@@ -31,7 +31,7 @@ from ....core import same_doc_as
 
 from ..models import AppInfo
 from ..models import AppUpdate
-from ..models import AvailablePredicateObject
+from ..models import AvailablePredicate
 from ..models import BasicItem
 from ..models import ErrorEntity
 from ..models import FullAppInfo
@@ -133,8 +133,8 @@ from ..models import (
     AppUpdatePrimaryGenreEnum,
 )
 from ..models import (
-    AvailablePredicateObjectPredicateTypeEnum,
-    AvailablePredicateObjectValueTypeEnum,
+    AvailablePredicatePredicateTypeEnum,
+    AvailablePredicateValueTypeEnum,
 )
 from ..models import (
     BasicItemAppTypeEnum,
@@ -197,6 +197,41 @@ def acquire_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Acquire item (acquireItem)
+
+    [SERVICE COMMUNICATION ONLY] This api is used for acquiring a published item while the item is maxCount limited, it will decrease the sale available count.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : acquire result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/acquire
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemAcquireRequest in body
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ItemAcquireResult (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -217,6 +252,41 @@ async def acquire_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Acquire item (acquireItem)
+
+    [SERVICE COMMUNICATION ONLY] This api is used for acquiring a published item while the item is maxCount limited, it will decrease the sale available count.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : acquire result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/acquire
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemAcquireRequest in body
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ItemAcquireResult (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -242,6 +312,48 @@ def bulk_get_locale_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get locale items (bulkGetLocaleItems)
+
+    This API is used to bulk get locale items. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/locale/byIds
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ItemInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -268,6 +380,48 @@ async def bulk_get_locale_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get locale items (bulkGetLocaleItems)
+
+    This API is used to bulk get locale items. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/locale/byIds
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ItemInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -293,6 +447,261 @@ def create_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create an Item (createItem)
+
+    This API is used to create an item. APP item only can created in publisher namespace.
+
+    An item create example:
+
+
+        {
+
+           "categoryPath": "/games",
+
+           "localizations": {
+
+               "en": {
+
+                   "title":"required",
+
+                   "description":"optional",
+
+                   "longDescription":"optional",
+
+                   "localExt": {
+
+                          "properties":[
+
+                                           {
+
+                                               "key1":"value1",
+
+                                               "key2":"value2"
+
+                                           }
+
+                          ],
+
+                          "functions":[
+
+                                           {
+
+                                               "key1":"value1",
+
+                                               "key2":"value2"
+
+                                           }
+
+                         ]
+
+                   }
+
+                }
+
+           },
+
+           "images": [
+
+             {
+
+                   "as":"optional, image for",
+
+                   "caption":"optional",
+
+                   "height":10,
+
+                   "width":10,
+
+                   "imageUrl":"http://img-url-required",
+
+                   "smallImageUrl":"http://small-img-url-required"
+
+             }
+
+           ],
+
+           "thumbnailUrl": "optional, thumbnail url",
+
+           "status": "ACTIVE",
+
+           "listable": true,
+
+           "purchasable": true,
+
+           "itemType": "APP(allowed: [APP,COINS,INGAMEITEM,CODE,BUNDLE])",
+
+           "name": "required, also will be used as entitlement name",
+
+           "entitlementType": "DURABLE(allowed:[DURABLE,CONSUMABLE], should be CONSUMABLE when item type is COINS)",
+
+           "useCount": 1(optional, required if the entitlement type is consumable),
+
+           "stackable": false,
+
+           "appId": "optional, required if itemType is APP",
+
+           "appType": "GAME(optional, required if itemType is APP)",
+
+           "seasonType": "PASS(optional, required if itemType is SEASON)",
+
+           "baseAppId": "optional, set value of game app id if you want to link to a game",
+
+           "targetCurrencyCode": "optional, required if itemType is COINS",
+
+           "targetNamespace": "optional, required when itemType is INGAMEITEM, the targetNamespace will only take effect when the item
+
+           created belongs to the publisher namespace",
+
+           "sku": "optional, commonly unique item code",
+
+           "regionData": {
+
+               "US(store's default region is required)": [
+
+                 {
+
+                    "price":10,
+
+                    "discountPercentage": 0(integer, optional, range[0,100], discountedPrice = price  * ((100 - discountPercentage) * 0.01),
+
+                      will use it to calculate discounted price if it is not 0),
+
+                    "discountAmount":0(integer, optional, range[0,itemPrice], will use it to calculate discounted price if discountPercentage is 0),
+
+                    "currencyCode":"code(required, example: USD)",
+
+                    "currencyNamespace":"test-ns-required(allow publisher namespace if namespace is publisher namespace, allow publisher and game namespace if namespace is not publisher namespace)",
+
+                    "trialPrice":5(required while fixedTrialCycles set, should >=0 and <= price, will same as price if not present),
+
+                    "purchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "expireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "discountPurchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "discountExpireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+                 }
+
+               ]
+
+           },
+
+           "itemIds": [
+
+               "itemId"
+
+           ],
+
+           "itemQty": {
+
+               "itemId":1
+
+           },
+
+           "recurring": {
+
+               "cycle":"MONTHLY(allowed: [WEEKLY,MONTHLY,QUARTERLY,YEARLY])",
+
+               "fixedFreeDays":0(integer, fixed free days, 0 means not set),
+
+               "fixedTrialCycles":0(integer, fixed trial cycles, 0 means not set, will not take effect if fixedFreeDays set),
+
+               "graceDays":7(integer, recurring grace days, retry recurring charge within configured days if charge fail, default 7)
+
+           },
+
+           "tags": [
+
+               "exampleTag24"
+
+           ],
+
+           "features": [
+
+               "feature"
+
+           ],
+
+           "clazz": "weapon",
+
+           "boothName": "C_campaign1",
+
+           "displayOrder": 1000,
+
+           "ext": {
+
+               "properties":[
+
+                   {
+
+                       "key1":"value1",
+
+                       "key2":"value2"
+
+                   }
+
+               ],
+
+               "functions":[
+
+                   {
+
+                       "key1":"value1",
+
+                       "key2":"value2"
+
+                   }
+
+               ]
+
+           },
+
+           "maxCountPerUser": 1(integer, optional, -1 means UNLIMITED),
+
+           "maxCount": 1(integer, optional, -1 means UNLIMITED, unset when itemType is CODE)
+
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=1 (CREATE)
+      *  Returns : created item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items
+
+        method: POST
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        201: Created - FullItemInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30322: Bundle item [{itemId}] can't be bundled | 30325: Code item [{itemId}] can't be bundled | 30326: Subscription item [{itemId}] can't be bundled | 30329: Invalid bundled item [{itemId}] quantity | 30021: Default language [{language}] required | 30321: Invalid item discount amount | 30022: Default region [{region}] is required | 30323: Target namespace is required | 30327: Invalid item trial price | 30330: Invalid item region price currency namespace [{namespace}] | 30332: Invalid option box item [{itemId}] quantity | 30333: Item [{itemId}] item type [{itemType}] can't be bundled into option box | 30334: Option box item [{itemId}] can't be bundled | 30337: Invalid loot box item [{itemId}] quantity | 30338: Item [{itemId}] item type [{itemType}] can't be bundled into loot box | 30339: Loot box item [{itemId}] can't be bundled)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -313,6 +722,261 @@ async def create_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create an Item (createItem)
+
+    This API is used to create an item. APP item only can created in publisher namespace.
+
+    An item create example:
+
+
+        {
+
+           "categoryPath": "/games",
+
+           "localizations": {
+
+               "en": {
+
+                   "title":"required",
+
+                   "description":"optional",
+
+                   "longDescription":"optional",
+
+                   "localExt": {
+
+                          "properties":[
+
+                                           {
+
+                                               "key1":"value1",
+
+                                               "key2":"value2"
+
+                                           }
+
+                          ],
+
+                          "functions":[
+
+                                           {
+
+                                               "key1":"value1",
+
+                                               "key2":"value2"
+
+                                           }
+
+                         ]
+
+                   }
+
+                }
+
+           },
+
+           "images": [
+
+             {
+
+                   "as":"optional, image for",
+
+                   "caption":"optional",
+
+                   "height":10,
+
+                   "width":10,
+
+                   "imageUrl":"http://img-url-required",
+
+                   "smallImageUrl":"http://small-img-url-required"
+
+             }
+
+           ],
+
+           "thumbnailUrl": "optional, thumbnail url",
+
+           "status": "ACTIVE",
+
+           "listable": true,
+
+           "purchasable": true,
+
+           "itemType": "APP(allowed: [APP,COINS,INGAMEITEM,CODE,BUNDLE])",
+
+           "name": "required, also will be used as entitlement name",
+
+           "entitlementType": "DURABLE(allowed:[DURABLE,CONSUMABLE], should be CONSUMABLE when item type is COINS)",
+
+           "useCount": 1(optional, required if the entitlement type is consumable),
+
+           "stackable": false,
+
+           "appId": "optional, required if itemType is APP",
+
+           "appType": "GAME(optional, required if itemType is APP)",
+
+           "seasonType": "PASS(optional, required if itemType is SEASON)",
+
+           "baseAppId": "optional, set value of game app id if you want to link to a game",
+
+           "targetCurrencyCode": "optional, required if itemType is COINS",
+
+           "targetNamespace": "optional, required when itemType is INGAMEITEM, the targetNamespace will only take effect when the item
+
+           created belongs to the publisher namespace",
+
+           "sku": "optional, commonly unique item code",
+
+           "regionData": {
+
+               "US(store's default region is required)": [
+
+                 {
+
+                    "price":10,
+
+                    "discountPercentage": 0(integer, optional, range[0,100], discountedPrice = price  * ((100 - discountPercentage) * 0.01),
+
+                      will use it to calculate discounted price if it is not 0),
+
+                    "discountAmount":0(integer, optional, range[0,itemPrice], will use it to calculate discounted price if discountPercentage is 0),
+
+                    "currencyCode":"code(required, example: USD)",
+
+                    "currencyNamespace":"test-ns-required(allow publisher namespace if namespace is publisher namespace, allow publisher and game namespace if namespace is not publisher namespace)",
+
+                    "trialPrice":5(required while fixedTrialCycles set, should >=0 and <= price, will same as price if not present),
+
+                    "purchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "expireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "discountPurchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "discountExpireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+                 }
+
+               ]
+
+           },
+
+           "itemIds": [
+
+               "itemId"
+
+           ],
+
+           "itemQty": {
+
+               "itemId":1
+
+           },
+
+           "recurring": {
+
+               "cycle":"MONTHLY(allowed: [WEEKLY,MONTHLY,QUARTERLY,YEARLY])",
+
+               "fixedFreeDays":0(integer, fixed free days, 0 means not set),
+
+               "fixedTrialCycles":0(integer, fixed trial cycles, 0 means not set, will not take effect if fixedFreeDays set),
+
+               "graceDays":7(integer, recurring grace days, retry recurring charge within configured days if charge fail, default 7)
+
+           },
+
+           "tags": [
+
+               "exampleTag24"
+
+           ],
+
+           "features": [
+
+               "feature"
+
+           ],
+
+           "clazz": "weapon",
+
+           "boothName": "C_campaign1",
+
+           "displayOrder": 1000,
+
+           "ext": {
+
+               "properties":[
+
+                   {
+
+                       "key1":"value1",
+
+                       "key2":"value2"
+
+                   }
+
+               ],
+
+               "functions":[
+
+                   {
+
+                       "key1":"value1",
+
+                       "key2":"value2"
+
+                   }
+
+               ]
+
+           },
+
+           "maxCountPerUser": 1(integer, optional, -1 means UNLIMITED),
+
+           "maxCount": 1(integer, optional, -1 means UNLIMITED, unset when itemType is CODE)
+
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=1 (CREATE)
+      *  Returns : created item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items
+
+        method: POST
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        201: Created - FullItemInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30322: Bundle item [{itemId}] can't be bundled | 30325: Code item [{itemId}] can't be bundled | 30326: Subscription item [{itemId}] can't be bundled | 30329: Invalid bundled item [{itemId}] quantity | 30021: Default language [{language}] required | 30321: Invalid item discount amount | 30022: Default region [{region}] is required | 30323: Target namespace is required | 30327: Invalid item trial price | 30330: Invalid item region price currency namespace [{namespace}] | 30332: Invalid option box item [{itemId}] quantity | 30333: Item [{itemId}] item type [{itemType}] can't be bundled into option box | 30334: Option box item [{itemId}] can't be bundled | 30337: Invalid loot box item [{itemId}] quantity | 30338: Item [{itemId}] item type [{itemType}] can't be bundled into loot box | 30339: Loot box item [{itemId}] can't be bundled)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -333,6 +997,40 @@ def create_item_type_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create an Item Type Config (createItemTypeConfig)
+
+    This API is used to create an item type config.
+
+    *  Required permission : resource="ADMIN:ITEM:CONFIG", action=1 (CREATE)
+    *  Returns : item type config data
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [CREATE]
+
+    Properties:
+        url: /platform/admin/items/configs
+
+        method: POST
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemTypeConfigCreate in body
+
+    Responses:
+        201: Created - (item type config created)
+
+        400: Bad Request - ErrorEntity (30336: Item type [{itemType}] does not support)
+
+        409: Conflict - ErrorEntity (30371: Item type config for type [{itemType}] and clazz [{clazz}] already exists)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     request = CreateItemTypeConfig.create(
         body=body,
     )
@@ -345,6 +1043,40 @@ async def create_item_type_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create an Item Type Config (createItemTypeConfig)
+
+    This API is used to create an item type config.
+
+    *  Required permission : resource="ADMIN:ITEM:CONFIG", action=1 (CREATE)
+    *  Returns : item type config data
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [CREATE]
+
+    Properties:
+        url: /platform/admin/items/configs
+
+        method: POST
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemTypeConfigCreate in body
+
+    Responses:
+        201: Created - (item type config created)
+
+        400: Bad Request - ErrorEntity (30336: Item type [{itemType}] does not support)
+
+        409: Conflict - ErrorEntity (30371: Item type config for type [{itemType}] and clazz [{clazz}] already exists)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     request = CreateItemTypeConfig.create(
         body=body,
     )
@@ -362,6 +1094,45 @@ def defeature_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Defeature an item (defeatureItem)
+
+    Remove a feature from an item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/features/{feature}
+
+        method: DELETE
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        feature: (feature) REQUIRED str in path
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -384,6 +1155,45 @@ async def defeature_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Defeature an item (defeatureItem)
+
+    Remove a feature from an item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/features/{feature}
+
+        method: DELETE
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        feature: (feature) REQUIRED str in path
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -408,6 +1218,46 @@ def delete_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete an item (deleteItem)
+
+    This API is used to delete an item permanently.
+
+    force: the default value should be: false. When the value is:
+    * false: only the items in the draft store that have never been published yet can be removed.
+    *  true: the item in the draft store(even been published before) can be removed.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}
+
+        method: DELETE
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        force: (force) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        204: No Content - (Delete item successfully)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30335: Item [{itemId}] can't be deleted in non-forced mode if item has been published)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -430,6 +1280,46 @@ async def delete_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete an item (deleteItem)
+
+    This API is used to delete an item permanently.
+
+    force: the default value should be: false. When the value is:
+    * false: only the items in the draft store that have never been published yet can be removed.
+    *  true: the item in the draft store(even been published before) can be removed.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}
+
+        method: DELETE
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        force: (force) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        204: No Content - (Delete item successfully)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30335: Item [{itemId}] can't be deleted in non-forced mode if item has been published)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -449,6 +1339,35 @@ async def delete_item_async(
 def delete_item_type_config(
     id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete an item type config (deleteItemTypeConfig)
+
+    This API is used to delete an item type config permanently.Other detail info:
+
+      * Required permission : resource="ADMIN:ITEM:CONFIG", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [DELETE]
+
+    Properties:
+        url: /platform/admin/items/configs/{id}
+
+        method: DELETE
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete item successfully)
+
+        404: Not Found - ErrorEntity (30541: Item type config [{id}] doesn't exist)
+    """
     request = DeleteItemTypeConfig.create(
         id_=id_,
     )
@@ -459,6 +1378,35 @@ def delete_item_type_config(
 async def delete_item_type_config_async(
     id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete an item type config (deleteItemTypeConfig)
+
+    This API is used to delete an item type config permanently.Other detail info:
+
+      * Required permission : resource="ADMIN:ITEM:CONFIG", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [DELETE]
+
+    Properties:
+        url: /platform/admin/items/configs/{id}
+
+        method: DELETE
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete item successfully)
+
+        404: Not Found - ErrorEntity (30541: Item type config [{id}] doesn't exist)
+    """
     request = DeleteItemTypeConfig.create(
         id_=id_,
     )
@@ -475,6 +1423,43 @@ def disable_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable an item (disableItem)
+
+    Disable an item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/disable
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -495,6 +1480,43 @@ async def disable_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable an item (disableItem)
+
+    Disable an item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/disable
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -517,6 +1539,43 @@ def enable_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable an item (enableItem)
+
+    Enable an item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/enable
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -537,6 +1596,43 @@ async def enable_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable an item (enableItem)
+
+    Enable an item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/enable
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -560,6 +1656,45 @@ def feature_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Feature an item (featureItem)
+
+    Add a feature to an item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/features/{feature}
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        feature: (feature) REQUIRED str in path
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -582,6 +1717,45 @@ async def feature_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Feature an item (featureItem)
+
+    Add a feature to an item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/features/{feature}
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        feature: (feature) REQUIRED str in path
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -606,6 +1780,42 @@ def get_app(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an app info (getApp)
+
+    This API is used to get an app info.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : app data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/app
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullAppInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -628,6 +1838,42 @@ async def get_app_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an app info (getApp)
+
+    This API is used to get an app info.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : app data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/app
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullAppInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -649,6 +1895,34 @@ def get_available_predicate_types(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get available predicate types (getAvailablePredicateTypes)
+
+    Get available predicate types.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:ITEM, action=2 (READ)
+      *  Returns : available predicate types
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/predicate/types
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[AvailablePredicate] (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -665,6 +1939,34 @@ async def get_available_predicate_types_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get available predicate types (getAvailablePredicateTypes)
+
+    Get available predicate types.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:ITEM, action=2 (READ)
+      *  Returns : available predicate types
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/predicate/types
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[AvailablePredicate] (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -685,6 +1987,40 @@ def get_bulk_item_id_by_skus(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get multiple itemId by sku (getBulkItemIdBySkus)
+
+    This API is used to get an list of itemId by list of sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/itemId/bySkus
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sku: (sku) OPTIONAL List[str] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ItemId] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -705,6 +2041,40 @@ async def get_bulk_item_id_by_skus_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get multiple itemId by sku (getBulkItemIdBySkus)
+
+    This API is used to get an list of itemId by list of sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/itemId/bySkus
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sku: (sku) OPTIONAL List[str] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ItemId] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -728,6 +2098,44 @@ def get_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an item (getItem)
+
+    This API is used to get an item.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -750,6 +2158,44 @@ async def get_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an item (getItem)
+
+    This API is used to get an item.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -774,6 +2220,44 @@ def get_item_by_app_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item by appId (getItemByAppId)
+
+    This API is used to get the item by appId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the item with that appId
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/byAppId
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30342: Item of appId [{appId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -796,6 +2280,44 @@ async def get_item_by_app_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item by appId (getItemByAppId)
+
+    This API is used to get the item by appId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the item with that appId
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/byAppId
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30342: Item of appId [{appId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -820,6 +2342,44 @@ def get_item_by_sku(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item by sku (getItemBySku)
+
+    This API is used to get the item by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the item with sku
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/bySku
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -842,6 +2402,44 @@ async def get_item_by_sku_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item by sku (getItemBySku)
+
+    This API is used to get the item by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the item with sku
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/bySku
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -864,6 +2462,39 @@ def get_item_dynamic_data(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item dynamic data (getItemDynamicData)
+
+    Get item dynamic data for published item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : item dynamic data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/dynamic
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ItemDynamicDataInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -882,6 +2513,39 @@ async def get_item_dynamic_data_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item dynamic data (getItemDynamicData)
+
+    Get item dynamic data for published item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : item dynamic data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/dynamic
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ItemDynamicDataInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -904,6 +2568,44 @@ def get_item_id_by_sku(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get itemId by sku (getItemIdBySku)
+
+    [SERVICE COMMUNICATION ONLY] This API is used to get the itemId by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the itemId with sku
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/itemId/bySku
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - ItemId (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -926,6 +2628,44 @@ async def get_item_id_by_sku_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get itemId by sku (getItemIdBySku)
+
+    [SERVICE COMMUNICATION ONLY] This API is used to get the itemId by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the itemId with sku
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/itemId/bySku
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - ItemId (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -945,6 +2685,38 @@ async def get_item_id_by_sku_async(
 def get_item_type_config(
     id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get an item type config (getItemTypeConfig)
+
+    This API is used to get an item type config.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:ITEM:CONFIG", action=2 (READ)
+      *  Returns : item type config data
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/items/configs/{id}
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        200: OK - ItemTypeConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30541: Item type config [{id}] doesn't exist)
+    """
     request = GetItemTypeConfig.create(
         id_=id_,
     )
@@ -955,6 +2727,38 @@ def get_item_type_config(
 async def get_item_type_config_async(
     id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get an item type config (getItemTypeConfig)
+
+    This API is used to get an item type config.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:ITEM:CONFIG", action=2 (READ)
+      *  Returns : item type config data
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/items/configs/{id}
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        200: OK - ItemTypeConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30541: Item type config [{id}] doesn't exist)
+    """
     request = GetItemTypeConfig.create(
         id_=id_,
     )
@@ -975,6 +2779,50 @@ def get_locale_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an item in locale (getLocaleItem)
+
+    This API is used to get an item in specific locale. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/locale
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        language: (language) OPTIONAL str in query
+
+        populate_bundle: (populateBundle) OPTIONAL bool in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - PopulatedItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1003,6 +2851,50 @@ async def get_locale_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an item in locale (getLocaleItem)
+
+    This API is used to get an item in specific locale. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/locale
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        language: (language) OPTIONAL str in query
+
+        populate_bundle: (populateBundle) OPTIONAL bool in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - PopulatedItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1033,6 +2925,50 @@ def get_locale_item_by_sku(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an item by sku in locale (getLocaleItemBySku)
+
+    This API is used to get an item by sku in specific locale. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/bySku/locale
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        language: (language) OPTIONAL str in query
+
+        populate_bundle: (populateBundle) OPTIONAL bool in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - PopulatedItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1061,6 +2997,50 @@ async def get_locale_item_by_sku_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an item by sku in locale (getLocaleItemBySku)
+
+    This API is used to get an item by sku in specific locale. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/bySku/locale
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        language: (language) OPTIONAL str in query
+
+        populate_bundle: (populateBundle) OPTIONAL bool in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - PopulatedItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1087,6 +3067,40 @@ def list_basic_items_by_features(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List basic items by features (listBasicItemsByFeatures)
+
+    [SERVICE COMMUNICATION ONLY] This API is used to list basic items by features.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of basic items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/byFeatures/basic
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        features: (features) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[BasicItem] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1107,6 +3121,40 @@ async def list_basic_items_by_features_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List basic items by features (listBasicItemsByFeatures)
+
+    [SERVICE COMMUNICATION ONLY] This API is used to list basic items by features.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of basic items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/byFeatures/basic
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        features: (features) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[BasicItem] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1125,6 +3173,34 @@ async def list_basic_items_by_features_async(
 def list_item_type_configs(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get all item type configs (listItemTypeConfigs)
+
+    This API is used to get all item type configs.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:ITEM:CONFIG", action=2 (READ)
+      *  Returns : the list of items
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/items/configs
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[ItemTypeConfigInfo] (successful operation)
+    """
     request = ListItemTypeConfigs.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -1133,6 +3209,34 @@ def list_item_type_configs(
 async def list_item_type_configs_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get all item type configs (listItemTypeConfigs)
+
+    This API is used to get all item type configs.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:ITEM:CONFIG", action=2 (READ)
+      *  Returns : the list of items
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/items/configs
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[ItemTypeConfigInfo] (successful operation)
+    """
     request = ListItemTypeConfigs.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -1149,6 +3253,44 @@ def public_bulk_get_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get locale items (publicBulkGetItems)
+
+    This API is used to bulk get locale items. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store items)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store items)
+      *  Returns : the list of items info
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/locale/byIds
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ItemInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1173,6 +3315,44 @@ async def public_bulk_get_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get locale items (publicBulkGetItems)
+
+    This API is used to bulk get locale items. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store items)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store items)
+      *  Returns : the list of items info
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/locale/byIds
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ItemInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1199,6 +3379,44 @@ def public_get_app(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an app in locale (publicGetApp)
+
+    This API is used to get an app in locale. If app not exist in specific region, default region app will return.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store app)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store app)
+      *  Returns : app data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/{itemId}/app/locale
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - AppInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1223,6 +3441,44 @@ async def public_get_app_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an app in locale (publicGetApp)
+
+    This API is used to get an app in locale. If app not exist in specific region, default region app will return.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store app)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store app)
+      *  Returns : app data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/{itemId}/app/locale
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - AppInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1250,6 +3506,46 @@ def public_get_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an item in locale (publicGetItem)
+
+    This API is used to get an item in locale. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : item data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/{itemId}/locale
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        populate_bundle: (populateBundle) OPTIONAL bool in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - PopulatedItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1276,6 +3572,46 @@ async def public_get_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an item in locale (publicGetItem)
+
+    This API is used to get an item in locale. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : item data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/{itemId}/locale
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        populate_bundle: (populateBundle) OPTIONAL bool in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - PopulatedItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1303,6 +3639,44 @@ def public_get_item_by_app_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item by appId (publicGetItemByAppId)
+
+    This API is used to get item by appId.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : the item with that appId
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/byAppId
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - ItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30342: Item of appId [{appId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1327,6 +3701,44 @@ async def public_get_item_by_app_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item by appId (publicGetItemByAppId)
+
+    This API is used to get item by appId.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : the item with that appId
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/byAppId
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - ItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30342: Item of appId [{appId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1353,6 +3765,44 @@ def public_get_item_by_sku(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item by sku (publicGetItemBySku)
+
+    This API is used to get the item by sku.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : the item with sku
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/bySku
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - ItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1377,6 +3827,44 @@ async def public_get_item_by_sku_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item by sku (publicGetItemBySku)
+
+    This API is used to get the item by sku.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : the item with sku
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/bySku
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - ItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1400,6 +3888,35 @@ def public_get_item_dynamic_data(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item dynamic data (publicGetItemDynamicData)
+
+    Get item dynamic data for a published item.
+    Other detail info:
+
+      * Returns : item dynamic data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/{itemId}/dynamic
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ItemDynamicDataInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1418,6 +3935,35 @@ async def public_get_item_dynamic_data_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get item dynamic data (publicGetItemDynamicData)
+
+    Get item dynamic data for a published item.
+    Other detail info:
+
+      * Returns : item dynamic data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/{itemId}/dynamic
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ItemDynamicDataInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1450,6 +3996,64 @@ def public_query_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query items by criteria (publicQueryItems)
+
+    This API is used to query items by criteria within a store. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : the list of items
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/byCriteria
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        base_app_id: (baseAppId) OPTIONAL str in query
+
+        category_path: (categoryPath) OPTIONAL str in query
+
+        features: (features) OPTIONAL str in query
+
+        include_sub_category_item: (includeSubCategoryItem) OPTIONAL bool in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        language: (language) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
+
+    Responses:
+        200: OK - ItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1492,6 +4096,64 @@ async def public_query_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query items by criteria (publicQueryItems)
+
+    This API is used to query items by criteria within a store. If item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : the list of items
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/byCriteria
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        base_app_id: (baseAppId) OPTIONAL str in query
+
+        category_path: (categoryPath) OPTIONAL str in query
+
+        features: (features) OPTIONAL str in query
+
+        include_sub_category_item: (includeSubCategoryItem) OPTIONAL bool in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        language: (language) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
+
+    Responses:
+        200: OK - ItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1530,6 +4192,50 @@ def public_search_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search items by keyword (publicSearchItems)
+
+    This API is used to search items by keyword in title, description and long description, It's language constrained, also if item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : the list of items
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/search
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        keyword: (keyword) REQUIRED str in query
+
+        language: (language) REQUIRED str in query
+
+    Responses:
+        200: OK - ItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1560,6 +4266,50 @@ async def public_search_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search items by keyword (publicSearchItems)
+
+    This API is used to search items by keyword in title, description and long description, It's language constrained, also if item not exist in specific region, default region item will return.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store item)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store item)
+      *  Returns : the list of items
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/search
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        keyword: (keyword) REQUIRED str in query
+
+        language: (language) REQUIRED str in query
+
+    Responses:
+        200: OK - ItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1586,6 +4336,32 @@ def public_validate_item_purchase_condition(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Validate user item purchase condition (publicValidateItemPurchaseCondition)
+
+    This API is used to validate user item purchase condition
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/purchase/conditions/validate
+
+        method: POST
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemPurchaseConditionValidateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ItemPurchaseConditionValidateResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1604,6 +4380,32 @@ async def public_validate_item_purchase_condition_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Validate user item purchase condition (publicValidateItemPurchaseCondition)
+
+    This API is used to validate user item purchase condition
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/purchase/conditions/validate
+
+        method: POST
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemPurchaseConditionValidateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ItemPurchaseConditionValidateResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1638,6 +4440,70 @@ def query_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query items by criteria (queryItems)
+
+    This API is used to query items by criteria within a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/byCriteria
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        available_date: (availableDate) OPTIONAL str in query
+
+        base_app_id: (baseAppId) OPTIONAL str in query
+
+        category_path: (categoryPath) OPTIONAL str in query
+
+        features: (features) OPTIONAL str in query
+
+        include_sub_category_item: (includeSubCategoryItem) OPTIONAL bool in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
+
+        target_namespace: (targetNamespace) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1684,6 +4550,70 @@ async def query_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query items by criteria (queryItems)
+
+    This API is used to query items by criteria within a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/byCriteria
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        available_date: (availableDate) OPTIONAL str in query
+
+        base_app_id: (baseAppId) OPTIONAL str in query
+
+        category_path: (categoryPath) OPTIONAL str in query
+
+        features: (features) OPTIONAL str in query
+
+        include_sub_category_item: (includeSubCategoryItem) OPTIONAL bool in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
+
+        target_namespace: (targetNamespace) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1733,6 +4663,76 @@ def query_items_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query items by criteria (queryItems_1)
+
+    This API is used to query items by criteria within a store.
+
+    The behaviour for itemStatus query parameter:
+    * TRUE: Show only ACTIVE items
+    * FALSE: Show only INACTIVE items
+    * Not provided: show both ACTIVE and INACTIVE items
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/v2/admin/namespaces/{namespace}/items/byCriteria
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        available_date: (availableDate) OPTIONAL str in query
+
+        base_app_id: (baseAppId) OPTIONAL str in query
+
+        category_path: (categoryPath) OPTIONAL str in query
+
+        features: (features) OPTIONAL str in query
+
+        include_sub_category_item: (includeSubCategoryItem) OPTIONAL bool in query
+
+        item_name: (itemName) OPTIONAL str in query
+
+        item_status: (itemStatus) OPTIONAL Union[str, ItemStatusEnum] in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
+
+        target_namespace: (targetNamespace) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1781,6 +4781,76 @@ async def query_items_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query items by criteria (queryItems_1)
+
+    This API is used to query items by criteria within a store.
+
+    The behaviour for itemStatus query parameter:
+    * TRUE: Show only ACTIVE items
+    * FALSE: Show only INACTIVE items
+    * Not provided: show both ACTIVE and INACTIVE items
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/v2/admin/namespaces/{namespace}/items/byCriteria
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        available_date: (availableDate) OPTIONAL str in query
+
+        base_app_id: (baseAppId) OPTIONAL str in query
+
+        category_path: (categoryPath) OPTIONAL str in query
+
+        features: (features) OPTIONAL str in query
+
+        include_sub_category_item: (includeSubCategoryItem) OPTIONAL bool in query
+
+        item_name: (itemName) OPTIONAL str in query
+
+        item_status: (itemStatus) OPTIONAL Union[str, ItemStatusEnum] in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
+
+        target_namespace: (targetNamespace) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1820,6 +4890,50 @@ def query_uncategorized_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query uncategorized items (queryUncategorizedItems)
+
+    This API is used to query uncategorized items within a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of uncategorized items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/uncategorized
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1846,6 +4960,50 @@ async def query_uncategorized_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query uncategorized items (queryUncategorizedItems)
+
+    This API is used to query uncategorized items within a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of uncategorized items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/uncategorized
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1871,6 +5029,42 @@ def return_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Return item (returnItem)
+
+    [SERVICE COMMUNICATION ONLY] This api is used for returning a published item while the item is maxCount limited, it will increase the sale available count if orderNo already acquired.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/return
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemReturnRequest in body
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Return item successfully)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1891,6 +5085,42 @@ async def return_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Return item (returnItem)
+
+    [SERVICE COMMUNICATION ONLY] This api is used for returning a published item while the item is maxCount limited, it will increase the sale available count if orderNo already acquired.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/return
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemReturnRequest in body
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Return item successfully)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1912,6 +5142,40 @@ def search_item_type_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an item type config (searchItemTypeConfig)
+
+    This API is used to get an item type config.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:ITEM:CONFIG", action=2 (READ)
+      *  Returns : item type config data
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/items/configs/search
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        clazz: (clazz) OPTIONAL str in query
+
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum] in query
+
+    Responses:
+        200: OK - ItemTypeConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30541: Item type config [{id}] doesn't exist)
+    """
     request = SearchItemTypeConfig.create(
         item_type=item_type,
         clazz=clazz,
@@ -1926,6 +5190,40 @@ async def search_item_type_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an item type config (searchItemTypeConfig)
+
+    This API is used to get an item type config.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:ITEM:CONFIG", action=2 (READ)
+      *  Returns : item type config data
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/items/configs/search
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        clazz: (clazz) OPTIONAL str in query
+
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum] in query
+
+    Responses:
+        200: OK - ItemTypeConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30541: Item type config [{id}] doesn't exist)
+    """
     request = SearchItemTypeConfig.create(
         item_type=item_type,
         clazz=clazz,
@@ -1949,6 +5247,54 @@ def search_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search items by keyword (searchItems)
+
+    This API is used to search items by keyword in title, description and long description within a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/search
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        keyword: (keyword) REQUIRED str in query
+
+        language: (language) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1981,6 +5327,54 @@ async def search_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search items by keyword (searchItems)
+
+    This API is used to search items by keyword in title, description and long description within a store.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/search
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        keyword: (keyword) REQUIRED str in query
+
+        language: (language) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2009,6 +5403,50 @@ def sync_in_game_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync an in game item (syncInGameItem)
+
+    This API is used to sync an in game item in game namespace to publisher namespace, at current BUNDLE can't be synced.
+
+    The synced item has an additional field targetItemId besides targetNamespace, mostly this item should not modified manually again.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL InGameItemSync in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required | 30022: Default region [{region}] is required | 30324: Invalid namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2029,6 +5467,50 @@ async def sync_in_game_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync an in game item (syncInGameItem)
+
+    This API is used to sync an in game item in game namespace to publisher namespace, at current BUNDLE can't be synced.
+
+    The synced item has an additional field targetItemId besides targetNamespace, mostly this item should not modified manually again.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL InGameItemSync in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required | 30022: Default region [{region}] is required | 30324: Invalid namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2052,6 +5534,135 @@ def update_app(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update an app (updateApp)
+
+    This API is used to update an app.
+
+    An app update example:
+
+
+        {
+
+          "developer": "accelbyte",
+
+          "publisher": "accelbyte",
+
+          "websiteUrl": "http://accelbyte.io",
+
+          "forumUrl": "http://accelbyte.io",
+
+          "platforms": ["Windows(allowed values: Windows, MacOS, Linux, IOS, Android)"],
+
+          "platformRequirements": {
+
+            "Windows": [
+
+              {
+
+                "label":"minimum(can be minimum or recommended)",
+
+                "osVersion":"os version",
+
+                "processor":"processor",
+
+                "ram":"RAM",
+
+                "graphics":"graphics",
+
+                "directXVersion":"directXVersion",
+
+                "diskSpace":"diskSpace",
+
+                "soundCard":"soundCard",
+
+                "additionals":"additionals"
+
+              }
+
+             ]
+
+          },
+
+          "carousel": [
+
+            {
+
+              "type":"image(allowed values: image, video)",
+
+              "videoSource":"generic(allowed values:generic, youtube, viemo)",
+
+              "url":"url",
+
+              "alt":"alternative url or text",
+
+              "thumbnailUrl":"thumbnail url",
+
+              "previewUrl":"preview url",
+
+            }
+
+          ],
+
+          "localizations": {
+
+            "en": {
+
+              "slogan":"slogan",
+
+              "announcement":"announcement",
+
+            }
+
+          },
+
+          "primaryGenre": "Action",
+
+          "genres": ["Action", "Adventure"],
+
+          "players": ["Single"],
+
+          "releaseDate": "optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated app data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/app
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL AppUpdate in body
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullAppInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2074,6 +5685,135 @@ async def update_app_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update an app (updateApp)
+
+    This API is used to update an app.
+
+    An app update example:
+
+
+        {
+
+          "developer": "accelbyte",
+
+          "publisher": "accelbyte",
+
+          "websiteUrl": "http://accelbyte.io",
+
+          "forumUrl": "http://accelbyte.io",
+
+          "platforms": ["Windows(allowed values: Windows, MacOS, Linux, IOS, Android)"],
+
+          "platformRequirements": {
+
+            "Windows": [
+
+              {
+
+                "label":"minimum(can be minimum or recommended)",
+
+                "osVersion":"os version",
+
+                "processor":"processor",
+
+                "ram":"RAM",
+
+                "graphics":"graphics",
+
+                "directXVersion":"directXVersion",
+
+                "diskSpace":"diskSpace",
+
+                "soundCard":"soundCard",
+
+                "additionals":"additionals"
+
+              }
+
+             ]
+
+          },
+
+          "carousel": [
+
+            {
+
+              "type":"image(allowed values: image, video)",
+
+              "videoSource":"generic(allowed values:generic, youtube, viemo)",
+
+              "url":"url",
+
+              "alt":"alternative url or text",
+
+              "thumbnailUrl":"thumbnail url",
+
+              "previewUrl":"preview url",
+
+            }
+
+          ],
+
+          "localizations": {
+
+            "en": {
+
+              "slogan":"slogan",
+
+              "announcement":"announcement",
+
+            }
+
+          },
+
+          "primaryGenre": "Action",
+
+          "genres": ["Action", "Adventure"],
+
+          "players": ["Single"],
+
+          "releaseDate": "optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated app data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/app
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL AppUpdate in body
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullAppInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2098,6 +5838,265 @@ def update_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update an item (updateItem)
+
+    This API is used to update an item.
+
+    An item update example:
+
+
+        {
+
+            "categoryPath": "/games",
+
+            "localizations": {
+
+               "en": {
+
+                   "title":"required",
+
+                   "description":"optional",
+
+                   "longDescription":"optional",
+
+                   "localExt": {
+
+                          "properties":[
+
+                                           {
+
+                                               "key1":"value1",
+
+                                               "key2":"value2"
+
+                                           }
+
+                          ],
+
+                          "functions":[
+
+                                           {
+
+                                               "key1":"value1",
+
+                                               "key2":"value2"
+
+                                           }
+
+                         ]
+
+                   }
+
+               }
+
+           },
+
+           "images": [
+
+             {
+
+                   "as":"optional, image for",
+
+                   "caption":"optional",
+
+                   "height":10,
+
+                   "width":10,
+
+                   "imageUrl":"http://img-url-required",
+
+                   "smallImageUrl":"http://small-img-url-required"
+
+             }
+
+           ],
+
+           "thumbnailUrl": "optional, thumbnail url",
+
+           "status": "ACTIVE",
+
+           "listable": true,
+
+           "purchasable": true,
+
+           "itemType": "APP(allowed: [APP,COINS,INGAMEITEM,CODE,BUNDLE])",
+
+           "name": "optional",
+
+           "entitlementType": "DURABLE(allowed:[DURABLE,CONSUMABLE], should be CONSUMABLE when item type is COINS)",
+
+           "useCount": 1(optional, required if the entitlement type is consumable),
+
+           "stackable": false,
+
+           "appId": "optional, required if itemType is APP",
+
+           "baseAppId": "optional, set value of game app id if you want to link to a game",
+
+           "appType": "GAME(optional, required if itemType is APP)",
+
+           "seasonType": "PASS(optional, required if itemType is SEASON)",
+
+           "sku": "optional, commonly unique item code",
+
+           "targetCurrencyCode": "optional, required if itemType is COINS",
+
+           "targetNamespace": "optional, required when itemType is INGAMEITEM, the targetNamespace will only take effect when the item
+
+           created belongs to the publisher namespace",
+
+           "regionData": {
+
+               "US(store's default region is required)": [
+
+                 {
+
+                    "price":10,
+
+                    "discountPercentage":0(integer, optional, range[0,100], discountedPrice = price*((100 - discountPercentage) * 0.01),
+
+                      if it is not 0, will use it to calculate discounted price),
+
+                    "discountAmount":0(integer, optional, range[0,itemPrice], will use it to calculate discounted price if discountPercentage is 0),
+
+                    "currencyCode":"code(required, example: USD)",
+
+                    "currencyNamespace":"test-ns-required(allow publisher namespace if namespace is publisher namespace, allow publisher and game namespace if namespace is not publisher namespace)",
+
+                    "trialPrice":5(required while fixedTrialCycles set, should >=0 and <= price, will same as price if not present),
+
+                    "purchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "expireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "discountPurchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "discountExpireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+                 }
+
+               ]
+
+           },
+
+           "itemIds": [
+
+               "itemId"
+
+           ],
+
+           "itemQty": {
+
+               "itemId":1
+
+           },
+
+           "recurring": {
+
+               "cycle":"MONTHLY(allowed: [WEEKLY,MONTHLY,QUARTERLY,YEARLY])",
+
+               "fixedFreeDays":0(integer, fixed free days, 0 means not set),
+
+               "fixedTrialCycles":0(integer, fixed trial cycles, 0 means not set, will not take effect if fixedFreeDays set),
+
+               "graceDays":7(integer, recurring grace days, retry recurring charge within configured days if charge fail, default 7)
+
+           },
+
+           "tags": [
+
+               "exampleTag24"
+
+           ],
+
+           "features": [
+
+               "feature"
+
+           ],
+
+           "clazz": "weapon",
+
+           "boothName": "C_campaign1",
+
+           "displayOrder": 1000,
+
+           "ext": {
+
+               "properties":[
+
+                   {
+
+                       "key1":"value1",
+
+                       "key2":"value2"
+
+                   }
+
+               ],
+
+               "functions":[
+
+                   {
+
+                       "key1":"value1",
+
+                       "key2":"value2"
+
+                   }
+
+               ]
+
+           },
+
+           "maxCountPerUser": 1(integer, optional, -1 means UNLIMITED),
+
+           "maxCount": 1(integer, optional, -1 means UNLIMITED, new value should >= old value if both old value and new value is
+
+           limited, unset when item type is CODE)
+
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemUpdate in body
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30322: Bundle item [{itemId}] can't be bundled | 30325: Code item [{itemId}] can't be bundled | 30326: Subscription item [{itemId}] can't be bundled | 30329: Invalid bundled item [{itemId}] quantity | 30021: Default language [{language}] required | 30321: Invalid item discount amount | 30022: Default region [{region}] is required | 30323: Target namespace is required | 30327: Invalid item trial price | 30330: Invalid item region price currency namespace [{namespace}] | 30332: Invalid option box item [{itemId}] quantity | 30333: Item [{itemId}] item type [{itemType}] can't be bundled into option box | 30334: Option box item [{itemId}] can't be bundled | 30337: Invalid loot box item [{itemId}] quantity | 30338: Item [{itemId}] item type [{itemType}] can't be bundled into loot box | 30339: Loot box item [{itemId}] can't be bundled)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30371: Item maxCount not allow reduce | 30372: ItemType is not updatable)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2120,6 +6119,265 @@ async def update_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update an item (updateItem)
+
+    This API is used to update an item.
+
+    An item update example:
+
+
+        {
+
+            "categoryPath": "/games",
+
+            "localizations": {
+
+               "en": {
+
+                   "title":"required",
+
+                   "description":"optional",
+
+                   "longDescription":"optional",
+
+                   "localExt": {
+
+                          "properties":[
+
+                                           {
+
+                                               "key1":"value1",
+
+                                               "key2":"value2"
+
+                                           }
+
+                          ],
+
+                          "functions":[
+
+                                           {
+
+                                               "key1":"value1",
+
+                                               "key2":"value2"
+
+                                           }
+
+                         ]
+
+                   }
+
+               }
+
+           },
+
+           "images": [
+
+             {
+
+                   "as":"optional, image for",
+
+                   "caption":"optional",
+
+                   "height":10,
+
+                   "width":10,
+
+                   "imageUrl":"http://img-url-required",
+
+                   "smallImageUrl":"http://small-img-url-required"
+
+             }
+
+           ],
+
+           "thumbnailUrl": "optional, thumbnail url",
+
+           "status": "ACTIVE",
+
+           "listable": true,
+
+           "purchasable": true,
+
+           "itemType": "APP(allowed: [APP,COINS,INGAMEITEM,CODE,BUNDLE])",
+
+           "name": "optional",
+
+           "entitlementType": "DURABLE(allowed:[DURABLE,CONSUMABLE], should be CONSUMABLE when item type is COINS)",
+
+           "useCount": 1(optional, required if the entitlement type is consumable),
+
+           "stackable": false,
+
+           "appId": "optional, required if itemType is APP",
+
+           "baseAppId": "optional, set value of game app id if you want to link to a game",
+
+           "appType": "GAME(optional, required if itemType is APP)",
+
+           "seasonType": "PASS(optional, required if itemType is SEASON)",
+
+           "sku": "optional, commonly unique item code",
+
+           "targetCurrencyCode": "optional, required if itemType is COINS",
+
+           "targetNamespace": "optional, required when itemType is INGAMEITEM, the targetNamespace will only take effect when the item
+
+           created belongs to the publisher namespace",
+
+           "regionData": {
+
+               "US(store's default region is required)": [
+
+                 {
+
+                    "price":10,
+
+                    "discountPercentage":0(integer, optional, range[0,100], discountedPrice = price*((100 - discountPercentage) * 0.01),
+
+                      if it is not 0, will use it to calculate discounted price),
+
+                    "discountAmount":0(integer, optional, range[0,itemPrice], will use it to calculate discounted price if discountPercentage is 0),
+
+                    "currencyCode":"code(required, example: USD)",
+
+                    "currencyNamespace":"test-ns-required(allow publisher namespace if namespace is publisher namespace, allow publisher and game namespace if namespace is not publisher namespace)",
+
+                    "trialPrice":5(required while fixedTrialCycles set, should >=0 and <= price, will same as price if not present),
+
+                    "purchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "expireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "discountPurchaseAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+
+                    "discountExpireAt":"optional yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+                 }
+
+               ]
+
+           },
+
+           "itemIds": [
+
+               "itemId"
+
+           ],
+
+           "itemQty": {
+
+               "itemId":1
+
+           },
+
+           "recurring": {
+
+               "cycle":"MONTHLY(allowed: [WEEKLY,MONTHLY,QUARTERLY,YEARLY])",
+
+               "fixedFreeDays":0(integer, fixed free days, 0 means not set),
+
+               "fixedTrialCycles":0(integer, fixed trial cycles, 0 means not set, will not take effect if fixedFreeDays set),
+
+               "graceDays":7(integer, recurring grace days, retry recurring charge within configured days if charge fail, default 7)
+
+           },
+
+           "tags": [
+
+               "exampleTag24"
+
+           ],
+
+           "features": [
+
+               "feature"
+
+           ],
+
+           "clazz": "weapon",
+
+           "boothName": "C_campaign1",
+
+           "displayOrder": 1000,
+
+           "ext": {
+
+               "properties":[
+
+                   {
+
+                       "key1":"value1",
+
+                       "key2":"value2"
+
+                   }
+
+               ],
+
+               "functions":[
+
+                   {
+
+                       "key1":"value1",
+
+                       "key2":"value2"
+
+                   }
+
+               ]
+
+           },
+
+           "maxCountPerUser": 1(integer, optional, -1 means UNLIMITED),
+
+           "maxCount": 1(integer, optional, -1 means UNLIMITED, new value should >= old value if both old value and new value is
+
+           limited, unset when item type is CODE)
+
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+      *  Returns : updated item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemUpdate in body
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30322: Bundle item [{itemId}] can't be bundled | 30325: Code item [{itemId}] can't be bundled | 30326: Subscription item [{itemId}] can't be bundled | 30329: Invalid bundled item [{itemId}] quantity | 30021: Default language [{language}] required | 30321: Invalid item discount amount | 30022: Default region [{region}] is required | 30323: Target namespace is required | 30327: Invalid item trial price | 30330: Invalid item region price currency namespace [{namespace}] | 30332: Invalid option box item [{itemId}] quantity | 30333: Item [{itemId}] item type [{itemType}] can't be bundled into option box | 30334: Option box item [{itemId}] can't be bundled | 30337: Invalid loot box item [{itemId}] quantity | 30338: Item [{itemId}] item type [{itemType}] can't be bundled into loot box | 30339: Loot box item [{itemId}] can't be bundled)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30371: Item maxCount not allow reduce | 30372: ItemType is not updatable)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2144,6 +6402,42 @@ def update_item_purchase_condition(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update item purchase condition (updateItemPurchaseCondition)
+
+    This API is used to update item purchase condition
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/purchase/condition
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PurchaseConditionUpdate in body
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30331: Invalid purchase condition)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2166,6 +6460,42 @@ async def update_item_purchase_condition_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update item purchase condition (updateItemPurchaseCondition)
+
+    This API is used to update item purchase condition
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/purchase/condition
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PurchaseConditionUpdate in body
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullItemInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30331: Invalid purchase condition)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2188,6 +6518,42 @@ def update_item_type_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update an Item Type Config (updateItemTypeConfig)
+
+    This API is used to update an item type config.
+
+    *  Required permission : resource="ADMIN:ITEM:CONFIG", action=4 (UPDATE)
+    *  Returns : item type config data
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/items/configs/{id}
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemTypeConfigUpdate in body
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        200: OK - ItemTypeConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30541: Item type config [{id}] doesn't exist)
+
+        409: Conflict - ErrorEntity (30371: Item type config for type [{itemType}] and clazz [{clazz}] already exists)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     request = UpdateItemTypeConfig.create(
         id_=id_,
         body=body,
@@ -2202,6 +6568,42 @@ async def update_item_type_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update an Item Type Config (updateItemTypeConfig)
+
+    This API is used to update an item type config.
+
+    *  Required permission : resource="ADMIN:ITEM:CONFIG", action=4 (UPDATE)
+    *  Returns : item type config data
+
+    Required Permission(s):
+        - ADMIN:ITEM:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/items/configs/{id}
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemTypeConfigUpdate in body
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        200: OK - ItemTypeConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30541: Item type config [{id}] doesn't exist)
+
+        409: Conflict - ErrorEntity (30371: Item type config for type [{itemType}] and clazz [{clazz}] already exists)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     request = UpdateItemTypeConfig.create(
         id_=id_,
         body=body,
@@ -2219,6 +6621,34 @@ def validate_item_purchase_condition(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Validate user purchase condition (validateItemPurchaseCondition)
+
+    This API is used to validate user purchase condition
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/purchase/conditions/validate
+
+        method: POST
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemPurchaseConditionValidateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ItemPurchaseConditionValidateResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2239,6 +6669,34 @@ async def validate_item_purchase_condition_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Validate user purchase condition (validateItemPurchaseCondition)
+
+    This API is used to validate user purchase condition
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/purchase/conditions/validate
+
+        method: POST
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ItemPurchaseConditionValidateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ItemPurchaseConditionValidateResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

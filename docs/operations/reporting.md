@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Reporting Service Index (0.1.23)
+# AccelByte Cloud Reporting Service Index (0.1.24)
 
 
 ## Operations

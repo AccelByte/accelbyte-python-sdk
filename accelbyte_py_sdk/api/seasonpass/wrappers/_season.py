@@ -85,6 +85,42 @@ def bulk_get_user_season_progression(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get user current season progression (bulkGetUserSeasonProgression)
+
+    This API is used to bulk get user current season progression, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS, action=2 (READ)
+      *  Returns : user season progression
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/current/users/bulk/progression
+
+        method: POST
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkUserProgressionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[UserSeasonSummary] (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -103,6 +139,42 @@ async def bulk_get_user_season_progression_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get user current season progression (bulkGetUserSeasonProgression)
+
+    This API is used to bulk get user current season progression, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS, action=2 (READ)
+      *  Returns : user season progression
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/current/users/bulk/progression
+
+        method: POST
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkUserProgressionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[UserSeasonSummary] (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,6 +196,45 @@ def check_season_purchasable(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check pass or tier purchasable (checkSeasonPurchasable)
+
+    This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/purchasable
+
+        method: POST
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserPurchasable in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (OK)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist)
+
+        409: Conflict - ErrorEntity (49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,6 +255,45 @@ async def check_season_purchasable_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check pass or tier purchasable (checkSeasonPurchasable)
+
+    This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/purchasable
+
+        method: POST
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserPurchasable in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (OK)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist)
+
+        409: Conflict - ErrorEntity (49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -166,6 +316,46 @@ def clone_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Clone a season (cloneSeason)
+
+    This API is used to clone a season.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
+      *  Returns : cloned season info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/clone
+
+        method: POST
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SeasonCloneRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49122: Invalid time range)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -186,6 +376,46 @@ async def clone_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Clone a season (cloneSeason)
+
+    This API is used to clone a season.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
+      *  Returns : cloned season info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/clone
+
+        method: POST
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SeasonCloneRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49122: Invalid time range)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,6 +437,44 @@ def create_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a season (createSeason)
+
+    This API is used to create a season, season only allowed in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
+      *  Returns : created season
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons
+
+        method: POST
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SeasonCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations | 49122: Invalid time range)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -225,6 +493,44 @@ async def create_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a season (createSeason)
+
+    This API is used to create a season, season only allowed in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
+      *  Returns : created season
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons
+
+        method: POST
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SeasonCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations | 49122: Invalid time range)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -245,6 +551,43 @@ def delete_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a season (deleteSeason)
+
+    This API is used to delete a season permanently, only draft season can be deleted.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
+
+        method: DELETE
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete season successfully)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -263,6 +606,43 @@ async def delete_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a season (deleteSeason)
+
+    This API is used to delete a season permanently, only draft season can be deleted.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
+
+        method: DELETE
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete season successfully)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -284,6 +664,42 @@ def exists_any_pass_by_pass_codes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get ownership for any pass codes (existsAnyPassByPassCodes)
+
+    [SERVICE COMMUNICATION ONLY]This API is used to get ownership for any pass codes, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : ownership
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/passes/ownership/any
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        pass_codes: (passCodes) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -304,6 +720,42 @@ async def exists_any_pass_by_pass_codes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get ownership for any pass codes (existsAnyPassByPassCodes)
+
+    [SERVICE COMMUNICATION ONLY]This API is used to get ownership for any pass codes, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : ownership
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/passes/ownership/any
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        pass_codes: (passCodes) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -324,6 +776,36 @@ def get_current_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current published season summary (getCurrentSeason)
+
+    [SERVICE COMMUNICATION ONLY]This API is used to get current published season summary which includes previous published season summary if exists, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Returns : season summary data
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/current
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - SeasonSummary (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -340,6 +822,36 @@ async def get_current_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current published season summary (getCurrentSeason)
+
+    [SERVICE COMMUNICATION ONLY]This API is used to get current published season summary which includes previous published season summary if exists, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Returns : season summary data
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/current
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - SeasonSummary (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -359,6 +871,42 @@ def get_current_user_season_progression(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current user season progression (getCurrentUserSeasonProgression)
+
+    This API is used to get current user season progression, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : user season progression
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/progression
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserSeasonSummary (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist | 49148: User season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -377,6 +925,42 @@ async def get_current_user_season_progression_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current user season progression (getCurrentUserSeasonProgression)
+
+    This API is used to get current user season progression, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : user season progression
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/progression
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserSeasonSummary (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist | 49148: User season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -397,6 +981,42 @@ def get_full_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a season full content (getFullSeason)
+
+    This API is used to get a season full content, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/full
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - FullSeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -415,6 +1035,42 @@ async def get_full_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a season full content (getFullSeason)
+
+    This API is used to get a season full content, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/full
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - FullSeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -435,6 +1091,42 @@ def get_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a season (getSeason)
+
+    This API is used to get a season, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -453,6 +1145,42 @@ async def get_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a season (getSeason)
+
+    This API is used to get a season, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -475,6 +1203,44 @@ def get_user_participated_seasons(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user participated season data (getUserParticipatedSeasons)
+
+    This API is used to get user participated season data, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : user participated season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ListUserSeasonInfoPagingSlicedResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -497,6 +1263,44 @@ async def get_user_participated_seasons_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user participated season data (getUserParticipatedSeasons)
+
+    This API is used to get user participated season data, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : user participated season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ListUserSeasonInfoPagingSlicedResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -520,6 +1324,44 @@ def get_user_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user season data (getUserSeason)
+
+    This API is used to get user season data, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ClaimableUserSeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49148: User season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -540,6 +1382,44 @@ async def get_user_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user season data (getUserSeason)
+
+    This API is used to get user season data, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ClaimableUserSeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49148: User season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -561,6 +1441,38 @@ def public_get_current_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current published season (publicGetCurrentSeason)
+
+    This API is used to get current published season, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Returns : localized season data
+
+    Properties:
+        url: /seasonpass/public/namespaces/{namespace}/seasons/current
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+    Responses:
+        200: OK - LocalizedSeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -579,6 +1491,38 @@ async def public_get_current_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current published season (publicGetCurrentSeason)
+
+    This API is used to get current published season, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Returns : localized season data
+
+    Properties:
+        url: /seasonpass/public/namespaces/{namespace}/seasons/current
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+    Responses:
+        200: OK - LocalizedSeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49147: Published season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -599,6 +1543,42 @@ def public_get_current_user_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current user season data (publicGetCurrentUserSeason)
+
+    This API is used to get current user season data, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/data
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ClaimableUserSeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49148: User season does not exist | 49147: Published season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -617,6 +1597,42 @@ async def public_get_current_user_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current user season data (publicGetCurrentUserSeason)
+
+    This API is used to get current user season data, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/data
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ClaimableUserSeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49148: User season does not exist | 49147: Published season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -638,6 +1654,44 @@ def public_get_user_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user season data (publicGetUserSeason)
+
+    This API is used to get user season data, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ClaimableUserSeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49148: User season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -658,6 +1712,44 @@ async def public_get_user_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user season data (publicGetUserSeason)
+
+    This API is used to get user season data, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ClaimableUserSeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49148: User season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -679,6 +1771,44 @@ def publish_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Publish a season (publishSeason)
+
+    This API is used to publish a draft season, only one published season allowed at same time in a namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : published season
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/publish
+
+        method: PUT
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49172: Season is already ended | 49175: Published season already exists in namespace [{namespace}] | 49176: Rewards are not provided | 49177: Passes are not provided | 49178: Tiers are not provided | 49189: Duplicate season name [{name}] for publishing in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -697,6 +1827,44 @@ async def publish_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Publish a season (publishSeason)
+
+    This API is used to publish a draft season, only one published season allowed at same time in a namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : published season
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/publish
+
+        method: PUT
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 49142: Pass item does not exist in the store of namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49172: Season is already ended | 49175: Published season already exists in namespace [{namespace}] | 49176: Rewards are not provided | 49177: Passes are not provided | 49178: Tiers are not provided | 49189: Duplicate season name [{name}] for publishing in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -719,6 +1887,44 @@ def query_seasons(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query seasons (querySeasons)
+
+    This API is used to query seasons, seasons only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : the list of season basic info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL List[Union[str, StatusEnum]] in query
+
+    Responses:
+        200: OK - ListSeasonInfoPagingSlicedResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -741,6 +1947,44 @@ async def query_seasons_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query seasons (querySeasons)
+
+    This API is used to query seasons, seasons only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : the list of season basic info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL List[Union[str, StatusEnum]] in query
+
+    Responses:
+        200: OK - ListSeasonInfoPagingSlicedResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -770,6 +2014,55 @@ def query_user_exp_grant_history(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user season exp acquisition history (queryUserExpGrantHistory)
+
+    This API is used to get user exp acquisition history, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * default will query from current active season
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : paginated grant history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        from_: (from) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        season_id: (seasonId) OPTIONAL str in query
+
+        source: (source) OPTIONAL Union[str, SourceEnum] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+        to: (to) OPTIONAL str in query
+
+    Responses:
+        200: OK - ExpGrantHistoryPagingSlicedResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -802,6 +2095,55 @@ async def query_user_exp_grant_history_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user season exp acquisition history (queryUserExpGrantHistory)
+
+    This API is used to get user exp acquisition history, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * default will query from current active season
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : paginated grant history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        from_: (from) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        season_id: (seasonId) OPTIONAL str in query
+
+        source: (source) OPTIONAL Union[str, SourceEnum] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+        to: (to) OPTIONAL str in query
+
+    Responses:
+        200: OK - ExpGrantHistoryPagingSlicedResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -830,6 +2172,43 @@ def query_user_exp_grant_history_tag(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user season exp acquisition history's reason tag list (queryUserExpGrantHistoryTag)
+
+    This API is used to get user exp acquisition history's tag list.
+
+    Other detail info:
+
+      * default will query from current active season
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : exp grant history tags list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history/tags
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        season_id: (seasonId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ReasonTagsResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -850,6 +2229,43 @@ async def query_user_exp_grant_history_tag_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user season exp acquisition history's reason tag list (queryUserExpGrantHistoryTag)
+
+    This API is used to get user exp acquisition history's tag list.
+
+    Other detail info:
+
+      * default will query from current active season
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
+      *  Returns : exp grant history tags list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history/tags
+
+        method: GET
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        season_id: (seasonId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ReasonTagsResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -871,6 +2287,39 @@ def reset_user_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset user data in current season (resetUserSeason)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset user data in current season, it will not revoke the rewarded entitlements.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [DELETE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/reset
+
+        method: DELETE
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (OK)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -889,6 +2338,39 @@ async def reset_user_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset user data in current season (resetUserSeason)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset user data in current season, it will not revoke the rewarded entitlements.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [DELETE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/reset
+
+        method: DELETE
+
+        tags: ["Season"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (OK)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -910,6 +2392,46 @@ def retire_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retire a season (retireSeason)
+
+    This API is used to retire a published season, if the season has not ended it will report error except with force.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : season info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/retire
+
+        method: PUT
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        force: (force) OPTIONAL bool in query
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49181: Season has not ended)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -930,6 +2452,46 @@ async def retire_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retire a season (retireSeason)
+
+    This API is used to retire a published season, if the season has not ended it will report error except with force.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : season info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/retire
+
+        method: PUT
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        force: (force) OPTIONAL bool in query
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49181: Season has not ended)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -952,6 +2514,46 @@ def unpublish_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unpublish a season (unpublishSeason)
+
+    This API is used to unpublish a published season, if the season already started it will report error except with force.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : season info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/unpublish
+
+        method: PUT
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        force: (force) OPTIONAL bool in query
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49180: Season is already started)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -972,6 +2574,46 @@ async def unpublish_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unpublish a season (unpublishSeason)
+
+    This API is used to unpublish a published season, if the season already started it will report error except with force.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : season info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/unpublish
+
+        method: PUT
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        force: (force) OPTIONAL bool in query
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49180: Season is already started)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -994,6 +2636,48 @@ def update_season(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a season (updateSeason)
+
+    This API is used to update a season. Only draft season can be updated.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : updated season
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
+
+        method: PATCH
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SeasonUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations | 49122: Invalid time range)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1014,6 +2698,48 @@ async def update_season_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a season (updateSeason)
+
+    This API is used to update a season. Only draft season can be updated.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : updated season
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
+
+        method: PATCH
+
+        tags: ["Season"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SeasonUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - SeasonInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49121: Default language [{language}] required in localizations | 49122: Invalid time range)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 49141: Tier item does not exist in the store of namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

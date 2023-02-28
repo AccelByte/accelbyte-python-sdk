@@ -48,6 +48,55 @@ def add_sso_login_platform_credential(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add SSO Platform Credential (AddSSOLoginPlatformCredential)
+
+    This is the API to Add SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE] resource.
+
+    ## Supported platforms:
+
+
+
+      * discourse
+    the ssoUrl of the discourse is the discourse forum url. example: https://forum.example.com
+
+      * azure with SAML
+     appId is an application identifier in IdP, in azure it's called EntityID
+    acsUrl is an endpoint on the service provider where the identity provider will redirect to with its authentication response. example: /iam/v3/sso/saml/azuresaml/authenticate
+    federationMetadataUrl is an endpoint on the Identity Provider(IdP) to get IdP federation metadata for service provider to build trust relationship
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
+
+        method: POST
+
+        tags: ["SSO Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSSOPlatformCredentialRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelSSOPlatformCredentialResponse (SSO Credential Created)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,6 +117,55 @@ async def add_sso_login_platform_credential_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add SSO Platform Credential (AddSSOLoginPlatformCredential)
+
+    This is the API to Add SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE] resource.
+
+    ## Supported platforms:
+
+
+
+      * discourse
+    the ssoUrl of the discourse is the discourse forum url. example: https://forum.example.com
+
+      * azure with SAML
+     appId is an application identifier in IdP, in azure it's called EntityID
+    acsUrl is an endpoint on the service provider where the identity provider will redirect to with its authentication response. example: /iam/v3/sso/saml/azuresaml/authenticate
+    federationMetadataUrl is an endpoint on the Identity Provider(IdP) to get IdP federation metadata for service provider to build trust relationship
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
+
+        method: POST
+
+        tags: ["SSO Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSSOPlatformCredentialRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelSSOPlatformCredentialResponse (SSO Credential Created)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,6 +187,43 @@ def delete_sso_login_platform_credential_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete SSO Platform Credential (DeleteSSOLoginPlatformCredentialV3)
+
+    This is the API to Delete SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
+
+        method: DELETE
+
+        tags: ["SSO Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete Process Successful)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,6 +242,43 @@ async def delete_sso_login_platform_credential_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete SSO Platform Credential (DeleteSSOLoginPlatformCredentialV3)
+
+    This is the API to Delete SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
+
+        method: DELETE
+
+        tags: ["SSO Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete Process Successful)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -128,6 +300,43 @@ def retrieve_all_sso_login_platform_credential_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get All SSO Platform Credential (RetrieveAllSSOLoginPlatformCredentialV3)
+
+    This is the API to Get All Active SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/sso
+
+        method: GET
+
+        tags: ["SSO Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - List[ModelSSOPlatformCredentialResponse] (All Active SSO Credential Retrieved)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -148,6 +357,43 @@ async def retrieve_all_sso_login_platform_credential_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get All SSO Platform Credential (RetrieveAllSSOLoginPlatformCredentialV3)
+
+    This is the API to Get All Active SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/sso
+
+        method: GET
+
+        tags: ["SSO Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - List[ModelSSOPlatformCredentialResponse] (All Active SSO Credential Retrieved)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -169,6 +415,43 @@ def retrieve_sso_login_platform_credential(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve SSO Platform Credential (RetrieveSSOLoginPlatformCredential)
+
+    This is the API to Get SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [READ] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
+
+        method: GET
+
+        tags: ["SSO Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelSSOPlatformCredentialResponse (SSO Credential Found)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (SSO Credential Not Found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,6 +470,43 @@ async def retrieve_sso_login_platform_credential_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve SSO Platform Credential (RetrieveSSOLoginPlatformCredential)
+
+    This is the API to Get SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [READ] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
+
+        method: GET
+
+        tags: ["SSO Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelSSOPlatformCredentialResponse (SSO Credential Found)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (SSO Credential Not Found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -208,6 +528,45 @@ def update_sso_platform_credential(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update SSO Platform Credential (UpdateSSOPlatformCredential)
+
+    This is the API to Delete SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
+
+        method: PATCH
+
+        tags: ["SSO Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSSOPlatformCredentialRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelSSOPlatformCredentialResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -228,6 +587,45 @@ async def update_sso_platform_credential_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update SSO Platform Credential (UpdateSSOPlatformCredential)
+
+    This is the API to Delete SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
+
+        method: PATCH
+
+        tags: ["SSO Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSSOPlatformCredentialRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelSSOPlatformCredentialResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

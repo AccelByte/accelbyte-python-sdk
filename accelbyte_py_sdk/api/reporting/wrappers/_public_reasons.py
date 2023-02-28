@@ -47,6 +47,38 @@ def public_get_reasons(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of reasons (publicGetReasons)
+
+    Properties:
+        url: /reporting/v1/public/namespaces/{namespace}/reasons
+
+        method: GET
+
+        tags: ["Public Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        group: (group) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        title: (title) OPTIONAL str in query
+
+    Responses:
+        200: OK - RestapiPublicReasonListResponse (OK)
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,6 +103,38 @@ async def public_get_reasons_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of reasons (publicGetReasons)
+
+    Properties:
+        url: /reporting/v1/public/namespaces/{namespace}/reasons
+
+        method: GET
+
+        tags: ["Public Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        group: (group) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        title: (title) OPTIONAL str in query
+
+    Responses:
+        200: OK - RestapiPublicReasonListResponse (OK)
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,6 +159,34 @@ def public_list_reason_groups(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List reason groups under a namespace (publicListReasonGroups)
+
+    Return list of reason groups ID and title under given namespace.
+
+    Properties:
+        url: /reporting/v1/public/namespaces/{namespace}/reasonGroups
+
+        method: GET
+
+        tags: ["Public Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - RestapiReasonGroupListResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,6 +207,34 @@ async def public_list_reason_groups_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List reason groups under a namespace (publicListReasonGroups)
+
+    Return list of reason groups ID and title under given namespace.
+
+    Properties:
+        url: /reporting/v1/public/namespaces/{namespace}/reasonGroups
+
+        method: GET
+
+        tags: ["Public Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - RestapiReasonGroupListResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

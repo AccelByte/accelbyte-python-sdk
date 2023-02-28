@@ -85,6 +85,54 @@ def add_user_into_session_in_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add user into the session in a channel (AddUserIntoSessionInChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
+
+    Required Scope: social
+
+    Add user into the session in a channel.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}
+
+        method: POST
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsMatchAddUserIntoSessionRequest in body
+
+        channel_name: (channelName) REQUIRED str in path
+
+        match_id: (matchID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,6 +155,54 @@ async def add_user_into_session_in_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add user into the session in a channel (AddUserIntoSessionInChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
+
+    Required Scope: social
+
+    Add user into the session in a channel.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}
+
+        method: POST
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsMatchAddUserIntoSessionRequest in body
+
+        channel_name: (channelName) REQUIRED str in path
+
+        match_id: (matchID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -129,6 +225,50 @@ def bulk_get_sessions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get sessions (BulkGetSessions)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Bulk get sessions.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/all/sessions/bulk
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        match_i_ds: (matchIDs) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ModelsMatchmakingResult] (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -147,6 +287,50 @@ async def bulk_get_sessions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get sessions (BulkGetSessions)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Bulk get sessions.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/all/sessions/bulk
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        match_i_ds: (matchIDs) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ModelsMatchmakingResult] (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -167,6 +351,63 @@ def create_channel_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a channel (CreateChannelHandler)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
+
+    Required Scope: social
+
+    Creates a new matchmaking channel.
+
+    Matchmaking channels is a list of pool name that is eligible for matchmaking processes.
+    GameMode isolates each matchmaking pools.
+
+    If match timeout is set to 0, by default, incoming matchmaking requests will be timed out after 1 hour.
+
+    If max worker delay is set to 0, by default, it will wait for at max ~8 seconds during low volume.
+
+    Rule Set
+
+    Matching Rule used to classify the player. Player that has matched criteria will be grouped together within an ally.
+
+    Valid value for criteria is "distance"
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/channels
+
+        method: POST
+
+        tags: ["Matchmaking", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsChannelRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateChannelResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -185,6 +426,63 @@ async def create_channel_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a channel (CreateChannelHandler)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
+
+    Required Scope: social
+
+    Creates a new matchmaking channel.
+
+    Matchmaking channels is a list of pool name that is eligible for matchmaking processes.
+    GameMode isolates each matchmaking pools.
+
+    If match timeout is set to 0, by default, incoming matchmaking requests will be timed out after 1 hour.
+
+    If max worker delay is set to 0, by default, it will wait for at max ~8 seconds during low volume.
+
+    Rule Set
+
+    Matching Rule used to classify the player. Player that has matched criteria will be grouped together within an ally.
+
+    Valid value for criteria is "distance"
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/channels
+
+        method: POST
+
+        tags: ["Matchmaking", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsChannelRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateChannelResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -205,6 +503,49 @@ def delete_channel_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a channel (DeleteChannelHandler)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope: social
+
+    Deletes a matchmaking channel. Matchmaking channels is a list of
+    pool name that is eligible for matchmaking processes. GameMode isolates each matchmaking pools.
+
+    Trying to delete non-existent channel will result deletion success
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/channels/{channel}
+
+        method: DELETE
+
+        tags: ["Matchmaking", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel: (channel) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -223,6 +564,49 @@ async def delete_channel_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a channel (DeleteChannelHandler)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope: social
+
+    Deletes a matchmaking channel. Matchmaking channels is a list of
+    pool name that is eligible for matchmaking processes. GameMode isolates each matchmaking pools.
+
+    Trying to delete non-existent channel will result deletion success
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/channels/{channel}
+
+        method: DELETE
+
+        tags: ["Matchmaking", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel: (channel) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -244,6 +628,52 @@ def delete_session_in_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete session in a channel (DeleteSessionInChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope: social
+
+    Delete a session in a channel.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}
+
+        method: DELETE
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        match_id: (matchID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -264,6 +694,52 @@ async def delete_session_in_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete session in a channel (DeleteSessionInChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope: social
+
+    Delete a session in a channel.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}
+
+        method: DELETE
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        match_id: (matchID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -287,6 +763,56 @@ def delete_user_from_session_in_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user from the session in a channel (DeleteUserFromSessionInChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope: social
+
+    Delete a user from a session in the channel.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}/users/{userID}
+
+        method: DELETE
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        match_id: (matchID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userID) REQUIRED str in path
+
+    Responses:
+        200: OK - (Operation succeeded)
+
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -309,6 +835,56 @@ async def delete_user_from_session_in_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user from the session in a channel (DeleteUserFromSessionInChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope: social
+
+    Delete a user from a session in the channel.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}/users/{userID}
+
+        method: DELETE
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        match_id: (matchID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userID) REQUIRED str in path
+
+    Responses:
+        200: OK - (Operation succeeded)
+
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -331,6 +907,53 @@ def dequeue_session_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Dequeue joinable session (DequeueSessionHandler)
+
+    Required Permission: NAMESPACE:{namespace}:SESSION [UPDATE]
+
+    Required Scope: social
+
+    Dequeues joinable session so that it will not be matched with player's match request tickets.
+
+    This endpoint is intended to be called by game server to let matchmaker know that
+    the game server does not want more players to its session, even though it is not full.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSION [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/sessions/dequeue
+
+        method: POST
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDequeueRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -349,6 +972,53 @@ async def dequeue_session_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Dequeue joinable session (DequeueSessionHandler)
+
+    Required Permission: NAMESPACE:{namespace}:SESSION [UPDATE]
+
+    Required Scope: social
+
+    Dequeues joinable session so that it will not be matched with player's match request tickets.
+
+    This endpoint is intended to be called by game server to let matchmaker know that
+    the game server does not want more players to its session, even though it is not full.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSION [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/sessions/dequeue
+
+        method: POST
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDequeueRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -368,6 +1038,46 @@ def export_channels(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Export channels (ExportChannels)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Export channels configuration to file.
+
+    Action Code: 510114
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/export
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (OK)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -384,6 +1094,46 @@ async def export_channels_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Export channels (ExportChannels)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Export channels configuration to file.
+
+    Action Code: 510114
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/export
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (OK)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -404,6 +1154,52 @@ def get_all_channels_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all channels (GetAllChannelsHandler)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
+
+    Required Scope: social
+
+    Reads all available channels in a namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/channels
+
+        method: GET
+
+        tags: ["Matchmaking", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetChannelsResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -424,6 +1220,52 @@ async def get_all_channels_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all channels (GetAllChannelsHandler)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
+
+    Required Scope: social
+
+    Reads all available channels in a namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/channels
+
+        method: GET
+
+        tags: ["Matchmaking", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetChannelsResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -444,6 +1286,48 @@ def get_all_party_in_all_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all party in all channels (GetAllPartyInAllChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Get all parties queueing in all channels.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/all/parties
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, List[ModelsMatchingParty]] (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -460,6 +1344,48 @@ async def get_all_party_in_all_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all party in all channels (GetAllPartyInAllChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Get all parties queueing in all channels.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/all/parties
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, List[ModelsMatchingParty]] (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -479,6 +1405,50 @@ def get_all_party_in_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all party in a channel (GetAllPartyInChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Get all parties queueing in a channel.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/parties
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsMatchingParty] (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -497,6 +1467,50 @@ async def get_all_party_in_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all party in a channel (GetAllPartyInChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Get all parties queueing in a channel.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/parties
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsMatchingParty] (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -517,6 +1531,52 @@ def get_all_sessions_in_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all channel sessions (GetAllSessionsInChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Get all sessions in a channel.
+
+    if party_id value empty/null, field will not show in response body.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsMatchmakingResult] (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -535,6 +1595,52 @@ async def get_all_sessions_in_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all channel sessions (GetAllSessionsInChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Get all sessions in a channel.
+
+    if party_id value empty/null, field will not show in response body.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsMatchmakingResult] (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -556,6 +1662,74 @@ def get_session_history_detailed(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get session history detailed (GetSessionHistoryDetailed)
+
+
+
+
+
+
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /sessionbrowser/admin/namespaces/{namespace}/sessions/{sessionId}/history/detailed [GET]
+
+
+
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Get session history detailed.
+
+    if party_id value empty/null, field will not show in response body.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        match_id: (matchID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ServiceGetSessionHistoryDetailedResponseItem] (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -575,6 +1749,74 @@ async def get_session_history_detailed_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get session history detailed (GetSessionHistoryDetailed)
+
+
+
+
+
+
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /sessionbrowser/admin/namespaces/{namespace}/sessions/{sessionId}/history/detailed [GET]
+
+
+
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Get session history detailed.
+
+    if party_id value empty/null, field will not show in response body.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        match_id: (matchID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ServiceGetSessionHistoryDetailedResponseItem] (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -595,6 +1837,52 @@ def get_single_matchmaking_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get single channel (GetSingleMatchmakingChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
+
+    Required Scope: social
+
+    Reads single channel based on namespace and channel name
+
+    Action Code: 510112
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsChannelV1 (OK)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -613,6 +1901,52 @@ async def get_single_matchmaking_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get single channel (GetSingleMatchmakingChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
+
+    Required Scope: social
+
+    Reads single channel based on namespace and channel name
+
+    Action Code: 510112
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsChannelV1 (OK)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -634,6 +1968,55 @@ def import_channels(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Import channels (ImportChannels)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
+
+    Required Scope: social
+
+    Import channels configuration from file. It will merge with existing channels.
+    Available import strategy:
+    - leaveOut: if channel with same key exist, the existing will be used and imported one will be ignored (default)
+    - replace: if channel with same key exist, the imported channel will be used and existing one will be removed
+
+    Action Code: 510113
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/import
+
+        method: POST
+
+        tags: ["Matchmaking"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        strategy: (strategy) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsImportConfigResponse (OK)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 510109: failed to read file)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -654,6 +2037,55 @@ async def import_channels_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Import channels (ImportChannels)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
+
+    Required Scope: social
+
+    Import channels configuration from file. It will merge with existing channels.
+    Available import strategy:
+    - leaveOut: if channel with same key exist, the existing will be used and imported one will be ignored (default)
+    - replace: if channel with same key exist, the imported channel will be used and existing one will be removed
+
+    Action Code: 510113
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/import
+
+        method: POST
+
+        tags: ["Matchmaking"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        strategy: (strategy) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsImportConfigResponse (OK)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 510109: failed to read file)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -674,6 +2106,38 @@ def public_get_all_matchmaking_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all channels (PublicGetAllMatchmakingChannel)
+
+    Reads all available channels in a namespace
+
+    Properties:
+        url: /matchmaking/v1/public/namespaces/{namespace}/channels
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsChannelV1] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -690,6 +2154,38 @@ async def public_get_all_matchmaking_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all channels (PublicGetAllMatchmakingChannel)
+
+    Reads all available channels in a namespace
+
+    Properties:
+        url: /matchmaking/v1/public/namespaces/{namespace}/channels
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsChannelV1] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -709,6 +2205,40 @@ def public_get_single_matchmaking_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get single channel (PublicGetSingleMatchmakingChannel)
+
+    Reads single channel based on namespace and channel name
+
+    Properties:
+        url: /matchmaking/v1/public/namespaces/{namespace}/channels/{channelName}
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsChannelV1 (OK)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -727,6 +2257,40 @@ async def public_get_single_matchmaking_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get single channel (PublicGetSingleMatchmakingChannel)
+
+    Reads single channel based on namespace and channel name
+
+    Properties:
+        url: /matchmaking/v1/public/namespaces/{namespace}/channels/{channelName}
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsChannelV1 (OK)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -747,6 +2311,56 @@ def query_session_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query joinable session status (QuerySessionHandler)
+
+    Required Permission: NAMESPACE:{namespace}:SESSION [READ]
+
+    Required Scope: social
+
+    Queries the specified session's status. Game servers are expected to
+    call this periodically as long as it has a session in queue to see
+    if there are new players being matched to the session.
+
+    Possible session statuses are "sessionInQueue", "sessionFull", and "sessionTimeout".
+
+    if party_id value empty/null, field will not show in response body.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/sessions/{matchID}/status
+
+        method: GET
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        match_id: (matchID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMatchmakingResult (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -765,6 +2379,56 @@ async def query_session_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query joinable session status (QuerySessionHandler)
+
+    Required Permission: NAMESPACE:{namespace}:SESSION [READ]
+
+    Required Scope: social
+
+    Queries the specified session's status. Game servers are expected to
+    call this periodically as long as it has a session in queue to see
+    if there are new players being matched to the session.
+
+    Possible session statuses are "sessionInQueue", "sessionFull", and "sessionTimeout".
+
+    if party_id value empty/null, field will not show in response body.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/sessions/{matchID}/status
+
+        method: GET
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        match_id: (matchID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMatchmakingResult (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -785,6 +2449,58 @@ def queue_session_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Queue joinable session (QueueSessionHandler)
+
+    Required Permission: NAMESPACE:{namespace}:SESSION [CREATE]
+
+    Required Scope: social
+
+    Queues joinable session so that it will be matched with player's match request tickets.
+    The session queued must be in a channel/game mode that is set to have joinable flag.
+    The session will be in queue until it is full or expired.
+    Both the number of players and session queue timeout can be set in the channel's config.
+
+    This endpoint is intended to be called by game server to let matchmaker know that
+    the game server is ready for receiving more players through matchmaking tickets to its session.
+
+    If a session is already queued, and game server wants to modify the data or
+    renew the queue timeout (e.g. some player left and more empty slot opened up),
+    simply call this endpoint with the updated session data.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/sessions
+
+        method: POST
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsMatchmakingResult in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -803,6 +2519,58 @@ async def queue_session_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Queue joinable session (QueueSessionHandler)
+
+    Required Permission: NAMESPACE:{namespace}:SESSION [CREATE]
+
+    Required Scope: social
+
+    Queues joinable session so that it will be matched with player's match request tickets.
+    The session queued must be in a channel/game mode that is set to have joinable flag.
+    The session will be in queue until it is full or expired.
+    Both the number of players and session queue timeout can be set in the channel's config.
+
+    This endpoint is intended to be called by game server to let matchmaker know that
+    the game server is ready for receiving more players through matchmaking tickets to its session.
+
+    If a session is already queued, and game server wants to modify the data or
+    renew the queue timeout (e.g. some player left and more empty slot opened up),
+    simply call this endpoint with the updated session data.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:SESSION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/sessions
+
+        method: POST
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsMatchmakingResult in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -823,6 +2591,54 @@ def rebalance(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Rebalance Matchmaking based on MMR (Rebalance)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]
+
+    Required Scope: social
+
+    Do rebalance the teams based on MMR from given matchID,
+    consider attribute name "mmr" (case-insensitive),
+    or any first attribute with criteria "distance"
+
+    Will return rebalanced mm result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/rebalance
+
+        method: POST
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsRebalanceRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsRebalanceResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -841,6 +2657,54 @@ async def rebalance_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Rebalance Matchmaking based on MMR (Rebalance)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]
+
+    Required Scope: social
+
+    Do rebalance the teams based on MMR from given matchID,
+    consider attribute name "mmr" (case-insensitive),
+    or any first attribute with criteria "distance"
+
+    Will return rebalanced mm result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/rebalance
+
+        method: POST
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsRebalanceRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsRebalanceResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -868,6 +2732,84 @@ def search_sessions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search sessions (SearchSessions)
+
+
+
+
+
+
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /sessionbrowser/admin/namespaces/{namespace}/sessions/history/search [GET]
+
+
+
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Search sessions.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/sessions/history/search
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        channel: (channel) OPTIONAL str in query
+
+        deleted: (deleted) OPTIONAL bool in query
+
+        match_id: (matchID) OPTIONAL str in query
+
+        party_id: (partyID) OPTIONAL str in query
+
+        user_id: (userID) OPTIONAL str in query
+
+        limit: (limit) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ServiceGetSessionHistorySearchResponse (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -899,6 +2841,84 @@ async def search_sessions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search sessions (SearchSessions)
+
+
+
+
+
+
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /sessionbrowser/admin/namespaces/{namespace}/sessions/history/search [GET]
+
+
+
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Search sessions.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/sessions/history/search
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        channel: (channel) OPTIONAL str in query
+
+        deleted: (deleted) OPTIONAL bool in query
+
+        match_id: (matchID) OPTIONAL str in query
+
+        party_id: (partyID) OPTIONAL str in query
+
+        user_id: (userID) OPTIONAL str in query
+
+        limit: (limit) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ServiceGetSessionHistorySearchResponse (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -932,6 +2952,82 @@ def search_sessions_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search sessions (SearchSessionsV2)
+
+
+
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /sessionbrowser/admin/namespaces/{namespace}/sessions/history/search [GET]
+
+
+
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace & other filter (partyID, userID, matchID).
+    Query with filter namespace only will not group whole session data while query with filter namespace & other filter will include session data.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v2/admin/namespaces/{namespace}/sessions/history/search
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        channel: (channel) OPTIONAL str in query
+
+        deleted: (deleted) OPTIONAL bool in query
+
+        match_id: (matchID) OPTIONAL str in query
+
+        party_id: (partyID) OPTIONAL str in query
+
+        user_id: (userID) OPTIONAL str in query
+
+        limit: (limit) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ServiceGetSessionHistorySearchResponseV2 (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -963,6 +3059,82 @@ async def search_sessions_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search sessions (SearchSessionsV2)
+
+
+
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /sessionbrowser/admin/namespaces/{namespace}/sessions/history/search [GET]
+
+
+
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace & other filter (partyID, userID, matchID).
+    Query with filter namespace only will not group whole session data while query with filter namespace & other filter will include session data.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v2/admin/namespaces/{namespace}/sessions/history/search
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        channel: (channel) OPTIONAL str in query
+
+        deleted: (deleted) OPTIONAL bool in query
+
+        match_id: (matchID) OPTIONAL str in query
+
+        party_id: (partyID) OPTIONAL str in query
+
+        user_id: (userID) OPTIONAL str in query
+
+        limit: (limit) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ServiceGetSessionHistorySearchResponseV2 (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -989,6 +3161,50 @@ def store_match_results(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Store match result (StoreMatchResults)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHRESULT [CREATE]
+
+    Required Scope: social
+
+    Process match result into final attribute value and stores it to player attribute
+
+    Will return final attribute value
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHRESULT [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/matchresult
+
+        method: POST
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsMatchResultRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMatchResultResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1007,6 +3223,50 @@ async def store_match_results_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Store match result (StoreMatchResults)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHRESULT [CREATE]
+
+    Required Scope: social
+
+    Process match result into final attribute value and stores it to player attribute
+
+    Will return final attribute value
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHRESULT [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/matchresult
+
+        method: POST
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsMatchResultRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMatchResultResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1028,6 +3288,54 @@ def update_matchmaking_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a channel (UpdateMatchmakingChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
+
+    Required Scope: social
+
+    Update channel based on namespace and channel name
+
+    Action Code: 510111
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}
+
+        method: PATCH
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateChannelRequest in body
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1048,6 +3356,54 @@ async def update_matchmaking_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a channel (UpdateMatchmakingChannel)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
+
+    Required Scope: social
+
+    Update channel based on namespace and channel name
+
+    Action Code: 510111
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}
+
+        method: PATCH
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateChannelRequest in body
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

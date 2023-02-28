@@ -52,6 +52,42 @@ def create_fulfillment_script(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create fulfillment script (createFulfillmentScript)
+
+    Create fulfillment script.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
+
+    Fulfillment scripts are used for adding custom fulfillment logic based on ITEM_TYPE : [MEDIA,INGAMEITEM] for now, and the custom scripts only cover grantDays.
+    Example for grantDays:
+    `order && ((order.currency && order.currency.currencyCode) == 'LP' || order.isFree) ? 30 : -1`
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [CREATE]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts/{id}
+
+        method: POST
+
+        tags: ["FulfillmentScript"]
+
+        consumes: ["application/json"]
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillmentScriptCreate in body
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        201: Created - FulfillmentScriptInfo (successful operation)
+
+        409: Conflict - ErrorEntity (38171: Fulfillment script already exists)
+    """
     request = CreateFulfillmentScript.create(
         id_=id_,
         body=body,
@@ -66,6 +102,42 @@ async def create_fulfillment_script_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create fulfillment script (createFulfillmentScript)
+
+    Create fulfillment script.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
+
+    Fulfillment scripts are used for adding custom fulfillment logic based on ITEM_TYPE : [MEDIA,INGAMEITEM] for now, and the custom scripts only cover grantDays.
+    Example for grantDays:
+    `order && ((order.currency && order.currency.currencyCode) == 'LP' || order.isFree) ? 30 : -1`
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [CREATE]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts/{id}
+
+        method: POST
+
+        tags: ["FulfillmentScript"]
+
+        consumes: ["application/json"]
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillmentScriptCreate in body
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        201: Created - FulfillmentScriptInfo (successful operation)
+
+        409: Conflict - ErrorEntity (38171: Fulfillment script already exists)
+    """
     request = CreateFulfillmentScript.create(
         id_=id_,
         body=body,
@@ -79,6 +151,34 @@ async def create_fulfillment_script_async(
 def delete_fulfillment_script(
     id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete fulfillment script (deleteFulfillmentScript)
+
+    Delete fulfillment script.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [DELETE]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts/{id}
+
+        method: DELETE
+
+        tags: ["FulfillmentScript"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        204: No Content - (delete fulfillment script successfully)
+    """
     request = DeleteFulfillmentScript.create(
         id_=id_,
     )
@@ -89,6 +189,34 @@ def delete_fulfillment_script(
 async def delete_fulfillment_script_async(
     id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete fulfillment script (deleteFulfillmentScript)
+
+    Delete fulfillment script.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [DELETE]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts/{id}
+
+        method: DELETE
+
+        tags: ["FulfillmentScript"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        204: No Content - (delete fulfillment script successfully)
+    """
     request = DeleteFulfillmentScript.create(
         id_=id_,
     )
@@ -101,6 +229,37 @@ async def delete_fulfillment_script_async(
 def get_fulfillment_script(
     id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get fulfillment script by id (getFulfillmentScript)
+
+    Get fulfillment script by id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
+      *  Returns : get fulfillment script
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [READ]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts/{id}
+
+        method: GET
+
+        tags: ["FulfillmentScript"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentScriptInfo (successful operation)
+
+        404: Not Found - ErrorEntity (38141: Fulfillment script does not exist)
+    """
     request = GetFulfillmentScript.create(
         id_=id_,
     )
@@ -111,6 +270,37 @@ def get_fulfillment_script(
 async def get_fulfillment_script_async(
     id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get fulfillment script by id (getFulfillmentScript)
+
+    Get fulfillment script by id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
+      *  Returns : get fulfillment script
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [READ]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts/{id}
+
+        method: GET
+
+        tags: ["FulfillmentScript"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentScriptInfo (successful operation)
+
+        404: Not Found - ErrorEntity (38141: Fulfillment script does not exist)
+    """
     request = GetFulfillmentScript.create(
         id_=id_,
     )
@@ -123,6 +313,32 @@ async def get_fulfillment_script_async(
 def list_fulfillment_scripts(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """List all fulfillment scripts (listFulfillmentScripts)
+
+    List all fulfillment scripts.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [READ]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts
+
+        method: GET
+
+        tags: ["FulfillmentScript"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[FulfillmentScriptInfo] (successful operation)
+    """
     request = ListFulfillmentScripts.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -131,6 +347,32 @@ def list_fulfillment_scripts(
 async def list_fulfillment_scripts_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """List all fulfillment scripts (listFulfillmentScripts)
+
+    List all fulfillment scripts.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [READ]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts
+
+        method: GET
+
+        tags: ["FulfillmentScript"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[FulfillmentScriptInfo] (successful operation)
+    """
     request = ListFulfillmentScripts.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -143,6 +385,34 @@ def test_fulfillment_script_eval(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Test eval fulfillment script (testFulfillmentScriptEval)
+
+    [TEST FACILITY ONLY] Test eval fulfillment script.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [READ]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts/tests/eval
+
+        method: POST
+
+        tags: ["FulfillmentScript"]
+
+        consumes: ["application/json"]
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillmentScriptEvalTestRequest in body
+
+    Responses:
+        200: OK - FulfillmentScriptEvalTestResult (successful operation)
+    """
     request = TestFulfillmentScriptEval.create(
         body=body,
     )
@@ -155,6 +425,34 @@ async def test_fulfillment_script_eval_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Test eval fulfillment script (testFulfillmentScriptEval)
+
+    [TEST FACILITY ONLY] Test eval fulfillment script.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [READ]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts/tests/eval
+
+        method: POST
+
+        tags: ["FulfillmentScript"]
+
+        consumes: ["application/json"]
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillmentScriptEvalTestRequest in body
+
+    Responses:
+        200: OK - FulfillmentScriptEvalTestResult (successful operation)
+    """
     request = TestFulfillmentScriptEval.create(
         body=body,
     )
@@ -170,6 +468,38 @@ def update_fulfillment_script(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update fulfillment script (updateFulfillmentScript)
+
+    Update fulfillment script.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts/{id}
+
+        method: PATCH
+
+        tags: ["FulfillmentScript"]
+
+        consumes: ["application/json"]
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillmentScriptUpdate in body
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentScriptInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (38141: Fulfillment script does not exist)
+    """
     request = UpdateFulfillmentScript.create(
         id_=id_,
         body=body,
@@ -184,6 +514,38 @@ async def update_fulfillment_script_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update fulfillment script (updateFulfillmentScript)
+
+    Update fulfillment script.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:FULFILLMENT", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:FULFILLMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/fulfillment/scripts/{id}
+
+        method: PATCH
+
+        tags: ["FulfillmentScript"]
+
+        consumes: ["application/json"]
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillmentScriptUpdate in body
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentScriptInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (38141: Fulfillment script does not exist)
+    """
     request = UpdateFulfillmentScript.create(
         id_=id_,
         body=body,

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Leaderboard Service (2.19.0)
+# AccelByte Cloud Leaderboard Service (2.19.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

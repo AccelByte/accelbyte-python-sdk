@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Social Service."""
 
-__version__ = "1.33.0"
+__version__ = "2.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -94,6 +94,23 @@ from ._stat_configuration import query_stats
 from ._stat_configuration import query_stats_async
 from ._stat_configuration import update_stat
 from ._stat_configuration import update_stat_async
+
+from ._stat_cycle_configuration import bulk_add_stats
+from ._stat_cycle_configuration import bulk_add_stats_async
+from ._stat_cycle_configuration import create_stat_cycle
+from ._stat_cycle_configuration import create_stat_cycle_async
+from ._stat_cycle_configuration import delete_stat_cycle
+from ._stat_cycle_configuration import delete_stat_cycle_async
+from ._stat_cycle_configuration import get_stat_cycle
+from ._stat_cycle_configuration import get_stat_cycle_async
+from ._stat_cycle_configuration import get_stat_cycle_1
+from ._stat_cycle_configuration import get_stat_cycle_1_async
+from ._stat_cycle_configuration import get_stat_cycles
+from ._stat_cycle_configuration import get_stat_cycles_async
+from ._stat_cycle_configuration import get_stat_cycles_1
+from ._stat_cycle_configuration import get_stat_cycles_1_async
+from ._stat_cycle_configuration import update_stat_cycle
+from ._stat_cycle_configuration import update_stat_cycle_async
 
 from ._user_statistic import bulk_create_user_stat_items
 from ._user_statistic import bulk_create_user_stat_items_async

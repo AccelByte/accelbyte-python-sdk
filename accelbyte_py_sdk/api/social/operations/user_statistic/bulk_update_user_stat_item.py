@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Social Service (1.33.0)
+# AccelByte Cloud Social Service (2.0.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import BulkStatItemOperationResult
 from ...models import BulkStatItemUpdate
+from ...models import BulkStatOperationResult
 from ...models import ValidationErrorEntity
 
 
@@ -76,7 +76,7 @@ class BulkUpdateUserStatItem(Operation):
         additional_key: (additionalKey) OPTIONAL str in query
 
     Responses:
-        200: OK - List[BulkStatItemOperationResult] (successful operation)
+        200: OK - List[BulkStatOperationResult] (successful operation)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -217,12 +217,12 @@ class BulkUpdateUserStatItem(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[BulkStatItemOperationResult]],
+        Union[None, List[BulkStatOperationResult]],
         Union[None, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
-        200: OK - List[BulkStatItemOperationResult] (successful operation)
+        200: OK - List[BulkStatOperationResult] (successful operation)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -240,9 +240,7 @@ class BulkUpdateUserStatItem(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [
-                BulkStatItemOperationResult.create_from_dict(i) for i in content
-            ], None
+            return [BulkStatOperationResult.create_from_dict(i) for i in content], None
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 

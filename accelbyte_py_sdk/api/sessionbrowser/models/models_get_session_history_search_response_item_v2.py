@@ -58,6 +58,8 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
         status: (status) REQUIRED str
 
         sub_game_mode: (sub_game_mode) REQUIRED List[str]
+
+        user_id: (user_id) REQUIRED str
     """
 
     # region fields
@@ -74,6 +76,7 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
     session_type: str  # REQUIRED
     status: str  # REQUIRED
     sub_game_mode: List[str]  # REQUIRED
+    user_id: str  # REQUIRED
 
     # endregion fields
 
@@ -139,6 +142,10 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
         self.sub_game_mode = value
         return self
 
+    def with_user_id(self, value: str) -> ModelsGetSessionHistorySearchResponseItemV2:
+        self.user_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -197,6 +204,10 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
             result["sub_game_mode"] = [str(i0) for i0 in self.sub_game_mode]
         elif include_empty:
             result["sub_game_mode"] = []
+        if hasattr(self, "user_id"):
+            result["user_id"] = str(self.user_id)
+        elif include_empty:
+            result["user_id"] = ""
         return result
 
     # endregion to methods
@@ -218,6 +229,7 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
         session_type: str,
         status: str,
         sub_game_mode: List[str],
+        user_id: str,
     ) -> ModelsGetSessionHistorySearchResponseItemV2:
         instance = cls()
         instance.created_at = created_at
@@ -232,6 +244,7 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
         instance.session_type = session_type
         instance.status = status
         instance.sub_game_mode = sub_game_mode
+        instance.user_id = user_id
         return instance
 
     @classmethod
@@ -299,6 +312,10 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
             instance.sub_game_mode = [str(i0) for i0 in dict_["sub_game_mode"]]
         elif include_empty:
             instance.sub_game_mode = []
+        if "user_id" in dict_ and dict_["user_id"] is not None:
+            instance.user_id = str(dict_["user_id"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @classmethod
@@ -354,6 +371,7 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
             "session_type": "session_type",
             "status": "status",
             "sub_game_mode": "sub_game_mode",
+            "user_id": "user_id",
         }
 
     @staticmethod
@@ -371,6 +389,7 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
             "session_type": True,
             "status": True,
             "sub_game_mode": True,
+            "user_id": True,
         }
 
     # endregion static methods

@@ -51,7 +51,7 @@ class GetTopicByTopicName(Operation):
 
         method: GET
 
-        tags: ["notification"]
+        tags: ["notification", "public"]
 
         consumes: ["application/json"]
 

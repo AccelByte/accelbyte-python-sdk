@@ -61,6 +61,52 @@ def add_port(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create port config (AddPort)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint create a dedicated servers port config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
+
+        method: POST
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreatePortRequest in body
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDSMConfigRecord (pod config created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (port config not found)
+
+        409: Conflict - ResponseError (port config already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,6 +127,52 @@ async def add_port_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create port config (AddPort)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint create a dedicated servers port config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
+
+        method: POST
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreatePortRequest in body
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDSMConfigRecord (pod config created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (port config not found)
+
+        409: Conflict - ResponseError (port config already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,6 +193,42 @@ def clear_cache(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Clear config cache (ClearCache)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint clears config cache in a namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/cache
+
+        method: DELETE
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (ok)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,6 +245,42 @@ async def clear_cache_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Clear config cache (ClearCache)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint clears config cache in a namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/cache
+
+        method: DELETE
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (ok)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,6 +300,76 @@ def create_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create config (CreateConfig)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+    Required scope: social
+
+    This endpoint creates config.
+
+    Port is where your game listens for incoming UDP connection, if empty it'll be set to 15000
+
+    CPU and Memory limit / request are formatted with Kubernetes format,
+    e.g. CPU of 1000m is 1 core, and Memory of 512Mi is 512 MB.
+
+    The creation/claim/session/unreachable/heartbeat timeouts are all in seconds.
+    Creation timeout is time limit for DS to startup until registers itself.
+    Claim timeout is time limit for game session manager to claim its ready DS.
+    Session timeout is time limit for match session before deleted.
+    Unreachable timeout is time limit for DS in UNREACHABLE state before deleted.
+    Heartbeat timeout is time limit for DS to give heartbeat before marked as UNREACHABLE.
+
+    Sample config:
+    {
+    "namespace": "accelbyte",
+    "providers": [
+    "aws"
+    ],
+    "port": 7777,
+    "protocol": "udp",
+    "creation_timeout": 120,
+    "claim_timeout": 60,
+    "session_timeout": 1800,
+    "heartbeat_timeout": 30,
+    "unreachable_timeout": 30,
+    }
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs
+
+        method: POST
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateDSMConfigRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDSMConfigRecord (config created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -154,6 +388,76 @@ async def create_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create config (CreateConfig)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+    Required scope: social
+
+    This endpoint creates config.
+
+    Port is where your game listens for incoming UDP connection, if empty it'll be set to 15000
+
+    CPU and Memory limit / request are formatted with Kubernetes format,
+    e.g. CPU of 1000m is 1 core, and Memory of 512Mi is 512 MB.
+
+    The creation/claim/session/unreachable/heartbeat timeouts are all in seconds.
+    Creation timeout is time limit for DS to startup until registers itself.
+    Claim timeout is time limit for game session manager to claim its ready DS.
+    Session timeout is time limit for match session before deleted.
+    Unreachable timeout is time limit for DS in UNREACHABLE state before deleted.
+    Heartbeat timeout is time limit for DS to give heartbeat before marked as UNREACHABLE.
+
+    Sample config:
+    {
+    "namespace": "accelbyte",
+    "providers": [
+    "aws"
+    ],
+    "port": 7777,
+    "protocol": "udp",
+    "creation_timeout": 120,
+    "claim_timeout": 60,
+    "session_timeout": 1800,
+    "heartbeat_timeout": 30,
+    "unreachable_timeout": 30,
+    }
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs
+
+        method: POST
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateDSMConfigRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDSMConfigRecord (config created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,6 +477,48 @@ def delete_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete config (DeleteConfig)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+    Required scope: social
+
+    This endpoint removes config. When there are ready servers,
+    those servers will be removed.
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs
+
+        method: DELETE
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (config deleted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -189,6 +535,48 @@ async def delete_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete config (DeleteConfig)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+    Required scope: social
+
+    This endpoint removes config. When there are ready servers,
+    those servers will be removed.
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs
+
+        method: DELETE
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (config deleted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -208,6 +596,48 @@ def delete_port(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete port config (DeletePort)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server port config in a namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
+
+        method: DELETE
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDSMConfigRecord (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (port config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,6 +656,48 @@ async def delete_port_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete port config (DeletePort)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server port config in a namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
+
+        method: DELETE
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDSMConfigRecord (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (port config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -245,6 +717,46 @@ def export_config_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """export DSM Controller configuration for a namespace (exportConfigV1)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint export a dedicated servers config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/export
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (config exported)
+
+        401: Unauthorized - ResponseError (unauthorized access)
+
+        403: Forbidden - ResponseError (forbidden access)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -261,6 +773,46 @@ async def export_config_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """export DSM Controller configuration for a namespace (exportConfigV1)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint export a dedicated servers config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/export
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (config exported)
+
+        401: Unauthorized - ResponseError (unauthorized access)
+
+        403: Forbidden - ResponseError (forbidden access)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -279,6 +831,44 @@ def get_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get config for a namespace (GetConfig)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a dedicated servers config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDSMConfigRecord (config retrieved)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -295,6 +885,44 @@ async def get_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get config for a namespace (GetConfig)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a dedicated servers config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDSMConfigRecord (config retrieved)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -314,6 +942,52 @@ def import_config_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """import config for a namespace (importConfigV1)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint import a dedicated servers config in a namespace.
+
+    If there is an existing configuration, the configuration would be replaced.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/import
+
+        method: POST
+
+        tags: ["Config"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsImportResponse (config imported)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (unauthorized access)
+
+        403: Forbidden - ResponseError (forbidden access)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -332,6 +1006,52 @@ async def import_config_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """import config for a namespace (importConfigV1)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint import a dedicated servers config in a namespace.
+
+    If there is an existing configuration, the configuration would be replaced.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/import
+
+        method: POST
+
+        tags: ["Config"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsImportResponse (config imported)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (unauthorized access)
+
+        403: Forbidden - ResponseError (forbidden access)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -347,6 +1067,40 @@ async def import_config_v1_async(
 
 @same_doc_as(ListConfig)
 def list_config(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """List all configs (ListConfig)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint lists all of dedicated servers configs.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/configs
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsListConfigResponse (configs listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = ListConfig.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -355,6 +1109,40 @@ def list_config(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs)
 async def list_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """List all configs (ListConfig)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint lists all of dedicated servers configs.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/configs
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsListConfigResponse (configs listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = ListConfig.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -368,6 +1156,113 @@ def save_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Save config (SaveConfig)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+    Required scope: social
+
+    This endpoint adds/modifies config. When there are ready servers and
+    the server version is updated, those servers will be replaced with newer version.
+
+    Port is where your game listens for incoming UDP connection, if empty it'll be set to 15000
+
+    CPU and Memory limit / request are formatted with Kubernetes format,
+    e.g. CPU of 1000m is 1 core, and Memory of 512Mi is 512 MB.
+
+    The creation/claim/session/unreachable/heartbeat timeouts are all in seconds.
+    Creation timeout is time limit for DS to startup until registers itself.
+    Claim timeout is time limit for game session manager to claim its ready DS.
+    Session timeout is time limit for match session before deleted.
+    Unreachable timeout is time limit for DS in UNREACHABLE state before deleted.
+    Heartbeat timeout is time limit for DS to give heartbeat before marked as UNREACHABLE.
+
+    Sample config:
+    {
+    "namespace": "accelbyte",
+    "providers": [
+    "aws"
+    ],
+    "port": 7777,
+    "protocol": "udp",
+    "creation_timeout": 120,
+    "claim_timeout": 60,
+    "session_timeout": 1800,
+    "heartbeat_timeout": 30,
+    "unreachable_timeout": 30,
+    "image_version_mapping": {
+    "1.4.0": "accelbyte/sample-ds-go:1.4.0"
+    },
+    "default_version": "1.4.0",
+    "cpu_limit": "100",
+    "mem_limit": "64",
+    "params": "",
+    "min_count": 0,
+    "max_count": 0,
+    "buffer_count": 0,
+    "configurations": {
+    "1player": {
+    "cpu_limit": "100",
+    "mem_limit": "64",
+    "params": "-gamemode 1p",
+    },
+    "50players": {
+    "cpu_limit": "200",
+    "mem_limit": "512",
+    "params": "-gamemode 50p",
+    }
+    },
+    "deployments": {
+    "global-1p": {
+    "game_version": "1.4.0"",
+    "regions": ["us-west", "ap-southeast"],
+    "configuration": "1player",
+    "min_count": 0,
+    "max_count": 0,
+    "buffer_count": 2
+    },
+    "us-50p": {
+    "game_version": "1.4.0"",
+    "regions": ["us-west"],
+    "configuration": "50players",
+    "min_count": 0,
+    "max_count": 0,
+    "buffer_count": 5
+    },
+    },
+    }
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/configs
+
+        method: POST
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDSMConfigRecord in body
+
+    Responses:
+        204: No Content - (config added/updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = SaveConfig.create(
         body=body,
     )
@@ -381,6 +1276,113 @@ async def save_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Save config (SaveConfig)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+    Required scope: social
+
+    This endpoint adds/modifies config. When there are ready servers and
+    the server version is updated, those servers will be replaced with newer version.
+
+    Port is where your game listens for incoming UDP connection, if empty it'll be set to 15000
+
+    CPU and Memory limit / request are formatted with Kubernetes format,
+    e.g. CPU of 1000m is 1 core, and Memory of 512Mi is 512 MB.
+
+    The creation/claim/session/unreachable/heartbeat timeouts are all in seconds.
+    Creation timeout is time limit for DS to startup until registers itself.
+    Claim timeout is time limit for game session manager to claim its ready DS.
+    Session timeout is time limit for match session before deleted.
+    Unreachable timeout is time limit for DS in UNREACHABLE state before deleted.
+    Heartbeat timeout is time limit for DS to give heartbeat before marked as UNREACHABLE.
+
+    Sample config:
+    {
+    "namespace": "accelbyte",
+    "providers": [
+    "aws"
+    ],
+    "port": 7777,
+    "protocol": "udp",
+    "creation_timeout": 120,
+    "claim_timeout": 60,
+    "session_timeout": 1800,
+    "heartbeat_timeout": 30,
+    "unreachable_timeout": 30,
+    "image_version_mapping": {
+    "1.4.0": "accelbyte/sample-ds-go:1.4.0"
+    },
+    "default_version": "1.4.0",
+    "cpu_limit": "100",
+    "mem_limit": "64",
+    "params": "",
+    "min_count": 0,
+    "max_count": 0,
+    "buffer_count": 0,
+    "configurations": {
+    "1player": {
+    "cpu_limit": "100",
+    "mem_limit": "64",
+    "params": "-gamemode 1p",
+    },
+    "50players": {
+    "cpu_limit": "200",
+    "mem_limit": "512",
+    "params": "-gamemode 50p",
+    }
+    },
+    "deployments": {
+    "global-1p": {
+    "game_version": "1.4.0"",
+    "regions": ["us-west", "ap-southeast"],
+    "configuration": "1player",
+    "min_count": 0,
+    "max_count": 0,
+    "buffer_count": 2
+    },
+    "us-50p": {
+    "game_version": "1.4.0"",
+    "regions": ["us-west"],
+    "configuration": "50players",
+    "min_count": 0,
+    "max_count": 0,
+    "buffer_count": 5
+    },
+    },
+    }
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/configs
+
+        method: POST
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDSMConfigRecord in body
+
+    Responses:
+        204: No Content - (config added/updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = SaveConfig.create(
         body=body,
     )
@@ -396,6 +1398,77 @@ def update_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update config (UpdateConfig)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+    Required scope: social
+
+    This endpoint modifies config. When there are ready servers and
+    the server version is updated, those servers will be replaced with newer version.
+
+    Port is where your game listens for incoming UDP connection, if empty it'll be set to 15000
+
+    CPU and Memory limit / request are formatted with Kubernetes format,
+    e.g. CPU of 1000m is 1 core, and Memory of 512Mi is 512 MB.
+
+    The creation/claim/session/unreachable/heartbeat timeouts are all in seconds.
+    Creation timeout is time limit for DS to startup until registers itself.
+    Claim timeout is time limit for game session manager to claim its ready DS.
+    Session timeout is time limit for match session before deleted.
+    Unreachable timeout is time limit for DS in UNREACHABLE state before deleted.
+    Heartbeat timeout is time limit for DS to give heartbeat before marked as UNREACHABLE.
+
+    Sample config:
+    {
+    "namespace": "accelbyte",
+    "providers": [
+    "aws"
+    ],
+    "port": 7777,
+    "protocol": "udp",
+    "creation_timeout": 120,
+    "claim_timeout": 60,
+    "session_timeout": 1800,
+    "heartbeat_timeout": 30,
+    "unreachable_timeout": 30,
+    }
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs
+
+        method: PATCH
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateDSMConfigRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDSMConfigRecord (config updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -414,6 +1487,77 @@ async def update_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update config (UpdateConfig)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+    Required scope: social
+
+    This endpoint modifies config. When there are ready servers and
+    the server version is updated, those servers will be replaced with newer version.
+
+    Port is where your game listens for incoming UDP connection, if empty it'll be set to 15000
+
+    CPU and Memory limit / request are formatted with Kubernetes format,
+    e.g. CPU of 1000m is 1 core, and Memory of 512Mi is 512 MB.
+
+    The creation/claim/session/unreachable/heartbeat timeouts are all in seconds.
+    Creation timeout is time limit for DS to startup until registers itself.
+    Claim timeout is time limit for game session manager to claim its ready DS.
+    Session timeout is time limit for match session before deleted.
+    Unreachable timeout is time limit for DS in UNREACHABLE state before deleted.
+    Heartbeat timeout is time limit for DS to give heartbeat before marked as UNREACHABLE.
+
+    Sample config:
+    {
+    "namespace": "accelbyte",
+    "providers": [
+    "aws"
+    ],
+    "port": 7777,
+    "protocol": "udp",
+    "creation_timeout": 120,
+    "claim_timeout": 60,
+    "session_timeout": 1800,
+    "heartbeat_timeout": 30,
+    "unreachable_timeout": 30,
+    }
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs
+
+        method: PATCH
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateDSMConfigRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDSMConfigRecord (config updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -435,6 +1579,50 @@ def update_port(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update port config (UpdatePort)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required scope: social
+
+    This endpoint update a dedicated servers port config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
+
+        method: PATCH
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdatePortRequest in body
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDSMConfigRecord (pod config updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (port config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -455,6 +1643,50 @@ async def update_port_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update port config (UpdatePort)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required scope: social
+
+    This endpoint update a dedicated servers port config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
+
+        method: PATCH
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdatePortRequest in body
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDSMConfigRecord (pod config updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (port config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

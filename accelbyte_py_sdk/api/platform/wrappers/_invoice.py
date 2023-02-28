@@ -49,6 +49,45 @@ def download_invoice_details(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download invoice details (downloadInvoiceDetails)
+
+    Download invoice details as a csv file.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : invoice details csv file
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/invoice/details.csv
+
+        method: GET
+
+        tags: ["Invoice"]
+
+        consumes: []
+
+        produces: ["text/csv"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        feature: (feature) OPTIONAL str in query
+
+        item_id: (itemId) OPTIONAL str in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        end_time: (endTime) REQUIRED str in query
+
+        start_time: (startTime) REQUIRED str in query
+
+    Responses:
+        200: OK - Any (Successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -75,6 +114,45 @@ async def download_invoice_details_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download invoice details (downloadInvoiceDetails)
+
+    Download invoice details as a csv file.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : invoice details csv file
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/invoice/details.csv
+
+        method: GET
+
+        tags: ["Invoice"]
+
+        consumes: []
+
+        produces: ["text/csv"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        feature: (feature) OPTIONAL str in query
+
+        item_id: (itemId) OPTIONAL str in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        end_time: (endTime) REQUIRED str in query
+
+        start_time: (startTime) REQUIRED str in query
+
+    Responses:
+        200: OK - Any (Successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -103,6 +181,47 @@ def generate_invoice_summary(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Generate invoice summary (generateInvoiceSummary)
+
+    Generate invoice summary.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : query orders
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/invoice/summary
+
+        method: GET
+
+        tags: ["Invoice"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        feature: (feature) OPTIONAL str in query
+
+        item_id: (itemId) OPTIONAL str in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        end_time: (endTime) REQUIRED str in query
+
+        start_time: (startTime) REQUIRED str in query
+
+    Responses:
+        200: OK - InvoiceSummary (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -129,6 +248,47 @@ async def generate_invoice_summary_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Generate invoice summary (generateInvoiceSummary)
+
+    Generate invoice summary.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : query orders
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/invoice/summary
+
+        method: GET
+
+        tags: ["Invoice"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        feature: (feature) OPTIONAL str in query
+
+        item_id: (itemId) OPTIONAL str in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        end_time: (endTime) REQUIRED str in query
+
+        start_time: (startTime) REQUIRED str in query
+
+    Responses:
+        200: OK - InvoiceSummary (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

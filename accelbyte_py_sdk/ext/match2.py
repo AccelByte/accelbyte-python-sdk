@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Match Service V2 (2.1.1)
+# AccelByte Cloud Match Service V2 (2.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,7 @@ from .utils import randomize
 from ..api.match2.models import ApiBackFillAcceptRequest
 from ..api.match2.models import ApiBackFillCreateRequest
 from ..api.match2.models import ApiBackFillRejectRequest
+from ..api.match2.models import ApiBackfillCreateResponse
 from ..api.match2.models import ApiBackfillGetResponse
 from ..api.match2.models import ApiBackfillProposalResponse
 from ..api.match2.models import ApiListMatchFunctionsResponse
@@ -48,6 +49,7 @@ from ..api.match2.models import ApiProposedProposal
 from ..api.match2.models import ApiRuleSetPayload
 from ..api.match2.models import ApiTeam
 from ..api.match2.models import ApiTicket
+from ..api.match2.models import ApiTicketMetricResultRecord
 from ..api.match2.models import ModelsPagination
 from ..api.match2.models import ResponseError
 
@@ -70,6 +72,12 @@ def create_api_back_fill_reject_request_example() -> ApiBackFillRejectRequest:
     instance = ApiBackFillRejectRequest()
     instance.proposal_id = randomize()
     instance.stop = randomize("bool")
+    return instance
+
+
+def create_api_backfill_create_response_example() -> ApiBackfillCreateResponse:
+    instance = ApiBackfillCreateResponse()
+    instance.id_ = randomize()
     return instance
 
 
@@ -265,6 +273,12 @@ def create_api_ticket_example() -> ApiTicket:
     instance.players = [create_api_player_data_example()]
     instance.ticket_attributes = {randomize(): randomize()}
     instance.ticket_id = randomize()
+    return instance
+
+
+def create_api_ticket_metric_result_record_example() -> ApiTicketMetricResultRecord:
+    instance = ApiTicketMetricResultRecord()
+    instance.queue_time = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

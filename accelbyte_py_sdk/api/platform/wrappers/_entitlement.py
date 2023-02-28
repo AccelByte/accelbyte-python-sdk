@@ -161,6 +161,45 @@ def consume_user_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Consume user entitlement (consumeUserEntitlement)
+
+    Consume user entitlement. If the entitlement useCount is 0, the status will be CONSUMED.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : consumed entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/decrement
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementDecrement in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementDecrementResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -183,6 +222,45 @@ async def consume_user_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Consume user entitlement (consumeUserEntitlement)
+
+    Consume user entitlement. If the entitlement useCount is 0, the status will be CONSUMED.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : consumed entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/decrement
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementDecrement in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementDecrementResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -206,6 +284,44 @@ def disable_user_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable user entitlement (disableUserEntitlement)
+
+    Disable user entitlement if entitlement, only active entitlement can be disable, disabled entitlement can't consume.
+     Like revoke, it will lose the entitlement ownership, except disabled entitlement can enable.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : disable entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/disable
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31172: Entitlement [{entitlementId}] not active | 20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,6 +342,44 @@ async def disable_user_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable user entitlement (disableUserEntitlement)
+
+    Disable user entitlement if entitlement, only active entitlement can be disable, disabled entitlement can't consume.
+     Like revoke, it will lose the entitlement ownership, except disabled entitlement can enable.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : disable entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/disable
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31172: Entitlement [{entitlementId}] not active | 20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -248,6 +402,43 @@ def enable_user_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable user entitlement (enableUserEntitlement)
+
+    Enable user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : enable entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/enable
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31177: Permanent item already owned | 31179: Duplicate entitlement exists | 20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -268,6 +459,43 @@ async def enable_user_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable user entitlement (enableUserEntitlement)
+
+    Enable user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : enable entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/enable
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31174: Entitlement [{entitlementId}] already consumed | 31177: Permanent item already owned | 31179: Duplicate entitlement exists | 20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -292,6 +520,43 @@ def exists_any_user_active_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Exists any user active entitlement (existsAnyUserActiveEntitlement)
+
+    Exists any user active entitlement of specified itemIds, skus and appIds
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/any
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_ids: (appIds) OPTIONAL List[str] in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
+
+        skus: (skus) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -316,6 +581,43 @@ async def exists_any_user_active_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Exists any user active entitlement (existsAnyUserActiveEntitlement)
+
+    Exists any user active entitlement of specified itemIds, skus and appIds
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/any
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_ids: (appIds) OPTIONAL List[str] in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
+
+        skus: (skus) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -340,6 +642,39 @@ def exists_any_user_active_entitlement_by_item_ids(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Exists any user active entitlement (existsAnyUserActiveEntitlementByItemIds)
+
+    Exists any user active entitlement of specified items.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/anyOf
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_ids: (itemIds) REQUIRED List[str] in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -360,6 +695,39 @@ async def exists_any_user_active_entitlement_by_item_ids_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Exists any user active entitlement (existsAnyUserActiveEntitlementByItemIds)
+
+    Exists any user active entitlement of specified items.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/anyOf
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_ids: (itemIds) REQUIRED List[str] in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -381,6 +749,40 @@ def get_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get entitlement (getEntitlement)
+
+    Get entitlement.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/entitlements/{entitlementId}
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -399,6 +801,40 @@ async def get_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get entitlement (getEntitlement)
+
+    Get entitlement.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/entitlements/{entitlementId}
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -420,6 +856,39 @@ def get_user_active_entitlements_by_item_ids(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlements by itemIds (getUserActiveEntitlementsByItemIds)
+
+    Get user entitlements by itemIds.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byItemIds
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        ids: (ids) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[EntitlementInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -440,6 +909,39 @@ async def get_user_active_entitlements_by_item_ids_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlements by itemIds (getUserActiveEntitlementsByItemIds)
+
+    Get user entitlements by itemIds.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byItemIds
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        ids: (ids) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[EntitlementInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -463,6 +965,43 @@ def get_user_app_entitlement_by_app_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user app entitlement by appId (getUserAppEntitlementByAppId)
+
+    Get user app entitlement by appId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byAppId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - AppEntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31142: Entitlement with appId [{appId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -485,6 +1024,43 @@ async def get_user_app_entitlement_by_app_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user app entitlement by appId (getUserAppEntitlementByAppId)
+
+    Get user app entitlement by appId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byAppId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - AppEntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31142: Entitlement with appId [{appId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -508,6 +1084,39 @@ def get_user_app_entitlement_ownership_by_app_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user app entitlement ownership by appId (getUserAppEntitlementOwnershipByAppId)
+
+    Get user app entitlement ownership by appId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/byAppId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -528,6 +1137,39 @@ async def get_user_app_entitlement_ownership_by_app_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user app entitlement ownership by appId (getUserAppEntitlementOwnershipByAppId)
+
+    Get user app entitlement ownership by appId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/byAppId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -550,6 +1192,42 @@ def get_user_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement (getUserEntitlement)
+
+    Get user entitlement.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -570,6 +1248,42 @@ async def get_user_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement (getUserEntitlement)
+
+    Get user entitlement.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -596,6 +1310,45 @@ def get_user_entitlement_by_item_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement by itemId (getUserEntitlementByItemId)
+
+    Get user entitlement by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byItemId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31144: Entitlement with itemId [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -622,6 +1375,45 @@ async def get_user_entitlement_by_item_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement by itemId (getUserEntitlementByItemId)
+
+    Get user entitlement by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byItemId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31144: Entitlement with itemId [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -650,6 +1442,45 @@ def get_user_entitlement_by_sku(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement by sku (getUserEntitlementBySku)
+
+    Get user entitlement by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/bySku
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31143: Entitlement with sku [{sku}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -676,6 +1507,45 @@ async def get_user_entitlement_by_sku_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement by sku (getUserEntitlementBySku)
+
+    Get user entitlement by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/bySku
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31143: Entitlement with sku [{sku}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -700,6 +1570,40 @@ def get_user_entitlement_histories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement history (getUserEntitlementHistories)
+
+    Get user entitlement histories.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : list of entitlement history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/history
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[EntitlementHistoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -720,6 +1624,40 @@ async def get_user_entitlement_histories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement history (getUserEntitlementHistories)
+
+    Get user entitlement histories.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : list of entitlement history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/history
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[EntitlementHistoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -745,6 +1683,41 @@ def get_user_entitlement_ownership_by_item_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by itemId (getUserEntitlementOwnershipByItemId)
+
+    Get user entitlement ownership by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/byItemId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -769,6 +1742,41 @@ async def get_user_entitlement_ownership_by_item_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by itemId (getUserEntitlementOwnershipByItemId)
+
+    Get user entitlement ownership by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/byItemId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -792,6 +1800,39 @@ def get_user_entitlement_ownership_by_item_ids(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by itemIds (getUserEntitlementOwnershipByItemIds)
+
+    Get user entitlement ownership by itemIds.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/byItemIds
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        ids: (ids) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[EntitlementOwnership] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -812,6 +1853,39 @@ async def get_user_entitlement_ownership_by_item_ids_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by itemIds (getUserEntitlementOwnershipByItemIds)
+
+    Get user entitlement ownership by itemIds.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/byItemIds
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        ids: (ids) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[EntitlementOwnership] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -837,6 +1911,41 @@ def get_user_entitlement_ownership_by_sku(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by sku (getUserEntitlementOwnershipBySku)
+
+    Get user entitlement ownership by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/bySku
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -861,6 +1970,41 @@ async def get_user_entitlement_ownership_by_sku_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by sku (getUserEntitlementOwnershipBySku)
+
+    Get user entitlement ownership by sku.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/bySku
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -884,6 +2028,43 @@ def grant_user_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Grant user entitlement (grantUserEntitlement)
+
+    Grant user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (CREATE)
+      *  Returns : granted entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements
+
+        method: POST
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[EntitlementGrant] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - List[StackableEntitlementInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -904,6 +2085,43 @@ async def grant_user_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Grant user entitlement (grantUserEntitlement)
+
+    Grant user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (CREATE)
+      *  Returns : granted entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements
+
+        method: POST
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[EntitlementGrant] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - List[StackableEntitlementInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -927,6 +2145,47 @@ def public_consume_user_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Consume user entitlement (publicConsumeUserEntitlement)
+
+    Consume user entitlement. If the entitlement useCount is 0, the status will be CONSUMED. Client should pass item id in options if entitlement clazz is OPTIONBOX
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : consumed entitlement
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/decrement
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementDecrement in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementDecrementResult (successful operation)
+
+        400: Bad Request - ErrorEntity (31121: OptionBox entitlement [{entitlementId}] use count is not 1 | 31122: OptionBox entitlement [{entitlementId}] options size is not 1)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}] | 31145: Option [{option}] doesn't exist in OptionBox entitlement [{entitlementId}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -949,6 +2208,47 @@ async def public_consume_user_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Consume user entitlement (publicConsumeUserEntitlement)
+
+    Consume user entitlement. If the entitlement useCount is 0, the status will be CONSUMED. Client should pass item id in options if entitlement clazz is OPTIONBOX
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : consumed entitlement
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/decrement
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementDecrement in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementDecrementResult (successful operation)
+
+        400: Bad Request - ErrorEntity (31121: OptionBox entitlement [{entitlementId}] use count is not 1 | 31122: OptionBox entitlement [{entitlementId}] options size is not 1)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}] | 31145: Option [{option}] doesn't exist in OptionBox entitlement [{entitlementId}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -973,6 +2273,41 @@ def public_exists_any_my_active_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Exists any my active entitlement (publicExistsAnyMyActiveEntitlement)
+
+    Exists any my active entitlement of specified itemIds, skus and appIds
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/any
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        app_ids: (appIds) OPTIONAL List[str] in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
+
+        skus: (skus) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -995,6 +2330,41 @@ async def public_exists_any_my_active_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Exists any my active entitlement (publicExistsAnyMyActiveEntitlement)
+
+    Exists any my active entitlement of specified itemIds, skus and appIds
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/any
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        app_ids: (appIds) OPTIONAL List[str] in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
+
+        skus: (skus) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1020,6 +2390,43 @@ def public_exists_any_user_active_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Exists any user active entitlement (publicExistsAnyUserActiveEntitlement)
+
+    Exists any user active entitlement of specified itemIds, skus and appIds
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/any
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_ids: (appIds) OPTIONAL List[str] in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
+
+        skus: (skus) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1044,6 +2451,43 @@ async def public_exists_any_user_active_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Exists any user active entitlement (publicExistsAnyUserActiveEntitlement)
+
+    Exists any user active entitlement of specified itemIds, skus and appIds
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/any
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_ids: (appIds) OPTIONAL List[str] in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
+
+        skus: (skus) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1069,6 +2513,115 @@ def public_get_entitlement_ownership_token(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Gets an entitlement ownership token (publicGetEntitlementOwnershipToken)
+
+    Gets an entitlement ownership token of specified itemIds, skus and appIds
+
+    The decoded ownership token header like below:
+
+
+        {
+
+          "kid": "9fd4cd5f991cebe3323605cd12d3b8bfdfc73fa4",
+
+          "typ": "JWT",
+
+          "alg": "RS256"
+
+        }
+
+
+
+    That you can get the jwks by api /platform/jwks, if the configured private key is same as IAM,
+
+    you can also get jwks from IAM endpoint.
+
+    The decoded ownership token payload like below:
+
+
+        {
+
+         "namespace": "accelbyte",
+
+         "entitlements": [
+
+          {
+
+            "itemId": "4c1296291f604c199f7bb7f0ee02e5f8",
+
+            "appType": null,
+
+            "appId": null,
+
+            "namespace": "accelbyte",
+
+            "itemNamespace": "accelbyte",
+
+            "sku": "prime-plus"
+
+          },
+
+          {
+
+            "itemId": "e8f4974cf45c4e1f8d4f0c6990c518bd",
+
+            "appType": "GAME",
+
+            "appId": "omeganebula",
+
+            "namespace": "accelbyte",
+
+            "itemNamespace": "accelbyte",
+
+            "sku": "APPG005ON"
+
+          }
+
+         ],
+
+        "sub": "66459eb6a4e44e6fb0040bd20c1079a5",
+
+        "exp": 1619624360,
+
+        "iat": 1619624060
+
+        }
+
+
+
+    if there's no active entitlement for the specific params, the entitlements section will be omitted.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownershipToken
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        app_ids: (appIds) OPTIONAL List[str] in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
+
+        skus: (skus) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - OwnershipToken (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1091,6 +2644,115 @@ async def public_get_entitlement_ownership_token_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Gets an entitlement ownership token (publicGetEntitlementOwnershipToken)
+
+    Gets an entitlement ownership token of specified itemIds, skus and appIds
+
+    The decoded ownership token header like below:
+
+
+        {
+
+          "kid": "9fd4cd5f991cebe3323605cd12d3b8bfdfc73fa4",
+
+          "typ": "JWT",
+
+          "alg": "RS256"
+
+        }
+
+
+
+    That you can get the jwks by api /platform/jwks, if the configured private key is same as IAM,
+
+    you can also get jwks from IAM endpoint.
+
+    The decoded ownership token payload like below:
+
+
+        {
+
+         "namespace": "accelbyte",
+
+         "entitlements": [
+
+          {
+
+            "itemId": "4c1296291f604c199f7bb7f0ee02e5f8",
+
+            "appType": null,
+
+            "appId": null,
+
+            "namespace": "accelbyte",
+
+            "itemNamespace": "accelbyte",
+
+            "sku": "prime-plus"
+
+          },
+
+          {
+
+            "itemId": "e8f4974cf45c4e1f8d4f0c6990c518bd",
+
+            "appType": "GAME",
+
+            "appId": "omeganebula",
+
+            "namespace": "accelbyte",
+
+            "itemNamespace": "accelbyte",
+
+            "sku": "APPG005ON"
+
+          }
+
+         ],
+
+        "sub": "66459eb6a4e44e6fb0040bd20c1079a5",
+
+        "exp": 1619624360,
+
+        "iat": 1619624060
+
+        }
+
+
+
+    if there's no active entitlement for the specific params, the entitlements section will be omitted.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownershipToken
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        app_ids: (appIds) OPTIONAL List[str] in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
+
+        skus: (skus) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - OwnershipToken (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1113,6 +2775,39 @@ def public_get_my_app_entitlement_ownership_by_app_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my app entitlement ownership by appId (publicGetMyAppEntitlementOwnershipByAppId)
+
+    Get my app entitlement ownership by appId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher namespace app entitlement ownership
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/byAppId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1131,6 +2826,39 @@ async def public_get_my_app_entitlement_ownership_by_app_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my app entitlement ownership by appId (publicGetMyAppEntitlementOwnershipByAppId)
+
+    Get my app entitlement ownership by appId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher namespace app entitlement ownership
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/byAppId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1154,6 +2882,42 @@ def public_get_my_entitlement_ownership_by_item_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my entitlement ownership by itemId (publicGetMyEntitlementOwnershipByItemId)
+
+    Get my entitlement ownership by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher namespace entitlement ownership by sku
+        * can be filled with game namespace in order to get game namespace entitlement ownership by sku
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/byItemId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1176,6 +2940,42 @@ async def public_get_my_entitlement_ownership_by_item_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my entitlement ownership by itemId (publicGetMyEntitlementOwnershipByItemId)
+
+    Get my entitlement ownership by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher namespace entitlement ownership by sku
+        * can be filled with game namespace in order to get game namespace entitlement ownership by sku
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/byItemId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1200,6 +3000,42 @@ def public_get_my_entitlement_ownership_by_sku(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my entitlement ownership by sku (publicGetMyEntitlementOwnershipBySku)
+
+    Get my entitlement ownership by sku.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher namespace entitlement ownership by sku
+        * can be filled with game namespace in order to get game namespace entitlement ownership by sku
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/bySku
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1222,6 +3058,42 @@ async def public_get_my_entitlement_ownership_by_sku_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my entitlement ownership by sku (publicGetMyEntitlementOwnershipBySku)
+
+    Get my entitlement ownership by sku.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher namespace entitlement ownership by sku
+        * can be filled with game namespace in order to get game namespace entitlement ownership by sku
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/bySku
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1244,6 +3116,41 @@ def public_get_user_app_entitlement_by_app_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user app entitlement by appId (publicGetUserAppEntitlementByAppId)
+
+    Get user app entitlement by appId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byAppId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - AppEntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31142: Entitlement with appId [{appId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1264,6 +3171,41 @@ async def public_get_user_app_entitlement_by_app_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user app entitlement by appId (publicGetUserAppEntitlementByAppId)
+
+    Get user app entitlement by appId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byAppId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - AppEntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31142: Entitlement with appId [{appId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1286,6 +3228,39 @@ def public_get_user_app_entitlement_ownership_by_app_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user app entitlement ownership by appId (publicGetUserAppEntitlementOwnershipByAppId)
+
+    Get user app entitlement ownership by appId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/byAppId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1306,6 +3281,39 @@ async def public_get_user_app_entitlement_ownership_by_app_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user app entitlement ownership by appId (publicGetUserAppEntitlementOwnershipByAppId)
+
+    Get user app entitlement ownership by appId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/byAppId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_id: (appId) REQUIRED str in query
+
+    Responses:
+        200: OK - Ownership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1328,6 +3336,42 @@ def public_get_user_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement (publicGetUserEntitlement)
+
+    Get user entitlement.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1348,6 +3392,42 @@ async def public_get_user_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement (publicGetUserEntitlement)
+
+    Get user entitlement.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1373,6 +3453,43 @@ def public_get_user_entitlement_by_item_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement by itemId (publicGetUserEntitlementByItemId)
+
+    Get user entitlement by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byItemId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31144: Entitlement with itemId [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1397,6 +3514,43 @@ async def public_get_user_entitlement_by_item_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement by itemId (publicGetUserEntitlementByItemId)
+
+    Get user entitlement by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byItemId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31144: Entitlement with itemId [{itemId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1423,6 +3577,43 @@ def public_get_user_entitlement_by_sku(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement by sku (publicGetUserEntitlementBySku)
+
+    Get user entitlement by sku.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/bySku
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31143: Entitlement with sku [{sku}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1447,6 +3638,43 @@ async def public_get_user_entitlement_by_sku_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement by sku (publicGetUserEntitlementBySku)
+
+    Get user entitlement by sku.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/bySku
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31143: Entitlement with sku [{sku}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1473,6 +3701,41 @@ def public_get_user_entitlement_ownership_by_item_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by itemId (publicGetUserEntitlementOwnershipByItemId)
+
+    Get user entitlement ownership by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/byItemId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1497,6 +3760,41 @@ async def public_get_user_entitlement_ownership_by_item_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by itemId (publicGetUserEntitlementOwnershipByItemId)
+
+    Get user entitlement ownership by itemId.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/byItemId
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1520,6 +3818,39 @@ def public_get_user_entitlement_ownership_by_item_ids(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by itemIds (publicGetUserEntitlementOwnershipByItemIds)
+
+    Get user entitlement ownership by itemIds.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/byItemIds
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        ids: (ids) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[EntitlementOwnership] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1540,6 +3871,39 @@ async def public_get_user_entitlement_ownership_by_item_ids_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by itemIds (publicGetUserEntitlementOwnershipByItemIds)
+
+    Get user entitlement ownership by itemIds.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/byItemIds
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        ids: (ids) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[EntitlementOwnership] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1565,6 +3929,41 @@ def public_get_user_entitlement_ownership_by_sku(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by sku (publicGetUserEntitlementOwnershipBySku)
+
+    Get user entitlement ownership by sku.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/bySku
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1589,6 +3988,41 @@ async def public_get_user_entitlement_ownership_by_sku_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user entitlement ownership by sku (publicGetUserEntitlementOwnershipBySku)
+
+    Get user entitlement ownership by sku.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/bySku
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        sku: (sku) REQUIRED str in query
+
+    Responses:
+        200: OK - TimedOwnership (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1620,6 +4054,52 @@ def public_query_user_entitlements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user entitlements (publicQueryUserEntitlements)
+
+    Query user entitlements for a specific user.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement list
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        entitlement_name: (entitlementName) OPTIONAL str in query
+
+        features: (features) OPTIONAL List[str] in query
+
+        item_id: (itemId) OPTIONAL List[str] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - EntitlementPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1654,6 +4134,52 @@ async def public_query_user_entitlements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user entitlements (publicQueryUserEntitlements)
+
+    Query user entitlements for a specific user.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement list
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        entitlement_name: (entitlementName) OPTIONAL str in query
+
+        features: (features) OPTIONAL List[str] in query
+
+        item_id: (itemId) OPTIONAL List[str] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - EntitlementPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1684,6 +4210,44 @@ def public_query_user_entitlements_by_app_type(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query app entitlements by appType (publicQueryUserEntitlementsByAppType)
+
+    Query app entitlements by appType.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : app entitlement pagination
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byAppType
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        app_type: (appType) REQUIRED Union[str, AppTypeEnum] in query
+
+    Responses:
+        200: OK - AppEntitlementPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1708,6 +4272,44 @@ async def public_query_user_entitlements_by_app_type_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query app entitlements by appType (publicQueryUserEntitlementsByAppType)
+
+    Query app entitlements by appType.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : app entitlement pagination
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byAppType
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        app_type: (appType) REQUIRED Union[str, AppTypeEnum] in query
+
+    Responses:
+        200: OK - AppEntitlementPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1740,6 +4342,52 @@ def query_entitlements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query entitlements (queryEntitlements)
+
+    Query entitlements.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/entitlements
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        entitlement_name: (entitlementName) OPTIONAL str in query
+
+        item_id: (itemId) OPTIONAL List[str] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - EntitlementPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1774,6 +4422,52 @@ async def query_entitlements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query entitlements (queryEntitlements)
+
+    Query entitlements.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/entitlements
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        entitlement_name: (entitlementName) OPTIONAL str in query
+
+        item_id: (itemId) OPTIONAL List[str] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - EntitlementPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1811,6 +4505,54 @@ def query_user_entitlements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user entitlements (queryUserEntitlements)
+
+    Query entitlements for a specific user.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        entitlement_name: (entitlementName) OPTIONAL str in query
+
+        features: (features) OPTIONAL List[str] in query
+
+        item_id: (itemId) OPTIONAL List[str] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - EntitlementPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1847,6 +4589,54 @@ async def query_user_entitlements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user entitlements (queryUserEntitlements)
+
+    Query entitlements for a specific user.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        entitlement_name: (entitlementName) OPTIONAL str in query
+
+        features: (features) OPTIONAL List[str] in query
+
+        item_id: (itemId) OPTIONAL List[str] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - EntitlementPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1879,6 +4669,46 @@ def query_user_entitlements_by_app_type(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query app entitlements by appType (queryUserEntitlementsByAppType)
+
+    Query app entitlements by appType.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2
+      *  Returns : app entitlement pagination
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT []
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byAppType
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        app_type: (appType) REQUIRED Union[str, AppTypeEnum] in query
+
+    Responses:
+        200: OK - AppEntitlementPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1905,6 +4735,46 @@ async def query_user_entitlements_by_app_type_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query app entitlements by appType (queryUserEntitlementsByAppType)
+
+    Query app entitlements by appType.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2
+      *  Returns : app entitlement pagination
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT []
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byAppType
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        app_type: (appType) REQUIRED Union[str, AppTypeEnum] in query
+
+    Responses:
+        200: OK - AppEntitlementPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1930,6 +4800,41 @@ def revoke_user_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Revoke user entitlement (revokeUserEntitlement)
+
+    Revoke user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : revoke entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1950,6 +4855,41 @@ async def revoke_user_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Revoke user entitlement (revokeUserEntitlement)
+
+    Revoke user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : revoke entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1972,6 +4912,39 @@ def revoke_user_entitlements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Revoke user's entitlements by ids (revokeUserEntitlements)
+
+    Revoke user's entitlements by ids.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : revoke entitlements count
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/revoke/byIds
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_ids: (entitlementIds) REQUIRED str in query
+
+    Responses:
+        200: OK - BulkOperationResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1992,6 +4965,39 @@ async def revoke_user_entitlements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Revoke user's entitlements by ids (revokeUserEntitlements)
+
+    Revoke user's entitlements by ids.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : revoke entitlements count
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/revoke/byIds
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        entitlement_ids: (entitlementIds) REQUIRED str in query
+
+    Responses:
+        200: OK - BulkOperationResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2015,6 +5021,47 @@ def update_user_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user entitlement (updateUserEntitlement)
+
+    Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the status will be CONSUMED.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : updated entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementUpdate in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2037,6 +5084,47 @@ async def update_user_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user entitlement (updateUserEntitlement)
+
+    Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the status will be CONSUMED.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : updated entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementUpdate in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

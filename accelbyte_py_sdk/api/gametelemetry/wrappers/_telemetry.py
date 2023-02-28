@@ -49,6 +49,42 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Events (get_events_game_telemetry_v1_admin_namespaces__namespace__events_get)
+
+    Properties:
+        url: /game-telemetry/v1/admin/namespaces/{namespace}/events
+
+        method: GET
+
+        tags: ["telemetry"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL str in query
+
+        event_id: (eventId) OPTIONAL str in query
+
+        event_name: (eventName) OPTIONAL str in query
+
+        event_payload: (eventPayload) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_time: (startTime) OPTIONAL str in query
+
+    Responses:
+        200: OK - (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,6 +115,42 @@ async def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_asy
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Events (get_events_game_telemetry_v1_admin_namespaces__namespace__events_get)
+
+    Properties:
+        url: /game-telemetry/v1/admin/namespaces/{namespace}/events
+
+        method: GET
+
+        tags: ["telemetry"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL str in query
+
+        event_id: (eventId) OPTIONAL str in query
+
+        event_name: (eventName) OPTIONAL str in query
+
+        event_payload: (eventPayload) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_time: (startTime) OPTIONAL str in query
+
+    Responses:
+        200: OK - (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

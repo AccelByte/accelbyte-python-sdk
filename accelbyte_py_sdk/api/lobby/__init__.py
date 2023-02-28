@@ -14,6 +14,28 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+# admin
+from .wrappers import create_template
+from .wrappers import create_template_async
+from .wrappers import delete_template_localization
+from .wrappers import delete_template_localization_async
+from .wrappers import delete_template_slug
+from .wrappers import delete_template_slug_async
+from .wrappers import free_form_notification
+from .wrappers import free_form_notification_async
+from .wrappers import get_game_template
+from .wrappers import get_game_template_async
+from .wrappers import get_localization_template
+from .wrappers import get_localization_template_async
+from .wrappers import get_slug_template
+from .wrappers import get_slug_template_async
+from .wrappers import notification_with_template
+from .wrappers import notification_with_template_async
+from .wrappers import publish_template
+from .wrappers import publish_template_async
+from .wrappers import update_localization_template
+from .wrappers import update_localization_template_async
+
 # chat
 from .wrappers import admin_chat_history
 from .wrappers import admin_chat_history_async
@@ -71,52 +93,34 @@ from .wrappers import create_notification_template_v1_admin
 from .wrappers import create_notification_template_v1_admin_async
 from .wrappers import create_notification_topic_v1_admin
 from .wrappers import create_notification_topic_v1_admin_async
-from .wrappers import create_template
-from .wrappers import create_template_async
 from .wrappers import create_topic
 from .wrappers import create_topic_async
 from .wrappers import delete_notification_template_slug_v1_admin
 from .wrappers import delete_notification_template_slug_v1_admin_async
 from .wrappers import delete_notification_topic_v1_admin
 from .wrappers import delete_notification_topic_v1_admin_async
-from .wrappers import delete_template_localization
-from .wrappers import delete_template_localization_async
 from .wrappers import delete_template_localization_v1_admin
 from .wrappers import delete_template_localization_v1_admin_async
-from .wrappers import delete_template_slug
-from .wrappers import delete_template_slug_async
 from .wrappers import delete_topic_by_topic_name
 from .wrappers import delete_topic_by_topic_name_async
-from .wrappers import free_form_notification
-from .wrappers import free_form_notification_async
 from .wrappers import free_form_notification_by_user_id
 from .wrappers import free_form_notification_by_user_id_async
 from .wrappers import get_all_notification_templates_v1_admin
 from .wrappers import get_all_notification_templates_v1_admin_async
 from .wrappers import get_all_notification_topics_v1_admin
 from .wrappers import get_all_notification_topics_v1_admin_async
-from .wrappers import get_game_template
-from .wrappers import get_game_template_async
-from .wrappers import get_localization_template
-from .wrappers import get_localization_template_async
 from .wrappers import get_notification_topic_v1_admin
 from .wrappers import get_notification_topic_v1_admin_async
 from .wrappers import get_single_template_localization_v1_admin
 from .wrappers import get_single_template_localization_v1_admin_async
-from .wrappers import get_slug_template
-from .wrappers import get_slug_template_async
 from .wrappers import get_template_slug_localizations_template_v1_admin
 from .wrappers import get_template_slug_localizations_template_v1_admin_async
 from .wrappers import get_topic_by_namespace
 from .wrappers import get_topic_by_namespace_async
 from .wrappers import get_topic_by_topic_name
 from .wrappers import get_topic_by_topic_name_async
-from .wrappers import notification_with_template
-from .wrappers import notification_with_template_async
 from .wrappers import notification_with_template_by_user_id
 from .wrappers import notification_with_template_by_user_id_async
-from .wrappers import publish_template
-from .wrappers import publish_template_async
 from .wrappers import publish_template_localization_v1_admin
 from .wrappers import publish_template_localization_v1_admin_async
 from .wrappers import send_multiple_users_freeform_notification_v1_admin
@@ -133,8 +137,6 @@ from .wrappers import send_users_freeform_notification_v1_admin
 from .wrappers import send_users_freeform_notification_v1_admin_async
 from .wrappers import send_users_templated_notification_v1_admin
 from .wrappers import send_users_templated_notification_v1_admin_async
-from .wrappers import update_localization_template
-from .wrappers import update_localization_template_async
 from .wrappers import update_notification_topic_v1_admin
 from .wrappers import update_notification_topic_v1_admin_async
 from .wrappers import update_template_localization_v1_admin

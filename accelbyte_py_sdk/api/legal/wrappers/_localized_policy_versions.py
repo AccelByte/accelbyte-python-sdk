@@ -55,6 +55,40 @@ def create_localized_policy_version(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a Localized Version from Country-Specific Policy (createLocalizedPolicyVersion)
+
+    Create a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/versions/{policyVersionId}
+
+        method: POST
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreateLocalizedPolicyVersionRequest in body
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        201: Created - CreateLocalizedPolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_version)
+
+        409: Conflict - ErrorEntity (40044: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
+    """
     request = CreateLocalizedPolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
@@ -69,6 +103,40 @@ async def create_localized_policy_version_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a Localized Version from Country-Specific Policy (createLocalizedPolicyVersion)
+
+    Create a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/versions/{policyVersionId}
+
+        method: POST
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreateLocalizedPolicyVersionRequest in body
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        201: Created - CreateLocalizedPolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_version)
+
+        409: Conflict - ErrorEntity (40044: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
+    """
     request = CreateLocalizedPolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
@@ -85,6 +153,38 @@ def request_presigned_url(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Request Presigned URL for Upload Document (requestPresignedURL)
+
+    Request presigned URL for upload attachment for a particular localized version of base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}/attachments
+
+        method: POST
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UploadPolicyVersionAttachmentRequest in body
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        201: Created - UploadLocalizedPolicyVersionAttachmentResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40034: errors.net.accelbyte.platform.legal.invalid_file_type | 40037: errors.net.accelbyte.platform.legal.invalid_localized_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
+    """
     request = RequestPresignedURL.create(
         localized_policy_version_id=localized_policy_version_id,
         body=body,
@@ -99,6 +199,38 @@ async def request_presigned_url_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Request Presigned URL for Upload Document (requestPresignedURL)
+
+    Request presigned URL for upload attachment for a particular localized version of base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}/attachments
+
+        method: POST
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UploadPolicyVersionAttachmentRequest in body
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        201: Created - UploadLocalizedPolicyVersionAttachmentResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40034: errors.net.accelbyte.platform.legal.invalid_file_type | 40037: errors.net.accelbyte.platform.legal.invalid_localized_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
+    """
     request = RequestPresignedURL.create(
         localized_policy_version_id=localized_policy_version_id,
         body=body,
@@ -114,6 +246,34 @@ def retrieve_localized_policy_versions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve Versions from Country-Specific Policy (retrieveLocalizedPolicyVersions)
+
+    Retrieve versions of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/versions/{policyVersionId}
+
+        method: GET
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveLocalizedPolicyVersionResponse] (successful operation)
+    """
     request = RetrieveLocalizedPolicyVersions.create(
         policy_version_id=policy_version_id,
     )
@@ -126,6 +286,34 @@ async def retrieve_localized_policy_versions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve Versions from Country-Specific Policy (retrieveLocalizedPolicyVersions)
+
+    Retrieve versions of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/versions/{policyVersionId}
+
+        method: GET
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveLocalizedPolicyVersionResponse] (successful operation)
+    """
     request = RetrieveLocalizedPolicyVersions.create(
         policy_version_id=policy_version_id,
     )
@@ -140,6 +328,36 @@ def retrieve_single_localized_policy_version(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Localized Version from Country-Specific Policy (retrieveSingleLocalizedPolicyVersion)
+
+    Retrieve a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: GET
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveLocalizedPolicyVersionResponse (successful operation)
+
+        404: Not Found - ErrorEntity (2912: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
     request = RetrieveSingleLocalizedPolicyVersion.create(
         localized_policy_version_id=localized_policy_version_id,
     )
@@ -152,6 +370,36 @@ async def retrieve_single_localized_policy_version_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Localized Version from Country-Specific Policy (retrieveSingleLocalizedPolicyVersion)
+
+    Retrieve a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: GET
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveLocalizedPolicyVersionResponse (successful operation)
+
+        404: Not Found - ErrorEntity (2912: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
     request = RetrieveSingleLocalizedPolicyVersion.create(
         localized_policy_version_id=localized_policy_version_id,
     )
@@ -166,6 +414,31 @@ def retrieve_single_localized_policy_version_2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Localized Version (retrieveSingleLocalizedPolicyVersion_2)
+
+    Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
+    Other detail info:
+
+    Properties:
+        url: /agreement/public/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: GET
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveLocalizedPolicyVersionPublicResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40038: errors.net.accelbyte.platform.legal.localized_policy_version_not_found)
+    """
     request = RetrieveSingleLocalizedPolicyVersion2.create(
         localized_policy_version_id=localized_policy_version_id,
     )
@@ -178,6 +451,31 @@ async def retrieve_single_localized_policy_version_2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Localized Version (retrieveSingleLocalizedPolicyVersion_2)
+
+    Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
+    Other detail info:
+
+    Properties:
+        url: /agreement/public/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: GET
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveLocalizedPolicyVersionPublicResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40038: errors.net.accelbyte.platform.legal.localized_policy_version_not_found)
+    """
     request = RetrieveSingleLocalizedPolicyVersion2.create(
         localized_policy_version_id=localized_policy_version_id,
     )
@@ -192,6 +490,36 @@ def set_default_policy(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Set Default Localized Policy (setDefaultPolicy)
+
+    Update a localized version policy to be the default.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}/default
+
+        method: PATCH
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_localize_policy_version)
+    """
     request = SetDefaultPolicy.create(
         localized_policy_version_id=localized_policy_version_id,
     )
@@ -204,6 +532,36 @@ async def set_default_policy_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Set Default Localized Policy (setDefaultPolicy)
+
+    Update a localized version policy to be the default.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}/default
+
+        method: PATCH
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_localize_policy_version)
+    """
     request = SetDefaultPolicy.create(
         localized_policy_version_id=localized_policy_version_id,
     )
@@ -219,6 +577,38 @@ def update_localized_policy_version(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a Localized Version from Country-Specific Policy (updateLocalizedPolicyVersion)
+
+    Update a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: PUT
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdateLocalizedPolicyVersionRequest in body
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdateLocalizedPolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version)
+    """
     request = UpdateLocalizedPolicyVersion.create(
         localized_policy_version_id=localized_policy_version_id,
         body=body,
@@ -233,6 +623,38 @@ async def update_localized_policy_version_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a Localized Version from Country-Specific Policy (updateLocalizedPolicyVersion)
+
+    Update a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: PUT
+
+        tags: ["Localized Policy Versions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdateLocalizedPolicyVersionRequest in body
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdateLocalizedPolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version)
+    """
     request = UpdateLocalizedPolicyVersion.create(
         localized_policy_version_id=localized_policy_version_id,
         body=body,

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Group Service (2.15.0)
+# AccelByte Cloud Group Service (2.15.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,7 @@ from ..api.group.models import ModelsCreateGroupConfigurationRequestV1
 from ..api.group.models import ModelsCreateGroupConfigurationResponseV1
 from ..api.group.models import ModelsCreateMemberRoleRequestV1
 from ..api.group.models import ModelsGetGroupConfigurationResponseV1
+from ..api.group.models import ModelsGetGroupListRequestV2
 from ..api.group.models import ModelsGetGroupMemberListResponseV1
 from ..api.group.models import ModelsGetGroupsListResponseV1
 from ..api.group.models import ModelsGetGroupsResponseV1
@@ -51,7 +52,6 @@ from ..api.group.models import ModelsMemberRequestResponseV1
 from ..api.group.models import ModelsMemberRoleResponseV1
 from ..api.group.models import ModelsPagination
 from ..api.group.models import ModelsPublicCreateNewGroupRequestV1
-from ..api.group.models import ModelsPublicGetGroupListRequestV2
 from ..api.group.models import ModelsRemoveRoleFromMemberRequestV1
 from ..api.group.models import ModelsRolePermission
 from ..api.group.models import ModelsRule
@@ -71,26 +71,20 @@ from ..api.group.models import ModelsUserInvitationResponseV1
 from ..api.group.models import ResponseErrorResponse
 
 
-def create_models_assign_role_to_member_request_v1_example() -> (
-    ModelsAssignRoleToMemberRequestV1
-):
+def create_models_assign_role_to_member_request_v1_example() -> ModelsAssignRoleToMemberRequestV1:
     instance = ModelsAssignRoleToMemberRequestV1()
     instance.user_id = randomize("uid")
     return instance
 
 
-def create_models_cancel_invitation_group_response_v2_example() -> (
-    ModelsCancelInvitationGroupResponseV2
-):
+def create_models_cancel_invitation_group_response_v2_example() -> ModelsCancelInvitationGroupResponseV2:
     instance = ModelsCancelInvitationGroupResponseV2()
     instance.group_id = randomize()
     instance.user_id = randomize("uid")
     return instance
 
 
-def create_models_create_group_configuration_request_v1_example() -> (
-    ModelsCreateGroupConfigurationRequestV1
-):
+def create_models_create_group_configuration_request_v1_example() -> ModelsCreateGroupConfigurationRequestV1:
     instance = ModelsCreateGroupConfigurationRequestV1()
     instance.allow_multiple = randomize("bool")
     instance.configuration_code = randomize()
@@ -103,9 +97,7 @@ def create_models_create_group_configuration_request_v1_example() -> (
     return instance
 
 
-def create_models_create_group_configuration_response_v1_example() -> (
-    ModelsCreateGroupConfigurationResponseV1
-):
+def create_models_create_group_configuration_response_v1_example() -> ModelsCreateGroupConfigurationResponseV1:
     instance = ModelsCreateGroupConfigurationResponseV1()
     instance.allow_multiple = randomize("bool")
     instance.configuration_code = randomize()
@@ -118,18 +110,14 @@ def create_models_create_group_configuration_response_v1_example() -> (
     return instance
 
 
-def create_models_create_member_role_request_v1_example() -> (
-    ModelsCreateMemberRoleRequestV1
-):
+def create_models_create_member_role_request_v1_example() -> ModelsCreateMemberRoleRequestV1:
     instance = ModelsCreateMemberRoleRequestV1()
     instance.member_role_name = randomize()
     instance.member_role_permissions = [create_models_role_permission_example()]
     return instance
 
 
-def create_models_get_group_configuration_response_v1_example() -> (
-    ModelsGetGroupConfigurationResponseV1
-):
+def create_models_get_group_configuration_response_v1_example() -> ModelsGetGroupConfigurationResponseV1:
     instance = ModelsGetGroupConfigurationResponseV1()
     instance.allow_multiple = randomize("bool")
     instance.configuration_code = randomize()
@@ -143,18 +131,20 @@ def create_models_get_group_configuration_response_v1_example() -> (
     return instance
 
 
-def create_models_get_group_member_list_response_v1_example() -> (
-    ModelsGetGroupMemberListResponseV1
-):
+def create_models_get_group_list_request_v2_example() -> ModelsGetGroupListRequestV2:
+    instance = ModelsGetGroupListRequestV2()
+    instance.group_i_ds = [randomize()]
+    return instance
+
+
+def create_models_get_group_member_list_response_v1_example() -> ModelsGetGroupMemberListResponseV1:
     instance = ModelsGetGroupMemberListResponseV1()
     instance.data = [create_models_get_user_group_information_response_v1_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_get_groups_list_response_v1_example() -> (
-    ModelsGetGroupsListResponseV1
-):
+def create_models_get_groups_list_response_v1_example() -> ModelsGetGroupsListResponseV1:
     instance = ModelsGetGroupsListResponseV1()
     instance.data = [create_models_group_response_v1_example()]
     instance.paging = create_models_pagination_example()
@@ -167,29 +157,24 @@ def create_models_get_groups_response_v1_example() -> ModelsGetGroupsResponseV1:
     return instance
 
 
-def create_models_get_member_requests_list_response_v1_example() -> (
-    ModelsGetMemberRequestsListResponseV1
-):
+def create_models_get_member_requests_list_response_v1_example() -> ModelsGetMemberRequestsListResponseV1:
     instance = ModelsGetMemberRequestsListResponseV1()
     instance.data = [create_models_member_request_response_v1_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_get_member_roles_list_response_v1_example() -> (
-    ModelsGetMemberRolesListResponseV1
-):
+def create_models_get_member_roles_list_response_v1_example() -> ModelsGetMemberRolesListResponseV1:
     instance = ModelsGetMemberRolesListResponseV1()
     instance.data = [create_models_member_role_response_v1_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_get_user_group_information_response_v1_example() -> (
-    ModelsGetUserGroupInformationResponseV1
-):
+def create_models_get_user_group_information_response_v1_example() -> ModelsGetUserGroupInformationResponseV1:
     instance = ModelsGetUserGroupInformationResponseV1()
     instance.group_id = randomize()
+    instance.joined_at = randomize("date")
     instance.member_role_id = [randomize()]
     instance.user_id = randomize("uid")
     instance.status = randomize()
@@ -206,6 +191,7 @@ def create_models_group_member_example() -> ModelsGroupMember:
 def create_models_group_response_v1_example() -> ModelsGroupResponseV1:
     instance = ModelsGroupResponseV1()
     instance.configuration_code = randomize()
+    instance.created_at = randomize("date")
     instance.custom_attributes = {randomize(): randomize()}
     instance.group_description = randomize()
     instance.group_icon = randomize()
@@ -226,9 +212,7 @@ def create_models_group_rule_example() -> ModelsGroupRule:
     return instance
 
 
-def create_models_group_rule_group_custom_rule_example() -> (
-    ModelsGroupRuleGroupCustomRule
-):
+def create_models_group_rule_group_custom_rule_example() -> ModelsGroupRuleGroupCustomRule:
     instance = ModelsGroupRuleGroupCustomRule()
     return instance
 
@@ -242,9 +226,7 @@ def create_models_group_rule_response_v1_example() -> ModelsGroupRuleResponseV1:
     return instance
 
 
-def create_models_group_rule_response_v1_group_custom_rule_example() -> (
-    ModelsGroupRuleResponseV1GroupCustomRule
-):
+def create_models_group_rule_response_v1_group_custom_rule_example() -> ModelsGroupRuleResponseV1GroupCustomRule:
     instance = ModelsGroupRuleResponseV1GroupCustomRule()
     return instance
 
@@ -257,9 +239,7 @@ def create_models_join_group_response_v1_example() -> ModelsJoinGroupResponseV1:
     return instance
 
 
-def create_models_kick_group_member_response_v1_example() -> (
-    ModelsKickGroupMemberResponseV1
-):
+def create_models_kick_group_member_response_v1_example() -> ModelsKickGroupMemberResponseV1:
     instance = ModelsKickGroupMemberResponseV1()
     instance.group_id = randomize()
     instance.kicked_user_id = randomize()
@@ -273,18 +253,14 @@ def create_models_leave_group_response_v1_example() -> ModelsLeaveGroupResponseV
     return instance
 
 
-def create_models_list_configuration_response_v1_example() -> (
-    ModelsListConfigurationResponseV1
-):
+def create_models_list_configuration_response_v1_example() -> ModelsListConfigurationResponseV1:
     instance = ModelsListConfigurationResponseV1()
     instance.data = [create_models_get_group_configuration_response_v1_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_member_request_group_response_v1_example() -> (
-    ModelsMemberRequestGroupResponseV1
-):
+def create_models_member_request_group_response_v1_example() -> ModelsMemberRequestGroupResponseV1:
     instance = ModelsMemberRequestGroupResponseV1()
     instance.group_id = randomize()
     instance.user_id = randomize("uid")
@@ -316,9 +292,7 @@ def create_models_pagination_example() -> ModelsPagination:
     return instance
 
 
-def create_models_public_create_new_group_request_v1_example() -> (
-    ModelsPublicCreateNewGroupRequestV1
-):
+def create_models_public_create_new_group_request_v1_example() -> ModelsPublicCreateNewGroupRequestV1:
     instance = ModelsPublicCreateNewGroupRequestV1()
     instance.configuration_code = randomize()
     instance.custom_attributes = {randomize(): randomize()}
@@ -332,17 +306,7 @@ def create_models_public_create_new_group_request_v1_example() -> (
     return instance
 
 
-def create_models_public_get_group_list_request_v2_example() -> (
-    ModelsPublicGetGroupListRequestV2
-):
-    instance = ModelsPublicGetGroupListRequestV2()
-    instance.group_i_ds = [randomize()]
-    return instance
-
-
-def create_models_remove_role_from_member_request_v1_example() -> (
-    ModelsRemoveRoleFromMemberRequestV1
-):
+def create_models_remove_role_from_member_request_v1_example() -> ModelsRemoveRoleFromMemberRequestV1:
     instance = ModelsRemoveRoleFromMemberRequestV1()
     instance.user_id = randomize("uid")
     return instance
@@ -377,17 +341,13 @@ def create_models_rule_response_v1_example() -> ModelsRuleResponseV1:
     return instance
 
 
-def create_models_update_group_configuration_global_rules_request_v1_example() -> (
-    ModelsUpdateGroupConfigurationGlobalRulesRequestV1
-):
+def create_models_update_group_configuration_global_rules_request_v1_example() -> ModelsUpdateGroupConfigurationGlobalRulesRequestV1:
     instance = ModelsUpdateGroupConfigurationGlobalRulesRequestV1()
     instance.rule_detail = [create_models_rule_information_example()]
     return instance
 
 
-def create_models_update_group_configuration_request_v1_example() -> (
-    ModelsUpdateGroupConfigurationRequestV1
-):
+def create_models_update_group_configuration_request_v1_example() -> ModelsUpdateGroupConfigurationRequestV1:
     instance = ModelsUpdateGroupConfigurationRequestV1()
     instance.description = randomize()
     instance.group_max_member = randomize("int", min_val=1, max_val=1000)
@@ -395,9 +355,7 @@ def create_models_update_group_configuration_request_v1_example() -> (
     return instance
 
 
-def create_models_update_group_configuration_response_v1_example() -> (
-    ModelsUpdateGroupConfigurationResponseV1
-):
+def create_models_update_group_configuration_response_v1_example() -> ModelsUpdateGroupConfigurationResponseV1:
     instance = ModelsUpdateGroupConfigurationResponseV1()
     instance.allow_multiple = randomize("bool")
     instance.configuration_code = randomize()
@@ -410,25 +368,19 @@ def create_models_update_group_configuration_response_v1_example() -> (
     return instance
 
 
-def create_models_update_group_custom_attributes_request_v1_example() -> (
-    ModelsUpdateGroupCustomAttributesRequestV1
-):
+def create_models_update_group_custom_attributes_request_v1_example() -> ModelsUpdateGroupCustomAttributesRequestV1:
     instance = ModelsUpdateGroupCustomAttributesRequestV1()
     instance.custom_attributes = {randomize(): randomize()}
     return instance
 
 
-def create_models_update_group_custom_rule_request_v1_example() -> (
-    ModelsUpdateGroupCustomRuleRequestV1
-):
+def create_models_update_group_custom_rule_request_v1_example() -> ModelsUpdateGroupCustomRuleRequestV1:
     instance = ModelsUpdateGroupCustomRuleRequestV1()
     instance.group_custom_rule = {randomize(): randomize()}
     return instance
 
 
-def create_models_update_group_predefined_rule_request_v1_example() -> (
-    ModelsUpdateGroupPredefinedRuleRequestV1
-):
+def create_models_update_group_predefined_rule_request_v1_example() -> ModelsUpdateGroupPredefinedRuleRequestV1:
     instance = ModelsUpdateGroupPredefinedRuleRequestV1()
     instance.rule_detail = [create_models_rule_information_example()]
     return instance
@@ -447,32 +399,24 @@ def create_models_update_group_request_v1_example() -> ModelsUpdateGroupRequestV
     return instance
 
 
-def create_models_update_group_request_v1_custom_attributes_example() -> (
-    ModelsUpdateGroupRequestV1CustomAttributes
-):
+def create_models_update_group_request_v1_custom_attributes_example() -> ModelsUpdateGroupRequestV1CustomAttributes:
     instance = ModelsUpdateGroupRequestV1CustomAttributes()
     return instance
 
 
-def create_models_update_member_role_permissions_request_v1_example() -> (
-    ModelsUpdateMemberRolePermissionsRequestV1
-):
+def create_models_update_member_role_permissions_request_v1_example() -> ModelsUpdateMemberRolePermissionsRequestV1:
     instance = ModelsUpdateMemberRolePermissionsRequestV1()
     instance.member_role_permissions = [create_models_role_permission_example()]
     return instance
 
 
-def create_models_update_member_role_request_v1_example() -> (
-    ModelsUpdateMemberRoleRequestV1
-):
+def create_models_update_member_role_request_v1_example() -> ModelsUpdateMemberRoleRequestV1:
     instance = ModelsUpdateMemberRoleRequestV1()
     instance.member_role_name = randomize()
     return instance
 
 
-def create_models_user_invitation_response_v1_example() -> (
-    ModelsUserInvitationResponseV1
-):
+def create_models_user_invitation_response_v1_example() -> ModelsUserInvitationResponseV1:
     instance = ModelsUserInvitationResponseV1()
     instance.group_id = randomize()
     instance.user_id = randomize("uid")

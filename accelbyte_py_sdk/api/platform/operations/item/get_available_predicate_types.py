@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.23.0)
+# AccelByte Cloud Platform Service (4.24.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import AvailablePredicate
 from ...models import ErrorEntity
-from ...models import AvailablePredicateObject
 
 
 class GetAvailablePredicateTypes(Operation):
@@ -58,7 +58,7 @@ class GetAvailablePredicateTypes(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[AvailablePredicateObject] (successful operation)
+        200: OK - List[AvailablePredicate] (successful operation)
 
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
@@ -153,12 +153,11 @@ class GetAvailablePredicateTypes(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[AvailablePredicateObject]],
-        Union[None, ErrorEntity, HttpResponse],
+        Union[None, List[AvailablePredicate]], Union[None, ErrorEntity, HttpResponse]
     ]:
         """Parse the given response.
 
-        200: OK - List[AvailablePredicateObject] (successful operation)
+        200: OK - List[AvailablePredicate] (successful operation)
 
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
@@ -176,7 +175,7 @@ class GetAvailablePredicateTypes(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [AvailablePredicateObject.create_from_dict(i) for i in content], None
+            return [AvailablePredicate.create_from_dict(i) for i in content], None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 

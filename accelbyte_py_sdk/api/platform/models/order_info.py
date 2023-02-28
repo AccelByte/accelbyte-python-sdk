@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.23.0)
+# AccelByte Cloud Platform Service (4.24.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,11 +28,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
-from ..models.a_dto_object_for_order_creation_options import (
-    ADTOObjectForOrderCreationOptions,
-)
 from ..models.currency_summary import CurrencySummary
 from ..models.item_snapshot import ItemSnapshot
+from ..models.order_creation_options import OrderCreationOptions
 
 
 class StatusEnum(StrEnum):
@@ -100,7 +98,7 @@ class OrderInfo(Model):
 
         created_time: (createdTime) OPTIONAL str
 
-        creation_options: (creationOptions) OPTIONAL ADTOObjectForOrderCreationOptions
+        creation_options: (creationOptions) OPTIONAL OrderCreationOptions
 
         ext: (ext) OPTIONAL Dict[str, Any]
 
@@ -161,7 +159,7 @@ class OrderInfo(Model):
     chargeback_time: str  # OPTIONAL
     charged_time: str  # OPTIONAL
     created_time: str  # OPTIONAL
-    creation_options: ADTOObjectForOrderCreationOptions  # OPTIONAL
+    creation_options: OrderCreationOptions  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     fulfilled_time: str  # OPTIONAL
     item_snapshot: ItemSnapshot  # OPTIONAL
@@ -258,9 +256,7 @@ class OrderInfo(Model):
         self.created_time = value
         return self
 
-    def with_creation_options(
-        self, value: ADTOObjectForOrderCreationOptions
-    ) -> OrderInfo:
+    def with_creation_options(self, value: OrderCreationOptions) -> OrderInfo:
         self.creation_options = value
         return self
 
@@ -425,7 +421,7 @@ class OrderInfo(Model):
                 include_empty=include_empty
             )
         elif include_empty:
-            result["creationOptions"] = ADTOObjectForOrderCreationOptions()
+            result["creationOptions"] = OrderCreationOptions()
         if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
@@ -531,7 +527,7 @@ class OrderInfo(Model):
         chargeback_time: Optional[str] = None,
         charged_time: Optional[str] = None,
         created_time: Optional[str] = None,
-        creation_options: Optional[ADTOObjectForOrderCreationOptions] = None,
+        creation_options: Optional[OrderCreationOptions] = None,
         ext: Optional[Dict[str, Any]] = None,
         fulfilled_time: Optional[str] = None,
         item_snapshot: Optional[ItemSnapshot] = None,
@@ -703,13 +699,11 @@ class OrderInfo(Model):
         elif include_empty:
             instance.created_time = ""
         if "creationOptions" in dict_ and dict_["creationOptions"] is not None:
-            instance.creation_options = (
-                ADTOObjectForOrderCreationOptions.create_from_dict(
-                    dict_["creationOptions"], include_empty=include_empty
-                )
+            instance.creation_options = OrderCreationOptions.create_from_dict(
+                dict_["creationOptions"], include_empty=include_empty
             )
         elif include_empty:
-            instance.creation_options = ADTOObjectForOrderCreationOptions()
+            instance.creation_options = OrderCreationOptions()
         if "ext" in dict_ and dict_["ext"] is not None:
             instance.ext = {str(k0): v0 for k0, v0 in dict_["ext"].items()}
         elif include_empty:

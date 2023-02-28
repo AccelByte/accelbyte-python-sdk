@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Group Service (2.15.0)
+# AccelByte Cloud Group Service (2.15.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,10 +26,17 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_update_group_request_v1_custom_attributes import (
     ModelsUpdateGroupRequestV1CustomAttributes,
 )
+
+
+class GroupTypeEnum(StrEnum):
+    OPEN = "OPEN"
+    PRIVATE = "PRIVATE"
+    PUBLIC = "PUBLIC"
 
 
 class ModelsUpdateGroupRequestV1(Model):
@@ -46,7 +53,7 @@ class ModelsUpdateGroupRequestV1(Model):
 
         group_region: (groupRegion) REQUIRED str
 
-        group_type: (groupType) REQUIRED str
+        group_type: (groupType) REQUIRED Union[str, GroupTypeEnum]
     """
 
     # region fields
@@ -56,7 +63,7 @@ class ModelsUpdateGroupRequestV1(Model):
     group_icon: str  # REQUIRED
     group_name: str  # REQUIRED
     group_region: str  # REQUIRED
-    group_type: str  # REQUIRED
+    group_type: Union[str, GroupTypeEnum]  # REQUIRED
 
     # endregion fields
 
@@ -84,7 +91,9 @@ class ModelsUpdateGroupRequestV1(Model):
         self.group_region = value
         return self
 
-    def with_group_type(self, value: str) -> ModelsUpdateGroupRequestV1:
+    def with_group_type(
+        self, value: Union[str, GroupTypeEnum]
+    ) -> ModelsUpdateGroupRequestV1:
         self.group_type = value
         return self
 
@@ -119,7 +128,7 @@ class ModelsUpdateGroupRequestV1(Model):
         if hasattr(self, "group_type"):
             result["groupType"] = str(self.group_type)
         elif include_empty:
-            result["groupType"] = ""
+            result["groupType"] = Union[str, GroupTypeEnum]()
         return result
 
     # endregion to methods
@@ -134,7 +143,7 @@ class ModelsUpdateGroupRequestV1(Model):
         group_icon: str,
         group_name: str,
         group_region: str,
-        group_type: str,
+        group_type: Union[str, GroupTypeEnum],
     ) -> ModelsUpdateGroupRequestV1:
         instance = cls()
         instance.custom_attributes = custom_attributes
@@ -179,7 +188,7 @@ class ModelsUpdateGroupRequestV1(Model):
         if "groupType" in dict_ and dict_["groupType"] is not None:
             instance.group_type = str(dict_["groupType"])
         elif include_empty:
-            instance.group_type = ""
+            instance.group_type = Union[str, GroupTypeEnum]()
         return instance
 
     @classmethod
@@ -240,6 +249,12 @@ class ModelsUpdateGroupRequestV1(Model):
             "groupName": True,
             "groupRegion": True,
             "groupType": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "groupType": ["OPEN", "PRIVATE", "PUBLIC"],
         }
 
     # endregion static methods

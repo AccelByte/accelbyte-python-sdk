@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Achievement Service (2.14.0)
+# AccelByte Cloud Achievement Service (2.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,24 +29,26 @@ from ..api.achievement.models import ModelsAchievementRequest
 from ..api.achievement.models import ModelsAchievementResponse
 from ..api.achievement.models import ModelsAchievementUpdateRequest
 from ..api.achievement.models import ModelsAdditionalInfo
+from ..api.achievement.models import ModelsContributorResponse
 from ..api.achievement.models import ModelsGlobalAchievementResponse
 from ..api.achievement.models import ModelsIcon
 from ..api.achievement.models import ModelsPaginatedAchievementResponse
+from ..api.achievement.models import ModelsPaginatedContributorResponse
 from ..api.achievement.models import ModelsPaginatedGlobalAchievementResponse
 from ..api.achievement.models import ModelsPaginatedTagResponse
 from ..api.achievement.models import ModelsPaginatedUserAchievementResponse
+from ..api.achievement.models import ModelsPaginatedUserContributionResponse
 from ..api.achievement.models import ModelsPagination
 from ..api.achievement.models import ModelsPublicAchievementResponse
 from ..api.achievement.models import ModelsPublicAchievementsResponse
 from ..api.achievement.models import ModelsTagResponse
 from ..api.achievement.models import ModelsUserAchievementResponse
+from ..api.achievement.models import ModelsUserContributionResponse
 from ..api.achievement.models import ResponseError
 from ..api.achievement.models import ServiceImportConfigResponse
 
 
-def create_models_achievement_order_update_request_example() -> (
-    ModelsAchievementOrderUpdateRequest
-):
+def create_models_achievement_order_update_request_example() -> ModelsAchievementOrderUpdateRequest:
     instance = ModelsAchievementOrderUpdateRequest()
     instance.target_order = randomize("int", min_val=1, max_val=1000)
     return instance
@@ -87,12 +89,11 @@ def create_models_achievement_response_example() -> ModelsAchievementResponse:
     instance.updated_at = randomize("date")
     instance.goal_value = randomize("int", min_val=1, max_val=1000)
     instance.stat_code = randomize()
+    instance.status = randomize()
     return instance
 
 
-def create_models_achievement_update_request_example() -> (
-    ModelsAchievementUpdateRequest
-):
+def create_models_achievement_update_request_example() -> ModelsAchievementUpdateRequest:
     instance = ModelsAchievementUpdateRequest()
     instance.default_language = randomize()
     instance.description = {randomize(): randomize()}
@@ -104,6 +105,7 @@ def create_models_achievement_update_request_example() -> (
     instance.stat_code = randomize()
     instance.tags = [randomize()]
     instance.unlocked_icons = [create_models_icon_example()]
+    instance.global_ = randomize("bool")
     return instance
 
 
@@ -115,9 +117,19 @@ def create_models_additional_info_example() -> ModelsAdditionalInfo:
     return instance
 
 
-def create_models_global_achievement_response_example() -> (
-    ModelsGlobalAchievementResponse
-):
+def create_models_contributor_response_example() -> ModelsContributorResponse:
+    instance = ModelsContributorResponse()
+    instance.achievement_code = randomize()
+    instance.contributed_value = randomize("int", min_val=1, max_val=1000)
+    instance.created_at = randomize("date")
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_models_global_achievement_response_example() -> ModelsGlobalAchievementResponse:
     instance = ModelsGlobalAchievementResponse()
     instance.achievement_code = randomize()
     instance.created_at = randomize("date")
@@ -138,18 +150,21 @@ def create_models_icon_example() -> ModelsIcon:
     return instance
 
 
-def create_models_paginated_achievement_response_example() -> (
-    ModelsPaginatedAchievementResponse
-):
+def create_models_paginated_achievement_response_example() -> ModelsPaginatedAchievementResponse:
     instance = ModelsPaginatedAchievementResponse()
     instance.data = [create_models_achievement_response_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_paginated_global_achievement_response_example() -> (
-    ModelsPaginatedGlobalAchievementResponse
-):
+def create_models_paginated_contributor_response_example() -> ModelsPaginatedContributorResponse:
+    instance = ModelsPaginatedContributorResponse()
+    instance.data = [create_models_contributor_response_example()]
+    instance.paging = create_models_pagination_example()
+    return instance
+
+
+def create_models_paginated_global_achievement_response_example() -> ModelsPaginatedGlobalAchievementResponse:
     instance = ModelsPaginatedGlobalAchievementResponse()
     instance.data = [create_models_global_achievement_response_example()]
     instance.paging = create_models_pagination_example()
@@ -163,12 +178,17 @@ def create_models_paginated_tag_response_example() -> ModelsPaginatedTagResponse
     return instance
 
 
-def create_models_paginated_user_achievement_response_example() -> (
-    ModelsPaginatedUserAchievementResponse
-):
+def create_models_paginated_user_achievement_response_example() -> ModelsPaginatedUserAchievementResponse:
     instance = ModelsPaginatedUserAchievementResponse()
     instance.count_info = create_models_additional_info_example()
     instance.data = [create_models_user_achievement_response_example()]
+    instance.paging = create_models_pagination_example()
+    return instance
+
+
+def create_models_paginated_user_contribution_response_example() -> ModelsPaginatedUserContributionResponse:
+    instance = ModelsPaginatedUserContributionResponse()
+    instance.data = [create_models_user_contribution_response_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
@@ -180,9 +200,7 @@ def create_models_pagination_example() -> ModelsPagination:
     return instance
 
 
-def create_models_public_achievement_response_example() -> (
-    ModelsPublicAchievementResponse
-):
+def create_models_public_achievement_response_example() -> ModelsPublicAchievementResponse:
     instance = ModelsPublicAchievementResponse()
     instance.achievement_code = randomize()
     instance.created_at = randomize("date")
@@ -199,12 +217,11 @@ def create_models_public_achievement_response_example() -> (
     instance.updated_at = randomize("date")
     instance.goal_value = randomize("int", min_val=1, max_val=1000)
     instance.stat_code = randomize()
+    instance.status = randomize()
     return instance
 
 
-def create_models_public_achievements_response_example() -> (
-    ModelsPublicAchievementsResponse
-):
+def create_models_public_achievements_response_example() -> ModelsPublicAchievementsResponse:
     instance = ModelsPublicAchievementsResponse()
     instance.data = [create_models_public_achievement_response_example()]
     instance.paging = create_models_pagination_example()
@@ -227,6 +244,18 @@ def create_models_user_achievement_response_example() -> ModelsUserAchievementRe
     instance.latest_value = randomize("int", min_val=1, max_val=1000)
     instance.name = {randomize(): randomize()}
     instance.status = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_user_contribution_response_example() -> ModelsUserContributionResponse:
+    instance = ModelsUserContributionResponse()
+    instance.achievement_code = randomize()
+    instance.can_claim_reward = randomize("bool")
+    instance.contributed_value = randomize("int", min_val=1, max_val=1000)
+    instance.id_ = randomize()
+    instance.name = {randomize(): randomize()}
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
     return instance
 
 

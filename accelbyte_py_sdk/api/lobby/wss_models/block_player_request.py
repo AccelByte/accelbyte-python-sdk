@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class BlockPlayerRequest(WebSocketMessage):
+
     # region fields
 
     block_user_id: str

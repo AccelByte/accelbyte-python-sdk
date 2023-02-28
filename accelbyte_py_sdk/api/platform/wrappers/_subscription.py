@@ -95,6 +95,49 @@ def cancel_subscription(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel a subscription (cancelSubscription)
+
+    Cancel a subscription, only ACTIVE subscription can be cancelled. Ensure successfully cancel, recommend at least 1 day before current period ends, otherwise it may be charging or charged.
+    Set immediate true, the subscription will be terminated immediately, otherwise till the end of current billing cycle.
+    Set force true, will ignore the error if subscription is during recurring charging.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : cancelled subscription
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/cancel
+
+        method: PUT
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CancelRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        force: (force) OPTIONAL bool in query
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+
+        409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,6 +162,49 @@ async def cancel_subscription_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel a subscription (cancelSubscription)
+
+    Cancel a subscription, only ACTIVE subscription can be cancelled. Ensure successfully cancel, recommend at least 1 day before current period ends, otherwise it may be charging or charged.
+    Set immediate true, the subscription will be terminated immediately, otherwise till the end of current billing cycle.
+    Set force true, will ignore the error if subscription is during recurring charging.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : cancelled subscription
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/cancel
+
+        method: PUT
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CancelRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        force: (force) OPTIONAL bool in query
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+
+        409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -143,6 +229,40 @@ def check_user_subscription_subscribable_by_item_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check user subscription subscribable (checkUserSubscriptionSubscribableByItemId)
+
+    Check user subscription subscribable by itemId, ACTIVE USER subscription can't do subscribe again.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : subscribable info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/subscribable/byItemId
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - Subscribable (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -163,6 +283,40 @@ async def check_user_subscription_subscribable_by_item_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check user subscription subscribable (checkUserSubscriptionSubscribableByItemId)
+
+    Check user subscription subscribable by itemId, ACTIVE USER subscription can't do subscribe again.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : subscribable info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/subscribable/byItemId
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - Subscribable (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -185,6 +339,38 @@ def delete_user_subscription(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user subscription (deleteUserSubscription)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. Delete user subscription.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
+
+        method: DELETE
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (delete user subscription successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -205,6 +391,38 @@ async def delete_user_subscription_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user subscription (deleteUserSubscription)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. Delete user subscription.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
+
+        method: DELETE
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (delete user subscription successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -227,6 +445,41 @@ def get_user_subscription(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user subscription (getUserSubscription)
+
+    Get user subscription.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : subscription
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -247,6 +500,41 @@ async def get_user_subscription_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user subscription (getUserSubscription)
+
+    Get user subscription.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : subscription
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -272,6 +560,45 @@ def get_user_subscription_activities(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user subscription activity (getUserSubscriptionActivities)
+
+    Get user subscription activity.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription activity
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/activities
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        exclude_system: (excludeSystem) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        subscription_id: (subscriptionId) OPTIONAL str in query
+
+    Responses:
+        200: OK - SubscriptionActivityPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -298,6 +625,45 @@ async def get_user_subscription_activities_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user subscription activity (getUserSubscriptionActivities)
+
+    Get user subscription activity.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription activity
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/activities
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        exclude_system: (excludeSystem) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        subscription_id: (subscriptionId) OPTIONAL str in query
+
+    Responses:
+        200: OK - SubscriptionActivityPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -326,6 +692,45 @@ def get_user_subscription_billing_histories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user subscription billing histories (getUserSubscriptionBillingHistories)
+
+    Get user subscription billing histories.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription billing history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        exclude_free: (excludeFree) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - BillingHistoryPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -352,6 +757,45 @@ async def get_user_subscription_billing_histories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user subscription billing histories (getUserSubscriptionBillingHistories)
+
+    Get user subscription billing histories.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription billing history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        exclude_free: (excludeFree) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - BillingHistoryPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -378,6 +822,44 @@ def grant_days_to_subscription(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Grant days to a subscription (grantDaysToSubscription)
+
+    Grant days to a subscription, if grantDays is positive, it will add free days and push the next billing date by the amount of day.
+    if the grantDays is negative or zero, it only apply to active/cancelled subscription, remove days will decrease current period end, and move the next billing date closer.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : updated subscription
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/grant
+
+        method: PUT
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL GrantSubscriptionDaysRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -400,6 +882,44 @@ async def grant_days_to_subscription_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Grant days to a subscription (grantDaysToSubscription)
+
+    Grant days to a subscription, if grantDays is positive, it will add free days and push the next billing date by the amount of day.
+    if the grantDays is negative or zero, it only apply to active/cancelled subscription, remove days will decrease current period end, and move the next billing date closer.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : updated subscription
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/grant
+
+        method: PUT
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL GrantSubscriptionDaysRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -423,6 +943,47 @@ def platform_subscribe_subscription(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Free subscribe by platform (platformSubscribeSubscription)
+
+    Free subscribe by platform, can used by other justice service to redeem/reward the subscription.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
+      *  Returns : result subscription
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/platformSubscribe
+
+        method: POST
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PlatformSubscribeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        201: Created - (platform subscribe request processed)
+
+        400: Bad Request - ErrorEntity (40121: Item type [{itemType}] does not support)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 20008: user [{userId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -443,6 +1004,47 @@ async def platform_subscribe_subscription_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Free subscribe by platform (platformSubscribeSubscription)
+
+    Free subscribe by platform, can used by other justice service to redeem/reward the subscription.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
+      *  Returns : result subscription
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/platformSubscribe
+
+        method: POST
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PlatformSubscribeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        201: Created - (platform subscribe request processed)
+
+        400: Bad Request - ErrorEntity (40121: Item type [{itemType}] does not support)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 20008: user [{userId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -466,6 +1068,43 @@ def process_user_subscription_notification(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Web hook for payment notification (processUserSubscriptionNotification)
+
+    [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment notification from justice payment service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : Process result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/notifications
+
+        method: POST
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TradeNotification in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (process successfully)
+
+        400: Bad Request - (process failed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -488,6 +1127,43 @@ async def process_user_subscription_notification_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Web hook for payment notification (processUserSubscriptionNotification)
+
+    [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment notification from justice payment service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : Process result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/notifications
+
+        method: POST
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TradeNotification in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (process successfully)
+
+        400: Bad Request - (process failed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -512,6 +1188,46 @@ def public_cancel_subscription(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel a subscription (publicCancelSubscription)
+
+    Cancel a subscription, only ACTIVE subscription can be cancelled. Ensure successfully cancel, recommend at least 1 day before current period ends, otherwise it may be charging or charged.
+    Set immediate true, the subscription will be terminated immediately, otherwise till the end of current billing cycle.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : cancelled subscription
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/cancel
+
+        method: PUT
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CancelRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+
+        409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -534,6 +1250,46 @@ async def public_cancel_subscription_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel a subscription (publicCancelSubscription)
+
+    Cancel a subscription, only ACTIVE subscription can be cancelled. Ensure successfully cancel, recommend at least 1 day before current period ends, otherwise it may be charging or charged.
+    Set immediate true, the subscription will be terminated immediately, otherwise till the end of current billing cycle.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : cancelled subscription
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/cancel
+
+        method: PUT
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CancelRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+
+        409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -557,6 +1313,46 @@ def public_change_subscription_billing_account(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Request to change a subscription billing account (publicChangeSubscriptionBillingAccount)
+
+    Request to change a subscription billing account, this will guide user to payment station. The actual change will happen at the 0 payment notification successfully handled.
+    Only ACTIVE USER subscription with real currency billing account can be changed.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : updated subscription
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/billingAccount
+
+        method: PUT
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (40125: Subscription [{subscriptionId}] has no real currency billing account)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+
+        409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -577,6 +1373,46 @@ async def public_change_subscription_billing_account_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Request to change a subscription billing account (publicChangeSubscriptionBillingAccount)
+
+    Request to change a subscription billing account, this will guide user to payment station. The actual change will happen at the 0 payment notification successfully handled.
+    Only ACTIVE USER subscription with real currency billing account can be changed.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : updated subscription
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/billingAccount
+
+        method: PUT
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (40125: Subscription [{subscriptionId}] has no real currency billing account)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+
+        409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -599,6 +1435,40 @@ def public_check_user_subscription_subscribable_by_item_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check user subscription subscribable (publicCheckUserSubscriptionSubscribableByItemId)
+
+    Check user subscription subscribable by itemId, ACTIVE USER subscription can't do subscribe again.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : subscribable info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/subscribable/byItemId
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - Subscribable (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -619,6 +1489,40 @@ async def public_check_user_subscription_subscribable_by_item_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check user subscription subscribable (publicCheckUserSubscriptionSubscribableByItemId)
+
+    Check user subscription subscribable by itemId, ACTIVE USER subscription can't do subscribe again.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : subscribable info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/subscribable/byItemId
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - Subscribable (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -641,6 +1545,41 @@ def public_get_user_subscription(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user subscription (publicGetUserSubscription)
+
+    Get user subscription.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : subscription
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -661,6 +1600,41 @@ async def public_get_user_subscription_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user subscription (publicGetUserSubscription)
+
+    Get user subscription.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : subscription
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SubscriptionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -686,6 +1660,45 @@ def public_get_user_subscription_billing_histories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user subscription billing histories (publicGetUserSubscriptionBillingHistories)
+
+    Get user subscription billing histories.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription history
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        exclude_free: (excludeFree) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - BillingHistoryPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -712,6 +1725,45 @@ async def public_get_user_subscription_billing_histories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user subscription billing histories (publicGetUserSubscriptionBillingHistories)
+
+    Get user subscription billing histories.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription history
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        exclude_free: (excludeFree) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - BillingHistoryPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -747,6 +1799,51 @@ def public_query_user_subscriptions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user subscriptions (publicQueryUserSubscriptions)
+
+    Query user subscriptions.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        charge_status: (chargeStatus) OPTIONAL Union[str, ChargeStatusEnum] in query
+
+        item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sku: (sku) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        subscribed_by: (subscribedBy) OPTIONAL Union[str, SubscribedByEnum] in query
+
+    Responses:
+        200: OK - SubscriptionPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -783,6 +1880,51 @@ async def public_query_user_subscriptions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user subscriptions (publicQueryUserSubscriptions)
+
+    Query user subscriptions.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        charge_status: (chargeStatus) OPTIONAL Union[str, ChargeStatusEnum] in query
+
+        item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sku: (sku) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        subscribed_by: (subscribedBy) OPTIONAL Union[str, SubscribedByEnum] in query
+
+    Responses:
+        200: OK - SubscriptionPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -811,6 +1953,54 @@ def public_subscribe_subscription(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Subscribe a subscription (publicSubscribeSubscription)
+
+    Subscribe a subscription. Support both real and virtual payment. Need go through payment flow using the paymentOrderNo if paymentFlowRequired true.
+     ACTIVE USER subscription can't do subscribe again.
+     The next billing date will be X(default 4) hours before the current period ends if correctly subscribed.
+    User with permission SANDBOX will create sandbox subscription that not real paid.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
+      *  Optional permission(user with this permission will create sandbox subscription) : resource="SANDBOX", action=1 (CREATE)
+      * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
+      *  Returns : created subscription
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
+
+        method: POST
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SubscribeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - (subscribe request processed)
+
+        400: Bad Request - ErrorEntity (40121: Item type [{itemType}] does not support | 40122: Subscription already been subscribed by user | 40123: Currency [{currencyCode}] does not support | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (20006: optimistic lock | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification | 40173: Subscription [{subscriptionId}] current currency [{currentCurrency}] not match request currency [{requestCurrency}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -831,6 +2021,54 @@ async def public_subscribe_subscription_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Subscribe a subscription (publicSubscribeSubscription)
+
+    Subscribe a subscription. Support both real and virtual payment. Need go through payment flow using the paymentOrderNo if paymentFlowRequired true.
+     ACTIVE USER subscription can't do subscribe again.
+     The next billing date will be X(default 4) hours before the current period ends if correctly subscribed.
+    User with permission SANDBOX will create sandbox subscription that not real paid.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
+      *  Optional permission(user with this permission will create sandbox subscription) : resource="SANDBOX", action=1 (CREATE)
+      * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
+      *  Returns : created subscription
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
+
+        method: POST
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SubscribeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - (subscribe request processed)
+
+        400: Bad Request - ErrorEntity (40121: Item type [{itemType}] does not support | 40122: Subscription already been subscribed by user | 40123: Currency [{currencyCode}] does not support | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (20006: optimistic lock | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification | 40173: Subscription [{subscriptionId}] current currency [{currentCurrency}] not match request currency [{requestCurrency}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -859,6 +2097,51 @@ def query_subscriptions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query subscriptions (querySubscriptions)
+
+    Query subscriptions.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscriptions
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/subscriptions
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        charge_status: (chargeStatus) OPTIONAL Union[str, ChargeStatusEnum] in query
+
+        item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sku: (sku) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        subscribed_by: (subscribedBy) OPTIONAL Union[str, SubscribedByEnum] in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - SubscriptionPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -891,6 +2174,51 @@ async def query_subscriptions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query subscriptions (querySubscriptions)
+
+    Query subscriptions.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscriptions
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/subscriptions
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        charge_status: (chargeStatus) OPTIONAL Union[str, ChargeStatusEnum] in query
+
+        item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sku: (sku) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        subscribed_by: (subscribedBy) OPTIONAL Union[str, SubscribedByEnum] in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - SubscriptionPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -925,6 +2253,51 @@ def query_user_subscriptions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user subscriptions (queryUserSubscriptions)
+
+    Query user subscriptions.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        charge_status: (chargeStatus) OPTIONAL Union[str, ChargeStatusEnum] in query
+
+        item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sku: (sku) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        subscribed_by: (subscribedBy) OPTIONAL Union[str, SubscribedByEnum] in query
+
+    Responses:
+        200: OK - SubscriptionPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -957,6 +2330,51 @@ async def query_user_subscriptions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user subscriptions (queryUserSubscriptions)
+
+    Query user subscriptions.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
+      *  Returns : paginated subscription
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions
+
+        method: GET
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        charge_status: (chargeStatus) OPTIONAL Union[str, ChargeStatusEnum] in query
+
+        item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sku: (sku) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        subscribed_by: (subscribedBy) OPTIONAL Union[str, SubscribedByEnum] in query
+
+    Responses:
+        200: OK - SubscriptionPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -984,6 +2402,37 @@ def recurring_charge_subscription(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Recurring charge subscription (recurringChargeSubscription)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. Recurring charge subscription, it will trigger recurring charge if the USER subscription status is ACTIVE, nextBillingDate is before now and no fail recurring charge within X(default 12) hours.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : recurring charge result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/subscriptions/{subscriptionId}/recurring
+
+        method: PUT
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+    Responses:
+        200: OK - RecurringChargeResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1002,6 +2451,37 @@ async def recurring_charge_subscription_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Recurring charge subscription (recurringChargeSubscription)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. Recurring charge subscription, it will trigger recurring charge if the USER subscription status is ACTIVE, nextBillingDate is before now and no fail recurring charge within X(default 12) hours.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4 (UPDATE)
+      *  Returns : recurring charge result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/subscriptions/{subscriptionId}/recurring
+
+        method: PUT
+
+        tags: ["Subscription"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        subscription_id: (subscriptionId) REQUIRED str in path
+
+    Responses:
+        200: OK - RecurringChargeResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

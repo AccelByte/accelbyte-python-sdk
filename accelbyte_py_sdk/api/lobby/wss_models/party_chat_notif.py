@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class PartyChatNotif(WebSocketMessage):
+
     # region fields
 
     from_: str

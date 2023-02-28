@@ -47,6 +47,169 @@ def admin_put_game_record_concurrent_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace game record (adminPutGameRecordConcurrentHandlerV1)
+
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|---------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new game record or replace the existing game record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: __META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Parameters Notes
+
+
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+    2. updatedAt (required: true)
+    Time format style: RFC3339
+    3. value
+    Json
+     Request Body Example:
+
+
+
+
+            {
+                "set_by": "SERVER",
+                "value": {},
+                "updatedAt": "2022-03-17T10:42:15.444Z"
+            }
+
+
+
+
+
+
+    ## Optimistic Concurrency Control
+
+
+
+    This endpoint implement optimistic concurrency control to avoid race condition.
+    If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
+    and client need to redo the operation (fetch data and do update).
+    Otherwise, the server will process the request.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
+
+        - CLIENT []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key}
+
+        method: PUT
+
+        tags: ["AdminConcurrentRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminConcurrentRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,6 +230,169 @@ async def admin_put_game_record_concurrent_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace game record (adminPutGameRecordConcurrentHandlerV1)
+
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|---------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new game record or replace the existing game record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: __META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Parameters Notes
+
+
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+    2. updatedAt (required: true)
+    Time format style: RFC3339
+    3. value
+    Json
+     Request Body Example:
+
+
+
+
+            {
+                "set_by": "SERVER",
+                "value": {},
+                "updatedAt": "2022-03-17T10:42:15.444Z"
+            }
+
+
+
+
+
+
+    ## Optimistic Concurrency Control
+
+
+
+    This endpoint implement optimistic concurrency control to avoid race condition.
+    If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
+    and client need to redo the operation (fetch data and do update).
+    Otherwise, the server will process the request.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
+
+        - CLIENT []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key}
+
+        method: PUT
+
+        tags: ["AdminConcurrentRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminConcurrentRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,6 +416,172 @@ def admin_put_player_public_record_concurrent_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace player public record (adminPutPlayerPublicRecordConcurrentHandlerV1)
+
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|------------------------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player public record or replace the existing player public record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: __META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Parameters Notes
+
+
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+    2. updatedAt (required: true)
+    Time format style: RFC3339
+    3. value
+    Json
+     Request Body Example:
+
+
+
+
+            {
+                "set_by": "SERVER",
+                "value": {},
+                "updatedAt": "2022-03-17T10:42:15.444Z"
+            }
+
+
+
+
+
+
+
+    ## Optimistic Concurrency Control
+
+
+
+    This endpoint implement optimistic concurrency control to avoid race condition.
+    If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
+    and client need to redo the operation (fetch data and do update).
+    Otherwise, the server will process the request.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
+
+        - CLIENT []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public
+
+        method: PUT
+
+        tags: ["AdminConcurrentRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminConcurrentRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -112,6 +604,172 @@ async def admin_put_player_public_record_concurrent_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace player public record (adminPutPlayerPublicRecordConcurrentHandlerV1)
+
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|------------------------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player public record or replace the existing player public record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: __META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Parameters Notes
+
+
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+    2. updatedAt (required: true)
+    Time format style: RFC3339
+    3. value
+    Json
+     Request Body Example:
+
+
+
+
+            {
+                "set_by": "SERVER",
+                "value": {},
+                "updatedAt": "2022-03-17T10:42:15.444Z"
+            }
+
+
+
+
+
+
+
+    ## Optimistic Concurrency Control
+
+
+
+    This endpoint implement optimistic concurrency control to avoid race condition.
+    If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
+    and client need to redo the operation (fetch data and do update).
+    Otherwise, the server will process the request.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
+
+        - CLIENT []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public
+
+        method: PUT
+
+        tags: ["AdminConcurrentRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminConcurrentRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,6 +794,172 @@ def admin_put_player_record_concurrent_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace player private record (adminPutPlayerRecordConcurrentHandlerV1)
+
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|-----------------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player record or replace the existing player record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: __META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Parameters Notes
+
+
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+    2. updatedAt (required: true)
+    Time format style: RFC3339
+    3. value
+    Json
+     Request Body Example:
+
+
+
+
+            {
+                "set_by": "SERVER",
+                "value": {},
+                "updatedAt": "2022-03-17T10:42:15.444Z"
+            }
+
+
+
+
+
+
+
+    ## Optimistic Concurrency Control
+
+
+
+    This endpoint implement optimistic concurrency control to avoid race condition.
+    If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
+    and client need to redo the operation (fetch data and do update).
+    Otherwise, the server will process the request.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
+
+        - CLIENT []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key}
+
+        method: PUT
+
+        tags: ["AdminConcurrentRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminConcurrentRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -158,6 +982,172 @@ async def admin_put_player_record_concurrent_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace player private record (adminPutPlayerRecordConcurrentHandlerV1)
+
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|-----------------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player record or replace the existing player record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: __META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Parameters Notes
+
+
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+    2. updatedAt (required: true)
+    Time format style: RFC3339
+    3. value
+    Json
+     Request Body Example:
+
+
+
+
+            {
+                "set_by": "SERVER",
+                "value": {},
+                "updatedAt": "2022-03-17T10:42:15.444Z"
+            }
+
+
+
+
+
+
+
+    ## Optimistic Concurrency Control
+
+
+
+    This endpoint implement optimistic concurrency control to avoid race condition.
+    If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
+    and client need to redo the operation (fetch data and do update).
+    Otherwise, the server will process the request.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
+
+        - CLIENT []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key}
+
+        method: PUT
+
+        tags: ["AdminConcurrentRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminConcurrentRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

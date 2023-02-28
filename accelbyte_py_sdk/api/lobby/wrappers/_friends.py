@@ -64,6 +64,48 @@ def add_friends_without_confirmation(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add friends without confirmation (addFriendsWithoutConfirmation)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]` with scope `social`
+
+    friends request in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /friends/namespaces/{namespace}/users/{userId}/add/bulk
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBulkAddFriendsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content -
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -84,6 +126,48 @@ async def add_friends_without_confirmation_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add friends without confirmation (addFriendsWithoutConfirmation)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]` with scope `social`
+
+    friends request in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /friends/namespaces/{namespace}/users/{userId}/add/bulk
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBulkAddFriendsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content -
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,6 +191,50 @@ def get_list_of_friends(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get list of friends (get list of friends)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]` with scope `social`
+
+    get list of friends in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["friends"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetFriendsResponse
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -129,6 +257,50 @@ async def get_list_of_friends_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get list of friends (get list of friends)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]` with scope `social`
+
+    get list of friends in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["friends"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetFriendsResponse
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -152,6 +324,40 @@ def get_user_friends_updated(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get list of friends (getUserFriendsUpdated)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - List[ModelGetUserFriendsResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -172,6 +378,40 @@ async def get_user_friends_updated_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get list of friends (getUserFriendsUpdated)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - List[ModelGetUserFriendsResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -192,6 +432,36 @@ def get_user_incoming_friends(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get list of incoming friends (getUserIncomingFriends)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/incoming
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelGetUserIncomingFriendsResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -208,6 +478,36 @@ async def get_user_incoming_friends_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get list of incoming friends (getUserIncomingFriends)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/incoming
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelGetUserIncomingFriendsResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,6 +526,36 @@ def get_user_outgoing_friends(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get list of outgoing friends (getUserOutgoingFriends)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/outgoing
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelGetUserOutgoingFriendsResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -242,6 +572,36 @@ async def get_user_outgoing_friends_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get list of outgoing friends (getUserOutgoingFriends)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/outgoing
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelGetUserOutgoingFriendsResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -261,6 +621,38 @@ def user_accept_friend_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user accept friend (userAcceptFriendRequest)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/request/accept
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserAcceptFriendRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -279,6 +671,38 @@ async def user_accept_friend_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user accept friend (userAcceptFriendRequest)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/request/accept
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserAcceptFriendRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -299,6 +723,38 @@ def user_cancel_friend_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user cancel a friend request (userCancelFriendRequest)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/request/cancel
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserCancelFriendRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -317,6 +773,38 @@ async def user_cancel_friend_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user cancel a friend request (userCancelFriendRequest)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/request/cancel
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserCancelFriendRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -337,6 +825,36 @@ def user_get_friendship_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user get friendship status (userGetFriendshipStatus)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/status/{friendId}
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        friend_id: (friendId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserGetFriendshipStatusResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -355,6 +873,36 @@ async def user_get_friendship_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user get friendship status (userGetFriendshipStatus)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/status/{friendId}
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        friend_id: (friendId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserGetFriendshipStatusResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -375,6 +923,38 @@ def user_reject_friend_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user reject a friend request (userRejectFriendRequest)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/request/reject
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserRejectFriendRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -393,6 +973,38 @@ async def user_reject_friend_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user reject a friend request (userRejectFriendRequest)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/request/reject
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserRejectFriendRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -413,6 +1025,42 @@ def user_request_friend(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user add friend (userRequestFriend)
+
+    Client should provide either friendID or friendPublicID. If both are provided, friendID will be chosen to be used.
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/request
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserRequestFriendRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        422: Unprocessable Entity - RestapiErrorResponseV1 (Unprocessable Entity)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -431,6 +1079,42 @@ async def user_request_friend_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user add friend (userRequestFriend)
+
+    Client should provide either friendID or friendPublicID. If both are provided, friendID will be chosen to be used.
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/request
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserRequestFriendRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        422: Unprocessable Entity - RestapiErrorResponseV1 (Unprocessable Entity)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -451,6 +1135,38 @@ def user_unfriend_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user unfriend a friend (userUnfriendRequest)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/unfriend
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUnfriendRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -469,6 +1185,38 @@ async def user_unfriend_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """user unfriend a friend (userUnfriendRequest)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/unfriend
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUnfriendRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

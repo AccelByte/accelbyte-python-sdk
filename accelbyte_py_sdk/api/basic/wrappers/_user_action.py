@@ -54,6 +54,44 @@ def ban_users(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Ban user(temporarily or permanently) (banUsers)
+
+    Ban user.
+    actionId: 1 means permanent ban, actionId: 10 means Temporary ban.Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions/ban
+
+        method: POST
+
+        tags: ["UserAction"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserBanRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (11041: Equ8 config not found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -72,6 +110,44 @@ async def ban_users_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Ban user(temporarily or permanently) (banUsers)
+
+    Ban user.
+    actionId: 1 means permanent ban, actionId: 10 means Temporary ban.Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions/ban
+
+        method: POST
+
+        tags: ["UserAction"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserBanRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (11041: Equ8 config not found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,6 +167,40 @@ def get_actions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get configured actions (getActions)
+
+    Get configured actions.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions
+
+        method: GET
+
+        tags: ["UserAction"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[Action] (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (11041: Equ8 config not found in namespace [{namespace}])
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,6 +217,40 @@ async def get_actions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get configured actions (getActions)
+
+    Get configured actions.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions
+
+        method: GET
+
+        tags: ["UserAction"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[Action] (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (11041: Equ8 config not found in namespace [{namespace}])
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -126,6 +270,44 @@ def get_banned_users(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get banned user (getBannedUsers)
+
+    Get banned status.
+    Unbanned users will not return, for example: request has 8 userIds, only 5 of then were banned, then the api will these 5 user status.Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions/banned
+
+        method: GET
+
+        tags: ["UserAction"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_ids: (userIds) REQUIRED List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForEqu8UserBanStatus] (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (11641: Equ8 config not found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,6 +326,44 @@ async def get_banned_users_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get banned user (getBannedUsers)
+
+    Get banned status.
+    Unbanned users will not return, for example: request has 8 userIds, only 5 of then were banned, then the api will these 5 user status.Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions/banned
+
+        method: GET
+
+        tags: ["UserAction"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_ids: (userIds) REQUIRED List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForEqu8UserBanStatus] (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (11641: Equ8 config not found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -164,6 +384,44 @@ def get_user_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user status (getUserStatus)
+
+    Get user status.
+    If actionId does not exist, then the user is not banned.If actionId and expires exist, then the user is temporarily banned, if expires does not exist, then the user is permanently banned.Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions/status
+
+        method: GET
+
+        tags: ["UserAction"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in query
+
+    Responses:
+        200: OK - ADTOObjectForEqu8UserStatus (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (11641: Equ8 config not found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,6 +440,44 @@ async def get_user_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user status (getUserStatus)
+
+    Get user status.
+    If actionId does not exist, then the user is not banned.If actionId and expires exist, then the user is temporarily banned, if expires does not exist, then the user is permanently banned.Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions/status
+
+        method: GET
+
+        tags: ["UserAction"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in query
+
+    Responses:
+        200: OK - ADTOObjectForEqu8UserStatus (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (11641: Equ8 config not found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -203,6 +499,43 @@ def public_report_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Report a game user (publicReportUser)
+
+    This API is used to report a game user.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ACTION", action=1 (CREATE)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ACTION [CREATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/actions/report
+
+        method: POST
+
+        tags: ["UserAction"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserReportRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -223,6 +556,43 @@ async def public_report_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Report a game user (publicReportUser)
+
+    This API is used to report a game user.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ACTION", action=1 (CREATE)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ACTION [CREATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/actions/report
+
+        method: POST
+
+        tags: ["UserAction"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserReportRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -244,6 +614,39 @@ def report_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Report a game player(for game service) (reportUser)
+
+    This API is for game service to report a game player.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ACTION", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [CREATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions/report
+
+        method: POST
+
+        tags: ["UserAction"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserReportRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -262,6 +665,39 @@ async def report_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Report a game player(for game service) (reportUser)
+
+    This API is for game service to report a game player.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ACTION", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [CREATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions/report
+
+        method: POST
+
+        tags: ["UserAction"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserReportRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -282,6 +718,44 @@ def un_ban_users(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unban user (unBanUsers)
+
+    Unban user.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions/unban
+
+        method: POST
+
+        tags: ["UserAction"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ADTOForUnbanUserAPICall in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (11041: Equ8 config not found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -300,6 +774,44 @@ async def un_ban_users_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unban user (unBanUsers)
+
+    Unban user.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:ACTION" , action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACTION [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/actions/unban
+
+        method: POST
+
+        tags: ["UserAction"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ADTOForUnbanUserAPICall in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (11041: Equ8 config not found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

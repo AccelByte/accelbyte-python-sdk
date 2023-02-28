@@ -47,6 +47,48 @@ def generated_upload_url(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Generate Upload URL (generatedUploadUrl)
+
+    Generate an upload URL. It's valid for 10 minutes.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11101
+      *  Returns : URL data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/folders/{folder}/files
+
+        method: POST
+
+        tags: ["FileUpload"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        folder: (folder) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        file_type: (fileType) REQUIRED str in query
+
+    Responses:
+        200: OK - FileUploadUrlInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11131: Unable to {action}: File type is not supported)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,6 +109,48 @@ async def generated_upload_url_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Generate Upload URL (generatedUploadUrl)
+
+    Generate an upload URL. It's valid for 10 minutes.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11101
+      *  Returns : URL data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/folders/{folder}/files
+
+        method: POST
+
+        tags: ["FileUpload"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        folder: (folder) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        file_type: (fileType) REQUIRED str in query
+
+    Responses:
+        200: OK - FileUploadUrlInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11131: Unable to {action}: File type is not supported)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,6 +174,54 @@ def generated_user_upload_content_url(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Generate Upload URL For User Content (generatedUserUploadContentUrl)
+
+    Generate an upload URL for user content. It's valid for 10 minutes.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11102
+      *  Default maximum file count per user : 10 files
+      *  Default maximum file size per user : 104857600 bytes
+      *  Returns : URL data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/files
+
+        method: POST
+
+        tags: ["FileUpload"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        category: (category) OPTIONAL str in query
+
+        file_type: (fileType) REQUIRED str in query
+
+    Responses:
+        200: OK - FileUploadUrlInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11121: Unable to {action}: category {category} is not valid | 11131: Unable to {action}: File type is not supported)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        409: Conflict - ErrorEntity (11132: Unable to {action}: file storage exceed limitation, user ID: {userId}, namespace: {namespace})
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -112,6 +244,54 @@ async def generated_user_upload_content_url_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Generate Upload URL For User Content (generatedUserUploadContentUrl)
+
+    Generate an upload URL for user content. It's valid for 10 minutes.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11102
+      *  Default maximum file count per user : 10 files
+      *  Default maximum file size per user : 104857600 bytes
+      *  Returns : URL data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/files
+
+        method: POST
+
+        tags: ["FileUpload"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        category: (category) OPTIONAL str in query
+
+        file_type: (fileType) REQUIRED str in query
+
+    Responses:
+        200: OK - FileUploadUrlInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11121: Unable to {action}: category {category} is not valid | 11131: Unable to {action}: File type is not supported)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        409: Conflict - ErrorEntity (11132: Unable to {action}: file storage exceed limitation, user ID: {userId}, namespace: {namespace})
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,6 +315,48 @@ def public_generated_upload_url(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Generate Upload URL (publicGeneratedUploadUrl)
+
+    Generate an upload URL. It's valid for 10 minutes.
+    Other detail info:
+
+      * Required permission : resource = "NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11101
+      *  Returns : URL data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/folders/{folder}/files
+
+        method: POST
+
+        tags: ["FileUpload"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        folder: (folder) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        file_type: (fileType) REQUIRED str in query
+
+    Responses:
+        200: OK - FileUploadUrlInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11131: Unable to {action}: File type is not supported)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -155,6 +377,48 @@ async def public_generated_upload_url_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Generate Upload URL (publicGeneratedUploadUrl)
+
+    Generate an upload URL. It's valid for 10 minutes.
+    Other detail info:
+
+      * Required permission : resource = "NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11101
+      *  Returns : URL data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/folders/{folder}/files
+
+        method: POST
+
+        tags: ["FileUpload"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        folder: (folder) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        file_type: (fileType) REQUIRED str in query
+
+    Responses:
+        200: OK - FileUploadUrlInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11131: Unable to {action}: File type is not supported)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -178,6 +442,56 @@ def public_generated_user_upload_content_url(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Generate Upload URL For User Content (publicGeneratedUserUploadContentUrl)
+
+    Generate an upload URL for user content. It's valid for 10 minutes.
+    There are 2 kinds of storage limitation per user : maximum file count and maximum file size.
+    The threshold of those limitations is different between upload category that is used.
+    Other detail info:
+
+      * Required permission : resource = "NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11102
+      *  Default maximum file count per user : 10 files
+      *  Default maximum file size per user : 104857600 bytes
+      *  Returns : URL data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/files
+
+        method: POST
+
+        tags: ["FileUpload"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        category: (category) OPTIONAL str in query
+
+        file_type: (fileType) REQUIRED str in query
+
+    Responses:
+        200: OK - FileUploadUrlInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11121: Unable to {action}: category {category} is not valid | 11131: Unable to {action}: File type is not supported)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        409: Conflict - ErrorEntity (11132: Unable to {action}: file storage exceed limitation, user ID: {userId}, namespace: {namespace})
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -200,6 +514,56 @@ async def public_generated_user_upload_content_url_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Generate Upload URL For User Content (publicGeneratedUserUploadContentUrl)
+
+    Generate an upload URL for user content. It's valid for 10 minutes.
+    There are 2 kinds of storage limitation per user : maximum file count and maximum file size.
+    The threshold of those limitations is different between upload category that is used.
+    Other detail info:
+
+      * Required permission : resource = "NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
+      *  Action code : 11102
+      *  Default maximum file count per user : 10 files
+      *  Default maximum file size per user : 104857600 bytes
+      *  Returns : URL data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/files
+
+        method: POST
+
+        tags: ["FileUpload"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        category: (category) OPTIONAL str in query
+
+        file_type: (fileType) REQUIRED str in query
+
+    Responses:
+        200: OK - FileUploadUrlInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 11121: Unable to {action}: category {category} is not valid | 11131: Unable to {action}: File type is not supported)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        409: Conflict - ErrorEntity (11132: Unable to {action}: file storage exceed limitation, user ID: {userId}, namespace: {namespace})
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -58,6 +58,41 @@ def create_currency(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a currency (createCurrency)
+
+    Create a currency.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=1 (CREATE)
+      *  Returns : created currency
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies
+
+        method: POST
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CurrencyCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CurrencyInfo (successful operation)
+
+        409: Conflict - ErrorEntity (36171: Currency [{currencyCode}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -76,6 +111,41 @@ async def create_currency_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a currency (createCurrency)
+
+    Create a currency.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=1 (CREATE)
+      *  Returns : created currency
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies
+
+        method: POST
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CurrencyCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CurrencyInfo (successful operation)
+
+        409: Conflict - ErrorEntity (36171: Currency [{currencyCode}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -96,6 +166,39 @@ def delete_currency(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a currency (deleteCurrency)
+
+    Delete a currency by currency code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=8 (DELETE)
+      *  Returns :
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}
+
+        method: DELETE
+
+        tags: ["Currency"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CurrencyInfo (successful operation)
+
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -114,6 +217,39 @@ async def delete_currency_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a currency (deleteCurrency)
+
+    Delete a currency by currency code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=8 (DELETE)
+      *  Returns :
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}
+
+        method: DELETE
+
+        tags: ["Currency"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CurrencyInfo (successful operation)
+
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,6 +270,39 @@ def get_currency_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get currency config (getCurrencyConfig)
+
+    [SERVICE COMMUNICATION ONLY] Get currency config by code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
+      *  Returns : simplified Currency
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}/config
+
+        method: GET
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CurrencyConfig (successful operation)
+
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -152,6 +321,39 @@ async def get_currency_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get currency config (getCurrencyConfig)
+
+    [SERVICE COMMUNICATION ONLY] Get currency config by code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
+      *  Returns : simplified Currency
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}/config
+
+        method: GET
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CurrencyConfig (successful operation)
+
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -172,6 +374,39 @@ def get_currency_summary(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get currency summary (getCurrencySummary)
+
+    Get currency summary by code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
+      *  Returns : simplified Currency
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}/summary
+
+        method: GET
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CurrencySummary (successful operation)
+
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -190,6 +425,39 @@ async def get_currency_summary_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get currency summary (getCurrencySummary)
+
+    Get currency summary by code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
+      *  Returns : simplified Currency
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}/summary
+
+        method: GET
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CurrencySummary (successful operation)
+
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -210,6 +478,37 @@ def list_currencies(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List currencies (listCurrencies)
+
+    List currencies of a namespace.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
+      *  Returns : Currency List
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies
+
+        method: GET
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        currency_type: (currencyType) OPTIONAL Union[str, CurrencyTypeEnum] in query
+
+    Responses:
+        200: OK - List[CurrencyInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -228,6 +527,37 @@ async def list_currencies_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List currencies (listCurrencies)
+
+    List currencies of a namespace.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=2 (READ)
+      *  Returns : Currency List
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies
+
+        method: GET
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        currency_type: (currencyType) OPTIONAL Union[str, CurrencyTypeEnum] in query
+
+    Responses:
+        200: OK - List[CurrencyInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -248,6 +578,33 @@ def public_list_currencies(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """list currencies (publicListCurrencies)
+
+    List currencies of a namespace.
+    Other detail info:
+
+      * Returns : Currency List
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/currencies
+
+        method: GET
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        currency_type: (currencyType) OPTIONAL Union[str, CurrencyTypeEnum] in query
+
+    Responses:
+        200: OK - List[CurrencyInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -266,6 +623,33 @@ async def public_list_currencies_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """list currencies (publicListCurrencies)
+
+    List currencies of a namespace.
+    Other detail info:
+
+      * Returns : Currency List
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/currencies
+
+        method: GET
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        currency_type: (currencyType) OPTIONAL Union[str, CurrencyTypeEnum] in query
+
+    Responses:
+        200: OK - List[CurrencyInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -287,6 +671,43 @@ def update_currency(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a currency (updateCurrency)
+
+    Update a currency by currency code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=4 (UPDATE)
+      *  Returns : updated currency
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}
+
+        method: PUT
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CurrencyUpdate in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CurrencyInfo (successful operation)
+
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -307,6 +728,43 @@ async def update_currency_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a currency (updateCurrency)
+
+    Update a currency by currency code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=4 (UPDATE)
+      *  Returns : updated currency
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CURRENCY [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}
+
+        method: PUT
+
+        tags: ["Currency"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CurrencyUpdate in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CurrencyInfo (successful operation)
+
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -64,6 +64,34 @@ def delete_dlc_item_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete a DLC item config (deleteDLCItemConfig)
+
+    delete a DLC item config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/item
+
+        method: DELETE
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,6 +108,34 @@ async def delete_dlc_item_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete a DLC item config (deleteDLCItemConfig)
+
+    delete a DLC item config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/item
+
+        method: DELETE
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -98,6 +154,34 @@ def delete_platform_dlc_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete a Platform DLC config (deletePlatformDLCConfig)
+
+    delete a Platform DLC config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
+
+        method: DELETE
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -114,6 +198,34 @@ async def delete_platform_dlc_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete a Platform DLC config (deletePlatformDLCConfig)
+
+    delete a Platform DLC config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
+
+        method: DELETE
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -132,6 +244,36 @@ def get_dlc_item_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get DLC item config (getDLCItemConfig)
+
+    Get DLC item config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/item
+
+        method: GET
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - DLCItemConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (39341: DLC item config cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -148,6 +290,36 @@ async def get_dlc_item_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get DLC item config (getDLCItemConfig)
+
+    Get DLC item config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/item
+
+        method: GET
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - DLCItemConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (39341: DLC item config cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -166,6 +338,36 @@ def get_platform_dlc_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Platform DLC config (getPlatformDLCConfig)
+
+    Get Platform DLC config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
+
+        method: GET
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformDLCConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (39341: Platform DLC config cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,6 +384,36 @@ async def get_platform_dlc_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Platform DLC config (getPlatformDLCConfig)
+
+    Get Platform DLC config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
+
+        method: GET
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformDLCConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (39341: Platform DLC config cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -202,6 +434,39 @@ def get_user_dlc(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user dlc by platform (getUserDLC)
+
+    Get user dlc by platform.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
+      *  Returns : user dlc
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/dlc
+
+        method: GET
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        type_: (type) REQUIRED Union[str, TypeEnum] in query
+
+    Responses:
+        200: OK - UserDLC (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -222,6 +487,39 @@ async def get_user_dlc_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user dlc by platform (getUserDLC)
+
+    Get user dlc by platform.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
+      *  Returns : user dlc
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/dlc
+
+        method: GET
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        type_: (type) REQUIRED Union[str, TypeEnum] in query
+
+    Responses:
+        200: OK - UserDLC (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -244,6 +542,39 @@ def public_sync_psn_dlc_inventory(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Synchronize with dlc entitlements in PSN Store. (publicSyncPsnDlcInventory)
+
+    Synchronize with dlc entitlements in PSN Store.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns : result of synchronization
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PlayStationDLCSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -264,6 +595,39 @@ async def public_sync_psn_dlc_inventory_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Synchronize with dlc entitlements in PSN Store. (publicSyncPsnDlcInventory)
+
+    Synchronize with dlc entitlements in PSN Store.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns : result of synchronization
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PlayStationDLCSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -286,6 +650,39 @@ def public_sync_psn_dlc_inventory_with_multiple_service_labels(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Synchronize with dlc entitlements in PSN Store with multiple service labels. (publicSyncPsnDlcInventoryWithMultipleServiceLabels)
+
+    Synchronize with dlc entitlements in PSN Store with multiple service labels.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns : result of synchronization
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync/multiServiceLabels
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PlayStationDLCSyncMultiServiceLabelsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -306,6 +703,39 @@ async def public_sync_psn_dlc_inventory_with_multiple_service_labels_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Synchronize with dlc entitlements in PSN Store with multiple service labels. (publicSyncPsnDlcInventoryWithMultipleServiceLabels)
+
+    Synchronize with dlc entitlements in PSN Store with multiple service labels.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns : result of synchronization
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync/multiServiceLabels
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PlayStationDLCSyncMultiServiceLabelsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -328,6 +758,39 @@ def sync_epic_game_dlc(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync epic games dlc items (syncEpicGameDLC)
+
+    Sync epic games dlc items.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/epicgames/sync
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL EpicGamesDLCSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -348,6 +811,39 @@ async def sync_epic_game_dlc_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync epic games dlc items (syncEpicGameDLC)
+
+    Sync epic games dlc items.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/epicgames/sync
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL EpicGamesDLCSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -370,6 +866,39 @@ def sync_steam_dlc(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync steam dlc. (syncSteamDLC)
+
+    Sync steam dlc.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/steam/sync
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL SteamDLCSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -390,6 +919,39 @@ async def sync_steam_dlc_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync steam dlc. (syncSteamDLC)
+
+    Sync steam dlc.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/steam/sync
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL SteamDLCSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -412,6 +974,39 @@ def sync_xbox_dlc(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync Xbox dlc items. (syncXboxDLC)
+
+    Sync Xbox inventory's dlc items.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/xbl/sync
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL XblDLCSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -432,6 +1027,39 @@ async def sync_xbox_dlc_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync Xbox dlc items. (syncXboxDLC)
+
+    Sync Xbox inventory's dlc items.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/xbl/sync
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL XblDLCSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -453,6 +1081,40 @@ def update_dlc_item_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update DLC item config (updateDLCItemConfig)
+
+    Update DLC item config. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
+      *  Returns : updated DLC item config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/item
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL DLCItemConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - DLCItemConfigInfo (successful operation)
+
+        409: Conflict - ErrorEntity (39471: Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] )
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -471,6 +1133,40 @@ async def update_dlc_item_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update DLC item config (updateDLCItemConfig)
+
+    Update DLC item config. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
+      *  Returns : updated DLC item config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/item
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL DLCItemConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - DLCItemConfigInfo (successful operation)
+
+        409: Conflict - ErrorEntity (39471: Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] )
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -491,6 +1187,38 @@ def update_platform_dlc_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Platform DLC config (updatePlatformDLCConfig)
+
+    Update Platform DLC config. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
+      *  Returns : updated Platform DLC config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PlatformDLCConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformDLCConfigInfo (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -509,6 +1237,38 @@ async def update_platform_dlc_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Platform DLC config (updatePlatformDLCConfig)
+
+    Update Platform DLC config. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
+      *  Returns : updated Platform DLC config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PlatformDLCConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformDLCConfigInfo (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -41,6 +41,43 @@ def admin_anonymize_user_achievement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Anonymize user's achievement (AdminAnonymizeUserAchievement)
+
+    This API will delete specified user achievement
+
+
+
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/achievements
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -59,6 +96,43 @@ async def admin_anonymize_user_achievement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Anonymize user's achievement (AdminAnonymizeUserAchievement)
+
+    This API will delete specified user achievement
+
+
+
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/achievements
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

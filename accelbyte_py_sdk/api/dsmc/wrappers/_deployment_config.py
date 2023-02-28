@@ -63,6 +63,50 @@ def create_deployment(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create deployment (CreateDeployment)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint create a dedicated servers deployment in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: POST
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateDeploymentRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDeploymentWithOverride (deployment created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (deployment already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,6 +127,50 @@ async def create_deployment_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create deployment (CreateDeployment)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint create a dedicated servers deployment in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: POST
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateDeploymentRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDeploymentWithOverride (deployment created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (deployment already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -106,6 +194,54 @@ def create_deployment_override(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create deployment override (CreateDeploymentOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint create a dedicated servers deployment override in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/version/{version}
+
+        method: POST
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateDeploymentOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDeploymentWithOverride (deployment override created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        409: Conflict - ResponseError (deployment override already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -128,6 +264,54 @@ async def create_deployment_override_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create deployment override (CreateDeploymentOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint create a dedicated servers deployment override in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/version/{version}
+
+        method: POST
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateDeploymentOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDeploymentWithOverride (deployment override created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        409: Conflict - ResponseError (deployment override already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -153,6 +337,56 @@ def create_override_region_override(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create region override for deployment override (CreateOverrideRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint creates a dedicated servers deployment override in a namespace in a region for deployment overrides.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
+
+        method: POST
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateRegionOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDeploymentWithOverride (region override created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        409: Conflict - ResponseError (deployment already has region override)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -177,6 +411,56 @@ async def create_override_region_override_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create region override for deployment override (CreateOverrideRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint creates a dedicated servers deployment override in a namespace in a region for deployment overrides.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
+
+        method: POST
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateRegionOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDeploymentWithOverride (region override created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        409: Conflict - ResponseError (deployment already has region override)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -202,6 +486,54 @@ def create_root_region_override(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create region override (CreateRootRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint creates a dedicated servers deployment override in a namespace in a region for root deployment.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
+
+        method: POST
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateRegionOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDeploymentWithOverride (region override created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        409: Conflict - ResponseError (deployment already has region override)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -224,6 +556,54 @@ async def create_root_region_override_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create region override (CreateRootRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint creates a dedicated servers deployment override in a namespace in a region for root deployment.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
+
+        method: POST
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateRegionOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDeploymentWithOverride (region override created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        409: Conflict - ResponseError (deployment already has region override)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,6 +626,48 @@ def delete_deployment(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Deployment (DeleteDeployment)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment in a namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: DELETE
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -264,6 +686,48 @@ async def delete_deployment_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Deployment (DeleteDeployment)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment in a namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: DELETE
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -285,6 +749,50 @@ def delete_deployment_override(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Deployment Override (DeleteDeploymentOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment override in a namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}
+
+        method: DELETE
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment override deleted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -305,6 +813,50 @@ async def delete_deployment_override_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Deployment Override (DeleteDeploymentOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment override in a namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}
+
+        method: DELETE
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment override deleted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -328,6 +880,52 @@ def delete_override_region_override(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete region override for deployment override (DeleteOverrideRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment override in a namespace in a region for deployment overrides
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
+
+        method: DELETE
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment region override deleted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment  not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -350,6 +948,52 @@ async def delete_override_region_override_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete region override for deployment override (DeleteOverrideRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment override in a namespace in a region for deployment overrides
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
+
+        method: DELETE
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment region override deleted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment  not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -373,6 +1017,50 @@ def delete_root_region_override(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Region Override (DeleteRootRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment override in a namespace in a region for root deployment
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
+
+        method: DELETE
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment region override deleted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -393,6 +1081,50 @@ async def delete_root_region_override_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Region Override (DeleteRootRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment override in a namespace in a region for root deployment
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
+
+        method: DELETE
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment region override deleted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -416,6 +1148,52 @@ def get_all_deployment(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get All Deployments (GetAllDeployment)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a all deployments in a namespace
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments
+
+        method: GET
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        name: (name) OPTIONAL str in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListDeploymentResponse (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -438,6 +1216,52 @@ async def get_all_deployment_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get All Deployments (GetAllDeployment)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a all deployments in a namespace
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments
+
+        method: GET
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        name: (name) OPTIONAL str in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListDeploymentResponse (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -460,6 +1284,48 @@ def get_deployment(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Deployment (GetDeployment)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a dedicated server deployment in a namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: GET
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -478,6 +1344,48 @@ async def get_deployment_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Deployment (GetDeployment)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a dedicated server deployment in a namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: GET
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -499,6 +1407,50 @@ def update_deployment(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update deployment (UpdateDeployment)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required scope: social
+
+    This endpoint update a dedicated servers deployment in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: PATCH
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateDeploymentRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -519,6 +1471,50 @@ async def update_deployment_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update deployment (UpdateDeployment)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required scope: social
+
+    This endpoint update a dedicated servers deployment in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: PATCH
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateDeploymentRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (config not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -542,6 +1538,52 @@ def update_deployment_override(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update deployment override (UpdateDeploymentOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required scope: social
+
+    This endpoint update a dedicated servers deployment override in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}
+
+        method: PATCH
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateDeploymentOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment override updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -564,6 +1606,52 @@ async def update_deployment_override_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update deployment override (UpdateDeploymentOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required scope: social
+
+    This endpoint update a dedicated servers deployment override in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}
+
+        method: PATCH
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateDeploymentOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment override updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -589,6 +1677,54 @@ def update_override_region_override(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update region override for deployment override (UpdateOverrideRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required scope: social
+
+    This endpoint update a dedicated servers deployment override in a namespace in a region for deployment overrides.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
+
+        method: PATCH
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateRegionOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment region override updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -613,6 +1749,54 @@ async def update_override_region_override_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update region override for deployment override (UpdateOverrideRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required scope: social
+
+    This endpoint update a dedicated servers deployment override in a namespace in a region for deployment overrides.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
+
+        method: PATCH
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateRegionOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+        version: (version) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment region override updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -638,6 +1822,52 @@ def update_root_region_override(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update region override (UpdateRootRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required scope: social
+
+    This endpoint update a dedicated servers deployment override in a namespace in a region for root deployment.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
+
+        method: PATCH
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateRegionOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment region override updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -660,6 +1890,52 @@ async def update_root_region_override_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update region override (UpdateRootRegionOverride)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required scope: social
+
+    This endpoint update a dedicated servers deployment override in a namespace in a region for root deployment.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
+
+        method: PATCH
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateRegionOverrideRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeploymentWithOverride (deployment region override updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

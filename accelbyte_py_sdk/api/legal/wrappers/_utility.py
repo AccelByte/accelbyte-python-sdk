@@ -36,6 +36,32 @@ from ..operations.utility import CheckReadiness
 
 @same_doc_as(CheckReadiness)
 def check_readiness(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """Check Legal Data Readiness (checkReadiness)
+
+    Readiness status defined as at least one legal basePolicy is present and having active basePolicy.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/public/readiness
+
+        method: GET
+
+        tags: ["Utility"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+    Responses:
+        200: OK - LegalReadinessStatusResponse (successful operation)
+    """
     request = CheckReadiness.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -44,6 +70,32 @@ def check_readiness(x_additional_headers: Optional[Dict[str, str]] = None, **kwa
 async def check_readiness_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Check Legal Data Readiness (checkReadiness)
+
+    Readiness status defined as at least one legal basePolicy is present and having active basePolicy.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/public/readiness
+
+        method: GET
+
+        tags: ["Utility"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+    Responses:
+        200: OK - LegalReadinessStatusResponse (successful operation)
+    """
     request = CheckReadiness.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

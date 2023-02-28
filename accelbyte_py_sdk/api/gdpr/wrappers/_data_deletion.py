@@ -51,6 +51,46 @@ def admin_cancel_user_account_deletion_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel user's account deletion request (AdminCancelUserAccountDeletionRequest)
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]` and scope `account`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
+
+        method: DELETE
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -69,6 +109,46 @@ async def admin_cancel_user_account_deletion_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel user's account deletion request (AdminCancelUserAccountDeletionRequest)
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]` and scope `account`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
+
+        method: DELETE
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -93,6 +173,51 @@ def admin_get_list_deletion_data_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve all user's account deletion requests in specified date (AdminGetListDeletionDataRequest)
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER[READ]` and scope `account`
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/deletions
+
+        method: GET
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        request_date: (requestDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsListDeletionDataResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,6 +244,51 @@ async def admin_get_list_deletion_data_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve all user's account deletion requests in specified date (AdminGetListDeletionDataRequest)
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER[READ]` and scope `account`
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/deletions
+
+        method: GET
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        request_date: (requestDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsListDeletionDataResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -143,6 +313,41 @@ def admin_get_user_account_deletion_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve specific user's account deletion request (AdminGetUserAccountDeletionRequest)
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId}[READ]` and scope `account`
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
+
+        method: GET
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeletionData (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -161,6 +366,41 @@ async def admin_get_user_account_deletion_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve specific user's account deletion request (AdminGetUserAccountDeletionRequest)
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId}[READ]` and scope `account`
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
+
+        method: GET
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeletionData (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -181,6 +421,46 @@ def admin_submit_user_account_deletion_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Submit user's account deletion requests (AdminSubmitUserAccountDeletionRequest)
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]` and scope `account`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
+
+        method: POST
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsRequestDeleteResponse (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -199,6 +479,46 @@ async def admin_submit_user_account_deletion_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Submit user's account deletion requests (AdminSubmitUserAccountDeletionRequest)
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]` and scope `account`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
+
+        method: POST
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsRequestDeleteResponse (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -219,6 +539,38 @@ def public_cancel_user_account_deletion_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel user's account deletion request (PublicCancelUserAccountDeletionRequest)
+
+    Requires valid user access token
+
+    Properties:
+        url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
+
+        method: DELETE
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -237,6 +589,38 @@ async def public_cancel_user_account_deletion_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel user's account deletion request (PublicCancelUserAccountDeletionRequest)
+
+    Requires valid user access token
+
+    Properties:
+        url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
+
+        method: DELETE
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -257,6 +641,36 @@ def public_get_user_account_deletion_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve specific user's account deletion status (PublicGetUserAccountDeletionStatus)
+
+    Requires valid user access token
+
+    Properties:
+        url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions/status
+
+        method: GET
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeletionStatus (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -275,6 +689,36 @@ async def public_get_user_account_deletion_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve specific user's account deletion status (PublicGetUserAccountDeletionStatus)
+
+    Requires valid user access token
+
+    Properties:
+        url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions/status
+
+        method: GET
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeletionStatus (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -296,6 +740,42 @@ def public_submit_user_account_deletion_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Submit user's account deletion requests (PublicSubmitUserAccountDeletionRequest)
+
+    Requires valid user access token and password
+
+    Properties:
+        url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
+
+        method: POST
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        password: (password) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsRequestDeleteResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -316,6 +796,42 @@ async def public_submit_user_account_deletion_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Submit user's account deletion requests (PublicSubmitUserAccountDeletionRequest)
+
+    Requires valid user access token and password
+
+    Properties:
+        url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
+
+        method: POST
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        password: (password) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsRequestDeleteResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

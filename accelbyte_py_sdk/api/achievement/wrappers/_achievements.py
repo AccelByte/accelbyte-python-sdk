@@ -60,6 +60,59 @@ def admin_create_new_achievement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create new achievement (AdminCreateNewAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]` and scope `social`
+
+
+    Other detail info:
+    - achievementCode: Human readable unique code to indentify the achievement. Must be lowercase
+    and maximum length is 32
+    - incremental: If the achievement is not incremental, it does not need to store a goal value
+    of a stat to be unlocked.
+    If the achievement is incremental, it needs to set statCode and goalValue
+    - statCode: Selected statistic code, from the published statistic code event.Human readable unique
+    code to indentify the achievement. Must be lowercase and maximum length is 32
+    - goalValue: Statistics value required to unlock the achievement.
+    - defaultLanguage: localozation for achievement name and achievement description. Allowed format : en, en-US
+    - slug: specify the image they want to use, it can be file image name or something
+    to define the achievement icon.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements
+
+        method: POST
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAchievementRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsAchievementResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,6 +131,59 @@ async def admin_create_new_achievement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create new achievement (AdminCreateNewAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]` and scope `social`
+
+
+    Other detail info:
+    - achievementCode: Human readable unique code to indentify the achievement. Must be lowercase
+    and maximum length is 32
+    - incremental: If the achievement is not incremental, it does not need to store a goal value
+    of a stat to be unlocked.
+    If the achievement is incremental, it needs to set statCode and goalValue
+    - statCode: Selected statistic code, from the published statistic code event.Human readable unique
+    code to indentify the achievement. Must be lowercase and maximum length is 32
+    - goalValue: Statistics value required to unlock the achievement.
+    - defaultLanguage: localozation for achievement name and achievement description. Allowed format : en, en-US
+    - slug: specify the image they want to use, it can be file image name or something
+    to define the achievement icon.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements
+
+        method: POST
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAchievementRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsAchievementResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -98,6 +204,45 @@ def admin_delete_achievement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete an achievement (AdminDeleteAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
+
+        method: DELETE
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,6 +261,45 @@ async def admin_delete_achievement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete an achievement (AdminDeleteAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
+
+        method: DELETE
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,6 +320,45 @@ def admin_get_achievement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an achievement (AdminGetAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
+
+        method: GET
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -154,6 +377,45 @@ async def admin_get_achievement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an achievement (AdminGetAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
+
+        method: GET
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -178,6 +440,53 @@ def admin_list_achievements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query achievements (AdminListAchievements)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements
+
+        method: GET
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        global_: (global) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - ModelsPaginatedAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -204,6 +513,53 @@ async def admin_list_achievements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query achievements (AdminListAchievements)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements
+
+        method: GET
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        global_: (global) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - ModelsPaginatedAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -229,6 +585,47 @@ def admin_update_achievement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update an achievement (AdminUpdateAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
+
+        method: PUT
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAchievementUpdateRequest in body
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -249,6 +646,47 @@ async def admin_update_achievement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update an achievement (AdminUpdateAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
+
+        method: PUT
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAchievementUpdateRequest in body
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -271,6 +709,47 @@ def admin_update_achievement_list_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update achievements listOrder (AdminUpdateAchievementListOrder)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
+
+        method: PATCH
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAchievementOrderUpdateRequest in body
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -291,6 +770,47 @@ async def admin_update_achievement_list_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update achievements listOrder (AdminUpdateAchievementListOrder)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
+
+        method: PATCH
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAchievementOrderUpdateRequest in body
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -312,6 +832,47 @@ def export_achievements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Export achievements configuration into a json file (ExportAchievements)
+
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]`
+
+    Required Scope: `social`
+
+    Successful response header will contain: `content-disposition: attachment; filename=achievement__config.json`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - socialSuccessful
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/export
+
+        method: GET
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - Any (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -330,6 +891,47 @@ async def export_achievements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Export achievements configuration into a json file (ExportAchievements)
+
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]`
+
+    Required Scope: `social`
+
+    Successful response header will contain: `content-disposition: attachment; filename=achievement__config.json`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - socialSuccessful
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/export
+
+        method: GET
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - Any (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -351,6 +953,54 @@ def import_achievements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Import achievements from file (ImportAchievements)
+
+
+    Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope: social
+
+    Import achievement configuration from file. It will merge with existing achievement.
+    Available import strategy:
+    - leaveOut: if achievement with same key exist, the existing will be used and imported one will be ignored (default)
+    - replace: if achievement with same key exist, the imported achievement will be used and existing one will be removed
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/import
+
+        method: POST
+
+        tags: ["Achievements"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        strategy: (strategy) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ServiceImportConfigResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -371,6 +1021,54 @@ async def import_achievements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Import achievements from file (ImportAchievements)
+
+
+    Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope: social
+
+    Import achievement configuration from file. It will merge with existing achievement.
+    Available import strategy:
+    - leaveOut: if achievement with same key exist, the existing will be used and imported one will be ignored (default)
+    - replace: if achievement with same key exist, the imported achievement will be used and existing one will be removed
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/achievements/import
+
+        method: POST
+
+        tags: ["Achievements"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        strategy: (strategy) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ServiceImportConfigResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -393,6 +1091,47 @@ def public_get_achievement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an achievement (PublicGetAchievement)
+
+    Required permission
+    `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/achievements/{achievementCode}
+
+        method: GET
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsPublicAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -413,6 +1152,47 @@ async def public_get_achievement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an achievement (PublicGetAchievement)
+
+    Required permission
+    `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/achievements/{achievementCode}
+
+        method: GET
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsPublicAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -439,6 +1219,55 @@ def public_list_achievements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query achievements (PublicListAchievements)
+
+    Required permission
+    `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/achievements
+
+        method: GET
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        global_: (global) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+        language: (language) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsPublicAchievementsResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -467,6 +1296,55 @@ async def public_list_achievements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query achievements (PublicListAchievements)
+
+    Required permission
+    `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/achievements
+
+        method: GET
+
+        tags: ["Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        global_: (global) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+        language: (language) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsPublicAchievementsResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

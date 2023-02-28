@@ -54,6 +54,45 @@ def fulfill_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Fulfill item (fulfillItem)
+
+    Fulfill item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
+      *  Returns : fulfillment result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment
+
+        method: POST
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillmentRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentResult (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -74,6 +113,45 @@ async def fulfill_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Fulfill item (fulfillItem)
+
+    Fulfill item.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
+      *  Returns : fulfillment result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment
+
+        method: POST
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillmentRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentResult (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -96,6 +174,45 @@ def fulfill_rewards(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Fulfill rewards (fulfillRewards)
+
+    [SERVICE COMMUNICATION ONLY] Fulfill rewards.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
+      *  Returns : fulfillment result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/rewards
+
+        method: POST
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RewardsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (fulfill successfully)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,6 +233,45 @@ async def fulfill_rewards_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Fulfill rewards (fulfillRewards)
+
+    [SERVICE COMMUNICATION ONLY] Fulfill rewards.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
+      *  Returns : fulfillment result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/rewards
+
+        method: POST
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RewardsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (fulfill successfully)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -138,6 +294,45 @@ def public_redeem_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Redeem campaign code (publicRedeemCode)
+
+    Redeem campaign code.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
+      *  Returns : fulfillment result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/fulfillment/code
+
+        method: POST
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentResult (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 37142: Code [{code}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 20006: optimistic lock | 31177: Permanent item already owned)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -158,6 +353,45 @@ async def public_redeem_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Redeem campaign code (publicRedeemCode)
+
+    Redeem campaign code.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
+      *  Returns : fulfillment result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/fulfillment/code
+
+        method: POST
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentResult (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 37142: Code [{code}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 20006: optimistic lock | 31177: Permanent item already owned)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,6 +416,43 @@ def query_fulfillment_histories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query fulfillment histories (queryFulfillmentHistories)
+
+    Query fulfillment histories in a namespace.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:FULFILLMENT", action=2 (READ)
+      *  Returns : query fulfillment history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:FULFILLMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/fulfillment/history
+
+        method: GET
+
+        tags: ["Fulfillment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -206,6 +477,43 @@ async def query_fulfillment_histories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query fulfillment histories (queryFulfillmentHistories)
+
+    Query fulfillment histories in a namespace.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:FULFILLMENT", action=2 (READ)
+      *  Returns : query fulfillment history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:FULFILLMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/fulfillment/history
+
+        method: GET
+
+        tags: ["Fulfillment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -230,6 +538,45 @@ def redeem_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Redeem campaign code (redeemCode)
+
+    Redeem campaign code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
+      *  Returns : fulfillment result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/code
+
+        method: POST
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentResult (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 37142: Code [{code}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 20006: optimistic lock | 31177: Permanent item already owned)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,6 +597,45 @@ async def redeem_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Redeem campaign code (redeemCode)
+
+    Redeem campaign code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
+      *  Returns : fulfillment result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/code
+
+        method: POST
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentResult (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 37142: Code [{code}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 20006: optimistic lock | 31177: Permanent item already owned)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

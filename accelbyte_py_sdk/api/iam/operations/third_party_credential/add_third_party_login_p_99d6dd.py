@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.27.2)
+# AccelByte Cloud Iam Service (5.28.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -129,12 +129,12 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
 
 
 
-      * Current supported value for TokenAuthenticationType is idToken
+      * Current supported value for TokenAuthenticationType are code, idToken and bearerToken
 
 
-      * `TokenClaimsMapping` is used to extract user info from idToken claims.
+      * `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
     Its a JSON format with key should be `name`, `email` and `avatarUrl`
-    since IAM will look up for these key when extracting user info.
+    since IAM will look up for these key when extracting user info. default claims keys : userIdentity/sub, name, email and avatarUrl/picture
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]

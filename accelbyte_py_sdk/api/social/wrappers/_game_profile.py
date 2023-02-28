@@ -57,6 +57,41 @@ def get_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns profile for a user (getProfile)
+
+    Returns profile for a user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : game profile info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/profiles/{profileId}
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - GameProfileInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -77,6 +112,41 @@ async def get_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns profile for a user (getProfile)
+
+    Returns profile for a user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : game profile info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/profiles/{profileId}
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - GameProfileInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -98,6 +168,37 @@ def get_user_profiles(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns all profiles' header for a user (getUserProfiles)
+
+    Returns all profiles' header for a user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : list of profiles
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/profiles
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[GameProfileHeader] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,6 +217,37 @@ async def get_user_profiles_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns all profiles' header for a user (getUserProfiles)
+
+    Returns all profiles' header for a user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : list of profiles
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/profiles
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[GameProfileHeader] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,6 +269,43 @@ def public_create_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a new profile for user (publicCreateProfile)
+
+    Create new profile for user.
+    Other detail info:
+
+      *  Required permission
+    : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=1 (CREATE)
+      *  Returns
+    : created game profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [CREATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles
+
+        method: POST
+
+        tags: ["GameProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL GameProfileRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - (Profile has been created)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -157,6 +326,43 @@ async def public_create_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a new profile for user (publicCreateProfile)
+
+    Create new profile for user.
+    Other detail info:
+
+      *  Required permission
+    : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=1 (CREATE)
+      *  Returns
+    : created game profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [CREATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles
+
+        method: POST
+
+        tags: ["GameProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL GameProfileRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - (Profile has been created)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,6 +385,40 @@ def public_delete_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes game profile (publicDeleteProfile)
+
+    Deletes game profile.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=8 (DELETE)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [DELETE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}
+
+        method: DELETE
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Game profile has been deleted)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -199,6 +439,40 @@ async def public_delete_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes game profile (publicDeleteProfile)
+
+    Deletes game profile.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=8 (DELETE)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [DELETE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}
+
+        method: DELETE
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Game profile has been deleted)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,6 +495,41 @@ def public_get_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns profile for a user (publicGetProfile)
+
+    Returns profile for a user.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : game profile info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - GameProfileInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -241,6 +550,41 @@ async def public_get_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns profile for a user (publicGetProfile)
+
+    Returns profile for a user.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : game profile info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - GameProfileInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -264,6 +608,43 @@ def public_get_profile_attribute(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns game profile attribute (publicGetProfileAttribute)
+
+    Returns game profile attribute.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : attribute info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}/attributes/{attributeName}
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        attribute_name: (attributeName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Attribute (successful operation)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -286,6 +667,43 @@ async def public_get_profile_attribute_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns game profile attribute (publicGetProfileAttribute)
+
+    Returns game profile attribute.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : attribute info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}/attributes/{attributeName}
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        attribute_name: (attributeName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Attribute (successful operation)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -308,6 +726,40 @@ def public_get_user_game_profiles(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns all profiles for specified users (publicGetUserGameProfiles)
+
+    Returns all profiles for specified users.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:GAMEPROFILE", action=2 (READ)
+
+      *  Returns : list of profiles
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/profiles
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_ids: (userIds) REQUIRED List[str] in query
+
+    Responses:
+        200: OK - List[UserGameProfiles] (successful operation)
+
+        400: Bad Request - ErrorEntity (12021: {totalUser} users is requested. Cannot retrieve more than {limitUser} users at once)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -326,6 +778,40 @@ async def public_get_user_game_profiles_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns all profiles for specified users (publicGetUserGameProfiles)
+
+    Returns all profiles for specified users.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:GAMEPROFILE", action=2 (READ)
+
+      *  Returns : list of profiles
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/profiles
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_ids: (userIds) REQUIRED List[str] in query
+
+    Responses:
+        200: OK - List[UserGameProfiles] (successful operation)
+
+        400: Bad Request - ErrorEntity (12021: {totalUser} users is requested. Cannot retrieve more than {limitUser} users at once)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -346,6 +832,37 @@ def public_get_user_profiles(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns all profiles' header for a user (publicGetUserProfiles)
+
+    Returns all profiles' header for a user.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : list of profiles
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[GameProfileHeader] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -364,6 +881,37 @@ async def public_get_user_profiles_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns all profiles' header for a user (publicGetUserProfiles)
+
+    Returns all profiles' header for a user.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
+      *  Returns : list of profiles
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles
+
+        method: GET
+
+        tags: ["GameProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[GameProfileHeader] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -387,6 +935,47 @@ def public_update_attribute(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Updates game profile attribute (publicUpdateAttribute)
+
+    Updates game profile attribute, returns updated profile.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
+      *  Returns : updated attribute
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [UPDATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}/attributes/{attributeName}
+
+        method: PUT
+
+        tags: ["GameProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL Attribute in body
+
+        attribute_name: (attributeName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - GameProfileInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (12022: Game profile attribute name [{attrName1}] passed in request url mismatch the name [{attrName2}] in body)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -411,6 +1000,47 @@ async def public_update_attribute_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Updates game profile attribute (publicUpdateAttribute)
+
+    Updates game profile attribute, returns updated profile.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
+      *  Returns : updated attribute
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [UPDATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}/attributes/{attributeName}
+
+        method: PUT
+
+        tags: ["GameProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL Attribute in body
+
+        attribute_name: (attributeName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - GameProfileInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (12022: Game profile attribute name [{attrName1}] passed in request url mismatch the name [{attrName2}] in body)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -436,6 +1066,45 @@ def public_update_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Updates user game profile (publicUpdateProfile)
+
+    Updates user game profile, returns updated profile.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
+      *  Returns : updated game profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [UPDATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}
+
+        method: PUT
+
+        tags: ["GameProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL GameProfileRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - GameProfileInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -458,6 +1127,45 @@ async def public_update_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Updates user game profile (publicUpdateProfile)
+
+    Updates user game profile, returns updated profile.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
+      *  Returns : updated game profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [UPDATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}
+
+        method: PUT
+
+        tags: ["GameProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL GameProfileRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        profile_id: (profileId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - GameProfileInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12041: Game profile with id [{profileId}] is not found)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

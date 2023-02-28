@@ -43,6 +43,37 @@ def get_payment_callback_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment callback configuration (getPaymentCallbackConfig)
+
+    Get payment callback configuration.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : Payment callback config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/config/callback
+
+        method: GET
+
+        tags: ["PaymentCallbackConfig"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentCallbackConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33243: Payment callback config for [{namespace}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -59,6 +90,37 @@ async def get_payment_callback_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment callback configuration (getPaymentCallbackConfig)
+
+    Get payment callback configuration.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=2 (READ)
+      *  Returns : Payment callback config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/config/callback
+
+        method: GET
+
+        tags: ["PaymentCallbackConfig"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentCallbackConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33243: Payment callback config for [{namespace}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,6 +140,37 @@ def update_payment_callback_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update payment callback configuration (updatePaymentCallbackConfig)
+
+    Update payment callback configuration.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : Payment callback config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/config/callback
+
+        method: PUT
+
+        tags: ["PaymentCallbackConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentCallbackConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentCallbackConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -96,6 +189,37 @@ async def update_payment_callback_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update payment callback configuration (updatePaymentCallbackConfig)
+
+    Update payment callback configuration.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : Payment callback config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/config/callback
+
+        method: PUT
+
+        tags: ["PaymentCallbackConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentCallbackConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentCallbackConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

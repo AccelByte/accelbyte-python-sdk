@@ -82,6 +82,45 @@ def charge_payment_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Charge payment order without payment flow (chargePaymentOrder)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
+      *  Returns : payment order instance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}
+
+        method: PUT
+
+        tags: ["Payment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentOrderChargeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (33322: Payment provider [{paymentProvider}] not supported)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,6 +141,45 @@ async def charge_payment_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Charge payment order without payment flow (chargePaymentOrder)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
+      *  Returns : payment order instance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}
+
+        method: PUT
+
+        tags: ["Payment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentOrderChargeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (33322: Payment provider [{paymentProvider}] not supported)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,6 +202,50 @@ def create_user_payment_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create payment order (createUserPaymentOrder)
+
+    [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)
+      * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
+      *  Returns : created order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders
+
+        method: POST
+
+        tags: ["Payment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentOrderCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - PaymentOrderInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (33121: Recurring payment failed with code: [{errorCode}] and message: [{errorMessage}] by provider: [{provider}] | 33122: Subscription not match when create payment order)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 33141: Payment Order [{paymentOrderNo}] does not exist | 33145: Recurring token not found | 20008: user [{userId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,6 +266,50 @@ async def create_user_payment_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create payment order (createUserPaymentOrder)
+
+    [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)
+      * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
+      *  Returns : created order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders
+
+        method: POST
+
+        tags: ["Payment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentOrderCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - PaymentOrderInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (33121: Recurring payment failed with code: [{errorCode}] and message: [{errorMessage}] by provider: [{provider}] | 33122: Subscription not match when create payment order)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 33141: Payment Order [{paymentOrderNo}] does not exist | 33145: Recurring token not found | 20008: user [{userId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -165,6 +331,39 @@ def get_payment_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment order (getPaymentOrder)
+
+    Get payment order by paymentOrderNo.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : payment order instance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}
+
+        method: GET
+
+        tags: ["Payment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -183,6 +382,39 @@ async def get_payment_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment order (getPaymentOrder)
+
+    Get payment order by paymentOrderNo.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : payment order instance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}
+
+        method: GET
+
+        tags: ["Payment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -203,6 +435,39 @@ def get_payment_order_charge_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment order charge status (getPaymentOrderChargeStatus)
+
+    Get payment order charge status.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : payment order charge status
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status
+
+        method: GET
+
+        tags: ["Payment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderChargeStatus (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,6 +486,39 @@ async def get_payment_order_charge_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment order charge status (getPaymentOrderChargeStatus)
+
+    Get payment order charge status.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : payment order charge status
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status
+
+        method: GET
+
+        tags: ["Payment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderChargeStatus (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -241,6 +539,37 @@ def list_ext_order_no_by_ext_tx_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List external order No by external transaction id (listExtOrderNoByExtTxId)
+
+    List external order No by external transaction id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : payment orders
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders/byExtTxId
+
+        method: GET
+
+        tags: ["Payment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ext_tx_id: (extTxId) REQUIRED str in query
+
+    Responses:
+        200: OK - List[str] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -259,6 +588,37 @@ async def list_ext_order_no_by_ext_tx_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List external order No by external transaction id (listExtOrderNoByExtTxId)
+
+    List external order No by external transaction id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : payment orders
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders/byExtTxId
+
+        method: GET
+
+        tags: ["Payment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ext_tx_id: (extTxId) REQUIRED str in query
+
+    Responses:
+        200: OK - List[str] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -289,6 +649,53 @@ def query_payment_notifications(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query payment notifications (queryPaymentNotifications)
+
+    Query payment notifications.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION", action=2 (READ)
+      *  Returns : Payment notifications
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/notifications
+
+        method: GET
+
+        tags: ["Payment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        external_id: (externalId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        notification_source: (notificationSource) OPTIONAL Union[str, NotificationSourceEnum] in query
+
+        notification_type: (notificationType) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        payment_order_no: (paymentOrderNo) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+    Responses:
+        200: OK - PaymentNotificationPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -325,6 +732,53 @@ async def query_payment_notifications_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query payment notifications (queryPaymentNotifications)
+
+    Query payment notifications.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION", action=2 (READ)
+      *  Returns : Payment notifications
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/notifications
+
+        method: GET
+
+        tags: ["Payment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        external_id: (externalId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        notification_source: (notificationSource) OPTIONAL Union[str, NotificationSourceEnum] in query
+
+        notification_type: (notificationType) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        payment_order_no: (paymentOrderNo) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+    Responses:
+        200: OK - PaymentNotificationPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -357,6 +811,45 @@ def query_payment_orders(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query payment orders (queryPaymentOrders)
+
+    Query payment orders.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : query payment orders
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders
+
+        method: GET
+
+        tags: ["Payment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        channel: (channel) OPTIONAL Union[str, ChannelEnum] in query
+
+        ext_tx_id: (extTxId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+    Responses:
+        200: OK - PaymentOrderPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -383,6 +876,45 @@ async def query_payment_orders_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query payment orders (queryPaymentOrders)
+
+    Query payment orders.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
+      *  Returns : query payment orders
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders
+
+        method: GET
+
+        tags: ["Payment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        channel: (channel) OPTIONAL Union[str, ChannelEnum] in query
+
+        ext_tx_id: (extTxId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+    Responses:
+        200: OK - PaymentOrderPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -409,6 +941,46 @@ def refund_user_payment_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Refund payment order (refundUserPaymentOrder)
+
+    [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund
+
+        method: PUT
+
+        tags: ["Payment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentOrderRefund in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (33172: Payment order [{paymentOrderNo}] is not refundable)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -431,6 +1003,46 @@ async def refund_user_payment_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Refund payment order (refundUserPaymentOrder)
+
+    [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund
+
+        method: PUT
+
+        tags: ["Payment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentOrderRefund in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (33172: Payment order [{paymentOrderNo}] is not refundable)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -454,6 +1066,43 @@ def simulate_payment_order_notification(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Simulate payment notification (simulatePaymentOrderNotification)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
+      *  Returns : notification process result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/simulate-notification
+
+        method: PUT
+
+        tags: ["Payment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentOrderNotifySimulation in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - NotificationProcessResult (successful operation)
+
+        400: Bad Request - ErrorEntity (33322: Payment provider [{paymentProvider}] not supported)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -474,6 +1123,43 @@ async def simulate_payment_order_notification_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Simulate payment notification (simulatePaymentOrderNotification)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
+      *  Returns : notification process result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/simulate-notification
+
+        method: PUT
+
+        tags: ["Payment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentOrderNotifySimulation in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - NotificationProcessResult (successful operation)
+
+        400: Bad Request - ErrorEntity (33322: Payment provider [{paymentProvider}] not supported)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

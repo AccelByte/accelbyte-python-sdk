@@ -59,6 +59,47 @@ def add_country_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add a country group (addCountryGroup)
+
+    Add a country groups
+    Country code must follow ISO3166-1 alpha-2.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=1 (CREATE)
+      *  Action code : 11201
+      *  Returns : newly created country group
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [CREATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
+
+        method: POST
+
+        tags: ["Misc"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL AddCountryGroupRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - AddCountryGroupResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: Unable to {action}: A country can't be assigned to more than one country group)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        409: Conflict - ErrorEntity (11235: Unable to {action}: Country group with specified code is already exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -77,6 +118,47 @@ async def add_country_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add a country group (addCountryGroup)
+
+    Add a country groups
+    Country code must follow ISO3166-1 alpha-2.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=1 (CREATE)
+      *  Action code : 11201
+      *  Returns : newly created country group
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [CREATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
+
+        method: POST
+
+        tags: ["Misc"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL AddCountryGroupRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - AddCountryGroupResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: Unable to {action}: A country can't be assigned to more than one country group)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        409: Conflict - ErrorEntity (11235: Unable to {action}: Country group with specified code is already exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -97,6 +179,44 @@ def delete_country_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a country group (deleteCountryGroup)
+
+    Delete a country groups by its country group code. This endpoint usually used for testing purpose to cleanup test data.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [DELETE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
+
+        method: DELETE
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        country_group_code: (countryGroupCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,6 +235,44 @@ async def delete_country_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a country group (deleteCountryGroup)
+
+    Delete a country groups by its country group code. This endpoint usually used for testing purpose to cleanup test data.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [DELETE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
+
+        method: DELETE
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        country_group_code: (countryGroupCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,6 +293,39 @@ def get_countries(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List countries (getCountries)
+
+    List countries.
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11204
+      *  Returns : country code list
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/countries
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        lang: (lang) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CountryObject] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -153,6 +344,39 @@ async def get_countries_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List countries (getCountries)
+
+    List countries.
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11204
+      *  Returns : country code list
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/countries
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        lang: (lang) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CountryObject] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,6 +397,46 @@ def get_country_groups(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List country groups (getCountryGroups)
+
+    List country groups. Will return all available country groups if the query param is not specified
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=2 (READ)
+      *  Action code : 11203
+      *  Returns : list of country groups
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        group_code: (groupCode) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[RetrieveCountryGroupResponse] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,6 +455,46 @@ async def get_country_groups_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List country groups (getCountryGroups)
+
+    List country groups. Will return all available country groups if the query param is not specified
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=2 (READ)
+      *  Action code : 11203
+      *  Returns : list of country groups
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        group_code: (groupCode) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[RetrieveCountryGroupResponse] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -210,6 +514,37 @@ def get_languages(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List languages. (getLanguages)
+
+    List languages.
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11206
+      *  Returns : language list
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/languages
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,6 +561,37 @@ async def get_languages_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List languages. (getLanguages)
+
+    List languages.
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11206
+      *  Returns : language list
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/languages
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -244,6 +610,37 @@ def get_time_zones(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List time zones (getTimeZones)
+
+    List time zones.
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11205
+      *  Returns : time zones
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/timezones
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[str] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -260,6 +657,37 @@ async def get_time_zones_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List time zones (getTimeZones)
+
+    List time zones.
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11205
+      *  Returns : time zones
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/timezones
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[str] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -279,6 +707,35 @@ def public_get_countries(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List countries (publicGetCountries)
+
+    List countries.
+    Other detail info:
+
+      * Returns : country code list
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/misc/countries
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        lang: (lang) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CountryObject] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -297,6 +754,35 @@ async def public_get_countries_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List countries (publicGetCountries)
+
+    List countries.
+    Other detail info:
+
+      * Returns : country code list
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/misc/countries
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        lang: (lang) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CountryObject] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -316,6 +802,33 @@ def public_get_languages(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List languages. (publicGetLanguages)
+
+    List languages.
+    Other detail info:
+
+      * Returns : language list
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/misc/languages
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -332,6 +845,33 @@ async def public_get_languages_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List languages. (publicGetLanguages)
+
+    List languages.
+    Other detail info:
+
+      * Returns : language list
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/misc/languages
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -346,6 +886,26 @@ async def public_get_languages_async(
 
 @same_doc_as(PublicGetTime)
 def public_get_time(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """Get server time (publicGetTime)
+
+    Get server time
+
+    Properties:
+        url: /basic/v1/public/misc/time
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - RetrieveTimeResponse (Success retrieve server time)
+    """
     request = PublicGetTime.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -354,6 +914,26 @@ def public_get_time(x_additional_headers: Optional[Dict[str, str]] = None, **kwa
 async def public_get_time_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get server time (publicGetTime)
+
+    Get server time
+
+    Properties:
+        url: /basic/v1/public/misc/time
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - RetrieveTimeResponse (Success retrieve server time)
+    """
     request = PublicGetTime.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -366,6 +946,33 @@ def public_get_time_zones(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List time zones (publicGetTimeZones)
+
+    List time zones.
+    Other detail info:
+
+      * Returns : time zones
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/misc/timezones
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[str] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -382,6 +989,33 @@ async def public_get_time_zones_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List time zones (publicGetTimeZones)
+
+    List time zones.
+    Other detail info:
+
+      * Returns : time zones
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/misc/timezones
+
+        method: GET
+
+        tags: ["Misc"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[str] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -402,6 +1036,51 @@ def update_country_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a country group (updateCountryGroup)
+
+    Update a country groups. The countryGroupCode must be exist beforehand.
+    Valid update behaviour :
+    - To update countryGroupName only, do not include countries key or just specify it with empty array.
+    - To update countries only, do not include countryGroupName key or just specify it with blank value.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=4 (UPDATE)
+      *  Action code : 11202
+      *  Returns : updated country group
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
+
+        method: PUT
+
+        tags: ["Misc"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdateCountryGroupRequest in body
+
+        country_group_code: (countryGroupCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CountryGroupObject (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: Unable to {action}: A country can't be assigned to more than one country group)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -422,6 +1101,51 @@ async def update_country_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a country group (updateCountryGroup)
+
+    Update a country groups. The countryGroupCode must be exist beforehand.
+    Valid update behaviour :
+    - To update countryGroupName only, do not include countries key or just specify it with empty array.
+    - To update countries only, do not include countryGroupName key or just specify it with blank value.
+    Other detail info:
+
+      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=4 (UPDATE)
+      *  Action code : 11202
+      *  Returns : updated country group
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
+
+        method: PUT
+
+        tags: ["Misc"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdateCountryGroupRequest in body
+
+        country_group_code: (countryGroupCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CountryGroupObject (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11234: Unable to {action}: A country can't be assigned to more than one country group)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11233: Unable to {action}: Country group with code [{countryGroupCode}] is not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

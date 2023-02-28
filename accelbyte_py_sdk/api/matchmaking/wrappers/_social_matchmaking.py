@@ -44,6 +44,52 @@ def update_play_time_weight(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update player -- playtime connection weight (UpdatePlayTimeWeight)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
+
+    Required Scope: social
+
+    Update a connection weight between player and playtime.
+
+    This endpoint is intended to be called by admin for debugging purpose on social matchmaking rule.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/social/playtime/namespaces/{namespace}/weight
+
+        method: PATCH
+
+        tags: ["Social Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdatePlayTimeWeightRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdatePlayerPlaytimeWeightResponse (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510301: user playtime not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,6 +108,52 @@ async def update_play_time_weight_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update player -- playtime connection weight (UpdatePlayTimeWeight)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
+
+    Required Scope: social
+
+    Update a connection weight between player and playtime.
+
+    This endpoint is intended to be called by admin for debugging purpose on social matchmaking rule.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/social/playtime/namespaces/{namespace}/weight
+
+        method: PATCH
+
+        tags: ["Social Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdatePlayTimeWeightRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdatePlayerPlaytimeWeightResponse (Operation succeeded)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510301: user playtime not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

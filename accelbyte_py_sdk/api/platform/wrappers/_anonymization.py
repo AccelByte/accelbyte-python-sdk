@@ -48,6 +48,36 @@ def anonymize_campaign(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Anonymize campaign (anonymizeCampaign)
+
+    Anonymize campaign. At current it will only anonymize redeem history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/campaign
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,6 +96,36 @@ async def anonymize_campaign_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Anonymize campaign (anonymizeCampaign)
+
+    Anonymize campaign. At current it will only anonymize redeem history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/campaign
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -86,6 +146,36 @@ def anonymize_entitlement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize entitlement (anonymizeEntitlement)
+
+    Anonymize entitlement. At current it will only anonymize entitlement, entitlement history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/entitlements
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,6 +194,36 @@ async def anonymize_entitlement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize entitlement (anonymizeEntitlement)
+
+    Anonymize entitlement. At current it will only anonymize entitlement, entitlement history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/entitlements
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,6 +244,36 @@ def anonymize_fulfillment(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize fulfillment (anonymizeFulfillment)
+
+    Anonymize fulfillment. At current it will only anonymize fulfillment history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/fulfillment
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,6 +292,36 @@ async def anonymize_fulfillment_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize fulfillment (anonymizeFulfillment)
+
+    Anonymize fulfillment. At current it will only anonymize fulfillment history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/fulfillment
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -162,6 +342,36 @@ def anonymize_integration(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize integrations (anonymizeIntegration)
+
+    Anonymize integrations. At current it will only anonymize iap histories.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/integrations
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -180,6 +390,36 @@ async def anonymize_integration_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize integrations (anonymizeIntegration)
+
+    Anonymize integrations. At current it will only anonymize iap histories.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/integrations
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -200,6 +440,36 @@ def anonymize_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize order (anonymizeOrder)
+
+    Anonymize order. At current it will only anonymize order, order history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/orders
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -218,6 +488,36 @@ async def anonymize_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize order (anonymizeOrder)
+
+    Anonymize order. At current it will only anonymize order, order history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/orders
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -238,6 +538,36 @@ def anonymize_payment(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize payment (anonymizePayment)
+
+    Anonymize payment. At current it will only anonymize payment order, payment order history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/payment
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -256,6 +586,36 @@ async def anonymize_payment_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize payment (anonymizePayment)
+
+    Anonymize payment. At current it will only anonymize payment order, payment order history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/payment
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -276,6 +636,33 @@ def anonymize_revocation(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize revocation (anonymizeRevocation)
+
+    Anonymize revocation. At current it will only anonymize revocation history.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION, action=8 (DELETE)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/revocation
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -294,6 +681,33 @@ async def anonymize_revocation_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize revocation (anonymizeRevocation)
+
+    Anonymize revocation. At current it will only anonymize revocation history.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION, action=8 (DELETE)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/revocation
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -314,6 +728,36 @@ def anonymize_subscription(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize subscription (anonymizeSubscription)
+
+    Anonymize subscription. At current it will anonymize subscription, billing history and subscription activity.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/subscriptions
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -332,6 +776,36 @@ async def anonymize_subscription_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize subscription (anonymizeSubscription)
+
+    Anonymize subscription. At current it will anonymize subscription, billing history and subscription activity.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/subscriptions
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -352,6 +826,36 @@ def anonymize_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize wallet (anonymizeWallet)
+
+    Anonymize wallet. At current it will only anonymize wallet, wallet transaction.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/wallets
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -370,6 +874,36 @@ async def anonymize_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize wallet (anonymizeWallet)
+
+    Anonymize wallet. At current it will only anonymize wallet, wallet transaction.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/wallets
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

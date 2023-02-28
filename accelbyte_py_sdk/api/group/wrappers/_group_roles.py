@@ -60,6 +60,73 @@ def create_member_role_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new member role (createMemberRoleAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
+
+
+
+
+    This endpoint is used to create new member role
+
+
+
+
+    Action Code: 73202
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 1
+
+
+
+
+    "resourceName": "GROUP:ROLE"
+
+
+
+
+    The changes will give user with that role have a permission to create a role for new group member
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles
+
+        method: POST
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateMemberRoleRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsMemberRoleResponseV1 (Created)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,6 +145,73 @@ async def create_member_role_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new member role (createMemberRoleAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
+
+
+
+
+    This endpoint is used to create new member role
+
+
+
+
+    Action Code: 73202
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 1
+
+
+
+
+    "resourceName": "GROUP:ROLE"
+
+
+
+
+    The changes will give user with that role have a permission to create a role for new group member
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles
+
+        method: POST
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateMemberRoleRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsMemberRoleResponseV1 (Created)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -98,6 +232,53 @@ def delete_member_role_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete member role (deleteMemberRoleAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
+
+
+
+
+    This endpoint is used to delete member role. Any member role can't be deleted if the specific role is applied to the configuration (admin and member role)
+
+
+
+
+    Action Code: 73207
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
+
+        method: DELETE
+
+        tags: ["Group Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,6 +297,53 @@ async def delete_member_role_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete member role (deleteMemberRoleAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
+
+
+
+
+    This endpoint is used to delete member role. Any member role can't be deleted if the specific role is applied to the configuration (admin and member role)
+
+
+
+
+    Action Code: 73207
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
+
+        method: DELETE
+
+        tags: ["Group Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,6 +365,54 @@ def delete_member_role_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove role from group member (deleteMemberRolePublicV1)
+
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]"
+
+
+
+
+    This endpoint is used to remove role from group member
+
+
+
+
+    Action Code: 73204
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/roles/{memberRoleId}/members
+
+        method: DELETE
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsRemoveRoleFromMemberRequestV1 in body
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        422: Unprocessable Entity - ResponseErrorResponse (73444: member must have role)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -157,6 +433,54 @@ async def delete_member_role_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove role from group member (deleteMemberRolePublicV1)
+
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]"
+
+
+
+
+    This endpoint is used to remove role from group member
+
+
+
+
+    Action Code: 73204
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/roles/{memberRoleId}/members
+
+        method: DELETE
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsRemoveRoleFromMemberRequestV1 in body
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        422: Unprocessable Entity - ResponseErrorResponse (73444: member must have role)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -180,6 +504,56 @@ def delete_member_role_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove role from group member (deleteMemberRolePublicV2)
+
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]"
+
+
+
+
+    This endpoint is used to remove role from group member
+
+
+
+
+    Action Code: 73204
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/roles/{memberRoleId}/groups/{groupId}/members
+
+        method: DELETE
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsRemoveRoleFromMemberRequestV1 in body
+
+        group_id: (groupId) REQUIRED str in path
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        422: Unprocessable Entity - ResponseErrorResponse (73444: member must have role)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -202,6 +576,56 @@ async def delete_member_role_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove role from group member (deleteMemberRolePublicV2)
+
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]"
+
+
+
+
+    This endpoint is used to remove role from group member
+
+
+
+
+    Action Code: 73204
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/roles/{memberRoleId}/groups/{groupId}/members
+
+        method: DELETE
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsRemoveRoleFromMemberRequestV1 in body
+
+        group_id: (groupId) REQUIRED str in path
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        422: Unprocessable Entity - ResponseErrorResponse (73444: member must have role)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -225,6 +649,53 @@ def get_member_roles_list_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get all list of member roles (getMemberRolesListAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
+
+
+
+    This endpoint is used to get list of member roles
+
+
+
+
+    Action Code: 73201
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles
+
+        method: GET
+
+        tags: ["Group Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRolesListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -245,6 +716,53 @@ async def get_member_roles_list_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get all list of member roles (getMemberRolesListAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
+
+
+
+    This endpoint is used to get list of member roles
+
+
+
+
+    Action Code: 73201
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles
+
+        method: GET
+
+        tags: ["Group Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRolesListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -267,6 +785,50 @@ def get_member_roles_list_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get all list of member roles (getMemberRolesListPublicV1)
+
+    Required Member Role Permission: "GROUP:ROLE [READ]"
+
+
+
+
+    This endpoint is used to get list of member roles
+
+
+
+
+    Action Code: 73201
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/roles
+
+        method: GET
+
+        tags: ["Group Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRolesListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -287,6 +849,50 @@ async def get_member_roles_list_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get all list of member roles (getMemberRolesListPublicV1)
+
+    Required Member Role Permission: "GROUP:ROLE [READ]"
+
+
+
+
+    This endpoint is used to get list of member roles
+
+
+
+
+    Action Code: 73201
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/roles
+
+        method: GET
+
+        tags: ["Group Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRolesListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -309,6 +915,45 @@ def get_member_roles_list_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get all list of member roles (getMemberRolesListPublicV2)
+
+    This endpoint is used to get list of member roles
+
+
+
+
+    Action Code: 73201
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/roles
+
+        method: GET
+
+        tags: ["Group Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRolesListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -329,6 +974,45 @@ async def get_member_roles_list_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get all list of member roles (getMemberRolesListPublicV2)
+
+    This endpoint is used to get list of member roles
+
+
+
+
+    Action Code: 73201
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/roles
+
+        method: GET
+
+        tags: ["Group Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRolesListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -350,6 +1034,53 @@ def get_single_member_role_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get member role (getSingleMemberRoleAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
+
+
+
+    This endpoint is used to get member role based on the role ID
+
+
+
+
+    Action Code: 73203
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
+
+        method: GET
+
+        tags: ["Group Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRoleResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -368,6 +1099,53 @@ async def get_single_member_role_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get member role (getSingleMemberRoleAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
+
+
+
+    This endpoint is used to get member role based on the role ID
+
+
+
+
+    Action Code: 73203
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
+
+        method: GET
+
+        tags: ["Group Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRoleResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -389,6 +1167,55 @@ def update_member_role_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update member role (updateMemberRoleAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
+
+
+
+    This endpoint is used to update member role
+
+
+
+
+    Action Code: 73204
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
+
+        method: PATCH
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateMemberRoleRequestV1 in body
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRoleResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -409,6 +1236,55 @@ async def update_member_role_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update member role (updateMemberRoleAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
+
+
+
+    This endpoint is used to update member role
+
+
+
+
+    Action Code: 73204
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
+
+        method: PATCH
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateMemberRoleRequestV1 in body
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRoleResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -431,6 +1307,77 @@ def update_member_role_permission_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update member role permission (updateMemberRolePermissionAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
+
+
+
+    This endpoint is used to update member role permission. It will replace the existing permission based on the request from this endpoint
+
+
+
+
+    Action Code: 73205
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 2
+
+
+
+
+    "resourceName": "GROUP:ROLE"
+
+
+
+
+    The changes will update user role to be able to read a role of other member
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}/permissions
+
+        method: PUT
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateMemberRolePermissionsRequestV1 in body
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRoleResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -451,6 +1398,77 @@ async def update_member_role_permission_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update member role permission (updateMemberRolePermissionAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
+
+
+
+    This endpoint is used to update member role permission. It will replace the existing permission based on the request from this endpoint
+
+
+
+
+    Action Code: 73205
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 2
+
+
+
+
+    "resourceName": "GROUP:ROLE"
+
+
+
+
+    The changes will update user role to be able to read a role of other member
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}/permissions
+
+        method: PUT
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateMemberRolePermissionsRequestV1 in body
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRoleResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -473,6 +1491,52 @@ def update_member_role_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Assign role to group member (updateMemberRolePublicV1)
+
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]
+
+
+
+
+    This endpoint is used to assign role to group member
+
+
+
+
+    Action Code: 73204
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/roles/{memberRoleId}/members
+
+        method: POST
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAssignRoleToMemberRequestV1 in body
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -493,6 +1557,52 @@ async def update_member_role_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Assign role to group member (updateMemberRolePublicV1)
+
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]
+
+
+
+
+    This endpoint is used to assign role to group member
+
+
+
+
+    Action Code: 73204
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/roles/{memberRoleId}/members
+
+        method: POST
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAssignRoleToMemberRequestV1 in body
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -516,6 +1626,54 @@ def update_member_role_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Assign role to group member (updateMemberRolePublicV2)
+
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]
+
+
+
+
+    This endpoint is used to assign role to group member
+
+
+
+
+    Action Code: 73204
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/roles/{memberRoleId}/groups/{groupId}/members
+
+        method: POST
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAssignRoleToMemberRequestV1 in body
+
+        group_id: (groupId) REQUIRED str in path
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -538,6 +1696,54 @@ async def update_member_role_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Assign role to group member (updateMemberRolePublicV2)
+
+    Required Member Role Permission: "GROUP:ROLE [UPDATE]
+
+
+
+
+    This endpoint is used to assign role to group member
+
+
+
+
+    Action Code: 73204
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/roles/{memberRoleId}/groups/{groupId}/members
+
+        method: POST
+
+        tags: ["Group Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAssignRoleToMemberRequestV1 in body
+
+        group_id: (groupId) REQUIRED str in path
+
+        member_role_id: (memberRoleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (73232: member role not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

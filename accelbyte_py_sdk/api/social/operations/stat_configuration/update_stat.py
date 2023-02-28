@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Social Service (1.33.0)
+# AccelByte Cloud Social Service (2.0.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -68,7 +68,7 @@ class UpdateStat(Operation):
     Responses:
         200: OK - StatInfo (successful update of stat)
 
-        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
     """
 
     # region fields
@@ -191,7 +191,7 @@ class UpdateStat(Operation):
 
         200: OK - StatInfo (successful update of stat)
 
-        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
 
         ---: HttpResponse (Undocumented Response)
 

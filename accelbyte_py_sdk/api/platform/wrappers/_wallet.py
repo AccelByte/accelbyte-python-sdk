@@ -87,6 +87,46 @@ def check_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check wallet by balance origin and currency code (checkWallet)
+
+    [SERVICE COMMUNICATION ONLY] Check wallet by balance origin and currency code whether it's inactive.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/check
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        origin: (origin) REQUIRED Union[str, OriginEnum] in query
+
+    Responses:
+        204: No Content - (check successfully)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,6 +150,46 @@ async def check_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check wallet by balance origin and currency code (checkWallet)
+
+    [SERVICE COMMUNICATION ONLY] Check wallet by balance origin and currency code whether it's inactive.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/check
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        origin: (origin) REQUIRED Union[str, OriginEnum] in query
+
+    Responses:
+        204: No Content - (check successfully)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,6 +214,44 @@ def credit_user_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Credit a user wallet by currency code and balance origin (creditUserWallet)
+
+    Credit a user wallet by currency code and balance origin, if wallet not exists, it will create a new wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/credit
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreditRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -156,6 +274,44 @@ async def credit_user_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Credit a user wallet by currency code and balance origin (creditUserWallet)
+
+    Credit a user wallet by currency code and balance origin, if wallet not exists, it will create a new wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/credit
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreditRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -181,6 +337,48 @@ def debit_user_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Debit a user wallet (debitUserWallet)
+
+    Debit a user wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/debit
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL DebitRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -204,6 +402,48 @@ async def debit_user_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Debit a user wallet (debitUserWallet)
+
+    Debit a user wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/debit
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL DebitRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -228,6 +468,46 @@ def debit_user_wallet_by_currency_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Debit a user wallet by currency code (debitUserWalletByCurrencyCode)
+
+    Debit a user wallet by currency code, default is debit system wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/currencies/{currencyCode}/debit
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL DebitByCurrencyCodeRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (35124: Wallet [{currencyCode}] has insufficient balance)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,6 +530,46 @@ async def debit_user_wallet_by_currency_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Debit a user wallet by currency code (debitUserWalletByCurrencyCode)
+
+    Debit a user wallet by currency code, default is debit system wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/currencies/{currencyCode}/debit
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL DebitByCurrencyCodeRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (35124: Wallet [{currencyCode}] has insufficient balance)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -274,6 +594,42 @@ def disable_user_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable a user wallet (disableUserWallet)
+
+    disable a user wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/disable
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -295,6 +651,42 @@ async def disable_user_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable a user wallet (disableUserWallet)
+
+    disable a user wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/disable
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -318,6 +710,42 @@ def enable_user_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable a user wallet (enableUserWallet)
+
+    enable a user wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/enable
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -339,6 +767,42 @@ async def enable_user_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable a user wallet (enableUserWallet)
+
+    enable a user wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/enable
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -360,6 +824,37 @@ def get_platform_wallet_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get platform wallet config list (getPlatformWalletConfig)
+
+    Get platform wallet config list.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG", action=2 (READ)
+      *  Returns : wallet info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) REQUIRED Union[str, PlatformEnum] in path
+
+    Responses:
+        200: OK - PlatformWalletConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -378,6 +873,37 @@ async def get_platform_wallet_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get platform wallet config list (getPlatformWalletConfig)
+
+    Get platform wallet config list.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG", action=2 (READ)
+      *  Returns : wallet info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) REQUIRED Union[str, PlatformEnum] in path
+
+    Responses:
+        200: OK - PlatformWalletConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -400,6 +926,41 @@ def get_user_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a user wallet (getUserWallet)
+
+    get a user wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletInfo (successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -421,6 +982,41 @@ async def get_user_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a user wallet (getUserWallet)
+
+    get a user wallet.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletInfo (successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -443,6 +1039,39 @@ def get_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a wallet by wallet id (getWallet)
+
+    get a wallet by wallet id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallets/{walletId}
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletInfo (successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -462,6 +1091,39 @@ async def get_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a wallet by wallet id (getWallet)
+
+    get a wallet by wallet id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallets/{walletId}
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletInfo (successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -485,6 +1147,45 @@ def list_user_currency_transactions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List user currency transactions (listUserCurrencyTransactions)
+
+    List user currency transactions ordered by create time desc.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : currency transaction info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/currencies/{currencyCode}/transactions
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - WalletTransactionPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -509,6 +1210,45 @@ async def list_user_currency_transactions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List user currency transactions (listUserCurrencyTransactions)
+
+    List user currency transactions ordered by create time desc.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : currency transaction info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/currencies/{currencyCode}/transactions
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - WalletTransactionPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -536,6 +1276,45 @@ def list_user_wallet_transactions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List user wallet transactions (listUserWalletTransactions)
+
+    List user wallet transactions ordered by create time desc.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : wallet transaction info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/transactions
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - DetailedWalletTransactionPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -561,6 +1340,45 @@ async def list_user_wallet_transactions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List user wallet transactions (listUserWalletTransactions)
+
+    List user wallet transactions ordered by create time desc.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : wallet transaction info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/transactions
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        wallet_id: (walletId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - DetailedWalletTransactionPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -586,6 +1404,44 @@ def pay_with_user_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Pay with user wallet by currency code and client platform (payWithUserWallet)
+
+    Pay with user wallet by currency code and client platform.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/payment
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformWallet (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -608,6 +1464,44 @@ async def pay_with_user_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Pay with user wallet by currency code and client platform (payWithUserWallet)
+
+    Pay with user wallet by currency code and client platform.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/payment
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformWallet (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -630,6 +1524,40 @@ def public_get_my_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my wallet by currency code and namespace (publicGetMyWallet)
+
+    get my wallet by currency code and namespace.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher user wallet
+        * can be filled with game namespace in order to get game user wallet
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:WALLET [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/wallets/{currencyCode}
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformWallet (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -648,6 +1576,40 @@ async def public_get_my_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my wallet by currency code and namespace (publicGetMyWallet)
+
+    get my wallet by currency code and namespace.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher user wallet
+        * can be filled with game namespace in order to get game user wallet
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:WALLET [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/wallets/{currencyCode}
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformWallet (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -669,6 +1631,39 @@ def public_get_wallet(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a wallet by currency code (publicGetWallet)
+
+    get a wallet by currency code.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformWallet (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -689,6 +1684,39 @@ async def public_get_wallet_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a wallet by currency code (publicGetWallet)
+
+    get a wallet by currency code.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : wallet info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformWallet (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -713,6 +1741,43 @@ def public_list_user_wallet_transactions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List wallet transactions by currency code (publicListUserWalletTransactions)
+
+    List wallet transactions by currency code ordered by create time desc.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : currency transaction info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/transactions
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - WalletTransactionPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -737,6 +1802,43 @@ async def public_list_user_wallet_transactions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List wallet transactions by currency code (publicListUserWalletTransactions)
+
+    List wallet transactions by currency code ordered by create time desc.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : currency transaction info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/transactions
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - WalletTransactionPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -760,6 +1862,37 @@ def query_user_currency_wallets(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user currency wallet summary (queryUserCurrencyWallets)
+
+    Get user currency wallet summary.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : currency wallet summary
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/currencies/summary
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[CurrencyWallet] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -778,6 +1911,37 @@ async def query_user_currency_wallets_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user currency wallet summary (queryUserCurrencyWallets)
+
+    Get user currency wallet summary.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : currency wallet summary
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/currencies/summary
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[CurrencyWallet] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -803,6 +1967,45 @@ def query_wallets(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query wallets (queryWallets)
+
+    Query wallets.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2 (READ)
+      *  Returns : paginated wallets info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallets
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        currency_code: (currencyCode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - WalletPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -830,6 +2033,45 @@ async def query_wallets_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query wallets (queryWallets)
+
+    Query wallets.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2 (READ)
+      *  Returns : paginated wallets info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallets
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        currency_code: (currencyCode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - WalletPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -854,6 +2096,37 @@ def reset_platform_wallet_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset platform wallet config (resetPlatformWalletConfig)
+
+    Reset platform wallet config to default config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG", action=4 (UPDATE)
+      *  Returns : platform wallet config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config/reset
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) REQUIRED Union[str, PlatformEnum] in path
+
+    Responses:
+        200: OK - PlatformWalletConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -872,6 +2145,37 @@ async def reset_platform_wallet_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset platform wallet config (resetPlatformWalletConfig)
+
+    Reset platform wallet config to default config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG", action=4 (UPDATE)
+      *  Returns : platform wallet config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config/reset
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) REQUIRED Union[str, PlatformEnum] in path
+
+    Responses:
+        200: OK - PlatformWalletConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -893,6 +2197,39 @@ def update_platform_wallet_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update platform wallet config (updatePlatformWalletConfig)
+
+    Update platform wallet config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG", action=4 (UPDATE)
+      *  Returns : platform wallet config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PlatformWalletConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) REQUIRED Union[str, PlatformEnum] in path
+
+    Responses:
+        200: OK - PlatformWalletConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -913,6 +2250,39 @@ async def update_platform_wallet_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update platform wallet config (updatePlatformWalletConfig)
+
+    Update platform wallet config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG", action=4 (UPDATE)
+      *  Returns : platform wallet config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PlatformWalletConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) REQUIRED Union[str, PlatformEnum] in path
+
+    Responses:
+        200: OK - PlatformWalletConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

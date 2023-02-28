@@ -44,6 +44,31 @@ def delete_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete equ8 config (deleteConfig)
+
+    Delete equ8 config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=8 (DELETE)
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/equ8/config
+
+        method: DELETE
+
+        tags: ["EQU8Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete equ8 config successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -60,6 +85,31 @@ async def delete_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete equ8 config (deleteConfig)
+
+    Delete equ8 config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=8 (DELETE)
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/equ8/config
+
+        method: DELETE
+
+        tags: ["EQU8Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete equ8 config successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,6 +128,35 @@ def get_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get equ8 config (getConfig)
+
+    Get equ8 config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=2 (READ)
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/equ8/config
+
+        method: GET
+
+        tags: ["EQU8Config"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Equ8Config (successful operation)
+
+        404: Not Found - ErrorEntity (11641: Equ8 config not found in namespace [{namespace}])
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -94,6 +173,35 @@ async def get_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get equ8 config (getConfig)
+
+    Get equ8 config.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=2 (READ)
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/equ8/config
+
+        method: GET
+
+        tags: ["EQU8Config"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Equ8Config (successful operation)
+
+        404: Not Found - ErrorEntity (11641: Equ8 config not found in namespace [{namespace}])
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,6 +221,37 @@ def update_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or Update equ8 config (updateConfig)
+
+    Update equ8 config, create if not exists.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=4 (UPDATE)
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/equ8/config
+
+        method: PATCH
+
+        tags: ["EQU8Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ADTOForUpdateEqu8ConfigAPICall in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Equ8Config (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -131,6 +270,37 @@ async def update_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or Update equ8 config (updateConfig)
+
+    Update equ8 config, create if not exists.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:EQU8CONFIG" , action=4 (UPDATE)
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/equ8/config
+
+        method: PATCH
+
+        tags: ["EQU8Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ADTOForUpdateEqu8ConfigAPICall in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Equ8Config (successful operation)
+
+        400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
+
+        500: Internal Server Error - ErrorEntity (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

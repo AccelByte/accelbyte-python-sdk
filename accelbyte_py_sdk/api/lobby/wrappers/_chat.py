@@ -45,6 +45,50 @@ def admin_chat_history(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """admin get chat history (adminChatHistory)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with scope `social`
+
+    get chat history in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/chat/namespaces/{namespace}/users/{userId}/friends/{friendId}
+
+        method: GET
+
+        tags: ["chat"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        friend_id: (friendId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelChatMessageResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,6 +109,50 @@ async def admin_chat_history_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """admin get chat history (adminChatHistory)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with scope `social`
+
+    get chat history in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/chat/namespaces/{namespace}/users/{userId}/friends/{friendId}
+
+        method: GET
+
+        tags: ["chat"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        friend_id: (friendId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelChatMessageResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -86,6 +174,45 @@ def get_personal_chat_history_v1_public(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """load personal chat history (getPersonalChatHistoryV1Public)
+
+    Required valid user authorization
+
+
+    load personal chat history in a namespace based on Friend User ID
+
+    Action Code: 50101
+
+    Properties:
+        url: /lobby/v1/public/chat/namespaces/{namespace}/users/me/friends/{friendId}
+
+        method: GET
+
+        tags: ["chat"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        friend_id: (friendId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelChatMessageResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,6 +231,45 @@ async def get_personal_chat_history_v1_public_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """load personal chat history (getPersonalChatHistoryV1Public)
+
+    Required valid user authorization
+
+
+    load personal chat history in a namespace based on Friend User ID
+
+    Action Code: 50101
+
+    Properties:
+        url: /lobby/v1/public/chat/namespaces/{namespace}/users/me/friends/{friendId}
+
+        method: GET
+
+        tags: ["chat"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        friend_id: (friendId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelChatMessageResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -125,6 +291,50 @@ def personal_chat_history(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """load personal chat history (personalChatHistory)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with scope `social`
+
+    load personal chat history in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/chat/namespaces/{namespace}/users/{userId}/friend/{friendId}
+
+        method: GET
+
+        tags: ["chat", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        friend_id: (friendId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelChatMessageResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,6 +355,50 @@ async def personal_chat_history_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """load personal chat history (personalChatHistory)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with scope `social`
+
+    load personal chat history in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/chat/namespaces/{namespace}/users/{userId}/friend/{friendId}
+
+        method: GET
+
+        tags: ["chat", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        friend_id: (friendId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelChatMessageResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

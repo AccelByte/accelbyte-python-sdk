@@ -41,7 +41,7 @@ class UserUnfriendRequest(Operation):
 
         method: POST
 
-        tags: ["friends"]
+        tags: ["friends", "public"]
 
         consumes: ["application/json"]
 

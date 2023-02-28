@@ -46,6 +46,51 @@ def admin_list_tags(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query tags (AdminListTags)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/tags
+
+        method: GET
+
+        tags: ["Tags"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedTagResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -70,6 +115,51 @@ async def admin_list_tags_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query tags (AdminListTags)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/tags
+
+        method: GET
+
+        tags: ["Tags"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedTagResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -96,6 +186,51 @@ def public_list_tags(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query tags (PublicListTags)
+
+    Required permission
+    `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/tags
+
+        method: GET
+
+        tags: ["Tags"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedTagResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,6 +255,51 @@ async def public_list_tags_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query tags (PublicListTags)
+
+    Required permission
+    `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/tags
+
+        method: GET
+
+        tags: ["Tags"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedTagResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -43,6 +43,37 @@ def retrieve_eligibilities_public(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check User Legal Eligibility (retrieveEligibilitiesPublic)
+
+    Retrieve the active policies and its conformance status by user.
+    This process supports cross-namespace checking, that means if the active policy already accepted by the same user in other namespace, then it will be considered as eligible.
+
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/eligibilities/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["Eligibilities"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveUserEligibilitiesResponse] (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
+
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -59,6 +90,37 @@ async def retrieve_eligibilities_public_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check User Legal Eligibility (retrieveEligibilitiesPublic)
+
+    Retrieve the active policies and its conformance status by user.
+    This process supports cross-namespace checking, that means if the active policy already accepted by the same user in other namespace, then it will be considered as eligible.
+
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/eligibilities/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["Eligibilities"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveUserEligibilitiesResponse] (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
+
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,6 +142,40 @@ def retrieve_eligibilities_public_indirect(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check User Legal Eligibility (retrieveEligibilitiesPublicIndirect)
+
+    Retrieve the active policies and its conformance status by userThis process only supports cross-namespace checking between game namespace and publisher namespace , that means if the active policy already accepted by the same user in publisher namespace, then it will also be considered as eligible in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/eligibilities/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}
+
+        method: GET
+
+        tags: ["Eligibilities"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        client_id: (clientId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveUserEligibilitiesIndirectResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,6 +198,40 @@ async def retrieve_eligibilities_public_indirect_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check User Legal Eligibility (retrieveEligibilitiesPublicIndirect)
+
+    Retrieve the active policies and its conformance status by userThis process only supports cross-namespace checking between game namespace and publisher namespace , that means if the active policy already accepted by the same user in publisher namespace, then it will also be considered as eligible in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/eligibilities/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}
+
+        method: GET
+
+        tags: ["Eligibilities"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        client_id: (clientId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveUserEligibilitiesIndirectResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

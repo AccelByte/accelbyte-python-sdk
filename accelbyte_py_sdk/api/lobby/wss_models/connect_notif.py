@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class ConnectNotif(WebSocketMessage):
+
     # region fields
 
     lobby_session_id: str

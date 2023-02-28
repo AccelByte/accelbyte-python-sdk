@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class BlockPlayerNotif(WebSocketMessage):
+
     # region fields
 
     blocked_user_id: str

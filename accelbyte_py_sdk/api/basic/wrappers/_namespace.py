@@ -58,6 +58,48 @@ def change_namespace_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Change namespace status (changeNamespaceStatus)
+
+    Change a namespace status.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
+      * Action code : 11306
+      *  Returns : updated namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/status
+
+        method: PATCH
+
+        tags: ["Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL NamespaceStatusUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -76,6 +118,48 @@ async def change_namespace_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Change namespace status (changeNamespaceStatus)
+
+    Change a namespace status.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
+      * Action code : 11306
+      *  Returns : updated namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/status
+
+        method: PATCH
+
+        tags: ["Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL NamespaceStatusUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,6 +179,46 @@ def create_namespace(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a namespace (createNamespace)
+
+    Create a namespace.
+    By default the namespace is enabled.
+    In multi tenant mode, parentNamespace will be automatically filled with requester namespace if the requester is using studio or publisher token, and it will be filled with studio namespace if the requester uses game token. An oauth client will also be created and the id will be returned.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE" , action=1 (CREATE)
+      *  Action code : 11301
+      *  Returns : created namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE [CREATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces
+
+        method: POST
+
+        tags: ["Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL NamespaceCreate in body
+
+    Responses:
+        201: Created - NamespaceInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: Unable to {action}: Namespace contains invalid character(s) | 11339: Unable to {action}: Display name contains invalid character(s))
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        409: Conflict - ErrorEntity (11336: Unable to {action}: Namespace already exists)
+    """
     request = CreateNamespace.create(
         body=body,
     )
@@ -107,6 +231,46 @@ async def create_namespace_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a namespace (createNamespace)
+
+    Create a namespace.
+    By default the namespace is enabled.
+    In multi tenant mode, parentNamespace will be automatically filled with requester namespace if the requester is using studio or publisher token, and it will be filled with studio namespace if the requester uses game token. An oauth client will also be created and the id will be returned.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE" , action=1 (CREATE)
+      *  Action code : 11301
+      *  Returns : created namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE [CREATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces
+
+        method: POST
+
+        tags: ["Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL NamespaceCreate in body
+
+    Responses:
+        201: Created - NamespaceInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: Unable to {action}: Namespace contains invalid character(s) | 11339: Unable to {action}: Display name contains invalid character(s))
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        409: Conflict - ErrorEntity (11336: Unable to {action}: Namespace already exists)
+    """
     request = CreateNamespace.create(
         body=body,
     )
@@ -121,6 +285,46 @@ def delete_namespace(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a namespace (deleteNamespace)
+
+    Delete a namespace.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=8 (DELETE)
+      *  Action code : 11307
+      *  Returns : deleted namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [DELETE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}
+
+        method: DELETE
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,6 +341,46 @@ async def delete_namespace_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a namespace (deleteNamespace)
+
+    Delete a namespace.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=8 (DELETE)
+      *  Action code : 11307
+      *  Returns : deleted namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [DELETE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}
+
+        method: DELETE
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -156,6 +400,43 @@ def get_game_namespaces(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get game namespaces (getGameNamespaces)
+
+    Get game namespaces.
+    In multi tenant mode, a given super admin namespace will return all game namespaces of studio namespaces
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11308
+      *  Returns : list of namespaces
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/game
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[NamespaceInfo] (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -174,6 +455,43 @@ async def get_game_namespaces_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get game namespaces (getGameNamespaces)
+
+    Get game namespaces.
+    In multi tenant mode, a given super admin namespace will return all game namespaces of studio namespaces
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11308
+      *  Returns : list of namespaces
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/game
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[NamespaceInfo] (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -194,6 +512,47 @@ def get_namespace(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a namespace (getNamespace)
+
+    Get a namespace.
+    In multi tenant mode, parentNamespace will be returned.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11304
+      *  Returns : namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - NamespaceInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -212,6 +571,47 @@ async def get_namespace_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a namespace (getNamespace)
+
+    Get a namespace.
+    In multi tenant mode, parentNamespace will be returned.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11304
+      *  Returns : namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - NamespaceInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -231,6 +631,44 @@ def get_namespace_publisher(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get namespace info related publisher namespace (getNamespacePublisher)
+
+    Get namespace info related publisher namespace.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11305
+      *  Returns : Namespace info related publisher namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/publisher
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespacePublisherInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -247,6 +685,44 @@ async def get_namespace_publisher_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get namespace info related publisher namespace (getNamespacePublisher)
+
+    Get namespace info related publisher namespace.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11305
+      *  Returns : Namespace info related publisher namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/publisher
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespacePublisherInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -265,6 +741,40 @@ def get_namespaces(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all namespaces (getNamespaces)
+
+    Get all namespaces.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE" , action=2 (READ)
+      *  Action code : 11303
+      *  Returns : list of namespaces
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[NamespaceInfo] (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
     request = GetNamespaces.create(
         active_only=active_only,
     )
@@ -277,6 +787,40 @@ async def get_namespaces_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all namespaces (getNamespaces)
+
+    Get all namespaces.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE" , action=2 (READ)
+      *  Action code : 11303
+      *  Returns : list of namespaces
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[NamespaceInfo] (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
     request = GetNamespaces.create(
         active_only=active_only,
     )
@@ -291,6 +835,44 @@ def public_get_namespace_publisher(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get namespace info related publisher namespace (publicGetNamespacePublisher)
+
+    Get namespace info related publisher namespace.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11305
+      *  Returns : Namespace info related publisher namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/publisher
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespacePublisherInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -307,6 +889,44 @@ async def public_get_namespace_publisher_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get namespace info related publisher namespace (publicGetNamespacePublisher)
+
+    Get namespace info related publisher namespace.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11305
+      *  Returns : Namespace info related publisher namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/publisher
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespacePublisherInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -325,6 +945,35 @@ def public_get_namespaces(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all namespaces (publicGetNamespaces)
+
+    Get all namespaces.
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11303
+      *  Returns : list of namespaces
+
+    Properties:
+        url: /basic/v1/public/namespaces
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[NamespaceInfo] (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+    """
     request = PublicGetNamespaces.create(
         active_only=active_only,
     )
@@ -337,6 +986,35 @@ async def public_get_namespaces_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all namespaces (publicGetNamespaces)
+
+    Get all namespaces.
+    Other detail info:
+
+      * Required permission : login user
+      *  Action code : 11303
+      *  Returns : list of namespaces
+
+    Properties:
+        url: /basic/v1/public/namespaces
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[NamespaceInfo] (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+    """
     request = PublicGetNamespaces.create(
         active_only=active_only,
     )
@@ -352,6 +1030,48 @@ def update_namespace(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update namespace basic info (updateNamespace)
+
+    Update namespace basic info.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
+      *  Action code : 11302
+      *  Returns : updated namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/basic
+
+        method: PATCH
+
+        tags: ["Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL NamespaceUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -370,6 +1090,48 @@ async def update_namespace_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update namespace basic info (updateNamespace)
+
+    Update namespace basic info.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
+      *  Action code : 11302
+      *  Returns : updated namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/basic
+
+        method: PATCH
+
+        tags: ["Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL NamespaceUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -40,6 +40,26 @@ from ..operations.public import ListProvidersByRegion
 def get_default_provider(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get default provider (GetDefaultProvider)
+
+    This endpoints returns the default provider.
+
+    Properties:
+        url: /dsmcontroller/public/provider/default
+
+        method: GET
+
+        tags: ["Public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsDefaultProvider (Default provider got)
+    """
     request = GetDefaultProvider.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -48,6 +68,26 @@ def get_default_provider(
 async def get_default_provider_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get default provider (GetDefaultProvider)
+
+    This endpoints returns the default provider.
+
+    Properties:
+        url: /dsmcontroller/public/provider/default
+
+        method: GET
+
+        tags: ["Public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsDefaultProvider (Default provider got)
+    """
     request = GetDefaultProvider.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -56,6 +96,26 @@ async def get_default_provider_async(
 
 @same_doc_as(ListProviders)
 def list_providers(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """List all supported providers (ListProviders)
+
+    This endpoints returns list of supported providers. Armada is the default provider.
+
+    Properties:
+        url: /dsmcontroller/public/providers
+
+        method: GET
+
+        tags: ["Public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[str] (Providers listed)
+    """
     request = ListProviders.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -64,6 +124,26 @@ def list_providers(x_additional_headers: Optional[Dict[str, str]] = None, **kwar
 async def list_providers_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """List all supported providers (ListProviders)
+
+    This endpoints returns list of supported providers. Armada is the default provider.
+
+    Properties:
+        url: /dsmcontroller/public/providers
+
+        method: GET
+
+        tags: ["Public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[str] (Providers listed)
+    """
     request = ListProviders.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -74,6 +154,28 @@ async def list_providers_async(
 def list_providers_by_region(
     region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """List providers by region (ListProvidersByRegion)
+
+    This endpoint returns the providers by region.
+
+    Properties:
+        url: /dsmcontroller/public/providers/regions/{region}
+
+        method: GET
+
+        tags: ["Public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDefaultProvider (Default providers got)
+    """
     request = ListProvidersByRegion.create(
         region=region,
     )
@@ -84,6 +186,28 @@ def list_providers_by_region(
 async def list_providers_by_region_async(
     region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """List providers by region (ListProvidersByRegion)
+
+    This endpoint returns the providers by region.
+
+    Properties:
+        url: /dsmcontroller/public/providers/regions/{region}
+
+        method: GET
+
+        tags: ["Public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDefaultProvider (Default providers got)
+    """
     request = ListProvidersByRegion.create(
         region=region,
     )

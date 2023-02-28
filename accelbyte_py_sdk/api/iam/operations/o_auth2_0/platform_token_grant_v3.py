@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.27.2)
+# AccelByte Cloud Iam Service (5.28.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -124,6 +124,10 @@ class PlatformTokenGrantV3(Operation):
 
 
       * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
+
+
+
+      * for specific generic oauth (OIDC) : The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
 
 
 

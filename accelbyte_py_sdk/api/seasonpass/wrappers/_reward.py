@@ -57,6 +57,48 @@ def create_reward(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a reward (createReward)
+
+    This API is used to create a reward for a draft season.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
+      *  Returns : created reward
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards
+
+        method: POST
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RewardCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        201: Created - RewardInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49143: Item type not match)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49173: Reward [{code}] already exists in the season)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -77,6 +119,48 @@ async def create_reward_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a reward (createReward)
+
+    This API is used to create a reward for a draft season.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
+      *  Returns : created reward
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards
+
+        method: POST
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RewardCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        201: Created - RewardInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49143: Item type not match)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}] | 49173: Reward [{code}] already exists in the season)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,6 +183,45 @@ def delete_reward(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a reward (deleteReward)
+
+    This API is used to delete a reward permanently, only draft season reward can be deleted.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
+
+        method: DELETE
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete reward successfully)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49144: Reward [{code}] does not exist | 49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Season is not updatable in status [{status}] | 49179: Reward [{code}] is in use)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,6 +242,45 @@ async def delete_reward_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a reward (deleteReward)
+
+    This API is used to delete a reward permanently, only draft season reward can be deleted.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
+
+        method: DELETE
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete reward successfully)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49144: Reward [{code}] does not exist | 49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Season is not updatable in status [{status}] | 49179: Reward [{code}] is in use)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -141,6 +303,44 @@ def get_reward(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a reward (getReward)
+
+    This API is used to get a reward for a season.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : reward data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -161,6 +361,44 @@ async def get_reward_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a reward (getReward)
+
+    This API is used to get a reward for a season.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : reward data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,6 +420,42 @@ def public_bulk_claim_user_rewards(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk claim all remained rewards (publicBulkClaimUserRewards)
+
+    This API is used to bulk claim all remained rewards, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/rewards/bulk
+
+        method: POST
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ClaimableRewards (successful operation)
+
+        400: Bad Request - ErrorEntity (49124: Manual claim not supported | 20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49148: User season does not exist | 49147: Published season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -200,6 +474,42 @@ async def public_bulk_claim_user_rewards_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk claim all remained rewards (publicBulkClaimUserRewards)
+
+    This API is used to bulk claim all remained rewards, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/rewards/bulk
+
+        method: POST
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ClaimableRewards (successful operation)
+
+        400: Bad Request - ErrorEntity (49124: Manual claim not supported | 20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49148: User season does not exist | 49147: Published season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,6 +531,46 @@ def public_claim_user_reward(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Claim tier reward (publicClaimUserReward)
+
+    This API is used to claim reward, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/rewards
+
+        method: POST
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserRewardClaim in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ClaimableRewards (successful operation)
+
+        400: Bad Request - ErrorEntity (49124: Manual claim not supported | 20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49144: Reward [{code}] does not exist | 49148: User season does not exist | 49147: Published season does not exist)
+
+        409: Conflict - ErrorEntity (49182: Reward is already claimed | 49188: Reward is claiming)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -241,6 +591,46 @@ async def public_claim_user_reward_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Claim tier reward (publicClaimUserReward)
+
+    This API is used to claim reward, season only located in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/rewards
+
+        method: POST
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserRewardClaim in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ClaimableRewards (successful operation)
+
+        400: Bad Request - ErrorEntity (49124: Manual claim not supported | 20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49144: Reward [{code}] does not exist | 49148: User season does not exist | 49147: Published season does not exist)
+
+        409: Conflict - ErrorEntity (49182: Reward is already claimed | 49188: Reward is claiming)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -263,6 +653,44 @@ def query_rewards(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query all rewards for a season (queryRewards)
+
+    This API is used to query rewards for a season.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : the list of rewards
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        q: (q) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[RewardInfo] (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -283,6 +711,44 @@ async def query_rewards_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query all rewards for a season (queryRewards)
+
+    This API is used to query rewards for a season.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : the list of rewards
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        q: (q) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[RewardInfo] (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -306,6 +772,50 @@ def update_reward(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a reward (updateReward)
+
+    This API is used to update a reward. Only draft season reward can be updated.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : updated reward
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
+
+        method: PATCH
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RewardUpdate in body
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49143: Item type not match)
+
+        404: Not Found - ErrorEntity (49144: Reward [{code}] does not exist | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -328,6 +838,50 @@ async def update_reward_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a reward (updateReward)
+
+    This API is used to update a reward. Only draft season reward can be updated.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : updated reward
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
+
+        method: PATCH
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RewardUpdate in body
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed | 49143: Item type not match)
+
+        404: Not Found - ErrorEntity (49144: Reward [{code}] does not exist | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

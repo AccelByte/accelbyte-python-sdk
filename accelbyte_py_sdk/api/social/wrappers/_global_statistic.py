@@ -46,6 +46,39 @@ def get_global_stat_item_by_stat_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get global statItem by stat code (getGlobalStatItemByStatCode)
+
+    Get global statItem by stat code.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+      *  Returns : global stat item
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/globalstatitems/{statCode}
+
+        method: GET
+
+        tags: ["GlobalStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        200: OK - GlobalStatItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12244: Global stat item of [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,6 +97,39 @@ async def get_global_stat_item_by_stat_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get global statItem by stat code (getGlobalStatItemByStatCode)
+
+    Get global statItem by stat code.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+      *  Returns : global stat item
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/globalstatitems/{statCode}
+
+        method: GET
+
+        tags: ["GlobalStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        200: OK - GlobalStatItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12244: Global stat item of [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -84,6 +150,39 @@ def get_global_stat_item_by_stat_code_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get global statItem by stat code (getGlobalStatItemByStatCode_1)
+
+    Get global statItem by stat code.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+      *  Returns : global stat item
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/globalstatitems/{statCode}
+
+        method: GET
+
+        tags: ["GlobalStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        200: OK - GlobalStatItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12244: Global stat item of [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,6 +201,39 @@ async def get_global_stat_item_by_stat_code_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get global statItem by stat code (getGlobalStatItemByStatCode_1)
+
+    Get global statItem by stat code.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+      *  Returns : global stat item
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/globalstatitems/{statCode}
+
+        method: GET
+
+        tags: ["GlobalStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        200: OK - GlobalStatItemInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12244: Global stat item of [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,6 +256,41 @@ def get_global_stat_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List global statItems (getGlobalStatItems)
+
+    List global statItems by pagination.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/globalstatitems
+
+        method: GET
+
+        tags: ["GlobalStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        stat_codes: (statCodes) OPTIONAL str in query
+
+    Responses:
+        200: OK - GlobalStatItemPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -146,6 +313,41 @@ async def get_global_stat_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List global statItems (getGlobalStatItems)
+
+    List global statItems by pagination.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/globalstatitems
+
+        method: GET
+
+        tags: ["GlobalStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        stat_codes: (statCodes) OPTIONAL str in query
+
+    Responses:
+        200: OK - GlobalStatItemPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -170,6 +372,41 @@ def get_global_stat_items_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List global statItems (getGlobalStatItems_1)
+
+    List global statItems by pagination.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/globalstatitems
+
+        method: GET
+
+        tags: ["GlobalStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        stat_codes: (statCodes) OPTIONAL str in query
+
+    Responses:
+        200: OK - GlobalStatItemPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -192,6 +429,41 @@ async def get_global_stat_items_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List global statItems (getGlobalStatItems_1)
+
+    List global statItems by pagination.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/globalstatitems
+
+        method: GET
+
+        tags: ["GlobalStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        stat_codes: (statCodes) OPTIONAL str in query
+
+    Responses:
+        200: OK - GlobalStatItemPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

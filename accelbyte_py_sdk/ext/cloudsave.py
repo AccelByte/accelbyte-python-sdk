@@ -46,9 +46,7 @@ from ..api.cloudsave.models import ModelsResponseError
 from ..api.cloudsave.models import ModelsUserKeyRequest
 
 
-def create_models_admin_concurrent_record_request_example() -> (
-    ModelsAdminConcurrentRecordRequest
-):
+def create_models_admin_concurrent_record_request_example() -> ModelsAdminConcurrentRecordRequest:
     instance = ModelsAdminConcurrentRecordRequest()
     instance.set_by = randomize()
     instance.updated_at = randomize()
@@ -56,41 +54,31 @@ def create_models_admin_concurrent_record_request_example() -> (
     return instance
 
 
-def create_models_bulk_get_game_record_request_example() -> (
-    ModelsBulkGetGameRecordRequest
-):
+def create_models_bulk_get_game_record_request_example() -> ModelsBulkGetGameRecordRequest:
     instance = ModelsBulkGetGameRecordRequest()
     instance.keys = [randomize()]
     return instance
 
 
-def create_models_bulk_get_game_record_response_example() -> (
-    ModelsBulkGetGameRecordResponse
-):
+def create_models_bulk_get_game_record_response_example() -> ModelsBulkGetGameRecordResponse:
     instance = ModelsBulkGetGameRecordResponse()
     instance.data = [create_models_game_record_response_example()]
     return instance
 
 
-def create_models_bulk_get_player_record_response_example() -> (
-    ModelsBulkGetPlayerRecordResponse
-):
+def create_models_bulk_get_player_record_response_example() -> ModelsBulkGetPlayerRecordResponse:
     instance = ModelsBulkGetPlayerRecordResponse()
     instance.data = [create_models_player_record_response_example()]
     return instance
 
 
-def create_models_bulk_get_player_record_size_response_example() -> (
-    ModelsBulkGetPlayerRecordSizeResponse
-):
+def create_models_bulk_get_player_record_size_response_example() -> ModelsBulkGetPlayerRecordSizeResponse:
     instance = ModelsBulkGetPlayerRecordSizeResponse()
     instance.data = [create_models_player_record_size_response_example()]
     return instance
 
 
-def create_models_bulk_get_player_records_request_example() -> (
-    ModelsBulkGetPlayerRecordsRequest
-):
+def create_models_bulk_get_player_records_request_example() -> ModelsBulkGetPlayerRecordsRequest:
     instance = ModelsBulkGetPlayerRecordsRequest()
     instance.keys = [randomize()]
     return instance
@@ -131,18 +119,14 @@ def create_models_game_record_response_example() -> ModelsGameRecordResponse:
     return instance
 
 
-def create_models_list_game_record_keys_response_example() -> (
-    ModelsListGameRecordKeysResponse
-):
+def create_models_list_game_record_keys_response_example() -> ModelsListGameRecordKeysResponse:
     instance = ModelsListGameRecordKeysResponse()
     instance.data = [randomize()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_list_player_record_keys_response_example() -> (
-    ModelsListPlayerRecordKeysResponse
-):
+def create_models_list_player_record_keys_response_example() -> ModelsListPlayerRecordKeysResponse:
     instance = ModelsListPlayerRecordKeysResponse()
     instance.data = [create_models_player_record_key_info_example()]
     instance.paging = create_models_pagination_example()
@@ -183,9 +167,7 @@ def create_models_player_record_response_example() -> ModelsPlayerRecordResponse
     return instance
 
 
-def create_models_player_record_size_response_example() -> (
-    ModelsPlayerRecordSizeResponse
-):
+def create_models_player_record_size_response_example() -> ModelsPlayerRecordSizeResponse:
     instance = ModelsPlayerRecordSizeResponse()
     instance.current_size = randomize("int", min_val=1, max_val=1000)
     instance.key = randomize()

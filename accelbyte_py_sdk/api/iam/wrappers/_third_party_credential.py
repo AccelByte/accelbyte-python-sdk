@@ -69,6 +69,140 @@ def add_third_party_login_platform_credential_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Third Party Platform Credential (AddThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Add 3rd Platform Credential.
+
+
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE] resource.
+
+
+
+
+    The secret for apple is base64 encoded private key.
+
+
+
+
+    No secret for awscognito , we only need to configure AWS Cognito Region and User Pool
+
+
+
+
+    The secret for discord is client secret of the twitch client id.
+
+
+
+
+    The secret for epicgames is client secret of the epicgames client id.
+
+
+
+
+    The secret for facebook is client secret of the facebook client id.
+
+
+
+
+    The secret for google is client secret of the google OAuth client.
+
+
+
+
+    No secret for nintendo , we only need to configure app id of the game
+
+
+
+
+    No secret for netflix , we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
+
+
+
+
+    The secret for oculus is app secret of the oculus app.
+
+
+
+
+    The secret for ps4, ps5, and ps4web is client secret of the psn web server.
+
+
+
+
+    The secret for steam is the Steam Web API Key.
+
+
+
+
+    The secret for steamopenid is the Steam Web API Key.
+
+
+
+
+    The secret for twitch is client secret of the twitch client.
+
+
+
+
+    The secret for live is the Relying Party Private Key in base64 encode PEM format.
+
+
+
+
+    The secret for xblwebapi is client secret of the xbl client.
+
+
+
+
+    If generic oauth flow is set to true:
+
+
+
+
+
+
+      * Current supported value for TokenAuthenticationType are code, idToken and bearerToken
+
+
+      * `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
+    Its a JSON format with key should be `name`, `email` and `avatarUrl`
+    since IAM will look up for these key when extracting user info. default claims keys : userIdentity/sub, name, email and avatarUrl/picture
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
+
+        method: POST
+
+        tags: ["Third Party Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelThirdPartyLoginPlatformCredentialRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelThirdPartyLoginPlatformCredentialResponse (Third Party Credential Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,6 +223,140 @@ async def add_third_party_login_platform_credential_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Third Party Platform Credential (AddThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Add 3rd Platform Credential.
+
+
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE] resource.
+
+
+
+
+    The secret for apple is base64 encoded private key.
+
+
+
+
+    No secret for awscognito , we only need to configure AWS Cognito Region and User Pool
+
+
+
+
+    The secret for discord is client secret of the twitch client id.
+
+
+
+
+    The secret for epicgames is client secret of the epicgames client id.
+
+
+
+
+    The secret for facebook is client secret of the facebook client id.
+
+
+
+
+    The secret for google is client secret of the google OAuth client.
+
+
+
+
+    No secret for nintendo , we only need to configure app id of the game
+
+
+
+
+    No secret for netflix , we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
+
+
+
+
+    The secret for oculus is app secret of the oculus app.
+
+
+
+
+    The secret for ps4, ps5, and ps4web is client secret of the psn web server.
+
+
+
+
+    The secret for steam is the Steam Web API Key.
+
+
+
+
+    The secret for steamopenid is the Steam Web API Key.
+
+
+
+
+    The secret for twitch is client secret of the twitch client.
+
+
+
+
+    The secret for live is the Relying Party Private Key in base64 encode PEM format.
+
+
+
+
+    The secret for xblwebapi is client secret of the xbl client.
+
+
+
+
+    If generic oauth flow is set to true:
+
+
+
+
+
+
+      * Current supported value for TokenAuthenticationType are code, idToken and bearerToken
+
+
+      * `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
+    Its a JSON format with key should be `name`, `email` and `avatarUrl`
+    since IAM will look up for these key when extracting user info. default claims keys : userIdentity/sub, name, email and avatarUrl/picture
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
+
+        method: POST
+
+        tags: ["Third Party Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelThirdPartyLoginPlatformCredentialRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelThirdPartyLoginPlatformCredentialResponse (Third Party Credential Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,6 +378,41 @@ def delete_third_party_login_platform_credential_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Third Party Platform Credential (DeleteThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Delete 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
+
+        method: DELETE
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete Process Successful)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -128,6 +431,41 @@ async def delete_third_party_login_platform_credential_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Third Party Platform Credential (DeleteThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Delete 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
+
+        method: DELETE
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete Process Successful)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -149,6 +487,50 @@ def delete_third_party_login_platform_domain_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
+
+    This is the API to unregister 3rd Platform domain.
+
+
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE] resource.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
+
+        method: DELETE
+
+        tags: ["Third Party Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformDomainDeleteRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Domain unregister succeeded)
+
+        400: Bad Request - RestErrorResponse (Bad Request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -169,6 +551,50 @@ async def delete_third_party_login_platform_domain_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
+
+    This is the API to unregister 3rd Platform domain.
+
+
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE] resource.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
+
+        method: DELETE
+
+        tags: ["Third Party Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformDomainDeleteRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Domain unregister succeeded)
+
+        400: Bad Request - RestErrorResponse (Bad Request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -190,6 +616,34 @@ def retrieve_active_oidc_clients_public_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Active OIDC Platform Credential By Client ID (RetrieveActiveOIDCClientsPublicV3)
+
+    This is the Public API to Get All Active OIDC Platform Credential By Client ID
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/platforms/clients/oidc
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        client_id: (clientId) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ModelPublicThirdPartyPlatformInfo] (All Active OIDC Credential Retrieved)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -208,6 +662,34 @@ async def retrieve_active_oidc_clients_public_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Active OIDC Platform Credential By Client ID (RetrieveActiveOIDCClientsPublicV3)
+
+    This is the Public API to Get All Active OIDC Platform Credential By Client ID
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/platforms/clients/oidc
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        client_id: (clientId) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ModelPublicThirdPartyPlatformInfo] (All Active OIDC Credential Retrieved)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -227,6 +709,36 @@ def retrieve_all_active_third_party_login_platform_credential_public_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get All Active Third Party Platform Active Credential for Public Usage (RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
+
+    This is the Public API to Get All Active 3rd Platform Credential.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/platforms/clients/active
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelPublicThirdPartyPlatformInfo] (All Active Third Party Credential Retrieved)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -243,6 +755,36 @@ async def retrieve_all_active_third_party_login_platform_credential_public_v3_as
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get All Active Third Party Platform Active Credential for Public Usage (RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
+
+    This is the Public API to Get All Active 3rd Platform Credential.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/platforms/clients/active
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelPublicThirdPartyPlatformInfo] (All Active Third Party Credential Retrieved)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -261,6 +803,39 @@ def retrieve_all_active_third_party_login_platform_credential_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get All Active Third Party Platform Active Credential (RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Get All Active 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients/active
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelThirdPartyLoginPlatformCredentialResponse] (All Active Third Party Credential Retrieved)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -277,6 +852,39 @@ async def retrieve_all_active_third_party_login_platform_credential_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get All Active Third Party Platform Active Credential (RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Get All Active 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients/active
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelThirdPartyLoginPlatformCredentialResponse] (All Active Third Party Credential Retrieved)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -295,6 +903,39 @@ def retrieve_all_third_party_login_platform_credential_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get All Third Party Platform Credential (RetrieveAllThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Get All Active 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelThirdPartyLoginPlatformCredentialResponse] (All Active Third Party Credential Retrieved)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -311,6 +952,39 @@ async def retrieve_all_third_party_login_platform_credential_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get All Third Party Platform Credential (RetrieveAllThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Get All Active 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelThirdPartyLoginPlatformCredentialResponse] (All Active Third Party Credential Retrieved)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -330,6 +1004,41 @@ def retrieve_third_party_login_platform_credential_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve Third Party Platform Credential (RetrieveThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Get 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [READ] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelThirdPartyLoginPlatformCredentialResponse (Third Party Credential Found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -348,6 +1057,41 @@ async def retrieve_third_party_login_platform_credential_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve Third Party Platform Credential (RetrieveThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Get 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [READ] resource
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelThirdPartyLoginPlatformCredentialResponse (Third Party Credential Found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -369,6 +1113,142 @@ def update_third_party_login_platform_credential_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Third Party Platform Credential (UpdateThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Add 3rd Platform Credential.
+
+
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE] resource.
+
+
+
+
+    The secret for apple is base64 encoded private key.
+
+
+
+
+    No secret for awscognito , we only need to configure AWS Cognito Region and User Pool
+
+
+
+
+    The secret for discord is client secret of the twitch client id.
+
+
+
+
+    The secret for epicgames is client secret of the epicgames client id.
+
+
+
+
+    The secret for facebook is client secret of the facebook client id.
+
+
+
+
+    The secret for google is client secret of the google OAuth client.
+
+
+
+
+    No secret for nintendo , we only need to configure app id of the game
+
+
+
+
+    No secret for netflix , we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
+
+
+
+
+    The secret for oculus is app secret of the oculus app.
+
+
+
+
+    The secret for ps4, ps5, and ps4web is client secret of the psn web server.
+
+
+
+
+    The secret for steam is the Steam Web API Key.
+
+
+
+
+    The secret for steamopenid is the Steam Web API Key.
+
+
+
+
+    The secret for twitch is client secret of the twitch client.
+
+
+
+
+    The secret for live is the Relying Party Private Key in base64 encode PEM format.
+
+
+
+
+    The secret for xblwebapi is client secret of the xbl client.
+
+
+
+
+    If generic oauth flow is set to true:
+
+
+
+
+
+
+      * Current supported value for TokenAuthenticationType is code, idToken and bearerToken
+
+
+      * `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
+    Its a JSON format with key should be `name`, `email` and `avatarUrl`
+    since IAM will look up for these key when extracting user info. default claims keys : userIdentity/sub, name, email and avatarUrl/picture
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
+
+        method: PATCH
+
+        tags: ["Third Party Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelThirdPartyLoginPlatformCredentialRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelThirdPartyLoginPlatformCredentialResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Bad Request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -389,6 +1269,142 @@ async def update_third_party_login_platform_credential_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Third Party Platform Credential (UpdateThirdPartyLoginPlatformCredentialV3)
+
+    This is the API to Add 3rd Platform Credential.
+
+
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE] resource.
+
+
+
+
+    The secret for apple is base64 encoded private key.
+
+
+
+
+    No secret for awscognito , we only need to configure AWS Cognito Region and User Pool
+
+
+
+
+    The secret for discord is client secret of the twitch client id.
+
+
+
+
+    The secret for epicgames is client secret of the epicgames client id.
+
+
+
+
+    The secret for facebook is client secret of the facebook client id.
+
+
+
+
+    The secret for google is client secret of the google OAuth client.
+
+
+
+
+    No secret for nintendo , we only need to configure app id of the game
+
+
+
+
+    No secret for netflix , we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
+
+
+
+
+    The secret for oculus is app secret of the oculus app.
+
+
+
+
+    The secret for ps4, ps5, and ps4web is client secret of the psn web server.
+
+
+
+
+    The secret for steam is the Steam Web API Key.
+
+
+
+
+    The secret for steamopenid is the Steam Web API Key.
+
+
+
+
+    The secret for twitch is client secret of the twitch client.
+
+
+
+
+    The secret for live is the Relying Party Private Key in base64 encode PEM format.
+
+
+
+
+    The secret for xblwebapi is client secret of the xbl client.
+
+
+
+
+    If generic oauth flow is set to true:
+
+
+
+
+
+
+      * Current supported value for TokenAuthenticationType is code, idToken and bearerToken
+
+
+      * `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
+    Its a JSON format with key should be `name`, `email` and `avatarUrl`
+    since IAM will look up for these key when extracting user info. default claims keys : userIdentity/sub, name, email and avatarUrl/picture
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
+
+        method: PATCH
+
+        tags: ["Third Party Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelThirdPartyLoginPlatformCredentialRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelThirdPartyLoginPlatformCredentialResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Bad Request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -411,6 +1427,50 @@ def update_third_party_login_platform_domain_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Set Third Party Platform Credential's domain (UpdateThirdPartyLoginPlatformDomainV3)
+
+    This is the API to set 3rd Platform domain.
+
+
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE] resource.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
+
+        method: PUT
+
+        tags: ["Third Party Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformDomainUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelPlatformDomainResponse (Domain config updated)
+
+        400: Bad Request - RestErrorResponse (Bad Request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -431,6 +1491,50 @@ async def update_third_party_login_platform_domain_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Set Third Party Platform Credential's domain (UpdateThirdPartyLoginPlatformDomainV3)
+
+    This is the API to set 3rd Platform domain.
+
+
+
+
+    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE] resource.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
+
+        method: PUT
+
+        tags: ["Third Party Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformDomainUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelPlatformDomainResponse (Domain config updated)
+
+        400: Bad Request - RestErrorResponse (Bad Request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

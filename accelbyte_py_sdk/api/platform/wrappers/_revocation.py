@@ -55,6 +55,31 @@ def delete_revocation_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete revocation config (deleteRevocationConfig)
+
+    Delete revocation config.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=8 (DELETE)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/revocation/config
+
+        method: DELETE
+
+        tags: ["Revocation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,6 +96,31 @@ async def delete_revocation_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete revocation config (deleteRevocationConfig)
+
+    Delete revocation config.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=8 (DELETE)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/revocation/config
+
+        method: DELETE
+
+        tags: ["Revocation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,6 +141,36 @@ def do_revocation(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Do revocation. (doRevocation)
+
+    Do revocation.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:REVOCATION, action=4 (UPDATE)
+      *  Returns : revocation results
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/revocation
+
+        method: PUT
+
+        tags: ["Revocation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL RevocationRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - RevocationResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -111,6 +191,36 @@ async def do_revocation_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Do revocation. (doRevocation)
+
+    Do revocation.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:REVOCATION, action=4 (UPDATE)
+      *  Returns : revocation results
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/revocation
+
+        method: PUT
+
+        tags: ["Revocation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL RevocationRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - RevocationResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -131,6 +241,34 @@ def get_payment_callback_config_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get revocation configuration (getPaymentCallbackConfig_1)
+
+    Get revocation configuration.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
+      *  Returns : Revocation config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/revocation/config
+
+        method: GET
+
+        tags: ["Revocation"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RevocationConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33243: Payment callback config for [{namespace}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -147,6 +285,34 @@ async def get_payment_callback_config_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get revocation configuration (getPaymentCallbackConfig_1)
+
+    Get revocation configuration.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
+      *  Returns : Revocation config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/revocation/config
+
+        method: GET
+
+        tags: ["Revocation"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RevocationConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33243: Payment callback config for [{namespace}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,6 +339,48 @@ def query_revocation_histories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query revocation histories (queryRevocationHistories)
+
+    Query revocation histories in a namespace.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
+      *  Returns : query revocation history
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/revocation/history
+
+        method: GET
+
+        tags: ["Revocation"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        source: (source) OPTIONAL Union[str, SourceEnum] in query
+
+        start_time: (startTime) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        transaction_id: (transactionId) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - RevocationHistoryPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -205,6 +413,48 @@ async def query_revocation_histories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query revocation histories (queryRevocationHistories)
+
+    Query revocation histories in a namespace.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
+      *  Returns : query revocation history
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/revocation/history
+
+        method: GET
+
+        tags: ["Revocation"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        source: (source) OPTIONAL Union[str, SourceEnum] in query
+
+        start_time: (startTime) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        transaction_id: (transactionId) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - RevocationHistoryPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -232,6 +482,34 @@ def update_revocation_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update revocation configuration (updateRevocationConfig)
+
+    Update revocation configuration.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=4 (UPDATE)
+      *  Returns : Revocation config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/revocation/config
+
+        method: PUT
+
+        tags: ["Revocation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL RevocationConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RevocationConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,6 +528,34 @@ async def update_revocation_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update revocation configuration (updateRevocationConfig)
+
+    Update revocation configuration.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=4 (UPDATE)
+      *  Returns : Revocation config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/revocation/config
+
+        method: PUT
+
+        tags: ["Revocation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL RevocationConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RevocationConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

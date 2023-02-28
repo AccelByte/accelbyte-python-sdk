@@ -55,7 +55,7 @@ class CreateSession(Operation):
 
         method: POST
 
-        tags: ["Session"]
+        tags: ["Session", "public"]
 
         consumes: ["application/json"]
 

@@ -53,6 +53,24 @@ from ..operations.event_descriptions import UXNameDescriptionHandler
 def agent_type_description_handler(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of agent type and the descriptions (AgentTypeDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/agentType
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsMultipleAgentType (OK)
+    """
     request = AgentTypeDescriptionHandler.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -62,6 +80,24 @@ def agent_type_description_handler(
 async def agent_type_description_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of agent type and the descriptions (AgentTypeDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/agentType
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsMultipleAgentType (OK)
+    """
     request = AgentTypeDescriptionHandler.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -73,6 +109,24 @@ async def agent_type_description_handler_async(
 def event_id_description_handler(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of eventID and the descriptions (EventIDDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventId
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsMultipleEventID (OK)
+    """
     request = EventIDDescriptionHandler.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -82,6 +136,24 @@ def event_id_description_handler(
 async def event_id_description_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of eventID and the descriptions (EventIDDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventId
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsMultipleEventID (OK)
+    """
     request = EventIDDescriptionHandler.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -93,6 +165,24 @@ async def event_id_description_handler_async(
 def event_level_description_handler(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of event level and the descriptions (EventLevelDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventLevel
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsMultipleEventLevel (OK)
+    """
     request = EventLevelDescriptionHandler.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -102,6 +192,24 @@ def event_level_description_handler(
 async def event_level_description_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of event level and the descriptions (EventLevelDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventLevel
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsMultipleEventLevel (OK)
+    """
     request = EventLevelDescriptionHandler.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -113,6 +221,24 @@ async def event_level_description_handler_async(
 def event_type_description_handler(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of event type and the descriptions (EventTypeDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventType
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsMultipleEventType (OK)
+    """
     request = EventTypeDescriptionHandler.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -122,6 +248,24 @@ def event_type_description_handler(
 async def event_type_description_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of event type and the descriptions (EventTypeDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventType
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsMultipleEventType (OK)
+    """
     request = EventTypeDescriptionHandler.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -135,6 +279,30 @@ def specific_agent_type_description_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get specific list of agent type and the descriptions by comma separated value of agent types (SpecificAgentTypeDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/agentType/listByAgentTypes
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        agent_types: (agentTypes) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsMultipleAgentType (OK)
+
+        400: Bad Request - (Bad Request)
+
+        404: Not Found - (Not Found)
+    """
     request = SpecificAgentTypeDescriptionHandler.create(
         agent_types=agent_types,
     )
@@ -148,6 +316,30 @@ async def specific_agent_type_description_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get specific list of agent type and the descriptions by comma separated value of agent types (SpecificAgentTypeDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/agentType/listByAgentTypes
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        agent_types: (agentTypes) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsMultipleAgentType (OK)
+
+        400: Bad Request - (Bad Request)
+
+        404: Not Found - (Not Found)
+    """
     request = SpecificAgentTypeDescriptionHandler.create(
         agent_types=agent_types,
     )
@@ -163,6 +355,30 @@ def specific_event_id_description_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get specific list of eventID and the descriptions by comma separated value of eventIDs (SpecificEventIDDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventId/listByEventIds
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_ids: (eventIds) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsMultipleEventID (OK)
+
+        400: Bad Request - (Bad Request)
+
+        404: Not Found - (Not Found)
+    """
     request = SpecificEventIDDescriptionHandler.create(
         event_ids=event_ids,
     )
@@ -176,6 +392,30 @@ async def specific_event_id_description_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get specific list of eventID and the descriptions by comma separated value of eventIDs (SpecificEventIDDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventId/listByEventIds
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_ids: (eventIds) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsMultipleEventID (OK)
+
+        400: Bad Request - (Bad Request)
+
+        404: Not Found - (Not Found)
+    """
     request = SpecificEventIDDescriptionHandler.create(
         event_ids=event_ids,
     )
@@ -191,6 +431,30 @@ def specific_event_level_description_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get specific list of event level and the descriptions by comma separated value of event levels (SpecificEventLevelDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventLevel/listByEventLevels
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_levels: (eventLevels) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsMultipleEventLevel (OK)
+
+        400: Bad Request - (Bad Request)
+
+        404: Not Found - (Not Found)
+    """
     request = SpecificEventLevelDescriptionHandler.create(
         event_levels=event_levels,
     )
@@ -204,6 +468,30 @@ async def specific_event_level_description_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get specific list of event level and the descriptions by comma separated value of event levels (SpecificEventLevelDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventLevel/listByEventLevels
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_levels: (eventLevels) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsMultipleEventLevel (OK)
+
+        400: Bad Request - (Bad Request)
+
+        404: Not Found - (Not Found)
+    """
     request = SpecificEventLevelDescriptionHandler.create(
         event_levels=event_levels,
     )
@@ -219,6 +507,30 @@ def specific_event_type_description_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get specific list of event type and the descriptions by comma separated value of event types (SpecificEventTypeDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventType/listByEventTypes
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_types: (eventTypes) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsMultipleEventType (OK)
+
+        400: Bad Request - (Bad Request)
+
+        404: Not Found - (Not Found)
+    """
     request = SpecificEventTypeDescriptionHandler.create(
         event_types=event_types,
     )
@@ -232,6 +544,30 @@ async def specific_event_type_description_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get specific list of event type and the descriptions by comma separated value of event types (SpecificEventTypeDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/eventType/listByEventTypes
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_types: (eventTypes) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsMultipleEventType (OK)
+
+        400: Bad Request - (Bad Request)
+
+        404: Not Found - (Not Found)
+    """
     request = SpecificEventTypeDescriptionHandler.create(
         event_types=event_types,
     )
@@ -247,6 +583,30 @@ def specific_ux_description_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get specific list of UX and the descriptions by comma separated value of UX (SpecificUXDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/ux/listByUx
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ux: (ux) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsMultipleUX (OK)
+
+        400: Bad Request - (Bad Request)
+
+        404: Not Found - (Not Found)
+    """
     request = SpecificUXDescriptionHandler.create(
         ux=ux,
     )
@@ -260,6 +620,30 @@ async def specific_ux_description_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get specific list of UX and the descriptions by comma separated value of UX (SpecificUXDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/ux/listByUx
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ux: (ux) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsMultipleUX (OK)
+
+        400: Bad Request - (Bad Request)
+
+        404: Not Found - (Not Found)
+    """
     request = SpecificUXDescriptionHandler.create(
         ux=ux,
     )
@@ -273,6 +657,24 @@ async def specific_ux_description_handler_async(
 def ux_name_description_handler(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of ux name and the descriptions (UXNameDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/ux
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsMultipleUX (OK)
+    """
     request = UXNameDescriptionHandler.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -282,6 +684,24 @@ def ux_name_description_handler(
 async def ux_name_description_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of ux name and the descriptions (UXNameDescriptionHandler)
+
+    Properties:
+        url: /event/descriptions/ux
+
+        method: GET
+
+        tags: ["Event Descriptions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsMultipleUX (OK)
+    """
     request = UXNameDescriptionHandler.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

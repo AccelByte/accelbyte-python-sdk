@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class RematchmakingNotif(WebSocketMessage):
+
     # region fields
 
     ban_duration: int

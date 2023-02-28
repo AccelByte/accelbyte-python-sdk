@@ -51,7 +51,7 @@ class PersonalChatHistory(Operation):
 
         method: GET
 
-        tags: ["chat"]
+        tags: ["chat", "public"]
 
         consumes: ["application/json"]
 

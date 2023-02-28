@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class PartyRejectNotif(WebSocketMessage):
+
     # region fields
 
     leader_id: str

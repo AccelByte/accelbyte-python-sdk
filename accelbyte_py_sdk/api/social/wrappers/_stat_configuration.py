@@ -57,6 +57,43 @@ def create_stat(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create stat (createStat)
+
+    Create stat.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+      *  Returns : created stat template
+      * default minimum value is 0
+      * default maximum value is 1.7976931348623157e+308
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats
+
+        method: POST
+
+        tags: ["StatConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - StatInfo (Create stat successfully)
+
+        404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12271: Stat template with code [{statCode}] already exists in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -75,6 +112,43 @@ async def create_stat_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create stat (createStat)
+
+    Create stat.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+      *  Returns : created stat template
+      * default minimum value is 0
+      * default maximum value is 1.7976931348623157e+308
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats
+
+        method: POST
+
+        tags: ["StatConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - StatInfo (Create stat successfully)
+
+        404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12271: Stat template with code [{statCode}] already exists in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,6 +169,41 @@ def create_stat_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create stat (createStat_1)
+
+    Create stat.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+      *  Returns : created stat template
+      * default minimum value is 0
+      * default maximum value is 1.7976931348623157e+308
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STAT [CREATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/stats
+
+        method: POST
+
+        tags: ["StatConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - StatInfo (Create stat successfully)
+
+        409: Conflict - ErrorEntity (12271: Stat template with code [{statCode}] already exists in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,6 +222,41 @@ async def create_stat_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create stat (createStat_1)
+
+    Create stat.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+      *  Returns : created stat template
+      * default minimum value is 0
+      * default maximum value is 1.7976931348623157e+308
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STAT [CREATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/stats
+
+        method: POST
+
+        tags: ["StatConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - StatInfo (Create stat successfully)
+
+        409: Conflict - ErrorEntity (12271: Stat template with code [{statCode}] already exists in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -133,6 +277,38 @@ def delete_stat(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes stat (deleteStat)
+
+    Deletes stat template.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [DELETE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
+
+        method: DELETE
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful delete of stat)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,6 +327,38 @@ async def delete_stat_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes stat (deleteStat)
+
+    Deletes stat template.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [DELETE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
+
+        method: DELETE
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful delete of stat)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -171,6 +379,38 @@ def delete_tied_stat(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes tied stat (deleteTiedStat)
+
+    Deletes stat template.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [DELETE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}/tied
+
+        method: DELETE
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successfully delete the stat of tied status)
+
+        409: Conflict - ErrorEntity (12276:  Stat template with code [{statCode}] in namespace [{namespace}] not deletable due it is in an INIT status )
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -189,6 +429,38 @@ async def delete_tied_stat_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes tied stat (deleteTiedStat)
+
+    Deletes stat template.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [DELETE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}/tied
+
+        method: DELETE
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successfully delete the stat of tied status)
+
+        409: Conflict - ErrorEntity (12276:  Stat template with code [{statCode}] in namespace [{namespace}] not deletable due it is in an INIT status )
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -208,6 +480,35 @@ def export_stats(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Export all stat configurations (exportStats)
+
+    Export all stat configurations for a given namespace into file At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/export
+
+        method: GET
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (successful export of stat configs)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -224,6 +525,35 @@ async def export_stats_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Export all stat configurations (exportStats)
+
+    Export all stat configurations for a given namespace into file At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/export
+
+        method: GET
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (successful export of stat configs)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -243,6 +573,39 @@ def get_stat(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get stat by statCode (getStat)
+
+    Get stat by statCode.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : stat info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
+
+        method: GET
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        200: OK - StatInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -261,6 +624,39 @@ async def get_stat_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get stat by statCode (getStat)
+
+    Get stat by statCode.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : stat info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
+
+        method: GET
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        200: OK - StatInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -276,6 +672,7 @@ async def get_stat_async(
 
 @same_doc_as(GetStats)
 def get_stats(
+    cycle_ids: Optional[str] = None,
     is_global: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -283,11 +680,49 @@ def get_stats(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List stats (getStats)
+
+    List stats by pagination.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : stats
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats
+
+        method: GET
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        cycle_ids: (cycleIds) OPTIONAL str in query
+
+        is_global: (isGlobal) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - StatPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetStats.create(
+        cycle_ids=cycle_ids,
         is_global=is_global,
         limit=limit,
         offset=offset,
@@ -298,6 +733,7 @@ def get_stats(
 
 @same_doc_as(GetStats)
 async def get_stats_async(
+    cycle_ids: Optional[str] = None,
     is_global: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -305,11 +741,49 @@ async def get_stats_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List stats (getStats)
+
+    List stats by pagination.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : stats
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats
+
+        method: GET
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        cycle_ids: (cycleIds) OPTIONAL str in query
+
+        is_global: (isGlobal) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - StatPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetStats.create(
+        cycle_ids=cycle_ids,
         is_global=is_global,
         limit=limit,
         offset=offset,
@@ -328,6 +802,41 @@ def import_stats(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Import stat configurations (importStats)
+
+    Import stat configurations for a given namespace from file. At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/import
+
+        method: POST
+
+        tags: ["StatConfiguration"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        replace_existing: (replaceExisting) OPTIONAL bool in query
+
+    Responses:
+        201: Created - StatImportInfo (Import stats successfully)
+
+        400: Bad Request - ErrorEntity (70138: Stats data for namespace [{namespace}] is invalid)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -348,6 +857,41 @@ async def import_stats_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Import stat configurations (importStats)
+
+    Import stat configurations for a given namespace from file. At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/import
+
+        method: POST
+
+        tags: ["StatConfiguration"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        replace_existing: (replaceExisting) OPTIONAL bool in query
+
+    Responses:
+        201: Created - StatImportInfo (Import stats successfully)
+
+        400: Bad Request - ErrorEntity (70138: Stats data for namespace [{namespace}] is invalid)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -372,6 +916,43 @@ def query_stats(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query stats by keyword (queryStats)
+
+    Query stats stats by keyword.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : stats
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/search
+
+        method: GET
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        is_global: (isGlobal) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        keyword: (keyword) REQUIRED str in query
+
+    Responses:
+        200: OK - StatPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -396,6 +977,43 @@ async def query_stats_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query stats by keyword (queryStats)
+
+    Query stats stats by keyword.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : stats
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/search
+
+        method: GET
+
+        tags: ["StatConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        is_global: (isGlobal) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        keyword: (keyword) REQUIRED str in query
+
+    Responses:
+        200: OK - StatPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -420,6 +1038,41 @@ def update_stat(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update stat (updateStat)
+
+    Update stat.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
+      *  Returns : updated stat
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
+
+        method: PATCH
+
+        tags: ["StatConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        200: OK - StatInfo (successful update of stat)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -440,6 +1093,41 @@ async def update_stat_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update stat (updateStat)
+
+    Update stat.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
+      *  Returns : updated stat
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
+
+        method: PATCH
+
+        tags: ["StatConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+    Responses:
+        200: OK - StatInfo (successful update of stat)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -42,6 +42,47 @@ def platform_authenticate_samlv3_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """SAML platform Authentication API (platformAuthenticateSAMLV3Handler)
+
+    This endpoint authenticates user platform for SAML protocol. It validates user to its
+    respective platforms. Deactivated or login-banned users are unable to login.
+
+
+
+    ## Supported platforms:
+
+
+
+      * azure
+    Microsoft login page will redirects to this endpoint after login success
+    as previously defined on authentication request SAML
+
+    Properties:
+        url: /iam/v3/sso/saml/platforms/{platformId}/authenticate
+
+        method: POST
+
+        tags: ["SSO SAML 2.0"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        location query: PLACEHOLDER
+
+        platform_id: (platformId) REQUIRED str in path
+
+        code: (code) OPTIONAL str in query
+
+        error: (error) OPTIONAL str in query
+
+        state: (state) REQUIRED str in query
+
+    Responses:
+        302: Found - (Found. Redirect to clients redirection URL with either code or error on the query parameter)
+    """
     request = PlatformAuthenticateSAMLV3Handler.create(
         platform_id=platform_id,
         state=state,
@@ -60,6 +101,47 @@ async def platform_authenticate_samlv3_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """SAML platform Authentication API (platformAuthenticateSAMLV3Handler)
+
+    This endpoint authenticates user platform for SAML protocol. It validates user to its
+    respective platforms. Deactivated or login-banned users are unable to login.
+
+
+
+    ## Supported platforms:
+
+
+
+      * azure
+    Microsoft login page will redirects to this endpoint after login success
+    as previously defined on authentication request SAML
+
+    Properties:
+        url: /iam/v3/sso/saml/platforms/{platformId}/authenticate
+
+        method: POST
+
+        tags: ["SSO SAML 2.0"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        location query: PLACEHOLDER
+
+        platform_id: (platformId) REQUIRED str in path
+
+        code: (code) OPTIONAL str in query
+
+        error: (error) OPTIONAL str in query
+
+        state: (state) REQUIRED str in query
+
+    Responses:
+        302: Found - (Found. Redirect to clients redirection URL with either code or error on the query parameter)
+    """
     request = PlatformAuthenticateSAMLV3Handler.create(
         platform_id=platform_id,
         state=state,

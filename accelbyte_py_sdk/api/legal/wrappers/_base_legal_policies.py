@@ -53,6 +53,40 @@ def create_policy(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a Base Legal Policy (createPolicy)
+
+    Create a legal policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/base-policies
+
+        method: POST
+
+        tags: ["Base Legal Policies"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreateBasePolicyRequest in body
+
+    Responses:
+        201: Created - CreateBasePolicyResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id)
+
+        404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     request = CreatePolicy.create(
         body=body,
     )
@@ -65,6 +99,40 @@ async def create_policy_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a Base Legal Policy (createPolicy)
+
+    Create a legal policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/base-policies
+
+        method: POST
+
+        tags: ["Base Legal Policies"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreateBasePolicyRequest in body
+
+    Responses:
+        201: Created - CreateBasePolicyResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id)
+
+        404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     request = CreatePolicy.create(
         body=body,
     )
@@ -80,6 +148,40 @@ def partial_update_policy(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Base Legal Policy (partialUpdatePolicy)
+
+    Update an existing base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/base-policies/{basePolicyId}
+
+        method: PATCH
+
+        tags: ["Base Legal Policies"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdateBasePolicyRequest in body
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdateBasePolicyResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy | 40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id)
+
+        404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
+    """
     request = PartialUpdatePolicy.create(
         base_policy_id=base_policy_id,
         body=body,
@@ -94,6 +196,40 @@ async def partial_update_policy_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Base Legal Policy (partialUpdatePolicy)
+
+    Update an existing base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/base-policies/{basePolicyId}
+
+        method: PATCH
+
+        tags: ["Base Legal Policies"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdateBasePolicyRequest in body
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdateBasePolicyResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy | 40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id)
+
+        404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
+    """
     request = PartialUpdatePolicy.create(
         base_policy_id=base_policy_id,
         body=body,
@@ -107,6 +243,32 @@ async def partial_update_policy_async(
 def retrieve_all_legal_policies(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Retrieve All Base Legal Policy (retrieveAllLegalPolicies)
+
+    Retrieve all base policies.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/base-policies
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[RetrieveBasePolicyResponse] (successful operation)
+    """
     request = RetrieveAllLegalPolicies.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -115,6 +277,32 @@ def retrieve_all_legal_policies(
 async def retrieve_all_legal_policies_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Retrieve All Base Legal Policy (retrieveAllLegalPolicies)
+
+    Retrieve all base policies.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/base-policies
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[RetrieveBasePolicyResponse] (successful operation)
+    """
     request = RetrieveAllLegalPolicies.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -128,6 +316,36 @@ def retrieve_all_policy_types(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Policy Type (retrieveAllPolicyTypes)
+
+    Retrieve all supported policy types.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/policy-types
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        offset: (offset) OPTIONAL int in query
+
+        limit: (limit) REQUIRED int in query
+
+    Responses:
+        200: OK - List[RetrievePolicyTypeResponse] (successful operation)
+    """
     request = RetrieveAllPolicyTypes.create(
         limit=limit,
         offset=offset,
@@ -142,6 +360,36 @@ async def retrieve_all_policy_types_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Policy Type (retrieveAllPolicyTypes)
+
+    Retrieve all supported policy types.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/policy-types
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        offset: (offset) OPTIONAL int in query
+
+        limit: (limit) REQUIRED int in query
+
+    Responses:
+        200: OK - List[RetrievePolicyTypeResponse] (successful operation)
+    """
     request = RetrieveAllPolicyTypes.create(
         limit=limit,
         offset=offset,
@@ -158,6 +406,38 @@ def retrieve_policy_country(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry)
+
+    Retrieve a Base Legal Policy based on a Particular Country.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/base-policies/{basePolicyId}/countries/{countryCode}
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrievePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
+    """
     request = RetrievePolicyCountry.create(
         base_policy_id=base_policy_id,
         country_code=country_code,
@@ -172,6 +452,38 @@ async def retrieve_policy_country_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry)
+
+    Retrieve a Base Legal Policy based on a Particular Country.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/base-policies/{basePolicyId}/countries/{countryCode}
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrievePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
+    """
     request = RetrievePolicyCountry.create(
         base_policy_id=base_policy_id,
         country_code=country_code,
@@ -185,6 +497,36 @@ async def retrieve_policy_country_async(
 def retrieve_single_policy(
     base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Retrieve a Base Legal Policy (retrieveSinglePolicy)
+
+    Retrieve a base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/base-policies/{basePolicyId}
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveBasePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
+    """
     request = RetrieveSinglePolicy.create(
         base_policy_id=base_policy_id,
     )
@@ -195,6 +537,36 @@ def retrieve_single_policy(
 async def retrieve_single_policy_async(
     base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Retrieve a Base Legal Policy (retrieveSinglePolicy)
+
+    Retrieve a base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/base-policies/{basePolicyId}
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveBasePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
+    """
     request = RetrieveSinglePolicy.create(
         base_policy_id=base_policy_id,
     )

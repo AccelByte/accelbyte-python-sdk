@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class SignalingP2PNotif(WebSocketMessage):
+
     # region fields
 
     destination_id: str

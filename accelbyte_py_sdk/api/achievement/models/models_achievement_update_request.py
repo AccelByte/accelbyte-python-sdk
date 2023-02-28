@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Achievement Service (2.14.0)
+# AccelByte Cloud Achievement Service (2.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,6 +53,8 @@ class ModelsAchievementUpdateRequest(Model):
         tags: (tags) REQUIRED List[str]
 
         unlocked_icons: (unlockedIcons) REQUIRED List[ModelsIcon]
+
+        global_: (global) OPTIONAL bool
     """
 
     # region fields
@@ -67,6 +69,7 @@ class ModelsAchievementUpdateRequest(Model):
     stat_code: str  # REQUIRED
     tags: List[str]  # REQUIRED
     unlocked_icons: List[ModelsIcon]  # REQUIRED
+    global_: bool  # OPTIONAL
 
     # endregion fields
 
@@ -114,6 +117,10 @@ class ModelsAchievementUpdateRequest(Model):
         self, value: List[ModelsIcon]
     ) -> ModelsAchievementUpdateRequest:
         self.unlocked_icons = value
+        return self
+
+    def with_global(self, value: bool) -> ModelsAchievementUpdateRequest:
+        self.global_ = value
         return self
 
     # endregion with_x methods
@@ -168,6 +175,10 @@ class ModelsAchievementUpdateRequest(Model):
             ]
         elif include_empty:
             result["unlockedIcons"] = []
+        if hasattr(self, "global_"):
+            result["global"] = bool(self.global_)
+        elif include_empty:
+            result["global"] = False
         return result
 
     # endregion to methods
@@ -187,6 +198,7 @@ class ModelsAchievementUpdateRequest(Model):
         stat_code: str,
         tags: List[str],
         unlocked_icons: List[ModelsIcon],
+        global_: Optional[bool] = None,
     ) -> ModelsAchievementUpdateRequest:
         instance = cls()
         instance.default_language = default_language
@@ -199,6 +211,8 @@ class ModelsAchievementUpdateRequest(Model):
         instance.stat_code = stat_code
         instance.tags = tags
         instance.unlocked_icons = unlocked_icons
+        if global_ is not None:
+            instance.global_ = global_
         return instance
 
     @classmethod
@@ -256,6 +270,10 @@ class ModelsAchievementUpdateRequest(Model):
             ]
         elif include_empty:
             instance.unlocked_icons = []
+        if "global" in dict_ and dict_["global"] is not None:
+            instance.global_ = bool(dict_["global"])
+        elif include_empty:
+            instance.global_ = False
         return instance
 
     @classmethod
@@ -309,6 +327,7 @@ class ModelsAchievementUpdateRequest(Model):
             "statCode": "stat_code",
             "tags": "tags",
             "unlockedIcons": "unlocked_icons",
+            "global": "global_",
         }
 
     @staticmethod
@@ -324,6 +343,7 @@ class ModelsAchievementUpdateRequest(Model):
             "statCode": True,
             "tags": True,
             "unlockedIcons": True,
+            "global": False,
         }
 
     # endregion static methods

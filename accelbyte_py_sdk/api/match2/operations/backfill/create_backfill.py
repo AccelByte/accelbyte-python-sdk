@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Match Service V2 (2.1.1)
+# AccelByte Cloud Match Service V2 (2.2.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ApiBackFillCreateRequest
+from ...models import ApiBackfillCreateResponse
 from ...models import ResponseError
 
 
@@ -66,7 +67,7 @@ class CreateBackfill(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - (Created)
+        201: Created - ApiBackfillCreateResponse (Created)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -185,10 +186,12 @@ class CreateBackfill(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, Optional[str]], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, ApiBackfillCreateResponse], Union[None, HttpResponse, ResponseError]
+    ]:
         """Parse the given response.
 
-        201: Created - (Created)
+        201: Created - ApiBackfillCreateResponse (Created)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -216,7 +219,7 @@ class CreateBackfill(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 201:
-            return HttpResponse.create(code, "Created"), None
+            return ApiBackfillCreateResponse.create_from_dict(content), None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:

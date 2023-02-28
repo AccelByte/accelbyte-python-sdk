@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class ExitAllChannel(WebSocketMessage):
+
     # region fields
 
     namespace: str

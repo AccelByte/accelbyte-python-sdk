@@ -50,6 +50,38 @@ def get_followed_content(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get contents from followed creators (GetFollowedContent)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/followed
+
+        method: GET
+
+        tags: ["Public Follow"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -70,6 +102,38 @@ async def get_followed_content_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get contents from followed creators (GetFollowedContent)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/followed
+
+        method: GET
+
+        tags: ["Public Follow"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -92,6 +156,38 @@ def get_followed_users(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get followed creators (GetFollowedUsers)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/followed
+
+        method: GET
+
+        tags: ["Public Follow"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -112,6 +208,38 @@ async def get_followed_users_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get followed creators (GetFollowedUsers)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/followed
+
+        method: GET
+
+        tags: ["Public Follow"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,6 +263,38 @@ def get_public_followers(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of followers (GetPublicFollowers)
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/followers
+
+        method: GET
+
+        tags: ["Public Follow"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -157,6 +317,38 @@ async def get_public_followers_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of followers (GetPublicFollowers)
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/followers
+
+        method: GET
+
+        tags: ["Public Follow"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -181,6 +373,38 @@ def get_public_following(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of following (GetPublicFollowing)
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/following
+
+        method: GET
+
+        tags: ["Public Follow"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -203,6 +427,38 @@ async def get_public_following_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of following (GetPublicFollowing)
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/following
+
+        method: GET
+
+        tags: ["Public Follow"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,6 +482,40 @@ def update_user_follow_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update follow/unfollow status to a user (UpdateUserFollowStatus)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/follow
+
+        method: PUT
+
+        tags: ["Public Follow"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUserFollowRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUserFollowResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,6 +536,40 @@ async def update_user_follow_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update follow/unfollow status to a user (UpdateUserFollowStatus)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/follow
+
+        method: PUT
+
+        tags: ["Public Follow"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUserFollowRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUserFollowResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

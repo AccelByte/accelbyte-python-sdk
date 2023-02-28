@@ -38,6 +38,24 @@ from ..operations.operations import GetHealthcheckInfoV1
 def get_healthcheck_info(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get healthcheck info (GetHealthcheckInfo)
+
+    Properties:
+        url: /healthz
+
+        method: GET
+
+        tags: []
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (OK)
+    """
     request = GetHealthcheckInfo.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -46,6 +64,24 @@ def get_healthcheck_info(
 async def get_healthcheck_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get healthcheck info (GetHealthcheckInfo)
+
+    Properties:
+        url: /healthz
+
+        method: GET
+
+        tags: []
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (OK)
+    """
     request = GetHealthcheckInfo.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -56,6 +92,24 @@ async def get_healthcheck_info_async(
 def get_healthcheck_info_v1(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get healthcheck info V1 (GetHealthcheckInfoV1)
+
+    Properties:
+        url: /session/healthz
+
+        method: GET
+
+        tags: []
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (OK)
+    """
     request = GetHealthcheckInfoV1.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -64,6 +118,24 @@ def get_healthcheck_info_v1(
 async def get_healthcheck_info_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get healthcheck info V1 (GetHealthcheckInfoV1)
+
+    Properties:
+        url: /session/healthz
+
+        method: GET
+
+        tags: []
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (OK)
+    """
     request = GetHealthcheckInfoV1.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

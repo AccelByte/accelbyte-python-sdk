@@ -69,6 +69,50 @@ def get_statistic(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get catalog changes statistics (getStatistic)
+
+    This API is used to query catalog changes statistics .
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : catalog changes statistics changes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/statistics
+
+        method: GET
+
+        tags: ["CatalogChanges"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+        action: (action) OPTIONAL Union[str, ActionEnum] in query
+
+        item_sku: (itemSku) OPTIONAL str in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        type_: (type) OPTIONAL Union[str, TypeEnum] in query
+
+        updated_at_end: (updatedAtEnd) OPTIONAL str in query
+
+        updated_at_start: (updatedAtStart) OPTIONAL str in query
+
+    Responses:
+        200: OK - CatalogChangeStatistics (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,6 +143,50 @@ async def get_statistic_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get catalog changes statistics (getStatistic)
+
+    This API is used to query catalog changes statistics .
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : catalog changes statistics changes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/statistics
+
+        method: GET
+
+        tags: ["CatalogChanges"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+        action: (action) OPTIONAL Union[str, ActionEnum] in query
+
+        item_sku: (itemSku) OPTIONAL str in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        type_: (type) OPTIONAL Union[str, TypeEnum] in query
+
+        updated_at_end: (updatedAtEnd) OPTIONAL str in query
+
+        updated_at_start: (updatedAtStart) OPTIONAL str in query
+
+    Responses:
+        200: OK - CatalogChangeStatistics (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -125,6 +213,42 @@ def publish_all(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Publish all unpublished changes (publishAll)
+
+    This API is used to publish all unpublished changes.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : no content
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishAll
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        200: OK - StoreInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -143,6 +267,42 @@ async def publish_all_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Publish all unpublished changes (publishAll)
+
+    This API is used to publish all unpublished changes.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : no content
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishAll
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        200: OK - StoreInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -163,6 +323,44 @@ def publish_selected(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Publish selected unpublished changes (publishSelected)
+
+    This API is used to publish selected unpublished changes.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : no content
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishSelected
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        200: OK - StoreInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30375: Item id [{itemId}] of sku [{sku}] is duplicate with un-published deleted item in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -181,6 +379,44 @@ async def publish_selected_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Publish selected unpublished changes (publishSelected)
+
+    This API is used to publish selected unpublished changes.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : no content
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishSelected
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        200: OK - StoreInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30375: Item id [{itemId}] of sku [{sku}] is duplicate with un-published deleted item in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -212,6 +448,60 @@ def query_changes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query catalog changes (queryChanges)
+
+    This API is used to query changes .
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : the pagination of changes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/byCriteria
+
+        method: GET
+
+        tags: ["CatalogChanges"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+        action: (action) OPTIONAL Union[str, ActionEnum] in query
+
+        item_sku: (itemSku) OPTIONAL str in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        selected: (selected) OPTIONAL bool in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        type_: (type) OPTIONAL Union[str, TypeEnum] in query
+
+        updated_at_end: (updatedAtEnd) OPTIONAL str in query
+
+        updated_at_start: (updatedAtStart) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CatalogChangePagingSlicedResult] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -252,6 +542,60 @@ async def query_changes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query catalog changes (queryChanges)
+
+    This API is used to query changes .
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : the pagination of changes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/byCriteria
+
+        method: GET
+
+        tags: ["CatalogChanges"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+        action: (action) OPTIONAL Union[str, ActionEnum] in query
+
+        item_sku: (itemSku) OPTIONAL str in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        selected: (selected) OPTIONAL bool in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        type_: (type) OPTIONAL Union[str, TypeEnum] in query
+
+        updated_at_end: (updatedAtEnd) OPTIONAL str in query
+
+        updated_at_start: (updatedAtStart) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CatalogChangePagingSlicedResult] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -283,6 +627,38 @@ def select_all_records(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Select all changes (selectAllRecords)
+
+    Select all changes.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAll
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -301,6 +677,38 @@ async def select_all_records_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Select all changes (selectAllRecords)
+
+    Select all changes.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAll
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -322,6 +730,40 @@ def select_record(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Select a change (selectRecord)
+
+    Select a change, it will be included when partial publish.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/select
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        change_id: (changeId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30041: Changelog [{changelogId}] doest not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -342,6 +784,40 @@ async def select_record_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Select a change (selectRecord)
+
+    Select a change, it will be included when partial publish.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/select
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        change_id: (changeId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30041: Changelog [{changelogId}] doest not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -363,6 +839,38 @@ def unselect_all_records(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unselect all changes (unselectAllRecords)
+
+    Unselect all change.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/unselectAll
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -381,6 +889,38 @@ async def unselect_all_records_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unselect all changes (unselectAllRecords)
+
+    Unselect all change.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/unselectAll
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -402,6 +942,42 @@ def unselect_record(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unselect a change (unselectRecord)
+
+    Unselect a change, it will not be included when partial publish.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/unselect
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        change_id: (changeId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30041: Changelog [{changelogId}] doest not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30071: Can't unselect item [{itemId}] when the item which is bound to is already selected in namespace [{namespace}] | 30072: Can't unselect category [{categoryPath}] when item with this category is already selected in namespace [{namespace}] | 30073: Can't unselect store change | 30074: Can't unselect subscription's content [{itemId}] when subscription is already selected in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -422,6 +998,42 @@ async def unselect_record_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unselect a change (unselectRecord)
+
+    Unselect a change, it will not be included when partial publish.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/unselect
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        change_id: (changeId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30041: Changelog [{changelogId}] doest not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30071: Can't unselect item [{itemId}] when the item which is bound to is already selected in namespace [{namespace}] | 30072: Can't unselect category [{categoryPath}] when item with this category is already selected in namespace [{namespace}] | 30073: Can't unselect store change | 30074: Can't unselect subscription's content [{itemId}] when subscription is already selected in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

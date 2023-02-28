@@ -45,6 +45,54 @@ def get_server_logs(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Queries server logs (getServerLogs)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint queries a specified dedicated server's logs.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dslogmanager/admin/namespaces/{namespace}/servers/{podName}/logs
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+        log_type: (logType) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        origin: (origin) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsServerLogs (server logs queried)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -69,6 +117,54 @@ async def get_server_logs_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Queries server logs (getServerLogs)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint queries a specified dedicated server's logs.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dslogmanager/admin/namespaces/{namespace}/servers/{podName}/logs
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+        log_type: (logType) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        origin: (origin) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsServerLogs (server logs queried)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

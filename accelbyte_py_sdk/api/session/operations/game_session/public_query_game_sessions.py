@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Session Service (2.6.1)
+# AccelByte Cloud Session Service (2.6.8)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

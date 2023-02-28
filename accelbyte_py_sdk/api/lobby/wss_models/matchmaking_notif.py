@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class MatchmakingNotif(WebSocketMessage):
+
     # region fields
 
     counter_party_member: List[str]

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.23.0)
+# AccelByte Cloud Platform Service (4.24.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ADTOObjectForUnlockSteamAchievementAPI
 from ...models import ErrorEntity
+from ...models import SteamAchievementUpdateRequest
 from ...models import ValidationErrorEntity
 
 
@@ -56,7 +56,7 @@ class UnlockSteamUserAchievement(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ADTOObjectForUnlockSteamAchievementAPI in body
+        body: (body) OPTIONAL SteamAchievementUpdateRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -81,7 +81,7 @@ class UnlockSteamUserAchievement(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ADTOObjectForUnlockSteamAchievementAPI  # OPTIONAL in [body]
+    body: SteamAchievementUpdateRequest  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -149,7 +149,7 @@ class UnlockSteamUserAchievement(Operation):
     # region with_x methods
 
     def with_body(
-        self, value: ADTOObjectForUnlockSteamAchievementAPI
+        self, value: SteamAchievementUpdateRequest
     ) -> UnlockSteamUserAchievement:
         self.body = value
         return self
@@ -171,7 +171,7 @@ class UnlockSteamUserAchievement(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ADTOObjectForUnlockSteamAchievementAPI()
+            result["body"] = SteamAchievementUpdateRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -231,7 +231,7 @@ class UnlockSteamUserAchievement(Operation):
         cls,
         namespace: str,
         user_id: str,
-        body: Optional[ADTOObjectForUnlockSteamAchievementAPI] = None,
+        body: Optional[SteamAchievementUpdateRequest] = None,
     ) -> UnlockSteamUserAchievement:
         instance = cls()
         instance.namespace = namespace
@@ -246,11 +246,11 @@ class UnlockSteamUserAchievement(Operation):
     ) -> UnlockSteamUserAchievement:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ADTOObjectForUnlockSteamAchievementAPI.create_from_dict(
+            instance.body = SteamAchievementUpdateRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ADTOObjectForUnlockSteamAchievementAPI()
+            instance.body = SteamAchievementUpdateRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

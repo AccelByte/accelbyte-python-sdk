@@ -121,6 +121,57 @@ def add_role_managers(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Managers (AddRoleManagers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/managers
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleManagersRequest in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = AddRoleManagers.create(
         body=body,
         role_id=role_id,
@@ -136,6 +187,57 @@ async def add_role_managers_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Managers (AddRoleManagers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/managers
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleManagersRequest in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = AddRoleManagers.create(
         body=body,
         role_id=role_id,
@@ -153,6 +255,62 @@ def add_role_members(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Members (AddRoleMembers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/members
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleMembersRequest in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = AddRoleMembers.create(
         body=body,
         role_id=role_id,
@@ -168,6 +326,62 @@ async def add_role_members_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Members (AddRoleMembers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/members
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleMembersRequest in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = AddRoleMembers.create(
         body=body,
         role_id=role_id,
@@ -187,6 +401,155 @@ def add_role_permission(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Permission (AddRolePermission)
+
+    ## The endpoint is going to be deprecated
+
+
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' Or 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(update): /iam/v3/admin/roles/{roleId}/permissions [PUT]
+
+
+      * Substitute endpoint(create): /iam/v3/admin/roles/{roleId}/permissions [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/permissions/{resource}/{action}
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdatePermissionScheduleRequest in body
+
+        action: (action) REQUIRED int in path
+
+        resource: (resource) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = AddRolePermission.create(
         action=action,
         body=body,
@@ -206,6 +569,155 @@ async def add_role_permission_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Permission (AddRolePermission)
+
+    ## The endpoint is going to be deprecated
+
+
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' Or 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(update): /iam/v3/admin/roles/{roleId}/permissions [PUT]
+
+
+      * Substitute endpoint(create): /iam/v3/admin/roles/{roleId}/permissions [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/permissions/{resource}/{action}
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdatePermissionScheduleRequest in body
+
+        action: (action) REQUIRED int in path
+
+        resource: (resource) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = AddRolePermission.create(
         action=action,
         body=body,
@@ -224,6 +736,52 @@ def admin_add_role_managers_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Managers (AdminAddRoleManagersV3)
+
+    Role can only be assigned to other users by the role's manager.
+
+
+
+
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+    action code: 10408
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/managers
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleManagersRequestV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        409: Conflict - RestErrorResponse (10468: role manager exist)
+    """
     request = AdminAddRoleManagersV3.create(
         body=body,
         role_id=role_id,
@@ -238,6 +796,52 @@ async def admin_add_role_managers_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Managers (AdminAddRoleManagersV3)
+
+    Role can only be assigned to other users by the role's manager.
+
+
+
+
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+    action code: 10408
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/managers
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleManagersRequestV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        409: Conflict - RestErrorResponse (10468: role manager exist)
+    """
     request = AdminAddRoleManagersV3.create(
         body=body,
         role_id=role_id,
@@ -254,6 +858,58 @@ def admin_add_role_members_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Members (AdminAddRoleMembersV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    action code: 10410
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/members
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleMembersRequestV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10457: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (10456: role not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10469: role member exist)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminAddRoleMembersV3.create(
         body=body,
         role_id=role_id,
@@ -268,6 +924,58 @@ async def admin_add_role_members_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Members (AdminAddRoleMembersV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    action code: 10410
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/members
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleMembersRequestV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10457: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (10456: role not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10469: role member exist)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminAddRoleMembersV3.create(
         body=body,
         role_id=role_id,
@@ -284,6 +992,137 @@ def admin_add_role_permissions_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Permissions (AdminAddRolePermissionsV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will ATTACH permission(s) into the role
+
+
+
+    action code: 10404
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/permissions
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissionsV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminAddRolePermissionsV3.create(
         body=body,
         role_id=role_id,
@@ -298,6 +1137,137 @@ async def admin_add_role_permissions_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Permissions (AdminAddRolePermissionsV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will ATTACH permission(s) into the role
+
+
+
+    action code: 10404
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/permissions
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissionsV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminAddRolePermissionsV3.create(
         body=body,
         role_id=role_id,
@@ -314,6 +1284,135 @@ def admin_add_role_permissions_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Permissions V4 (AdminAddRolePermissionsV4)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will ATTACH permission(s) into the role
+
+
+
+    action code: 10404
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/permissions
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissionsV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = AdminAddRolePermissionsV4.create(
         body=body,
         role_id=role_id,
@@ -328,6 +1427,135 @@ async def admin_add_role_permissions_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add Role Permissions V4 (AdminAddRolePermissionsV4)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will ATTACH permission(s) into the role
+
+
+
+    action code: 10404
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/permissions
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissionsV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = AdminAddRolePermissionsV4.create(
         body=body,
         role_id=role_id,
@@ -344,6 +1572,52 @@ def admin_assign_user_to_role_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Assign User to Role (AdminAssignUserToRoleV4)
+
+    Required permission ADMIN:ROLE [UPDATE]
+
+    Parameters:
+    - userId: string (required)
+    - namespace: string (userâs namespace) (required)
+    - assignedNamespaces: array of string (namespaces to be assigned on role) (required)
+
+    action code: 10410
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/users
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelAssignUserV4Request in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelAssignedUserV4Response (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10457: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (10456: role not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10469: role member exist)
+
+        422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
+    """
     request = AdminAssignUserToRoleV4.create(
         body=body,
         role_id=role_id,
@@ -358,6 +1632,52 @@ async def admin_assign_user_to_role_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Assign User to Role (AdminAssignUserToRoleV4)
+
+    Required permission ADMIN:ROLE [UPDATE]
+
+    Parameters:
+    - userId: string (required)
+    - namespace: string (userâs namespace) (required)
+    - assignedNamespaces: array of string (namespaces to be assigned on role) (required)
+
+    action code: 10410
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/users
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelAssignUserV4Request in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelAssignedUserV4Response (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10457: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (10456: role not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10469: role member exist)
+
+        422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
+    """
     request = AdminAssignUserToRoleV4.create(
         body=body,
         role_id=role_id,
@@ -373,6 +1693,51 @@ def admin_create_role_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Role (AdminCreateRoleV3)
+
+    Required permission 'ADMIN:ROLE [CREATE]'
+
+    Create role request body:
+    - roleName: specify role name, alphanumeric, cannot have special character (required)
+    - permissions: specify the permission that this role have
+    - managers: specify list of user that will act as the managers of this role
+    - members: specify list of user that will act as the members of this role
+    - adminRole: specify if role is for admin user (default false)
+    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+    - deletable: specify if role can be deleted or not (default true)
+
+
+    action code: 10401
+
+    Required Permission(s):
+        - ADMIN:ROLE [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/roles
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleCreateV3Request in body
+
+    Responses:
+        201: Created - AccountcommonRoleV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10466: invalid role members)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminCreateRoleV3.create(
         body=body,
     )
@@ -385,6 +1750,51 @@ async def admin_create_role_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Role (AdminCreateRoleV3)
+
+    Required permission 'ADMIN:ROLE [CREATE]'
+
+    Create role request body:
+    - roleName: specify role name, alphanumeric, cannot have special character (required)
+    - permissions: specify the permission that this role have
+    - managers: specify list of user that will act as the managers of this role
+    - members: specify list of user that will act as the members of this role
+    - adminRole: specify if role is for admin user (default false)
+    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+    - deletable: specify if role can be deleted or not (default true)
+
+
+    action code: 10401
+
+    Required Permission(s):
+        - ADMIN:ROLE [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/roles
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleCreateV3Request in body
+
+    Responses:
+        201: Created - AccountcommonRoleV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10466: invalid role members)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminCreateRoleV3.create(
         body=body,
     )
@@ -399,6 +1809,47 @@ def admin_create_role_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Role (AdminCreateRoleV4)
+
+    Required permission: ADMIN:ROLE [CREATE]
+
+    Create role request body:
+    - roleName: specify role name, alphanumeric, cannot have special character (required)
+    - adminRole: specify if role is for admin user (default false)
+    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+    - deletable: specify if role can be deleted (default true)
+
+    action code: 10401
+
+    Required Permission(s):
+        - ADMIN:ROLE [CREATE]
+
+    Properties:
+        url: /iam/v4/admin/roles
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleV4Request in body
+
+    Responses:
+        201: Created - ModelRoleV4Response (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10466: invalid role members)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminCreateRoleV4.create(
         body=body,
     )
@@ -411,6 +1862,47 @@ async def admin_create_role_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Role (AdminCreateRoleV4)
+
+    Required permission: ADMIN:ROLE [CREATE]
+
+    Create role request body:
+    - roleName: specify role name, alphanumeric, cannot have special character (required)
+    - adminRole: specify if role is for admin user (default false)
+    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+    - deletable: specify if role can be deleted (default true)
+
+    action code: 10401
+
+    Required Permission(s):
+        - ADMIN:ROLE [CREATE]
+
+    Properties:
+        url: /iam/v4/admin/roles
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleV4Request in body
+
+    Responses:
+        201: Created - ModelRoleV4Response (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10466: invalid role members)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminCreateRoleV4.create(
         body=body,
     )
@@ -427,6 +1919,46 @@ def admin_delete_role_permission_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Role Permission (AdminDeleteRolePermissionV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+    action code: 10406
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/permissions/{resource}/{action}
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        action: (action) REQUIRED int in path
+
+        resource: (resource) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminDeleteRolePermissionV3.create(
         action=action,
         resource=resource,
@@ -443,6 +1975,46 @@ async def admin_delete_role_permission_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Role Permission (AdminDeleteRolePermissionV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+    action code: 10406
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/permissions/{resource}/{action}
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        action: (action) REQUIRED int in path
+
+        resource: (resource) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminDeleteRolePermissionV3.create(
         action=action,
         resource=resource,
@@ -460,6 +2032,39 @@ def admin_delete_role_permissions_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Role (AdminDeleteRolePermissionsV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/permissions
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = AdminDeleteRolePermissionsV3.create(
         body=body,
         role_id=role_id,
@@ -474,6 +2079,39 @@ async def admin_delete_role_permissions_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Role (AdminDeleteRolePermissionsV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/permissions
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = AdminDeleteRolePermissionsV3.create(
         body=body,
         role_id=role_id,
@@ -490,6 +2128,39 @@ def admin_delete_role_permissions_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Role Permission V4 (AdminDeleteRolePermissionsV4)
+
+    Required permission ADMIN:ROLE [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/permissions
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = AdminDeleteRolePermissionsV4.create(
         body=body,
         role_id=role_id,
@@ -504,6 +2175,39 @@ async def admin_delete_role_permissions_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Role Permission V4 (AdminDeleteRolePermissionsV4)
+
+    Required permission ADMIN:ROLE [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/permissions
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = AdminDeleteRolePermissionsV4.create(
         body=body,
         role_id=role_id,
@@ -517,6 +2221,44 @@ async def admin_delete_role_permissions_v4_async(
 def admin_delete_role_v3(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete Role (AdminDeleteRoleV3)
+
+    Required permission ''ADMIN:ROLE [DELETE]''
+    action code: 10403
+
+    Required Permission(s):
+        - ADMIN:ROLE [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        409: Conflict - RestErrorResponse (20009: request_conflict)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminDeleteRoleV3.create(
         role_id=role_id,
     )
@@ -527,6 +2269,44 @@ def admin_delete_role_v3(
 async def admin_delete_role_v3_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete Role (AdminDeleteRoleV3)
+
+    Required permission ''ADMIN:ROLE [DELETE]''
+    action code: 10403
+
+    Required Permission(s):
+        - ADMIN:ROLE [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        409: Conflict - RestErrorResponse (20009: request_conflict)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminDeleteRoleV3.create(
         role_id=role_id,
     )
@@ -539,6 +2319,45 @@ async def admin_delete_role_v3_async(
 def admin_delete_role_v4(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete Role (AdminDeleteRoleV4)
+
+    Required permission ADMIN:ROLE [DELETE]
+
+    Removes role ID from user's Roles and NamespaceRoles before deleting the role.
+
+    action code: 10403
+
+    Required Permission(s):
+        - ADMIN:ROLE [DELETE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminDeleteRoleV4.create(
         role_id=role_id,
     )
@@ -549,6 +2368,45 @@ def admin_delete_role_v4(
 async def admin_delete_role_v4_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete Role (AdminDeleteRoleV4)
+
+    Required permission ADMIN:ROLE [DELETE]
+
+    Removes role ID from user's Roles and NamespaceRoles before deleting the role.
+
+    action code: 10403
+
+    Required Permission(s):
+        - ADMIN:ROLE [DELETE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminDeleteRoleV4.create(
         role_id=role_id,
     )
@@ -561,6 +2419,51 @@ async def admin_delete_role_v4_async(
 def admin_get_role_admin_status_v3(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role Admin Status (AdminGetRoleAdminStatusV3)
+
+    Required permission 'ADMIN:ROLE [READ]'
+
+
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    action code: 10420
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/admin
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleAdminStatusResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRoleAdminStatusV3.create(
         role_id=role_id,
     )
@@ -571,6 +2474,51 @@ def admin_get_role_admin_status_v3(
 async def admin_get_role_admin_status_v3_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role Admin Status (AdminGetRoleAdminStatusV3)
+
+    Required permission 'ADMIN:ROLE [READ]'
+
+
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    action code: 10420
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/admin
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleAdminStatusResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRoleAdminStatusV3.create(
         role_id=role_id,
     )
@@ -588,6 +2536,56 @@ def admin_get_role_managers_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Role Managers (AdminGetRoleManagersV3)
+
+    Required permission 'ADMIN:ROLE [READ]'
+
+
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+
+    action code: 10415
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/managers
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelRoleManagersResponsesV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRoleManagersV3.create(
         role_id=role_id,
         after=after,
@@ -606,6 +2604,56 @@ async def admin_get_role_managers_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Role Managers (AdminGetRoleManagersV3)
+
+    Required permission 'ADMIN:ROLE [READ]'
+
+
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+
+    action code: 10415
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/managers
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelRoleManagersResponsesV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRoleManagersV3.create(
         role_id=role_id,
         after=after,
@@ -626,6 +2674,57 @@ def admin_get_role_members_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Role Members (AdminGetRoleMembersV3)
+
+    Required permission 'ADMIN:ROLE [READ]'
+
+
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    action code: 10416
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/members
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelRoleMembersResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRoleMembersV3.create(
         role_id=role_id,
         after=after,
@@ -644,6 +2743,57 @@ async def admin_get_role_members_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Role Members (AdminGetRoleMembersV3)
+
+    Required permission 'ADMIN:ROLE [READ]'
+
+
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    action code: 10416
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/members
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelRoleMembersResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRoleMembersV3.create(
         role_id=role_id,
         after=after,
@@ -659,6 +2809,44 @@ async def admin_get_role_members_v3_async(
 def admin_get_role_v3(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role (AdminGetRoleV3)
+
+    Required permission 'ADMIN:ROLE [READ]'
+
+
+    action code: 10419
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRoleV3.create(
         role_id=role_id,
     )
@@ -669,6 +2857,44 @@ def admin_get_role_v3(
 async def admin_get_role_v3_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role (AdminGetRoleV3)
+
+    Required permission 'ADMIN:ROLE [READ]'
+
+
+    action code: 10419
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRoleV3.create(
         role_id=role_id,
     )
@@ -681,6 +2907,43 @@ async def admin_get_role_v3_async(
 def admin_get_role_v4(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role (AdminGetRoleV4)
+
+    Required permission ADMIN:ROLE [READ]
+
+    action code: 10419
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRoleV4.create(
         role_id=role_id,
     )
@@ -691,6 +2954,43 @@ def admin_get_role_v4(
 async def admin_get_role_v4_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role (AdminGetRoleV4)
+
+    Required permission ADMIN:ROLE [READ]
+
+    action code: 10419
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRoleV4.create(
         role_id=role_id,
     )
@@ -708,6 +3008,48 @@ def admin_get_roles_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Roles (AdminGetRolesV3)
+
+    Required permission 'ADMIN:ROLE [READ]'
+
+
+    action code: 10414
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v3/admin/roles
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        is_wildcard: (isWildcard) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelRoleResponseWithManagersAndPaginationV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRolesV3.create(
         after=after,
         before=before,
@@ -726,6 +3068,48 @@ async def admin_get_roles_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Roles (AdminGetRolesV3)
+
+    Required permission 'ADMIN:ROLE [READ]'
+
+
+    action code: 10414
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v3/admin/roles
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        is_wildcard: (isWildcard) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelRoleResponseWithManagersAndPaginationV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRolesV3.create(
         after=after,
         before=before,
@@ -746,6 +3130,47 @@ def admin_get_roles_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Roles (AdminGetRolesV4)
+
+    Required permission ADMIN:ROLE [READ]
+
+    action code: 10414
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v4/admin/roles
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        admin_role: (adminRole) OPTIONAL bool in query
+
+        is_wildcard: (isWildcard) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelListRoleV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRolesV4.create(
         admin_role=admin_role,
         is_wildcard=is_wildcard,
@@ -764,6 +3189,47 @@ async def admin_get_roles_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Roles (AdminGetRolesV4)
+
+    Required permission ADMIN:ROLE [READ]
+
+    action code: 10414
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v4/admin/roles
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        admin_role: (adminRole) OPTIONAL bool in query
+
+        is_wildcard: (isWildcard) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelListRoleV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetRolesV4.create(
         admin_role=admin_role,
         is_wildcard=is_wildcard,
@@ -784,6 +3250,47 @@ def admin_list_assigned_users_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Role's Assigned Users (AdminListAssignedUsersV4)
+
+    Required permission ADMIN:ROLE [READ]
+    Query all users that has the specified role.
+    action code: 10416
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/users
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelListAssignedUsersV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = AdminListAssignedUsersV4.create(
         role_id=role_id,
         after=after,
@@ -802,6 +3309,47 @@ async def admin_list_assigned_users_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Role's Assigned Users (AdminListAssignedUsersV4)
+
+    Required permission ADMIN:ROLE [READ]
+    Query all users that has the specified role.
+    action code: 10416
+
+    Required Permission(s):
+        - ADMIN:ROLE [READ]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/users
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelListAssignedUsersV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = AdminListAssignedUsersV4.create(
         role_id=role_id,
         after=after,
@@ -817,6 +3365,43 @@ async def admin_list_assigned_users_v4_async(
 def admin_remove_role_admin_v3(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Remove Role Admin Status (AdminRemoveRoleAdminV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    code: 10413
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/admin
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminRemoveRoleAdminV3.create(
         role_id=role_id,
     )
@@ -827,6 +3412,43 @@ def admin_remove_role_admin_v3(
 async def admin_remove_role_admin_v3_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Remove Role Admin Status (AdminRemoveRoleAdminV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    code: 10413
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/admin
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminRemoveRoleAdminV3.create(
         role_id=role_id,
     )
@@ -842,6 +3464,51 @@ def admin_remove_role_managers_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove Role Managers (AdminRemoveRoleManagersV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    action code: 10409
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/managers
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleManagersRequestV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminRemoveRoleManagersV3.create(
         body=body,
         role_id=role_id,
@@ -856,6 +3523,51 @@ async def admin_remove_role_managers_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove Role Managers (AdminRemoveRoleManagersV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    action code: 10409
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/managers
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleManagersRequestV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminRemoveRoleManagersV3.create(
         body=body,
         role_id=role_id,
@@ -872,6 +3584,56 @@ def admin_remove_role_members_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove Role Members (AdminRemoveRoleMembersV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    action code: 10411
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/members
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleMembersRequestV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10457: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminRemoveRoleMembersV3.create(
         body=body,
         role_id=role_id,
@@ -886,6 +3648,56 @@ async def admin_remove_role_members_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove Role Members (AdminRemoveRoleMembersV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    action code: 10411
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/members
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleMembersRequestV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10457: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminRemoveRoleMembersV3.create(
         body=body,
         role_id=role_id,
@@ -902,6 +3714,49 @@ def admin_revoke_user_from_role_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Revoke User from Role (AdminRevokeUserFromRoleV4)
+
+    Required permission ADMIN:ROLE [UPDATE]
+
+    Current implementation will revoke user from role in all assigned namespaces.
+
+    Parameters:
+    - userId: string (required)
+    - namespace: string (userâs namespace) (required)
+
+    action code: 10411
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/users
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRevokeUserV4Request in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10457: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = AdminRevokeUserFromRoleV4.create(
         body=body,
         role_id=role_id,
@@ -916,6 +3771,49 @@ async def admin_revoke_user_from_role_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Revoke User from Role (AdminRevokeUserFromRoleV4)
+
+    Required permission ADMIN:ROLE [UPDATE]
+
+    Current implementation will revoke user from role in all assigned namespaces.
+
+    Parameters:
+    - userId: string (required)
+    - namespace: string (userâs namespace) (required)
+
+    action code: 10411
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/users
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRevokeUserV4Request in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10457: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = AdminRevokeUserFromRoleV4.create(
         body=body,
         role_id=role_id,
@@ -929,6 +3827,55 @@ async def admin_revoke_user_from_role_v4_async(
 def admin_update_admin_role_status_v3(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Set Role as Admin Role (AdminUpdateAdminRoleStatusV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    Role can be set as admin role only when it has at least 1 manager.
+
+
+
+    action code: 10412
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/admin
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10467: role has no manager)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminUpdateAdminRoleStatusV3.create(
         role_id=role_id,
     )
@@ -939,6 +3886,55 @@ def admin_update_admin_role_status_v3(
 async def admin_update_admin_role_status_v3_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Set Role as Admin Role (AdminUpdateAdminRoleStatusV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    Role can be set as admin role only when it has at least 1 manager.
+
+
+
+    action code: 10412
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/admin
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10467: role has no manager)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminUpdateAdminRoleStatusV3.create(
         role_id=role_id,
     )
@@ -954,6 +3950,137 @@ def admin_update_role_permissions_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role Permissions (AdminUpdateRolePermissionsV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will REPLACE role's permissions with the ones defined in body
+
+
+
+    action code: 10405
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/permissions
+
+        method: PUT
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissionsV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminUpdateRolePermissionsV3.create(
         body=body,
         role_id=role_id,
@@ -968,6 +4095,137 @@ async def admin_update_role_permissions_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role Permissions (AdminUpdateRolePermissionsV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will REPLACE role's permissions with the ones defined in body
+
+
+
+    action code: 10405
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}/permissions
+
+        method: PUT
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissionsV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminUpdateRolePermissionsV3.create(
         body=body,
         role_id=role_id,
@@ -984,6 +4242,135 @@ def admin_update_role_permissions_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role Permissions (AdminUpdateRolePermissionsV4)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will REPLACE role's permissions with the ones defined in body
+
+
+
+    action code: 10405
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/permissions
+
+        method: PUT
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissionsV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = AdminUpdateRolePermissionsV4.create(
         body=body,
         role_id=role_id,
@@ -998,6 +4385,135 @@ async def admin_update_role_permissions_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role Permissions (AdminUpdateRolePermissionsV4)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will REPLACE role's permissions with the ones defined in body
+
+
+
+    action code: 10405
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}/permissions
+
+        method: PUT
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissionsV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = AdminUpdateRolePermissionsV4.create(
         body=body,
         role_id=role_id,
@@ -1014,6 +4530,51 @@ def admin_update_role_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role (AdminUpdateRoleV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    Update role request body:
+    - roleName: specify role name, alphanumeric, cannot have special character (required)
+    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+    - deletable: specify if role can be deleted or not (optional)
+
+
+    action code: 10402
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}
+
+        method: PATCH
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleUpdateRequestV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminUpdateRoleV3.create(
         body=body,
         role_id=role_id,
@@ -1028,6 +4589,51 @@ async def admin_update_role_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role (AdminUpdateRoleV3)
+
+    Required permission 'ADMIN:ROLE [UPDATE]'
+
+    Update role request body:
+    - roleName: specify role name, alphanumeric, cannot have special character (required)
+    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+    - deletable: specify if role can be deleted or not (optional)
+
+
+    action code: 10402
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/roles/{roleId}
+
+        method: PATCH
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleUpdateRequestV3 in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminUpdateRoleV3.create(
         body=body,
         role_id=role_id,
@@ -1044,6 +4650,49 @@ def admin_update_role_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role (AdminUpdateRoleV4)
+
+    Required permission ADMIN:ROLE [UPDATE]
+
+    Update role request body:
+    - roleName: specify role name, alphanumeric, cannot have special character (required)
+    - adminRole: specify if role is for admin user (default false)
+    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+    - deletable: specify if role can be deleted (optional)
+
+    action code: 10402
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}
+
+        method: PATCH
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleV4Request in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = AdminUpdateRoleV4.create(
         body=body,
         role_id=role_id,
@@ -1058,6 +4707,49 @@ async def admin_update_role_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role (AdminUpdateRoleV4)
+
+    Required permission ADMIN:ROLE [UPDATE]
+
+    Update role request body:
+    - roleName: specify role name, alphanumeric, cannot have special character (required)
+    - adminRole: specify if role is for admin user (default false)
+    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
+    - deletable: specify if role can be deleted (optional)
+
+    action code: 10402
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/roles/{roleId}
+
+        method: PATCH
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleV4Request in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleV4Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = AdminUpdateRoleV4.create(
         body=body,
         role_id=role_id,
@@ -1074,6 +4766,63 @@ def create_role(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Role (CreateRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [CREATE]' or 'ADMIN:ROLE [CREATE]'
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+
+
+    If role is an administrator role (i.e. AdminRole == true), it will list out the role's members.
+
+
+
+
+    Administrator role can be created only when at least 1 manager is specified.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [CREATE]
+
+        - ROLE:ADMIN [CREATE]
+
+    Properties:
+        url: /iam/roles
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleCreateRequest in body
+
+    Responses:
+        201: Created - AccountcommonRole (Created)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     request = CreateRole.create(
         body=body,
     )
@@ -1087,6 +4836,63 @@ async def create_role_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Role (CreateRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [CREATE]' or 'ADMIN:ROLE [CREATE]'
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+
+
+    If role is an administrator role (i.e. AdminRole == true), it will list out the role's members.
+
+
+
+
+    Administrator role can be created only when at least 1 manager is specified.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [CREATE]
+
+        - ROLE:ADMIN [CREATE]
+
+    Properties:
+        url: /iam/roles
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleCreateRequest in body
+
+    Responses:
+        201: Created - AccountcommonRole (Created)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     request = CreateRole.create(
         body=body,
     )
@@ -1100,6 +4906,48 @@ async def create_role_async(
 def delete_role(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete Role (DeleteRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [DELETE]' or 'ADMIN:ROLE [DELETE]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [DELETE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [DELETE]
+
+        - ROLE:ADMIN [DELETE]
+
+    Properties:
+        url: /iam/roles/{roleId}
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = DeleteRole.create(
         role_id=role_id,
     )
@@ -1111,6 +4959,48 @@ def delete_role(
 async def delete_role_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete Role (DeleteRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [DELETE]' or 'ADMIN:ROLE [DELETE]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [DELETE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [DELETE]
+
+        - ROLE:ADMIN [DELETE]
+
+    Properties:
+        url: /iam/roles/{roleId}
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = DeleteRole.create(
         role_id=role_id,
     )
@@ -1128,6 +5018,57 @@ def delete_role_permission(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Role Permission (DeleteRolePermission)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/permissions/{resource}/{action} [DELETE]
+
+
+      * Substitute endpoint: /iam/v4/admin/roles/{roleId}/permissions [DELETE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/permissions/{resource}/{action}
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        action: (action) REQUIRED int in path
+
+        resource: (resource) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = DeleteRolePermission.create(
         action=action,
         resource=resource,
@@ -1145,6 +5086,57 @@ async def delete_role_permission_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Role Permission (DeleteRolePermission)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/permissions/{resource}/{action} [DELETE]
+
+
+      * Substitute endpoint: /iam/v4/admin/roles/{roleId}/permissions [DELETE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/permissions/{resource}/{action}
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        action: (action) REQUIRED int in path
+
+        resource: (resource) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = DeleteRolePermission.create(
         action=action,
         resource=resource,
@@ -1160,6 +5152,46 @@ async def delete_role_permission_async(
 def get_role(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role (GetRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE [READ]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [GET]
+
+    Required Permission(s):
+        - ROLE [READ]
+
+    Properties:
+        url: /iam/roles/{roleId}
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = GetRole.create(
         role_id=role_id,
     )
@@ -1171,6 +5203,46 @@ def get_role(
 async def get_role_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role (GetRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE [READ]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [GET]
+
+    Required Permission(s):
+        - ROLE [READ]
+
+    Properties:
+        url: /iam/roles/{roleId}
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = GetRole.create(
         role_id=role_id,
     )
@@ -1184,6 +5256,53 @@ async def get_role_async(
 def get_role_admin_status(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role Admin Status (GetRoleAdminStatus)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE [READ]
+
+
+    Admin roles has its members listed in the role.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [GET]
+
+    Required Permission(s):
+        - ROLE [READ]
+
+    Properties:
+        url: /iam/roles/{roleId}/admin
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleAdminStatusResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = GetRoleAdminStatus.create(
         role_id=role_id,
     )
@@ -1195,6 +5314,53 @@ def get_role_admin_status(
 async def get_role_admin_status_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role Admin Status (GetRoleAdminStatus)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE [READ]
+
+
+    Admin roles has its members listed in the role.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [GET]
+
+    Required Permission(s):
+        - ROLE [READ]
+
+    Properties:
+        url: /iam/roles/{roleId}/admin
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleAdminStatusResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = GetRoleAdminStatus.create(
         role_id=role_id,
     )
@@ -1208,6 +5374,53 @@ async def get_role_admin_status_async(
 def get_role_managers(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role Managers (GetRoleManagers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE [READ]'
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [GET]
+
+    Required Permission(s):
+        - ROLE [READ]
+
+    Properties:
+        url: /iam/roles/{roleId}/managers
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleManagersResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = GetRoleManagers.create(
         role_id=role_id,
     )
@@ -1219,6 +5432,53 @@ def get_role_managers(
 async def get_role_managers_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role Managers (GetRoleManagers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE [READ]'
+
+
+    Role can only be assigned to other users by the role's manager.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [GET]
+
+    Required Permission(s):
+        - ROLE [READ]
+
+    Properties:
+        url: /iam/roles/{roleId}/managers
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleManagersResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = GetRoleManagers.create(
         role_id=role_id,
     )
@@ -1232,6 +5492,48 @@ async def get_role_managers_async(
 def get_role_members(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role Members (GetRoleMembers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE [READ]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [GET]
+
+    Required Permission(s):
+        - ROLE [READ]
+
+    Properties:
+        url: /iam/roles/{roleId}/members
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleMembersResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = GetRoleMembers.create(
         role_id=role_id,
     )
@@ -1243,6 +5545,48 @@ def get_role_members(
 async def get_role_members_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Role Members (GetRoleMembers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE [READ]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [GET]
+
+    Required Permission(s):
+        - ROLE [READ]
+
+    Properties:
+        url: /iam/roles/{roleId}/members
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleMembersResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = GetRoleMembers.create(
         role_id=role_id,
     )
@@ -1258,6 +5602,44 @@ def get_roles(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Roles (GetRoles)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE [READ]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles [GET]
+
+    Required Permission(s):
+        - ROLE [READ]
+
+    Properties:
+        url: /iam/roles
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        is_wildcard: (isWildcard) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ModelRoleResponseWithManagers] (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     request = GetRoles.create(
         is_wildcard=is_wildcard,
     )
@@ -1271,6 +5653,44 @@ async def get_roles_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Roles (GetRoles)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE [READ]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles [GET]
+
+    Required Permission(s):
+        - ROLE [READ]
+
+    Properties:
+        url: /iam/roles
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        is_wildcard: (isWildcard) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ModelRoleResponseWithManagers] (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     request = GetRoles.create(
         is_wildcard=is_wildcard,
     )
@@ -1283,6 +5703,34 @@ async def get_roles_async(
 def public_get_role_v3(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Public Role (PublicGetRoleV3)
+
+
+    This endpoint is used to get non-admin role based on specify roleId.
+    action code : 10417
+
+    Properties:
+        url: /iam/v3/public/roles/{roleId}
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = PublicGetRoleV3.create(
         role_id=role_id,
     )
@@ -1293,6 +5741,34 @@ def public_get_role_v3(
 async def public_get_role_v3_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get Public Role (PublicGetRoleV3)
+
+
+    This endpoint is used to get non-admin role based on specify roleId.
+    action code : 10417
+
+    Properties:
+        url: /iam/v3/public/roles/{roleId}
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        404: Not Found - RestErrorResponse (10456: role not found)
+    """
     request = PublicGetRoleV3.create(
         role_id=role_id,
     )
@@ -1310,6 +5786,40 @@ def public_get_roles_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Roles (PublicGetRolesV3)
+
+
+    This endpoint is used to get all non-admin role.
+
+
+    action code: 10418
+
+    Properties:
+        url: /iam/v3/public/roles
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        is_wildcard: (isWildcard) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelRoleNamesResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+    """
     request = PublicGetRolesV3.create(
         after=after,
         before=before,
@@ -1328,6 +5838,40 @@ async def public_get_roles_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Roles (PublicGetRolesV3)
+
+
+    This endpoint is used to get all non-admin role.
+
+
+    action code: 10418
+
+    Properties:
+        url: /iam/v3/public/roles
+
+        method: GET
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        is_wildcard: (isWildcard) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelRoleNamesResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+    """
     request = PublicGetRolesV3.create(
         after=after,
         before=before,
@@ -1344,6 +5888,50 @@ async def public_get_roles_v3_async(
 def remove_role_admin(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Remove Role Admin Status (RemoveRoleAdmin)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [DELETE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/admin
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = RemoveRoleAdmin.create(
         role_id=role_id,
     )
@@ -1355,6 +5943,50 @@ def remove_role_admin(
 async def remove_role_admin_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Remove Role Admin Status (RemoveRoleAdmin)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [DELETE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/admin
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = RemoveRoleAdmin.create(
         role_id=role_id,
     )
@@ -1371,6 +6003,52 @@ def remove_role_managers(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove Role Managers (RemoveRoleManagers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [DELETE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/managers
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleManagersRequest in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = RemoveRoleManagers.create(
         body=body,
         role_id=role_id,
@@ -1386,6 +6064,52 @@ async def remove_role_managers_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove Role Managers (RemoveRoleManagers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [DELETE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/managers
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleManagersRequest in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = RemoveRoleManagers.create(
         body=body,
         role_id=role_id,
@@ -1403,6 +6127,52 @@ def remove_role_members(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove Role Members (RemoveRoleMembers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [DELETE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/members
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleMembersRequest in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = RemoveRoleMembers.create(
         body=body,
         role_id=role_id,
@@ -1418,6 +6188,52 @@ async def remove_role_members_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove Role Members (RemoveRoleMembers)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [DELETE]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/members
+
+        method: DELETE
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleMembersRequest in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = RemoveRoleMembers.create(
         body=body,
         role_id=role_id,
@@ -1432,6 +6248,60 @@ async def remove_role_members_async(
 def set_role_as_admin(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Set Role as Admin Role (SetRoleAsAdmin)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    Role can be set as admin role only when it has at least 1 manager.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/admin
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = SetRoleAsAdmin.create(
         role_id=role_id,
     )
@@ -1443,6 +6313,60 @@ def set_role_as_admin(
 async def set_role_as_admin_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Set Role as Admin Role (SetRoleAsAdmin)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+
+
+    Admin roles has its members listed in the role.
+
+
+
+
+    Role can be set as admin role only when it has at least 1 manager.
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/admin
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = SetRoleAsAdmin.create(
         role_id=role_id,
     )
@@ -1459,6 +6383,52 @@ def update_role(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role (UpdateRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [PATCH]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}
+
+        method: PUT
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleUpdateRequest in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = UpdateRole.create(
         body=body,
         role_id=role_id,
@@ -1474,6 +6444,52 @@ async def update_role_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role (UpdateRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [PATCH]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}
+
+        method: PUT
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRoleUpdateRequest in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelRoleResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = UpdateRole.create(
         body=body,
         role_id=role_id,
@@ -1491,6 +6507,148 @@ def update_role_permissions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role Permissions (UpdateRolePermissions)
+
+    ## The endpoint is going to be deprecated
+
+
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will REPLACE role's permissions with the ones defined in body
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/permissions [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/permissions
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissions in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = UpdateRolePermissions.create(
         body=body,
         role_id=role_id,
@@ -1506,6 +6664,148 @@ async def update_role_permissions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Role Permissions (UpdateRolePermissions)
+
+    ## The endpoint is going to be deprecated
+
+
+
+
+    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
+
+
+
+
+    This endpoint will REPLACE role's permissions with the ones defined in body
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/permissions [POST]
+
+    Required Permission(s):
+        - ADMIN:ROLE [UPDATE]
+
+        - ROLE:ADMIN [UPDATE]
+
+    Properties:
+        url: /iam/roles/{roleId}/permissions
+
+        method: POST
+
+        tags: ["Roles"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissions in body
+
+        role_id: (roleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     request = UpdateRolePermissions.create(
         body=body,
         role_id=role_id,

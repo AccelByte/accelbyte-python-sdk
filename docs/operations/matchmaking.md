@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Matchmaking Service Index (2.20.2)
+# AccelByte Cloud Matchmaking Service Index (2.21.2)
 
 
 ## Operations

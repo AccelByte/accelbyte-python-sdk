@@ -61,9 +61,7 @@ def create_models_allocation_event_example() -> ModelsAllocationEvent:
     return instance
 
 
-def create_models_batch_download_logs_request_example() -> (
-    ModelsBatchDownloadLogsRequest
-):
+def create_models_batch_download_logs_request_example() -> ModelsBatchDownloadLogsRequest:
     instance = ModelsBatchDownloadLogsRequest()
     instance.downloads = [create_models_download_logs_request_example()]
     return instance
@@ -77,9 +75,7 @@ def create_models_download_logs_request_example() -> ModelsDownloadLogsRequest:
     return instance
 
 
-def create_models_list_terminated_servers_response_example() -> (
-    ModelsListTerminatedServersResponse
-):
+def create_models_list_terminated_servers_response_example() -> ModelsListTerminatedServersResponse:
     instance = ModelsListTerminatedServersResponse()
     instance.data = [create_models_notif_payload_server_status_change_example()]
     instance.paging = create_models_paging_cursor_example()
@@ -101,9 +97,7 @@ def create_models_match_result_example() -> ModelsMatchResult:
     return instance
 
 
-def create_models_notif_payload_server_status_change_example() -> (
-    ModelsNotifPayloadServerStatusChange
-):
+def create_models_notif_payload_server_status_change_example() -> ModelsNotifPayloadServerStatusChange:
     instance = ModelsNotifPayloadServerStatusChange()
     instance.match = create_models_match_result_example()
     instance.server = create_models_server_example()

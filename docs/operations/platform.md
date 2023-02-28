@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Platform Service Index (4.23.0)
+# AccelByte Cloud Platform Service Index (4.24.0)
 
 
 ## Operations
@@ -517,10 +517,7 @@
 ## Models
 | Model | Class |
 |---|---|
-| A DTO object for order creation options | [ADTOObjectForOrderCreationOptions](../../accelbyte_py_sdk/api/platform/models/a_dto_object_for_order_creation_options.py) |
-| A DTO object for querying xbox user achievements | [ADTOObjectForQueryingXboxUserAchievements](../../accelbyte_py_sdk/api/platform/models/a_dto_object_for_querying_xbox_user_achievements.py) |
-| A DTO object for unlock steam achievement API | [ADTOObjectForUnlockSteamAchievementAPI](../../accelbyte_py_sdk/api/platform/models/a_dto_object_for_unlock_steam_achievement_api.py) |
-| A DTO object for update xbox achievement complete percentage API | [ADTOObjectForUpdateXboxAchievementCompletePercentageAPI](../../accelbyte_py_sdk/api/platform/models/a_dto_object_for_update_xbox_achievement_complete_percentage_api.py) |
+| Achievement | [Achievement](../../accelbyte_py_sdk/api/platform/models/achievement.py) |
 | AchievementInfo | [AchievementInfo](../../accelbyte_py_sdk/api/platform/models/achievement_info.py) |
 | AdditionalData | [AdditionalData](../../accelbyte_py_sdk/api/platform/models/additional_data.py) |
 | AdminOrderCreate | [AdminOrderCreate](../../accelbyte_py_sdk/api/platform/models/admin_order_create.py) |
@@ -534,8 +531,8 @@
 | AppleIAPConfigInfo | [AppleIAPConfigInfo](../../accelbyte_py_sdk/api/platform/models/apple_iap_config_info.py) |
 | AppleIAPConfigRequest | [AppleIAPConfigRequest](../../accelbyte_py_sdk/api/platform/models/apple_iap_config_request.py) |
 | AppleIAPReceipt | [AppleIAPReceipt](../../accelbyte_py_sdk/api/platform/models/apple_iap_receipt.py) |
-| available comparison object | [AvailableComparisonObject](../../accelbyte_py_sdk/api/platform/models/available_comparison_object.py) |
-| available predicate object | [AvailablePredicateObject](../../accelbyte_py_sdk/api/platform/models/available_predicate_object.py) |
+| AvailableComparison | [AvailableComparison](../../accelbyte_py_sdk/api/platform/models/available_comparison.py) |
+| AvailablePredicate | [AvailablePredicate](../../accelbyte_py_sdk/api/platform/models/available_predicate.py) |
 | BasicCategoryInfo | [BasicCategoryInfo](../../accelbyte_py_sdk/api/platform/models/basic_category_info.py) |
 | BasicItem | [BasicItem](../../accelbyte_py_sdk/api/platform/models/basic_item.py) |
 | BillingAccount | [BillingAccount](../../accelbyte_py_sdk/api/platform/models/billing_account.py) |
@@ -683,6 +680,7 @@
 | OptionBoxConfig | [OptionBoxConfig](../../accelbyte_py_sdk/api/platform/models/option_box_config.py) |
 | Order | [Order](../../accelbyte_py_sdk/api/platform/models/order.py) |
 | OrderCreate | [OrderCreate](../../accelbyte_py_sdk/api/platform/models/order_create.py) |
+| OrderCreationOptions | [OrderCreationOptions](../../accelbyte_py_sdk/api/platform/models/order_creation_options.py) |
 | OrderGrantInfo | [OrderGrantInfo](../../accelbyte_py_sdk/api/platform/models/order_grant_info.py) |
 | OrderHistoryInfo | [OrderHistoryInfo](../../accelbyte_py_sdk/api/platform/models/order_history_info.py) |
 | OrderInfo | [OrderInfo](../../accelbyte_py_sdk/api/platform/models/order_info.py) |
@@ -745,7 +743,7 @@
 | PlayStationReconcileResult | [PlayStationReconcileResult](../../accelbyte_py_sdk/api/platform/models/play_station_reconcile_result.py) |
 | PlaystationIAPConfigRequest | [PlaystationIAPConfigRequest](../../accelbyte_py_sdk/api/platform/models/playstation_iap_config_request.py) |
 | PopulatedItemInfo | [PopulatedItemInfo](../../accelbyte_py_sdk/api/platform/models/populated_item_info.py) |
-| predicate object | [PredicateObject](../../accelbyte_py_sdk/api/platform/models/predicate_object.py) |
+| Predicate | [Predicate](../../accelbyte_py_sdk/api/platform/models/predicate.py) |
 | PredicateValidateResult | [PredicateValidateResult](../../accelbyte_py_sdk/api/platform/models/predicate_validate_result.py) |
 | PurchaseCondition | [PurchaseCondition](../../accelbyte_py_sdk/api/platform/models/purchase_condition.py) |
 | PurchaseConditionUpdate | [PurchaseConditionUpdate](../../accelbyte_py_sdk/api/platform/models/purchase_condition_update.py) |
@@ -788,7 +786,7 @@
 | ServicePluginConfigUpdate | [ServicePluginConfigUpdate](../../accelbyte_py_sdk/api/platform/models/service_plugin_config_update.py) |
 | Slide | [Slide](../../accelbyte_py_sdk/api/platform/models/slide.py) |
 | StackableEntitlementInfo | [StackableEntitlementInfo](../../accelbyte_py_sdk/api/platform/models/stackable_entitlement_info.py) |
-| steam achievement request | [SteamAchievementRequest](../../accelbyte_py_sdk/api/platform/models/steam_achievement_request.py) |
+| SteamAchievementUpdateRequest | [SteamAchievementUpdateRequest](../../accelbyte_py_sdk/api/platform/models/steam_achievement_update_request.py) |
 | SteamDLCSyncRequest | [SteamDLCSyncRequest](../../accelbyte_py_sdk/api/platform/models/steam_dlc_sync_request.py) |
 | SteamIAPConfig | [SteamIAPConfig](../../accelbyte_py_sdk/api/platform/models/steam_iap_config.py) |
 | SteamIAPConfigInfo | [SteamIAPConfigInfo](../../accelbyte_py_sdk/api/platform/models/steam_iap_config_info.py) |
@@ -835,12 +833,13 @@
 | WalletTransactionPagingSlicedResult | [WalletTransactionPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/wallet_transaction_paging_sliced_result.py) |
 | WxPayConfigInfo | [WxPayConfigInfo](../../accelbyte_py_sdk/api/platform/models/wx_pay_config_info.py) |
 | WxPayConfigRequest | [WxPayConfigRequest](../../accelbyte_py_sdk/api/platform/models/wx_pay_config_request.py) |
+| XblAchievementUpdateRequest | [XblAchievementUpdateRequest](../../accelbyte_py_sdk/api/platform/models/xbl_achievement_update_request.py) |
 | XblDLCSyncRequest | [XblDLCSyncRequest](../../accelbyte_py_sdk/api/platform/models/xbl_dlc_sync_request.py) |
 | XblIAPConfigInfo | [XblIAPConfigInfo](../../accelbyte_py_sdk/api/platform/models/xbl_iap_config_info.py) |
 | XblIAPConfigRequest | [XblIAPConfigRequest](../../accelbyte_py_sdk/api/platform/models/xbl_iap_config_request.py) |
 | XblReconcileRequest | [XblReconcileRequest](../../accelbyte_py_sdk/api/platform/models/xbl_reconcile_request.py) |
 | XblReconcileResult | [XblReconcileResult](../../accelbyte_py_sdk/api/platform/models/xbl_reconcile_result.py) |
-| xbox achievement request | [XboxAchievementRequest](../../accelbyte_py_sdk/api/platform/models/xbox_achievement_request.py) |
+| XblUserAchievements | [XblUserAchievements](../../accelbyte_py_sdk/api/platform/models/xbl_user_achievements.py) |
 | XsollaConfig | [XsollaConfig](../../accelbyte_py_sdk/api/platform/models/xsolla_config.py) |
 | XsollaPaywallConfig | [XsollaPaywallConfig](../../accelbyte_py_sdk/api/platform/models/xsolla_paywall_config.py) |
 | XsollaPaywallConfigRequest | [XsollaPaywallConfigRequest](../../accelbyte_py_sdk/api/platform/models/xsolla_paywall_config_request.py) |

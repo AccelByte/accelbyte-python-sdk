@@ -61,6 +61,50 @@ def admin_ban_device_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Ban a device (AdminBanDeviceV4)
+
+    This is the endpoint for an admin to ban a device.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [CREATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [CREATE]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/bans
+
+        method: POST
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDeviceBanRequestV4 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10204: device can not be banned)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict - RestErrorResponse (10202: active device ban config already exists)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,6 +123,50 @@ async def admin_ban_device_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Ban a device (AdminBanDeviceV4)
+
+    This is the endpoint for an admin to ban a device.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [CREATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [CREATE]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/bans
+
+        method: POST
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDeviceBanRequestV4 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10204: device can not be banned)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict - RestErrorResponse (10202: active device ban config already exists)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,6 +187,48 @@ def admin_decrypt_device_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin decrypt device id (AdminDecryptDeviceV4)
+
+    This is the endpoint for an admin to decrypt device id.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/decrypt
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        device_id: (deviceId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelDeviceIDDecryptResponseV4 (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,6 +247,48 @@ async def admin_decrypt_device_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin decrypt device id (AdminDecryptDeviceV4)
+
+    This is the endpoint for an admin to decrypt device id.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/decrypt
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        device_id: (deviceId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelDeviceIDDecryptResponseV4 (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -139,6 +311,54 @@ def admin_generate_report_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin generate device report (AdminGenerateReportV4)
+
+    This is the endpoint for an admin to generate device report.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/report
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+        device_type: (deviceType) REQUIRED str in query
+
+    Responses:
+        200: OK - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -161,6 +381,54 @@ async def admin_generate_report_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin generate device report (AdminGenerateReportV4)
+
+    This is the endpoint for an admin to generate device report.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/report
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+        device_type: (deviceType) REQUIRED str in query
+
+    Responses:
+        200: OK - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,6 +455,54 @@ def admin_get_banned_devices_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get banned devices (AdminGetBannedDevicesV4)
+
+    This is the endpoint for an admin to get banned devices.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/banned
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        device_type: (deviceType) OPTIONAL str in query
+
+        end_date: (endDate) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelDeviceBannedResponseV4 (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -213,6 +529,54 @@ async def admin_get_banned_devices_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get banned devices (AdminGetBannedDevicesV4)
+
+    This is the endpoint for an admin to get banned devices.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/banned
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        device_type: (deviceType) OPTIONAL str in query
+
+        end_date: (endDate) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelDeviceBannedResponseV4 (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -237,6 +601,50 @@ def admin_get_device_ban_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get device ban config (AdminGetDeviceBanV4)
+
+    This is the endpoint for an admin to get device ban config.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/bans/{banId}
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ban_id: (banId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelDeviceBanResponseV4 (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -255,6 +663,50 @@ async def admin_get_device_ban_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get device ban config (AdminGetDeviceBanV4)
+
+    This is the endpoint for an admin to get device ban config.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/bans/{banId}
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ban_id: (banId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelDeviceBanResponseV4 (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -275,6 +727,48 @@ def admin_get_device_bans_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get device ban list (AdminGetDeviceBansV4)
+
+    This is the endpoint for an admin to get device ban list.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/bans
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        device_id: (deviceId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelDeviceBansResponseV4 (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -293,6 +787,48 @@ async def admin_get_device_bans_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get device ban list (AdminGetDeviceBansV4)
+
+    This is the endpoint for an admin to get device ban list.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/bans
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        device_id: (deviceId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelDeviceBansResponseV4 (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -312,6 +848,44 @@ def admin_get_device_types_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get device types (AdminGetDeviceTypesV4)
+
+    This is the endpoint for an admin to get device types.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/types
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelDeviceTypesResponseV4 (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -328,6 +902,44 @@ async def admin_get_device_types_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get device types (AdminGetDeviceTypesV4)
+
+    This is the endpoint for an admin to get device types.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/types
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelDeviceTypesResponseV4 (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -347,6 +959,50 @@ def admin_get_devices_by_user_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get devices by user id (AdminGetDevicesByUserV4)
+
+    This is the endpoint for an admin to get devices a user ever used to login.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelDevicesResponseV4 (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20021: invalid pagination parameter)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -365,6 +1021,50 @@ async def admin_get_devices_by_user_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get devices by user id (AdminGetDevicesByUserV4)
+
+    This is the endpoint for an admin to get devices a user ever used to login.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelDevicesResponseV4 (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20021: invalid pagination parameter)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -385,6 +1085,48 @@ def admin_get_user_device_bans_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get device bans of user (AdminGetUserDeviceBansV4)
+
+    This is the endpoint for an admin to get device bans of user.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/bans
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelDeviceBansResponseV4 (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -403,6 +1145,48 @@ async def admin_get_user_device_bans_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get device bans of user (AdminGetUserDeviceBansV4)
+
+    This is the endpoint for an admin to get device bans of user.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/bans
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelDeviceBansResponseV4 (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -423,6 +1207,48 @@ def admin_get_users_by_device_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get users by device id (AdminGetUsersByDeviceV4)
+
+    This is the endpoint for an admin to get users that ever login on the device.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/users
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        device_id: (deviceId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelDeviceUsersResponseV4 (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -441,6 +1267,48 @@ async def admin_get_users_by_device_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get users by device id (AdminGetUsersByDeviceV4)
+
+    This is the endpoint for an admin to get users that ever login on the device.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/users
+
+        method: GET
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        device_id: (deviceId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelDeviceUsersResponseV4 (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -461,6 +1329,48 @@ def admin_unban_device_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin unban device (AdminUnbanDeviceV4)
+
+    This is the endpoint for an admin to unban device.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/unban
+
+        method: PUT
+
+        tags: ["Devices V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        device_id: (deviceId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -479,6 +1389,48 @@ async def admin_unban_device_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin unban device (AdminUnbanDeviceV4)
+
+    This is the endpoint for an admin to unban device.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/unban
+
+        method: PUT
+
+        tags: ["Devices V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        device_id: (deviceId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -500,6 +1452,54 @@ def admin_update_device_ban_v4(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin update device ban config (AdminUpdateDeviceBanV4)
+
+    This is the endpoint for an admin to update a device ban config.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/bans/{banId}
+
+        method: PUT
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDeviceBanUpdateRequestV4 in body
+
+        ban_id: (banId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10158: ban not found)
+
+        409: Conflict - RestErrorResponse (10202: active device ban config already exists)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -520,6 +1520,54 @@ async def admin_update_device_ban_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin update device ban config (AdminUpdateDeviceBanV4)
+
+    This is the endpoint for an admin to update a device ban config.
+
+
+
+    Required permission
+
+
+        'ADMIN:NAMESPACE:{namespace}:DEVICE [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DEVICE [UPDATE]
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/devices/bans/{banId}
+
+        method: PUT
+
+        tags: ["Devices V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDeviceBanUpdateRequestV4 in body
+
+        ban_id: (banId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10158: ban not found)
+
+        409: Conflict - RestErrorResponse (10202: active device ban config already exists)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

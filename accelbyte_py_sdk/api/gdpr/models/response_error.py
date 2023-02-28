@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Gdpr Service (1.19.0)
+# AccelByte Cloud Gdpr Service (1.19.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

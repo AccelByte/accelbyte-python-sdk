@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Social Service."""
 
-__version__ = "1.33.0"
+__version__ = "2.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,14 +19,15 @@ from .a_dto_object_for_resetting_user_stat_items import (
 )
 from .a_dto_object_for_user_stat_item_value import ADTOObjectForUserStatItemValue
 from .attribute import Attribute
+from .bulk_cycle_stats_add import BulkCycleStatsAdd
 from .bulk_stat_item_create import BulkStatItemCreate
 from .bulk_stat_item_inc import BulkStatItemInc
-from .bulk_stat_item_operation_result import BulkStatItemOperationResult
 from .bulk_stat_item_reset import BulkStatItemReset
 from .bulk_stat_item_update import BulkStatItemUpdate
 from .bulk_stat_item_update import (
     UpdateStrategyEnum as BulkStatItemUpdateUpdateStrategyEnum,
 )
+from .bulk_stat_operation_result import BulkStatOperationResult
 from .bulk_user_stat_item_inc import BulkUserStatItemInc
 from .bulk_user_stat_item_reset import BulkUserStatItemReset
 from .bulk_user_stat_item_update import BulkUserStatItemUpdate
@@ -48,6 +49,16 @@ from .slot_info import SlotInfo
 from .slot_metadata_update import SlotMetadataUpdate
 from .stat_create import StatCreate
 from .stat_create import SetByEnum as StatCreateSetByEnum
+from .stat_cycle_create import StatCycleCreate
+from .stat_cycle_create import CycleTypeEnum as StatCycleCreateCycleTypeEnum
+from .stat_cycle_info import StatCycleInfo
+from .stat_cycle_info import (
+    CycleTypeEnum as StatCycleInfoCycleTypeEnum,
+    StatusEnum as StatCycleInfoStatusEnum,
+)
+from .stat_cycle_paging_sliced_result import StatCyclePagingSlicedResult
+from .stat_cycle_update import StatCycleUpdate
+from .stat_cycle_update import CycleTypeEnum as StatCycleUpdateCycleTypeEnum
 from .stat_import_info import StatImportInfo
 from .stat_info import StatInfo
 from .stat_info import SetByEnum as StatInfoSetByEnum, StatusEnum as StatInfoStatusEnum

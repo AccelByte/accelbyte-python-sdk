@@ -33,9 +33,9 @@ from ..models import ADTOObjectForResettingUserStatItems
 from ..models import ADTOObjectForUserStatItemValue
 from ..models import BulkStatItemCreate
 from ..models import BulkStatItemInc
-from ..models import BulkStatItemOperationResult
 from ..models import BulkStatItemReset
 from ..models import BulkStatItemUpdate
+from ..models import BulkStatOperationResult
 from ..models import BulkUserStatItemInc
 from ..models import BulkUserStatItemReset
 from ..models import BulkUserStatItemUpdate
@@ -100,6 +100,41 @@ def bulk_create_user_stat_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk create user's statItems (bulkCreateUserStatItems)
+
+    Bulk create user's statItems.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : bulk created result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/bulk
+
+        method: POST
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemCreate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,6 +155,41 @@ async def bulk_create_user_stat_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk create user's statItems (bulkCreateUserStatItems)
+
+    Bulk create user's statItems.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : bulk created result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/bulk
+
+        method: POST
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemCreate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,6 +212,39 @@ def bulk_fetch_or_default_stat_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk fetch user stat item values (bulkFetchOrDefaultStatItems)
+
+    Bulk fetch multiple user's stat item values for a given namespace and statCode.
+    NOTE: If stat item does not exist, will return default value. Other detail info:
+    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
+    + *Returns*: list of user's stat item values
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statitems/value/bulk/getOrDefault
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in query
+
+        user_ids: (userIds) REQUIRED List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -162,6 +265,39 @@ async def bulk_fetch_or_default_stat_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk fetch user stat item values (bulkFetchOrDefaultStatItems)
+
+    Bulk fetch multiple user's stat item values for a given namespace and statCode.
+    NOTE: If stat item does not exist, will return default value. Other detail info:
+    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
+    + *Returns*: list of user's stat item values
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statitems/value/bulk/getOrDefault
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in query
+
+        user_ids: (userIds) REQUIRED List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -185,6 +321,41 @@ def bulk_fetch_or_default_stat_items_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk fetch user stat item values (bulkFetchOrDefaultStatItems_1)
+
+    Bulk fetch multiple user's stat item values for a given namespace and statCode.
+    NOTE: If stat item does not exist, will return default value. Other detail info:
+    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
+    + *Returns*: list of user's stat item values
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/statitems/value/bulk/getOrDefault
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+        stat_code: (statCode) REQUIRED str in query
+
+        user_ids: (userIds) REQUIRED List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,6 +378,41 @@ async def bulk_fetch_or_default_stat_items_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk fetch user stat item values (bulkFetchOrDefaultStatItems_1)
+
+    Bulk fetch multiple user's stat item values for a given namespace and statCode.
+    NOTE: If stat item does not exist, will return default value. Other detail info:
+    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
+    + *Returns*: list of user's stat item values
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/statitems/value/bulk/getOrDefault
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+        stat_code: (statCode) REQUIRED str in query
+
+        user_ids: (userIds) REQUIRED List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -230,6 +436,40 @@ def bulk_fetch_stat_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk fetch statitems value (bulkFetchStatItems)
+
+    Bulk fetch multiple user's statitem value for a given namespace and statCode.
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+    + *Returns*: list of user's statItem
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statitems/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in query
+
+        user_ids: (userIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[UserStatItemInfo] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,6 +490,40 @@ async def bulk_fetch_stat_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk fetch statitems value (bulkFetchStatItems)
+
+    Bulk fetch multiple user's statitem value for a given namespace and statCode.
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+    + *Returns*: list of user's statItem
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statitems/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in query
+
+        user_ids: (userIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[UserStatItemInfo] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -272,6 +546,40 @@ def bulk_fetch_stat_items_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk fetch statitems value (bulkFetchStatItems_1)
+
+    Public bulk fetch multiple user's statitem value for a given namespace and statCode.
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+    + *Returns*: list of user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/statitems/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in query
+
+        user_ids: (userIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[UserStatItemInfo] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -292,6 +600,40 @@ async def bulk_fetch_stat_items_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk fetch statitems value (bulkFetchStatItems_1)
+
+    Public bulk fetch multiple user's statitem value for a given namespace and statCode.
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=2 (READ)
+    + *Returns*: list of user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/statitems/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in query
+
+        user_ids: (userIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[UserStatItemInfo] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -313,6 +655,39 @@ def bulk_inc_user_stat_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update multiple user's statitems value (bulkIncUserStatItem)
+
+    Bulk update multiple user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -331,6 +706,39 @@ async def bulk_inc_user_stat_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update multiple user's statitems value (bulkIncUserStatItem)
+
+    Bulk update multiple user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -352,6 +760,41 @@ def bulk_inc_user_stat_item_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update user's statitems value (bulkIncUserStatItem_1)
+
+    Bulk update user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -372,6 +815,41 @@ async def bulk_inc_user_stat_item_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update user's statitems value (bulkIncUserStatItem_1)
+
+    Bulk update user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -393,6 +871,39 @@ def bulk_inc_user_stat_item_value(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update multiple user's statitems value (bulkIncUserStatItemValue)
+
+    Bulk update multiple user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statitems/value/bulk
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -411,6 +922,39 @@ async def bulk_inc_user_stat_item_value_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update multiple user's statitems value (bulkIncUserStatItemValue)
+
+    Bulk update multiple user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statitems/value/bulk
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -432,6 +976,41 @@ def bulk_inc_user_stat_item_value_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update user's statitems value (bulkIncUserStatItemValue_1)
+
+    Bulk update user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -452,6 +1031,41 @@ async def bulk_inc_user_stat_item_value_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update user's statitems value (bulkIncUserStatItemValue_1)
+
+    Bulk update user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -474,6 +1088,41 @@ def bulk_inc_user_stat_item_value_2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update user's statitems value (bulkIncUserStatItemValue_2)
+
+    Public bulk update user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -494,6 +1143,41 @@ async def bulk_inc_user_stat_item_value_2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update user's statitems value (bulkIncUserStatItemValue_2)
+
+    Public bulk update user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -515,6 +1199,40 @@ def bulk_reset_user_stat_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk reset multiple user's statitems value (bulkResetUserStatItem)
+
+    Bulk reset multiple user's statitems value.
+    User's statitem value will be reset to the default value defined in the statistic configuration.
+
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statitems/value/reset/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemReset] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -533,6 +1251,40 @@ async def bulk_reset_user_stat_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk reset multiple user's statitems value (bulkResetUserStatItem)
+
+    Bulk reset multiple user's statitems value.
+    User's statitem value will be reset to the default value defined in the statistic configuration.
+
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statitems/value/reset/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemReset] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -554,6 +1306,40 @@ def bulk_reset_user_stat_item_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk reset user's statitems value (bulkResetUserStatItem_1)
+
+    Bulk reset user's statitems value for given namespace and user.
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemReset] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -574,6 +1360,40 @@ async def bulk_reset_user_stat_item_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk reset user's statitems value (bulkResetUserStatItem_1)
+
+    Bulk reset user's statitems value for given namespace and user.
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemReset] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -595,6 +1415,40 @@ def bulk_reset_user_stat_item_2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk reset multiple user's statitems value (bulkResetUserStatItem_2)
+
+    Bulk reset multiple user's statitems value.
+    User's statitem value will be reset to the default value defined in the statistic configuration.
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/statitems/value/reset/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemReset] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -613,6 +1467,40 @@ async def bulk_reset_user_stat_item_2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk reset multiple user's statitems value (bulkResetUserStatItem_2)
+
+    Bulk reset multiple user's statitems value.
+    User's statitem value will be reset to the default value defined in the statistic configuration.
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/statitems/value/reset/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemReset] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -634,6 +1522,40 @@ def bulk_reset_user_stat_item_3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk reset user's statitems value (bulkResetUserStatItem_3)
+
+    Public bulk reset user's statitems value for given namespace and user.
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemReset] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -654,6 +1576,40 @@ async def bulk_reset_user_stat_item_3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk reset user's statitems value (bulkResetUserStatItem_3)
+
+    Public bulk reset user's statitems value for given namespace and user.
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemReset] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -677,6 +1633,42 @@ def bulk_reset_user_stat_item_values(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk reset user's statitem values (bulkResetUserStatItemValues)
+
+    Bulk reset user's statitem values for given namespace and user.
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[ADTOObjectForResettingUserStatItems] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -699,6 +1691,42 @@ async def bulk_reset_user_stat_item_values_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk reset user's statitem values (bulkResetUserStatItemValues)
+
+    Bulk reset user's statitem values for given namespace and user.
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[ADTOObjectForResettingUserStatItems] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -723,6 +1751,51 @@ def bulk_update_user_stat_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update user's statitems value (bulkUpdateUserStatItem)
+
+    Bulk update user's statitems value for given namespace and user with specific update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user's statitems, such as character's statitems.
+    If provided, user's statitems will be saved with key: *userId_additionalKey*
+
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemUpdate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -745,6 +1818,51 @@ async def bulk_update_user_stat_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update user's statitems value (bulkUpdateUserStatItem)
+
+    Bulk update user's statitems value for given namespace and user with specific update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user's statitems, such as character's statitems.
+    If provided, user's statitems will be saved with key: *userId_additionalKey*
+
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemUpdate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -767,6 +1885,44 @@ def bulk_update_user_stat_item_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update multiple user's statitems value (bulkUpdateUserStatItem_1)
+
+    Public bulk update multiple user's statitems value with specific update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/public/namespaces/{namespace}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemUpdate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -785,6 +1941,44 @@ async def bulk_update_user_stat_item_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update multiple user's statitems value (bulkUpdateUserStatItem_1)
+
+    Public bulk update multiple user's statitems value with specific update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/public/namespaces/{namespace}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemUpdate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -807,6 +2001,51 @@ def bulk_update_user_stat_item_2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update user's statitems value (bulkUpdateUserStatItem_2)
+
+    Public bulk update user's statitems value for given namespace and user with specific update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user's statitems, such as character's statitems.
+    If provided, user's statitems will be saved with key: *userId_additionalKey*
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemUpdate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -829,6 +2068,51 @@ async def bulk_update_user_stat_item_2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update user's statitems value (bulkUpdateUserStatItem_2)
+
+    Public bulk update user's statitems value for given namespace and user with specific update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user's statitems, such as character's statitems.
+    If provided, user's statitems will be saved with key: *userId_additionalKey*
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemUpdate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -851,6 +2135,44 @@ def bulk_update_user_stat_item_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update multiple user's statitems value (bulkUpdateUserStatItemV2)
+
+    Bulk update multiple user's statitems value with specific update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemUpdate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -869,6 +2191,44 @@ async def bulk_update_user_stat_item_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk update multiple user's statitems value (bulkUpdateUserStatItemV2)
+
+    Bulk update multiple user's statitems value with specific update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+    + *Returns*: bulk updated result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemUpdate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -890,6 +2250,43 @@ def create_user_stat_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create user's statItem (createUserStatItem)
+
+    Create statItem for a user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : created user's statItem
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
+
+        method: POST
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - (Create user statItem successfully)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12274: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -910,6 +2307,43 @@ async def create_user_stat_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create user's statItem (createUserStatItem)
+
+    Create statItem for a user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : created user's statItem
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
+
+        method: POST
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - (Create user statItem successfully)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12274: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -932,6 +2366,46 @@ def delete_user_stat_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User's statItems (deleteUserStatItems)
+
+    This endpoint is for testing purpose. Use this endpoint for cleaning up after testing.
+    Delete user's statItems given stat code.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
+      *  Returns : no content
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
+
+        method: DELETE
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (delete successfully)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -952,6 +2426,46 @@ async def delete_user_stat_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User's statItems (deleteUserStatItems)
+
+    This endpoint is for testing purpose. Use this endpoint for cleaning up after testing.
+    Delete user's statItems given stat code.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
+      *  Returns : no content
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
+
+        method: DELETE
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (delete successfully)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -974,6 +2488,45 @@ def delete_user_stat_items_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User's statItems (deleteUserStatItems_1)
+
+    Delete user's statItems given stat code.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
+      *  Returns : no content
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
+
+        method: DELETE
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (delete successfully)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -994,6 +2547,45 @@ async def delete_user_stat_items_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User's statItems (deleteUserStatItems_1)
+
+    Delete user's statItems given stat code.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
+      *  Returns : no content
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
+
+        method: DELETE
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (delete successfully)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1017,6 +2609,51 @@ def delete_user_stat_items_2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User's statItems (deleteUserStatItems_2)
+
+    Delete user's stat items for given namespace, statCode, and user Id.
+    If query param *additionalKey* is provided, it will delete user stat items of specific key (i.e. characterName).
+    Otherwise, it will delete all stat items related to the user Id.
+
+    Delete user's statItems given stat code.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
+      *  Returns : no content
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
+
+        method: DELETE
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        204: No Content - (delete successfully)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1039,6 +2676,51 @@ async def delete_user_stat_items_2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User's statItems (deleteUserStatItems_2)
+
+    Delete user's stat items for given namespace, statCode, and user Id.
+    If query param *additionalKey* is provided, it will delete user stat items of specific key (i.e. characterName).
+    Otherwise, it will delete all stat items related to the user Id.
+
+    Delete user's statItems given stat code.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
+      *  Returns : no content
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
+
+        method: DELETE
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        204: No Content - (delete successfully)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1066,6 +2748,47 @@ def get_user_stat_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List user's statItems (getUserStatItems)
+
+    List user's statItems.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
+
+    Responses:
+        200: OK - UserStatItemPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1094,6 +2817,47 @@ async def get_user_stat_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List user's statItems (getUserStatItems)
+
+    List user's statItems.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
+
+    Responses:
+        200: OK - UserStatItemPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1121,6 +2885,47 @@ def inc_user_stat_item_value(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user's statitem value (incUserStatItemValue)
+
+    Update user's statitem value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : updated user's statItem
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatItemInc in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1143,6 +2948,47 @@ async def inc_user_stat_item_value_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user's statitem value (incUserStatItemValue)
+
+    Update user's statitem value.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : updated user's statItem
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatItemInc in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1166,6 +3012,41 @@ def public_bulk_create_user_stat_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk create user's statItems (publicBulkCreateUserStatItems)
+
+    Bulk create statItems.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : bulk created result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/bulk
+
+        method: POST
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemCreate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1186,6 +3067,41 @@ async def public_bulk_create_user_stat_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk create user's statItems (publicBulkCreateUserStatItems)
+
+    Bulk create statItems.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : bulk created result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/bulk
+
+        method: POST
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemCreate] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1207,6 +3123,39 @@ def public_bulk_inc_user_stat_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update multiple user's statitems value (publicBulkIncUserStatItem)
+
+    Public bulk update multiple user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1225,6 +3174,39 @@ async def public_bulk_inc_user_stat_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update multiple user's statitems value (publicBulkIncUserStatItem)
+
+    Public bulk update multiple user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1246,6 +3228,41 @@ def public_bulk_inc_user_stat_item_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update user's statitems value (publicBulkIncUserStatItem_1)
+
+    Public bulk update user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1266,6 +3283,41 @@ async def public_bulk_inc_user_stat_item_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update user's statitems value (publicBulkIncUserStatItem_1)
+
+    Public bulk update user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1287,6 +3339,39 @@ def public_bulk_inc_user_stat_item_value(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update multiple user's statitems value (publicBulkIncUserStatItemValue)
+
+    Public bulk update multiple user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/statitems/value/bulk
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1305,6 +3390,39 @@ async def public_bulk_inc_user_stat_item_value_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public bulk update multiple user's statitems value (publicBulkIncUserStatItemValue)
+
+    Public bulk update multiple user's statitems value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
+      *  Returns : bulk updated result
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/statitems/value/bulk
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkUserStatItemInc] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[BulkStatOperationResult] (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1326,6 +3444,43 @@ def public_create_user_stat_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create user's statItem (publicCreateUserStatItem)
+
+    Create user's statItem.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : created user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
+
+        method: POST
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - (Create user statItem successfully)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12274: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1346,6 +3501,43 @@ async def public_create_user_stat_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create user's statItem (publicCreateUserStatItem)
+
+    Create user's statItem.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
+      *  Returns : created user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
+
+        method: POST
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - (Create user statItem successfully)
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12274: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1369,6 +3561,47 @@ def public_inc_user_stat_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public update user's statitem value (publicIncUserStatItem)
+
+    Public update user's statitem value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : updated user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatItemInc in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1391,6 +3624,47 @@ async def public_inc_user_stat_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public update user's statitem value (publicIncUserStatItem)
+
+    Public update user's statitem value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : updated user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatItemInc in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1415,6 +3689,47 @@ def public_inc_user_stat_item_value(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public update user's statitem value (publicIncUserStatItemValue)
+
+    Public update user's statitem value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : updated user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatItemInc in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1437,6 +3752,47 @@ async def public_inc_user_stat_item_value_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public update user's statitem value (publicIncUserStatItemValue)
+
+    Public update user's statitem value.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+      *  Returns : updated user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
+
+        method: PATCH
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatItemInc in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1464,6 +3820,47 @@ def public_query_user_stat_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public list user's statItems (publicQueryUserStatItems)
+
+    Public list all statItems by pagination.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
+
+    Responses:
+        200: OK - UserStatItemPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1492,6 +3889,47 @@ async def public_query_user_stat_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public list user's statItems (publicQueryUserStatItems)
+
+    Public list all statItems by pagination.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
+
+    Responses:
+        200: OK - UserStatItemPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1519,6 +3957,50 @@ def public_query_user_stat_items_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public list user's statItems (publicQueryUserStatItems_1)
+
+    Public list all statItems of user.
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
+
+    Other detail info:
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        stat_codes: (statCodes) OPTIONAL List[str] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1541,6 +4023,50 @@ async def public_query_user_stat_items_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public list user's statItems (publicQueryUserStatItems_1)
+
+    Public list all statItems of user.
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
+
+    Other detail info:
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        stat_codes: (statCodes) OPTIONAL List[str] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1566,6 +4092,52 @@ def public_query_user_stat_items_2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public list user's statItems (publicQueryUserStatItems_2)
+
+    Public list all statItems of user.
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
+
+    Other detail info:
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL List[str] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1590,6 +4162,52 @@ async def public_query_user_stat_items_2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public list user's statItems (publicQueryUserStatItems_2)
+
+    Public list all statItems of user.
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
+
+    Other detail info:
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL List[str] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1616,6 +4234,48 @@ def reset_user_stat_item_value(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset user's statitem value (resetUserStatItemValue)
+
+    Reset user's statitem value for a given namespace and user.
+    User's statitem value will be reset to the default value defined in the statistic configuration.
+
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: updated user's statItem
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value/reset
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatResetInfo in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1640,6 +4300,48 @@ async def reset_user_stat_item_value_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset user's statitem value (resetUserStatItemValue)
+
+    Reset user's statitem value for a given namespace and user.
+    User's statitem value will be reset to the default value defined in the statistic configuration.
+
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: updated user's statItem
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value/reset
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatResetInfo in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1664,6 +4366,44 @@ def reset_user_stat_item_value_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public reset user's statitem value (resetUserStatItemValue_1)
+
+    Reset user's statitem value for a given namespace and user.
+    User's statitem value will be reset to the default value defined in the statistic configuration.
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: updated user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value/reset
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1684,6 +4424,44 @@ async def reset_user_stat_item_value_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public reset user's statitem value (resetUserStatItemValue_1)
+
+    Reset user's statitem value for a given namespace and user.
+    User's statitem value will be reset to the default value defined in the statistic configuration.
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: updated user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value/reset
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1708,6 +4486,59 @@ def update_user_stat_item_value(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user's statitem value (updateUserStatItemValue)
+
+    Update user's statitem value for a given namespace and user with a certain update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user's statitems, such as character's statitems.
+    If provided, user's statitems will be saved with key: *userId_additionalKey*
+
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: updated user's statItem
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatItemUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}] is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1732,6 +4563,59 @@ async def update_user_stat_item_value_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user's statitem value (updateUserStatItemValue)
+
+    Update user's statitem value for a given namespace and user with a certain update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user's statitems, such as character's statitems.
+    If provided, user's statitems will be saved with key: *userId_additionalKey*
+
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: updated user's statItem
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatItemUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}] is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1758,6 +4642,59 @@ def update_user_stat_item_value_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public update user's statitem value (updateUserStatItemValue_1)
+
+    Public update user's statitem value for a given namespace and user with a certain update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user's statitems, such as character's statitems.
+    If provided, user's statitems will be saved with key: *userId_additionalKey*
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: updated user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatItemUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}] is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1782,6 +4719,59 @@ async def update_user_stat_item_value_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public update user's statitem value (updateUserStatItemValue_1)
+
+    Public update user's statitem value for a given namespace and user with a certain update strategy.
+    There are four supported update strategies:
+    + *OVERRIDE*: update user statitem with the new value
+    + *INCREMENT*: increment user statitem with the specified value
+    + *MAX*: update user statitem with the specified value if it's larger than the existing value
+    + *MIN*: update user statitem with the specified value if it's lower than the existing value
+
+    The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user's statitems, such as character's statitems.
+    If provided, user's statitems will be saved with key: *userId_additionalKey*
+
+    Other detail info:
+    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
+    + *Returns*: updated user's statItem
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
+
+    Properties:
+        url: /social/v2/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
+
+        method: PUT
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL StatItemUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        stat_code: (statCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - StatItemIncResult (successful operation)
+
+        400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
+
+        404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}] is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -51,6 +51,70 @@ def admin_list_user_achievements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user achievements [include achieved and in-progress] (AdminListUserAchievements)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+    Note:
+
+
+
+
+    User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+    `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements
+
+        method: GET
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - ModelsPaginatedUserAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,6 +143,70 @@ async def admin_list_user_achievements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user achievements [include achieved and in-progress] (AdminListUserAchievements)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+    Note:
+
+
+
+
+    User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+    `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements
+
+        method: GET
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - ModelsPaginatedUserAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -105,6 +233,52 @@ def admin_reset_achievement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset an achievement (AdminResetAchievement)
+
+    [TEST FACILITY ONLY]
+
+
+
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [DELETE]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/reset
+
+        method: DELETE
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -125,6 +299,52 @@ async def admin_reset_achievement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset an achievement (AdminResetAchievement)
+
+    [TEST FACILITY ONLY]
+
+
+
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [DELETE]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/reset
+
+        method: DELETE
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -147,6 +367,47 @@ def admin_unlock_achievement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlock an achievement (AdminUnlockAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
+
+        method: PUT
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -167,6 +428,47 @@ async def admin_unlock_achievement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlock an achievement (AdminUnlockAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
+
+        method: PUT
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -193,6 +495,70 @@ def public_list_user_achievements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user achievements [include achieved and in-progress] (PublicListUserAchievements)
+
+    Required permission
+    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+    Note:
+
+
+
+
+    User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+    `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements
+
+        method: GET
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - ModelsPaginatedUserAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,6 +587,70 @@ async def public_list_user_achievements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user achievements [include achieved and in-progress] (PublicListUserAchievements)
+
+    Required permission
+    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+    Note:
+
+
+
+
+    User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+    `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements
+
+        method: GET
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - ModelsPaginatedUserAchievementResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -247,6 +677,47 @@ def public_unlock_achievement(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlock an achievement (PublicUnlockAchievement)
+
+    Required permission
+    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
+
+        method: PUT
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -267,6 +738,47 @@ async def public_unlock_achievement_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlock an achievement (PublicUnlockAchievement)
+
+    Required permission
+    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
+
+        method: PUT
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        achievement_code: (achievementCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

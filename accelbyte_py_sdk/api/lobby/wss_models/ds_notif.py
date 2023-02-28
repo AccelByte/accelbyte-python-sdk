@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class DsNotif(WebSocketMessage):
+
     # region fields
 
     alternate_ips: List[str]

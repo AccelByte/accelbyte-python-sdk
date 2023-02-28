@@ -44,6 +44,50 @@ def get_user_leaderboard_rankings_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user rankings (getUserLeaderboardRankingsAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get user leaderboard rankings
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}/leaderboards
+
+        method: GET
+
+        tags: ["UserData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetAllUserLeaderboardsResp (OK)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,6 +110,50 @@ async def get_user_leaderboard_rankings_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user rankings (getUserLeaderboardRankingsAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get user leaderboard rankings
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}/leaderboards
+
+        method: GET
+
+        tags: ["UserData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetAllUserLeaderboardsResp (OK)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

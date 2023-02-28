@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Social Service (1.33.0)
+# AccelByte Cloud Social Service (2.0.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -59,6 +59,8 @@ class GetStats(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        cycle_ids: (cycleIds) OPTIONAL str in query
+
         is_global: (isGlobal) OPTIONAL bool in query
 
         limit: (limit) OPTIONAL int in query
@@ -79,6 +81,7 @@ class GetStats(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    cycle_ids: str  # OPTIONAL in [query]
     is_global: bool  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
@@ -133,6 +136,8 @@ class GetStats(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "cycle_ids"):
+            result["cycleIds"] = self.cycle_ids
         if hasattr(self, "is_global"):
             result["isGlobal"] = self.is_global
         if hasattr(self, "limit"):
@@ -151,6 +156,10 @@ class GetStats(Operation):
 
     def with_namespace(self, value: str) -> GetStats:
         self.namespace = value
+        return self
+
+    def with_cycle_ids(self, value: str) -> GetStats:
+        self.cycle_ids = value
         return self
 
     def with_is_global(self, value: bool) -> GetStats:
@@ -175,6 +184,10 @@ class GetStats(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "cycle_ids") and self.cycle_ids:
+            result["cycleIds"] = str(self.cycle_ids)
+        elif include_empty:
+            result["cycleIds"] = ""
         if hasattr(self, "is_global") and self.is_global:
             result["isGlobal"] = bool(self.is_global)
         elif include_empty:
@@ -229,12 +242,15 @@ class GetStats(Operation):
     def create(
         cls,
         namespace: str,
+        cycle_ids: Optional[str] = None,
         is_global: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> GetStats:
         instance = cls()
         instance.namespace = namespace
+        if cycle_ids is not None:
+            instance.cycle_ids = cycle_ids
         if is_global is not None:
             instance.is_global = is_global
         if limit is not None:
@@ -250,6 +266,10 @@ class GetStats(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "cycleIds" in dict_ and dict_["cycleIds"] is not None:
+            instance.cycle_ids = str(dict_["cycleIds"])
+        elif include_empty:
+            instance.cycle_ids = ""
         if "isGlobal" in dict_ and dict_["isGlobal"] is not None:
             instance.is_global = bool(dict_["isGlobal"])
         elif include_empty:
@@ -268,6 +288,7 @@ class GetStats(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "cycleIds": "cycle_ids",
             "isGlobal": "is_global",
             "limit": "limit",
             "offset": "offset",
@@ -277,6 +298,7 @@ class GetStats(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "cycleIds": False,
             "isGlobal": False,
             "limit": False,
             "offset": False,

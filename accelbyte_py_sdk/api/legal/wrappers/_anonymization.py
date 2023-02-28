@@ -38,6 +38,35 @@ from ..operations.anonymization import AnonymizeUserAgreement
 def anonymize_user_agreement(
     user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Anonymize user's agreement record (anonymizeUserAgreement)
+
+    This API will anonymize agreement record for specified user. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
+
+    Properties:
+        url: /agreement/admin/users/{userId}/anonymization/agreements
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (successful anonymize)
+
+        404: Not Found - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_agreement_not_found)
+    """
     request = AnonymizeUserAgreement.create(
         user_id=user_id,
     )
@@ -48,6 +77,35 @@ def anonymize_user_agreement(
 async def anonymize_user_agreement_async(
     user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Anonymize user's agreement record (anonymizeUserAgreement)
+
+    This API will anonymize agreement record for specified user. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
+
+    Properties:
+        url: /agreement/admin/users/{userId}/anonymization/agreements
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (successful anonymize)
+
+        404: Not Found - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_agreement_not_found)
+    """
     request = AnonymizeUserAgreement.create(
         user_id=user_id,
     )

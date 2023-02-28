@@ -71,6 +71,45 @@ def create_content_direct(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upload content to a channel (CreateContentDirect)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
+
+    All request body are required except preview, tags and customAttributes.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents
+
+        method: POST
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateContentRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateContentResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -94,6 +133,45 @@ async def create_content_direct_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upload content to a channel (CreateContentDirect)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
+
+    All request body are required except preview, tags and customAttributes.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents
+
+        method: POST
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateContentRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateContentResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -118,6 +196,51 @@ def create_content_s3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upload content to S3 bucket (CreateContentS3)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
+
+    All request body are required except payload, preview, tags, contentType and customAttributes.
+    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.
+    If not specified, it will use fileExtension value.
+
+
+
+    NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3
+
+        method: POST
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateContentRequestS3 in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateContentResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -140,6 +263,51 @@ async def create_content_s3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upload content to S3 bucket (CreateContentS3)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
+
+    All request body are required except payload, preview, tags, contentType and customAttributes.
+    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.
+    If not specified, it will use fileExtension value.
+
+
+
+    NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3
+
+        method: POST
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateContentRequestS3 in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateContentResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -164,6 +332,43 @@ def delete_content(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete content (DeleteContent)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
+
+        method: DELETE
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -186,6 +391,43 @@ async def delete_content_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete content (DeleteContent)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
+
+        method: DELETE
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -210,6 +452,45 @@ def delete_content_screenshot(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete screenshots content (DeleteContentScreenshot)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots/{screenshotId}
+
+        method: DELETE
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        screenshot_id: (screenshotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -232,6 +513,45 @@ async def delete_content_screenshot_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete screenshots content (DeleteContentScreenshot)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots/{screenshotId}
+
+        method: DELETE
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        screenshot_id: (screenshotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -254,6 +574,36 @@ def public_download_content_by_content_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user specific content (PublicDownloadContentByContentID)
+
+    Public user can access without token or if token specified, requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -272,6 +622,36 @@ async def public_download_content_by_content_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user specific content (PublicDownloadContentByContentID)
+
+    Public user can access without token or if token specified, requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -292,6 +672,36 @@ def public_download_content_by_share_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get content by sharecode (PublicDownloadContentByShareCode)
+
+    Public user can access without token or if token specified, requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/sharecodes/{shareCode}
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -310,6 +720,36 @@ async def public_download_content_by_share_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get content by sharecode (PublicDownloadContentByShareCode)
+
+    Public user can access without token or if token specified, requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/sharecodes/{shareCode}
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -330,6 +770,38 @@ def public_download_content_preview(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get content preview (PublicDownloadContentPreview)
+
+    Requires valid user token
+
+     NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/preview
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetContentPreviewResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -348,6 +820,38 @@ async def public_download_content_preview_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get content preview (PublicDownloadContentPreview)
+
+    Requires valid user token
+
+     NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/preview
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetContentPreviewResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -368,6 +872,37 @@ def public_get_content_bulk(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get contents by content Ids  (PublicGetContentBulk)
+
+    Maximum requested Ids: 100.
+    Public user can access without token or if token specified, requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/bulk
+
+        method: POST
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPublicGetContentBulkRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsContentDownloadResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -386,6 +921,37 @@ async def public_get_content_bulk_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get contents by content Ids  (PublicGetContentBulk)
+
+    Maximum requested Ids: 100.
+    Public user can access without token or if token specified, requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/bulk
+
+        method: POST
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPublicGetContentBulkRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsContentDownloadResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -408,6 +974,43 @@ def public_get_user_content(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's generated contents (PublicGetUserContent)
+
+    Public user can access without token or if token specified, required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -430,6 +1033,43 @@ async def public_get_user_content_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's generated contents (PublicGetUserContent)
+
+    Public user can access without token or if token specified, required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -462,6 +1102,76 @@ def public_search_content(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search contents (PublicSearchContent)
+
+    Public user can access without token or if token specified, requires valid user token.
+
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
+
+    `tags=red`
+
+    `tags=red&animal;`
+
+    `tags=red|animal`
+
+    `tags=red&animal;|wild`
+
+    `tags=red&(animal|wild)`
+
+    The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
+
+    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
+
+    Allowed character for operator: `&` `|` `(` `)`
+
+     Please note that value of tags query param should be URL encoded
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        creator: (creator) OPTIONAL str in query
+
+        isofficial: (isofficial) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        orderby: (orderby) OPTIONAL str in query
+
+        sortby: (sortby) OPTIONAL str in query
+
+        subtype: (subtype) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+        type_: (type) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -500,6 +1210,76 @@ async def public_search_content_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search contents (PublicSearchContent)
+
+    Public user can access without token or if token specified, requires valid user token.
+
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
+
+    `tags=red`
+
+    `tags=red&animal;`
+
+    `tags=red|animal`
+
+    `tags=red&animal;|wild`
+
+    `tags=red&(animal|wild)`
+
+    The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
+
+    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
+
+    Allowed character for operator: `&` `|` `(` `)`
+
+     Please note that value of tags query param should be URL encoded
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        creator: (creator) OPTIONAL str in query
+
+        isofficial: (isofficial) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        orderby: (orderby) OPTIONAL str in query
+
+        sortby: (sortby) OPTIONAL str in query
+
+        subtype: (subtype) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+        type_: (type) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -541,6 +1321,78 @@ def search_channel_specific_content(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search contents specific to a channel (SearchChannelSpecificContent)
+
+    Requires valid user token.
+
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
+
+    `tags=red`
+
+    `tags=red&animal;`
+
+    `tags=red|animal`
+
+    `tags=red&animal;|wild`
+
+    `tags=red&(animal|wild)`
+
+    The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
+
+    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
+
+    Allowed character for operator: `&` `|` `(` `)`
+
+     Please note that value of tags query param should be URL encoded
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/channels/{channelId}/contents
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        creator: (creator) OPTIONAL str in query
+
+        isofficial: (isofficial) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        orderby: (orderby) OPTIONAL str in query
+
+        sortby: (sortby) OPTIONAL str in query
+
+        subtype: (subtype) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+        type_: (type) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -581,6 +1433,78 @@ async def search_channel_specific_content_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search contents specific to a channel (SearchChannelSpecificContent)
+
+    Requires valid user token.
+
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
+
+    `tags=red`
+
+    `tags=red&animal;`
+
+    `tags=red|animal`
+
+    `tags=red&animal;|wild`
+
+    `tags=red&(animal|wild)`
+
+    The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
+
+    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
+
+    Allowed character for operator: `&` `|` `(` `)`
+
+     Please note that value of tags query param should be URL encoded
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/channels/{channelId}/contents
+
+        method: GET
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        creator: (creator) OPTIONAL str in query
+
+        isofficial: (isofficial) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        orderby: (orderby) OPTIONAL str in query
+
+        sortby: (sortby) OPTIONAL str in query
+
+        subtype: (subtype) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+        type_: (type) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -616,6 +1540,49 @@ def update_content_direct(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update content to a channel (UpdateContentDirect)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+
+    All request body are required except preview, tags and customAttributes.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
+
+        method: PUT
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateContentRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -641,6 +1608,49 @@ async def update_content_direct_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update content to a channel (UpdateContentDirect)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+
+    All request body are required except preview, tags and customAttributes.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
+
+        method: PUT
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateContentRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -667,6 +1677,55 @@ def update_content_s3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update content to S3 bucket (UpdateContentS3)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+    All request body are required except payload, preview, tags, contentType, updateContentFile and customAttributes.
+    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.
+    If not specified, it will use fileExtension value.
+    To update content's file, set `updateContentFile` to `true` and upload the file using URL in `payloadURL.url` in response body.
+
+
+
+    NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/{contentId}
+
+        method: PUT
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsContentRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -691,6 +1750,55 @@ async def update_content_s3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update content to S3 bucket (UpdateContentS3)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+    All request body are required except payload, preview, tags, contentType, updateContentFile and customAttributes.
+    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.
+    If not specified, it will use fileExtension value.
+    To update content's file, set `updateContentFile` to `true` and upload the file using URL in `payloadURL.url` in response body.
+
+
+
+    NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/{contentId}
+
+        method: PUT
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsContentRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -716,6 +1824,47 @@ def update_screenshots(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update screenshot of content (UpdateScreenshots)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+
+    Maximum description length: 1024.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots
+
+        method: PUT
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateScreenshotRequest in body
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateScreenshotResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -738,6 +1887,47 @@ async def update_screenshots_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update screenshot of content (UpdateScreenshots)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+
+    Maximum description length: 1024.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots
+
+        method: PUT
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateScreenshotRequest in body
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateScreenshotResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -762,6 +1952,50 @@ def upload_content_screenshot(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upload screenshots for content (UploadContentScreenshot)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
+
+    All request body are required except for contentType field.
+    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
+    If not specified, it will use fileExtension value.
+    Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
+
+    Maximum description length: 1024.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots
+
+        method: POST
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateScreenshotRequest in body
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateScreenshotResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -784,6 +2018,50 @@ async def upload_content_screenshot_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upload screenshots for content (UploadContentScreenshot)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
+
+    All request body are required except for contentType field.
+    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
+    If not specified, it will use fileExtension value.
+    Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
+
+    Maximum description length: 1024.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots
+
+        method: POST
+
+        tags: ["Public Content"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateScreenshotRequest in body
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateScreenshotResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

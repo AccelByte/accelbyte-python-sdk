@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.27.2)
+# AccelByte Cloud Iam Service (5.28.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -84,6 +84,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         token_claims_mapping: (TokenClaimsMapping) REQUIRED Dict[str, str]
 
         token_endpoint: (TokenEndpoint) REQUIRED str
+
+        user_info_endpoint: (UserInfoEndpoint) REQUIRED str
+
+        user_info_http_method: (UserInfoHTTPMethod) REQUIRED str
     """
 
     # region fields
@@ -113,6 +117,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     token_authentication_type: str  # REQUIRED
     token_claims_mapping: Dict[str, str]  # REQUIRED
     token_endpoint: str  # REQUIRED
+    user_info_endpoint: str  # REQUIRED
+    user_info_http_method: str  # REQUIRED
 
     # endregion fields
 
@@ -256,6 +262,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.token_endpoint = value
         return self
 
+    def with_user_info_endpoint(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.user_info_endpoint = value
+        return self
+
+    def with_user_info_http_method(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.user_info_http_method = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -369,6 +387,14 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["TokenEndpoint"] = str(self.token_endpoint)
         elif include_empty:
             result["TokenEndpoint"] = ""
+        if hasattr(self, "user_info_endpoint"):
+            result["UserInfoEndpoint"] = str(self.user_info_endpoint)
+        elif include_empty:
+            result["UserInfoEndpoint"] = ""
+        if hasattr(self, "user_info_http_method"):
+            result["UserInfoHTTPMethod"] = str(self.user_info_http_method)
+        elif include_empty:
+            result["UserInfoHTTPMethod"] = ""
         return result
 
     # endregion to methods
@@ -403,6 +429,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         token_authentication_type: str,
         token_claims_mapping: Dict[str, str],
         token_endpoint: str,
+        user_info_endpoint: str,
+        user_info_http_method: str,
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
         instance = cls()
         instance.acsurl = acsurl
@@ -430,6 +458,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         instance.token_authentication_type = token_authentication_type
         instance.token_claims_mapping = token_claims_mapping
         instance.token_endpoint = token_endpoint
+        instance.user_info_endpoint = user_info_endpoint
+        instance.user_info_http_method = user_info_http_method
         return instance
 
     @classmethod
@@ -559,6 +589,14 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.token_endpoint = str(dict_["TokenEndpoint"])
         elif include_empty:
             instance.token_endpoint = ""
+        if "UserInfoEndpoint" in dict_ and dict_["UserInfoEndpoint"] is not None:
+            instance.user_info_endpoint = str(dict_["UserInfoEndpoint"])
+        elif include_empty:
+            instance.user_info_endpoint = ""
+        if "UserInfoHTTPMethod" in dict_ and dict_["UserInfoHTTPMethod"] is not None:
+            instance.user_info_http_method = str(dict_["UserInfoHTTPMethod"])
+        elif include_empty:
+            instance.user_info_http_method = ""
         return instance
 
     @classmethod
@@ -627,6 +665,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "TokenAuthenticationType": "token_authentication_type",
             "TokenClaimsMapping": "token_claims_mapping",
             "TokenEndpoint": "token_endpoint",
+            "UserInfoEndpoint": "user_info_endpoint",
+            "UserInfoHTTPMethod": "user_info_http_method",
         }
 
     @staticmethod
@@ -657,6 +697,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "TokenAuthenticationType": True,
             "TokenClaimsMapping": True,
             "TokenEndpoint": True,
+            "UserInfoEndpoint": True,
+            "UserInfoHTTPMethod": True,
         }
 
     # endregion static methods

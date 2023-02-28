@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class CancelMatchmakingRequest(WebSocketMessage):
+
     # region fields
 
     game_mode: str

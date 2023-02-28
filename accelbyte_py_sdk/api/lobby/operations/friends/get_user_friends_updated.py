@@ -41,7 +41,7 @@ class GetUserFriendsUpdated(Operation):
 
         method: GET
 
-        tags: ["friends"]
+        tags: ["friends", "public"]
 
         consumes: []
 

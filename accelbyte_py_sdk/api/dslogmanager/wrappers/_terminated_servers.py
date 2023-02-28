@@ -45,6 +45,44 @@ def check_server_logs(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check dedicated server log files existence (checkServerLogs)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required scope: social
+
+    This endpoint will check log file existence before download file.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists
+
+        method: GET
+
+        tags: ["Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json", "text/x-log"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsLogFileStatus (Log exists.)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,6 +101,44 @@ async def check_server_logs_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check dedicated server log files existence (checkServerLogs)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required scope: social
+
+    This endpoint will check log file existence before download file.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists
+
+        method: GET
+
+        tags: ["Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json", "text/x-log"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsLogFileStatus (Log exists.)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,6 +159,44 @@ def download_server_logs(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download dedicated server log files (downloadServerLogs)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required scope: social
+
+    This endpoint will download dedicated server's log file (.log).
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/download
+
+        method: GET
+
+        tags: ["Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json", "text/x-log"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (server logs downloaded.)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,6 +215,44 @@ async def download_server_logs_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download dedicated server log files (downloadServerLogs)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required scope: social
+
+    This endpoint will download dedicated server's log file (.log).
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/download
+
+        method: GET
+
+        tags: ["Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json", "text/x-log"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (server logs downloaded.)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,6 +286,69 @@ def list_terminated_servers(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Terminated Servers (listTerminatedServers)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    This endpoint used to retrieve terminated servers in a namespace
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    Properties:
+        url: /dslogmanager/namespaces/{namespace}/servers/search
+
+        method: GET
+
+        tags: ["Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json", "text/x-log"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        deployment: (deployment) OPTIONAL str in query
+
+        end_date: (end_date) OPTIONAL str in query
+
+        game_mode: (game_mode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        next_: (next) OPTIONAL str in query
+
+        party_id: (party_id) OPTIONAL str in query
+
+        pod_name: (pod_name) OPTIONAL str in query
+
+        previous: (previous) OPTIONAL str in query
+
+        provider: (provider) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        session_id: (session_id) OPTIONAL str in query
+
+        start_date: (start_date) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        user_id: (user_id) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsListTerminatedServersResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -178,6 +393,69 @@ async def list_terminated_servers_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Terminated Servers (listTerminatedServers)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    This endpoint used to retrieve terminated servers in a namespace
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    Properties:
+        url: /dslogmanager/namespaces/{namespace}/servers/search
+
+        method: GET
+
+        tags: ["Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json", "text/x-log"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        deployment: (deployment) OPTIONAL str in query
+
+        end_date: (end_date) OPTIONAL str in query
+
+        game_mode: (game_mode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        next_: (next) OPTIONAL str in query
+
+        party_id: (party_id) OPTIONAL str in query
+
+        pod_name: (pod_name) OPTIONAL str in query
+
+        previous: (previous) OPTIONAL str in query
+
+        provider: (provider) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        session_id: (session_id) OPTIONAL str in query
+
+        start_date: (start_date) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        user_id: (user_id) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsListTerminatedServersResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

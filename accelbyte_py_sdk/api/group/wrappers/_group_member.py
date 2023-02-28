@@ -72,6 +72,72 @@ def accept_group_invitation_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept Group Invitation (acceptGroupInvitationPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to accept group invitation.
+
+
+
+
+    Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+
+
+
+    This endpoint will also check if the user who access this endpoint is already joined to specific group
+
+
+
+
+    Accessing this endpoint will make all requests (invite / join request) will be deleted for the user who access this endpoint
+
+
+
+
+    Existing members will receive notification of newly accepted member.
+
+
+
+
+    Action Code: 73401
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/invite/accept
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,6 +156,72 @@ async def accept_group_invitation_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept Group Invitation (acceptGroupInvitationPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to accept group invitation.
+
+
+
+
+    Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+
+
+
+    This endpoint will also check if the user who access this endpoint is already joined to specific group
+
+
+
+
+    Accessing this endpoint will make all requests (invite / join request) will be deleted for the user who access this endpoint
+
+
+
+
+    Existing members will receive notification of newly accepted member.
+
+
+
+
+    Action Code: 73401
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/invite/accept
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,6 +242,72 @@ def accept_group_invitation_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept Group Invitation (acceptGroupInvitationPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to accept group invitation.
+
+
+
+
+    Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+
+
+
+    This endpoint will also check if the user who access this endpoint is already joined to specific group
+
+
+
+
+    Accessing this endpoint will make all requests (invite / join request) will be deleted for the user who access this endpoint
+
+
+
+
+    Existing members will receive notification of newly accepted member.
+
+
+
+
+    Action Code: 73401
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/invite/accept
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -128,6 +326,72 @@ async def accept_group_invitation_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept Group Invitation (acceptGroupInvitationPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to accept group invitation.
+
+
+
+
+    Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+
+
+
+    This endpoint will also check if the user who access this endpoint is already joined to specific group
+
+
+
+
+    Accessing this endpoint will make all requests (invite / join request) will be deleted for the user who access this endpoint
+
+
+
+
+    Existing members will receive notification of newly accepted member.
+
+
+
+
+    Action Code: 73401
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/invite/accept
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -148,6 +412,67 @@ def accept_group_join_request_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept Group Join Request (acceptGroupJoinRequestPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+
+
+
+    This endpoint is used to accept group join request.
+
+
+
+
+    Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+
+
+
+    This endpoint will also check if the specific user is already joined to specific group
+
+
+
+
+    Action Code: 73407
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/{userId}/join/accept
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -166,6 +491,67 @@ async def accept_group_join_request_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept Group Join Request (acceptGroupJoinRequestPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+
+
+
+    This endpoint is used to accept group join request.
+
+
+
+
+    Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+
+
+
+    This endpoint will also check if the specific user is already joined to specific group
+
+
+
+
+    Action Code: 73407
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/{userId}/join/accept
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,6 +573,69 @@ def accept_group_join_request_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept Group Join Request (acceptGroupJoinRequestPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+
+
+
+    This endpoint is used to accept group join request.
+
+
+
+
+    Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+
+
+
+    This endpoint will also check if the specific user is already joined to specific group
+
+
+
+
+    Action Code: 73407
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/join/accept
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,6 +656,69 @@ async def accept_group_join_request_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept Group Join Request (acceptGroupJoinRequestPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+
+
+
+    This endpoint is used to accept group join request.
+
+
+
+
+    Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+
+
+
+    This endpoint will also check if the specific user is already joined to specific group
+
+
+
+
+    Action Code: 73407
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/join/accept
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -228,6 +740,50 @@ def cancel_group_join_request_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel request to join group (CancelGroupJoinRequestV1)
+
+    Requires valid user authentication
+
+
+
+
+    This endpoint allows user to cancel request to join specific group.
+
+
+
+
+    Action Code: 73411
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/join/cancel
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,6 +802,50 @@ async def cancel_group_join_request_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel request to join group (CancelGroupJoinRequestV1)
+
+    Requires valid user authentication
+
+
+
+
+    This endpoint allows user to cancel request to join specific group.
+
+
+
+
+    Action Code: 73411
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/join/cancel
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -267,6 +867,65 @@ def cancel_invitation_group_member_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel Invitation Group Member (CancelInvitationGroupMemberV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:INVITE [DELETE]"
+
+
+
+
+    This endpoint is used to cancel invitation group member.
+
+
+
+
+    cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the the user who accesses this endpoint
+
+
+
+
+    Action Code: 73409
+
+    Required Permission(s):
+        - GROUP:INVITE [DELETE]
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite/cancel
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCancelInvitationGroupResponseV2 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -287,6 +946,65 @@ async def cancel_invitation_group_member_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel Invitation Group Member (CancelInvitationGroupMemberV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:INVITE [DELETE]"
+
+
+
+
+    This endpoint is used to cancel invitation group member.
+
+
+
+
+    cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the the user who accesses this endpoint
+
+
+
+
+    Action Code: 73409
+
+    Required Permission(s):
+        - GROUP:INVITE [DELETE]
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite/cancel
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCancelInvitationGroupResponseV2 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -311,6 +1029,59 @@ def get_group_members_list_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of group members (getGroupMembersListAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
+
+
+
+
+    This endpoint is used to get list of group members.
+
+
+
+
+    Action Code: 73410
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}/members
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order: (order) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsGetGroupMemberListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -335,6 +1106,59 @@ async def get_group_members_list_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of group members (getGroupMembersListAdminV1)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
+
+
+
+
+    This endpoint is used to get list of group members.
+
+
+
+
+    Action Code: 73410
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}/members
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order: (order) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsGetGroupMemberListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -361,6 +1185,56 @@ def get_group_members_list_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of group members (getGroupMembersListPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to get list of group members.
+
+
+
+
+    Action Code: 73410
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/members
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order: (order) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsGetGroupMemberListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -385,6 +1259,56 @@ async def get_group_members_list_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of group members (getGroupMembersListPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to get list of group members.
+
+
+
+
+    Action Code: 73410
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/members
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order: (order) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsGetGroupMemberListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -408,6 +1332,74 @@ def get_user_group_information_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Group Information (getUserGroupInformationPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to get user group information.
+
+
+
+
+    Get user group information. If user does not belong to any group, it will return warning to give information about it
+
+
+
+
+    Group Member Status:
+
+
+
+
+
+
+      * JOIN : status of user requested to join group
+
+
+      * INVITE: status of user invited to a group
+
+
+      * JOINED: status of user already joined to a group
+
+
+
+
+
+    Action Code: 73405
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -426,6 +1418,74 @@ async def get_user_group_information_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Group Information (getUserGroupInformationPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to get user group information.
+
+
+
+
+    Get user group information. If user does not belong to any group, it will return warning to give information about it
+
+
+
+
+    Group Member Status:
+
+
+
+
+
+
+      * JOIN : status of user requested to join group
+
+
+      * INVITE: status of user invited to a group
+
+
+      * JOINED: status of user already joined to a group
+
+
+
+
+
+    Action Code: 73405
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -447,6 +1507,70 @@ def get_user_group_information_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Joined Group Information (getUserGroupInformationPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to get user joined group information.
+
+
+
+
+    Get user group joined information. If user does not belong to any group, it will return warning to give information about it
+
+
+
+
+    Group Member Status:
+
+
+
+
+
+
+      * JOINED: status of user already joined to a group
+
+
+
+
+
+    Action Code: 73405
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/me/groups
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetGroupMemberListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -467,6 +1591,70 @@ async def get_user_group_information_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Joined Group Information (getUserGroupInformationPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to get user joined group information.
+
+
+
+
+    Get user group joined information. If user does not belong to any group, it will return warning to give information about it
+
+
+
+
+    Group Member Status:
+
+
+
+
+
+
+      * JOINED: status of user already joined to a group
+
+
+
+
+
+    Action Code: 73405
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/me/groups
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetGroupMemberListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -489,6 +1677,63 @@ def get_user_group_status_information_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """User Group Status Information (GetUserGroupStatusInformationV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP [READ]"
+
+
+
+
+    This endpoint is used to get user group status information.
+
+
+
+
+    get user group status information. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+
+
+
+
+    Action Code: 73409
+
+    Required Permission(s):
+        - GROUP [READ]
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/status
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -509,6 +1754,63 @@ async def get_user_group_status_information_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """User Group Status Information (GetUserGroupStatusInformationV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP [READ]"
+
+
+
+
+    This endpoint is used to get user group status information.
+
+
+
+
+    get user group status information. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+
+
+
+
+    Action Code: 73409
+
+    Required Permission(s):
+        - GROUP [READ]
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/status
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -532,6 +1834,66 @@ def get_user_joined_group_information_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Joined Group Information (getUserJoinedGroupInformationPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to get user joined group information.
+
+
+
+
+    Get user group joined information. If user does not belong to any group, it will return warning to give information about it
+
+
+
+
+    Group Member Status:
+
+
+
+
+
+
+      * JOINED: status of user already joined to a group
+
+    Properties:
+        url: /group/v2/admin/namespaces/{namespace}/users/{userId}/groups
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetGroupMemberListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -554,6 +1916,66 @@ async def get_user_joined_group_information_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Joined Group Information (getUserJoinedGroupInformationPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to get user joined group information.
+
+
+
+
+    Get user group joined information. If user does not belong to any group, it will return warning to give information about it
+
+
+
+
+    Group Member Status:
+
+
+
+
+
+
+      * JOINED: status of user already joined to a group
+
+    Properties:
+        url: /group/v2/admin/namespaces/{namespace}/users/{userId}/groups
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetGroupMemberListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -576,6 +1998,92 @@ def invite_group_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Invite user to group (inviteGroupPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:INVITE [CREATE]"
+
+
+
+
+    This endpoint is used to invite specific user to the group.
+
+
+
+
+    invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
+
+
+
+
+    Invited user will receive notification through lobby.
+
+
+
+
+    Action Code: 73406
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 1
+
+
+
+
+    "resourceName": "GROUP:INVITE"
+
+
+
+
+    The invited user will have a permission to invite another user to the group
+
+    Required Permission(s):
+        - GROUP:INVITE [CREATE]
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/{userId}/invite
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUserInvitationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group | 73437: user already invited | 73438: user already requested to join)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -594,6 +2102,92 @@ async def invite_group_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Invite user to group (inviteGroupPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:INVITE [CREATE]"
+
+
+
+
+    This endpoint is used to invite specific user to the group.
+
+
+
+
+    invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
+
+
+
+
+    Invited user will receive notification through lobby.
+
+
+
+
+    Action Code: 73406
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 1
+
+
+
+
+    "resourceName": "GROUP:INVITE"
+
+
+
+
+    The invited user will have a permission to invite another user to the group
+
+    Required Permission(s):
+        - GROUP:INVITE [CREATE]
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/{userId}/invite
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUserInvitationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group | 73437: user already invited | 73438: user already requested to join)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -615,6 +2209,94 @@ def invite_group_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Invite user to group (inviteGroupPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:INVITE [CREATE]"
+
+
+
+
+    This endpoint is used to invite specific user to the group.
+
+
+
+
+    invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
+
+
+
+
+    Invited user will receive notification through lobby.
+
+
+
+
+    Action Code: 73406
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 1
+
+
+
+
+    "resourceName": "GROUP:INVITE"
+
+
+
+
+    The invited user will have a permission to invite another user to the group
+
+    Required Permission(s):
+        - GROUP:INVITE [CREATE]
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUserInvitationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group | 73437: user already invited | 73438: user already requested to join)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -635,6 +2317,94 @@ async def invite_group_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Invite user to group (inviteGroupPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:INVITE [CREATE]"
+
+
+
+
+    This endpoint is used to invite specific user to the group.
+
+
+
+
+    invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
+
+
+
+
+    Invited user will receive notification through lobby.
+
+
+
+
+    Action Code: 73406
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 1
+
+
+
+
+    "resourceName": "GROUP:INVITE"
+
+
+
+
+    The invited user will have a permission to invite another user to the group
+
+    Required Permission(s):
+        - GROUP:INVITE [CREATE]
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUserInvitationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group | 73437: user already invited | 73438: user already requested to join)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -656,6 +2426,79 @@ def join_group_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Join to group (JoinGroupV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to join as group member
+
+
+
+
+    Join to the group. This endpoint will check the the the type of the group based on the groupID.
+
+
+
+
+    Additional Information:
+
+
+
+
+
+
+      * User cannot join to the group with PRIVATE type
+
+
+      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+
+
+      * Joining OPEN group type will make this user become member of that group immediately
+
+
+
+
+
+    This endpoint will return status field to give information whether the user is JOINED or REQUESTED to join to the specific group
+
+
+
+
+    Action Code: 73403
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/join
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsJoinGroupResponseV1 (Created)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -674,6 +2517,79 @@ async def join_group_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Join to group (JoinGroupV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to join as group member
+
+
+
+
+    Join to the group. This endpoint will check the the the type of the group based on the groupID.
+
+
+
+
+    Additional Information:
+
+
+
+
+
+
+      * User cannot join to the group with PRIVATE type
+
+
+      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+
+
+      * Joining OPEN group type will make this user become member of that group immediately
+
+
+
+
+
+    This endpoint will return status field to give information whether the user is JOINED or REQUESTED to join to the specific group
+
+
+
+
+    Action Code: 73403
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/join
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsJoinGroupResponseV1 (Created)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -694,6 +2610,79 @@ def join_group_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Join to group (JoinGroupV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to join as group member
+
+
+
+
+    Join to the group. This endpoint will check the the the type of the group based on the groupID.
+
+
+
+
+    Additional Information:
+
+
+
+
+
+
+      * User cannot join to the group with PRIVATE type
+
+
+      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+
+
+      * Joining OPEN group type will make this user become member of that group immediately
+
+
+
+
+
+    This endpoint will return status field to give information whether the user is JOINED or REQUESTED to join to the specific group
+
+
+
+
+    Action Code: 73403
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/join
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsJoinGroupResponseV1 (Created)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -712,6 +2701,79 @@ async def join_group_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Join to group (JoinGroupV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to join as group member
+
+
+
+
+    Join to the group. This endpoint will check the the the type of the group based on the groupID.
+
+
+
+
+    Additional Information:
+
+
+
+
+
+
+      * User cannot join to the group with PRIVATE type
+
+
+      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+
+
+      * Joining OPEN group type will make this user become member of that group immediately
+
+
+
+
+
+    This endpoint will return status field to give information whether the user is JOINED or REQUESTED to join to the specific group
+
+
+
+
+    Action Code: 73403
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/join
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsJoinGroupResponseV1 (Created)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -732,6 +2794,60 @@ def kick_group_member_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Kick Group Member (kickGroupMemberPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:KICK [CREATE]"
+
+
+
+
+    This endpoint is used to kick group member.
+
+
+
+
+    Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+
+
+
+
+    Action Code: 73409
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/{userId}/kick
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsKickGroupMemberResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -750,6 +2866,60 @@ async def kick_group_member_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Kick Group Member (kickGroupMemberPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:KICK [CREATE]"
+
+
+
+
+    This endpoint is used to kick group member.
+
+
+
+
+    Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+
+
+
+
+    Action Code: 73409
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/{userId}/kick
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsKickGroupMemberResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -771,6 +2941,62 @@ def kick_group_member_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Kick Group Member (kickGroupMemberPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:KICK [CREATE]"
+
+
+
+
+    This endpoint is used to kick group member.
+
+
+
+
+    Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+
+
+
+
+    Action Code: 73409
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/kick
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsKickGroupMemberResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -791,6 +3017,62 @@ async def kick_group_member_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Kick Group Member (kickGroupMemberPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:KICK [CREATE]"
+
+
+
+
+    This endpoint is used to kick group member.
+
+
+
+
+    Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+
+
+
+
+    Action Code: 73409
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/kick
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsKickGroupMemberResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -811,6 +3093,53 @@ def leave_group_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Leave group (leaveGroupPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to leave from group.
+
+
+
+
+    leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
+
+
+
+
+    Action Code: 73404
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/leave
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsLeaveGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 73440: group admin cannot leave group)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -827,6 +3156,53 @@ async def leave_group_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Leave group (leaveGroupPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to leave from group.
+
+
+
+
+    leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
+
+
+
+
+    Action Code: 73404
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/leave
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsLeaveGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 73440: group admin cannot leave group)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -846,6 +3222,55 @@ def leave_group_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Leave group (leaveGroupPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to leave from group.
+
+
+
+
+    leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
+
+
+
+
+    Action Code: 73404
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/leave
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsLeaveGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 73440: group admin cannot leave group)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -864,6 +3289,55 @@ async def leave_group_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Leave group (leaveGroupPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to leave from group.
+
+
+
+
+    leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
+
+
+
+
+    Action Code: 73404
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/leave
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsLeaveGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 73440: group admin cannot leave group)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -884,6 +3358,57 @@ def reject_group_invitation_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject Group Invitation (rejectGroupInvitationPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to reject group invitation.
+
+
+
+
+    Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+
+
+
+    Action Code: 73402
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/invite/reject
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -902,6 +3427,57 @@ async def reject_group_invitation_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject Group Invitation (rejectGroupInvitationPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to reject group invitation.
+
+
+
+
+    Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+
+
+
+    Action Code: 73402
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/invite/reject
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -922,6 +3498,57 @@ def reject_group_invitation_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject Group Invitation (rejectGroupInvitationPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to reject group invitation.
+
+
+
+
+    Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+
+
+
+    Action Code: 73402
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/invite/reject
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -940,6 +3567,57 @@ async def reject_group_invitation_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject Group Invitation (rejectGroupInvitationPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to reject group invitation.
+
+
+
+
+    Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+
+
+
+
+    Action Code: 73402
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/invite/reject
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -960,6 +3638,67 @@ def reject_group_join_request_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject Group Join Request (rejectGroupJoinRequestPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+
+
+
+    This endpoint is used to reject group join request.
+
+
+
+
+    Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+
+
+
+    This endpoint will also check if the specific user is already joined to specific group
+
+
+
+
+    Action Code: 73408
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/{userId}/join/reject
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -978,6 +3717,67 @@ async def reject_group_join_request_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject Group Join Request (rejectGroupJoinRequestPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+
+
+
+    This endpoint is used to reject group join request.
+
+
+
+
+    Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+
+
+
+    This endpoint will also check if the specific user is already joined to specific group
+
+
+
+
+    Action Code: 73408
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/{userId}/join/reject
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -999,6 +3799,69 @@ def reject_group_join_request_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject Group Join Request (rejectGroupJoinRequestPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+
+
+
+    This endpoint is used to reject group join request.
+
+
+
+
+    Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+
+
+
+    This endpoint will also check if the specific user is already joined to specific group
+
+
+
+
+    Action Code: 73408
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/join/reject
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1019,6 +3882,69 @@ async def reject_group_join_request_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject Group Join Request (rejectGroupJoinRequestPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [CREATE]"
+
+
+
+
+    This endpoint is used to reject group join request.
+
+
+
+
+    Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+
+
+
+
+    This endpoint will also check if the specific user is already joined to specific group
+
+
+
+
+    Action Code: 73408
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/join/reject
+
+        method: POST
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsMemberRequestGroupResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73443: member request not found)
+
+        409: Conflict - ResponseErrorResponse (73442: user already joined in another group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

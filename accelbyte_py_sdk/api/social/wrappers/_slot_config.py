@@ -47,6 +47,34 @@ def delete_namespace_slot_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes a namespace slot configuration (deleteNamespaceSlotConfig)
+
+    Deletes a namespace slot configuration, the configuration will be default after delete.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SLOTCONFIG [DELETE]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/config
+
+        method: DELETE
+
+        tags: ["SlotConfig"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful delete of namespace slot config)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,6 +91,34 @@ async def delete_namespace_slot_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes a namespace slot configuration (deleteNamespaceSlotConfig)
+
+    Deletes a namespace slot configuration, the configuration will be default after delete.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SLOTCONFIG [DELETE]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/config
+
+        method: DELETE
+
+        tags: ["SlotConfig"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful delete of namespace slot config)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -82,6 +138,36 @@ def delete_user_slot_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes a user slot configuration (deleteUserSlotConfig)
+
+    Deletes a user slot configuration in given namespace, the namespace slot configuration will be returned after delete.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [DELETE]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/config
+
+        method: DELETE
+
+        tags: ["SlotConfig"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful delete of user/namespace slot config)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -100,6 +186,36 @@ async def delete_user_slot_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes a user slot configuration (deleteUserSlotConfig)
+
+    Deletes a user slot configuration in given namespace, the namespace slot configuration will be returned after delete.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [DELETE]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/config
+
+        method: DELETE
+
+        tags: ["SlotConfig"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful delete of user/namespace slot config)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,6 +235,35 @@ def get_namespace_slot_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns a namespace slot configuration (getNamespaceSlotConfig)
+
+    Get slot configuration for a given namespace. In case slot configuration is not set, the default will be returned.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=2 (READ)
+      *  Returns : namespace slot config info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SLOTCONFIG [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/config
+
+        method: GET
+
+        tags: ["SlotConfig"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceSlotConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,6 +280,35 @@ async def get_namespace_slot_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns a namespace slot configuration (getNamespaceSlotConfig)
+
+    Get slot configuration for a given namespace. In case slot configuration is not set, the default will be returned.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=2 (READ)
+      *  Returns : namespace slot config info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SLOTCONFIG [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/config
+
+        method: GET
+
+        tags: ["SlotConfig"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceSlotConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -154,6 +328,37 @@ def get_user_slot_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns a user slot configuration (getUserSlotConfig)
+
+    GetÂ a user slot configuration in given namespace. In case the user slot configuration is not set, the namespace configuration will be returned.
+    Other detail info:
+
+      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=2 (READ)
+      * Returns: slot config info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/config
+
+        method: GET
+
+        tags: ["SlotConfig"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserSlotConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -172,6 +377,37 @@ async def get_user_slot_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns a user slot configuration (getUserSlotConfig)
+
+    GetÂ a user slot configuration in given namespace. In case the user slot configuration is not set, the namespace configuration will be returned.
+    Other detail info:
+
+      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=2 (READ)
+      * Returns: slot config info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/config
+
+        method: GET
+
+        tags: ["SlotConfig"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserSlotConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -192,6 +428,37 @@ def update_namespace_slot_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a namespace slot configuration (updateNamespaceSlotConfig)
+
+    Update a slot namespace configuration.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=4 (UPDATE)
+      *  Returns : updated namespace slot config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SLOTCONFIG [UPDATE]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/config
+
+        method: PUT
+
+        tags: ["SlotConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SlotConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceSlotConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -210,6 +477,37 @@ async def update_namespace_slot_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a namespace slot configuration (updateNamespaceSlotConfig)
+
+    Update a slot namespace configuration.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:SLOTCONFIG", action=4 (UPDATE)
+      *  Returns : updated namespace slot config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SLOTCONFIG [UPDATE]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/config
+
+        method: PUT
+
+        tags: ["SlotConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SlotConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceSlotConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -231,6 +529,39 @@ def update_user_slot_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a user slot configuration (updateUserSlotConfig)
+
+    Update a user slot configuration in given namespace.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=4 (UPDATE)
+      *  Returns : updated slot config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [UPDATE]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/config
+
+        method: PUT
+
+        tags: ["SlotConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SlotConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserSlotConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -251,6 +582,39 @@ async def update_user_slot_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a user slot configuration (updateUserSlotConfig)
+
+    Update a user slot configuration in given namespace.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=4 (UPDATE)
+      *  Returns : updated slot config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [UPDATE]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/config
+
+        method: PUT
+
+        tags: ["SlotConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SlotConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserSlotConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

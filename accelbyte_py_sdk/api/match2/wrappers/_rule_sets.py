@@ -47,6 +47,55 @@ def create_rule_set(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a match rule set (CreateRuleSet)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
+
+    Required Scope: social
+
+    Creates a new rules set.
+
+    A rule set has a name and contains arbitrary data which is meaningful to some particular match function(s)
+    The name is used for a match pool to select the ruleset data that should be sent to the match function when matchmaking in that pool.
+
+    To use custom rules set please set enable_custom_match_function=true. Default (false).
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/rulesets
+
+        method: POST
+
+        tags: ["Rule-Sets", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiRuleSetPayload in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,6 +114,55 @@ async def create_rule_set_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a match rule set (CreateRuleSet)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
+
+    Required Scope: social
+
+    Creates a new rules set.
+
+    A rule set has a name and contains arbitrary data which is meaningful to some particular match function(s)
+    The name is used for a match pool to select the ruleset data that should be sent to the match function when matchmaking in that pool.
+
+    To use custom rules set please set enable_custom_match_function=true. Default (false).
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/rulesets
+
+        method: POST
+
+        tags: ["Rule-Sets", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiRuleSetPayload in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -85,6 +183,48 @@ def delete_rule_set(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a rule set (DeleteRuleSet)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [DELETE]
+
+    Required Scope: social
+
+    Deletes an existing rule set.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:RULES [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
+
+        method: DELETE
+
+        tags: ["Rule-Sets", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ruleset: (ruleset) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -103,6 +243,48 @@ async def delete_rule_set_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a rule set (DeleteRuleSet)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [DELETE]
+
+    Required Scope: social
+
+    Deletes an existing rule set.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:RULES [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
+
+        method: DELETE
+
+        tags: ["Rule-Sets", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ruleset: (ruleset) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -123,6 +305,46 @@ def rule_set_details(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get details for a specific rule set (RuleSetDetails)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
+
+    Required Scope: social
+
+    Get details for a specific rule set
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
+
+        method: GET
+
+        tags: ["Rule-Sets", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ruleset: (ruleset) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiRuleSetPayload (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -141,6 +363,46 @@ async def rule_set_details_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get details for a specific rule set (RuleSetDetails)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
+
+    Required Scope: social
+
+    Get details for a specific rule set
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
+
+        method: GET
+
+        tags: ["Rule-Sets", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ruleset: (ruleset) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiRuleSetPayload (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -162,6 +424,48 @@ def rule_set_list(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List existing rule sets (RuleSetList)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
+
+    Required Scope: social
+
+    List rule sets.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/rulesets
+
+        method: GET
+
+        tags: ["Rule-Sets", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ApiListRuleSetsResponse (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,6 +486,48 @@ async def rule_set_list_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List existing rule sets (RuleSetList)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
+
+    Required Scope: social
+
+    List rule sets.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/rulesets
+
+        method: GET
+
+        tags: ["Rule-Sets", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ApiListRuleSetsResponse (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -204,6 +550,54 @@ def update_rule_set(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a match rule set (UpdateRuleSet)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
+
+    Required Scope: social
+
+    Updates an existing matchmaking rule set.
+
+    To use custom rules set please set enable_custom_match_function=true. Default (false).
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
+
+        method: PUT
+
+        tags: ["Rule-Sets", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiRuleSetPayload in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        ruleset: (ruleset) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiRuleSetPayload (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -224,6 +618,54 @@ async def update_rule_set_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a match rule set (UpdateRuleSet)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
+
+    Required Scope: social
+
+    Updates an existing matchmaking rule set.
+
+    To use custom rules set please set enable_custom_match_function=true. Default (false).
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
+
+        method: PUT
+
+        tags: ["Rule-Sets", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiRuleSetPayload in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        ruleset: (ruleset) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiRuleSetPayload (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

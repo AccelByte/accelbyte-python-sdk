@@ -42,6 +42,43 @@ def anonymize_user_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize user profile (anonymizeUserProfile)
+
+    Anonymize user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION" , action=8 (DELETE)
+      *  Action code : 11501
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/profiles
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymized profile successfully)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -60,6 +97,43 @@ async def anonymize_user_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """anonymize user profile (anonymizeUserProfile)
+
+    Anonymize user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION" , action=8 (DELETE)
+      *  Action code : 11501
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/profiles
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymized profile successfully)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

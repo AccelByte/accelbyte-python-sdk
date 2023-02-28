@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Achievement Service (2.14.0)
+# AccelByte Cloud Achievement Service (2.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,6 +65,8 @@ class ModelsAchievementResponse(Model):
         goal_value: (goalValue) OPTIONAL float
 
         stat_code: (statCode) OPTIONAL str
+
+        status: (status) OPTIONAL str
     """
 
     # region fields
@@ -85,6 +87,7 @@ class ModelsAchievementResponse(Model):
     updated_at: str  # REQUIRED
     goal_value: float  # OPTIONAL
     stat_code: str  # OPTIONAL
+    status: str  # OPTIONAL
 
     # endregion fields
 
@@ -152,6 +155,10 @@ class ModelsAchievementResponse(Model):
 
     def with_stat_code(self, value: str) -> ModelsAchievementResponse:
         self.stat_code = value
+        return self
+
+    def with_status(self, value: str) -> ModelsAchievementResponse:
+        self.status = value
         return self
 
     # endregion with_x methods
@@ -230,6 +237,10 @@ class ModelsAchievementResponse(Model):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = ""
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = ""
         return result
 
     # endregion to methods
@@ -255,6 +266,7 @@ class ModelsAchievementResponse(Model):
         updated_at: str,
         goal_value: Optional[float] = None,
         stat_code: Optional[str] = None,
+        status: Optional[str] = None,
     ) -> ModelsAchievementResponse:
         instance = cls()
         instance.achievement_code = achievement_code
@@ -275,6 +287,8 @@ class ModelsAchievementResponse(Model):
             instance.goal_value = goal_value
         if stat_code is not None:
             instance.stat_code = stat_code
+        if status is not None:
+            instance.status = status
         return instance
 
     @classmethod
@@ -356,6 +370,10 @@ class ModelsAchievementResponse(Model):
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
             instance.stat_code = ""
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = ""
         return instance
 
     @classmethod
@@ -415,6 +433,7 @@ class ModelsAchievementResponse(Model):
             "updatedAt": "updated_at",
             "goalValue": "goal_value",
             "statCode": "stat_code",
+            "status": "status",
         }
 
     @staticmethod
@@ -436,6 +455,7 @@ class ModelsAchievementResponse(Model):
             "updatedAt": True,
             "goalValue": False,
             "statCode": False,
+            "status": False,
         }
 
     # endregion static methods

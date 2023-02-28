@@ -50,6 +50,40 @@ def create_policy_version_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a Version from Country-Specific Policy (createPolicyVersion_1)
+
+    Create a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/{policyId}/versions
+
+        method: POST
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreatePolicyVersionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_id: (policyId) REQUIRED str in path
+
+    Responses:
+        201: Created - CreatePolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -70,6 +104,40 @@ async def create_policy_version_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a Version from Country-Specific Policy (createPolicyVersion_1)
+
+    Create a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/{policyId}/versions
+
+        method: POST
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreatePolicyVersionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_id: (policyId) REQUIRED str in path
+
+    Responses:
+        201: Created - CreatePolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -92,6 +160,42 @@ def publish_policy_version_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion_1)
+
+    Manually publish a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/versions/{policyVersionId}/latest
+
+        method: PATCH
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+        should_notify: (shouldNotify) OPTIONAL bool in query
+
+    Responses:
+        200: OK - (operation successful)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40046: errors.net.accelbyte.platform.legal.default_selection_not_provided | 40030: errors.net.accelbyte.platform.legal.localized_policy_version_not_provided)
+
+        409: Conflict - ErrorEntity (40039: errors.net.accelbyte.platform.legal.localized_policy_version_already_latest | 40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_publish)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -112,6 +216,42 @@ async def publish_policy_version_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion_1)
+
+    Manually publish a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/versions/{policyVersionId}/latest
+
+        method: PATCH
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+        should_notify: (shouldNotify) OPTIONAL bool in query
+
+    Responses:
+        200: OK - (operation successful)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40046: errors.net.accelbyte.platform.legal.default_selection_not_provided | 40030: errors.net.accelbyte.platform.legal.localized_policy_version_not_provided)
+
+        409: Conflict - ErrorEntity (40039: errors.net.accelbyte.platform.legal.localized_policy_version_already_latest | 40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_publish)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,6 +274,40 @@ def retrieve_single_policy_version_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion_1)
+
+    Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/{policyId}/versions
+
+        method: GET
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_id: (policyId) REQUIRED str in path
+
+        version_id: (versionId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[RetrievePolicyVersionResponse] (successful operation)
+
+        404: Not Found - ErrorEntity (40036: errors.net.accelbyte.platform.legal.policy_version_id_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -154,6 +328,40 @@ async def retrieve_single_policy_version_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion_1)
+
+    Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/{policyId}/versions
+
+        method: GET
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_id: (policyId) REQUIRED str in path
+
+        version_id: (versionId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[RetrievePolicyVersionResponse] (successful operation)
+
+        404: Not Found - ErrorEntity (40036: errors.net.accelbyte.platform.legal.policy_version_id_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -176,6 +384,42 @@ def update_policy_version_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a Version of Policy (updatePolicyVersion_1)
+
+    Update a particular policy version.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/versions/{policyVersionId}
+
+        method: PATCH
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdatePolicyVersionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdatePolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
+
+        409: Conflict - ErrorEntity (40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -196,6 +440,42 @@ async def update_policy_version_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a Version of Policy (updatePolicyVersion_1)
+
+    Update a particular policy version.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/versions/{policyVersionId}
+
+        method: PATCH
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdatePolicyVersionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdatePolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
+
+        409: Conflict - ErrorEntity (40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

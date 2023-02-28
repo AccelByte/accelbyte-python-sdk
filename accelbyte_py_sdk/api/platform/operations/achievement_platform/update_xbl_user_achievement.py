@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.23.0)
+# AccelByte Cloud Platform Service (4.24.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ADTOObjectForUpdateXboxAchievementCompletePercentageAPI
 from ...models import ValidationErrorEntity
+from ...models import XblAchievementUpdateRequest
 
 
 class UpdateXblUserAchievement(Operation):
@@ -55,7 +55,7 @@ class UpdateXblUserAchievement(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ADTOObjectForUpdateXboxAchievementCompletePercentageAPI in body
+        body: (body) OPTIONAL XblAchievementUpdateRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -76,7 +76,7 @@ class UpdateXblUserAchievement(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ADTOObjectForUpdateXboxAchievementCompletePercentageAPI  # OPTIONAL in [body]
+    body: XblAchievementUpdateRequest  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -143,9 +143,7 @@ class UpdateXblUserAchievement(Operation):
 
     # region with_x methods
 
-    def with_body(
-        self, value: ADTOObjectForUpdateXboxAchievementCompletePercentageAPI
-    ) -> UpdateXblUserAchievement:
+    def with_body(self, value: XblAchievementUpdateRequest) -> UpdateXblUserAchievement:
         self.body = value
         return self
 
@@ -166,7 +164,7 @@ class UpdateXblUserAchievement(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ADTOObjectForUpdateXboxAchievementCompletePercentageAPI()
+            result["body"] = XblAchievementUpdateRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -222,7 +220,7 @@ class UpdateXblUserAchievement(Operation):
         cls,
         namespace: str,
         user_id: str,
-        body: Optional[ADTOObjectForUpdateXboxAchievementCompletePercentageAPI] = None,
+        body: Optional[XblAchievementUpdateRequest] = None,
     ) -> UpdateXblUserAchievement:
         instance = cls()
         instance.namespace = namespace
@@ -237,11 +235,11 @@ class UpdateXblUserAchievement(Operation):
     ) -> UpdateXblUserAchievement:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ADTOObjectForUpdateXboxAchievementCompletePercentageAPI.create_from_dict(
+            instance.body = XblAchievementUpdateRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ADTOObjectForUpdateXboxAchievementCompletePercentageAPI()
+            instance.body = XblAchievementUpdateRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

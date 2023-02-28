@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Match Service V2."""
 
-__version__ = "2.1.1"
+__version__ = "2.2.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,4 +18,5 @@ from .create_match_pool import CreateMatchPool
 from .delete_match_pool import DeleteMatchPool
 from .match_pool_details import MatchPoolDetails
 from .match_pool_list import MatchPoolList
+from .match_pool_metric import MatchPoolMetric
 from .update_match_pool import UpdateMatchPool

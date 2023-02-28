@@ -291,6 +291,154 @@ def add_user_permission(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add User Permission (AddUserPermission)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]
+
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
+
+
+
+
+    This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdatePermissionScheduleRequest in body
+
+        action: (action) REQUIRED int in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        resource: (resource) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -316,6 +464,154 @@ async def add_user_permission_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add User Permission (AddUserPermission)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]
+
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
+
+
+
+
+    This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdatePermissionScheduleRequest in body
+
+        action: (action) REQUIRED int in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        resource: (resource) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -341,6 +637,58 @@ def add_user_role(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add User Role (AddUserRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [POST]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/roles/{roleId}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json", "text/plain"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10159: operator is not a role manager)
+
+        404: Not Found - (10156: role not found | 20008: user not found)
+
+        409: Conflict - (10160: user already has the role | 10161: user already the role member)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -362,6 +710,58 @@ async def add_user_role_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add User Role (AddUserRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [POST]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/roles/{roleId}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json", "text/plain"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10159: operator is not a role manager)
+
+        404: Not Found - (10156: role not found | 20008: user not found)
+
+        409: Conflict - (10160: user already has the role | 10161: user already the role member)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -384,6 +784,134 @@ def admin_add_user_permissions_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add User Permissions (AdminAddUserPermissionsV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [CREATE]'
+
+
+
+
+    This endpoint will APPEND user's permissions with the ones defined in body
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissions in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -404,6 +932,134 @@ async def admin_add_user_permissions_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add User Permissions (AdminAddUserPermissionsV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [CREATE]'
+
+
+
+
+    This endpoint will APPEND user's permissions with the ones defined in body
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissions in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -426,6 +1082,52 @@ def admin_add_user_role_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add User Role (AdminAddUserRoleV3)
+
+    This endpoint adds role to user. Required permission ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+
+
+
+    action code: 10109
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10159: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
+
+        409: Conflict - RestErrorResponse (10160: user already has the role | 10161: user already the role member)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -446,6 +1148,52 @@ async def admin_add_user_role_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add User Role (AdminAddUserRoleV3)
+
+    This endpoint adds role to user. Required permission ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+
+
+
+    action code: 10109
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10159: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
+
+        409: Conflict - RestErrorResponse (10160: user already has the role | 10161: user already the role member)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -469,6 +1217,59 @@ def admin_ban_user_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Ban a single user (AdminBanUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/ban
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBanCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserBanResponse (Created)
+
+        400: Bad Request - (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -490,6 +1291,59 @@ async def admin_ban_user_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Ban a single user (AdminBanUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/ban
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBanCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserBanResponse (Created)
+
+        400: Bad Request - (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -512,6 +1366,55 @@ def admin_ban_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Ban a single user (AdminBanUserV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
+
+
+
+
+    Bans a user with specific type of ban. Ban types and reason can be queried.
+
+
+
+
+    action code : 10141
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBanCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserBanResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -532,6 +1435,55 @@ async def admin_ban_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Ban a single user (AdminBanUserV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
+
+
+
+
+    Bans a user with specific type of ban. Ban types and reason can be queried.
+
+
+
+
+    action code : 10141
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBanCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserBanResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -554,6 +1506,47 @@ def admin_create_justice_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Justice User from Publisher User (AdminCreateJusticeUser)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]
+
+    Create Justice User from Publisher User information. It will check first if Justice User on target namespace already exist.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        target_namespace: (targetNamespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelCreateJusticeUserResponse (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -574,6 +1567,47 @@ async def admin_create_justice_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Justice User from Publisher User (AdminCreateJusticeUser)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]
+
+    Create Justice User from Publisher User information. It will check first if Justice User on target namespace already exist.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        target_namespace: (targetNamespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelCreateJusticeUserResponse (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -597,6 +1631,59 @@ def admin_create_user_roles_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Save User Roles (AdminCreateUserRolesV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/roles
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+
+        409: Conflict - (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -618,6 +1705,59 @@ async def admin_create_user_roles_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Save User Roles (AdminCreateUserRolesV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/roles
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+
+        409: Conflict - (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -642,6 +1782,110 @@ def admin_delete_platform_link_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete the link of user's account with platform (AdminDeletePlatformLinkV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]
+
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
+
+
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam
+
+
+      * steamopenid
+
+
+      * facebook
+
+
+      * google
+
+
+      * oculus
+
+
+      * twitch
+
+
+      * android
+
+
+      * ios
+
+
+      * device
+
+
+      * discord
+
+
+
+
+
+    Delete link of user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
+
+    Delete link of justice platform will enable password token grant and password update.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded", "text/plain"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_namespace: (platform_namespace) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -665,6 +1909,110 @@ async def admin_delete_platform_link_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete the link of user's account with platform (AdminDeletePlatformLinkV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]
+
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
+
+
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam
+
+
+      * steamopenid
+
+
+      * facebook
+
+
+      * google
+
+
+      * oculus
+
+
+      * twitch
+
+
+      * android
+
+
+      * ios
+
+
+      * device
+
+
+      * discord
+
+
+
+
+
+    Delete link of user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
+
+    Delete link of justice platform will enable password token grant and password update.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded", "text/plain"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_namespace: (platform_namespace) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -687,6 +2035,39 @@ def admin_delete_user_information_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user's information (AdminDeleteUserInformationV3)
+
+    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow.Required permissions 'ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -705,6 +2086,39 @@ async def admin_delete_user_information_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user's information (AdminDeleteUserInformationV3)
+
+    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow.Required permissions 'ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -726,6 +2140,43 @@ def admin_delete_user_permission_bulk_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Permission (AdminDeleteUserPermissionBulkV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[ModelPermissionDeleteRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -746,6 +2197,43 @@ async def admin_delete_user_permission_bulk_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Permission (AdminDeleteUserPermissionBulkV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[ModelPermissionDeleteRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -769,6 +2257,45 @@ def admin_delete_user_permission_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Permission (AdminDeleteUserPermissionV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        action: (action) REQUIRED int in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        resource: (resource) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -791,6 +2318,45 @@ async def admin_delete_user_permission_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Permission (AdminDeleteUserPermissionV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        action: (action) REQUIRED int in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        resource: (resource) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -814,6 +2380,50 @@ def admin_delete_user_role_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Role (AdminDeleteUserRoleV3)
+
+    This endpoint removes role from user. Required permission ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
+
+
+
+    action code: 10110
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10159: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -834,6 +2444,50 @@ async def admin_delete_user_role_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Role (AdminDeleteUserRoleV3)
+
+    This endpoint removes role from user. Required permission ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
+
+
+
+    action code: 10110
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10159: operator is not a role manager)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -856,6 +2510,43 @@ def admin_delete_user_roles_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Roles (AdminDeleteUserRolesV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -876,6 +2567,43 @@ async def admin_delete_user_roles_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Roles (AdminDeleteUserRolesV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -899,6 +2627,72 @@ def admin_disable_user_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable a user (AdminDisableUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
+
+    For Deletion Account purpose fill the reason with:
+
+
+
+
+
+
+      * DeactivateAccount : if your deletion request comes from user
+
+
+      * AdminDeactivateAccount : if your deletion request comes from admin
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/disable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableUserRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -920,6 +2714,72 @@ async def admin_disable_user_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable a user (AdminDisableUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
+
+    For Deletion Account purpose fill the reason with:
+
+
+
+
+
+
+      * DeactivateAccount : if your deletion request comes from user
+
+
+      * AdminDeactivateAccount : if your deletion request comes from admin
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/disable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableUserRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -942,6 +2802,55 @@ def admin_enable_user_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable a user (AdminEnableUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/enable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -961,6 +2870,55 @@ async def admin_enable_user_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable a user (AdminEnableUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/enable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -981,6 +2939,57 @@ def admin_get_age_restriction_status_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get age restriction status (AdminGetAgeRestrictionStatusV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions [GET]
+
+
+
+      * Note:
+        difference in V3 response, format difference: Pascal case => Camel case
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/agerestrictions
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelAgeRestrictionResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -998,6 +3007,57 @@ async def admin_get_age_restriction_status_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get age restriction status (AdminGetAgeRestrictionStatusV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions [GET]
+
+
+
+      * Note:
+        difference in V3 response, format difference: Pascal case => Camel case
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/agerestrictions
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelAgeRestrictionResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1016,6 +3076,42 @@ def admin_get_age_restriction_status_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get age restriction status (AdminGetAgeRestrictionStatusV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
+    action code: 10138
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelAgeRestrictionResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10169: age restriction not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1032,6 +3128,42 @@ async def admin_get_age_restriction_status_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get age restriction status (AdminGetAgeRestrictionStatusV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
+    action code: 10138
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelAgeRestrictionResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10169: age restriction not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1051,6 +3183,52 @@ def admin_get_bulk_user_by_email_address_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Bulk User By Email Address (AdminGetBulkUserByEmailAddressV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+
+
+    This endpoint search user by the list of email addresses
+
+
+
+    action code : 10132
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/search/bulk
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelListEmailAddressRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelListUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1069,6 +3247,52 @@ async def admin_get_bulk_user_by_email_address_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Bulk User By Email Address (AdminGetBulkUserByEmailAddressV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+
+
+    This endpoint search user by the list of email addresses
+
+
+
+    action code : 10132
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/search/bulk
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelListEmailAddressRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelListUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1088,6 +3312,40 @@ def admin_get_list_country_age_restriction_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get List Country age restriction (AdminGetListCountryAgeRestrictionV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+    action code : 10139
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelCountryV3Response] (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1104,6 +3362,40 @@ async def admin_get_list_country_age_restriction_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get List Country age restriction (AdminGetListCountryAgeRestrictionV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+    action code : 10139
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelCountryV3Response] (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1123,6 +3415,40 @@ def admin_get_list_justice_platform_accounts(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Justice Platform Accounts (AdminGetListJusticePlatformAccounts)
+
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelGetUserMapping] (OK)
+
+        400: Bad Request - RestErrorResponse
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1141,6 +3467,40 @@ async def admin_get_list_justice_platform_accounts_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Justice Platform Accounts (AdminGetListJusticePlatformAccounts)
+
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelGetUserMapping] (OK)
+
+        400: Bad Request - RestErrorResponse
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1158,6 +3518,32 @@ async def admin_get_list_justice_platform_accounts_async(
 def admin_get_my_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get My User (AdminGetMyUserV3)
+
+    Require valid user authorization
+    Get my user data
+    action code : 10147
+
+    Properties:
+        url: /iam/v3/admin/users/me
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetMyUserV3.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -1166,6 +3552,32 @@ def admin_get_my_user_v3(
 async def admin_get_my_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get My User (AdminGetMyUserV3)
+
+    Require valid user authorization
+    Get my user data
+    action code : 10147
+
+    Properties:
+        url: /iam/v3/admin/users/me
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetMyUserV3.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -1181,6 +3593,139 @@ def admin_get_third_party_platform_token_link_status_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get the link status of the third party platform token with user id. (AdminGetThirdPartyPlatformTokenLinkStatusV3)
+
+    Admin get the link status of the third party platform token with user id.
+
+
+
+
+    This endpoint is used for checking whether the third party user represented by third party token is
+    linked with the corresponding user id.
+
+
+
+
+
+    Notes:
+
+
+
+
+
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+
+
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The platform_tokenâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
+
+
+      * facebook : The platform_tokenâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The platform_tokenâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The platform_tokenâs value is the authorization code returned by Twitch OAuth.
+
+
+      * discord : The platform_tokenâs value is the authorization code returned by Discord OAuth
+
+
+      * android : The device_id is the Androidâs device ID
+
+
+      * ios : The device_id is the iOSâs device ID.
+
+
+      * apple : The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
+
+
+      * device : Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
+
+
+      * justice : The platform_tokenâs value is the designated userâs access token.
+
+
+      * epicgames : The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
+
+
+      * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * ps5 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * nintendo : The platform_tokenâs value is the authorization code(id_token) returned by Nintendo OAuth.
+
+
+      * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
+
+
+      * live : The platform_tokenâs value is xbox XSTS token
+
+
+      * xblweb : The platform_tokenâs value is code returned by xbox after login
+
+
+      * netflix : The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
+
+
+      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/linkStatus
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_token: (platformToken) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelTokenThirdPartyLinkStatusResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1203,6 +3748,139 @@ async def admin_get_third_party_platform_token_link_status_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get the link status of the third party platform token with user id. (AdminGetThirdPartyPlatformTokenLinkStatusV3)
+
+    Admin get the link status of the third party platform token with user id.
+
+
+
+
+    This endpoint is used for checking whether the third party user represented by third party token is
+    linked with the corresponding user id.
+
+
+
+
+
+    Notes:
+
+
+
+
+
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+
+
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The platform_tokenâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
+
+
+      * facebook : The platform_tokenâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The platform_tokenâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The platform_tokenâs value is the authorization code returned by Twitch OAuth.
+
+
+      * discord : The platform_tokenâs value is the authorization code returned by Discord OAuth
+
+
+      * android : The device_id is the Androidâs device ID
+
+
+      * ios : The device_id is the iOSâs device ID.
+
+
+      * apple : The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
+
+
+      * device : Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
+
+
+      * justice : The platform_tokenâs value is the designated userâs access token.
+
+
+      * epicgames : The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
+
+
+      * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * ps5 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * nintendo : The platform_tokenâs value is the authorization code(id_token) returned by Nintendo OAuth.
+
+
+      * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
+
+
+      * live : The platform_tokenâs value is xbox XSTS token
+
+
+      * xblweb : The platform_tokenâs value is code returned by xbox after login
+
+
+      * netflix : The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
+
+
+      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/linkStatus
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_token: (platformToken) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelTokenThirdPartyLinkStatusResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1227,6 +3905,55 @@ def admin_get_user_ban_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's bans (AdminGetUserBanV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/bans
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[ModelUserBanResponse] (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1248,6 +3975,55 @@ async def admin_get_user_ban_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's bans (AdminGetUserBanV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/bans
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[ModelUserBanResponse] (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1273,6 +4049,61 @@ def admin_get_user_ban_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's bans (AdminGetUserBanV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'
+
+
+
+
+    This endpoint retrieve the first page of the data if after and before parameters is empty
+
+
+
+
+    action code : 10126
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetUserBanV3Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1299,6 +4130,61 @@ async def admin_get_user_ban_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's bans (AdminGetUserBanV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'
+
+
+
+
+    This endpoint retrieve the first page of the data if after and before parameters is empty
+
+
+
+
+    action code : 10126
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetUserBanV3Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1323,6 +4209,52 @@ def admin_get_user_by_email_address_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By Email Address (AdminGetUserByEmailAddressV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+
+
+    This endpoint search user who owns the given email address
+
+
+
+    action code : 10132
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        email_address: (emailAddress) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1341,6 +4273,52 @@ async def admin_get_user_by_email_address_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By Email Address (AdminGetUserByEmailAddressV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+
+
+    This endpoint search user who owns the given email address
+
+
+
+    action code : 10132
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        email_address: (emailAddress) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1362,6 +4340,44 @@ def admin_get_user_by_platform_user_idv3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Get User By Platform User ID (AdminGetUserByPlatformUserIDV3)
+
+    Get User By Platform User ID
+
+    This endpoint return user information by given platform ID and platform user ID
+
+    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        platform_user_id: (platformUserId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1382,6 +4398,44 @@ async def admin_get_user_by_platform_user_idv3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Get User By Platform User ID (AdminGetUserByPlatformUserIDV3)
+
+    Get User By Platform User ID
+
+    This endpoint return user information by given platform ID and platform user ID
+
+    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        platform_user_id: (platformUserId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1404,6 +4458,50 @@ def admin_get_user_by_user_id_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By User Id (AdminGetUserByUserIdV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        404: Not Found - (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1423,6 +4521,50 @@ async def admin_get_user_by_user_id_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By User Id (AdminGetUserByUserIdV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        404: Not Found - (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1443,6 +4585,43 @@ def admin_get_user_by_user_id_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Get User By User Id (AdminGetUserByUserIdV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1461,6 +4640,43 @@ async def admin_get_user_by_user_id_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Get User By User Id (AdminGetUserByUserIdV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1481,6 +4697,42 @@ def admin_get_user_deletion_status_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Deletion Status (AdminGetUserDeletionStatusV3)
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [READ]'
+    action code : 10145
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserDeletionStatusResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1499,6 +4751,42 @@ async def admin_get_user_deletion_status_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Deletion Status (AdminGetUserDeletionStatusV3)
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [READ]'
+    action code : 10145
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserDeletionStatusResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1522,6 +4810,52 @@ def admin_get_user_login_histories_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User's Login Histories (AdminGetUserLoginHistoriesV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]'
+
+    Notes for this endpoint:
+
+      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
+      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        after: (after) OPTIONAL float in query
+
+        before: (before) OPTIONAL float in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelLoginHistoriesResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1546,6 +4880,52 @@ async def admin_get_user_login_histories_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User's Login Histories (AdminGetUserLoginHistoriesV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]'
+
+    Notes for this endpoint:
+
+      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
+      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        after: (after) OPTIONAL float in query
+
+        before: (before) OPTIONAL float in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelLoginHistoriesResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1570,6 +4950,58 @@ def admin_get_user_mapping(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user mapping (AdminGetUserMapping)
+
+    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]'
+
+
+
+
+    This endpoint will support publisher access to game and game access to publisher
+
+
+
+
+    If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
+
+
+
+
+    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        target_namespace: (targetNamespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetUserMappingV3 (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1590,6 +5022,58 @@ async def admin_get_user_mapping_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user mapping (AdminGetUserMapping)
+
+    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]'
+
+
+
+
+    This endpoint will support publisher access to game and game access to publisher
+
+
+
+
+    If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
+
+
+
+
+    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        target_namespace: (targetNamespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetUserMappingV3 (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1614,6 +5098,68 @@ def admin_get_user_platform_accounts_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get platform accounts linked to the user (AdminGetUserPlatformAccountsV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'.
+
+
+
+
+    ## Justice Platform Account
+
+
+
+
+    The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ]
+    is required in order to read the UserID who linked with the user.
+
+
+
+    Gets platform accounts that are already linked with user account
+
+    action code : 10128
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - AccountcommonUserLinkedPlatformsResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1638,6 +5184,68 @@ async def admin_get_user_platform_accounts_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get platform accounts linked to the user (AdminGetUserPlatformAccountsV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'.
+
+
+
+
+    ## Justice Platform Account
+
+
+
+
+    The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ]
+    is required in order to read the UserID who linked with the user.
+
+
+
+    Gets platform accounts that are already linked with user account
+
+    action code : 10128
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - AccountcommonUserLinkedPlatformsResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1661,6 +5269,54 @@ def admin_invite_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Invite User (AdminInviteUserV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
+
+    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace.
+    Substitute the namespace in path parameter to desired role's namespace'. An admin user can only
+    assign role to namespaces that the admin user has the required permission.
+    Role is optional, if not specified then it will only assign User role
+
+    The invited admin will also assigned with "User" role by default.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/invite
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelInviteUserRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelInviteUserResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        422: Unprocessable Entity - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1679,6 +5335,54 @@ async def admin_invite_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Invite User (AdminInviteUserV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
+
+    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace.
+    Substitute the namespace in path parameter to desired role's namespace'. An admin user can only
+    assign role to namespaces that the admin user has the required permission.
+    Role is optional, if not specified then it will only assign User role
+
+    The invited admin will also assigned with "User" role by default.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/invite
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelInviteUserRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelInviteUserResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        422: Unprocessable Entity - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1700,6 +5404,46 @@ def admin_link_platform_account(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link a Platform User Account to User Account (AdminLinkPlatformAccount)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/link
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelLinkPlatformAccountRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1720,6 +5464,46 @@ async def admin_link_platform_account_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link a Platform User Account to User Account (AdminLinkPlatformAccount)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/link
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelLinkPlatformAccountRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1741,6 +5525,43 @@ def admin_list_user_id_by_user_i_ds_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List User By User ID (AdminListUserIDByUserIDsV3)
+
+    List User By User ID
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
+    This endpoint intended to list user information from the given list of userID and namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/bulk
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserIDsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelListUserInformationResult (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1759,6 +5580,43 @@ async def admin_list_user_id_by_user_i_ds_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List User By User ID (AdminListUserIDByUserIDsV3)
+
+    List User By User ID
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
+    This endpoint intended to list user information from the given list of userID and namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/bulk
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserIDsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelListUserInformationResult (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1780,6 +5638,46 @@ def admin_list_users_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin List Users V3 (AdminListUsersV3)
+
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
+
+    Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
+    doesn't have Justice platform account, the linkedPlatforms will be empty array.'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/platforms/justice
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - AccountcommonListUsersWithPlatformAccountsResponse (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1800,6 +5698,46 @@ async def admin_list_users_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin List Users V3 (AdminListUsersV3)
+
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
+
+    Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
+    doesn't have Justice platform account, the linkedPlatforms will be empty array.'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/platforms/justice
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - AccountcommonListUsersWithPlatformAccountsResponse (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1823,6 +5761,104 @@ def admin_platform_link_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link user's account with platform (AdminPlatformLinkV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
+
+
+
+
+
+    Prerequisite: Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The ticketâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+
+
+      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The ticketâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
+
+
+      * android : The ticket's value is the Androidâs device ID
+
+
+      * ios : The ticket's value is the iOSâs device ID.
+
+
+      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
+
+
+      * device : Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+
+
+      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
+
+
+      * awscognito : The ticketâs value is the aws cognito access token (JWT).
+
+
+      * epicgames : The ticketâs value is an access-token obtained from Epicgames EOS Account Service.
+
+
+      * nintendo : The ticketâs value is the authorization code(id_token) returned by Nintendo OAuth.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ticket: (ticket) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        409: Conflict - (10163: platform is already linked with the user account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1845,6 +5881,104 @@ async def admin_platform_link_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link user's account with platform (AdminPlatformLinkV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
+
+
+
+
+
+    Prerequisite: Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The ticketâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+
+
+      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The ticketâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
+
+
+      * android : The ticket's value is the Androidâs device ID
+
+
+      * ios : The ticket's value is the iOSâs device ID.
+
+
+      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
+
+
+      * device : Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+
+
+      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
+
+
+      * awscognito : The ticketâs value is the aws cognito access token (JWT).
+
+
+      * epicgames : The ticketâs value is an access-token obtained from Epicgames EOS Account Service.
+
+
+      * nintendo : The ticketâs value is the authorization code(id_token) returned by Nintendo OAuth.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ticket: (ticket) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        409: Conflict - (10163: platform is already linked with the user account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1869,6 +6003,119 @@ def admin_platform_unlink_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlink user's account from specific platform (AdminPlatformUnlinkV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam
+
+
+      * steamopenid
+
+
+      * facebook
+
+
+      * google
+
+
+      * oculus
+
+
+      * twitch
+
+
+      * android
+
+
+      * ios
+
+
+      * apple
+
+
+      * device
+
+
+      * discord
+
+
+      * awscognito
+
+
+      * epicgames
+
+
+      * nintendo
+
+
+      * snapchat
+
+
+
+
+
+    Unlink user's account from a specific platform. 'justice' platform might have multiple accounts from different namespaces linked.
+
+    platformNamespace need to be specified when the platform ID is 'justice'.
+
+
+
+    Unlink user's account from justice platform will enable password token grant and password update.
+
+
+
+    If you want to unlink user's account in a game namespace, you have to specify platformNamespace to that game namespace.
+
+
+
+    action code : 10121
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUnlinkUserPlatformRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1891,6 +6138,119 @@ async def admin_platform_unlink_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlink user's account from specific platform (AdminPlatformUnlinkV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam
+
+
+      * steamopenid
+
+
+      * facebook
+
+
+      * google
+
+
+      * oculus
+
+
+      * twitch
+
+
+      * android
+
+
+      * ios
+
+
+      * apple
+
+
+      * device
+
+
+      * discord
+
+
+      * awscognito
+
+
+      * epicgames
+
+
+      * nintendo
+
+
+      * snapchat
+
+
+
+
+
+    Unlink user's account from a specific platform. 'justice' platform might have multiple accounts from different namespaces linked.
+
+    platformNamespace need to be specified when the platform ID is 'justice'.
+
+
+
+    Unlink user's account from justice platform will enable password token grant and password update.
+
+
+
+    If you want to unlink user's account in a game namespace, you have to specify platformNamespace to that game namespace.
+
+
+
+    action code : 10121
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUnlinkUserPlatformRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1915,6 +6275,57 @@ def admin_put_user_roles_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Roles, will replace all the existing roles (AdminPutUserRolesV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/roles
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1936,6 +6347,57 @@ async def admin_put_user_roles_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Roles, will replace all the existing roles (AdminPutUserRolesV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/roles
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1960,6 +6422,51 @@ def admin_query_third_platform_link_history_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search linking history of the query platform with platform user id (AdminQueryThirdPlatformLinkHistoryV3)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+
+
+    * if limit is not defined, The default limit is 100
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/linkhistories
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        platform_user_id: (platformUserId) OPTIONAL str in query
+
+        platform_id: (platformId) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelLinkingHistoryResponseWithPaginationV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1984,6 +6491,51 @@ async def admin_query_third_platform_link_history_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search linking history of the query platform with platform user id (AdminQueryThirdPlatformLinkHistoryV3)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+
+
+    * if limit is not defined, The default limit is 100
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/linkhistories
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        platform_user_id: (platformUserId) OPTIONAL str in query
+
+        platform_id: (platformId) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelLinkingHistoryResponseWithPaginationV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2009,6 +6561,59 @@ def admin_reset_password_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Password (AdminResetPasswordV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password [PUT]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/password
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserPasswordUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2030,6 +6635,59 @@ async def admin_reset_password_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Password (AdminResetPasswordV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password [PUT]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/password
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserPasswordUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2052,6 +6710,45 @@ def admin_reset_password_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Password (AdminResetPasswordV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserPasswordUpdateV3Request in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2072,6 +6769,45 @@ async def admin_reset_password_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Password (AdminResetPasswordV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserPasswordUpdateV3Request in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2094,6 +6830,50 @@ def admin_save_user_role_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Save User Role V3 (AdminSaveUserRoleV3)
+
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE] permission.
+
+    User's roles will be updated with given roles (replacing current user's role). Request body need to specify allowed namespace for given role to support new role restriction.
+    Skipped the check whether the user performing the request is a role manager / assigner since there is a plan to discard the role manager / assigner.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[ModelNamespaceRoleRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        422: Unprocessable Entity - RestErrorResponse
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2114,6 +6894,50 @@ async def admin_save_user_role_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Save User Role V3 (AdminSaveUserRoleV3)
+
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE] permission.
+
+    User's roles will be updated with given roles (replacing current user's role). Request body need to specify allowed namespace for given role to support new role restriction.
+    Skipped the check whether the user performing the request is a role manager / assigner since there is a plan to discard the role manager / assigner.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[ModelNamespaceRoleRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        422: Unprocessable Entity - RestErrorResponse
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2142,6 +6966,119 @@ def admin_search_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search User (AdminSearchUserV3)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+
+
+
+    Endpoint behavior :
+
+
+      * by default this endpoint searches all users on the specified namespace
+
+
+      * if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
+
+
+      * if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
+
+
+      * if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
+
+
+      * if startDate parameter is defined, endpoint will search users that created start from the defined date
+
+
+      * if endDate parameter is defined, endpoint will search users that created until the defined date
+
+
+      * if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
+
+
+      * if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
+
+
+      * if limit is not defined, The default limit is 100
+
+
+
+
+
+
+
+    In multi tenant mode :
+
+
+
+
+      * if super admin search in super admin namespace, the result will be all game admin user
+
+
+      * if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
+
+
+      * if super admin search in game namespace, the result will be all game admin users and players under the game namespace
+
+
+      * if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
+
+
+      * if game admin search in their game namespace, the result will be all player in the game namespace
+
+
+
+
+
+
+    action code : 10133
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/search
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        by: (by) OPTIONAL str in query
+
+        end_date: (endDate) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        platform_by: (platformBy) OPTIONAL str in query
+
+        platform_id: (platformId) OPTIONAL str in query
+
+        query: (query) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelSearchUsersResponseWithPaginationV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2174,6 +7111,119 @@ async def admin_search_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search User (AdminSearchUserV3)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+
+
+
+    Endpoint behavior :
+
+
+      * by default this endpoint searches all users on the specified namespace
+
+
+      * if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
+
+
+      * if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
+
+
+      * if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
+
+
+      * if startDate parameter is defined, endpoint will search users that created start from the defined date
+
+
+      * if endDate parameter is defined, endpoint will search users that created until the defined date
+
+
+      * if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
+
+
+      * if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
+
+
+      * if limit is not defined, The default limit is 100
+
+
+
+
+
+
+
+    In multi tenant mode :
+
+
+
+
+      * if super admin search in super admin namespace, the result will be all game admin user
+
+
+      * if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
+
+
+      * if super admin search in game namespace, the result will be all game admin users and players under the game namespace
+
+
+      * if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
+
+
+      * if game admin search in their game namespace, the result will be all player in the game namespace
+
+
+
+
+
+
+    action code : 10133
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/search
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        by: (by) OPTIONAL str in query
+
+        end_date: (endDate) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        platform_by: (platformBy) OPTIONAL str in query
+
+        platform_id: (platformId) OPTIONAL str in query
+
+        query: (query) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelSearchUsersResponseWithPaginationV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2210,6 +7260,69 @@ def admin_search_users_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search Users (AdminSearchUsersV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/search [GET]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        display_name: (displayName) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        login_id: (loginId) OPTIONAL str in query
+
+        platform_user_id: (platformUserId) OPTIONAL str in query
+
+        role_id: (roleId) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+        platform_id: (platformId) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelSearchUsersByPlatformIDResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2245,6 +7358,69 @@ async def admin_search_users_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search Users (AdminSearchUsersV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/search [GET]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        display_name: (displayName) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        login_id: (loginId) OPTIONAL str in query
+
+        platform_user_id: (platformUserId) OPTIONAL str in query
+
+        role_id: (roleId) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+        platform_id: (platformId) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelSearchUsersByPlatformIDResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2274,6 +7450,94 @@ def admin_send_verification_code_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send verification code to user (AdminSendVerificationCodeV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    The verification code is sent to email address.
+
+
+
+
+    Available contexts for use :
+
+
+
+
+
+
+      1. UserAccountRegistration
+
+
+    a context type used for verifying email address in user account registration. It returns 409 if the email address already verified.
+    It is the default context if the Context field is empty
+
+
+
+
+
+      2. UpdateEmailAddress
+
+
+    a context type used for verify user before updating email address.(Without email address verified checking)
+
+
+
+
+
+      3. upgradeHeadlessAccount
+
+
+    The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
+    If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
+
+
+
+
+
+
+
+
+    action code: 10116
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/request
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (10146: userID not match)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10171: email address not found | 10139: platform account not found)
+
+        409: Conflict - RestErrorResponse (10140: user verified | 10133: email already used)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2294,6 +7558,94 @@ async def admin_send_verification_code_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send verification code to user (AdminSendVerificationCodeV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    The verification code is sent to email address.
+
+
+
+
+    Available contexts for use :
+
+
+
+
+
+
+      1. UserAccountRegistration
+
+
+    a context type used for verifying email address in user account registration. It returns 409 if the email address already verified.
+    It is the default context if the Context field is empty
+
+
+
+
+
+      2. UpdateEmailAddress
+
+
+    a context type used for verify user before updating email address.(Without email address verified checking)
+
+
+
+
+
+      3. upgradeHeadlessAccount
+
+
+    The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
+    If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
+
+
+
+
+
+
+
+
+    action code: 10116
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/request
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (10146: userID not match)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10171: email address not found | 10139: platform account not found)
+
+        409: Conflict - RestErrorResponse (10140: user verified | 10133: email already used)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2316,6 +7668,55 @@ def admin_update_age_restriction_config_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update age restriction config value (AdminUpdateAgeRestrictionConfigV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/agerestrictions
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelAgeRestrictionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelAgeRestrictionResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2335,6 +7736,55 @@ async def admin_update_age_restriction_config_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update age restriction config value (AdminUpdateAgeRestrictionConfigV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/agerestrictions
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelAgeRestrictionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelAgeRestrictionResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2355,6 +7805,42 @@ def admin_update_age_restriction_config_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update age restriction config value (AdminUpdateAgeRestrictionConfigV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
+    action code: 10122
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelAgeRestrictionRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelAgeRestrictionResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2373,6 +7859,42 @@ async def admin_update_age_restriction_config_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update age restriction config value (AdminUpdateAgeRestrictionConfigV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
+    action code: 10122
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelAgeRestrictionRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelAgeRestrictionResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2394,6 +7916,46 @@ def admin_update_country_age_restriction_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update country's age restriction (AdminUpdateCountryAgeRestrictionV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
+    action code: 10123
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCountryAgeRestrictionV3Request in body
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelCountryV3Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2414,6 +7976,46 @@ async def admin_update_country_age_restriction_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update country's age restriction (AdminUpdateCountryAgeRestrictionV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
+    action code: 10123
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCountryAgeRestrictionV3Request in body
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelCountryV3Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2437,6 +8039,52 @@ def admin_update_user_ban_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable or disable ban for a single user (AdminUpdateUserBanV3)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId}
+    [UPDATE]
+    Set ban status for a single user for a specific ban. Retrieve
+    user ban and choose the ban ID. Set the form parameter to true/false to enable
+    or disable the ban.
+    action code : 10142'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBanUpdateRequest in body
+
+        ban_id: (banId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserBanResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (10145: disallow game access publisher user's ban)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2459,6 +8107,52 @@ async def admin_update_user_ban_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable or disable ban for a single user (AdminUpdateUserBanV3)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId}
+    [UPDATE]
+    Set ban status for a single user for a specific ban. Retrieve
+    user ban and choose the ban ID. Set the form parameter to true/false to enable
+    or disable the ban.
+    action code : 10142'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBanUpdateRequest in body
+
+        ban_id: (banId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserBanResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (10145: disallow game access publisher user's ban)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2482,6 +8176,46 @@ def admin_update_user_deletion_status_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Deletion Status (AdminUpdateUserDeletionStatusV3)
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]'
+    action code : 10144
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateUserDeletionStatusRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2502,6 +8236,46 @@ async def admin_update_user_deletion_status_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Deletion Status (AdminUpdateUserDeletionStatusV3)
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]'
+    action code : 10144
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateUserDeletionStatusRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2524,6 +8298,134 @@ def admin_update_user_permission_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Permissions (AdminUpdateUserPermissionV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
+
+
+
+
+    This endpoint will REPLACE user's permissions with the ones defined in body
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissions in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2544,6 +8446,134 @@ async def admin_update_user_permission_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Permissions (AdminUpdateUserPermissionV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
+
+
+
+
+    This endpoint will REPLACE user's permissions with the ones defined in body
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissions in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2566,6 +8596,70 @@ def admin_update_user_status_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user status (AdminUpdateUserStatusV3)
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
+
+    This endpoint disable or enable user account. Set the enable status on the request body to true to enable user account or set to false to disable it.
+
+
+
+
+    Disable user for Account Disable purpose fill the reason with:
+
+
+
+
+
+
+      * AdminDeactivateAccount : if your disable account request comes from admin
+
+
+
+
+
+    Enable user ignore field 'reason' in the request body.
+
+
+
+    action code : 10143
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateUserStatusRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2586,6 +8680,70 @@ async def admin_update_user_status_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user status (AdminUpdateUserStatusV3)
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
+
+    This endpoint disable or enable user account. Set the enable status on the request body to true to enable user account or set to false to disable it.
+
+
+
+
+    Disable user for Account Disable purpose fill the reason with:
+
+
+
+
+
+
+      * AdminDeactivateAccount : if your disable account request comes from admin
+
+
+
+
+
+    Enable user ignore field 'reason' in the request body.
+
+
+
+    action code : 10143
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateUserStatusRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2609,6 +8767,90 @@ def admin_update_user_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (AdminUpdateUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]
+
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    "+
+    "
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+    "+
+    "
+
+    Supported field {Country, DisplayName, LanguageTag}
+
+    "+
+    "
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    "+
+    "
+     Several case of updating email address "+
+    "
+
+      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+    "+
+    "
+      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    "+
+    "
+      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        400: Bad Request - (20019: unable to parse request body | 10131: invalid date of birth | 10155: country is not defined | 10154: country not found | 10130: user under age | 10132: invalid email address)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - (10133: email already used)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2630,6 +8872,90 @@ async def admin_update_user_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (AdminUpdateUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]
+
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    "+
+    "
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+    "+
+    "
+
+    Supported field {Country, DisplayName, LanguageTag}
+
+    "+
+    "
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    "+
+    "
+     Several case of updating email address "+
+    "
+
+      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+    "+
+    "
+      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    "+
+    "
+      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/users/{userId}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        400: Bad Request - (20019: unable to parse request body | 10131: invalid date of birth | 10155: country is not defined | 10154: country not found | 10130: user under age | 10132: invalid email address)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - (10133: email already used)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2652,6 +8978,85 @@ def admin_update_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (AdminUpdateUserV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+
+
+
+    Supported field {country, displayName, emailAddress, languageTag, dateOfBirth}
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
+
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+
+
+     Several case of updating email address
+
+
+      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+
+
+      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+
+
+      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
+
+
+
+    action code : 10103
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2672,6 +9077,85 @@ async def admin_update_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (AdminUpdateUserV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+
+
+
+    Supported field {country, displayName, emailAddress, languageTag, dateOfBirth}
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
+
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+
+
+     Several case of updating email address
+
+
+      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+
+
+      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+
+
+      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
+
+
+
+    action code : 10103
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2694,6 +9178,83 @@ def admin_upgrade_headless_account_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify or consume verification code.  (AdminUpgradeHeadlessAccountV3)
+
+    If validateOnly is set false, will upgrade headless account with verification code
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    The endpoint upgrades a headless account by linking the headless account with the email address and the password.
+    By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
+
+
+
+
+    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
+    In order to get a verification code for the endpoint, please check the send verification code endpoint.
+
+
+
+
+    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+
+    Supported user data fields :
+
+
+
+
+      * displayName
+
+
+      * dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
+
+
+      * country : format ISO3166-1 alpha-2 two letter, e.g. US
+
+
+
+
+    action code : 10124
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/headless/code/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10155: country is not defined | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10154: country not found)
+
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2714,6 +9275,83 @@ async def admin_upgrade_headless_account_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify or consume verification code.  (AdminUpgradeHeadlessAccountV3)
+
+    If validateOnly is set false, will upgrade headless account with verification code
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    The endpoint upgrades a headless account by linking the headless account with the email address and the password.
+    By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
+
+
+
+
+    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
+    In order to get a verification code for the endpoint, please check the send verification code endpoint.
+
+
+
+
+    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+
+    Supported user data fields :
+
+
+
+
+      * displayName
+
+
+      * dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
+
+
+      * country : format ISO3166-1 alpha-2 two letter, e.g. US
+
+
+
+
+    action code : 10124
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/headless/code/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10155: country is not defined | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10154: country not found)
+
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2736,6 +9374,56 @@ def admin_verify_account_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify or consume verification code sent to user (AdminVerifyAccountV3)
+
+    Will verify account and consume code if validateOnly is set false in request body
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    Redeems a verification code sent to a user to verify the user's contact address is correct
+
+
+    Available ContactType : email or phone
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserVerificationRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2756,6 +9444,56 @@ async def admin_verify_account_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify or consume verification code sent to user (AdminVerifyAccountV3)
+
+    Will verify account and consume code if validateOnly is set false in request body
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    Redeems a verification code sent to a user to verify the user's contact address is correct
+
+
+    Available ContactType : email or phone
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserVerificationRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2777,6 +9515,50 @@ def admin_verify_user_without_verification_code_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
+
+    This endpoint force verify user. Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+
+
+
+    action code: 10118
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/verify
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        409: Conflict - RestErrorResponse (10140: user verified)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2795,6 +9577,50 @@ async def admin_verify_user_without_verification_code_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
+
+    This endpoint force verify user. Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+
+
+
+    action code: 10118
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/verify
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        409: Conflict - RestErrorResponse (10140: user verified)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2817,6 +9643,59 @@ def ban_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Ban a single user (BanUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/ban
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBanCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserBanResponse (Created)
+
+        400: Bad Request - (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2838,6 +9717,59 @@ async def ban_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Ban a single user (BanUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/ban
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBanCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserBanResponse (Created)
+
+        400: Bad Request - (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2860,6 +9792,47 @@ def check_user_availability(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check user's account availability (CheckUserAvailability)
+
+    Check user's account availability.
+    Available field :
+    - displayName
+
+    If request include access token with user ID data, that user ID will be excluded from availability check.
+    For example, in case user update his emailAddress, he can use his own emailAddress to update his account.
+
+    Response Code :
+    - Account Available : 404 (not found)
+    - Account Not Available : 204 (no content)
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/availability
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        field: (field) REQUIRED str in query
+
+        query: (query) REQUIRED str in query
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        404: Not Found - (Not Found)
+
+        422: Unprocessable Entity - RestErrorResponse (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2880,6 +9853,47 @@ async def check_user_availability_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check user's account availability (CheckUserAvailability)
+
+    Check user's account availability.
+    Available field :
+    - displayName
+
+    If request include access token with user ID data, that user ID will be excluded from availability check.
+    For example, in case user update his emailAddress, he can use his own emailAddress to update his account.
+
+    Response Code :
+    - Account Available : 404 (not found)
+    - Account Not Available : 204 (no content)
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/availability
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        field: (field) REQUIRED str in query
+
+        query: (query) REQUIRED str in query
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        404: Not Found - (Not Found)
+
+        422: Unprocessable Entity - RestErrorResponse (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2902,6 +9916,88 @@ def create_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create User (CreateUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      *  Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [POST]
+
+      *  Substitute endpoint: /iam/v4/public/namespaces/{namespace}/users [POST]
+
+
+
+      *  Note:
+         1. v3 & v4 introduce optional verification code
+
+         2. format differenceï¼Pascal case => Camel case)
+
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER [CREATE]'.
+
+
+
+
+    Available Authentication Types:
+
+
+
+
+
+
+      1.  EMAILPASSWD : an authentication type used for new user registration through email.
+
+
+      2.  PHONEPASSWD : an authentication type used for new user registration through phone number.
+
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER [CREATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserCreateResponse (Created)
+
+        400: Bad Request -
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict -
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2921,6 +10017,88 @@ async def create_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create User (CreateUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      *  Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [POST]
+
+      *  Substitute endpoint: /iam/v4/public/namespaces/{namespace}/users [POST]
+
+
+
+      *  Note:
+         1. v3 & v4 introduce optional verification code
+
+         2. format differenceï¼Pascal case => Camel case)
+
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER [CREATE]'.
+
+
+
+
+    Available Authentication Types:
+
+
+
+
+
+
+      1.  EMAILPASSWD : an authentication type used for new user registration through email.
+
+
+      2.  PHONEPASSWD : an authentication type used for new user registration through phone number.
+
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER [CREATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserCreateResponse (Created)
+
+        400: Bad Request -
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict -
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2942,6 +10120,46 @@ def create_user_from_invitation_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create User From Invitation (CreateUserFromInvitationV3)
+
+    This endpoint create user from saved roles when creating invitation and submitted data.
+    User will be able to login after completing submitting the data through this endpoint.
+    Available Authentication Types:
+
+    EMAILPASSWD: an authentication type used for new user registration through email.
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/invite/{invitationId}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserCreateFromInvitationRequestV3 in body
+
+        invitation_id: (invitationId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserCreateResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
+
+        404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2962,6 +10180,46 @@ async def create_user_from_invitation_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create User From Invitation (CreateUserFromInvitationV3)
+
+    This endpoint create user from saved roles when creating invitation and submitted data.
+    User will be able to login after completing submitting the data through this endpoint.
+    Available Authentication Types:
+
+    EMAILPASSWD: an authentication type used for new user registration through email.
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/invite/{invitationId}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserCreateFromInvitationRequestV3 in body
+
+        invitation_id: (invitationId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserCreateResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
+
+        404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -2984,6 +10242,53 @@ def delete_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User (DeleteUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3003,6 +10308,53 @@ async def delete_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User (DeleteUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3024,6 +10376,53 @@ def delete_user_information(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user's information (DeleteUserInformation)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/information
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3043,6 +10442,53 @@ async def delete_user_information_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user's information (DeleteUserInformation)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/information
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3066,6 +10512,58 @@ def delete_user_permission(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Permission (DeleteUserPermission)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action} [DELETE]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        action: (action) REQUIRED int in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        resource: (resource) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3089,6 +10587,58 @@ async def delete_user_permission_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Permission (DeleteUserPermission)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action} [DELETE]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        action: (action) REQUIRED int in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        resource: (resource) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3113,6 +10663,57 @@ def delete_user_role(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Role (DeleteUserRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [DELETE]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/roles/{roleId}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json", "text/plain"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10159: operator is not a role manager)
+
+        404: Not Found - (10156: role not found | 20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3134,6 +10735,57 @@ async def delete_user_role_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete User Role (DeleteUserRole)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [DELETE]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/roles/{roleId}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json", "text/plain"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10159: operator is not a role manager)
+
+        404: Not Found - (10156: role not found | 20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3157,6 +10809,75 @@ def disable_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable a user (DisableUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
+
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
+
+
+
+    For Deletion Account purpose fill the reason with:
+
+
+
+
+
+
+      * DeactivateAccount : if your deletion request comes from user
+
+
+      * AdminDeactivateAccount : if your deletion request comes from admin
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/disable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableUserRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3178,6 +10899,75 @@ async def disable_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable a user (DisableUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
+
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
+
+
+
+    For Deletion Account purpose fill the reason with:
+
+
+
+
+
+
+      * DeactivateAccount : if your deletion request comes from user
+
+
+      * AdminDeactivateAccount : if your deletion request comes from admin
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/disable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableUserRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3201,6 +10991,79 @@ def disable_user_ban(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable ban for a single user. (DisableUserBan)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
+    "+
+    "
+     Notes for using IAM in publisher - game studio scenarios
+    "+
+    "
+
+    The endpoint allows:
+
+    "+
+    "
+      * The admin user in publisher namespace disables userâs ban in publisher namespace.
+    "+
+    "
+      * The admin user in game namespace disables userâs ban in game namespace.
+    "+
+    "
+      * The admin user in publisher namespace disables userâs ban in publisher namespace.
+
+    "+
+    "
+
+    Other scenarios are not supported and will return 403: Forbidden.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/disable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ban_id: (banId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserBanResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10145: disallow game access publisher user's ban)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3222,6 +11085,79 @@ async def disable_user_ban_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable ban for a single user. (DisableUserBan)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
+    "+
+    "
+     Notes for using IAM in publisher - game studio scenarios
+    "+
+    "
+
+    The endpoint allows:
+
+    "+
+    "
+      * The admin user in publisher namespace disables userâs ban in publisher namespace.
+    "+
+    "
+      * The admin user in game namespace disables userâs ban in game namespace.
+    "+
+    "
+      * The admin user in publisher namespace disables userâs ban in publisher namespace.
+
+    "+
+    "
+
+    Other scenarios are not supported and will return 403: Forbidden.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/disable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ban_id: (banId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserBanResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10145: disallow game access publisher user's ban)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3244,6 +11180,56 @@ def enable_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable a user (EnableUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
+
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/enable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3263,6 +11249,56 @@ async def enable_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable a user (EnableUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
+
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/enable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3285,6 +11321,56 @@ def enable_user_ban(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable ban for a single user (EnableUserBan)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/enable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ban_id: (banId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserBanResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10145: disallow game access publisher user's ban)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found | 10144: user has no bans)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3306,6 +11392,56 @@ async def enable_user_ban_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable ban for a single user (EnableUserBan)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/enable
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ban_id: (banId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserBanResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10145: disallow game access publisher user's ban)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found | 10158: ban not found | 10144: user has no bans)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3328,6 +11464,62 @@ def forgot_password(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Request Password Reset Code (ForgotPassword)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/forgot [POST]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or valid basic auth header"+
+    "
+
+     Special note for publisher-game scenario: Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
+
+    "+
+    "
+
+    The password reset code will be sent to the publisher account's email address.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/forgotPassword
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BASIC_AUTH] or [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3347,6 +11539,62 @@ async def forgot_password_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Request Password Reset Code (ForgotPassword)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/forgot [POST]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or valid basic auth header"+
+    "
+
+     Special note for publisher-game scenario: Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
+
+    "+
+    "
+
+    The password reset code will be sent to the publisher account's email address.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/forgotPassword
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BASIC_AUTH] or [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3367,6 +11615,34 @@ def get_admin_invitation_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Invitation (GetAdminInvitationV3)
+
+    Endpoint to validate user invitation. When not found, it could also means the invitation has expired.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/invite/{invitationId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        invitation_id: (invitationId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserInvitationV3 (OK)
+
+        404: Not Found - RestErrorResponse (10180: admin invitation not found or expired)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3385,6 +11661,34 @@ async def get_admin_invitation_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Invitation (GetAdminInvitationV3)
+
+    Endpoint to validate user invitation. When not found, it could also means the invitation has expired.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/invite/{invitationId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        invitation_id: (invitationId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserInvitationV3 (OK)
+
+        404: Not Found - RestErrorResponse (10180: admin invitation not found or expired)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3409,6 +11713,81 @@ def get_admin_users_by_role_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Admin Users By RoleId (GetAdminUsersByRoleID)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(Public): /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users [GET]
+
+
+
+      * Note:
+        difference in V3 response, format difference: Pascal case => Camel case
+
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+
+
+    This endpoint search admin users which have the roleId
+
+
+
+
+    Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
+    Use endpoint [GET] /roles/{roleId}/admin to check the role status
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/admin
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL int in query
+
+        before: (before) OPTIONAL int in query
+
+        limit: (limit) OPTIONAL int in query
+
+        role_id: (roleId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelGetAdminUsersResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20021: invalid pagination parameter | 20002: validation error | 10157: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3434,6 +11813,81 @@ async def get_admin_users_by_role_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Admin Users By RoleId (GetAdminUsersByRoleID)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(Public): /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users [GET]
+
+
+
+      * Note:
+        difference in V3 response, format difference: Pascal case => Camel case
+
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+
+
+    This endpoint search admin users which have the roleId
+
+
+
+
+    Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
+    Use endpoint [GET] /roles/{roleId}/admin to check the role status
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/admin
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL int in query
+
+        before: (before) OPTIONAL int in query
+
+        limit: (limit) OPTIONAL int in query
+
+        role_id: (roleId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelGetAdminUsersResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20021: invalid pagination parameter | 20002: validation error | 10157: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3460,6 +11914,64 @@ def get_admin_users_by_role_id_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Admin Users By RoleId (GetAdminUsersByRoleIdV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+
+
+    This endpoint search admin users which have the roleId
+
+
+
+
+    Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
+    Use endpoint [GET] /roles/{roleId}/admin to check the role status
+
+
+
+    action code : 10140
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+        after: (after) OPTIONAL int in query
+
+        before: (before) OPTIONAL int in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetUsersResponseWithPaginationV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10157: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10156: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3484,6 +11996,64 @@ async def get_admin_users_by_role_id_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Admin Users By RoleId (GetAdminUsersByRoleIdV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+
+
+    This endpoint search admin users which have the roleId
+
+
+
+
+    Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
+    Use endpoint [GET] /roles/{roleId}/admin to check the role status
+
+
+
+    action code : 10140
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        role_id: (roleId) REQUIRED str in path
+
+        after: (after) OPTIONAL int in query
+
+        before: (before) OPTIONAL int in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetUsersResponseWithPaginationV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10157: specified role is not admin role)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10156: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3507,6 +12077,51 @@ def get_list_country_age_restriction(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get List Country age restriction (GetListCountryAgeRestriction)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/countries/agerestrictions
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[AccountcommonCountryAgeRestriction] (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3524,6 +12139,51 @@ async def get_list_country_age_restriction_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get List Country age restriction (GetListCountryAgeRestriction)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/countries/agerestrictions
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[AccountcommonCountryAgeRestriction] (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3544,6 +12204,48 @@ def get_list_justice_platform_accounts(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Justice Platform Accounts (GetListJusticePlatformAccounts)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice [GET]
+
+
+
+
+
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/justice
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelGetUserMapping] (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3563,6 +12265,48 @@ async def get_list_justice_platform_accounts_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Justice Platform Accounts (GetListJusticePlatformAccounts)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice [GET]
+
+
+
+
+
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/justice
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelGetUserMapping] (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3584,6 +12328,62 @@ def get_publisher_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Publisher User (GetPublisherUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]
+
+
+
+
+
+
+    Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ].
+
+
+
+
+    Restriction:
+    Path Parameter namespace can be provided only with game namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/publisher
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetPublisherUserResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Error Code: 7239 - Error Message: wrong namespace: required game namespace)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3603,6 +12403,62 @@ async def get_publisher_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Publisher User (GetPublisherUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]
+
+
+
+
+
+
+    Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ].
+
+
+
+
+    Restriction:
+    Path Parameter namespace can be provided only with game namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/publisher
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetPublisherUserResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Error Code: 7239 - Error Message: wrong namespace: required game namespace)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3624,6 +12480,53 @@ def get_user_ban_history(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's bans history (GetUserBanHistory)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/bans
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelUserBanResponse] (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3643,6 +12546,53 @@ async def get_user_ban_history_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's bans history (GetUserBanHistory)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]
+
+
+
+
+
+    Required permissions 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/bans
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelUserBanResponse] (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3664,6 +12614,52 @@ def get_user_by_login_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By Login Id (GetUserByLoginID)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [GET]
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER [READ]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/byLoginId
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        login_id: (loginId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelPublicUserResponse (OK)
+
+        400: Bad Request - (20002: validation error)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3683,6 +12679,52 @@ async def get_user_by_login_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By Login Id (GetUserByLoginID)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [GET]
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER [READ]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/byLoginId
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        login_id: (loginId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelPublicUserResponse (OK)
+
+        400: Bad Request - (20002: validation error)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3705,6 +12747,64 @@ def get_user_by_platform_user_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By Platform User ID (GetUserByPlatformUserID)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
+
+      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
+
+
+
+      * Note:
+        1. difference in V3 response, format difference: Pascal case => Camel case
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER [READ]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/byPlatformUserID
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformID) REQUIRED str in query
+
+        platform_user_id: (platformUserID) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelPublicUserResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3726,6 +12826,64 @@ async def get_user_by_platform_user_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By Platform User ID (GetUserByPlatformUserID)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
+
+      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
+
+
+
+      * Note:
+        1. difference in V3 response, format difference: Pascal case => Camel case
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER [READ]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/byPlatformUserID
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformID) REQUIRED str in query
+
+        platform_user_id: (platformUserID) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelPublicUserResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3748,6 +12906,58 @@ def get_user_by_user_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By User Id (GetUserByUserID)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/users/{userId} [GET]
+
+      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
+
+
+
+      * Note:
+        format difference in response: Pascal case => Camel case
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        404: Not Found - (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3767,6 +12977,58 @@ async def get_user_by_user_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By User Id (GetUserByUserID)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/users/{userId} [GET]
+
+      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
+
+
+
+      * Note:
+        format difference in response: Pascal case => Camel case
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        404: Not Found - (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3788,6 +13050,53 @@ def get_user_information(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's information (GetUserInformation)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/information [GET]
+
+
+
+
+
+    Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/information
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserInformation (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3807,6 +13116,53 @@ async def get_user_information_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's information (GetUserInformation)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/information [GET]
+
+
+
+
+
+    Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/information
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserInformation (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3829,6 +13185,73 @@ def get_user_justice_platform_account(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get the Justice linked accounts on the designated namespace (GetUserJusticePlatformAccount)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
+
+
+
+
+
+    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]'
+
+
+
+
+    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going toÂ create and return the new Justice platform account.
+    The newly user Justice platform account is going to be forced to perform token grant through the given user and can't perform password update
+
+
+
+
+    ### Read Justice Platform Account UserID
+
+
+
+
+    In order to read the Justice platform account UserID, it is required to have the permission: NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ] , otherwise the UserID is going to be censored and replaced with âRedactedâ text.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
+
+        - NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        target_namespace: (targetNamespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetUserJusticePlatformAccountResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3850,6 +13273,73 @@ async def get_user_justice_platform_account_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get the Justice linked accounts on the designated namespace (GetUserJusticePlatformAccount)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
+
+
+
+
+
+    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]'
+
+
+
+
+    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going toÂ create and return the new Justice platform account.
+    The newly user Justice platform account is going to be forced to perform token grant through the given user and can't perform password update
+
+
+
+
+    ### Read Justice Platform Account UserID
+
+
+
+
+    In order to read the Justice platform account UserID, it is required to have the permission: NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ] , otherwise the UserID is going to be censored and replaced with âRedactedâ text.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
+
+        - NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        target_namespace: (targetNamespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetUserJusticePlatformAccountResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3875,6 +13365,78 @@ def get_user_login_histories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User's Login Histories (GetUserLoginHistories)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]'"+
+    "
+
+    Notes for this endpoint:
+
+    "+
+    "
+
+      * This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
+    "+
+    "
+      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    "+
+    "
+      * This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
+    "+
+    "
+      * This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/logins/histories
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        after: (after) OPTIONAL float in query
+
+        before: (before) OPTIONAL float in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelLoginHistoriesResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3900,6 +13462,78 @@ async def get_user_login_histories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User's Login Histories (GetUserLoginHistories)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]'"+
+    "
+
+    Notes for this endpoint:
+
+    "+
+    "
+
+      * This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
+    "+
+    "
+      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    "+
+    "
+      * This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
+    "+
+    "
+      * This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/logins/histories
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        after: (after) OPTIONAL float in query
+
+        before: (before) OPTIONAL float in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelLoginHistoriesResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3925,6 +13559,74 @@ def get_user_mapping(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user mapping (GetUserMapping)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
+
+
+
+
+
+
+
+    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]'
+
+
+
+
+    This endpoint will support publisher access to game and game access to publisher
+
+
+
+
+    If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
+
+
+
+
+    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        target_namespace: (targetNamespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetUserMapping (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3946,6 +13648,74 @@ async def get_user_mapping_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user mapping (GetUserMapping)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
+
+
+
+
+
+
+
+    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]'
+
+
+
+
+    This endpoint will support publisher access to game and game access to publisher
+
+
+
+
+    If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
+
+
+
+
+    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        target_namespace: (targetNamespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetUserMapping (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3968,6 +13738,69 @@ def get_user_platform_accounts(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get platform accounts linked to the user (GetUserPlatformAccounts)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms [GET]
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms [GET]
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'.
+
+
+
+
+    ## Justice Platform Account
+
+
+
+
+    The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+        - NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/platforms
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[AccountcommonUserLinkedPlatform] (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3987,6 +13820,69 @@ async def get_user_platform_accounts_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get platform accounts linked to the user (GetUserPlatformAccounts)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms [GET]
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms [GET]
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'.
+
+
+
+
+    ## Justice Platform Account
+
+
+
+
+    The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
+
+        - NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/platforms
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[AccountcommonUserLinkedPlatform] (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4007,6 +13903,46 @@ def get_user_verification_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get verification code sent to user (getUserVerificationCode)
+
+    [WARNING] This endpoint is only for testing purpose.
+    This endpoint get active user verification
+    code. There are 3 scenario of getting verification codes : after account registration, after reset password
+    request, and after headless account upgrade. All of them will be returned on this endpoint. Required permission
+    'ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE' [READ]
+    action code: 10146
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/codes
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelVerificationCodeResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4025,6 +13961,46 @@ async def get_user_verification_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get verification code sent to user (getUserVerificationCode)
+
+    [WARNING] This endpoint is only for testing purpose.
+    This endpoint get active user verification
+    code. There are 3 scenario of getting verification codes : after account registration, after reset password
+    request, and after headless account upgrade. All of them will be returned on this endpoint. Required permission
+    'ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE' [READ]
+    action code: 10146
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/codes
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelVerificationCodeResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4046,6 +14022,54 @@ def get_users_by_login_ids(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a List of Users By Their Login Id (GetUsersByLoginIds)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(query by email list): /iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]
+
+      * Substitute endpoint(query by user id list): /iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER [READ]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/listByLoginIds
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        login_ids: (loginIds) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelPublicUsersResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4065,6 +14089,54 @@ async def get_users_by_login_ids_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a List of Users By Their Login Id (GetUsersByLoginIds)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(query by email list): /iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]
+
+      * Substitute endpoint(query by user id list): /iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER [READ]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/listByLoginIds
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        login_ids: (loginIds) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelPublicUsersResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4084,6 +14156,39 @@ def link_headless_account_to_my_account_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link headless account to current full account (LinkHeadlessAccountToMyAccountV3)
+
+    Note:
+
+    1. My account should be full account
+    2. My account not linked to headless account's third platform.
+
+    Properties:
+        url: /iam/v3/public/users/me/headless/linkWithProgression
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelLinkHeadlessAccountRequest in body
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = LinkHeadlessAccountToMyAccountV3.create(
         body=body,
     )
@@ -4096,6 +14201,39 @@ async def link_headless_account_to_my_account_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link headless account to current full account (LinkHeadlessAccountToMyAccountV3)
+
+    Note:
+
+    1. My account should be full account
+    2. My account not linked to headless account's third platform.
+
+    Properties:
+        url: /iam/v3/public/users/me/headless/linkWithProgression
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelLinkHeadlessAccountRequest in body
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = LinkHeadlessAccountToMyAccountV3.create(
         body=body,
     )
@@ -4113,6 +14251,48 @@ def list_admins_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List User Admins (ListAdminsV3)
+
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
+
+    List all users that has admin role (role that has admin_role attribute set to true).
+
+    The endpoint will return all admin from all namespace when called from publisher namespace.
+    When not called from publisher namespace, the endpoint will return all admin from the path namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/admins
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetUsersResponseWithPaginationV3 (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4135,6 +14315,48 @@ async def list_admins_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List User Admins (ListAdminsV3)
+
+    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
+
+    List all users that has admin role (role that has admin_role attribute set to true).
+
+    The endpoint will return all admin from all namespace when called from publisher namespace.
+    When not called from publisher namespace, the endpoint will return all admin from the path namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/admins
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetUsersResponseWithPaginationV3 (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4160,6 +14382,69 @@ def list_cross_namespace_account_link(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
+
+
+
+
+
+    Access token from original namespace is needed as authorization header. Access token from designated account needed as form parameter to verify the ownership of that account.
+    When platformID (device platfom ID) is specified, platform login method for that specific platform ID is removed.
+    This means to protect account from second hand device usage.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/crosslink
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) OPTIONAL str in form_data
+
+        linking_token: (linkingToken) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4183,6 +14468,69 @@ async def list_cross_namespace_account_link_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
+
+
+
+
+
+    Access token from original namespace is needed as authorization header. Access token from designated account needed as form parameter to verify the ownership of that account.
+    When platformID (device platfom ID) is specified, platform login method for that specific platform ID is removed.
+    This means to protect account from second hand device usage.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/crosslink
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) OPTIONAL str in form_data
+
+        linking_token: (linkingToken) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4208,6 +14556,111 @@ def platform_link(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link user's account with platform (PlatformLink)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
+
+
+
+
+
+    Prerequisite: Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The ticketâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+
+
+      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The ticketâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
+
+
+      * android : The ticket's value is the Androidâs device ID
+
+
+      * ios : The ticket's value is the iOSâs device ID.
+
+
+      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
+
+
+      * device : Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+
+
+      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ticket: (ticket) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        409: Conflict - (10163: platform is already linked with the user account)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4231,6 +14684,111 @@ async def platform_link_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link user's account with platform (PlatformLink)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
+
+
+
+
+
+    Prerequisite: Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The ticketâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+
+
+      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The ticketâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
+
+
+      * android : The ticket's value is the Androidâs device ID
+
+
+      * ios : The ticket's value is the iOSâs device ID.
+
+
+      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
+
+
+      * device : Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+
+
+      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ticket: (ticket) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        409: Conflict - (10163: platform is already linked with the user account)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4256,6 +14814,113 @@ def platform_unlink(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlink user's account with platform (PlatformUnlink)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]
+
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
+
+
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam
+
+
+      * steamopenid
+
+
+      * facebook
+
+
+      * google
+
+
+      * oculus
+
+
+      * twitch
+
+
+      * android
+
+
+      * ios
+
+
+      * device
+
+
+      * justice : A user might have several 'justiceâ platform on different namespaces. Thatâs why the platform_namespace need to be specified when the platform ID is âjusticeâ. The platform_namespace is the designated userâs namespace.
+
+
+
+
+
+    Unlink user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
+
+    Unlinking justice platform will enable password token grant and password update.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/unlink
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded", "text/plain"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_namespace: (platform_namespace) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4279,6 +14944,113 @@ async def platform_unlink_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlink user's account with platform (PlatformUnlink)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]
+
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
+
+
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam
+
+
+      * steamopenid
+
+
+      * facebook
+
+
+      * google
+
+
+      * oculus
+
+
+      * twitch
+
+
+      * android
+
+
+      * ios
+
+
+      * device
+
+
+      * justice : A user might have several 'justiceâ platform on different namespaces. Thatâs why the platform_namespace need to be specified when the platform ID is âjusticeâ. The platform_namespace is the designated userâs namespace.
+
+
+
+
+
+    Unlink user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
+
+    Unlinking justice platform will enable password token grant and password update.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/unlink
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded", "text/plain"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_namespace: (platform_namespace) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4301,6 +15073,47 @@ def public_bulk_get_users(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get users' basic info by user Id (PublicBulkGetUsers)
+
+    Notes:
+
+
+
+
+
+
+      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+
+
+      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
+
+
+      * Result will include displayName(if it exists)
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/bulk/basic
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserIDsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelListBulkUserResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10185: publisher namespace not allowed)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4319,6 +15132,47 @@ async def public_bulk_get_users_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get users' basic info by user Id (PublicBulkGetUsers)
+
+    Notes:
+
+
+
+
+
+
+      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+
+
+      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
+
+
+      * Result will include displayName(if it exists)
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/bulk/basic
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserIDsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelListBulkUserResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10185: publisher namespace not allowed)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4339,6 +15193,40 @@ def public_create_justice_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Justice User from Publisher User (PublicCreateJusticeUser)
+
+    Create Justice User from Publisher User information. It will check first if Justice User on target namespace already exist.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/justice/{targetNamespace}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        target_namespace: (targetNamespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelCreateJusticeUserResponse (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4357,6 +15245,40 @@ async def public_create_justice_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Justice User from Publisher User (PublicCreateJusticeUser)
+
+    Create Justice User from Publisher User information. It will check first if Justice User on target namespace already exist.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/justice/{targetNamespace}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        target_namespace: (targetNamespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelCreateJusticeUserResponse (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4378,6 +15300,76 @@ def public_create_user_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create User (PublicCreateUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      *  Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [POST]
+
+      *  Substitute endpoint: /iam/v4/public/namespaces/{namespace}/users [POST]
+
+
+
+      *  Note:
+         1. v3 & v4 introduce optional verification code
+
+         2. format differenceï¼Pascal case => Camel case)
+
+
+
+
+
+
+
+    Available Authentication Types:
+
+
+
+
+
+
+      1.  EMAILPASSWD : an authentication type used for new user registration through email.
+
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserCreateResponse (Created)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict - (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4397,6 +15389,76 @@ async def public_create_user_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create User (PublicCreateUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      *  Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [POST]
+
+      *  Substitute endpoint: /iam/v4/public/namespaces/{namespace}/users [POST]
+
+
+
+      *  Note:
+         1. v3 & v4 introduce optional verification code
+
+         2. format differenceï¼Pascal case => Camel case)
+
+
+
+
+
+
+
+    Available Authentication Types:
+
+
+
+
+
+
+      1.  EMAILPASSWD : an authentication type used for new user registration through email.
+
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserCreateResponse (Created)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict - (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4417,6 +15479,64 @@ def public_create_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create User (PublicCreateUserV3)
+
+
+
+
+    Available Authentication Types:
+
+
+
+
+
+
+      1. EMAILPASSWD : an authentication type used for new user registration through email.
+
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
+
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+
+
+
+    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserCreateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserCreateResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4435,6 +15555,64 @@ async def public_create_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create User (PublicCreateUserV3)
+
+
+
+
+    Available Authentication Types:
+
+
+
+
+
+
+      1. EMAILPASSWD : an authentication type used for new user registration through email.
+
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
+
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+
+
+
+    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserCreateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelUserCreateResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4458,6 +15636,104 @@ def public_delete_platform_link_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete the link of user's account with platform (PublicDeletePlatformLinkV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]
+
+
+
+
+
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam
+
+
+      * steamopenid
+
+
+      * facebook
+
+
+      * google
+
+
+      * oculus
+
+
+      * twitch
+
+
+      * android
+
+
+      * ios
+
+
+      * device
+
+
+      * discord
+
+
+
+
+
+    Delete link of user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
+
+    Delete link of justice platform will enable password token grant and password update.
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded", "text/plain"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_namespace: (platform_namespace) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4481,6 +15757,104 @@ async def public_delete_platform_link_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete the link of user's account with platform (PublicDeletePlatformLinkV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]
+
+
+
+
+
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam
+
+
+      * steamopenid
+
+
+      * facebook
+
+
+      * google
+
+
+      * oculus
+
+
+      * twitch
+
+
+      * android
+
+
+      * ios
+
+
+      * device
+
+
+      * discord
+
+
+
+
+
+    Delete link of user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
+
+    Delete link of justice platform will enable password token grant and password update.
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded", "text/plain"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_namespace: (platform_namespace) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4504,6 +15878,43 @@ def public_force_link_platform_with_progression(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Force link 3rd platform account and transfer progression (PublicForceLinkPlatformWithProgression)
+
+    Force update other account's Platform Account relation to current User Account.
+
+    This endpoint can transfer progression from 3rd platform binding account's to current account.
+    This endpoint need the same requestID which also used in Get link status.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/linkWithProgression
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelLinkPlatformAccountWithProgressionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4524,6 +15935,43 @@ async def public_force_link_platform_with_progression_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Force link 3rd platform account and transfer progression (PublicForceLinkPlatformWithProgression)
+
+    Force update other account's Platform Account relation to current User Account.
+
+    This endpoint can transfer progression from 3rd platform binding account's to current account.
+    This endpoint need the same requestID which also used in Get link status.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/linkWithProgression
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelLinkPlatformAccountWithProgressionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4546,6 +15994,116 @@ def public_force_platform_link_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Force linking user's account with platform (PublicForcePlatformLinkV3)
+
+    Force linking user account with platform.
+
+    If this platform account was already linked to another user account, this endpoint will perform force linking and remove platform from that conflict user, not only from the current request namespace but also include all the enrolled namespaces.
+
+    If current user have linked to this platform with another platform account (include once linked but it is unlinked now), it will not allow user to perform linking.
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The platform_tokenâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
+
+
+      * facebook : The platform_tokenâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The platform_tokenâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The platform_tokenâs value is the authorization code returned by Twitch OAuth.
+
+
+      * discord : The platform_tokenâs value is the authorization code returned by Discord OAuth
+
+
+      * android : The device_id is the Androidâs device ID
+
+
+      * ios : The device_id is the iOSâs device ID.
+
+
+      * apple : The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
+
+
+      * device : Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
+
+
+      * justice : The platform_tokenâs value is the designated userâs access token.
+
+
+      * epicgames : The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
+
+
+      * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * ps5 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * nintendo : The platform_tokenâs value is the authorization code(id_token) returned by Nintendo OAuth.
+
+
+      * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
+
+
+      * live : The platform_tokenâs value is xbox XSTS token
+
+
+      * xblweb : The platform_tokenâs value is code returned by xbox after login
+
+
+      * netflix : The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
+
+
+      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/force
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ticket: (ticket) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (10174: platform client not found)
+
+        409: Conflict - RestErrorResponse (10163: platform is already linked with the user account | 10172: platform user is already linked with the account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4566,6 +16124,116 @@ async def public_force_platform_link_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Force linking user's account with platform (PublicForcePlatformLinkV3)
+
+    Force linking user account with platform.
+
+    If this platform account was already linked to another user account, this endpoint will perform force linking and remove platform from that conflict user, not only from the current request namespace but also include all the enrolled namespaces.
+
+    If current user have linked to this platform with another platform account (include once linked but it is unlinked now), it will not allow user to perform linking.
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The platform_tokenâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
+
+
+      * facebook : The platform_tokenâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The platform_tokenâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The platform_tokenâs value is the authorization code returned by Twitch OAuth.
+
+
+      * discord : The platform_tokenâs value is the authorization code returned by Discord OAuth
+
+
+      * android : The device_id is the Androidâs device ID
+
+
+      * ios : The device_id is the iOSâs device ID.
+
+
+      * apple : The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
+
+
+      * device : Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
+
+
+      * justice : The platform_tokenâs value is the designated userâs access token.
+
+
+      * epicgames : The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
+
+
+      * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * ps5 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * nintendo : The platform_tokenâs value is the authorization code(id_token) returned by Nintendo OAuth.
+
+
+      * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
+
+
+      * live : The platform_tokenâs value is xbox XSTS token
+
+
+      * xblweb : The platform_tokenâs value is code returned by xbox after login
+
+
+      * netflix : The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
+
+
+      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/force
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ticket: (ticket) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (10174: platform client not found)
+
+        409: Conflict - RestErrorResponse (10163: platform is already linked with the user account | 10172: platform user is already linked with the account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4588,6 +16256,58 @@ def public_forgot_password_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Request Password Reset Code (PublicForgotPasswordV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/forgot [POST]
+
+
+
+
+
+
+    Special note for publisher-game scenario: Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
+
+    "+
+    "
+
+    The password reset code will be sent to the publisher account's email address.
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/forgotPassword
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        404: Not Found - (20008: user not found)
+
+        429: Too Many Requests - (20007: too many requests)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4607,6 +16327,58 @@ async def public_forgot_password_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Request Password Reset Code (PublicForgotPasswordV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/forgot [POST]
+
+
+
+
+
+
+    Special note for publisher-game scenario: Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
+
+    "+
+    "
+
+    The password reset code will be sent to the publisher account's email address.
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/forgotPassword
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        404: Not Found - (20008: user not found)
+
+        429: Too Many Requests - (20007: too many requests)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4627,6 +16399,48 @@ def public_forgot_password_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Request Password Reset Code (PublicForgotPasswordV3)
+
+    Special note for publisher-game scenario:
+    Game Client should provide game namespace path parameter and Publisher
+    Client should provide publisher namespace path parameter.
+
+
+
+
+    The password reset code will be sent to the publisher account's email address.
+
+
+
+
+    action code : 10104
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/forgot
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelForgotPasswordRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4645,6 +16459,48 @@ async def public_forgot_password_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Request Password Reset Code (PublicForgotPasswordV3)
+
+    Special note for publisher-game scenario:
+    Game Client should provide game namespace path parameter and Publisher
+    Client should provide publisher namespace path parameter.
+
+
+
+
+    The password reset code will be sent to the publisher account's email address.
+
+
+
+
+    action code : 10104
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/forgot
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelForgotPasswordRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4665,6 +16521,36 @@ def public_get_async_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Linking Progress Status (PublicGetAsyncStatus)
+
+    This endpoint is used to get linking status.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        request_id: (requestId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelLinkRequest (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4683,6 +16569,36 @@ async def public_get_async_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Linking Progress Status (PublicGetAsyncStatus)
+
+    This endpoint is used to get linking status.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        request_id: (requestId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelLinkRequest (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4704,6 +16620,42 @@ def public_get_country_age_restriction(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public get age restriction by country code (PublicGetCountryAgeRestriction)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/countries/{countryCode}/agerestrictions
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonCountry (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4723,6 +16675,42 @@ async def public_get_country_age_restriction_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public get age restriction by country code (PublicGetCountryAgeRestriction)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/countries/{countryCode}/agerestrictions
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonCountry (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4743,6 +16731,34 @@ def public_get_country_age_restriction_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public get age restriction by country code (PublicGetCountryAgeRestrictionV3)
+
+    Get age restriction by country code. It will always get by publisher namespace
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelCountryV3Response (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4761,6 +16777,34 @@ async def public_get_country_age_restriction_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Public get age restriction by country code (PublicGetCountryAgeRestrictionV3)
+
+    Get age restriction by country code. It will always get by publisher namespace
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelCountryV3Response (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4780,6 +16824,41 @@ def public_get_link_headless_account_to_my_account_conflict_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get conflict result when link headless account to current full account by one time code (PublicGetLinkHeadlessAccountToMyAccountConflictV3)
+
+    Note:
+
+    1. My account should be full account
+    2. My account not linked to request headless account's third platform.
+
+    After client resolving the conflict, it will call endpoint /iam/v3/public/users/me/headless/linkWithProgression [POST]
+
+    Properties:
+        url: /iam/v3/public/users/me/headless/link/conflict
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        one_time_link_code: (oneTimeLinkCode) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelGetLinkHeadlessAccountConflictResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = PublicGetLinkHeadlessAccountToMyAccountConflictV3.create(
         one_time_link_code=one_time_link_code,
     )
@@ -4792,6 +16871,41 @@ async def public_get_link_headless_account_to_my_account_conflict_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get conflict result when link headless account to current full account by one time code (PublicGetLinkHeadlessAccountToMyAccountConflictV3)
+
+    Note:
+
+    1. My account should be full account
+    2. My account not linked to request headless account's third platform.
+
+    After client resolving the conflict, it will call endpoint /iam/v3/public/users/me/headless/linkWithProgression [POST]
+
+    Properties:
+        url: /iam/v3/public/users/me/headless/link/conflict
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        one_time_link_code: (oneTimeLinkCode) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelGetLinkHeadlessAccountConflictResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = PublicGetLinkHeadlessAccountToMyAccountConflictV3.create(
         one_time_link_code=one_time_link_code,
     )
@@ -4804,6 +16918,32 @@ async def public_get_link_headless_account_to_my_account_conflict_v3_async(
 def public_get_my_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get My User (PublicGetMyUserV3)
+
+    Require valid user authorization
+    Get my user data
+    action code : 10147
+
+    Properties:
+        url: /iam/v3/public/users/me
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = PublicGetMyUserV3.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -4812,6 +16952,32 @@ def public_get_my_user_v3(
 async def public_get_my_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get My User (PublicGetMyUserV3)
+
+    Require valid user authorization
+    Get my user data
+    action code : 10147
+
+    Properties:
+        url: /iam/v3/public/users/me
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = PublicGetMyUserV3.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -4825,6 +16991,47 @@ def public_get_publisher_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Publisher User (PublicGetPublisherUserV3)
+
+    Required permissions 'NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ].
+
+
+
+
+    Restriction:
+    Path Parameter namespace can be provided only with game namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ]
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetPublisherUserV3Response (OK)
+
+        400: Bad Request - RestErrorResponse (Error Code: 7239 - Error Message: wrong namespace: required game namespace)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4843,6 +17050,47 @@ async def public_get_publisher_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Publisher User (PublicGetPublisherUserV3)
+
+    Required permissions 'NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ].
+
+
+
+
+    Restriction:
+    Path Parameter namespace can be provided only with game namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ]
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetPublisherUserV3Response (OK)
+
+        400: Bad Request - RestErrorResponse (Error Code: 7239 - Error Message: wrong namespace: required game namespace)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4865,6 +17113,46 @@ def public_get_user_ban(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's bans (PublicGetUserBan)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans [GET]
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}/bans
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[ModelUserBanResponse] (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4886,6 +17174,46 @@ async def public_get_user_ban_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's bans (PublicGetUserBan)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans [GET]
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}/bans
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[ModelUserBanResponse] (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4911,6 +17239,61 @@ def public_get_user_ban_history_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's bans (PublicGetUserBanHistoryV3)
+
+    Required valid user authorization.
+
+
+    Notes:
+
+
+
+
+
+
+      * This endpoint retrieve the first page of the data if after and before parameters is empty
+
+
+      * The pagination is not working yet
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetUserBanV3Response (OK)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4937,6 +17320,61 @@ async def public_get_user_ban_history_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's bans (PublicGetUserBanHistoryV3)
+
+    Required valid user authorization.
+
+
+    Notes:
+
+
+
+
+
+
+      * This endpoint retrieve the first page of the data if after and before parameters is empty
+
+
+      * The pagination is not working yet
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetUserBanV3Response (OK)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4962,6 +17400,44 @@ def public_get_user_by_platform_user_idv3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By Platform User ID (PublicGetUserByPlatformUserIDV3)
+
+    Get User By Platform User ID
+
+    This endpoint return user information by given platform ID and platform user ID
+
+    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        platform_user_id: (platformUserId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -4982,6 +17458,44 @@ async def public_get_user_by_platform_user_idv3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By Platform User ID (PublicGetUserByPlatformUserIDV3)
+
+    Get User By Platform User ID
+
+    This endpoint return user information by given platform ID and platform user ID
+
+    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        platform_user_id: (platformUserId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5003,6 +17517,36 @@ def public_get_user_by_user_id_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By User ID (PublicGetUserByUserIdV3)
+
+    This endpoint retrieve user attributes. action code: 10129
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelPublicUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5021,6 +17565,36 @@ async def public_get_user_by_user_id_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By User ID (PublicGetUserByUserIdV3)
+
+    This endpoint retrieve user attributes. action code: 10129
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelPublicUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5042,6 +17616,49 @@ def public_get_user_by_user_idv2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By User ID (PublicGetUserByUserIDV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/users/{userId} [GET]
+
+      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
+
+
+
+      * Note:
+        format difference in response: Pascal case => Camel case
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        404: Not Found - (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5061,6 +17678,49 @@ async def public_get_user_by_user_idv2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User By User ID (PublicGetUserByUserIDV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/users/{userId} [GET]
+
+      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
+
+
+
+      * Note:
+        format difference in response: Pascal case => Camel case
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        404: Not Found - (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5081,6 +17741,42 @@ def public_get_user_information_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's information v3 (PublicGetUserInformationV3)
+
+    This endpoint retrieves user info and linked platform accounts.
+    Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/information
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonUserInformationV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5099,6 +17795,42 @@ async def public_get_user_information_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's information v3 (PublicGetUserInformationV3)
+
+    This endpoint retrieves user info and linked platform accounts.
+    Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/information
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonUserInformationV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5122,6 +17854,49 @@ def public_get_user_login_histories_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
+
+    Required valid user authorization.
+
+    Notes for this endpoint:
+
+      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
+      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        after: (after) OPTIONAL float in query
+
+        before: (before) OPTIONAL float in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelLoginHistoriesResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5146,6 +17921,49 @@ async def public_get_user_login_histories_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
+
+    Required valid user authorization.
+
+    Notes for this endpoint:
+
+      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
+      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        after: (after) OPTIONAL float in query
+
+        before: (before) OPTIONAL float in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelLoginHistoriesResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5172,6 +17990,48 @@ def public_get_user_platform_accounts_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
+
+    This endpoint retrieves platform accounts linked to user. Required valid user authorization.
+
+    action code: 10128
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - AccountcommonUserLinkedPlatformsResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5196,6 +18056,48 @@ async def public_get_user_platform_accounts_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
+
+    This endpoint retrieves platform accounts linked to user. Required valid user authorization.
+
+    action code: 10128
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - AccountcommonUserLinkedPlatformsResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5220,6 +18122,43 @@ def public_link_platform_account(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link a Platform User Account to User Account (PublicLinkPlatformAccount)
+
+    It is going to be DEPRECATED.
+    Update Platform Account relation to current User Account.
+    Note: Game progression data (statistics, reward, etc) associated with previous User Account will not be
+    transferred. If the data is tight to game user ID, the user will have the game progression data.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/link
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelLinkPlatformAccountRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5240,6 +18179,43 @@ async def public_link_platform_account_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link a Platform User Account to User Account (PublicLinkPlatformAccount)
+
+    It is going to be DEPRECATED.
+    Update Platform Account relation to current User Account.
+    Note: Game progression data (statistics, reward, etc) associated with previous User Account will not be
+    transferred. If the data is tight to game user ID, the user will have the game progression data.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/link
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelLinkPlatformAccountRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5261,6 +18237,43 @@ def public_list_justice_platform_accounts_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Justice Platform Accounts (PublicListJusticePlatformAccountsV3)
+
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID
+
+
+    Requires valid user access token
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelGetUserMappingV3] (OK)
+
+        400: Bad Request - RestErrorResponse
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5279,6 +18292,43 @@ async def public_list_justice_platform_accounts_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get User Justice Platform Accounts (PublicListJusticePlatformAccountsV3)
+
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID
+
+
+    Requires valid user access token
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelGetUserMappingV3] (OK)
+
+        400: Bad Request - RestErrorResponse
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5299,6 +18349,44 @@ def public_list_user_all_platform_accounts_distinct_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get distinct platform accounts linked to the user (PublicListUserAllPlatformAccountsDistinctV3)
+
+    This endpoint retrieves platform accounts linked to user.
+
+    It will query all linked platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
+
+    Required valid user authorization.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/distinctPlatforms
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonDistinctPlatformResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5317,6 +18405,44 @@ async def public_list_user_all_platform_accounts_distinct_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get distinct platform accounts linked to the user (PublicListUserAllPlatformAccountsDistinctV3)
+
+    This endpoint retrieves platform accounts linked to user.
+
+    It will query all linked platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
+
+    Required valid user authorization.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/distinctPlatforms
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonDistinctPlatformResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5338,6 +18464,44 @@ def public_list_user_id_by_platform_user_i_ds_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List User ID By Platform User ID (PublicListUserIDByPlatformUserIDsV3)
+
+    List User ID By Platform User ID
+    This endpoint intended to list game user ID from the given namespace
+    This endpoint return list of user ID by given platform ID and list of platform user ID
+
+    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformUserIDRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonUserPlatforms (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5358,6 +18522,44 @@ async def public_list_user_id_by_platform_user_i_ds_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List User ID By Platform User ID (PublicListUserIDByPlatformUserIDsV3)
+
+    List User ID By Platform User ID
+    This endpoint intended to list game user ID from the given namespace
+    This endpoint return list of user ID by given platform ID and list of platform user ID
+
+    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformUserIDRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonUserPlatforms (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5379,6 +18581,76 @@ def public_partial_update_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (PublicPartialUpdateUserV3)
+
+    Requires valid user access token
+
+
+
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+
+
+
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl}
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
+
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+
+
+     Several case of updating email address
+
+
+      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+
+
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+
+
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
+
+    action code : 10103
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5397,6 +18669,76 @@ async def public_partial_update_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (PublicPartialUpdateUserV3)
+
+    Requires valid user access token
+
+
+
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+
+
+
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl}
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
+
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+
+
+     Several case of updating email address
+
+
+      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+
+
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+
+
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
+
+    action code : 10103
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5420,6 +18762,100 @@ def public_platform_link_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link user's account with platform (PublicPlatformLinkV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
+
+
+
+
+
+
+
+    Prerequisite:
+    Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The ticketâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+
+
+      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The ticketâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
+
+
+      * android : The ticket's value is the Androidâs device ID
+
+
+      * ios : The ticket's value is the iOSâs device ID.
+
+
+      * device : Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+
+
+      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ticket: (ticket) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        409: Conflict - (10163: platform is already linked with the user account)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5443,6 +18879,100 @@ async def public_platform_link_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link user's account with platform (PublicPlatformLinkV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
+
+
+
+
+
+
+
+    Prerequisite:
+    Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The ticketâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+
+
+      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The ticketâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
+
+
+      * android : The ticket's value is the Androidâs device ID
+
+
+      * ios : The ticket's value is the iOSâs device ID.
+
+
+      * device : Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+
+
+      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        ticket: (ticket) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        409: Conflict - (10163: platform is already linked with the user account)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5467,6 +18997,109 @@ def public_platform_link_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link user's account with platform (PublicPlatformLinkV3)
+
+    Required valid user authorization.
+
+
+
+    Prerequisite:
+    Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The ticketâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+
+
+      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The ticketâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
+
+
+      * android : The ticket's value is the Androidâs device ID
+
+
+      * ios : The ticket's value is the iOSâs device ID.
+
+
+      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
+
+
+      * device : Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+
+
+      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
+
+
+      * ps4web : The ticketâs value is the authorization code returned by PSN OAuth.
+
+
+      * xblweb : The ticketâs value is the authorization code returned by XBox Live OAuth.
+
+
+      * awscognito : The ticketâs value is the aws cognito access token (JWT).
+
+
+      * epicgames : The ticketâs value is an access-token obtained from Epicgames EOS Account Service.
+
+
+      * nintendo : The ticketâs value is the authorization code(id_token) returned by Nintendo OAuth.
+
+
+
+
+    action code : 10144
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        redirect_uri: (redirectUri) OPTIONAL str in form_data
+
+        ticket: (ticket) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10174: platform client not found)
+
+        409: Conflict - RestErrorResponse (10163: platform is already linked with the user account | 10172: platform user is already linked with the account | 10173: platform is already linked with another user account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5489,6 +19122,109 @@ async def public_platform_link_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Link user's account with platform (PublicPlatformLinkV3)
+
+    Required valid user authorization.
+
+
+
+    Prerequisite:
+    Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam : The ticketâs value is the authentication code returned by Steam.
+
+
+      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+
+
+      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
+
+
+      * google : The ticketâs value is the authorization code returned by Google OAuth
+
+
+      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+
+
+      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
+
+
+      * android : The ticket's value is the Androidâs device ID
+
+
+      * ios : The ticket's value is the iOSâs device ID.
+
+
+      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
+
+
+      * device : Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+
+
+      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
+
+
+      * ps4web : The ticketâs value is the authorization code returned by PSN OAuth.
+
+
+      * xblweb : The ticketâs value is the authorization code returned by XBox Live OAuth.
+
+
+      * awscognito : The ticketâs value is the aws cognito access token (JWT).
+
+
+      * epicgames : The ticketâs value is an access-token obtained from Epicgames EOS Account Service.
+
+
+      * nintendo : The ticketâs value is the authorization code(id_token) returned by Nintendo OAuth.
+
+
+
+
+    action code : 10144
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        redirect_uri: (redirectUri) OPTIONAL str in form_data
+
+        ticket: (ticket) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10174: platform client not found)
+
+        409: Conflict - RestErrorResponse (10163: platform is already linked with the user account | 10172: platform user is already linked with the account | 10173: platform is already linked with another user account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5511,6 +19247,41 @@ def public_platform_unlink_all_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlink user's account from specific platform (PublicPlatformUnlinkAllV3)
+
+    Required valid user authorization.
+
+
+    Unlink user's account from for all third platforms.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5529,6 +19300,41 @@ async def public_platform_unlink_all_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlink user's account from specific platform (PublicPlatformUnlinkAllV3)
+
+    Required valid user authorization.
+
+
+    Unlink user's account from for all third platforms.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5550,6 +19356,109 @@ def public_platform_unlink_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlink user's account from specific platform (PublicPlatformUnlinkV3)
+
+    Required valid user authorization.
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam
+
+
+      * steamopenid
+
+
+      * facebook
+
+
+      * google
+
+
+      * oculus
+
+
+      * twitch
+
+
+      * android
+
+
+      * ios
+
+
+      * apple
+
+
+      * device
+
+
+      * discord
+
+
+      * awscognito
+
+
+      * epicgames
+
+
+      * nintendo
+
+
+
+
+
+    Unlink user's account from a specific platform. 'justice' platform might have multiple accounts from different namespaces linked.
+
+    platformNamespace need to be specified when the platform ID is 'justice'.
+
+
+
+    Unlink user's account from justice platform will enable password token grant and password update.
+
+
+
+    If you want to unlink user's account in a game namespace, you have to specify platformNamespace to that game namespace.
+
+
+
+    action code : 10121
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUnlinkUserPlatformRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5570,6 +19479,109 @@ async def public_platform_unlink_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlink user's account from specific platform (PublicPlatformUnlinkV3)
+
+    Required valid user authorization.
+
+
+    ## Supported platforms:
+
+
+
+
+
+
+      * steam
+
+
+      * steamopenid
+
+
+      * facebook
+
+
+      * google
+
+
+      * oculus
+
+
+      * twitch
+
+
+      * android
+
+
+      * ios
+
+
+      * apple
+
+
+      * device
+
+
+      * discord
+
+
+      * awscognito
+
+
+      * epicgames
+
+
+      * nintendo
+
+
+
+
+
+    Unlink user's account from a specific platform. 'justice' platform might have multiple accounts from different namespaces linked.
+
+    platformNamespace need to be specified when the platform ID is 'justice'.
+
+
+
+    Unlink user's account from justice platform will enable password token grant and password update.
+
+
+
+    If you want to unlink user's account in a game namespace, you have to specify platformNamespace to that game namespace.
+
+
+
+    action code : 10121
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUnlinkUserPlatformRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5592,6 +19604,46 @@ def public_reset_password_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset User Password (PublicResetPasswordV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/reset [POST]
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/resetPassword
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelResetPasswordRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body | 10142: new password cannot be same with original)
+
+        403: Forbidden - (10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10152: verification code not found)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5611,6 +19663,46 @@ async def public_reset_password_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset User Password (PublicResetPasswordV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/reset [POST]
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/resetPassword
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelResetPasswordRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body | 10142: new password cannot be same with original)
+
+        403: Forbidden - (10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10152: verification code not found)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5634,6 +19726,54 @@ def public_search_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search User (PublicSearchUserV3)
+
+    Requires valid user access token
+
+
+
+
+    This endpoint search all users on the specified namespace that match the query on these fields: display name, and username.
+    The query length should greater than 1ï¼otherwise will not query the database. The default limit value is 100
+
+
+
+    action code : 10132
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        by: (by) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        query: (query) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelPublicUserInformationResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5658,6 +19798,54 @@ async def public_search_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search User (PublicSearchUserV3)
+
+    Requires valid user access token
+
+
+
+
+    This endpoint search all users on the specified namespace that match the query on these fields: display name, and username.
+    The query length should greater than 1ï¼otherwise will not query the database. The default limit value is 100
+
+
+
+    action code : 10132
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        by: (by) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        query: (query) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelPublicUserInformationResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5681,6 +19869,39 @@ def public_send_registration_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send verification code to new unregistered account's email address (PublicSendRegistrationCode)
+
+    This endpoint will validate the request's email address.
+
+    If it already been used, will response 409.
+
+    If it is available, we will send a verification code to this email address.
+    This code can be verified by this endpoint.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/code/request
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendRegisterVerificationCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5699,6 +19920,39 @@ async def public_send_registration_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send verification code to new unregistered account's email address (PublicSendRegistrationCode)
+
+    This endpoint will validate the request's email address.
+
+    If it already been used, will response 409.
+
+    If it is available, we will send a verification code to this email address.
+    This code can be verified by this endpoint.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/code/request
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendRegisterVerificationCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5719,6 +19973,89 @@ def public_send_verification_code_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send verification code to user (PublicSendVerificationCodeV3)
+
+    Required valid user authorization
+
+
+    The verification code is sent to email address
+
+
+
+
+    Available contexts for use :
+
+
+
+
+
+
+      1.
+    UserAccountRegistration
+
+
+    a context type used for verifying email address in user account registration. It returns 409 if the email address already verified.
+    It is the default context if the Context field is empty
+
+
+
+
+
+      2.
+    UpdateEmailAddress
+
+
+    a context type used for verify user before updating email address.(Without email address verified checking)
+
+
+
+
+
+      3. upgradeHeadlessAccount
+
+
+    The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
+    If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
+
+
+
+
+
+
+
+
+    action code: 10116
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/code/request
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (10171: email address not found | 10139: platform account not found)
+
+        409: Conflict - RestErrorResponse (10140: user verified | 10133: email already used)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5737,6 +20074,89 @@ async def public_send_verification_code_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send verification code to user (PublicSendVerificationCodeV3)
+
+    Required valid user authorization
+
+
+    The verification code is sent to email address
+
+
+
+
+    Available contexts for use :
+
+
+
+
+
+
+      1.
+    UserAccountRegistration
+
+
+    a context type used for verifying email address in user account registration. It returns 409 if the email address already verified.
+    It is the default context if the Context field is empty
+
+
+
+
+
+      2.
+    UpdateEmailAddress
+
+
+    a context type used for verify user before updating email address.(Without email address verified checking)
+
+
+
+
+
+      3. upgradeHeadlessAccount
+
+
+    The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
+    If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
+
+
+
+
+
+
+
+
+    action code: 10116
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/code/request
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (10171: email address not found | 10139: platform account not found)
+
+        409: Conflict - RestErrorResponse (10140: user verified | 10133: email already used)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5756,6 +20176,44 @@ def public_send_verification_link_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send verification link to user, this link will point to '/iam/v3/public/users/verify_link/verify' (PublicSendVerificationLinkV3)
+
+    Required valid user authorization
+
+
+    The verification link is sent to email address
+
+
+
+
+    It will not send request if user email is already verified
+
+    Properties:
+        url: /iam/v3/public/users/me/verify_link/request
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationLinkRequest in body
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        409: Conflict - RestErrorResponse (10140: user verified)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+    """
     request = PublicSendVerificationLinkV3.create(
         body=body,
     )
@@ -5768,6 +20226,44 @@ async def public_send_verification_link_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send verification link to user, this link will point to '/iam/v3/public/users/verify_link/verify' (PublicSendVerificationLinkV3)
+
+    Required valid user authorization
+
+
+    The verification link is sent to email address
+
+
+
+
+    It will not send request if user email is already verified
+
+    Properties:
+        url: /iam/v3/public/users/me/verify_link/request
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationLinkRequest in body
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        409: Conflict - RestErrorResponse (10140: user verified)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+    """
     request = PublicSendVerificationLinkV3.create(
         body=body,
     )
@@ -5785,6 +20281,56 @@ def public_update_password_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Password (PublicUpdatePasswordV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/password [PUT]
+
+
+
+
+
+    This endpoint need a valid user access token
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}/password
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserPasswordUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5806,6 +20352,56 @@ async def public_update_password_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Password (PublicUpdatePasswordV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/password [PUT]
+
+
+
+
+
+    This endpoint need a valid user access token
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}/password
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserPasswordUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5827,6 +20423,37 @@ def public_update_password_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Password (PublicUpdatePasswordV3)
+
+    Required valid user authorization.
+    action code: 10107
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/password
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserPasswordUpdateV3Request in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5845,6 +20472,37 @@ async def public_update_password_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Password (PublicUpdatePasswordV3)
+
+    Required valid user authorization.
+    action code: 10107
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/password
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserPasswordUpdateV3Request in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5867,6 +20525,75 @@ def public_update_user_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (PublicUpdateUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint([PUT]): /iam/v3/public/namespaces/{namespace}/users/me [PUT]
+
+      * Substitute endpoint([PATCH]): /iam/v3/public/namespaces/{namespace}/users/me [PATCH]
+
+      * Substitute endpoint([PATCH]): /iam/v4/public/namespaces/{namespace}/users/me [PATCH]
+
+
+
+      * Note:
+        1. Prefer [PATCH] if client support PATCH method
+
+        2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
+
+
+
+
+
+
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+    "+
+    "This endpoint require valid user access token to accessed.
+
+    Supported field {Country, DisplayName, LanguageTag}
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelUserResponse] (OK)
+
+        400: Bad Request - (20019: unable to parse request body | 10131: invalid date of birth | 10155: country is not defined | 10154: country not found | 10130: user under age | 10132: invalid email address)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - (10133: email already used)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5888,6 +20615,75 @@ async def public_update_user_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (PublicUpdateUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint([PUT]): /iam/v3/public/namespaces/{namespace}/users/me [PUT]
+
+      * Substitute endpoint([PATCH]): /iam/v3/public/namespaces/{namespace}/users/me [PATCH]
+
+      * Substitute endpoint([PATCH]): /iam/v4/public/namespaces/{namespace}/users/me [PATCH]
+
+
+
+      * Note:
+        1. Prefer [PATCH] if client support PATCH method
+
+        2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
+
+
+
+
+
+
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+    "+
+    "This endpoint require valid user access token to accessed.
+
+    Supported field {Country, DisplayName, LanguageTag}
+
+    Properties:
+        url: /iam/v2/public/namespaces/{namespace}/users/{userId}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelUserResponse] (OK)
+
+        400: Bad Request - (20019: unable to parse request body | 10131: invalid date of birth | 10155: country is not defined | 10154: country not found | 10130: user under age | 10132: invalid email address)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - (10133: email already used)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5909,6 +20705,78 @@ def public_upgrade_headless_account_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify or consume verification code. (PublicUpgradeHeadlessAccountV3)
+
+    If validateOnly is set false, consume code and upgrade headless account and automatically verified the email address if it is succeeded
+
+
+    Require valid user access token.
+
+
+    The endpoint upgrades a headless account by linking the headless account with the email address and the password.
+    By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
+
+
+
+
+    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
+    In order to get a verification code for the endpoint, please check the send verification code endpoint.
+
+
+
+
+    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+
+    Supported user data fields :
+
+
+
+
+      * displayName
+
+
+      * dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
+
+
+      * country : format ISO3166-1 alpha-2 two letter, e.g. US
+
+
+
+
+    action code : 10124
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10155: country is not defined | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
+
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5927,6 +20795,78 @@ async def public_upgrade_headless_account_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify or consume verification code. (PublicUpgradeHeadlessAccountV3)
+
+    If validateOnly is set false, consume code and upgrade headless account and automatically verified the email address if it is succeeded
+
+
+    Require valid user access token.
+
+
+    The endpoint upgrades a headless account by linking the headless account with the email address and the password.
+    By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
+
+
+
+
+    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
+    In order to get a verification code for the endpoint, please check the send verification code endpoint.
+
+
+
+
+    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+
+    Supported user data fields :
+
+
+
+
+      * displayName
+
+
+      * dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
+
+
+      * country : format ISO3166-1 alpha-2 two letter, e.g. US
+
+
+
+
+    action code : 10124
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10155: country is not defined | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
+
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5947,6 +20887,58 @@ def public_user_verification_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Validate or consume verification code sent to user (PublicUserVerificationV3)
+
+    Will consume code if validateOnly is set false
+
+
+
+
+    Required valid user authorization
+
+
+
+
+    Redeems a verification code sent to a user to verify the user's contact address is correct
+
+
+
+
+    Available ContactType : email
+
+
+
+
+    action code: 10107
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/code/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserVerificationRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+
+        409: Conflict - RestErrorResponse (10141: email verified)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5965,6 +20957,58 @@ async def public_user_verification_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Validate or consume verification code sent to user (PublicUserVerificationV3)
+
+    Will consume code if validateOnly is set false
+
+
+
+
+    Required valid user authorization
+
+
+
+
+    Redeems a verification code sent to a user to verify the user's contact address is correct
+
+
+
+
+    Available ContactType : email
+
+
+
+
+    action code: 10107
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/code/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserVerificationRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+
+        409: Conflict - RestErrorResponse (10141: email verified)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -5986,6 +21030,52 @@ def public_validate_user_by_user_id_and_password_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
+
+    This endpoint is used to validate the user password. Required valid user authorization and valid user ID.
+
+
+    Notes:
+
+
+
+
+
+
+      * This endpoint validate the user password by specifying the userId and password
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/validate
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        password: (password) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (10143: password not match | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6006,6 +21096,52 @@ async def public_validate_user_by_user_id_and_password_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
+
+    This endpoint is used to validate the user password. Required valid user authorization and valid user ID.
+
+
+    Notes:
+
+
+
+
+
+
+      * This endpoint validate the user password by specifying the userId and password
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/{userId}/validate
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        password: (password) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (10143: password not match | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6027,6 +21163,41 @@ def public_verify_headless_account_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upgrade user account to full account (with email) (PublicVerifyHeadlessAccountV3)
+
+    Require valid user authorization
+    action code : 10124
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpgradeHeadlessAccountV3Request in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found)
+
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6045,6 +21216,41 @@ async def public_verify_headless_account_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upgrade user account to full account (with email) (PublicVerifyHeadlessAccountV3)
+
+    Require valid user authorization
+    action code : 10124
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpgradeHeadlessAccountV3Request in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found)
+
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6065,6 +21271,32 @@ def public_verify_registration_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify the registration code (PublicVerifyRegistrationCode)
+
+    Verify the registration code
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/code/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelVerifyRegistrationCode in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Code is valid)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 10138: code not match)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6083,6 +21315,32 @@ async def public_verify_registration_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify the registration code (PublicVerifyRegistrationCode)
+
+    Verify the registration code
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/code/verify
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelVerifyRegistrationCode in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Code is valid)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 10138: code not match)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6102,6 +21360,26 @@ def public_verify_user_by_link_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify user email by the verification link code (PublicVerifyUserByLinkV3)
+
+    Properties:
+        url: /iam/v3/public/users/verify_link/verify
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        code: (code) OPTIONAL str in query
+
+    Responses:
+        302: Found - (Found. Redirected to verification finish page.)
+    """
     request = PublicVerifyUserByLinkV3.create(
         code=code,
     )
@@ -6114,6 +21392,26 @@ async def public_verify_user_by_link_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Verify user email by the verification link code (PublicVerifyUserByLinkV3)
+
+    Properties:
+        url: /iam/v3/public/users/verify_link/verify
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        code: (code) OPTIONAL str in query
+
+    Responses:
+        302: Found - (Found. Redirected to verification finish page.)
+    """
     request = PublicVerifyUserByLinkV3.create(
         code=code,
     )
@@ -6131,6 +21429,40 @@ def public_web_link_platform(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Public Web Linking (PublicWebLinkPlatform)
+
+    This endpoint is used to generate third party login page which will redirected to establish endpoint.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        client_id: (clientId) OPTIONAL str in query
+
+        redirect_uri: (redirectUri) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelWebLinkingResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6153,6 +21485,40 @@ async def public_web_link_platform_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Public Web Linking (PublicWebLinkPlatform)
+
+    This endpoint is used to generate third party login page which will redirected to establish endpoint.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        client_id: (clientId) OPTIONAL str in query
+
+        redirect_uri: (redirectUri) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelWebLinkingResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6176,6 +21542,34 @@ def public_web_link_platform_establish(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Establish Link Progress  (PublicWebLinkPlatformEstablish)
+
+    This endpoint is used by third party to redirect the code for the purpose of linking the account third party to IAM account.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/establish
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        location query: PLACEHOLDER
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        state: (state) REQUIRED str in query
+
+    Responses:
+        302: Found - (Handle Redirect from third party)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6196,6 +21590,34 @@ async def public_web_link_platform_establish_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Establish Link Progress  (PublicWebLinkPlatformEstablish)
+
+    This endpoint is used by third party to redirect the code for the purpose of linking the account third party to IAM account.
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/establish
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        location query: PLACEHOLDER
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        state: (state) REQUIRED str in query
+
+    Responses:
+        302: Found - (Handle Redirect from third party)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6218,6 +21640,54 @@ def reset_password(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset User Password (ResetPassword)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/reset [POST]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or valid basic auth header
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/resetPassword
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BASIC_AUTH] or [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelResetPasswordRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request -
+
+        403: Forbidden -
+
+        404: Not Found -
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6237,6 +21707,54 @@ async def reset_password_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset User Password (ResetPassword)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/reset [POST]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or valid basic auth header
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/resetPassword
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BASIC_AUTH] or [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelResetPasswordRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request -
+
+        403: Forbidden -
+
+        404: Not Found -
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6257,6 +21775,36 @@ def reset_password_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset User Password (ResetPasswordV3)
+
+    action code: 10105
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/reset
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelResetPasswordRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10142: new password cannot be same with original)
+
+        403: Forbidden - RestErrorResponse (10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10152: verification code not found)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6275,6 +21823,36 @@ async def reset_password_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reset User Password (ResetPasswordV3)
+
+    action code: 10105
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/reset
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelResetPasswordRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10142: new password cannot be same with original)
+
+        403: Forbidden - RestErrorResponse (10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10152: verification code not found)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6297,6 +21875,150 @@ def save_user_permission(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Save User Permissions (SaveUserPermission)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]
+
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
+
+
+
+
+    This endpoint will REPLACE user's permissions with the ones defined in body
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/permissions
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissions in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6318,6 +22040,150 @@ async def save_user_permission_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Save User Permissions (SaveUserPermission)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]
+
+
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
+
+
+
+
+    This endpoint will REPLACE user's permissions with the ones defined in body
+
+
+
+
+    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
+
+
+
+
+    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
+
+
+
+
+    In ranged schedule, first element will be start date, and second one will be end date
+
+
+
+
+    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
+
+
+
+
+    Syntax reference
+
+
+
+
+    Fields:
+
+
+
+
+
+
+      1. Seconds: 0-59 * / , -
+
+
+      2. Minutes: 0-59 * / , -
+
+
+      3. Hours: 0-23 * / , -
+
+
+      4. Day of month: 1-31 * / , - L W
+
+
+      5. Month: 1-12 JAN-DEC * / , -
+
+
+      6. Day of week: 0-6 SUN-SAT * / , - L #
+
+
+      7. Year: 1970-2099 * / , -
+
+
+
+
+
+    Special characters:
+
+
+
+
+
+
+      1. *: all values in the fields, e.g. * in seconds fields indicates every second
+
+
+      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+
+
+      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+
+
+      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+
+
+      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+
+
+      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+
+
+      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/permissions
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountcommonPermissions in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6341,6 +22207,58 @@ def save_user_roles(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Save User Roles (SaveUserRoles)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/roles
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+
+        409: Conflict - (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6362,6 +22280,58 @@ async def save_user_roles_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Save User Roles (SaveUserRoles)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/roles
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[str] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+
+        409: Conflict - (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6384,6 +22354,56 @@ def search_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search users (SearchUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/search [GET]
+
+
+
+
+
+
+    Search all users that match the query on these fields: all login IDs (email address, phone number, and platform user id),
+    userID, display name, and on the specified namespace. If the query is not defined, then it searches all users on the specified namespace.
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:* [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:* [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/search
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        query: (query) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelSearchUsersResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6403,6 +22423,56 @@ async def search_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search users (SearchUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/search [GET]
+
+
+
+
+
+
+    Search all users that match the query on these fields: all login IDs (email address, phone number, and platform user id),
+    userID, display name, and on the specified namespace. If the query is not defined, then it searches all users on the specified namespace.
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:* [READ]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:* [READ]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/search
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        query: (query) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelSearchUsersResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6425,6 +22495,92 @@ def send_verification_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send verification code to user (SendVerificationCode)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/code/request [POST]
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    The verification code is sent to either the phone number or email address. It depends on the LoginID's value.
+
+
+
+
+    Available contexts for use :
+
+
+
+
+
+
+      1. UserAccountRegistration
+
+    a context type used for verifying email address in user account registration. It returns 409 if the email address already verified. It is the default context if the Context field is empty
+
+
+
+      2. UpdateEmailAddress
+
+    a context type used for verify user before updating email address.(Without email address verified checking)
+
+
+
+      3. upgradeHeadlessAccount
+
+    The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account. If this context used, IAM rejects the request if the loginId field's value is already used by others by returning HTTP Status Code 409.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/verificationcode
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10146: userID not match)
+
+        404: Not Found - (20008: user not found | 10171: email address not found | 10139: platform account not found)
+
+        409: Conflict - (10140: user verified | 10133: email already used)
+
+        429: Too Many Requests - (20007: too many requests)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6446,6 +22602,92 @@ async def send_verification_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send verification code to user (SendVerificationCode)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/code/request [POST]
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    The verification code is sent to either the phone number or email address. It depends on the LoginID's value.
+
+
+
+
+    Available contexts for use :
+
+
+
+
+
+
+      1. UserAccountRegistration
+
+    a context type used for verifying email address in user account registration. It returns 409 if the email address already verified. It is the default context if the Context field is empty
+
+
+
+      2. UpdateEmailAddress
+
+    a context type used for verify user before updating email address.(Without email address verified checking)
+
+
+
+      3. upgradeHeadlessAccount
+
+    The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account. If this context used, IAM rejects the request if the loginId field's value is already used by others by returning HTTP Status Code 409.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/verificationcode
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10146: userID not match)
+
+        404: Not Found - (20008: user not found | 10171: email address not found | 10139: platform account not found)
+
+        409: Conflict - (10140: user verified | 10133: email already used)
+
+        429: Too Many Requests - (20007: too many requests)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6469,6 +22711,57 @@ def update_country_age_restriction(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update country's age restriction (UpdateCountryAgeRestriction)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/countries/{countryCode}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCountryAgeRestrictionRequest in body
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelCountry (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6490,6 +22783,57 @@ async def update_country_age_restriction_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update country's age restriction (UpdateCountryAgeRestriction)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]
+
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+
+    Properties:
+        url: /iam/v2/admin/namespaces/{namespace}/countries/{countryCode}
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCountryAgeRestrictionRequest in body
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelCountry (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (Data not found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6513,6 +22857,58 @@ def update_password(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Password (UpdatePassword)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/password [PUT]
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/password
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserPasswordUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6534,6 +22930,58 @@ async def update_password_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User Password (UpdatePassword)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/password [PUT]
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/password
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserPasswordUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - (20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6557,6 +23005,101 @@ def update_user(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (UpdateUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint([PUT]): /iam/v3/public/namespaces/{namespace}/users/me [PUT]
+
+      * Substitute endpoint([PATCH]): /iam/v3/public/namespaces/{namespace}/users/me [PATCH]
+
+      * Substitute endpoint([PATCH]): /iam/v4/public/namespaces/{namespace}/users/me [PATCH]
+
+
+
+      * Note:
+        1. Prefer [PATCH] if client support PATCH method
+
+        2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    "+
+    "
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+    "+
+    "
+
+    Supported field {Country, DisplayName, LanguageTag}
+
+    "+
+    "
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    "+
+    "
+     Several case of updating email address "+
+    "
+
+      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+    "+
+    "
+      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    "+
+    "
+      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        400: Bad Request - (20019: unable to parse request body | 10131: invalid date of birth | 10155: country is not defined | 10154: country not found | 10130: user under age | 10132: invalid email address)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - (10133: email already used)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6578,6 +23121,101 @@ async def update_user_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (UpdateUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint([PUT]): /iam/v3/public/namespaces/{namespace}/users/me [PUT]
+
+      * Substitute endpoint([PATCH]): /iam/v3/public/namespaces/{namespace}/users/me [PATCH]
+
+      * Substitute endpoint([PATCH]): /iam/v4/public/namespaces/{namespace}/users/me [PATCH]
+
+
+
+      * Note:
+        1. Prefer [PATCH] if client support PATCH method
+
+        2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    "+
+    "
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+    "+
+    "
+
+    Supported field {Country, DisplayName, LanguageTag}
+
+    "+
+    "
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+    "+
+    "
+     Several case of updating email address "+
+    "
+
+      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+    "+
+    "
+      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    "+
+    "
+      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        400: Bad Request - (20019: unable to parse request body | 10131: invalid date of birth | 10155: country is not defined | 10154: country not found | 10130: user under age | 10132: invalid email address)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - (10133: email already used)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6599,6 +23237,87 @@ def update_user_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (UpdateUserV3)
+
+    Requires valid user access token
+
+
+
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+
+
+
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl}
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
+
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+
+
+     Several case of updating email address
+
+
+      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+
+
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+
+
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
+    Important notes:
+
+
+
+    This endpoint provides support for client that doesn't have PATCH support, i.e. UE4 before v4.23 released.
+
+    If the client support PATCH method, use [PATCH] /iam/v3/public/namespaces/{namespace}/users/me instead
+
+
+
+
+
+    action code : 10103
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6617,6 +23336,87 @@ async def update_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update User (UpdateUserV3)
+
+    Requires valid user access token
+
+
+
+
+
+    This Endpoint support update user based on given data. Single request can update single field or multi fields.
+
+
+
+
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl}
+
+
+
+
+    Country use ISO3166-1 alpha-2 two letter, e.g. US.
+
+
+
+
+    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+
+
+
+     Several case of updating email address
+
+
+      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+
+
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+
+
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
+    Important notes:
+
+
+
+    This endpoint provides support for client that doesn't have PATCH support, i.e. UE4 before v4.23 released.
+
+    If the client support PATCH method, use [PATCH] /iam/v3/public/namespaces/{namespace}/users/me instead
+
+
+
+
+
+    action code : 10103
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6639,6 +23439,56 @@ def upgrade_headless_account(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upgrade user account to full account (with email) (upgradeHeadlessAccount)
+
+    ## The endpoint is going to be deprecated
+
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccount
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpgradeHeadlessAccountRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict - (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6660,6 +23510,56 @@ async def upgrade_headless_account_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upgrade user account to full account (with email) (upgradeHeadlessAccount)
+
+    ## The endpoint is going to be deprecated
+
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccount
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpgradeHeadlessAccountRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict - (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6683,6 +23583,61 @@ def upgrade_headless_account_with_verification_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upgrade headless account and automatically verified the email address if it is succeeded (UpgradeHeadlessAccountWithVerificationCode)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    The endpoint upgrades a headless account by linking the headless account with the email address and the password. By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
+    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call. In order to get a verification code for the endpoint, please check the send verification code endpoint.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpgradeHeadlessAccountWithVerificationCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict - (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6704,6 +23659,61 @@ async def upgrade_headless_account_with_verification_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upgrade headless account and automatically verified the email address if it is succeeded (UpgradeHeadlessAccountWithVerificationCode)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    The endpoint upgrades a headless account by linking the headless account with the email address and the password. By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
+    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call. In order to get a verification code for the endpoint, please check the send verification code endpoint.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpgradeHeadlessAccountWithVerificationCodeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponse (OK)
+
+        400: Bad Request - RestErrorResponse (Invalid request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict - (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6727,6 +23737,67 @@ def user_verification(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Redeem verification code sent to user (UserVerification)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/code/verify [POST]
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    Redeems a verification code sent to a user to verify the user's contact address is correct
+
+
+    Available ContactType : email or phone
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/verification
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserVerificationRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -6748,6 +23819,67 @@ async def user_verification_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Redeem verification code sent to user (UserVerification)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/code/verify [POST]
+
+
+
+
+
+
+
+    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
+
+
+    Redeems a verification code sent to a user to verify the user's contact address is correct
+
+
+    Available ContactType : email or phone
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+
+    Properties:
+        url: /iam/namespaces/{namespace}/users/{userId}/verification
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserVerificationRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - (20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
+
+        404: Not Found - (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

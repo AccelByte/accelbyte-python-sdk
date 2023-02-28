@@ -55,6 +55,77 @@ def create_group_configuration_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new configuration (createGroupConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]'
+
+
+
+
+    This endpoint is used to create new configuration. Before creating the configuration, make sure that member role for admin and group member are already created before.
+
+
+
+
+    For each of the global rule, it will be the rule detail that consists of these fields:
+
+
+
+
+
+
+      * ruleAttribute : attribute of the player that needs to be checked
+
+
+      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+
+
+      * ruleValue : value that needs to be checked
+
+
+
+
+
+    Allowed Action can only be filled with any available action in the Group Service. For the configuration, the only value is "createGroup"
+
+
+
+
+    Action Code: 73103
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration
+
+        method: POST
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateGroupConfigurationRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateGroupConfigurationResponseV1 (Created)
+
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        409: Conflict - ResponseErrorResponse (73130: global configuration already exist)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -73,6 +144,77 @@ async def create_group_configuration_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new configuration (createGroupConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]'
+
+
+
+
+    This endpoint is used to create new configuration. Before creating the configuration, make sure that member role for admin and group member are already created before.
+
+
+
+
+    For each of the global rule, it will be the rule detail that consists of these fields:
+
+
+
+
+
+
+      * ruleAttribute : attribute of the player that needs to be checked
+
+
+      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+
+
+      * ruleValue : value that needs to be checked
+
+
+
+
+
+    Allowed Action can only be filled with any available action in the Group Service. For the configuration, the only value is "createGroup"
+
+
+
+
+    Action Code: 73103
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration
+
+        method: POST
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateGroupConfigurationRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateGroupConfigurationResponseV1 (Created)
+
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        409: Conflict - ResponseErrorResponse (73130: global configuration already exist)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -94,6 +236,55 @@ def delete_group_configuration_global_rule_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete existing configuration global rule based on allowed action (deleteGroupConfigurationGlobalRuleAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
+
+
+
+
+    This endpoint is used to delete existing global rule configuration based on the allowed action. It will not give any error if the allowed action is not existed in the global rule
+
+
+
+
+    Action Code: 73105
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}
+
+        method: DELETE
+
+        tags: ["Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        allowed_action: (allowedAction) REQUIRED str in path
+
+        configuration_code: (configurationCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateGroupConfigurationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -114,6 +305,55 @@ async def delete_group_configuration_global_rule_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete existing configuration global rule based on allowed action (deleteGroupConfigurationGlobalRuleAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
+
+
+
+
+    This endpoint is used to delete existing global rule configuration based on the allowed action. It will not give any error if the allowed action is not existed in the global rule
+
+
+
+
+    Action Code: 73105
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}
+
+        method: DELETE
+
+        tags: ["Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        allowed_action: (allowedAction) REQUIRED str in path
+
+        configuration_code: (configurationCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateGroupConfigurationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,6 +375,53 @@ def delete_group_configuration_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete group configuration (deleteGroupConfigurationV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]'
+
+
+
+
+    This endpoint is used to delete group configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
+
+
+
+
+    Action Code: 73101
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
+
+        method: DELETE
+
+        tags: ["Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        configuration_code: (configurationCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -153,6 +440,53 @@ async def delete_group_configuration_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete group configuration (deleteGroupConfigurationV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]'
+
+
+
+
+    This endpoint is used to delete group configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
+
+
+
+
+    Action Code: 73101
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
+
+        method: DELETE
+
+        tags: ["Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        configuration_code: (configurationCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,6 +507,53 @@ def get_group_configuration_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get existing configuration (getGroupConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]'
+
+
+
+
+    This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
+
+
+
+
+    Action Code: 73101
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
+
+        method: GET
+
+        tags: ["Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        configuration_code: (configurationCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetGroupConfigurationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,6 +572,53 @@ async def get_group_configuration_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get existing configuration (getGroupConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]'
+
+
+
+
+    This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
+
+
+
+
+    Action Code: 73101
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
+
+        method: GET
+
+        tags: ["Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        configuration_code: (configurationCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetGroupConfigurationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -210,6 +638,73 @@ def initiate_group_configuration_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """initiate configuration (initiateGroupConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]'
+
+
+
+
+    This endpoint is used to initiate configuration. This endpoint will automatically create default configuration and member roles with default permission
+
+
+
+
+    Default Permission for admin role will cover these permission:
+
+
+
+
+
+
+      * Permission to invite user to group
+
+
+      * Permission to accept or reject join request
+
+
+      * Permission to kick group member
+
+
+
+
+
+    Default max member value will be 50 and global rules will be empty
+
+
+
+
+    Action Code: 73104
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/initiate
+
+        method: POST
+
+        tags: ["Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateGroupConfigurationResponseV1 (Created)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        409: Conflict - ResponseErrorResponse (73130: global configuration already exist)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,6 +721,73 @@ async def initiate_group_configuration_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """initiate configuration (initiateGroupConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]'
+
+
+
+
+    This endpoint is used to initiate configuration. This endpoint will automatically create default configuration and member roles with default permission
+
+
+
+
+    Default Permission for admin role will cover these permission:
+
+
+
+
+
+
+      * Permission to invite user to group
+
+
+      * Permission to accept or reject join request
+
+
+      * Permission to kick group member
+
+
+
+
+
+    Default max member value will be 50 and global rules will be empty
+
+
+
+
+    Action Code: 73104
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/initiate
+
+        method: POST
+
+        tags: ["Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateGroupConfigurationResponseV1 (Created)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        409: Conflict - ResponseErrorResponse (73130: global configuration already exist)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,6 +808,55 @@ def list_group_configuration_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List Group Configuration (listGroupConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]'
+
+
+
+
+    This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
+
+
+
+
+    Action Code: 73101
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration
+
+        method: GET
+
+        tags: ["Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsListConfigurationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -266,6 +877,55 @@ async def list_group_configuration_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List Group Configuration (listGroupConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]'
+
+
+
+
+    This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
+
+
+
+
+    Action Code: 73101
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration
+
+        method: GET
+
+        tags: ["Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsListConfigurationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -288,6 +948,55 @@ def update_group_configuration_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update existing configuration (updateGroupConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
+
+
+
+
+    This endpoint is used to update existing configuration. groupAdminRoleId and groupMemberRoleId won't be able to be updated. User can try to change the member role permission instead for each of those member role
+
+
+
+
+    Action Code: 73102
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
+
+        method: PATCH
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateGroupConfigurationRequestV1 in body
+
+        configuration_code: (configurationCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateGroupConfigurationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -308,6 +1017,55 @@ async def update_group_configuration_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update existing configuration (updateGroupConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
+
+
+
+
+    This endpoint is used to update existing configuration. groupAdminRoleId and groupMemberRoleId won't be able to be updated. User can try to change the member role permission instead for each of those member role
+
+
+
+
+    Action Code: 73102
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
+
+        method: PATCH
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateGroupConfigurationRequestV1 in body
+
+        configuration_code: (configurationCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateGroupConfigurationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -331,6 +1089,57 @@ def update_group_configuration_global_rule_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update existing configuration global rule (updateGroupConfigurationGlobalRuleAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
+
+
+
+
+    This endpoint is used to update existing global rule configuration based on the allowed action. It will replace the permission with the request
+
+
+
+
+    Action Code: 73106
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}
+
+        method: PUT
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateGroupConfigurationGlobalRulesRequestV1 in body
+
+        allowed_action: (allowedAction) REQUIRED str in path
+
+        configuration_code: (configurationCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateGroupConfigurationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -353,6 +1162,57 @@ async def update_group_configuration_global_rule_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update existing configuration global rule (updateGroupConfigurationGlobalRuleAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
+
+
+
+
+    This endpoint is used to update existing global rule configuration based on the allowed action. It will replace the permission with the request
+
+
+
+
+    Action Code: 73106
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
+
+    Properties:
+        url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}
+
+        method: PUT
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateGroupConfigurationGlobalRulesRequestV1 in body
+
+        allowed_action: (allowedAction) REQUIRED str in path
+
+        configuration_code: (configurationCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateGroupConfigurationResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 20022: token is not user token)
+
+        404: Not Found - ResponseErrorResponse (73131: global configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

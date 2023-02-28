@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Group Service (2.15.0)
+# AccelByte Cloud Group Service (2.15.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ModelsGetGroupListRequestV2
 from ...models import ModelsGetGroupsResponseV1
-from ...models import ModelsPublicGetGroupListRequestV2
 from ...models import ResponseErrorResponse
 
 
@@ -62,7 +62,7 @@ class GetListGroupByIDsV2(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsPublicGetGroupListRequestV2 in body
+        body: (body) REQUIRED ModelsGetGroupListRequestV2 in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -87,7 +87,7 @@ class GetListGroupByIDsV2(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsPublicGetGroupListRequestV2  # REQUIRED in [body]
+    body: ModelsGetGroupListRequestV2  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -151,9 +151,7 @@ class GetListGroupByIDsV2(Operation):
 
     # region with_x methods
 
-    def with_body(
-        self, value: ModelsPublicGetGroupListRequestV2
-    ) -> GetListGroupByIDsV2:
+    def with_body(self, value: ModelsGetGroupListRequestV2) -> GetListGroupByIDsV2:
         self.body = value
         return self
 
@@ -170,7 +168,7 @@ class GetListGroupByIDsV2(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelsPublicGetGroupListRequestV2()
+            result["body"] = ModelsGetGroupListRequestV2()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -235,7 +233,7 @@ class GetListGroupByIDsV2(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelsPublicGetGroupListRequestV2,
+        body: ModelsGetGroupListRequestV2,
         namespace: str,
     ) -> GetListGroupByIDsV2:
         instance = cls()
@@ -249,11 +247,11 @@ class GetListGroupByIDsV2(Operation):
     ) -> GetListGroupByIDsV2:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsPublicGetGroupListRequestV2.create_from_dict(
+            instance.body = ModelsGetGroupListRequestV2.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelsPublicGetGroupListRequestV2()
+            instance.body = ModelsGetGroupListRequestV2()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

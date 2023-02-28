@@ -46,6 +46,43 @@ def indirect_bulk_accept_versioned_policy(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin bulk accept Policy Versions (indirectBulkAcceptVersionedPolicy)
+
+    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/users/{userId}/agreements/policies
+
+        method: POST
+
+        tags: ["Admin User Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        publisher_user_id: (publisherUserId) OPTIONAL str in query
+
+        client_id: (clientId) REQUIRED str in query
+
+        country_code: (countryCode) REQUIRED str in query
+
+    Responses:
+        201: Created - AcceptAgreementResponse (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -72,6 +109,43 @@ async def indirect_bulk_accept_versioned_policy_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin bulk accept Policy Versions (indirectBulkAcceptVersionedPolicy)
+
+    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/users/{userId}/agreements/policies
+
+        method: POST
+
+        tags: ["Admin User Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        publisher_user_id: (publisherUserId) OPTIONAL str in query
+
+        client_id: (clientId) REQUIRED str in query
+
+        country_code: (countryCode) REQUIRED str in query
+
+    Responses:
+        201: Created - AcceptAgreementResponse (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

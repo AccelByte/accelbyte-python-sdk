@@ -53,7 +53,7 @@ class RemovePlayerFromSession(Operation):
 
         method: DELETE
 
-        tags: ["Session"]
+        tags: ["Session", "public"]
 
         consumes: ["application/json"]
 

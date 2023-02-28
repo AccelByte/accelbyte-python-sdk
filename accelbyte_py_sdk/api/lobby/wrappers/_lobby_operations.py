@@ -47,6 +47,52 @@ def admin_join_party_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """admin join a player into a party (adminJoinPartyV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
+
+    admin join a player into a party.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId}
+
+        method: POST
+
+        tags: ["Lobby Operations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (Accepted)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        412: Precondition Failed - RestapiErrorResponseBody (Precondition Failed)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,6 +113,52 @@ async def admin_join_party_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """admin join a player into a party (adminJoinPartyV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
+
+    admin join a player into a party.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId}
+
+        method: POST
+
+        tags: ["Lobby Operations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (Accepted)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        412: Precondition Failed - RestapiErrorResponseBody (Precondition Failed)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,6 +181,52 @@ def admin_update_party_attributes_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """admin update party attributes (adminUpdatePartyAttributesV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
+
+    update party attributes in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/attributes
+
+        method: PUT
+
+        tags: ["Lobby Operations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPartyPUTCustomAttributesRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPartyData (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        412: Precondition Failed - RestapiErrorResponseBody (Precondition Failed)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,6 +247,52 @@ async def admin_update_party_attributes_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """admin update party attributes (adminUpdatePartyAttributesV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
+
+    update party attributes in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/attributes
+
+        method: PUT
+
+        tags: ["Lobby Operations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPartyPUTCustomAttributesRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPartyData (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        412: Precondition Failed - RestapiErrorResponseBody (Precondition Failed)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -127,6 +311,28 @@ async def admin_update_party_attributes_v1_async(
 def public_get_messages(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """get service messages (publicGetMessages)
+
+    get the list of messages.
+
+    Properties:
+        url: /lobby/v1/messages
+
+        method: GET
+
+        tags: ["Lobby Operations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[LogAppMessageDeclaration] (OK)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     request = PublicGetMessages.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -135,6 +341,28 @@ def public_get_messages(
 async def public_get_messages_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """get service messages (publicGetMessages)
+
+    get the list of messages.
+
+    Properties:
+        url: /lobby/v1/messages
+
+        method: GET
+
+        tags: ["Lobby Operations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[LogAppMessageDeclaration] (OK)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     request = PublicGetMessages.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

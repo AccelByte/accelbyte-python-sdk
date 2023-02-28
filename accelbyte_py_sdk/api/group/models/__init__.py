@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Group Service."""
 
-__version__ = "2.15.0"
+__version__ = "2.15.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -28,6 +28,7 @@ from .models_create_member_role_request_v1 import ModelsCreateMemberRoleRequestV
 from .models_get_group_configuration_response_v1 import (
     ModelsGetGroupConfigurationResponseV1,
 )
+from .models_get_group_list_request_v2 import ModelsGetGroupListRequestV2
 from .models_get_group_member_list_response_v1 import ModelsGetGroupMemberListResponseV1
 from .models_get_groups_list_response_v1 import ModelsGetGroupsListResponseV1
 from .models_get_groups_response_v1 import ModelsGetGroupsResponseV1
@@ -60,7 +61,9 @@ from .models_pagination import ModelsPagination
 from .models_public_create_new_group_request_v1 import (
     ModelsPublicCreateNewGroupRequestV1,
 )
-from .models_public_get_group_list_request_v2 import ModelsPublicGetGroupListRequestV2
+from .models_public_create_new_group_request_v1 import (
+    GroupTypeEnum as ModelsPublicCreateNewGroupRequestV1GroupTypeEnum,
+)
 from .models_remove_role_from_member_request_v1 import (
     ModelsRemoveRoleFromMemberRequestV1,
 )
@@ -90,6 +93,9 @@ from .models_update_group_predefined_rule_request_v1 import (
     ModelsUpdateGroupPredefinedRuleRequestV1,
 )
 from .models_update_group_request_v1 import ModelsUpdateGroupRequestV1
+from .models_update_group_request_v1 import (
+    GroupTypeEnum as ModelsUpdateGroupRequestV1GroupTypeEnum,
+)
 from .models_update_group_request_v1_custom_attributes import (
     ModelsUpdateGroupRequestV1CustomAttributes,
 )

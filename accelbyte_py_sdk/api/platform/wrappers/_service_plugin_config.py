@@ -44,6 +44,31 @@ def delete_service_plugin_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete service plugin config (deleteServicePluginConfig)
+
+    Delete service plugin config.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:CONFIG:SERVICEPLUGIN, action=8 (DELETE)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/configs/servicePlugin
+
+        method: DELETE
+
+        tags: ["ServicePluginConfig"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -60,6 +85,31 @@ async def delete_service_plugin_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete service plugin config (deleteServicePluginConfig)
+
+    Delete service plugin config.
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:CONFIG:SERVICEPLUGIN, action=8 (DELETE)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/configs/servicePlugin
+
+        method: DELETE
+
+        tags: ["ServicePluginConfig"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,6 +128,31 @@ def get_service_plugin_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get service plugin config (getServicePluginConfig)
+
+    Get service plugin config.
+    Other detail info:
+
+      * Required permission : resource= ADMIN:NAMESPACE:{namespace}:CONFIG:SERVICEPLUGIN , action=2 (READ)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/configs/servicePlugin
+
+        method: GET
+
+        tags: ["ServicePluginConfig"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ServicePluginConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -94,6 +169,31 @@ async def get_service_plugin_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get service plugin config (getServicePluginConfig)
+
+    Get service plugin config.
+    Other detail info:
+
+      * Required permission : resource= ADMIN:NAMESPACE:{namespace}:CONFIG:SERVICEPLUGIN , action=2 (READ)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/configs/servicePlugin
+
+        method: GET
+
+        tags: ["ServicePluginConfig"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ServicePluginConfigInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,6 +213,35 @@ def update_service_plugin_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update service plugin config service (updateServicePluginConfig)
+
+    Update catalog config. Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:CONFIG:SERVICEPLUGIN, action=4 (UPDATE)
+      *  Returns : updated service plugin config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/configs/servicePlugin
+
+        method: PUT
+
+        tags: ["ServicePluginConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ServicePluginConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ServicePluginConfigInfo (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -131,6 +260,35 @@ async def update_service_plugin_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update service plugin config service (updateServicePluginConfig)
+
+    Update catalog config. Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:CONFIG:SERVICEPLUGIN, action=4 (UPDATE)
+      *  Returns : updated service plugin config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/configs/servicePlugin
+
+        method: PUT
+
+        tags: ["ServicePluginConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ServicePluginConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ServicePluginConfigInfo (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -54,7 +54,7 @@ class UpdateTopicByTopicName(Operation):
 
         method: PUT
 
-        tags: ["notification"]
+        tags: ["notification", "public"]
 
         consumes: ["application/json"]
 

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.27.2)
+# AccelByte Cloud Iam Service (5.28.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -88,6 +88,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         scopes: (scopes) OPTIONAL List[str]
 
         token_endpoint: (TokenEndpoint) OPTIONAL str
+
+        user_info_endpoint: (UserInfoEndpoint) OPTIONAL str
+
+        user_info_http_method: (UserInfoHTTPMethod) OPTIONAL str
     """
 
     # region fields
@@ -119,6 +123,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     netflix_certificates: AccountcommonNetflixCertificates  # OPTIONAL
     scopes: List[str]  # OPTIONAL
     token_endpoint: str  # OPTIONAL
+    user_info_endpoint: str  # OPTIONAL
+    user_info_http_method: str  # OPTIONAL
 
     # endregion fields
 
@@ -276,6 +282,18 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.token_endpoint = value
         return self
 
+    def with_user_info_endpoint(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.user_info_endpoint = value
+        return self
+
+    def with_user_info_http_method(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.user_info_http_method = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -397,6 +415,14 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["TokenEndpoint"] = str(self.token_endpoint)
         elif include_empty:
             result["TokenEndpoint"] = ""
+        if hasattr(self, "user_info_endpoint"):
+            result["UserInfoEndpoint"] = str(self.user_info_endpoint)
+        elif include_empty:
+            result["UserInfoEndpoint"] = ""
+        if hasattr(self, "user_info_http_method"):
+            result["UserInfoHTTPMethod"] = str(self.user_info_http_method)
+        elif include_empty:
+            result["UserInfoHTTPMethod"] = ""
         return result
 
     # endregion to methods
@@ -433,6 +459,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         netflix_certificates: Optional[AccountcommonNetflixCertificates] = None,
         scopes: Optional[List[str]] = None,
         token_endpoint: Optional[str] = None,
+        user_info_endpoint: Optional[str] = None,
+        user_info_http_method: Optional[str] = None,
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         instance = cls()
         instance.acsurl = acsurl
@@ -466,6 +494,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.scopes = scopes
         if token_endpoint is not None:
             instance.token_endpoint = token_endpoint
+        if user_info_endpoint is not None:
+            instance.user_info_endpoint = user_info_endpoint
+        if user_info_http_method is not None:
+            instance.user_info_http_method = user_info_http_method
         return instance
 
     @classmethod
@@ -603,6 +635,14 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.token_endpoint = str(dict_["TokenEndpoint"])
         elif include_empty:
             instance.token_endpoint = ""
+        if "UserInfoEndpoint" in dict_ and dict_["UserInfoEndpoint"] is not None:
+            instance.user_info_endpoint = str(dict_["UserInfoEndpoint"])
+        elif include_empty:
+            instance.user_info_endpoint = ""
+        if "UserInfoHTTPMethod" in dict_ and dict_["UserInfoHTTPMethod"] is not None:
+            instance.user_info_http_method = str(dict_["UserInfoHTTPMethod"])
+        elif include_empty:
+            instance.user_info_http_method = ""
         return instance
 
     @classmethod
@@ -673,6 +713,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "NetflixCertificates": "netflix_certificates",
             "scopes": "scopes",
             "TokenEndpoint": "token_endpoint",
+            "UserInfoEndpoint": "user_info_endpoint",
+            "UserInfoHTTPMethod": "user_info_http_method",
         }
 
     @staticmethod
@@ -705,6 +747,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "NetflixCertificates": False,
             "scopes": False,
             "TokenEndpoint": False,
+            "UserInfoEndpoint": False,
+            "UserInfoHTTPMethod": False,
         }
 
     # endregion static methods

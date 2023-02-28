@@ -56,6 +56,47 @@ def acquire_user_ticket(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Acquire ticket (acquireUserTicket)
+
+    [SERVICE COMMUNICATION ONLY] Acquire ticket(code/key) based on booth name.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET", action=1 (CREATE)
+      *  Returns : acquire result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/tickets/{boothName}
+
+        method: POST
+
+        tags: ["Ticket"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TicketAcquireRequest in body
+
+        booth_name: (boothName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - TicketAcquireResult (successful operation)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37071: Insufficient ticket in booth [{boothName}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,6 +119,47 @@ async def acquire_user_ticket_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Acquire ticket (acquireUserTicket)
+
+    [SERVICE COMMUNICATION ONLY] Acquire ticket(code/key) based on booth name.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET", action=1 (CREATE)
+      *  Returns : acquire result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/tickets/{boothName}
+
+        method: POST
+
+        tags: ["Ticket"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TicketAcquireRequest in body
+
+        booth_name: (boothName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - TicketAcquireResult (successful operation)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37071: Insufficient ticket in booth [{boothName}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,6 +183,42 @@ def decrease_ticket_sale(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Decrease ticket sale (decreaseTicketSale)
+
+    [SERVICE COMMUNICATION ONLY] Decrease ticket(code/key) sale if requested orderNo is already increased.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/decrement
+
+        method: PUT
+
+        tags: ["Ticket"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TicketSaleDecrementRequest in body
+
+        booth_name: (boothName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Return item successfully)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -121,6 +239,42 @@ async def decrease_ticket_sale_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Decrease ticket sale (decreaseTicketSale)
+
+    [SERVICE COMMUNICATION ONLY] Decrease ticket(code/key) sale if requested orderNo is already increased.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/decrement
+
+        method: PUT
+
+        tags: ["Ticket"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TicketSaleDecrementRequest in body
+
+        booth_name: (boothName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Return item successfully)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,6 +296,39 @@ def get_ticket_booth_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get ticket booth ID (getTicketBoothID)
+
+    Get ticket(code/key) booth ID.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
+      *  Returns : ticket booth id
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/id
+
+        method: GET
+
+        tags: ["Ticket"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        booth_name: (boothName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - TicketBoothID (successful operation)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -160,6 +347,39 @@ async def get_ticket_booth_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get ticket booth ID (getTicketBoothID)
+
+    Get ticket(code/key) booth ID.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
+      *  Returns : ticket booth id
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/id
+
+        method: GET
+
+        tags: ["Ticket"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        booth_name: (boothName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - TicketBoothID (successful operation)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -180,6 +400,39 @@ def get_ticket_dynamic(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get ticket dynamic (getTicketDynamic)
+
+    [SERVICE COMMUNICATION ONLY] Get ticket(code/key) dynamic based on booth name.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
+      *  Returns : ticket dynamic
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/tickets/{boothName}
+
+        method: GET
+
+        tags: ["Ticket"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        booth_name: (boothName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - TicketDynamicInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -198,6 +451,39 @@ async def get_ticket_dynamic_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get ticket dynamic (getTicketDynamic)
+
+    [SERVICE COMMUNICATION ONLY] Get ticket(code/key) dynamic based on booth name.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
+      *  Returns : ticket dynamic
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/tickets/{boothName}
+
+        method: GET
+
+        tags: ["Ticket"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        booth_name: (boothName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - TicketDynamicInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -219,6 +505,43 @@ def increase_ticket_sale(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Increase ticket sale (increaseTicketSale)
+
+    [SERVICE COMMUNICATION ONLY] increase ticket(code/key) sale.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
+      *  Returns : Ticket sale increment result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/increment
+
+        method: PUT
+
+        tags: ["Ticket"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TicketSaleIncrementRequest in body
+
+        booth_name: (boothName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - TicketSaleIncrementResult (successful operation)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -239,6 +562,43 @@ async def increase_ticket_sale_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Increase ticket sale (increaseTicketSale)
+
+    [SERVICE COMMUNICATION ONLY] increase ticket(code/key) sale.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
+      *  Returns : Ticket sale increment result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/increment
+
+        method: PUT
+
+        tags: ["Ticket"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TicketSaleIncrementRequest in body
+
+        booth_name: (boothName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - TicketSaleIncrementResult (successful operation)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

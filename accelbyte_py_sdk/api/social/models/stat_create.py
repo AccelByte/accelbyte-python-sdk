@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Social Service (1.33.0)
+# AccelByte Cloud Social Service (2.0.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,6 +46,8 @@ class StatCreate(Model):
 
         stat_code: (statCode) REQUIRED str
 
+        cycle_ids: (cycleIds) OPTIONAL List[str]
+
         description: (description) OPTIONAL str
 
         increment_only: (incrementOnly) OPTIONAL bool
@@ -65,6 +67,7 @@ class StatCreate(Model):
     name: str  # REQUIRED
     set_by: Union[str, SetByEnum]  # REQUIRED
     stat_code: str  # REQUIRED
+    cycle_ids: List[str]  # OPTIONAL
     description: str  # OPTIONAL
     increment_only: bool  # OPTIONAL
     maximum: float  # OPTIONAL
@@ -90,6 +93,10 @@ class StatCreate(Model):
 
     def with_stat_code(self, value: str) -> StatCreate:
         self.stat_code = value
+        return self
+
+    def with_cycle_ids(self, value: List[str]) -> StatCreate:
+        self.cycle_ids = value
         return self
 
     def with_description(self, value: str) -> StatCreate:
@@ -138,6 +145,10 @@ class StatCreate(Model):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = ""
+        if hasattr(self, "cycle_ids"):
+            result["cycleIds"] = [str(i0) for i0 in self.cycle_ids]
+        elif include_empty:
+            result["cycleIds"] = []
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -175,6 +186,7 @@ class StatCreate(Model):
         name: str,
         set_by: Union[str, SetByEnum],
         stat_code: str,
+        cycle_ids: Optional[List[str]] = None,
         description: Optional[str] = None,
         increment_only: Optional[bool] = None,
         maximum: Optional[float] = None,
@@ -187,6 +199,8 @@ class StatCreate(Model):
         instance.name = name
         instance.set_by = set_by
         instance.stat_code = stat_code
+        if cycle_ids is not None:
+            instance.cycle_ids = cycle_ids
         if description is not None:
             instance.description = description
         if increment_only is not None:
@@ -222,6 +236,10 @@ class StatCreate(Model):
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
             instance.stat_code = ""
+        if "cycleIds" in dict_ and dict_["cycleIds"] is not None:
+            instance.cycle_ids = [str(i0) for i0 in dict_["cycleIds"]]
+        elif include_empty:
+            instance.cycle_ids = []
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -289,6 +307,7 @@ class StatCreate(Model):
             "name": "name",
             "setBy": "set_by",
             "statCode": "stat_code",
+            "cycleIds": "cycle_ids",
             "description": "description",
             "incrementOnly": "increment_only",
             "maximum": "maximum",
@@ -304,6 +323,7 @@ class StatCreate(Model):
             "name": True,
             "setBy": True,
             "statCode": True,
+            "cycleIds": False,
             "description": False,
             "incrementOnly": False,
             "maximum": False,

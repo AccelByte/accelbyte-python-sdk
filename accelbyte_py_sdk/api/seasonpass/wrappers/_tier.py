@@ -59,6 +59,47 @@ def create_tier(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create tier (createTier)
+
+    This API is used to create tier for a draft season, can create multiple tiers at same time.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers
+
+        method: POST
+
+        tags: ["Tier"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TierCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        201: Created - List[Tier] (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist | 49145: Pass [{code}] does not exist)
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,6 +120,47 @@ async def create_tier_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create tier (createTier)
+
+    This API is used to create tier for a draft season, can create multiple tiers at same time.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers
+
+        method: POST
+
+        tags: ["Tier"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TierCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        201: Created - List[Tier] (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist | 49145: Pass [{code}] does not exist)
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,6 +183,45 @@ def delete_tier(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a tier (deleteTier)
+
+    This API is used to delete a tier permanently, only draft season pass can be deleted.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}
+
+        method: DELETE
+
+        tags: ["Tier"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete tier successfully)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -121,6 +242,45 @@ async def delete_tier_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a tier (deleteTier)
+
+    This API is used to delete a tier permanently, only draft season pass can be deleted.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}
+
+        method: DELETE
+
+        tags: ["Tier"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete tier successfully)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -143,6 +303,42 @@ def grant_user_exp(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Grant exp to user (grantUserExp)
+
+    This API is used to grant exp to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/exp
+
+        method: POST
+
+        tags: ["Tier"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserExpGrant in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserSeasonSummary (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -163,6 +359,42 @@ async def grant_user_exp_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Grant exp to user (grantUserExp)
+
+    This API is used to grant exp to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/exp
+
+        method: POST
+
+        tags: ["Tier"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserExpGrant in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserSeasonSummary (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -185,6 +417,44 @@ def grant_user_tier(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Grant tier to user (grantUserTier)
+
+    This API is used to grant tier to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/tiers
+
+        method: POST
+
+        tags: ["Tier"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserTierGrant in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserSeasonSummary (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49148: User season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -205,6 +475,44 @@ async def grant_user_tier_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Grant tier to user (grantUserTier)
+
+    This API is used to grant tier to user, it will auto enroll if there's no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
+      *  Returns : user season data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/tiers
+
+        method: POST
+
+        tags: ["Tier"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserTierGrant in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserSeasonSummary (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49148: User season does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -228,6 +536,46 @@ def query_tiers(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query paginated tiers for a season (queryTiers)
+
+    This API is used to query paginated tiers for a season.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : the list of passes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers
+
+        method: GET
+
+        tags: ["Tier"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - TierPagingSlicedResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,6 +598,46 @@ async def query_tiers_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query paginated tiers for a season (queryTiers)
+
+    This API is used to query paginated tiers for a season.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
+      *  Returns : the list of passes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers
+
+        method: GET
+
+        tags: ["Tier"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - TierPagingSlicedResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -274,6 +662,49 @@ def reorder_tier(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reorder a tier (reorderTier)
+
+    This API is used to reorder a tier. Only draft season pass can be updated.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}/reorder
+
+        method: PUT
+
+        tags: ["Tier"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TierReorder in body
+
+        id_: (id) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - Tier (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49146: Tier does not exist)
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -296,6 +727,49 @@ async def reorder_tier_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reorder a tier (reorderTier)
+
+    This API is used to reorder a tier. Only draft season pass can be updated.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}/reorder
+
+        method: PUT
+
+        tags: ["Tier"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TierReorder in body
+
+        id_: (id) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - Tier (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49146: Tier does not exist)
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -320,6 +794,49 @@ def update_tier(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a tier (updateTier)
+
+    This API is used to update a tier. Only draft season pass can be updated.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}
+
+        method: PUT
+
+        tags: ["Tier"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TierInput in body
+
+        id_: (id) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - Tier (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist | 49145: Pass [{code}] does not exist | 49146: Tier does not exist)
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -342,6 +859,49 @@ async def update_tier_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a tier (updateTier)
+
+    This API is used to update a tier. Only draft season pass can be updated.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+
+    Properties:
+        url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}
+
+        method: PUT
+
+        tags: ["Tier"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TierInput in body
+
+        id_: (id) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        season_id: (seasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - Tier (successful operation)
+
+        400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist | 49145: Pass [{code}] does not exist | 49146: Tier does not exist)
+
+        409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.27.2)
+# AccelByte Cloud Iam Service (5.28.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

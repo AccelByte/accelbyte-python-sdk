@@ -54,7 +54,7 @@ class UpdateSession(Operation):
 
         method: PUT
 
-        tags: ["Session"]
+        tags: ["Session", "public"]
 
         consumes: ["application/json"]
 

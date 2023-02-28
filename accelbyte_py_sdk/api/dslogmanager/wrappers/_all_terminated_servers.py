@@ -43,6 +43,42 @@ def batch_download_server_logs(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Batch Download dedicated server log files (batchDownloadServerLogs)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required scope: social
+
+    This endpoint will download dedicated server's log file (.zip).
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dslogmanager/servers/logs/download
+
+        method: POST
+
+        tags: ["All Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBatchDownloadLogsRequest in body
+
+    Responses:
+        200: OK - Any (server logs downloaded.)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = BatchDownloadServerLogs.create(
         body=body,
     )
@@ -55,6 +91,42 @@ async def batch_download_server_logs_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Batch Download dedicated server log files (batchDownloadServerLogs)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required scope: social
+
+    This endpoint will download dedicated server's log file (.zip).
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dslogmanager/servers/logs/download
+
+        method: POST
+
+        tags: ["All Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBatchDownloadLogsRequest in body
+
+    Responses:
+        200: OK - Any (server logs downloaded.)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = BatchDownloadServerLogs.create(
         body=body,
     )
@@ -83,6 +155,69 @@ def list_all_terminated_servers(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Terminated Servers (listAllTerminatedServers)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    This endpoint used to retrieve terminated servers in all namespace
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    Properties:
+        url: /dslogmanager/servers/search
+
+        method: GET
+
+        tags: ["All Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) OPTIONAL str in query
+
+        end_date: (end_date) OPTIONAL str in query
+
+        game_mode: (game_mode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        namespace: (namespace) OPTIONAL str in query
+
+        next_: (next) OPTIONAL str in query
+
+        party_id: (party_id) OPTIONAL str in query
+
+        pod_name: (pod_name) OPTIONAL str in query
+
+        previous: (previous) OPTIONAL str in query
+
+        provider: (provider) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        session_id: (session_id) OPTIONAL str in query
+
+        start_date: (start_date) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        user_id: (user_id) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsListTerminatedServersResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = ListAllTerminatedServers.create(
         deployment=deployment,
         end_date=end_date,
@@ -123,6 +258,69 @@ async def list_all_terminated_servers_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Terminated Servers (listAllTerminatedServers)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    This endpoint used to retrieve terminated servers in all namespace
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    Properties:
+        url: /dslogmanager/servers/search
+
+        method: GET
+
+        tags: ["All Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) OPTIONAL str in query
+
+        end_date: (end_date) OPTIONAL str in query
+
+        game_mode: (game_mode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        namespace: (namespace) OPTIONAL str in query
+
+        next_: (next) OPTIONAL str in query
+
+        party_id: (party_id) OPTIONAL str in query
+
+        pod_name: (pod_name) OPTIONAL str in query
+
+        previous: (previous) OPTIONAL str in query
+
+        provider: (provider) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        session_id: (session_id) OPTIONAL str in query
+
+        start_date: (start_date) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        user_id: (user_id) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsListTerminatedServersResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = ListAllTerminatedServers.create(
         deployment=deployment,
         end_date=end_date,

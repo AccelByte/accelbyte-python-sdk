@@ -45,6 +45,50 @@ def create_match_function(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a match function (CreateMatchFunction)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [CREATE]
+
+    Required Scope: social
+
+    Creates a new matchmaking function.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-functions
+
+        method: POST
+
+        tags: ["Match-Functions", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiMatchFunctionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,6 +107,50 @@ async def create_match_function_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a match function (CreateMatchFunction)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [CREATE]
+
+    Required Scope: social
+
+    Creates a new matchmaking function.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-functions
+
+        method: POST
+
+        tags: ["Match-Functions", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiMatchFunctionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,6 +171,48 @@ def delete_match_function(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a match function (DeleteMatchFunction)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [DELETE]
+
+    Required Scope: social
+
+    Deletes an existing match function.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-functions/{name}
+
+        method: DELETE
+
+        tags: ["Match-Functions", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,6 +231,48 @@ async def delete_match_function_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a match function (DeleteMatchFunction)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [DELETE]
+
+    Required Scope: social
+
+    Deletes an existing match function.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-functions/{name}
+
+        method: DELETE
+
+        tags: ["Match-Functions", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -122,6 +294,48 @@ def match_function_list(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List existing match functions (MatchFunctionList)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [READ]
+
+    Required Scope: social
+
+    List existing match functions.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-functions
+
+        method: GET
+
+        tags: ["Match-Functions", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ApiListMatchFunctionsResponse (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,6 +356,48 @@ async def match_function_list_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List existing match functions (MatchFunctionList)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [READ]
+
+    Required Scope: social
+
+    List existing match functions.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-functions
+
+        method: GET
+
+        tags: ["Match-Functions", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ApiListMatchFunctionsResponse (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

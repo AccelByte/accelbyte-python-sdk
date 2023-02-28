@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.23.0)
+# AccelByte Cloud Platform Service (4.24.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ADTOObjectForQueryingXboxUserAchievements
 from ...models import ValidationErrorEntity
+from ...models import XblUserAchievements
 
 
 class GetXblUserAchievements(Operation):
@@ -62,7 +62,7 @@ class GetXblUserAchievements(Operation):
         xbox_user_id: (xboxUserId) REQUIRED str in query
 
     Responses:
-        200: OK - ADTOObjectForQueryingXboxUserAchievements (OK)
+        200: OK - XblUserAchievements (OK)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error)
     """
@@ -184,12 +184,12 @@ class GetXblUserAchievements(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ADTOObjectForQueryingXboxUserAchievements],
+        Union[None, XblUserAchievements],
         Union[None, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
-        200: OK - ADTOObjectForQueryingXboxUserAchievements (OK)
+        200: OK - XblUserAchievements (OK)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error)
 
@@ -207,10 +207,7 @@ class GetXblUserAchievements(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return (
-                ADTOObjectForQueryingXboxUserAchievements.create_from_dict(content),
-                None,
-            )
+            return XblUserAchievements.create_from_dict(content), None
         if code == 400:
             return None, ValidationErrorEntity.create_from_dict(content)
 

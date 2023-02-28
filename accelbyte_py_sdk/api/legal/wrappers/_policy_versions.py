@@ -49,6 +49,38 @@ def create_policy_version(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a Version from Country-Specific Policy (createPolicyVersion)
+
+    Create a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/policies/{policyId}/versions
+
+        method: POST
+
+        tags: ["Policy Versions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreatePolicyVersionRequest in body
+
+        policy_id: (policyId) REQUIRED str in path
+
+    Responses:
+        201: Created - CreatePolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy)
+    """
     request = CreatePolicyVersion.create(
         policy_id=policy_id,
         body=body,
@@ -63,6 +95,38 @@ async def create_policy_version_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a Version from Country-Specific Policy (createPolicyVersion)
+
+    Create a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/policies/{policyId}/versions
+
+        method: POST
+
+        tags: ["Policy Versions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreatePolicyVersionRequest in body
+
+        policy_id: (policyId) REQUIRED str in path
+
+    Responses:
+        201: Created - CreatePolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy)
+    """
     request = CreatePolicyVersion.create(
         policy_id=policy_id,
         body=body,
@@ -79,6 +143,40 @@ def publish_policy_version(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion)
+
+    Manually publish a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/policies/versions/{policyVersionId}/latest
+
+        method: PATCH
+
+        tags: ["Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+        should_notify: (shouldNotify) OPTIONAL bool in query
+
+    Responses:
+        200: OK - (operation successful)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40046: errors.net.accelbyte.platform.legal.default_selection_not_provided | 40030: errors.net.accelbyte.platform.legal.localized_policy_version_not_provided)
+
+        409: Conflict - ErrorEntity (40039: errors.net.accelbyte.platform.legal.localized_policy_version_already_latest | 40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_publish)
+    """
     request = PublishPolicyVersion.create(
         policy_version_id=policy_version_id,
         should_notify=should_notify,
@@ -93,6 +191,40 @@ async def publish_policy_version_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion)
+
+    Manually publish a version of a particular country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/policies/versions/{policyVersionId}/latest
+
+        method: PATCH
+
+        tags: ["Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+        should_notify: (shouldNotify) OPTIONAL bool in query
+
+    Responses:
+        200: OK - (operation successful)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40046: errors.net.accelbyte.platform.legal.default_selection_not_provided | 40030: errors.net.accelbyte.platform.legal.localized_policy_version_not_provided)
+
+        409: Conflict - ErrorEntity (40039: errors.net.accelbyte.platform.legal.localized_policy_version_already_latest | 40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_publish)
+    """
     request = PublishPolicyVersion.create(
         policy_version_id=policy_version_id,
         should_notify=should_notify,
@@ -109,6 +241,38 @@ def retrieve_single_policy_version(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion)
+
+    Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/policies/{policyId}/versions
+
+        method: GET
+
+        tags: ["Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        policy_id: (policyId) REQUIRED str in path
+
+        version_id: (versionId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[RetrievePolicyVersionResponse] (successful operation)
+
+        404: Not Found - ErrorEntity (40036: errors.net.accelbyte.platform.legal.policy_version_id_not_found)
+    """
     request = RetrieveSinglePolicyVersion.create(
         policy_id=policy_id,
         version_id=version_id,
@@ -123,6 +287,38 @@ async def retrieve_single_policy_version_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion)
+
+    Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/policies/{policyId}/versions
+
+        method: GET
+
+        tags: ["Policy Versions"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        policy_id: (policyId) REQUIRED str in path
+
+        version_id: (versionId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[RetrievePolicyVersionResponse] (successful operation)
+
+        404: Not Found - ErrorEntity (40036: errors.net.accelbyte.platform.legal.policy_version_id_not_found)
+    """
     request = RetrieveSinglePolicyVersion.create(
         policy_id=policy_id,
         version_id=version_id,
@@ -139,6 +335,40 @@ def update_policy_version(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a Version of Policy (updatePolicyVersion)
+
+    Update a particular policy version.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/policies/versions/{policyVersionId}
+
+        method: PATCH
+
+        tags: ["Policy Versions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdatePolicyVersionRequest in body
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdatePolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
+
+        409: Conflict - ErrorEntity (40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
+    """
     request = UpdatePolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
@@ -153,6 +383,40 @@ async def update_policy_version_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a Version of Policy (updatePolicyVersion)
+
+    Update a particular policy version.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/policies/versions/{policyVersionId}
+
+        method: PATCH
+
+        tags: ["Policy Versions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdatePolicyVersionRequest in body
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdatePolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
+
+        409: Conflict - ErrorEntity (40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
+    """
     request = UpdatePolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,

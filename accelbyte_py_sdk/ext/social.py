@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Social Service (1.33.0)
+# AccelByte Cloud Social Service (2.0.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,11 +27,12 @@ from .utils import randomize
 from ..api.social.models import ADTOObjectForResettingUserStatItems
 from ..api.social.models import ADTOObjectForUserStatItemValue
 from ..api.social.models import Attribute
+from ..api.social.models import BulkCycleStatsAdd
 from ..api.social.models import BulkStatItemCreate
 from ..api.social.models import BulkStatItemInc
-from ..api.social.models import BulkStatItemOperationResult
 from ..api.social.models import BulkStatItemReset
 from ..api.social.models import BulkStatItemUpdate
+from ..api.social.models import BulkStatOperationResult
 from ..api.social.models import BulkUserStatItemInc
 from ..api.social.models import BulkUserStatItemReset
 from ..api.social.models import BulkUserStatItemUpdate
@@ -49,6 +50,10 @@ from ..api.social.models import SlotConfigUpdate
 from ..api.social.models import SlotInfo
 from ..api.social.models import SlotMetadataUpdate
 from ..api.social.models import StatCreate
+from ..api.social.models import StatCycleCreate
+from ..api.social.models import StatCycleInfo
+from ..api.social.models import StatCyclePagingSlicedResult
+from ..api.social.models import StatCycleUpdate
 from ..api.social.models import StatImportInfo
 from ..api.social.models import StatInfo
 from ..api.social.models import StatItemInc
@@ -64,18 +69,14 @@ from ..api.social.models import UserStatItemPagingSlicedResult
 from ..api.social.models import ValidationErrorEntity
 
 
-def create_a_dto_object_for_resetting_user_stat_items_example() -> (
-    ADTOObjectForResettingUserStatItems
-):
+def create_a_dto_object_for_resetting_user_stat_items_example() -> ADTOObjectForResettingUserStatItems:
     instance = ADTOObjectForResettingUserStatItems()
     instance.stat_code = randomize()
     instance.additional_data = {randomize(): randomize()}
     return instance
 
 
-def create_a_dto_object_for_user_stat_item_value_example() -> (
-    ADTOObjectForUserStatItemValue
-):
+def create_a_dto_object_for_user_stat_item_value_example() -> ADTOObjectForUserStatItemValue:
     instance = ADTOObjectForUserStatItemValue()
     instance.profile_id = randomize()
     instance.stat_code = randomize()
@@ -87,6 +88,12 @@ def create_attribute_example() -> Attribute:
     instance = Attribute()
     instance.name = randomize()
     instance.value = randomize()
+    return instance
+
+
+def create_bulk_cycle_stats_add_example() -> BulkCycleStatsAdd:
+    instance = BulkCycleStatsAdd()
+    instance.stat_codes = [randomize()]
     return instance
 
 
@@ -103,14 +110,6 @@ def create_bulk_stat_item_inc_example() -> BulkStatItemInc:
     return instance
 
 
-def create_bulk_stat_item_operation_result_example() -> BulkStatItemOperationResult:
-    instance = BulkStatItemOperationResult()
-    instance.details = {randomize(): randomize()}
-    instance.stat_code = randomize()
-    instance.success = randomize("bool")
-    return instance
-
-
 def create_bulk_stat_item_reset_example() -> BulkStatItemReset:
     instance = BulkStatItemReset()
     instance.stat_code = randomize()
@@ -123,6 +122,14 @@ def create_bulk_stat_item_update_example() -> BulkStatItemUpdate:
     instance.update_strategy = randomize()
     instance.value = randomize("int", min_val=1, max_val=1000)
     instance.additional_data = {randomize(): randomize()}
+    return instance
+
+
+def create_bulk_stat_operation_result_example() -> BulkStatOperationResult:
+    instance = BulkStatOperationResult()
+    instance.details = {randomize(): randomize()}
+    instance.stat_code = randomize()
+    instance.success = randomize("bool")
     return instance
 
 
@@ -233,9 +240,7 @@ def create_global_stat_item_info_example() -> GlobalStatItemInfo:
     return instance
 
 
-def create_global_stat_item_paging_sliced_result_example() -> (
-    GlobalStatItemPagingSlicedResult
-):
+def create_global_stat_item_paging_sliced_result_example() -> GlobalStatItemPagingSlicedResult:
     instance = GlobalStatItemPagingSlicedResult()
     instance.data = [create_global_stat_item_info_example()]
     instance.paging = create_paging_example()
@@ -297,12 +302,72 @@ def create_stat_create_example() -> StatCreate:
     instance.name = randomize()
     instance.set_by = randomize()
     instance.stat_code = randomize()
+    instance.cycle_ids = [randomize()]
     instance.description = randomize()
     instance.increment_only = randomize("bool")
     instance.maximum = randomize("int", min_val=1, max_val=1000)
     instance.minimum = randomize("int", min_val=1, max_val=1000)
     instance.set_as_global = randomize("bool")
     instance.tags = [randomize()]
+    return instance
+
+
+def create_stat_cycle_create_example() -> StatCycleCreate:
+    instance = StatCycleCreate()
+    instance.cycle_type = randomize()
+    instance.name = randomize()
+    instance.reset_time = randomize()
+    instance.start = randomize("date")
+    instance.description = randomize()
+    instance.end = randomize("date")
+    instance.reset_date = randomize("int", min_val=1, max_val=1000)
+    instance.reset_day = randomize("int", min_val=1, max_val=1000)
+    instance.reset_month = randomize("int", min_val=1, max_val=1000)
+    instance.season_period = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_stat_cycle_info_example() -> StatCycleInfo:
+    instance = StatCycleInfo()
+    instance.created_at = randomize("date")
+    instance.current_version = randomize("int", min_val=1, max_val=1000)
+    instance.cycle_type = randomize()
+    instance.id_ = randomize()
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.reset_time = randomize()
+    instance.start = randomize("date")
+    instance.status = randomize()
+    instance.updated_at = randomize("date")
+    instance.description = randomize()
+    instance.end = randomize("date")
+    instance.next_reset = randomize("date")
+    instance.reset_date = randomize("int", min_val=1, max_val=1000)
+    instance.reset_day = randomize("int", min_val=1, max_val=1000)
+    instance.reset_month = randomize("int", min_val=1, max_val=1000)
+    instance.season_period = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_stat_cycle_paging_sliced_result_example() -> StatCyclePagingSlicedResult:
+    instance = StatCyclePagingSlicedResult()
+    instance.data = [create_stat_cycle_info_example()]
+    instance.paging = create_paging_example()
+    return instance
+
+
+def create_stat_cycle_update_example() -> StatCycleUpdate:
+    instance = StatCycleUpdate()
+    instance.cycle_type = randomize()
+    instance.name = randomize()
+    instance.reset_time = randomize()
+    instance.start = randomize("date")
+    instance.description = randomize()
+    instance.end = randomize("date")
+    instance.reset_date = randomize("int", min_val=1, max_val=1000)
+    instance.reset_day = randomize("int", min_val=1, max_val=1000)
+    instance.reset_month = randomize("int", min_val=1, max_val=1000)
+    instance.season_period = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -327,6 +392,7 @@ def create_stat_info_example() -> StatInfo:
     instance.stat_code = randomize()
     instance.status = randomize()
     instance.updated_at = randomize("date")
+    instance.cycle_ids = [randomize()]
     instance.description = randomize()
     instance.maximum = randomize("int", min_val=1, max_val=1000)
     instance.minimum = randomize("int", min_val=1, max_val=1000)
@@ -369,6 +435,7 @@ def create_stat_reset_info_example() -> StatResetInfo:
 
 def create_stat_update_example() -> StatUpdate:
     instance = StatUpdate()
+    instance.cycle_ids = [randomize()]
     instance.default_value = randomize("int", min_val=1, max_val=1000)
     instance.description = randomize()
     instance.name = randomize()
@@ -405,9 +472,7 @@ def create_user_stat_item_info_example() -> UserStatItemInfo:
     return instance
 
 
-def create_user_stat_item_paging_sliced_result_example() -> (
-    UserStatItemPagingSlicedResult
-):
+def create_user_stat_item_paging_sliced_result_example() -> UserStatItemPagingSlicedResult:
     instance = UserStatItemPagingSlicedResult()
     instance.data = [create_user_stat_item_info_example()]
     instance.paging = create_paging_example()

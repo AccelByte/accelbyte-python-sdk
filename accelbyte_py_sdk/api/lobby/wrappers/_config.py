@@ -48,6 +48,50 @@ def admin_export_config_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Export lobby config to a json file. (adminExportConfigV1)
+
+
+        Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+
+        Required Scope: social
+
+        Export lobby configuration to a json file. The file can then be imported from the /import endpoint.
+
+        JSON Schema of the exported file:
+        {"required":["namespace","entitlementItemID","chatRateLimitDuration","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"}}}
+
+        Required Permission(s):
+            - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+
+        Required Scope(s):
+            - social
+
+        Properties:
+            url: /lobby/v1/admin/config/namespaces/{namespace}/export
+
+            method: GET
+
+            tags: ["config"]
+
+            consumes: []
+
+            produces: ["application/json"]
+
+            securities: [BEARER_AUTH]
+
+            namespace: (namespace) REQUIRED str in path
+
+        Responses:
+            200: OK - Any (OK
+    JSON Schema of the exported file:
+    {"required":["namespace","entitlementItemID","chatRateLimitDuration","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"}}})
+
+            401: Unauthorized - ResponseError (Unauthorized)
+
+            403: Forbidden - ResponseError (Forbidden)
+
+            500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,6 +108,50 @@ async def admin_export_config_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Export lobby config to a json file. (adminExportConfigV1)
+
+
+        Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+
+        Required Scope: social
+
+        Export lobby configuration to a json file. The file can then be imported from the /import endpoint.
+
+        JSON Schema of the exported file:
+        {"required":["namespace","entitlementItemID","chatRateLimitDuration","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"}}}
+
+        Required Permission(s):
+            - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+
+        Required Scope(s):
+            - social
+
+        Properties:
+            url: /lobby/v1/admin/config/namespaces/{namespace}/export
+
+            method: GET
+
+            tags: ["config"]
+
+            consumes: []
+
+            produces: ["application/json"]
+
+            securities: [BEARER_AUTH]
+
+            namespace: (namespace) REQUIRED str in path
+
+        Responses:
+            200: OK - Any (OK
+    JSON Schema of the exported file:
+    {"required":["namespace","entitlementItemID","chatRateLimitDuration","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"}}})
+
+            401: Unauthorized - ResponseError (Unauthorized)
+
+            403: Forbidden - ResponseError (Forbidden)
+
+            500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,6 +168,45 @@ async def admin_export_config_v1_async(
 def admin_get_all_config_v1(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """admin get all namespaces config (adminGetAllConfigV1)
+
+    Required permission : `ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]` with scope `social`
+
+    get lobby config of all namespaces.
+    default MaxDSWaitTime is 120 (second)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/config
+
+        method: GET
+
+        tags: ["config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsConfigList (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     request = AdminGetAllConfigV1.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -88,6 +215,45 @@ def admin_get_all_config_v1(
 async def admin_get_all_config_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """admin get all namespaces config (adminGetAllConfigV1)
+
+    Required permission : `ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]` with scope `social`
+
+    get lobby config of all namespaces.
+    default MaxDSWaitTime is 120 (second)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/config
+
+        method: GET
+
+        tags: ["config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsConfigList (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     request = AdminGetAllConfigV1.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -100,6 +266,47 @@ def admin_get_config_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """admin get namespace config (adminGetConfigV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with scope `social`
+
+    get lobby config of a namespace.
+    default MaxDSWaitTime is 120 (second)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/config/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsConfigReq (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,6 +323,47 @@ async def admin_get_config_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """admin get namespace config (adminGetConfigV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with scope `social`
+
+    get lobby config of a namespace.
+    default MaxDSWaitTime is 120 (second)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/config/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsConfigReq (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,6 +383,50 @@ def admin_import_config_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Import lobby config from a json file. (adminImportConfigV1)
+
+
+    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
+
+    Required Scope: social
+
+    Import config configuration from file. The existing configuration will be replaced.
+    The json file to import can be obtained from the /export endpoint.
+
+    MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/config/namespaces/{namespace}/import
+
+        method: POST
+
+        tags: ["config"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsImportConfigResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -153,6 +445,50 @@ async def admin_import_config_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Import lobby config from a json file. (adminImportConfigV1)
+
+
+    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
+
+    Required Scope: social
+
+    Import config configuration from file. The existing configuration will be replaced.
+    The json file to import can be obtained from the /export endpoint.
+
+    MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/config/namespaces/{namespace}/import
+
+        method: POST
+
+        tags: ["config"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsImportConfigResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,6 +509,51 @@ def admin_update_config_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """admin update namespace config (adminUpdateConfigV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]` with scope `social`
+
+    update lobby config of a namespace.
+    MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/config/namespaces/{namespace}
+
+        method: PUT
+
+        tags: ["config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsConfigReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsConfigReq (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        412: Precondition Failed - RestapiErrorResponseBody (Precondition Failed)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,6 +572,51 @@ async def admin_update_config_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """admin update namespace config (adminUpdateConfigV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]` with scope `social`
+
+    update lobby config of a namespace.
+    MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/config/namespaces/{namespace}
+
+        method: PUT
+
+        tags: ["config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsConfigReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsConfigReq (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        412: Precondition Failed - RestapiErrorResponseBody (Precondition Failed)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

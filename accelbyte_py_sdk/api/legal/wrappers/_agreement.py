@@ -52,6 +52,33 @@ def accept_versioned_policy(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept a Policy Version (acceptVersionedPolicy)
+
+    Accepts a legal policy version. Supply with localized version policy id to accept an agreement.
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/agreements/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: POST
+
+        tags: ["Agreement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        201: Created - (successful anonymize)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed | 40035: errors.net.accelbyte.platform.legal.invalid_localize_policy_version_id)
+    """
     request = AcceptVersionedPolicy.create(
         localized_policy_version_id=localized_policy_version_id,
     )
@@ -64,6 +91,33 @@ async def accept_versioned_policy_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept a Policy Version (acceptVersionedPolicy)
+
+    Accepts a legal policy version. Supply with localized version policy id to accept an agreement.
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/agreements/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: POST
+
+        tags: ["Agreement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+    Responses:
+        201: Created - (successful anonymize)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed | 40035: errors.net.accelbyte.platform.legal.invalid_localize_policy_version_id)
+    """
     request = AcceptVersionedPolicy.create(
         localized_policy_version_id=localized_policy_version_id,
     )
@@ -78,6 +132,33 @@ def bulk_accept_versioned_policy(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk Accept Policy Versions (bulkAcceptVersionedPolicy)
+
+    Accepts many legal policy versions all at once. Supply with localized version policy id to accept an agreement.
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/agreements/policies
+
+        method: POST
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+    Responses:
+        201: Created - AcceptAgreementResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed | 40035: errors.net.accelbyte.platform.legal.invalid_localize_policy_version_id)
+    """
     request = BulkAcceptVersionedPolicy.create(
         body=body,
     )
@@ -90,6 +171,33 @@ async def bulk_accept_versioned_policy_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk Accept Policy Versions (bulkAcceptVersionedPolicy)
+
+    Accepts many legal policy versions all at once. Supply with localized version policy id to accept an agreement.
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/agreements/policies
+
+        method: POST
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+    Responses:
+        201: Created - AcceptAgreementResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed | 40035: errors.net.accelbyte.platform.legal.invalid_localize_policy_version_id)
+    """
     request = BulkAcceptVersionedPolicy.create(
         body=body,
     )
@@ -106,6 +214,39 @@ def change_preference_consent(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Change Preference Consent (changePreferenceConsent)
+
+    This API will Update Preference Consent. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/agreements/localized-policy-versions/preferences/namespaces/{namespace}/userId/{userId}
+
+        method: PATCH
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - (operation successful)
+
+        404: Not Found - ErrorEntity (40047: errors.net.accelbyte.platform.legal.user_agreement_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -126,6 +267,39 @@ async def change_preference_consent_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Change Preference Consent (changePreferenceConsent)
+
+    This API will Update Preference Consent. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/agreements/localized-policy-versions/preferences/namespaces/{namespace}/userId/{userId}
+
+        method: PATCH
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - (operation successful)
+
+        404: Not Found - ErrorEntity (40047: errors.net.accelbyte.platform.legal.user_agreement_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -146,6 +320,33 @@ def change_preference_consent_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept/Revoke Marketing Preference Consent (changePreferenceConsent_1)
+
+    Change marketing preference consent.
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/agreements/localized-policy-versions/preferences
+
+        method: PATCH
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+    Responses:
+        200: OK - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference | 40045: errors.net.accelbyte.platform.legal.user_id_needed)
+    """
     request = ChangePreferenceConsent1.create(
         body=body,
     )
@@ -158,6 +359,33 @@ async def change_preference_consent_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept/Revoke Marketing Preference Consent (changePreferenceConsent_1)
+
+    Change marketing preference consent.
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/agreements/localized-policy-versions/preferences
+
+        method: PATCH
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+    Responses:
+        200: OK - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference | 40045: errors.net.accelbyte.platform.legal.user_id_needed)
+    """
     request = ChangePreferenceConsent1.create(
         body=body,
     )
@@ -173,6 +401,40 @@ def indirect_bulk_accept_versioned_policy_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy_1)
+
+    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
+
+    Available Extra Information to return:
+
+
+      * userIds : List of userId mapping ( IMPORTANT: GOING TO DEPRECATE )
+
+    Other detail info:
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/agreements/policies/users/{userId}
+
+        method: POST
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - AcceptAgreementResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
     request = IndirectBulkAcceptVersionedPolicy1.create(
         user_id=user_id,
         body=body,
@@ -187,6 +449,40 @@ async def indirect_bulk_accept_versioned_policy_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy_1)
+
+    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
+
+    Available Extra Information to return:
+
+
+      * userIds : List of userId mapping ( IMPORTANT: GOING TO DEPRECATE )
+
+    Other detail info:
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/agreements/policies/users/{userId}
+
+        method: POST
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - AcceptAgreementResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
     request = IndirectBulkAcceptVersionedPolicy1.create(
         user_id=user_id,
         body=body,
@@ -206,6 +502,44 @@ def indirect_bulk_accept_versioned_policy_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicyV2)
+
+    IMPORTANT: GOING TO DEPRECATE
+
+    Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}
+
+        method: POST
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+        client_id: (clientId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - AcceptAgreementResponse (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -230,6 +564,44 @@ async def indirect_bulk_accept_versioned_policy_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicyV2)
+
+    IMPORTANT: GOING TO DEPRECATE
+
+    Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}
+
+        method: POST
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+        client_id: (clientId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - AcceptAgreementResponse (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,6 +622,33 @@ async def indirect_bulk_accept_versioned_policy_v2_async(
 def retrieve_accepted_agreements(
     user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
+
+    This API will return all accepted Legal Agreements for specified user. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/agreements/policies/users/{userId}
+
+        method: GET
+
+        tags: ["Agreement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
+    """
     request = RetrieveAcceptedAgreements.create(
         user_id=user_id,
     )
@@ -260,6 +659,33 @@ def retrieve_accepted_agreements(
 async def retrieve_accepted_agreements_async(
     user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
+
+    This API will return all accepted Legal Agreements for specified user. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/agreements/policies/users/{userId}
+
+        method: GET
+
+        tags: ["Agreement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
+    """
     request = RetrieveAcceptedAgreements.create(
         user_id=user_id,
     )
@@ -272,6 +698,31 @@ async def retrieve_accepted_agreements_async(
 def retrieve_agreements_public(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Retrieve the accepted Legal Agreements (retrieveAgreementsPublic)
+
+    Retrieve accepted Legal Agreements.
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/agreements/policies
+
+        method: GET
+
+        tags: ["Agreement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
+    """
     request = RetrieveAgreementsPublic.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -280,6 +731,31 @@ def retrieve_agreements_public(
 async def retrieve_agreements_public_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Retrieve the accepted Legal Agreements (retrieveAgreementsPublic)
+
+    Retrieve accepted Legal Agreements.
+    Other detail info:
+
+      * Required permission : login user
+
+    Properties:
+        url: /agreement/public/agreements/policies
+
+        method: GET
+
+        tags: ["Agreement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
+    """
     request = RetrieveAgreementsPublic.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -295,6 +771,41 @@ def retrieve_all_users_by_policy_version(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
+
+    This API will return all users who has accepted a specific policy version.Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/agreements/policy-versions/users
+
+        method: GET
+
+        tags: ["Agreement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        keyword: (keyword) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        policy_version_id: (policyVersionId) REQUIRED str in query
+
+    Responses:
+        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
     request = RetrieveAllUsersByPolicyVersion.create(
         policy_version_id=policy_version_id,
         keyword=keyword,
@@ -313,6 +824,41 @@ async def retrieve_all_users_by_policy_version_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
+
+    This API will return all users who has accepted a specific policy version.Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/agreements/policy-versions/users
+
+        method: GET
+
+        tags: ["Agreement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        keyword: (keyword) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        policy_version_id: (policyVersionId) REQUIRED str in query
+
+    Responses:
+        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
     request = RetrieveAllUsersByPolicyVersion.create(
         policy_version_id=policy_version_id,
         keyword=keyword,

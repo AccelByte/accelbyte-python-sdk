@@ -56,6 +56,42 @@ def create_policy_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a Base Legal Policy (createPolicy_1)
+
+    Create a legal policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/base-policies
+
+        method: POST
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreateBasePolicyRequestV2 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - CreateBasePolicyResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.base_policy_namespace_not_match)
+
+        409: Conflict - ErrorEntity (40030: errors.net.accelbyte.platform.legal.invalid_policy_type)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -74,6 +110,42 @@ async def create_policy_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a Base Legal Policy (createPolicy_1)
+
+    Create a legal policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [CREATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/base-policies
+
+        method: POST
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CreateBasePolicyRequestV2 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - CreateBasePolicyResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.base_policy_namespace_not_match)
+
+        409: Conflict - ErrorEntity (40030: errors.net.accelbyte.platform.legal.invalid_policy_type)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,6 +167,40 @@ def partial_update_policy_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Base Legal Policy (partialUpdatePolicy_1)
+
+    Update an existing base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}
+
+        method: PATCH
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdateBasePolicyRequestV2 in body
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdateBasePolicyResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,6 +221,40 @@ async def partial_update_policy_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Base Legal Policy (partialUpdatePolicy_1)
+
+    Update an existing base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}
+
+        method: PATCH
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdateBasePolicyRequestV2 in body
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdateBasePolicyResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,6 +275,34 @@ def retrieve_all_legal_policies_by_namespace(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
+
+    Retrieve all base policies in the namespace.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/base-policies
+
+        method: GET
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveBasePolicyResponse] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,6 +319,34 @@ async def retrieve_all_legal_policies_by_namespace_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
+
+    Retrieve all base policies in the namespace.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/base-policies
+
+        method: GET
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveBasePolicyResponse] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -171,6 +367,38 @@ def retrieve_all_policy_types_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Policy Type (retrieveAllPolicyTypes_1)
+
+    Retrieve all supported policy types.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policy-types
+
+        method: GET
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        limit: (limit) REQUIRED int in query
+
+    Responses:
+        200: OK - List[RetrievePolicyTypeResponse] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,6 +419,38 @@ async def retrieve_all_policy_types_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Policy Type (retrieveAllPolicyTypes_1)
+
+    Retrieve all supported policy types.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policy-types
+
+        method: GET
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        limit: (limit) REQUIRED int in query
+
+    Responses:
+        200: OK - List[RetrievePolicyTypeResponse] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -213,6 +473,40 @@ def retrieve_policy_country_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry_1)
+
+    Retrieve a Base Legal Policy based on a Particular Country.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}/countries/{countryCode}
+
+        method: GET
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrievePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -233,6 +527,40 @@ async def retrieve_policy_country_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry_1)
+
+    Retrieve a Base Legal Policy based on a Particular Country.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}/countries/{countryCode}
+
+        method: GET
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrievePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -254,6 +582,38 @@ def retrieve_single_policy_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Base Legal Policy (retrieveSinglePolicy_1)
+
+    Retrieve a base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}
+
+        method: GET
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveBasePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -272,6 +632,38 @@ async def retrieve_single_policy_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve a Base Legal Policy (retrieveSinglePolicy_1)
+
+    Retrieve a base policy.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}
+
+        method: GET
+
+        tags: ["Base Legal Policies With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveBasePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

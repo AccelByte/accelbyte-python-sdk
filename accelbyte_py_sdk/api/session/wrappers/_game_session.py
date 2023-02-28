@@ -75,6 +75,71 @@ def admin_query_game_sessions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all game sessions. (adminQueryGameSessions)
+
+    Get all game sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SESSION:GAME [READ]
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        configuration_name: (configurationName) OPTIONAL str in query
+
+        ds_pod_name: (dsPodName) OPTIONAL str in query
+
+        from_time: (fromTime) OPTIONAL str in query
+
+        game_mode: (gameMode) OPTIONAL str in query
+
+        is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
+
+        joinability: (joinability) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        match_pool: (matchPool) OPTIONAL str in query
+
+        member_id: (memberID) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order: (order) OPTIONAL str in query
+
+        order_by: (orderBy) OPTIONAL str in query
+
+        session_id: (sessionID) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        status_v2: (statusV2) OPTIONAL str in query
+
+        to_time: (toTime) OPTIONAL str in query
+
+    Responses:
+        200: OK - ApimodelsGameSessionQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -123,6 +188,71 @@ async def admin_query_game_sessions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all game sessions. (adminQueryGameSessions)
+
+    Get all game sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:SESSION:GAME [READ]
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        configuration_name: (configurationName) OPTIONAL str in query
+
+        ds_pod_name: (dsPodName) OPTIONAL str in query
+
+        from_time: (fromTime) OPTIONAL str in query
+
+        game_mode: (gameMode) OPTIONAL str in query
+
+        is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
+
+        joinability: (joinability) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        match_pool: (matchPool) OPTIONAL str in query
+
+        member_id: (memberID) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order: (order) OPTIONAL str in query
+
+        order_by: (orderBy) OPTIONAL str in query
+
+        session_id: (sessionID) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        status_v2: (statusV2) OPTIONAL str in query
+
+        to_time: (toTime) OPTIONAL str in query
+
+    Responses:
+        200: OK - ApimodelsGameSessionQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -160,6 +290,44 @@ def admin_update_game_session_member(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update status of a game session member. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (adminUpdateGameSessionMember)
+
+    Update a game session member status.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/status/{statusType}
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        member_id: (memberId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+        status_type: (statusType) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsUpdateGameSessionMemberStatusResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,6 +350,44 @@ async def admin_update_game_session_member_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update status of a game session member. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (adminUpdateGameSessionMember)
+
+    Update a game session member status.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/status/{statusType}
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        member_id: (memberId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+        status_type: (statusType) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsUpdateGameSessionMemberStatusResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -204,6 +410,55 @@ def create_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [CREATE] (createGameSession)
+
+    Create a game session.
+    Session configuration name is mandatory, this API will refer following values from the session template if they're not provided in the request:
+    - type
+    - joinability
+    - minPlayers
+    - maxPlayers
+    - inviteTimeout
+    - inactiveTimeout
+
+    When the session type is a DS, a DS creation request will be sent to DSMC if number of active players reaches session's minPlayers.
+
+    Active user is a user who present within the session, has status CONNECTED/JOINED.
+
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesession
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsCreateGameSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ApimodelsGameSessionResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -222,6 +477,55 @@ async def create_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [CREATE] (createGameSession)
+
+    Create a game session.
+    Session configuration name is mandatory, this API will refer following values from the session template if they're not provided in the request:
+    - type
+    - joinability
+    - minPlayers
+    - maxPlayers
+    - inviteTimeout
+    - inactiveTimeout
+
+    When the session type is a DS, a DS creation request will be sent to DSMC if number of active players reaches session's minPlayers.
+
+    Active user is a user who present within the session, has status CONNECTED/JOINED.
+
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesession
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsCreateGameSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ApimodelsGameSessionResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -242,6 +546,36 @@ def delete_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [DELETE] (deleteGameSession)
+
+    Delete a game session.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -260,6 +594,36 @@ async def delete_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [DELETE] (deleteGameSession)
+
+    Delete a game session.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -280,6 +644,45 @@ def get_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSession)
+
+    Get game session detail.
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -298,6 +701,45 @@ async def get_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSession)
+
+    Get game session detail.
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -318,6 +760,45 @@ def get_game_session_by_pod_name(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSessionByPodName)
+
+    Get game session detail by podname.
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/servers/{podName}
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -336,6 +817,45 @@ async def get_game_session_by_pod_name_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSessionByPodName)
+
+    Get game session detail by podname.
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/servers/{podName}
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -356,6 +876,40 @@ def join_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Join a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (joinGameSession)
+
+    Join a game session.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/join
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -374,6 +928,40 @@ async def join_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Join a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (joinGameSession)
+
+    Join a game session.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/join
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -394,6 +982,40 @@ def leave_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Leave a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [DELETE] (leaveGameSession)
+
+    Leave a game session.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leave
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -412,6 +1034,40 @@ async def leave_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Leave a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [DELETE] (leaveGameSession)
+
+    Leave a game session.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leave
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -433,6 +1089,42 @@ def patch_update_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Patch update a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (patchUpdateGameSession)
+
+    Update specified fields from game session data.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+        method: PATCH
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdateGameSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -453,6 +1145,42 @@ async def patch_update_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Patch update a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (patchUpdateGameSession)
+
+    Update specified fields from game session data.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+        method: PATCH
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdateGameSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -475,6 +1203,42 @@ def public_game_session_invite(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Invite a user to a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (publicGameSessionInvite)
+
+    Invite a user to a game session.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/invite
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsSessionInviteRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -495,6 +1259,42 @@ async def public_game_session_invite_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Invite a user to a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (publicGameSessionInvite)
+
+    Invite a user to a game session.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/invite
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsSessionInviteRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -516,6 +1316,40 @@ def public_game_session_reject(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject a game session invitation. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [DELETE] (publicGameSessionReject)
+
+    Reject a game session invitation.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/reject
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -534,6 +1368,40 @@ async def public_game_session_reject_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject a game session invitation. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [DELETE] (publicGameSessionReject)
+
+    Reject a game session invitation.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/reject
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -554,6 +1422,45 @@ def public_query_game_sessions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query game sessions (publicQueryGameSessions)
+
+    Query game sessions.
+
+    By default, API will return a list of available game sessions (joinability: open).
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -572,6 +1479,45 @@ async def public_query_game_sessions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query game sessions (publicQueryGameSessions)
+
+    Query game sessions.
+
+    By default, API will return a list of available game sessions (joinability: open).
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -594,6 +1540,47 @@ def public_query_my_game_sessions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user's game sessions (publicQueryMyGameSessions)
+
+    Query user's game sessions.
+    By default, API will return a list of user's active game sessions (INVITED,JOINED,CONNECTED).
+
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/users/me/gamesessions
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order: (order) OPTIONAL str in query
+
+        order_by: (orderBy) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ApimodelsGameSessionResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -616,6 +1603,47 @@ async def public_query_my_game_sessions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user's game sessions (publicQueryMyGameSessions)
+
+    Query user's game sessions.
+    By default, API will return a list of user's active game sessions (INVITED,JOINED,CONNECTED).
+
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/users/me/gamesessions
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order: (order) OPTIONAL str in query
+
+        order_by: (orderBy) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ApimodelsGameSessionResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -639,6 +1667,45 @@ def update_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (updateGameSession)
+
+    Updates a game session, this endpoint will override stored gamesession data.
+    To update only specified fields, please use following endpoint:
+    method : PATCH
+    API : /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdateGameSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -659,6 +1726,45 @@ async def update_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (updateGameSession)
+
+    Updates a game session, this endpoint will override stored gamesession data.
+    To update only specified fields, please use following endpoint:
+    method : PATCH
+    API : /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdateGameSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -60,6 +60,38 @@ def admin_get_all_reasons(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all reasons (adminGetAllReasons)
+
+    This endpoint get all reasons without pagination.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons/all
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiAdminAllReasonsResponse (OK)
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -76,6 +108,38 @@ async def admin_get_all_reasons_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all reasons (adminGetAllReasons)
+
+    This endpoint get all reasons without pagination.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons/all
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiAdminAllReasonsResponse (OK)
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,6 +159,37 @@ def admin_get_reason(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a single reason (adminGetReason)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reason_id: (reasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiAdminReasonResponse (OK)
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,6 +208,37 @@ async def admin_get_reason_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a single reason (adminGetReason)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reason_id: (reasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiAdminReasonResponse (OK)
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,6 +262,38 @@ def admin_get_reasons(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of reasons (adminGetReasons)
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        group: (group) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        title: (title) OPTIONAL str in query
+
+    Responses:
+        200: OK - RestapiAdminReasonListResponse (OK)
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -160,6 +318,38 @@ async def admin_get_reasons_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of reasons (adminGetReasons)
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        group: (group) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        title: (title) OPTIONAL str in query
+
+    Responses:
+        200: OK - RestapiAdminReasonListResponse (OK)
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -184,6 +374,44 @@ def admin_get_unused_reasons(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of reasons that not used by moderation rules (adminGetUnusedReasons)
+
+    This endpoint get reasons not used by moderation rules.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons/unused
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        extension_category: (extensionCategory) OPTIONAL str in query
+
+        category: (category) REQUIRED str in query
+
+    Responses:
+        200: OK - RestapiUnusedReasonListResponse (OK)
+
+        404: Not Found - RestapiErrorResponse (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -204,6 +432,44 @@ async def admin_get_unused_reasons_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of reasons that not used by moderation rules (adminGetUnusedReasons)
+
+    This endpoint get reasons not used by moderation rules.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons/unused
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        extension_category: (extensionCategory) OPTIONAL str in query
+
+        category: (category) REQUIRED str in query
+
+    Responses:
+        200: OK - RestapiUnusedReasonListResponse (OK)
+
+        404: Not Found - RestapiErrorResponse (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,6 +492,38 @@ def admin_list_reason_groups(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List reason groups under a namespace (adminListReasonGroups)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
+    Return list of reason groups ID and title under given namespace. To fetch the reasons inside a group, use get reason group endpoint.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - RestapiReasonGroupListResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,6 +544,38 @@ async def admin_list_reason_groups_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List reason groups under a namespace (adminListReasonGroups)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
+    Return list of reason groups ID and title under given namespace. To fetch the reasons inside a group, use get reason group endpoint.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - RestapiReasonGroupListResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -267,6 +597,39 @@ def create_reason(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a report reason (createReason)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons
+
+        method: POST
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiCreateReasonRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - RestapiAdminReasonResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        409: Conflict - RestapiErrorResponse (Conflict)
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -285,6 +648,39 @@ async def create_reason_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a report reason (createReason)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons
+
+        method: POST
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiCreateReasonRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - RestapiAdminReasonResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        409: Conflict - RestapiErrorResponse (Conflict)
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -305,6 +701,41 @@ def create_reason_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a reason group (createReasonGroup)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+    Create a reason group for easier query. You can query reasons by specifying the group title in the list reasons query.
+    Reason group title is case insensitive, meaning you can't have reason if you already create a reason titled Reason
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups
+
+        method: POST
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiCreateReasonGroupRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - RestapiReasonGroupResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        409: Conflict - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -323,6 +754,41 @@ async def create_reason_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a reason group (createReasonGroup)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+    Create a reason group for easier query. You can query reasons by specifying the group title in the list reasons query.
+    Reason group title is case insensitive, meaning you can't have reason if you already create a reason titled Reason
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups
+
+        method: POST
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiCreateReasonGroupRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - RestapiReasonGroupResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        409: Conflict - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -343,6 +809,35 @@ def delete_reason(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a report reason (deleteReason)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
+
+        method: DELETE
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reason_id: (reasonId) REQUIRED str in path
+
+    Responses:
+        204: No Content -
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -361,6 +856,35 @@ async def delete_reason_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a report reason (deleteReason)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
+
+        method: DELETE
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reason_id: (reasonId) REQUIRED str in path
+
+    Responses:
+        204: No Content -
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -381,6 +905,35 @@ def delete_reason_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a reason group (deleteReasonGroup)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
+
+        method: DELETE
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content -
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -399,6 +952,35 @@ async def delete_reason_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a reason group (deleteReasonGroup)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
+
+        method: DELETE
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content -
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -419,6 +1001,37 @@ def get_reason_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get reason group (getReasonGroup)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiReasonGroupResponse
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -437,6 +1050,37 @@ async def get_reason_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get reason group (getReasonGroup)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
+
+        method: GET
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiReasonGroupResponse
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -458,6 +1102,41 @@ def update_reason(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a report reason (updateReason)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
+
+        method: PATCH
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiCreateReasonRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        reason_id: (reasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiAdminReasonResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        409: Conflict - RestapiErrorResponse (Conflict)
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -478,6 +1157,41 @@ async def update_reason_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a report reason (updateReason)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
+
+        method: PATCH
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiCreateReasonRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        reason_id: (reasonId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiAdminReasonResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        409: Conflict - RestapiErrorResponse (Conflict)
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -500,6 +1214,43 @@ def update_reason_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a reason group (updateReasonGroup)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+    Reason group title is case insensitive, meaning you can't have reason if you already create a reason titled Reason
+    If no reasonIds passed when updating, the current reasons under the reason group will be kept (reasons will not be removed from the group).
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
+
+        method: PATCH
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiUpdateReasonGroupRequest in body
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiReasonGroupResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        409: Conflict - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -520,6 +1271,43 @@ async def update_reason_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a reason group (updateReasonGroup)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+    Reason group title is case insensitive, meaning you can't have reason if you already create a reason titled Reason
+    If no reasonIds passed when updating, the current reasons under the reason group will be kept (reasons will not be removed from the group).
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
+
+        method: PATCH
+
+        tags: ["Admin Reasons"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiUpdateReasonGroupRequest in body
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiReasonGroupResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        409: Conflict - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

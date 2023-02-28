@@ -42,6 +42,39 @@ def sync_orders(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync orders (syncOrders)
+
+    Sync orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:ORDER", action=2 (READ)
+      *  Returns : sync orders
+
+    Required Permission(s):
+        - ADMIN:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/orders
+
+        method: GET
+
+        tags: ["Order(Dedicated)"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        next_evaluated_key: (nextEvaluatedKey) OPTIONAL str in query
+
+        end: (end) REQUIRED str in query
+
+        start: (start) REQUIRED str in query
+
+    Responses:
+        200: OK - OrderSyncResult (successful operation)
+    """
     request = SyncOrders.create(
         end=end,
         start=start,
@@ -58,6 +91,39 @@ async def sync_orders_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync orders (syncOrders)
+
+    Sync orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:ORDER", action=2 (READ)
+      *  Returns : sync orders
+
+    Required Permission(s):
+        - ADMIN:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/orders
+
+        method: GET
+
+        tags: ["Order(Dedicated)"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        next_evaluated_key: (nextEvaluatedKey) OPTIONAL str in query
+
+        end: (end) REQUIRED str in query
+
+        start: (start) REQUIRED str in query
+
+    Responses:
+        200: OK - OrderSyncResult (successful operation)
+    """
     request = SyncOrders.create(
         end=end,
         start=start,

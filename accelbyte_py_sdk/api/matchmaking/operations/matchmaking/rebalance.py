@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Matchmaking Service (2.20.2)
+# AccelByte Cloud Matchmaking Service (2.21.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -58,7 +58,7 @@ class Rebalance(Operation):
 
         method: POST
 
-        tags: ["Matchmaking"]
+        tags: ["Matchmaking", "public"]
 
         consumes: ["application/json"]
 

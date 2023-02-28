@@ -41,6 +41,41 @@ def heartbeat(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send heartbeat (Heartbeat)
+
+    ```
+    Required permission: QOS:SERVER [CREATE][UPDATE]
+    Required scope: social
+
+    This endpoint is intended to be called by QoS service
+    to register and periodically let QoS Manager know that it is still alive.
+    ```
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /qosm/servers/heartbeat
+
+        method: POST
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsHeartbeatRequest in body
+
+    Responses:
+        204: No Content - (heartbeat received)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = Heartbeat.create(
         body=body,
     )
@@ -53,6 +88,41 @@ async def heartbeat_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Send heartbeat (Heartbeat)
+
+    ```
+    Required permission: QOS:SERVER [CREATE][UPDATE]
+    Required scope: social
+
+    This endpoint is intended to be called by QoS service
+    to register and periodically let QoS Manager know that it is still alive.
+    ```
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /qosm/servers/heartbeat
+
+        method: POST
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsHeartbeatRequest in body
+
+    Responses:
+        204: No Content - (heartbeat received)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = Heartbeat.create(
         body=body,
     )

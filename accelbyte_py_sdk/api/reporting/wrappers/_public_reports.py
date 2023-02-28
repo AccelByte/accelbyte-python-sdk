@@ -48,6 +48,51 @@ def submit_report(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Submit a report (submitReport)
+
+    User need to be authenticated to access this endpoint.
+    Submit a report and will return ticket for reported object.
+    New ticket will be created if no OPEN ticket present for reported object (based by objectId and objectType) in a namespace.
+
+    User can only submit report once for each different user / object reported in the same OPEN ticket.
+    Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
+
+    Fill the 'reason' field with a 'reason title'
+    Supported category:
+
+      * UGC
+      * USER
+      * CHAT
+      * EXTENSION
+
+    Properties:
+        url: /reporting/v1/public/namespaces/{namespace}/reports
+
+        method: POST
+
+        tags: ["Public Reports"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiSubmitReportRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - RestapiSubmitReportResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        409: Conflict - RestapiErrorResponse
+
+        429: Too Many Requests - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,6 +111,51 @@ async def submit_report_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Submit a report (submitReport)
+
+    User need to be authenticated to access this endpoint.
+    Submit a report and will return ticket for reported object.
+    New ticket will be created if no OPEN ticket present for reported object (based by objectId and objectType) in a namespace.
+
+    User can only submit report once for each different user / object reported in the same OPEN ticket.
+    Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
+
+    Fill the 'reason' field with a 'reason title'
+    Supported category:
+
+      * UGC
+      * USER
+      * CHAT
+      * EXTENSION
+
+    Properties:
+        url: /reporting/v1/public/namespaces/{namespace}/reports
+
+        method: POST
+
+        tags: ["Public Reports"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiSubmitReportRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - RestapiSubmitReportResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        409: Conflict - RestapiErrorResponse
+
+        429: Too Many Requests - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -44,6 +44,35 @@ def retrieve_accepted_agreements_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements_1)
+
+    This API will return all accepted Legal Agreements for specified user. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/agreements/policies/users/{userId}
+
+        method: GET
+
+        tags: ["Agreement With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,6 +91,35 @@ async def retrieve_accepted_agreements_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements_1)
+
+    This API will return all accepted Legal Agreements for specified user. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/agreements/policies/users/{userId}
+
+        method: GET
+
+        tags: ["Agreement With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -85,6 +143,43 @@ def retrieve_all_users_by_policy_version_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion_1)
+
+    This API will return all users who has accepted a specific policy version.Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/agreements/policy-versions/users
+
+        method: GET
+
+        tags: ["Agreement With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        keyword: (keyword) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        policy_version_id: (policyVersionId) REQUIRED str in query
+
+    Responses:
+        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,6 +204,43 @@ async def retrieve_all_users_by_policy_version_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Retrieve All Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion_1)
+
+    This API will return all users who has accepted a specific policy version.Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/agreements/policy-versions/users
+
+        method: GET
+
+        tags: ["Agreement With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        keyword: (keyword) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        policy_version_id: (policyVersionId) REQUIRED str in query
+
+    Responses:
+        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

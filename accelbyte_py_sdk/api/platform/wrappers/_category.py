@@ -61,6 +61,59 @@ def create_category(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create category (createCategory)
+
+    This API is used to create category.
+
+    A category is a path separated by "/". A category also has localized display names. Example:
+
+
+        {
+
+            "categoryPath": "/games",
+
+            "localizationDisplayNames": {"en" : "Games"}
+
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=1 (CREATE)
+      *  Returns : created category data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories
+
+        method: POST
+
+        tags: ["Category"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CategoryCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        201: Created - FullCategoryInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,6 +134,59 @@ async def create_category_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create category (createCategory)
+
+    This API is used to create category.
+
+    A category is a path separated by "/". A category also has localized display names. Example:
+
+
+        {
+
+            "categoryPath": "/games",
+
+            "localizationDisplayNames": {"en" : "Games"}
+
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=1 (CREATE)
+      *  Returns : created category data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories
+
+        method: POST
+
+        tags: ["Category"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CategoryCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        201: Created - FullCategoryInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30271: Category [{categoryPath}] already exists in namespace [{namespace}] | 30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -103,6 +209,44 @@ def delete_category(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete category (deleteCategory)
+
+    This API is used to delete category by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=8 (DELETE)
+      *  Returns : the deleted category data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
+
+        method: DELETE
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullCategoryInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30272: Category [{categoryPath}] is not empty in namespace [{namespace}] | 30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -123,6 +267,44 @@ async def delete_category_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete category (deleteCategory)
+
+    This API is used to delete category by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=8 (DELETE)
+      *  Returns : the deleted category data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
+
+        method: DELETE
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullCategoryInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30272: Category [{categoryPath}] is not empty in namespace [{namespace}] | 30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,6 +327,40 @@ def download_categories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download store's structured categories (downloadCategories)
+
+    This API is used to download store's structured categories.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store content)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store content)
+      *  Returns : structured categories
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/categories/download
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[HierarchicalCategoryInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -165,6 +381,40 @@ async def download_categories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download store's structured categories (downloadCategories)
+
+    This API is used to download store's structured categories.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store content)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store content)
+      *  Returns : structured categories
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/categories/download
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[HierarchicalCategoryInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,6 +437,42 @@ def get_category(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get category (getCategory)
+
+    This API is used to get category by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : category data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullCategoryInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,6 +493,42 @@ async def get_category_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get category (getCategory)
+
+    This API is used to get category by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : category data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullCategoryInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -229,6 +551,40 @@ def get_child_categories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get child categories (getChildCategories)
+
+    This API is used to get child categories by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : list of child categories data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}/children
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[FullCategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -249,6 +605,40 @@ async def get_child_categories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get child categories (getChildCategories)
+
+    This API is used to get child categories by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : list of child categories data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}/children
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[FullCategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -271,6 +661,40 @@ def get_descendant_categories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get descendant categories (getDescendantCategories)
+
+    This API is used to get descendant categories by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : list of descendant categories data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}/descendants
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[FullCategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -291,6 +715,40 @@ async def get_descendant_categories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get descendant categories (getDescendantCategories)
+
+    This API is used to get descendant categories by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : list of descendant categories data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}/descendants
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[FullCategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -312,6 +770,38 @@ def get_root_categories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get root categories (getRootCategories)
+
+    This API is used to get root categories.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : root category data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[FullCategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -330,6 +820,38 @@ async def get_root_categories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get root categories (getRootCategories)
+
+    This API is used to get root categories.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : root category data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[FullCategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -350,6 +872,38 @@ def list_categories_basic(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List categories' basic info (listCategoriesBasic)
+
+    This API is used to list all categories' basic info of a store ordered by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : list of categories' paths
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/basic
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[BasicCategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -368,6 +922,38 @@ async def list_categories_basic_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List categories' basic info (listCategoriesBasic)
+
+    This API is used to list all categories' basic info of a store ordered by category path.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
+      *  Returns : list of categories' paths
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/basic
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[BasicCategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -390,6 +976,42 @@ def public_get_category(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Category (publicGetCategory)
+
+    This API is used to get category by category path.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store category)
+      *  Optional permission : resource="SANDBOX", action=1 (CREATE)(user with this permission can view draft store category)
+      *  Returns : category data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/categories/{categoryPath}
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - CategoryInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -412,6 +1034,42 @@ async def public_get_category_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Category (publicGetCategory)
+
+    This API is used to get category by category path.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store category)
+      *  Optional permission : resource="SANDBOX", action=1 (CREATE)(user with this permission can view draft store category)
+      *  Returns : category data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/categories/{categoryPath}
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - CategoryInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -436,6 +1094,40 @@ def public_get_child_categories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Child Categories (publicGetChildCategories)
+
+    This API is used to get child categories by category path.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store category)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store category)
+      *  Returns : list of child categories data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/categories/{categoryPath}/children
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -458,6 +1150,40 @@ async def public_get_child_categories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Child Categories (publicGetChildCategories)
+
+    This API is used to get child categories by category path.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store category)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store category)
+      *  Returns : list of child categories data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/categories/{categoryPath}/children
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -482,6 +1208,40 @@ def public_get_descendant_categories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Descendant Categories (publicGetDescendantCategories)
+
+    This API is used to get descendant categories by category path.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store category)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store category)
+      *  Returns : list of descendant categories data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/categories/{categoryPath}/descendants
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -504,6 +1264,40 @@ async def public_get_descendant_categories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Descendant Categories (publicGetDescendantCategories)
+
+    This API is used to get descendant categories by category path.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store category)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store category)
+      *  Returns : list of descendant categories data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/categories/{categoryPath}/descendants
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -527,6 +1321,38 @@ def public_get_root_categories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Root Categories (publicGetRootCategories)
+
+    This API is used to get root categories.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store category)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store category)
+      *  Returns : root category data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/categories
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -547,6 +1373,38 @@ async def public_get_root_categories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Root Categories (publicGetRootCategories)
+
+    This API is used to get root categories.
+
+    Other detail info:
+
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store category)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store category)
+      *  Returns : root category data
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/categories
+
+        method: GET
+
+        tags: ["Category"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[CategoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -570,6 +1428,61 @@ def update_category(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update category (updateCategory)
+
+    This API is used to update category.
+
+    The category update data is a category object, example as:
+
+
+        {
+
+            "storeId": "store-id",
+
+            "localizationDisplayNames": {"en" : "Games"}
+
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=4 (UPDATE)
+      *  Returns : the updated category data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
+
+        method: PUT
+
+        tags: ["Category"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CategoryUpdate in body
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullCategoryInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -592,6 +1505,61 @@ async def update_category_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update category (updateCategory)
+
+    This API is used to update category.
+
+    The category update data is a category object, example as:
+
+
+        {
+
+            "storeId": "store-id",
+
+            "localizationDisplayNames": {"en" : "Games"}
+
+        }
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=4 (UPDATE)
+      *  Returns : the updated category data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CATEGORY [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
+
+        method: PUT
+
+        tags: ["Category"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CategoryUpdate in body
+
+        category_path: (categoryPath) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullCategoryInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+
+        404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

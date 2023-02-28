@@ -53,6 +53,72 @@ def get_liked_content(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get liked contents (GetLikedContent)
+
+    Requires valid user token.
+
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
+
+    `tags=red`
+
+    `tags=red&animal;`
+
+    `tags=red|animal`
+
+    `tags=red&animal;|wild`
+
+    `tags=red&(animal|wild)`
+
+    The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
+
+    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
+
+    Allowed character for operator: `&` `|` `(` `)`
+
+     Please note that value of tags query param should be URL encoded
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/liked
+
+        method: GET
+
+        tags: ["Public Like"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        isofficial: (isofficial) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        orderby: (orderby) OPTIONAL str in query
+
+        sortby: (sortby) OPTIONAL str in query
+
+        subtype: (subtype) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+        type_: (type) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -87,6 +153,72 @@ async def get_liked_content_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get liked contents (GetLikedContent)
+
+    Requires valid user token.
+
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
+
+    `tags=red`
+
+    `tags=red&animal;`
+
+    `tags=red|animal`
+
+    `tags=red&animal;|wild`
+
+    `tags=red&(animal|wild)`
+
+    The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
+
+    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
+
+    Allowed character for operator: `&` `|` `(` `)`
+
+     Please note that value of tags query param should be URL encoded
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/liked
+
+        method: GET
+
+        tags: ["Public Like"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        isofficial: (isofficial) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        orderby: (orderby) OPTIONAL str in query
+
+        sortby: (sortby) OPTIONAL str in query
+
+        subtype: (subtype) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+        type_: (type) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,6 +248,38 @@ def update_content_like_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update like/unlike status to a content (UpdateContentLikeStatus)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/like
+
+        method: PUT
+
+        tags: ["Public Like"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsContentLikeRequest in body
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsContentLikeResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,6 +300,38 @@ async def update_content_like_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update like/unlike status to a content (UpdateContentLikeStatus)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/like
+
+        method: PUT
+
+        tags: ["Public Like"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsContentLikeRequest in body
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsContentLikeResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -39,6 +39,28 @@ from ..operations.dsmc_operations import PublicGetMessages
 def public_get_messages(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """get service messages (publicGetMessages)
+
+    get the list of messages.
+
+    Properties:
+        url: /dsmcontroller/v1/messages
+
+        method: GET
+
+        tags: ["Dsmc Operations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[LogAppMessageDeclaration] (messages returned)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = PublicGetMessages.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -47,6 +69,28 @@ def public_get_messages(
 async def public_get_messages_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """get service messages (publicGetMessages)
+
+    get the list of messages.
+
+    Properties:
+        url: /dsmcontroller/v1/messages
+
+        method: GET
+
+        tags: ["Dsmc Operations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[LogAppMessageDeclaration] (messages returned)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = PublicGetMessages.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

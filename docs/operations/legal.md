@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Legal Service Index (1.26.0)
+# AccelByte Cloud Legal Service Index (1.27.0)
 
 
 ## Operations

@@ -42,6 +42,41 @@ from ..operations.admin import UpdateServerConfig
 def delete_server(
     region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete a QoS service record (DeleteServer)
+
+    ```
+    Required permission: ADMIN:QOS:SERVER [DELETE]
+    Required scope: social
+
+    This endpoint delete a registered QoS service record.
+    ```
+
+    Required Permission(s):
+        - ADMIN:QOS:SERVER [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /qosm/admin/servers/{region}
+
+        method: DELETE
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        204: No Content - (record deleted)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = DeleteServer.create(
         region=region,
     )
@@ -52,6 +87,41 @@ def delete_server(
 async def delete_server_async(
     region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Delete a QoS service record (DeleteServer)
+
+    ```
+    Required permission: ADMIN:QOS:SERVER [DELETE]
+    Required scope: social
+
+    This endpoint delete a registered QoS service record.
+    ```
+
+    Required Permission(s):
+        - ADMIN:QOS:SERVER [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /qosm/admin/servers/{region}
+
+        method: DELETE
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        204: No Content - (record deleted)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = DeleteServer.create(
         region=region,
     )
@@ -67,6 +137,47 @@ def set_server_alias(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Modify a QoS service's region alias (SetServerAlias)
+
+    ```
+    Required permission: ADMIN:QOS:SERVER [UDPATE]
+    Required scope: social
+
+    This endpoint modifies a registered QoS service's region alias.
+    ```
+
+    Required Permission(s):
+        - ADMIN:QOS:SERVER []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /qosm/admin/servers/{region}/alias
+
+        method: POST
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsSetAliasRequest in body
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        204: No Content - (record updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        404: Not Found - ResponseError (server record not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = SetServerAlias.create(
         body=body,
         region=region,
@@ -81,6 +192,47 @@ async def set_server_alias_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Modify a QoS service's region alias (SetServerAlias)
+
+    ```
+    Required permission: ADMIN:QOS:SERVER [UDPATE]
+    Required scope: social
+
+    This endpoint modifies a registered QoS service's region alias.
+    ```
+
+    Required Permission(s):
+        - ADMIN:QOS:SERVER []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /qosm/admin/servers/{region}/alias
+
+        method: POST
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsSetAliasRequest in body
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        204: No Content - (record updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        404: Not Found - ResponseError (server record not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = SetServerAlias.create(
         body=body,
         region=region,
@@ -98,6 +250,49 @@ def update_server_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update QoS Service configuration (UpdateServerConfig)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
+    Required scope: social
+
+    This endpoint updates the registered QoS service's configurable configuration'.
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /qosm/admin/namespaces/{namespace}/servers/{region}
+
+        method: PATCH
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateServerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        204: No Content - (record updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        404: Not Found - ResponseError (server record not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -118,6 +313,49 @@ async def update_server_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update QoS Service configuration (UpdateServerConfig)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
+    Required scope: social
+
+    This endpoint updates the registered QoS service's configurable configuration'.
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /qosm/admin/namespaces/{namespace}/servers/{region}
+
+        method: PATCH
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateServerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) REQUIRED str in path
+
+    Responses:
+        204: No Content - (record updated)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        404: Not Found - ResponseError (server record not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

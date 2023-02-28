@@ -53,7 +53,7 @@ class GetSession(Operation):
 
         method: GET
 
-        tags: ["Session"]
+        tags: ["Session", "public"]
 
         consumes: ["application/json"]
 

@@ -43,6 +43,38 @@ def get_type(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get types (GetType)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/types
+
+        method: GET
+
+        tags: ["Public Type"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedGetTypeResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,6 +95,38 @@ async def get_type_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get types (GetType)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/types
+
+        method: GET
+
+        tags: ["Public Type"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedGetTypeResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

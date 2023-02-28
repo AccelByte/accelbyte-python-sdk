@@ -50,6 +50,58 @@ def get_event_specific_user_v2_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from a specific user (GetEventSpecificUserV2Handler)
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/v2/admin/namespaces/{namespace}/users/{userId}/event
+
+        method: GET
+
+        tags: ["Event V2"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        event_name: (eventName) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        page_size: (pageSize) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsEventResponseV2 (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+
+        501: Not Implemented - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,6 +130,58 @@ async def get_event_specific_user_v2_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from a specific user (GetEventSpecificUserV2Handler)
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/v2/admin/namespaces/{namespace}/users/{userId}/event
+
+        method: GET
+
+        tags: ["Event V2"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        event_name: (eventName) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        page_size: (pageSize) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsEventResponseV2 (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+
+        501: Not Implemented - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -108,6 +212,80 @@ def get_public_edit_history(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a user edit history based on the provided type (GetPublicEditHistory)
+
+    Available Type:
+
+
+
+
+
+
+      * email
+
+
+      * password
+
+
+      * displayname
+
+
+      * dateofbirth
+
+
+      * country
+
+
+      * language
+
+
+
+
+
+    Requires a valid user access token
+
+    Properties:
+        url: /event/v2/public/namespaces/{namespace}/users/{userId}/edithistory
+
+        method: GET
+
+        tags: ["Event V2"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        page_size: (pageSize) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+        type_: (type) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsEventResponseV2 (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+
+        501: Not Implemented - (Not Implemented)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,6 +314,80 @@ async def get_public_edit_history_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a user edit history based on the provided type (GetPublicEditHistory)
+
+    Available Type:
+
+
+
+
+
+
+      * email
+
+
+      * password
+
+
+      * displayname
+
+
+      * dateofbirth
+
+
+      * country
+
+
+      * language
+
+
+
+
+
+    Requires a valid user access token
+
+    Properties:
+        url: /event/v2/public/namespaces/{namespace}/users/{userId}/edithistory
+
+        method: GET
+
+        tags: ["Event V2"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        page_size: (pageSize) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+        type_: (type) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsEventResponseV2 (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+
+        501: Not Implemented - (Not Implemented)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -166,6 +418,52 @@ def get_user_events_v2_public(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from a specific user (GetUserEventsV2Public)
+
+    Requires valid user access token
+
+    Properties:
+        url: /event/v2/public/namespaces/{namespace}/users/{userId}/event
+
+        method: GET
+
+        tags: ["Event V2"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        event_name: (eventName) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        page_size: (pageSize) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsEventResponseV2 (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+
+        501: Not Implemented - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -194,6 +492,52 @@ async def get_user_events_v2_public_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from a specific user (GetUserEventsV2Public)
+
+    Requires valid user access token
+
+    Properties:
+        url: /event/v2/public/namespaces/{namespace}/users/{userId}/event
+
+        method: GET
+
+        tags: ["Event V2"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        event_name: (eventName) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        page_size: (pageSize) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsEventResponseV2 (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+
+        501: Not Implemented - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -223,6 +567,64 @@ def query_event_stream_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """A generic query to get a set of events based on the provided filters (QueryEventStreamHandler)
+
+    This endpoint is using POST which is somewhat unfamiliar,
+    but it's logical that we have to send/post a filter (search term) in order to get the data.
+
+
+
+
+    This endpoint will not return anything if you give it an empty filters in the request body.
+
+
+
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]` and scope `"+scope+"`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
+
+    Properties:
+        url: /event/v2/admin/namespaces/{namespace}/query
+
+        method: POST
+
+        tags: ["Event V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGenericQueryPayload in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        page_size: (pageSize) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsEventResponseV2 (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+
+        501: Not Implemented - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -249,6 +651,64 @@ async def query_event_stream_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """A generic query to get a set of events based on the provided filters (QueryEventStreamHandler)
+
+    This endpoint is using POST which is somewhat unfamiliar,
+    but it's logical that we have to send/post a filter (search term) in order to get the data.
+
+
+
+
+    This endpoint will not return anything if you give it an empty filters in the request body.
+
+
+
+
+    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]` and scope `"+scope+"`
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
+
+    Properties:
+        url: /event/v2/admin/namespaces/{namespace}/query
+
+        method: POST
+
+        tags: ["Event V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGenericQueryPayload in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        page_size: (pageSize) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsEventResponseV2 (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+
+        501: Not Implemented - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

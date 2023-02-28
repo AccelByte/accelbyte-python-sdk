@@ -47,6 +47,46 @@ def admin_get_player_attributes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get player attributes. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLAYER:{userId} [READ] (adminGetPlayerAttributes)
+
+    Admin get attributes of a player.
+
+    Field descriptions:
+    - userID : user who owns the attributes.
+    - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
+    - platforms : list of the player's 3rd party platform account information.
+    - name : platform name. supported platforms: STEAM
+    - userID : platform userID
+    - data : other data that the player wants to store.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/users/{userId}/attributes
+
+        method: GET
+
+        tags: ["Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsPlayerAttributesResponseBody (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,6 +105,46 @@ async def admin_get_player_attributes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get player attributes. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLAYER:{userId} [READ] (adminGetPlayerAttributes)
+
+    Admin get attributes of a player.
+
+    Field descriptions:
+    - userID : user who owns the attributes.
+    - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
+    - platforms : list of the player's 3rd party platform account information.
+    - name : platform name. supported platforms: STEAM
+    - userID : platform userID
+    - data : other data that the player wants to store.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/users/{userId}/attributes
+
+        method: GET
+
+        tags: ["Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsPlayerAttributesResponseBody (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -85,6 +165,46 @@ def admin_query_player_attributes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query player attributes. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLAYER:{userId} [READ] (adminQueryPlayerAttributes)
+
+    Admin get attributes of players.
+
+    Field descriptions:
+    - userID : user who owns the attributes.
+    - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
+    - platforms : list of the player's 3rd party platform account information.
+    - name : platform name. supported platforms: STEAM
+    - userID : platform userID
+    - data : other data that the player wants to store.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/users/attributes
+
+        method: GET
+
+        tags: ["Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        users: (users) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ApimodelsPlayerAttributesResponseBody] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -103,6 +223,46 @@ async def admin_query_player_attributes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query player attributes. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLAYER:{userId} [READ] (adminQueryPlayerAttributes)
+
+    Admin get attributes of players.
+
+    Field descriptions:
+    - userID : user who owns the attributes.
+    - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
+    - platforms : list of the player's 3rd party platform account information.
+    - name : platform name. supported platforms: STEAM
+    - userID : platform userID
+    - data : other data that the player wants to store.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/users/attributes
+
+        method: GET
+
+        tags: ["Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        users: (users) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ApimodelsPlayerAttributesResponseBody] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -122,6 +282,36 @@ def public_delete_player_attributes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [DELETE] (publicDeletePlayerAttributes)
+
+    Reset player attributes.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/users/me/attributes
+
+        method: DELETE
+
+        tags: ["Player"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -138,6 +328,36 @@ async def public_delete_player_attributes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [DELETE] (publicDeletePlayerAttributes)
+
+    Reset player attributes.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/users/me/attributes
+
+        method: DELETE
+
+        tags: ["Player"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -156,6 +376,44 @@ def public_get_player_attributes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetPlayerAttributes)
+
+    Get player attributes.
+
+    Field descriptions:
+    - userID : user who owns the attributes.
+    - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
+    - platforms : list of the player's 3rd party platform account information.
+    - name : platform name. supported platforms: STEAM
+    - userID : platform userID
+    - data : other data that the player wants to store.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/users/me/attributes
+
+        method: GET
+
+        tags: ["Player"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsPlayerAttributesResponseBody (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -172,6 +430,44 @@ async def public_get_player_attributes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetPlayerAttributes)
+
+    Get player attributes.
+
+    Field descriptions:
+    - userID : user who owns the attributes.
+    - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
+    - platforms : list of the player's 3rd party platform account information.
+    - name : platform name. supported platforms: STEAM
+    - userID : platform userID
+    - data : other data that the player wants to store.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/users/me/attributes
+
+        method: GET
+
+        tags: ["Player"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsPlayerAttributesResponseBody (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,6 +487,44 @@ def public_store_player_attributes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Store player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [CREATE] (publicStorePlayerAttributes)
+
+    This API behaves to upsert player's attributes.
+
+    Field descriptions:
+    - userID : user who owns the attributes.
+    - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
+    - platforms : list of the player's 3rd party platform account information.
+    - name : platform name. supported platforms: STEAM
+    - userID : platform userID
+    - data : other data that the player wants to store.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/users/me/attributes
+
+        method: POST
+
+        tags: ["Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsPlayerAttributesRequestBody in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsPlayerAttributesResponseBody (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -209,6 +543,44 @@ async def public_store_player_attributes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Store player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [CREATE] (publicStorePlayerAttributes)
+
+    This API behaves to upsert player's attributes.
+
+    Field descriptions:
+    - userID : user who owns the attributes.
+    - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
+    - platforms : list of the player's 3rd party platform account information.
+    - name : platform name. supported platforms: STEAM
+    - userID : platform userID
+    - data : other data that the player wants to store.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/users/me/attributes
+
+        method: POST
+
+        tags: ["Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsPlayerAttributesRequestBody in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsPlayerAttributesResponseBody (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

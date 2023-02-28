@@ -70,6 +70,42 @@ def admin_get_archived_leaderboard_ranking_data_v1_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Get signed url for archive all time leaderboard ranking data (AdminGetArchivedLeaderboardRankingDataV1Handler)
+
+    Admin Get signed url in an all time leaderboard that archived. Notes: This will be a bulk endpoint to get sign url
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        slug: (slug) OPTIONAL str in query
+
+        leaderboard_codes: (leaderboardCodes) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,6 +126,42 @@ async def admin_get_archived_leaderboard_ranking_data_v1_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Get signed url for archive all time leaderboard ranking data (AdminGetArchivedLeaderboardRankingDataV1Handler)
+
+    Admin Get signed url in an all time leaderboard that archived. Notes: This will be a bulk endpoint to get sign url
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        slug: (slug) OPTIONAL str in query
+
+        leaderboard_codes: (leaderboardCodes) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -111,6 +183,49 @@ def create_archived_leaderboard_ranking_data_v1_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Archive a leadeboard data ranking (CreateArchivedLeaderboardRankingDataV1Handler)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
+
+
+
+
+    Archive leaderboard ranking data for specified leaderboard codes. NOTE: This will remove all data of the leaderboard on every slug,
+    remove the leaderboard code on stat mapping, and remove the leaderboard on the queue reset. This will be a bulk endpoint
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived
+
+        method: POST
+
+        tags: ["LeaderboardData"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsArchiveLeaderboardReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -129,6 +244,49 @@ async def create_archived_leaderboard_ranking_data_v1_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Archive a leadeboard data ranking (CreateArchivedLeaderboardRankingDataV1Handler)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
+
+
+
+
+    Archive leaderboard ranking data for specified leaderboard codes. NOTE: This will remove all data of the leaderboard on every slug,
+    remove the leaderboard code on stat mapping, and remove the leaderboard on the queue reset. This will be a bulk endpoint
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived
+
+        method: POST
+
+        tags: ["LeaderboardData"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsArchiveLeaderboardReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -150,6 +308,48 @@ def delete_user_ranking_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user ranking (deleteUserRankingAdminV1)
+
+    Delete user ranking
+    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
+
+    Remove entry with provided userId from leaderboard.
+    If leaderboard with given leaderboard code not found, it will return http status not found (404).
+    If the leaderboard is found and no entry found in it, it will still return success (204)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
+
+        method: DELETE
+
+        tags: ["LeaderboardData"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -170,6 +370,48 @@ async def delete_user_ranking_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user ranking (deleteUserRankingAdminV1)
+
+    Delete user ranking
+    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
+
+    Remove entry with provided userId from leaderboard.
+    If leaderboard with given leaderboard code not found, it will return http status not found (404).
+    If the leaderboard is found and no entry found in it, it will still return success (204)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
+
+        method: DELETE
+
+        tags: ["LeaderboardData"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -192,6 +434,48 @@ def delete_user_ranking_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user ranking (deleteUserRankingPublicV1)
+
+    Delete user ranking
+    Required permission: NAMESPACE:{namespace}:LEADERBOARD:USER:{userId} [DELETE]
+
+    Remove entry with provided userId from leaderboard.
+    If leaderboard with given leaderboard code not found, it will return http status not found (404).
+    If the leaderboard is found and no entry found in it, it will still return success (204)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:LEADERBOARD:USER:{userId} [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
+
+        method: DELETE
+
+        tags: ["LeaderboardData"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -212,6 +496,48 @@ async def delete_user_ranking_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user ranking (deleteUserRankingPublicV1)
+
+    Delete user ranking
+    Required permission: NAMESPACE:{namespace}:LEADERBOARD:USER:{userId} [DELETE]
+
+    Remove entry with provided userId from leaderboard.
+    If leaderboard with given leaderboard code not found, it will return http status not found (404).
+    If the leaderboard is found and no entry found in it, it will still return success (204)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:LEADERBOARD:USER:{userId} [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
+
+        method: DELETE
+
+        tags: ["LeaderboardData"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -234,6 +560,48 @@ def delete_user_rankings_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user ranking across leaderboard(s) (deleteUserRankingsAdminV1)
+
+    Delete user ranking across leaderboard
+    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
+
+    Remove entry with provided userId from leaderboard.
+    If leaderboard with given leaderboard code not found, it will return http status not found (404).
+    If the leaderboard is found and no entry found in it, it will still return success (204)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}
+
+        method: DELETE
+
+        tags: ["LeaderboardData"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        leaderboard_code: (leaderboardCode) REQUIRED List[str] in query
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -254,6 +622,48 @@ async def delete_user_rankings_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user ranking across leaderboard(s) (deleteUserRankingsAdminV1)
+
+    Delete user ranking across leaderboard
+    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
+
+    Remove entry with provided userId from leaderboard.
+    If leaderboard with given leaderboard code not found, it will return http status not found (404).
+    If the leaderboard is found and no entry found in it, it will still return success (204)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}
+
+        method: DELETE
+
+        tags: ["LeaderboardData"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        leaderboard_code: (leaderboardCode) REQUIRED List[str] in query
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -277,6 +687,52 @@ def get_all_time_leaderboard_ranking_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get rankings in an all time leaderboard.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -299,6 +755,52 @@ async def get_all_time_leaderboard_ranking_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get rankings in an all time leaderboard.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -323,6 +825,40 @@ def get_all_time_leaderboard_ranking_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingPublicV1)
+
+    Get rankings in an all time leaderboard.
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -345,6 +881,40 @@ async def get_all_time_leaderboard_ranking_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingPublicV1)
+
+    Get rankings in an all time leaderboard.
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -369,6 +939,44 @@ def get_all_time_leaderboard_ranking_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingPublicV2)
+
+    Get rankings in an all time leaderboard.
+
+    Properties:
+        url: /leaderboard/v2/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - V2GetPublicLeaderboardRankingResponse (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -391,6 +999,44 @@ async def get_all_time_leaderboard_ranking_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingPublicV2)
+
+    Get rankings in an all time leaderboard.
+
+    Properties:
+        url: /leaderboard/v2/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - V2GetPublicLeaderboardRankingResponse (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -415,6 +1061,44 @@ def get_archived_leaderboard_ranking_data_v1_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get signed url for archive all time leaderboard ranking data (GetArchivedLeaderboardRankingDataV1Handler)
+
+    Get signed url in an all time leaderboard that archived. NOTE: This will be a bulk endpoint to get sign url
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/archived
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        slug: (slug) OPTIONAL str in query
+
+        leaderboard_codes: (leaderboardCodes) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -437,6 +1121,44 @@ async def get_archived_leaderboard_ranking_data_v1_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get signed url for archive all time leaderboard ranking data (GetArchivedLeaderboardRankingDataV1Handler)
+
+    Get signed url in an all time leaderboard that archived. NOTE: This will be a bulk endpoint to get sign url
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/archived
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        slug: (slug) OPTIONAL str in query
+
+        leaderboard_codes: (leaderboardCodes) REQUIRED str in query
+
+    Responses:
+        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -461,6 +1183,52 @@ def get_current_month_leaderboard_ranking_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current month leaderboard ranking data (GetCurrentMonthLeaderboardRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get rankings in current month leaderboard.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/month
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -483,6 +1251,52 @@ async def get_current_month_leaderboard_ranking_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current month leaderboard ranking data (GetCurrentMonthLeaderboardRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get rankings in current month leaderboard.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/month
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -507,6 +1321,40 @@ def get_current_month_leaderboard_ranking_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current month leaderboard ranking data (GetCurrentMonthLeaderboardRankingPublicV1)
+
+    Get rankings in current month leaderboard.
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/month
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -529,6 +1377,40 @@ async def get_current_month_leaderboard_ranking_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current month leaderboard ranking data (GetCurrentMonthLeaderboardRankingPublicV1)
+
+    Get rankings in current month leaderboard.
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/month
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -553,6 +1435,52 @@ def get_current_season_leaderboard_ranking_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current season leaderboard ranking data (GetCurrentSeasonLeaderboardRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get rankings in current season leaderboard.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/season
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -575,6 +1503,52 @@ async def get_current_season_leaderboard_ranking_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current season leaderboard ranking data (GetCurrentSeasonLeaderboardRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get rankings in current season leaderboard.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/season
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -599,6 +1573,40 @@ def get_current_season_leaderboard_ranking_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current season leaderboard ranking data (GetCurrentSeasonLeaderboardRankingPublicV1)
+
+    Get rankings in current season leaderboard.
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/season
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -621,6 +1629,40 @@ async def get_current_season_leaderboard_ranking_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current season leaderboard ranking data (GetCurrentSeasonLeaderboardRankingPublicV1)
+
+    Get rankings in current season leaderboard.
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/season
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -645,6 +1687,52 @@ def get_current_week_leaderboard_ranking_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current week leaderboard ranking data (GetCurrentWeekLeaderboardRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get rankings in current week leaderboard.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/week
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -667,6 +1755,52 @@ async def get_current_week_leaderboard_ranking_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current week leaderboard ranking data (GetCurrentWeekLeaderboardRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get rankings in current week leaderboard.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/week
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -691,6 +1825,40 @@ def get_current_week_leaderboard_ranking_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current week leaderboard ranking data (GetCurrentWeekLeaderboardRankingPublicV1)
+
+    Get rankings in current week leaderboard.
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/week
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -713,6 +1881,40 @@ async def get_current_week_leaderboard_ranking_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get current week leaderboard ranking data (GetCurrentWeekLeaderboardRankingPublicV1)
+
+    Get rankings in current week leaderboard.
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/week
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -737,6 +1939,52 @@ def get_today_leaderboard_ranking_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get today leaderboard ranking data (GetTodayLeaderboardRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get rankings in today leaderboard.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/today
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -759,6 +2007,52 @@ async def get_today_leaderboard_ranking_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get today leaderboard ranking data (GetTodayLeaderboardRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get rankings in today leaderboard.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/today
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -783,6 +2077,40 @@ def get_today_leaderboard_ranking_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get today leaderboard ranking data (GetTodayLeaderboardRankingPublicV1)
+
+    Get rankings in today leaderboard.
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/today
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -805,6 +2133,40 @@ async def get_today_leaderboard_ranking_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get today leaderboard ranking data (GetTodayLeaderboardRankingPublicV1)
+
+    Get rankings in today leaderboard.
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/today
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetLeaderboardRankingResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -828,6 +2190,48 @@ def get_user_ranking_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user ranking (getUserRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get user ranking in leaderboard
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUserRankingResponse (OK)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -848,6 +2252,48 @@ async def get_user_ranking_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user ranking (getUserRankingAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    Get user ranking in leaderboard
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUserRankingResponse (OK)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -870,6 +2316,40 @@ def get_user_ranking_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user ranking (getUserRankingPublicV1)
+
+    Get user ranking in leaderboard
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUserRankingResponse (OK)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -890,6 +2370,40 @@ async def get_user_ranking_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user ranking (getUserRankingPublicV1)
+
+    Get user ranking in leaderboard
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
+
+        method: GET
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUserRankingResponse (OK)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -913,6 +2427,59 @@ def update_user_point_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user point (updateUserPointAdminV1)
+
+    Update user point in a leaderboard. This endpoint uses for test utility only.
+
+
+
+
+    Other detail info:
+
+
+
+
+
+
+      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:(userId):LEADERBOARD", action=4 (UPDATE)
+
+
+      * Returns: user ranking
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
+
+        method: PUT
+
+        tags: ["LeaderboardData"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateUserPointAdminV1Request in body
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateUserPointAdminV1Response (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -935,6 +2502,59 @@ async def update_user_point_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user point (updateUserPointAdminV1)
+
+    Update user point in a leaderboard. This endpoint uses for test utility only.
+
+
+
+
+    Other detail info:
+
+
+
+
+
+
+      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:(userId):LEADERBOARD", action=4 (UPDATE)
+
+
+      * Returns: user ranking
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
+
+        method: PUT
+
+        tags: ["LeaderboardData"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateUserPointAdminV1Request in body
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateUserPointAdminV1Response (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

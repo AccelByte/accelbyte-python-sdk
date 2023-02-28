@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Group Service (2.15.0)
+# AccelByte Cloud Group Service (2.15.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,8 @@ class ModelsGetUserGroupInformationResponseV1(Model):
     Properties:
         group_id: (groupId) REQUIRED str
 
+        joined_at: (joinedAt) REQUIRED str
+
         member_role_id: (memberRoleId) REQUIRED List[str]
 
         user_id: (userId) REQUIRED str
@@ -44,6 +46,7 @@ class ModelsGetUserGroupInformationResponseV1(Model):
     # region fields
 
     group_id: str  # REQUIRED
+    joined_at: str  # REQUIRED
     member_role_id: List[str]  # REQUIRED
     user_id: str  # REQUIRED
     status: str  # OPTIONAL
@@ -54,6 +57,10 @@ class ModelsGetUserGroupInformationResponseV1(Model):
 
     def with_group_id(self, value: str) -> ModelsGetUserGroupInformationResponseV1:
         self.group_id = value
+        return self
+
+    def with_joined_at(self, value: str) -> ModelsGetUserGroupInformationResponseV1:
+        self.joined_at = value
         return self
 
     def with_member_role_id(
@@ -80,6 +87,10 @@ class ModelsGetUserGroupInformationResponseV1(Model):
             result["groupId"] = str(self.group_id)
         elif include_empty:
             result["groupId"] = ""
+        if hasattr(self, "joined_at"):
+            result["joinedAt"] = str(self.joined_at)
+        elif include_empty:
+            result["joinedAt"] = ""
         if hasattr(self, "member_role_id"):
             result["memberRoleId"] = [str(i0) for i0 in self.member_role_id]
         elif include_empty:
@@ -102,12 +113,14 @@ class ModelsGetUserGroupInformationResponseV1(Model):
     def create(
         cls,
         group_id: str,
+        joined_at: str,
         member_role_id: List[str],
         user_id: str,
         status: Optional[str] = None,
     ) -> ModelsGetUserGroupInformationResponseV1:
         instance = cls()
         instance.group_id = group_id
+        instance.joined_at = joined_at
         instance.member_role_id = member_role_id
         instance.user_id = user_id
         if status is not None:
@@ -125,6 +138,10 @@ class ModelsGetUserGroupInformationResponseV1(Model):
             instance.group_id = str(dict_["groupId"])
         elif include_empty:
             instance.group_id = ""
+        if "joinedAt" in dict_ and dict_["joinedAt"] is not None:
+            instance.joined_at = str(dict_["joinedAt"])
+        elif include_empty:
+            instance.joined_at = ""
         if "memberRoleId" in dict_ and dict_["memberRoleId"] is not None:
             instance.member_role_id = [str(i0) for i0 in dict_["memberRoleId"]]
         elif include_empty:
@@ -181,6 +198,7 @@ class ModelsGetUserGroupInformationResponseV1(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "groupId": "group_id",
+            "joinedAt": "joined_at",
             "memberRoleId": "member_role_id",
             "userId": "user_id",
             "status": "status",
@@ -190,6 +208,7 @@ class ModelsGetUserGroupInformationResponseV1(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "groupId": True,
+            "joinedAt": True,
             "memberRoleId": True,
             "userId": True,
             "status": False,

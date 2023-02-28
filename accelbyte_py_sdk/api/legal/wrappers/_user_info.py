@@ -42,6 +42,36 @@ def get_user_info_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user info cache status (getUserInfoStatus)
+
+    Get user info cache last updated time per namespace.
+    The query parameter namespaces can be a list of namespace separated by comma.
+    If query parameter namespaces is empty, user info cache status for all available namespaces will be returned.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/userInfo
+
+        method: GET
+
+        tags: ["UserInfo"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespaces: (namespaces) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[RetrieveUserInfoCacheStatusResponse] (successful operation)
+    """
     request = GetUserInfoStatus.create(
         namespaces=namespaces,
     )
@@ -54,6 +84,36 @@ async def get_user_info_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user info cache status (getUserInfoStatus)
+
+    Get user info cache last updated time per namespace.
+    The query parameter namespaces can be a list of namespace separated by comma.
+    If query parameter namespaces is empty, user info cache status for all available namespaces will be returned.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/userInfo
+
+        method: GET
+
+        tags: ["UserInfo"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespaces: (namespaces) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[RetrieveUserInfoCacheStatusResponse] (successful operation)
+    """
     request = GetUserInfoStatus.create(
         namespaces=namespaces,
     )
@@ -68,6 +128,36 @@ def invalidate_user_info_cache(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Invalidate user info cache (invalidateUserInfoCache)
+
+    Important: GOING TO DEPRECATE
+
+    Invalidate user info cache in agreement service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
+
+    Properties:
+        url: /agreement/admin/userInfo
+
+        method: DELETE
+
+        tags: ["UserInfo"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) OPTIONAL str in query
+
+    Responses:
+        204: No Content - (Successful operation)
+    """
     request = InvalidateUserInfoCache.create(
         namespace=namespace,
     )
@@ -80,6 +170,36 @@ async def invalidate_user_info_cache_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Invalidate user info cache (invalidateUserInfoCache)
+
+    Important: GOING TO DEPRECATE
+
+    Invalidate user info cache in agreement service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
+
+    Properties:
+        url: /agreement/admin/userInfo
+
+        method: DELETE
+
+        tags: ["UserInfo"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) OPTIONAL str in query
+
+    Responses:
+        204: No Content - (Successful operation)
+    """
     request = InvalidateUserInfoCache.create(
         namespace=namespace,
     )
@@ -94,6 +214,36 @@ def sync_user_info(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync user info with iam service  (syncUserInfo)
+
+    Important: GOING TO DEPRECATE
+
+    Sync user info cache in agreement service with iam service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/userInfo
+
+        method: PUT
+
+        tags: ["UserInfo"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in query
+
+    Responses:
+        200: OK - (Successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,6 +260,36 @@ async def sync_user_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Sync user info with iam service  (syncUserInfo)
+
+    Important: GOING TO DEPRECATE
+
+    Sync user info cache in agreement service with iam service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
+
+    Properties:
+        url: /agreement/admin/userInfo
+
+        method: PUT
+
+        tags: ["UserInfo"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in query
+
+    Responses:
+        200: OK - (Successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

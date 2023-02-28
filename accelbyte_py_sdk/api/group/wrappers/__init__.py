@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Group Service."""
 
-__version__ = "2.15.0"
+__version__ = "2.15.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -49,6 +49,8 @@ from ._group import get_group_list_admin_v1
 from ._group import get_group_list_admin_v1_async
 from ._group import get_group_list_public_v1
 from ._group import get_group_list_public_v1_async
+from ._group import get_list_group_by_i_ds_admin_v2
+from ._group import get_list_group_by_i_ds_admin_v2_async
 from ._group import get_list_group_by_i_ds_v2
 from ._group import get_list_group_by_i_ds_v2_async
 from ._group import get_single_group_admin_v1

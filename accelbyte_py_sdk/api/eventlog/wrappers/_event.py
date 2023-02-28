@@ -56,6 +56,54 @@ def get_event_by_event_id_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from all users in a namespace with specific eventID (GetEventByEventIDHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/eventId/{eventId}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_id: (eventId) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,6 +131,54 @@ async def get_event_by_event_id_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from all users in a namespace with specific eventID (GetEventByEventIDHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/eventId/{eventId}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_id: (eventId) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,6 +209,56 @@ def get_event_by_event_type_and_event_id_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from all users in a namespace with specific eventID and eventType (GetEventByEventTypeAndEventIDHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/eventType/{eventType}/eventId/{eventId}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_id: (eventId) REQUIRED float in path
+
+        event_type: (eventType) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,6 +288,56 @@ async def get_event_by_event_type_and_event_id_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from all users in a namespace with specific eventID and eventType (GetEventByEventTypeAndEventIDHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/eventType/{eventType}/eventId/{eventId}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_id: (eventId) REQUIRED float in path
+
+        event_type: (eventType) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -172,6 +368,54 @@ def get_event_by_event_type_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from all users in a namespace with specific eventType (GetEventByEventTypeHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/eventType/{eventType}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_type: (eventType) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -199,6 +443,54 @@ async def get_event_by_event_type_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from all users in a namespace with specific eventType (GetEventByEventTypeHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/eventType/{eventType}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_type: (eventType) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -227,6 +519,52 @@ def get_event_by_namespace_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from all users in a namespace (GetEventByNamespaceHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -252,6 +590,52 @@ async def get_event_by_namespace_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from all users in a namespace (GetEventByNamespaceHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -282,6 +666,58 @@ def get_event_by_user_event_id_and_event_type_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from specific user with specific eventID and eventType (GetEventByUserEventIDAndEventTypeHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/users/{userId}/eventType/{eventType}/eventId/{eventId}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_id: (eventId) REQUIRED float in path
+
+        event_type: (eventType) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -313,6 +749,58 @@ async def get_event_by_user_event_id_and_event_type_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from specific user with specific eventID and eventType (GetEventByUserEventIDAndEventTypeHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/users/{userId}/eventType/{eventType}/eventId/{eventId}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_id: (eventId) REQUIRED float in path
+
+        event_type: (eventType) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -345,6 +833,56 @@ def get_event_by_user_id_and_event_id_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from specific user with specific eventID (GetEventByUserIDAndEventIDHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/users/{userId}/eventId/{eventId}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_id: (eventId) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -374,6 +912,56 @@ async def get_event_by_user_id_and_event_id_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from specific user with specific eventID (GetEventByUserIDAndEventIDHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/users/{userId}/eventId/{eventId}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_id: (eventId) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -405,6 +993,56 @@ def get_event_by_user_id_and_event_type_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from specific user with specific eventType (GetEventByUserIDAndEventTypeHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/users/{userId}/eventType/{eventType}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_type: (eventType) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -434,6 +1072,56 @@ async def get_event_by_user_id_and_event_type_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from specific user with specific eventType (GetEventByUserIDAndEventTypeHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/users/{userId}/eventType/{eventType}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        event_type: (eventType) REQUIRED float in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -464,6 +1152,54 @@ def get_event_by_user_id_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from specific user (GetEventByUserIDHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -491,6 +1227,54 @@ async def get_event_by_user_id_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get events from specific user (GetEventByUserIDHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [UPDATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Event"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        offset: (offset) OPTIONAL int in query
+
+        end_date: (endDate) REQUIRED str in query
+
+        page_size: (pageSize) REQUIRED int in query
+
+        start_date: (startDate) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelsEventResponse (OK)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -516,6 +1300,44 @@ def post_event_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Post an activity log (PostEventHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [CREATE]`and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [CREATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}
+
+        method: POST
+
+        tags: ["Event"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsEvent in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -535,6 +1357,44 @@ async def post_event_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Post an activity log (PostEventHandler)
+
+    Required permission `NAMESPACE:{namespace}:EVENT [CREATE]`and scope `analytics`
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:EVENT [CREATE]
+
+    Required Scope(s):
+        - analytics
+
+    Properties:
+        url: /event/namespaces/{namespace}
+
+        method: POST
+
+        tags: ["Event"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsEvent in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - (Bad Request)
+
+        401: Unauthorized - (Unauthorized)
+
+        403: Forbidden - (Forbidden)
+
+        500: Internal Server Error - (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

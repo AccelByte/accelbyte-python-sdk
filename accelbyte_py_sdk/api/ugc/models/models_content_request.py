@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.9.0)
+# AccelByte Cloud Ugc Service (2.9.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,8 +36,6 @@ class ModelsContentRequest(Model):
     Properties:
         content_type: (contentType) REQUIRED str
 
-        custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
-
         file_extension: (fileExtension) REQUIRED str
 
         name: (name) REQUIRED str
@@ -46,8 +44,6 @@ class ModelsContentRequest(Model):
 
         preview: (preview) REQUIRED str
 
-        preview_metadata: (previewMetadata) REQUIRED ModelsPreviewMetadata
-
         sub_type: (subType) REQUIRED str
 
         tags: (tags) REQUIRED List[str]
@@ -55,21 +51,25 @@ class ModelsContentRequest(Model):
         type_: (type) REQUIRED str
 
         update_content_file: (updateContentFile) REQUIRED bool
+
+        custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
+
+        preview_metadata: (previewMetadata) OPTIONAL ModelsPreviewMetadata
     """
 
     # region fields
 
     content_type: str  # REQUIRED
-    custom_attributes: Dict[str, Any]  # REQUIRED
     file_extension: str  # REQUIRED
     name: str  # REQUIRED
     payload: str  # REQUIRED
     preview: str  # REQUIRED
-    preview_metadata: ModelsPreviewMetadata  # REQUIRED
     sub_type: str  # REQUIRED
     tags: List[str]  # REQUIRED
     type_: str  # REQUIRED
     update_content_file: bool  # REQUIRED
+    custom_attributes: Dict[str, Any]  # OPTIONAL
+    preview_metadata: ModelsPreviewMetadata  # OPTIONAL
 
     # endregion fields
 
@@ -77,10 +77,6 @@ class ModelsContentRequest(Model):
 
     def with_content_type(self, value: str) -> ModelsContentRequest:
         self.content_type = value
-        return self
-
-    def with_custom_attributes(self, value: Dict[str, Any]) -> ModelsContentRequest:
-        self.custom_attributes = value
         return self
 
     def with_file_extension(self, value: str) -> ModelsContentRequest:
@@ -99,12 +95,6 @@ class ModelsContentRequest(Model):
         self.preview = value
         return self
 
-    def with_preview_metadata(
-        self, value: ModelsPreviewMetadata
-    ) -> ModelsContentRequest:
-        self.preview_metadata = value
-        return self
-
     def with_sub_type(self, value: str) -> ModelsContentRequest:
         self.sub_type = value
         return self
@@ -121,6 +111,16 @@ class ModelsContentRequest(Model):
         self.update_content_file = value
         return self
 
+    def with_custom_attributes(self, value: Dict[str, Any]) -> ModelsContentRequest:
+        self.custom_attributes = value
+        return self
+
+    def with_preview_metadata(
+        self, value: ModelsPreviewMetadata
+    ) -> ModelsContentRequest:
+        self.preview_metadata = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -131,12 +131,6 @@ class ModelsContentRequest(Model):
             result["contentType"] = str(self.content_type)
         elif include_empty:
             result["contentType"] = ""
-        if hasattr(self, "custom_attributes"):
-            result["customAttributes"] = {
-                str(k0): v0 for k0, v0 in self.custom_attributes.items()
-            }
-        elif include_empty:
-            result["customAttributes"] = {}
         if hasattr(self, "file_extension"):
             result["fileExtension"] = str(self.file_extension)
         elif include_empty:
@@ -153,12 +147,6 @@ class ModelsContentRequest(Model):
             result["preview"] = str(self.preview)
         elif include_empty:
             result["preview"] = ""
-        if hasattr(self, "preview_metadata"):
-            result["previewMetadata"] = self.preview_metadata.to_dict(
-                include_empty=include_empty
-            )
-        elif include_empty:
-            result["previewMetadata"] = ModelsPreviewMetadata()
         if hasattr(self, "sub_type"):
             result["subType"] = str(self.sub_type)
         elif include_empty:
@@ -175,6 +163,18 @@ class ModelsContentRequest(Model):
             result["updateContentFile"] = bool(self.update_content_file)
         elif include_empty:
             result["updateContentFile"] = False
+        if hasattr(self, "custom_attributes"):
+            result["customAttributes"] = {
+                str(k0): v0 for k0, v0 in self.custom_attributes.items()
+            }
+        elif include_empty:
+            result["customAttributes"] = {}
+        if hasattr(self, "preview_metadata"):
+            result["previewMetadata"] = self.preview_metadata.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["previewMetadata"] = ModelsPreviewMetadata()
         return result
 
     # endregion to methods
@@ -185,29 +185,31 @@ class ModelsContentRequest(Model):
     def create(
         cls,
         content_type: str,
-        custom_attributes: Dict[str, Any],
         file_extension: str,
         name: str,
         payload: str,
         preview: str,
-        preview_metadata: ModelsPreviewMetadata,
         sub_type: str,
         tags: List[str],
         type_: str,
         update_content_file: bool,
+        custom_attributes: Optional[Dict[str, Any]] = None,
+        preview_metadata: Optional[ModelsPreviewMetadata] = None,
     ) -> ModelsContentRequest:
         instance = cls()
         instance.content_type = content_type
-        instance.custom_attributes = custom_attributes
         instance.file_extension = file_extension
         instance.name = name
         instance.payload = payload
         instance.preview = preview
-        instance.preview_metadata = preview_metadata
         instance.sub_type = sub_type
         instance.tags = tags
         instance.type_ = type_
         instance.update_content_file = update_content_file
+        if custom_attributes is not None:
+            instance.custom_attributes = custom_attributes
+        if preview_metadata is not None:
+            instance.preview_metadata = preview_metadata
         return instance
 
     @classmethod
@@ -221,12 +223,6 @@ class ModelsContentRequest(Model):
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
             instance.content_type = ""
-        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
-            instance.custom_attributes = {
-                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
-            }
-        elif include_empty:
-            instance.custom_attributes = {}
         if "fileExtension" in dict_ and dict_["fileExtension"] is not None:
             instance.file_extension = str(dict_["fileExtension"])
         elif include_empty:
@@ -243,12 +239,6 @@ class ModelsContentRequest(Model):
             instance.preview = str(dict_["preview"])
         elif include_empty:
             instance.preview = ""
-        if "previewMetadata" in dict_ and dict_["previewMetadata"] is not None:
-            instance.preview_metadata = ModelsPreviewMetadata.create_from_dict(
-                dict_["previewMetadata"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.preview_metadata = ModelsPreviewMetadata()
         if "subType" in dict_ and dict_["subType"] is not None:
             instance.sub_type = str(dict_["subType"])
         elif include_empty:
@@ -265,6 +255,18 @@ class ModelsContentRequest(Model):
             instance.update_content_file = bool(dict_["updateContentFile"])
         elif include_empty:
             instance.update_content_file = False
+        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
+            instance.custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
+            }
+        elif include_empty:
+            instance.custom_attributes = {}
+        if "previewMetadata" in dict_ and dict_["previewMetadata"] is not None:
+            instance.preview_metadata = ModelsPreviewMetadata.create_from_dict(
+                dict_["previewMetadata"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.preview_metadata = ModelsPreviewMetadata()
         return instance
 
     @classmethod
@@ -309,32 +311,32 @@ class ModelsContentRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "contentType": "content_type",
-            "customAttributes": "custom_attributes",
             "fileExtension": "file_extension",
             "name": "name",
             "payload": "payload",
             "preview": "preview",
-            "previewMetadata": "preview_metadata",
             "subType": "sub_type",
             "tags": "tags",
             "type": "type_",
             "updateContentFile": "update_content_file",
+            "customAttributes": "custom_attributes",
+            "previewMetadata": "preview_metadata",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "contentType": True,
-            "customAttributes": True,
             "fileExtension": True,
             "name": True,
             "payload": True,
             "preview": True,
-            "previewMetadata": True,
             "subType": True,
             "tags": True,
             "type": True,
             "updateContentFile": True,
+            "customAttributes": False,
+            "previewMetadata": False,
         }
 
     # endregion static methods

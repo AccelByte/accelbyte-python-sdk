@@ -44,6 +44,36 @@ def public_get_creator(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get creator stats: number of total like by other user, number of total following and follower user (PublicGetCreator)
+
+    Public user can access without token or if token specified, requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Public Creator"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreatorResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,6 +92,36 @@ async def public_get_creator_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get creator stats: number of total like by other user, number of total following and follower user (PublicGetCreator)
+
+    Public user can access without token or if token specified, requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Public Creator"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreatorResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -85,6 +145,42 @@ def public_search_creator(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search creator (PublicSearchCreator)
+
+    Public user can access without token or if token specified, requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users
+
+        method: GET
+
+        tags: ["Public Creator"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        orderby: (orderby) OPTIONAL str in query
+
+        sortby: (sortby) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,6 +205,42 @@ async def public_search_creator_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Search creator (PublicSearchCreator)
+
+    Public user can access without token or if token specified, requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users
+
+        method: GET
+
+        tags: ["Public Creator"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        orderby: (orderby) OPTIONAL str in query
+
+        sortby: (sortby) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

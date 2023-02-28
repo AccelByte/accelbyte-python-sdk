@@ -50,6 +50,37 @@ def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playti
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Protected Get Playtime (protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get)
+
+    This endpoint requires valid JWT token.
+    This endpoint does not require permission.
+
+    This endpoint retrieves player's total playtime in Steam for a specific game (AppId) and store them in service's cache.
+
+    Players' Steam account must be set into public to enable the service fetch their total playtime data.
+
+    Properties:
+        url: /game-telemetry/v1/protected/steamIds/{steamId}/playtime
+
+        method: GET
+
+        tags: ["Gametelemetry Operations"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
+
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
+        steam_id: (steamId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+    """
     request = (
         ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.create(
             steam_id=steam_id,
@@ -66,6 +97,37 @@ async def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Protected Get Playtime (protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get)
+
+    This endpoint requires valid JWT token.
+    This endpoint does not require permission.
+
+    This endpoint retrieves player's total playtime in Steam for a specific game (AppId) and store them in service's cache.
+
+    Players' Steam account must be set into public to enable the service fetch their total playtime data.
+
+    Properties:
+        url: /game-telemetry/v1/protected/steamIds/{steamId}/playtime
+
+        method: GET
+
+        tags: ["Gametelemetry Operations"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
+
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
+        steam_id: (steamId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+    """
     request = (
         ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.create(
             steam_id=steam_id,
@@ -84,6 +146,77 @@ def protected_save_events_game_telemetry_v1_protected_events_post(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Protected Save Events (protected_save_events_game_telemetry_v1_protected_events_post)
+
+    This endpoint requires valid JWT token.
+    This endpoint does not require permission.
+
+    This endpoint send events into designated streaming pipeline and each request can contain single or multiple events.
+
+
+    Format of the event:
+
+    - **EventNamespace (required)**: Namespace of the relevant game with domain name format.
+
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+
+
+
+    It is encouraged to use alphanumeric only characters. _.- will be deprecated soon
+
+
+
+
+    Example: accelbyte
+
+
+
+    - **EventName (required)**: Name of the event.
+
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+
+
+
+    It is encouraged to use alphanumeric only characters. _.- will be deprecated soon
+
+
+
+
+    Example: player_killed, mission_accomplished
+
+
+
+    - **Payload (required)**: An arbitrary json with the payload of the said event.
+
+
+    Default maximum payload size is 1MB
+
+    Properties:
+        url: /game-telemetry/v1/protected/events
+
+        method: POST
+
+        tags: ["Gametelemetry Operations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
+
+        body: (body) REQUIRED List[TelemetryBody] in body
+
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
+    Responses:
+        204: No Content - (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+    """
     request = ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost.create(
         body=body,
         cookie=cookie,
@@ -98,6 +231,77 @@ async def protected_save_events_game_telemetry_v1_protected_events_post_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Protected Save Events (protected_save_events_game_telemetry_v1_protected_events_post)
+
+    This endpoint requires valid JWT token.
+    This endpoint does not require permission.
+
+    This endpoint send events into designated streaming pipeline and each request can contain single or multiple events.
+
+
+    Format of the event:
+
+    - **EventNamespace (required)**: Namespace of the relevant game with domain name format.
+
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+
+
+
+    It is encouraged to use alphanumeric only characters. _.- will be deprecated soon
+
+
+
+
+    Example: accelbyte
+
+
+
+    - **EventName (required)**: Name of the event.
+
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+
+
+
+    It is encouraged to use alphanumeric only characters. _.- will be deprecated soon
+
+
+
+
+    Example: player_killed, mission_accomplished
+
+
+
+    - **Payload (required)**: An arbitrary json with the payload of the said event.
+
+
+    Default maximum payload size is 1MB
+
+    Properties:
+        url: /game-telemetry/v1/protected/events
+
+        method: POST
+
+        tags: ["Gametelemetry Operations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
+
+        body: (body) REQUIRED List[TelemetryBody] in body
+
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
+    Responses:
+        204: No Content - (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+    """
     request = ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost.create(
         body=body,
         cookie=cookie,
@@ -117,6 +321,37 @@ def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_pla
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Protected Update Playtime (protected_update_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime__playtime__put)
+
+    This endpoint requires valid JWT token.
+    This endpoint does not require permission.
+
+    This endpoint update player's total playtime in a specific game (AppId) from service's cache.
+
+    Properties:
+        url: /game-telemetry/v1/protected/steamIds/{steamId}/playtime/{playtime}
+
+        method: PUT
+
+        tags: ["Gametelemetry Operations"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
+
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
+        playtime: (playtime) REQUIRED str in path
+
+        steam_id: (steamId) REQUIRED str in path
+
+    Responses:
+        200: OK - (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+    """
     request = ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut.create(
         playtime=playtime,
         steam_id=steam_id,
@@ -135,6 +370,37 @@ async def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Protected Update Playtime (protected_update_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime__playtime__put)
+
+    This endpoint requires valid JWT token.
+    This endpoint does not require permission.
+
+    This endpoint update player's total playtime in a specific game (AppId) from service's cache.
+
+    Properties:
+        url: /game-telemetry/v1/protected/steamIds/{steamId}/playtime/{playtime}
+
+        method: PUT
+
+        tags: ["Gametelemetry Operations"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
+
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
+        playtime: (playtime) REQUIRED str in path
+
+        steam_id: (steamId) REQUIRED str in path
+
+    Responses:
+        200: OK - (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+    """
     request = ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut.create(
         playtime=playtime,
         steam_id=steam_id,

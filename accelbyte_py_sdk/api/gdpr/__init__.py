@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Gdpr Service."""
 
-__version__ = "1.19.0"
+__version__ = "1.19.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

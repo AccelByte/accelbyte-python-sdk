@@ -32,6 +32,7 @@ from ....core import same_doc_as
 from ..models import ApiBackFillAcceptRequest
 from ..models import ApiBackFillCreateRequest
 from ..models import ApiBackFillRejectRequest
+from ..models import ApiBackfillCreateResponse
 from ..models import ApiBackfillGetResponse
 from ..models import ApiBackfillProposalResponse
 from ..models import ResponseError
@@ -52,6 +53,52 @@ def accept_backfill(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept a backfill proposal (AcceptBackfill)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
+
+    Required Scope: social
+
+    Accept backfill proposal
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept
+
+        method: PUT
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiBackFillAcceptRequest in body
+
+        backfill_id: (backfillID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -72,6 +119,52 @@ async def accept_backfill_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Accept a backfill proposal (AcceptBackfill)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
+
+    Required Scope: social
+
+    Accept backfill proposal
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept
+
+        method: PUT
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiBackFillAcceptRequest in body
+
+        backfill_id: (backfillID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -93,6 +186,52 @@ def create_backfill(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a backfill ticket (CreateBackfill)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]
+
+    Required Scope: social
+
+    Create backfill ticket
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill
+
+        method: POST
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiBackFillCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ApiBackfillCreateResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -111,6 +250,52 @@ async def create_backfill_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a backfill ticket (CreateBackfill)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]
+
+    Required Scope: social
+
+    Create backfill ticket
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill
+
+        method: POST
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiBackFillCreateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ApiBackfillCreateResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -131,6 +316,48 @@ def delete_backfill(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a backfill ticket (DeleteBackfill)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [DELETE]
+
+    Required Scope: social
+
+    Delete backfill ticket
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}
+
+        method: DELETE
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        backfill_id: (backfillID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -149,6 +376,48 @@ async def delete_backfill_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a backfill ticket (DeleteBackfill)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [DELETE]
+
+    Required Scope: social
+
+    Delete backfill ticket
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}
+
+        method: DELETE
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        backfill_id: (backfillID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -169,6 +438,50 @@ def get_backfill(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a backfill ticket (GetBackfill)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [GET]
+
+    Required Scope: social
+
+    Get backfill ticket by ID
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}
+
+        method: GET
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        backfill_id: (backfillID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiBackfillGetResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,6 +500,50 @@ async def get_backfill_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a backfill ticket (GetBackfill)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [GET]
+
+    Required Scope: social
+
+    Get backfill ticket by ID
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}
+
+        method: GET
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        backfill_id: (backfillID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiBackfillGetResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,6 +564,50 @@ def get_backfill_proposal(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get backfill proposal (GetBackfillProposal)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [GET]
+
+    Required Scope: social
+
+    Get backfill proposal
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill/proposal
+
+        method: GET
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionID) REQUIRED str in query
+
+    Responses:
+        200: OK - ApiBackfillProposalResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -225,6 +626,50 @@ async def get_backfill_proposal_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get backfill proposal (GetBackfillProposal)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [GET]
+
+    Required Scope: social
+
+    Get backfill proposal
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill/proposal
+
+        method: GET
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionID) REQUIRED str in query
+
+    Responses:
+        200: OK - ApiBackfillProposalResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,6 +691,52 @@ def reject_backfill(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject a backfill proposal (RejectBackfill)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
+
+    Required Scope: social
+
+    Reject backfill proposal
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/reject
+
+        method: PUT
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiBackFillRejectRequest in body
+
+        backfill_id: (backfillID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -266,6 +757,52 @@ async def reject_backfill_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Reject a backfill proposal (RejectBackfill)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
+
+    Required Scope: social
+
+    Reject backfill proposal
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/reject
+
+        method: PUT
+
+        tags: ["Backfill", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiBackFillRejectRequest in body
+
+        backfill_id: (backfillID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

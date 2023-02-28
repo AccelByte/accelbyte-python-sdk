@@ -61,18 +61,14 @@ from ..api.sessionbrowser.models import RestapiErrorResponseV2
 from ..api.sessionbrowser.models import RestapiErrorV1
 
 
-def create_models_active_custom_game_response_example() -> (
-    ModelsActiveCustomGameResponse
-):
+def create_models_active_custom_game_response_example() -> ModelsActiveCustomGameResponse:
     instance = ModelsActiveCustomGameResponse()
     instance.pagination = create_models_paging_cursor_example()
     instance.sessions = [create_models_custom_game_response_example()]
     return instance
 
 
-def create_models_active_matchmaking_game_response_example() -> (
-    ModelsActiveMatchmakingGameResponse
-):
+def create_models_active_matchmaking_game_response_example() -> ModelsActiveMatchmakingGameResponse:
     instance = ModelsActiveMatchmakingGameResponse()
     instance.pagination = create_models_paging_cursor_example()
     instance.sessions = [create_models_game_session_example()]
@@ -111,9 +107,7 @@ def create_models_admin_session_response_example() -> ModelsAdminSessionResponse
     return instance
 
 
-def create_models_count_active_session_response_example() -> (
-    ModelsCountActiveSessionResponse
-):
+def create_models_count_active_session_response_example() -> ModelsCountActiveSessionResponse:
     instance = ModelsCountActiveSessionResponse()
     instance.custom_game = randomize("int", min_val=1, max_val=1000)
     instance.matchmaking_game = randomize("int", min_val=1, max_val=1000)
@@ -180,9 +174,7 @@ def create_models_game_session_setting_example() -> ModelsGameSessionSetting:
     return instance
 
 
-def create_models_get_session_history_detailed_response_item_example() -> (
-    ModelsGetSessionHistoryDetailedResponseItem
-):
+def create_models_get_session_history_detailed_response_item_example() -> ModelsGetSessionHistoryDetailedResponseItem:
     instance = ModelsGetSessionHistoryDetailedResponseItem()
     instance.channel = randomize()
     instance.client_version = randomize()
@@ -202,9 +194,7 @@ def create_models_get_session_history_detailed_response_item_example() -> (
     return instance
 
 
-def create_models_get_session_history_search_response_item_v2_example() -> (
-    ModelsGetSessionHistorySearchResponseItemV2
-):
+def create_models_get_session_history_search_response_item_v2_example() -> ModelsGetSessionHistorySearchResponseItemV2:
     instance = ModelsGetSessionHistorySearchResponseItemV2()
     instance.created_at = randomize("date")
     instance.game_mode = randomize()
@@ -218,12 +208,11 @@ def create_models_get_session_history_search_response_item_v2_example() -> (
     instance.session_type = randomize()
     instance.status = randomize()
     instance.sub_game_mode = [randomize()]
+    instance.user_id = randomize("uid")
     return instance
 
 
-def create_models_get_session_history_search_response_v2_example() -> (
-    ModelsGetSessionHistorySearchResponseV2
-):
+def create_models_get_session_history_search_response_v2_example() -> ModelsGetSessionHistorySearchResponseV2:
     instance = ModelsGetSessionHistorySearchResponseV2()
     instance.data = [
         create_models_get_session_history_search_response_item_v2_example()
@@ -315,9 +304,7 @@ def create_models_recent_player_history_example() -> ModelsRecentPlayerHistory:
     return instance
 
 
-def create_models_recent_player_query_response_example() -> (
-    ModelsRecentPlayerQueryResponse
-):
+def create_models_recent_player_query_response_example() -> ModelsRecentPlayerQueryResponse:
     instance = ModelsRecentPlayerQueryResponse()
     instance.data = [create_models_recent_player_history_example()]
     return instance
@@ -350,9 +337,7 @@ def create_models_server_example() -> ModelsServer:
     return instance
 
 
-def create_models_session_by_user_i_ds_response_example() -> (
-    ModelsSessionByUserIDsResponse
-):
+def create_models_session_by_user_i_ds_response_example() -> ModelsSessionByUserIDsResponse:
     instance = ModelsSessionByUserIDsResponse()
     instance.data = [create_models_game_session_example()]
     return instance

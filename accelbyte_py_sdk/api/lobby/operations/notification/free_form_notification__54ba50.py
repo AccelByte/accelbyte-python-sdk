@@ -51,7 +51,7 @@ class FreeFormNotificationByUserID(Operation):
 
         method: POST
 
-        tags: ["notification"]
+        tags: ["notification", "public"]
 
         consumes: ["application/json"]
 

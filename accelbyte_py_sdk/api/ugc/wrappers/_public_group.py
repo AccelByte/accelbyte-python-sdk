@@ -51,6 +51,41 @@ def create_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create groups (CreateGroup)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
+
+        method: POST
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateGroupRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateGroupResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,6 +106,41 @@ async def create_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create groups (CreateGroup)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
+
+        method: POST
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateGroupRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateGroupResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -93,6 +163,41 @@ def delete_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete group (DeleteGroup)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
+
+        method: DELETE
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,6 +218,41 @@ async def delete_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete group (DeleteGroup)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
+
+        method: DELETE
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,6 +275,41 @@ def get_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's groups (GetGroup)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
+
+        method: GET
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateGroupResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -155,6 +330,41 @@ async def get_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user's groups (GetGroup)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
+
+        method: GET
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateGroupResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,6 +389,45 @@ def get_group_content(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get contents belong to a group (GetGroupContent)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents
+
+        method: GET
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -203,6 +452,45 @@ async def get_group_content_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get contents belong to a group (GetGroupContent)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents
+
+        method: GET
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -228,6 +516,43 @@ def get_groups(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all user groups (GetGroups)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
+
+        method: GET
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedGroupResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,6 +575,43 @@ async def get_groups_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all user groups (GetGroups)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
+
+        method: GET
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedGroupResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -274,6 +636,46 @@ def update_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update group (UpdateGroup)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
+    replace group name and contents with new ones
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
+
+        method: PUT
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateGroupRequest in body
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateGroupResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -296,6 +698,46 @@ async def update_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update group (UpdateGroup)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
+    replace group name and contents with new ones
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
+
+        method: PUT
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateGroupRequest in body
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateGroupResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

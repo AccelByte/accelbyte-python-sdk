@@ -49,6 +49,48 @@ def admin_create_third_party_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Third Party Steam Config (adminCreateThirdPartyConfig)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]` with scope `social`
+
+    create third party config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
+
+        method: POST
+
+        tags: ["thirdParty"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateConfigRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateConfigResponse (Created)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        409: Conflict - RestapiErrorResponseV1 (Conflict)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,6 +109,48 @@ async def admin_create_third_party_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Third Party Steam Config (adminCreateThirdPartyConfig)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]` with scope `social`
+
+    create third party config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
+
+        method: POST
+
+        tags: ["thirdParty"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateConfigRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateConfigResponse (Created)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        409: Conflict - RestapiErrorResponseV1 (Conflict)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -86,6 +170,44 @@ def admin_delete_third_party_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Third Party Steam Config (adminDeleteThirdPartyConfig)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]` with scope `social`
+
+    delete third party config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
+
+        method: DELETE
+
+        tags: ["thirdParty"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - str (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,6 +224,44 @@ async def admin_delete_third_party_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Third Party Steam Config (adminDeleteThirdPartyConfig)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]` with scope `social`
+
+    delete third party config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
+
+        method: DELETE
+
+        tags: ["thirdParty"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - str (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,6 +280,44 @@ def admin_get_third_party_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Third Party Steam Config (adminGetThirdPartyConfig)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]` with scope `social`
+
+    get third party config for specified namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
+
+        method: GET
+
+        tags: ["thirdParty"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetConfigResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,6 +334,44 @@ async def admin_get_third_party_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Third Party Steam Config (adminGetThirdPartyConfig)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]` with scope `social`
+
+    get third party config for specified namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
+
+        method: GET
+
+        tags: ["thirdParty"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetConfigResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -155,6 +391,46 @@ def admin_update_third_party_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Third Party Steam Config (adminUpdateThirdPartyConfig)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [UPDATE]` with scope `social`
+
+    Update third party config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
+
+        method: PUT
+
+        tags: ["thirdParty"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateConfigRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateConfigResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,6 +449,46 @@ async def admin_update_third_party_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Third Party Steam Config (adminUpdateThirdPartyConfig)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [UPDATE]` with scope `social`
+
+    Update third party config in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
+
+        method: PUT
+
+        tags: ["thirdParty"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateConfigRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsUpdateConfigResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

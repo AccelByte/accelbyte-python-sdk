@@ -42,6 +42,28 @@ def login_sso_client(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Login to SSO client with provided platformId (LoginSSOClient)
+
+    Properties:
+        url: /iam/v3/sso/{platformId}
+
+        method: GET
+
+        tags: ["SSO"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) REQUIRED str in path
+
+        payload: (payload) OPTIONAL str in query
+
+    Responses:
+        200: OK - (OK)
+    """
     request = LoginSSOClient.create(
         platform_id=platform_id,
         payload=payload,
@@ -56,6 +78,28 @@ async def login_sso_client_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Login to SSO client with provided platformId (LoginSSOClient)
+
+    Properties:
+        url: /iam/v3/sso/{platformId}
+
+        method: GET
+
+        tags: ["SSO"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) REQUIRED str in path
+
+        payload: (payload) OPTIONAL str in query
+
+    Responses:
+        200: OK - (OK)
+    """
     request = LoginSSOClient.create(
         platform_id=platform_id,
         payload=payload,
@@ -69,6 +113,37 @@ async def login_sso_client_async(
 def logout_sso_client(
     platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Logout (LogoutSSOClient)
+
+    Logout user's session on platform that logged in using SSO.
+
+    Supported platforms:
+    - discourse
+
+    Properties:
+        url: /iam/v3/sso/{platformId}/logout
+
+        method: POST
+
+        tags: ["SSO"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        404: Not Found - RestErrorResponse (Not Found)
+
+        422: Unprocessable Entity - RestErrorResponse (Unprocessable Entity)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = LogoutSSOClient.create(
         platform_id=platform_id,
     )
@@ -79,6 +154,37 @@ def logout_sso_client(
 async def logout_sso_client_async(
     platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Logout (LogoutSSOClient)
+
+    Logout user's session on platform that logged in using SSO.
+
+    Supported platforms:
+    - discourse
+
+    Properties:
+        url: /iam/v3/sso/{platformId}/logout
+
+        method: POST
+
+        tags: ["SSO"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        404: Not Found - RestErrorResponse (Not Found)
+
+        422: Unprocessable Entity - RestErrorResponse (Unprocessable Entity)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = LogoutSSOClient.create(
         platform_id=platform_id,
     )

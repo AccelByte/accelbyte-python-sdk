@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.23.0)
+# AccelByte Cloud Platform Service (4.24.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -24,12 +24,7 @@
 
 from .utils import randomize
 
-from ..api.platform.models import ADTOObjectForOrderCreationOptions
-from ..api.platform.models import ADTOObjectForQueryingXboxUserAchievements
-from ..api.platform.models import ADTOObjectForUnlockSteamAchievementAPI
-from ..api.platform.models import (
-    ADTOObjectForUpdateXboxAchievementCompletePercentageAPI,
-)
+from ..api.platform.models import Achievement
 from ..api.platform.models import AchievementInfo
 from ..api.platform.models import AdditionalData
 from ..api.platform.models import AdminOrderCreate
@@ -43,8 +38,8 @@ from ..api.platform.models import AppUpdate
 from ..api.platform.models import AppleIAPConfigInfo
 from ..api.platform.models import AppleIAPConfigRequest
 from ..api.platform.models import AppleIAPReceipt
-from ..api.platform.models import AvailableComparisonObject
-from ..api.platform.models import AvailablePredicateObject
+from ..api.platform.models import AvailableComparison
+from ..api.platform.models import AvailablePredicate
 from ..api.platform.models import BasicCategoryInfo
 from ..api.platform.models import BasicItem
 from ..api.platform.models import BillingAccount
@@ -192,6 +187,7 @@ from ..api.platform.models import NotificationProcessResult
 from ..api.platform.models import OptionBoxConfig
 from ..api.platform.models import Order
 from ..api.platform.models import OrderCreate
+from ..api.platform.models import OrderCreationOptions
 from ..api.platform.models import OrderGrantInfo
 from ..api.platform.models import OrderHistoryInfo
 from ..api.platform.models import OrderInfo
@@ -254,7 +250,7 @@ from ..api.platform.models import PlayStationReconcileRequest
 from ..api.platform.models import PlayStationReconcileResult
 from ..api.platform.models import PlaystationIAPConfigRequest
 from ..api.platform.models import PopulatedItemInfo
-from ..api.platform.models import PredicateObject
+from ..api.platform.models import Predicate
 from ..api.platform.models import PredicateValidateResult
 from ..api.platform.models import PurchaseCondition
 from ..api.platform.models import PurchaseConditionUpdate
@@ -297,7 +293,7 @@ from ..api.platform.models import ServicePluginConfigInfo
 from ..api.platform.models import ServicePluginConfigUpdate
 from ..api.platform.models import Slide
 from ..api.platform.models import StackableEntitlementInfo
-from ..api.platform.models import SteamAchievementRequest
+from ..api.platform.models import SteamAchievementUpdateRequest
 from ..api.platform.models import SteamDLCSyncRequest
 from ..api.platform.models import SteamIAPConfig
 from ..api.platform.models import SteamIAPConfigInfo
@@ -344,50 +340,22 @@ from ..api.platform.models import WalletTransactionInfo
 from ..api.platform.models import WalletTransactionPagingSlicedResult
 from ..api.platform.models import WxPayConfigInfo
 from ..api.platform.models import WxPayConfigRequest
+from ..api.platform.models import XblAchievementUpdateRequest
 from ..api.platform.models import XblDLCSyncRequest
 from ..api.platform.models import XblIAPConfigInfo
 from ..api.platform.models import XblIAPConfigRequest
 from ..api.platform.models import XblReconcileRequest
 from ..api.platform.models import XblReconcileResult
-from ..api.platform.models import XboxAchievementRequest
+from ..api.platform.models import XblUserAchievements
 from ..api.platform.models import XsollaConfig
 from ..api.platform.models import XsollaPaywallConfig
 from ..api.platform.models import XsollaPaywallConfigRequest
 
 
-def create_a_dto_object_for_order_creation_options_example() -> (
-    ADTOObjectForOrderCreationOptions
-):
-    instance = ADTOObjectForOrderCreationOptions()
-    instance.skip_price_validation = randomize("bool")
-    return instance
-
-
-def create_a_dto_object_for_querying_xbox_user_achievements_example() -> (
-    ADTOObjectForQueryingXboxUserAchievements
-):
-    instance = ADTOObjectForQueryingXboxUserAchievements()
-    instance.achievements = [create_achievement_info_example()]
-    return instance
-
-
-def create_a_dto_object_for_unlock_steam_achievement_api_example() -> (
-    ADTOObjectForUnlockSteamAchievementAPI
-):
-    instance = ADTOObjectForUnlockSteamAchievementAPI()
-    instance.achievements = [create_steam_achievement_request_example()]
-    instance.steam_user_id = randomize()
-    return instance
-
-
-def create_a_dto_object_for_update_xbox_achievement_complete_percentage_api_example() -> (
-    ADTOObjectForUpdateXboxAchievementCompletePercentageAPI
-):
-    instance = ADTOObjectForUpdateXboxAchievementCompletePercentageAPI()
-    instance.achievements = [create_xbox_achievement_request_example()]
-    instance.service_config_id = randomize()
-    instance.title_id = randomize()
-    instance.xbox_user_id = randomize()
+def create_achievement_example() -> Achievement:
+    instance = Achievement()
+    instance.id_ = randomize()
+    instance.value = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -418,7 +386,7 @@ def create_admin_order_create_example() -> AdminOrderCreate:
     instance.currency_namespace = randomize("slug")
     instance.ext = {randomize(): randomize()}
     instance.language = randomize()
-    instance.options = create_a_dto_object_for_order_creation_options_example()
+    instance.options = create_order_creation_options_example()
     instance.platform = randomize()
     instance.return_url = randomize("url")
     instance.sandbox = randomize("bool")
@@ -469,9 +437,7 @@ def create_app_entitlement_info_example() -> AppEntitlementInfo:
     return instance
 
 
-def create_app_entitlement_paging_sliced_result_example() -> (
-    AppEntitlementPagingSlicedResult
-):
+def create_app_entitlement_paging_sliced_result_example() -> AppEntitlementPagingSlicedResult:
     instance = AppEntitlementPagingSlicedResult()
     instance.data = [create_app_entitlement_info_example()]
     instance.paging = create_paging_example()
@@ -550,16 +516,16 @@ def create_apple_iap_receipt_example() -> AppleIAPReceipt:
     return instance
 
 
-def create_available_comparison_object_example() -> AvailableComparisonObject:
-    instance = AvailableComparisonObject()
+def create_available_comparison_example() -> AvailableComparison:
+    instance = AvailableComparison()
     instance.comparison = randomize()
     instance.text = randomize()
     return instance
 
 
-def create_available_predicate_object_example() -> AvailablePredicateObject:
-    instance = AvailablePredicateObject()
-    instance.available_comparisons = [create_available_comparison_object_example()]
+def create_available_predicate_example() -> AvailablePredicate:
+    instance = AvailablePredicate()
+    instance.available_comparisons = [create_available_comparison_example()]
     instance.predicate_type = randomize()
     instance.show_any_of = randomize("bool")
     instance.value_type = randomize()
@@ -635,9 +601,7 @@ def create_billing_history_info_example() -> BillingHistoryInfo:
     return instance
 
 
-def create_billing_history_paging_sliced_result_example() -> (
-    BillingHistoryPagingSlicedResult
-):
+def create_billing_history_paging_sliced_result_example() -> BillingHistoryPagingSlicedResult:
     instance = BillingHistoryPagingSlicedResult()
     instance.data = [create_billing_history_info_example()]
     instance.paging = create_paging_example()
@@ -828,9 +792,7 @@ def create_catalog_change_info_example() -> CatalogChangeInfo:
     return instance
 
 
-def create_catalog_change_paging_sliced_result_example() -> (
-    CatalogChangePagingSlicedResult
-):
+def create_catalog_change_paging_sliced_result_example() -> CatalogChangePagingSlicedResult:
     instance = CatalogChangePagingSlicedResult()
     instance.data = [create_catalog_change_info_example()]
     instance.paging = create_paging_example()
@@ -936,7 +898,7 @@ def create_code_info_paging_sliced_result_example() -> CodeInfoPagingSlicedResul
 def create_condition_group_example() -> ConditionGroup:
     instance = ConditionGroup()
     instance.operator = randomize()
-    instance.predicates = [create_predicate_object_example()]
+    instance.predicates = [create_predicate_example()]
     return instance
 
 
@@ -1097,9 +1059,7 @@ def create_detailed_wallet_transaction_info_example() -> DetailedWalletTransacti
     return instance
 
 
-def create_detailed_wallet_transaction_paging_sliced_result_example() -> (
-    DetailedWalletTransactionPagingSlicedResult
-):
+def create_detailed_wallet_transaction_paging_sliced_result_example() -> DetailedWalletTransactionPagingSlicedResult:
     instance = DetailedWalletTransactionPagingSlicedResult()
     instance.data = [create_detailed_wallet_transaction_info_example()]
     instance.paging = create_paging_example()
@@ -1140,9 +1100,7 @@ def create_dlc_record_example() -> DLCRecord:
     return instance
 
 
-def create_durable_entitlement_revocation_config_example() -> (
-    DurableEntitlementRevocationConfig
-):
+def create_durable_entitlement_revocation_config_example() -> DurableEntitlementRevocationConfig:
     instance = DurableEntitlementRevocationConfig()
     instance.enabled = randomize("bool")
     instance.strategy = randomize()
@@ -1469,9 +1427,7 @@ def create_fulfillment_history_info_example() -> FulfillmentHistoryInfo:
     return instance
 
 
-def create_fulfillment_history_paging_sliced_result_example() -> (
-    FulfillmentHistoryPagingSlicedResult
-):
+def create_fulfillment_history_paging_sliced_result_example() -> FulfillmentHistoryPagingSlicedResult:
     instance = FulfillmentHistoryPagingSlicedResult()
     instance.data = [create_fulfillment_history_info_example()]
     instance.paging = create_paging_example()
@@ -1533,9 +1489,7 @@ def create_fulfillment_script_create_example() -> FulfillmentScriptCreate:
     return instance
 
 
-def create_fulfillment_script_eval_test_request_example() -> (
-    FulfillmentScriptEvalTestRequest
-):
+def create_fulfillment_script_eval_test_request_example() -> FulfillmentScriptEvalTestRequest:
     instance = FulfillmentScriptEvalTestRequest()
     instance.context = create_fulfillment_script_context_example()
     instance.script = randomize()
@@ -1543,9 +1497,7 @@ def create_fulfillment_script_eval_test_request_example() -> (
     return instance
 
 
-def create_fulfillment_script_eval_test_result_example() -> (
-    FulfillmentScriptEvalTestResult
-):
+def create_fulfillment_script_eval_test_result_example() -> FulfillmentScriptEvalTestResult:
     instance = FulfillmentScriptEvalTestResult()
     instance.error_stack_trace = randomize()
     instance.result = {randomize(): randomize()}
@@ -1754,9 +1706,7 @@ def create_iap_consume_history_info_example() -> IAPConsumeHistoryInfo:
     return instance
 
 
-def create_iap_consume_history_paging_sliced_result_example() -> (
-    IAPConsumeHistoryPagingSlicedResult
-):
+def create_iap_consume_history_paging_sliced_result_example() -> IAPConsumeHistoryPagingSlicedResult:
     instance = IAPConsumeHistoryPagingSlicedResult()
     instance.data = [create_iap_consume_history_info_example()]
     instance.paging = create_paging_example()
@@ -2028,17 +1978,13 @@ def create_item_paging_sliced_result_example() -> ItemPagingSlicedResult:
     return instance
 
 
-def create_item_purchase_condition_validate_request_example() -> (
-    ItemPurchaseConditionValidateRequest
-):
+def create_item_purchase_condition_validate_request_example() -> ItemPurchaseConditionValidateRequest:
     instance = ItemPurchaseConditionValidateRequest()
     instance.item_ids = [randomize()]
     return instance
 
 
-def create_item_purchase_condition_validate_result_example() -> (
-    ItemPurchaseConditionValidateResult
-):
+def create_item_purchase_condition_validate_result_example() -> ItemPurchaseConditionValidateResult:
     instance = ItemPurchaseConditionValidateResult()
     instance.item_id = randomize()
     instance.purchasable = randomize("bool")
@@ -2319,7 +2265,7 @@ def create_order_example() -> Order:
     instance.count_user_id = randomize()
     instance.created_at = randomize("date")
     instance.created_time = randomize("date")
-    instance.creation_options = create_a_dto_object_for_order_creation_options_example()
+    instance.creation_options = create_order_creation_options_example()
     instance.currency = create_currency_summary_example()
     instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.expire_time = randomize("date")
@@ -2372,6 +2318,12 @@ def create_order_create_example() -> OrderCreate:
     return instance
 
 
+def create_order_creation_options_example() -> OrderCreationOptions:
+    instance = OrderCreationOptions()
+    instance.skip_price_validation = randomize("bool")
+    return instance
+
+
 def create_order_grant_info_example() -> OrderGrantInfo:
     instance = OrderGrantInfo()
     instance.credits = [create_credit_summary_example()]
@@ -2412,7 +2364,7 @@ def create_order_info_example() -> OrderInfo:
     instance.chargeback_time = randomize("date")
     instance.charged_time = randomize("date")
     instance.created_time = randomize("date")
-    instance.creation_options = create_a_dto_object_for_order_creation_options_example()
+    instance.creation_options = create_order_creation_options_example()
     instance.ext = {randomize(): randomize()}
     instance.fulfilled_time = randomize("date")
     instance.item_snapshot = create_item_snapshot_example()
@@ -2582,9 +2534,7 @@ def create_payment_notification_info_example() -> PaymentNotificationInfo:
     return instance
 
 
-def create_payment_notification_paging_sliced_result_example() -> (
-    PaymentNotificationPagingSlicedResult
-):
+def create_payment_notification_paging_sliced_result_example() -> PaymentNotificationPagingSlicedResult:
     instance = PaymentNotificationPagingSlicedResult()
     instance.data = [create_payment_notification_info_example()]
     instance.paging = create_paging_example()
@@ -2776,9 +2726,7 @@ def create_payment_order_notify_simulation_example() -> PaymentOrderNotifySimula
     return instance
 
 
-def create_payment_order_paging_sliced_result_example() -> (
-    PaymentOrderPagingSlicedResult
-):
+def create_payment_order_paging_sliced_result_example() -> PaymentOrderPagingSlicedResult:
     instance = PaymentOrderPagingSlicedResult()
     instance.data = [create_payment_order_info_example()]
     instance.paging = create_paging_example()
@@ -2854,9 +2802,7 @@ def create_payment_provider_config_info_example() -> PaymentProviderConfigInfo:
     return instance
 
 
-def create_payment_provider_config_paging_sliced_result_example() -> (
-    PaymentProviderConfigPagingSlicedResult
-):
+def create_payment_provider_config_paging_sliced_result_example() -> PaymentProviderConfigPagingSlicedResult:
     instance = PaymentProviderConfigPagingSlicedResult()
     instance.data = [create_payment_provider_config_info_example()]
     instance.paging = create_paging_example()
@@ -3000,9 +2946,7 @@ def create_platform_wallet_config_update_example() -> PlatformWalletConfigUpdate
     return instance
 
 
-def create_play_station_dlc_sync_multi_service_labels_request_example() -> (
-    PlayStationDLCSyncMultiServiceLabelsRequest
-):
+def create_play_station_dlc_sync_multi_service_labels_request_example() -> PlayStationDLCSyncMultiServiceLabelsRequest:
     instance = PlayStationDLCSyncMultiServiceLabelsRequest()
     instance.service_labels = [randomize("int", min_val=1, max_val=1000)]
     return instance
@@ -3021,9 +2965,7 @@ def create_play_station_iap_config_info_example() -> PlayStationIAPConfigInfo:
     return instance
 
 
-def create_play_station_multi_service_labels_reconcile_request_example() -> (
-    PlayStationMultiServiceLabelsReconcileRequest
-):
+def create_play_station_multi_service_labels_reconcile_request_example() -> PlayStationMultiServiceLabelsReconcileRequest:
     instance = PlayStationMultiServiceLabelsReconcileRequest()
     instance.currency_code = randomize()
     instance.price = randomize("int", min_val=1, max_val=1000)
@@ -3109,8 +3051,8 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     return instance
 
 
-def create_predicate_object_example() -> PredicateObject:
-    instance = PredicateObject()
+def create_predicate_example() -> Predicate:
+    instance = Predicate()
     instance.any_of = randomize("int", min_val=1, max_val=1000)
     instance.comparison = randomize()
     instance.name = randomize()
@@ -3178,9 +3120,7 @@ def create_redeem_history_info_example() -> RedeemHistoryInfo:
     return instance
 
 
-def create_redeem_history_paging_sliced_result_example() -> (
-    RedeemHistoryPagingSlicedResult
-):
+def create_redeem_history_paging_sliced_result_example() -> RedeemHistoryPagingSlicedResult:
     instance = RedeemHistoryPagingSlicedResult()
     instance.data = [create_redeem_history_info_example()]
     instance.paging = create_paging_example()
@@ -3282,9 +3222,7 @@ def create_revocation_history_info_example() -> RevocationHistoryInfo:
     return instance
 
 
-def create_revocation_history_paging_sliced_result_example() -> (
-    RevocationHistoryPagingSlicedResult
-):
+def create_revocation_history_paging_sliced_result_example() -> RevocationHistoryPagingSlicedResult:
     instance = RevocationHistoryPagingSlicedResult()
     instance.data = [create_revocation_history_info_example()]
     instance.paging = create_paging_example()
@@ -3562,10 +3500,10 @@ def create_stackable_entitlement_info_example() -> StackableEntitlementInfo:
     return instance
 
 
-def create_steam_achievement_request_example() -> SteamAchievementRequest:
-    instance = SteamAchievementRequest()
-    instance.id_ = randomize()
-    instance.value = randomize("int", min_val=1, max_val=1000)
+def create_steam_achievement_update_request_example() -> SteamAchievementUpdateRequest:
+    instance = SteamAchievementUpdateRequest()
+    instance.achievements = [create_achievement_example()]
+    instance.steam_user_id = randomize()
     return instance
 
 
@@ -3710,9 +3648,7 @@ def create_subscription_activity_info_example() -> SubscriptionActivityInfo:
     return instance
 
 
-def create_subscription_activity_paging_sliced_result_example() -> (
-    SubscriptionActivityPagingSlicedResult
-):
+def create_subscription_activity_paging_sliced_result_example() -> SubscriptionActivityPagingSlicedResult:
     instance = SubscriptionActivityPagingSlicedResult()
     instance.data = [create_subscription_activity_info_example()]
     instance.paging = create_paging_example()
@@ -3767,9 +3703,7 @@ def create_subscription_info_example() -> SubscriptionInfo:
     return instance
 
 
-def create_subscription_paging_sliced_result_example() -> (
-    SubscriptionPagingSlicedResult
-):
+def create_subscription_paging_sliced_result_example() -> SubscriptionPagingSlicedResult:
     instance = SubscriptionPagingSlicedResult()
     instance.data = [create_subscription_info_example()]
     instance.paging = create_paging_example()
@@ -4069,9 +4003,7 @@ def create_wallet_transaction_info_example() -> WalletTransactionInfo:
     return instance
 
 
-def create_wallet_transaction_paging_sliced_result_example() -> (
-    WalletTransactionPagingSlicedResult
-):
+def create_wallet_transaction_paging_sliced_result_example() -> WalletTransactionPagingSlicedResult:
     instance = WalletTransactionPagingSlicedResult()
     instance.data = [create_wallet_transaction_info_example()]
     instance.paging = create_paging_example()
@@ -4094,6 +4026,15 @@ def create_wx_pay_config_request_example() -> WxPayConfigRequest:
     instance.key = randomize()
     instance.mchid = randomize()
     instance.return_url = randomize("url")
+    return instance
+
+
+def create_xbl_achievement_update_request_example() -> XblAchievementUpdateRequest:
+    instance = XblAchievementUpdateRequest()
+    instance.achievements = [create_achievement_example()]
+    instance.service_config_id = randomize()
+    instance.title_id = randomize()
+    instance.xbox_user_id = randomize()
     return instance
 
 
@@ -4137,10 +4078,9 @@ def create_xbl_reconcile_result_example() -> XblReconcileResult:
     return instance
 
 
-def create_xbox_achievement_request_example() -> XboxAchievementRequest:
-    instance = XboxAchievementRequest()
-    instance.id_ = randomize()
-    instance.percent_complete = randomize("int", min_val=1, max_val=1000)
+def create_xbl_user_achievements_example() -> XblUserAchievements:
+    instance = XblUserAchievements()
+    instance.achievements = [create_achievement_info_example()]
     return instance
 
 

@@ -82,6 +82,45 @@ def apply_user_redemption(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Redeem code (applyUserRedemption)
+
+    [SERVICE COMMUNICATION ONLY] Redeem code. If the campaign which the code belongs to is INACTIVE, the code couldn't be redeemed even if its status is ACTIVE.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION", action=1 (CREATE)
+      *  Returns : Redeem result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/redemption
+
+        method: POST
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RedeemRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - RedeemResult (successful operation)
+
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,6 +141,45 @@ async def apply_user_redemption_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Redeem code (applyUserRedemption)
+
+    [SERVICE COMMUNICATION ONLY] Redeem code. If the campaign which the code belongs to is INACTIVE, the code couldn't be redeemed even if its status is ACTIVE.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION", action=1 (CREATE)
+      *  Returns : Redeem result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/redemption
+
+        method: POST
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RedeemRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - RedeemResult (successful operation)
+
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,6 +202,41 @@ def bulk_disable_codes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk disable codes (bulkDisableCodes)
+
+    Bulk disable codes.
+
+    Bulk disable campaign codes, all matched codes will be disabled except those have already been redeemed.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : the number of code actually disabled
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/disable/bulk
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        batch_no: (batchNo) OPTIONAL int in query
+
+    Responses:
+        200: OK - BulkOperationResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,6 +257,41 @@ async def bulk_disable_codes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk disable codes (bulkDisableCodes)
+
+    Bulk disable codes.
+
+    Bulk disable campaign codes, all matched codes will be disabled except those have already been redeemed.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : the number of code actually disabled
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/disable/bulk
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        batch_no: (batchNo) OPTIONAL int in query
+
+    Responses:
+        200: OK - BulkOperationResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -166,6 +314,39 @@ def bulk_enable_codes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk enable codes (bulkEnableCodes)
+
+    Bulk enable campaign codes.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : the number of code actually enabled
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/enable/bulk
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        batch_no: (batchNo) OPTIONAL int in query
+
+    Responses:
+        200: OK - BulkOperationResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -186,6 +367,39 @@ async def bulk_enable_codes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk enable codes (bulkEnableCodes)
+
+    Bulk enable campaign codes.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : the number of code actually enabled
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/enable/bulk
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        batch_no: (batchNo) OPTIONAL int in query
+
+    Responses:
+        200: OK - BulkOperationResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,6 +421,41 @@ def create_campaign(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create campaign (createCampaign)
+
+    Create campaign.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
+      *  Returns : created campaign
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns
+
+        method: POST
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CampaignCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - CampaignInfo (successful operation)
+
+        409: Conflict - ErrorEntity (37171: Campaign [{name}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -225,6 +474,41 @@ async def create_campaign_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create campaign (createCampaign)
+
+    Create campaign.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
+      *  Returns : created campaign
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns
+
+        method: POST
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CampaignCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - CampaignInfo (successful operation)
+
+        409: Conflict - ErrorEntity (37171: Campaign [{name}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,6 +530,43 @@ def create_codes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create campaign codes (createCodes)
+
+    This API is used to create campaign codes, it will increase the batch No. based on last creation.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
+      *  Returns : number of codes created
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
+
+        method: POST
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CodeCreate in body
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - CodeCreateResult (successful operation)
+
+        404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -266,6 +587,43 @@ async def create_codes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create campaign codes (createCodes)
+
+    This API is used to create campaign codes, it will increase the batch No. based on last creation.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
+      *  Returns : number of codes created
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
+
+        method: POST
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: []
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CodeCreate in body
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - CodeCreateResult (successful operation)
+
+        404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -287,6 +645,41 @@ def disable_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable code (disableCode)
+
+    Disable code.
+
+    Disable an active code, the code can't be disabled if it has already been redeemed.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : disabled code
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/{code}/disable
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CodeInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}] | 37176: Code [{code}] has been redeemed in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -305,6 +698,41 @@ async def disable_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Disable code (disableCode)
+
+    Disable code.
+
+    Disable an active code, the code can't be disabled if it has already been redeemed.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : disabled code
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/{code}/disable
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CodeInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}] | 37176: Code [{code}] has been redeemed in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -326,6 +754,39 @@ def download(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download codes (download)
+
+    Download all or a batch of campaign's codes as a csv file.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
+      *  Returns : codes csv file
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/codes.csv
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["text/csv"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        batch_no: (batchNo) OPTIONAL int in query
+
+    Responses:
+        200: OK - Any (Successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -346,6 +807,39 @@ async def download_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download codes (download)
+
+    Download all or a batch of campaign's codes as a csv file.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
+      *  Returns : codes csv file
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/codes.csv
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["text/csv"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        batch_no: (batchNo) OPTIONAL int in query
+
+    Responses:
+        200: OK - Any (Successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -367,6 +861,39 @@ def enable_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable code (enableCode)
+
+    Enable code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : enabled code
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/{code}/enable
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CodeInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -385,6 +912,39 @@ async def enable_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable code (enableCode)
+
+    Enable code.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : enabled code
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/{code}/enable
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CodeInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -405,6 +965,39 @@ def get_campaign(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get campaign (getCampaign)
+
+    Get campaign info.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
+      *  Returns : campaign info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CampaignInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -423,6 +1016,39 @@ async def get_campaign_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get campaign (getCampaign)
+
+    Get campaign info.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
+      *  Returns : campaign info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CampaignInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -443,6 +1069,39 @@ def get_campaign_dynamic(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get campaign dynamic (getCampaignDynamic)
+
+    Get campaign dynamic.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
+      *  Returns : campaign dynamic
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/dynamic
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CampaignDynamicInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -461,6 +1120,39 @@ async def get_campaign_dynamic_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get campaign dynamic (getCampaignDynamic)
+
+    Get campaign dynamic.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
+      *  Returns : campaign dynamic
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/dynamic
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CampaignDynamicInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -482,6 +1174,43 @@ def get_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get code info (getCode)
+
+    Get campaign code, it will check code whether available to redeem if redeemable true.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
+      *  Returns : code info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/{code}
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        redeemable: (redeemable) OPTIONAL bool in query
+
+    Responses:
+        200: OK - CodeInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -502,6 +1231,43 @@ async def get_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get code info (getCode)
+
+    Get campaign code, it will check code whether available to redeem if redeemable true.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
+      *  Returns : code info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/{code}
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        redeemable: (redeemable) OPTIONAL bool in query
+
+    Responses:
+        200: OK - CodeInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -526,6 +1292,43 @@ def query_campaigns(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query campaigns (queryCampaigns)
+
+    Query campaigns, if name is presented, it's fuzzy match.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
+      *  Returns : slice of campaigns
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        tag: (tag) OPTIONAL str in query
+
+    Responses:
+        200: OK - CampaignPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -550,6 +1353,43 @@ async def query_campaigns_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query campaigns (queryCampaigns)
+
+    Query campaigns, if name is presented, it's fuzzy match.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
+      *  Returns : slice of campaigns
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        tag: (tag) OPTIONAL str in query
+
+    Responses:
+        200: OK - CampaignPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -578,6 +1418,47 @@ def query_codes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query codes (queryCodes)
+
+    Query campaign codes.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
+      *  Returns : list of codes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        batch_no: (batchNo) OPTIONAL int in query
+
+        code: (code) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - CodeInfoPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -606,6 +1487,47 @@ async def query_codes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query codes (queryCodes)
+
+    Query campaign codes.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
+      *  Returns : list of codes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        batch_no: (batchNo) OPTIONAL int in query
+
+        code: (code) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - CodeInfoPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -635,6 +1557,45 @@ def query_redeem_history(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query redeem history (queryRedeemHistory)
+
+    Query redeem history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
+      *  Returns : slice of redeem history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/history
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        code: (code) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - RedeemHistoryPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -661,6 +1622,45 @@ async def query_redeem_history_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query redeem history (queryRedeemHistory)
+
+    Query redeem history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
+      *  Returns : slice of redeem history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/history
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        code: (code) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - RedeemHistoryPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -686,6 +1686,45 @@ def update_campaign(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update campaign (updateCampaign)
+
+    Update campaign.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : updated campaign
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CampaignUpdate in body
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CampaignInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37171: Campaign [{name}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -706,6 +1745,45 @@ async def update_campaign_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update campaign (updateCampaign)
+
+    Update campaign.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
+      *  Returns : updated campaign
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL CampaignUpdate in body
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - CampaignInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37171: Campaign [{name}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

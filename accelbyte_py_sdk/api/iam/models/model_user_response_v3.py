@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.27.2)
+# AccelByte Cloud Iam Service (5.28.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,8 +44,6 @@ class ModelUserResponseV3(Model):
 
         created_at: (createdAt) REQUIRED str
 
-        date_of_birth: (dateOfBirth) REQUIRED str
-
         deletion_status: (deletionStatus) REQUIRED bool
 
         display_name: (displayName) REQUIRED str
@@ -76,6 +74,8 @@ class ModelUserResponseV3(Model):
 
         avatar_url: (avatarUrl) OPTIONAL str
 
+        date_of_birth: (dateOfBirth) OPTIONAL str
+
         new_email_address: (newEmailAddress) OPTIONAL str
 
         phone_number: (phoneNumber) OPTIONAL str
@@ -97,7 +97,6 @@ class ModelUserResponseV3(Model):
     bans: List[ModelUserActiveBanResponseV3]  # REQUIRED
     country: str  # REQUIRED
     created_at: str  # REQUIRED
-    date_of_birth: str  # REQUIRED
     deletion_status: bool  # REQUIRED
     display_name: str  # REQUIRED
     email_address: str  # REQUIRED
@@ -113,6 +112,7 @@ class ModelUserResponseV3(Model):
     roles: List[str]  # REQUIRED
     user_id: str  # REQUIRED
     avatar_url: str  # OPTIONAL
+    date_of_birth: str  # OPTIONAL
     new_email_address: str  # OPTIONAL
     phone_number: str  # OPTIONAL
     platform_avatar_url: str  # OPTIONAL
@@ -141,10 +141,6 @@ class ModelUserResponseV3(Model):
 
     def with_created_at(self, value: str) -> ModelUserResponseV3:
         self.created_at = value
-        return self
-
-    def with_date_of_birth(self, value: str) -> ModelUserResponseV3:
-        self.date_of_birth = value
         return self
 
     def with_deletion_status(self, value: bool) -> ModelUserResponseV3:
@@ -211,6 +207,10 @@ class ModelUserResponseV3(Model):
         self.avatar_url = value
         return self
 
+    def with_date_of_birth(self, value: str) -> ModelUserResponseV3:
+        self.date_of_birth = value
+        return self
+
     def with_new_email_address(self, value: str) -> ModelUserResponseV3:
         self.new_email_address = value
         return self
@@ -263,10 +263,6 @@ class ModelUserResponseV3(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
-        if hasattr(self, "date_of_birth"):
-            result["dateOfBirth"] = str(self.date_of_birth)
-        elif include_empty:
-            result["dateOfBirth"] = ""
         if hasattr(self, "deletion_status"):
             result["deletionStatus"] = bool(self.deletion_status)
         elif include_empty:
@@ -333,6 +329,10 @@ class ModelUserResponseV3(Model):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
             result["avatarUrl"] = ""
+        if hasattr(self, "date_of_birth"):
+            result["dateOfBirth"] = str(self.date_of_birth)
+        elif include_empty:
+            result["dateOfBirth"] = ""
         if hasattr(self, "new_email_address"):
             result["newEmailAddress"] = str(self.new_email_address)
         elif include_empty:
@@ -374,7 +374,6 @@ class ModelUserResponseV3(Model):
         bans: List[ModelUserActiveBanResponseV3],
         country: str,
         created_at: str,
-        date_of_birth: str,
         deletion_status: bool,
         display_name: str,
         email_address: str,
@@ -390,6 +389,7 @@ class ModelUserResponseV3(Model):
         roles: List[str],
         user_id: str,
         avatar_url: Optional[str] = None,
+        date_of_birth: Optional[str] = None,
         new_email_address: Optional[str] = None,
         phone_number: Optional[str] = None,
         platform_avatar_url: Optional[str] = None,
@@ -403,7 +403,6 @@ class ModelUserResponseV3(Model):
         instance.bans = bans
         instance.country = country
         instance.created_at = created_at
-        instance.date_of_birth = date_of_birth
         instance.deletion_status = deletion_status
         instance.display_name = display_name
         instance.email_address = email_address
@@ -420,6 +419,8 @@ class ModelUserResponseV3(Model):
         instance.user_id = user_id
         if avatar_url is not None:
             instance.avatar_url = avatar_url
+        if date_of_birth is not None:
+            instance.date_of_birth = date_of_birth
         if new_email_address is not None:
             instance.new_email_address = new_email_address
         if phone_number is not None:
@@ -464,10 +465,6 @@ class ModelUserResponseV3(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
-        if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
-            instance.date_of_birth = str(dict_["dateOfBirth"])
-        elif include_empty:
-            instance.date_of_birth = ""
         if "deletionStatus" in dict_ and dict_["deletionStatus"] is not None:
             instance.deletion_status = bool(dict_["deletionStatus"])
         elif include_empty:
@@ -546,6 +543,10 @@ class ModelUserResponseV3(Model):
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
             instance.avatar_url = ""
+        if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
+            instance.date_of_birth = str(dict_["dateOfBirth"])
+        elif include_empty:
+            instance.date_of_birth = ""
         if "newEmailAddress" in dict_ and dict_["newEmailAddress"] is not None:
             instance.new_email_address = str(dict_["newEmailAddress"])
         elif include_empty:
@@ -619,7 +620,6 @@ class ModelUserResponseV3(Model):
             "bans": "bans",
             "country": "country",
             "createdAt": "created_at",
-            "dateOfBirth": "date_of_birth",
             "deletionStatus": "deletion_status",
             "displayName": "display_name",
             "emailAddress": "email_address",
@@ -635,6 +635,7 @@ class ModelUserResponseV3(Model):
             "roles": "roles",
             "userId": "user_id",
             "avatarUrl": "avatar_url",
+            "dateOfBirth": "date_of_birth",
             "newEmailAddress": "new_email_address",
             "phoneNumber": "phone_number",
             "platformAvatarUrl": "platform_avatar_url",
@@ -651,7 +652,6 @@ class ModelUserResponseV3(Model):
             "bans": True,
             "country": True,
             "createdAt": True,
-            "dateOfBirth": True,
             "deletionStatus": True,
             "displayName": True,
             "emailAddress": True,
@@ -667,6 +667,7 @@ class ModelUserResponseV3(Model):
             "roles": True,
             "userId": True,
             "avatarUrl": False,
+            "dateOfBirth": False,
             "newEmailAddress": False,
             "phoneNumber": False,
             "platformAvatarUrl": False,

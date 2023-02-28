@@ -47,6 +47,55 @@ def get_group_invitation_request_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Group Invitation Request List (getGroupInvitationRequestPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to Get Group Invitation Request List
+
+
+
+
+    Get Group Invitation Request List for the user calling this endpoint. It will check any group invitation for this user
+
+
+
+
+    Action Code: 73502
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/me/invite/request
+
+        method: GET
+
+        tags: ["Member Request"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRequestsListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,6 +116,55 @@ async def get_group_invitation_request_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Group Invitation Request List (getGroupInvitationRequestPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to Get Group Invitation Request List
+
+
+
+
+    Get Group Invitation Request List for the user calling this endpoint. It will check any group invitation for this user
+
+
+
+
+    Action Code: 73502
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/users/me/invite/request
+
+        method: GET
+
+        tags: ["Member Request"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRequestsListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,6 +188,62 @@ def get_group_invite_request_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Group Invite Request List (getGroupInviteRequestPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [READ]"
+
+
+
+
+    This endpoint is used to Get Group Invite Request List
+
+
+
+
+    Get Group Invite Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
+
+
+
+
+    Action Code: 73501
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/invite/request
+
+        method: GET
+
+        tags: ["Member Request"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRequestsListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -112,6 +266,62 @@ async def get_group_invite_request_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Group Invite Request List (getGroupInviteRequestPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [READ]"
+
+
+
+
+    This endpoint is used to Get Group Invite Request List
+
+
+
+
+    Get Group Invite Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
+
+
+
+
+    Action Code: 73501
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/invite/request
+
+        method: GET
+
+        tags: ["Member Request"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRequestsListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,6 +346,62 @@ def get_group_join_request_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Group Join Request List (getGroupJoinRequestPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [READ]"
+
+
+
+
+    This endpoint is used to Get Group Join Request List
+
+
+
+
+    Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
+
+
+
+
+    Action Code: 73501
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/join/request
+
+        method: GET
+
+        tags: ["Member Request"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRequestsListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -158,6 +424,62 @@ async def get_group_join_request_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Group Join Request List (getGroupJoinRequestPublicV1)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [READ]"
+
+
+
+
+    This endpoint is used to Get Group Join Request List
+
+
+
+
+    Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
+
+
+
+
+    Action Code: 73501
+
+    Properties:
+        url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/join/request
+
+        method: GET
+
+        tags: ["Member Request"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRequestsListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,6 +504,62 @@ def get_group_join_request_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Group Join Request List (getGroupJoinRequestPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [READ]"
+
+
+
+
+    This endpoint is used to Get Group Join Request List
+
+
+
+
+    Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
+
+
+
+
+    Action Code: 73501
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/join/request
+
+        method: GET
+
+        tags: ["Member Request"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRequestsListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -204,6 +582,62 @@ async def get_group_join_request_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Group Join Request List (getGroupJoinRequestPublicV2)
+
+    Required valid user authentication
+
+
+
+
+    Required Member Role Permission: "GROUP:JOIN [READ]"
+
+
+
+
+    This endpoint is used to Get Group Join Request List
+
+
+
+
+    Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
+
+
+
+
+    Action Code: 73501
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/join/request
+
+        method: GET
+
+        tags: ["Member Request"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRequestsListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -227,6 +661,55 @@ def get_my_group_join_request_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get My Join Request To The Groups (GetMyGroupJoinRequestV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to Get My Join Request To The Groups
+
+
+
+
+    Get My Join Request To The Groups for the user calling this endpoint. It will check any join request group for this user
+
+
+
+
+    Action Code: 73502
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/me/join/request
+
+        method: GET
+
+        tags: ["Member Request"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRequestsListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -247,6 +730,55 @@ async def get_my_group_join_request_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get My Join Request To The Groups (GetMyGroupJoinRequestV2)
+
+    Required valid user authentication
+
+
+
+
+    This endpoint is used to Get My Join Request To The Groups
+
+
+
+
+    Get My Join Request To The Groups for the user calling this endpoint. It will check any join request group for this user
+
+
+
+
+    Action Code: 73502
+
+    Properties:
+        url: /group/v2/public/namespaces/{namespace}/users/me/join/request
+
+        method: GET
+
+        tags: ["Member Request"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetMemberRequestsListResponseV1 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

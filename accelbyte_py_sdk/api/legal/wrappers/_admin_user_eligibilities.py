@@ -45,6 +45,45 @@ def admin_retrieve_eligibilities(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check User Legal Eligibility (adminRetrieveEligibilities)
+
+    Retrieve the active policies and its conformance status by userThis process only supports cross-namespace checking between game namespace and publisher namespace , that means if the active policy already accepted by the same user in publisher namespace, then it will also be considered as eligible in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/users/{userId}/eligibilities
+
+        method: GET
+
+        tags: ["Admin User Eligibilities"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        publisher_user_id: (publisherUserId) OPTIONAL str in query
+
+        client_id: (clientId) REQUIRED str in query
+
+        country_code: (countryCode) REQUIRED str in query
+
+    Responses:
+        200: OK - RetrieveUserEligibilitiesIndirectResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -69,6 +108,45 @@ async def admin_retrieve_eligibilities_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check User Legal Eligibility (adminRetrieveEligibilities)
+
+    Retrieve the active policies and its conformance status by userThis process only supports cross-namespace checking between game namespace and publisher namespace , that means if the active policy already accepted by the same user in publisher namespace, then it will also be considered as eligible in non-publisher namespace.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/users/{userId}/eligibilities
+
+        method: GET
+
+        tags: ["Admin User Eligibilities"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        publisher_user_id: (publisherUserId) OPTIONAL str in query
+
+        client_id: (clientId) REQUIRED str in query
+
+        country_code: (countryCode) REQUIRED str in query
+
+    Responses:
+        200: OK - RetrieveUserEligibilitiesIndirectResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

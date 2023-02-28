@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Group Service (2.15.0)
+# AccelByte Cloud Group Service (2.15.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,6 +44,8 @@ class ModelsGroupResponseV1(Model):
     Properties:
         configuration_code: (configurationCode) REQUIRED str
 
+        created_at: (createdAt) REQUIRED str
+
         custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
 
         group_description: (groupDescription) REQUIRED str
@@ -68,6 +70,7 @@ class ModelsGroupResponseV1(Model):
     # region fields
 
     configuration_code: str  # REQUIRED
+    created_at: str  # REQUIRED
     custom_attributes: Dict[str, Any]  # REQUIRED
     group_description: str  # REQUIRED
     group_icon: str  # REQUIRED
@@ -85,6 +88,10 @@ class ModelsGroupResponseV1(Model):
 
     def with_configuration_code(self, value: str) -> ModelsGroupResponseV1:
         self.configuration_code = value
+        return self
+
+    def with_created_at(self, value: str) -> ModelsGroupResponseV1:
+        self.created_at = value
         return self
 
     def with_custom_attributes(self, value: Dict[str, Any]) -> ModelsGroupResponseV1:
@@ -143,6 +150,10 @@ class ModelsGroupResponseV1(Model):
             result["configurationCode"] = str(self.configuration_code)
         elif include_empty:
             result["configurationCode"] = ""
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = ""
         if hasattr(self, "custom_attributes"):
             result["customAttributes"] = {
                 str(k0): v0 for k0, v0 in self.custom_attributes.items()
@@ -197,6 +208,7 @@ class ModelsGroupResponseV1(Model):
     def create(
         cls,
         configuration_code: str,
+        created_at: str,
         custom_attributes: Dict[str, Any],
         group_description: str,
         group_icon: str,
@@ -210,6 +222,7 @@ class ModelsGroupResponseV1(Model):
     ) -> ModelsGroupResponseV1:
         instance = cls()
         instance.configuration_code = configuration_code
+        instance.created_at = created_at
         instance.custom_attributes = custom_attributes
         instance.group_description = group_description
         instance.group_icon = group_icon
@@ -233,6 +246,10 @@ class ModelsGroupResponseV1(Model):
             instance.configuration_code = str(dict_["configurationCode"])
         elif include_empty:
             instance.configuration_code = ""
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = ""
         if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
             instance.custom_attributes = {
                 str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
@@ -324,6 +341,7 @@ class ModelsGroupResponseV1(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "configurationCode": "configuration_code",
+            "createdAt": "created_at",
             "customAttributes": "custom_attributes",
             "groupDescription": "group_description",
             "groupIcon": "group_icon",
@@ -340,6 +358,7 @@ class ModelsGroupResponseV1(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "configurationCode": True,
+            "createdAt": True,
             "customAttributes": True,
             "groupDescription": True,
             "groupIcon": True,

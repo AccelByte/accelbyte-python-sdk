@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class UnblockPlayerRequest(WebSocketMessage):
+
     # region fields
 
     id_: str

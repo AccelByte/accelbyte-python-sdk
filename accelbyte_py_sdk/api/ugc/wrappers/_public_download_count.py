@@ -42,6 +42,38 @@ def add_download_count(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add unique download count to a content (AddDownloadCount)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/downloadcount
+
+        method: POST
+
+        tags: ["Public Download Count"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsAddDownloadCountResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -60,6 +92,38 @@ async def add_download_count_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Add unique download count to a content (AddDownloadCount)
+
+    Requires valid user token
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/downloadcount
+
+        method: POST
+
+        tags: ["Public Download Count"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsAddDownloadCountResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

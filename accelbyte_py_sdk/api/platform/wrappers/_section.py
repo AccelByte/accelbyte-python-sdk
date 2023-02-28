@@ -57,6 +57,48 @@ def create_section(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a section (createSection)
+
+    This API is used to create a section.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : created a section
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections
+
+        method: POST
+
+        tags: ["Section"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SectionCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        201: Created - FullSectionInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20027: Invalid time range | 30021: Default language [{language}] required | 30023: Catalog plugin grpc server address required)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -77,6 +119,48 @@ async def create_section_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a section (createSection)
+
+    This API is used to create a section.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : created a section
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections
+
+        method: POST
+
+        tags: ["Section"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SectionCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        201: Created - FullSectionInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20027: Invalid time range | 30021: Default language [{language}] required | 30023: Catalog plugin grpc server address required)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,6 +183,43 @@ def delete_section(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a section (deleteSection)
+
+    This API is used to delete s section.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
+
+        method: DELETE
+
+        tags: ["Section"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        section_id: (sectionId) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        204: No Content - (Delete section successfully)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30741: Section [{sectionId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,6 +240,43 @@ async def delete_section_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a section (deleteSection)
+
+    This API is used to delete s section.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
+
+        method: DELETE
+
+        tags: ["Section"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        section_id: (sectionId) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        204: No Content - (Delete section successfully)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30741: Section [{sectionId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -141,6 +299,42 @@ def get_section(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a section (getSection)
+
+    This API is used to get a section.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : section data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
+
+        method: GET
+
+        tags: ["Section"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        section_id: (sectionId) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullSectionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30741: Section [{sectionId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -161,6 +355,42 @@ async def get_section_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a section (getSection)
+
+    This API is used to get a section.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : section data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
+
+        method: GET
+
+        tags: ["Section"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        section_id: (sectionId) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullSectionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30741: Section [{sectionId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -186,6 +416,47 @@ def public_list_active_sections(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List active section contents (publicListActiveSections)
+
+    This API is used to list active section contents.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:STORE, action=2 (READ)
+      *  Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store sections)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store sections)
+      *  Returns : active section contents
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/sections
+
+        method: GET
+
+        tags: ["Section"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        view_id: (viewId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[SectionInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -212,6 +483,47 @@ async def public_list_active_sections_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List active section contents (publicListActiveSections)
+
+    This API is used to list active section contents.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:STORE, action=2 (READ)
+      *  Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store sections)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store sections)
+      *  Returns : active section contents
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/sections
+
+        method: GET
+
+        tags: ["Section"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        view_id: (viewId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[SectionInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -236,6 +548,39 @@ def purge_expired_section(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """purge expired section (purgeExpiredSection)
+
+    This API is used to purge expired section.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections/purge/expired
+
+        method: DELETE
+
+        tags: ["Section"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        204: No Content - (purge expired section successfully)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -254,6 +599,39 @@ async def purge_expired_section_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """purge expired section (purgeExpiredSection)
+
+    This API is used to purge expired section.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections/purge/expired
+
+        method: DELETE
+
+        tags: ["Section"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        204: No Content - (purge expired section successfully)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -279,6 +657,52 @@ def query_sections(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List sections (querySections)
+
+    This API is used to query sections.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : paginated sections
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections
+
+        method: GET
+
+        tags: ["Section"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end: (end) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start: (start) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        view_id: (viewId) OPTIONAL str in query
+
+    Responses:
+        200: OK - SectionPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -307,6 +731,52 @@ async def query_sections_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List sections (querySections)
+
+    This API is used to query sections.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : paginated sections
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections
+
+        method: GET
+
+        tags: ["Section"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end: (end) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start: (start) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        view_id: (viewId) OPTIONAL str in query
+
+    Responses:
+        200: OK - SectionPagingSlicedResult (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -334,6 +804,50 @@ def update_section(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update s section (updateSection)
+
+    This API is used to update s section.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+      *  Returns : updated section data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
+
+        method: PUT
+
+        tags: ["Section"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SectionUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        section_id: (sectionId) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullSectionInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20027: Invalid time range | 30021: Default language [{language}] required | 30023: Catalog plugin grpc server address required)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}] | 30741: Section [{sectionId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -356,6 +870,50 @@ async def update_section_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update s section (updateSection)
+
+    This API is used to update s section.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+      *  Returns : updated section data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
+
+        method: PUT
+
+        tags: ["Section"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SectionUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        section_id: (sectionId) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullSectionInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (20027: Invalid time range | 30021: Default language [{language}] required | 30023: Catalog plugin grpc server address required)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}] | 30741: Section [{sectionId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

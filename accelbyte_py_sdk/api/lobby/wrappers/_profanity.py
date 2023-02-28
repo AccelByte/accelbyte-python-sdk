@@ -67,6 +67,50 @@ def admin_add_profanity_filter_into_list(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """add a single filter into the list (adminAddProfanityFilterIntoList)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
+
+    add a single filter into the list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminAddProfanityFilterIntoListRequest in body
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -87,6 +131,50 @@ async def admin_add_profanity_filter_into_list_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """add a single filter into the list (adminAddProfanityFilterIntoList)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
+
+    add a single filter into the list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminAddProfanityFilterIntoListRequest in body
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,6 +197,50 @@ def admin_add_profanity_filters(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """add multiple filters into the list (adminAddProfanityFilters)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
+
+    add multiple filters into the list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminAddProfanityFiltersRequest in body
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -129,6 +261,50 @@ async def admin_add_profanity_filters_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """add multiple filters into the list (adminAddProfanityFilters)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
+
+    add multiple filters into the list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminAddProfanityFiltersRequest in body
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -150,6 +326,48 @@ def admin_create_profanity_list(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create a new list (adminCreateProfanityList)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
+
+    create a new list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminCreateProfanityListRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -168,6 +386,48 @@ async def admin_create_profanity_list_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create a new list (adminCreateProfanityList)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
+
+    create a new list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminCreateProfanityListRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -188,6 +448,48 @@ def admin_debug_profanity_filters(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get the list of filters that would modify the phrase (adminDebugProfanityFilters)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
+
+    get the list of filters that would modify the phrase
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/filters/debug
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDebugProfanityFilterRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsProfanityFilter] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -206,6 +508,48 @@ async def admin_debug_profanity_filters_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get the list of filters that would modify the phrase (adminDebugProfanityFilters)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
+
+    get the list of filters that would modify the phrase
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/filters/debug
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDebugProfanityFilterRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsProfanityFilter] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -227,6 +571,50 @@ def admin_delete_profanity_filter(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete the filter from the list (adminDeleteProfanityFilter)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with scope `social`
+
+    delete the filter from the list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/delete
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminDeleteProfanityFilterRequest in body
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsProfanityFilter] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -247,6 +635,50 @@ async def admin_delete_profanity_filter_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete the filter from the list (adminDeleteProfanityFilter)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with scope `social`
+
+    delete the filter from the list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/delete
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminDeleteProfanityFilterRequest in body
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsProfanityFilter] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -268,6 +700,48 @@ def admin_delete_profanity_list(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete a list include all filters inside of it (adminDeleteProfanityList)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with scope `social`
+
+    delete a list include all filters inside of it
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}
+
+        method: DELETE
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -286,6 +760,48 @@ async def admin_delete_profanity_list_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete a list include all filters inside of it (adminDeleteProfanityList)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with scope `social`
+
+    delete a list include all filters inside of it
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}
+
+        method: DELETE
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -306,6 +822,48 @@ def admin_get_profanity_list_filters_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get the list of filters inside the list (adminGetProfanityListFiltersV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
+
+    get the list of filters inside the list.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters
+
+        method: GET
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsAdminGetProfanityListFiltersV1Response (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -324,6 +882,48 @@ async def admin_get_profanity_list_filters_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get the list of filters inside the list (adminGetProfanityListFiltersV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
+
+    get the list of filters inside the list.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters
+
+        method: GET
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsAdminGetProfanityListFiltersV1Response (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -343,6 +943,46 @@ def admin_get_profanity_lists(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get lists (adminGetProfanityLists)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
+
+    get lists
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists
+
+        method: GET
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsAdminGetProfanityListsListResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -359,6 +999,46 @@ async def admin_get_profanity_lists_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get lists (adminGetProfanityLists)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
+
+    get lists
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists
+
+        method: GET
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsAdminGetProfanityListsListResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -377,6 +1057,46 @@ def admin_get_profanity_rule(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get current profanity rule (adminGetProfanityRule)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
+
+    get current profanity rule
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
+
+        method: GET
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsProfanityRule (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -393,6 +1113,46 @@ async def admin_get_profanity_rule_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get current profanity rule (adminGetProfanityRule)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
+
+    get current profanity rule
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
+
+        method: GET
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsProfanityRule (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -413,6 +1173,50 @@ def admin_import_profanity_filters_from_file(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """import a file with filters (adminImportProfanityFiltersFromFile)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
+
+    import a file with filters
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk-file
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[int] in body
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -433,6 +1237,50 @@ async def admin_import_profanity_filters_from_file_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """import a file with filters (adminImportProfanityFiltersFromFile)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
+
+    import a file with filters
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk-file
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[int] in body
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -454,6 +1302,48 @@ def admin_set_profanity_rule_for_namespace(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """set current profanity rule (adminSetProfanityRuleForNamespace)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with scope `social`
+
+    set current profanity rule
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminSetProfanityRuleForNamespaceRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -472,6 +1362,48 @@ async def admin_set_profanity_rule_for_namespace_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """set current profanity rule (adminSetProfanityRuleForNamespace)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with scope `social`
+
+    set current profanity rule
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminSetProfanityRuleForNamespaceRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -493,6 +1425,50 @@ def admin_update_profanity_list(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update the list (adminUpdateProfanityList)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with scope `social`
+
+    update the list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminUpdateProfanityList in body
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -513,6 +1489,50 @@ async def admin_update_profanity_list_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update the list (adminUpdateProfanityList)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with scope `social`
+
+    update the list
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminUpdateProfanityList in body
+
+        list_: (list) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -534,6 +1554,48 @@ def admin_verify_message_profanity_response(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """verify a message directly from the UI or other services (adminVerifyMessageProfanityResponse)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
+
+    verify a message directly from the UI or other services
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/verify
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminVerifyMessageProfanityRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsAdminVerifyMessageProfanityResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -552,6 +1614,48 @@ async def admin_verify_message_profanity_response_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """verify a message directly from the UI or other services (adminVerifyMessageProfanityResponse)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
+
+    verify a message directly from the UI or other services
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/profanity/namespaces/{namespace}/verify
+
+        method: POST
+
+        tags: ["profanity"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminVerifyMessageProfanityRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsAdminVerifyMessageProfanityResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -61,6 +61,41 @@ def create_key_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create key group (createKeyGroup)
+
+    Create key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=1 (CREATE)
+      *  Returns : created key group
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups
+
+        method: POST
+
+        tags: ["KeyGroup"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL KeyGroupCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - KeyGroupInfo (successful operation)
+
+        409: Conflict - ErrorEntity (37271: Key group [{name}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,6 +114,41 @@ async def create_key_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create key group (createKeyGroup)
+
+    Create key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=1 (CREATE)
+      *  Returns : created key group
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups
+
+        method: POST
+
+        tags: ["KeyGroup"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL KeyGroupCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - KeyGroupInfo (successful operation)
+
+        409: Conflict - ErrorEntity (37271: Key group [{name}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,6 +169,39 @@ def get_key_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get key group (getKeyGroup)
+
+    Get key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : key group info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}
+
+        method: GET
+
+        tags: ["KeyGroup"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        key_group_id: (keyGroupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - KeyGroupInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,6 +220,39 @@ async def get_key_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get key group (getKeyGroup)
+
+    Get key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : key group info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}
+
+        method: GET
+
+        tags: ["KeyGroup"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        key_group_id: (keyGroupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - KeyGroupInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -138,6 +274,39 @@ def get_key_group_by_booth_name(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get key group by booth name (getKeyGroupByBoothName)
+
+    Get key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : key group info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/byBoothName
+
+        method: GET
+
+        tags: ["KeyGroup"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        booth_name: (boothName) REQUIRED str in query
+
+    Responses:
+        200: OK - KeyGroupInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -157,6 +326,39 @@ async def get_key_group_by_booth_name_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get key group by booth name (getKeyGroupByBoothName)
+
+    Get key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : key group info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/byBoothName
+
+        method: GET
+
+        tags: ["KeyGroup"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        booth_name: (boothName) REQUIRED str in query
+
+    Responses:
+        200: OK - KeyGroupInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -177,6 +379,39 @@ def get_key_group_dynamic(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get key group dynamic (getKeyGroupDynamic)
+
+    Get key group dynamic.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : key group info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/dynamic
+
+        method: GET
+
+        tags: ["KeyGroup"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        key_group_id: (keyGroupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - KeyGroupDynamicInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -195,6 +430,39 @@ async def get_key_group_dynamic_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get key group dynamic (getKeyGroupDynamic)
+
+    Get key group dynamic.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : key group info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/dynamic
+
+        method: GET
+
+        tags: ["KeyGroup"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        key_group_id: (keyGroupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - KeyGroupDynamicInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -218,6 +486,43 @@ def list_keys(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List keys of a key group (listKeys)
+
+    This API is used to list keys of a key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : keys
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/keys
+
+        method: GET
+
+        tags: ["KeyGroup"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        key_group_id: (keyGroupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+    Responses:
+        200: OK - KeyPagingSliceResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -242,6 +547,43 @@ async def list_keys_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List keys of a key group (listKeys)
+
+    This API is used to list keys of a key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : keys
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/keys
+
+        method: GET
+
+        tags: ["KeyGroup"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        key_group_id: (keyGroupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+    Responses:
+        200: OK - KeyPagingSliceResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -268,6 +610,43 @@ def query_key_groups(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query key groups (queryKeyGroups)
+
+    Query key groups, if name is presented, it's fuzzy match.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : slice of key group
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups
+
+        method: GET
+
+        tags: ["KeyGroup"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        tag: (tag) OPTIONAL str in query
+
+    Responses:
+        200: OK - KeyGroupPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -292,6 +671,43 @@ async def query_key_groups_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query key groups (queryKeyGroups)
+
+    Query key groups, if name is presented, it's fuzzy match.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
+      *  Returns : slice of key group
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups
+
+        method: GET
+
+        tags: ["KeyGroup"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        tag: (tag) OPTIONAL str in query
+
+    Responses:
+        200: OK - KeyGroupPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -316,6 +732,45 @@ def update_key_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update key group (updateKeyGroup)
+
+    Update key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=4 (UPDATE)
+      *  Returns : updated key group
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}
+
+        method: PUT
+
+        tags: ["KeyGroup"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL KeyGroupUpdate in body
+
+        key_group_id: (keyGroupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - KeyGroupInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37271: Key group [{name}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -336,6 +791,45 @@ async def update_key_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update key group (updateKeyGroup)
+
+    Update key group.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=4 (UPDATE)
+      *  Returns : updated key group
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}
+
+        method: PUT
+
+        tags: ["KeyGroup"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL KeyGroupUpdate in body
+
+        key_group_id: (keyGroupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - KeyGroupInfo (successful operation)
+
+        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37271: Key group [{name}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -358,6 +852,44 @@ def upload_keys(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upload keys to key group (uploadKeys)
+
+    This API is used to upload keys with csv format to a key group.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=4 (UPDATE)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/keys
+
+        method: POST
+
+        tags: ["KeyGroup"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        key_group_id: (keyGroupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkOperationResult (successful operation)
+
+        400: Bad Request - ErrorEntity (37221: Invalid key file)
+
+        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -378,6 +910,44 @@ async def upload_keys_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Upload keys to key group (uploadKeys)
+
+    This API is used to upload keys with csv format to a key group.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=4 (UPDATE)
+      *  Returns : item data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/keys
+
+        method: POST
+
+        tags: ["KeyGroup"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        key_group_id: (keyGroupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkOperationResult (successful operation)
+
+        400: Bad Request - ErrorEntity (37221: Invalid key file)
+
+        404: Not Found - ErrorEntity (37241: Key group [{keyGroupId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

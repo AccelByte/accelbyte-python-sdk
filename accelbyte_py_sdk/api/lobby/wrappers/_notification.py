@@ -43,9 +43,6 @@ from ..models import ModelNotificationTopicResponse
 from ..models import ModelNotificationTopicResponseV1
 from ..models import ModelNotificationWithTemplateRequest
 from ..models import ModelNotificationWithTemplateRequestV1
-from ..models import ModelTemplateLocalization
-from ..models import ModelTemplateLocalizationResponse
-from ..models import ModelTemplateResponse
 from ..models import ModelTopicByNamespacesResponse
 from ..models import ModelUpdateTemplateRequest
 from ..models import ModelUpdateTopicRequest
@@ -54,29 +51,20 @@ from ..models import RestapiErrorResponseV1
 
 from ..operations.notification import CreateNotificationTemplateV1Admin
 from ..operations.notification import CreateNotificationTopicV1Admin
-from ..operations.notification import CreateTemplate
 from ..operations.notification import CreateTopic
 from ..operations.notification import DeleteNotificationTemplateSlugV1Admin
 from ..operations.notification import DeleteNotificationTopicV1Admin
-from ..operations.notification import DeleteTemplateLocalization
 from ..operations.notification import DeleteTemplateLocalizationV1Admin
-from ..operations.notification import DeleteTemplateSlug
 from ..operations.notification import DeleteTopicByTopicName
-from ..operations.notification import FreeFormNotification
 from ..operations.notification import FreeFormNotificationByUserID
 from ..operations.notification import GetAllNotificationTemplatesV1Admin
 from ..operations.notification import GetAllNotificationTopicsV1Admin
-from ..operations.notification import GetGameTemplate
-from ..operations.notification import GetLocalizationTemplate
 from ..operations.notification import GetNotificationTopicV1Admin
 from ..operations.notification import GetSingleTemplateLocalizationV1Admin
-from ..operations.notification import GetSlugTemplate
 from ..operations.notification import GetTemplateSlugLocalizationsTemplateV1Admin
 from ..operations.notification import GetTopicByNamespace
 from ..operations.notification import GetTopicByTopicName
-from ..operations.notification import NotificationWithTemplate
 from ..operations.notification import NotificationWithTemplateByUserID
-from ..operations.notification import PublishTemplate
 from ..operations.notification import PublishTemplateLocalizationV1Admin
 from ..operations.notification import SendMultipleUsersFreeformNotificationV1Admin
 from ..operations.notification import SendPartyFreeformNotificationV1Admin
@@ -85,7 +73,6 @@ from ..operations.notification import SendSpecificUserFreeformNotificationV1Admi
 from ..operations.notification import SendSpecificUserTemplatedNotificationV1Admin
 from ..operations.notification import SendUsersFreeformNotificationV1Admin
 from ..operations.notification import SendUsersTemplatedNotificationV1Admin
-from ..operations.notification import UpdateLocalizationTemplate
 from ..operations.notification import UpdateNotificationTopicV1Admin
 from ..operations.notification import UpdateTemplateLocalizationV1Admin
 from ..operations.notification import UpdateTopicByTopicName
@@ -98,6 +85,54 @@ def create_notification_template_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new notification template (createNotificationTemplateV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Create new notification template. Include handlebars {{key}} for replaceable contexts. The key inside
+    handlebars will be the key to be replaced when sending notification. Already existing template with the same
+    slug and language can not be created.
+
+    Check model description for detailed input restrictions.
+
+    Action Code: 50204
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCreateTemplateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        409: Conflict - RestapiErrorResponseV1 (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,6 +151,54 @@ async def create_notification_template_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new notification template (createNotificationTemplateV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Create new notification template. Include handlebars {{key}} for replaceable contexts. The key inside
+    handlebars will be the key to be replaced when sending notification. Already existing template with the same
+    slug and language can not be created.
+
+    Check model description for detailed input restrictions.
+
+    Action Code: 50204
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCreateTemplateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        409: Conflict - RestapiErrorResponseV1 (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,6 +219,49 @@ def create_notification_topic_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new notification topic (createNotificationTopicV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Create new notification topic.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Action Code: 50214
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCreateTopicRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -154,49 +280,54 @@ async def create_notification_topic_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new notification topic (createNotificationTopicV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Create new notification topic.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Action Code: 50214
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCreateTopicRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = CreateNotificationTopicV1Admin.create(
-        body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(CreateTemplate)
-def create_template(
-    body: ModelCreateTemplateRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = CreateTemplate.create(
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(CreateTemplate)
-async def create_template_async(
-    body: ModelCreateTemplateRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = CreateTemplate.create(
         body=body,
         namespace=namespace,
     )
@@ -212,6 +343,49 @@ def create_topic(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new notification topic (createTopic)
+
+    Required permission : `NAMESPACE:{namespace}:TOPIC [CREATE]` with scope `social`
+
+    Create new notification topic.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/topics
+
+        method: POST
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCreateTopicRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        409: Conflict - RestapiErrorResponseBody (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -230,6 +404,49 @@ async def create_topic_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new notification topic (createTopic)
+
+    Required permission : `NAMESPACE:{namespace}:TOPIC [CREATE]` with scope `social`
+
+    Create new notification topic.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/topics
+
+        method: POST
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCreateTopicRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        409: Conflict - RestapiErrorResponseBody (Conflict)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,6 +467,48 @@ def delete_notification_template_slug_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete template slug in notification template (deleteNotificationTemplateSlugV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
+
+    Delete template slug in notification template
+
+    Action Code: 50206
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
+
+        method: DELETE
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -268,6 +527,48 @@ async def delete_notification_template_slug_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete template slug in notification template (deleteNotificationTemplateSlugV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
+
+    Delete template slug in notification template
+
+    Action Code: 50206
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
+
+        method: DELETE
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -288,6 +589,51 @@ def delete_notification_topic_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete topic information by topic name (deleteNotificationTopicV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
+
+    delete topic information by topic name.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Action Code: 50217
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
+
+        method: DELETE
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic_name: (topicName) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -306,54 +652,57 @@ async def delete_notification_topic_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete topic information by topic name (deleteNotificationTopicV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
+
+    delete topic information by topic name.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Action Code: 50217
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
+
+        method: DELETE
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic_name: (topicName) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = DeleteNotificationTopicV1Admin.create(
         topic_name=topic_name,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(DeleteTemplateLocalization)
-def delete_template_localization(
-    template_language: str,
-    template_slug: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DeleteTemplateLocalization.create(
-        template_language=template_language,
-        template_slug=template_slug,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(DeleteTemplateLocalization)
-async def delete_template_localization_async(
-    template_language: str,
-    template_slug: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DeleteTemplateLocalization.create(
-        template_language=template_language,
-        template_slug=template_slug,
         namespace=namespace,
     )
     return await run_request_async(
@@ -369,6 +718,50 @@ def delete_template_localization_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete template localization (deleteTemplateLocalizationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
+
+    delete template localization
+
+    Action Code: 50209
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
+
+        method: DELETE
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_language: (templateLanguage) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -389,50 +782,56 @@ async def delete_template_localization_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete template localization (deleteTemplateLocalizationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
+
+    delete template localization
+
+    Action Code: 50209
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
+
+        method: DELETE
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_language: (templateLanguage) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = DeleteTemplateLocalizationV1Admin.create(
         template_language=template_language,
-        template_slug=template_slug,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(DeleteTemplateSlug)
-def delete_template_slug(
-    template_slug: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DeleteTemplateSlug.create(
-        template_slug=template_slug,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(DeleteTemplateSlug)
-async def delete_template_slug_async(
-    template_slug: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DeleteTemplateSlug.create(
         template_slug=template_slug,
         namespace=namespace,
     )
@@ -448,6 +847,49 @@ def delete_topic_by_topic_name(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete topic information by topic name (deleteTopicByTopicName)
+
+    Required permission : `NAMESPACE:{namespace}:TOPIC [DELETE]` with scope `social`
+
+    delete topic information by topic name.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/topics/{topic}
+
+        method: DELETE
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic: (topic) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -466,50 +908,55 @@ async def delete_topic_by_topic_name_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete topic information by topic name (deleteTopicByTopicName)
+
+    Required permission : `NAMESPACE:{namespace}:TOPIC [DELETE]` with scope `social`
+
+    delete topic information by topic name.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/topics/{topic}
+
+        method: DELETE
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic: (topic) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = DeleteTopicByTopicName.create(
         topic=topic,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(FreeFormNotification)
-def free_form_notification(
-    body: ModelFreeFormNotificationRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = FreeFormNotification.create(
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(FreeFormNotification)
-async def free_form_notification_async(
-    body: ModelFreeFormNotificationRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = FreeFormNotification.create(
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -525,6 +972,48 @@ def free_form_notification_by_user_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send freeform notification to a user (freeFormNotificationByUserID)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to a user.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/users/{userId}/freeform
+
+        method: POST
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelFreeFormNotificationRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -545,6 +1034,48 @@ async def free_form_notification_by_user_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send freeform notification to a user (freeFormNotificationByUserID)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to a user.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/users/{userId}/freeform
+
+        method: POST
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelFreeFormNotificationRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -565,6 +1096,48 @@ def get_all_notification_templates_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get all notification template in a namespace (getAllNotificationTemplatesV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
+
+    Get all templates in a namespace
+
+    Action Code: 50203
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
+
+        method: GET
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelNotificationTemplateResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -581,6 +1154,48 @@ async def get_all_notification_templates_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get all notification template in a namespace (getAllNotificationTemplatesV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
+
+    Get all templates in a namespace
+
+    Action Code: 50203
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
+
+        method: GET
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelNotificationTemplateResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -602,6 +1217,52 @@ def get_all_notification_topics_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get topic by namespace (getAllNotificationTopicsV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
+
+    get topic by namespace.
+
+    Action Code: 50213
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
+
+        method: GET
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetAllNotificationTopicsResponse (OK)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -624,6 +1285,52 @@ async def get_all_notification_topics_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get topic by namespace (getAllNotificationTopicsV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
+
+    get topic by namespace.
+
+    Action Code: 50213
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
+
+        method: GET
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetAllNotificationTopicsResponse (OK)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -639,82 +1346,6 @@ async def get_all_notification_topics_v1_admin_async(
     )
 
 
-@same_doc_as(GetGameTemplate)
-def get_game_template(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetGameTemplate.create(
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(GetGameTemplate)
-async def get_game_template_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetGameTemplate.create(
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(GetLocalizationTemplate)
-def get_localization_template(
-    template_language: str,
-    template_slug: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetLocalizationTemplate.create(
-        template_language=template_language,
-        template_slug=template_slug,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(GetLocalizationTemplate)
-async def get_localization_template_async(
-    template_language: str,
-    template_slug: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetLocalizationTemplate.create(
-        template_language=template_language,
-        template_slug=template_slug,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
 @same_doc_as(GetNotificationTopicV1Admin)
 def get_notification_topic_v1_admin(
     topic_name: str,
@@ -722,6 +1353,48 @@ def get_notification_topic_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get topic information by topic name (getNotificationTopicV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
+
+    get topic information by topic name.
+
+    Action Code: 50215
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
+
+        method: GET
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic_name: (topicName) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelNotificationTopicResponseV1 (OK)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -740,6 +1413,48 @@ async def get_notification_topic_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get topic information by topic name (getNotificationTopicV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
+
+    get topic information by topic name.
+
+    Action Code: 50215
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
+
+        method: GET
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic_name: (topicName) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelNotificationTopicResponseV1 (OK)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -761,6 +1476,50 @@ def get_single_template_localization_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get a template localization (getSingleTemplateLocalizationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
+
+    Get a template localization
+
+    Action Code: 50207
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
+
+        method: GET
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_language: (templateLanguage) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelLocalization (OK)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -781,6 +1540,50 @@ async def get_single_template_localization_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get a template localization (getSingleTemplateLocalizationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
+
+    Get a template localization
+
+    Action Code: 50207
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
+
+        method: GET
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_language: (templateLanguage) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelLocalization (OK)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -788,56 +1591,6 @@ async def get_single_template_localization_v1_admin_async(
     request = GetSingleTemplateLocalizationV1Admin.create(
         template_language=template_language,
         template_slug=template_slug,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(GetSlugTemplate)
-def get_slug_template(
-    template_slug: str,
-    after: Optional[str] = None,
-    before: Optional[str] = None,
-    limit: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetSlugTemplate.create(
-        template_slug=template_slug,
-        after=after,
-        before=before,
-        limit=limit,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(GetSlugTemplate)
-async def get_slug_template_async(
-    template_slug: str,
-    after: Optional[str] = None,
-    before: Optional[str] = None,
-    limit: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetSlugTemplate.create(
-        template_slug=template_slug,
-        after=after,
-        before=before,
-        limit=limit,
         namespace=namespace,
     )
     return await run_request_async(
@@ -855,6 +1608,54 @@ def get_template_slug_localizations_template_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get all notification template localization in a slug (getTemplateSlugLocalizationsTemplateV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
+
+    Get all templates in a namespace
+
+    Action Code: 50205
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
+
+        method: GET
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetAllNotificationTemplateSlugResp (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -879,6 +1680,54 @@ async def get_template_slug_localizations_template_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get all notification template localization in a slug (getTemplateSlugLocalizationsTemplateV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
+
+    Get all templates in a namespace
+
+    Action Code: 50205
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
+
+        method: GET
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetAllNotificationTemplateSlugResp (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -904,6 +1753,50 @@ def get_topic_by_namespace(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get topic by namespace (getTopicByNamespace)
+
+    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
+
+    get topic by namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/topics
+
+        method: GET
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelTopicByNamespacesResponse (OK)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -926,6 +1819,50 @@ async def get_topic_by_namespace_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get topic by namespace (getTopicByNamespace)
+
+    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
+
+    get topic by namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/topics
+
+        method: GET
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        after: (after) OPTIONAL str in query
+
+        before: (before) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelTopicByNamespacesResponse (OK)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -948,6 +1885,46 @@ def get_topic_by_topic_name(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get topic information by topic name (getTopicByTopicName)
+
+    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
+
+    get topic information by topic name.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/topics/{topic}
+
+        method: GET
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic: (topic) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelNotificationTopicResponse (OK)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -966,50 +1943,52 @@ async def get_topic_by_topic_name_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get topic information by topic name (getTopicByTopicName)
+
+    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
+
+    get topic information by topic name.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/topics/{topic}
+
+        method: GET
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic: (topic) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelNotificationTopicResponse (OK)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetTopicByTopicName.create(
         topic=topic,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(NotificationWithTemplate)
-def notification_with_template(
-    body: ModelNotificationWithTemplateRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = NotificationWithTemplate.create(
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(NotificationWithTemplate)
-async def notification_with_template_async(
-    body: ModelNotificationWithTemplateRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = NotificationWithTemplate.create(
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1025,6 +2004,53 @@ def notification_with_template_by_user_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send notification to a user with template (notificationWithTemplateByUserID)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to a user with predefined template.
+
+    In the request body, specify which template slug (template identifier) to use and the template language.
+
+    NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
+    Template need to be published before it can be use to send notifications
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/users/{userId}/templated
+
+        method: POST
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelNotificationWithTemplateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1045,6 +2071,53 @@ async def notification_with_template_by_user_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send notification to a user with template (notificationWithTemplateByUserID)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to a user with predefined template.
+
+    In the request body, specify which template slug (template identifier) to use and the template language.
+
+    NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
+    Template need to be published before it can be use to send notifications
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/users/{userId}/templated
+
+        method: POST
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelNotificationWithTemplateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1052,48 +2125,6 @@ async def notification_with_template_by_user_id_async(
     request = NotificationWithTemplateByUserID.create(
         body=body,
         user_id=user_id,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(PublishTemplate)
-def publish_template(
-    template_language: str,
-    template_slug: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublishTemplate.create(
-        template_language=template_language,
-        template_slug=template_slug,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(PublishTemplate)
-async def publish_template_async(
-    template_language: str,
-    template_slug: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublishTemplate.create(
-        template_language=template_language,
-        template_slug=template_slug,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1109,6 +2140,50 @@ def publish_template_localization_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """publish template localization draft (publishTemplateLocalizationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Publish notification template draft. Empty draft can not be published.
+
+    Action Code: 50210
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_language: (templateLanguage) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1129,6 +2204,50 @@ async def publish_template_localization_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """publish template localization draft (publishTemplateLocalizationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Publish notification template draft. Empty draft can not be published.
+
+    Action Code: 50210
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_language: (templateLanguage) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1150,6 +2269,45 @@ def send_multiple_users_freeform_notification_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send freeform notification to multiple users (sendMultipleUsersFreeformNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to multiple user.
+    Action Code: 50211
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/bulkUsers/freeform/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBulkUsersFreeFormNotificationRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1168,6 +2326,45 @@ async def send_multiple_users_freeform_notification_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send freeform notification to multiple users (sendMultipleUsersFreeformNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to multiple user.
+    Action Code: 50211
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/bulkUsers/freeform/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBulkUsersFreeFormNotificationRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1189,6 +2386,48 @@ def send_party_freeform_notification_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send freeform notification to a party (sendPartyFreeformNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to a party.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/freeform/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelFreeFormNotificationRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1209,6 +2448,48 @@ async def send_party_freeform_notification_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send freeform notification to a party (sendPartyFreeformNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to a party.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/freeform/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelFreeFormNotificationRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1231,6 +2512,53 @@ def send_party_templated_notification_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send templated notification to a party (sendPartyTemplatedNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends templated notification to a party.
+
+    In the request body, specify which template slug (template identifier) to use and the template language.
+
+    NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
+    Template need to be published before it can be use to send notifications
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/templates/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelNotificationWithTemplateRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1251,6 +2579,53 @@ async def send_party_templated_notification_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send templated notification to a party (sendPartyTemplatedNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends templated notification to a party.
+
+    In the request body, specify which template slug (template identifier) to use and the template language.
+
+    NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
+    Template need to be published before it can be use to send notifications
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/templates/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelNotificationWithTemplateRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1273,6 +2648,49 @@ def send_specific_user_freeform_notification_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send freeform notification to a user (sendSpecificUserFreeformNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to a user.
+    Action Code: 50211
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/freeform/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelFreeFormNotificationRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1293,6 +2711,49 @@ async def send_specific_user_freeform_notification_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send freeform notification to a user (sendSpecificUserFreeformNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to a user.
+    Action Code: 50211
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/freeform/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelFreeFormNotificationRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1315,6 +2776,55 @@ def send_specific_user_templated_notification_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send templated notification to specific user (sendSpecificUserTemplatedNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends templated notification to a user.
+
+    In the request body, specify which template slug (template identifier) to use and the template language.
+
+    NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
+    Template need to be published before it can be use to send notifications
+
+    Action Code: 50212
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/templates/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelNotificationWithTemplateRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1335,6 +2845,55 @@ async def send_specific_user_templated_notification_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send templated notification to specific user (sendSpecificUserTemplatedNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends templated notification to a user.
+
+    In the request body, specify which template slug (template identifier) to use and the template language.
+
+    NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
+    Template need to be published before it can be use to send notifications
+
+    Action Code: 50212
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/templates/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelNotificationWithTemplateRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1356,6 +2915,48 @@ def send_users_freeform_notification_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send freeform notification to connected users (sendUsersFreeformNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to all connected users in a namespace.
+
+    Action Code: 50201
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/freeform/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelFreeFormNotificationRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (Accepted)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1374,6 +2975,48 @@ async def send_users_freeform_notification_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send freeform notification to connected users (sendUsersFreeformNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to all connected users in a namespace.
+
+    Action Code: 50201
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/freeform/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelFreeFormNotificationRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (Accepted)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1394,6 +3037,53 @@ def send_users_templated_notification_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send notification to connected users with template (sendUsersTemplatedNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to all connected users in a namespace with predefined template.
+
+    In the request body, specify which template slug (template identifier) to use and the template language.
+
+    NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
+    Template need to be published before it can be use to send notifications
+
+    Action Code: 50202
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelNotificationWithTemplateRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (Accepted)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1412,58 +3102,59 @@ async def send_users_templated_notification_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """send notification to connected users with template (sendUsersTemplatedNotificationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
+
+    Sends notification to all connected users in a namespace with predefined template.
+
+    In the request body, specify which template slug (template identifier) to use and the template language.
+
+    NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
+    Template need to be published before it can be use to send notifications
+
+    Action Code: 50202
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/notify
+
+        method: POST
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelNotificationWithTemplateRequestV1 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (Accepted)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = SendUsersTemplatedNotificationV1Admin.create(
         body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(UpdateLocalizationTemplate)
-def update_localization_template(
-    body: ModelUpdateTemplateRequest,
-    template_language: str,
-    template_slug: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = UpdateLocalizationTemplate.create(
-        body=body,
-        template_language=template_language,
-        template_slug=template_slug,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(UpdateLocalizationTemplate)
-async def update_localization_template_async(
-    body: ModelUpdateTemplateRequest,
-    template_language: str,
-    template_slug: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = UpdateLocalizationTemplate.create(
-        body=body,
-        template_language=template_language,
-        template_slug=template_slug,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1479,6 +3170,55 @@ def update_notification_topic_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update topic information by topic name (updateNotificationTopicV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]` with scope `social`
+
+    update topic information by topic name.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Action Code: 50216
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
+
+        method: PUT
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateTopicRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic_name: (topicName) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1499,6 +3239,55 @@ async def update_notification_topic_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update topic information by topic name (updateNotificationTopicV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]` with scope `social`
+
+    update topic information by topic name.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Action Code: 50216
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
+
+        method: PUT
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateTopicRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic_name: (topicName) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1522,6 +3311,54 @@ def update_template_localization_v1_admin(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update template localization (updateTemplateLocalizationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]` with scope `social`
+
+    update template localization
+
+    Action Code: 50208
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
+
+        method: PUT
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateTemplateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_language: (templateLanguage) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1544,6 +3381,54 @@ async def update_template_localization_v1_admin_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update template localization (updateTemplateLocalizationV1Admin)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]` with scope `social`
+
+    update template localization
+
+    Action Code: 50208
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
+
+        method: PUT
+
+        tags: ["notification"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateTemplateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        template_language: (templateLanguage) REQUIRED str in path
+
+        template_slug: (templateSlug) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1567,6 +3452,51 @@ def update_topic_by_topic_name(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update topic information by topic name (updateTopicByTopicName)
+
+    Required permission : `NAMESPACE:{namespace}:TOPIC [UPDATE]` with scope `social`
+
+    update topic information by topic name.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/topics/{topic}
+
+        method: PUT
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateTopicRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic: (topic) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1587,6 +3517,51 @@ async def update_topic_by_topic_name_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update topic information by topic name (updateTopicByTopicName)
+
+    Required permission : `NAMESPACE:{namespace}:TOPIC [UPDATE]` with scope `social`
+
+    update topic information by topic name.
+
+    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
+    Already existing topic can not be created
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:TOPIC [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /notification/namespaces/{namespace}/topics/{topic}
+
+        method: PUT
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateTopicRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        topic: (topic) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

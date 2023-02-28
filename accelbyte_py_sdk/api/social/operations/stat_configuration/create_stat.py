@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Social Service (1.33.0)
+# AccelByte Cloud Social Service (2.0.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -67,6 +67,8 @@ class CreateStat(Operation):
 
     Responses:
         201: Created - StatInfo (Create stat successfully)
+
+        404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12271: Stat template with code [{statCode}] already exists in namespace [{namespace}])
     """
@@ -180,6 +182,8 @@ class CreateStat(Operation):
 
         201: Created - StatInfo (Create stat successfully)
 
+        404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
         409: Conflict - ErrorEntity (12271: Stat template with code [{statCode}] already exists in namespace [{namespace}])
 
         ---: HttpResponse (Undocumented Response)
@@ -197,6 +201,8 @@ class CreateStat(Operation):
 
         if code == 201:
             return StatInfo.create_from_dict(content), None
+        if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)
 

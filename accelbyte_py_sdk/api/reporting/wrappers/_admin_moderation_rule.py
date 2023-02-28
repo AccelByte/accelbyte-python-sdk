@@ -54,6 +54,87 @@ def create_moderation_rule(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create auto moderation rule (createModerationRule)
+
+    This endpoint create moderation rule.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [CREATE]
+
+
+
+
+    Supported Category:
+
+      * UGC
+      * USER
+      * CHAT
+      * EXTENSION
+
+
+
+
+
+
+    Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
+
+
+
+
+
+
+      * HideContent
+
+
+
+
+
+    Supported Actions:
+
+
+
+
+
+
+      * hideContent : Hide the content
+
+
+      * banAccount : Ban the user account
+
+
+      * deleteChat : Delete chat
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rule
+
+        method: POST
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiModerationRuleRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - RestapiErrorResponse (Bad Request)
+
+        409: Conflict - RestapiErrorResponse (Conflict)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -72,6 +153,87 @@ async def create_moderation_rule_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create auto moderation rule (createModerationRule)
+
+    This endpoint create moderation rule.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [CREATE]
+
+
+
+
+    Supported Category:
+
+      * UGC
+      * USER
+      * CHAT
+      * EXTENSION
+
+
+
+
+
+
+    Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
+
+
+
+
+
+
+      * HideContent
+
+
+
+
+
+    Supported Actions:
+
+
+
+
+
+
+      * hideContent : Hide the content
+
+
+      * banAccount : Ban the user account
+
+
+      * deleteChat : Delete chat
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rule
+
+        method: POST
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiModerationRuleRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - RestapiErrorResponse (Bad Request)
+
+        409: Conflict - RestapiErrorResponse (Conflict)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -92,6 +254,42 @@ def delete_moderation_rule(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete auto moderation rule (deleteModerationRule)
+
+    This endpoint delete moderation rule.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [DELETE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}
+
+        method: DELETE
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        rule_id: (ruleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponse (Bad Request)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,6 +308,42 @@ async def delete_moderation_rule_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete auto moderation rule (deleteModerationRule)
+
+    This endpoint delete moderation rule.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [DELETE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}
+
+        method: DELETE
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        rule_id: (ruleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponse (Bad Request)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -130,6 +364,42 @@ def get_moderation_rule_details(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get auto moderation rule (getModerationRuleDetails)
+
+    This endpoint get moderation rule.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rules/{ruleId}
+
+        method: GET
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        rule_id: (ruleId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiModerationRuleResponse (OK)
+
+        404: Not Found - RestapiErrorResponse (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -148,6 +418,42 @@ async def get_moderation_rule_details_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get auto moderation rule (getModerationRuleDetails)
+
+    This endpoint get moderation rule.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rules/{ruleId}
+
+        method: GET
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        rule_id: (ruleId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiModerationRuleResponse (OK)
+
+        404: Not Found - RestapiErrorResponse (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -171,6 +477,50 @@ def get_moderation_rules(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get auto moderation rules (getModerationRules)
+
+    This endpoint get moderation rules.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rules
+
+        method: GET
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        category: (category) OPTIONAL str in query
+
+        extension_category: (extensionCategory) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - RestapiModerationRulesList (OK)
+
+        400: Bad Request - RestapiErrorResponse (Bad Request)
+
+        404: Not Found - RestapiErrorResponse (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -195,6 +545,50 @@ async def get_moderation_rules_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get auto moderation rules (getModerationRules)
+
+    This endpoint get moderation rules.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rules
+
+        method: GET
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        category: (category) OPTIONAL str in query
+
+        extension_category: (extensionCategory) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - RestapiModerationRulesList (OK)
+
+        400: Bad Request - RestapiErrorResponse (Bad Request)
+
+        404: Not Found - RestapiErrorResponse (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -219,6 +613,89 @@ def update_moderation_rule(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update auto moderation rule (updateModerationRule)
+
+    This endpoint update moderation rule.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+
+
+    Supported Category:
+
+      * UGC
+      * USER
+      * CHAT
+      * EXTENSION
+
+
+
+
+
+
+    Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
+
+
+
+
+
+
+      * HideContent
+
+
+
+
+
+    Supported Actions:
+
+
+
+
+
+
+      * hideContent : Hide the content
+
+
+      * banAccount : Ban the user account
+
+
+      * deleteChat : Delete chat
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}
+
+        method: PUT
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiModerationRuleRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        rule_id: (ruleId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiModerationRuleResponse (OK)
+
+        400: Bad Request - RestapiErrorResponse (Bad Request)
+
+        404: Not Found - RestapiErrorResponse (Not Found)
+
+        409: Conflict - RestapiErrorResponse (Conflict)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -239,6 +716,89 @@ async def update_moderation_rule_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update auto moderation rule (updateModerationRule)
+
+    This endpoint update moderation rule.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+
+
+    Supported Category:
+
+      * UGC
+      * USER
+      * CHAT
+      * EXTENSION
+
+
+
+
+
+
+    Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
+
+
+
+
+
+
+      * HideContent
+
+
+
+
+
+    Supported Actions:
+
+
+
+
+
+
+      * hideContent : Hide the content
+
+
+      * banAccount : Ban the user account
+
+
+      * deleteChat : Delete chat
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}
+
+        method: PUT
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiModerationRuleRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        rule_id: (ruleId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiModerationRuleResponse (OK)
+
+        400: Bad Request - RestapiErrorResponse (Bad Request)
+
+        404: Not Found - RestapiErrorResponse (Not Found)
+
+        409: Conflict - RestapiErrorResponse (Conflict)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -261,6 +821,46 @@ def update_moderation_rule_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable/Disable auto moderation rule (updateModerationRuleStatus)
+
+    This endpoint enable/disable moderation rule status.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}/status
+
+        method: PUT
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiModerationRuleActiveRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        rule_id: (ruleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponse (Bad Request)
+
+        404: Not Found - RestapiErrorResponse (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -281,6 +881,46 @@ async def update_moderation_rule_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Enable/Disable auto moderation rule (updateModerationRuleStatus)
+
+    This endpoint enable/disable moderation rule status.
+
+
+
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}/status
+
+        method: PUT
+
+        tags: ["Admin Moderation Rule"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiModerationRuleActiveRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        rule_id: (ruleId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponse (Bad Request)
+
+        404: Not Found - RestapiErrorResponse (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class RejectFriendsNotif(WebSocketMessage):
+
     # region fields
 
     user_id: str

@@ -53,6 +53,38 @@ def delete_ticket(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete single ticket (deleteTicket)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [DELETE]
+    This endpoint will delete ticket and all its reports.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [DELETE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}
+
+        method: DELETE
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ticket_id: (ticketId) REQUIRED str in path
+
+    Responses:
+        204: No Content -
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,6 +103,38 @@ async def delete_ticket_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete single ticket (deleteTicket)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [DELETE]
+    This endpoint will delete ticket and all its reports.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [DELETE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}
+
+        method: DELETE
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ticket_id: (ticketId) REQUIRED str in path
+
+    Responses:
+        204: No Content -
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -93,6 +157,40 @@ def get_reports_by_ticket(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get reports by ticket ID (getReportsByTicket)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+    List reports ordered by createdAt in descending order.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}/reports
+
+        method: GET
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ticket_id: (ticketId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - RestapiReportListResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,6 +213,40 @@ async def get_reports_by_ticket_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get reports by ticket ID (getReportsByTicket)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+    List reports ordered by createdAt in descending order.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}/reports
+
+        method: GET
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ticket_id: (ticketId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - RestapiReportListResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,6 +269,37 @@ def get_ticket_detail(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get single ticket (getTicketDetail)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}
+
+        method: GET
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ticket_id: (ticketId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiTicketResponse
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -155,6 +318,37 @@ async def get_ticket_detail_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get single ticket (getTicketDetail)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}
+
+        method: GET
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        ticket_id: (ticketId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiTicketResponse
+
+        404: Not Found - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,6 +376,53 @@ def list_tickets(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List report tickets (listTickets)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+    Tickets list can be ordered by:
+    - createdAt
+    - reportsCount
+    - status (currently there are OPEN, AUTO_MODERATED and CLOSED statuses, desc order will put ticket with CLOSED status at the top)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets
+
+        method: GET
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        category: (category) OPTIONAL str in query
+
+        extension_category: (extensionCategory) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order: (order) OPTIONAL str in query
+
+        reported_user_id: (reportedUserId) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+    Responses:
+        200: OK - RestapiTicketListResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -214,6 +455,53 @@ async def list_tickets_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List report tickets (listTickets)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+    Tickets list can be ordered by:
+    - createdAt
+    - reportsCount
+    - status (currently there are OPEN, AUTO_MODERATED and CLOSED statuses, desc order will put ticket with CLOSED status at the top)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets
+
+        method: GET
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        category: (category) OPTIONAL str in query
+
+        extension_category: (extensionCategory) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order: (order) OPTIONAL str in query
+
+        reported_user_id: (reportedUserId) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+    Responses:
+        200: OK - RestapiTicketListResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -242,6 +530,37 @@ def ticket_statistic(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Ticket statistic (ticketStatistic)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets/statistic
+
+        method: GET
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        extension_category: (extensionCategory) OPTIONAL str in query
+
+        category: (category) REQUIRED str in query
+
+    Responses:
+        200: OK - RestapiTicketStatisticResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -262,6 +581,37 @@ async def ticket_statistic_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Ticket statistic (ticketStatistic)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets/statistic
+
+        method: GET
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        extension_category: (extensionCategory) OPTIONAL str in query
+
+        category: (category) REQUIRED str in query
+
+    Responses:
+        200: OK - RestapiTicketStatisticResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -284,6 +634,38 @@ def update_ticket_resolutions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update ticket resolution to a given status (updateTicketResolutions)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+    Update ticket resolution status to either OPEN or CLOSED. It is mandatory to provide notes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}/resolutions
+
+        method: POST
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiUpdateTicketResolutionsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        ticket_id: (ticketId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiTicketResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -304,6 +686,38 @@ async def update_ticket_resolutions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update ticket resolution to a given status (updateTicketResolutions)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+    Update ticket resolution status to either OPEN or CLOSED. It is mandatory to provide notes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}/resolutions
+
+        method: POST
+
+        tags: ["Admin Tickets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiUpdateTicketResolutionsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        ticket_id: (ticketId) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiTicketResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

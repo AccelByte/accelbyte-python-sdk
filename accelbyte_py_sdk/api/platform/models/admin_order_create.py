@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.23.0)
+# AccelByte Cloud Platform Service (4.24.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,9 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
-from ..models.a_dto_object_for_order_creation_options import (
-    ADTOObjectForOrderCreationOptions,
-)
+from ..models.order_creation_options import OrderCreationOptions
 
 
 class PlatformEnum(StrEnum):
@@ -66,7 +64,7 @@ class AdminOrderCreate(Model):
 
         language: (language) OPTIONAL str
 
-        options: (options) OPTIONAL ADTOObjectForOrderCreationOptions
+        options: (options) OPTIONAL OrderCreationOptions
 
         platform: (platform) OPTIONAL Union[str, PlatformEnum]
 
@@ -86,7 +84,7 @@ class AdminOrderCreate(Model):
     currency_namespace: str  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     language: str  # OPTIONAL
-    options: ADTOObjectForOrderCreationOptions  # OPTIONAL
+    options: OrderCreationOptions  # OPTIONAL
     platform: Union[str, PlatformEnum]  # OPTIONAL
     return_url: str  # OPTIONAL
     sandbox: bool  # OPTIONAL
@@ -131,9 +129,7 @@ class AdminOrderCreate(Model):
         self.language = value
         return self
 
-    def with_options(
-        self, value: ADTOObjectForOrderCreationOptions
-    ) -> AdminOrderCreate:
+    def with_options(self, value: OrderCreationOptions) -> AdminOrderCreate:
         self.options = value
         return self
 
@@ -194,7 +190,7 @@ class AdminOrderCreate(Model):
         if hasattr(self, "options"):
             result["options"] = self.options.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["options"] = ADTOObjectForOrderCreationOptions()
+            result["options"] = OrderCreationOptions()
         if hasattr(self, "platform"):
             result["platform"] = str(self.platform)
         elif include_empty:
@@ -225,7 +221,7 @@ class AdminOrderCreate(Model):
         currency_namespace: Optional[str] = None,
         ext: Optional[Dict[str, Any]] = None,
         language: Optional[str] = None,
-        options: Optional[ADTOObjectForOrderCreationOptions] = None,
+        options: Optional[OrderCreationOptions] = None,
         platform: Optional[Union[str, PlatformEnum]] = None,
         return_url: Optional[str] = None,
         sandbox: Optional[bool] = None,
@@ -297,11 +293,11 @@ class AdminOrderCreate(Model):
         elif include_empty:
             instance.language = ""
         if "options" in dict_ and dict_["options"] is not None:
-            instance.options = ADTOObjectForOrderCreationOptions.create_from_dict(
+            instance.options = OrderCreationOptions.create_from_dict(
                 dict_["options"], include_empty=include_empty
             )
         elif include_empty:
-            instance.options = ADTOObjectForOrderCreationOptions()
+            instance.options = OrderCreationOptions()
         if "platform" in dict_ and dict_["platform"] is not None:
             instance.platform = str(dict_["platform"])
         elif include_empty:

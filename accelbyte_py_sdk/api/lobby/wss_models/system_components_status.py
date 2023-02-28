@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class SystemComponentsStatus(WebSocketMessage):
+
     # region fields
 
     components: Dict[str, bool]

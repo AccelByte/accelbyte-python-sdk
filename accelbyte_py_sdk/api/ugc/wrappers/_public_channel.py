@@ -48,6 +48,41 @@ def create_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Channel (CreateChannel)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
+
+        method: POST
+
+        tags: ["Public Channel"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsChannelRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsChannelResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,6 +103,41 @@ async def create_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Channel (CreateChannel)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
+
+        method: POST
+
+        tags: ["Public Channel"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsChannelRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsChannelResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,6 +160,41 @@ def delete_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Channel (DeleteChannel)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}
+
+        method: DELETE
+
+        tags: ["Public Channel"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,6 +215,41 @@ async def delete_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete Channel (DeleteChannel)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}
+
+        method: DELETE
+
+        tags: ["Public Channel"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -133,6 +273,43 @@ def get_channels(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Channels (GetChannels)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
+
+        method: GET
+
+        tags: ["Public Channel"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedGetChannelResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -155,6 +332,43 @@ async def get_channels_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Channels (GetChannels)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
+
+        method: GET
+
+        tags: ["Public Channel"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedGetChannelResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,6 +393,45 @@ def update_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Channel (UpdateChannel)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}
+
+        method: PUT
+
+        tags: ["Public Channel"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsChannelRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsChannelResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -201,6 +454,45 @@ async def update_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update Channel (UpdateChannel)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}
+
+        method: PUT
+
+        tags: ["Public Channel"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsChannelRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsChannelResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

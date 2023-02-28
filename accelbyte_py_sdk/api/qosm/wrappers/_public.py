@@ -38,6 +38,44 @@ from ..operations.public import ListServerPerNamespace
 
 @same_doc_as(ListServer)
 def list_server(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """Get list of QoS services (ListServer)
+
+    ```
+    This endpoint lists all QoS services available in all regions.
+
+    This endpoint is intended to be called by game client to find out all available regions.
+    After getting a list of QoS on each region, game client is expected to ping each one with UDP
+    connection as described below:
+
+    1. Make UDP connection to each QoS's IP:Port
+    2. Send string "PING" after connection established
+    3. Wait for string "PONG" response
+    4. Note the request-response latency for each QoS in each region
+
+    The game then can use ping latency information to either:
+    1. Inform the player on these latencies and let player choose preferred region
+    2. Send the latency list to Matchmaking Service so that player can be matched with other players
+    in nearby regions
+    ```
+
+    Properties:
+        url: /qosm/public/qos
+
+        method: GET
+
+        tags: ["Public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsListServerResponse (list of QoS services returned)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = ListServer.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -46,6 +84,44 @@ def list_server(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs)
 async def list_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of QoS services (ListServer)
+
+    ```
+    This endpoint lists all QoS services available in all regions.
+
+    This endpoint is intended to be called by game client to find out all available regions.
+    After getting a list of QoS on each region, game client is expected to ping each one with UDP
+    connection as described below:
+
+    1. Make UDP connection to each QoS's IP:Port
+    2. Send string "PING" after connection established
+    3. Wait for string "PONG" response
+    4. Note the request-response latency for each QoS in each region
+
+    The game then can use ping latency information to either:
+    1. Inform the player on these latencies and let player choose preferred region
+    2. Send the latency list to Matchmaking Service so that player can be matched with other players
+    in nearby regions
+    ```
+
+    Properties:
+        url: /qosm/public/qos
+
+        method: GET
+
+        tags: ["Public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsListServerResponse (list of QoS services returned)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     request = ListServer.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -59,6 +135,48 @@ def list_server_per_namespace(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of QoS services per region (ListServerPerNamespace)
+
+    ```
+    This endpoint lists all QoS services available in all regions.
+
+    This endpoint is intended to be called by game client to find out all available regions.
+    After getting a list of QoS on each region, game client is expected to ping each one with UDP
+    connection as described below:
+
+    1. Make UDP connection to each QoS's IP:Port
+    2. Send string "PING" after connection established
+    3. Wait for string "PONG" response
+    4. Note the request-response latency for each QoS in each region
+
+    The game then can use ping latency information to either:
+    1. Inform the player on these latencies and let player choose preferred region
+    2. Send the latency list to Matchmaking Service so that player can be matched with other players
+    in nearby regions
+    ```
+
+    Properties:
+        url: /qosm/public/namespaces/{namespace}/qos
+
+        method: GET
+
+        tags: ["Public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        status: (status) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsListServerResponse (list of QoS services returned)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -77,6 +195,48 @@ async def list_server_per_namespace_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of QoS services per region (ListServerPerNamespace)
+
+    ```
+    This endpoint lists all QoS services available in all regions.
+
+    This endpoint is intended to be called by game client to find out all available regions.
+    After getting a list of QoS on each region, game client is expected to ping each one with UDP
+    connection as described below:
+
+    1. Make UDP connection to each QoS's IP:Port
+    2. Send string "PING" after connection established
+    3. Wait for string "PONG" response
+    4. Note the request-response latency for each QoS in each region
+
+    The game then can use ping latency information to either:
+    1. Inform the player on these latencies and let player choose preferred region
+    2. Send the latency list to Matchmaking Service so that player can be matched with other players
+    in nearby regions
+    ```
+
+    Properties:
+        url: /qosm/public/namespaces/{namespace}/qos
+
+        method: GET
+
+        tags: ["Public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        status: (status) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsListServerResponse (list of QoS services returned)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

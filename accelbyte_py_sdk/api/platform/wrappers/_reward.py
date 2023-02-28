@@ -63,6 +63,40 @@ def check_event_condition(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check if event payload match reward condition (checkEventCondition)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : match result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}/match
+
+        method: PUT
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EventPayload in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        200: OK - ConditionMatchResult (successful operation)
+
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,6 +117,40 @@ async def check_event_condition_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check if event payload match reward condition (checkEventCondition)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : match result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}/match
+
+        method: PUT
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EventPayload in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        200: OK - ConditionMatchResult (successful operation)
+
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,6 +172,43 @@ def create_reward(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a reward (createReward)
+
+    This API is used to create a reward.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
+      *  Returns : created reward data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards
+
+        method: POST
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RewardCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34042: Reward item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (34071: Reward with code [{rewardCode}] already exists in namespace [{namespace}] | 34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -122,6 +227,43 @@ async def create_reward_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a reward (createReward)
+
+    This API is used to create a reward.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
+      *  Returns : created reward data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards
+
+        method: POST
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RewardCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34042: Reward item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (34071: Reward with code [{rewardCode}] already exists in namespace [{namespace}] | 34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,6 +284,40 @@ def delete_reward(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a reward (deleteReward)
+
+    This API is used to delete a reward by reward Id.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
+      *  Returns : the deleted reward data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
+
+        method: DELETE
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -160,6 +336,40 @@ async def delete_reward_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a reward (deleteReward)
+
+    This API is used to delete a reward by reward Id.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
+      *  Returns : the deleted reward data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
+
+        method: DELETE
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -181,6 +391,40 @@ def delete_reward_condition_record(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a reward condition record (deleteRewardConditionRecord)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. This API is used to delete a reward condition record by reward Id and condition Name (optional).
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
+      *  Returns : 204 No Content
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}/record
+
+        method: DELETE
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL DeleteRewardConditionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete reward success)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -201,6 +445,40 @@ async def delete_reward_condition_record_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a reward condition record (deleteRewardConditionRecord)
+
+    [TEST FACILITY ONLY] Forbidden in live environment. This API is used to delete a reward condition record by reward Id and condition Name (optional).
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
+      *  Returns : 204 No Content
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}/record
+
+        method: DELETE
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL DeleteRewardConditionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Delete reward success)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,6 +499,35 @@ def export_rewards(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Export all reward configurations (exportRewards)
+
+    Export reward configurations for a given namespace into file. At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/export
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (successful export of reward configs)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -237,6 +544,35 @@ async def export_rewards_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Export all reward configurations (exportRewards)
+
+    Export reward configurations for a given namespace into file. At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/export
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (successful export of reward configs)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -256,6 +592,39 @@ def get_reward(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a reward (getReward)
+
+    This API is used to get reward by reward Id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : reward instance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -274,6 +643,39 @@ async def get_reward_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a reward (getReward)
+
+    This API is used to get reward by reward Id.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : reward instance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -294,6 +696,39 @@ def get_reward_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a reward (getReward_1)
+
+    This API is used to get reward by reward Id.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : reward instance
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/rewards/{rewardId}
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -312,6 +747,39 @@ async def get_reward_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a reward (getReward_1)
+
+    This API is used to get reward by reward Id.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : reward instance
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/rewards/{rewardId}
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -332,6 +800,39 @@ def get_reward_by_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a reward by code (getRewardByCode)
+
+    This API is used to get reward by reward code.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : reward instance
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/rewards/byCode
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_code: (rewardCode) REQUIRED str in query
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34043: Reward with code [{rewardCode}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -350,6 +851,39 @@ async def get_reward_by_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a reward by code (getRewardByCode)
+
+    This API is used to get reward by reward code.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : reward instance
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/rewards/byCode
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_code: (rewardCode) REQUIRED str in query
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34043: Reward with code [{rewardCode}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -371,6 +905,41 @@ def import_rewards(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Import reward configurations (importRewards)
+
+    Import reward configurations for a given namespace from file. At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/import
+
+        method: POST
+
+        tags: ["Reward"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        replace_existing: (replaceExisting) REQUIRED bool in query
+
+    Responses:
+        200: OK - (successful import of reward configs)
+
+        400: Bad Request - ErrorEntity (34021: Reward data for namespace [{namespace}] is invalid)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -391,6 +960,41 @@ async def import_rewards_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Import reward configurations (importRewards)
+
+    Import reward configurations for a given namespace from file. At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/import
+
+        method: POST
+
+        tags: ["Reward"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        replace_existing: (replaceExisting) REQUIRED bool in query
+
+    Responses:
+        200: OK - (successful import of reward configs)
+
+        400: Bad Request - ErrorEntity (34021: Reward data for namespace [{namespace}] is invalid)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -415,6 +1019,46 @@ def query_rewards(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query rewards by criteria (queryRewards)
+
+    This API is used to query rewards by criteria.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : the list of rewards
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/byCriteria
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        event_topic: (eventTopic) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+    Responses:
+        200: OK - RewardPagingSlicedResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -439,6 +1083,46 @@ async def query_rewards_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query rewards by criteria (queryRewards)
+
+    This API is used to query rewards by criteria.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : the list of rewards
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/byCriteria
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        event_topic: (eventTopic) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+    Responses:
+        200: OK - RewardPagingSlicedResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -465,6 +1149,46 @@ def query_rewards_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query rewards by criteria (queryRewards_1)
+
+    This API is used to query rewards by criteria.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : the list of rewards
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/rewards/byCriteria
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        event_topic: (eventTopic) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+    Responses:
+        200: OK - RewardPagingSlicedResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -489,6 +1213,46 @@ async def query_rewards_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query rewards by criteria (queryRewards_1)
+
+    This API is used to query rewards by criteria.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
+      *  Returns : the list of rewards
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:REWARD [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/rewards/byCriteria
+
+        method: GET
+
+        tags: ["Reward"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        event_topic: (eventTopic) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
+
+    Responses:
+        200: OK - RewardPagingSlicedResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -513,6 +1277,43 @@ def update_reward(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a reward (updateReward)
+
+    This API is used to update a reward.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=4 (UPDATE)
+      *  Returns : reward instance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
+
+        method: PUT
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RewardUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}] | 34042: Reward item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -533,6 +1334,43 @@ async def update_reward_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a reward (updateReward)
+
+    This API is used to update a reward.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=4 (UPDATE)
+      *  Returns : reward instance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REWARD [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
+
+        method: PUT
+
+        tags: ["Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RewardUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        reward_id: (rewardId) REQUIRED str in path
+
+    Responses:
+        200: OK - RewardInfo (successful operation)
+
+        404: Not Found - ErrorEntity (34041: Reward [{rewardId}] does not exist in namespace [{namespace}] | 34042: Reward item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

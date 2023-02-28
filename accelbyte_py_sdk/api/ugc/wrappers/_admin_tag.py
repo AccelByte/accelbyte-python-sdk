@@ -47,6 +47,42 @@ def admin_create_tag(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create tags (AdminCreateTag)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+    creates a new tag
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/tags
+
+        method: POST
+
+        tags: ["Admin Tag"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateTagRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateTagResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,6 +101,42 @@ async def admin_create_tag_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create tags (AdminCreateTag)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+    creates a new tag
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/tags
+
+        method: POST
+
+        tags: ["Admin Tag"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateTagRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsCreateTagResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -85,6 +157,39 @@ def admin_delete_tag(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete tags (AdminDeleteTag)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}
+
+        method: DELETE
+
+        tags: ["Admin Tag"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        tag_id: (tagId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -103,6 +208,39 @@ async def admin_delete_tag_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete tags (AdminDeleteTag)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}
+
+        method: DELETE
+
+        tags: ["Admin Tag"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        tag_id: (tagId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,6 +262,41 @@ def admin_get_tag(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get tags (AdminGetTag)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/tags
+
+        method: GET
+
+        tags: ["Admin Tag"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedGetTagResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,6 +317,41 @@ async def admin_get_tag_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get tags (AdminGetTag)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/tags
+
+        method: GET
+
+        tags: ["Admin Tag"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedGetTagResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -166,6 +374,46 @@ def admin_update_tag(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update tag (AdminUpdateTag)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    updates a tag
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}
+
+        method: PUT
+
+        tags: ["Admin Tag"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateTagRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        tag_id: (tagId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateTagResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -186,6 +434,46 @@ async def admin_update_tag_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update tag (AdminUpdateTag)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    updates a tag
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}
+
+        method: PUT
+
+        tags: ["Admin Tag"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateTagRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        tag_id: (tagId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateTagResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

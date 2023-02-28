@@ -73,6 +73,37 @@ def get_payment_customization(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment provider customization (getPaymentCustomization)
+
+    Get payment provider customization, at current only Adyen provide customization. This api has been deprecated, pls use /public/namespaces/{namespace}/payment/publicconfig to get adyen config
+    Other detail info:
+
+      * Returns : customization
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/customization
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sandbox: (sandbox) OPTIONAL bool in query
+
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
+
+        region: (region) REQUIRED str in query
+
+    Responses:
+        200: OK - Customization (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -96,6 +127,37 @@ async def get_payment_customization_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment provider customization (getPaymentCustomization)
+
+    Get payment provider customization, at current only Adyen provide customization. This api has been deprecated, pls use /public/namespaces/{namespace}/payment/publicconfig to get adyen config
+    Other detail info:
+
+      * Returns : customization
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/customization
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sandbox: (sandbox) OPTIONAL bool in query
+
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
+
+        region: (region) REQUIRED str in query
+
+    Responses:
+        200: OK - Customization (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,6 +182,37 @@ def get_payment_public_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment provider public config (getPaymentPublicConfig)
+
+    Get payment provider public config, at current only Strip provide public config.
+    Other detail info:
+
+      * Returns : Public config
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/publicconfig
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sandbox: (sandbox) OPTIONAL bool in query
+
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
+
+        region: (region) REQUIRED str in query
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,6 +235,37 @@ async def get_payment_public_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment provider public config (getPaymentPublicConfig)
+
+    Get payment provider public config, at current only Strip provide public config.
+    Other detail info:
+
+      * Returns : Public config
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/publicconfig
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sandbox: (sandbox) OPTIONAL bool in query
+
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
+
+        region: (region) REQUIRED str in query
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -166,6 +290,41 @@ def get_payment_tax_value(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get tax result of a payment order (getPaymentTaxValue)
+
+    Check and get a payment order's should pay tax.
+    Other detail info:
+
+      * Returns : tax result
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/tax
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        zip_code: (zipCode) OPTIONAL str in query
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in query
+
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
+
+    Responses:
+        200: OK - TaxResult (successful operation)
+
+        400: Bad Request - ErrorEntity (33123: Invalid zipcode)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -188,6 +347,41 @@ async def get_payment_tax_value_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get tax result of a payment order (getPaymentTaxValue)
+
+    Check and get a payment order's should pay tax.
+    Other detail info:
+
+      * Returns : tax result
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/tax
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        zip_code: (zipCode) OPTIONAL str in query
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in query
+
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
+
+    Responses:
+        200: OK - TaxResult (successful operation)
+
+        400: Bad Request - ErrorEntity (33123: Invalid zipcode)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -213,6 +407,45 @@ def pay(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Do payment (pay)
+
+    Do payment(For now, this only support checkout.com).
+    Other detail info:
+
+      * Returns : Payment process result
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/pay
+
+        method: POST
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentToken in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+        payment_provider: (paymentProvider) OPTIONAL Union[str, PaymentProviderEnum] in query
+
+        zip_code: (zipCode) OPTIONAL str in query
+
+    Responses:
+        200: OK - PaymentProcessResult (successful operation)
+
+        400: Bad Request - ErrorEntity (33322: Payment provider [{paymentProvider}] not supported)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -237,6 +470,45 @@ async def pay_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Do payment (pay)
+
+    Do payment(For now, this only support checkout.com).
+    Other detail info:
+
+      * Returns : Payment process result
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/pay
+
+        method: POST
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentToken in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+        payment_provider: (paymentProvider) OPTIONAL Union[str, PaymentProviderEnum] in query
+
+        zip_code: (zipCode) OPTIONAL str in query
+
+    Responses:
+        200: OK - PaymentProcessResult (successful operation)
+
+        400: Bad Request - ErrorEntity (33322: Payment provider [{paymentProvider}] not supported)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -260,6 +532,35 @@ def public_check_payment_order_paid_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check payment order paid status (publicCheckPaymentOrderPaidStatus)
+
+    Check payment order paid status.
+    Other detail info:
+
+      * Returns : Payment order paid result
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderPaidResult (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -278,6 +579,35 @@ async def public_check_payment_order_paid_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Check payment order paid status (publicCheckPaymentOrderPaidStatus)
+
+    Check payment order paid status.
+    Other detail info:
+
+      * Returns : Payment order paid result
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderPaidResult (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -298,6 +628,35 @@ def public_get_payment_methods(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment methods (publicGetPaymentMethods)
+
+    Get payment methods.
+    Other detail info:
+
+      * Returns : Payment method list
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/methods
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in query
+
+    Responses:
+        200: OK - List[PaymentMethod] (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -316,6 +675,35 @@ async def public_get_payment_methods_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment methods (publicGetPaymentMethods)
+
+    Get payment methods.
+    Other detail info:
+
+      * Returns : Payment method list
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/methods
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in query
+
+    Responses:
+        200: OK - List[PaymentMethod] (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -336,6 +724,39 @@ def public_get_payment_url(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment url (publicGetPaymentUrl)
+
+    Get payment url.
+    Other detail info:
+
+      * Returns : Get payment link
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/link
+
+        method: POST
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentUrlCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentUrl (successful operation)
+
+        400: Bad Request - ErrorEntity (33321: Payment provider [{paymentProvider}] not support currency [{currency}] | 33322: Payment provider [{paymentProvider}] not supported | 33332: Amount too small, please contact administrator)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist | 20008: user [{userId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -354,6 +775,39 @@ async def public_get_payment_url_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment url (publicGetPaymentUrl)
+
+    Get payment url.
+    Other detail info:
+
+      * Returns : Get payment link
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/link
+
+        method: POST
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentUrlCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentUrl (successful operation)
+
+        400: Bad Request - ErrorEntity (33321: Payment provider [{paymentProvider}] not support currency [{currency}] | 33322: Payment provider [{paymentProvider}] not supported | 33332: Amount too small, please contact administrator)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist | 20008: user [{userId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -374,6 +828,33 @@ def public_get_qr_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get qrcode (publicGetQRCode)
+
+    Get qrcode.
+    Other detail info:
+
+      * Returns : QRCode image stream
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/qrcode
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: []
+
+        produces: ["image/png"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        code: (code) REQUIRED str in query
+
+    Responses:
+        200: OK - Any (Successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -392,6 +873,33 @@ async def public_get_qr_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get qrcode (publicGetQRCode)
+
+    Get qrcode.
+    Other detail info:
+
+      * Returns : QRCode image stream
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/qrcode
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: []
+
+        produces: ["image/png"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        code: (code) REQUIRED str in query
+
+    Responses:
+        200: OK - Any (Successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -412,6 +920,37 @@ def public_get_unpaid_payment_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment order info (publicGetUnpaidPaymentOrder)
+
+    Get payment order info.
+    Other detail info:
+
+      * Returns : Payment order details
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/info
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderDetails (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist | 20008: user [{userId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -430,6 +969,37 @@ async def public_get_unpaid_payment_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment order info (publicGetUnpaidPaymentOrder)
+
+    Get payment order info.
+    Other detail info:
+
+      * Returns : Payment order details
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/info
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentOrderDetails (successful operation)
+
+        404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist | 20008: user [{userId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -464,6 +1034,81 @@ def public_normalize_payment_return_url(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Normalize payment return url (publicNormalizePaymentReturnUrl)
+
+    Normalize payment return url for payment provider
+    Field                                                                                                                                                        | Type   | Required | Description
+    -------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|----------|-----------------------
+    orderNo                                                                                                                                                      | String | Yes      | order no
+    paymentStatus                                                                                                                                                | String | Yes      |
+
+      * DONE: The payment was successfully completed.
+      * CANCELLED: The payment was cancelled by the shopper before completion, or the shopper returned to the merchant's site before completing the transaction.
+      * PENDING: Inform the shopper that you've received their order, and are waiting for the payment to be completed.
+
+    When the shopper has completed the payment you will receive a successful AUTHORISATION.
+      * RECEIVED: Inform the shopper that you've received their order, and are waiting for the payment to clear.
+      * UNKNOWN: An error occurred during the payment processing.
+      * FAILED: Shopper paid failed because of various reasons.
+
+
+    reason                                                                                                                                                       | String | No       | payment status reason
+
+    Other detail info:
+
+      * xsolla : parameters 'user_id', 'foreinginvoice', 'invoice_id' and 'status' will be automatically added to the link
+      *  adyen : https://docs.adyen.com/developers/checkout/web-sdk
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/returnurl
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payer_id: (PayerID) OPTIONAL str in query
+
+        foreinginvoice: (foreinginvoice) OPTIONAL str in query
+
+        invoice_id: (invoice_id) OPTIONAL str in query
+
+        payload: (payload) OPTIONAL str in query
+
+        redirect_result: (redirectResult) OPTIONAL str in query
+
+        result_code: (resultCode) OPTIONAL str in query
+
+        session_id: (sessionId) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        token: (token) OPTIONAL str in query
+
+        type_: (type) OPTIONAL str in query
+
+        user_id: (user_id) OPTIONAL str in query
+
+        order_no: (orderNo) REQUIRED str in query
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in query
+
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
+
+        return_url: (returnUrl) REQUIRED str in query
+
+    Responses:
+        204: No Content - (no content.(if query param 'returnUrl' is empty))
+
+        307: Temporary Redirect - (successful operation.(if query param 'returnUrl' is not empty))
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -510,6 +1155,81 @@ async def public_normalize_payment_return_url_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Normalize payment return url (publicNormalizePaymentReturnUrl)
+
+    Normalize payment return url for payment provider
+    Field                                                                                                                                                        | Type   | Required | Description
+    -------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|----------|-----------------------
+    orderNo                                                                                                                                                      | String | Yes      | order no
+    paymentStatus                                                                                                                                                | String | Yes      |
+
+      * DONE: The payment was successfully completed.
+      * CANCELLED: The payment was cancelled by the shopper before completion, or the shopper returned to the merchant's site before completing the transaction.
+      * PENDING: Inform the shopper that you've received their order, and are waiting for the payment to be completed.
+
+    When the shopper has completed the payment you will receive a successful AUTHORISATION.
+      * RECEIVED: Inform the shopper that you've received their order, and are waiting for the payment to clear.
+      * UNKNOWN: An error occurred during the payment processing.
+      * FAILED: Shopper paid failed because of various reasons.
+
+
+    reason                                                                                                                                                       | String | No       | payment status reason
+
+    Other detail info:
+
+      * xsolla : parameters 'user_id', 'foreinginvoice', 'invoice_id' and 'status' will be automatically added to the link
+      *  adyen : https://docs.adyen.com/developers/checkout/web-sdk
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/payment/returnurl
+
+        method: GET
+
+        tags: ["PaymentStation"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        payer_id: (PayerID) OPTIONAL str in query
+
+        foreinginvoice: (foreinginvoice) OPTIONAL str in query
+
+        invoice_id: (invoice_id) OPTIONAL str in query
+
+        payload: (payload) OPTIONAL str in query
+
+        redirect_result: (redirectResult) OPTIONAL str in query
+
+        result_code: (resultCode) OPTIONAL str in query
+
+        session_id: (sessionId) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        token: (token) OPTIONAL str in query
+
+        type_: (type) OPTIONAL str in query
+
+        user_id: (user_id) OPTIONAL str in query
+
+        order_no: (orderNo) REQUIRED str in query
+
+        payment_order_no: (paymentOrderNo) REQUIRED str in query
+
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
+
+        return_url: (returnUrl) REQUIRED str in query
+
+    Responses:
+        204: No Content - (no content.(if query param 'returnUrl' is empty))
+
+        307: Temporary Redirect - (successful operation.(if query param 'returnUrl' is not empty))
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

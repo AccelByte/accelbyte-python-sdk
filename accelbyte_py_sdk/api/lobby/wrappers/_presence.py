@@ -43,6 +43,38 @@ def users_presence_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query users presence (UsersPresenceHandlerV1)
+
+    Query users presence with given namespace and userIds.
+
+    Properties:
+        url: /lobby/v1/public/presence/namespaces/{namespace}/users/presence
+
+        method: GET
+
+        tags: ["presence"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        count_only: (countOnly) OPTIONAL bool in query
+
+        user_ids: (userIds) REQUIRED str in query
+
+    Responses:
+        200: OK - HandlersGetUsersPresenceResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,6 +95,38 @@ async def users_presence_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query users presence (UsersPresenceHandlerV1)
+
+    Query users presence with given namespace and userIds.
+
+    Properties:
+        url: /lobby/v1/public/presence/namespaces/{namespace}/users/presence
+
+        method: GET
+
+        tags: ["presence"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        count_only: (countOnly) OPTIONAL bool in query
+
+        user_ids: (userIds) REQUIRED str in query
+
+    Responses:
+        200: OK - HandlersGetUsersPresenceResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -46,6 +46,52 @@ def claim_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Claim a DS for a game session (ClaimServer)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [UPDATE]
+
+    Required scope: social
+
+    This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to claim a dedicated server. The dedicated server cannot be claimed unless the status is READY
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/sessions/claim
+
+        method: POST
+
+        tags: ["Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsClaimSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (DS claimed for session)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (session not found)
+
+        409: Conflict - ResponseError (DS is already claimed)
+
+        425: Too Early - ResponseError (DS is not ready to be claimed)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+
+        503: Service Unavailable - ResponseError (DS is unreachable)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,6 +110,52 @@ async def claim_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Claim a DS for a game session (ClaimServer)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [UPDATE]
+
+    Required scope: social
+
+    This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to claim a dedicated server. The dedicated server cannot be claimed unless the status is READY
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/sessions/claim
+
+        method: POST
+
+        tags: ["Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsClaimSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (DS claimed for session)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (session not found)
+
+        409: Conflict - ResponseError (DS is already claimed)
+
+        425: Too Early - ResponseError (DS is not ready to be claimed)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+
+        503: Service Unavailable - ResponseError (DS is unreachable)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -84,6 +176,58 @@ def create_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Register a new game session (CreateSession)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [CREATE]
+
+    Required scope: social
+
+    This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to get a dedicated server for a game session.
+
+    If a dedicated server is available, it will respond with a dedicated server details ready to be used.
+
+    Otherwise it will trigger new dedicated server creation and respond with a server status CREATING. The game session manager then expected to wait and query the server readiness with GET /namespaces/{namespace}/sessions/{sessionID} endpoint until the serverstatus is READY
+
+    Specify pod_name with name of local DS in the request to create a session using the registered local DS
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/sessions
+
+        method: POST
+
+        tags: ["Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsSessionResponse (session created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (local server not found)
+
+        409: Conflict - ResponseError (session already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+
+        503: Service Unavailable - ResponseError (server count is at max)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,6 +246,58 @@ async def create_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Register a new game session (CreateSession)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [CREATE]
+
+    Required scope: social
+
+    This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to get a dedicated server for a game session.
+
+    If a dedicated server is available, it will respond with a dedicated server details ready to be used.
+
+    Otherwise it will trigger new dedicated server creation and respond with a server status CREATING. The game session manager then expected to wait and query the server readiness with GET /namespaces/{namespace}/sessions/{sessionID} endpoint until the serverstatus is READY
+
+    Specify pod_name with name of local DS in the request to create a session using the registered local DS
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/sessions
+
+        method: POST
+
+        tags: ["Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsSessionResponse (session created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (local server not found)
+
+        409: Conflict - ResponseError (session already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+
+        503: Service Unavailable - ResponseError (server count is at max)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -122,6 +318,48 @@ def get_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query specified session (GetSession)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required scope: social
+
+    This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to query the status of dedicated server that is created for the session.
+
+    The server is ready to use when the status is READY. At which point, the game session manager can claim the server using the GET /namespaces/{namespace}/sessions/{sessionID}/claim endpoint
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}
+
+        method: GET
+
+        tags: ["Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionID) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsSessionResponse (session queried)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (session not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -140,6 +378,48 @@ async def get_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query specified session (GetSession)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required scope: social
+
+    This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to query the status of dedicated server that is created for the session.
+
+    The server is ready to use when the status is READY. At which point, the game session manager can claim the server using the GET /namespaces/{namespace}/sessions/{sessionID}/claim endpoint
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}
+
+        method: GET
+
+        tags: ["Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionID) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsSessionResponse (session queried)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (session not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

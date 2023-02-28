@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Social Service (1.33.0)
+# AccelByte Cloud Social Service (2.0.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -63,6 +63,8 @@ class StatInfo(Model):
 
         updated_at: (updatedAt) REQUIRED str
 
+        cycle_ids: (cycleIds) OPTIONAL List[str]
+
         description: (description) OPTIONAL str
 
         maximum: (maximum) OPTIONAL float
@@ -84,6 +86,7 @@ class StatInfo(Model):
     stat_code: str  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
     updated_at: str  # REQUIRED
+    cycle_ids: List[str]  # OPTIONAL
     description: str  # OPTIONAL
     maximum: float  # OPTIONAL
     minimum: float  # OPTIONAL
@@ -131,6 +134,10 @@ class StatInfo(Model):
 
     def with_updated_at(self, value: str) -> StatInfo:
         self.updated_at = value
+        return self
+
+    def with_cycle_ids(self, value: List[str]) -> StatInfo:
+        self.cycle_ids = value
         return self
 
     def with_description(self, value: str) -> StatInfo:
@@ -195,6 +202,10 @@ class StatInfo(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "cycle_ids"):
+            result["cycleIds"] = [str(i0) for i0 in self.cycle_ids]
+        elif include_empty:
+            result["cycleIds"] = []
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -230,6 +241,7 @@ class StatInfo(Model):
         stat_code: str,
         status: Union[str, StatusEnum],
         updated_at: str,
+        cycle_ids: Optional[List[str]] = None,
         description: Optional[str] = None,
         maximum: Optional[float] = None,
         minimum: Optional[float] = None,
@@ -246,6 +258,8 @@ class StatInfo(Model):
         instance.stat_code = stat_code
         instance.status = status
         instance.updated_at = updated_at
+        if cycle_ids is not None:
+            instance.cycle_ids = cycle_ids
         if description is not None:
             instance.description = description
         if maximum is not None:
@@ -301,6 +315,10 @@ class StatInfo(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "cycleIds" in dict_ and dict_["cycleIds"] is not None:
+            instance.cycle_ids = [str(i0) for i0 in dict_["cycleIds"]]
+        elif include_empty:
+            instance.cycle_ids = []
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -366,6 +384,7 @@ class StatInfo(Model):
             "statCode": "stat_code",
             "status": "status",
             "updatedAt": "updated_at",
+            "cycleIds": "cycle_ids",
             "description": "description",
             "maximum": "maximum",
             "minimum": "minimum",
@@ -385,6 +404,7 @@ class StatInfo(Model):
             "statCode": True,
             "status": True,
             "updatedAt": True,
+            "cycleIds": False,
             "description": False,
             "maximum": False,
             "minimum": False,

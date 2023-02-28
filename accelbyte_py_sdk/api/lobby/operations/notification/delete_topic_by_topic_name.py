@@ -53,7 +53,7 @@ class DeleteTopicByTopicName(Operation):
 
         method: DELETE
 
-        tags: ["notification"]
+        tags: ["notification", "public"]
 
         consumes: ["application/json"]
 

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Achievement Service Index (2.14.0)
+# AccelByte Cloud Achievement Service Index (2.15.0)
 
 
 ## Operations
@@ -29,8 +29,14 @@
 ### Global Achievements
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /achievement/v1/admin/namespaces/{namespace}/global/achievements/{achievementCode}/contributors | GET | AdminListGlobalAchievementContributors | `false` | [AdminListGlobalAchievementContributors](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/admin_list_global_achie_0b49fb.py) | [admin_list_global_achievement_contributors](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-admin-list-global-achievement-contributors](../../samples/cli/accelbyte_py_sdk_cli/achievement/_admin_list_global_achievement_contributors.py) |
+| /achievement/v1/admin/namespaces/{namespace}/global/achievements | GET | AdminListGlobalAchievements | `false` | [AdminListGlobalAchievements](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/admin_list_global_achievements.py) | [admin_list_global_achievements](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-admin-list-global-achievements](../../samples/cli/accelbyte_py_sdk_cli/achievement/_admin_list_global_achievements.py) |
+| /achievement/v1/admin/namespaces/{namespace}/users/{userId}/global/achievements | GET | AdminListUserContributions | `false` | [AdminListUserContributions](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/admin_list_user_contributions.py) | [admin_list_user_contributions](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-admin-list-user-contributions](../../samples/cli/accelbyte_py_sdk_cli/achievement/_admin_list_user_contributions.py) |
 | /achievement/v1/public/namespaces/{namespace}/users/{userId}/global/achievements/{achievementCode}/claim | POST | ClaimGlobalAchievementReward | `false` | [ClaimGlobalAchievementReward](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/claim_global_achievemen_1ea8df.py) | [claim_global_achievement_reward](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-claim-global-achievement-reward](../../samples/cli/accelbyte_py_sdk_cli/achievement/_claim_global_achievement_reward.py) |
+| /achievement/v1/public/namespaces/{namespace}/global/achievements/{achievementCode}/contributors | GET | ListGlobalAchievementContributors | `false` | [ListGlobalAchievementContributors](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/list_global_achievement_b19e66.py) | [list_global_achievement_contributors](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-list-global-achievement-contributors](../../samples/cli/accelbyte_py_sdk_cli/achievement/_list_global_achievement_contributors.py) |
+| /achievement/v1/public/namespaces/{namespace}/users/{userId}/global/achievements | GET | ListUserContributions | `false` | [ListUserContributions](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/list_user_contributions.py) | [list_user_contributions](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-list-user-contributions](../../samples/cli/accelbyte_py_sdk_cli/achievement/_list_user_contributions.py) |
 | /achievement/v1/public/namespaces/{namespace}/global/achievements | GET | PublicListGlobalAchievements | `false` | [PublicListGlobalAchievements](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/public_list_global_achi_9c838b.py) | [public_list_global_achievements](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-public-list-global-achievements](../../samples/cli/accelbyte_py_sdk_cli/achievement/_public_list_global_achievements.py) |
+| /achievement/v1/admin/namespaces/{namespace}/global/achievements/{achievementCode}/reset | DELETE | ResetGlobalAchievement | `false` | [ResetGlobalAchievement](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/reset_global_achievement.py) | [reset_global_achievement](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-reset-global-achievement](../../samples/cli/accelbyte_py_sdk_cli/achievement/_reset_global_achievement.py) |
 
 ### Tags
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -56,16 +62,20 @@
 | models.AchievementResponse | [ModelsAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_achievement_response.py) |
 | models.AchievementUpdateRequest | [ModelsAchievementUpdateRequest](../../accelbyte_py_sdk/api/achievement/models/models_achievement_update_request.py) |
 | models.AdditionalInfo | [ModelsAdditionalInfo](../../accelbyte_py_sdk/api/achievement/models/models_additional_info.py) |
+| models.ContributorResponse | [ModelsContributorResponse](../../accelbyte_py_sdk/api/achievement/models/models_contributor_response.py) |
 | models.GlobalAchievementResponse | [ModelsGlobalAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_global_achievement_response.py) |
 | models.Icon | [ModelsIcon](../../accelbyte_py_sdk/api/achievement/models/models_icon.py) |
 | models.PaginatedAchievementResponse | [ModelsPaginatedAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_achievement_response.py) |
+| models.PaginatedContributorResponse | [ModelsPaginatedContributorResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_contributor_response.py) |
 | models.PaginatedGlobalAchievementResponse | [ModelsPaginatedGlobalAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_global_achievement_response.py) |
 | models.PaginatedTagResponse | [ModelsPaginatedTagResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_tag_response.py) |
 | models.PaginatedUserAchievementResponse | [ModelsPaginatedUserAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_user_achievement_response.py) |
+| models.PaginatedUserContributionResponse | [ModelsPaginatedUserContributionResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_user_contribution_response.py) |
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/achievement/models/models_pagination.py) |
 | models.PublicAchievementResponse | [ModelsPublicAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_public_achievement_response.py) |
 | models.PublicAchievementsResponse | [ModelsPublicAchievementsResponse](../../accelbyte_py_sdk/api/achievement/models/models_public_achievements_response.py) |
 | models.TagResponse | [ModelsTagResponse](../../accelbyte_py_sdk/api/achievement/models/models_tag_response.py) |
 | models.UserAchievementResponse | [ModelsUserAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_user_achievement_response.py) |
+| models.UserContributionResponse | [ModelsUserContributionResponse](../../accelbyte_py_sdk/api/achievement/models/models_user_contribution_response.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/achievement/models/response_error.py) |
 | service.ImportConfigResponse | [ServiceImportConfigResponse](../../accelbyte_py_sdk/api/achievement/models/service_import_config_response.py) |

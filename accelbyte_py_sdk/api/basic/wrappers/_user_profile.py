@@ -83,6 +83,40 @@ def admin_get_user_profile_public_info_by_ids(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get user profile public info by ids (adminGetUserProfilePublicInfoByIds)
+
+    Admin get user public profile by ids.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:PROFILE" , action=2 (GET)
+      *  Action code : 11405
+      *  Returns : user public profiles
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFILE []
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/profiles/public
+
+        method: POST
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileBulkRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[UserProfilePublicInfo] (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,6 +135,40 @@ async def admin_get_user_profile_public_info_by_ids_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin get user profile public info by ids (adminGetUserProfilePublicInfoByIds)
+
+    Admin get user public profile by ids.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:PROFILE" , action=2 (GET)
+      *  Action code : 11405
+      *  Returns : user public profiles
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFILE []
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/profiles/public
+
+        method: POST
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileBulkRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[UserProfilePublicInfo] (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -121,6 +189,55 @@ def create_my_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create my profile (createMyProfile)
+
+    Create my profile.
+     Client with user token can create user profile in target namespace
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=1 (CREATE)
+      *  Action code : 11401
+      *  Returns : Created user profile
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to create publisher user profile
+        * can be filled with game namespace in order to create game user profile
+      *  Language : allowed format: en, en-US
+      *  Country : ISO3166-1 alpha-2 two letter, e.g. US
+      * Timezone : IANA time zone, e.g. Asia/Shanghai
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [CREATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
+
+        method: POST
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfilePrivateCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - UserProfilePrivateInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked)
+
+        409: Conflict - ErrorEntity (11441: Unable to {action}: User profile already exists)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -139,6 +256,55 @@ async def create_my_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create my profile (createMyProfile)
+
+    Create my profile.
+     Client with user token can create user profile in target namespace
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=1 (CREATE)
+      *  Action code : 11401
+      *  Returns : Created user profile
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to create publisher user profile
+        * can be filled with game namespace in order to create game user profile
+      *  Language : allowed format: en, en-US
+      *  Country : ISO3166-1 alpha-2 two letter, e.g. US
+      * Timezone : IANA time zone, e.g. Asia/Shanghai
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [CREATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
+
+        method: POST
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfilePrivateCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - UserProfilePrivateInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked)
+
+        409: Conflict - ErrorEntity (11441: Unable to {action}: User profile already exists)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -159,6 +325,46 @@ def delete_user_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user profile (deleteUserProfile)
+
+    Delete user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=8 (DELETE)
+      *  Action code : 11407
+      *  Returns : Delete user profile
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [DELETE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
+
+        method: DELETE
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -177,6 +383,46 @@ async def delete_user_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete user profile (deleteUserProfile)
+
+    Delete user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=8 (DELETE)
+      *  Action code : 11407
+      *  Returns : Delete user profile
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [DELETE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
+
+        method: DELETE
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -197,6 +443,44 @@ def get_custom_attributes_info(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user custom attributes (getCustomAttributesInfo)
+
+    Get user custom attributes.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Returns : custom attributes
+      *  Action code : 11403
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -215,6 +499,44 @@ async def get_custom_attributes_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user custom attributes (getCustomAttributesInfo)
+
+    Get user custom attributes.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Returns : custom attributes
+      *  Action code : 11403
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -234,6 +556,42 @@ def get_my_private_custom_attributes_info(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my private custom attributes (getMyPrivateCustomAttributesInfo)
+
+    Get my private custom attributes.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Returns : custom attributes
+      *  Action code : 11403
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/privateCustomAttributes
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,6 +608,42 @@ async def get_my_private_custom_attributes_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my private custom attributes (getMyPrivateCustomAttributesInfo)
+
+    Get my private custom attributes.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Returns : custom attributes
+      *  Action code : 11403
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/privateCustomAttributes
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -268,6 +662,50 @@ def get_my_profile_info(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my profile (getMyProfileInfo)
+
+    Get my profile
+     Client with user token can get user profile in target namespace
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Action code : 11403
+      *  Returns : user profile
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher user profile
+        * can be filled with game namespace in order to get game user profile
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked | 11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -284,6 +722,50 @@ async def get_my_profile_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my profile (getMyProfileInfo)
+
+    Get my profile
+     Client with user token can get user profile in target namespace
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Action code : 11403
+      *  Returns : user profile
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to get publisher user profile
+        * can be filled with game namespace in order to get game user profile
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked | 11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -302,6 +784,40 @@ def get_my_zip_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my zip code (getMyZipCode)
+
+    Get my zip code.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Action code : 11407
+      *  Returns : user zip code
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UserZipCode (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -318,6 +834,40 @@ async def get_my_zip_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get my zip code (getMyZipCode)
+
+    Get my zip code.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Action code : 11407
+      *  Returns : user zip code
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UserZipCode (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -337,6 +887,44 @@ def get_private_custom_attributes_info(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user private custom attributes (getPrivateCustomAttributesInfo)
+
+    Get user private custom attributes.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Returns : custom attributes
+      *  Action code : 11403
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -355,6 +943,44 @@ async def get_private_custom_attributes_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user private custom attributes (getPrivateCustomAttributesInfo)
+
+    Get user private custom attributes.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Returns : custom attributes
+      *  Action code : 11403
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -375,6 +1001,46 @@ def get_user_profile_info(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile (getUserProfileInfo)
+
+    Get user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Returns : user profile
+      *  Action code : 11403
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -393,6 +1059,46 @@ async def get_user_profile_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile (getUserProfileInfo)
+
+    Get user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Returns : user profile
+      *  Action code : 11403
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -413,6 +1119,45 @@ def get_user_profile_info_by_public_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile info by public id (getUserProfileInfoByPublicId)
+
+    Get user profile by public id.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Returns : user profile info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/profiles/byPublicId
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        public_id: (publicId) REQUIRED str in query
+
+    Responses:
+        200: OK - UserProfileInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11469: User profile with publicId [{publicId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -431,6 +1176,45 @@ async def get_user_profile_info_by_public_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile info by public id (getUserProfileInfoByPublicId)
+
+    Get user profile by public id.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
+      *  Returns : user profile info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/profiles/byPublicId
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        public_id: (publicId) REQUIRED str in query
+
+    Responses:
+        200: OK - UserProfileInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11469: User profile with publicId [{publicId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -452,6 +1236,50 @@ def public_create_user_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create user profile (publicCreateUserProfile)
+
+    Create user profile.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=1 (CREATE)
+      *  Action code : 11401
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+      *  Returns : Created user profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [CREATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
+
+        method: POST
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - UserProfileInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        409: Conflict - ErrorEntity (11441: Unable to {action}: User profile already exists)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -472,6 +1300,50 @@ async def public_create_user_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create user profile (publicCreateUserProfile)
+
+    Create user profile.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=1 (CREATE)
+      *  Action code : 11401
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+      *  Returns : Created user profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [CREATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
+
+        method: POST
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - UserProfileInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        409: Conflict - ErrorEntity (11441: Unable to {action}: User profile already exists)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -493,6 +1365,36 @@ def public_get_custom_attributes_info(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get custom attributes info (publicGetCustomAttributesInfo)
+
+    Get custom attributes info.
+    Other detail info:
+
+      * Action code : 11404
+      *  Returns : user custom attributes
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (Successful operation)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -511,6 +1413,36 @@ async def public_get_custom_attributes_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get custom attributes info (publicGetCustomAttributesInfo)
+
+    Get custom attributes info.
+    Other detail info:
+
+      * Action code : 11404
+      *  Returns : user custom attributes
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (Successful operation)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -531,6 +1463,46 @@ def public_get_user_profile_info(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile (publicGetUserProfileInfo)
+
+    Get user profile.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Action code : 11403
+      *  Returns : user profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfileInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -549,6 +1521,46 @@ async def public_get_user_profile_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile (publicGetUserProfileInfo)
+
+    Get user profile.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
+      *  Action code : 11403
+      *  Returns : user profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfileInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -569,6 +1581,37 @@ def public_get_user_profile_info_by_public_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile public info by public id (publicGetUserProfileInfoByPublicId)
+
+    Get user public profile by public id.
+    Other detail info:
+
+      * Returns : user public profile
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/profiles/public/byPublicId
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        public_id: (publicId) REQUIRED str in query
+
+    Responses:
+        200: OK - UserProfilePublicInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        404: Not Found - ErrorEntity (11469: User profile with publicId [{publicId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -587,6 +1630,37 @@ async def public_get_user_profile_info_by_public_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile public info by public id (publicGetUserProfileInfoByPublicId)
+
+    Get user public profile by public id.
+    Other detail info:
+
+      * Returns : user public profile
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/profiles/public/byPublicId
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        public_id: (publicId) REQUIRED str in query
+
+    Responses:
+        200: OK - UserProfilePublicInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        404: Not Found - ErrorEntity (11469: User profile with publicId [{publicId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -607,6 +1681,38 @@ def public_get_user_profile_public_info(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile public info (publicGetUserProfilePublicInfo)
+
+    Get user profile public info.
+    Other detail info:
+
+      * Action code : 11404
+      *  Returns : user public profile
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/public
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePublicInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -625,6 +1731,38 @@ async def public_get_user_profile_public_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile public info (publicGetUserProfilePublicInfo)
+
+    Get user profile public info.
+    Other detail info:
+
+      * Action code : 11404
+      *  Returns : user public profile
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/public
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePublicInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -645,6 +1783,36 @@ def public_get_user_profile_public_info_by_ids(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile public info by ids (publicGetUserProfilePublicInfoByIds)
+
+    Get user public profile by ids.
+    Other detail info:
+
+      * Action code : 11405
+      *  Returns : user public profiles
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/profiles/public
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_ids: (userIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[UserProfilePublicInfo] (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -663,6 +1831,36 @@ async def public_get_user_profile_public_info_by_ids_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user profile public info by ids (publicGetUserProfilePublicInfoByIds)
+
+    Get user public profile by ids.
+    Other detail info:
+
+      * Action code : 11405
+      *  Returns : user public profiles
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/profiles/public
+
+        method: GET
+
+        tags: ["UserProfile"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_ids: (userIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[UserProfilePublicInfo] (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -684,6 +1882,49 @@ def public_update_custom_attributes_partially(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update partially custom attributes tied to user id (publicUpdateCustomAttributesPartially)
+
+    Update partially custom attributes tied to user id.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Request body : allowed format: JSON object
+      *  Returns : Updated custom attributes
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -704,6 +1945,49 @@ async def public_update_custom_attributes_partially_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update partially custom attributes tied to user id (publicUpdateCustomAttributesPartially)
+
+    Update partially custom attributes tied to user id.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Request body : allowed format: JSON object
+      *  Returns : Updated custom attributes
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -726,6 +2010,50 @@ def public_update_user_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user profile (publicUpdateUserProfile)
+
+    Update user profile.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+      *  Returns : Updated user profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfileInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -746,6 +2074,50 @@ async def public_update_user_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user profile (publicUpdateUserProfile)
+
+    Update user profile.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+      *  Returns : Updated user profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfileInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -768,6 +2140,48 @@ def public_update_user_profile_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user profile status (publicUpdateUserProfileStatus)
+
+    Update user profile status.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11406
+      *  Returns : user profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/status
+
+        method: PATCH
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileStatusUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfileInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -788,6 +2202,48 @@ async def public_update_user_profile_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user profile status (publicUpdateUserProfileStatus)
+
+    Update user profile status.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11406
+      *  Returns : user profile
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/status
+
+        method: PATCH
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileStatusUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfileInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -810,6 +2266,49 @@ def update_custom_attributes_partially(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update partially custom attributes tied to the user id (updateCustomAttributesPartially)
+
+    Update partially custom attributes tied to the user id.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Request body : allowed format: JSON object
+      *  Returns : Updated custom attributes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -830,6 +2329,49 @@ async def update_custom_attributes_partially_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update partially custom attributes tied to the user id (updateCustomAttributesPartially)
+
+    Update partially custom attributes tied to the user id.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Request body : allowed format: JSON object
+      *  Returns : Updated custom attributes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -851,6 +2393,47 @@ def update_my_private_custom_attributes_partially(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update partially private custom attributes tied to me (updateMyPrivateCustomAttributesPartially)
+
+    Update partially private custom attributes tied to me.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Request body : allowed format: JSON object
+      *  Returns : Updated custom attributes
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/privateCustomAttributes
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -869,6 +2452,47 @@ async def update_my_private_custom_attributes_partially_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update partially private custom attributes tied to me (updateMyPrivateCustomAttributesPartially)
+
+    Update partially private custom attributes tied to me.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Request body : allowed format: JSON object
+      *  Returns : Updated custom attributes
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/privateCustomAttributes
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -889,6 +2513,52 @@ def update_my_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update my profile (updateMyProfile)
+
+    Update my profile.
+    Updates user profile in the target namespace (namespace in the path). If token's namespace doesn't match the target namespace, the service automatically maps the token's user ID into the user ID in the target namespace. The endpoint returns the updated user profile on a successful call.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Returns : user profile
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to update publisher user profile
+        * can be filled with game namespace in order to update game user profile
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfilePrivateUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked | 11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -907,6 +2577,52 @@ async def update_my_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update my profile (updateMyProfile)
+
+    Update my profile.
+    Updates user profile in the target namespace (namespace in the path). If token's namespace doesn't match the target namespace, the service automatically maps the token's user ID into the user ID in the target namespace. The endpoint returns the updated user profile on a successful call.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Returns : user profile
+      *  Path's namespace :
+        * can be filled with publisher namespace in order to update publisher user profile
+        * can be filled with game namespace in order to update game user profile
+      *  Language : allowed format: en, en-US
+      *  Timezone : IANA time zone, e.g. Asia/Shanghai
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfilePrivateUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (20008: user not found | 20017: user not linked | 11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -927,6 +2643,44 @@ def update_my_zip_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update my zip code (updateMyZipCode)
+
+    Update my zip code.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11408
+      *  Returns : user zip code
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
+
+        method: PATCH
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        user_zip_code_update: (userZipCodeUpdate) REQUIRED UserZipCodeUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UserZipCode (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -945,6 +2699,44 @@ async def update_my_zip_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update my zip code (updateMyZipCode)
+
+    Update my zip code.
+    Other detail info:
+
+      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11408
+      *  Returns : user zip code
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
+
+        method: PATCH
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        user_zip_code_update: (userZipCodeUpdate) REQUIRED UserZipCodeUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UserZipCode (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -966,6 +2758,49 @@ def update_private_custom_attributes_partially(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update partially private custom attributes tied to the user id (updatePrivateCustomAttributesPartially)
+
+    Update partially private custom attributes tied to the user id.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Request body : allowed format: JSON object
+      *  Returns : Updated custom attributes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -986,6 +2821,49 @@ async def update_private_custom_attributes_partially_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update partially private custom attributes tied to the user id (updatePrivateCustomAttributesPartially)
+
+    Update partially private custom attributes tied to the user id.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Request body : allowed format: JSON object
+      *  Returns : Updated custom attributes
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1008,6 +2886,48 @@ def update_user_profile(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user profile (updateUserProfile)
+
+    Update user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Returns : Updated user profile
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileAdmin in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1028,6 +2948,48 @@ async def update_user_profile_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user profile (updateUserProfile)
+
+    Update user profile.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11402
+      *  Returns : Updated user profile
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
+
+        method: PUT
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileAdmin in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1050,6 +3012,48 @@ def update_user_profile_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user profile status (updateUserProfileStatus)
+
+    Update user profile status.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11406
+      *  Returns : user profile
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/status
+
+        method: PATCH
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileStatusUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1070,6 +3074,48 @@ async def update_user_profile_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update user profile status (updateUserProfileStatus)
+
+    Update user profile status.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
+      *  Action code : 11406
+      *  Returns : user profile
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/status
+
+        method: PATCH
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileStatusUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - UserProfilePrivateInfo (successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

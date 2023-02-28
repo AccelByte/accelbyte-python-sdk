@@ -61,6 +61,36 @@ def admin_create_extension_category(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Extension Category (adminCreateExtensionCategory)
+
+    Required permission: ADMIN:REPORTINGCONFIG [CREATE]
+    Create extension category data
+
+    Required Permission(s):
+        - ADMIN:REPORTINGCONFIG [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/extensionCategories
+
+        method: POST
+
+        tags: ["Admin Extension Categories and Auto Moderation Actions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiExtensionCategoryApiRequest in body
+
+    Responses:
+        201: Created - RestapiExtensionCategoryApiResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     request = AdminCreateExtensionCategory.create(
         body=body,
     )
@@ -73,6 +103,36 @@ async def admin_create_extension_category_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Extension Category (adminCreateExtensionCategory)
+
+    Required permission: ADMIN:REPORTINGCONFIG [CREATE]
+    Create extension category data
+
+    Required Permission(s):
+        - ADMIN:REPORTINGCONFIG [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/extensionCategories
+
+        method: POST
+
+        tags: ["Admin Extension Categories and Auto Moderation Actions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiExtensionCategoryApiRequest in body
+
+    Responses:
+        201: Created - RestapiExtensionCategoryApiResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     request = AdminCreateExtensionCategory.create(
         body=body,
     )
@@ -87,6 +147,36 @@ def admin_create_mod_action(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Auto Moderation Action data (adminCreateModAction)
+
+    Required permission: ADMIN:REPORTINGCONFIG [CREATE]
+    Create auto moderation action
+
+    Required Permission(s):
+        - ADMIN:REPORTINGCONFIG [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/extensionActions
+
+        method: POST
+
+        tags: ["Admin Extension Categories and Auto Moderation Actions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiActionApiRequest in body
+
+    Responses:
+        201: Created - RestapiActionApiResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     request = AdminCreateModAction.create(
         body=body,
     )
@@ -99,6 +189,36 @@ async def admin_create_mod_action_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create Auto Moderation Action data (adminCreateModAction)
+
+    Required permission: ADMIN:REPORTINGCONFIG [CREATE]
+    Create auto moderation action
+
+    Required Permission(s):
+        - ADMIN:REPORTINGCONFIG [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/extensionActions
+
+        method: POST
+
+        tags: ["Admin Extension Categories and Auto Moderation Actions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiActionApiRequest in body
+
+    Responses:
+        201: Created - RestapiActionApiResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     request = AdminCreateModAction.create(
         body=body,
     )
@@ -111,6 +231,34 @@ async def admin_create_mod_action_async(
 def admin_find_action_list(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Find Auto Moderation Action List (adminFindActionList)
+
+    Required permission: ADMIN:REPORTINGCONFIG [READ]
+    Get a list of auto moderation actions
+
+    Required Permission(s):
+        - ADMIN:REPORTINGCONFIG [READ]
+
+    Properties:
+        url: /reporting/v1/admin/extensionActions
+
+        method: GET
+
+        tags: ["Admin Extension Categories and Auto Moderation Actions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - RestapiActionListApiResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     request = AdminFindActionList.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -119,6 +267,34 @@ def admin_find_action_list(
 async def admin_find_action_list_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Find Auto Moderation Action List (adminFindActionList)
+
+    Required permission: ADMIN:REPORTINGCONFIG [READ]
+    Get a list of auto moderation actions
+
+    Required Permission(s):
+        - ADMIN:REPORTINGCONFIG [READ]
+
+    Properties:
+        url: /reporting/v1/admin/extensionActions
+
+        method: GET
+
+        tags: ["Admin Extension Categories and Auto Moderation Actions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - RestapiActionListApiResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     request = AdminFindActionList.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -132,6 +308,38 @@ def admin_find_extension_category_list(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Find Extension Category List (adminFindExtensionCategoryList)
+
+    Required permission: ADMIN:REPORTINGCONFIG [READ]
+    Get a list of extension category data with the specified name
+
+    Required Permission(s):
+        - ADMIN:REPORTINGCONFIG [READ]
+
+    Properties:
+        url: /reporting/v1/admin/extensionCategories
+
+        method: GET
+
+        tags: ["Admin Extension Categories and Auto Moderation Actions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        order: (order) OPTIONAL Union[str, OrderEnum] in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+    Responses:
+        200: OK - RestapiExtensionCategoryListApiResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     request = AdminFindExtensionCategoryList.create(
         order=order,
         sort_by=sort_by,
@@ -146,6 +354,38 @@ async def admin_find_extension_category_list_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Find Extension Category List (adminFindExtensionCategoryList)
+
+    Required permission: ADMIN:REPORTINGCONFIG [READ]
+    Get a list of extension category data with the specified name
+
+    Required Permission(s):
+        - ADMIN:REPORTINGCONFIG [READ]
+
+    Properties:
+        url: /reporting/v1/admin/extensionCategories
+
+        method: GET
+
+        tags: ["Admin Extension Categories and Auto Moderation Actions"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        order: (order) OPTIONAL Union[str, OrderEnum] in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+    Responses:
+        200: OK - RestapiExtensionCategoryListApiResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     request = AdminFindExtensionCategoryList.create(
         order=order,
         sort_by=sort_by,

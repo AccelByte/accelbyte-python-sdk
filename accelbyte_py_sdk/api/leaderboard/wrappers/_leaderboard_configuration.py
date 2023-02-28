@@ -61,6 +61,77 @@ def create_leaderboard_configuration_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new leaderboard (createLeaderboardConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
+
+
+
+
+    Fields :
+
+
+
+
+      * LeaderboardConfig code must be lowercase and maximum length is 48 characters. (required).
+
+
+      * Maximum length for leaderboard name is 128 characters. (required).
+
+
+      * Start time must be follow RFC3339 standard. e.g. 2020-10-02T15:00:00.05Z (required).
+
+
+      * Season period must be greater than 31 days.
+
+
+      * If seasonPeriod is filled, the LeaderboardConfig would have seasonal leaderboard.
+
+
+      * Reset Date must be a number 1 - 31. Default is '1'.
+
+
+      * Reset Day must be a number 0 - 6. 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday (day of week). Default is '0'.
+
+
+      * Reset time must be hours:minutes in 24 hours format e.g. 01:30, 10:30, 15:30, 23:15.Default is '00:00'.
+
+
+      * Stat Code is related with statistic code in statistic service. (required).
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards
+
+        method: POST
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsLeaderboardConfigReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsLeaderboardConfigReq (Created)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        409: Conflict - ResponseErrorResponse (Conflict)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,6 +150,77 @@ async def create_leaderboard_configuration_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new leaderboard (createLeaderboardConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
+
+
+
+
+    Fields :
+
+
+
+
+      * LeaderboardConfig code must be lowercase and maximum length is 48 characters. (required).
+
+
+      * Maximum length for leaderboard name is 128 characters. (required).
+
+
+      * Start time must be follow RFC3339 standard. e.g. 2020-10-02T15:00:00.05Z (required).
+
+
+      * Season period must be greater than 31 days.
+
+
+      * If seasonPeriod is filled, the LeaderboardConfig would have seasonal leaderboard.
+
+
+      * Reset Date must be a number 1 - 31. Default is '1'.
+
+
+      * Reset Day must be a number 0 - 6. 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday (day of week). Default is '0'.
+
+
+      * Reset time must be hours:minutes in 24 hours format e.g. 01:30, 10:30, 15:30, 23:15.Default is '00:00'.
+
+
+      * Stat Code is related with statistic code in statistic service. (required).
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards
+
+        method: POST
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsLeaderboardConfigReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsLeaderboardConfigReq (Created)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        409: Conflict - ResponseErrorResponse (Conflict)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,6 +241,81 @@ def create_leaderboard_configuration_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new leaderboard (createLeaderboardConfigurationPublicV1)
+
+    Public endpoint to create a new leaderboard.
+
+
+
+    Required permission 'NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
+
+
+
+
+     Fields :
+
+
+
+
+      * LeaderboardConfig code must be lowercase and maximum length is 48 characters. (required).
+
+
+      * Maximum length for leaderboard name is 128 characters. (required).
+
+
+      * Start time must be follow RFC3339 standard. e.g. 2020-10-02T15:00:00.05Z (required).
+
+
+      * Season period must be greater than 31 days.
+
+
+      * If seasonPeriod is filled, the LeaderboardConfig would have seasonal leaderboard.
+
+
+      * Reset Date must be a number 1 - 31. Default is '1'.
+
+
+      * Reset Day must be a number 0 - 6. 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday (day of week). Default is '0'.
+
+
+      * Reset time must be hours:minutes in 24 hours format e.g. 01:30, 10:30, 15:30, 23:15.Default is '00:00'.
+
+
+      * Stat Code is related with statistic code in statistic service. (required).
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:LEADERBOARD [CREATE]
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards
+
+        method: POST
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsLeaderboardConfigReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsLeaderboardConfigReq (Created)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        409: Conflict - ResponseErrorResponse (Conflict)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,6 +334,81 @@ async def create_leaderboard_configuration_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """create new leaderboard (createLeaderboardConfigurationPublicV1)
+
+    Public endpoint to create a new leaderboard.
+
+
+
+    Required permission 'NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
+
+
+
+
+     Fields :
+
+
+
+
+      * LeaderboardConfig code must be lowercase and maximum length is 48 characters. (required).
+
+
+      * Maximum length for leaderboard name is 128 characters. (required).
+
+
+      * Start time must be follow RFC3339 standard. e.g. 2020-10-02T15:00:00.05Z (required).
+
+
+      * Season period must be greater than 31 days.
+
+
+      * If seasonPeriod is filled, the LeaderboardConfig would have seasonal leaderboard.
+
+
+      * Reset Date must be a number 1 - 31. Default is '1'.
+
+
+      * Reset Day must be a number 0 - 6. 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday (day of week). Default is '0'.
+
+
+      * Reset time must be hours:minutes in 24 hours format e.g. 01:30, 10:30, 15:30, 23:15.Default is '00:00'.
+
+
+      * Stat Code is related with statistic code in statistic service. (required).
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:LEADERBOARD [CREATE]
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards
+
+        method: POST
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsLeaderboardConfigReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsLeaderboardConfigReq (Created)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        409: Conflict - ResponseErrorResponse (Conflict)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,6 +429,46 @@ def delete_bulk_leaderboard_configuration_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete bulk leaderboards. response body will contains failed leaderboard with the reason why it's failed to delete (deleteBulkLeaderboardConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+
+
+
+
+    This endpoint delete multiple leaderboards configuration in one request
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/delete
+
+        method: POST
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDeleteBulkLeaderboardsReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeleteBulkLeaderboardsResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -155,6 +487,46 @@ async def delete_bulk_leaderboard_configuration_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete bulk leaderboards. response body will contains failed leaderboard with the reason why it's failed to delete (deleteBulkLeaderboardConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+
+
+
+
+    This endpoint delete multiple leaderboards configuration in one request
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/delete
+
+        method: POST
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDeleteBulkLeaderboardsReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsDeleteBulkLeaderboardsResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -175,6 +547,48 @@ def delete_leaderboard_configuration_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete leaderboard by leaderboardCode (deleteLeaderboardConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+
+
+
+
+    This endpoint delete a leaderboard configuration
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
+
+        method: DELETE
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -193,6 +607,48 @@ async def delete_leaderboard_configuration_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """delete leaderboard by leaderboardCode (deleteLeaderboardConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+
+
+
+
+    This endpoint delete a leaderboard configuration
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
+
+        method: DELETE
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -213,6 +669,48 @@ def get_leaderboard_configuration_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get leaderboard by leaderboardCode (getLeaderboardConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    This endpoint returns a leaderboard configuration
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
+
+        method: GET
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetLeaderboardConfigResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -231,6 +729,48 @@ async def get_leaderboard_configuration_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """get leaderboard by leaderboardCode (getLeaderboardConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    This endpoint returns a leaderboard configuration
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
+
+        method: GET
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetLeaderboardConfigResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -254,6 +794,52 @@ def get_leaderboard_configurations_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """list all leaderboards by given namespace (getLeaderboardConfigurationsAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    This endpoint return all leaderboard configurations
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards
+
+        method: GET
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        is_archived: (isArchived) OPTIONAL bool in query
+
+        is_deleted: (isDeleted) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetAllLeaderboardConfigsResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -278,6 +864,52 @@ async def get_leaderboard_configurations_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """list all leaderboards by given namespace (getLeaderboardConfigurationsAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
+
+
+
+
+    This endpoint return all leaderboard configurations
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards
+
+        method: GET
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        is_archived: (isArchived) OPTIONAL bool in query
+
+        is_deleted: (isDeleted) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetAllLeaderboardConfigsResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -304,6 +936,44 @@ def get_leaderboard_configurations_public_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """list all leaderboards by given namespace (getLeaderboardConfigurationsPublicV1)
+
+    This endpoint return all leaderboard configurations
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards
+
+        method: GET
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        is_archived: (isArchived) OPTIONAL bool in query
+
+        is_deleted: (isDeleted) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetAllLeaderboardConfigsPublicResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -328,6 +998,44 @@ async def get_leaderboard_configurations_public_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """list all leaderboards by given namespace (getLeaderboardConfigurationsPublicV1)
+
+    This endpoint return all leaderboard configurations
+
+    Properties:
+        url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards
+
+        method: GET
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        is_archived: (isArchived) OPTIONAL bool in query
+
+        is_deleted: (isDeleted) OPTIONAL bool in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsGetAllLeaderboardConfigsPublicResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -352,6 +1060,40 @@ def get_leaderboard_configurations_public_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """list all leaderboards by given namespace (GetLeaderboardConfigurationsPublicV2)
+
+    This endpoint return all leaderboard configurations
+
+    Properties:
+        url: /leaderboard/v2/public/namespaces/{namespace}/leaderboards
+
+        method: GET
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - V2GetAllLeaderboardConfigsPublicResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -372,6 +1114,40 @@ async def get_leaderboard_configurations_public_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """list all leaderboards by given namespace (GetLeaderboardConfigurationsPublicV2)
+
+    This endpoint return all leaderboard configurations
+
+    Properties:
+        url: /leaderboard/v2/public/namespaces/{namespace}/leaderboards
+
+        method: GET
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - V2GetAllLeaderboardConfigsPublicResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -394,6 +1170,75 @@ def update_leaderboard_configuration_admin_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update leaderboard by leaderboardCode (updateLeaderboardConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]'
+
+
+
+
+    Fields :
+
+
+
+
+
+
+      * Maximum length for leaderboard name is 128 characters.
+
+
+      * Start time must be follow RFC3339 standard. e.g. 2020-10-02T15:00:00.05Z
+
+
+      * Season period must be greater than 31 days.
+
+
+      * If seasonPeriod is filled, the LeaderboardConfig would have seasonal leaderboard.
+
+
+      * Reset Date must be a number 1 - 31. Default is '1'.
+
+
+      * Reset Day must be a number 0 - 6. 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday (day of week). Default is '0'.
+
+
+      * Reset time must be hours:minutes in 24 hours format e.g. 01:30, 10:30, 15:30, 23:15.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
+
+        method: PUT
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateLeaderboardConfigReq in body
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetLeaderboardConfigResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -414,6 +1259,75 @@ async def update_leaderboard_configuration_admin_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """update leaderboard by leaderboardCode (updateLeaderboardConfigurationAdminV1)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]'
+
+
+
+
+    Fields :
+
+
+
+
+
+
+      * Maximum length for leaderboard name is 128 characters.
+
+
+      * Start time must be follow RFC3339 standard. e.g. 2020-10-02T15:00:00.05Z
+
+
+      * Season period must be greater than 31 days.
+
+
+      * If seasonPeriod is filled, the LeaderboardConfig would have seasonal leaderboard.
+
+
+      * Reset Date must be a number 1 - 31. Default is '1'.
+
+
+      * Reset Day must be a number 0 - 6. 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday (day of week). Default is '0'.
+
+
+      * Reset time must be hours:minutes in 24 hours format e.g. 01:30, 10:30, 15:30, 23:15.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
+
+        method: PUT
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateLeaderboardConfigReq in body
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetLeaderboardConfigResp (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

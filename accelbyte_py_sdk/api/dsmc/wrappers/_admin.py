@@ -55,6 +55,42 @@ def count_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Count all managed servers (CountServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint counts all of dedicated servers in a namespace managed by this service.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/count
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCountServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,6 +107,42 @@ async def count_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Count all managed servers (CountServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint counts all of dedicated servers in a namespace managed by this service.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/count
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCountServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,6 +162,44 @@ def count_server_detailed(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get detailed count of managed servers in a region (CountServerDetailed)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint counts all of dedicated servers in a region managed by this service.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/count/detailed
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsDetailedCountServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -108,6 +218,44 @@ async def count_server_detailed_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get detailed count of managed servers in a region (CountServerDetailed)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint counts all of dedicated servers in a region managed by this service.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/count/detailed
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsDetailedCountServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -128,6 +276,44 @@ def count_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Count all sessions (CountSession)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required scope: social
+
+    This endpoint count all of sessions in a namespace managed by this service.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/sessions/count
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsCountSessionResponse (sessions listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -146,6 +332,44 @@ async def count_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Count all sessions (CountSession)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required scope: social
+
+    This endpoint count all of sessions in a namespace managed by this service.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/sessions/count
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsCountSessionResponse (sessions listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -166,6 +390,45 @@ def delete_local_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a local server (DeleteLocalServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
+
+    Required scope: social
+
+    This endpoint deletes a specified local dedicated server from DB.
+    Note that DSM has no ability to shutdown local DS.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/local/{name}
+
+        method: DELETE
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (server deleted)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -184,6 +447,45 @@ async def delete_local_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a local server (DeleteLocalServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
+
+    Required scope: social
+
+    This endpoint deletes a specified local dedicated server from DB.
+    Note that DSM has no ability to shutdown local DS.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/local/{name}
+
+        method: DELETE
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (server deleted)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -204,6 +506,46 @@ def delete_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a server in a region (DeleteServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
+
+    Required scope: social
+
+    This endpoint deletes a specified dedicated server from DB and terminates the DS pod.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}
+
+        method: DELETE
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        204: No Content - (server deleted)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -222,6 +564,46 @@ async def delete_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a server in a region (DeleteServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
+
+    Required scope: social
+
+    This endpoint deletes a specified dedicated server from DB and terminates the DS pod.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}
+
+        method: DELETE
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        204: No Content - (server deleted)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -242,6 +624,44 @@ def delete_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a session in a region (DeleteSession)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]
+
+    Required scope: social
+
+    This endpoint deletes a specified session and its corresponding match result from DB.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/sessions/{sessionID}
+
+        method: DELETE
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionID) REQUIRED str in path
+
+    Responses:
+        204: No Content - (session deleted)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -260,6 +680,44 @@ async def delete_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a session in a region (DeleteSession)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]
+
+    Required scope: social
+
+    This endpoint deletes a specified session and its corresponding match result from DB.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/sessions/{sessionID}
+
+        method: DELETE
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionID) REQUIRED str in path
+
+    Responses:
+        204: No Content - (session deleted)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -280,6 +738,46 @@ def get_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query a server in a region (GetServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint queries a specified dedicated server from DB.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsServer (server queried)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -298,6 +796,46 @@ async def get_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query a server in a region (GetServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint queries a specified dedicated server from DB.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsServer (server queried)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -317,6 +855,42 @@ def list_local_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List all managed local servers (ListLocalServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint lists all of local dedicated servers in a namespace managed by this service.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/local
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsListServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -333,6 +907,42 @@ async def list_local_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List all managed local servers (ListLocalServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint lists all of local dedicated servers in a namespace managed by this service.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers/local
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsListServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -354,6 +964,50 @@ def list_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List all managed servers in a region (ListServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint lists all of dedicated servers in a namespace managed by this service.
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -376,6 +1030,50 @@ async def list_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List all managed servers in a region (ListServer)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint lists all of dedicated servers in a namespace managed by this service.
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/servers
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -401,6 +1099,52 @@ def list_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List all managed sessions in a region (ListSession)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required scope: social
+
+    This endpoint lists all of sessions in a namespace managed by this service.
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/sessions
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+        with_server: (withServer) OPTIONAL bool in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListSessionResponse (sessions listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -425,6 +1169,52 @@ async def list_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List all managed sessions in a region (ListSession)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required scope: social
+
+    This endpoint lists all of sessions in a namespace managed by this service.
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/sessions
+
+        method: GET
+
+        tags: ["Admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+        with_server: (withServer) OPTIONAL bool in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListSessionResponse (sessions listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

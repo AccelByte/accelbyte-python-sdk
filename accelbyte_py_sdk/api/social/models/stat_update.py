@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Social Service (1.33.0)
+# AccelByte Cloud Social Service (2.0.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,6 +32,8 @@ class StatUpdate(Model):
     """Stat update (StatUpdate)
 
     Properties:
+        cycle_ids: (cycleIds) OPTIONAL List[str]
+
         default_value: (defaultValue) OPTIONAL float
 
         description: (description) OPTIONAL str
@@ -43,6 +45,7 @@ class StatUpdate(Model):
 
     # region fields
 
+    cycle_ids: List[str]  # OPTIONAL
     default_value: float  # OPTIONAL
     description: str  # OPTIONAL
     name: str  # OPTIONAL
@@ -51,6 +54,10 @@ class StatUpdate(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_cycle_ids(self, value: List[str]) -> StatUpdate:
+        self.cycle_ids = value
+        return self
 
     def with_default_value(self, value: float) -> StatUpdate:
         self.default_value = value
@@ -74,6 +81,10 @@ class StatUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "cycle_ids"):
+            result["cycleIds"] = [str(i0) for i0 in self.cycle_ids]
+        elif include_empty:
+            result["cycleIds"] = []
         if hasattr(self, "default_value"):
             result["defaultValue"] = float(self.default_value)
         elif include_empty:
@@ -99,12 +110,15 @@ class StatUpdate(Model):
     @classmethod
     def create(
         cls,
+        cycle_ids: Optional[List[str]] = None,
         default_value: Optional[float] = None,
         description: Optional[str] = None,
         name: Optional[str] = None,
         tags: Optional[List[str]] = None,
     ) -> StatUpdate:
         instance = cls()
+        if cycle_ids is not None:
+            instance.cycle_ids = cycle_ids
         if default_value is not None:
             instance.default_value = default_value
         if description is not None:
@@ -120,6 +134,10 @@ class StatUpdate(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "cycleIds" in dict_ and dict_["cycleIds"] is not None:
+            instance.cycle_ids = [str(i0) for i0 in dict_["cycleIds"]]
+        elif include_empty:
+            instance.cycle_ids = []
         if "defaultValue" in dict_ and dict_["defaultValue"] is not None:
             instance.default_value = float(dict_["defaultValue"])
         elif include_empty:
@@ -175,6 +193,7 @@ class StatUpdate(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "cycleIds": "cycle_ids",
             "defaultValue": "default_value",
             "description": "description",
             "name": "name",
@@ -184,6 +203,7 @@ class StatUpdate(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "cycleIds": False,
             "defaultValue": False,
             "description": False,
             "name": False,

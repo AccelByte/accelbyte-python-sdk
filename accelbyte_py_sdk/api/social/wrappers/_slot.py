@@ -51,6 +51,41 @@ def get_slot_data(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns slot data (getSlotData)
+
+    Get slot data.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : slot data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/slots/{slotId}
+
+        method: GET
+
+        tags: ["Slot"]
+
+        consumes: []
+
+        produces: ["application/octet-stream"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,6 +106,41 @@ async def get_slot_data_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns slot data (getSlotData)
+
+    Get slot data.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : slot data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/slots/{slotId}
+
+        method: GET
+
+        tags: ["Slot"]
+
+        consumes: []
+
+        produces: ["application/octet-stream"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -92,6 +162,37 @@ def get_user_namespace_slots(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns list of slots for given user (getUserNamespaceSlots)
+
+    GetÂ slots for a given user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : list of slots
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/slots
+
+        method: GET
+
+        tags: ["Slot"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[SlotInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,6 +211,37 @@ async def get_user_namespace_slots_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns list of slots for given user (getUserNamespaceSlots)
+
+    GetÂ slots for a given user.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : list of slots
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
+
+    Properties:
+        url: /social/admin/namespaces/{namespace}/users/{userId}/slots
+
+        method: GET
+
+        tags: ["Slot"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[SlotInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,6 +267,51 @@ def public_create_user_namespace_slot(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Creates a slot (publicCreateUserNamespaceSlot)
+
+    Creates a slot.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=1 (CREATE)
+      *  Returns : created slot info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [CREATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots
+
+        method: POST
+
+        tags: ["Slot"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        checksum: (checksum) OPTIONAL str in form_data
+
+        custom_attribute: (customAttribute) OPTIONAL str in form_data
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        label: (label) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        201: Created - (Successful create of a slot)
+
+        400: Bad Request - ErrorEntity (12121: Checksum mismatch for [{filename}] | 12122: [{filename}] exceeds the upload limit size of [{sizeLimit}] bytes)
+
+        409: Conflict - ErrorEntity (12171: User [{userId}] exceed max slot count [{maxCount}] in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -163,6 +340,51 @@ async def public_create_user_namespace_slot_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Creates a slot (publicCreateUserNamespaceSlot)
+
+    Creates a slot.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=1 (CREATE)
+      *  Returns : created slot info
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [CREATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots
+
+        method: POST
+
+        tags: ["Slot"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        checksum: (checksum) OPTIONAL str in form_data
+
+        custom_attribute: (customAttribute) OPTIONAL str in form_data
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        label: (label) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        201: Created - (Successful create of a slot)
+
+        400: Bad Request - ErrorEntity (12121: Checksum mismatch for [{filename}] | 12122: [{filename}] exceeds the upload limit size of [{sizeLimit}] bytes)
+
+        409: Conflict - ErrorEntity (12171: User [{userId}] exceed max slot count [{maxCount}] in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -189,6 +411,40 @@ def public_delete_user_namespace_slot(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes the slot (publicDeleteUserNamespaceSlot)
+
+    Deletes the slot.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=8 (DELETE)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [DELETE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
+
+        method: DELETE
+
+        tags: ["Slot"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful delete of a slot)
+
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -209,6 +465,40 @@ async def public_delete_user_namespace_slot_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deletes the slot (publicDeleteUserNamespaceSlot)
+
+    Deletes the slot.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=8 (DELETE)
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [DELETE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
+
+        method: DELETE
+
+        tags: ["Slot"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful delete of a slot)
+
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -231,6 +521,41 @@ def public_get_slot_data(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns slot data (publicGetSlotData)
+
+    Get slot data.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : slot data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
+
+        method: GET
+
+        tags: ["Slot"]
+
+        consumes: []
+
+        produces: ["application/octet-stream"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -251,6 +576,41 @@ async def public_get_slot_data_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns slot data (publicGetSlotData)
+
+    Get slot data.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : slot data
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
+
+        method: GET
+
+        tags: ["Slot"]
+
+        consumes: []
+
+        produces: ["application/octet-stream"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -272,6 +632,37 @@ def public_get_user_namespace_slots(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns slots for given user (publicGetUserNamespaceSlots)
+
+    GetÂ list of slots for a given user in namespace.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : list of slots
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots
+
+        method: GET
+
+        tags: ["Slot"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[SlotInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -290,6 +681,37 @@ async def public_get_user_namespace_slots_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Returns slots for given user (publicGetUserNamespaceSlots)
+
+    GetÂ list of slots for a given user in namespace.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
+      *  Returns : list of slots
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots
+
+        method: GET
+
+        tags: ["Slot"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[SlotInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -316,6 +738,53 @@ def public_update_user_namespace_slot(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Updates a slot (publicUpdateUserNamespaceSlot)
+
+    Updates a slot.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
+      *  Returns : updated slot
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
+
+        method: PUT
+
+        tags: ["Slot"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        checksum: (checksum) OPTIONAL str in form_data
+
+        custom_attribute: (customAttribute) OPTIONAL str in form_data
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        label: (label) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - SlotInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (12121: Checksum mismatch for [{filename}] | 12122: [{filename}] exceeds the upload limit size of [{sizeLimit}] bytes)
+
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -346,6 +815,53 @@ async def public_update_user_namespace_slot_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Updates a slot (publicUpdateUserNamespaceSlot)
+
+    Updates a slot.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
+      *  Returns : updated slot
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
+
+        method: PUT
+
+        tags: ["Slot"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        checksum: (checksum) OPTIONAL str in form_data
+
+        custom_attribute: (customAttribute) OPTIONAL str in form_data
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        label: (label) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - SlotInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (12121: Checksum mismatch for [{filename}] | 12122: [{filename}] exceeds the upload limit size of [{sizeLimit}] bytes)
+
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -374,6 +890,43 @@ def public_update_user_namespace_slot_metadata(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Updates the slot metadata (publicUpdateUserNamespaceSlotMetadata)
+
+    Updates the slot metadata.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
+      *  Returns : updated slot
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}/metadata
+
+        method: PUT
+
+        tags: ["Slot"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SlotMetadataUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SlotInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -396,6 +949,43 @@ async def public_update_user_namespace_slot_metadata_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Updates the slot metadata (publicUpdateUserNamespaceSlotMetadata)
+
+    Updates the slot metadata.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
+      *  Returns : updated slot
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
+
+    Properties:
+        url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}/metadata
+
+        method: PUT
+
+        tags: ["Slot"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL SlotMetadataUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - SlotInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12141: Slot [{slotId}] not found in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

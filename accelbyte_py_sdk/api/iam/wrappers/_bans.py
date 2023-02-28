@@ -57,6 +57,53 @@ def admin_ban_user_bulk_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk ban user (AdminBanUserBulkV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN [CREATE]'.
+
+
+
+
+    Bulk ban user with specific type of ban. Ban types and reason can be queried. The maximum limit value is 100 userIDs
+
+
+
+
+    action code : 10141
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/bans/users
+
+        method: POST
+
+        tags: ["Bans"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBulkBanCreateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelListBulkUserBanResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -75,6 +122,53 @@ async def admin_ban_user_bulk_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk ban user (AdminBanUserBulkV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN [CREATE]'.
+
+
+
+
+    Bulk ban user with specific type of ban. Ban types and reason can be queried. The maximum limit value is 100 userIDs
+
+
+
+
+    action code : 10141
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN [CREATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/bans/users
+
+        method: POST
+
+        tags: ["Bans"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBulkBanCreateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelListBulkUserBanResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -98,6 +192,48 @@ def admin_get_banned_users_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of user filtered by ban types (AdminGetBannedUsersV3)
+
+    Required permission 'ADMIN:BAN [READ]'
+    Ban type is the code
+    available for ban assignment. It is applicable globally for any namespace.
+    action code : 10201
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/bans/users
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        ban_type: (banType) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetUserBanV3Response (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -122,6 +258,48 @@ async def admin_get_banned_users_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of user filtered by ban types (AdminGetBannedUsersV3)
+
+    Required permission 'ADMIN:BAN [READ]'
+    Ban type is the code
+    available for ban assignment. It is applicable globally for any namespace.
+    action code : 10201
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/bans/users
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        ban_type: (banType) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelGetUserBanV3Response (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,6 +320,38 @@ async def admin_get_banned_users_v3_async(
 def admin_get_bans_type_v3(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of ban types (AdminGetBansTypeV3)
+
+    Required permission 'ADMIN:BAN [READ]'
+    Ban type is the code
+    available for ban assignment. It is applicable globally for any namespace.
+    action code : 10201
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+    Properties:
+        url: /iam/v3/admin/bans
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - AccountcommonBansV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetBansTypeV3.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -150,6 +360,38 @@ def admin_get_bans_type_v3(
 async def admin_get_bans_type_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of ban types (AdminGetBansTypeV3)
+
+    Required permission 'ADMIN:BAN [READ]'
+    Ban type is the code
+    available for ban assignment. It is applicable globally for any namespace.
+    action code : 10201
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+    Properties:
+        url: /iam/v3/admin/bans
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - AccountcommonBansV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetBansTypeV3.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -162,6 +404,40 @@ def admin_get_bans_type_with_namespace_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of ban types (AdminGetBansTypeWithNamespaceV3)
+
+    Required permission 'ADMIN:BAN [READ]'
+    Ban type is the code
+    available for ban assignment. It is applicable globally for any namespace.
+    action code : 10201
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/bantypes
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonBansV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -178,6 +454,40 @@ async def admin_get_bans_type_with_namespace_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get list of ban types (AdminGetBansTypeWithNamespaceV3)
+
+    Required permission 'ADMIN:BAN [READ]'
+    Ban type is the code
+    available for ban assignment. It is applicable globally for any namespace.
+    action code : 10201
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/bantypes
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonBansV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -194,6 +504,41 @@ async def admin_get_bans_type_with_namespace_v3_async(
 def admin_get_list_ban_reason_v3(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of ban reasons (AdminGetListBanReasonV3)
+
+    Required permission 'ADMIN:BAN [READ]'
+
+
+    Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace.
+
+
+    action code : 10202
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+    Properties:
+        url: /iam/v3/admin/bans/reasons
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - AccountcommonBanReasonsV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetListBanReasonV3.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -202,6 +547,41 @@ def admin_get_list_ban_reason_v3(
 async def admin_get_list_ban_reason_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of ban reasons (AdminGetListBanReasonV3)
+
+    Required permission 'ADMIN:BAN [READ]'
+
+
+    Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace.
+
+
+    action code : 10202
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+    Properties:
+        url: /iam/v3/admin/bans/reasons
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - AccountcommonBanReasonsV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     request = AdminGetListBanReasonV3.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -215,6 +595,53 @@ def admin_unban_user_bulk_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk unban user (AdminUnbanUserBulkV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN [UPDATE]'.
+
+
+
+
+    disable bulk ban user. The maximum limit value is 100
+
+
+
+
+    action code : 10142
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/bans/users/disabled
+
+        method: PATCH
+
+        tags: ["Bans"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBulkUnbanCreateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelListBulkUserBanResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -233,6 +660,53 @@ async def admin_unban_user_bulk_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk unban user (AdminUnbanUserBulkV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN [UPDATE]'.
+
+
+
+
+    disable bulk ban user. The maximum limit value is 100
+
+
+
+
+    action code : 10142
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/bans/users/disabled
+
+        method: PATCH
+
+        tags: ["Bans"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBulkUnbanCreateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelListBulkUserBanResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10158: ban not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -249,6 +723,48 @@ async def admin_unban_user_bulk_v3_async(
 @deprecated
 @same_doc_as(GetBansType)
 def get_bans_type(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """Get list of ban types (GetBansType)
+
+    ## The endpoint is going to be deprecated
+
+
+
+
+    Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/bans [GET]
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+        - BAN:ADMIN [READ]
+
+    Properties:
+        url: /iam/bans
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - AccountcommonBans (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     request = GetBansType.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -258,6 +774,48 @@ def get_bans_type(x_additional_headers: Optional[Dict[str, str]] = None, **kwarg
 async def get_bans_type_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of ban types (GetBansType)
+
+    ## The endpoint is going to be deprecated
+
+
+
+
+    Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/bans [GET]
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+        - BAN:ADMIN [READ]
+
+    Properties:
+        url: /iam/bans
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - AccountcommonBans (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     request = GetBansType.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -269,6 +827,48 @@ async def get_bans_type_async(
 def get_list_ban_reason(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of ban reasons (GetListBanReason)
+
+    ## The endpoint is going to be deprecated
+
+
+
+
+    Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/bans/reasons [GET]
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+        - BAN:ADMIN [READ]
+
+    Properties:
+        url: /iam/bans/reasons
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - AccountcommonBanReasons (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     request = GetListBanReason.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -278,6 +878,48 @@ def get_list_ban_reason(
 async def get_list_ban_reason_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
+    """Get list of ban reasons (GetListBanReason)
+
+    ## The endpoint is going to be deprecated
+
+
+
+
+    Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/bans/reasons [GET]
+
+    Required Permission(s):
+        - ADMIN:BAN [READ]
+
+        - BAN:ADMIN [READ]
+
+    Properties:
+        url: /iam/bans/reasons
+
+        method: GET
+
+        tags: ["Bans"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - AccountcommonBanReasons (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
     request = GetListBanReason.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

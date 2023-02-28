@@ -45,6 +45,37 @@ def get(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get configuration (Get)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [READ]
+    TimeInterval is in nanoseconds.
+    When there's no configuration set, the response is the default value (configurable through envar).
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/configurations
+
+        method: GET
+
+        tags: ["Admin Configurations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        category: (category) OPTIONAL Union[str, CategoryEnum] in query
+
+    Responses:
+        200: OK - RestapiConfigResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,6 +94,37 @@ async def get_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get configuration (Get)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [READ]
+    TimeInterval is in nanoseconds.
+    When there's no configuration set, the response is the default value (configurable through envar).
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [READ]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/configurations
+
+        method: GET
+
+        tags: ["Admin Configurations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        category: (category) OPTIONAL Union[str, CategoryEnum] in query
+
+    Responses:
+        200: OK - RestapiConfigResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,6 +145,40 @@ def upsert(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create/Update configuration (Upsert)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [CREATE]
+    The behaviour of this endpoint is upsert based on the namespace.
+    So, you can use this for both creating & updating the configuration.
+    TimeInterval is in nanoseconds.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/configurations
+
+        method: POST
+
+        tags: ["Admin Configurations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiReportingLimit in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiConfigResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,6 +197,40 @@ async def upsert_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create/Update configuration (Upsert)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [CREATE]
+    The behaviour of this endpoint is upsert based on the namespace.
+    So, you can use this for both creating & updating the configuration.
+    TimeInterval is in nanoseconds.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [CREATE]
+
+    Properties:
+        url: /reporting/v1/admin/namespaces/{namespace}/configurations
+
+        method: POST
+
+        tags: ["Admin Configurations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED RestapiReportingLimit in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RestapiConfigResponse
+
+        400: Bad Request - RestapiErrorResponse
+
+        500: Internal Server Error - RestapiErrorResponse
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

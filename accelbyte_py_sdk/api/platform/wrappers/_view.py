@@ -53,6 +53,48 @@ def create_view(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a view (createView)
+
+    This API is used to create a view.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : created a view
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/views
+
+        method: POST
+
+        tags: ["View"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ViewCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        201: Created - FullViewInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -73,6 +115,48 @@ async def create_view_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create a view (createView)
+
+    This API is used to create a view.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
+      *  Returns : created a view
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/views
+
+        method: POST
+
+        tags: ["View"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ViewCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        201: Created - FullViewInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,6 +179,43 @@ def delete_view(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a view (deleteView)
+
+    This API is used to delete a view.It will also delete all the related sections
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/views/{viewId}
+
+        method: DELETE
+
+        tags: ["View"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        view_id: (viewId) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        204: No Content - (Delete view successfully)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,6 +236,43 @@ async def delete_view_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete a view (deleteView)
+
+    This API is used to delete a view.It will also delete all the related sections
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/views/{viewId}
+
+        method: DELETE
+
+        tags: ["View"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        view_id: (viewId) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        204: No Content - (Delete view successfully)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,6 +295,42 @@ def get_view(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a view (getView)
+
+    This API is used to get a view.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : view data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/views/{viewId}
+
+        method: GET
+
+        tags: ["View"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        view_id: (viewId) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullViewInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -157,6 +351,42 @@ async def get_view_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get a view (getView)
+
+    This API is used to get a view.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : view data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/views/{viewId}
+
+        method: GET
+
+        tags: ["View"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        view_id: (viewId) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FullViewInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}])
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -178,6 +408,42 @@ def list_views(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List all views (listViews)
+
+    This API is used to list all views.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : the list of views
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/views
+
+        method: GET
+
+        tags: ["View"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ListViewInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -196,6 +462,42 @@ async def list_views_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """List all views (listViews)
+
+    This API is used to list all views.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+      *  Returns : the list of views
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/views
+
+        method: GET
+
+        tags: ["View"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ListViewInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -218,6 +520,41 @@ def public_list_views(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all views (publicListViews)
+
+    This API is used to get all views.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:STORE, action=2 (READ)
+      *  Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store views)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store views)
+      *  Returns : all views
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/views
+
+        method: GET
+
+        tags: ["View"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ViewInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -240,6 +577,41 @@ async def public_list_views_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get all views (publicListViews)
+
+    This API is used to get all views.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:STORE, action=2 (READ)
+      *  Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store views)
+      *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store views)
+      *  Returns : all views
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/views
+
+        method: GET
+
+        tags: ["View"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        language: (language) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ViewInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -264,6 +636,50 @@ def update_view(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a view (updateView)
+
+    This API is used to update a view.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+      *  Returns : updated view data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/views/{viewId}
+
+        method: PUT
+
+        tags: ["View"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ViewUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        view_id: (viewId) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullViewInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -286,6 +702,50 @@ async def update_view_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update a view (updateView)
+
+    This API is used to update a view.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+      *  Returns : updated view data
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/views/{viewId}
+
+        method: PUT
+
+        tags: ["View"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ViewUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        view_id: (viewId) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        200: OK - FullViewInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (30021: Default language [{language}] required)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

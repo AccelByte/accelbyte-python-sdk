@@ -82,6 +82,52 @@ def admin_create_user_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Create an order (adminCreateUserOrder)
+
+    Admin Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
+      * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
+      * sandbox default value is false
+      * platform default value is Other
+      *  Returns : created order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders
+
+        method: POST
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL AdminOrderCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - OrderInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists | 32124: Invalid currency namespace)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
+
+        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,6 +148,52 @@ async def admin_create_user_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Admin Create an order (adminCreateUserOrder)
+
+    Admin Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
+      * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
+      * sandbox default value is false
+      * platform default value is Other
+      *  Returns : created order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders
+
+        method: POST
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL AdminOrderCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - OrderInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists | 32124: Invalid currency namespace)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
+
+        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,6 +216,39 @@ def count_of_purchased_item(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get the count of purchased item (countOfPurchasedItem)
+
+    This API is used to get the count of purchased item which is the order target.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : Item purchased count
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/countOfItem
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - PurchasedItemCount (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,6 +269,39 @@ async def count_of_purchased_item_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get the count of purchased item (countOfPurchasedItem)
+
+    This API is used to get the count of purchased item which is the order target.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : Item purchased count
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/countOfItem
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_id: (itemId) REQUIRED str in query
+
+    Responses:
+        200: OK - PurchasedItemCount (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -166,6 +324,43 @@ def download_user_order_receipt(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download user order receipt (downloadUserOrderReceipt)
+
+    Download user order receipt by orderNo.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : order receipt pdf
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/pdf"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (32173: Receipt of order [{orderNo}] is not downloadable)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -186,6 +381,43 @@ async def download_user_order_receipt_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download user order receipt (downloadUserOrderReceipt)
+
+    Download user order receipt by orderNo.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : order receipt pdf
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/pdf"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (32173: Receipt of order [{orderNo}] is not downloadable)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -208,6 +440,45 @@ def fulfill_user_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Fulfill an order (fulfillUserOrder)
+
+    Fulfill an order if the order is charged but fulfill failed.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : fulfilled order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/fulfill
+
+        method: PUT
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (32172: Invalid order status [{status}] for order [{orderNo}] | 20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -228,6 +499,45 @@ async def fulfill_user_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Fulfill an order (fulfillUserOrder)
+
+    Fulfill an order if the order is charged but fulfill failed.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : fulfilled order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/fulfill
+
+        method: PUT
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (32172: Invalid order status [{status}] for order [{orderNo}] | 20006: optimistic lock)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -249,6 +559,39 @@ def get_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get order (getOrder)
+
+    Get order by orderNo.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : order instance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/orders/{orderNo}
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -267,6 +610,39 @@ async def get_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get order (getOrder)
+
+    Get order by orderNo.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : order instance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/orders/{orderNo}
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -286,6 +662,35 @@ def get_order_statistics(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Order Statistics (getOrderStatistics)
+
+    Get Order Statistics.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : order statistics
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/orders/stats
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderStatistics (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -302,6 +707,35 @@ async def get_order_statistics_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Order Statistics (getOrderStatistics)
+
+    Get Order Statistics.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : order statistics
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/orders/stats
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderStatistics (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -322,6 +756,41 @@ def get_user_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an order (getUserOrder)
+
+    Get an order.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -342,6 +811,41 @@ async def get_user_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get an order (getUserOrder)
+
+    Get an order.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -364,6 +868,39 @@ def get_user_order_grant(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user order grant (getUserOrderGrant)
+
+    Get user order grant that fulfilled by this order.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order grant
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/grant
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderGrantInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -384,6 +921,39 @@ async def get_user_order_grant_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user order grant (getUserOrderGrant)
+
+    Get user order grant that fulfilled by this order.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order grant
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/grant
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderGrantInfo (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -406,6 +976,39 @@ def get_user_order_histories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user order histories (getUserOrderHistories)
+
+    Get user order history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[OrderHistoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -426,6 +1029,39 @@ async def get_user_order_histories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user order histories (getUserOrderHistories)
+
+    Get user order history.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order history
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[OrderHistoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -449,6 +1085,43 @@ def process_user_order_notification(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Web hook for payment notification (processUserOrderNotification)
+
+    [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment notification from justice payment service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : Process result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/notifications
+
+        method: POST
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TradeNotification in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (process successfully)
+
+        400: Bad Request - (process failed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -471,6 +1144,43 @@ async def process_user_order_notification_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Web hook for payment notification (processUserOrderNotification)
+
+    [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment notification from justice payment service.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : Process result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/notifications
+
+        method: POST
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TradeNotification in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (process successfully)
+
+        400: Bad Request - (process failed)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -494,6 +1204,43 @@ def public_cancel_user_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel user order (publicCancelUserOrder)
+
+    Cancel user order.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : cancelled order
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/cancel
+
+        method: PUT
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (32177: Order [{orderNo}] is not cancelable)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -514,6 +1261,43 @@ async def public_cancel_user_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Cancel user order (publicCancelUserOrder)
+
+    Cancel user order.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : cancelled order
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/cancel
+
+        method: PUT
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (32177: Order [{orderNo}] is not cancelable)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -536,6 +1320,51 @@ def public_create_user_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create an order (publicCreateUserOrder)
+
+    Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
+      *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
+      * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
+      *  Returns : created order
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders
+
+        method: POST
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL OrderCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - OrderInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
+
+        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -556,6 +1385,51 @@ async def public_create_user_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create an order (publicCreateUserOrder)
+
+    Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
+      *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
+      * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
+      *  Returns : created order
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders
+
+        method: POST
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL OrderCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - OrderInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
+
+        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -578,6 +1452,43 @@ def public_download_user_order_receipt(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download user order receipt (publicDownloadUserOrderReceipt)
+
+    Download user order receipt by orderNo.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : order receipt pdf
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/pdf"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (32173: Receipt of order [{orderNo}] is not downloadable)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -598,6 +1509,43 @@ async def public_download_user_order_receipt_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Download user order receipt (publicDownloadUserOrderReceipt)
+
+    Download user order receipt by orderNo.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : order receipt pdf
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/pdf"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (32173: Receipt of order [{orderNo}] is not downloadable)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -620,6 +1568,41 @@ def public_get_user_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user order (publicGetUserOrder)
+
+    Get user order.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -640,6 +1623,41 @@ async def public_get_user_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user order (publicGetUserOrder)
+
+    Get user order.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -662,6 +1680,39 @@ def public_get_user_order_histories(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user order histories (publicGetUserOrderHistories)
+
+    Get user order histories.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order history
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[OrderHistoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -682,6 +1733,39 @@ async def public_get_user_order_histories_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get user order histories (publicGetUserOrderHistories)
+
+    Get user order histories.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order history
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[OrderHistoryInfo] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -707,6 +1791,45 @@ def public_query_user_orders(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user orders (publicQueryUserOrders)
+
+    Query user orders.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+    Responses:
+        200: OK - OrderPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -733,6 +1856,45 @@ async def public_query_user_orders_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user orders (publicQueryUserOrders)
+
+    Query user orders.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+    Responses:
+        200: OK - OrderPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -764,6 +1926,53 @@ def query_orders(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query orders (queryOrders)
+
+    Query orders.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : query orders
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/orders
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order_nos: (orderNos) OPTIONAL List[str] in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        start_time: (startTime) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        with_total: (withTotal) OPTIONAL bool in query
+
+    Responses:
+        200: OK - OrderPagingResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -796,6 +2005,53 @@ async def query_orders_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query orders (queryOrders)
+
+    Query orders.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
+      *  Returns : query orders
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/orders
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order_nos: (orderNos) OPTIONAL List[str] in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        start_time: (startTime) OPTIONAL str in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+        with_total: (withTotal) OPTIONAL bool in query
+
+    Responses:
+        200: OK - OrderPagingResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -827,6 +2083,45 @@ def query_user_orders(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user orders (queryUserOrders)
+
+    Query user orders.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+    Responses:
+        200: OK - OrderPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -853,6 +2148,45 @@ async def query_user_orders_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query user orders (queryUserOrders)
+
+    Query user orders.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
+      *  Returns : get order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders
+
+        method: GET
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        item_id: (itemId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
+    Responses:
+        200: OK - OrderPagingSlicedResult (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -878,6 +2212,44 @@ def refund_order(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Refund order (refundOrder)
+
+    Refund order by orderNo.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/orders/{orderNo}/refund
+
+        method: PUT
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL OrderRefundCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (32171: Order [{orderNo}] is not refundable)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -898,6 +2270,44 @@ async def refund_order_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Refund order (refundOrder)
+
+    Refund order by orderNo.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ORDER [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/orders/{orderNo}/refund
+
+        method: PUT
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL OrderRefundCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (32171: Order [{orderNo}] is not refundable)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -921,6 +2331,47 @@ def update_user_order_status(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update order status (updateUserOrderStatus)
+
+    Update order status.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : updated order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}
+
+        method: PUT
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL OrderUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -943,6 +2394,47 @@ async def update_user_order_status_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update order status (updateUserOrderStatus)
+
+    Update order status.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
+      *  Returns : updated order
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}
+
+        method: PUT
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL OrderUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        order_no: (orderNo) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderInfo (successful operation)
+
+        404: Not Found - ErrorEntity (32141: Order [{orderNo}] does not exist)
+
+        409: Conflict - ErrorEntity (20006: optimistic lock)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

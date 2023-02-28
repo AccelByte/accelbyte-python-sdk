@@ -48,6 +48,39 @@ def admin_delete_all_user_channels(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user channel (AdminDeleteAllUserChannels)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,6 +99,39 @@ async def admin_delete_all_user_channels_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user channel (AdminDeleteAllUserChannels)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -86,6 +152,39 @@ def admin_delete_all_user_contents(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user content (AdminDeleteAllUserContents)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,6 +203,39 @@ async def admin_delete_all_user_contents_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user content (AdminDeleteAllUserContents)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,6 +256,39 @@ def admin_delete_all_user_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user group (AdminDeleteAllUserGroup)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/groups
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,6 +307,39 @@ async def admin_delete_all_user_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user group (AdminDeleteAllUserGroup)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/groups
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -162,6 +360,39 @@ def admin_delete_all_user_states(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove all user related state: likes, downloads, followers, following (AdminDeleteAllUserStates)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/states
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -180,6 +411,39 @@ async def admin_delete_all_user_states_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove all user related state: likes, downloads, followers, following (AdminDeleteAllUserStates)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/states
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -200,6 +464,39 @@ def delete_all_user_channel(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user channel (DeleteAllUserChannel)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -218,6 +515,39 @@ async def delete_all_user_channel_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user channel (DeleteAllUserChannel)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -238,6 +568,39 @@ def delete_all_user_contents(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user content (DeleteAllUserContents)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -256,6 +619,39 @@ async def delete_all_user_contents_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user content (DeleteAllUserContents)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -276,6 +672,39 @@ def delete_all_user_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user group (DeleteAllUserGroup)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -294,6 +723,39 @@ async def delete_all_user_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete all user group (DeleteAllUserGroup)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -314,6 +776,39 @@ def delete_all_user_states(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove all user related state: likes, downloads, followers, following (DeleteAllUserStates)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}" [DELETE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/states
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -332,6 +827,39 @@ async def delete_all_user_states_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Remove all user related state: likes, downloads, followers, following (DeleteAllUserStates)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}" [DELETE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId} [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/states
+
+        method: DELETE
+
+        tags: ["Anonymization"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

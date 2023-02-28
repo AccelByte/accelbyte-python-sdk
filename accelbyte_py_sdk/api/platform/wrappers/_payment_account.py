@@ -46,6 +46,41 @@ def public_delete_payment_account(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete payment account (publicDeletePaymentAccount)
+
+    Delete payment account.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8 (DELETE)
+      *  Returns :
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [DELETE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts/{type}/{id}
+
+        method: DELETE
+
+        tags: ["PaymentAccount"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        type_: (type) REQUIRED Union[str, TypeEnum] in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (delete a payment account successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,6 +103,41 @@ async def public_delete_payment_account_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete payment account (publicDeletePaymentAccount)
+
+    Delete payment account.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8 (DELETE)
+      *  Returns :
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [DELETE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts/{type}/{id}
+
+        method: DELETE
+
+        tags: ["PaymentAccount"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        type_: (type) REQUIRED Union[str, TypeEnum] in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (delete a payment account successfully)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,6 +160,37 @@ def public_get_payment_accounts(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment accounts (publicGetPaymentAccounts)
+
+    Get payment accounts.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=2 (READ)
+      *  Returns : Payment account list
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts
+
+        method: GET
+
+        tags: ["PaymentAccount"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[PaymentAccount] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -108,6 +209,37 @@ async def public_get_payment_accounts_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get payment accounts (publicGetPaymentAccounts)
+
+    Get payment accounts.
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=2 (READ)
+      *  Returns : Payment account list
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts
+
+        method: GET
+
+        tags: ["PaymentAccount"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[PaymentAccount] (successful operation)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

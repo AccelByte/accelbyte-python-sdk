@@ -48,6 +48,44 @@ def admin_delete_game_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete game record (adminDeleteGameRecordHandlerV1)
+
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
+
+    Required scope: `social`
+
+    This endpoints delete game record in namespace-level
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
+
+        method: DELETE
+
+        tags: ["AdminGameRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record deleted)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,6 +104,44 @@ async def admin_delete_game_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete game record (adminDeleteGameRecordHandlerV1)
+
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
+
+    Required scope: `social`
+
+    This endpoints delete game record in namespace-level
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
+
+        method: DELETE
+
+        tags: ["AdminGameRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record deleted)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -86,6 +162,46 @@ def admin_get_game_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get game record (adminGetGameRecordHandlerV1)
+
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
+
+    Required scope: `social`
+
+    Get a record by its key in namespace-level.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
+
+        method: GET
+
+        tags: ["AdminGameRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGameRecordResponse (Record in namespace-level retrieved)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        404: Not Found - ModelsResponseError (Not Found)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,6 +220,46 @@ async def admin_get_game_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get game record (adminGetGameRecordHandlerV1)
+
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
+
+    Required scope: `social`
+
+    Get a record by its key in namespace-level.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
+
+        method: GET
+
+        tags: ["AdminGameRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGameRecordResponse (Record in namespace-level retrieved)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        404: Not Found - ModelsResponseError (Not Found)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -125,6 +281,160 @@ def admin_post_game_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or append game record (adminPostGameRecordHandlerV1)
+
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new game record or append the existing game record.
+
+     Append example:
+
+    Example 1
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": "value", "data2": "new value" }
+
+
+
+    Example 2
+    - Existing JSON:
+
+
+
+        { "data1": { "data2": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data1": { "data3": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": { "data2": "value", "data3": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Record Metadata
+
+
+
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name __META.
+    When creating record, if __META field is not defined, the metadata value will use the default value.
+    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+
+     Metadata List:
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+
+     Request Body Example:
+
+
+
+
+            {
+                "__META": {
+                    "set_by": "SERVER"
+                }
+                ...
+            }
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
+
+        - CLIENT []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
+
+        method: POST
+
+        tags: ["AdminGameRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGameRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,6 +455,160 @@ async def admin_post_game_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or append game record (adminPostGameRecordHandlerV1)
+
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new game record or append the existing game record.
+
+     Append example:
+
+    Example 1
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": "value", "data2": "new value" }
+
+
+
+    Example 2
+    - Existing JSON:
+
+
+
+        { "data1": { "data2": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data1": { "data3": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": { "data2": "value", "data3": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Record Metadata
+
+
+
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name __META.
+    When creating record, if __META field is not defined, the metadata value will use the default value.
+    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+
+     Metadata List:
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+
+     Request Body Example:
+
+
+
+
+            {
+                "__META": {
+                    "set_by": "SERVER"
+                }
+                ...
+            }
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
+
+        - CLIENT []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
+
+        method: POST
+
+        tags: ["AdminGameRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGameRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -167,6 +631,138 @@ def admin_put_game_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace game record (adminPutGameRecordHandlerV1)
+
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new game record or replace the existing game record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Record Metadata
+
+
+
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name __META.
+    When creating record, if __META field is not defined, the metadata value will use the default value.
+    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+
+     Metadata List:
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+
+     Request Body Example:
+
+
+
+
+            {
+                "__META": {
+                    "set_by": "SERVER"
+                }
+                ...
+            }
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
+
+        - CLIENT []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
+
+        method: PUT
+
+        tags: ["AdminGameRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGameRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGameRecordResponse (Record saved)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,6 +783,138 @@ async def admin_put_game_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace game record (adminPutGameRecordHandlerV1)
+
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new game record or replace the existing game record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Record Metadata
+
+
+
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name __META.
+    When creating record, if __META field is not defined, the metadata value will use the default value.
+    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+
+     Metadata List:
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+
+     Request Body Example:
+
+
+
+
+            {
+                "__META": {
+                    "set_by": "SERVER"
+                }
+                ...
+            }
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
+
+        - CLIENT []
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
+
+        method: PUT
+
+        tags: ["AdminGameRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGameRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGameRecordResponse (Record saved)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -210,6 +938,48 @@ def list_game_records_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query game records (listGameRecordsHandlerV1)
+
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
+
+    Required scope: `social`
+
+    Retrieve list of records key by namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/records
+
+        method: GET
+
+        tags: ["AdminGameRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        query: (query) OPTIONAL str in query
+
+        limit: (limit) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListGameRecordKeysResponse (Retrieve list of records key by namespace)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -232,6 +1002,48 @@ async def list_game_records_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query game records (listGameRecordsHandlerV1)
+
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
+
+    Required scope: `social`
+
+    Retrieve list of records key by namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/records
+
+        method: GET
+
+        tags: ["AdminGameRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        query: (query) OPTIONAL str in query
+
+        limit: (limit) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListGameRecordKeysResponse (Retrieve list of records key by namespace)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

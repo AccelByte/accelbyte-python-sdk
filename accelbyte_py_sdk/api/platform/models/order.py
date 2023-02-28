@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.23.0)
+# AccelByte Cloud Platform Service (4.24.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,11 +28,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
-from ..models.a_dto_object_for_order_creation_options import (
-    ADTOObjectForOrderCreationOptions,
-)
 from ..models.currency_summary import CurrencySummary
 from ..models.item_snapshot import ItemSnapshot
+from ..models.order_creation_options import OrderCreationOptions
 
 
 class PaymentProviderEnum(StrEnum):
@@ -82,7 +80,7 @@ class Order(Model):
 
         created_time: (createdTime) OPTIONAL str
 
-        creation_options: (creationOptions) OPTIONAL ADTOObjectForOrderCreationOptions
+        creation_options: (creationOptions) OPTIONAL OrderCreationOptions
 
         currency: (currency) OPTIONAL CurrencySummary
 
@@ -166,7 +164,7 @@ class Order(Model):
     count_user_id: str  # OPTIONAL
     created_at: str  # OPTIONAL
     created_time: str  # OPTIONAL
-    creation_options: ADTOObjectForOrderCreationOptions  # OPTIONAL
+    creation_options: OrderCreationOptions  # OPTIONAL
     currency: CurrencySummary  # OPTIONAL
     discounted_price: int  # OPTIONAL
     expire_time: str  # OPTIONAL
@@ -243,7 +241,7 @@ class Order(Model):
         self.created_time = value
         return self
 
-    def with_creation_options(self, value: ADTOObjectForOrderCreationOptions) -> Order:
+    def with_creation_options(self, value: OrderCreationOptions) -> Order:
         self.creation_options = value
         return self
 
@@ -434,7 +432,7 @@ class Order(Model):
                 include_empty=include_empty
             )
         elif include_empty:
-            result["creationOptions"] = ADTOObjectForOrderCreationOptions()
+            result["creationOptions"] = OrderCreationOptions()
         if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -595,7 +593,7 @@ class Order(Model):
         count_user_id: Optional[str] = None,
         created_at: Optional[str] = None,
         created_time: Optional[str] = None,
-        creation_options: Optional[ADTOObjectForOrderCreationOptions] = None,
+        creation_options: Optional[OrderCreationOptions] = None,
         currency: Optional[CurrencySummary] = None,
         discounted_price: Optional[int] = None,
         expire_time: Optional[str] = None,
@@ -770,13 +768,11 @@ class Order(Model):
         elif include_empty:
             instance.created_time = ""
         if "creationOptions" in dict_ and dict_["creationOptions"] is not None:
-            instance.creation_options = (
-                ADTOObjectForOrderCreationOptions.create_from_dict(
-                    dict_["creationOptions"], include_empty=include_empty
-                )
+            instance.creation_options = OrderCreationOptions.create_from_dict(
+                dict_["creationOptions"], include_empty=include_empty
             )
         elif include_empty:
-            instance.creation_options = ADTOObjectForOrderCreationOptions()
+            instance.creation_options = OrderCreationOptions()
         if "currency" in dict_ and dict_["currency"] is not None:
             instance.currency = CurrencySummary.create_from_dict(
                 dict_["currency"], include_empty=include_empty

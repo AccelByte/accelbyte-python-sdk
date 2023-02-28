@@ -58,6 +58,55 @@ def bulk_get_player_public_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get player public records (bulkGetPlayerPublicRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:PUBLIC:CLOUDSAVE:RECORD [READ]`
+    --------------------|--------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+    Bulk get other player's record that is public by userIds, max allowed 20 at a time. Only record with `isPublic=true` that can be
+    retrieved using this endpoint.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/bulk/records/{key}/public
+
+        method: POST
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUserIDsRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkGetPlayerRecordResponse (Record retrieved)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (Forbidden)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,6 +127,55 @@ async def bulk_get_player_public_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Bulk get player public records (bulkGetPlayerPublicRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:PUBLIC:CLOUDSAVE:RECORD [READ]`
+    --------------------|--------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+    Bulk get other player's record that is public by userIds, max allowed 20 at a time. Only record with `isPublic=true` that can be
+    retrieved using this endpoint.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/bulk/records/{key}/public
+
+        method: POST
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUserIDsRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkGetPlayerRecordResponse (Record retrieved)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (Forbidden)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -100,6 +198,55 @@ def delete_player_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete player record (deletePlayerRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
+    --------------------|-----------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+    Delete player record by its key.
+    Only user that own the player record could delete it.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+        method: DELETE
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record deleted)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18072: delete action is forbidden on other user's record)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,6 +267,55 @@ async def delete_player_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete player record (deletePlayerRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
+    --------------------|-----------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+    Delete player record by its key.
+    Only user that own the player record could delete it.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+        method: DELETE
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record deleted)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18072: delete action is forbidden on other user's record)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,6 +338,53 @@ def get_player_public_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get player public record (getPlayerPublicRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
+    --------------------|----------------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+    Get other player's record that is public. Only record with `isPublic=true` that can be
+    retrieved using this endpoint.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public
+
+        method: GET
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPlayerRecordResponse (Record retrieved)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        404: Not Found - ModelsResponseError (Not Found)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -162,6 +405,53 @@ async def get_player_public_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get player public record (getPlayerPublicRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
+    --------------------|----------------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+    Get other player's record that is public. Only record with `isPublic=true` that can be
+    retrieved using this endpoint.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public
+
+        method: GET
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPlayerRecordResponse (Record retrieved)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        404: Not Found - ModelsResponseError (Not Found)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -184,6 +474,55 @@ def get_player_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get player record (getPlayerRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
+    --------------------|---------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+    Get player record by its key.
+     Private Record: Only user that own the player record could retrieve it.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+        method: GET
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPlayerRecordResponse (Record retrieved)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18023: get action is forbidden on other user's record)
+
+        404: Not Found - ModelsResponseError (Not Found)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -204,6 +543,55 @@ async def get_player_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get player record (getPlayerRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
+    --------------------|---------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+    Get player record by its key.
+     Private Record: Only user that own the player record could retrieve it.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+        method: GET
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPlayerRecordResponse (Record retrieved)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18023: get action is forbidden on other user's record)
+
+        404: Not Found - ModelsResponseError (Not Found)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -225,6 +613,47 @@ def get_player_records_bulk_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get player records bulk (getPlayerRecordsBulkHandlerV1)
+
+    Required valid user token
+
+    Required scope: `social`
+
+    Retrieve player record key and payload in bulk under given namespace.
+
+    Maximum bulk key limit per request 20
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/me/records/bulk
+
+        method: POST
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkGetPlayerRecordsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkGetPlayerRecordResponse (Successful operation)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (Forbidden)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -243,6 +672,47 @@ async def get_player_records_bulk_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get player records bulk (getPlayerRecordsBulkHandlerV1)
+
+    Required valid user token
+
+    Required scope: `social`
+
+    Retrieve player record key and payload in bulk under given namespace.
+
+    Maximum bulk key limit per request 20
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/me/records/bulk
+
+        method: POST
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkGetPlayerRecordsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkGetPlayerRecordResponse (Successful operation)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (Forbidden)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -265,6 +735,163 @@ def post_player_public_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or append player public record (postPlayerPublicRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [WRITE]`
+    --------------------|-----------------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player public record or append the existing player public record.
+
+     Append example:
+
+    Example 1
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": "value", "data2": "new value" }
+
+
+
+    Example 2
+    - Existing JSON:
+
+
+
+        { "data1": { "data2": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data1": { "data3": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": { "data2": "value", "data3": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: __META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Warning: This endpoint is going to deprecate
+
+
+
+    This endpoint is going to deprecate in the future please don't use it.
+
+    For alternative, please use these endpoints:
+    - POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [WRITE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public
+
+        method: POST
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPlayerRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsPlayerRecordResponse (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -287,6 +914,163 @@ async def post_player_public_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or append player public record (postPlayerPublicRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [WRITE]`
+    --------------------|-----------------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player public record or append the existing player public record.
+
+     Append example:
+
+    Example 1
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": "value", "data2": "new value" }
+
+
+
+    Example 2
+    - Existing JSON:
+
+
+
+        { "data1": { "data2": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data1": { "data3": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": { "data2": "value", "data3": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: __META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Warning: This endpoint is going to deprecate
+
+
+
+    This endpoint is going to deprecate in the future please don't use it.
+
+    For alternative, please use these endpoints:
+    - POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [WRITE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public
+
+        method: POST
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPlayerRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsPlayerRecordResponse (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -311,6 +1095,163 @@ def post_player_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or append player record (postPlayerRecordHandlerV1)
+
+    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player record or append the existing player record.
+    Only user that own the existing player record could modify.
+
+     Append example:
+
+    Example 1
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": "value", "data2": "new value" }
+
+
+
+    Example 2
+    - Existing JSON:
+
+
+
+        { "data1": { "data2": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data1": { "data3": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": { "data2": "value", "data3": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Record Metadata
+
+
+
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name __META.
+    When creating record, if __META field is not defined, the metadata value will use the default value.
+    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+
+     Metadata List:
+    1. is_public (default: false, type: bool)
+    Indicate whether the player record is a public record or not.
+
+     Request Body Example:
+
+
+
+
+            {
+                "__META": {
+                    "is_public": true
+                }
+                ...
+            }
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+        method: POST
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPlayerRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsPlayerRecordResponse (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18035: post action is forbidden on other user's record)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -333,6 +1274,163 @@ async def post_player_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or append player record (postPlayerRecordHandlerV1)
+
+    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player record or append the existing player record.
+    Only user that own the existing player record could modify.
+
+     Append example:
+
+    Example 1
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": "value", "data2": "new value" }
+
+
+
+    Example 2
+    - Existing JSON:
+
+
+
+        { "data1": { "data2": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data1": { "data3": "new value" }
+
+
+    - Result:
+
+
+
+        { "data1": { "data2": "value", "data3": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Record Metadata
+
+
+
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name __META.
+    When creating record, if __META field is not defined, the metadata value will use the default value.
+    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+
+     Metadata List:
+    1. is_public (default: false, type: bool)
+    Indicate whether the player record is a public record or not.
+
+     Request Body Example:
+
+
+
+
+            {
+                "__META": {
+                    "is_public": true
+                }
+                ...
+            }
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+        method: POST
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPlayerRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsPlayerRecordResponse (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18035: post action is forbidden on other user's record)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -355,6 +1453,58 @@ def public_delete_player_public_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete player public record (publicDeletePlayerPublicRecordHandlerV1)
+
+    Required valid user authorization
+    Required scope: `social`
+
+    Delete player public record.
+
+
+
+
+    ## Warning: This endpoint is going to deprecate
+
+
+
+    This endpoint is going to deprecate in the future please don't use it.
+
+    For alternative, please use these endpoints:
+    - POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/me/records/{key}/public
+
+        method: DELETE
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record deleted)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        404: Not Found - ModelsResponseError (Not Found)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -373,6 +1523,58 @@ async def public_delete_player_public_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Delete player public record (publicDeletePlayerPublicRecordHandlerV1)
+
+    Required valid user authorization
+    Required scope: `social`
+
+    Delete player public record.
+
+
+
+
+    ## Warning: This endpoint is going to deprecate
+
+
+
+    This endpoint is going to deprecate in the future please don't use it.
+
+    For alternative, please use these endpoints:
+    - POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/me/records/{key}/public
+
+        method: DELETE
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Record deleted)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        404: Not Found - ModelsResponseError (Not Found)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -395,6 +1597,141 @@ def put_player_public_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace player public record (putPlayerPublicRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|------------------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player public record or replace the existing player public record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: __META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Warning: This endpoint is going to deprecate
+
+
+
+    This endpoint is going to deprecate in the future please don't use it.
+
+    For alternative, please use these endpoints:
+    - POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public
+
+        method: PUT
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPlayerRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPlayerRecordResponse (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -417,6 +1754,141 @@ async def put_player_public_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace player public record (putPlayerPublicRecordHandlerV1)
+
+    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|------------------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player public record or replace the existing player public record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: __META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Warning: This endpoint is going to deprecate
+
+
+
+    This endpoint is going to deprecate in the future please don't use it.
+
+    For alternative, please use these endpoints:
+    - POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public
+
+        method: PUT
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPlayerRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPlayerRecordResponse (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -441,6 +1913,141 @@ def put_player_record_handler_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace player record (putPlayerRecordHandlerV1)
+
+    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player record or replace the existing player record.
+    Only user that own the existing player record could modify it.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Record Metadata
+
+
+
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name __META.
+    When creating record, if __META field is not defined, the metadata value will use the default value.
+    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+
+     Metadata List:
+    1. is_public (default: false, type: bool)
+    Indicate whether the player record is a public record or not.
+
+     Request Body Example:
+
+
+
+
+            {
+                "__META": {
+                    "is_public": true
+                }
+                ...
+            }
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+        method: PUT
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPlayerRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPlayerRecordResponse (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18063: put action is forbidden on other user's record)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -463,6 +2070,141 @@ async def put_player_record_handler_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Create or replace player record (putPlayerRecordHandlerV1)
+
+    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
+    Required scope: `social`
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new player record or replace the existing player record.
+    Only user that own the existing player record could modify it.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
+    ## Record Metadata
+
+
+
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name __META.
+    When creating record, if __META field is not defined, the metadata value will use the default value.
+    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+
+     Metadata List:
+    1. is_public (default: false, type: bool)
+    Indicate whether the player record is a public record or not.
+
+     Request Body Example:
+
+
+
+
+            {
+                "__META": {
+                    "is_public": true
+                }
+                ...
+            }
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+
+        method: PUT
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPlayerRecordRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPlayerRecordResponse (Record saved)
+
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (18063: put action is forbidden on other user's record)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -486,6 +2228,45 @@ def retrieve_player_records(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query player records key (RetrievePlayerRecords)
+
+    Required valid user token
+
+    Required scope: `social`
+
+    Retrieve list of player records key under given namespace.
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/me/records
+
+        method: GET
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsListPlayerRecordKeysResponse (Successful operation)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -506,6 +2287,45 @@ async def retrieve_player_records_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Query player records key (RetrievePlayerRecords)
+
+    Required valid user token
+
+    Required scope: `social`
+
+    Retrieve list of player records key under given namespace.
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/me/records
+
+        method: GET
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsListPlayerRecordKeysResponse (Successful operation)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

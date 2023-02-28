@@ -29,11 +29,11 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import ADTOObjectForQueryingXboxUserAchievements
-from ..models import ADTOObjectForUnlockSteamAchievementAPI
-from ..models import ADTOObjectForUpdateXboxAchievementCompletePercentageAPI
 from ..models import ErrorEntity
+from ..models import SteamAchievementUpdateRequest
 from ..models import ValidationErrorEntity
+from ..models import XblAchievementUpdateRequest
+from ..models import XblUserAchievements
 
 from ..operations.achievement_platform import GetXblUserAchievements
 from ..operations.achievement_platform import UnlockSteamUserAchievement
@@ -48,6 +48,38 @@ def get_xbl_user_achievements(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get xbox live user achievements. (getXblUserAchievements)
+
+    This API is used to get xbox live user achievements(Only for test).
+
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=2 (READ)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl
+
+        method: GET
+
+        tags: ["Achievement(Platform)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        xbox_user_id: (xboxUserId) REQUIRED str in query
+
+    Responses:
+        200: OK - XblUserAchievements (OK)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,6 +100,38 @@ async def get_xbl_user_achievements_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get xbox live user achievements. (getXblUserAchievements)
+
+    This API is used to get xbox live user achievements(Only for test).
+
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=2 (READ)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl
+
+        method: GET
+
+        tags: ["Achievement(Platform)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        xbox_user_id: (xboxUserId) REQUIRED str in query
+
+    Responses:
+        200: OK - XblUserAchievements (OK)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -85,11 +149,45 @@ async def get_xbl_user_achievements_async(
 @same_doc_as(UnlockSteamUserAchievement)
 def unlock_steam_user_achievement(
     user_id: str,
-    body: Optional[ADTOObjectForUnlockSteamAchievementAPI] = None,
+    body: Optional[SteamAchievementUpdateRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlock steam achievement. (unlockSteamUserAchievement)
+
+    This API is used to unlock steam achievement.
+
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=4 (UPDATE)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/steam
+
+        method: PUT
+
+        tags: ["Achievement(Platform)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL SteamAchievementUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        404: Not Found - ErrorEntity (39244: Steam config does not exist | 39245: Steam app id does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -105,11 +203,45 @@ def unlock_steam_user_achievement(
 @same_doc_as(UnlockSteamUserAchievement)
 async def unlock_steam_user_achievement_async(
     user_id: str,
-    body: Optional[ADTOObjectForUnlockSteamAchievementAPI] = None,
+    body: Optional[SteamAchievementUpdateRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Unlock steam achievement. (unlockSteamUserAchievement)
+
+    This API is used to unlock steam achievement.
+
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=4 (UPDATE)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/steam
+
+        method: PUT
+
+        tags: ["Achievement(Platform)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL SteamAchievementUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        404: Not Found - ErrorEntity (39244: Steam config does not exist | 39245: Steam app id does not exist)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -127,11 +259,43 @@ async def unlock_steam_user_achievement_async(
 @same_doc_as(UpdateXblUserAchievement)
 def update_xbl_user_achievement(
     user_id: str,
-    body: Optional[ADTOObjectForUpdateXboxAchievementCompletePercentageAPI] = None,
+    body: Optional[XblAchievementUpdateRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update xbox live achievements. (updateXblUserAchievement)
+
+    This API is used to update xbox live achievements.
+
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=4 (UPDATE)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl
+
+        method: PUT
+
+        tags: ["Achievement(Platform)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL XblAchievementUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -147,11 +311,43 @@ def update_xbl_user_achievement(
 @same_doc_as(UpdateXblUserAchievement)
 async def update_xbl_user_achievement_async(
     user_id: str,
-    body: Optional[ADTOObjectForUpdateXboxAchievementCompletePercentageAPI] = None,
+    body: Optional[XblAchievementUpdateRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Update xbox live achievements. (updateXblUserAchievement)
+
+    This API is used to update xbox live achievements.
+
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=4 (UPDATE)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl
+
+        method: PUT
+
+        tags: ["Achievement(Platform)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL XblAchievementUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

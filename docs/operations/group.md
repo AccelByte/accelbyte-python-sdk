@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Group Service Index (2.15.0)
+# AccelByte Cloud Group Service Index (2.15.1)
 
 
 ## Operations
@@ -31,6 +31,7 @@
 | /group/v2/public/namespaces/{namespace}/groups/{groupId} | DELETE | deleteGroupPublicV2 | `false` | [DeleteGroupPublicV2](../../accelbyte_py_sdk/api/group/operations/group/delete_group_public_v2.py) | [delete_group_public_v2](../../accelbyte_py_sdk/api/group/wrappers/_group.py) | [accelbyte_py_sdk_cli group-delete-group-public-v2](../../samples/cli/accelbyte_py_sdk_cli/group/_delete_group_public_v2.py) |
 | /group/v1/admin/namespaces/{namespace}/groups | GET | getGroupListAdminV1 | `false` | [GetGroupListAdminV1](../../accelbyte_py_sdk/api/group/operations/group/get_group_list_admin_v1.py) | [get_group_list_admin_v1](../../accelbyte_py_sdk/api/group/wrappers/_group.py) | [accelbyte_py_sdk_cli group-get-group-list-admin-v1](../../samples/cli/accelbyte_py_sdk_cli/group/_get_group_list_admin_v1.py) |
 | /group/v1/public/namespaces/{namespace}/groups | GET | getGroupListPublicV1 | `false` | [GetGroupListPublicV1](../../accelbyte_py_sdk/api/group/operations/group/get_group_list_public_v1.py) | [get_group_list_public_v1](../../accelbyte_py_sdk/api/group/wrappers/_group.py) | [accelbyte_py_sdk_cli group-get-group-list-public-v1](../../samples/cli/accelbyte_py_sdk_cli/group/_get_group_list_public_v1.py) |
+| /group/v2/admin/namespaces/{namespace}/groups/bulk | POST | getListGroupByIDsAdminV2 | `false` | [GetListGroupByIDsAdminV2](../../accelbyte_py_sdk/api/group/operations/group/get_list_group_by_i_ds__72c106.py) | [get_list_group_by_i_ds_admin_v2](../../accelbyte_py_sdk/api/group/wrappers/_group.py) | [accelbyte_py_sdk_cli group-get-list-group-by-i-ds-admin-v2](../../samples/cli/accelbyte_py_sdk_cli/group/_get_list_group_by_i_ds_admin_v2.py) |
 | /group/v2/public/namespaces/{namespace}/groups/bulk | POST | getListGroupByIDsV2 | `false` | [GetListGroupByIDsV2](../../accelbyte_py_sdk/api/group/operations/group/get_list_group_by_i_ds_v2.py) | [get_list_group_by_i_ds_v2](../../accelbyte_py_sdk/api/group/wrappers/_group.py) | [accelbyte_py_sdk_cli group-get-list-group-by-i-ds-v2](../../samples/cli/accelbyte_py_sdk_cli/group/_get_list_group_by_i_ds_v2.py) |
 | /group/v1/admin/namespaces/{namespace}/groups/{groupId} | GET | getSingleGroupAdminV1 | `false` | [GetSingleGroupAdminV1](../../accelbyte_py_sdk/api/group/operations/group/get_single_group_admin_v1.py) | [get_single_group_admin_v1](../../accelbyte_py_sdk/api/group/wrappers/_group.py) | [accelbyte_py_sdk_cli group-get-single-group-admin-v1](../../samples/cli/accelbyte_py_sdk_cli/group/_get_single_group_admin_v1.py) |
 | /group/v1/public/namespaces/{namespace}/groups/{groupId} | GET | getSingleGroupPublicV1 | `false` | [GetSingleGroupPublicV1](../../accelbyte_py_sdk/api/group/operations/group/get_single_group_public_v1.py) | [get_single_group_public_v1](../../accelbyte_py_sdk/api/group/wrappers/_group.py) | [accelbyte_py_sdk_cli group-get-single-group-public-v1](../../samples/cli/accelbyte_py_sdk_cli/group/_get_single_group_public_v1.py) |
@@ -108,6 +109,7 @@
 | models.CreateGroupConfigurationResponseV1 | [ModelsCreateGroupConfigurationResponseV1](../../accelbyte_py_sdk/api/group/models/models_create_group_configuration_response_v1.py) |
 | models.CreateMemberRoleRequestV1 | [ModelsCreateMemberRoleRequestV1](../../accelbyte_py_sdk/api/group/models/models_create_member_role_request_v1.py) |
 | models.GetGroupConfigurationResponseV1 | [ModelsGetGroupConfigurationResponseV1](../../accelbyte_py_sdk/api/group/models/models_get_group_configuration_response_v1.py) |
+| models.GetGroupListRequestV2 | [ModelsGetGroupListRequestV2](../../accelbyte_py_sdk/api/group/models/models_get_group_list_request_v2.py) |
 | models.GetGroupMemberListResponseV1 | [ModelsGetGroupMemberListResponseV1](../../accelbyte_py_sdk/api/group/models/models_get_group_member_list_response_v1.py) |
 | models.GetGroupsListResponseV1 | [ModelsGetGroupsListResponseV1](../../accelbyte_py_sdk/api/group/models/models_get_groups_list_response_v1.py) |
 | models.GetGroupsResponseV1 | [ModelsGetGroupsResponseV1](../../accelbyte_py_sdk/api/group/models/models_get_groups_response_v1.py) |
@@ -129,7 +131,6 @@
 | models.MemberRoleResponseV1 | [ModelsMemberRoleResponseV1](../../accelbyte_py_sdk/api/group/models/models_member_role_response_v1.py) |
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/group/models/models_pagination.py) |
 | models.PublicCreateNewGroupRequestV1 | [ModelsPublicCreateNewGroupRequestV1](../../accelbyte_py_sdk/api/group/models/models_public_create_new_group_request_v1.py) |
-| models.PublicGetGroupListRequestV2 | [ModelsPublicGetGroupListRequestV2](../../accelbyte_py_sdk/api/group/models/models_public_get_group_list_request_v2.py) |
 | models.RemoveRoleFromMemberRequestV1 | [ModelsRemoveRoleFromMemberRequestV1](../../accelbyte_py_sdk/api/group/models/models_remove_role_from_member_request_v1.py) |
 | models.RolePermission | [ModelsRolePermission](../../accelbyte_py_sdk/api/group/models/models_role_permission.py) |
 | models.Rule | [ModelsRule](../../accelbyte_py_sdk/api/group/models/models_rule.py) |

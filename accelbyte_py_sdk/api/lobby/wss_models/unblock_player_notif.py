@@ -25,6 +25,7 @@ from ....core import generate_websocket_message_id
 
 
 class UnblockPlayerNotif(WebSocketMessage):
+
     # region fields
 
     unblocked_user_id: str

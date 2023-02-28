@@ -51,6 +51,49 @@ def deregister_local_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deregister local DS (DeregisterLocalServer)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
+
+    This endpoint is intended to be called by local dedicated server
+    to let DSM know that it is shutting down.
+
+    Calling this will remove the server records from DB.```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/local/deregister
+
+        method: POST
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDeregisterLocalServerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (server removed)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -69,6 +112,49 @@ async def deregister_local_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Deregister local DS (DeregisterLocalServer)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
+
+    This endpoint is intended to be called by local dedicated server
+    to let DSM know that it is shutting down.
+
+    Calling this will remove the server records from DB.```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/local/deregister
+
+        method: POST
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDeregisterLocalServerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (server removed)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,6 +175,51 @@ def get_server_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Session ID (GetServerSession)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server
+    to query its session ID.
+    DS should call this when it first receive player connection,
+    to see if it is actually claimed```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/session
+
+        method: GET
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsServerSessionResponse (session found)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,6 +238,51 @@ async def get_server_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Get Session ID (GetServerSession)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server
+    to query its session ID.
+    DS should call this when it first receive player connection,
+    to see if it is actually claimed```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/session
+
+        method: GET
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsServerSessionResponse (session found)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -127,6 +303,55 @@ def register_local_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Register a local DS (RegisterLocalServer)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
+
+    Use the alternative GET of the same endpoint to upgrade DS connection to DSM via websocket.
+
+    This endpoint is intended to be called by local dedicated server to let DSM know that it is ready for use.
+    Use local DS only for development purposes since DSM wouldn't be able to properly manage local DS in production.
+    This MUST be called by DS after it is ready to accept match data and incoming client connections.
+
+    Upon successfully calling this endpoint, the dedicated
+    server is listed under READY local servers.```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/local/register
+
+        method: POST
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsRegisterLocalServerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsServer (server registered)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (server with same name already registered)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,6 +370,55 @@ async def register_local_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Register a local DS (RegisterLocalServer)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
+
+    Use the alternative GET of the same endpoint to upgrade DS connection to DSM via websocket.
+
+    This endpoint is intended to be called by local dedicated server to let DSM know that it is ready for use.
+    Use local DS only for development purposes since DSM wouldn't be able to properly manage local DS in production.
+    This MUST be called by DS after it is ready to accept match data and incoming client connections.
+
+    Upon successfully calling this endpoint, the dedicated
+    server is listed under READY local servers.```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/local/register
+
+        method: POST
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsRegisterLocalServerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsServer (server registered)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (server with same name already registered)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -165,6 +439,52 @@ def register_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Register a DS (RegisterServer)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server to let DSM know that it is ready for use.
+    This MUST be called by DS after it is ready to accept match data and incoming client connections.
+
+    Upon successfully calling this endpoint, the dedicated
+    server is listed under READY servers.```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/register
+
+        method: POST
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsRegisterServerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsServer (server registered)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (server with same name already registered)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -183,6 +503,52 @@ async def register_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Register a DS (RegisterServer)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server to let DSM know that it is ready for use.
+    This MUST be called by DS after it is ready to accept match data and incoming client connections.
+
+    Upon successfully calling this endpoint, the dedicated
+    server is listed under READY servers.```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/register
+
+        method: POST
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsRegisterServerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsServer (server registered)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (server with same name already registered)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -203,6 +569,48 @@ def shutdown_server(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Mark a DS is shutting down (ShutdownServer)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server to let DSM know that it is shutting down. Calling this will remove the server and session records from DB.Set 'kill_me' in request to 'true' if the DS cannot shut itself down.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/shutdown
+
+        method: POST
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsShutdownServerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (server removed)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,6 +629,48 @@ async def shutdown_server_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
+    """Mark a DS is shutting down (ShutdownServer)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server to let DSM know that it is shutting down. Calling this will remove the server and session records from DB.Set 'kill_me' in request to 'true' if the DS cannot shut itself down.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/shutdown
+
+        method: POST
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsShutdownServerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (server removed)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

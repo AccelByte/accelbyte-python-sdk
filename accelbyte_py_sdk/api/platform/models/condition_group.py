@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.23.0)
+# AccelByte Cloud Platform Service (4.24.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,7 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
-from ..models.predicate_object import PredicateObject
+from ..models.predicate import Predicate
 
 
 class OperatorEnum(StrEnum):
@@ -42,13 +42,13 @@ class ConditionGroup(Model):
     Properties:
         operator: (operator) OPTIONAL Union[str, OperatorEnum]
 
-        predicates: (predicates) OPTIONAL List[PredicateObject]
+        predicates: (predicates) OPTIONAL List[Predicate]
     """
 
     # region fields
 
     operator: Union[str, OperatorEnum]  # OPTIONAL
-    predicates: List[PredicateObject]  # OPTIONAL
+    predicates: List[Predicate]  # OPTIONAL
 
     # endregion fields
 
@@ -58,7 +58,7 @@ class ConditionGroup(Model):
         self.operator = value
         return self
 
-    def with_predicates(self, value: List[PredicateObject]) -> ConditionGroup:
+    def with_predicates(self, value: List[Predicate]) -> ConditionGroup:
         self.predicates = value
         return self
 
@@ -88,7 +88,7 @@ class ConditionGroup(Model):
     def create(
         cls,
         operator: Optional[Union[str, OperatorEnum]] = None,
-        predicates: Optional[List[PredicateObject]] = None,
+        predicates: Optional[List[Predicate]] = None,
     ) -> ConditionGroup:
         instance = cls()
         if operator is not None:
@@ -110,7 +110,7 @@ class ConditionGroup(Model):
             instance.operator = Union[str, OperatorEnum]()
         if "predicates" in dict_ and dict_["predicates"] is not None:
             instance.predicates = [
-                PredicateObject.create_from_dict(i0, include_empty=include_empty)
+                Predicate.create_from_dict(i0, include_empty=include_empty)
                 for i0 in dict_["predicates"]
             ]
         elif include_empty:
