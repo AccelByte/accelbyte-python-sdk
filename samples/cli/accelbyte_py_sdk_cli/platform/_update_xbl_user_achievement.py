@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.23.0)
+# Accelbyte Cloud Platform Service (4.24.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,10 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     update_xbl_user_achievement as update_xbl_user_achievement_internal,
 )
-from accelbyte_py_sdk.api.platform.models import (
-    ADTOObjectForUpdateXboxAchievementCompletePercentageAPI,
-)
 from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.platform.models import XblAchievementUpdateRequest
 
 
 @click.command()
@@ -65,9 +63,7 @@ def update_xbl_user_achievement(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ADTOObjectForUpdateXboxAchievementCompletePercentageAPI.create_from_dict(
-                body_json
-            )
+            body = XblAchievementUpdateRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = update_xbl_user_achievement_internal(

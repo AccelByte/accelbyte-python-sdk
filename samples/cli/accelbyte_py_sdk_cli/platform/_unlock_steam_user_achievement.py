@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.23.0)
+# Accelbyte Cloud Platform Service (4.24.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,8 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     unlock_steam_user_achievement as unlock_steam_user_achievement_internal,
 )
-from accelbyte_py_sdk.api.platform.models import ADTOObjectForUnlockSteamAchievementAPI
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import SteamAchievementUpdateRequest
 from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
@@ -64,7 +64,7 @@ def unlock_steam_user_achievement(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ADTOObjectForUnlockSteamAchievementAPI.create_from_dict(body_json)
+            body = SteamAchievementUpdateRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = unlock_steam_user_achievement_internal(

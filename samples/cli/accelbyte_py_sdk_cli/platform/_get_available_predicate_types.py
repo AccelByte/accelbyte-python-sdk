@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.23.0)
+# Accelbyte Cloud Platform Service (4.24.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,8 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     get_available_predicate_types as get_available_predicate_types_internal,
 )
+from accelbyte_py_sdk.api.platform.models import AvailablePredicate
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
-from accelbyte_py_sdk.api.platform.models import AvailablePredicateObject
 
 
 @click.command()

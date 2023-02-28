@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Achievement Service (2.14.0)
+# Accelbyte Cloud Achievement Service (2.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,21 +40,23 @@ from accelbyte_py_sdk.api.achievement.models import ResponseError
 
 
 @click.command()
-@click.option("--achievement_code", "achievement_code", type=str)
+@click.option("--achievement_codes", "achievement_codes", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--sort_by", "sort_by", type=str)
 @click.option("--status", "status", type=str)
+@click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_list_global_achievements(
-    achievement_code: Optional[str] = None,
+    achievement_codes: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[str] = None,
     status: Optional[str] = None,
+    tags: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -68,12 +70,19 @@ def public_list_global_achievements(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = public_list_global_achievements_internal(
-        achievement_code=achievement_code,
+        achievement_codes=achievement_codes,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
         status=status,
+        tags=tags,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

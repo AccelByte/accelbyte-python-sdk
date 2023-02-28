@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Justice Match Service V2 (2.1.1)
+# Justice Match Service V2 (2.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,6 +32,7 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.match2 import create_backfill as create_backfill_internal
 from accelbyte_py_sdk.api.match2.models import ApiBackFillCreateRequest
+from accelbyte_py_sdk.api.match2.models import ApiBackfillCreateResponse
 from accelbyte_py_sdk.api.match2.models import ResponseError
 
 

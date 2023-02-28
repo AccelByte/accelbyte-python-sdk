@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Group Service (2.15.0)
+# Accelbyte Cloud Group Service (2.15.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,8 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.group import (
     get_list_group_by_i_ds_v2 as get_list_group_by_i_ds_v2_internal,
 )
+from accelbyte_py_sdk.api.group.models import ModelsGetGroupListRequestV2
 from accelbyte_py_sdk.api.group.models import ModelsGetGroupsResponseV1
-from accelbyte_py_sdk.api.group.models import ModelsPublicGetGroupListRequestV2
 from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 
 
@@ -62,7 +62,7 @@ def get_list_group_by_i_ds_v2(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelsPublicGetGroupListRequestV2.create_from_dict(body_json)
+            body = ModelsGetGroupListRequestV2.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = get_list_group_by_i_ds_v2_internal(

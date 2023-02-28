@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Social Service (1.33.0)
+# Accelbyte Cloud Social Service (2.0.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,7 +34,7 @@ from accelbyte_py_sdk.api.social import (
     public_bulk_inc_user_stat_item_1 as public_bulk_inc_user_stat_item_1_internal,
 )
 from accelbyte_py_sdk.api.social.models import BulkStatItemInc
-from accelbyte_py_sdk.api.social.models import BulkStatItemOperationResult
+from accelbyte_py_sdk.api.social.models import BulkStatOperationResult
 from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 
 
