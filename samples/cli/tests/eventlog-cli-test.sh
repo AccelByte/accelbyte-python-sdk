@@ -29,10 +29,10 @@ touch "tmp.dat"
 if [ "$BATCH" = true ] ; then
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
-eventlog-query-event-stream-handler '{"clientId": "iAjE9R4d", "eventName": "k45tZsLi", "payloadQuery": {"bCpLqzVp": {}, "FvkarDx6": {}, "Li3R8rT1": {}}, "sessionId": "qflwUWrH", "traceId": "HzhqQSQV", "userId": "giqS40xI", "version": 37}' --login_with_auth "Bearer foo"
-eventlog-get-event-specific-user-v2-handler 'MduEjkYU' --login_with_auth "Bearer foo"
-eventlog-get-public-edit-history 'KVZaQ7q6' --login_with_auth "Bearer foo"
-eventlog-get-user-events-v2-public 'h0yN8jZd' --login_with_auth "Bearer foo"
+eventlog-query-event-stream-handler '{"clientId": "fRJya3R8", "eventName": "4NMHIFbB", "payloadQuery": {"rxpOja5Z": {}, "XnH46il8": {}, "YbIPIzml": {}}, "sessionId": "jRmPBhJ7", "traceId": "BSkflhzV", "userId": "0yWBEu70", "version": 46}' --login_with_auth "Bearer foo"
+eventlog-get-event-specific-user-v2-handler 'DDWonS2v' --login_with_auth "Bearer foo"
+eventlog-get-public-edit-history 'gL1DrLtH' --login_with_auth "Bearer foo"
+eventlog-get-user-events-v2-public '0JE6S5gT' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -147,28 +147,28 @@ eval_tap 0 29 'GetRegisteredEventsByEventTypeHandler # SKIP deprecated' test.out
 
 #- 30 QueryEventStreamHandler
 $PYTHON -m $MODULE 'eventlog-query-event-stream-handler' \
-    '{"clientId": "0hgWc8sa", "eventName": "R8fUE6JH", "payloadQuery": {"B6cQ2rV6": {}, "nx56tR6z": {}, "wJedpNP7": {}}, "sessionId": "i8mhnNbS", "traceId": "wg6yK6e8", "userId": "gLZMXlKu", "version": 43}' \
+    '{"clientId": "pD3AppCP", "eventName": "8xYmSKiS", "payloadQuery": {"ZIYFBk2m": {}, "MTXkQKnd": {}, "zrRHe6sl": {}}, "sessionId": "MhCV0LR1", "traceId": "CS5rmIlC", "userId": "axxqojMG", "version": 0}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 30 'QueryEventStreamHandler' test.out
 
 #- 31 GetEventSpecificUserV2Handler
 $PYTHON -m $MODULE 'eventlog-get-event-specific-user-v2-handler' \
-    'MAlIea9E' \
+    'CaRwTiV7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 31 'GetEventSpecificUserV2Handler' test.out
 
 #- 32 GetPublicEditHistory
 $PYTHON -m $MODULE 'eventlog-get-public-edit-history' \
-    'XHM4Tc6t' \
+    'tDjIFh32' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 32 'GetPublicEditHistory' test.out
 
 #- 33 GetUserEventsV2Public
 $PYTHON -m $MODULE 'eventlog-get-user-events-v2-public' \
-    'oVTmEhPv' \
+    'Ht00BMSX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 33 'GetUserEventsV2Public' test.out

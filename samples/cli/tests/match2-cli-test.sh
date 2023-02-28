@@ -31,28 +31,29 @@ if [ "$BATCH" = true ] ; then
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 match2-get-healthcheck-info --login_with_auth "Bearer foo"
 match2-get-healthcheck-info-v1 --login_with_auth "Bearer foo"
-match2-create-backfill '{"matchPool": "MuhihDg9", "sessionId": "E5kw8SJL"}' --login_with_auth "Bearer foo"
-match2-get-backfill-proposal 'YvGZ2fbw' --login_with_auth "Bearer foo"
-match2-get-backfill 'jCzceiR9' --login_with_auth "Bearer foo"
-match2-delete-backfill 'e9JFexz9' --login_with_auth "Bearer foo"
-match2-accept-backfill '{"proposalId": "xxMDdpol", "stop": true}' 'wLliArSO' --login_with_auth "Bearer foo"
-match2-reject-backfill '{"proposalId": "riVcuyeq", "stop": true}' 'UQd5e6uP' --login_with_auth "Bearer foo"
+match2-create-backfill '{"matchPool": "MEA19t1L", "sessionId": "0d5dDabw"}' --login_with_auth "Bearer foo"
+match2-get-backfill-proposal 'ab4PSX7F' --login_with_auth "Bearer foo"
+match2-get-backfill 'yM7vs7rE' --login_with_auth "Bearer foo"
+match2-delete-backfill 'uoA0eC8U' --login_with_auth "Bearer foo"
+match2-accept-backfill '{"proposalId": "gt9yGNv5", "stop": false}' 'MQpSMQxa' --login_with_auth "Bearer foo"
+match2-reject-backfill '{"proposalId": "yzYzlDnr", "stop": false}' 'ITnmoqps' --login_with_auth "Bearer foo"
 match2-match-function-list --login_with_auth "Bearer foo"
-match2-create-match-function '{"match_function": "UjGvbRjA", "url": "QPAVoYGk"}' --login_with_auth "Bearer foo"
-match2-delete-match-function '5BbCA7pc' --login_with_auth "Bearer foo"
+match2-create-match-function '{"match_function": "wi6XNmQR", "url": "0EuTM6z8"}' --login_with_auth "Bearer foo"
+match2-delete-match-function 'LTsV9R6P' --login_with_auth "Bearer foo"
 match2-match-pool-list --login_with_auth "Bearer foo"
-match2-create-match-pool '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 34, "backfill_ticket_expiration_seconds": 63, "match_function": "TzrcToQq", "match_function_override": {"backfill_matches": "XcMtzfLW", "hydration": ["X3xrj3L3", "fduEPICC", "qtZfOiHd"], "make_matches": "SawWyJzK", "stat_codes": ["JI3FvhvW", "lIRf2Lue", "8skXXVdk"], "validation": ["ZfhDyZyN", "obhHWxRc", "1sq5jSx8"]}, "name": "YlXCde5T", "rule_set": "37SrEpUO", "session_template": "217yec9d", "ticket_expiration_seconds": 78}' --login_with_auth "Bearer foo"
-match2-match-pool-details 'IKBgxb99' --login_with_auth "Bearer foo"
-match2-update-match-pool '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 5, "backfill_ticket_expiration_seconds": 90, "match_function": "UACYbY10", "match_function_override": {"backfill_matches": "wGivqddB", "hydration": ["OMj4cRQL", "fZMVe0FO", "OQBWgRU3"], "make_matches": "zxmxlVtO", "stat_codes": ["P8Lb0wjV", "tv2qDfRc", "Jlw1YI9U"], "validation": ["v6x7V3Zm", "wcFMyFOQ", "pH7KVbzQ"]}, "rule_set": "9346PN7x", "session_template": "Ga6ZoHRX", "ticket_expiration_seconds": 7}' '3awGPxfY' --login_with_auth "Bearer foo"
-match2-delete-match-pool 'm2B7Uq5Q' --login_with_auth "Bearer foo"
-match2-create-match-ticket '{"attributes": {"52mDCAnN": {}, "KFhPcHr5": {}, "h2mG4sod": {}}, "latencies": {"xWiUunCX": 51, "y1O5vy9z": 4, "Raqg0K4H": 64}, "matchPool": "xW7ZVo1p", "sessionID": "2oQ1QZXV"}' --login_with_auth "Bearer foo"
-match2-match-ticket-details 'X0h18QOY' --login_with_auth "Bearer foo"
-match2-delete-match-ticket 'CsnKoopv' --login_with_auth "Bearer foo"
+match2-create-match-pool '{"auto_accept_backfill_proposal": false, "backfill_proposal_expiration_seconds": 6, "backfill_ticket_expiration_seconds": 76, "match_function": "OV4m8LIk", "match_function_override": {"backfill_matches": "mC52MnsX", "hydration": ["LefdjX0g", "mTat7yPN", "oXjz5wHf"], "make_matches": "shtyCeAp", "stat_codes": ["Yua7Jllf", "V4IkYNqp", "taFqSgQo"], "validation": ["Pjd2Ts9Q", "ef2Py200", "x2zKZcED"]}, "name": "yY5YQN1Y", "rule_set": "sCmaLpAY", "session_template": "LYvopnLB", "ticket_expiration_seconds": 18}' --login_with_auth "Bearer foo"
+match2-match-pool-details 'RZWE3eTS' --login_with_auth "Bearer foo"
+match2-update-match-pool '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 32, "backfill_ticket_expiration_seconds": 26, "match_function": "nyssDBnf", "match_function_override": {"backfill_matches": "K8NetXZ0", "hydration": ["9mSR6cEl", "g0aBmeC2", "Cx9QJx4Q"], "make_matches": "nxJsE03H", "stat_codes": ["lCHn8hNW", "SyMI67qG", "wRPpAVWu"], "validation": ["fJ9wkHf8", "CkzkkDMy", "fFoX466d"]}, "rule_set": "1f0Qr3ar", "session_template": "EwHrhbd0", "ticket_expiration_seconds": 11}' 'cGF9C3U2' --login_with_auth "Bearer foo"
+match2-delete-match-pool 'KjBJdepq' --login_with_auth "Bearer foo"
+match2-match-pool-metric 'qyz1uNgc' --login_with_auth "Bearer foo"
+match2-create-match-ticket '{"attributes": {"a6FEYUt1": {}, "vxlESYMe": {}, "CAXavcyK": {}}, "latencies": {"ZvzorKUj": 13, "U79LXfbA": 40, "ihSMeehG": 40}, "matchPool": "mUDrpfFp", "sessionID": "Q2LvvVJw"}' --login_with_auth "Bearer foo"
+match2-match-ticket-details 'M2texGFo' --login_with_auth "Bearer foo"
+match2-delete-match-ticket 'eSI9ReUd' --login_with_auth "Bearer foo"
 match2-rule-set-list --login_with_auth "Bearer foo"
-match2-create-rule-set '{"data": {"uA3azI1Q": {}, "BCOaVwAJ": {}, "jDMYrdUv": {}}, "enable_custom_match_function": false, "name": "FUTnAtDY"}' --login_with_auth "Bearer foo"
-match2-rule-set-details 'qETq4iWt' --login_with_auth "Bearer foo"
-match2-update-rule-set '{"data": {"wW0MoOTk": {}, "DNRurkEy": {}, "P7I8lJo4": {}}, "enable_custom_match_function": true, "name": "5UHTwxxP"}' '3TS3LJuC' --login_with_auth "Bearer foo"
-match2-delete-rule-set '9BtseNPM' --login_with_auth "Bearer foo"
+match2-create-rule-set '{"data": {"7epv1Liq": {}, "Pz7QtXTL": {}, "vI4hamRo": {}}, "enable_custom_match_function": true, "name": "szHSw0wG"}' --login_with_auth "Bearer foo"
+match2-rule-set-details 'TCeZE6e6' --login_with_auth "Bearer foo"
+match2-update-rule-set '{"data": {"1hIGTOd9": {}, "6au8ZOMq": {}, "gYkiVeIj": {}}, "enable_custom_match_function": true, "name": "5r6Apbqs"}' 'vr8szoht' --login_with_auth "Bearer foo"
+match2-delete-rule-set 'iYCPeiOG' --login_with_auth "Bearer foo"
 match2-version-check-handler --login_with_auth "Bearer foo"
 exit()
 END
@@ -73,7 +74,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..26"
+echo "1..27"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -96,44 +97,44 @@ eval_tap $? 3 'GetHealthcheckInfoV1' test.out
 
 #- 4 CreateBackfill
 $PYTHON -m $MODULE 'match2-create-backfill' \
-    '{"matchPool": "RXURgoDg", "sessionId": "OAwCJ637"}' \
+    '{"matchPool": "z8W4mHzB", "sessionId": "FrK0XVod"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 4 'CreateBackfill' test.out
 
 #- 5 GetBackfillProposal
 $PYTHON -m $MODULE 'match2-get-backfill-proposal' \
-    'GZiaOfFw' \
+    'XnCjbZc8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'GetBackfillProposal' test.out
 
 #- 6 GetBackfill
 $PYTHON -m $MODULE 'match2-get-backfill' \
-    'WK5IGrFW' \
+    'fmN4SjmZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'GetBackfill' test.out
 
 #- 7 DeleteBackfill
 $PYTHON -m $MODULE 'match2-delete-backfill' \
-    'U2jGRRlS' \
+    '06GvNUCv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'DeleteBackfill' test.out
 
 #- 8 AcceptBackfill
 $PYTHON -m $MODULE 'match2-accept-backfill' \
-    '{"proposalId": "EoIMRUz2", "stop": false}' \
-    'Did0Msj5' \
+    '{"proposalId": "5L2GNscp", "stop": true}' \
+    'gpqlzsIB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'AcceptBackfill' test.out
 
 #- 9 RejectBackfill
 $PYTHON -m $MODULE 'match2-reject-backfill' \
-    '{"proposalId": "8lRQYxJp", "stop": false}' \
-    'k8hmpn2q' \
+    '{"proposalId": "MnmhBDFQ", "stop": false}' \
+    'LklFXWIf' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'RejectBackfill' test.out
@@ -146,14 +147,14 @@ eval_tap $? 10 'MatchFunctionList' test.out
 
 #- 11 CreateMatchFunction
 $PYTHON -m $MODULE 'match2-create-match-function' \
-    '{"match_function": "P1p7WBtm", "url": "1jrtrRsI"}' \
+    '{"match_function": "0UiK6JzK", "url": "61CNTnq1"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'CreateMatchFunction' test.out
 
 #- 12 DeleteMatchFunction
 $PYTHON -m $MODULE 'match2-delete-match-function' \
-    'Lm9cD37F' \
+    'VrGmAsee' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'DeleteMatchFunction' test.out
@@ -166,94 +167,101 @@ eval_tap $? 13 'MatchPoolList' test.out
 
 #- 14 CreateMatchPool
 $PYTHON -m $MODULE 'match2-create-match-pool' \
-    '{"auto_accept_backfill_proposal": false, "backfill_proposal_expiration_seconds": 26, "backfill_ticket_expiration_seconds": 54, "match_function": "t3zuZvcM", "match_function_override": {"backfill_matches": "rv6x9kpr", "hydration": ["iwjsz2ox", "0fNXa6yH", "tZe1f2wR"], "make_matches": "iSJKRt5o", "stat_codes": ["MSI1O2Hd", "vuSj8LNb", "ilnxGKBQ"], "validation": ["F7mLEROG", "4n45GYAG", "1yKBDpyr"]}, "name": "MqDr2nyU", "rule_set": "RGVsMCw0", "session_template": "7Gtgo0IY", "ticket_expiration_seconds": 36}' \
+    '{"auto_accept_backfill_proposal": false, "backfill_proposal_expiration_seconds": 18, "backfill_ticket_expiration_seconds": 2, "match_function": "NUeJOrSD", "match_function_override": {"backfill_matches": "IBLNU6YD", "hydration": ["NMsD41Ao", "fykbjfEv", "crMYRASb"], "make_matches": "NHzvCMdR", "stat_codes": ["GTbBb4f2", "TI5s1GMo", "yIIyFvdJ"], "validation": ["ON7MptCo", "ySnvV7OM", "21v0G2c6"]}, "name": "rp21fCzT", "rule_set": "4B2mZLlj", "session_template": "jLndI7E9", "ticket_expiration_seconds": 36}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 14 'CreateMatchPool' test.out
 
 #- 15 MatchPoolDetails
 $PYTHON -m $MODULE 'match2-match-pool-details' \
-    'rD1jsUkh' \
+    'Hu8iXZNb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 15 'MatchPoolDetails' test.out
 
 #- 16 UpdateMatchPool
 $PYTHON -m $MODULE 'match2-update-match-pool' \
-    '{"auto_accept_backfill_proposal": false, "backfill_proposal_expiration_seconds": 28, "backfill_ticket_expiration_seconds": 18, "match_function": "9jQgSyg6", "match_function_override": {"backfill_matches": "xJs7vKgG", "hydration": ["YR2DCixK", "n7vL8FYf", "wYrcKKX4"], "make_matches": "y5uJ4FtQ", "stat_codes": ["4eZy5GNs", "AW7Iy5cp", "iMAQNtMU"], "validation": ["O6HlNVib", "Ry1tOWbr", "w2nmwfN0"]}, "rule_set": "v0VV9suF", "session_template": "z8lJSQp6", "ticket_expiration_seconds": 0}' \
-    'xH98kPIc' \
+    '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 30, "backfill_ticket_expiration_seconds": 51, "match_function": "q9SwDxHY", "match_function_override": {"backfill_matches": "HiKWljcA", "hydration": ["rvavoqs3", "wlQi7sBd", "dD6dMKBu"], "make_matches": "GcfRSNF6", "stat_codes": ["bt4CzWD3", "RhZP6FTa", "dMmcYW71"], "validation": ["RItOQpLJ", "BNU5FeIL", "t8om8rdA"]}, "rule_set": "sgfyqxcP", "session_template": "gKv5ImEW", "ticket_expiration_seconds": 47}' \
+    'wPSPpWK7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 16 'UpdateMatchPool' test.out
 
 #- 17 DeleteMatchPool
 $PYTHON -m $MODULE 'match2-delete-match-pool' \
-    'JH4LYbI3' \
+    'wKKjQmgM' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'DeleteMatchPool' test.out
 
-#- 18 CreateMatchTicket
+#- 18 MatchPoolMetric
+$PYTHON -m $MODULE 'match2-match-pool-metric' \
+    'NUiWjgmm' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 18 'MatchPoolMetric' test.out
+
+#- 19 CreateMatchTicket
 $PYTHON -m $MODULE 'match2-create-match-ticket' \
-    '{"attributes": {"6pt4pxxB": {}, "bBS17wbR": {}, "eA8fU3kI": {}}, "latencies": {"xClIrxxu": 49, "5b9Q8Xja": 18, "zQH1TMDm": 34}, "matchPool": "UjdhmhbL", "sessionID": "IoxRs25v"}' \
+    '{"attributes": {"xr4vAT9n": {}, "Gbpn12SM": {}, "w7LyEcZz": {}}, "latencies": {"XzV2nQWi": 70, "rmvmX4X2": 17, "IfXWTArm": 44}, "matchPool": "JnvbtICC", "sessionID": "TQPlDQB6"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 18 'CreateMatchTicket' test.out
+eval_tap $? 19 'CreateMatchTicket' test.out
 
-#- 19 MatchTicketDetails
+#- 20 MatchTicketDetails
 $PYTHON -m $MODULE 'match2-match-ticket-details' \
-    '4AstWxZn' \
+    'N6H7CwJv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 19 'MatchTicketDetails' test.out
+eval_tap $? 20 'MatchTicketDetails' test.out
 
-#- 20 DeleteMatchTicket
+#- 21 DeleteMatchTicket
 $PYTHON -m $MODULE 'match2-delete-match-ticket' \
-    'KDzjvjC3' \
+    'WvmChLk8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 20 'DeleteMatchTicket' test.out
+eval_tap $? 21 'DeleteMatchTicket' test.out
 
-#- 21 RuleSetList
+#- 22 RuleSetList
 $PYTHON -m $MODULE 'match2-rule-set-list' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 21 'RuleSetList' test.out
+eval_tap $? 22 'RuleSetList' test.out
 
-#- 22 CreateRuleSet
+#- 23 CreateRuleSet
 $PYTHON -m $MODULE 'match2-create-rule-set' \
-    '{"data": {"1fqvYhuv": {}, "Z1m6CH3m": {}, "DujjDxtz": {}}, "enable_custom_match_function": false, "name": "mQvxwyk0"}' \
+    '{"data": {"s3aBhpfA": {}, "FW8IIi4u": {}, "NWYdYsFe": {}}, "enable_custom_match_function": true, "name": "GBYGRxfy"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 22 'CreateRuleSet' test.out
+eval_tap $? 23 'CreateRuleSet' test.out
 
-#- 23 RuleSetDetails
+#- 24 RuleSetDetails
 $PYTHON -m $MODULE 'match2-rule-set-details' \
-    'WeSaiBuG' \
+    'lW7RFXZ3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 23 'RuleSetDetails' test.out
+eval_tap $? 24 'RuleSetDetails' test.out
 
-#- 24 UpdateRuleSet
+#- 25 UpdateRuleSet
 $PYTHON -m $MODULE 'match2-update-rule-set' \
-    '{"data": {"M0vARLAa": {}, "NLDtMpTV": {}, "mxGSQ9AV": {}}, "enable_custom_match_function": true, "name": "BYP60k8U"}' \
-    'pwmvzS2G' \
+    '{"data": {"48OTsmnv": {}, "zsNxDsVJ": {}, "EG4jeJOM": {}}, "enable_custom_match_function": true, "name": "WT2Tbu78"}' \
+    '70Z5eSA2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 24 'UpdateRuleSet' test.out
+eval_tap $? 25 'UpdateRuleSet' test.out
 
-#- 25 DeleteRuleSet
+#- 26 DeleteRuleSet
 $PYTHON -m $MODULE 'match2-delete-rule-set' \
-    'ky91ZXNa' \
+    'RWlPYGl6' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 25 'DeleteRuleSet' test.out
+eval_tap $? 26 'DeleteRuleSet' test.out
 
-#- 26 VersionCheckHandler
+#- 27 VersionCheckHandler
 $PYTHON -m $MODULE 'match2-version-check-handler' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 26 'VersionCheckHandler' test.out
+eval_tap $? 27 'VersionCheckHandler' test.out
 
 
 fi

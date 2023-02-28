@@ -30,76 +30,77 @@ if [ "$BATCH" = true ] ; then
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 group-list-group-configuration-admin-v1 --login_with_auth "Bearer foo"
-group-create-group-configuration-admin-v1 '{"allowMultiple": false, "configurationCode": "jbMzZ7nn", "description": "X5osVDID", "globalRules": [{"allowedAction": "bK4VxsJ1", "ruleDetail": [{"ruleAttribute": "48qSxuYi", "ruleCriteria": "EQUAL", "ruleValue": 0.3245895295610205}, {"ruleAttribute": "7J04lWI4", "ruleCriteria": "MINIMUM", "ruleValue": 0.21725651056365225}, {"ruleAttribute": "Fubve18V", "ruleCriteria": "EQUAL", "ruleValue": 0.8762487737792533}]}, {"allowedAction": "ioLEC57L", "ruleDetail": [{"ruleAttribute": "8aYCisPL", "ruleCriteria": "MAXIMUM", "ruleValue": 0.6699530355429028}, {"ruleAttribute": "tvTLDlmm", "ruleCriteria": "MAXIMUM", "ruleValue": 0.66749679097074}, {"ruleAttribute": "NzK6B8wF", "ruleCriteria": "MINIMUM", "ruleValue": 0.7279271726817499}]}, {"allowedAction": "QYrOhKwg", "ruleDetail": [{"ruleAttribute": "FREOXCGi", "ruleCriteria": "MINIMUM", "ruleValue": 0.04079893461886952}, {"ruleAttribute": "HqdKkhYT", "ruleCriteria": "MINIMUM", "ruleValue": 0.7716701187053648}, {"ruleAttribute": "dzMy3Tkj", "ruleCriteria": "MINIMUM", "ruleValue": 0.48512358458791305}]}], "groupAdminRoleId": "UbSc3mIs", "groupMaxMember": 38, "groupMemberRoleId": "Vm9LEBli", "name": "2SKp8O2C"}' --login_with_auth "Bearer foo"
+group-create-group-configuration-admin-v1 '{"allowMultiple": false, "configurationCode": "5UvFBlJS", "description": "FdJv9fHn", "globalRules": [{"allowedAction": "zBG2BA7K", "ruleDetail": [{"ruleAttribute": "w3mCi443", "ruleCriteria": "MAXIMUM", "ruleValue": 0.8848195230125973}, {"ruleAttribute": "td4XYPqQ", "ruleCriteria": "MINIMUM", "ruleValue": 0.5762888498669193}, {"ruleAttribute": "htrOSQXQ", "ruleCriteria": "EQUAL", "ruleValue": 0.5963119536741581}]}, {"allowedAction": "dC19eYCE", "ruleDetail": [{"ruleAttribute": "91JwdulM", "ruleCriteria": "EQUAL", "ruleValue": 0.5839723743285915}, {"ruleAttribute": "LhQWK8be", "ruleCriteria": "EQUAL", "ruleValue": 0.428780896284797}, {"ruleAttribute": "jurHf2dE", "ruleCriteria": "MAXIMUM", "ruleValue": 0.9965581709087645}]}, {"allowedAction": "WmUrbwUm", "ruleDetail": [{"ruleAttribute": "S77W20cS", "ruleCriteria": "MINIMUM", "ruleValue": 0.38014091354284085}, {"ruleAttribute": "Fw5l3JzD", "ruleCriteria": "EQUAL", "ruleValue": 0.8006194112316304}, {"ruleAttribute": "o3Qmfc7m", "ruleCriteria": "EQUAL", "ruleValue": 0.26733861184262797}]}], "groupAdminRoleId": "qp0GVWNn", "groupMaxMember": 67, "groupMemberRoleId": "LCmIs0br", "name": "UZTsmxi1"}' --login_with_auth "Bearer foo"
 group-initiate-group-configuration-admin-v1 --login_with_auth "Bearer foo"
-group-get-group-configuration-admin-v1 'oZraNL59' --login_with_auth "Bearer foo"
-group-delete-group-configuration-v1 'k7MkU4Qc' --login_with_auth "Bearer foo"
-group-update-group-configuration-admin-v1 '{"description": "P6SiexmF", "groupMaxMember": 99, "name": "wPKTXt74"}' 'rA74mMEW' --login_with_auth "Bearer foo"
-group-update-group-configuration-global-rule-admin-v1 '{"ruleDetail": [{"ruleAttribute": "ZWF0exUP", "ruleCriteria": "MAXIMUM", "ruleValue": 0.7027114588495675}, {"ruleAttribute": "UDy6FsjE", "ruleCriteria": "MINIMUM", "ruleValue": 0.4750914049301569}, {"ruleAttribute": "Btcr2por", "ruleCriteria": "MINIMUM", "ruleValue": 0.3538268728710928}]}' 'B7Mkv9b6' 'cPVKYyBp' --login_with_auth "Bearer foo"
-group-delete-group-configuration-global-rule-admin-v1 'C4Yu8Qh9' 'qT2xxOLB' --login_with_auth "Bearer foo"
+group-get-group-configuration-admin-v1 '7gxVlYlv' --login_with_auth "Bearer foo"
+group-delete-group-configuration-v1 'LzBiQHsQ' --login_with_auth "Bearer foo"
+group-update-group-configuration-admin-v1 '{"description": "OKmoJAde", "groupMaxMember": 5, "name": "GCXgRqt0"}' 'Br3BX94Y' --login_with_auth "Bearer foo"
+group-update-group-configuration-global-rule-admin-v1 '{"ruleDetail": [{"ruleAttribute": "Uvfp53JP", "ruleCriteria": "EQUAL", "ruleValue": 0.1392532440014843}, {"ruleAttribute": "vMubI3gP", "ruleCriteria": "EQUAL", "ruleValue": 0.4970224625749099}, {"ruleAttribute": "YwZZGVsD", "ruleCriteria": "MINIMUM", "ruleValue": 0.2167428983606915}]}' 'OYXiqyhy' 'fErMHmxR' --login_with_auth "Bearer foo"
+group-delete-group-configuration-global-rule-admin-v1 'MntHtNVf' '7P3NANdM' --login_with_auth "Bearer foo"
 group-get-group-list-admin-v1 --login_with_auth "Bearer foo"
-group-get-single-group-admin-v1 '6UZvch16' --login_with_auth "Bearer foo"
-group-delete-group-admin-v1 'IzfmG2rz' --login_with_auth "Bearer foo"
-group-get-group-members-list-admin-v1 'yhDWIgn8' --login_with_auth "Bearer foo"
+group-get-single-group-admin-v1 'PAOyLv62' --login_with_auth "Bearer foo"
+group-delete-group-admin-v1 'tNDJxfGU' --login_with_auth "Bearer foo"
+group-get-group-members-list-admin-v1 'K8nuK25r' --login_with_auth "Bearer foo"
 group-get-member-roles-list-admin-v1 --login_with_auth "Bearer foo"
-group-create-member-role-admin-v1 '{"memberRoleName": "C1RiupHo", "memberRolePermissions": [{"action": 19, "resourceName": "yCSIMJpB"}, {"action": 45, "resourceName": "554qNsxE"}, {"action": 3, "resourceName": "n3UIEyCV"}]}' --login_with_auth "Bearer foo"
-group-get-single-member-role-admin-v1 'ezLAAFSS' --login_with_auth "Bearer foo"
-group-delete-member-role-admin-v1 '9UUI3llk' --login_with_auth "Bearer foo"
-group-update-member-role-admin-v1 '{"memberRoleName": "mswDlbOL"}' '12iY4uSb' --login_with_auth "Bearer foo"
-group-update-member-role-permission-admin-v1 '{"memberRolePermissions": [{"action": 71, "resourceName": "b8A0cOGS"}, {"action": 99, "resourceName": "VZ7xzNCe"}, {"action": 47, "resourceName": "9295CS5E"}]}' 'SrhWJhJY' --login_with_auth "Bearer foo"
+group-create-member-role-admin-v1 '{"memberRoleName": "VhuISOsu", "memberRolePermissions": [{"action": 8, "resourceName": "ZWXKdUmY"}, {"action": 5, "resourceName": "7s8HOpVn"}, {"action": 88, "resourceName": "lX7TdTh6"}]}' --login_with_auth "Bearer foo"
+group-get-single-member-role-admin-v1 'WVSiG7YO' --login_with_auth "Bearer foo"
+group-delete-member-role-admin-v1 '4Lc9xE6R' --login_with_auth "Bearer foo"
+group-update-member-role-admin-v1 '{"memberRoleName": "TQvfgg1i"}' 'lANzywXO' --login_with_auth "Bearer foo"
+group-update-member-role-permission-admin-v1 '{"memberRolePermissions": [{"action": 77, "resourceName": "8RsBrWA8"}, {"action": 32, "resourceName": "FmrbtK5V"}, {"action": 29, "resourceName": "i9VcFTwT"}]}' 'LeTfSgjW' --login_with_auth "Bearer foo"
 group-get-group-list-public-v1 --login_with_auth "Bearer foo"
-group-create-new-group-public-v1 '{"configurationCode": "mbLtIIBT", "customAttributes": {"a7OqKJ1Y": {}, "h6asPqlm": {}, "KE7d3R3F": {}}, "groupDescription": "9xJRz7V1", "groupIcon": "jmZMW25p", "groupMaxMember": 78, "groupName": "kpqXQLfm", "groupRegion": "8VvdjI4l", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "pE4Jfa88", "ruleDetail": [{"ruleAttribute": "UIhjQd8O", "ruleCriteria": "MINIMUM", "ruleValue": 0.06232212125732395}, {"ruleAttribute": "nLJk8v0I", "ruleCriteria": "MAXIMUM", "ruleValue": 0.11526793333888385}, {"ruleAttribute": "3RdbXaar", "ruleCriteria": "MINIMUM", "ruleValue": 0.24692800557823757}]}, {"allowedAction": "kwh9cZRq", "ruleDetail": [{"ruleAttribute": "IJzFqxJJ", "ruleCriteria": "EQUAL", "ruleValue": 0.28022641426529415}, {"ruleAttribute": "Lns5Lbht", "ruleCriteria": "MINIMUM", "ruleValue": 0.05840232689253577}, {"ruleAttribute": "jjkVlegc", "ruleCriteria": "MAXIMUM", "ruleValue": 0.798689764604192}]}, {"allowedAction": "92B1Bg4g", "ruleDetail": [{"ruleAttribute": "VK1CAD3z", "ruleCriteria": "MINIMUM", "ruleValue": 0.2624352828468487}, {"ruleAttribute": "Dc6bpE0D", "ruleCriteria": "MINIMUM", "ruleValue": 0.8632219294702537}, {"ruleAttribute": "idEP1yI6", "ruleCriteria": "MINIMUM", "ruleValue": 0.6367490321893691}]}]}, "groupType": "StA6fGyA"}' --login_with_auth "Bearer foo"
-group-get-single-group-public-v1 'Jbflkpo7' --login_with_auth "Bearer foo"
-group-update-single-group-v1 '{"customAttributes": {}, "groupDescription": "ZkPcxfGv", "groupIcon": "6iNKAFNl", "groupName": "yE0dP6Qq", "groupRegion": "wh4uWvfE", "groupType": "k4pZSZov"}' 'TUUBMcR4' --login_with_auth "Bearer foo"
-group-delete-group-public-v1 '0AwxYDRD' --login_with_auth "Bearer foo"
-group-update-patch-single-group-public-v1 '{"customAttributes": {}, "groupDescription": "S9QFWA86", "groupIcon": "IRGcy6SV", "groupName": "d2T9SztT", "groupRegion": "jk8QkU91", "groupType": "S6v5cGT5"}' 'BnZKt45q' --login_with_auth "Bearer foo"
-group-update-group-custom-attributes-public-v1 '{"customAttributes": {"dbG947ZL": {}, "NrPwWXoS": {}, "mFGYvUlM": {}}}' 'Zjc8X3Fv' --login_with_auth "Bearer foo"
-group-accept-group-invitation-public-v1 '224yXzsy' --login_with_auth "Bearer foo"
-group-reject-group-invitation-public-v1 'caQSnr3g' --login_with_auth "Bearer foo"
-group-join-group-v1 'RlVCKwza' --login_with_auth "Bearer foo"
-group-cancel-group-join-request-v1 'w7NpXXA7' --login_with_auth "Bearer foo"
-group-get-group-join-request-public-v1 'ZNIHm4sF' --login_with_auth "Bearer foo"
-group-get-group-members-list-public-v1 'hgfkiyuH' --login_with_auth "Bearer foo"
-group-update-group-custom-rule-public-v1 '{"groupCustomRule": {"W71yk9ST": {}, "UQ35qgUP": {}, "v7bwE1RR": {}}}' 'ft8YtniL' --login_with_auth "Bearer foo"
-group-update-group-predefined-rule-public-v1 '{"ruleDetail": [{"ruleAttribute": "4zRgjXkM", "ruleCriteria": "MAXIMUM", "ruleValue": 0.39725819297306153}, {"ruleAttribute": "eN2WYUao", "ruleCriteria": "EQUAL", "ruleValue": 0.290998066898971}, {"ruleAttribute": "8pbc6v8c", "ruleCriteria": "MINIMUM", "ruleValue": 0.41166552891829333}]}' '7MhGpbjS' 'cOFIFkYi' --login_with_auth "Bearer foo"
-group-delete-group-predefined-rule-public-v1 'eLKIA7gr' '7WrILSH4' --login_with_auth "Bearer foo"
+group-create-new-group-public-v1 '{"configurationCode": "0dUcs5xr", "customAttributes": {"iN0en1aN": {}, "cj4zjJgP": {}, "I1Q7dPBZ": {}}, "groupDescription": "oRfnnYjP", "groupIcon": "RwLBUFio", "groupMaxMember": 52, "groupName": "NkkKOMGN", "groupRegion": "YHIZiayw", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "FfM3tH6w", "ruleDetail": [{"ruleAttribute": "Dxxl63iD", "ruleCriteria": "EQUAL", "ruleValue": 0.997256228488175}, {"ruleAttribute": "QmVd2L8u", "ruleCriteria": "MINIMUM", "ruleValue": 0.20234443844804295}, {"ruleAttribute": "GMp6rMtz", "ruleCriteria": "EQUAL", "ruleValue": 0.12632357390654225}]}, {"allowedAction": "tAGw9q5j", "ruleDetail": [{"ruleAttribute": "3HEYy76I", "ruleCriteria": "MAXIMUM", "ruleValue": 0.25400114004272156}, {"ruleAttribute": "MHF3GWTd", "ruleCriteria": "EQUAL", "ruleValue": 0.12957678807734752}, {"ruleAttribute": "x0pOV4k6", "ruleCriteria": "MAXIMUM", "ruleValue": 0.7444430675523602}]}, {"allowedAction": "6YhsQT7a", "ruleDetail": [{"ruleAttribute": "bSyz2Bv0", "ruleCriteria": "EQUAL", "ruleValue": 0.3361881021880724}, {"ruleAttribute": "5zYYHsSf", "ruleCriteria": "MAXIMUM", "ruleValue": 0.21476297118452914}, {"ruleAttribute": "Ut9rk5J8", "ruleCriteria": "MAXIMUM", "ruleValue": 0.13840436684080892}]}]}, "groupType": "PRIVATE"}' --login_with_auth "Bearer foo"
+group-get-single-group-public-v1 '83oQHwxF' --login_with_auth "Bearer foo"
+group-update-single-group-v1 '{"customAttributes": {}, "groupDescription": "pHGeKonA", "groupIcon": "oahPkZhI", "groupName": "UWO44tD7", "groupRegion": "HHTxfDQC", "groupType": "PUBLIC"}' 'ziMRPSk6' --login_with_auth "Bearer foo"
+group-delete-group-public-v1 '4KopHJ8L' --login_with_auth "Bearer foo"
+group-update-patch-single-group-public-v1 '{"customAttributes": {}, "groupDescription": "GAWkfeyw", "groupIcon": "B2veQ0YU", "groupName": "2o2TsoRu", "groupRegion": "3653OEW0", "groupType": "PUBLIC"}' '8T7EyMSR' --login_with_auth "Bearer foo"
+group-update-group-custom-attributes-public-v1 '{"customAttributes": {"ckpbcHdh": {}, "tOhsEE8u": {}, "O8PAX57y": {}}}' 'LXKWFFIS' --login_with_auth "Bearer foo"
+group-accept-group-invitation-public-v1 'di6o07gk' --login_with_auth "Bearer foo"
+group-reject-group-invitation-public-v1 'krCD400R' --login_with_auth "Bearer foo"
+group-join-group-v1 'oLGZEBXG' --login_with_auth "Bearer foo"
+group-cancel-group-join-request-v1 'v4JkRLd9' --login_with_auth "Bearer foo"
+group-get-group-join-request-public-v1 'zfLazRdL' --login_with_auth "Bearer foo"
+group-get-group-members-list-public-v1 'dLstVkgG' --login_with_auth "Bearer foo"
+group-update-group-custom-rule-public-v1 '{"groupCustomRule": {"4IPIlwLq": {}, "4TPVX3lF": {}, "A7ZP5rb6": {}}}' 'rlgolGH4' --login_with_auth "Bearer foo"
+group-update-group-predefined-rule-public-v1 '{"ruleDetail": [{"ruleAttribute": "tu0ZAVo5", "ruleCriteria": "MINIMUM", "ruleValue": 0.642620921815536}, {"ruleAttribute": "cnwmAQuN", "ruleCriteria": "EQUAL", "ruleValue": 0.44733641374516375}, {"ruleAttribute": "BabJisOp", "ruleCriteria": "MINIMUM", "ruleValue": 0.3440709533637275}]}' 'UeRenr6h' 'Op0Plcq5' --login_with_auth "Bearer foo"
+group-delete-group-predefined-rule-public-v1 'hHc9Lkm0' 'TVlztm1P' --login_with_auth "Bearer foo"
 group-leave-group-public-v1 --login_with_auth "Bearer foo"
 group-get-member-roles-list-public-v1 --login_with_auth "Bearer foo"
-group-update-member-role-public-v1 '{"userId": "xJ2O2nKn"}' 'QFTR9G1C' --login_with_auth "Bearer foo"
-group-delete-member-role-public-v1 '{"userId": "XdsBmYeT"}' 'E4r6TFxM' --login_with_auth "Bearer foo"
+group-update-member-role-public-v1 '{"userId": "e9gY2MYN"}' 'bI9cgoJM' --login_with_auth "Bearer foo"
+group-delete-member-role-public-v1 '{"userId": "12igZv58"}' 'W9yygxDf' --login_with_auth "Bearer foo"
 group-get-group-invitation-request-public-v1 --login_with_auth "Bearer foo"
-group-get-user-group-information-public-v1 'hpv9cK22' --login_with_auth "Bearer foo"
-group-invite-group-public-v1 'w6wWa888' --login_with_auth "Bearer foo"
-group-accept-group-join-request-public-v1 'KcvTCLzw' --login_with_auth "Bearer foo"
-group-reject-group-join-request-public-v1 'zbDdgmWN' --login_with_auth "Bearer foo"
-group-kick-group-member-public-v1 '9ASLg3SX' --login_with_auth "Bearer foo"
-group-get-user-joined-group-information-public-v2 'sB14hl1Q' --login_with_auth "Bearer foo"
-group-create-new-group-public-v2 '{"configurationCode": "J5SdI2Pi", "customAttributes": {"bKaSgz5w": {}, "krp3TwzX": {}, "YTNisZjg": {}}, "groupDescription": "Jw9PDeY3", "groupIcon": "zZXLMDk6", "groupMaxMember": 94, "groupName": "bXM7JcT6", "groupRegion": "wlo2NueQ", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "KikoDAKF", "ruleDetail": [{"ruleAttribute": "zcr69vwK", "ruleCriteria": "MAXIMUM", "ruleValue": 0.09966235878531549}, {"ruleAttribute": "K7JXhuaT", "ruleCriteria": "EQUAL", "ruleValue": 0.7357625014120778}, {"ruleAttribute": "CjVhDc6x", "ruleCriteria": "MINIMUM", "ruleValue": 0.18497540617146224}]}, {"allowedAction": "cNulMczh", "ruleDetail": [{"ruleAttribute": "MwkJOzqq", "ruleCriteria": "MINIMUM", "ruleValue": 0.336048609974814}, {"ruleAttribute": "XkhSfCsV", "ruleCriteria": "MINIMUM", "ruleValue": 0.5290633254460626}, {"ruleAttribute": "V5389mdC", "ruleCriteria": "EQUAL", "ruleValue": 0.16627349584827023}]}, {"allowedAction": "njBD8Iu8", "ruleDetail": [{"ruleAttribute": "7xh1lEXV", "ruleCriteria": "MAXIMUM", "ruleValue": 0.1280704316663861}, {"ruleAttribute": "k5m49bHl", "ruleCriteria": "MAXIMUM", "ruleValue": 0.41891177744631614}, {"ruleAttribute": "eMOJpW1e", "ruleCriteria": "EQUAL", "ruleValue": 0.48807294192029815}]}]}, "groupType": "BYhruheF"}' --login_with_auth "Bearer foo"
-group-get-list-group-by-i-ds-v2 '{"groupIDs": ["aXcSkm2X", "Vvbzcst3", "Os8HnWe8"]}' --login_with_auth "Bearer foo"
-group-update-put-single-group-public-v2 '{"customAttributes": {}, "groupDescription": "8cDTJl4y", "groupIcon": "4jGIdGDC", "groupName": "UBPx13Tb", "groupRegion": "BXJDhsIb", "groupType": "z2ELgUIS"}' 'n7Y1FXVk' --login_with_auth "Bearer foo"
-group-delete-group-public-v2 'eNgLu6OS' --login_with_auth "Bearer foo"
-group-update-patch-single-group-public-v2 '{"customAttributes": {}, "groupDescription": "KvkFZaQ1", "groupIcon": "vIHtPPDa", "groupName": "I5kRUG4M", "groupRegion": "Qg7o0XYb", "groupType": "Mo057Omo"}' 'JNo3kozt' --login_with_auth "Bearer foo"
-group-update-group-custom-attributes-public-v2 '{"customAttributes": {"Bg1phlZ3": {}, "110GH0p7": {}, "CGIMVtcD": {}}}' 'nftnGohy' --login_with_auth "Bearer foo"
-group-accept-group-invitation-public-v2 'MYhzJy8T' --login_with_auth "Bearer foo"
-group-reject-group-invitation-public-v2 '5WT4rtZU' --login_with_auth "Bearer foo"
-group-get-group-invite-request-public-v2 '8ih0uAhl' --login_with_auth "Bearer foo"
-group-join-group-v2 '8SvkGCTa' --login_with_auth "Bearer foo"
-group-get-group-join-request-public-v2 'lZY8cUBd' --login_with_auth "Bearer foo"
-group-leave-group-public-v2 'Pj5j1ak2' --login_with_auth "Bearer foo"
-group-update-group-custom-rule-public-v2 '{"groupCustomRule": {"bTRpj4EG": {}, "wnSypQYs": {}, "HqzCorwm": {}}}' 'tF6Q3Wq8' --login_with_auth "Bearer foo"
-group-update-group-predefined-rule-public-v2 '{"ruleDetail": [{"ruleAttribute": "MuoLOGqQ", "ruleCriteria": "MAXIMUM", "ruleValue": 0.14304629605410035}, {"ruleAttribute": "V2Lkz280", "ruleCriteria": "MINIMUM", "ruleValue": 0.014392466301123452}, {"ruleAttribute": "pFyPcCMb", "ruleCriteria": "MINIMUM", "ruleValue": 0.23618886951183482}]}' 'wNFYKJn2' 'TVbrlumP' --login_with_auth "Bearer foo"
-group-delete-group-predefined-rule-public-v2 '0KCaBRKv' 'PTObUGt4' --login_with_auth "Bearer foo"
+group-get-user-group-information-public-v1 '21aGErk0' --login_with_auth "Bearer foo"
+group-invite-group-public-v1 'KNsaw9uU' --login_with_auth "Bearer foo"
+group-accept-group-join-request-public-v1 'jgdNPcOQ' --login_with_auth "Bearer foo"
+group-reject-group-join-request-public-v1 '8c4SXRd8' --login_with_auth "Bearer foo"
+group-kick-group-member-public-v1 'aNlH9xpg' --login_with_auth "Bearer foo"
+group-get-list-group-by-i-ds-admin-v2 '{"groupIDs": ["Ro5Jbt05", "Ab9qltLr", "6xc0XjCm"]}' --login_with_auth "Bearer foo"
+group-get-user-joined-group-information-public-v2 'TKgxtNNc' --login_with_auth "Bearer foo"
+group-create-new-group-public-v2 '{"configurationCode": "sxE12LMO", "customAttributes": {"xPxJUHwG": {}, "nNLfgGVz": {}, "jIvlcMMe": {}}, "groupDescription": "FIZl2YiG", "groupIcon": "rXaVBB7m", "groupMaxMember": 89, "groupName": "Dxu0c9dl", "groupRegion": "sUNDubee", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "l3TSqrDU", "ruleDetail": [{"ruleAttribute": "Dmhid641", "ruleCriteria": "MAXIMUM", "ruleValue": 0.6601515843312111}, {"ruleAttribute": "lYcRk6a2", "ruleCriteria": "MAXIMUM", "ruleValue": 0.5315337708621114}, {"ruleAttribute": "NkhFFnz4", "ruleCriteria": "EQUAL", "ruleValue": 0.36056004876618897}]}, {"allowedAction": "GDZ1bov7", "ruleDetail": [{"ruleAttribute": "8rO8UvqD", "ruleCriteria": "EQUAL", "ruleValue": 0.2645499126395786}, {"ruleAttribute": "36CydqWP", "ruleCriteria": "EQUAL", "ruleValue": 0.8438457438427355}, {"ruleAttribute": "cQJXKzOY", "ruleCriteria": "MINIMUM", "ruleValue": 0.5196920152873492}]}, {"allowedAction": "ZwCAp2eg", "ruleDetail": [{"ruleAttribute": "ff5c6D0J", "ruleCriteria": "EQUAL", "ruleValue": 0.3767508407143232}, {"ruleAttribute": "AKg1GFj0", "ruleCriteria": "MINIMUM", "ruleValue": 0.3387620629932654}, {"ruleAttribute": "POxhYsEV", "ruleCriteria": "MAXIMUM", "ruleValue": 0.050791508804033714}]}]}, "groupType": "PRIVATE"}' --login_with_auth "Bearer foo"
+group-get-list-group-by-i-ds-v2 '{"groupIDs": ["0mjpTMOU", "enk9mw5l", "qFtt37r1"]}' --login_with_auth "Bearer foo"
+group-update-put-single-group-public-v2 '{"customAttributes": {}, "groupDescription": "U4kYBbiD", "groupIcon": "AzWGRu5R", "groupName": "Ke1DfUmL", "groupRegion": "SVzhE4WD", "groupType": "OPEN"}' 'IjLFEaRu' --login_with_auth "Bearer foo"
+group-delete-group-public-v2 'BTZP6ZFL' --login_with_auth "Bearer foo"
+group-update-patch-single-group-public-v2 '{"customAttributes": {}, "groupDescription": "YCKlDwAJ", "groupIcon": "mklPgT9m", "groupName": "NnFNkcAh", "groupRegion": "Lk8a8gfp", "groupType": "PUBLIC"}' '2ruXUyoM' --login_with_auth "Bearer foo"
+group-update-group-custom-attributes-public-v2 '{"customAttributes": {"X7dkjlZu": {}, "ToTXrfxt": {}, "WiasVA42": {}}}' 'GHZZl6V3' --login_with_auth "Bearer foo"
+group-accept-group-invitation-public-v2 'Is2wN4a8' --login_with_auth "Bearer foo"
+group-reject-group-invitation-public-v2 'dNLwccQH' --login_with_auth "Bearer foo"
+group-get-group-invite-request-public-v2 'sEgCkODo' --login_with_auth "Bearer foo"
+group-join-group-v2 'rBlzdWSJ' --login_with_auth "Bearer foo"
+group-get-group-join-request-public-v2 'GOdMb7Dz' --login_with_auth "Bearer foo"
+group-leave-group-public-v2 'N6eKPUpc' --login_with_auth "Bearer foo"
+group-update-group-custom-rule-public-v2 '{"groupCustomRule": {"eVeZ5VGK": {}, "9AOfs9LP": {}, "OuDAbykI": {}}}' 'nP4lrC7A' --login_with_auth "Bearer foo"
+group-update-group-predefined-rule-public-v2 '{"ruleDetail": [{"ruleAttribute": "inhaTiBk", "ruleCriteria": "EQUAL", "ruleValue": 0.12558289406357204}, {"ruleAttribute": "EGm78Q0k", "ruleCriteria": "EQUAL", "ruleValue": 0.6221116657945885}, {"ruleAttribute": "osAhbfJC", "ruleCriteria": "MAXIMUM", "ruleValue": 0.3391935922631234}]}' 'Alw413P4' 'FOs1iz0T' --login_with_auth "Bearer foo"
+group-delete-group-predefined-rule-public-v2 'KBFOKFIg' 'DbPVxkZ4' --login_with_auth "Bearer foo"
 group-get-member-roles-list-public-v2 --login_with_auth "Bearer foo"
-group-update-member-role-public-v2 '{"userId": "whcDYQ21"}' 'mjSRJrcc' 'Mll60b1W' --login_with_auth "Bearer foo"
-group-delete-member-role-public-v2 '{"userId": "ID9lp9zJ"}' '77QmO2f8' '3aqyLY3F' --login_with_auth "Bearer foo"
+group-update-member-role-public-v2 '{"userId": "OIG6xCFW"}' 'Lcc6WQLh' 'qafUxsnl' --login_with_auth "Bearer foo"
+group-delete-member-role-public-v2 '{"userId": "cOxACmxg"}' '5twJEiOl' '61mMTCjN' --login_with_auth "Bearer foo"
 group-get-user-group-information-public-v2 --login_with_auth "Bearer foo"
 group-get-my-group-join-request-v2 --login_with_auth "Bearer foo"
-group-invite-group-public-v2 'aEOuDs4e' 'L2scYPqK' --login_with_auth "Bearer foo"
-group-cancel-invitation-group-member-v2 'igLTbKJI' 'imLsjZKh' --login_with_auth "Bearer foo"
-group-accept-group-join-request-public-v2 'qVgcs3iz' '4vsyKZtm' --login_with_auth "Bearer foo"
-group-reject-group-join-request-public-v2 'bTBAgfaL' 'SLHUu3DT' --login_with_auth "Bearer foo"
-group-kick-group-member-public-v2 'CSo4RXmo' 'xRSg5R7k' --login_with_auth "Bearer foo"
-group-get-user-group-status-information-v2 'IiXxHF1V' 'Btpl1Sue' --login_with_auth "Bearer foo"
+group-invite-group-public-v2 '15JDFy95' 'kkL94ei1' --login_with_auth "Bearer foo"
+group-cancel-invitation-group-member-v2 'CsUQi6qZ' 'LsBfpwGl' --login_with_auth "Bearer foo"
+group-accept-group-join-request-public-v2 '6M3X12g1' 'oBocMbhd' --login_with_auth "Bearer foo"
+group-reject-group-join-request-public-v2 'mBANadde' 'oWPMCw9i' --login_with_auth "Bearer foo"
+group-kick-group-member-public-v2 'wIpUn2c9' 'tjDXri5O' --login_with_auth "Bearer foo"
+group-get-user-group-status-information-v2 'vVfWohmL' 'j72dyob1' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -119,7 +120,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..72"
+echo "1..73"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -136,7 +137,7 @@ eval_tap $? 2 'ListGroupConfigurationAdminV1' test.out
 
 #- 3 CreateGroupConfigurationAdminV1
 $PYTHON -m $MODULE 'group-create-group-configuration-admin-v1' \
-    '{"allowMultiple": false, "configurationCode": "fc00euqM", "description": "5nZCQOVl", "globalRules": [{"allowedAction": "D0Sv2iBx", "ruleDetail": [{"ruleAttribute": "82wWZrNr", "ruleCriteria": "MINIMUM", "ruleValue": 0.16955265232315653}, {"ruleAttribute": "aj1smqpX", "ruleCriteria": "MINIMUM", "ruleValue": 0.22866623448389234}, {"ruleAttribute": "DOJ38zLV", "ruleCriteria": "MINIMUM", "ruleValue": 0.15941679784192853}]}, {"allowedAction": "A3NQuJA9", "ruleDetail": [{"ruleAttribute": "Vv5281f5", "ruleCriteria": "MAXIMUM", "ruleValue": 0.755501480562522}, {"ruleAttribute": "GZaWOYIf", "ruleCriteria": "MAXIMUM", "ruleValue": 0.7064316111383773}, {"ruleAttribute": "47WUm9cs", "ruleCriteria": "MINIMUM", "ruleValue": 0.4684733137980923}]}, {"allowedAction": "wKinncQ0", "ruleDetail": [{"ruleAttribute": "P4hMsmPY", "ruleCriteria": "MINIMUM", "ruleValue": 0.046435445283019905}, {"ruleAttribute": "2vl4tviZ", "ruleCriteria": "MAXIMUM", "ruleValue": 0.1889875969238375}, {"ruleAttribute": "cwijSTHZ", "ruleCriteria": "EQUAL", "ruleValue": 0.18167500941880776}]}], "groupAdminRoleId": "8uLdmJR4", "groupMaxMember": 60, "groupMemberRoleId": "bROXinM9", "name": "ibYIDGwa"}' \
+    '{"allowMultiple": false, "configurationCode": "R7nF5qfX", "description": "Y601s9bf", "globalRules": [{"allowedAction": "X73ykvgj", "ruleDetail": [{"ruleAttribute": "RfjUY7Wo", "ruleCriteria": "EQUAL", "ruleValue": 0.41272377160539686}, {"ruleAttribute": "00u3h1Cf", "ruleCriteria": "MINIMUM", "ruleValue": 0.0721282642545158}, {"ruleAttribute": "yPbrvlRi", "ruleCriteria": "MAXIMUM", "ruleValue": 0.12454662135914829}]}, {"allowedAction": "I1v3CMwd", "ruleDetail": [{"ruleAttribute": "JwJIKLp1", "ruleCriteria": "EQUAL", "ruleValue": 0.40794979107582297}, {"ruleAttribute": "yeqLCLi5", "ruleCriteria": "EQUAL", "ruleValue": 0.03575770945684131}, {"ruleAttribute": "S3GIQPlH", "ruleCriteria": "MINIMUM", "ruleValue": 0.19696420757301725}]}, {"allowedAction": "6glZUfa3", "ruleDetail": [{"ruleAttribute": "U1RqfkWR", "ruleCriteria": "EQUAL", "ruleValue": 0.5261621909060937}, {"ruleAttribute": "2zoOsBMM", "ruleCriteria": "MAXIMUM", "ruleValue": 0.7007061927000576}, {"ruleAttribute": "9WZMRg0n", "ruleCriteria": "EQUAL", "ruleValue": 0.5848422189793953}]}], "groupAdminRoleId": "ziua0IxE", "groupMaxMember": 78, "groupMemberRoleId": "jkUVERs9", "name": "1rf42tZm"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 3 'CreateGroupConfigurationAdminV1' test.out
@@ -149,39 +150,39 @@ eval_tap $? 4 'InitiateGroupConfigurationAdminV1' test.out
 
 #- 5 GetGroupConfigurationAdminV1
 $PYTHON -m $MODULE 'group-get-group-configuration-admin-v1' \
-    'qfU3zHl0' \
+    'xtYH6Kms' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'GetGroupConfigurationAdminV1' test.out
 
 #- 6 DeleteGroupConfigurationV1
 $PYTHON -m $MODULE 'group-delete-group-configuration-v1' \
-    'Sc1kAZl2' \
+    'hYzO5LC0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'DeleteGroupConfigurationV1' test.out
 
 #- 7 UpdateGroupConfigurationAdminV1
 $PYTHON -m $MODULE 'group-update-group-configuration-admin-v1' \
-    '{"description": "U8beZxGc", "groupMaxMember": 95, "name": "ePUMTpih"}' \
-    '6b9sO2A4' \
+    '{"description": "4SDd3srH", "groupMaxMember": 69, "name": "UyMM5xUL"}' \
+    '161LJRPu' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'UpdateGroupConfigurationAdminV1' test.out
 
 #- 8 UpdateGroupConfigurationGlobalRuleAdminV1
 $PYTHON -m $MODULE 'group-update-group-configuration-global-rule-admin-v1' \
-    '{"ruleDetail": [{"ruleAttribute": "5ZxbuSa6", "ruleCriteria": "MAXIMUM", "ruleValue": 0.6776715721096439}, {"ruleAttribute": "xYheVyY7", "ruleCriteria": "MAXIMUM", "ruleValue": 0.5380810578147976}, {"ruleAttribute": "pZZDkC5O", "ruleCriteria": "MINIMUM", "ruleValue": 0.011604026085751729}]}' \
-    'OlKt4trB' \
-    'HBT6bvAl' \
+    '{"ruleDetail": [{"ruleAttribute": "x5PsQ0Dt", "ruleCriteria": "MINIMUM", "ruleValue": 0.7328551799327967}, {"ruleAttribute": "9uVdHqTr", "ruleCriteria": "MAXIMUM", "ruleValue": 0.5671027799169225}, {"ruleAttribute": "JYozuo9p", "ruleCriteria": "MAXIMUM", "ruleValue": 0.21666657818934631}]}' \
+    'SLjRn3fU' \
+    '0DFctSa8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'UpdateGroupConfigurationGlobalRuleAdminV1' test.out
 
 #- 9 DeleteGroupConfigurationGlobalRuleAdminV1
 $PYTHON -m $MODULE 'group-delete-group-configuration-global-rule-admin-v1' \
-    'f1qmORq4' \
-    'c09QAbyL' \
+    'EJtyCjQr' \
+    'FnnPF8vd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'DeleteGroupConfigurationGlobalRuleAdminV1' test.out
@@ -194,21 +195,21 @@ eval_tap $? 10 'GetGroupListAdminV1' test.out
 
 #- 11 GetSingleGroupAdminV1
 $PYTHON -m $MODULE 'group-get-single-group-admin-v1' \
-    'Lb0KMY4l' \
+    'G1O2jWJY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'GetSingleGroupAdminV1' test.out
 
 #- 12 DeleteGroupAdminV1
 $PYTHON -m $MODULE 'group-delete-group-admin-v1' \
-    'PFVOs7na' \
+    'KGT6WCNw' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'DeleteGroupAdminV1' test.out
 
 #- 13 GetGroupMembersListAdminV1
 $PYTHON -m $MODULE 'group-get-group-members-list-admin-v1' \
-    'nR8teJpT' \
+    'ncWGZzRV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'GetGroupMembersListAdminV1' test.out
@@ -221,37 +222,37 @@ eval_tap $? 14 'GetMemberRolesListAdminV1' test.out
 
 #- 15 CreateMemberRoleAdminV1
 $PYTHON -m $MODULE 'group-create-member-role-admin-v1' \
-    '{"memberRoleName": "sbf7hVna", "memberRolePermissions": [{"action": 47, "resourceName": "iMjiO3Kt"}, {"action": 54, "resourceName": "tqZXqOsm"}, {"action": 53, "resourceName": "FerN5BrC"}]}' \
+    '{"memberRoleName": "uoETqiHz", "memberRolePermissions": [{"action": 45, "resourceName": "op1vGb3r"}, {"action": 86, "resourceName": "LN1LpPbn"}, {"action": 42, "resourceName": "AewT12Fr"}]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 15 'CreateMemberRoleAdminV1' test.out
 
 #- 16 GetSingleMemberRoleAdminV1
 $PYTHON -m $MODULE 'group-get-single-member-role-admin-v1' \
-    'AYr6N0cU' \
+    'EAGrbAfE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 16 'GetSingleMemberRoleAdminV1' test.out
 
 #- 17 DeleteMemberRoleAdminV1
 $PYTHON -m $MODULE 'group-delete-member-role-admin-v1' \
-    '0DjOduyO' \
+    'XTX2ESzb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'DeleteMemberRoleAdminV1' test.out
 
 #- 18 UpdateMemberRoleAdminV1
 $PYTHON -m $MODULE 'group-update-member-role-admin-v1' \
-    '{"memberRoleName": "3vI5wWEl"}' \
-    '7b0Id0Ci' \
+    '{"memberRoleName": "aOEOuh2V"}' \
+    'DuvSBtkA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 18 'UpdateMemberRoleAdminV1' test.out
 
 #- 19 UpdateMemberRolePermissionAdminV1
 $PYTHON -m $MODULE 'group-update-member-role-permission-admin-v1' \
-    '{"memberRolePermissions": [{"action": 94, "resourceName": "geRX8IrM"}, {"action": 84, "resourceName": "DLjsVfsz"}, {"action": 94, "resourceName": "bEJ44jXN"}]}' \
-    'mhtaNIoI' \
+    '{"memberRolePermissions": [{"action": 69, "resourceName": "PLXBVNcp"}, {"action": 93, "resourceName": "HNbiyNI0"}, {"action": 4, "resourceName": "W6RqW5nv"}]}' \
+    '32jAKlYn' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'UpdateMemberRolePermissionAdminV1' test.out
@@ -264,112 +265,112 @@ eval_tap $? 20 'GetGroupListPublicV1' test.out
 
 #- 21 CreateNewGroupPublicV1
 $PYTHON -m $MODULE 'group-create-new-group-public-v1' \
-    '{"configurationCode": "AasBe9ZB", "customAttributes": {"J3hUU0EQ": {}, "pFLb5PYY": {}, "ZummCIDs": {}}, "groupDescription": "eQor421K", "groupIcon": "cwDAZwGJ", "groupMaxMember": 19, "groupName": "1bHCb8Ft", "groupRegion": "Gy1JYagn", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "EcBt1kVB", "ruleDetail": [{"ruleAttribute": "fntvRAhF", "ruleCriteria": "MINIMUM", "ruleValue": 0.2925965998442751}, {"ruleAttribute": "Bv2kdQtN", "ruleCriteria": "EQUAL", "ruleValue": 0.016926281183100356}, {"ruleAttribute": "quKJpRFy", "ruleCriteria": "EQUAL", "ruleValue": 0.9729050203952876}]}, {"allowedAction": "VXJxG2Km", "ruleDetail": [{"ruleAttribute": "ZMxWHJVM", "ruleCriteria": "MINIMUM", "ruleValue": 0.5663016672499355}, {"ruleAttribute": "dYUxWO6a", "ruleCriteria": "MINIMUM", "ruleValue": 0.7676433647463553}, {"ruleAttribute": "N7HnhzAx", "ruleCriteria": "EQUAL", "ruleValue": 0.7252292499890399}]}, {"allowedAction": "2xOwdqxr", "ruleDetail": [{"ruleAttribute": "sRU86nlq", "ruleCriteria": "MAXIMUM", "ruleValue": 0.20563544217805585}, {"ruleAttribute": "6Jsc2Xrb", "ruleCriteria": "EQUAL", "ruleValue": 0.4380039570339591}, {"ruleAttribute": "zPOen78w", "ruleCriteria": "MAXIMUM", "ruleValue": 0.8776894980035519}]}]}, "groupType": "HeJpf46n"}' \
+    '{"configurationCode": "cEdDTkGJ", "customAttributes": {"W4mMm3e1": {}, "bWs4B4Ec": {}, "qgdwq5al": {}}, "groupDescription": "D0VMfGIa", "groupIcon": "aVVuNFsD", "groupMaxMember": 47, "groupName": "EYgPmGsu", "groupRegion": "jq3OvP1p", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "871UnXhC", "ruleDetail": [{"ruleAttribute": "TUIOpYRn", "ruleCriteria": "MINIMUM", "ruleValue": 0.5311498631765673}, {"ruleAttribute": "uhqdM6t0", "ruleCriteria": "EQUAL", "ruleValue": 0.7417753621742202}, {"ruleAttribute": "3qHDMUfI", "ruleCriteria": "EQUAL", "ruleValue": 0.8369472754518666}]}, {"allowedAction": "RuHDcxLk", "ruleDetail": [{"ruleAttribute": "ufdEKBtO", "ruleCriteria": "MAXIMUM", "ruleValue": 0.1076130463785796}, {"ruleAttribute": "hILEW8A3", "ruleCriteria": "MAXIMUM", "ruleValue": 0.2711754369279895}, {"ruleAttribute": "HliNaNv7", "ruleCriteria": "EQUAL", "ruleValue": 0.9350682169354902}]}, {"allowedAction": "pegpVyAM", "ruleDetail": [{"ruleAttribute": "bimpVJUG", "ruleCriteria": "MAXIMUM", "ruleValue": 0.22774181414423023}, {"ruleAttribute": "JnM1KMNI", "ruleCriteria": "EQUAL", "ruleValue": 0.9965393343229477}, {"ruleAttribute": "ccNpSDpT", "ruleCriteria": "EQUAL", "ruleValue": 0.6731844163970716}]}]}, "groupType": "OPEN"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 21 'CreateNewGroupPublicV1' test.out
 
 #- 22 GetSingleGroupPublicV1
 $PYTHON -m $MODULE 'group-get-single-group-public-v1' \
-    'Fr9OnTZE' \
+    'EiqCTkV2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 22 'GetSingleGroupPublicV1' test.out
 
 #- 23 UpdateSingleGroupV1
 $PYTHON -m $MODULE 'group-update-single-group-v1' \
-    '{"customAttributes": {}, "groupDescription": "N3ugGZUF", "groupIcon": "eAJIujN5", "groupName": "WdldmwPw", "groupRegion": "fTwFziEf", "groupType": "jSzJnzr8"}' \
-    'FAC2bIhd' \
+    '{"customAttributes": {}, "groupDescription": "I0wQAvQd", "groupIcon": "ApF24AdL", "groupName": "4x54onXa", "groupRegion": "Cn1QZrBu", "groupType": "PRIVATE"}' \
+    '8b6Yhz1E' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 23 'UpdateSingleGroupV1' test.out
 
 #- 24 DeleteGroupPublicV1
 $PYTHON -m $MODULE 'group-delete-group-public-v1' \
-    'z3qmwBlK' \
+    'zPi37Emj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 24 'DeleteGroupPublicV1' test.out
 
 #- 25 UpdatePatchSingleGroupPublicV1
 $PYTHON -m $MODULE 'group-update-patch-single-group-public-v1' \
-    '{"customAttributes": {}, "groupDescription": "XibpWDGv", "groupIcon": "jrAC9XiN", "groupName": "jUB2qBKh", "groupRegion": "u8ddlfDj", "groupType": "tip2vseF"}' \
-    'PAbe3sQe' \
+    '{"customAttributes": {}, "groupDescription": "zb4FuY97", "groupIcon": "0LHA2lBi", "groupName": "lsssQhzQ", "groupRegion": "u1ub2Ydc", "groupType": "PRIVATE"}' \
+    '7zSqk5GY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 25 'UpdatePatchSingleGroupPublicV1' test.out
 
 #- 26 UpdateGroupCustomAttributesPublicV1
 $PYTHON -m $MODULE 'group-update-group-custom-attributes-public-v1' \
-    '{"customAttributes": {"5wxJb5q4": {}, "ACsMB73m": {}, "kP8pc5g5": {}}}' \
-    '7uWu951c' \
+    '{"customAttributes": {"sL4Jmycy": {}, "M6QfNPpW": {}, "8UufoCBP": {}}}' \
+    'C2r42plE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 26 'UpdateGroupCustomAttributesPublicV1' test.out
 
 #- 27 AcceptGroupInvitationPublicV1
 $PYTHON -m $MODULE 'group-accept-group-invitation-public-v1' \
-    'OzLnKY2b' \
+    'kllHYi3K' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 27 'AcceptGroupInvitationPublicV1' test.out
 
 #- 28 RejectGroupInvitationPublicV1
 $PYTHON -m $MODULE 'group-reject-group-invitation-public-v1' \
-    'ptLr8K9t' \
+    'Mg8KABbT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 28 'RejectGroupInvitationPublicV1' test.out
 
 #- 29 JoinGroupV1
 $PYTHON -m $MODULE 'group-join-group-v1' \
-    'QWvD343k' \
+    'rlrgwS9E' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 29 'JoinGroupV1' test.out
 
 #- 30 CancelGroupJoinRequestV1
 $PYTHON -m $MODULE 'group-cancel-group-join-request-v1' \
-    'HTJplrWf' \
+    '5813QgLh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 30 'CancelGroupJoinRequestV1' test.out
 
 #- 31 GetGroupJoinRequestPublicV1
 $PYTHON -m $MODULE 'group-get-group-join-request-public-v1' \
-    'tM2H4Z0P' \
+    'KdOMUCl7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 31 'GetGroupJoinRequestPublicV1' test.out
 
 #- 32 GetGroupMembersListPublicV1
 $PYTHON -m $MODULE 'group-get-group-members-list-public-v1' \
-    'lX96kRoh' \
+    'iirwTopU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 32 'GetGroupMembersListPublicV1' test.out
 
 #- 33 UpdateGroupCustomRulePublicV1
 $PYTHON -m $MODULE 'group-update-group-custom-rule-public-v1' \
-    '{"groupCustomRule": {"LLDMpXd3": {}, "Mxv21q3V": {}, "asm00d39": {}}}' \
-    'Ng8165Fo' \
+    '{"groupCustomRule": {"RRDk4zWF": {}, "BLkDTFzH": {}, "Wk8YA8O6": {}}}' \
+    'QxLbriDs' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 33 'UpdateGroupCustomRulePublicV1' test.out
 
 #- 34 UpdateGroupPredefinedRulePublicV1
 $PYTHON -m $MODULE 'group-update-group-predefined-rule-public-v1' \
-    '{"ruleDetail": [{"ruleAttribute": "boE9Zyhe", "ruleCriteria": "EQUAL", "ruleValue": 0.7622465097362406}, {"ruleAttribute": "0Vc6cKT9", "ruleCriteria": "MINIMUM", "ruleValue": 0.01627011951805979}, {"ruleAttribute": "lp5zV7sn", "ruleCriteria": "EQUAL", "ruleValue": 0.8030112523932263}]}' \
-    'ftOjyAUs' \
-    'AoLItO4m' \
+    '{"ruleDetail": [{"ruleAttribute": "2iRr6oQj", "ruleCriteria": "MINIMUM", "ruleValue": 0.11572297879630511}, {"ruleAttribute": "B8GqaP2e", "ruleCriteria": "EQUAL", "ruleValue": 0.04685141278216065}, {"ruleAttribute": "W9brWOb9", "ruleCriteria": "MINIMUM", "ruleValue": 0.5006621788093988}]}' \
+    'adZGy3Ws' \
+    'RBXuCpMA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 34 'UpdateGroupPredefinedRulePublicV1' test.out
 
 #- 35 DeleteGroupPredefinedRulePublicV1
 $PYTHON -m $MODULE 'group-delete-group-predefined-rule-public-v1' \
-    '0scUDAQh' \
-    'xzZebJHZ' \
+    '19HEJPiN' \
+    'OsTtmkha' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 35 'DeleteGroupPredefinedRulePublicV1' test.out
@@ -388,16 +389,16 @@ eval_tap $? 37 'GetMemberRolesListPublicV1' test.out
 
 #- 38 UpdateMemberRolePublicV1
 $PYTHON -m $MODULE 'group-update-member-role-public-v1' \
-    '{"userId": "V9oyshwH"}' \
-    'r6Ag5dWD' \
+    '{"userId": "1mm8fymt"}' \
+    'LWEnFggY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 38 'UpdateMemberRolePublicV1' test.out
 
 #- 39 DeleteMemberRolePublicV1
 $PYTHON -m $MODULE 'group-delete-member-role-public-v1' \
-    '{"userId": "Fruvyz61"}' \
-    'VNdXXuUs' \
+    '{"userId": "vrSspWps"}' \
+    'sC9TFGLj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 39 'DeleteMemberRolePublicV1' test.out
@@ -410,241 +411,248 @@ eval_tap $? 40 'GetGroupInvitationRequestPublicV1' test.out
 
 #- 41 GetUserGroupInformationPublicV1
 $PYTHON -m $MODULE 'group-get-user-group-information-public-v1' \
-    'TyhRLFKl' \
+    'mA4iIAaR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 41 'GetUserGroupInformationPublicV1' test.out
 
 #- 42 InviteGroupPublicV1
 $PYTHON -m $MODULE 'group-invite-group-public-v1' \
-    'E5iuaP6E' \
+    'B1kgUKAi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 42 'InviteGroupPublicV1' test.out
 
 #- 43 AcceptGroupJoinRequestPublicV1
 $PYTHON -m $MODULE 'group-accept-group-join-request-public-v1' \
-    'QeO0eAzK' \
+    'p0sNL9mH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 43 'AcceptGroupJoinRequestPublicV1' test.out
 
 #- 44 RejectGroupJoinRequestPublicV1
 $PYTHON -m $MODULE 'group-reject-group-join-request-public-v1' \
-    'ujlkLvFX' \
+    'yeiWVODZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 44 'RejectGroupJoinRequestPublicV1' test.out
 
 #- 45 KickGroupMemberPublicV1
 $PYTHON -m $MODULE 'group-kick-group-member-public-v1' \
-    '0TGKBGoX' \
+    'nX1O467Z' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 45 'KickGroupMemberPublicV1' test.out
 
-#- 46 GetUserJoinedGroupInformationPublicV2
+#- 46 GetListGroupByIDsAdminV2
+$PYTHON -m $MODULE 'group-get-list-group-by-i-ds-admin-v2' \
+    '{"groupIDs": ["ChzL0d8Y", "lc3E3a8v", "UiGNfG0u"]}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 46 'GetListGroupByIDsAdminV2' test.out
+
+#- 47 GetUserJoinedGroupInformationPublicV2
 $PYTHON -m $MODULE 'group-get-user-joined-group-information-public-v2' \
-    'EfrrpaYK' \
+    '9X1y2I7Z' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 46 'GetUserJoinedGroupInformationPublicV2' test.out
+eval_tap $? 47 'GetUserJoinedGroupInformationPublicV2' test.out
 
-#- 47 CreateNewGroupPublicV2
+#- 48 CreateNewGroupPublicV2
 $PYTHON -m $MODULE 'group-create-new-group-public-v2' \
-    '{"configurationCode": "RbVi5zCD", "customAttributes": {"9eHp8z1b": {}, "KU9E1jEp": {}, "ZPWoni7X": {}}, "groupDescription": "00Zy99cs", "groupIcon": "5F2BeFSc", "groupMaxMember": 2, "groupName": "WeGyczsO", "groupRegion": "wS3Ox2oJ", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "MY5X7F6n", "ruleDetail": [{"ruleAttribute": "xP81Dt33", "ruleCriteria": "MINIMUM", "ruleValue": 0.9340933195138952}, {"ruleAttribute": "5pVBHpt6", "ruleCriteria": "EQUAL", "ruleValue": 0.24398545411837214}, {"ruleAttribute": "RZKMWuZm", "ruleCriteria": "EQUAL", "ruleValue": 0.2727148333150966}]}, {"allowedAction": "rjSS0VHl", "ruleDetail": [{"ruleAttribute": "gfwUMvHn", "ruleCriteria": "MAXIMUM", "ruleValue": 0.7600870178373107}, {"ruleAttribute": "NQiHdezv", "ruleCriteria": "MINIMUM", "ruleValue": 0.9810016264630177}, {"ruleAttribute": "T1C0rAQ4", "ruleCriteria": "MINIMUM", "ruleValue": 0.8442014674880765}]}, {"allowedAction": "2dLpvyHu", "ruleDetail": [{"ruleAttribute": "qC8rRvjF", "ruleCriteria": "MINIMUM", "ruleValue": 0.5129159408179614}, {"ruleAttribute": "p13iKRMz", "ruleCriteria": "MINIMUM", "ruleValue": 0.4916427327522278}, {"ruleAttribute": "X3gGA6ep", "ruleCriteria": "MINIMUM", "ruleValue": 0.7160090754481022}]}]}, "groupType": "k0EXLL9U"}' \
+    '{"configurationCode": "eSIPRXiH", "customAttributes": {"T8M2MXXi": {}, "Ti7joHle": {}, "ZMdIGLw8": {}}, "groupDescription": "ZCljQat9", "groupIcon": "zCnGe6lA", "groupMaxMember": 51, "groupName": "tfx9zbvQ", "groupRegion": "1LPFxTTW", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "7W6U6Ixn", "ruleDetail": [{"ruleAttribute": "vSqrkJF2", "ruleCriteria": "EQUAL", "ruleValue": 0.5621384156971133}, {"ruleAttribute": "mUVUvCPj", "ruleCriteria": "MINIMUM", "ruleValue": 0.4065625137971308}, {"ruleAttribute": "jwRFETvY", "ruleCriteria": "MAXIMUM", "ruleValue": 0.09034862471821192}]}, {"allowedAction": "lPIws417", "ruleDetail": [{"ruleAttribute": "Syn2mjun", "ruleCriteria": "MINIMUM", "ruleValue": 0.953700838890041}, {"ruleAttribute": "TjQ1NCB6", "ruleCriteria": "MAXIMUM", "ruleValue": 0.32210129131727705}, {"ruleAttribute": "0VMsMlLb", "ruleCriteria": "EQUAL", "ruleValue": 0.7508011075444526}]}, {"allowedAction": "jaqsY6A0", "ruleDetail": [{"ruleAttribute": "fslbp6dt", "ruleCriteria": "MINIMUM", "ruleValue": 0.42347862756372123}, {"ruleAttribute": "ii44l3c9", "ruleCriteria": "EQUAL", "ruleValue": 0.21092421216622592}, {"ruleAttribute": "5dEFisOU", "ruleCriteria": "MAXIMUM", "ruleValue": 0.5199763427561521}]}]}, "groupType": "PUBLIC"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 47 'CreateNewGroupPublicV2' test.out
+eval_tap $? 48 'CreateNewGroupPublicV2' test.out
 
-#- 48 GetListGroupByIDsV2
+#- 49 GetListGroupByIDsV2
 $PYTHON -m $MODULE 'group-get-list-group-by-i-ds-v2' \
-    '{"groupIDs": ["a0XHQb8Q", "ujTQGjRd", "w1uf3bQA"]}' \
+    '{"groupIDs": ["8aDCI09o", "aaJDNSII", "37AgkHdE"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 48 'GetListGroupByIDsV2' test.out
+eval_tap $? 49 'GetListGroupByIDsV2' test.out
 
-#- 49 UpdatePutSingleGroupPublicV2
+#- 50 UpdatePutSingleGroupPublicV2
 $PYTHON -m $MODULE 'group-update-put-single-group-public-v2' \
-    '{"customAttributes": {}, "groupDescription": "1oKQtz8C", "groupIcon": "S3dcsjPo", "groupName": "gERhj0XK", "groupRegion": "1D8fpPBh", "groupType": "4hNPg0hG"}' \
-    'hWKinFEj' \
+    '{"customAttributes": {}, "groupDescription": "ba2HoKBV", "groupIcon": "3ftxsyIT", "groupName": "bz8YzbXl", "groupRegion": "rl7kz0VG", "groupType": "PUBLIC"}' \
+    'Rpz8JPLC' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 49 'UpdatePutSingleGroupPublicV2' test.out
+eval_tap $? 50 'UpdatePutSingleGroupPublicV2' test.out
 
-#- 50 DeleteGroupPublicV2
+#- 51 DeleteGroupPublicV2
 $PYTHON -m $MODULE 'group-delete-group-public-v2' \
-    'BpruTz90' \
+    'hAVPe3Yj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 50 'DeleteGroupPublicV2' test.out
+eval_tap $? 51 'DeleteGroupPublicV2' test.out
 
-#- 51 UpdatePatchSingleGroupPublicV2
+#- 52 UpdatePatchSingleGroupPublicV2
 $PYTHON -m $MODULE 'group-update-patch-single-group-public-v2' \
-    '{"customAttributes": {}, "groupDescription": "3prWVF3c", "groupIcon": "tsAc0AGe", "groupName": "zNidGU3V", "groupRegion": "7d9n2l4l", "groupType": "AybQJ9NH"}' \
-    '0spFhTF3' \
+    '{"customAttributes": {}, "groupDescription": "84bJQ6RF", "groupIcon": "wOJWIbZs", "groupName": "VVJATNxm", "groupRegion": "JLGCTRPn", "groupType": "PUBLIC"}' \
+    'z96DeLKs' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 51 'UpdatePatchSingleGroupPublicV2' test.out
+eval_tap $? 52 'UpdatePatchSingleGroupPublicV2' test.out
 
-#- 52 UpdateGroupCustomAttributesPublicV2
+#- 53 UpdateGroupCustomAttributesPublicV2
 $PYTHON -m $MODULE 'group-update-group-custom-attributes-public-v2' \
-    '{"customAttributes": {"n992XoRw": {}, "cCGqXdY0": {}, "FvcDnvYX": {}}}' \
-    'xA9ZzqhL' \
+    '{"customAttributes": {"tcReG1J3": {}, "YX5mV98V": {}, "T9o0gcxy": {}}}' \
+    'ZJYKEZjB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 52 'UpdateGroupCustomAttributesPublicV2' test.out
+eval_tap $? 53 'UpdateGroupCustomAttributesPublicV2' test.out
 
-#- 53 AcceptGroupInvitationPublicV2
+#- 54 AcceptGroupInvitationPublicV2
 $PYTHON -m $MODULE 'group-accept-group-invitation-public-v2' \
-    '5QRYBDke' \
+    'vCpzGwtT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 53 'AcceptGroupInvitationPublicV2' test.out
+eval_tap $? 54 'AcceptGroupInvitationPublicV2' test.out
 
-#- 54 RejectGroupInvitationPublicV2
+#- 55 RejectGroupInvitationPublicV2
 $PYTHON -m $MODULE 'group-reject-group-invitation-public-v2' \
-    'hkjhupmh' \
+    'k8F7E4Ow' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 54 'RejectGroupInvitationPublicV2' test.out
+eval_tap $? 55 'RejectGroupInvitationPublicV2' test.out
 
-#- 55 GetGroupInviteRequestPublicV2
+#- 56 GetGroupInviteRequestPublicV2
 $PYTHON -m $MODULE 'group-get-group-invite-request-public-v2' \
-    'BEGpQ6ta' \
+    '5VSsyBR1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 55 'GetGroupInviteRequestPublicV2' test.out
+eval_tap $? 56 'GetGroupInviteRequestPublicV2' test.out
 
-#- 56 JoinGroupV2
+#- 57 JoinGroupV2
 $PYTHON -m $MODULE 'group-join-group-v2' \
-    '7zLwW8KR' \
+    'ov4y0TjM' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 56 'JoinGroupV2' test.out
+eval_tap $? 57 'JoinGroupV2' test.out
 
-#- 57 GetGroupJoinRequestPublicV2
+#- 58 GetGroupJoinRequestPublicV2
 $PYTHON -m $MODULE 'group-get-group-join-request-public-v2' \
-    'ZhqpEByI' \
+    'TkDS39qI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 57 'GetGroupJoinRequestPublicV2' test.out
+eval_tap $? 58 'GetGroupJoinRequestPublicV2' test.out
 
-#- 58 LeaveGroupPublicV2
+#- 59 LeaveGroupPublicV2
 $PYTHON -m $MODULE 'group-leave-group-public-v2' \
-    '6vqRA6CH' \
+    'gaMC0acb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 58 'LeaveGroupPublicV2' test.out
+eval_tap $? 59 'LeaveGroupPublicV2' test.out
 
-#- 59 UpdateGroupCustomRulePublicV2
+#- 60 UpdateGroupCustomRulePublicV2
 $PYTHON -m $MODULE 'group-update-group-custom-rule-public-v2' \
-    '{"groupCustomRule": {"kjAuvnet": {}, "JGX7CBOQ": {}, "Ac4I9LaZ": {}}}' \
-    'MLMMXgc4' \
+    '{"groupCustomRule": {"DQcv8MWc": {}, "q28OajMv": {}, "lKoU7h5o": {}}}' \
+    'UG0FUu3d' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 59 'UpdateGroupCustomRulePublicV2' test.out
+eval_tap $? 60 'UpdateGroupCustomRulePublicV2' test.out
 
-#- 60 UpdateGroupPredefinedRulePublicV2
+#- 61 UpdateGroupPredefinedRulePublicV2
 $PYTHON -m $MODULE 'group-update-group-predefined-rule-public-v2' \
-    '{"ruleDetail": [{"ruleAttribute": "bTHEfHgy", "ruleCriteria": "MAXIMUM", "ruleValue": 0.8940430135631235}, {"ruleAttribute": "3LqmFck7", "ruleCriteria": "MINIMUM", "ruleValue": 0.6610881791697722}, {"ruleAttribute": "Y8wFvEcS", "ruleCriteria": "EQUAL", "ruleValue": 0.005269739862140965}]}' \
-    'f5RynPKG' \
-    'KxYdJ21c' \
+    '{"ruleDetail": [{"ruleAttribute": "TQZCVLXV", "ruleCriteria": "MINIMUM", "ruleValue": 0.22495005923774247}, {"ruleAttribute": "8G0Ns2AM", "ruleCriteria": "MAXIMUM", "ruleValue": 0.13852239484316287}, {"ruleAttribute": "qIb8EFXI", "ruleCriteria": "MINIMUM", "ruleValue": 0.3201284732052251}]}' \
+    'TThza2zA' \
+    '1zd9USNR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 60 'UpdateGroupPredefinedRulePublicV2' test.out
+eval_tap $? 61 'UpdateGroupPredefinedRulePublicV2' test.out
 
-#- 61 DeleteGroupPredefinedRulePublicV2
+#- 62 DeleteGroupPredefinedRulePublicV2
 $PYTHON -m $MODULE 'group-delete-group-predefined-rule-public-v2' \
-    'IoLMahBy' \
-    'pVplR8h8' \
+    'bDGthPNR' \
+    'DccTiAcN' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 61 'DeleteGroupPredefinedRulePublicV2' test.out
+eval_tap $? 62 'DeleteGroupPredefinedRulePublicV2' test.out
 
-#- 62 GetMemberRolesListPublicV2
+#- 63 GetMemberRolesListPublicV2
 $PYTHON -m $MODULE 'group-get-member-roles-list-public-v2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 62 'GetMemberRolesListPublicV2' test.out
+eval_tap $? 63 'GetMemberRolesListPublicV2' test.out
 
-#- 63 UpdateMemberRolePublicV2
+#- 64 UpdateMemberRolePublicV2
 $PYTHON -m $MODULE 'group-update-member-role-public-v2' \
-    '{"userId": "2CB6sVq5"}' \
-    'Z6lP3iId' \
-    'VX8L7zfd' \
+    '{"userId": "j6TQbnsg"}' \
+    'gVXA7NuX' \
+    'BLEjWDXf' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 63 'UpdateMemberRolePublicV2' test.out
+eval_tap $? 64 'UpdateMemberRolePublicV2' test.out
 
-#- 64 DeleteMemberRolePublicV2
+#- 65 DeleteMemberRolePublicV2
 $PYTHON -m $MODULE 'group-delete-member-role-public-v2' \
-    '{"userId": "h4ilpqY7"}' \
-    'uBF2VFlH' \
-    '7iB1XtOU' \
+    '{"userId": "VUbfMxJp"}' \
+    'ubppnPJI' \
+    'yGcdTLZr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 64 'DeleteMemberRolePublicV2' test.out
+eval_tap $? 65 'DeleteMemberRolePublicV2' test.out
 
-#- 65 GetUserGroupInformationPublicV2
+#- 66 GetUserGroupInformationPublicV2
 $PYTHON -m $MODULE 'group-get-user-group-information-public-v2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 65 'GetUserGroupInformationPublicV2' test.out
+eval_tap $? 66 'GetUserGroupInformationPublicV2' test.out
 
-#- 66 GetMyGroupJoinRequestV2
+#- 67 GetMyGroupJoinRequestV2
 $PYTHON -m $MODULE 'group-get-my-group-join-request-v2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 66 'GetMyGroupJoinRequestV2' test.out
+eval_tap $? 67 'GetMyGroupJoinRequestV2' test.out
 
-#- 67 InviteGroupPublicV2
+#- 68 InviteGroupPublicV2
 $PYTHON -m $MODULE 'group-invite-group-public-v2' \
-    'g9ZbgawK' \
-    'bL1PHiTI' \
+    'JUMLtRtP' \
+    '0PYXQyDj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 67 'InviteGroupPublicV2' test.out
+eval_tap $? 68 'InviteGroupPublicV2' test.out
 
-#- 68 CancelInvitationGroupMemberV2
+#- 69 CancelInvitationGroupMemberV2
 $PYTHON -m $MODULE 'group-cancel-invitation-group-member-v2' \
-    'cZICkMCm' \
-    'GzxN0l7h' \
+    'zvOm57sk' \
+    'VGVH522a' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 68 'CancelInvitationGroupMemberV2' test.out
+eval_tap $? 69 'CancelInvitationGroupMemberV2' test.out
 
-#- 69 AcceptGroupJoinRequestPublicV2
+#- 70 AcceptGroupJoinRequestPublicV2
 $PYTHON -m $MODULE 'group-accept-group-join-request-public-v2' \
-    'CUbwJZ1E' \
-    'W0GmfUPG' \
+    'rwKlsyWh' \
+    'Nc6hNr7j' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 69 'AcceptGroupJoinRequestPublicV2' test.out
+eval_tap $? 70 'AcceptGroupJoinRequestPublicV2' test.out
 
-#- 70 RejectGroupJoinRequestPublicV2
+#- 71 RejectGroupJoinRequestPublicV2
 $PYTHON -m $MODULE 'group-reject-group-join-request-public-v2' \
-    'qTXIwa7f' \
-    'lnk9UXC2' \
+    'K9L5urjb' \
+    'ma3xxjzZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 70 'RejectGroupJoinRequestPublicV2' test.out
+eval_tap $? 71 'RejectGroupJoinRequestPublicV2' test.out
 
-#- 71 KickGroupMemberPublicV2
+#- 72 KickGroupMemberPublicV2
 $PYTHON -m $MODULE 'group-kick-group-member-public-v2' \
-    'K923YR70' \
-    'UJWLeUqf' \
+    'zNhqlblb' \
+    'oLw5sGAM' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 71 'KickGroupMemberPublicV2' test.out
+eval_tap $? 72 'KickGroupMemberPublicV2' test.out
 
-#- 72 GetUserGroupStatusInformationV2
+#- 73 GetUserGroupStatusInformationV2
 $PYTHON -m $MODULE 'group-get-user-group-status-information-v2' \
-    '7akw5a4o' \
-    'SAfmkBv4' \
+    'FWzdmrKD' \
+    'kCK8imaW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 72 'GetUserGroupStatusInformationV2' test.out
+eval_tap $? 73 'GetUserGroupStatusInformationV2' test.out
 
 
 fi

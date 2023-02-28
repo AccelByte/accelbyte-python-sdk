@@ -32,94 +32,94 @@ $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap
 lobby-get-user-friends-updated --login_with_auth "Bearer foo"
 lobby-get-user-incoming-friends --login_with_auth "Bearer foo"
 lobby-get-user-outgoing-friends --login_with_auth "Bearer foo"
-lobby-user-request-friend '{"friendId": "H4sbeN8c", "friendPublicId": "TG4ZAVOY"}' --login_with_auth "Bearer foo"
-lobby-user-accept-friend-request '{"friendId": "OG4blKKk"}' --login_with_auth "Bearer foo"
-lobby-user-cancel-friend-request '{"friendId": "A2ORF30N"}' --login_with_auth "Bearer foo"
-lobby-user-reject-friend-request '{"friendId": "JWYnU4Yk"}' --login_with_auth "Bearer foo"
-lobby-user-get-friendship-status 'vu6TNTok' --login_with_auth "Bearer foo"
-lobby-user-unfriend-request '{"friendId": "PDJkjSFL"}' --login_with_auth "Bearer foo"
-lobby-add-friends-without-confirmation '{"friendIds": ["QKnAZaB2", "RTE4bS7x", "CtcfEXGh"]}' 'LmloJGXv' --login_with_auth "Bearer foo"
-lobby-personal-chat-history 'u6ofTLOx' 'EcJiHa7r' --login_with_auth "Bearer foo"
-lobby-admin-chat-history 'Hgr2Cw0N' 'VeijsHQK' --login_with_auth "Bearer foo"
+lobby-user-request-friend '{"friendId": "ZemCihTg", "friendPublicId": "C9uehkeY"}' --login_with_auth "Bearer foo"
+lobby-user-accept-friend-request '{"friendId": "OvOSIIvv"}' --login_with_auth "Bearer foo"
+lobby-user-cancel-friend-request '{"friendId": "mtjlQ6hV"}' --login_with_auth "Bearer foo"
+lobby-user-reject-friend-request '{"friendId": "FMJgfpe4"}' --login_with_auth "Bearer foo"
+lobby-user-get-friendship-status 'AH0eLfm6' --login_with_auth "Bearer foo"
+lobby-user-unfriend-request '{"friendId": "6OeZgGbD"}' --login_with_auth "Bearer foo"
+lobby-add-friends-without-confirmation '{"friendIds": ["jJPqrSO8", "Mq7DeDd7", "EanQaKMu"]}' '32dr1j2h' --login_with_auth "Bearer foo"
+lobby-personal-chat-history 'aUikYNI6' '5QTEt9QJ' --login_with_auth "Bearer foo"
+lobby-admin-chat-history 'Y6dVKnMT' '8XetsR3H' --login_with_auth "Bearer foo"
 lobby-admin-get-all-config-v1 --login_with_auth "Bearer foo"
 lobby-admin-get-config-v1 --login_with_auth "Bearer foo"
-lobby-admin-update-config-v1 '{"allowInviteNonConnectedUser": true, "allowJoinPartyDuringMatchmaking": true, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 63, "cancelTicketOnDisconnect": true, "chatRateLimitBurst": 13, "chatRateLimitDuration": 40, "concurrentUsersLimit": 72, "disableInvitationOnJoinParty": false, "enableChat": false, "entitlementCheck": true, "entitlementItemID": "qyWxCuTn", "generalRateLimitBurst": 39, "generalRateLimitDuration": 96, "keepPresenceActivityOnDisconnect": false, "maxDSWaitTime": 59, "maxPartyMember": 26, "profanityFilter": true, "readyConsentTimeout": 17}' --login_with_auth "Bearer foo"
+lobby-admin-update-config-v1 '{"allowInviteNonConnectedUser": false, "allowJoinPartyDuringMatchmaking": true, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 54, "cancelTicketOnDisconnect": true, "chatRateLimitBurst": 63, "chatRateLimitDuration": 55, "concurrentUsersLimit": 25, "disableInvitationOnJoinParty": false, "enableChat": false, "entitlementCheck": false, "entitlementItemID": "fpF5Z7r7", "generalRateLimitBurst": 48, "generalRateLimitDuration": 82, "keepPresenceActivityOnDisconnect": true, "maxDSWaitTime": 84, "maxPartyMember": 62, "profanityFilter": false, "readyConsentTimeout": 88}' --login_with_auth "Bearer foo"
 lobby-admin-export-config-v1 --login_with_auth "Bearer foo"
 lobby-admin-import-config-v1 --login_with_auth "Bearer foo"
-lobby-get-list-of-friends 'ROEOBNbK' --login_with_auth "Bearer foo"
-lobby-send-multiple-users-freeform-notification-v1-admin '{"message": "HjmtTTqm", "topicName": "6PcIsFia", "userIds": ["BpdoSEXk", "LQFyqkub", "Taws2jR9"]}' --login_with_auth "Bearer foo"
-lobby-send-users-freeform-notification-v1-admin '{"message": "yDLqRq39", "topicName": "TsF87RFH"}' --login_with_auth "Bearer foo"
-lobby-send-party-freeform-notification-v1-admin '{"message": "8IMG0LMG", "topicName": "4ipR93aO"}' 'jARD3RLN' --login_with_auth "Bearer foo"
-lobby-send-party-templated-notification-v1-admin '{"templateContext": {"DExkb3w5": "Zp6ed2On", "Jd5W2QZw": "5LV4WgDc", "ePQgqv66": "plWzSGmy"}, "templateLanguage": "s4vjOVLJ", "templateSlug": "TgOTo8tY", "topicName": "spai5Vck"}' 'u0tYS9YF' --login_with_auth "Bearer foo"
+lobby-get-list-of-friends '6VHxU4Le' --login_with_auth "Bearer foo"
+lobby-send-multiple-users-freeform-notification-v1-admin '{"message": "gCUdBymE", "topicName": "qmxaL8kC", "userIds": ["bPTUf9MI", "goqYmtXF", "6PAcFFiQ"]}' --login_with_auth "Bearer foo"
+lobby-send-users-freeform-notification-v1-admin '{"message": "7jNNQszt", "topicName": "H2TNvmM1"}' --login_with_auth "Bearer foo"
+lobby-send-party-freeform-notification-v1-admin '{"message": "h4t7qCId", "topicName": "yxYVAsVs"}' '8HNqIo8u' --login_with_auth "Bearer foo"
+lobby-send-party-templated-notification-v1-admin '{"templateContext": {"VJSjUTsg": "1TvyvR3A", "om1SRtHi": "fIv6yt3T", "oNGM7C7c": "1fIKi5xf"}, "templateLanguage": "wr7rLzWx", "templateSlug": "YzYAsA2j", "topicName": "9yB6SShz"}' 'j4cfCt3R' --login_with_auth "Bearer foo"
 lobby-get-all-notification-templates-v1-admin --login_with_auth "Bearer foo"
-lobby-create-notification-template-v1-admin '{"templateContent": "4ZZX9FqZ", "templateLanguage": "Eu5eBOiQ", "templateSlug": "dszOERKP"}' --login_with_auth "Bearer foo"
-lobby-send-users-templated-notification-v1-admin '{"templateContext": {"8xSHi5Xl": "IgEWFjEW", "MAJAlFfE": "9B1azsuj", "g8xezs3k": "Ab6L1L67"}, "templateLanguage": "pwn8ANG0", "templateSlug": "SqbSoSaW", "topicName": "C2Gu3wmq"}' --login_with_auth "Bearer foo"
-lobby-get-template-slug-localizations-template-v1-admin 'TgKhQkTj' --login_with_auth "Bearer foo"
-lobby-delete-notification-template-slug-v1-admin 'h5KCDwpx' --login_with_auth "Bearer foo"
-lobby-get-single-template-localization-v1-admin 'l1dSCNMA' 'IQFt3P80' --login_with_auth "Bearer foo"
-lobby-update-template-localization-v1-admin '{"templateContent": "Ae3CXQW7"}' 'DDj6nAZB' 'Ho5wkUBv' --login_with_auth "Bearer foo"
-lobby-delete-template-localization-v1-admin 'KEOCVZUv' 'EyHNA9rA' --login_with_auth "Bearer foo"
-lobby-publish-template-localization-v1-admin 'ZJr0gNFr' '3HaBd4r2' --login_with_auth "Bearer foo"
+lobby-create-notification-template-v1-admin '{"templateContent": "sIGcf4bZ", "templateLanguage": "feh75175", "templateSlug": "Pxp5BhFM"}' --login_with_auth "Bearer foo"
+lobby-send-users-templated-notification-v1-admin '{"templateContext": {"Vhaybn0r": "tnA1cyq4", "BwrzAVf3": "sj9p8CII", "yR3utfCC": "sfFDyLAA"}, "templateLanguage": "OCdPJJ7G", "templateSlug": "sSJ0ltBy", "topicName": "mN53vs62"}' --login_with_auth "Bearer foo"
+lobby-get-template-slug-localizations-template-v1-admin 'leVl8Rb3' --login_with_auth "Bearer foo"
+lobby-delete-notification-template-slug-v1-admin 'oMpaJ7Iz' --login_with_auth "Bearer foo"
+lobby-get-single-template-localization-v1-admin 'ilDH9u9Z' 'Q2sVTLCE' --login_with_auth "Bearer foo"
+lobby-update-template-localization-v1-admin '{"templateContent": "6SkdqTSi"}' 'OFNAvGOm' 'bL0QgSGN' --login_with_auth "Bearer foo"
+lobby-delete-template-localization-v1-admin 'K47dZTEp' 'gVFmgv7l' --login_with_auth "Bearer foo"
+lobby-publish-template-localization-v1-admin 'zPBv3ms2' 'kO46AHhL' --login_with_auth "Bearer foo"
 lobby-get-all-notification-topics-v1-admin --login_with_auth "Bearer foo"
-lobby-create-notification-topic-v1-admin '{"description": "ejCWBsaV", "topicName": "S42KVRhL"}' --login_with_auth "Bearer foo"
-lobby-get-notification-topic-v1-admin 'WnR3RojC' --login_with_auth "Bearer foo"
-lobby-update-notification-topic-v1-admin '{"description": "s46gyM1t"}' 'jABlG2u9' --login_with_auth "Bearer foo"
-lobby-delete-notification-topic-v1-admin 'QzeThZUP' --login_with_auth "Bearer foo"
-lobby-send-specific-user-freeform-notification-v1-admin '{"message": "EJcOxFwi", "topicName": "qDyQHXRD"}' 'rtJjkkVv' --login_with_auth "Bearer foo"
-lobby-send-specific-user-templated-notification-v1-admin '{"templateContext": {"qVV45oEE": "sU1Csk3b", "86eL4Z4d": "QZq5wsaw", "d5OFHx13": "dDd3nbxv"}, "templateLanguage": "0MDCWE3k", "templateSlug": "XxZ3LJJw", "topicName": "8182qQFJ"}' 'CP7t8wYE' --login_with_auth "Bearer foo"
-lobby-admin-get-party-data-v1 'TU5v3Vgm' --login_with_auth "Bearer foo"
-lobby-admin-update-party-attributes-v1 '{"custom_attribute": {"DrwWDkb6": {}, "trsDjkVl": {}, "SSHIknyL": {}}, "updatedAt": 7}' 'ONs17SzY' --login_with_auth "Bearer foo"
-lobby-admin-join-party-v1 'ZRzb5Uu8' 'MkfpijEt' --login_with_auth "Bearer foo"
-lobby-admin-get-user-party-v1 'Co7bnx4r' --login_with_auth "Bearer foo"
+lobby-create-notification-topic-v1-admin '{"description": "uC9DLJ9a", "topicName": "QmufTLDp"}' --login_with_auth "Bearer foo"
+lobby-get-notification-topic-v1-admin '9aOUwvpx' --login_with_auth "Bearer foo"
+lobby-update-notification-topic-v1-admin '{"description": "ubg2beTi"}' 'MzG3MEJj' --login_with_auth "Bearer foo"
+lobby-delete-notification-topic-v1-admin 'yZVxxLzN' --login_with_auth "Bearer foo"
+lobby-send-specific-user-freeform-notification-v1-admin '{"message": "iTv62p9y", "topicName": "dcgMUw8Z"}' '4J7XPrWM' --login_with_auth "Bearer foo"
+lobby-send-specific-user-templated-notification-v1-admin '{"templateContext": {"HGffmLHa": "XFAmQWtl", "0DS2LyJY": "6ID16PEq", "BTROonxJ": "BJLiiw5O"}, "templateLanguage": "RPMTE0Q7", "templateSlug": "hcD4J5Hs", "topicName": "suE4CBKg"}' 'uCXQT8v1' --login_with_auth "Bearer foo"
+lobby-admin-get-party-data-v1 'rod7QD1q' --login_with_auth "Bearer foo"
+lobby-admin-update-party-attributes-v1 '{"custom_attribute": {"IfrqcWY4": {}, "cht1YNpT": {}, "YBIvKPwQ": {}}, "updatedAt": 78}' 'dNTPa36e' --login_with_auth "Bearer foo"
+lobby-admin-join-party-v1 'lyfAR6K3' 'RpgJW33z' --login_with_auth "Bearer foo"
+lobby-admin-get-user-party-v1 'yZlFw9rq' --login_with_auth "Bearer foo"
 lobby-admin-get-lobby-ccu --login_with_auth "Bearer foo"
-lobby-admin-get-all-player-session-attribute 'eboaun8g' --login_with_auth "Bearer foo"
-lobby-admin-set-player-session-attribute '{"attributes": {"MUOuGjCn": "zJWDYJdB", "YiM0OEnN": "KPunHz6M", "6abx7cps": "kd64CrSb"}}' 'Gl2uY56A' --login_with_auth "Bearer foo"
-lobby-admin-get-player-session-attribute 'sFbr64uL' 'QgmsXYSp' --login_with_auth "Bearer foo"
-lobby-admin-get-player-blocked-players-v1 'm1F2Dchs' --login_with_auth "Bearer foo"
-lobby-admin-get-player-blocked-by-players-v1 'KwDpAOUL' --login_with_auth "Bearer foo"
-lobby-admin-bulk-block-players-v1 '{"listBlockedUserId": ["YvCYzcT5", "a1wo2XzC", "3DobgRr0"]}' 'GX80Tr4B' --login_with_auth "Bearer foo"
-lobby-admin-debug-profanity-filters '{"text": "u8tehldT"}' --login_with_auth "Bearer foo"
-lobby-admin-get-profanity-list-filters-v1 '163D52Mi' --login_with_auth "Bearer foo"
-lobby-admin-add-profanity-filter-into-list '{"filter": "NG32fvte", "note": "hyivpHuE"}' 'wMZRNDlL' --login_with_auth "Bearer foo"
-lobby-admin-add-profanity-filters '{"filters": [{"filter": "psUDnVmS", "note": "3KyNQue2"}, {"filter": "8ZSYdE4X", "note": "6x2Pox2V"}, {"filter": "8hKaCSgW", "note": "TeWn9eJu"}]}' 'ldQhrNL3' --login_with_auth "Bearer foo"
-lobby-admin-import-profanity-filters-from-file '[81, 61, 32]' 'JsXef4vq' --login_with_auth "Bearer foo"
-lobby-admin-delete-profanity-filter '{"filter": "llbfy70u"}' 'FewAx95w' --login_with_auth "Bearer foo"
+lobby-admin-get-all-player-session-attribute '98VelooH' --login_with_auth "Bearer foo"
+lobby-admin-set-player-session-attribute '{"attributes": {"ndsVonJi": "tmA21W0u", "IzvPP58N": "6GwBxcDF", "jBXmUH8r": "XvXtab6g"}}' 'RlXAi0wX' --login_with_auth "Bearer foo"
+lobby-admin-get-player-session-attribute 'QGckX9Mg' 'jCxSafi5' --login_with_auth "Bearer foo"
+lobby-admin-get-player-blocked-players-v1 '2bOyfoXC' --login_with_auth "Bearer foo"
+lobby-admin-get-player-blocked-by-players-v1 'hyPD9W8N' --login_with_auth "Bearer foo"
+lobby-admin-bulk-block-players-v1 '{"listBlockedUserId": ["gR35klGz", "SAf6Usuk", "iPwOG3Ub"]}' 'BtGrJ8ST' --login_with_auth "Bearer foo"
+lobby-admin-debug-profanity-filters '{"text": "Um0fOnZH"}' --login_with_auth "Bearer foo"
+lobby-admin-get-profanity-list-filters-v1 'FkPgNFGT' --login_with_auth "Bearer foo"
+lobby-admin-add-profanity-filter-into-list '{"filter": "b2vUQpPs", "note": "5PXICmMF"}' 'T1WfgpAw' --login_with_auth "Bearer foo"
+lobby-admin-add-profanity-filters '{"filters": [{"filter": "J5Dp7DqS", "note": "zbPBTTYd"}, {"filter": "ZGPGSCWq", "note": "amNrkCc9"}, {"filter": "0yjGALig", "note": "Z1xyxg9v"}]}' 'hYVNPiXJ' --login_with_auth "Bearer foo"
+lobby-admin-import-profanity-filters-from-file '[84, 7, 76]' 'x4tEDRCL' --login_with_auth "Bearer foo"
+lobby-admin-delete-profanity-filter '{"filter": "ud3hiNWI"}' 'Zixu1cvT' --login_with_auth "Bearer foo"
 lobby-admin-get-profanity-lists --login_with_auth "Bearer foo"
-lobby-admin-create-profanity-list '{"isEnabled": true, "isMandatory": false, "name": "R6za37mm"}' --login_with_auth "Bearer foo"
-lobby-admin-update-profanity-list '{"isEnabled": false, "isMandatory": false, "newName": "JQeWVzNF"}' '7pjLbHde' --login_with_auth "Bearer foo"
-lobby-admin-delete-profanity-list 'Hu7g166w' --login_with_auth "Bearer foo"
+lobby-admin-create-profanity-list '{"isEnabled": false, "isMandatory": false, "name": "ih9whCLQ"}' --login_with_auth "Bearer foo"
+lobby-admin-update-profanity-list '{"isEnabled": true, "isMandatory": false, "newName": "xNO9MvuW"}' 'so6RPMoC' --login_with_auth "Bearer foo"
+lobby-admin-delete-profanity-list '8GptnS7O' --login_with_auth "Bearer foo"
 lobby-admin-get-profanity-rule --login_with_auth "Bearer foo"
-lobby-admin-set-profanity-rule-for-namespace '{"rule": "vPebxGgL"}' --login_with_auth "Bearer foo"
-lobby-admin-verify-message-profanity-response '{"message": "ZsumqwwW", "profanityLevel": "pw7JavuU"}' --login_with_auth "Bearer foo"
+lobby-admin-set-profanity-rule-for-namespace '{"rule": "yrofP3a0"}' --login_with_auth "Bearer foo"
+lobby-admin-verify-message-profanity-response '{"message": "YqcNdo30", "profanityLevel": "TUBPfnXF"}' --login_with_auth "Bearer foo"
 lobby-admin-get-third-party-config --login_with_auth "Bearer foo"
-lobby-admin-update-third-party-config '{"apiKey": "viIE4aRa"}' --login_with_auth "Bearer foo"
-lobby-admin-create-third-party-config '{"apiKey": "8lZkteuh"}' --login_with_auth "Bearer foo"
+lobby-admin-update-third-party-config '{"apiKey": "8bAuihvs"}' --login_with_auth "Bearer foo"
+lobby-admin-create-third-party-config '{"apiKey": "TeidWBsR"}' --login_with_auth "Bearer foo"
 lobby-admin-delete-third-party-config --login_with_auth "Bearer foo"
 lobby-public-get-messages --login_with_auth "Bearer foo"
-lobby-get-personal-chat-history-v1-public 'esee63AA' --login_with_auth "Bearer foo"
-lobby-public-get-party-data-v1 'NB2XRYKM' --login_with_auth "Bearer foo"
-lobby-public-update-party-attributes-v1 '{"custom_attribute": {"0LRxY9sa": {}, "hkjgQFvU": {}, "lD9nndK9": {}}, "updatedAt": 30}' '9aNprAYB' --login_with_auth "Bearer foo"
-lobby-public-set-party-limit-v1 '{"limit": 96}' '93vd0iNu' --login_with_auth "Bearer foo"
+lobby-get-personal-chat-history-v1-public '1OzQ4SMg' --login_with_auth "Bearer foo"
+lobby-public-get-party-data-v1 'ggp7lFNr' --login_with_auth "Bearer foo"
+lobby-public-update-party-attributes-v1 '{"custom_attribute": {"b2EXDznV": {}, "YGPPiE44": {}, "aSr0vD6O": {}}, "updatedAt": 23}' 'ly6aNgpk' --login_with_auth "Bearer foo"
+lobby-public-set-party-limit-v1 '{"limit": 59}' 'RXif5EN4' --login_with_auth "Bearer foo"
 lobby-public-get-player-blocked-players-v1 --login_with_auth "Bearer foo"
 lobby-public-get-player-blocked-by-players-v1 --login_with_auth "Bearer foo"
-lobby-users-presence-handler-v1 'Mtr1rj0k' --login_with_auth "Bearer foo"
-lobby-free-form-notification '{"message": "YcWlZauX", "topic": "mks6fe4z"}' --login_with_auth "Bearer foo"
-lobby-notification-with-template '{"templateContext": {"UfU7qVGF": "l1KzVq56", "TiFCcBYh": "6oShErVU", "vMdJLudH": "Li8fXJFT"}, "templateLanguage": "sjFwQJAD", "templateSlug": "R9zqTgCt", "topic": "4OU8T5fe"}' --login_with_auth "Bearer foo"
+lobby-users-presence-handler-v1 'kHc9JEeL' --login_with_auth "Bearer foo"
+lobby-free-form-notification '{"message": "aJ7XuAhF", "topic": "bJrdxkqu"}' --login_with_auth "Bearer foo"
+lobby-notification-with-template '{"templateContext": {"VZter8zR": "ISWT4Zbh", "vwSVmUOI": "GkStYcBc", "YB4ZcAuk": "DdZxHWnQ"}, "templateLanguage": "dfKfxKtL", "templateSlug": "0R2tsBQr", "topic": "tj08Ghqz"}' --login_with_auth "Bearer foo"
 lobby-get-game-template --login_with_auth "Bearer foo"
-lobby-create-template '{"templateContent": "Hj3JxbCh", "templateLanguage": "oSB0ThJf", "templateSlug": "l1UKBphM"}' --login_with_auth "Bearer foo"
-lobby-get-slug-template 'Gf338sfN' --login_with_auth "Bearer foo"
-lobby-delete-template-slug 'E4YV84F2' --login_with_auth "Bearer foo"
-lobby-get-localization-template 'ujA3r5l5' 'YP5Sf5Wt' --login_with_auth "Bearer foo"
-lobby-update-localization-template '{"templateContent": "PsefGoNM"}' 'elhlvpLT' '4I1bSLZY' --login_with_auth "Bearer foo"
-lobby-delete-template-localization 'l8BpzLrD' 'VHzPRZRJ' --login_with_auth "Bearer foo"
-lobby-publish-template 'ak1LgDrv' 'cykNgPrH' --login_with_auth "Bearer foo"
+lobby-create-template '{"templateContent": "tVzYVBau", "templateLanguage": "NVhfM21u", "templateSlug": "2RWeZ9NN"}' --login_with_auth "Bearer foo"
+lobby-get-slug-template 'Tk4F1Y3c' --login_with_auth "Bearer foo"
+lobby-delete-template-slug '9AhemJ8L' --login_with_auth "Bearer foo"
+lobby-get-localization-template 'ptjz8nfs' 'qz7XWBU6' --login_with_auth "Bearer foo"
+lobby-update-localization-template '{"templateContent": "5iPUEUfh"}' 'IffNn2f7' 'WxJwHRQ1' --login_with_auth "Bearer foo"
+lobby-delete-template-localization '4zFLgW7I' 'ZEtftoVR' --login_with_auth "Bearer foo"
+lobby-publish-template 'EJhDP7Na' '5w2tPzps' --login_with_auth "Bearer foo"
 lobby-get-topic-by-namespace --login_with_auth "Bearer foo"
-lobby-create-topic '{"description": "wWPJx6UH", "topic": "FwbM4FIw"}' --login_with_auth "Bearer foo"
-lobby-get-topic-by-topic-name 'bZErB2gX' --login_with_auth "Bearer foo"
-lobby-update-topic-by-topic-name '{"description": "HiPWkOaI"}' 'klsjnXTW' --login_with_auth "Bearer foo"
-lobby-delete-topic-by-topic-name 'mFsDNtQd' --login_with_auth "Bearer foo"
-lobby-free-form-notification-by-user-id '{"message": "BaKsX0AO", "topic": "yAE361QZ"}' 'vLIAq55t' --login_with_auth "Bearer foo"
-lobby-notification-with-template-by-user-id '{"templateContext": {"Q54T15TS": "tRfNdYYr", "daf2dR0o": "ibETZw4B", "KIcH16hm": "OY9aEO7V"}, "templateLanguage": "e3qzEZ5C", "templateSlug": "UpCAsV6t", "topic": "6YBqSAUr"}' 'th3naxz5' --login_with_auth "Bearer foo"
+lobby-create-topic '{"description": "qazbkGrK", "topic": "MQts0L6m"}' --login_with_auth "Bearer foo"
+lobby-get-topic-by-topic-name 'cVqS1VHn' --login_with_auth "Bearer foo"
+lobby-update-topic-by-topic-name '{"description": "wfuOBWEA"}' 'wPUnU5I4' --login_with_auth "Bearer foo"
+lobby-delete-topic-by-topic-name 'Vq7ifTXA' --login_with_auth "Bearer foo"
+lobby-free-form-notification-by-user-id '{"message": "X3rA7rlg", "topic": "iB1d7Pgf"}' 'trArSnBN' --login_with_auth "Bearer foo"
+lobby-notification-with-template-by-user-id '{"templateContext": {"PLMFBooF": "7Os8j2o4", "DjRAIdWG": "U0lFo29a", "xMALb6ug": "LemOTgBA"}, "templateLanguage": "GYWtrjDj", "templateSlug": "YtgGj0nt", "topic": "GrbjPUrz"}' '4kdjXhDH' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -168,66 +168,66 @@ eval_tap $? 4 'GetUserOutgoingFriends' test.out
 
 #- 5 UserRequestFriend
 $PYTHON -m $MODULE 'lobby-user-request-friend' \
-    '{"friendId": "4DIgkr79", "friendPublicId": "iYSbqpAg"}' \
+    '{"friendId": "FVfzzxZ1", "friendPublicId": "F3r9cAlB"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'UserRequestFriend' test.out
 
 #- 6 UserAcceptFriendRequest
 $PYTHON -m $MODULE 'lobby-user-accept-friend-request' \
-    '{"friendId": "4MlBIRHY"}' \
+    '{"friendId": "OBjHZbJJ"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'UserAcceptFriendRequest' test.out
 
 #- 7 UserCancelFriendRequest
 $PYTHON -m $MODULE 'lobby-user-cancel-friend-request' \
-    '{"friendId": "nd4dJpHg"}' \
+    '{"friendId": "D8dI5NXQ"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'UserCancelFriendRequest' test.out
 
 #- 8 UserRejectFriendRequest
 $PYTHON -m $MODULE 'lobby-user-reject-friend-request' \
-    '{"friendId": "tOnT1VFK"}' \
+    '{"friendId": "LWTMcipA"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'UserRejectFriendRequest' test.out
 
 #- 9 UserGetFriendshipStatus
 $PYTHON -m $MODULE 'lobby-user-get-friendship-status' \
-    '4ZTThGVc' \
+    'UzZV778D' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'UserGetFriendshipStatus' test.out
 
 #- 10 UserUnfriendRequest
 $PYTHON -m $MODULE 'lobby-user-unfriend-request' \
-    '{"friendId": "HlI4DY6J"}' \
+    '{"friendId": "slElcl4s"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'UserUnfriendRequest' test.out
 
 #- 11 AddFriendsWithoutConfirmation
 $PYTHON -m $MODULE 'lobby-add-friends-without-confirmation' \
-    '{"friendIds": ["ebfDDXzQ", "oFkwpdOr", "LEO6ZV1A"]}' \
-    'r128wEUV' \
+    '{"friendIds": ["qTOjF5mR", "dTzDA2zL", "uSUhMSJ8"]}' \
+    'jA6cupiA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'AddFriendsWithoutConfirmation' test.out
 
 #- 12 PersonalChatHistory
 $PYTHON -m $MODULE 'lobby-personal-chat-history' \
-    'CNA2CVjs' \
-    'dMkRDTNu' \
+    'xlVx3Q71' \
+    'v1csvRyt' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'PersonalChatHistory' test.out
 
 #- 13 AdminChatHistory
 $PYTHON -m $MODULE 'lobby-admin-chat-history' \
-    'VvDdU7DC' \
-    'jbzteWI2' \
+    'iEvSJi3n' \
+    'jQB6ORrU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'AdminChatHistory' test.out
@@ -246,7 +246,7 @@ eval_tap $? 15 'AdminGetConfigV1' test.out
 
 #- 16 AdminUpdateConfigV1
 $PYTHON -m $MODULE 'lobby-admin-update-config-v1' \
-    '{"allowInviteNonConnectedUser": true, "allowJoinPartyDuringMatchmaking": true, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 27, "cancelTicketOnDisconnect": false, "chatRateLimitBurst": 62, "chatRateLimitDuration": 21, "concurrentUsersLimit": 1, "disableInvitationOnJoinParty": false, "enableChat": false, "entitlementCheck": true, "entitlementItemID": "kG665qAY", "generalRateLimitBurst": 33, "generalRateLimitDuration": 34, "keepPresenceActivityOnDisconnect": true, "maxDSWaitTime": 4, "maxPartyMember": 44, "profanityFilter": false, "readyConsentTimeout": 83}' \
+    '{"allowInviteNonConnectedUser": true, "allowJoinPartyDuringMatchmaking": true, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 59, "cancelTicketOnDisconnect": false, "chatRateLimitBurst": 18, "chatRateLimitDuration": 90, "concurrentUsersLimit": 16, "disableInvitationOnJoinParty": false, "enableChat": true, "entitlementCheck": true, "entitlementItemID": "iLOI1Cre", "generalRateLimitBurst": 89, "generalRateLimitDuration": 99, "keepPresenceActivityOnDisconnect": false, "maxDSWaitTime": 31, "maxPartyMember": 67, "profanityFilter": false, "readyConsentTimeout": 78}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 16 'AdminUpdateConfigV1' test.out
@@ -265,37 +265,37 @@ eval_tap $? 18 'AdminImportConfigV1' test.out
 
 #- 19 GetListOfFriends
 $PYTHON -m $MODULE 'lobby-get-list-of-friends' \
-    '7Di2BaV9' \
+    'lgl62EYz' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'GetListOfFriends' test.out
 
 #- 20 SendMultipleUsersFreeformNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-multiple-users-freeform-notification-v1-admin' \
-    '{"message": "69B8haiB", "topicName": "rOMdLYr7", "userIds": ["zORjzGCn", "OfrccjbA", "6TNOhzCC"]}' \
+    '{"message": "1mzhcm7I", "topicName": "wpbrGPpz", "userIds": ["B9ksuscw", "PbWqbidP", "SIw2bnoh"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 20 'SendMultipleUsersFreeformNotificationV1Admin' test.out
 
 #- 21 SendUsersFreeformNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-users-freeform-notification-v1-admin' \
-    '{"message": "bh6F2T57", "topicName": "2zyYKVEy"}' \
+    '{"message": "AVT2xU6p", "topicName": "ywGzfwoq"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 21 'SendUsersFreeformNotificationV1Admin' test.out
 
 #- 22 SendPartyFreeformNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-party-freeform-notification-v1-admin' \
-    '{"message": "2JVyztzX", "topicName": "OkvJQ1nW"}' \
-    'xvVhGabN' \
+    '{"message": "7AlXaBll", "topicName": "88k934Y4"}' \
+    'WOGxEHX7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 22 'SendPartyFreeformNotificationV1Admin' test.out
 
 #- 23 SendPartyTemplatedNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-party-templated-notification-v1-admin' \
-    '{"templateContext": {"Hwd14Mnj": "XA9mBRDP", "nUoMQZUA": "8WrA6bJO", "AO7SsSbu": "v5EHdlL1"}, "templateLanguage": "ke8AqOup", "templateSlug": "w3B5Ej9n", "topicName": "cVJxrtXq"}' \
-    'pAfwZ2L1' \
+    '{"templateContext": {"OOcKOuQ9": "V3iKUGYt", "ZfCciYf7": "35gLv00D", "gDYZ03hK": "ZffqfhMg"}, "templateLanguage": "PcaHTyr3", "templateSlug": "pKTQjsxu", "topicName": "KSCH6aBp"}' \
+    'TGhEerCl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 23 'SendPartyTemplatedNotificationV1Admin' test.out
@@ -308,61 +308,61 @@ eval_tap $? 24 'GetAllNotificationTemplatesV1Admin' test.out
 
 #- 25 CreateNotificationTemplateV1Admin
 $PYTHON -m $MODULE 'lobby-create-notification-template-v1-admin' \
-    '{"templateContent": "vxvBXjb2", "templateLanguage": "KhLKrWPo", "templateSlug": "wfg99IYT"}' \
+    '{"templateContent": "TnJeRifx", "templateLanguage": "qyITk3Q7", "templateSlug": "9hYHq1K5"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 25 'CreateNotificationTemplateV1Admin' test.out
 
 #- 26 SendUsersTemplatedNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-users-templated-notification-v1-admin' \
-    '{"templateContext": {"RujJsedS": "hXHvtWW7", "93qr6wYP": "rk0lw1b0", "irvxrZVi": "IvZffbZe"}, "templateLanguage": "u7VJ0Ivn", "templateSlug": "pOG63pt4", "topicName": "A0V3ppYC"}' \
+    '{"templateContext": {"2FnTNdMs": "Ncpm0o7Z", "7pzOgb5O": "mFmCKtbm", "80uISiNl": "Ob5Xex1C"}, "templateLanguage": "PGIcrBMw", "templateSlug": "SMSShOVj", "topicName": "2nImt8Ks"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 26 'SendUsersTemplatedNotificationV1Admin' test.out
 
 #- 27 GetTemplateSlugLocalizationsTemplateV1Admin
 $PYTHON -m $MODULE 'lobby-get-template-slug-localizations-template-v1-admin' \
-    'IhgBqZ9e' \
+    'mtfC7sqi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 27 'GetTemplateSlugLocalizationsTemplateV1Admin' test.out
 
 #- 28 DeleteNotificationTemplateSlugV1Admin
 $PYTHON -m $MODULE 'lobby-delete-notification-template-slug-v1-admin' \
-    'un8A8G9n' \
+    'O3k6H1YA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 28 'DeleteNotificationTemplateSlugV1Admin' test.out
 
 #- 29 GetSingleTemplateLocalizationV1Admin
 $PYTHON -m $MODULE 'lobby-get-single-template-localization-v1-admin' \
-    '9EgtFj47' \
-    '7974yRIM' \
+    'AQVLQPlG' \
+    'TqzZWGdN' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 29 'GetSingleTemplateLocalizationV1Admin' test.out
 
 #- 30 UpdateTemplateLocalizationV1Admin
 $PYTHON -m $MODULE 'lobby-update-template-localization-v1-admin' \
-    '{"templateContent": "ILOSciDB"}' \
-    'Rs7pJZkg' \
-    'oHVidMgA' \
+    '{"templateContent": "l01OnKL1"}' \
+    'f6vtSSpX' \
+    'k1ABKK1B' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 30 'UpdateTemplateLocalizationV1Admin' test.out
 
 #- 31 DeleteTemplateLocalizationV1Admin
 $PYTHON -m $MODULE 'lobby-delete-template-localization-v1-admin' \
-    'WGCzskII' \
-    'AP9yEZT4' \
+    'gVxOv2lT' \
+    'Qq3DLVNg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 31 'DeleteTemplateLocalizationV1Admin' test.out
 
 #- 32 PublishTemplateLocalizationV1Admin
 $PYTHON -m $MODULE 'lobby-publish-template-localization-v1-admin' \
-    '7Sy4gpdH' \
-    'ofqtDHXI' \
+    '6u43Rg3e' \
+    'c0ZsYdph' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 32 'PublishTemplateLocalizationV1Admin' test.out
@@ -375,75 +375,75 @@ eval_tap $? 33 'GetAllNotificationTopicsV1Admin' test.out
 
 #- 34 CreateNotificationTopicV1Admin
 $PYTHON -m $MODULE 'lobby-create-notification-topic-v1-admin' \
-    '{"description": "I2lEPEkN", "topicName": "FP0w1I9n"}' \
+    '{"description": "TuHWs9ZT", "topicName": "nHev4qyw"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 34 'CreateNotificationTopicV1Admin' test.out
 
 #- 35 GetNotificationTopicV1Admin
 $PYTHON -m $MODULE 'lobby-get-notification-topic-v1-admin' \
-    'wpNQsquo' \
+    'WUjU9tYK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 35 'GetNotificationTopicV1Admin' test.out
 
 #- 36 UpdateNotificationTopicV1Admin
 $PYTHON -m $MODULE 'lobby-update-notification-topic-v1-admin' \
-    '{"description": "SoQPY7Ix"}' \
-    'BJ6RBouE' \
+    '{"description": "jC9vWiu0"}' \
+    'hcp1bpvK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 36 'UpdateNotificationTopicV1Admin' test.out
 
 #- 37 DeleteNotificationTopicV1Admin
 $PYTHON -m $MODULE 'lobby-delete-notification-topic-v1-admin' \
-    'TdISj67Y' \
+    '8nLKyTVv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 37 'DeleteNotificationTopicV1Admin' test.out
 
 #- 38 SendSpecificUserFreeformNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-specific-user-freeform-notification-v1-admin' \
-    '{"message": "9MZAqHba", "topicName": "muRfbu0V"}' \
-    'CJpEuOjX' \
+    '{"message": "Mx0A5IFh", "topicName": "BnpuK7J0"}' \
+    '5wRMFRVA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 38 'SendSpecificUserFreeformNotificationV1Admin' test.out
 
 #- 39 SendSpecificUserTemplatedNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-specific-user-templated-notification-v1-admin' \
-    '{"templateContext": {"UTMAHz81": "SwCL4c3w", "1FfN3cQf": "QlYKApym", "FU6G432y": "XUMs95QY"}, "templateLanguage": "EN8DBQYu", "templateSlug": "GysMOwJM", "topicName": "d4Sq0qMh"}' \
-    'Pcc4fCjf' \
+    '{"templateContext": {"nwRwVYz3": "TccwMMVv", "Z4gVTMZJ": "43OQ2GTp", "tZbGDhMR": "MWA3QdU7"}, "templateLanguage": "jkIRM6dM", "templateSlug": "hrniNiCd", "topicName": "YC0viSde"}' \
+    '0gLVXoqs' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 39 'SendSpecificUserTemplatedNotificationV1Admin' test.out
 
 #- 40 AdminGetPartyDataV1
 $PYTHON -m $MODULE 'lobby-admin-get-party-data-v1' \
-    '9yqYpszY' \
+    'J7JlfQAM' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 40 'AdminGetPartyDataV1' test.out
 
 #- 41 AdminUpdatePartyAttributesV1
 $PYTHON -m $MODULE 'lobby-admin-update-party-attributes-v1' \
-    '{"custom_attribute": {"dg7MK5ib": {}, "5gIMFchb": {}, "G3h51e1L": {}}, "updatedAt": 6}' \
-    's2AE41nJ' \
+    '{"custom_attribute": {"bNpNL8Iz": {}, "F3hju6e4": {}, "ESV7M96P": {}}, "updatedAt": 29}' \
+    'Izsjw6tG' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 41 'AdminUpdatePartyAttributesV1' test.out
 
 #- 42 AdminJoinPartyV1
 $PYTHON -m $MODULE 'lobby-admin-join-party-v1' \
-    'FuNjeKMl' \
-    'Ia9u2xjZ' \
+    'fsrnyTKc' \
+    'YP9wyS55' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 42 'AdminJoinPartyV1' test.out
 
 #- 43 AdminGetUserPartyV1
 $PYTHON -m $MODULE 'lobby-admin-get-user-party-v1' \
-    'hFYarGSg' \
+    '025bKRv5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 43 'AdminGetUserPartyV1' test.out
@@ -456,91 +456,91 @@ eval_tap $? 44 'AdminGetLobbyCCU' test.out
 
 #- 45 AdminGetAllPlayerSessionAttribute
 $PYTHON -m $MODULE 'lobby-admin-get-all-player-session-attribute' \
-    'BbVHid4z' \
+    'e2deu39X' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 45 'AdminGetAllPlayerSessionAttribute' test.out
 
 #- 46 AdminSetPlayerSessionAttribute
 $PYTHON -m $MODULE 'lobby-admin-set-player-session-attribute' \
-    '{"attributes": {"FoTsbEra": "Ruy7HkfC", "mpIR9JA1": "ZP4k8Yv1", "b6VOXzFm": "W8tXlUDq"}}' \
-    'qAAnfnbl' \
+    '{"attributes": {"ufG4n5td": "Yus7thaS", "bCMdVvPn": "m79cDDdd", "uOF6LIwZ": "CWwmCgrK"}}' \
+    '5fFwS5p2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 46 'AdminSetPlayerSessionAttribute' test.out
 
 #- 47 AdminGetPlayerSessionAttribute
 $PYTHON -m $MODULE 'lobby-admin-get-player-session-attribute' \
-    's1k2Rabq' \
-    'lQFoqEyM' \
+    'x2rZruCV' \
+    'OLC7WeiW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 47 'AdminGetPlayerSessionAttribute' test.out
 
 #- 48 AdminGetPlayerBlockedPlayersV1
 $PYTHON -m $MODULE 'lobby-admin-get-player-blocked-players-v1' \
-    'Uvlp9Ix2' \
+    'iiba21G7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 48 'AdminGetPlayerBlockedPlayersV1' test.out
 
 #- 49 AdminGetPlayerBlockedByPlayersV1
 $PYTHON -m $MODULE 'lobby-admin-get-player-blocked-by-players-v1' \
-    'gDRr6Ai8' \
+    'Ff3GMjQi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 49 'AdminGetPlayerBlockedByPlayersV1' test.out
 
 #- 50 AdminBulkBlockPlayersV1
 $PYTHON -m $MODULE 'lobby-admin-bulk-block-players-v1' \
-    '{"listBlockedUserId": ["zNeNHKFU", "D82KwUzD", "7lrg16TG"]}' \
-    'ZPktOB3T' \
+    '{"listBlockedUserId": ["khMppDfN", "Lxv5eM50", "fztWlTrx"]}' \
+    'vPA16NzH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 50 'AdminBulkBlockPlayersV1' test.out
 
 #- 51 AdminDebugProfanityFilters
 $PYTHON -m $MODULE 'lobby-admin-debug-profanity-filters' \
-    '{"text": "FcVwLgaf"}' \
+    '{"text": "Do4VXrEK"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 51 'AdminDebugProfanityFilters' test.out
 
 #- 52 AdminGetProfanityListFiltersV1
 $PYTHON -m $MODULE 'lobby-admin-get-profanity-list-filters-v1' \
-    'aRY80raa' \
+    'GMcgCjIN' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 52 'AdminGetProfanityListFiltersV1' test.out
 
 #- 53 AdminAddProfanityFilterIntoList
 $PYTHON -m $MODULE 'lobby-admin-add-profanity-filter-into-list' \
-    '{"filter": "OUgSPO7i", "note": "xpH7ptEP"}' \
-    'jmXt1dsu' \
+    '{"filter": "fU9UZTp7", "note": "ndQzjixr"}' \
+    'tDEZXGV9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 53 'AdminAddProfanityFilterIntoList' test.out
 
 #- 54 AdminAddProfanityFilters
 $PYTHON -m $MODULE 'lobby-admin-add-profanity-filters' \
-    '{"filters": [{"filter": "K3wLWBaq", "note": "7vv30dhq"}, {"filter": "M6BQA8Be", "note": "YmPYEck4"}, {"filter": "Jcd4OKkd", "note": "zmLoUNdH"}]}' \
-    'MtQvhMQz' \
+    '{"filters": [{"filter": "iGGtD2GH", "note": "6jIwOblx"}, {"filter": "1iMcJ2O9", "note": "ryRQHZcD"}, {"filter": "y6v5f3Pv", "note": "0c8uOx2G"}]}' \
+    'dIVgWnvc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 54 'AdminAddProfanityFilters' test.out
 
 #- 55 AdminImportProfanityFiltersFromFile
 $PYTHON -m $MODULE 'lobby-admin-import-profanity-filters-from-file' \
-    '[4, 54, 37]' \
-    'MjMgsmyg' \
+    '[8, 46, 51]' \
+    'jxl3jrfk' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 55 'AdminImportProfanityFiltersFromFile' test.out
 
 #- 56 AdminDeleteProfanityFilter
 $PYTHON -m $MODULE 'lobby-admin-delete-profanity-filter' \
-    '{"filter": "9zP4jpbC"}' \
-    'wDlu1qYU' \
+    '{"filter": "mpozToQc"}' \
+    'YC8nRaWb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 56 'AdminDeleteProfanityFilter' test.out
@@ -553,22 +553,22 @@ eval_tap $? 57 'AdminGetProfanityLists' test.out
 
 #- 58 AdminCreateProfanityList
 $PYTHON -m $MODULE 'lobby-admin-create-profanity-list' \
-    '{"isEnabled": true, "isMandatory": false, "name": "NraA4Y17"}' \
+    '{"isEnabled": false, "isMandatory": false, "name": "DBwggDZk"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 58 'AdminCreateProfanityList' test.out
 
 #- 59 AdminUpdateProfanityList
 $PYTHON -m $MODULE 'lobby-admin-update-profanity-list' \
-    '{"isEnabled": true, "isMandatory": false, "newName": "2uSNMubQ"}' \
-    'GwoMPQlN' \
+    '{"isEnabled": false, "isMandatory": false, "newName": "Pee3Lhsm"}' \
+    'hvmWBVWS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 59 'AdminUpdateProfanityList' test.out
 
 #- 60 AdminDeleteProfanityList
 $PYTHON -m $MODULE 'lobby-admin-delete-profanity-list' \
-    'Y1H59ObM' \
+    'hGBaqfW8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 60 'AdminDeleteProfanityList' test.out
@@ -581,14 +581,14 @@ eval_tap $? 61 'AdminGetProfanityRule' test.out
 
 #- 62 AdminSetProfanityRuleForNamespace
 $PYTHON -m $MODULE 'lobby-admin-set-profanity-rule-for-namespace' \
-    '{"rule": "f88CYXFs"}' \
+    '{"rule": "5JsHbBo0"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 62 'AdminSetProfanityRuleForNamespace' test.out
 
 #- 63 AdminVerifyMessageProfanityResponse
 $PYTHON -m $MODULE 'lobby-admin-verify-message-profanity-response' \
-    '{"message": "KBu17mhy", "profanityLevel": "RgdUx9Nq"}' \
+    '{"message": "X6IUaVYd", "profanityLevel": "GinlEIKL"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 63 'AdminVerifyMessageProfanityResponse' test.out
@@ -601,14 +601,14 @@ eval_tap $? 64 'AdminGetThirdPartyConfig' test.out
 
 #- 65 AdminUpdateThirdPartyConfig
 $PYTHON -m $MODULE 'lobby-admin-update-third-party-config' \
-    '{"apiKey": "CUO4baHU"}' \
+    '{"apiKey": "Hb4TdNmO"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 65 'AdminUpdateThirdPartyConfig' test.out
 
 #- 66 AdminCreateThirdPartyConfig
 $PYTHON -m $MODULE 'lobby-admin-create-third-party-config' \
-    '{"apiKey": "qQP8P6I8"}' \
+    '{"apiKey": "LoRbpUqI"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 66 'AdminCreateThirdPartyConfig' test.out
@@ -627,30 +627,30 @@ eval_tap $? 68 'PublicGetMessages' test.out
 
 #- 69 GetPersonalChatHistoryV1Public
 $PYTHON -m $MODULE 'lobby-get-personal-chat-history-v1-public' \
-    'yy1DlROi' \
+    'S3isrPuh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 69 'GetPersonalChatHistoryV1Public' test.out
 
 #- 70 PublicGetPartyDataV1
 $PYTHON -m $MODULE 'lobby-public-get-party-data-v1' \
-    '3rcrx9lF' \
+    '5E7g50hc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 70 'PublicGetPartyDataV1' test.out
 
 #- 71 PublicUpdatePartyAttributesV1
 $PYTHON -m $MODULE 'lobby-public-update-party-attributes-v1' \
-    '{"custom_attribute": {"1wD5WIae": {}, "iqU54j1y": {}, "LVZbG6qs": {}}, "updatedAt": 93}' \
-    'wAQJmisw' \
+    '{"custom_attribute": {"yYdnAaEI": {}, "zvSCbmI4": {}, "35aRI7K3": {}}, "updatedAt": 75}' \
+    'mi8COpG0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 71 'PublicUpdatePartyAttributesV1' test.out
 
 #- 72 PublicSetPartyLimitV1
 $PYTHON -m $MODULE 'lobby-public-set-party-limit-v1' \
-    '{"limit": 93}' \
-    'UE8VBE1g' \
+    '{"limit": 36}' \
+    'yiSylbz5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 72 'PublicSetPartyLimitV1' test.out
@@ -669,21 +669,21 @@ eval_tap $? 74 'PublicGetPlayerBlockedByPlayersV1' test.out
 
 #- 75 UsersPresenceHandlerV1
 $PYTHON -m $MODULE 'lobby-users-presence-handler-v1' \
-    'OzI6Rz0F' \
+    'Ysk5u8FB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 75 'UsersPresenceHandlerV1' test.out
 
 #- 76 FreeFormNotification
 $PYTHON -m $MODULE 'lobby-free-form-notification' \
-    '{"message": "J7ARzr3v", "topic": "2Zb8eQFP"}' \
+    '{"message": "ujzZUyXw", "topic": "PnzgyV8V"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 76 'FreeFormNotification' test.out
 
 #- 77 NotificationWithTemplate
 $PYTHON -m $MODULE 'lobby-notification-with-template' \
-    '{"templateContext": {"mKinwcxt": "3780ISiN", "URZkIN8A": "WjPYLQr1", "uM61tzuU": "nbWJ5yTP"}, "templateLanguage": "DeHw7edR", "templateSlug": "hw4RUISE", "topic": "am4hliIU"}' \
+    '{"templateContext": {"g1NwyAvS": "k8RulWQY", "qoU0R95t": "QXGnmyFU", "f5BhAqwd": "54OzcufS"}, "templateLanguage": "WoWVRefJ", "templateSlug": "xoCfCkyn", "topic": "qqN4TEcN"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 77 'NotificationWithTemplate' test.out
@@ -696,54 +696,54 @@ eval_tap $? 78 'GetGameTemplate' test.out
 
 #- 79 CreateTemplate
 $PYTHON -m $MODULE 'lobby-create-template' \
-    '{"templateContent": "pFUQ2q6B", "templateLanguage": "hSXSpcwg", "templateSlug": "b80hYBt4"}' \
+    '{"templateContent": "fZbWw7Qt", "templateLanguage": "qcJVlvzp", "templateSlug": "xfjVMl8j"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 79 'CreateTemplate' test.out
 
 #- 80 GetSlugTemplate
 $PYTHON -m $MODULE 'lobby-get-slug-template' \
-    'gAxghrNH' \
+    '7E6Zrk30' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 80 'GetSlugTemplate' test.out
 
 #- 81 DeleteTemplateSlug
 $PYTHON -m $MODULE 'lobby-delete-template-slug' \
-    '9v2toE5d' \
+    'UDIxvUzd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 81 'DeleteTemplateSlug' test.out
 
 #- 82 GetLocalizationTemplate
 $PYTHON -m $MODULE 'lobby-get-localization-template' \
-    'M3FNVOSi' \
-    'tB9t05fy' \
+    'fqCLDfAH' \
+    'sshHKNHW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 82 'GetLocalizationTemplate' test.out
 
 #- 83 UpdateLocalizationTemplate
 $PYTHON -m $MODULE 'lobby-update-localization-template' \
-    '{"templateContent": "Y6NQRaCx"}' \
-    'lYCIpXfY' \
-    '0KMTt8Kj' \
+    '{"templateContent": "g37npuEi"}' \
+    '1gvolzx9' \
+    'B2cub8Jf' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 83 'UpdateLocalizationTemplate' test.out
 
 #- 84 DeleteTemplateLocalization
 $PYTHON -m $MODULE 'lobby-delete-template-localization' \
-    'dI9mlyfW' \
-    'CNY0uCYm' \
+    'sra0Lt41' \
+    'rfmxW3f3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 84 'DeleteTemplateLocalization' test.out
 
 #- 85 PublishTemplate
 $PYTHON -m $MODULE 'lobby-publish-template' \
-    '2axlwGzd' \
-    'AXvp9vBp' \
+    'vqrXoATR' \
+    'D8c8HZOu' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 85 'PublishTemplate' test.out
@@ -756,45 +756,45 @@ eval_tap $? 86 'GetTopicByNamespace' test.out
 
 #- 87 CreateTopic
 $PYTHON -m $MODULE 'lobby-create-topic' \
-    '{"description": "BG3uZYTm", "topic": "fn3YOnGK"}' \
+    '{"description": "nqcHzjnF", "topic": "QY5g9hNR"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 87 'CreateTopic' test.out
 
 #- 88 GetTopicByTopicName
 $PYTHON -m $MODULE 'lobby-get-topic-by-topic-name' \
-    'XTck5kw1' \
+    's3xGF2TK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 88 'GetTopicByTopicName' test.out
 
 #- 89 UpdateTopicByTopicName
 $PYTHON -m $MODULE 'lobby-update-topic-by-topic-name' \
-    '{"description": "10oynKyb"}' \
-    'b30YRAIm' \
+    '{"description": "PAcxGb1V"}' \
+    '4fcDhzTF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 89 'UpdateTopicByTopicName' test.out
 
 #- 90 DeleteTopicByTopicName
 $PYTHON -m $MODULE 'lobby-delete-topic-by-topic-name' \
-    'XsJDQaUP' \
+    '2icipJsZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 90 'DeleteTopicByTopicName' test.out
 
 #- 91 FreeFormNotificationByUserID
 $PYTHON -m $MODULE 'lobby-free-form-notification-by-user-id' \
-    '{"message": "rh1Omxza", "topic": "kP20vI4z"}' \
-    'UaKvvdtz' \
+    '{"message": "KScVjsQA", "topic": "APby9YvX"}' \
+    '7AvfV2e0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 91 'FreeFormNotificationByUserID' test.out
 
 #- 92 NotificationWithTemplateByUserID
 $PYTHON -m $MODULE 'lobby-notification-with-template-by-user-id' \
-    '{"templateContext": {"R7E1u25h": "OXkPXSG5", "1jwG0pnm": "Oh3rQeyJ", "t8W3RloL": "63zsnerq"}, "templateLanguage": "PmpChzxw", "templateSlug": "lIa5kPio", "topic": "SxQ3fSWd"}' \
-    'up1GUEfS' \
+    '{"templateContext": {"pzwZeMpK": "SFhsiV4S", "AXqhGOFP": "jGUr4pbL", "IebfIbg8": "pffOhJ9h"}, "templateLanguage": "yqANlGnf", "templateSlug": "kE5MF9Bk", "topic": "r3ZpfVgq"}' \
+    'PTlVkdKk' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 92 'NotificationWithTemplateByUserID' test.out
