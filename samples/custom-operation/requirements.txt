@@ -1,0 +1,9 @@
+accelbyte-py-sdk
+bitarray
+httpx
+mmh3
+PyJWT[crypto]
+python-dotenv
+PyYAML
+requests
+websockets
