@@ -84,3 +84,25 @@ class Model:
         return {}
 
     # endregion overrideable members
+
+    # region utils
+
+    @staticmethod
+    def create_dict_from_obj(obj: Any, keys: Union[List[str], Dict[str, str]]) -> dict:
+        result = {}
+        for key in keys:
+            alias = keys[key] if isinstance(keys, dict) else key
+            if hasattr(obj, alias):
+                result[key] = getattr(obj, alias)
+        return result
+
+    @staticmethod
+    def init_obj_from_dict(obj: Any, dikt: dict, keys: Union[List[str], Dict[str, str]]) -> None:
+        if not dikt:
+            return None
+        for key in keys:
+            alias = keys[key] if isinstance(keys, dict) else key
+            if field := dikt.get(key):
+                setattr(obj, alias, field)
+
+    # endregion utils

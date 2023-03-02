@@ -15,6 +15,16 @@ from ._validators import validate_field
 
 
 class Operation:
+    # noinspection PyMethodMayBeStatic
+    def create_params_dict(self, keys: List[str]) -> dict:
+        result = {}
+        for key, value in self.get_field_info().items():
+            if key not in keys:
+                continue
+            if hasattr(self, value):
+                result[key] = getattr(self, value)
+        return result
+
     def is_valid(
         self,
         check_required: bool = True,
@@ -108,7 +118,7 @@ class Operation:
     # region overrideable members
 
     url: str = ""
-    method: str = ""
+    method: str = "GET"
     consumes: List[str] = []
     produces: List[str] = []
     securities: List[List[str]] = []
@@ -116,7 +126,18 @@ class Operation:
     authorization_override: Optional[str] = None
 
     def get_all_params(self) -> dict:
-        raise NotImplementedError
+        result = {}
+        if body := self.get_body_params():
+            result["body"] = body
+        if header := self.get_header_params():
+            result["header"] = header
+        if form_data := self.get_form_data_params():
+            result["form_data"] = form_data
+        if path := self.get_path_params():
+            result["path"] = path
+        if query := self.get_query_params():
+            result["query"] = query
+        return result
 
     def parse_response(self, code: int, content_type: str, content: Any):
         raise NotImplementedError
