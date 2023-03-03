@@ -1,7 +1,7 @@
 # Changelog
 
 ## v0.35.0
-- Add [migration guide](/docs/migration-guides/migration-guide-v0.34.0-to-v0.35.0.md) for `v0.34.0` to `v0.35.0`.
+- Add [migration guide](docs/migration-guides/migration-guide-v0.34.0-to-v0.35.0.md) for `v0.34.0` to `v0.35.0`.
 - Add more DSMC deployment tests.
 - Fix error message wording when an operation fails to resolve all security requirements.
 - Update spec for AccelByte Gaming Services v3.43.0.
