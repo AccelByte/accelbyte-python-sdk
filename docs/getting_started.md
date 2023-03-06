@@ -4,7 +4,7 @@ This guide will show you how to create an application which uses Python Server S
 
 ## Prerequisites
 
-* AccelByte Cloud (demo environment):
+* AccelByte Gaming Services (demo environment):
     * Use https://demo.accelbyte.io for `AB_BASE_URL` environment variable.
     * [Create an Oauth Client](https://docs.accelbyte.io/guides/access/iam-client.html#create-a-client) with client type `Confidential`.
         * Use `Client ID` value for `AB_CLIENT_ID` environment variable.
@@ -52,11 +52,11 @@ Install the SDK.
 $ pip install accelbyte-py-sdk
 ```
 
-It is recommended to use the matching Python Server SDK version for the given AccelByte Cloud version. For the list of available versions, see [releases](https://github.com/AccelByte/accelbyte-python-sdk/releases). 
+It is recommended to use the matching Python Server SDK version for the given AccelByte Gaming Services version. For the list of available versions, see [releases](https://github.com/AccelByte/accelbyte-python-sdk/releases). 
 
 ### 3. Use in Code
 
-Create an SDK instance, login using client credentials, and call an AccelByte Cloud API in `app.py`. 
+Create an SDK instance, login using client credentials, and call an AccelByte Gaming Services API in `app.py`. 
 
 The `EnvironmentConfigRepository` gets its values from `AB_BASE_URL`, `AB_CLIENT_ID`, and `AB_CLIENT_SECRET` environment variables.
 
@@ -93,7 +93,7 @@ def main():
     if error:
         exit(1)  # Login failed
 
-    # Call an AccelByte Cloud API e.g. GetCountryLocationV3
+    # Call an AccelByte Gaming Services API e.g. GetCountryLocationV3
     response, error = iam_service.get_country_location_v3()
     if error:
         exit(1)  # Response error
@@ -111,16 +111,16 @@ if __name__ == "__main__":
 Set the required environment variables and run the code using the python interpreter.
 
 ```shell
-$ export AB_BASE_URL="https://demo.accelbyte.io"              # AccelByte Cloud Base URL e.g. demo environment
-$ export AB_CLIENT_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"      # AccelByte Cloud OAuth Client ID
-$ export AB_CLIENT_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # AccelByte Cloud OAuth Client Secret
+$ export AB_BASE_URL="https://demo.accelbyte.io"              # AccelByte Gaming Services Base URL e.g. demo environment
+$ export AB_CLIENT_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"      # AccelByte Gaming Services OAuth Client ID
+$ export AB_CLIENT_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # AccelByte Gaming Services OAuth Client Secret
 $ python app.py
 ```
 
 ## Follow Up Resources
 
 * Python Server SDK [README.md](https://github.com/AccelByte/accelbyte-python-sdk/blob/main/README.md)
-* Reference documentation on AccelByte Cloud endpoints, their corresponding Python Server SDK API, and short examples on how to use them is available in [docs](https://github.com/AccelByte/accelbyte-python-sdk/blob/main/docs)
+* Reference documentation on AccelByte Gaming Services endpoints, their corresponding Python Server SDK API, and short examples on how to use them is available in [docs](https://github.com/AccelByte/accelbyte-python-sdk/blob/main/docs)
 * Sample apps which show some practical usage of Python Server SDK are available in [samples](https://github.com/AccelByte/accelbyte-python-sdk/blob/main/samples)
 
 ## FAQ

@@ -1,8 +1,8 @@
-# AccelByte Cloud and 3rd Party OpenID Connect Login Integration Using AccelByte Python Server SDK
+# AccelByte Gaming Services and 3rd Party OpenID Connect Login Integration Using AccelByte Python Server SDK
 
 ## Overview
 
-AccelByte Cloud provides [integration with OpenID Connect providers](https://docs.accelbyte.io/guides/access/3rd-party-platform-integration.html#openid-connect) as one of the 3rd party login integration options. Any OpenID Connect providers should work. The following sample app will show you how to do this with the AccelByte Python Server SDK and [PhantAuth](https://www.phantauth.net/), an OpenID Connect provider to simplify testing.
+AccelByte Gaming Services provides [integration with OpenID Connect providers](https://docs.accelbyte.io/guides/access/3rd-party-platform-integration.html#openid-connect) as one of the 3rd party login integration options. Any OpenID Connect providers should work. The following sample app will show you how to do this with the AccelByte Python Server SDK and [PhantAuth](https://www.phantauth.net/), an OpenID Connect provider to simplify testing.
 
 ## Sample App
 
@@ -19,7 +19,7 @@ AccelByte Cloud provides [integration with OpenID Connect providers](https://doc
 3. In `/login/callback` endpoint: 
     - Get auth token from `PhantAuth` with `code` from the query string
     - Perform login platform using `Platform ID` and `ID Token` from `PhantAuth` auth token
-    - After login platform is successful, we can try to call some AccelByte Cloud endpoints
+    - After login platform is successful, we can try to call some AccelByte Gaming Services endpoints
 
 ```mermaid
 sequenceDiagram
@@ -27,7 +27,7 @@ sequenceDiagram
     participant B as Web Browser
     participant S as Sample App
     participant P as PhantAuth (OIDC Provider)
-    participant I as AB Cloud IAM Service
+    participant I as AB Gaming Services IAM Service
 
     U ->>+ B: Open Index Page (default: http://localhost:8080/)
     B ->>+ S: Get Home (/)
@@ -52,7 +52,7 @@ sequenceDiagram
     S ->>+ P: Get Auth Token using Code (PhantAuth /auth/token)
     P -->>- S: Auth Token
     S ->>+ I: Login Platform with ID Token from Auth Token
-    I -->>- S: AB Cloud Auth Token
+    I -->>- S: AB Gaming Services Auth Token
     S -->>- B: Redirect to Home (/) with state: IsAuthenticated
     B -->>- U: 
 ```
@@ -199,7 +199,7 @@ def login():
 2. Get auth `token` from the OIDC provider using `code` (`/auth/token`).
 3. Get `id_token` from the `token`.
 4. Perform AccelByte Python SDK `login_platform` using Platform ID (from the `env CLI argument` and environment variables) and `id_token` from PhantAuth token.
-5. After `login_platform` is successful, we can now begin calling AccelByte Cloud endpoints.
+5. After `login_platform` is successful, we can now begin calling AccelByte Gaming Services endpoints.
 
 ```python
 # app.py

@@ -28,7 +28,7 @@ def main():
     if error:
         exit(1)  # Login failed
 
-    # Call an AccelByte Cloud API e.g. GetCountryLocationV3
+    # Call an AccelByte Gaming Services API e.g. GetCountryLocationV3
     response, error = iam_service.get_country_location_v3()
     if error:
         exit(1)  # Response error
