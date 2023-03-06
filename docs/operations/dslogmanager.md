@@ -1,8 +1,8 @@
 [//]: # (<< Code generated. DO NOT EDIT!)
 
-[//]: # (<< template file: accelbyte_cloud_py_codegen)
+[//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Cloud Ds Log Manager Service Index (3.2.0)
+# AccelByte Gaming Services Ds Log Manager Service Index (3.2.0)
 
 
 ## Operations

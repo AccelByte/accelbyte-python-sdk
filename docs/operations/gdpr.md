@@ -1,8 +1,8 @@
 [//]: # (<< Code generated. DO NOT EDIT!)
 
-[//]: # (<< template file: accelbyte_cloud_py_codegen)
+[//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Cloud Gdpr Service Index (1.19.1)
+# AccelByte Gaming Services Gdpr Service Index (1.19.1)
 
 
 ## Operations

@@ -4,7 +4,7 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: accelbyte_cloud_py_codegen
+# template file: ags_py_codegen
 
 """Auto-generated package that contains models used by the Analytics Game Telemetry."""
 

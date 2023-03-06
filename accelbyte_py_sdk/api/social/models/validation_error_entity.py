@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: accelbyte_cloud_py_codegen
+# template file: ags_py_codegen
 
-# AccelByte Cloud Social Service (2.0.0)
+# AccelByte Gaming Services Social Service (2.0.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

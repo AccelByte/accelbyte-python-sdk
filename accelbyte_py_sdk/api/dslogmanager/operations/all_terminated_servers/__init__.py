@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: accelbyte_cloud_py_codegen
+# template file: ags_py_codegen
 
-"""Auto-generated package that contains models used by the AccelByte Cloud Ds Log Manager Service."""
+"""Auto-generated package that contains models used by the AccelByte Gaming Services Ds Log Manager Service."""
 
 __version__ = "3.2.0"
 __author__ = "AccelByte"

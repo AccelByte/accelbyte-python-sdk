@@ -4,7 +4,7 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: accelbyte_cloud_py_codegen
+# template file: ags_py_codegen
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Group Service (2.15.1)
+# AccelByte Gaming Services Group Service (2.15.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

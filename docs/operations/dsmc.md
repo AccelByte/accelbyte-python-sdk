@@ -1,8 +1,8 @@
 [//]: # (<< Code generated. DO NOT EDIT!)
 
-[//]: # (<< template file: accelbyte_cloud_py_codegen)
+[//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Cloud Dsm Controller Service Index (6.2.2)
+# AccelByte Gaming Services Dsm Controller Service Index (6.2.2)
 
 
 ## Operations

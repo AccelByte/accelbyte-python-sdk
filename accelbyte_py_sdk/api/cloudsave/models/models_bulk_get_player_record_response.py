@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: accelbyte_cloud_py_codegen
+# template file: ags_py_codegen
 
-# AccelByte Cloud Cloudsave Service (3.6.1)
+# AccelByte Gaming Services Cloudsave Service (3.6.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

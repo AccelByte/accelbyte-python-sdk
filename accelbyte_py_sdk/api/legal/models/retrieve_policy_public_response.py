@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: accelbyte_cloud_py_codegen
+# template file: ags_py_codegen
 
-# AccelByte Cloud Legal Service (1.27.0)
+# AccelByte Gaming Services Legal Service (1.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

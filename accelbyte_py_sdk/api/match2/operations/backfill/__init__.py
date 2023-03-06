@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: accelbyte_cloud_py_codegen
+# template file: ags_py_codegen
 
-"""Auto-generated package that contains models used by the AccelByte Cloud Match Service V2."""
+"""Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
 __version__ = "2.2.0"
 __author__ = "AccelByte"

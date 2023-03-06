@@ -1,8 +1,8 @@
 [//]: # (<< Code generated. DO NOT EDIT!)
 
-[//]: # (<< template file: accelbyte_cloud_py_codegen)
+[//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Cloud Basic Service Index (2.6.0)
+# AccelByte Gaming Services Basic Service Index (2.6.0)
 
 
 ## Operations

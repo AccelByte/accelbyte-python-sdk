@@ -1,8 +1,8 @@
 [//]: # (<< Code generated. DO NOT EDIT!)
 
-[//]: # (<< template file: accelbyte_cloud_py_codegen)
+[//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Cloud Matchmaking Service Index (2.21.2)
+# AccelByte Gaming Services Matchmaking Service Index (2.21.2)
 
 
 ## Operations
