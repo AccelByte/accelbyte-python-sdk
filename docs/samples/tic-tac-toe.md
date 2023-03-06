@@ -1,7 +1,7 @@
-# Tic-Tac-Toe with AccelByte's Python Server SDK
+# Tic-Tac-Toe with AccelByte's Python Extend SDK
 
-As an alternative to [AccelByte Golang Server SDK](https://github.com/AccelByte/accelbyte-go-sdk), you can use the [AccelByte Python Server SDK](https://github.com/AccelByte/accelbyte-python-sdk) to easily shift logic implementation from your game client into the backend.
-For this guide we will use the [Tic-Tac-Toe Sample App](https://github.com/AccelByte/accelbyte-python-sdk/tree/main/samples/tic-tac-toe-app) included with our Python Server SDK.
+As an alternative to [AccelByte Golang Extend SDK](https://github.com/AccelByte/accelbyte-go-sdk), you can use the [AccelByte Python Extend SDK](https://github.com/AccelByte/accelbyte-python-sdk) to easily shift logic implementation from your game client into the backend.
+For this guide we will use the [Tic-Tac-Toe Sample App](https://github.com/AccelByte/accelbyte-python-sdk/tree/main/samples/tic-tac-toe-app) included with our Python Extend SDK.
 
 ## An Overview
 
@@ -297,10 +297,10 @@ Before running the client, you will need to set a few environment variables firs
 
 Will there be more language runtimes supported, like Go, C#, Java, and TypeScript?
 
-Yes! Please reach out to us if you are interested to learn more about the Server SDKs we have in the works.
+Yes! Please reach out to us if you are interested to learn more about the Extend SDKs we have in the works.
 
 ## Learn More
 
-You can find our Python Server SDK in our [public Github](https://github.com/AccelByte/accelbyte-python-sdk).
+You can find our Python Extend SDK in our [public Github](https://github.com/AccelByte/accelbyte-python-sdk).
 Interested in learning more about our solutions?
 Get in touch [here](https://accelbyte.io/request-a-demo/?utm_source=website&utm_medium=blog).

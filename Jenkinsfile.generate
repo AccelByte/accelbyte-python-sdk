@@ -68,11 +68,11 @@ pipeline {
           cp -v ${sdkSpecPath}/docs/openapi-2.0-vendor-extensions.md ${sdkPath}/spec/;
           """, label: "Prepare: Copy Latest SDK Specs"
 
-        // regenerate server sdk code
+        // regenerate extend sdk code
         sh script: """
           cd ${sdkGenPath};
           make -f Makefile.sdk-python sdk_all SDK_PATH=${sdkPath};
-          """, label: "Generate Server SDK"
+          """, label: "Generate Extend SDK"
 
         // test if there's code breaking changes, by running sample cli againts newly generated sdk code
         catchError(buildResult: 'SUCCESS') {
@@ -94,7 +94,7 @@ pipeline {
           sh "make version"
 
           sh "git add --all"
-          sh "git commit -m 'chore(sdk): generate python server sdk (${timeStamp()})' -m '- generated from source sdk spec commit: ${sdkSpecCommitHash}'"
+          sh "git commit -m 'chore(sdk): generate python extend sdk (${timeStamp()})' -m '- generated from source sdk spec commit: ${sdkSpecCommitHash}'"
           sshagent(credentials: [bitbucketCredentialsSsh]) {
             sh "git push --set-upstream origin +${sdkNewBranchName}:${sdkNewBranchName}"
           }
@@ -183,7 +183,7 @@ pipeline {
         specLink = "https://bitbucket.org/accelbyte/justice-codegen-sdk-spec/commits/${sdkSpecCommitHash}"
         sdkLink = "https://bitbucket.org/accelbyte/${sdkRepoName}/commits/${sdkCommitHash}"
         message = """
-                  :white_check_mark: <${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}> *Generate Python Server SDK Successful :python:*
+                  :white_check_mark: <${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}> *Generate Python Extend SDK Successful :python:*
                 
                   |*Source SDK Spec:* <${specLink}|${sdkSpecCommitHash}>
                   |*Generated SDK:* <${sdkLink}|${sdkCommitHash}>

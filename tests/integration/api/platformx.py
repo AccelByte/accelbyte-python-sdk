@@ -10,7 +10,7 @@ class PlatformTestCase(IntegrationTestCase):
     exported_filename: str = "export_store"
     store_id: Optional[str] = None
     store_create: StoreCreate = StoreCreate.create(
-        title="Python Server SDK Store",
+        title="Python Extend SDK Store",
         default_language="en-US",
         default_region="US",
     )

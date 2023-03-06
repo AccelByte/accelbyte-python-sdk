@@ -17,7 +17,7 @@ class IAMTestCase(IntegrationTestCase):
         code="",
         country="US",
         date_of_birth="1990-01-01",
-        display_name="Python Server SDK Test",
+        display_name="Python Extend SDK Test",
         email_address=f"{username}@test.com",
         username=username,
         password="q!w@e#r$azsxdcfv1",

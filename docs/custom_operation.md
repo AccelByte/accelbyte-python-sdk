@@ -2,10 +2,10 @@
 
 ## Background
 
-Majority of Python Server SDK codes are generated from [specification files](../spec) using codegen tools.
-Any attemp to customize Python Server SDK must avoid editing files that are marked as `DO NOT EDIT`.
-Also, it is best practice to extend the functionality of Python Server SDK by inherit the base classes or add new
-implementation for partial classes to ensure fewer complications when upgrading Python Server SDK.
+Majority of Python Extend SDK codes are generated from [specification files](../spec) using codegen tools.
+Any attemp to customize Python Extend SDK must avoid editing files that are marked as `DO NOT EDIT`.
+Also, it is best practice to extend the functionality of Python Extend SDK by inherit the base classes or add new
+implementation for partial classes to ensure fewer complications when upgrading Python Extend SDK.
 
 ## How to Create a Custom Operation
 

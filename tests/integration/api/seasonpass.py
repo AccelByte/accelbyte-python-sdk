@@ -41,7 +41,7 @@ from accelbyte_py_sdk.api.seasonpass.models.season_update import SeasonUpdate
 
 class SeasonPassTestCase(IntegrationTestCase):
     namespace: str = os.environ.get("AB_NAMESPACE", "")
-    storeTitle: str = "Python Server SDK Season Store"
+    storeTitle: str = "Python Extend SDK Season Store"
 
     def do_get_store(self) -> StoreInfo:
         result, error = list_stores(

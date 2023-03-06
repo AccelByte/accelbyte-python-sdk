@@ -73,7 +73,7 @@ class GroupTestCase(IntegrationTestCase):
                 group_admin_role_id=self.group_admin_role_id,
                 group_max_member=50,
                 group_member_role_id=self.group_member_role_id,
-                name="Python Server SDK Configuration Code",
+                name="Python Extend SDK Configuration Code",
             )
         )
 
