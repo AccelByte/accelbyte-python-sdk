@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Session Browser Service ()
+# AGS Session Browser Service ()
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

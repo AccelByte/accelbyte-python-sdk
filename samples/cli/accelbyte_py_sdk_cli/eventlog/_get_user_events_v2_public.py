@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Event Log Service ()
+# AGS Event Log Service ()
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
