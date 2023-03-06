@@ -18,7 +18,7 @@ class Model:
         check_enum: bool = True,
         check_pattern: bool = True,
         recursive_check: bool = True,
-        **kwargs
+        **kwargs,
     ) -> Tuple[bool, Union[None, str]]:
         field_info = self.get_field_info()
         required_map = self.get_required_map() if check_required else None
@@ -97,7 +97,9 @@ class Model:
         return result
 
     @staticmethod
-    def init_obj_from_dict(obj: Any, dikt: dict, keys: Union[List[str], Dict[str, str]]) -> None:
+    def init_obj_from_dict(
+        obj: Any, dikt: dict, keys: Union[List[str], Dict[str, str]]
+    ) -> None:
         if not dikt:
             return None
         for key in keys:
