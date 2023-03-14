@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-reporting-service (0.1.24)
+# justice-reporting-service (0.1.25)
 
 from ._admin_find_action_list import admin_find_action_list
 from ._admin_create_mod_action import admin_create_mod_action

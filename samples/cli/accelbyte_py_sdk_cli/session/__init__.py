@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (2.6.8)
+# justice-session-service (2.6.9)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
@@ -35,6 +35,9 @@ from ._get_game_session import get_game_session
 from ._update_game_session import update_game_session
 from ._delete_game_session import delete_game_session
 from ._patch_update_game_session import patch_update_game_session
+from ._update_game_session_backfill_ticket_id import (
+    update_game_session_backfill_ticket_id,
+)
 from ._public_game_session_invite import public_game_session_invite
 from ._join_game_session import join_game_session
 from ._leave_game_session import leave_game_session
@@ -79,6 +82,7 @@ commands = [
     update_game_session,
     delete_game_session,
     patch_update_game_session,
+    update_game_session_backfill_ticket_id,
     public_game_session_invite,
     join_game_session,
     leave_game_session,

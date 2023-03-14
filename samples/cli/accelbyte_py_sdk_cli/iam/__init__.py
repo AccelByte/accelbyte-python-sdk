@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.28.0)
+# justice-iam-service (5.29.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -434,6 +434,7 @@ from ._public_disable_my_email_v4 import public_disable_my_email_v4
 from ._public_enable_my_email_v4 import public_enable_my_email_v4
 from ._public_get_my_enabled_factors_v4 import public_get_my_enabled_factors_v4
 from ._public_make_factor_my_default_v4 import public_make_factor_my_default_v4
+from ._public_invite_user_v4 import public_invite_user_v4
 
 
 commands = [
@@ -783,4 +784,5 @@ commands = [
     public_enable_my_email_v4,
     public_get_my_enabled_factors_v4,
     public_make_factor_my_default_v4,
+    public_invite_user_v4,
 ]

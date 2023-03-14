@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Social Service (2.0.0)
+# AGS Social Service (2.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.social.models import StatCyclePagingSlicedResult
 @click.option("--limit", "limit", type=int)
 @click.option("--name", "name", type=str)
 @click.option("--offset", "offset", type=int)
+@click.option("--sort_by", "sort_by", type=str)
 @click.option("--status", "status", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -49,6 +50,7 @@ def get_stat_cycles(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     status: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -68,6 +70,7 @@ def get_stat_cycles(
         limit=limit,
         name=name,
         offset=offset,
+        sort_by=sort_by,
         status=status,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

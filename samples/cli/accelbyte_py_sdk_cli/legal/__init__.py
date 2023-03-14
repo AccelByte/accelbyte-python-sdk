@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-legal-service (1.27.0)
+# justice-legal-service (1.27.1)
 
 from ._change_preference_consent import change_preference_consent
 from ._retrieve_accepted_agreements import retrieve_accepted_agreements
@@ -24,6 +24,9 @@ from ._retrieve_single_localized_policy_version import (
 from ._update_localized_policy_version import update_localized_policy_version
 from ._request_presigned_url import request_presigned_url
 from ._set_default_policy import set_default_policy
+from ._retrieve_accepted_agreements_for_multi_users import (
+    retrieve_accepted_agreements_for_multi_users,
+)
 from ._retrieve_accepted_agreements_1 import retrieve_accepted_agreements_1
 from ._retrieve_all_users_by_policy_version_1 import (
     retrieve_all_users_by_policy_version_1,
@@ -109,6 +112,7 @@ commands = [
     update_localized_policy_version,
     request_presigned_url,
     set_default_policy,
+    retrieve_accepted_agreements_for_multi_users,
     retrieve_accepted_agreements_1,
     retrieve_all_users_by_policy_version_1,
     retrieve_all_legal_policies_by_namespace,

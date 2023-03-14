@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.24.0)
+# justice-platform-service (4.25.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -335,6 +335,7 @@ from ._public_get_category import public_get_category
 from ._public_get_child_categories import public_get_child_categories
 from ._public_get_descendant_categories import public_get_descendant_categories
 from ._public_list_currencies import public_list_currencies
+from ._get_iap_item_mapping import get_iap_item_mapping
 from ._public_get_item_by_app_id import public_get_item_by_app_id
 from ._public_query_items import public_query_items
 from ._public_get_item_by_sku import public_get_item_by_sku
@@ -377,6 +378,7 @@ from ._public_get_my_entitlement_ownership_by_sku import (
 from ._public_get_entitlement_ownership_token import (
     public_get_entitlement_ownership_token,
 )
+from ._sync_twitch_drops_entitlement import sync_twitch_drops_entitlement
 from ._public_get_my_wallet import public_get_my_wallet
 from ._sync_epic_game_dlc import sync_epic_game_dlc
 from ._public_sync_psn_dlc_inventory import public_sync_psn_dlc_inventory
@@ -422,7 +424,7 @@ from ._public_reconcile_play_station_store_with_multiple_service_labels import (
     public_reconcile_play_station_store_with_multiple_service_labels,
 )
 from ._sync_steam_inventory import sync_steam_inventory
-from ._sync_twitch_drops_entitlement import sync_twitch_drops_entitlement
+from ._sync_twitch_drops_entitlement_1 import sync_twitch_drops_entitlement_1
 from ._sync_xbox_inventory import sync_xbox_inventory
 from ._public_query_user_orders import public_query_user_orders
 from ._public_create_user_order import public_create_user_order
@@ -760,6 +762,7 @@ commands = [
     public_get_child_categories,
     public_get_descendant_categories,
     public_list_currencies,
+    get_iap_item_mapping,
     public_get_item_by_app_id,
     public_query_items,
     public_get_item_by_sku,
@@ -788,6 +791,7 @@ commands = [
     public_get_my_entitlement_ownership_by_item_id,
     public_get_my_entitlement_ownership_by_sku,
     public_get_entitlement_ownership_token,
+    sync_twitch_drops_entitlement,
     public_get_my_wallet,
     sync_epic_game_dlc,
     public_sync_psn_dlc_inventory,
@@ -813,7 +817,7 @@ commands = [
     public_reconcile_play_station_store,
     public_reconcile_play_station_store_with_multiple_service_labels,
     sync_steam_inventory,
-    sync_twitch_drops_entitlement,
+    sync_twitch_drops_entitlement_1,
     sync_xbox_inventory,
     public_query_user_orders,
     public_create_user_order,

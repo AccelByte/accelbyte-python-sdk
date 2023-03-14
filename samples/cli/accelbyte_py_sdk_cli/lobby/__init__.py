@@ -10,7 +10,9 @@
 
 from ._get_user_friends_updated import get_user_friends_updated
 from ._get_user_incoming_friends import get_user_incoming_friends
+from ._get_user_incoming_friends_with_time import get_user_incoming_friends_with_time
 from ._get_user_outgoing_friends import get_user_outgoing_friends
+from ._get_user_outgoing_friends_with_time import get_user_outgoing_friends_with_time
 from ._user_request_friend import user_request_friend
 from ._user_accept_friend_request import user_accept_friend_request
 from ._user_cancel_friend_request import user_cancel_friend_request
@@ -148,7 +150,9 @@ from ._notification_with_template_by_user_id import (
 commands = [
     get_user_friends_updated,
     get_user_incoming_friends,
+    get_user_incoming_friends_with_time,
     get_user_outgoing_friends,
+    get_user_outgoing_friends_with_time,
     user_request_friend,
     user_accept_friend_request,
     user_cancel_friend_request,

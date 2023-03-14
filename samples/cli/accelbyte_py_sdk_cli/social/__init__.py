@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-social-service (2.0.0)
+# justice-social-service (2.1.0)
 
 from ._get_namespace_slot_config import get_namespace_slot_config
 from ._update_namespace_slot_config import update_namespace_slot_config
@@ -56,6 +56,7 @@ from ._get_stat import get_stat
 from ._delete_stat import delete_stat
 from ._update_stat import update_stat
 from ._delete_tied_stat import delete_tied_stat
+from ._get_user_stat_cycle_items import get_user_stat_cycle_items
 from ._get_user_stat_items import get_user_stat_items
 from ._bulk_create_user_stat_items import bulk_create_user_stat_items
 from ._bulk_inc_user_stat_item_1 import bulk_inc_user_stat_item_1
@@ -74,6 +75,7 @@ from ._public_bulk_inc_user_stat_item import public_bulk_inc_user_stat_item
 from ._public_bulk_inc_user_stat_item_value import public_bulk_inc_user_stat_item_value
 from ._bulk_reset_user_stat_item_2 import bulk_reset_user_stat_item_2
 from ._create_stat_1 import create_stat_1
+from ._get_user_stat_cycle_items_1 import get_user_stat_cycle_items_1
 from ._public_query_user_stat_items import public_query_user_stat_items
 from ._public_bulk_create_user_stat_items import public_bulk_create_user_stat_items
 from ._public_query_user_stat_items_1 import public_query_user_stat_items_1
@@ -144,6 +146,7 @@ commands = [
     delete_stat,
     update_stat,
     delete_tied_stat,
+    get_user_stat_cycle_items,
     get_user_stat_items,
     bulk_create_user_stat_items,
     bulk_inc_user_stat_item_1,
@@ -162,6 +165,7 @@ commands = [
     public_bulk_inc_user_stat_item_value,
     bulk_reset_user_stat_item_2,
     create_stat_1,
+    get_user_stat_cycle_items_1,
     public_query_user_stat_items,
     public_bulk_create_user_stat_items,
     public_query_user_stat_items_1,
