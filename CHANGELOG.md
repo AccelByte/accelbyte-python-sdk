@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.36.0
+- Add guide for creating custom operations and models.
+- Rename AccelByte Cloud to AccelByte Gaming Services.
+- Rename Python Server SDK to Python Extend SDK.
+- Update spec for AccelByte Cloud v3.44.0.
+
 ## v0.35.0
 - Add [migration guide](docs/migration-guides/migration-guide-v0.34.0-to-v0.35.0.md) for `v0.34.0` to `v0.35.0`.
 - Add more DSMC deployment tests.
