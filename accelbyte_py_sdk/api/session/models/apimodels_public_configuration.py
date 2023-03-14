@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.8)
+# AccelByte Gaming Services Session Service (2.6.9)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -48,6 +48,8 @@ class ApimodelsPublicConfiguration(Model):
 
         name: (name) REQUIRED str
 
+        persistent: (persistent) REQUIRED bool
+
         requested_regions: (requestedRegions) REQUIRED List[str]
 
         text_chat: (textChat) REQUIRED bool
@@ -65,6 +67,7 @@ class ApimodelsPublicConfiguration(Model):
     max_players: int  # REQUIRED
     min_players: int  # REQUIRED
     name: str  # REQUIRED
+    persistent: bool  # REQUIRED
     requested_regions: List[str]  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
@@ -103,6 +106,10 @@ class ApimodelsPublicConfiguration(Model):
 
     def with_name(self, value: str) -> ApimodelsPublicConfiguration:
         self.name = value
+        return self
+
+    def with_persistent(self, value: bool) -> ApimodelsPublicConfiguration:
+        self.persistent = value
         return self
 
     def with_requested_regions(self, value: List[str]) -> ApimodelsPublicConfiguration:
@@ -155,6 +162,10 @@ class ApimodelsPublicConfiguration(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "persistent"):
+            result["persistent"] = bool(self.persistent)
+        elif include_empty:
+            result["persistent"] = False
         if hasattr(self, "requested_regions"):
             result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
         elif include_empty:
@@ -184,6 +195,7 @@ class ApimodelsPublicConfiguration(Model):
         max_players: int,
         min_players: int,
         name: str,
+        persistent: bool,
         requested_regions: List[str],
         text_chat: bool,
         type_: str,
@@ -197,6 +209,7 @@ class ApimodelsPublicConfiguration(Model):
         instance.max_players = max_players
         instance.min_players = min_players
         instance.name = name
+        instance.persistent = persistent
         instance.requested_regions = requested_regions
         instance.text_chat = text_chat
         instance.type_ = type_
@@ -241,6 +254,10 @@ class ApimodelsPublicConfiguration(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "persistent" in dict_ and dict_["persistent"] is not None:
+            instance.persistent = bool(dict_["persistent"])
+        elif include_empty:
+            instance.persistent = False
         if "requestedRegions" in dict_ and dict_["requestedRegions"] is not None:
             instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
         elif include_empty:
@@ -304,6 +321,7 @@ class ApimodelsPublicConfiguration(Model):
             "maxPlayers": "max_players",
             "minPlayers": "min_players",
             "name": "name",
+            "persistent": "persistent",
             "requestedRegions": "requested_regions",
             "textChat": "text_chat",
             "type": "type_",
@@ -320,6 +338,7 @@ class ApimodelsPublicConfiguration(Model):
             "maxPlayers": True,
             "minPlayers": True,
             "name": True,
+            "persistent": True,
             "requestedRegions": True,
             "textChat": True,
             "type": True,

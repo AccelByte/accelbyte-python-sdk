@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.8)
+# AccelByte Gaming Services Session Service (2.6.9)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,6 +53,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         text_chat: (textChat) REQUIRED bool
 
         type_: (type) REQUIRED str
+
+        persistent: (persistent) OPTIONAL bool
+
+        persistent_ttl: (persistentTTL) OPTIONAL int
     """
 
     # region fields
@@ -68,6 +72,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
     requested_regions: List[str]  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
+    persistent: bool  # OPTIONAL
+    persistent_ttl: int  # OPTIONAL
 
     # endregion fields
 
@@ -135,6 +141,18 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         self.type_ = value
         return self
 
+    def with_persistent(
+        self, value: bool
+    ) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.persistent = value
+        return self
+
+    def with_persistent_ttl(
+        self, value: int
+    ) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.persistent_ttl = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -185,6 +203,14 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "persistent"):
+            result["persistent"] = bool(self.persistent)
+        elif include_empty:
+            result["persistent"] = False
+        if hasattr(self, "persistent_ttl"):
+            result["persistentTTL"] = int(self.persistent_ttl)
+        elif include_empty:
+            result["persistentTTL"] = 0
         return result
 
     # endregion to methods
@@ -205,6 +231,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         requested_regions: List[str],
         text_chat: bool,
         type_: str,
+        persistent: Optional[bool] = None,
+        persistent_ttl: Optional[int] = None,
     ) -> ApimodelsCreateConfigurationTemplateRequest:
         instance = cls()
         instance.client_version = client_version
@@ -218,6 +246,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         instance.requested_regions = requested_regions
         instance.text_chat = text_chat
         instance.type_ = type_
+        if persistent is not None:
+            instance.persistent = persistent
+        if persistent_ttl is not None:
+            instance.persistent_ttl = persistent_ttl
         return instance
 
     @classmethod
@@ -271,6 +303,14 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "persistent" in dict_ and dict_["persistent"] is not None:
+            instance.persistent = bool(dict_["persistent"])
+        elif include_empty:
+            instance.persistent = False
+        if "persistentTTL" in dict_ and dict_["persistentTTL"] is not None:
+            instance.persistent_ttl = int(dict_["persistentTTL"])
+        elif include_empty:
+            instance.persistent_ttl = 0
         return instance
 
     @classmethod
@@ -325,6 +365,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "requestedRegions": "requested_regions",
             "textChat": "text_chat",
             "type": "type_",
+            "persistent": "persistent",
+            "persistentTTL": "persistent_ttl",
         }
 
     @staticmethod
@@ -341,6 +383,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "requestedRegions": True,
             "textChat": True,
             "type": True,
+            "persistent": False,
+            "persistentTTL": False,
         }
 
     # endregion static methods

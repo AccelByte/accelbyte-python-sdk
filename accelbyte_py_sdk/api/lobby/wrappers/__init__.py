@@ -61,8 +61,12 @@ from ._friends import get_user_friends_updated
 from ._friends import get_user_friends_updated_async
 from ._friends import get_user_incoming_friends
 from ._friends import get_user_incoming_friends_async
+from ._friends import get_user_incoming_friends_with_time
+from ._friends import get_user_incoming_friends_with_time_async
 from ._friends import get_user_outgoing_friends
 from ._friends import get_user_outgoing_friends_async
+from ._friends import get_user_outgoing_friends_with_time
+from ._friends import get_user_outgoing_friends_with_time_async
 from ._friends import user_accept_friend_request
 from ._friends import user_accept_friend_request_async
 from ._friends import user_cancel_friend_request

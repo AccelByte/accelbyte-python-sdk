@@ -202,6 +202,8 @@ def create_stat_1(
     Responses:
         201: Created - StatInfo (Create stat successfully)
 
+        404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
         409: Conflict - ErrorEntity (12271: Stat template with code [{statCode}] already exists in namespace [{namespace}])
     """
     if namespace is None:
@@ -254,6 +256,8 @@ async def create_stat_1_async(
 
     Responses:
         201: Created - StatInfo (Create stat successfully)
+
+        404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12271: Stat template with code [{statCode}] already exists in namespace [{namespace}])
     """
@@ -918,7 +922,7 @@ def query_stats(
 ):
     """Query stats by keyword (queryStats)
 
-    Query stats stats by keyword.
+    Query stats by keyword.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
@@ -979,7 +983,7 @@ async def query_stats_async(
 ):
     """Query stats by keyword (queryStats)
 
-    Query stats stats by keyword.
+    Query stats by keyword.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)

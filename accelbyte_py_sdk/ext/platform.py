@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.24.0)
+# AccelByte Gaming Services Platform Service (4.25.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -144,6 +144,8 @@ from ..api.platform.models import IAPConsumeHistoryPagingSlicedResult
 from ..api.platform.models import IAPItemConfigInfo
 from ..api.platform.models import IAPItemConfigUpdate
 from ..api.platform.models import IAPItemEntry
+from ..api.platform.models import IAPItemFlatEntry
+from ..api.platform.models import IAPItemMappingInfo
 from ..api.platform.models import IAPOrderInfo
 from ..api.platform.models import IAPOrderPagingSlicedResult
 from ..api.platform.models import Image
@@ -328,6 +330,7 @@ from ..api.platform.models import TransactionAmountDetails
 from ..api.platform.models import TwitchIAPConfigInfo
 from ..api.platform.models import TwitchIAPConfigRequest
 from ..api.platform.models import TwitchSyncRequest
+from ..api.platform.models import TwitchSyncResult
 from ..api.platform.models import UserDLC
 from ..api.platform.models import ValidationErrorEntity
 from ..api.platform.models import ViewCreate
@@ -953,6 +956,7 @@ def create_credit_summary_example() -> CreditSummary:
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
     instance.wallet_id = randomize()
+    instance.currency_code = randomize()
     return instance
 
 
@@ -1257,6 +1261,7 @@ def create_entitlement_summary_example() -> EntitlementSummary:
     instance.end_date = randomize("date")
     instance.granted_code = randomize()
     instance.item_id = randomize()
+    instance.name = randomize()
     instance.stackable = randomize("bool")
     instance.stacked_use_count = randomize("int", min_val=1, max_val=1000)
     instance.start_date = randomize("date")
@@ -1730,6 +1735,21 @@ def create_iap_item_entry_example() -> IAPItemEntry:
     instance.item_identity = randomize()
     instance.item_identity_type = randomize()
     instance.platform_product_id_map = {randomize(): randomize()}
+    return instance
+
+
+def create_iap_item_flat_entry_example() -> IAPItemFlatEntry:
+    instance = IAPItemFlatEntry()
+    instance.item_identity = randomize()
+    instance.item_identity_type = randomize()
+    instance.platform = randomize()
+    instance.platform_product_id = randomize()
+    return instance
+
+
+def create_iap_item_mapping_info_example() -> IAPItemMappingInfo:
+    instance = IAPItemMappingInfo()
+    instance.data = [create_iap_item_flat_entry_example()]
     return instance
 
 
@@ -3258,9 +3278,7 @@ def create_revoke_currency_example() -> RevokeCurrency:
 
 def create_revoke_entitlement_example() -> RevokeEntitlement:
     instance = RevokeEntitlement()
-    instance.clazz = randomize()
     instance.entitlement_id = randomize()
-    instance.type_ = randomize()
     return instance
 
 
@@ -3900,6 +3918,14 @@ def create_twitch_sync_request_example() -> TwitchSyncRequest:
     instance.game_id = randomize()
     instance.language = randomize()
     instance.region = randomize()
+    return instance
+
+
+def create_twitch_sync_result_example() -> TwitchSyncResult:
+    instance = TwitchSyncResult()
+    instance.iap_order_status = randomize()
+    instance.item_sku = randomize()
+    instance.transaction_id = randomize("uid")
     return instance
 
 

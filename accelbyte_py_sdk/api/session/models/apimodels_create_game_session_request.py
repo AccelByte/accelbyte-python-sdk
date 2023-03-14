@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.8)
+# AccelByte Gaming Services Session Service (2.6.9)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,6 +67,10 @@ class ApimodelsCreateGameSessionRequest(Model):
         ticket_i_ds: (ticketIDs) REQUIRED List[str]
 
         type_: (type) REQUIRED str
+
+        persistent: (persistent) OPTIONAL bool
+
+        persistent_ttl: (persistentTTL) OPTIONAL int
     """
 
     # region fields
@@ -88,6 +92,8 @@ class ApimodelsCreateGameSessionRequest(Model):
     text_chat: bool  # REQUIRED
     ticket_i_ds: List[str]  # REQUIRED
     type_: str  # REQUIRED
+    persistent: bool  # OPTIONAL
+    persistent_ttl: int  # OPTIONAL
 
     # endregion fields
 
@@ -163,6 +169,14 @@ class ApimodelsCreateGameSessionRequest(Model):
 
     def with_type(self, value: str) -> ApimodelsCreateGameSessionRequest:
         self.type_ = value
+        return self
+
+    def with_persistent(self, value: bool) -> ApimodelsCreateGameSessionRequest:
+        self.persistent = value
+        return self
+
+    def with_persistent_ttl(self, value: int) -> ApimodelsCreateGameSessionRequest:
+        self.persistent_ttl = value
         return self
 
     # endregion with_x methods
@@ -241,6 +255,14 @@ class ApimodelsCreateGameSessionRequest(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "persistent"):
+            result["persistent"] = bool(self.persistent)
+        elif include_empty:
+            result["persistent"] = False
+        if hasattr(self, "persistent_ttl"):
+            result["persistentTTL"] = int(self.persistent_ttl)
+        elif include_empty:
+            result["persistentTTL"] = 0
         return result
 
     # endregion to methods
@@ -267,6 +289,8 @@ class ApimodelsCreateGameSessionRequest(Model):
         text_chat: bool,
         ticket_i_ds: List[str],
         type_: str,
+        persistent: Optional[bool] = None,
+        persistent_ttl: Optional[int] = None,
     ) -> ApimodelsCreateGameSessionRequest:
         instance = cls()
         instance.attributes = attributes
@@ -286,6 +310,10 @@ class ApimodelsCreateGameSessionRequest(Model):
         instance.text_chat = text_chat
         instance.ticket_i_ds = ticket_i_ds
         instance.type_ = type_
+        if persistent is not None:
+            instance.persistent = persistent
+        if persistent_ttl is not None:
+            instance.persistent_ttl = persistent_ttl
         return instance
 
     @classmethod
@@ -368,6 +396,14 @@ class ApimodelsCreateGameSessionRequest(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "persistent" in dict_ and dict_["persistent"] is not None:
+            instance.persistent = bool(dict_["persistent"])
+        elif include_empty:
+            instance.persistent = False
+        if "persistentTTL" in dict_ and dict_["persistentTTL"] is not None:
+            instance.persistent_ttl = int(dict_["persistentTTL"])
+        elif include_empty:
+            instance.persistent_ttl = 0
         return instance
 
     @classmethod
@@ -428,6 +464,8 @@ class ApimodelsCreateGameSessionRequest(Model):
             "textChat": "text_chat",
             "ticketIDs": "ticket_i_ds",
             "type": "type_",
+            "persistent": "persistent",
+            "persistentTTL": "persistent_ttl",
         }
 
     @staticmethod
@@ -450,6 +488,8 @@ class ApimodelsCreateGameSessionRequest(Model):
             "textChat": True,
             "ticketIDs": True,
             "type": True,
+            "persistent": False,
+            "persistentTTL": False,
         }
 
     # endregion static methods

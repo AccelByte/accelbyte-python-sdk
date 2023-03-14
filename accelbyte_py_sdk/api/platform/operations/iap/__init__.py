@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.24.0"
+__version__ = "4.25.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -26,6 +26,8 @@ from .get_apple_iap_config import GetAppleIAPConfig
 from .get_epic_games_iap_config import GetEpicGamesIAPConfig
 from .get_google_iap_config import GetGoogleIAPConfig
 from .get_iap_item_config import GetIAPItemConfig
+from .get_iap_item_mapping import GetIAPItemMapping
+from .get_iap_item_mapping import PlatformEnum as GetIAPItemMappingPlatformEnum
 from .get_play_station_iap_config import GetPlayStationIAPConfig
 from .get_steam_iap_config import GetSteamIAPConfig
 from .get_twitch_iap_config import GetTwitchIAPConfig
@@ -51,6 +53,7 @@ from .query_user_iap_orders import (
 from .sync_epic_games_inventory import SyncEpicGamesInventory
 from .sync_steam_inventory import SyncSteamInventory
 from .sync_twitch_drops_entitlement import SyncTwitchDropsEntitlement
+from .sync_twitch_drops_entit_0c09ca import SyncTwitchDropsEntitlement1
 from .sync_xbox_inventory import SyncXboxInventory
 from .update_apple_iap_config import UpdateAppleIAPConfig
 from .update_epic_games_iap_config import UpdateEpicGamesIAPConfig

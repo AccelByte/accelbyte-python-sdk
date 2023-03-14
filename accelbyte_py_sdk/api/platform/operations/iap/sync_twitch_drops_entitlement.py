@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.24.0)
+# AccelByte Gaming Services Platform Service (4.25.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -31,23 +31,21 @@ from .....core import HttpResponse
 
 from ...models import ErrorEntity
 from ...models import TwitchSyncRequest
+from ...models import TwitchSyncResult
 
 
 class SyncTwitchDropsEntitlement(Operation):
-    """Sync twitch drops entitlements. (syncTwitchDropsEntitlement)
+    """Sync my game twitch drops entitlements. (syncTwitchDropsEntitlement)
 
-    Sync twitch drops entitlements.
+    Sync my game twitch drops entitlements.
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      * Required permission : resource=NAMESPACE:{namespace}:IAP, action=4 (UPDATE)
       *  Returns :
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
-
     Properties:
-        url: /platform/public/namespaces/{namespace}/users/{userId}/iap/twitch/sync
+        url: /platform/public/namespaces/{namespace}/users/me/iap/twitch/sync
 
         method: PUT
 
@@ -57,32 +55,29 @@ class SyncTwitchDropsEntitlement(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TwitchSyncRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
     Responses:
-        204: No Content - (Sync Successful)
+        200: OK - List[TwitchSyncResult] (successful operation)
 
         400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
     """
 
     # region fields
 
-    _url: str = "/platform/public/namespaces/{namespace}/users/{userId}/iap/twitch/sync"
+    _url: str = "/platform/public/namespaces/{namespace}/users/me/iap/twitch/sync"
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: TwitchSyncRequest  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -135,8 +130,6 @@ class SyncTwitchDropsEntitlement(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -155,10 +148,6 @@ class SyncTwitchDropsEntitlement(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> SyncTwitchDropsEntitlement:
-        self.user_id = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
@@ -173,10 +162,6 @@ class SyncTwitchDropsEntitlement(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -186,10 +171,12 @@ class SyncTwitchDropsEntitlement(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, ErrorEntity, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, List[TwitchSyncResult]], Union[None, ErrorEntity, HttpResponse]
+    ]:
         """Parse the given response.
 
-        204: No Content - (Sync Successful)
+        200: OK - List[TwitchSyncResult] (successful operation)
 
         400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
 
@@ -206,8 +193,8 @@ class SyncTwitchDropsEntitlement(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
+        if code == 200:
+            return [TwitchSyncResult.create_from_dict(i) for i in content], None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
 
@@ -223,12 +210,10 @@ class SyncTwitchDropsEntitlement(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
         body: Optional[TwitchSyncRequest] = None,
     ) -> SyncTwitchDropsEntitlement:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         if body is not None:
             instance.body = body
         return instance
@@ -248,10 +233,6 @@ class SyncTwitchDropsEntitlement(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
         return instance
 
     @staticmethod
@@ -259,7 +240,6 @@ class SyncTwitchDropsEntitlement(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "userId": "user_id",
         }
 
     @staticmethod
@@ -267,7 +247,6 @@ class SyncTwitchDropsEntitlement(Operation):
         return {
             "body": False,
             "namespace": True,
-            "userId": True,
         }
 
     # endregion static methods

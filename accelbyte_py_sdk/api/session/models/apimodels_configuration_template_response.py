@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.8)
+# AccelByte Gaming Services Session Service (2.6.9)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -54,6 +54,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         namespace: (namespace) REQUIRED str
 
+        persistent: (persistent) REQUIRED bool
+
         requested_regions: (requestedRegions) REQUIRED List[str]
 
         text_chat: (textChat) REQUIRED bool
@@ -76,6 +78,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     min_players: int  # REQUIRED
     name: str  # REQUIRED
     namespace: str  # REQUIRED
+    persistent: bool  # REQUIRED
     requested_regions: List[str]  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
@@ -129,6 +132,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
     def with_namespace(self, value: str) -> ApimodelsConfigurationTemplateResponse:
         self.namespace = value
+        return self
+
+    def with_persistent(self, value: bool) -> ApimodelsConfigurationTemplateResponse:
+        self.persistent = value
         return self
 
     def with_requested_regions(
@@ -199,6 +206,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "persistent"):
+            result["persistent"] = bool(self.persistent)
+        elif include_empty:
+            result["persistent"] = False
         if hasattr(self, "requested_regions"):
             result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
         elif include_empty:
@@ -235,6 +246,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         min_players: int,
         name: str,
         namespace: str,
+        persistent: bool,
         requested_regions: List[str],
         text_chat: bool,
         type_: str,
@@ -252,6 +264,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         instance.min_players = min_players
         instance.name = name
         instance.namespace = namespace
+        instance.persistent = persistent
         instance.requested_regions = requested_regions
         instance.text_chat = text_chat
         instance.type_ = type_
@@ -309,6 +322,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "persistent" in dict_ and dict_["persistent"] is not None:
+            instance.persistent = bool(dict_["persistent"])
+        elif include_empty:
+            instance.persistent = False
         if "requestedRegions" in dict_ and dict_["requestedRegions"] is not None:
             instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
         elif include_empty:
@@ -379,6 +396,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "minPlayers": "min_players",
             "name": "name",
             "namespace": "namespace",
+            "persistent": "persistent",
             "requestedRegions": "requested_regions",
             "textChat": "text_chat",
             "type": "type_",
@@ -399,6 +417,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "minPlayers": True,
             "name": True,
             "namespace": True,
+            "persistent": True,
             "requestedRegions": True,
             "textChat": True,
             "type": True,

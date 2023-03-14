@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Legal Service Index (1.27.0)
+# AccelByte Gaming Services Legal Service Index (1.27.1)
 
 
 ## Operations
@@ -34,6 +34,7 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /agreement/admin/namespaces/{namespace}/agreements/policies/users/{userId} | GET | retrieveAcceptedAgreements_1 | `false` | [RetrieveAcceptedAgreements1](../../accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/retrieve_accepted_agreements_1.py) | [retrieve_accepted_agreements_1](../../accelbyte_py_sdk/api/legal/wrappers/_agreement_with_namespace.py) | [accelbyte_py_sdk_cli legal-retrieve-accepted-agreements-1](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_accepted_agreements_1.py) |
+| /agreement/admin/namespaces/{namespace}/agreements | POST | retrieveAcceptedAgreementsForMultiUsers | `false` | [RetrieveAcceptedAgreementsForMultiUsers](../../accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/retrieve_accepted_agree_8c230d.py) | [retrieve_accepted_agreements_for_multi_users](../../accelbyte_py_sdk/api/legal/wrappers/_agreement_with_namespace.py) | [accelbyte_py_sdk_cli legal-retrieve-accepted-agreements-for-multi-users](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_accepted_agreements_for_multi_users.py) |
 | /agreement/admin/namespaces/{namespace}/agreements/policy-versions/users | GET | retrieveAllUsersByPolicyVersion_1 | `false` | [RetrieveAllUsersByPolicyVersion1](../../accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/retrieve_all_users_by_p_3f6faa.py) | [retrieve_all_users_by_policy_version_1](../../accelbyte_py_sdk/api/legal/wrappers/_agreement_with_namespace.py) | [accelbyte_py_sdk_cli legal-retrieve-all-users-by-policy-version-1](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_all_users_by_policy_version_1.py) |
 
 ### Anonymization
@@ -177,4 +178,6 @@
 | UpdatePolicyVersionResponse | [UpdatePolicyVersionResponse](../../accelbyte_py_sdk/api/legal/models/update_policy_version_response.py) |
 | UploadLocalizedPolicyVersionAttachmentResponse | [UploadLocalizedPolicyVersionAttachmentResponse](../../accelbyte_py_sdk/api/legal/models/upload_localized_policy_version_attachment_response.py) |
 | UploadPolicyVersionAttachmentRequest | [UploadPolicyVersionAttachmentRequest](../../accelbyte_py_sdk/api/legal/models/upload_policy_version_attachment_request.py) |
+| UserAgreementsResponse | [UserAgreementsResponse](../../accelbyte_py_sdk/api/legal/models/user_agreements_response.py) |
+| UsersAgreementsRequest | [UsersAgreementsRequest](../../accelbyte_py_sdk/api/legal/models/users_agreements_request.py) |
 | ValidationErrorEntity | [ValidationErrorEntity](../../accelbyte_py_sdk/api/legal/models/validation_error_entity.py) |

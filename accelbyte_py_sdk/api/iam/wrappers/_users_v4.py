@@ -47,6 +47,7 @@ from ..models import ModelInviteUserRequestV4
 from ..models import ModelInviteUserResponseV3
 from ..models import ModelListUserRolesV4Response
 from ..models import ModelListValidUserIDResponseV4
+from ..models import ModelPublicInviteUserRequestV4
 from ..models import ModelRemoveUserRoleV4Request
 from ..models import ModelUserCreateFromInvitationRequestV4
 from ..models import ModelUserResponseV3
@@ -91,6 +92,7 @@ from ..operations.users_v4 import PublicGenerateMyAuthenticatorKeyV4
 from ..operations.users_v4 import PublicGenerateMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyEnabledFactorsV4
+from ..operations.users_v4 import PublicInviteUserV4
 from ..operations.users_v4 import PublicMakeFactorMyDefaultV4
 from ..operations.users_v4 import PublicRemoveTrustedDeviceV4
 from ..operations.users_v4 import PublicSendMyMFAEmailCodeV4
@@ -4377,6 +4379,108 @@ async def public_get_my_enabled_factors_v4_async(
             return None, error
     request = PublicGetMyEnabledFactorsV4.create(
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicInviteUserV4)
+def public_invite_user_v4(
+    body: ModelPublicInviteUserRequestV4,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Public invite admin user v4 (PublicInviteUserV4)
+
+    This endpoint is used to invite a game studio admin user with new namespace in multi tenant mode.
+    It will return error if the service multi tenant mode is set to false.
+
+    Request body details:
+    - emailAddress: email address of the user to be invited
+    - namespace: new namespace of the user to be created
+    - namespaceDisplayName: display name of the new namespace
+
+    The invited users will also be assigned with "User" role by default.
+
+    Properties:
+        url: /iam/v4/public/users/invite
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPublicInviteUserRequestV4 in body
+
+    Responses:
+        201: Created - ModelInviteUserResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        409: Conflict - RestErrorResponse
+
+        422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicInviteUserV4.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicInviteUserV4)
+async def public_invite_user_v4_async(
+    body: ModelPublicInviteUserRequestV4,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Public invite admin user v4 (PublicInviteUserV4)
+
+    This endpoint is used to invite a game studio admin user with new namespace in multi tenant mode.
+    It will return error if the service multi tenant mode is set to false.
+
+    Request body details:
+    - emailAddress: email address of the user to be invited
+    - namespace: new namespace of the user to be created
+    - namespaceDisplayName: display name of the new namespace
+
+    The invited users will also be assigned with "User" role by default.
+
+    Properties:
+        url: /iam/v4/public/users/invite
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPublicInviteUserRequestV4 in body
+
+    Responses:
+        201: Created - ModelInviteUserResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        409: Conflict - RestErrorResponse
+
+        422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicInviteUserV4.create(
+        body=body,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

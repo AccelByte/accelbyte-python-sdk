@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "1.27.0"
+__version__ = "1.27.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -41,6 +41,10 @@ from ._agreement import retrieve_all_users_by_policy_version_async
 
 from ._agreement_with_namespace import retrieve_accepted_agreements_1
 from ._agreement_with_namespace import retrieve_accepted_agreements_1_async
+from ._agreement_with_namespace import retrieve_accepted_agreements_for_multi_users
+from ._agreement_with_namespace import (
+    retrieve_accepted_agreements_for_multi_users_async,
+)
 from ._agreement_with_namespace import retrieve_all_users_by_policy_version_1
 from ._agreement_with_namespace import retrieve_all_users_by_policy_version_1_async
 

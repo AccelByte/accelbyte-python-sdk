@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.8)
+# AccelByte Gaming Services Session Service (2.6.9)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -55,6 +55,8 @@ class ApimodelsPartySessionResponse(Model):
 
         namespace: (namespace) REQUIRED str
 
+        persistent: (persistent) REQUIRED bool
+
         updated_at: (updatedAt) REQUIRED str
 
         version: (version) REQUIRED int
@@ -76,6 +78,7 @@ class ApimodelsPartySessionResponse(Model):
     leader_id: str  # REQUIRED
     members: List[ApimodelsUserResponse]  # REQUIRED
     namespace: str  # REQUIRED
+    persistent: bool  # REQUIRED
     updated_at: str  # REQUIRED
     version: int  # REQUIRED
     code: str  # OPTIONAL
@@ -127,6 +130,10 @@ class ApimodelsPartySessionResponse(Model):
 
     def with_namespace(self, value: str) -> ApimodelsPartySessionResponse:
         self.namespace = value
+        return self
+
+    def with_persistent(self, value: bool) -> ApimodelsPartySessionResponse:
+        self.persistent = value
         return self
 
     def with_updated_at(self, value: str) -> ApimodelsPartySessionResponse:
@@ -195,6 +202,10 @@ class ApimodelsPartySessionResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "persistent"):
+            result["persistent"] = bool(self.persistent)
+        elif include_empty:
+            result["persistent"] = False
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -230,6 +241,7 @@ class ApimodelsPartySessionResponse(Model):
         leader_id: str,
         members: List[ApimodelsUserResponse],
         namespace: str,
+        persistent: bool,
         updated_at: str,
         version: int,
         code: Optional[str] = None,
@@ -246,6 +258,7 @@ class ApimodelsPartySessionResponse(Model):
         instance.leader_id = leader_id
         instance.members = members
         instance.namespace = namespace
+        instance.persistent = persistent
         instance.updated_at = updated_at
         instance.version = version
         if code is not None:
@@ -308,6 +321,10 @@ class ApimodelsPartySessionResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "persistent" in dict_ and dict_["persistent"] is not None:
+            instance.persistent = bool(dict_["persistent"])
+        elif include_empty:
+            instance.persistent = False
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -377,6 +394,7 @@ class ApimodelsPartySessionResponse(Model):
             "leaderID": "leader_id",
             "members": "members",
             "namespace": "namespace",
+            "persistent": "persistent",
             "updatedAt": "updated_at",
             "version": "version",
             "code": "code",
@@ -396,6 +414,7 @@ class ApimodelsPartySessionResponse(Model):
             "leaderID": True,
             "members": True,
             "namespace": True,
+            "persistent": True,
             "updatedAt": True,
             "version": True,
             "code": False,

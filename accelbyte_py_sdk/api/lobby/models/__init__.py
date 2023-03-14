@@ -41,6 +41,13 @@ from .model_get_user_incoming_friends_response import (
 from .model_get_user_outgoing_friends_response import (
     ModelGetUserOutgoingFriendsResponse,
 )
+from .model_incoming_friends_with_time_data import ModelIncomingFriendsWithTimeData
+from .model_load_incoming_friends_with_time_response import (
+    ModelLoadIncomingFriendsWithTimeResponse,
+)
+from .model_load_outgoing_friends_with_time_response import (
+    ModelLoadOutgoingFriendsWithTimeResponse,
+)
 from .model_localization import ModelLocalization
 from .model_notification_template_response import ModelNotificationTemplateResponse
 from .model_notification_topic_response import ModelNotificationTopicResponse
@@ -51,6 +58,7 @@ from .model_notification_with_template_request import (
 from .model_notification_with_template_request_v1 import (
     ModelNotificationWithTemplateRequestV1,
 )
+from .model_outgoing_friends_with_time_data import ModelOutgoingFriendsWithTimeData
 from .model_pagination import ModelPagination
 from .model_template_content import ModelTemplateContent
 from .model_template_localization import ModelTemplateLocalization

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.24.0)
+# AccelByte Gaming Services Platform Service (4.25.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,6 +64,8 @@ class UpdateIAPItemConfig(Operation):
 
     Responses:
         200: OK - IAPItemConfigInfo (successful operation)
+
+        409: Conflict - ValidationErrorEntity (39175: Duplicate IAP item mapping, IAPType: [{iapType}] and id: [{iapId}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -179,6 +181,8 @@ class UpdateIAPItemConfig(Operation):
 
         200: OK - IAPItemConfigInfo (successful operation)
 
+        409: Conflict - ValidationErrorEntity (39175: Duplicate IAP item mapping, IAPType: [{iapType}] and id: [{iapId}])
+
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
         ---: HttpResponse (Undocumented Response)
@@ -196,6 +200,8 @@ class UpdateIAPItemConfig(Operation):
 
         if code == 200:
             return IAPItemConfigInfo.create_from_dict(content), None
+        if code == 409:
+            return None, ValidationErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 

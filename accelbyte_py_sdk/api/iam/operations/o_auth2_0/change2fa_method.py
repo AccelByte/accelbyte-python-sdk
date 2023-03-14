@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.28.0)
+# AccelByte Gaming Services Iam Service (5.29.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -80,6 +80,8 @@ class Change2faMethod(Operation):
         204: No Content - (Method changed)
 
         400: Bad Request - RestErrorResponse (10189: invalid factor | 20002: validation error)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -191,6 +193,8 @@ class Change2faMethod(Operation):
 
         400: Bad Request - RestErrorResponse (10189: invalid factor | 20002: validation error)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
@@ -209,6 +213,8 @@ class Change2faMethod(Operation):
         if code == 204:
             return None, None
         if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 429:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)

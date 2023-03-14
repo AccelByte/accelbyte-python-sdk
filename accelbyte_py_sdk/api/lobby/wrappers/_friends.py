@@ -34,6 +34,8 @@ from ..models import ModelGetFriendsResponse
 from ..models import ModelGetUserFriendsResponse
 from ..models import ModelGetUserIncomingFriendsResponse
 from ..models import ModelGetUserOutgoingFriendsResponse
+from ..models import ModelLoadIncomingFriendsWithTimeResponse
+from ..models import ModelLoadOutgoingFriendsWithTimeResponse
 from ..models import ModelUserAcceptFriendRequest
 from ..models import ModelUserCancelFriendRequest
 from ..models import ModelUserGetFriendshipStatusResponse
@@ -47,7 +49,9 @@ from ..operations.friends import AddFriendsWithoutConfirmation
 from ..operations.friends import GetListOfFriends
 from ..operations.friends import GetUserFriendsUpdated
 from ..operations.friends import GetUserIncomingFriends
+from ..operations.friends import GetUserIncomingFriendsWithTime
 from ..operations.friends import GetUserOutgoingFriends
+from ..operations.friends import GetUserOutgoingFriendsWithTime
 from ..operations.friends import UserAcceptFriendRequest
 from ..operations.friends import UserCancelFriendRequest
 from ..operations.friends import UserGetFriendshipStatus
@@ -520,6 +524,100 @@ async def get_user_incoming_friends_async(
     )
 
 
+@same_doc_as(GetUserIncomingFriendsWithTime)
+def get_user_incoming_friends_with_time(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """get list of incoming friends with requested time info (getUserIncomingFriendsWithTime)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/incoming-time
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelLoadIncomingFriendsWithTimeResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserIncomingFriendsWithTime.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetUserIncomingFriendsWithTime)
+async def get_user_incoming_friends_with_time_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """get list of incoming friends with requested time info (getUserIncomingFriendsWithTime)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/incoming-time
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelLoadIncomingFriendsWithTimeResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserIncomingFriendsWithTime.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetUserOutgoingFriends)
 def get_user_outgoing_friends(
     namespace: Optional[str] = None,
@@ -607,6 +705,100 @@ async def get_user_outgoing_friends_async(
         if error:
             return None, error
     request = GetUserOutgoingFriends.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetUserOutgoingFriendsWithTime)
+def get_user_outgoing_friends_with_time(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """get list of outgoing friends with requested time info (getUserOutgoingFriendsWithTime)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/outgoing-time
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelLoadOutgoingFriendsWithTimeResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserOutgoingFriendsWithTime.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetUserOutgoingFriendsWithTime)
+async def get_user_outgoing_friends_with_time_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """get list of outgoing friends with requested time info (getUserOutgoingFriendsWithTime)
+
+    Properties:
+        url: /friends/namespaces/{namespace}/me/outgoing-time
+
+        method: GET
+
+        tags: ["friends", "public"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelLoadOutgoingFriendsWithTimeResponse] (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserOutgoingFriendsWithTime.create(
         namespace=namespace,
     )
     return await run_request_async(

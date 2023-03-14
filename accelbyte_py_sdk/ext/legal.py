@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.0)
+# AccelByte Gaming Services Legal Service (1.27.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,6 +64,8 @@ from ..api.legal.models import UpdatePolicyVersionRequest
 from ..api.legal.models import UpdatePolicyVersionResponse
 from ..api.legal.models import UploadLocalizedPolicyVersionAttachmentResponse
 from ..api.legal.models import UploadPolicyVersionAttachmentRequest
+from ..api.legal.models import UserAgreementsResponse
+from ..api.legal.models import UsersAgreementsRequest
 from ..api.legal.models import ValidationErrorEntity
 
 
@@ -325,7 +327,6 @@ def create_retrieve_localized_policy_version_response_example() -> RetrieveLocal
     instance = RetrieveLocalizedPolicyVersionResponse()
     instance.id_ = randomize()
     instance.locale_code = randomize()
-    instance.policy = create_policy_object_example()
     instance.policy_version = create_policy_version_object_example()
     instance.attachment_checksum = randomize()
     instance.attachment_location = randomize()
@@ -334,6 +335,7 @@ def create_retrieve_localized_policy_version_response_example() -> RetrieveLocal
     instance.content_type = randomize()
     instance.created_at = randomize("date")
     instance.description = randomize()
+    instance.policy = create_policy_object_example()
     instance.updated_at = randomize("date")
     return instance
 
@@ -398,13 +400,13 @@ def create_retrieve_policy_version_response_example() -> RetrievePolicyVersionRe
     instance.id_ = randomize()
     instance.is_committed = randomize("bool")
     instance.is_in_effect = randomize("bool")
-    instance.policy_id = randomize()
     instance.base_policy_id = randomize()
     instance.created_at = randomize("date")
     instance.description = randomize()
     instance.localized_policy_versions = [
         create_localized_policy_version_object_example()
     ]
+    instance.policy_id = randomize()
     instance.published_date = randomize("date")
     instance.status = randomize()
     instance.updated_at = randomize("date")
@@ -568,6 +570,19 @@ def create_upload_policy_version_attachment_request_example() -> UploadPolicyVer
     instance = UploadPolicyVersionAttachmentRequest()
     instance.content_md5 = randomize()
     instance.content_type = randomize()
+    return instance
+
+
+def create_user_agreements_response_example() -> UserAgreementsResponse:
+    instance = UserAgreementsResponse()
+    instance.agreements = [create_retrieve_accepted_agreement_response_example()]
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_users_agreements_request_example() -> UsersAgreementsRequest:
+    instance = UsersAgreementsRequest()
+    instance.user_ids = [randomize()]
     return instance
 
 

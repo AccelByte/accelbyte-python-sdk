@@ -854,6 +854,8 @@ def change2fa_method(
 
         400: Bad Request - RestErrorResponse (10189: invalid factor | 20002: validation error)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     request = Change2faMethod.create(
@@ -917,6 +919,8 @@ async def change2fa_method_async(
         204: No Content - (Method changed)
 
         400: Bad Request - RestErrorResponse (10189: invalid factor | 20002: validation error)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """

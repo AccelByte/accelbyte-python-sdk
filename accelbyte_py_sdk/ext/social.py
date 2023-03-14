@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.0.0)
+# AccelByte Gaming Services Social Service (2.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,6 +64,8 @@ from ..api.social.models import StatResetInfo
 from ..api.social.models import StatUpdate
 from ..api.social.models import UserGameProfiles
 from ..api.social.models import UserSlotConfigInfo
+from ..api.social.models import UserStatCycleItemInfo
+from ..api.social.models import UserStatCycleItemPagingSlicedResult
 from ..api.social.models import UserStatItemInfo
 from ..api.social.models import UserStatItemPagingSlicedResult
 from ..api.social.models import ValidationErrorEntity
@@ -456,6 +458,29 @@ def create_user_slot_config_info_example() -> UserSlotConfigInfo:
     instance.max_slots = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_user_stat_cycle_item_info_example() -> UserStatCycleItemInfo:
+    instance = UserStatCycleItemInfo()
+    instance.created_at = randomize("date")
+    instance.cycle_id = randomize()
+    instance.cycle_name = randomize()
+    instance.cycle_version = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
+    instance.stat_code = randomize()
+    instance.stat_name = randomize()
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.value = randomize("int", min_val=1, max_val=1000)
+    instance.tags = [randomize()]
+    return instance
+
+
+def create_user_stat_cycle_item_paging_sliced_result_example() -> UserStatCycleItemPagingSlicedResult:
+    instance = UserStatCycleItemPagingSlicedResult()
+    instance.data = [create_user_stat_cycle_item_info_example()]
+    instance.paging = create_paging_example()
     return instance
 
 

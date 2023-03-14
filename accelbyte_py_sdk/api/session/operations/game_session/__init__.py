@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.6.8"
+__version__ = "2.6.9"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -28,3 +28,4 @@ from .public_game_session_reject import PublicGameSessionReject
 from .public_query_game_sessions import PublicQueryGameSessions
 from .public_query_my_game_sessions import PublicQueryMyGameSessions
 from .update_game_session import UpdateGameSession
+from .update_game_session_bac_df8b84 import UpdateGameSessionBackfillTicketID

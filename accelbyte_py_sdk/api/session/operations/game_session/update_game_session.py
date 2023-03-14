@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.6.8)
+# AccelByte Gaming Services Session Service (2.6.9)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,6 +41,8 @@ class UpdateGameSession(Operation):
     To update only specified fields, please use following endpoint:
     method : PATCH
     API : /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+    To update DS attributes (clientVersion, deployment, requestedRegions) it will only be applied only as long as no DS has been requested, otherwise ignored.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.28.0)
+# AccelByte Gaming Services Iam Service (5.29.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,20 +38,23 @@ class ModelUserInvitationV3(Model):
 
         expired_at: (expiredAt) REQUIRED str
 
-        namespace: (namespace) REQUIRED str
-
         roles: (roles) REQUIRED List[AccountcommonNamespaceRole]
 
         id_: (id) OPTIONAL str
+
+        namespace: (namespace) OPTIONAL str
+
+        namespace_display_name: (namespaceDisplayName) OPTIONAL str
     """
 
     # region fields
 
     email: str  # REQUIRED
     expired_at: str  # REQUIRED
-    namespace: str  # REQUIRED
     roles: List[AccountcommonNamespaceRole]  # REQUIRED
     id_: str  # OPTIONAL
+    namespace: str  # OPTIONAL
+    namespace_display_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -65,10 +68,6 @@ class ModelUserInvitationV3(Model):
         self.expired_at = value
         return self
 
-    def with_namespace(self, value: str) -> ModelUserInvitationV3:
-        self.namespace = value
-        return self
-
     def with_roles(
         self, value: List[AccountcommonNamespaceRole]
     ) -> ModelUserInvitationV3:
@@ -77,6 +76,14 @@ class ModelUserInvitationV3(Model):
 
     def with_id(self, value: str) -> ModelUserInvitationV3:
         self.id_ = value
+        return self
+
+    def with_namespace(self, value: str) -> ModelUserInvitationV3:
+        self.namespace = value
+        return self
+
+    def with_namespace_display_name(self, value: str) -> ModelUserInvitationV3:
+        self.namespace_display_name = value
         return self
 
     # endregion with_x methods
@@ -93,10 +100,6 @@ class ModelUserInvitationV3(Model):
             result["expiredAt"] = str(self.expired_at)
         elif include_empty:
             result["expiredAt"] = ""
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = ""
         if hasattr(self, "roles"):
             result["roles"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.roles
@@ -107,6 +110,14 @@ class ModelUserInvitationV3(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = ""
+        if hasattr(self, "namespace_display_name"):
+            result["namespaceDisplayName"] = str(self.namespace_display_name)
+        elif include_empty:
+            result["namespaceDisplayName"] = ""
         return result
 
     # endregion to methods
@@ -118,17 +129,21 @@ class ModelUserInvitationV3(Model):
         cls,
         email: str,
         expired_at: str,
-        namespace: str,
         roles: List[AccountcommonNamespaceRole],
         id_: Optional[str] = None,
+        namespace: Optional[str] = None,
+        namespace_display_name: Optional[str] = None,
     ) -> ModelUserInvitationV3:
         instance = cls()
         instance.email = email
         instance.expired_at = expired_at
-        instance.namespace = namespace
         instance.roles = roles
         if id_ is not None:
             instance.id_ = id_
+        if namespace is not None:
+            instance.namespace = namespace
+        if namespace_display_name is not None:
+            instance.namespace_display_name = namespace_display_name
         return instance
 
     @classmethod
@@ -146,10 +161,6 @@ class ModelUserInvitationV3(Model):
             instance.expired_at = str(dict_["expiredAt"])
         elif include_empty:
             instance.expired_at = ""
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = ""
         if "roles" in dict_ and dict_["roles"] is not None:
             instance.roles = [
                 AccountcommonNamespaceRole.create_from_dict(
@@ -163,6 +174,17 @@ class ModelUserInvitationV3(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = ""
+        if (
+            "namespaceDisplayName" in dict_
+            and dict_["namespaceDisplayName"] is not None
+        ):
+            instance.namespace_display_name = str(dict_["namespaceDisplayName"])
+        elif include_empty:
+            instance.namespace_display_name = ""
         return instance
 
     @classmethod
@@ -208,9 +230,10 @@ class ModelUserInvitationV3(Model):
         return {
             "email": "email",
             "expiredAt": "expired_at",
-            "namespace": "namespace",
             "roles": "roles",
             "id": "id_",
+            "namespace": "namespace",
+            "namespaceDisplayName": "namespace_display_name",
         }
 
     @staticmethod
@@ -218,9 +241,10 @@ class ModelUserInvitationV3(Model):
         return {
             "email": True,
             "expiredAt": True,
-            "namespace": True,
             "roles": True,
             "id": False,
+            "namespace": False,
+            "namespaceDisplayName": False,
         }
 
     # endregion static methods

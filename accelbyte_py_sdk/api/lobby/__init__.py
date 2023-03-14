@@ -65,8 +65,12 @@ from .wrappers import get_user_friends_updated
 from .wrappers import get_user_friends_updated_async
 from .wrappers import get_user_incoming_friends
 from .wrappers import get_user_incoming_friends_async
+from .wrappers import get_user_incoming_friends_with_time
+from .wrappers import get_user_incoming_friends_with_time_async
 from .wrappers import get_user_outgoing_friends
 from .wrappers import get_user_outgoing_friends_async
+from .wrappers import get_user_outgoing_friends_with_time
+from .wrappers import get_user_outgoing_friends_with_time_async
 from .wrappers import user_accept_friend_request
 from .wrappers import user_accept_friend_request_async
 from .wrappers import user_cancel_friend_request

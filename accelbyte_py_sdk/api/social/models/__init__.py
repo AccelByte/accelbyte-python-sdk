@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Social Service."""
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -71,6 +71,10 @@ from .stat_reset_info import StatResetInfo
 from .stat_update import StatUpdate
 from .user_game_profiles import UserGameProfiles
 from .user_slot_config_info import UserSlotConfigInfo
+from .user_stat_cycle_item_info import UserStatCycleItemInfo
+from .user_stat_cycle_item_paging_sliced_result import (
+    UserStatCycleItemPagingSlicedResult,
+)
 from .user_stat_item_info import UserStatItemInfo
 from .user_stat_item_paging_sliced_result import UserStatItemPagingSlicedResult
 from .validation_error_entity import ValidationErrorEntity

@@ -178,8 +178,18 @@ def create_stat_cycle(
     """Create stat cycle (createStatCycle)
 
     Create stat cycle.
-    Other detail info:
+    Fields:
 
+      * name: Cycle name, maximum length is 128 characters. (required).
+      * resetTime: Reset time must follow hours:minutes in 24 hours format e.g. 01:30, 23:15. (required)
+      * resetDay: Reset Day follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday). Required when cycleType is WEEKLY.
+      * resetDate: Reset Date must be a number 1 - 31. Required when cycleType is MONTHLY or ANNUALLY.
+      * resetMonth: Reset Month must be a number 1 - 12. Required when cycleType is ANNUALLY.
+      * seasonPeriod: Season period must be a number greater than or equal to 1 (days). Required when cycleType is SEASONAL.
+      * start: Start time must follow RFC3339 standard. e.g. 2023-02-24T05:10:24.865Z. (required)
+      * end: End time must follow RFC3339 standard. e.g. 2023-02-24T05:10:24.865Z.
+
+    Other detail info:
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
       *  Returns : created stat cycle
 
@@ -229,8 +239,18 @@ async def create_stat_cycle_async(
     """Create stat cycle (createStatCycle)
 
     Create stat cycle.
-    Other detail info:
+    Fields:
 
+      * name: Cycle name, maximum length is 128 characters. (required).
+      * resetTime: Reset time must follow hours:minutes in 24 hours format e.g. 01:30, 23:15. (required)
+      * resetDay: Reset Day follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday). Required when cycleType is WEEKLY.
+      * resetDate: Reset Date must be a number 1 - 31. Required when cycleType is MONTHLY or ANNUALLY.
+      * resetMonth: Reset Month must be a number 1 - 12. Required when cycleType is ANNUALLY.
+      * seasonPeriod: Season period must be a number greater than or equal to 1 (days). Required when cycleType is SEASONAL.
+      * start: Start time must follow RFC3339 standard. e.g. 2023-02-24T05:10:24.865Z. (required)
+      * end: End time must follow RFC3339 standard. e.g. 2023-02-24T05:10:24.865Z.
+
+    Other detail info:
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
       *  Returns : created stat cycle
 
@@ -588,6 +608,7 @@ def get_stat_cycles(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     status: Optional[Union[str, GetStatCyclesStatusEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -627,6 +648,8 @@ def get_stat_cycles(
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
@@ -641,6 +664,7 @@ def get_stat_cycles(
         limit=limit,
         name=name,
         offset=offset,
+        sort_by=sort_by,
         status=status,
         namespace=namespace,
     )
@@ -653,6 +677,7 @@ async def get_stat_cycles_async(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     status: Optional[Union[str, GetStatCyclesStatusEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -692,6 +717,8 @@ async def get_stat_cycles_async(
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
@@ -706,6 +733,7 @@ async def get_stat_cycles_async(
         limit=limit,
         name=name,
         offset=offset,
+        sort_by=sort_by,
         status=status,
         namespace=namespace,
     )
@@ -720,6 +748,7 @@ def get_stat_cycles_1(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     status: Optional[Union[str, GetStatCycles1StatusEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -759,6 +788,8 @@ def get_stat_cycles_1(
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
@@ -773,6 +804,7 @@ def get_stat_cycles_1(
         limit=limit,
         name=name,
         offset=offset,
+        sort_by=sort_by,
         status=status,
         namespace=namespace,
     )
@@ -785,6 +817,7 @@ async def get_stat_cycles_1_async(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     status: Optional[Union[str, GetStatCycles1StatusEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -824,6 +857,8 @@ async def get_stat_cycles_1_async(
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
@@ -838,6 +873,7 @@ async def get_stat_cycles_1_async(
         limit=limit,
         name=name,
         offset=offset,
+        sort_by=sort_by,
         status=status,
         namespace=namespace,
     )

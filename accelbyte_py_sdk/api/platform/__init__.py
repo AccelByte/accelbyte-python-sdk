@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.24.0"
+__version__ = "4.25.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -295,6 +295,8 @@ from .wrappers import get_google_iap_config
 from .wrappers import get_google_iap_config_async
 from .wrappers import get_iap_item_config
 from .wrappers import get_iap_item_config_async
+from .wrappers import get_iap_item_mapping
+from .wrappers import get_iap_item_mapping_async
 from .wrappers import get_play_station_iap_config
 from .wrappers import get_play_station_iap_config_async
 from .wrappers import get_steam_iap_config
@@ -327,6 +329,8 @@ from .wrappers import sync_steam_inventory
 from .wrappers import sync_steam_inventory_async
 from .wrappers import sync_twitch_drops_entitlement
 from .wrappers import sync_twitch_drops_entitlement_async
+from .wrappers import sync_twitch_drops_entitlement_1
+from .wrappers import sync_twitch_drops_entitlement_1_async
 from .wrappers import sync_xbox_inventory
 from .wrappers import sync_xbox_inventory_async
 from .wrappers import update_apple_iap_config

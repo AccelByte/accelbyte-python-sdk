@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.6.0"
+__version__ = "2.6.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,6 +21,9 @@ from .a_dto_object_for_equ8_user_status import ADTOObjectForEqu8UserStatus
 from .action import Action
 from .add_country_group_request import AddCountryGroupRequest
 from .add_country_group_response import AddCountryGroupResponse
+from .config_create import ConfigCreate
+from .config_info import ConfigInfo
+from .config_update import ConfigUpdate
 from .country_group_object import CountryGroupObject
 from .country_object import CountryObject
 from .equ8_config import Equ8Config

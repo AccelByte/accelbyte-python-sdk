@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.0)
+# AccelByte Gaming Services Basic Service (2.6.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,9 @@ from ..api.basic.models import ADTOObjectForEqu8UserStatus
 from ..api.basic.models import Action
 from ..api.basic.models import AddCountryGroupRequest
 from ..api.basic.models import AddCountryGroupResponse
+from ..api.basic.models import ConfigCreate
+from ..api.basic.models import ConfigInfo
+from ..api.basic.models import ConfigUpdate
 from ..api.basic.models import CountryGroupObject
 from ..api.basic.models import CountryObject
 from ..api.basic.models import Equ8Config
@@ -117,6 +120,29 @@ def create_add_country_group_response_example() -> AddCountryGroupResponse:
     instance.countries = [create_country_object_example()]
     instance.country_group_code = randomize()
     instance.country_group_name = randomize()
+    return instance
+
+
+def create_config_create_example() -> ConfigCreate:
+    instance = ConfigCreate()
+    instance.key = randomize()
+    instance.value = randomize()
+    return instance
+
+
+def create_config_info_example() -> ConfigInfo:
+    instance = ConfigInfo()
+    instance.created_at = randomize("date")
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.value = randomize()
+    return instance
+
+
+def create_config_update_example() -> ConfigUpdate:
+    instance = ConfigUpdate()
+    instance.value = randomize()
     return instance
 
 

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.28.0)
+# AccelByte Gaming Services Iam Service (5.29.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,8 +62,6 @@ class ModelUserResponseV3(Model):
 
         namespace_roles: (namespaceRoles) REQUIRED List[AccountcommonNamespaceRole]
 
-        old_email_address: (oldEmailAddress) REQUIRED str
-
         permissions: (permissions) REQUIRED List[ModelUserPermissionsResponseV3]
 
         phone_verified: (phoneVerified) REQUIRED bool
@@ -77,6 +75,8 @@ class ModelUserResponseV3(Model):
         date_of_birth: (dateOfBirth) OPTIONAL str
 
         new_email_address: (newEmailAddress) OPTIONAL str
+
+        old_email_address: (oldEmailAddress) OPTIONAL str
 
         phone_number: (phoneNumber) OPTIONAL str
 
@@ -106,7 +106,6 @@ class ModelUserResponseV3(Model):
     last_enabled_changed_time: str  # REQUIRED
     namespace: str  # REQUIRED
     namespace_roles: List[AccountcommonNamespaceRole]  # REQUIRED
-    old_email_address: str  # REQUIRED
     permissions: List[ModelUserPermissionsResponseV3]  # REQUIRED
     phone_verified: bool  # REQUIRED
     roles: List[str]  # REQUIRED
@@ -114,6 +113,7 @@ class ModelUserResponseV3(Model):
     avatar_url: str  # OPTIONAL
     date_of_birth: str  # OPTIONAL
     new_email_address: str  # OPTIONAL
+    old_email_address: str  # OPTIONAL
     phone_number: str  # OPTIONAL
     platform_avatar_url: str  # OPTIONAL
     platform_display_name: str  # OPTIONAL
@@ -181,10 +181,6 @@ class ModelUserResponseV3(Model):
         self.namespace_roles = value
         return self
 
-    def with_old_email_address(self, value: str) -> ModelUserResponseV3:
-        self.old_email_address = value
-        return self
-
     def with_permissions(
         self, value: List[ModelUserPermissionsResponseV3]
     ) -> ModelUserResponseV3:
@@ -213,6 +209,10 @@ class ModelUserResponseV3(Model):
 
     def with_new_email_address(self, value: str) -> ModelUserResponseV3:
         self.new_email_address = value
+        return self
+
+    def with_old_email_address(self, value: str) -> ModelUserResponseV3:
+        self.old_email_address = value
         return self
 
     def with_phone_number(self, value: str) -> ModelUserResponseV3:
@@ -303,10 +303,6 @@ class ModelUserResponseV3(Model):
             ]
         elif include_empty:
             result["namespaceRoles"] = []
-        if hasattr(self, "old_email_address"):
-            result["oldEmailAddress"] = str(self.old_email_address)
-        elif include_empty:
-            result["oldEmailAddress"] = ""
         if hasattr(self, "permissions"):
             result["permissions"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.permissions
@@ -337,6 +333,10 @@ class ModelUserResponseV3(Model):
             result["newEmailAddress"] = str(self.new_email_address)
         elif include_empty:
             result["newEmailAddress"] = ""
+        if hasattr(self, "old_email_address"):
+            result["oldEmailAddress"] = str(self.old_email_address)
+        elif include_empty:
+            result["oldEmailAddress"] = ""
         if hasattr(self, "phone_number"):
             result["phoneNumber"] = str(self.phone_number)
         elif include_empty:
@@ -383,7 +383,6 @@ class ModelUserResponseV3(Model):
         last_enabled_changed_time: str,
         namespace: str,
         namespace_roles: List[AccountcommonNamespaceRole],
-        old_email_address: str,
         permissions: List[ModelUserPermissionsResponseV3],
         phone_verified: bool,
         roles: List[str],
@@ -391,6 +390,7 @@ class ModelUserResponseV3(Model):
         avatar_url: Optional[str] = None,
         date_of_birth: Optional[str] = None,
         new_email_address: Optional[str] = None,
+        old_email_address: Optional[str] = None,
         phone_number: Optional[str] = None,
         platform_avatar_url: Optional[str] = None,
         platform_display_name: Optional[str] = None,
@@ -412,7 +412,6 @@ class ModelUserResponseV3(Model):
         instance.last_enabled_changed_time = last_enabled_changed_time
         instance.namespace = namespace
         instance.namespace_roles = namespace_roles
-        instance.old_email_address = old_email_address
         instance.permissions = permissions
         instance.phone_verified = phone_verified
         instance.roles = roles
@@ -423,6 +422,8 @@ class ModelUserResponseV3(Model):
             instance.date_of_birth = date_of_birth
         if new_email_address is not None:
             instance.new_email_address = new_email_address
+        if old_email_address is not None:
+            instance.old_email_address = old_email_address
         if phone_number is not None:
             instance.phone_number = phone_number
         if platform_avatar_url is not None:
@@ -514,10 +515,6 @@ class ModelUserResponseV3(Model):
             ]
         elif include_empty:
             instance.namespace_roles = []
-        if "oldEmailAddress" in dict_ and dict_["oldEmailAddress"] is not None:
-            instance.old_email_address = str(dict_["oldEmailAddress"])
-        elif include_empty:
-            instance.old_email_address = ""
         if "permissions" in dict_ and dict_["permissions"] is not None:
             instance.permissions = [
                 ModelUserPermissionsResponseV3.create_from_dict(
@@ -551,6 +548,10 @@ class ModelUserResponseV3(Model):
             instance.new_email_address = str(dict_["newEmailAddress"])
         elif include_empty:
             instance.new_email_address = ""
+        if "oldEmailAddress" in dict_ and dict_["oldEmailAddress"] is not None:
+            instance.old_email_address = str(dict_["oldEmailAddress"])
+        elif include_empty:
+            instance.old_email_address = ""
         if "phoneNumber" in dict_ and dict_["phoneNumber"] is not None:
             instance.phone_number = str(dict_["phoneNumber"])
         elif include_empty:
@@ -629,7 +630,6 @@ class ModelUserResponseV3(Model):
             "lastEnabledChangedTime": "last_enabled_changed_time",
             "namespace": "namespace",
             "namespaceRoles": "namespace_roles",
-            "oldEmailAddress": "old_email_address",
             "permissions": "permissions",
             "phoneVerified": "phone_verified",
             "roles": "roles",
@@ -637,6 +637,7 @@ class ModelUserResponseV3(Model):
             "avatarUrl": "avatar_url",
             "dateOfBirth": "date_of_birth",
             "newEmailAddress": "new_email_address",
+            "oldEmailAddress": "old_email_address",
             "phoneNumber": "phone_number",
             "platformAvatarUrl": "platform_avatar_url",
             "platformDisplayName": "platform_display_name",
@@ -661,7 +662,6 @@ class ModelUserResponseV3(Model):
             "lastEnabledChangedTime": True,
             "namespace": True,
             "namespaceRoles": True,
-            "oldEmailAddress": True,
             "permissions": True,
             "phoneVerified": True,
             "roles": True,
@@ -669,6 +669,7 @@ class ModelUserResponseV3(Model):
             "avatarUrl": False,
             "dateOfBirth": False,
             "newEmailAddress": False,
+            "oldEmailAddress": False,
             "phoneNumber": False,
             "platformAvatarUrl": False,
             "platformDisplayName": False,

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.24.0"
+__version__ = "4.25.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -287,6 +287,12 @@ from .iap_item_config_info import IAPItemConfigInfo
 from .iap_item_config_update import IAPItemConfigUpdate
 from .iap_item_entry import IAPItemEntry
 from .iap_item_entry import ItemIdentityTypeEnum as IAPItemEntryItemIdentityTypeEnum
+from .iap_item_flat_entry import IAPItemFlatEntry
+from .iap_item_flat_entry import (
+    ItemIdentityTypeEnum as IAPItemFlatEntryItemIdentityTypeEnum,
+    PlatformEnum as IAPItemFlatEntryPlatformEnum,
+)
+from .iap_item_mapping_info import IAPItemMappingInfo
 from .iap_order_info import IAPOrderInfo
 from .iap_order_info import (
     StatusEnum as IAPOrderInfoStatusEnum,
@@ -575,10 +581,6 @@ from .revocation_result import StatusEnum as RevocationResultStatusEnum
 from .revoke_currency import RevokeCurrency
 from .revoke_currency import BalanceOriginEnum as RevokeCurrencyBalanceOriginEnum
 from .revoke_entitlement import RevokeEntitlement
-from .revoke_entitlement import (
-    ClazzEnum as RevokeEntitlementClazzEnum,
-    TypeEnum as RevokeEntitlementTypeEnum,
-)
 from .revoke_entry import RevokeEntry
 from .revoke_entry import TypeEnum as RevokeEntryTypeEnum
 from .revoke_item import RevokeItem
@@ -680,6 +682,8 @@ from .transaction_amount_details import TransactionAmountDetails
 from .twitch_iap_config_info import TwitchIAPConfigInfo
 from .twitch_iap_config_request import TwitchIAPConfigRequest
 from .twitch_sync_request import TwitchSyncRequest
+from .twitch_sync_result import TwitchSyncResult
+from .twitch_sync_result import IapOrderStatusEnum as TwitchSyncResultIapOrderStatusEnum
 from .user_dlc import UserDLC
 from .user_dlc import PlatformEnum as UserDLCPlatformEnum
 from .validation_error_entity import ValidationErrorEntity

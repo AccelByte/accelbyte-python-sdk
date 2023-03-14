@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.0)
+# AccelByte Gaming Services Legal Service (1.27.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,8 +39,6 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
 
         locale_code: (localeCode) REQUIRED str
 
-        policy: (policy) REQUIRED PolicyObject
-
         policy_version: (policyVersion) REQUIRED PolicyVersionObject
 
         attachment_checksum: (attachmentChecksum) OPTIONAL str
@@ -57,6 +55,8 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
 
         description: (description) OPTIONAL str
 
+        policy: (policy) OPTIONAL PolicyObject
+
         updated_at: (updatedAt) OPTIONAL str
     """
 
@@ -64,7 +64,6 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
 
     id_: str  # REQUIRED
     locale_code: str  # REQUIRED
-    policy: PolicyObject  # REQUIRED
     policy_version: PolicyVersionObject  # REQUIRED
     attachment_checksum: str  # OPTIONAL
     attachment_location: str  # OPTIONAL
@@ -73,6 +72,7 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
     content_type: str  # OPTIONAL
     created_at: str  # OPTIONAL
     description: str  # OPTIONAL
+    policy: PolicyObject  # OPTIONAL
     updated_at: str  # OPTIONAL
 
     # endregion fields
@@ -85,12 +85,6 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
 
     def with_locale_code(self, value: str) -> RetrieveLocalizedPolicyVersionResponse:
         self.locale_code = value
-        return self
-
-    def with_policy(
-        self, value: PolicyObject
-    ) -> RetrieveLocalizedPolicyVersionResponse:
-        self.policy = value
         return self
 
     def with_policy_version(
@@ -135,6 +129,12 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
         self.description = value
         return self
 
+    def with_policy(
+        self, value: PolicyObject
+    ) -> RetrieveLocalizedPolicyVersionResponse:
+        self.policy = value
+        return self
+
     def with_updated_at(self, value: str) -> RetrieveLocalizedPolicyVersionResponse:
         self.updated_at = value
         return self
@@ -153,10 +153,6 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
             result["localeCode"] = str(self.locale_code)
         elif include_empty:
             result["localeCode"] = ""
-        if hasattr(self, "policy"):
-            result["policy"] = self.policy.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["policy"] = PolicyObject()
         if hasattr(self, "policy_version"):
             result["policyVersion"] = self.policy_version.to_dict(
                 include_empty=include_empty
@@ -193,6 +189,10 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "policy"):
+            result["policy"] = self.policy.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["policy"] = PolicyObject()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -208,7 +208,6 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
         cls,
         id_: str,
         locale_code: str,
-        policy: PolicyObject,
         policy_version: PolicyVersionObject,
         attachment_checksum: Optional[str] = None,
         attachment_location: Optional[str] = None,
@@ -217,12 +216,12 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
         content_type: Optional[str] = None,
         created_at: Optional[str] = None,
         description: Optional[str] = None,
+        policy: Optional[PolicyObject] = None,
         updated_at: Optional[str] = None,
     ) -> RetrieveLocalizedPolicyVersionResponse:
         instance = cls()
         instance.id_ = id_
         instance.locale_code = locale_code
-        instance.policy = policy
         instance.policy_version = policy_version
         if attachment_checksum is not None:
             instance.attachment_checksum = attachment_checksum
@@ -238,6 +237,8 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
             instance.created_at = created_at
         if description is not None:
             instance.description = description
+        if policy is not None:
+            instance.policy = policy
         if updated_at is not None:
             instance.updated_at = updated_at
         return instance
@@ -257,12 +258,6 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
             instance.locale_code = str(dict_["localeCode"])
         elif include_empty:
             instance.locale_code = ""
-        if "policy" in dict_ and dict_["policy"] is not None:
-            instance.policy = PolicyObject.create_from_dict(
-                dict_["policy"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.policy = PolicyObject()
         if "policyVersion" in dict_ and dict_["policyVersion"] is not None:
             instance.policy_version = PolicyVersionObject.create_from_dict(
                 dict_["policyVersion"], include_empty=include_empty
@@ -302,6 +297,12 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "policy" in dict_ and dict_["policy"] is not None:
+            instance.policy = PolicyObject.create_from_dict(
+                dict_["policy"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.policy = PolicyObject()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -351,7 +352,6 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
         return {
             "id": "id_",
             "localeCode": "locale_code",
-            "policy": "policy",
             "policyVersion": "policy_version",
             "attachmentChecksum": "attachment_checksum",
             "attachmentLocation": "attachment_location",
@@ -360,6 +360,7 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
             "contentType": "content_type",
             "createdAt": "created_at",
             "description": "description",
+            "policy": "policy",
             "updatedAt": "updated_at",
         }
 
@@ -368,7 +369,6 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
         return {
             "id": True,
             "localeCode": True,
-            "policy": True,
             "policyVersion": True,
             "attachmentChecksum": False,
             "attachmentLocation": False,
@@ -377,6 +377,7 @@ class RetrieveLocalizedPolicyVersionResponse(Model):
             "contentType": False,
             "createdAt": False,
             "description": False,
+            "policy": False,
             "updatedAt": False,
         }
 

@@ -32,8 +32,13 @@ from ....core import same_doc_as
 from ..models import ErrorEntity
 from ..models import PagedRetrieveUserAcceptedAgreementResponse
 from ..models import RetrieveAcceptedAgreementResponse
+from ..models import UserAgreementsResponse
+from ..models import UsersAgreementsRequest
 
 from ..operations.agreement_with_namespace import RetrieveAcceptedAgreements1
+from ..operations.agreement_with_namespace import (
+    RetrieveAcceptedAgreementsForMultiUsers,
+)
 from ..operations.agreement_with_namespace import RetrieveAllUsersByPolicyVersion1
 
 
@@ -126,6 +131,102 @@ async def retrieve_accepted_agreements_1_async(
             return None, error
     request = RetrieveAcceptedAgreements1.create(
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RetrieveAcceptedAgreementsForMultiUsers)
+def retrieve_accepted_agreements_for_multi_users(
+    body: Optional[UsersAgreementsRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve Accepted Legal Agreements For Multi Users (retrieveAcceptedAgreementsForMultiUsers)
+
+    This API will return all accepted Legal Agreements for each user, including agreements of game users if publisher user has corresponding game accountOther detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/agreements
+
+        method: POST
+
+        tags: ["Agreement With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UsersAgreementsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[UserAgreementsResponse] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetrieveAcceptedAgreementsForMultiUsers.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RetrieveAcceptedAgreementsForMultiUsers)
+async def retrieve_accepted_agreements_for_multi_users_async(
+    body: Optional[UsersAgreementsRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve Accepted Legal Agreements For Multi Users (retrieveAcceptedAgreementsForMultiUsers)
+
+    This API will return all accepted Legal Agreements for each user, including agreements of game users if publisher user has corresponding game accountOther detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/agreements
+
+        method: POST
+
+        tags: ["Agreement With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL UsersAgreementsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[UserAgreementsResponse] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetrieveAcceptedAgreementsForMultiUsers.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

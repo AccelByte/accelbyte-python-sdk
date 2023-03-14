@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.6.8"
+__version__ = "2.6.9"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -55,6 +55,8 @@ from .wrappers import public_query_my_game_sessions
 from .wrappers import public_query_my_game_sessions_async
 from .wrappers import update_game_session
 from .wrappers import update_game_session_async
+from .wrappers import update_game_session_backfill_ticket_id
+from .wrappers import update_game_session_backfill_ticket_id_async
 
 # operations
 from .wrappers import get_healthcheck_info

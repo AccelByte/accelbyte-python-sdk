@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Leaderboard Service."""
 
-__version__ = "2.19.2"
+__version__ = "2.19.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

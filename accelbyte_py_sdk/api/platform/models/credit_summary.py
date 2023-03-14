@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.24.0)
+# AccelByte Gaming Services Platform Service (4.25.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,8 @@ class CreditSummary(Model):
         user_id: (userId) REQUIRED str
 
         wallet_id: (walletId) REQUIRED str
+
+        currency_code: (currencyCode) OPTIONAL str
     """
 
     # region fields
@@ -47,6 +49,7 @@ class CreditSummary(Model):
     namespace: str  # REQUIRED
     user_id: str  # REQUIRED
     wallet_id: str  # REQUIRED
+    currency_code: str  # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +69,10 @@ class CreditSummary(Model):
 
     def with_wallet_id(self, value: str) -> CreditSummary:
         self.wallet_id = value
+        return self
+
+    def with_currency_code(self, value: str) -> CreditSummary:
+        self.currency_code = value
         return self
 
     # endregion with_x methods
@@ -90,6 +97,10 @@ class CreditSummary(Model):
             result["walletId"] = str(self.wallet_id)
         elif include_empty:
             result["walletId"] = ""
+        if hasattr(self, "currency_code"):
+            result["currencyCode"] = str(self.currency_code)
+        elif include_empty:
+            result["currencyCode"] = ""
         return result
 
     # endregion to methods
@@ -103,12 +114,15 @@ class CreditSummary(Model):
         namespace: str,
         user_id: str,
         wallet_id: str,
+        currency_code: Optional[str] = None,
     ) -> CreditSummary:
         instance = cls()
         instance.amount = amount
         instance.namespace = namespace
         instance.user_id = user_id
         instance.wallet_id = wallet_id
+        if currency_code is not None:
+            instance.currency_code = currency_code
         return instance
 
     @classmethod
@@ -134,6 +148,10 @@ class CreditSummary(Model):
             instance.wallet_id = str(dict_["walletId"])
         elif include_empty:
             instance.wallet_id = ""
+        if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
+            instance.currency_code = str(dict_["currencyCode"])
+        elif include_empty:
+            instance.currency_code = ""
         return instance
 
     @classmethod
@@ -177,6 +195,7 @@ class CreditSummary(Model):
             "namespace": "namespace",
             "userId": "user_id",
             "walletId": "wallet_id",
+            "currencyCode": "currency_code",
         }
 
     @staticmethod
@@ -186,6 +205,7 @@ class CreditSummary(Model):
             "namespace": True,
             "userId": True,
             "walletId": True,
+            "currencyCode": False,
         }
 
     # endregion static methods

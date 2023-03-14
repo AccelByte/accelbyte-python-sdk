@@ -33,6 +33,7 @@ from ..models import ApimodelsCreateGameSessionRequest
 from ..models import ApimodelsGameSessionQueryResponse
 from ..models import ApimodelsGameSessionResponse
 from ..models import ApimodelsSessionInviteRequest
+from ..models import ApimodelsUpdateGameSessionBackfillRequest
 from ..models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..models import ApimodelsUpdateGameSessionRequest
 from ..models import ResponseError
@@ -51,6 +52,7 @@ from ..operations.game_session import PublicGameSessionReject
 from ..operations.game_session import PublicQueryGameSessions
 from ..operations.game_session import PublicQueryMyGameSessions
 from ..operations.game_session import UpdateGameSession
+from ..operations.game_session import UpdateGameSessionBackfillTicketID
 
 
 @same_doc_as(AdminQueryGameSessions)
@@ -1674,6 +1676,8 @@ def update_game_session(
     method : PATCH
     API : /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
 
+    To update DS attributes (clientVersion, deployment, requestedRegions) it will only be applied only as long as no DS has been requested, otherwise ignored.
+
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
 
@@ -1733,6 +1737,8 @@ async def update_game_session_async(
     method : PATCH
     API : /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
 
+    To update DS attributes (clientVersion, deployment, requestedRegions) it will only be applied only as long as no DS has been requested, otherwise ignored.
+
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
 
@@ -1770,6 +1776,116 @@ async def update_game_session_async(
         if error:
             return None, error
     request = UpdateGameSession.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdateGameSessionBackfillTicketID)
+def update_game_session_backfill_ticket_id(
+    body: ApimodelsUpdateGameSessionBackfillRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update game session backfill ticket id . Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (updateGameSessionBackfillTicketID)
+
+    Update game session backfill ticket id. Will override game session backfill ticket based on given request parameter
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/backfill
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdateGameSessionBackfillRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateGameSessionBackfillTicketID.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateGameSessionBackfillTicketID)
+async def update_game_session_backfill_ticket_id_async(
+    body: ApimodelsUpdateGameSessionBackfillRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update game session backfill ticket id . Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (updateGameSessionBackfillTicketID)
+
+    Update game session backfill ticket id. Will override game session backfill ticket based on given request parameter
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/backfill
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdateGameSessionBackfillRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateGameSessionBackfillTicketID.create(
         body=body,
         session_id=session_id,
         namespace=namespace,

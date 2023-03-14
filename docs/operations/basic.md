@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Basic Service Index (2.6.0)
+# AccelByte Gaming Services Basic Service Index (2.6.1)
 
 
 ## Operations
@@ -11,6 +11,14 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /basic/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/profiles | DELETE | anonymizeUserProfile | `false` | [AnonymizeUserProfile](../../accelbyte_py_sdk/api/basic/operations/anonymization/anonymize_user_profile.py) | [anonymize_user_profile](../../accelbyte_py_sdk/api/basic/wrappers/_anonymization.py) | [accelbyte_py_sdk_cli basic-anonymize-user-profile](../../samples/cli/accelbyte_py_sdk_cli/basic/_anonymize_user_profile.py) |
+
+### Config
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /basic/v1/admin/namespaces/{namespace}/configs | POST | createConfig | `false` | [CreateConfig](../../accelbyte_py_sdk/api/basic/operations/config/create_config.py) | [create_config](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-create-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_create_config.py) |
+| /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | DELETE | deleteConfig_1 | `false` | [DeleteConfig1](../../accelbyte_py_sdk/api/basic/operations/config/delete_config_1.py) | [delete_config_1](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-delete-config-1](../../samples/cli/accelbyte_py_sdk_cli/basic/_delete_config_1.py) |
+| /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | GET | getConfig_1 | `false` | [GetConfig1](../../accelbyte_py_sdk/api/basic/operations/config/get_config_1.py) | [get_config_1](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-get-config-1](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_config_1.py) |
+| /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | PATCH | updateConfig_1 | `false` | [UpdateConfig1](../../accelbyte_py_sdk/api/basic/operations/config/update_config_1.py) | [update_config_1](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-update-config-1](../../samples/cli/accelbyte_py_sdk_cli/basic/_update_config_1.py) |
 
 ### EQU8Config
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -108,6 +116,9 @@
 | Action | [Action](../../accelbyte_py_sdk/api/basic/models/action.py) |
 | AddCountryGroupRequest | [AddCountryGroupRequest](../../accelbyte_py_sdk/api/basic/models/add_country_group_request.py) |
 | AddCountryGroupResponse | [AddCountryGroupResponse](../../accelbyte_py_sdk/api/basic/models/add_country_group_response.py) |
+| ConfigCreate | [ConfigCreate](../../accelbyte_py_sdk/api/basic/models/config_create.py) |
+| ConfigInfo | [ConfigInfo](../../accelbyte_py_sdk/api/basic/models/config_info.py) |
+| ConfigUpdate | [ConfigUpdate](../../accelbyte_py_sdk/api/basic/models/config_update.py) |
 | CountryGroupObject | [CountryGroupObject](../../accelbyte_py_sdk/api/basic/models/country_group_object.py) |
 | CountryObject | [CountryObject](../../accelbyte_py_sdk/api/basic/models/country_object.py) |
 | Equ8Config | [Equ8Config](../../accelbyte_py_sdk/api/basic/models/equ8_config.py) |

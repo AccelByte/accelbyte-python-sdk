@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (5.28.0)
+# AccelByte Gaming Services Iam Service Index (5.29.0)
 
 
 ## Operations
@@ -401,6 +401,7 @@
 | /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode | POST | PublicGenerateMyBackupCodesV4 | `false` | [PublicGenerateMyBackupCodesV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/public_generate_my_back_da569a.py) | [public_generate_my_backup_codes_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-public-generate-my-backup-codes-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_generate_my_backup_codes_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode | GET | PublicGetMyBackupCodesV4 | `false` | [PublicGetMyBackupCodesV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/public_get_my_backup_codes_v4.py) | [public_get_my_backup_codes_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-public-get-my-backup-codes-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_get_my_backup_codes_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me/mfa/factor | GET | PublicGetMyEnabledFactorsV4 | `false` | [PublicGetMyEnabledFactorsV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/public_get_my_enabled_f_a93b10.py) | [public_get_my_enabled_factors_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-public-get-my-enabled-factors-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_get_my_enabled_factors_v4.py) |
+| /iam/v4/public/users/invite | POST | PublicInviteUserV4 | `false` | [PublicInviteUserV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/public_invite_user_v4.py) | [public_invite_user_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-public-invite-user-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_invite_user_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me/mfa/factor | POST | PublicMakeFactorMyDefaultV4 | `false` | [PublicMakeFactorMyDefaultV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/public_make_factor_my_d_4f4f01.py) | [public_make_factor_my_default_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-public-make-factor-my-default-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_make_factor_my_default_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me/mfa/device | DELETE | PublicRemoveTrustedDeviceV4 | `false` | [PublicRemoveTrustedDeviceV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/public_remove_trusted_d_78cd8f.py) | [public_remove_trusted_device_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-public-remove-trusted-device-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_remove_trusted_device_v4.py) |
 | /iam/v4/public/namespaces/{namespace}/users/me/mfa/email/code | POST | PublicSendMyMFAEmailCodeV4 | `false` | [PublicSendMyMFAEmailCodeV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/public_send_my_mfa_emai_3deb3f.py) | [public_send_my_mfa_email_code_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-public-send-my-mfa-email-code-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_send_my_mfa_email_code_v4.py) |
@@ -563,6 +564,7 @@
 | model.PlatformDomainUpdateRequest | [ModelPlatformDomainUpdateRequest](../../accelbyte_py_sdk/api/iam/models/model_platform_domain_update_request.py) |
 | model.PlatformUserIDRequest | [ModelPlatformUserIDRequest](../../accelbyte_py_sdk/api/iam/models/model_platform_user_id_request.py) |
 | model.PlatformUserInformation | [ModelPlatformUserInformation](../../accelbyte_py_sdk/api/iam/models/model_platform_user_information.py) |
+| model.PublicInviteUserRequestV4 | [ModelPublicInviteUserRequestV4](../../accelbyte_py_sdk/api/iam/models/model_public_invite_user_request_v4.py) |
 | model.PublicThirdPartyPlatformInfo | [ModelPublicThirdPartyPlatformInfo](../../accelbyte_py_sdk/api/iam/models/model_public_third_party_platform_info.py) |
 | model.PublicUserInformationResponseV3 | [ModelPublicUserInformationResponseV3](../../accelbyte_py_sdk/api/iam/models/model_public_user_information_response_v3.py) |
 | model.PublicUserInformationV3 | [ModelPublicUserInformationV3](../../accelbyte_py_sdk/api/iam/models/model_public_user_information_v3.py) |

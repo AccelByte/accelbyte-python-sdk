@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Social Service Index (2.0.0)
+# AccelByte Gaming Services Social Service Index (2.1.0)
 
 
 ## Operations
@@ -120,6 +120,12 @@
 | /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value | PUT | updateUserStatItemValue | `false` | [UpdateUserStatItemValue](../../accelbyte_py_sdk/api/social/operations/user_statistic/update_user_stat_item_value.py) | [update_user_stat_item_value](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-update-user-stat-item-value](../../samples/cli/accelbyte_py_sdk_cli/social/_update_user_stat_item_value.py) |
 | /social/v2/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value | PUT | updateUserStatItemValue_1 | `false` | [UpdateUserStatItemValue1](../../accelbyte_py_sdk/api/social/operations/user_statistic/update_user_stat_item_value_1.py) | [update_user_stat_item_value_1](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-update-user-stat-item-value-1](../../samples/cli/accelbyte_py_sdk_cli/social/_update_user_stat_item_value_1.py) |
 
+### UserStatisticCycle
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /social/v1/admin/namespaces/{namespace}/users/{userId}/statCycles/{cycleId}/statCycleitems | GET | getUserStatCycleItems | `false` | [GetUserStatCycleItems](../../accelbyte_py_sdk/api/social/operations/user_statistic_cycle/get_user_stat_cycle_items.py) | [get_user_stat_cycle_items](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic_cycle.py) | [accelbyte_py_sdk_cli social-get-user-stat-cycle-items](../../samples/cli/accelbyte_py_sdk_cli/social/_get_user_stat_cycle_items.py) |
+| /social/v1/public/namespaces/{namespace}/users/{userId}/statCycles/{cycleId}/statCycleitems | GET | getUserStatCycleItems_1 | `false` | [GetUserStatCycleItems1](../../accelbyte_py_sdk/api/social/operations/user_statistic_cycle/get_user_stat_cycle_items_1.py) | [get_user_stat_cycle_items_1](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic_cycle.py) | [accelbyte_py_sdk_cli social-get-user-stat-cycle-items-1](../../samples/cli/accelbyte_py_sdk_cli/social/_get_user_stat_cycle_items_1.py) |
+
 
 ## Models
 | Model | Class |
@@ -164,6 +170,8 @@
 | StatUpdate | [StatUpdate](../../accelbyte_py_sdk/api/social/models/stat_update.py) |
 | UserGameProfiles | [UserGameProfiles](../../accelbyte_py_sdk/api/social/models/user_game_profiles.py) |
 | UserSlotConfigInfo | [UserSlotConfigInfo](../../accelbyte_py_sdk/api/social/models/user_slot_config_info.py) |
+| UserStatCycleItemInfo | [UserStatCycleItemInfo](../../accelbyte_py_sdk/api/social/models/user_stat_cycle_item_info.py) |
+| UserStatCycleItemPagingSlicedResult | [UserStatCycleItemPagingSlicedResult](../../accelbyte_py_sdk/api/social/models/user_stat_cycle_item_paging_sliced_result.py) |
 | UserStatItemInfo | [UserStatItemInfo](../../accelbyte_py_sdk/api/social/models/user_stat_item_info.py) |
 | UserStatItemPagingSlicedResult | [UserStatItemPagingSlicedResult](../../accelbyte_py_sdk/api/social/models/user_stat_item_paging_sliced_result.py) |
 | ValidationErrorEntity | [ValidationErrorEntity](../../accelbyte_py_sdk/api/social/models/validation_error_entity.py) |

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.1)
+# AccelByte Gaming Services Group Service (2.15.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

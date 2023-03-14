@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.28.0)
+# AccelByte Gaming Services Iam Service (5.29.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -174,6 +174,7 @@ from ..api.iam.models import ModelPlatformDomainResponse
 from ..api.iam.models import ModelPlatformDomainUpdateRequest
 from ..api.iam.models import ModelPlatformUserIDRequest
 from ..api.iam.models import ModelPlatformUserInformation
+from ..api.iam.models import ModelPublicInviteUserRequestV4
 from ..api.iam.models import ModelPublicThirdPartyPlatformInfo
 from ..api.iam.models import ModelPublicUserInformationResponseV3
 from ..api.iam.models import ModelPublicUserInformationV3
@@ -1074,8 +1075,8 @@ def create_model_authenticator_key_response_v4_example() -> ModelAuthenticatorKe
 def create_model_backup_codes_response_v4_example() -> ModelBackupCodesResponseV4:
     instance = ModelBackupCodesResponseV4()
     instance.generated_at = randomize("int", min_val=1, max_val=1000)
-    instance.valid_codes = [randomize()]
     instance.invalid_codes = [randomize()]
+    instance.valid_codes = [randomize()]
     return instance
 
 
@@ -1404,8 +1405,8 @@ def create_model_invite_user_request_v4_example() -> ModelInviteUserRequestV4:
     instance.assigned_namespaces = [randomize()]
     instance.email_addresses = [randomize()]
     instance.is_admin = randomize("bool")
-    instance.namespace = randomize("slug")
     instance.role_id = randomize("uid")
+    instance.namespace = randomize("slug")
     return instance
 
 
@@ -1582,6 +1583,14 @@ def create_model_platform_user_information_example() -> ModelPlatformUserInforma
     instance.platform_user_id = randomize()
     instance.email_address = randomize("email")
     instance.xuid = randomize()
+    return instance
+
+
+def create_model_public_invite_user_request_v4_example() -> ModelPublicInviteUserRequestV4:
+    instance = ModelPublicInviteUserRequestV4()
+    instance.email_address = randomize("email")
+    instance.namespace = randomize("slug")
+    instance.namespace_display_name = randomize()
     return instance
 
 
@@ -1949,7 +1958,6 @@ def create_model_sso_platform_credential_response_example() -> ModelSSOPlatformC
 def create_model_third_party_login_platform_credential_request_example() -> ModelThirdPartyLoginPlatformCredentialRequest:
     instance = ModelThirdPartyLoginPlatformCredentialRequest()
     instance.acsurl = randomize()
-    instance.allowed_clients = [randomize()]
     instance.app_id = randomize("uid")
     instance.authorization_endpoint = randomize()
     instance.aws_cognito_region = randomize()
@@ -1971,17 +1979,17 @@ def create_model_third_party_login_platform_credential_request_example() -> Mode
     instance.secret = randomize()
     instance.team_id = randomize()
     instance.token_authentication_type = randomize()
-    instance.token_claims_mapping = {randomize(): randomize()}
     instance.token_endpoint = randomize()
     instance.user_info_endpoint = randomize()
     instance.user_info_http_method = randomize()
+    instance.allowed_clients = [randomize()]
+    instance.token_claims_mapping = {randomize(): randomize()}
     return instance
 
 
 def create_model_third_party_login_platform_credential_response_example() -> ModelThirdPartyLoginPlatformCredentialResponse:
     instance = ModelThirdPartyLoginPlatformCredentialResponse()
     instance.acsurl = randomize()
-    instance.allowed_clients = [randomize()]
     instance.app_id = randomize("uid")
     instance.aws_cognito_region = randomize()
     instance.aws_cognito_user_pool = randomize()
@@ -1998,14 +2006,15 @@ def create_model_third_party_login_platform_credential_response_example() -> Mod
     instance.platform_id = randomize()
     instance.platform_name = randomize()
     instance.redirect_uri = randomize()
-    instance.registered_domains = [create_accountcommon_registered_domain_example()]
     instance.secret = randomize()
     instance.team_id = randomize()
     instance.token_authentication_type = randomize()
-    instance.token_claims_mapping = {randomize(): randomize()}
+    instance.allowed_clients = [randomize()]
     instance.authorization_endpoint = randomize()
     instance.netflix_certificates = create_accountcommon_netflix_certificates_example()
+    instance.registered_domains = [create_accountcommon_registered_domain_example()]
     instance.scopes = [randomize()]
+    instance.token_claims_mapping = {randomize(): randomize()}
     instance.token_endpoint = randomize()
     instance.user_info_endpoint = randomize()
     instance.user_info_http_method = randomize()
@@ -2251,9 +2260,10 @@ def create_model_user_invitation_v3_example() -> ModelUserInvitationV3:
     instance = ModelUserInvitationV3()
     instance.email = randomize("email")
     instance.expired_at = randomize("date")
-    instance.namespace = randomize("slug")
     instance.roles = [create_accountcommon_namespace_role_example()]
     instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.namespace_display_name = randomize()
     return instance
 
 
@@ -2342,7 +2352,6 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.last_enabled_changed_time = randomize("date")
     instance.namespace = randomize("slug")
     instance.namespace_roles = [create_accountcommon_namespace_role_example()]
-    instance.old_email_address = randomize()
     instance.permissions = [create_model_user_permissions_response_v3_example()]
     instance.phone_verified = randomize("bool")
     instance.roles = [randomize()]
@@ -2350,6 +2359,7 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.avatar_url = randomize("url")
     instance.date_of_birth = randomize("adult_birthdate")
     instance.new_email_address = randomize()
+    instance.old_email_address = randomize()
     instance.phone_number = randomize()
     instance.platform_avatar_url = randomize("url")
     instance.platform_display_name = randomize()

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (2.6.8)
+# AccelByte Gaming Services Session Service Index (2.6.9)
 
 
 ## Operations
@@ -33,6 +33,7 @@
 | /session/v1/public/namespaces/{namespace}/gamesessions | POST | publicQueryGameSessions | `false` | [PublicQueryGameSessions](../../accelbyte_py_sdk/api/session/operations/game_session/public_query_game_sessions.py) | [public_query_game_sessions](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-public-query-game-sessions](../../samples/cli/accelbyte_py_sdk_cli/session/_public_query_game_sessions.py) |
 | /session/v1/public/namespaces/{namespace}/users/me/gamesessions | GET | publicQueryMyGameSessions | `false` | [PublicQueryMyGameSessions](../../accelbyte_py_sdk/api/session/operations/game_session/public_query_my_game_sessions.py) | [public_query_my_game_sessions](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-public-query-my-game-sessions](../../samples/cli/accelbyte_py_sdk_cli/session/_public_query_my_game_sessions.py) |
 | /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId} | PUT | updateGameSession | `false` | [UpdateGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/update_game_session.py) | [update_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-update-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_update_game_session.py) |
+| /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/backfill | PUT | updateGameSessionBackfillTicketID | `false` | [UpdateGameSessionBackfillTicketID](../../accelbyte_py_sdk/api/session/operations/game_session/update_game_session_bac_df8b84.py) | [update_game_session_backfill_ticket_id](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-update-game-session-backfill-ticket-id](../../samples/cli/accelbyte_py_sdk_cli/session/_update_game_session_backfill_ticket_id.py) |
 
 ### Operations
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -92,6 +93,7 @@
 | apimodels.RequestMember | [ApimodelsRequestMember](../../accelbyte_py_sdk/api/session/models/apimodels_request_member.py) |
 | apimodels.SessionInviteRequest | [ApimodelsSessionInviteRequest](../../accelbyte_py_sdk/api/session/models/apimodels_session_invite_request.py) |
 | apimodels.UpdateConfigurationTemplateRequest | [ApimodelsUpdateConfigurationTemplateRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_configuration_template_request.py) |
+| apimodels.UpdateGameSessionBackfillRequest | [ApimodelsUpdateGameSessionBackfillRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_game_session_backfill_request.py) |
 | apimodels.UpdateGameSessionMemberStatusResponse | [ApimodelsUpdateGameSessionMemberStatusResponse](../../accelbyte_py_sdk/api/session/models/apimodels_update_game_session_member_status_response.py) |
 | apimodels.UpdateGameSessionRequest | [ApimodelsUpdateGameSessionRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_game_session_request.py) |
 | apimodels.UpdatePartyRequest | [ApimodelsUpdatePartyRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_party_request.py) |

@@ -41,12 +41,16 @@ from ..api.lobby.models import ModelGetFriendsResponse
 from ..api.lobby.models import ModelGetUserFriendsResponse
 from ..api.lobby.models import ModelGetUserIncomingFriendsResponse
 from ..api.lobby.models import ModelGetUserOutgoingFriendsResponse
+from ..api.lobby.models import ModelIncomingFriendsWithTimeData
+from ..api.lobby.models import ModelLoadIncomingFriendsWithTimeResponse
+from ..api.lobby.models import ModelLoadOutgoingFriendsWithTimeResponse
 from ..api.lobby.models import ModelLocalization
 from ..api.lobby.models import ModelNotificationTemplateResponse
 from ..api.lobby.models import ModelNotificationTopicResponse
 from ..api.lobby.models import ModelNotificationTopicResponseV1
 from ..api.lobby.models import ModelNotificationWithTemplateRequest
 from ..api.lobby.models import ModelNotificationWithTemplateRequestV1
+from ..api.lobby.models import ModelOutgoingFriendsWithTimeData
 from ..api.lobby.models import ModelPagination
 from ..api.lobby.models import ModelTemplateContent
 from ..api.lobby.models import ModelTemplateLocalization
@@ -235,6 +239,27 @@ def create_model_get_user_outgoing_friends_response_example() -> ModelGetUserOut
     return instance
 
 
+def create_model_incoming_friends_with_time_data_example() -> ModelIncomingFriendsWithTimeData:
+    instance = ModelIncomingFriendsWithTimeData()
+    instance.friend_id = randomize()
+    instance.requested_at = randomize("date")
+    return instance
+
+
+def create_model_load_incoming_friends_with_time_response_example() -> ModelLoadIncomingFriendsWithTimeResponse:
+    instance = ModelLoadIncomingFriendsWithTimeResponse()
+    instance.data = [create_model_incoming_friends_with_time_data_example()]
+    instance.paging = create_model_pagination_example()
+    return instance
+
+
+def create_model_load_outgoing_friends_with_time_response_example() -> ModelLoadOutgoingFriendsWithTimeResponse:
+    instance = ModelLoadOutgoingFriendsWithTimeResponse()
+    instance.data = [create_model_outgoing_friends_with_time_data_example()]
+    instance.paging = create_model_pagination_example()
+    return instance
+
+
 def create_model_localization_example() -> ModelLocalization:
     instance = ModelLocalization()
     instance.last_draft_at = randomize()
@@ -284,6 +309,13 @@ def create_model_notification_with_template_request_v1_example() -> ModelNotific
     instance.template_language = randomize()
     instance.template_slug = randomize()
     instance.topic_name = randomize()
+    return instance
+
+
+def create_model_outgoing_friends_with_time_data_example() -> ModelOutgoingFriendsWithTimeData:
+    instance = ModelOutgoingFriendsWithTimeData()
+    instance.friend_id = randomize()
+    instance.requested_at = randomize("date")
     return instance
 
 

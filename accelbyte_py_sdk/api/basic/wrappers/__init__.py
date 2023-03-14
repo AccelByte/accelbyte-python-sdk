@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.6.0"
+__version__ = "2.6.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,6 +16,15 @@ __email__ = "dev@accelbyte.net"
 
 from ._anonymization import anonymize_user_profile
 from ._anonymization import anonymize_user_profile_async
+
+from ._config import create_config
+from ._config import create_config_async
+from ._config import delete_config_1
+from ._config import delete_config_1_async
+from ._config import get_config_1
+from ._config import get_config_1_async
+from ._config import update_config_1
+from ._config import update_config_1_async
 
 from ._equ8_config import delete_config
 from ._equ8_config import delete_config_async

@@ -44,6 +44,7 @@ from ..models import GoogleReceiptResolveResult
 from ..models import IAPConsumeHistoryPagingSlicedResult
 from ..models import IAPItemConfigInfo
 from ..models import IAPItemConfigUpdate
+from ..models import IAPItemMappingInfo
 from ..models import IAPOrderPagingSlicedResult
 from ..models import MockIAPReceipt
 from ..models import PlayStationIAPConfigInfo
@@ -58,6 +59,7 @@ from ..models import SteamSyncRequest
 from ..models import TwitchIAPConfigInfo
 from ..models import TwitchIAPConfigRequest
 from ..models import TwitchSyncRequest
+from ..models import TwitchSyncResult
 from ..models import ValidationErrorEntity
 from ..models import XblIAPConfigInfo
 from ..models import XblIAPConfigRequest
@@ -76,6 +78,8 @@ from ..operations.iap import GetAppleIAPConfig
 from ..operations.iap import GetEpicGamesIAPConfig
 from ..operations.iap import GetGoogleIAPConfig
 from ..operations.iap import GetIAPItemConfig
+from ..operations.iap import GetIAPItemMapping
+from ..operations.iap import GetIAPItemMappingPlatformEnum
 from ..operations.iap import GetPlayStationIAPConfig
 from ..operations.iap import GetSteamIAPConfig
 from ..operations.iap import GetTwitchIAPConfig
@@ -96,6 +100,7 @@ from ..operations.iap import QueryUserIAPOrdersStatusEnum, QueryUserIAPOrdersTyp
 from ..operations.iap import SyncEpicGamesInventory
 from ..operations.iap import SyncSteamInventory
 from ..operations.iap import SyncTwitchDropsEntitlement
+from ..operations.iap import SyncTwitchDropsEntitlement1
 from ..operations.iap import SyncXboxInventory
 from ..operations.iap import UpdateAppleIAPConfig
 from ..operations.iap import UpdateEpicGamesIAPConfig
@@ -110,6 +115,7 @@ from ..operations.iap import UpdateXblIAPConfig
 from ..models import EpicGamesReconcileResultStatusEnum
 from ..models import MockIAPReceiptItemIdentityTypeEnum, MockIAPReceiptTypeEnum
 from ..models import PlayStationReconcileResultStatusEnum
+from ..models import TwitchSyncResultIapOrderStatusEnum
 from ..models import XblReconcileResultIapOrderStatusEnum
 
 
@@ -1196,6 +1202,98 @@ async def get_iap_item_config_async(
         if error:
             return None, error
     request = GetIAPItemConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetIAPItemMapping)
+def get_iap_item_mapping(
+    platform: Optional[Union[str, GetIAPItemMappingPlatformEnum]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get iap item mapping (getIAPItemMapping)
+
+    Get iap item mapping.
+    Other detail info:
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/iap/item/mapping
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) OPTIONAL Union[str, PlatformEnum] in query
+
+    Responses:
+        200: OK - IAPItemMappingInfo (successful operation)
+
+        404: Not Found - ErrorEntity (39341: IAP item config cannot be found in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetIAPItemMapping.create(
+        platform=platform,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetIAPItemMapping)
+async def get_iap_item_mapping_async(
+    platform: Optional[Union[str, GetIAPItemMappingPlatformEnum]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get iap item mapping (getIAPItemMapping)
+
+    Get iap item mapping.
+    Other detail info:
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/iap/item/mapping
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) OPTIONAL Union[str, PlatformEnum] in query
+
+    Responses:
+        200: OK - IAPItemMappingInfo (successful operation)
+
+        404: Not Found - ErrorEntity (39341: IAP item config cannot be found in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetIAPItemMapping.create(
+        platform=platform,
         namespace=namespace,
     )
     return await run_request_async(
@@ -2799,26 +2897,22 @@ async def sync_steam_inventory_async(
 
 @same_doc_as(SyncTwitchDropsEntitlement)
 def sync_twitch_drops_entitlement(
-    user_id: str,
     body: Optional[TwitchSyncRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Sync twitch drops entitlements. (syncTwitchDropsEntitlement)
+    """Sync my game twitch drops entitlements. (syncTwitchDropsEntitlement)
 
-    Sync twitch drops entitlements.
+    Sync my game twitch drops entitlements.
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      * Required permission : resource=NAMESPACE:{namespace}:IAP, action=4 (UPDATE)
       *  Returns :
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
-
     Properties:
-        url: /platform/public/namespaces/{namespace}/users/{userId}/iap/twitch/sync
+        url: /platform/public/namespaces/{namespace}/users/me/iap/twitch/sync
 
         method: PUT
 
@@ -2828,16 +2922,14 @@ def sync_twitch_drops_entitlement(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TwitchSyncRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
     Responses:
-        204: No Content - (Sync Successful)
+        200: OK - List[TwitchSyncResult] (successful operation)
 
         400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
     """
@@ -2846,7 +2938,6 @@ def sync_twitch_drops_entitlement(
         if error:
             return None, error
     request = SyncTwitchDropsEntitlement.create(
-        user_id=user_id,
         body=body,
         namespace=namespace,
     )
@@ -2855,13 +2946,64 @@ def sync_twitch_drops_entitlement(
 
 @same_doc_as(SyncTwitchDropsEntitlement)
 async def sync_twitch_drops_entitlement_async(
+    body: Optional[TwitchSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync my game twitch drops entitlements. (syncTwitchDropsEntitlement)
+
+    Sync my game twitch drops entitlements.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:IAP, action=4 (UPDATE)
+      *  Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/me/iap/twitch/sync
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL TwitchSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[TwitchSyncResult] (successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SyncTwitchDropsEntitlement.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(SyncTwitchDropsEntitlement1)
+def sync_twitch_drops_entitlement_1(
     user_id: str,
     body: Optional[TwitchSyncRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Sync twitch drops entitlements. (syncTwitchDropsEntitlement)
+    """Sync twitch drops entitlements. (syncTwitchDropsEntitlement_1)
 
     Sync twitch drops entitlements.
 
@@ -2901,7 +3043,63 @@ async def sync_twitch_drops_entitlement_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = SyncTwitchDropsEntitlement.create(
+    request = SyncTwitchDropsEntitlement1.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(SyncTwitchDropsEntitlement1)
+async def sync_twitch_drops_entitlement_1_async(
+    user_id: str,
+    body: Optional[TwitchSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync twitch drops entitlements. (syncTwitchDropsEntitlement_1)
+
+    Sync twitch drops entitlements.
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
+      *  Returns :
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/iap/twitch/sync
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL TwitchSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Sync Successful)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SyncTwitchDropsEntitlement1.create(
         user_id=user_id,
         body=body,
         namespace=namespace,
@@ -3456,6 +3654,8 @@ def update_iap_item_config(
     Responses:
         200: OK - IAPItemConfigInfo (successful operation)
 
+        409: Conflict - ValidationErrorEntity (39175: Duplicate IAP item mapping, IAPType: [{iapType}] and id: [{iapId}])
+
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
@@ -3505,6 +3705,8 @@ async def update_iap_item_config_async(
 
     Responses:
         200: OK - IAPItemConfigInfo (successful operation)
+
+        409: Conflict - ValidationErrorEntity (39175: Duplicate IAP item mapping, IAPType: [{iapType}] and id: [{iapId}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """

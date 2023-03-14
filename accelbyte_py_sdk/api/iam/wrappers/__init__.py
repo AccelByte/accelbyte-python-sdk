@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "5.28.0"
+__version__ = "5.29.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -723,6 +723,8 @@ from ._users_v4 import public_get_my_backup_codes_v4
 from ._users_v4 import public_get_my_backup_codes_v4_async
 from ._users_v4 import public_get_my_enabled_factors_v4
 from ._users_v4 import public_get_my_enabled_factors_v4_async
+from ._users_v4 import public_invite_user_v4
+from ._users_v4 import public_invite_user_v4_async
 from ._users_v4 import public_make_factor_my_default_v4
 from ._users_v4 import public_make_factor_my_default_v4_async
 from ._users_v4 import public_remove_trusted_device_v4

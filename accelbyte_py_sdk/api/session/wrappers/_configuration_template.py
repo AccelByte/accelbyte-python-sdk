@@ -52,6 +52,15 @@ def admin_create_configuration_template_v1(
     """Create configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [CREATE] (adminCreateConfigurationTemplateV1)
 
     Create template configuration to be applied across party and session.
+    Session configuration mandatory :
+    - name
+    - joinability (example value : OPEN, CLOSED, INVITE_ONLY)
+    - Type (example value : P2P, DS, NONE) if type empty, type will be assign to NONE
+    - MinPlayers (must greather or equal 0)
+    - MaxPlayers (must greather than 0)
+    - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - Persistent Flag only can use with type DS (example value true or false)
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -104,6 +113,15 @@ async def admin_create_configuration_template_v1_async(
     """Create configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [CREATE] (adminCreateConfigurationTemplateV1)
 
     Create template configuration to be applied across party and session.
+    Session configuration mandatory :
+    - name
+    - joinability (example value : OPEN, CLOSED, INVITE_ONLY)
+    - Type (example value : P2P, DS, NONE) if type empty, type will be assign to NONE
+    - MinPlayers (must greather or equal 0)
+    - MaxPlayers (must greather than 0)
+    - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - Persistent Flag only can use with type DS (example value true or false)
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -461,6 +479,14 @@ def admin_update_configuration_template_v1(
     """Update configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationTemplateV1)
 
     Update template configuration
+    Session configuration mandatory :
+    - name
+    - joinability (example value : OPEN, CLOSED, INVITE_ONLY)
+    - Type (example value : P2P, DS, NONE) if type empty, type will be assign to NONE
+    - MinPlayers (must greather or equal 0)
+    - MaxPlayers (must greather than 0)
+    - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}
@@ -517,6 +543,14 @@ async def admin_update_configuration_template_v1_async(
     """Update configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationTemplateV1)
 
     Update template configuration
+    Session configuration mandatory :
+    - name
+    - joinability (example value : OPEN, CLOSED, INVITE_ONLY)
+    - Type (example value : P2P, DS, NONE) if type empty, type will be assign to NONE
+    - MinPlayers (must greather or equal 0)
+    - MaxPlayers (must greather than 0)
+    - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.24.0)
+# AccelByte Gaming Services Platform Service (4.25.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -68,6 +68,8 @@ class EntitlementSummary(Model):
 
         item_id: (itemId) OPTIONAL str
 
+        name: (name) OPTIONAL str
+
         stackable: (stackable) OPTIONAL bool
 
         stacked_use_count: (stackedUseCount) OPTIONAL int
@@ -89,6 +91,7 @@ class EntitlementSummary(Model):
     end_date: str  # OPTIONAL
     granted_code: str  # OPTIONAL
     item_id: str  # OPTIONAL
+    name: str  # OPTIONAL
     stackable: bool  # OPTIONAL
     stacked_use_count: int  # OPTIONAL
     start_date: str  # OPTIONAL
@@ -136,6 +139,10 @@ class EntitlementSummary(Model):
 
     def with_item_id(self, value: str) -> EntitlementSummary:
         self.item_id = value
+        return self
+
+    def with_name(self, value: str) -> EntitlementSummary:
+        self.name = value
         return self
 
     def with_stackable(self, value: bool) -> EntitlementSummary:
@@ -200,6 +207,10 @@ class EntitlementSummary(Model):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = ""
+        if hasattr(self, "name"):
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = ""
         if hasattr(self, "stackable"):
             result["stackable"] = bool(self.stackable)
         elif include_empty:
@@ -235,6 +246,7 @@ class EntitlementSummary(Model):
         end_date: Optional[str] = None,
         granted_code: Optional[str] = None,
         item_id: Optional[str] = None,
+        name: Optional[str] = None,
         stackable: Optional[bool] = None,
         stacked_use_count: Optional[int] = None,
         start_date: Optional[str] = None,
@@ -254,6 +266,8 @@ class EntitlementSummary(Model):
             instance.granted_code = granted_code
         if item_id is not None:
             instance.item_id = item_id
+        if name is not None:
+            instance.name = name
         if stackable is not None:
             instance.stackable = stackable
         if stacked_use_count is not None:
@@ -311,6 +325,10 @@ class EntitlementSummary(Model):
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = ""
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = ""
         if "stackable" in dict_ and dict_["stackable"] is not None:
             instance.stackable = bool(dict_["stackable"])
         elif include_empty:
@@ -378,6 +396,7 @@ class EntitlementSummary(Model):
             "endDate": "end_date",
             "grantedCode": "granted_code",
             "itemId": "item_id",
+            "name": "name",
             "stackable": "stackable",
             "stackedUseCount": "stacked_use_count",
             "startDate": "start_date",
@@ -397,6 +416,7 @@ class EntitlementSummary(Model):
             "endDate": False,
             "grantedCode": False,
             "itemId": False,
+            "name": False,
             "stackable": False,
             "stackedUseCount": False,
             "startDate": False,

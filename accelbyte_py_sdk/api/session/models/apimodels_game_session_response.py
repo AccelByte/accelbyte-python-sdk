@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.8)
+# AccelByte Gaming Services Session Service (2.6.9)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -63,6 +63,8 @@ class ApimodelsGameSessionResponse(Model):
 
         namespace: (namespace) REQUIRED str
 
+        persistent: (persistent) REQUIRED bool
+
         teams: (teams) REQUIRED List[ModelsTeam]
 
         ticket_i_ds: (ticketIDs) REQUIRED List[str]
@@ -89,6 +91,7 @@ class ApimodelsGameSessionResponse(Model):
     match_pool: str  # REQUIRED
     members: List[ApimodelsUserResponse]  # REQUIRED
     namespace: str  # REQUIRED
+    persistent: bool  # REQUIRED
     teams: List[ModelsTeam]  # REQUIRED
     ticket_i_ds: List[str]  # REQUIRED
     updated_at: str  # REQUIRED
@@ -155,6 +158,10 @@ class ApimodelsGameSessionResponse(Model):
 
     def with_namespace(self, value: str) -> ApimodelsGameSessionResponse:
         self.namespace = value
+        return self
+
+    def with_persistent(self, value: bool) -> ApimodelsGameSessionResponse:
+        self.persistent = value
         return self
 
     def with_teams(self, value: List[ModelsTeam]) -> ApimodelsGameSessionResponse:
@@ -241,6 +248,10 @@ class ApimodelsGameSessionResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "persistent"):
+            result["persistent"] = bool(self.persistent)
+        elif include_empty:
+            result["persistent"] = False
         if hasattr(self, "teams"):
             result["teams"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.teams
@@ -285,6 +296,7 @@ class ApimodelsGameSessionResponse(Model):
         match_pool: str,
         members: List[ApimodelsUserResponse],
         namespace: str,
+        persistent: bool,
         teams: List[ModelsTeam],
         ticket_i_ds: List[str],
         updated_at: str,
@@ -305,6 +317,7 @@ class ApimodelsGameSessionResponse(Model):
         instance.match_pool = match_pool
         instance.members = members
         instance.namespace = namespace
+        instance.persistent = persistent
         instance.teams = teams
         instance.ticket_i_ds = ticket_i_ds
         instance.updated_at = updated_at
@@ -381,6 +394,10 @@ class ApimodelsGameSessionResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "persistent" in dict_ and dict_["persistent"] is not None:
+            instance.persistent = bool(dict_["persistent"])
+        elif include_empty:
+            instance.persistent = False
         if "teams" in dict_ and dict_["teams"] is not None:
             instance.teams = [
                 ModelsTeam.create_from_dict(i0, include_empty=include_empty)
@@ -460,6 +477,7 @@ class ApimodelsGameSessionResponse(Model):
             "matchPool": "match_pool",
             "members": "members",
             "namespace": "namespace",
+            "persistent": "persistent",
             "teams": "teams",
             "ticketIDs": "ticket_i_ds",
             "updatedAt": "updated_at",
@@ -483,6 +501,7 @@ class ApimodelsGameSessionResponse(Model):
             "matchPool": True,
             "members": True,
             "namespace": True,
+            "persistent": True,
             "teams": True,
             "ticketIDs": True,
             "updatedAt": True,

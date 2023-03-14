@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.0)
+# AccelByte Gaming Services Legal Service (1.27.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,8 +42,6 @@ class RetrievePolicyVersionResponse(Model):
 
         is_in_effect: (isInEffect) REQUIRED bool
 
-        policy_id: (policyId) REQUIRED str
-
         base_policy_id: (basePolicyId) OPTIONAL str
 
         created_at: (createdAt) OPTIONAL str
@@ -51,6 +49,8 @@ class RetrievePolicyVersionResponse(Model):
         description: (description) OPTIONAL str
 
         localized_policy_versions: (localizedPolicyVersions) OPTIONAL List[LocalizedPolicyVersionObject]
+
+        policy_id: (policyId) OPTIONAL str
 
         published_date: (publishedDate) OPTIONAL str
 
@@ -65,11 +65,11 @@ class RetrievePolicyVersionResponse(Model):
     id_: str  # REQUIRED
     is_committed: bool  # REQUIRED
     is_in_effect: bool  # REQUIRED
-    policy_id: str  # REQUIRED
     base_policy_id: str  # OPTIONAL
     created_at: str  # OPTIONAL
     description: str  # OPTIONAL
     localized_policy_versions: List[LocalizedPolicyVersionObject]  # OPTIONAL
+    policy_id: str  # OPTIONAL
     published_date: str  # OPTIONAL
     status: str  # OPTIONAL
     updated_at: str  # OPTIONAL
@@ -94,10 +94,6 @@ class RetrievePolicyVersionResponse(Model):
         self.is_in_effect = value
         return self
 
-    def with_policy_id(self, value: str) -> RetrievePolicyVersionResponse:
-        self.policy_id = value
-        return self
-
     def with_base_policy_id(self, value: str) -> RetrievePolicyVersionResponse:
         self.base_policy_id = value
         return self
@@ -114,6 +110,10 @@ class RetrievePolicyVersionResponse(Model):
         self, value: List[LocalizedPolicyVersionObject]
     ) -> RetrievePolicyVersionResponse:
         self.localized_policy_versions = value
+        return self
+
+    def with_policy_id(self, value: str) -> RetrievePolicyVersionResponse:
+        self.policy_id = value
         return self
 
     def with_published_date(self, value: str) -> RetrievePolicyVersionResponse:
@@ -150,10 +150,6 @@ class RetrievePolicyVersionResponse(Model):
             result["isInEffect"] = bool(self.is_in_effect)
         elif include_empty:
             result["isInEffect"] = False
-        if hasattr(self, "policy_id"):
-            result["policyId"] = str(self.policy_id)
-        elif include_empty:
-            result["policyId"] = ""
         if hasattr(self, "base_policy_id"):
             result["basePolicyId"] = str(self.base_policy_id)
         elif include_empty:
@@ -173,6 +169,10 @@ class RetrievePolicyVersionResponse(Model):
             ]
         elif include_empty:
             result["localizedPolicyVersions"] = []
+        if hasattr(self, "policy_id"):
+            result["policyId"] = str(self.policy_id)
+        elif include_empty:
+            result["policyId"] = ""
         if hasattr(self, "published_date"):
             result["publishedDate"] = str(self.published_date)
         elif include_empty:
@@ -198,11 +198,11 @@ class RetrievePolicyVersionResponse(Model):
         id_: str,
         is_committed: bool,
         is_in_effect: bool,
-        policy_id: str,
         base_policy_id: Optional[str] = None,
         created_at: Optional[str] = None,
         description: Optional[str] = None,
         localized_policy_versions: Optional[List[LocalizedPolicyVersionObject]] = None,
+        policy_id: Optional[str] = None,
         published_date: Optional[str] = None,
         status: Optional[str] = None,
         updated_at: Optional[str] = None,
@@ -212,7 +212,6 @@ class RetrievePolicyVersionResponse(Model):
         instance.id_ = id_
         instance.is_committed = is_committed
         instance.is_in_effect = is_in_effect
-        instance.policy_id = policy_id
         if base_policy_id is not None:
             instance.base_policy_id = base_policy_id
         if created_at is not None:
@@ -221,6 +220,8 @@ class RetrievePolicyVersionResponse(Model):
             instance.description = description
         if localized_policy_versions is not None:
             instance.localized_policy_versions = localized_policy_versions
+        if policy_id is not None:
+            instance.policy_id = policy_id
         if published_date is not None:
             instance.published_date = published_date
         if status is not None:
@@ -252,10 +253,6 @@ class RetrievePolicyVersionResponse(Model):
             instance.is_in_effect = bool(dict_["isInEffect"])
         elif include_empty:
             instance.is_in_effect = False
-        if "policyId" in dict_ and dict_["policyId"] is not None:
-            instance.policy_id = str(dict_["policyId"])
-        elif include_empty:
-            instance.policy_id = ""
         if "basePolicyId" in dict_ and dict_["basePolicyId"] is not None:
             instance.base_policy_id = str(dict_["basePolicyId"])
         elif include_empty:
@@ -280,6 +277,10 @@ class RetrievePolicyVersionResponse(Model):
             ]
         elif include_empty:
             instance.localized_policy_versions = []
+        if "policyId" in dict_ and dict_["policyId"] is not None:
+            instance.policy_id = str(dict_["policyId"])
+        elif include_empty:
+            instance.policy_id = ""
         if "publishedDate" in dict_ and dict_["publishedDate"] is not None:
             instance.published_date = str(dict_["publishedDate"])
         elif include_empty:
@@ -339,11 +340,11 @@ class RetrievePolicyVersionResponse(Model):
             "id": "id_",
             "isCommitted": "is_committed",
             "isInEffect": "is_in_effect",
-            "policyId": "policy_id",
             "basePolicyId": "base_policy_id",
             "createdAt": "created_at",
             "description": "description",
             "localizedPolicyVersions": "localized_policy_versions",
+            "policyId": "policy_id",
             "publishedDate": "published_date",
             "status": "status",
             "updatedAt": "updated_at",
@@ -356,11 +357,11 @@ class RetrievePolicyVersionResponse(Model):
             "id": True,
             "isCommitted": True,
             "isInEffect": True,
-            "policyId": True,
             "basePolicyId": False,
             "createdAt": False,
             "description": False,
             "localizedPolicyVersions": False,
+            "policyId": False,
             "publishedDate": False,
             "status": False,
             "updatedAt": False,

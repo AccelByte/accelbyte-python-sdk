@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.28.0)
+# AccelByte Gaming Services Iam Service (5.29.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,8 +36,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
     Properties:
         acsurl: (ACSURL) REQUIRED str
-
-        allowed_clients: (AllowedClients) REQUIRED List[str]
 
         app_id: (AppId) REQUIRED str
 
@@ -81,19 +79,20 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         token_authentication_type: (TokenAuthenticationType) REQUIRED str
 
-        token_claims_mapping: (TokenClaimsMapping) REQUIRED Dict[str, str]
-
         token_endpoint: (TokenEndpoint) REQUIRED str
 
         user_info_endpoint: (UserInfoEndpoint) REQUIRED str
 
         user_info_http_method: (UserInfoHTTPMethod) REQUIRED str
+
+        allowed_clients: (AllowedClients) OPTIONAL List[str]
+
+        token_claims_mapping: (TokenClaimsMapping) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
     acsurl: str  # REQUIRED
-    allowed_clients: List[str]  # REQUIRED
     app_id: str  # REQUIRED
     authorization_endpoint: str  # REQUIRED
     aws_cognito_region: str  # REQUIRED
@@ -115,10 +114,11 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     secret: str  # REQUIRED
     team_id: str  # REQUIRED
     token_authentication_type: str  # REQUIRED
-    token_claims_mapping: Dict[str, str]  # REQUIRED
     token_endpoint: str  # REQUIRED
     user_info_endpoint: str  # REQUIRED
     user_info_http_method: str  # REQUIRED
+    allowed_clients: List[str]  # OPTIONAL
+    token_claims_mapping: Dict[str, str]  # OPTIONAL
 
     # endregion fields
 
@@ -126,12 +126,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
     def with_acsurl(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.acsurl = value
-        return self
-
-    def with_allowed_clients(
-        self, value: List[str]
-    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
-        self.allowed_clients = value
         return self
 
     def with_app_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -250,12 +244,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.token_authentication_type = value
         return self
 
-    def with_token_claims_mapping(
-        self, value: Dict[str, str]
-    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
-        self.token_claims_mapping = value
-        return self
-
     def with_token_endpoint(
         self, value: str
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -274,6 +262,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.user_info_http_method = value
         return self
 
+    def with_allowed_clients(
+        self, value: List[str]
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.allowed_clients = value
+        return self
+
+    def with_token_claims_mapping(
+        self, value: Dict[str, str]
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.token_claims_mapping = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -284,10 +284,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["ACSURL"] = str(self.acsurl)
         elif include_empty:
             result["ACSURL"] = ""
-        if hasattr(self, "allowed_clients"):
-            result["AllowedClients"] = [str(i0) for i0 in self.allowed_clients]
-        elif include_empty:
-            result["AllowedClients"] = []
         if hasattr(self, "app_id"):
             result["AppId"] = str(self.app_id)
         elif include_empty:
@@ -377,12 +373,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["TokenAuthenticationType"] = str(self.token_authentication_type)
         elif include_empty:
             result["TokenAuthenticationType"] = ""
-        if hasattr(self, "token_claims_mapping"):
-            result["TokenClaimsMapping"] = {
-                str(k0): str(v0) for k0, v0 in self.token_claims_mapping.items()
-            }
-        elif include_empty:
-            result["TokenClaimsMapping"] = {}
         if hasattr(self, "token_endpoint"):
             result["TokenEndpoint"] = str(self.token_endpoint)
         elif include_empty:
@@ -395,6 +385,16 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["UserInfoHTTPMethod"] = str(self.user_info_http_method)
         elif include_empty:
             result["UserInfoHTTPMethod"] = ""
+        if hasattr(self, "allowed_clients"):
+            result["AllowedClients"] = [str(i0) for i0 in self.allowed_clients]
+        elif include_empty:
+            result["AllowedClients"] = []
+        if hasattr(self, "token_claims_mapping"):
+            result["TokenClaimsMapping"] = {
+                str(k0): str(v0) for k0, v0 in self.token_claims_mapping.items()
+            }
+        elif include_empty:
+            result["TokenClaimsMapping"] = {}
         return result
 
     # endregion to methods
@@ -405,7 +405,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     def create(
         cls,
         acsurl: str,
-        allowed_clients: List[str],
         app_id: str,
         authorization_endpoint: str,
         aws_cognito_region: str,
@@ -427,14 +426,14 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         secret: str,
         team_id: str,
         token_authentication_type: str,
-        token_claims_mapping: Dict[str, str],
         token_endpoint: str,
         user_info_endpoint: str,
         user_info_http_method: str,
+        allowed_clients: Optional[List[str]] = None,
+        token_claims_mapping: Optional[Dict[str, str]] = None,
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
         instance = cls()
         instance.acsurl = acsurl
-        instance.allowed_clients = allowed_clients
         instance.app_id = app_id
         instance.authorization_endpoint = authorization_endpoint
         instance.aws_cognito_region = aws_cognito_region
@@ -456,10 +455,13 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         instance.secret = secret
         instance.team_id = team_id
         instance.token_authentication_type = token_authentication_type
-        instance.token_claims_mapping = token_claims_mapping
         instance.token_endpoint = token_endpoint
         instance.user_info_endpoint = user_info_endpoint
         instance.user_info_http_method = user_info_http_method
+        if allowed_clients is not None:
+            instance.allowed_clients = allowed_clients
+        if token_claims_mapping is not None:
+            instance.token_claims_mapping = token_claims_mapping
         return instance
 
     @classmethod
@@ -473,10 +475,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.acsurl = str(dict_["ACSURL"])
         elif include_empty:
             instance.acsurl = ""
-        if "AllowedClients" in dict_ and dict_["AllowedClients"] is not None:
-            instance.allowed_clients = [str(i0) for i0 in dict_["AllowedClients"]]
-        elif include_empty:
-            instance.allowed_clients = []
         if "AppId" in dict_ and dict_["AppId"] is not None:
             instance.app_id = str(dict_["AppId"])
         elif include_empty:
@@ -579,12 +577,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.token_authentication_type = str(dict_["TokenAuthenticationType"])
         elif include_empty:
             instance.token_authentication_type = ""
-        if "TokenClaimsMapping" in dict_ and dict_["TokenClaimsMapping"] is not None:
-            instance.token_claims_mapping = {
-                str(k0): str(v0) for k0, v0 in dict_["TokenClaimsMapping"].items()
-            }
-        elif include_empty:
-            instance.token_claims_mapping = {}
         if "TokenEndpoint" in dict_ and dict_["TokenEndpoint"] is not None:
             instance.token_endpoint = str(dict_["TokenEndpoint"])
         elif include_empty:
@@ -597,6 +589,16 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.user_info_http_method = str(dict_["UserInfoHTTPMethod"])
         elif include_empty:
             instance.user_info_http_method = ""
+        if "AllowedClients" in dict_ and dict_["AllowedClients"] is not None:
+            instance.allowed_clients = [str(i0) for i0 in dict_["AllowedClients"]]
+        elif include_empty:
+            instance.allowed_clients = []
+        if "TokenClaimsMapping" in dict_ and dict_["TokenClaimsMapping"] is not None:
+            instance.token_claims_mapping = {
+                str(k0): str(v0) for k0, v0 in dict_["TokenClaimsMapping"].items()
+            }
+        elif include_empty:
+            instance.token_claims_mapping = {}
         return instance
 
     @classmethod
@@ -641,7 +643,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "ACSURL": "acsurl",
-            "AllowedClients": "allowed_clients",
             "AppId": "app_id",
             "AuthorizationEndpoint": "authorization_endpoint",
             "AWSCognitoRegion": "aws_cognito_region",
@@ -663,17 +664,17 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "Secret": "secret",
             "TeamID": "team_id",
             "TokenAuthenticationType": "token_authentication_type",
-            "TokenClaimsMapping": "token_claims_mapping",
             "TokenEndpoint": "token_endpoint",
             "UserInfoEndpoint": "user_info_endpoint",
             "UserInfoHTTPMethod": "user_info_http_method",
+            "AllowedClients": "allowed_clients",
+            "TokenClaimsMapping": "token_claims_mapping",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "ACSURL": True,
-            "AllowedClients": True,
             "AppId": True,
             "AuthorizationEndpoint": True,
             "AWSCognitoRegion": True,
@@ -695,10 +696,11 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "Secret": True,
             "TeamID": True,
             "TokenAuthenticationType": True,
-            "TokenClaimsMapping": True,
             "TokenEndpoint": True,
             "UserInfoEndpoint": True,
             "UserInfoHTTPMethod": True,
+            "AllowedClients": False,
+            "TokenClaimsMapping": False,
         }
 
     # endregion static methods

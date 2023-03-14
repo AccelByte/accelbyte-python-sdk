@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.6.1)
+# AccelByte Gaming Services Cloudsave Service (3.6.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

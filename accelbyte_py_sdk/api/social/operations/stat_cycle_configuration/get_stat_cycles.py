@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.0.0)
+# AccelByte Gaming Services Social Service (2.1.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -82,6 +82,8 @@ class GetStatCycles(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
@@ -102,6 +104,7 @@ class GetStatCycles(Operation):
     limit: int  # OPTIONAL in [query]
     name: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    sort_by: str  # OPTIONAL in [query]
     status: Union[str, StatusEnum]  # OPTIONAL in [query]
 
     # endregion fields
@@ -162,6 +165,8 @@ class GetStatCycles(Operation):
             result["name"] = self.name
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
         if hasattr(self, "status"):
             result["status"] = self.status
         return result
@@ -194,6 +199,10 @@ class GetStatCycles(Operation):
         self.offset = value
         return self
 
+    def with_sort_by(self, value: str) -> GetStatCycles:
+        self.sort_by = value
+        return self
+
     def with_status(self, value: Union[str, StatusEnum]) -> GetStatCycles:
         self.status = value
         return self
@@ -224,6 +233,10 @@ class GetStatCycles(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = ""
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
@@ -274,6 +287,7 @@ class GetStatCycles(Operation):
         limit: Optional[int] = None,
         name: Optional[str] = None,
         offset: Optional[int] = None,
+        sort_by: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
     ) -> GetStatCycles:
         instance = cls()
@@ -286,6 +300,8 @@ class GetStatCycles(Operation):
             instance.name = name
         if offset is not None:
             instance.offset = offset
+        if sort_by is not None:
+            instance.sort_by = sort_by
         if status is not None:
             instance.status = status
         return instance
@@ -315,6 +331,10 @@ class GetStatCycles(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -329,6 +349,7 @@ class GetStatCycles(Operation):
             "limit": "limit",
             "name": "name",
             "offset": "offset",
+            "sortBy": "sort_by",
             "status": "status",
         }
 
@@ -340,6 +361,7 @@ class GetStatCycles(Operation):
             "limit": False,
             "name": False,
             "offset": False,
+            "sortBy": False,
             "status": False,
         }
 
