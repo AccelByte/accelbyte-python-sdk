@@ -31,7 +31,9 @@ if [ "$BATCH" = true ] ; then
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 lobby-get-user-friends-updated --login_with_auth "Bearer foo"
 lobby-get-user-incoming-friends --login_with_auth "Bearer foo"
+lobby-get-user-incoming-friends-with-time --login_with_auth "Bearer foo"
 lobby-get-user-outgoing-friends --login_with_auth "Bearer foo"
+lobby-get-user-outgoing-friends-with-time --login_with_auth "Bearer foo"
 lobby-user-request-friend '{"friendId": "EAxcVpFr", "friendPublicId": "ttufHIRd"}' --login_with_auth "Bearer foo"
 lobby-user-accept-friend-request '{"friendId": "H9UzVRiX"}' --login_with_auth "Bearer foo"
 lobby-user-cancel-friend-request '{"friendId": "bqlAw7r6"}' --login_with_auth "Bearer foo"
@@ -139,7 +141,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..92"
+echo "1..94"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -160,644 +162,656 @@ $PYTHON -m $MODULE 'lobby-get-user-incoming-friends' \
     > test.out 2>&1
 eval_tap $? 3 'GetUserIncomingFriends' test.out
 
-#- 4 GetUserOutgoingFriends
+#- 4 GetUserIncomingFriendsWithTime
+$PYTHON -m $MODULE 'lobby-get-user-incoming-friends-with-time' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 4 'GetUserIncomingFriendsWithTime' test.out
+
+#- 5 GetUserOutgoingFriends
 $PYTHON -m $MODULE 'lobby-get-user-outgoing-friends' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 4 'GetUserOutgoingFriends' test.out
+eval_tap $? 5 'GetUserOutgoingFriends' test.out
 
-#- 5 UserRequestFriend
+#- 6 GetUserOutgoingFriendsWithTime
+$PYTHON -m $MODULE 'lobby-get-user-outgoing-friends-with-time' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 6 'GetUserOutgoingFriendsWithTime' test.out
+
+#- 7 UserRequestFriend
 $PYTHON -m $MODULE 'lobby-user-request-friend' \
     '{"friendId": "jI5YbsKo", "friendPublicId": "ADkzJEN2"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 5 'UserRequestFriend' test.out
+eval_tap $? 7 'UserRequestFriend' test.out
 
-#- 6 UserAcceptFriendRequest
+#- 8 UserAcceptFriendRequest
 $PYTHON -m $MODULE 'lobby-user-accept-friend-request' \
     '{"friendId": "VHzih3bi"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 6 'UserAcceptFriendRequest' test.out
+eval_tap $? 8 'UserAcceptFriendRequest' test.out
 
-#- 7 UserCancelFriendRequest
+#- 9 UserCancelFriendRequest
 $PYTHON -m $MODULE 'lobby-user-cancel-friend-request' \
     '{"friendId": "t0VWn3CO"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 7 'UserCancelFriendRequest' test.out
+eval_tap $? 9 'UserCancelFriendRequest' test.out
 
-#- 8 UserRejectFriendRequest
+#- 10 UserRejectFriendRequest
 $PYTHON -m $MODULE 'lobby-user-reject-friend-request' \
     '{"friendId": "39PXDNxt"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 8 'UserRejectFriendRequest' test.out
+eval_tap $? 10 'UserRejectFriendRequest' test.out
 
-#- 9 UserGetFriendshipStatus
+#- 11 UserGetFriendshipStatus
 $PYTHON -m $MODULE 'lobby-user-get-friendship-status' \
     'XgeO3Fgk' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 9 'UserGetFriendshipStatus' test.out
+eval_tap $? 11 'UserGetFriendshipStatus' test.out
 
-#- 10 UserUnfriendRequest
+#- 12 UserUnfriendRequest
 $PYTHON -m $MODULE 'lobby-user-unfriend-request' \
     '{"friendId": "XhjDzaQY"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 10 'UserUnfriendRequest' test.out
+eval_tap $? 12 'UserUnfriendRequest' test.out
 
-#- 11 AddFriendsWithoutConfirmation
+#- 13 AddFriendsWithoutConfirmation
 $PYTHON -m $MODULE 'lobby-add-friends-without-confirmation' \
     '{"friendIds": ["3snn2ZkP", "7cFdP43e", "5dC9XIBu"]}' \
     'dfZgrbHD' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 11 'AddFriendsWithoutConfirmation' test.out
+eval_tap $? 13 'AddFriendsWithoutConfirmation' test.out
 
-#- 12 PersonalChatHistory
+#- 14 PersonalChatHistory
 $PYTHON -m $MODULE 'lobby-personal-chat-history' \
     'IDm4hMzF' \
     '4TxodenS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 12 'PersonalChatHistory' test.out
+eval_tap $? 14 'PersonalChatHistory' test.out
 
-#- 13 AdminChatHistory
+#- 15 AdminChatHistory
 $PYTHON -m $MODULE 'lobby-admin-chat-history' \
     'rUTvfqU0' \
     'bfoMm5cT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 13 'AdminChatHistory' test.out
+eval_tap $? 15 'AdminChatHistory' test.out
 
-#- 14 AdminGetAllConfigV1
+#- 16 AdminGetAllConfigV1
 $PYTHON -m $MODULE 'lobby-admin-get-all-config-v1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 14 'AdminGetAllConfigV1' test.out
+eval_tap $? 16 'AdminGetAllConfigV1' test.out
 
-#- 15 AdminGetConfigV1
+#- 17 AdminGetConfigV1
 $PYTHON -m $MODULE 'lobby-admin-get-config-v1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 15 'AdminGetConfigV1' test.out
+eval_tap $? 17 'AdminGetConfigV1' test.out
 
-#- 16 AdminUpdateConfigV1
+#- 18 AdminUpdateConfigV1
 $PYTHON -m $MODULE 'lobby-admin-update-config-v1' \
     '{"allowInviteNonConnectedUser": true, "allowJoinPartyDuringMatchmaking": true, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 100, "cancelTicketOnDisconnect": false, "chatRateLimitBurst": 30, "chatRateLimitDuration": 39, "concurrentUsersLimit": 4, "disableInvitationOnJoinParty": true, "enableChat": false, "entitlementCheck": false, "entitlementItemID": "a23YvYmm", "generalRateLimitBurst": 61, "generalRateLimitDuration": 13, "keepPresenceActivityOnDisconnect": false, "maxDSWaitTime": 98, "maxPartyMember": 31, "profanityFilter": true, "readyConsentTimeout": 85}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 16 'AdminUpdateConfigV1' test.out
+eval_tap $? 18 'AdminUpdateConfigV1' test.out
 
-#- 17 AdminExportConfigV1
+#- 19 AdminExportConfigV1
 $PYTHON -m $MODULE 'lobby-admin-export-config-v1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 17 'AdminExportConfigV1' test.out
+eval_tap $? 19 'AdminExportConfigV1' test.out
 
-#- 18 AdminImportConfigV1
+#- 20 AdminImportConfigV1
 $PYTHON -m $MODULE 'lobby-admin-import-config-v1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 18 'AdminImportConfigV1' test.out
+eval_tap $? 20 'AdminImportConfigV1' test.out
 
-#- 19 GetListOfFriends
+#- 21 GetListOfFriends
 $PYTHON -m $MODULE 'lobby-get-list-of-friends' \
     'k0i8VxsZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 19 'GetListOfFriends' test.out
+eval_tap $? 21 'GetListOfFriends' test.out
 
-#- 20 SendMultipleUsersFreeformNotificationV1Admin
+#- 22 SendMultipleUsersFreeformNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-multiple-users-freeform-notification-v1-admin' \
     '{"message": "NereSvf9", "topicName": "699mCEHT", "userIds": ["hUJkETAs", "Sp7gh4Te", "UTkOkAYf"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 20 'SendMultipleUsersFreeformNotificationV1Admin' test.out
+eval_tap $? 22 'SendMultipleUsersFreeformNotificationV1Admin' test.out
 
-#- 21 SendUsersFreeformNotificationV1Admin
+#- 23 SendUsersFreeformNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-users-freeform-notification-v1-admin' \
     '{"message": "JB8AT9t4", "topicName": "Tv207Y2Q"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 21 'SendUsersFreeformNotificationV1Admin' test.out
+eval_tap $? 23 'SendUsersFreeformNotificationV1Admin' test.out
 
-#- 22 SendPartyFreeformNotificationV1Admin
+#- 24 SendPartyFreeformNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-party-freeform-notification-v1-admin' \
     '{"message": "D3oD5fLC", "topicName": "r3OOlXVv"}' \
     '8ZGF7uYn' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 22 'SendPartyFreeformNotificationV1Admin' test.out
+eval_tap $? 24 'SendPartyFreeformNotificationV1Admin' test.out
 
-#- 23 SendPartyTemplatedNotificationV1Admin
+#- 25 SendPartyTemplatedNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-party-templated-notification-v1-admin' \
     '{"templateContext": {"GzpipNDi": "gNJma1Mb", "qqZtfNWq": "l4nmwAft", "4gqkNNlW": "kD9eOziY"}, "templateLanguage": "RFOn0jJL", "templateSlug": "HC9LxhvN", "topicName": "XTwGBCto"}' \
     'hLtl9Zuh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 23 'SendPartyTemplatedNotificationV1Admin' test.out
+eval_tap $? 25 'SendPartyTemplatedNotificationV1Admin' test.out
 
-#- 24 GetAllNotificationTemplatesV1Admin
+#- 26 GetAllNotificationTemplatesV1Admin
 $PYTHON -m $MODULE 'lobby-get-all-notification-templates-v1-admin' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 24 'GetAllNotificationTemplatesV1Admin' test.out
+eval_tap $? 26 'GetAllNotificationTemplatesV1Admin' test.out
 
-#- 25 CreateNotificationTemplateV1Admin
+#- 27 CreateNotificationTemplateV1Admin
 $PYTHON -m $MODULE 'lobby-create-notification-template-v1-admin' \
     '{"templateContent": "ytm5UDrT", "templateLanguage": "6QXCs5SP", "templateSlug": "BbRPZTF6"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 25 'CreateNotificationTemplateV1Admin' test.out
+eval_tap $? 27 'CreateNotificationTemplateV1Admin' test.out
 
-#- 26 SendUsersTemplatedNotificationV1Admin
+#- 28 SendUsersTemplatedNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-users-templated-notification-v1-admin' \
     '{"templateContext": {"oQAXVG7t": "nsZg5QgX", "jvyGJPN4": "eXbJE5Vs", "2GcyomQo": "IXimBJeh"}, "templateLanguage": "yxlNsjUg", "templateSlug": "xBkF6wFP", "topicName": "oJeQedio"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 26 'SendUsersTemplatedNotificationV1Admin' test.out
+eval_tap $? 28 'SendUsersTemplatedNotificationV1Admin' test.out
 
-#- 27 GetTemplateSlugLocalizationsTemplateV1Admin
+#- 29 GetTemplateSlugLocalizationsTemplateV1Admin
 $PYTHON -m $MODULE 'lobby-get-template-slug-localizations-template-v1-admin' \
     'gEhhM2rI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 27 'GetTemplateSlugLocalizationsTemplateV1Admin' test.out
+eval_tap $? 29 'GetTemplateSlugLocalizationsTemplateV1Admin' test.out
 
-#- 28 DeleteNotificationTemplateSlugV1Admin
+#- 30 DeleteNotificationTemplateSlugV1Admin
 $PYTHON -m $MODULE 'lobby-delete-notification-template-slug-v1-admin' \
     'izGdKvOP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 28 'DeleteNotificationTemplateSlugV1Admin' test.out
+eval_tap $? 30 'DeleteNotificationTemplateSlugV1Admin' test.out
 
-#- 29 GetSingleTemplateLocalizationV1Admin
+#- 31 GetSingleTemplateLocalizationV1Admin
 $PYTHON -m $MODULE 'lobby-get-single-template-localization-v1-admin' \
     'dq5xrgxS' \
     'my1DN9LF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 29 'GetSingleTemplateLocalizationV1Admin' test.out
+eval_tap $? 31 'GetSingleTemplateLocalizationV1Admin' test.out
 
-#- 30 UpdateTemplateLocalizationV1Admin
+#- 32 UpdateTemplateLocalizationV1Admin
 $PYTHON -m $MODULE 'lobby-update-template-localization-v1-admin' \
     '{"templateContent": "kYW5DQyj"}' \
     '4bj5Ro2o' \
     'gaKt2ujQ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 30 'UpdateTemplateLocalizationV1Admin' test.out
+eval_tap $? 32 'UpdateTemplateLocalizationV1Admin' test.out
 
-#- 31 DeleteTemplateLocalizationV1Admin
+#- 33 DeleteTemplateLocalizationV1Admin
 $PYTHON -m $MODULE 'lobby-delete-template-localization-v1-admin' \
     'Sa3Zdb65' \
     'UXmy0Zp6' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 31 'DeleteTemplateLocalizationV1Admin' test.out
+eval_tap $? 33 'DeleteTemplateLocalizationV1Admin' test.out
 
-#- 32 PublishTemplateLocalizationV1Admin
+#- 34 PublishTemplateLocalizationV1Admin
 $PYTHON -m $MODULE 'lobby-publish-template-localization-v1-admin' \
     'iIaTIKUk' \
     'mkk9QM0N' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 32 'PublishTemplateLocalizationV1Admin' test.out
+eval_tap $? 34 'PublishTemplateLocalizationV1Admin' test.out
 
-#- 33 GetAllNotificationTopicsV1Admin
+#- 35 GetAllNotificationTopicsV1Admin
 $PYTHON -m $MODULE 'lobby-get-all-notification-topics-v1-admin' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 33 'GetAllNotificationTopicsV1Admin' test.out
+eval_tap $? 35 'GetAllNotificationTopicsV1Admin' test.out
 
-#- 34 CreateNotificationTopicV1Admin
+#- 36 CreateNotificationTopicV1Admin
 $PYTHON -m $MODULE 'lobby-create-notification-topic-v1-admin' \
     '{"description": "BMA9ORxp", "topicName": "zwLR2AK6"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 34 'CreateNotificationTopicV1Admin' test.out
+eval_tap $? 36 'CreateNotificationTopicV1Admin' test.out
 
-#- 35 GetNotificationTopicV1Admin
+#- 37 GetNotificationTopicV1Admin
 $PYTHON -m $MODULE 'lobby-get-notification-topic-v1-admin' \
     'eXUGPJsw' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 35 'GetNotificationTopicV1Admin' test.out
+eval_tap $? 37 'GetNotificationTopicV1Admin' test.out
 
-#- 36 UpdateNotificationTopicV1Admin
+#- 38 UpdateNotificationTopicV1Admin
 $PYTHON -m $MODULE 'lobby-update-notification-topic-v1-admin' \
     '{"description": "1fiP80G9"}' \
     'Pclxcft2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 36 'UpdateNotificationTopicV1Admin' test.out
+eval_tap $? 38 'UpdateNotificationTopicV1Admin' test.out
 
-#- 37 DeleteNotificationTopicV1Admin
+#- 39 DeleteNotificationTopicV1Admin
 $PYTHON -m $MODULE 'lobby-delete-notification-topic-v1-admin' \
     'ulIJzPyr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 37 'DeleteNotificationTopicV1Admin' test.out
+eval_tap $? 39 'DeleteNotificationTopicV1Admin' test.out
 
-#- 38 SendSpecificUserFreeformNotificationV1Admin
+#- 40 SendSpecificUserFreeformNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-specific-user-freeform-notification-v1-admin' \
     '{"message": "VEiOG4Uc", "topicName": "qsuGKHhM"}' \
     'RWLVd3Dl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 38 'SendSpecificUserFreeformNotificationV1Admin' test.out
+eval_tap $? 40 'SendSpecificUserFreeformNotificationV1Admin' test.out
 
-#- 39 SendSpecificUserTemplatedNotificationV1Admin
+#- 41 SendSpecificUserTemplatedNotificationV1Admin
 $PYTHON -m $MODULE 'lobby-send-specific-user-templated-notification-v1-admin' \
     '{"templateContext": {"hLuIpomM": "8sm1MiaI", "1mX2tJoA": "RtdbBe7u", "dsMrok0W": "vGYYnx4V"}, "templateLanguage": "709xbnGe", "templateSlug": "zKsDwG2o", "topicName": "mOR2nvYI"}' \
     '9TVqJdvz' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 39 'SendSpecificUserTemplatedNotificationV1Admin' test.out
+eval_tap $? 41 'SendSpecificUserTemplatedNotificationV1Admin' test.out
 
-#- 40 AdminGetPartyDataV1
+#- 42 AdminGetPartyDataV1
 $PYTHON -m $MODULE 'lobby-admin-get-party-data-v1' \
     'cWbfUpaX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 40 'AdminGetPartyDataV1' test.out
+eval_tap $? 42 'AdminGetPartyDataV1' test.out
 
-#- 41 AdminUpdatePartyAttributesV1
+#- 43 AdminUpdatePartyAttributesV1
 $PYTHON -m $MODULE 'lobby-admin-update-party-attributes-v1' \
     '{"custom_attribute": {"p5JMl5LL": {}, "4bTxBmZj": {}, "drrIxsB0": {}}, "updatedAt": 80}' \
     'laDXTvKC' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 41 'AdminUpdatePartyAttributesV1' test.out
+eval_tap $? 43 'AdminUpdatePartyAttributesV1' test.out
 
-#- 42 AdminJoinPartyV1
+#- 44 AdminJoinPartyV1
 $PYTHON -m $MODULE 'lobby-admin-join-party-v1' \
     'WwNTAhd2' \
     'wrS0uPdj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 42 'AdminJoinPartyV1' test.out
+eval_tap $? 44 'AdminJoinPartyV1' test.out
 
-#- 43 AdminGetUserPartyV1
+#- 45 AdminGetUserPartyV1
 $PYTHON -m $MODULE 'lobby-admin-get-user-party-v1' \
     'hdinpng5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 43 'AdminGetUserPartyV1' test.out
+eval_tap $? 45 'AdminGetUserPartyV1' test.out
 
-#- 44 AdminGetLobbyCCU
+#- 46 AdminGetLobbyCCU
 $PYTHON -m $MODULE 'lobby-admin-get-lobby-ccu' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 44 'AdminGetLobbyCCU' test.out
+eval_tap $? 46 'AdminGetLobbyCCU' test.out
 
-#- 45 AdminGetAllPlayerSessionAttribute
+#- 47 AdminGetAllPlayerSessionAttribute
 $PYTHON -m $MODULE 'lobby-admin-get-all-player-session-attribute' \
     'BLy8wbhM' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 45 'AdminGetAllPlayerSessionAttribute' test.out
+eval_tap $? 47 'AdminGetAllPlayerSessionAttribute' test.out
 
-#- 46 AdminSetPlayerSessionAttribute
+#- 48 AdminSetPlayerSessionAttribute
 $PYTHON -m $MODULE 'lobby-admin-set-player-session-attribute' \
     '{"attributes": {"ssAHjapI": "kY9Rf4wP", "57dBZNR8": "8YbCtmKy", "8M9zVrjf": "GXZnqAQU"}}' \
     'oY1GjlII' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 46 'AdminSetPlayerSessionAttribute' test.out
+eval_tap $? 48 'AdminSetPlayerSessionAttribute' test.out
 
-#- 47 AdminGetPlayerSessionAttribute
+#- 49 AdminGetPlayerSessionAttribute
 $PYTHON -m $MODULE 'lobby-admin-get-player-session-attribute' \
     'k0iKoTTS' \
     '1j02o7Jj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 47 'AdminGetPlayerSessionAttribute' test.out
+eval_tap $? 49 'AdminGetPlayerSessionAttribute' test.out
 
-#- 48 AdminGetPlayerBlockedPlayersV1
+#- 50 AdminGetPlayerBlockedPlayersV1
 $PYTHON -m $MODULE 'lobby-admin-get-player-blocked-players-v1' \
     'TXAQN0qd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 48 'AdminGetPlayerBlockedPlayersV1' test.out
+eval_tap $? 50 'AdminGetPlayerBlockedPlayersV1' test.out
 
-#- 49 AdminGetPlayerBlockedByPlayersV1
+#- 51 AdminGetPlayerBlockedByPlayersV1
 $PYTHON -m $MODULE 'lobby-admin-get-player-blocked-by-players-v1' \
     'skdQV0Tq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 49 'AdminGetPlayerBlockedByPlayersV1' test.out
+eval_tap $? 51 'AdminGetPlayerBlockedByPlayersV1' test.out
 
-#- 50 AdminBulkBlockPlayersV1
+#- 52 AdminBulkBlockPlayersV1
 $PYTHON -m $MODULE 'lobby-admin-bulk-block-players-v1' \
     '{"listBlockedUserId": ["I8EFnmDb", "xIxi4YKl", "ONk2Q5Y4"]}' \
     'Jvaizwii' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 50 'AdminBulkBlockPlayersV1' test.out
+eval_tap $? 52 'AdminBulkBlockPlayersV1' test.out
 
-#- 51 AdminDebugProfanityFilters
+#- 53 AdminDebugProfanityFilters
 $PYTHON -m $MODULE 'lobby-admin-debug-profanity-filters' \
     '{"text": "latuUjjt"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 51 'AdminDebugProfanityFilters' test.out
+eval_tap $? 53 'AdminDebugProfanityFilters' test.out
 
-#- 52 AdminGetProfanityListFiltersV1
+#- 54 AdminGetProfanityListFiltersV1
 $PYTHON -m $MODULE 'lobby-admin-get-profanity-list-filters-v1' \
     '9lIMGql5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 52 'AdminGetProfanityListFiltersV1' test.out
+eval_tap $? 54 'AdminGetProfanityListFiltersV1' test.out
 
-#- 53 AdminAddProfanityFilterIntoList
+#- 55 AdminAddProfanityFilterIntoList
 $PYTHON -m $MODULE 'lobby-admin-add-profanity-filter-into-list' \
     '{"filter": "ElEa9EII", "note": "lGcHB3Cf"}' \
     'R3ncDlwi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 53 'AdminAddProfanityFilterIntoList' test.out
+eval_tap $? 55 'AdminAddProfanityFilterIntoList' test.out
 
-#- 54 AdminAddProfanityFilters
+#- 56 AdminAddProfanityFilters
 $PYTHON -m $MODULE 'lobby-admin-add-profanity-filters' \
     '{"filters": [{"filter": "3v3MFFJ1", "note": "KesKoELC"}, {"filter": "pobBEG8X", "note": "645xpdXp"}, {"filter": "ai0rYaT5", "note": "hOPjaf3H"}]}' \
     '0tYighU0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 54 'AdminAddProfanityFilters' test.out
+eval_tap $? 56 'AdminAddProfanityFilters' test.out
 
-#- 55 AdminImportProfanityFiltersFromFile
+#- 57 AdminImportProfanityFiltersFromFile
 $PYTHON -m $MODULE 'lobby-admin-import-profanity-filters-from-file' \
     '[98, 76, 96]' \
     'VbLFzHEP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 55 'AdminImportProfanityFiltersFromFile' test.out
+eval_tap $? 57 'AdminImportProfanityFiltersFromFile' test.out
 
-#- 56 AdminDeleteProfanityFilter
+#- 58 AdminDeleteProfanityFilter
 $PYTHON -m $MODULE 'lobby-admin-delete-profanity-filter' \
     '{"filter": "8cM4NTwr"}' \
     '0KHaAsmT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 56 'AdminDeleteProfanityFilter' test.out
+eval_tap $? 58 'AdminDeleteProfanityFilter' test.out
 
-#- 57 AdminGetProfanityLists
+#- 59 AdminGetProfanityLists
 $PYTHON -m $MODULE 'lobby-admin-get-profanity-lists' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 57 'AdminGetProfanityLists' test.out
+eval_tap $? 59 'AdminGetProfanityLists' test.out
 
-#- 58 AdminCreateProfanityList
+#- 60 AdminCreateProfanityList
 $PYTHON -m $MODULE 'lobby-admin-create-profanity-list' \
     '{"isEnabled": false, "isMandatory": false, "name": "7HVWqMkN"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 58 'AdminCreateProfanityList' test.out
+eval_tap $? 60 'AdminCreateProfanityList' test.out
 
-#- 59 AdminUpdateProfanityList
+#- 61 AdminUpdateProfanityList
 $PYTHON -m $MODULE 'lobby-admin-update-profanity-list' \
     '{"isEnabled": true, "isMandatory": false, "newName": "AURt9plC"}' \
     'SVq8PdH6' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 59 'AdminUpdateProfanityList' test.out
+eval_tap $? 61 'AdminUpdateProfanityList' test.out
 
-#- 60 AdminDeleteProfanityList
+#- 62 AdminDeleteProfanityList
 $PYTHON -m $MODULE 'lobby-admin-delete-profanity-list' \
     'hJPUAc0R' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 60 'AdminDeleteProfanityList' test.out
+eval_tap $? 62 'AdminDeleteProfanityList' test.out
 
-#- 61 AdminGetProfanityRule
+#- 63 AdminGetProfanityRule
 $PYTHON -m $MODULE 'lobby-admin-get-profanity-rule' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 61 'AdminGetProfanityRule' test.out
+eval_tap $? 63 'AdminGetProfanityRule' test.out
 
-#- 62 AdminSetProfanityRuleForNamespace
+#- 64 AdminSetProfanityRuleForNamespace
 $PYTHON -m $MODULE 'lobby-admin-set-profanity-rule-for-namespace' \
     '{"rule": "VwXgAgnt"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 62 'AdminSetProfanityRuleForNamespace' test.out
+eval_tap $? 64 'AdminSetProfanityRuleForNamespace' test.out
 
-#- 63 AdminVerifyMessageProfanityResponse
+#- 65 AdminVerifyMessageProfanityResponse
 $PYTHON -m $MODULE 'lobby-admin-verify-message-profanity-response' \
     '{"message": "LMCuaXBW", "profanityLevel": "Qi6BqPg4"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 63 'AdminVerifyMessageProfanityResponse' test.out
+eval_tap $? 65 'AdminVerifyMessageProfanityResponse' test.out
 
-#- 64 AdminGetThirdPartyConfig
+#- 66 AdminGetThirdPartyConfig
 $PYTHON -m $MODULE 'lobby-admin-get-third-party-config' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 64 'AdminGetThirdPartyConfig' test.out
+eval_tap $? 66 'AdminGetThirdPartyConfig' test.out
 
-#- 65 AdminUpdateThirdPartyConfig
+#- 67 AdminUpdateThirdPartyConfig
 $PYTHON -m $MODULE 'lobby-admin-update-third-party-config' \
     '{"apiKey": "xr0lCanc"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 65 'AdminUpdateThirdPartyConfig' test.out
+eval_tap $? 67 'AdminUpdateThirdPartyConfig' test.out
 
-#- 66 AdminCreateThirdPartyConfig
+#- 68 AdminCreateThirdPartyConfig
 $PYTHON -m $MODULE 'lobby-admin-create-third-party-config' \
     '{"apiKey": "UZGCHsZY"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 66 'AdminCreateThirdPartyConfig' test.out
+eval_tap $? 68 'AdminCreateThirdPartyConfig' test.out
 
-#- 67 AdminDeleteThirdPartyConfig
+#- 69 AdminDeleteThirdPartyConfig
 $PYTHON -m $MODULE 'lobby-admin-delete-third-party-config' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 67 'AdminDeleteThirdPartyConfig' test.out
+eval_tap $? 69 'AdminDeleteThirdPartyConfig' test.out
 
-#- 68 PublicGetMessages
+#- 70 PublicGetMessages
 $PYTHON -m $MODULE 'lobby-public-get-messages' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 68 'PublicGetMessages' test.out
+eval_tap $? 70 'PublicGetMessages' test.out
 
-#- 69 GetPersonalChatHistoryV1Public
+#- 71 GetPersonalChatHistoryV1Public
 $PYTHON -m $MODULE 'lobby-get-personal-chat-history-v1-public' \
     'oLfR1KtO' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 69 'GetPersonalChatHistoryV1Public' test.out
+eval_tap $? 71 'GetPersonalChatHistoryV1Public' test.out
 
-#- 70 PublicGetPartyDataV1
+#- 72 PublicGetPartyDataV1
 $PYTHON -m $MODULE 'lobby-public-get-party-data-v1' \
     'v7Zy0b65' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 70 'PublicGetPartyDataV1' test.out
+eval_tap $? 72 'PublicGetPartyDataV1' test.out
 
-#- 71 PublicUpdatePartyAttributesV1
+#- 73 PublicUpdatePartyAttributesV1
 $PYTHON -m $MODULE 'lobby-public-update-party-attributes-v1' \
     '{"custom_attribute": {"uvuKNuy0": {}, "ytZQ7M6N": {}, "zy1adnSK": {}}, "updatedAt": 84}' \
     'kmZXElW9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 71 'PublicUpdatePartyAttributesV1' test.out
+eval_tap $? 73 'PublicUpdatePartyAttributesV1' test.out
 
-#- 72 PublicSetPartyLimitV1
+#- 74 PublicSetPartyLimitV1
 $PYTHON -m $MODULE 'lobby-public-set-party-limit-v1' \
     '{"limit": 77}' \
     'fRSse6AA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 72 'PublicSetPartyLimitV1' test.out
+eval_tap $? 74 'PublicSetPartyLimitV1' test.out
 
-#- 73 PublicGetPlayerBlockedPlayersV1
+#- 75 PublicGetPlayerBlockedPlayersV1
 $PYTHON -m $MODULE 'lobby-public-get-player-blocked-players-v1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 73 'PublicGetPlayerBlockedPlayersV1' test.out
+eval_tap $? 75 'PublicGetPlayerBlockedPlayersV1' test.out
 
-#- 74 PublicGetPlayerBlockedByPlayersV1
+#- 76 PublicGetPlayerBlockedByPlayersV1
 $PYTHON -m $MODULE 'lobby-public-get-player-blocked-by-players-v1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 74 'PublicGetPlayerBlockedByPlayersV1' test.out
+eval_tap $? 76 'PublicGetPlayerBlockedByPlayersV1' test.out
 
-#- 75 UsersPresenceHandlerV1
+#- 77 UsersPresenceHandlerV1
 $PYTHON -m $MODULE 'lobby-users-presence-handler-v1' \
     'z3S4czz0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 75 'UsersPresenceHandlerV1' test.out
+eval_tap $? 77 'UsersPresenceHandlerV1' test.out
 
-#- 76 FreeFormNotification
+#- 78 FreeFormNotification
 $PYTHON -m $MODULE 'lobby-free-form-notification' \
     '{"message": "QKFlAVmV", "topic": "Lu4AOec0"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 76 'FreeFormNotification' test.out
+eval_tap $? 78 'FreeFormNotification' test.out
 
-#- 77 NotificationWithTemplate
+#- 79 NotificationWithTemplate
 $PYTHON -m $MODULE 'lobby-notification-with-template' \
     '{"templateContext": {"z8eBeeoi": "p68J1nsv", "4W2OJhta": "fxMSJlHe", "b34sZKHc": "l5LLLOex"}, "templateLanguage": "L4fZvWtN", "templateSlug": "D2tcBFpX", "topic": "8lNtFEJ7"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 77 'NotificationWithTemplate' test.out
+eval_tap $? 79 'NotificationWithTemplate' test.out
 
-#- 78 GetGameTemplate
+#- 80 GetGameTemplate
 $PYTHON -m $MODULE 'lobby-get-game-template' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 78 'GetGameTemplate' test.out
+eval_tap $? 80 'GetGameTemplate' test.out
 
-#- 79 CreateTemplate
+#- 81 CreateTemplate
 $PYTHON -m $MODULE 'lobby-create-template' \
     '{"templateContent": "tnkY6Mca", "templateLanguage": "5afj12K2", "templateSlug": "IzrBvvWm"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 79 'CreateTemplate' test.out
+eval_tap $? 81 'CreateTemplate' test.out
 
-#- 80 GetSlugTemplate
+#- 82 GetSlugTemplate
 $PYTHON -m $MODULE 'lobby-get-slug-template' \
     '4udE0OXu' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 80 'GetSlugTemplate' test.out
+eval_tap $? 82 'GetSlugTemplate' test.out
 
-#- 81 DeleteTemplateSlug
+#- 83 DeleteTemplateSlug
 $PYTHON -m $MODULE 'lobby-delete-template-slug' \
     'dXgNne8k' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 81 'DeleteTemplateSlug' test.out
+eval_tap $? 83 'DeleteTemplateSlug' test.out
 
-#- 82 GetLocalizationTemplate
+#- 84 GetLocalizationTemplate
 $PYTHON -m $MODULE 'lobby-get-localization-template' \
     'JATwlc6e' \
     'sUp6Sw1I' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 82 'GetLocalizationTemplate' test.out
+eval_tap $? 84 'GetLocalizationTemplate' test.out
 
-#- 83 UpdateLocalizationTemplate
+#- 85 UpdateLocalizationTemplate
 $PYTHON -m $MODULE 'lobby-update-localization-template' \
     '{"templateContent": "98jeZQ7h"}' \
     'fxnhLd3K' \
     'naknoed9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 83 'UpdateLocalizationTemplate' test.out
+eval_tap $? 85 'UpdateLocalizationTemplate' test.out
 
-#- 84 DeleteTemplateLocalization
+#- 86 DeleteTemplateLocalization
 $PYTHON -m $MODULE 'lobby-delete-template-localization' \
     'DHhLOqQG' \
     'hCUr6iTr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 84 'DeleteTemplateLocalization' test.out
+eval_tap $? 86 'DeleteTemplateLocalization' test.out
 
-#- 85 PublishTemplate
+#- 87 PublishTemplate
 $PYTHON -m $MODULE 'lobby-publish-template' \
     'jyEgarAd' \
     'NJOIG36I' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 85 'PublishTemplate' test.out
+eval_tap $? 87 'PublishTemplate' test.out
 
-#- 86 GetTopicByNamespace
+#- 88 GetTopicByNamespace
 $PYTHON -m $MODULE 'lobby-get-topic-by-namespace' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 86 'GetTopicByNamespace' test.out
+eval_tap $? 88 'GetTopicByNamespace' test.out
 
-#- 87 CreateTopic
+#- 89 CreateTopic
 $PYTHON -m $MODULE 'lobby-create-topic' \
     '{"description": "6tRbRcrE", "topic": "veMdAdiP"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 87 'CreateTopic' test.out
+eval_tap $? 89 'CreateTopic' test.out
 
-#- 88 GetTopicByTopicName
+#- 90 GetTopicByTopicName
 $PYTHON -m $MODULE 'lobby-get-topic-by-topic-name' \
     'KDUVSC00' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 88 'GetTopicByTopicName' test.out
+eval_tap $? 90 'GetTopicByTopicName' test.out
 
-#- 89 UpdateTopicByTopicName
+#- 91 UpdateTopicByTopicName
 $PYTHON -m $MODULE 'lobby-update-topic-by-topic-name' \
     '{"description": "PYeDcagg"}' \
     'inxnFIna' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 89 'UpdateTopicByTopicName' test.out
+eval_tap $? 91 'UpdateTopicByTopicName' test.out
 
-#- 90 DeleteTopicByTopicName
+#- 92 DeleteTopicByTopicName
 $PYTHON -m $MODULE 'lobby-delete-topic-by-topic-name' \
     '3yddcbsP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 90 'DeleteTopicByTopicName' test.out
+eval_tap $? 92 'DeleteTopicByTopicName' test.out
 
-#- 91 FreeFormNotificationByUserID
+#- 93 FreeFormNotificationByUserID
 $PYTHON -m $MODULE 'lobby-free-form-notification-by-user-id' \
     '{"message": "heTH26IU", "topic": "JNvYuGRU"}' \
     'vpZaHCuE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 91 'FreeFormNotificationByUserID' test.out
+eval_tap $? 93 'FreeFormNotificationByUserID' test.out
 
-#- 92 NotificationWithTemplateByUserID
+#- 94 NotificationWithTemplateByUserID
 $PYTHON -m $MODULE 'lobby-notification-with-template-by-user-id' \
     '{"templateContext": {"SOiIZsMf": "B4ZH3mtg", "WgU4pCAK": "xeE70Cau", "nQNxot37": "1W9G4AvQ"}, "templateLanguage": "kqsGnmyo", "templateSlug": "5JJTUVmb", "topic": "8GEXFTlE"}' \
     'MEsFzYqw' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 92 'NotificationWithTemplateByUserID' test.out
+eval_tap $? 94 'NotificationWithTemplateByUserID' test.out
 
 
 fi

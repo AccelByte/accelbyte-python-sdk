@@ -49,7 +49,7 @@ seasonpass-query-rewards 'p4lSck0Z' --login_with_auth "Bearer foo"
 seasonpass-create-reward 'Hn5GI39Y' --body '{"code": "BHqaTHeK", "currency": {"currencyCode": "tW18iGeU", "namespace": "lc9d9sog"}, "image": {"as": "Wa24CKNS", "caption": "0GqVvUfH", "height": 87, "imageUrl": "W4ZJJ42d", "smallImageUrl": "3PBddN8S", "width": 23}, "itemId": "lSAiYnNj", "quantity": 22, "type": "ITEM"}' --login_with_auth "Bearer foo"
 seasonpass-get-reward 'fZrQvGgb' 'LdLsFzHk' --login_with_auth "Bearer foo"
 seasonpass-delete-reward 'BMr1yrOM' 'lNFSrUEi' --login_with_auth "Bearer foo"
-seasonpass-update-reward 'rnjX9fDm' 'IbeZxzfT' --body '{"currency": {"currencyCode": "cyiuATus", "namespace": "9hsfpFDc"}, "image": {"as": "SDG8aMVG", "caption": "LiBNrDjq", "height": 30, "imageUrl": "yDPUIj88", "smallImageUrl": "cekdqCt8", "width": 86}, "itemId": "AHdNzDme", "nullFields": ["9KOsb392", "IP6rOvDz", "k6YmJFfR"], "quantity": 56, "type": "ITEM"}' --login_with_auth "Bearer foo"
+seasonpass-update-reward 'rnjX9fDm' 'IbeZxzfT' --body '{"currency": {"currencyCode": "cyiuATus", "namespace": "9hsfpFDc"}, "image": {"as": "SDG8aMVG", "caption": "LiBNrDjq", "height": 30, "imageUrl": "yDPUIj88", "smallImageUrl": "cekdqCt8", "width": 86}, "itemId": "AHdNzDme", "nullFields": ["IP6rOvDz", "k6YmJFfR", "9KOsb392"], "quantity": 56, "type": "ITEM"}' --login_with_auth "Bearer foo"
 seasonpass-query-tiers 'j29a9LJE' --login_with_auth "Bearer foo"
 seasonpass-create-tier '8HoRS1X2' --body '{"index": 84, "quantity": 67, "tier": {"requiredExp": 64, "rewards": {"pAnkCmBU": ["qg2SCnqn", "tX9y1aZS", "WMiVi10s"], "G6vxkfUc": ["mqRRbceJ", "5i0EeDxO", "gBnhhqEl"], "IaDml48w": ["dNFLTm5T", "50x9WT0G", "fH2rtOa4"]}}}' --login_with_auth "Bearer foo"
 seasonpass-update-tier 'EXsXzOXQ' 'Ak4mqrxz' --body '{"requiredExp": 94, "rewards": {"4SqYUTLD": ["x9gIiDan", "dpGT2t24", "aOMh5eC3"], "IHeHSKLC": ["a3xreNDU", "WehwH3q3", "1A806DJg"], "as4b6z3L": ["NUj7fdgL", "A84Z8YYk", "6QEgJjBb"]}}' --login_with_auth "Bearer foo"
@@ -252,7 +252,7 @@ eval_tap $? 21 'DeleteReward' test.out
 $PYTHON -m $MODULE 'seasonpass-update-reward' \
     'o7dwV9DB' \
     'qFKHQkET' \
-    --body '{"currency": {"currencyCode": "JyTlUrwD", "namespace": "TnoujQD4"}, "image": {"as": "IEiH9Z5q", "caption": "Xn3aoRtl", "height": 34, "imageUrl": "eTH26IUJ", "smallImageUrl": "NvYuGRUv", "width": 32}, "itemId": "8X1A3PrI", "nullFields": ["fapq5AAe", "Me4L3mDW", "ORBVXTII"], "quantity": 73, "type": "ITEM"}' \
+    --body '{"currency": {"currencyCode": "JyTlUrwD", "namespace": "TnoujQD4"}, "image": {"as": "IEiH9Z5q", "caption": "Xn3aoRtl", "height": 34, "imageUrl": "eTH26IUJ", "smallImageUrl": "NvYuGRUv", "width": 32}, "itemId": "8X1A3PrI", "nullFields": ["Me4L3mDW", "ORBVXTII", "fapq5AAe"], "quantity": 73, "type": "ITEM"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 22 'UpdateReward' test.out
