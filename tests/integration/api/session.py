@@ -28,7 +28,7 @@ class SessionTestCase(IntegrationTestCase):
                 max_players=2,
                 min_players=2,
                 name=template_name,
-                persistent=True,
+                persistent=False,
                 requested_regions=["us-west-2"],
                 text_chat=False,
                 type_="P2P",
