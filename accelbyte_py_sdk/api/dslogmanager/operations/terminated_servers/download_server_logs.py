@@ -210,11 +210,7 @@ class DownloadServerLogs(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        pod_name: str,
-    ) -> DownloadServerLogs:
+    def create(cls, namespace: str, pod_name: str, **kwargs) -> DownloadServerLogs:
         instance = cls()
         instance.namespace = namespace
         instance.pod_name = pod_name

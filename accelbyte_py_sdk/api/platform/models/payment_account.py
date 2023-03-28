@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -93,10 +93,7 @@ class PaymentAccount(Model):
 
     @classmethod
     def create(
-        cls,
-        id_: str,
-        name: str,
-        type_: Union[str, TypeEnum],
+        cls, id_: str, name: str, type_: Union[str, TypeEnum], **kwargs
     ) -> PaymentAccount:
         instance = cls()
         instance.id_ = id_

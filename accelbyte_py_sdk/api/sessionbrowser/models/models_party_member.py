@@ -78,9 +78,7 @@ class ModelsPartyMember(Model):
 
     @classmethod
     def create(
-        cls,
-        extra_attributes: Dict[str, Any],
-        user_id: str,
+        cls, extra_attributes: Dict[str, Any], user_id: str, **kwargs
     ) -> ModelsPartyMember:
         instance = cls()
         instance.extra_attributes = extra_attributes

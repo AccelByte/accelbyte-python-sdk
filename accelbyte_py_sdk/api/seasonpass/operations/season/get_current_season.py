@@ -192,10 +192,7 @@ class GetCurrentSeason(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> GetCurrentSeason:
+    def create(cls, namespace: str, **kwargs) -> GetCurrentSeason:
         instance = cls()
         instance.namespace = namespace
         return instance

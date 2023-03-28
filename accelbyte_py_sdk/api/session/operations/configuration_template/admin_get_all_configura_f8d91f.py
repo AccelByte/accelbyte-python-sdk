@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -53,6 +53,10 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - ApimodelsConfigurationTemplatesResponse (OK)
 
@@ -75,6 +79,8 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    limit: int  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -115,12 +121,21 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -135,6 +150,14 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
         self.namespace = value
         return self
 
+    def with_limit(self, value: int) -> AdminGetAllConfigurationTemplatesV1:
+        self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> AdminGetAllConfigurationTemplatesV1:
+        self.offset = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -145,6 +168,14 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = 0
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -209,9 +240,16 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
     def create(
         cls,
         namespace: str,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        **kwargs,
     ) -> AdminGetAllConfigurationTemplatesV1:
         instance = cls()
         instance.namespace = namespace
+        if limit is not None:
+            instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
@@ -223,18 +261,30 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = 0
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "limit": "limit",
+            "offset": "offset",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "limit": False,
+            "offset": False,
         }
 
     # endregion static methods

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelsUpdateUserPointAdminV1Request(Model):
 
     @classmethod
     def create(
-        cls,
-        inc: float,
-        latest_value: float,
+        cls, inc: float, latest_value: float, **kwargs
     ) -> ModelsUpdateUserPointAdminV1Request:
         instance = cls()
         instance.inc = inc

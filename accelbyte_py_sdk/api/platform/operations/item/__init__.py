@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.25.0"
+__version__ = "4.27.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,6 +16,7 @@ __email__ = "dev@accelbyte.net"
 
 from .acquire_item import AcquireItem
 from .bulk_get_locale_items import BulkGetLocaleItems
+from .bulk_update_region_data import BulkUpdateRegionData
 from .create_item import CreateItem
 from .create_item_type_config import CreateItemTypeConfig
 from .defeature_item import DefeatureItem

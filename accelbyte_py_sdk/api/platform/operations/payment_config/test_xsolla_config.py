@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -194,10 +194,7 @@ class TestXsollaConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: Optional[XsollaConfig] = None,
-    ) -> TestXsollaConfig:
+    def create(cls, body: Optional[XsollaConfig] = None, **kwargs) -> TestXsollaConfig:
         instance = cls()
         if body is not None:
             instance.body = body

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ModelsMonthlyConfig(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        reset_date: int,
-        reset_time: str,
-    ) -> ModelsMonthlyConfig:
+    def create(cls, reset_date: int, reset_time: str, **kwargs) -> ModelsMonthlyConfig:
         instance = cls()
         instance.reset_date = reset_date
         instance.reset_time = reset_time

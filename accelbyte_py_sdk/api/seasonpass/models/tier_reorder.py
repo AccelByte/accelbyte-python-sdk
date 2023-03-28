@@ -64,10 +64,7 @@ class TierReorder(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        new_index: Optional[int] = None,
-    ) -> TierReorder:
+    def create(cls, new_index: Optional[int] = None, **kwargs) -> TierReorder:
         instance = cls()
         if new_index is not None:
             instance.new_index = new_index

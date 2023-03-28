@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -228,11 +228,7 @@ class Change2faMethod(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        factor: str,
-        mfa_token: str,
-    ) -> Change2faMethod:
+    def create(cls, factor: str, mfa_token: str, **kwargs) -> Change2faMethod:
         instance = cls()
         instance.factor = factor
         instance.mfa_token = mfa_token

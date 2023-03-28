@@ -226,9 +226,7 @@ class DeleteNotificationTopicV1Admin(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        topic_name: str,
+        cls, namespace: str, topic_name: str, **kwargs
     ) -> DeleteNotificationTopicV1Admin:
         instance = cls()
         instance.namespace = namespace

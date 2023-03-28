@@ -69,8 +69,7 @@ class ModelsSetPlayerSessionAttributeRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        attributes: Dict[str, str],
+        cls, attributes: Dict[str, str], **kwargs
     ) -> ModelsSetPlayerSessionAttributeRequest:
         instance = cls()
         instance.attributes = attributes

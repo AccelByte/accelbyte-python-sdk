@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -50,6 +50,8 @@ class ModelsChannelRequest(Model):
 
         joinable: (joinable) OPTIONAL bool
 
+        region_expansion_rate_ms: (region_expansion_rate_ms) OPTIONAL int
+
         social_matchmaking: (social_matchmaking) OPTIONAL bool
 
         use_sub_gamemode: (use_sub_gamemode) OPTIONAL bool
@@ -65,6 +67,7 @@ class ModelsChannelRequest(Model):
     rule_set: ModelsRuleSet  # REQUIRED
     session_queue_timeout_seconds: int  # REQUIRED
     joinable: bool  # OPTIONAL
+    region_expansion_rate_ms: int  # OPTIONAL
     social_matchmaking: bool  # OPTIONAL
     use_sub_gamemode: bool  # OPTIONAL
 
@@ -102,6 +105,10 @@ class ModelsChannelRequest(Model):
 
     def with_joinable(self, value: bool) -> ModelsChannelRequest:
         self.joinable = value
+        return self
+
+    def with_region_expansion_rate_ms(self, value: int) -> ModelsChannelRequest:
+        self.region_expansion_rate_ms = value
         return self
 
     def with_social_matchmaking(self, value: bool) -> ModelsChannelRequest:
@@ -152,6 +159,10 @@ class ModelsChannelRequest(Model):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
             result["joinable"] = False
+        if hasattr(self, "region_expansion_rate_ms"):
+            result["region_expansion_rate_ms"] = int(self.region_expansion_rate_ms)
+        elif include_empty:
+            result["region_expansion_rate_ms"] = 0
         if hasattr(self, "social_matchmaking"):
             result["social_matchmaking"] = bool(self.social_matchmaking)
         elif include_empty:
@@ -177,8 +188,10 @@ class ModelsChannelRequest(Model):
         rule_set: ModelsRuleSet,
         session_queue_timeout_seconds: int,
         joinable: Optional[bool] = None,
+        region_expansion_rate_ms: Optional[int] = None,
         social_matchmaking: Optional[bool] = None,
         use_sub_gamemode: Optional[bool] = None,
+        **kwargs,
     ) -> ModelsChannelRequest:
         instance = cls()
         instance.deployment = deployment
@@ -190,6 +203,8 @@ class ModelsChannelRequest(Model):
         instance.session_queue_timeout_seconds = session_queue_timeout_seconds
         if joinable is not None:
             instance.joinable = joinable
+        if region_expansion_rate_ms is not None:
+            instance.region_expansion_rate_ms = region_expansion_rate_ms
         if social_matchmaking is not None:
             instance.social_matchmaking = social_matchmaking
         if use_sub_gamemode is not None:
@@ -247,6 +262,13 @@ class ModelsChannelRequest(Model):
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
             instance.joinable = False
+        if (
+            "region_expansion_rate_ms" in dict_
+            and dict_["region_expansion_rate_ms"] is not None
+        ):
+            instance.region_expansion_rate_ms = int(dict_["region_expansion_rate_ms"])
+        elif include_empty:
+            instance.region_expansion_rate_ms = 0
         if "social_matchmaking" in dict_ and dict_["social_matchmaking"] is not None:
             instance.social_matchmaking = bool(dict_["social_matchmaking"])
         elif include_empty:
@@ -306,6 +328,7 @@ class ModelsChannelRequest(Model):
             "rule_set": "rule_set",
             "session_queue_timeout_seconds": "session_queue_timeout_seconds",
             "joinable": "joinable",
+            "region_expansion_rate_ms": "region_expansion_rate_ms",
             "social_matchmaking": "social_matchmaking",
             "use_sub_gamemode": "use_sub_gamemode",
         }
@@ -321,6 +344,7 @@ class ModelsChannelRequest(Model):
             "rule_set": True,
             "session_queue_timeout_seconds": True,
             "joinable": False,
+            "region_expansion_rate_ms": False,
             "social_matchmaking": False,
             "use_sub_gamemode": False,
         }

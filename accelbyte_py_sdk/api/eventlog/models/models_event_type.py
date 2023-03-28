@@ -75,11 +75,7 @@ class ModelsEventType(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        description: str,
-        event_type: int,
-    ) -> ModelsEventType:
+    def create(cls, description: str, event_type: int, **kwargs) -> ModelsEventType:
         instance = cls()
         instance.description = description
         instance.event_type = event_type

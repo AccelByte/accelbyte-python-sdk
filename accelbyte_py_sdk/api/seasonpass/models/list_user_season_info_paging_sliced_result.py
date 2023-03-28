@@ -98,6 +98,7 @@ class ListUserSeasonInfoPagingSlicedResult(Model):
         data: List[ListUserSeasonInfo],
         paging: Optional[Paging] = None,
         total: Optional[int] = None,
+        **kwargs,
     ) -> ListUserSeasonInfoPagingSlicedResult:
         instance = cls()
         instance.data = data

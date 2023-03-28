@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -291,6 +291,7 @@ class PlatformTokenRequestHandler(Operation):
         device_id: Optional[str] = None,
         mac_address: Optional[str] = None,
         platform_token: Optional[str] = None,
+        **kwargs,
     ) -> PlatformTokenRequestHandler:
         instance = cls()
         instance.namespace = namespace

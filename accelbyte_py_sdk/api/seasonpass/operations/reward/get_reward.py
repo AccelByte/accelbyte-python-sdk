@@ -224,12 +224,7 @@ class GetReward(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        code: str,
-        namespace: str,
-        season_id: str,
-    ) -> GetReward:
+    def create(cls, code: str, namespace: str, season_id: str, **kwargs) -> GetReward:
         instance = cls()
         instance.code = code
         instance.namespace = namespace

@@ -97,6 +97,7 @@ class ExcessStrategy(Model):
         method: Union[str, MethodEnum],
         currency: Optional[str] = None,
         percent_per_exp: Optional[int] = None,
+        **kwargs,
     ) -> ExcessStrategy:
         instance = cls()
         instance.method = method

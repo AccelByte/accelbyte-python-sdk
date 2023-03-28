@@ -271,6 +271,7 @@ class CreateRootRegionOverride(Operation):
         deployment: str,
         namespace: str,
         region: str,
+        **kwargs,
     ) -> CreateRootRegionOverride:
         instance = cls()
         instance.body = body

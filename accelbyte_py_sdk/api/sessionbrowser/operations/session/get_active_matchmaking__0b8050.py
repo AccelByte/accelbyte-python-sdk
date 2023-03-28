@@ -277,6 +277,7 @@ class GetActiveMatchmakingGameSessions(Operation):
         offset: Optional[int] = None,
         server_region: Optional[str] = None,
         session_id: Optional[str] = None,
+        **kwargs,
     ) -> GetActiveMatchmakingGameSessions:
         instance = cls()
         instance.namespace = namespace

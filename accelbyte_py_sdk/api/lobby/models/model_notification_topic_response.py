@@ -98,11 +98,7 @@ class ModelNotificationTopicResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        created_at: int,
-        description: str,
-        namespace: str,
-        topic: str,
+        cls, created_at: int, description: str, namespace: str, topic: str, **kwargs
     ) -> ModelNotificationTopicResponse:
         instance = cls()
         instance.created_at = created_at

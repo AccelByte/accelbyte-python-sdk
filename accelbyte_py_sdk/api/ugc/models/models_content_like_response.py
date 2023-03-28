@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelsContentLikeResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        content_id: str,
-        like_status: bool,
+        cls, content_id: str, like_status: bool, **kwargs
     ) -> ModelsContentLikeResponse:
         instance = cls()
         instance.content_id = content_id

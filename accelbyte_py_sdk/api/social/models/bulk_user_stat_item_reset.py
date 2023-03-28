@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class BulkUserStatItemReset(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        stat_code: str,
-        user_id: str,
-    ) -> BulkUserStatItemReset:
+    def create(cls, stat_code: str, user_id: str, **kwargs) -> BulkUserStatItemReset:
         instance = cls()
         instance.stat_code = stat_code
         instance.user_id = user_id

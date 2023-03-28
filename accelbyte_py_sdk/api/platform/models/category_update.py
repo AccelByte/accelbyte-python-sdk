@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,8 +67,7 @@ class CategoryUpdate(Model):
 
     @classmethod
     def create(
-        cls,
-        localization_display_names: Dict[str, str],
+        cls, localization_display_names: Dict[str, str], **kwargs
     ) -> CategoryUpdate:
         instance = cls()
         instance.localization_display_names = localization_display_names

@@ -93,6 +93,7 @@ class Tier(Model):
         id_: Optional[str] = None,
         required_exp: Optional[int] = None,
         rewards: Optional[Dict[str, List[str]]] = None,
+        **kwargs,
     ) -> Tier:
         instance = cls()
         if id_ is not None:

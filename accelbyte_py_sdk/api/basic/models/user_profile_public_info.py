@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -153,6 +153,7 @@ class UserProfilePublicInfo(Model):
         public_id: Optional[str] = None,
         time_zone: Optional[str] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> UserProfilePublicInfo:
         instance = cls()
         if avatar_large_url is not None:

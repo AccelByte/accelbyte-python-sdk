@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -91,6 +91,7 @@ class BulkStatOperationResult(Model):
         details: Optional[Dict[str, Any]] = None,
         stat_code: Optional[str] = None,
         success: Optional[bool] = None,
+        **kwargs,
     ) -> BulkStatOperationResult:
         instance = cls()
         if details is not None:

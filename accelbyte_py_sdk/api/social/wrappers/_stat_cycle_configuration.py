@@ -52,6 +52,7 @@ from ..operations.stat_cycle_configuration import (
     GetStatCycles1CycleTypeEnum,
     GetStatCycles1StatusEnum,
 )
+from ..operations.stat_cycle_configuration import StopStatCycle
 from ..operations.stat_cycle_configuration import UpdateStatCycle
 from ..models import StatCycleCreateCycleTypeEnum
 from ..models import StatCycleInfoCycleTypeEnum, StatCycleInfoStatusEnum
@@ -875,6 +876,114 @@ async def get_stat_cycles_1_async(
         offset=offset,
         sort_by=sort_by,
         status=status,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(StopStatCycle)
+def stop_stat_cycle(
+    cycle_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Stop stat cycle (stopStatCycle)
+
+    Stop stat cycle.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
+      *  Returns : updated stat cycle
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}/stop
+
+        method: PUT
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        cycle_id: (cycleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - StatCycleInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12279: Invalid stat cycle status: Stat cycle [{id}], namespace [{namespace}], status [{status}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = StopStatCycle.create(
+        cycle_id=cycle_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(StopStatCycle)
+async def stop_stat_cycle_async(
+    cycle_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Stop stat cycle (stopStatCycle)
+
+    Stop stat cycle.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
+      *  Returns : updated stat cycle
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [UPDATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}/stop
+
+        method: PUT
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        cycle_id: (cycleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - StatCycleInfo (successful operation)
+
+        404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12279: Invalid stat cycle status: Stat cycle [{id}], namespace [{namespace}], status [{status}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = StopStatCycle.create(
+        cycle_id=cycle_id,
         namespace=namespace,
     )
     return await run_request_async(

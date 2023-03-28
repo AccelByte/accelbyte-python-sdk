@@ -42,6 +42,7 @@ def get_user_stat_cycle_items(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     stat_codes: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -81,6 +82,8 @@ def get_user_stat_cycle_items(
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         stat_codes: (statCodes) OPTIONAL str in query
 
     Responses:
@@ -97,6 +100,7 @@ def get_user_stat_cycle_items(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         stat_codes=stat_codes,
         namespace=namespace,
     )
@@ -109,6 +113,7 @@ async def get_user_stat_cycle_items_async(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     stat_codes: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -148,6 +153,8 @@ async def get_user_stat_cycle_items_async(
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         stat_codes: (statCodes) OPTIONAL str in query
 
     Responses:
@@ -164,6 +171,7 @@ async def get_user_stat_cycle_items_async(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         stat_codes=stat_codes,
         namespace=namespace,
     )
@@ -178,6 +186,7 @@ def get_user_stat_cycle_items_1(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     stat_codes: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -217,6 +226,8 @@ def get_user_stat_cycle_items_1(
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         stat_codes: (statCodes) OPTIONAL str in query
 
     Responses:
@@ -233,6 +244,7 @@ def get_user_stat_cycle_items_1(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         stat_codes=stat_codes,
         namespace=namespace,
     )
@@ -245,6 +257,7 @@ async def get_user_stat_cycle_items_1_async(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     stat_codes: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -284,6 +297,8 @@ async def get_user_stat_cycle_items_1_async(
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         stat_codes: (statCodes) OPTIONAL str in query
 
     Responses:
@@ -300,6 +315,7 @@ async def get_user_stat_cycle_items_1_async(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         stat_codes=stat_codes,
         namespace=namespace,
     )

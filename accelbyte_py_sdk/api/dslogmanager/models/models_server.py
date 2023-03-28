@@ -364,6 +364,7 @@ class ModelsServer(Model):
         status: str,
         status_history: List[ModelsStatusHistory],
         termination_reason: str,
+        **kwargs,
     ) -> ModelsServer:
         instance = cls()
         instance.allocation_events = allocation_events

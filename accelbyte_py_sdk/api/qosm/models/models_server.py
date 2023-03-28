@@ -127,6 +127,7 @@ class ModelsServer(Model):
         port: int,
         region: str,
         status: str,
+        **kwargs,
     ) -> ModelsServer:
         instance = cls()
         instance.alias = alias

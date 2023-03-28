@@ -248,6 +248,7 @@ class UpdateSeason(Operation):
         namespace: str,
         season_id: str,
         body: Optional[SeasonUpdate] = None,
+        **kwargs,
     ) -> UpdateSeason:
         instance = cls()
         instance.namespace = namespace

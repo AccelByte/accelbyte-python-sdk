@@ -71,8 +71,7 @@ class RestapiUnusedReasonListResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        reasons: List[RestapiPublicReasonResponse],
+        cls, reasons: List[RestapiPublicReasonResponse], **kwargs
     ) -> RestapiUnusedReasonListResponse:
         instance = cls()
         instance.reasons = reasons

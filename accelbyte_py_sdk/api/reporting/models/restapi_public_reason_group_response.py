@@ -75,11 +75,7 @@ class RestapiPublicReasonGroupResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        id_: str,
-        title: str,
-    ) -> RestapiPublicReasonGroupResponse:
+    def create(cls, id_: str, title: str, **kwargs) -> RestapiPublicReasonGroupResponse:
         instance = cls()
         instance.id_ = id_
         instance.title = title

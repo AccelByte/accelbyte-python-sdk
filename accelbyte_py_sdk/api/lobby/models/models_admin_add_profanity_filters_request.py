@@ -73,8 +73,7 @@ class ModelsAdminAddProfanityFiltersRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        filters: List[ModelsAdminAddProfanityFiltersFilterRequest],
+        cls, filters: List[ModelsAdminAddProfanityFiltersFilterRequest], **kwargs
     ) -> ModelsAdminAddProfanityFiltersRequest:
         instance = cls()
         instance.filters = filters

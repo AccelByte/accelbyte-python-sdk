@@ -68,10 +68,7 @@ class ModelsMultipleEventID(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        event_i_ds: List[ModelsEventID],
-    ) -> ModelsMultipleEventID:
+    def create(cls, event_i_ds: List[ModelsEventID], **kwargs) -> ModelsMultipleEventID:
         instance = cls()
         instance.event_i_ds = event_i_ds
         return instance

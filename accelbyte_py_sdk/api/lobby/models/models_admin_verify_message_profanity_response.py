@@ -80,9 +80,7 @@ class ModelsAdminVerifyMessageProfanityResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        filtered_message: str,
-        has_profanity: bool,
+        cls, filtered_message: str, has_profanity: bool, **kwargs
     ) -> ModelsAdminVerifyMessageProfanityResponse:
         instance = cls()
         instance.filtered_message = filtered_message

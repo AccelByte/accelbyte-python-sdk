@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -322,6 +322,7 @@ class ModelsCreateContentResponse(Model):
         custom_attributes: Optional[Dict[str, Any]] = None,
         payload_url: Optional[List[ModelsPayloadURL]] = None,
         preview_url: Optional[List[ModelsPreviewURL]] = None,
+        **kwargs,
     ) -> ModelsCreateContentResponse:
         instance = cls()
         instance.channel_id = channel_id

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -112,6 +112,7 @@ class RevokeItem(Model):
         item_identity: Optional[str] = None,
         item_identity_type: Optional[Union[str, ItemIdentityTypeEnum]] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
+        **kwargs,
     ) -> RevokeItem:
         instance = cls()
         if item_identity is not None:

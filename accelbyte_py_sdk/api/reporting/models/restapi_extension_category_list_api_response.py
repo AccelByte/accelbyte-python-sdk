@@ -73,8 +73,7 @@ class RestapiExtensionCategoryListApiResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[RestapiExtensionCategoryApiResponse],
+        cls, data: List[RestapiExtensionCategoryApiResponse], **kwargs
     ) -> RestapiExtensionCategoryListApiResponse:
         instance = cls()
         instance.data = data

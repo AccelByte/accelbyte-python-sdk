@@ -182,6 +182,7 @@ class ModelsCustomGameResponse(Model):
         session_id: str,
         session_type: str,
         spectators: List[str],
+        **kwargs,
     ) -> ModelsCustomGameResponse:
         instance = cls()
         instance.all_players = all_players

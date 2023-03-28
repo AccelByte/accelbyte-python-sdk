@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.6.2)
+# AccelByte Gaming Services Cloudsave Service (3.6.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -73,8 +73,7 @@ class ModelsPlayerRecordRequest(Model, MutableMapping):
 
     @classmethod
     def create(
-        cls,
-        dict_: Optional[dict] = None,
+        cls, dict_: Optional[dict] = None, **kwargs
     ) -> ModelsPlayerRecordRequest:
         instance = cls()
         if dict_ is not None:

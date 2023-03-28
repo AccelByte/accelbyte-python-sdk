@@ -103,6 +103,7 @@ class ModelsImportConfigResponse(Model):
         ignored_configs: List[str],
         new_configs: List[str],
         replaced_configs: List[str],
+        **kwargs,
     ) -> ModelsImportConfigResponse:
         instance = cls()
         instance.failed_configs = failed_configs

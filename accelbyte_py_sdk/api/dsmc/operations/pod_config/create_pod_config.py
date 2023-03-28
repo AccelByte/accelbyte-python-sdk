@@ -244,10 +244,7 @@ class CreatePodConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsCreatePodConfigRequest,
-        name: str,
-        namespace: str,
+        cls, body: ModelsCreatePodConfigRequest, name: str, namespace: str, **kwargs
     ) -> CreatePodConfig:
         instance = cls()
         instance.body = body

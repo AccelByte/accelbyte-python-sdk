@@ -64,10 +64,7 @@ class ModelsUpdateServerRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        status: str,
-    ) -> ModelsUpdateServerRequest:
+    def create(cls, status: str, **kwargs) -> ModelsUpdateServerRequest:
         instance = cls()
         instance.status = status
         return instance

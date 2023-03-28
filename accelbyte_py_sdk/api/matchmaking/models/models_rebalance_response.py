@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -82,9 +82,7 @@ class ModelsRebalanceResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        match_id: str,
-        matching_allies: List[ModelsMatchingAlly],
+        cls, match_id: str, matching_allies: List[ModelsMatchingAlly], **kwargs
     ) -> ModelsRebalanceResponse:
         instance = cls()
         instance.match_id = match_id

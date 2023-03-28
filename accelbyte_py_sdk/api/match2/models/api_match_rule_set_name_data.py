@@ -64,10 +64,7 @@ class ApiMatchRuleSetNameData(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        name: str,
-    ) -> ApiMatchRuleSetNameData:
+    def create(cls, name: str, **kwargs) -> ApiMatchRuleSetNameData:
         instance = cls()
         instance.name = name
         return instance

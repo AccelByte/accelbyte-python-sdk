@@ -137,7 +137,9 @@ def create_exp_grant_history_info_example() -> ExpGrantHistoryInfo:
     return instance
 
 
-def create_exp_grant_history_paging_sliced_result_example() -> ExpGrantHistoryPagingSlicedResult:
+def create_exp_grant_history_paging_sliced_result_example() -> (
+    ExpGrantHistoryPagingSlicedResult
+):
     instance = ExpGrantHistoryPagingSlicedResult()
     instance.data = [create_exp_grant_history_info_example()]
     instance.paging = create_paging_example()
@@ -197,7 +199,9 @@ def create_list_season_info_example() -> ListSeasonInfo:
     return instance
 
 
-def create_list_season_info_paging_sliced_result_example() -> ListSeasonInfoPagingSlicedResult:
+def create_list_season_info_paging_sliced_result_example() -> (
+    ListSeasonInfoPagingSlicedResult
+):
     instance = ListSeasonInfoPagingSlicedResult()
     instance.data = [create_list_season_info_example()]
     instance.paging = create_paging_example()
@@ -218,7 +222,9 @@ def create_list_user_season_info_example() -> ListUserSeasonInfo:
     return instance
 
 
-def create_list_user_season_info_paging_sliced_result_example() -> ListUserSeasonInfoPagingSlicedResult:
+def create_list_user_season_info_paging_sliced_result_example() -> (
+    ListUserSeasonInfoPagingSlicedResult
+):
     instance = ListUserSeasonInfoPagingSlicedResult()
     instance.data = [create_list_user_season_info_example()]
     instance.paging = create_paging_example()

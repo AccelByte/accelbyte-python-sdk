@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class GrantSubscriptionDaysRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        grant_days: int,
-        reason: Optional[str] = None,
+        cls, grant_days: int, reason: Optional[str] = None, **kwargs
     ) -> GrantSubscriptionDaysRequest:
         instance = cls()
         instance.grant_days = grant_days

@@ -247,6 +247,7 @@ class AdminBulkBlockPlayersV1(Operation):
         body: ModelsListBlockedPlayerRequest,
         namespace: str,
         user_id: str,
+        **kwargs,
     ) -> AdminBulkBlockPlayersV1:
         instance = cls()
         instance.body = body

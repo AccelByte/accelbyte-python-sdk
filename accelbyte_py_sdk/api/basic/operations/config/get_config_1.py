@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,11 +40,11 @@ class GetConfig1(Operation):
     Get a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=2 (READ)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=2 (READ)
       *  Returns : config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [READ]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -72,7 +72,7 @@ class GetConfig1(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
 
     # region fields
@@ -189,7 +189,7 @@ class GetConfig1(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -224,11 +224,7 @@ class GetConfig1(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        config_key: str,
-        namespace: str,
-    ) -> GetConfig1:
+    def create(cls, config_key: str, namespace: str, **kwargs) -> GetConfig1:
         instance = cls()
         instance.config_key = config_key
         instance.namespace = namespace

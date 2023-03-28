@@ -86,6 +86,7 @@ class RestapiModerationRulesList(Model):
         cls,
         data: List[RestapiModerationRuleResponse],
         paging: RestapiPagination,
+        **kwargs,
     ) -> RestapiModerationRulesList:
         instance = cls()
         instance.data = data

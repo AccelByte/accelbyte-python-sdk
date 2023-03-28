@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -318,6 +318,7 @@ class ClientmodelClientV3Response(Model):
         oauth_refresh_token_expiration_time_unit: Optional[str] = None,
         parent_namespace: Optional[str] = None,
         roles: Optional[List[str]] = None,
+        **kwargs,
     ) -> ClientmodelClientV3Response:
         instance = cls()
         instance.audiences = audiences

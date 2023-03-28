@@ -193,6 +193,7 @@ class RestapiModerationRuleResponse(Model):
         action: Optional[str] = None,
         extension_category: Optional[str] = None,
         updated_at: Optional[str] = None,
+        **kwargs,
     ) -> RestapiModerationRuleResponse:
         instance = cls()
         instance.actions = actions

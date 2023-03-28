@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,6 +87,7 @@ class UserAgreementsResponse(Model):
         cls,
         agreements: Optional[List[RetrieveAcceptedAgreementResponse]] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> UserAgreementsResponse:
         instance = cls()
         if agreements is not None:

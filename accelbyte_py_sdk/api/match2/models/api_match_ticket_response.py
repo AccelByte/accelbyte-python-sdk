@@ -33,11 +33,14 @@ class ApiMatchTicketResponse(Model):
 
     Properties:
         match_ticket_id: (matchTicketID) REQUIRED str
+
+        queue_time: (queueTime) REQUIRED int
     """
 
     # region fields
 
     match_ticket_id: str  # REQUIRED
+    queue_time: int  # REQUIRED
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class ApiMatchTicketResponse(Model):
 
     def with_match_ticket_id(self, value: str) -> ApiMatchTicketResponse:
         self.match_ticket_id = value
+        return self
+
+    def with_queue_time(self, value: int) -> ApiMatchTicketResponse:
+        self.queue_time = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class ApiMatchTicketResponse(Model):
             result["matchTicketID"] = str(self.match_ticket_id)
         elif include_empty:
             result["matchTicketID"] = ""
+        if hasattr(self, "queue_time"):
+            result["queueTime"] = int(self.queue_time)
+        elif include_empty:
+            result["queueTime"] = 0
         return result
 
     # endregion to methods
@@ -65,11 +76,11 @@ class ApiMatchTicketResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        match_ticket_id: str,
+        cls, match_ticket_id: str, queue_time: int, **kwargs
     ) -> ApiMatchTicketResponse:
         instance = cls()
         instance.match_ticket_id = match_ticket_id
+        instance.queue_time = queue_time
         return instance
 
     @classmethod
@@ -83,6 +94,10 @@ class ApiMatchTicketResponse(Model):
             instance.match_ticket_id = str(dict_["matchTicketID"])
         elif include_empty:
             instance.match_ticket_id = ""
+        if "queueTime" in dict_ and dict_["queueTime"] is not None:
+            instance.queue_time = int(dict_["queueTime"])
+        elif include_empty:
+            instance.queue_time = 0
         return instance
 
     @classmethod
@@ -127,12 +142,14 @@ class ApiMatchTicketResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "matchTicketID": "match_ticket_id",
+            "queueTime": "queue_time",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "matchTicketID": True,
+            "queueTime": True,
         }
 
     # endregion static methods

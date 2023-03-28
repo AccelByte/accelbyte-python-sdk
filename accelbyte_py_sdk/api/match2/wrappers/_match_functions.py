@@ -30,12 +30,14 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ApiListMatchFunctionsResponse
+from ..models import ApiMatchFunctionConfig
 from ..models import ApiMatchFunctionRequest
 from ..models import ResponseError
 
 from ..operations.match_functions import CreateMatchFunction
 from ..operations.match_functions import DeleteMatchFunction
 from ..operations.match_functions import MatchFunctionList
+from ..operations.match_functions import UpdateMatchFunction
 
 
 @same_doc_as(CreateMatchFunction)
@@ -405,6 +407,140 @@ async def match_function_list_async(
     request = MatchFunctionList.create(
         limit=limit,
         offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdateMatchFunction)
+def update_match_function(
+    body: ApiMatchFunctionRequest,
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update a match function (UpdateMatchFunction)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [UPDATE]
+
+    Required Scope: social
+
+    Update existing matchmaking function.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-functions/{name}
+
+        method: PUT
+
+        tags: ["Match-Functions", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiMatchFunctionRequest in body
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiMatchFunctionConfig (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateMatchFunction.create(
+        body=body,
+        name=name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateMatchFunction)
+async def update_match_function_async(
+    body: ApiMatchFunctionRequest,
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update a match function (UpdateMatchFunction)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [UPDATE]
+
+    Required Scope: social
+
+    Update existing matchmaking function.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-functions/{name}
+
+        method: PUT
+
+        tags: ["Match-Functions", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiMatchFunctionRequest in body
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiMatchFunctionConfig (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateMatchFunction.create(
+        body=body,
+        name=name,
         namespace=namespace,
     )
     return await run_request_async(

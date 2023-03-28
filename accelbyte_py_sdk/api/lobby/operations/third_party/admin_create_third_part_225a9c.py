@@ -238,9 +238,7 @@ class AdminCreateThirdPartyConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsCreateConfigRequest,
-        namespace: str,
+        cls, body: ModelsCreateConfigRequest, namespace: str, **kwargs
     ) -> AdminCreateThirdPartyConfig:
         instance = cls()
         instance.body = body

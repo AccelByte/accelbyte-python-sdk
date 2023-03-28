@@ -228,6 +228,7 @@ class GrantUserPass(Operation):
         namespace: str,
         user_id: str,
         body: Optional[UserPassGrant] = None,
+        **kwargs,
     ) -> GrantUserPass:
         instance = cls()
         instance.namespace = namespace

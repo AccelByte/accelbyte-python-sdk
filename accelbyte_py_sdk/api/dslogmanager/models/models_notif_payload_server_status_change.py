@@ -81,9 +81,7 @@ class ModelsNotifPayloadServerStatusChange(Model):
 
     @classmethod
     def create(
-        cls,
-        match: ModelsMatchResult,
-        server: ModelsServer,
+        cls, match: ModelsMatchResult, server: ModelsServer, **kwargs
     ) -> ModelsNotifPayloadServerStatusChange:
         instance = cls()
         instance.match = match

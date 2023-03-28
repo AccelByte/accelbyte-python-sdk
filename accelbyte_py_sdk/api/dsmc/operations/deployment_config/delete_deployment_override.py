@@ -240,10 +240,7 @@ class DeleteDeploymentOverride(Operation):
 
     @classmethod
     def create(
-        cls,
-        deployment: str,
-        namespace: str,
-        version: str,
+        cls, deployment: str, namespace: str, version: str, **kwargs
     ) -> DeleteDeploymentOverride:
         instance = cls()
         instance.deployment = deployment

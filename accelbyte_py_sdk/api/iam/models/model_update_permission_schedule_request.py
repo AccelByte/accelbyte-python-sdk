@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -93,6 +93,7 @@ class ModelUpdatePermissionScheduleRequest(Model):
         sched_action: Optional[int] = None,
         sched_cron: Optional[str] = None,
         sched_range: Optional[List[str]] = None,
+        **kwargs,
     ) -> ModelUpdatePermissionScheduleRequest:
         instance = cls()
         if sched_action is not None:

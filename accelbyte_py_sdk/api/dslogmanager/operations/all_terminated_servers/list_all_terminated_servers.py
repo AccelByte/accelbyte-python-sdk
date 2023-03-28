@@ -403,6 +403,7 @@ class ListAllTerminatedServers(Operation):
         start_date: Optional[str] = None,
         status: Optional[str] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> ListAllTerminatedServers:
         instance = cls()
         if deployment is not None:

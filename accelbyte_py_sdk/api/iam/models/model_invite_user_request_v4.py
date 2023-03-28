@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -115,6 +115,7 @@ class ModelInviteUserRequestV4(Model):
         is_admin: bool,
         role_id: str,
         namespace: Optional[str] = None,
+        **kwargs,
     ) -> ModelInviteUserRequestV4:
         instance = cls()
         instance.assigned_namespaces = assigned_namespaces

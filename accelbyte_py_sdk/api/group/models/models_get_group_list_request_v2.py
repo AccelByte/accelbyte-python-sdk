@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelsGetGroupListRequestV2(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        group_i_ds: List[str],
-    ) -> ModelsGetGroupListRequestV2:
+    def create(cls, group_i_ds: List[str], **kwargs) -> ModelsGetGroupListRequestV2:
         instance = cls()
         instance.group_i_ds = group_i_ds
         return instance

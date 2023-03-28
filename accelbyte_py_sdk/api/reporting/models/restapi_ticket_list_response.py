@@ -83,9 +83,7 @@ class RestapiTicketListResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[RestapiTicketResponse],
-        paging: RestapiPagination,
+        cls, data: List[RestapiTicketResponse], paging: RestapiPagination, **kwargs
     ) -> RestapiTicketListResponse:
         instance = cls()
         instance.data = data

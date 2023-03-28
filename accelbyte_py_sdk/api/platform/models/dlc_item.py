@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -83,6 +83,7 @@ class DLCItem(Model):
         cls,
         id_: Optional[str] = None,
         rewards: Optional[List[PlatformReward]] = None,
+        **kwargs,
     ) -> DLCItem:
         instance = cls()
         if id_ is not None:

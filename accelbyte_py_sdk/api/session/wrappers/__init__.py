@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.6.9"
+__version__ = "2.7.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,13 +22,22 @@ from ._configuration_template import admin_get_all_configuration_templates_v1
 from ._configuration_template import admin_get_all_configuration_templates_v1_async
 from ._configuration_template import admin_get_configuration_template_v1
 from ._configuration_template import admin_get_configuration_template_v1_async
+from ._configuration_template import admin_get_dsmc_configuration
+from ._configuration_template import admin_get_dsmc_configuration_async
+from ._configuration_template import admin_sync_dsmc_configuration
+from ._configuration_template import admin_sync_dsmc_configuration_async
 from ._configuration_template import admin_update_configuration_template_v1
 from ._configuration_template import admin_update_configuration_template_v1_async
+
+from ._dsmc_default_configuration import admin_get_dsmc_configuration_default
+from ._dsmc_default_configuration import admin_get_dsmc_configuration_default_async
 
 from ._game_session import admin_query_game_sessions
 from ._game_session import admin_query_game_sessions_async
 from ._game_session import admin_update_game_session_member
 from ._game_session import admin_update_game_session_member_async
+from ._game_session import append_team_game_session
+from ._game_session import append_team_game_session_async
 from ._game_session import create_game_session
 from ._game_session import create_game_session_async
 from ._game_session import delete_game_session

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelsPartyMembers(Model):
 
     @classmethod
     def create(
-        cls,
-        party_id: str,
-        user_i_ds: List[str],
+        cls, party_id: str, user_i_ds: List[str], **kwargs
     ) -> ModelsPartyMembers:
         instance = cls()
         instance.party_id = party_id

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelRoleAdminStatusResponseV3(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        admin_role: bool,
-    ) -> ModelRoleAdminStatusResponseV3:
+    def create(cls, admin_role: bool, **kwargs) -> ModelRoleAdminStatusResponseV3:
         instance = cls()
         instance.admin_role = admin_role
         return instance

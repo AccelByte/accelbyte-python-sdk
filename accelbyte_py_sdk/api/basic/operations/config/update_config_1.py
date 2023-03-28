@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,11 +41,11 @@ class UpdateConfig1(Operation):
     Update a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=4 (UPDATE)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=4 (UPDATE)
       *  Returns : created config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [UPDATE]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -75,7 +75,7 @@ class UpdateConfig1(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
 
     # region fields
@@ -207,7 +207,7 @@ class UpdateConfig1(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -247,6 +247,7 @@ class UpdateConfig1(Operation):
         config_key: str,
         namespace: str,
         body: Optional[ConfigUpdate] = None,
+        **kwargs,
     ) -> UpdateConfig1:
         instance = cls()
         instance.config_key = config_key

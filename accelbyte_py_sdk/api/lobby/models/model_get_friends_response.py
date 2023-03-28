@@ -78,9 +78,7 @@ class ModelGetFriendsResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        friend_i_ds: List[str],
-        paging: ModelPagination,
+        cls, friend_i_ds: List[str], paging: ModelPagination, **kwargs
     ) -> ModelGetFriendsResponse:
         instance = cls()
         instance.friend_i_ds = friend_i_ds

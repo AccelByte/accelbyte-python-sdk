@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -252,10 +252,7 @@ class DeleteGroupPredefinedRulePublicV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        allowed_action: str,
-        group_id: str,
-        namespace: str,
+        cls, allowed_action: str, group_id: str, namespace: str, **kwargs
     ) -> DeleteGroupPredefinedRulePublicV1:
         instance = cls()
         instance.allowed_action = allowed_action

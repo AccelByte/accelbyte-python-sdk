@@ -206,10 +206,7 @@ class GetConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> GetConfig:
+    def create(cls, namespace: str, **kwargs) -> GetConfig:
         instance = cls()
         instance.namespace = namespace
         return instance

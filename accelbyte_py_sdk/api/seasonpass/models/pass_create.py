@@ -135,6 +135,7 @@ class PassCreate(Model):
         pass_item_id: str,
         auto_enroll: Optional[bool] = None,
         images: Optional[List[Image]] = None,
+        **kwargs,
     ) -> PassCreate:
         instance = cls()
         instance.code = code

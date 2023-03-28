@@ -75,11 +75,7 @@ class ApiMatchFunctionConfig(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        match_function: str,
-        url: str,
-    ) -> ApiMatchFunctionConfig:
+    def create(cls, match_function: str, url: str, **kwargs) -> ApiMatchFunctionConfig:
         instance = cls()
         instance.match_function = match_function
         instance.url = url

@@ -175,6 +175,7 @@ class ModelsGameSessionSetting(Model):
         num_bot: int,
         password: str,
         settings: Dict[str, Any],
+        **kwargs,
     ) -> ModelsGameSessionSetting:
         instance = cls()
         instance.allow_join_in_progress = allow_join_in_progress

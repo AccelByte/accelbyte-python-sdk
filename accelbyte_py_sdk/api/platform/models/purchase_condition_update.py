@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,8 +71,7 @@ class PurchaseConditionUpdate(Model):
 
     @classmethod
     def create(
-        cls,
-        purchase_condition: Optional[PurchaseCondition] = None,
+        cls, purchase_condition: Optional[PurchaseCondition] = None, **kwargs
     ) -> PurchaseConditionUpdate:
         instance = cls()
         if purchase_condition is not None:

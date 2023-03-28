@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (2.6.9)
+# AccelByte Gaming Services Session Service Index (2.7.3)
 
 
 ## Operations
@@ -14,13 +14,21 @@
 | /session/v1/admin/namespaces/{namespace}/configurations/{name} | DELETE | adminDeleteConfigurationTemplateV1 | `false` | [AdminDeleteConfigurationTemplateV1](../../accelbyte_py_sdk/api/session/operations/configuration_template/admin_delete_configurat_f38a32.py) | [admin_delete_configuration_template_v1](../../accelbyte_py_sdk/api/session/wrappers/_configuration_template.py) | [accelbyte_py_sdk_cli session-admin-delete-configuration-template-v1](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_delete_configuration_template_v1.py) |
 | /session/v1/admin/namespaces/{namespace}/configurations | GET | adminGetAllConfigurationTemplatesV1 | `false` | [AdminGetAllConfigurationTemplatesV1](../../accelbyte_py_sdk/api/session/operations/configuration_template/admin_get_all_configura_f8d91f.py) | [admin_get_all_configuration_templates_v1](../../accelbyte_py_sdk/api/session/wrappers/_configuration_template.py) | [accelbyte_py_sdk_cli session-admin-get-all-configuration-templates-v1](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_all_configuration_templates_v1.py) |
 | /session/v1/admin/namespaces/{namespace}/configurations/{name} | GET | adminGetConfigurationTemplateV1 | `false` | [AdminGetConfigurationTemplateV1](../../accelbyte_py_sdk/api/session/operations/configuration_template/admin_get_configuration_b1005a.py) | [admin_get_configuration_template_v1](../../accelbyte_py_sdk/api/session/wrappers/_configuration_template.py) | [accelbyte_py_sdk_cli session-admin-get-configuration-template-v1](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_configuration_template_v1.py) |
+| /session/v1/admin/namespaces/{namespace}/dsconfigs | GET | adminGetDSMCConfiguration | `false` | [AdminGetDSMCConfiguration](../../accelbyte_py_sdk/api/session/operations/configuration_template/admin_get_dsmc_configuration.py) | [admin_get_dsmc_configuration](../../accelbyte_py_sdk/api/session/wrappers/_configuration_template.py) | [accelbyte_py_sdk_cli session-admin-get-dsmc-configuration](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_dsmc_configuration.py) |
+| /session/v1/admin/namespaces/{namespace}/dsconfigs/sync | GET | adminSyncDSMCConfiguration | `false` | [AdminSyncDSMCConfiguration](../../accelbyte_py_sdk/api/session/operations/configuration_template/admin_sync_dsmc_configuration.py) | [admin_sync_dsmc_configuration](../../accelbyte_py_sdk/api/session/wrappers/_configuration_template.py) | [accelbyte_py_sdk_cli session-admin-sync-dsmc-configuration](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_sync_dsmc_configuration.py) |
 | /session/v1/admin/namespaces/{namespace}/configurations/{name} | PUT | adminUpdateConfigurationTemplateV1 | `false` | [AdminUpdateConfigurationTemplateV1](../../accelbyte_py_sdk/api/session/operations/configuration_template/admin_update_configurat_b6ef34.py) | [admin_update_configuration_template_v1](../../accelbyte_py_sdk/api/session/wrappers/_configuration_template.py) | [accelbyte_py_sdk_cli session-admin-update-configuration-template-v1](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_update_configuration_template_v1.py) |
+
+### DSMC Default Configuration
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /session/v1/admin/dsconfigs/default | GET | adminGetDSMCConfigurationDefault | `false` | [AdminGetDSMCConfigurationDefault](../../accelbyte_py_sdk/api/session/operations/dsmc_default_configuration/admin_get_dsmc_configur_e05bc8.py) | [admin_get_dsmc_configuration_default](../../accelbyte_py_sdk/api/session/wrappers/_dsmc_default_configuration.py) | [accelbyte_py_sdk_cli session-admin-get-dsmc-configuration-default](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_dsmc_configuration_default.py) |
 
 ### Game Session
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /session/v1/admin/namespaces/{namespace}/gamesessions | GET | adminQueryGameSessions | `false` | [AdminQueryGameSessions](../../accelbyte_py_sdk/api/session/operations/game_session/admin_query_game_sessions.py) | [admin_query_game_sessions](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-admin-query-game-sessions](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_query_game_sessions.py) |
 | /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/status/{statusType} | PUT | adminUpdateGameSessionMember | `false` | [AdminUpdateGameSessionMember](../../accelbyte_py_sdk/api/session/operations/game_session/admin_update_game_sessi_718745.py) | [admin_update_game_session_member](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-admin-update-game-session-member](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_update_game_session_member.py) |
+| /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/teams | POST | appendTeamGameSession | `false` | [AppendTeamGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/append_team_game_session.py) | [append_team_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-append-team-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_append_team_game_session.py) |
 | /session/v1/public/namespaces/{namespace}/gamesession | POST | createGameSession | `false` | [CreateGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/create_game_session.py) | [create_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-create-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_create_game_session.py) |
 | /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId} | DELETE | deleteGameSession | `false` | [DeleteGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/delete_game_session.py) | [delete_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-delete-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_delete_game_session.py) |
 | /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId} | GET | getGameSession | `false` | [GetGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/get_game_session.py) | [get_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-get-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_get_game_session.py) |
@@ -73,6 +81,7 @@
 ## Models
 | Model | Class |
 |---|---|
+| apimodels.AppendTeamGameSessionRequest | [ApimodelsAppendTeamGameSessionRequest](../../accelbyte_py_sdk/api/session/models/apimodels_append_team_game_session_request.py) |
 | apimodels.ConfigurationTemplateResponse | [ApimodelsConfigurationTemplateResponse](../../accelbyte_py_sdk/api/session/models/apimodels_configuration_template_response.py) |
 | apimodels.ConfigurationTemplatesResponse | [ApimodelsConfigurationTemplatesResponse](../../accelbyte_py_sdk/api/session/models/apimodels_configuration_templates_response.py) |
 | apimodels.CreateConfigurationTemplateRequest | [ApimodelsCreateConfigurationTemplateRequest](../../accelbyte_py_sdk/api/session/models/apimodels_create_configuration_template_request.py) |
@@ -98,6 +107,8 @@
 | apimodels.UpdateGameSessionRequest | [ApimodelsUpdateGameSessionRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_game_session_request.py) |
 | apimodels.UpdatePartyRequest | [ApimodelsUpdatePartyRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_party_request.py) |
 | apimodels.UserResponse | [ApimodelsUserResponse](../../accelbyte_py_sdk/api/session/models/apimodels_user_response.py) |
+| models.DefaultDSMCConfig | [ModelsDefaultDSMCConfig](../../accelbyte_py_sdk/api/session/models/models_default_dsmc_config.py) |
+| models.DSMConfigRecord | [ModelsDSMConfigRecord](../../accelbyte_py_sdk/api/session/models/models_dsm_config_record.py) |
 | models.GameServer | [ModelsGameServer](../../accelbyte_py_sdk/api/session/models/models_game_server.py) |
 | models.PartyMembers | [ModelsPartyMembers](../../accelbyte_py_sdk/api/session/models/models_party_members.py) |
 | models.Team | [ModelsTeam](../../accelbyte_py_sdk/api/session/models/models_team.py) |

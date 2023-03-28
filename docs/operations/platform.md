@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.25.0)
+# AccelByte Gaming Services Platform Service Index (4.27.0)
 
 
 ## Operations
@@ -139,11 +139,13 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/bySku | GET | publicGetUserEntitlementOwnershipBySku | `false` | [PublicGetUserEntitlementOwnershipBySku](../../accelbyte_py_sdk/api/platform/operations/entitlement/public_get_user_entitle_ee3005.py) | [public_get_user_entitlement_ownership_by_sku](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-public-get-user-entitlement-ownership-by-sku](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_user_entitlement_ownership_by_sku.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements | GET | publicQueryUserEntitlements | `false` | [PublicQueryUserEntitlements](../../accelbyte_py_sdk/api/platform/operations/entitlement/public_query_user_entitlements.py) | [public_query_user_entitlements](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-public-query-user-entitlements](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_query_user_entitlements.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byAppType | GET | publicQueryUserEntitlementsByAppType | `false` | [PublicQueryUserEntitlementsByAppType](../../accelbyte_py_sdk/api/platform/operations/entitlement/public_query_user_entit_2398e5.py) | [public_query_user_entitlements_by_app_type](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-public-query-user-entitlements-by-app-type](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_query_user_entitlements_by_app_type.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/sell | PUT | publicSellUserEntitlement | `false` | [PublicSellUserEntitlement](../../accelbyte_py_sdk/api/platform/operations/entitlement/public_sell_user_entitlement.py) | [public_sell_user_entitlement](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-public-sell-user-entitlement](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_sell_user_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/entitlements | GET | queryEntitlements | `false` | [QueryEntitlements](../../accelbyte_py_sdk/api/platform/operations/entitlement/query_entitlements.py) | [query_entitlements](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-query-entitlements](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_entitlements.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements | GET | queryUserEntitlements | `false` | [QueryUserEntitlements](../../accelbyte_py_sdk/api/platform/operations/entitlement/query_user_entitlements.py) | [query_user_entitlements](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-query-user-entitlements](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_entitlements.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byAppType | GET | queryUserEntitlementsByAppType | `false` | [QueryUserEntitlementsByAppType](../../accelbyte_py_sdk/api/platform/operations/entitlement/query_user_entitlements_22cea1.py) | [query_user_entitlements_by_app_type](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-query-user-entitlements-by-app-type](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_entitlements_by_app_type.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke | PUT | revokeUserEntitlement | `false` | [RevokeUserEntitlement](../../accelbyte_py_sdk/api/platform/operations/entitlement/revoke_user_entitlement.py) | [revoke_user_entitlement](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-revoke-user-entitlement](../../samples/cli/accelbyte_py_sdk_cli/platform/_revoke_user_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/revoke/byIds | PUT | revokeUserEntitlements | `false` | [RevokeUserEntitlements](../../accelbyte_py_sdk/api/platform/operations/entitlement/revoke_user_entitlements.py) | [revoke_user_entitlements](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-revoke-user-entitlements](../../samples/cli/accelbyte_py_sdk_cli/platform/_revoke_user_entitlements.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/sell | PUT | sellUserEntitlement | `false` | [SellUserEntitlement](../../accelbyte_py_sdk/api/platform/operations/entitlement/sell_user_entitlement.py) | [sell_user_entitlement](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-sell-user-entitlement](../../samples/cli/accelbyte_py_sdk_cli/platform/_sell_user_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId} | PUT | updateUserEntitlement | `false` | [UpdateUserEntitlement](../../accelbyte_py_sdk/api/platform/operations/entitlement/update_user_entitlement.py) | [update_user_entitlement](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-update-user-entitlement](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_user_entitlement.py) |
 
 ### Fulfillment
@@ -220,6 +222,7 @@
 |---|---|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/items/{itemId}/acquire | PUT | acquireItem | `false` | [AcquireItem](../../accelbyte_py_sdk/api/platform/operations/item/acquire_item.py) | [acquire_item](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-acquire-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_acquire_item.py) |
 | /platform/admin/namespaces/{namespace}/items/locale/byIds | GET | bulkGetLocaleItems | `false` | [BulkGetLocaleItems](../../accelbyte_py_sdk/api/platform/operations/item/bulk_get_locale_items.py) | [bulk_get_locale_items](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-bulk-get-locale-items](../../samples/cli/accelbyte_py_sdk_cli/platform/_bulk_get_locale_items.py) |
+| /platform/admin/namespaces/{namespace}/items/regiondata | PUT | bulkUpdateRegionData | `false` | [BulkUpdateRegionData](../../accelbyte_py_sdk/api/platform/operations/item/bulk_update_region_data.py) | [bulk_update_region_data](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-bulk-update-region-data](../../samples/cli/accelbyte_py_sdk_cli/platform/_bulk_update_region_data.py) |
 | /platform/admin/namespaces/{namespace}/items | POST | createItem | `false` | [CreateItem](../../accelbyte_py_sdk/api/platform/operations/item/create_item.py) | [create_item](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-create-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_create_item.py) |
 | /platform/admin/items/configs | POST | createItemTypeConfig | `false` | [CreateItemTypeConfig](../../accelbyte_py_sdk/api/platform/operations/item/create_item_type_config.py) | [create_item_type_config](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-create-item-type-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_create_item_type_config.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId}/features/{feature} | DELETE | defeatureItem | `false` | [DefeatureItem](../../accelbyte_py_sdk/api/platform/operations/item/defeature_item.py) | [defeature_item](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-defeature-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_defeature_item.py) |
@@ -542,6 +545,7 @@
 | BillingHistoryPagingSlicedResult | [BillingHistoryPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/billing_history_paging_sliced_result.py) |
 | BoxItem | [BoxItem](../../accelbyte_py_sdk/api/platform/models/box_item.py) |
 | BulkOperationResult | [BulkOperationResult](../../accelbyte_py_sdk/api/platform/models/bulk_operation_result.py) |
+| BulkRegionDataChangeRequest | [BulkRegionDataChangeRequest](../../accelbyte_py_sdk/api/platform/models/bulk_region_data_change_request.py) |
 | BundledItemInfo | [BundledItemInfo](../../accelbyte_py_sdk/api/platform/models/bundled_item_info.py) |
 | CampaignCreate | [CampaignCreate](../../accelbyte_py_sdk/api/platform/models/campaign_create.py) |
 | CampaignDynamicInfo | [CampaignDynamicInfo](../../accelbyte_py_sdk/api/platform/models/campaign_dynamic_info.py) |
@@ -595,6 +599,8 @@
 | EntitlementPagingSlicedResult | [EntitlementPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/entitlement_paging_sliced_result.py) |
 | EntitlementRevocation | [EntitlementRevocation](../../accelbyte_py_sdk/api/platform/models/entitlement_revocation.py) |
 | EntitlementRevocationConfig | [EntitlementRevocationConfig](../../accelbyte_py_sdk/api/platform/models/entitlement_revocation_config.py) |
+| EntitlementSoldRequest | [EntitlementSoldRequest](../../accelbyte_py_sdk/api/platform/models/entitlement_sold_request.py) |
+| EntitlementSoldResult | [EntitlementSoldResult](../../accelbyte_py_sdk/api/platform/models/entitlement_sold_result.py) |
 | EntitlementSummary | [EntitlementSummary](../../accelbyte_py_sdk/api/platform/models/entitlement_summary.py) |
 | EntitlementUpdate | [EntitlementUpdate](../../accelbyte_py_sdk/api/platform/models/entitlement_update.py) |
 | EpicGamesDLCSyncRequest | [EpicGamesDLCSyncRequest](../../accelbyte_py_sdk/api/platform/models/epic_games_dlc_sync_request.py) |
@@ -759,6 +765,7 @@
 | RedeemRequest | [RedeemRequest](../../accelbyte_py_sdk/api/platform/models/redeem_request.py) |
 | RedeemResult | [RedeemResult](../../accelbyte_py_sdk/api/platform/models/redeem_result.py) |
 | RedeemableItem | [RedeemableItem](../../accelbyte_py_sdk/api/platform/models/redeemable_item.py) |
+| RegionDataChange | [RegionDataChange](../../accelbyte_py_sdk/api/platform/models/region_data_change.py) |
 | RegionDataItem | [RegionDataItem](../../accelbyte_py_sdk/api/platform/models/region_data_item.py) |
 | RequestHistory | [RequestHistory](../../accelbyte_py_sdk/api/platform/models/request_history.py) |
 | Requirement | [Requirement](../../accelbyte_py_sdk/api/platform/models/requirement.py) |
@@ -781,6 +788,7 @@
 | RewardPagingSlicedResult | [RewardPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/reward_paging_sliced_result.py) |
 | RewardUpdate | [RewardUpdate](../../accelbyte_py_sdk/api/platform/models/reward_update.py) |
 | RewardsRequest | [RewardsRequest](../../accelbyte_py_sdk/api/platform/models/rewards_request.py) |
+| SaleConfig | [SaleConfig](../../accelbyte_py_sdk/api/platform/models/sale_config.py) |
 | SectionCreate | [SectionCreate](../../accelbyte_py_sdk/api/platform/models/section_create.py) |
 | SectionInfo | [SectionInfo](../../accelbyte_py_sdk/api/platform/models/section_info.py) |
 | SectionItem | [SectionItem](../../accelbyte_py_sdk/api/platform/models/section_item.py) |

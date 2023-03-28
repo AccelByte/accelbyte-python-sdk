@@ -253,6 +253,7 @@ class AdminSetPlayerSessionAttribute(Operation):
         body: ModelsSetPlayerSessionAttributeRequest,
         namespace: str,
         user_id: str,
+        **kwargs,
     ) -> AdminSetPlayerSessionAttribute:
         instance = cls()
         instance.body = body

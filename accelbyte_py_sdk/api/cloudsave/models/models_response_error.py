@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.6.2)
+# AccelByte Gaming Services Cloudsave Service (3.6.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelsResponseError(Model):
 
     @classmethod
     def create(
-        cls,
-        error_code: int,
-        error_message: str,
+        cls, error_code: int, error_message: str, **kwargs
     ) -> ModelsResponseError:
         instance = cls()
         instance.error_code = error_code

@@ -175,6 +175,7 @@ class ModelsEventV2(Model):
         user_id: str,
         version: int,
         payload: Optional[Dict[str, Any]] = None,
+        **kwargs,
     ) -> ModelsEventV2:
         instance = cls()
         instance.client_id = client_id

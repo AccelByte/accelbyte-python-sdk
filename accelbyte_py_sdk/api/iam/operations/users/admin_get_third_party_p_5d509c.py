@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -157,7 +157,7 @@ class AdminGetThirdPartyPlatformTokenLinkStatusV3(Operation):
     Responses:
         200: OK - ModelTokenThirdPartyLinkStatusResponse (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10208: platform token expired)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -307,7 +307,7 @@ class AdminGetThirdPartyPlatformTokenLinkStatusV3(Operation):
 
         200: OK - ModelTokenThirdPartyLinkStatusResponse (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10208: platform token expired)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -361,6 +361,7 @@ class AdminGetThirdPartyPlatformTokenLinkStatusV3(Operation):
         namespace: str,
         platform_id: str,
         user_id: str,
+        **kwargs,
     ) -> AdminGetThirdPartyPlatformTokenLinkStatusV3:
         instance = cls()
         instance.platform_token = platform_token

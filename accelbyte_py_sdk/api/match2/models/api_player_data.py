@@ -91,6 +91,7 @@ class ApiPlayerData(Model):
         attributes: Optional[Dict[str, Any]] = None,
         party_id: Optional[str] = None,
         player_id: Optional[str] = None,
+        **kwargs,
     ) -> ApiPlayerData:
         instance = cls()
         if attributes is not None:

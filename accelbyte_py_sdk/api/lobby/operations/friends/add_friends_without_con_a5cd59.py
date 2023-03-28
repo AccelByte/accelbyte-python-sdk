@@ -241,10 +241,7 @@ class AddFriendsWithoutConfirmation(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelBulkAddFriendsRequest,
-        namespace: str,
-        user_id: str,
+        cls, body: ModelBulkAddFriendsRequest, namespace: str, user_id: str, **kwargs
     ) -> AddFriendsWithoutConfirmation:
         instance = cls()
         instance.body = body

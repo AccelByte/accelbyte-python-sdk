@@ -81,9 +81,7 @@ class ModelsEventResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ModelsEvent],
-        pagination: ModelsPagination,
+        cls, data: List[ModelsEvent], pagination: ModelsPagination, **kwargs
     ) -> ModelsEventResponse:
         instance = cls()
         instance.data = data

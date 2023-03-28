@@ -80,9 +80,7 @@ class ModelsPartyPUTCustomAttributesRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        custom_attribute: Dict[str, Any],
-        updated_at: int,
+        cls, custom_attribute: Dict[str, Any], updated_at: int, **kwargs
     ) -> ModelsPartyPUTCustomAttributesRequest:
         instance = cls()
         instance.custom_attribute = custom_attribute

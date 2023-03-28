@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -115,6 +115,7 @@ class XsollaConfig(Model):
         merchant_id: Optional[int] = None,
         project_id: Optional[int] = None,
         project_secret_key: Optional[str] = None,
+        **kwargs,
     ) -> XsollaConfig:
         instance = cls()
         if api_key is not None:

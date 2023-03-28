@@ -308,6 +308,7 @@ class QueryEventStreamHandler(Operation):
         offset: Optional[int] = None,
         page_size: Optional[int] = None,
         start_date: Optional[str] = None,
+        **kwargs,
     ) -> QueryEventStreamHandler:
         instance = cls()
         instance.body = body

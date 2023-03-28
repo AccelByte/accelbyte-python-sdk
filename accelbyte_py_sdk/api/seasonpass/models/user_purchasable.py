@@ -91,6 +91,7 @@ class UserPurchasable(Model):
         pass_item_id: Optional[str] = None,
         tier_item_count: Optional[int] = None,
         tier_item_id: Optional[str] = None,
+        **kwargs,
     ) -> UserPurchasable:
         instance = cls()
         if pass_item_id is not None:

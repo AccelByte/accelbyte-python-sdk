@@ -198,6 +198,7 @@ class SeasonCreate(Model):
         default_language: Optional[str] = None,
         excess_strategy: Optional[ExcessStrategy] = None,
         images: Optional[List[Image]] = None,
+        **kwargs,
     ) -> SeasonCreate:
         instance = cls()
         instance.default_required_exp = default_required_exp

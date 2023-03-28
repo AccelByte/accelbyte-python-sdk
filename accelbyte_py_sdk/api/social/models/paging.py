@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class Paging(Model):
 
     @classmethod
     def create(
-        cls,
-        next_: Optional[str] = None,
-        previous: Optional[str] = None,
+        cls, next_: Optional[str] = None, previous: Optional[str] = None, **kwargs
     ) -> Paging:
         instance = cls()
         if next_ is not None:

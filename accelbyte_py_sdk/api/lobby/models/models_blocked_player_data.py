@@ -76,9 +76,7 @@ class ModelsBlockedPlayerData(Model):
 
     @classmethod
     def create(
-        cls,
-        blocked_at: str,
-        blocked_user_id: str,
+        cls, blocked_at: str, blocked_user_id: str, **kwargs
     ) -> ModelsBlockedPlayerData:
         instance = cls()
         instance.blocked_at = blocked_at

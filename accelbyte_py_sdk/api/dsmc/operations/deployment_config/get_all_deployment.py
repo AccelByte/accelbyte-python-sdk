@@ -259,6 +259,7 @@ class GetAllDeployment(Operation):
         count: int,
         offset: int,
         name: Optional[str] = None,
+        **kwargs,
     ) -> GetAllDeployment:
         instance = cls()
         instance.namespace = namespace

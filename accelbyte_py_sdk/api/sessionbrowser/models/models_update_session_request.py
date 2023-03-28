@@ -64,10 +64,7 @@ class ModelsUpdateSessionRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        game_max_player: int,
-    ) -> ModelsUpdateSessionRequest:
+    def create(cls, game_max_player: int, **kwargs) -> ModelsUpdateSessionRequest:
         instance = cls()
         instance.game_max_player = game_max_player
         return instance

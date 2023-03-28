@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -83,6 +83,7 @@ class UpdateCountryGroupRequest(Model):
         cls,
         countries: Optional[List[CountryObject]] = None,
         country_group_name: Optional[str] = None,
+        **kwargs,
     ) -> UpdateCountryGroupRequest:
         instance = cls()
         if countries is not None:

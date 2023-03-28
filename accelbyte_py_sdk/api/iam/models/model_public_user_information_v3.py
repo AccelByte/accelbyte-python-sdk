@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -115,6 +115,7 @@ class ModelPublicUserInformationV3(Model):
         namespace: str,
         user_id: str,
         user_name: str,
+        **kwargs,
     ) -> ModelPublicUserInformationV3:
         instance = cls()
         instance.created_at = created_at

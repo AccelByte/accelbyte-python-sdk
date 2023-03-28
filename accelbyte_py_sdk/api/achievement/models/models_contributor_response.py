@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -139,6 +139,7 @@ class ModelsContributorResponse(Model):
         namespace: str,
         user_id: str,
         updated_at: Optional[str] = None,
+        **kwargs,
     ) -> ModelsContributorResponse:
         instance = cls()
         instance.achievement_code = achievement_code

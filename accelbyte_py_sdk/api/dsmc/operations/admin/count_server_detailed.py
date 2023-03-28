@@ -220,9 +220,7 @@ class CountServerDetailed(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        region: Optional[str] = None,
+        cls, namespace: str, region: Optional[str] = None, **kwargs
     ) -> CountServerDetailed:
         instance = cls()
         instance.namespace = namespace

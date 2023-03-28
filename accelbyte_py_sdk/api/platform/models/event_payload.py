@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class EventPayload(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        payload: Optional[Dict[str, Any]] = None,
-    ) -> EventPayload:
+    def create(cls, payload: Optional[Dict[str, Any]] = None, **kwargs) -> EventPayload:
         instance = cls()
         if payload is not None:
             instance.payload = payload

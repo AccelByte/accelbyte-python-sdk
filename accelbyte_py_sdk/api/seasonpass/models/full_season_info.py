@@ -169,6 +169,7 @@ class FullSeasonInfo(Model):
         rewards: Dict[str, RewardInfo],
         tiers: List[Tier],
         images: Optional[List[Image]] = None,
+        **kwargs,
     ) -> FullSeasonInfo:
         instance = cls()
         instance.id_ = id_

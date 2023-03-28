@@ -86,12 +86,7 @@ class ValidationError(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        loc: List[str],
-        msg: str,
-        type_: str,
-    ) -> ValidationError:
+    def create(cls, loc: List[str], msg: str, type_: str, **kwargs) -> ValidationError:
         instance = cls()
         instance.loc = loc
         instance.msg = msg

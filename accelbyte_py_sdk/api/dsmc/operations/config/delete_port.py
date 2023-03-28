@@ -225,11 +225,7 @@ class DeletePort(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        name: str,
-        namespace: str,
-    ) -> DeletePort:
+    def create(cls, name: str, namespace: str, **kwargs) -> DeletePort:
         instance = cls()
         instance.name = name
         instance.namespace = namespace

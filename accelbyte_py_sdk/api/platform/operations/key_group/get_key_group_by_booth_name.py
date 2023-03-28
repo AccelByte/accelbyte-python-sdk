@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -209,9 +209,7 @@ class GetKeyGroupByBoothName(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        booth_name: str,
+        cls, namespace: str, booth_name: str, **kwargs
     ) -> GetKeyGroupByBoothName:
         instance = cls()
         instance.namespace = namespace

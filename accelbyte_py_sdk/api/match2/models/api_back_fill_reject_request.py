@@ -75,11 +75,7 @@ class ApiBackFillRejectRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        proposal_id: str,
-        stop: bool,
-    ) -> ApiBackFillRejectRequest:
+    def create(cls, proposal_id: str, stop: bool, **kwargs) -> ApiBackFillRejectRequest:
         instance = cls()
         instance.proposal_id = proposal_id
         instance.stop = stop

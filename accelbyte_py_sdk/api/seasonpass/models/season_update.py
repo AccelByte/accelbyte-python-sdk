@@ -198,6 +198,7 @@ class SeasonUpdate(Model):
         name: Optional[str] = None,
         start: Optional[str] = None,
         tier_item_id: Optional[str] = None,
+        **kwargs,
     ) -> SeasonUpdate:
         instance = cls()
         if auto_claim is not None:

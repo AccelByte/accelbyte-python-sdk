@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -81,9 +81,7 @@ class V2GetPublicLeaderboardRankingResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[V2Entry],
-        paging: V2Pagination,
+        cls, data: List[V2Entry], paging: V2Pagination, **kwargs
     ) -> V2GetPublicLeaderboardRankingResponse:
         instance = cls()
         instance.data = data

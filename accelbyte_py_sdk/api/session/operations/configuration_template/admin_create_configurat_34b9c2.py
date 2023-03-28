@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -47,6 +47,9 @@ class AdminCreateConfigurationTemplateV1(Operation):
     - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
     - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
     - Persistent Flag only can use with type DS (example value true or false)
+    - If Persistent True the session always active even DS removing or terminate and Session will be request DS again until DS Ready or Busy.
+    - To Stop Session Not request again to DS or want Delete Session can Delete Session using endpoint DELETE /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+    - If Persistent False the session will be inactive if all member left and DS terminate or removing
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -242,9 +245,7 @@ class AdminCreateConfigurationTemplateV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ApimodelsCreateConfigurationTemplateRequest,
-        namespace: str,
+        cls, body: ApimodelsCreateConfigurationTemplateRequest, namespace: str, **kwargs
     ) -> AdminCreateConfigurationTemplateV1:
         instance = cls()
         instance.body = body

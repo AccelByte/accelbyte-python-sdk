@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class EpicGamesIAPConfigInfo(Model):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        sandbox_id: str,
+        cls, namespace: str, sandbox_id: str, **kwargs
     ) -> EpicGamesIAPConfigInfo:
         instance = cls()
         instance.namespace = namespace

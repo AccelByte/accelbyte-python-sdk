@@ -91,6 +91,7 @@ class RestapiCategoryLimit(Model):
         max_report_per_ticket: int,
         name: str,
         extension_category: Optional[str] = None,
+        **kwargs,
     ) -> RestapiCategoryLimit:
         instance = cls()
         instance.max_report_per_ticket = max_report_per_ticket

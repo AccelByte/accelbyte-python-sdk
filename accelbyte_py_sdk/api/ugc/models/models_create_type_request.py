@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelsCreateTypeRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        subtype: List[str],
-        type_: str,
+        cls, subtype: List[str], type_: str, **kwargs
     ) -> ModelsCreateTypeRequest:
         instance = cls()
         instance.subtype = subtype

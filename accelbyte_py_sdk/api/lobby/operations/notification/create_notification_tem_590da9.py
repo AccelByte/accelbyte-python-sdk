@@ -240,9 +240,7 @@ class CreateNotificationTemplateV1Admin(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelCreateTemplateRequest,
-        namespace: str,
+        cls, body: ModelCreateTemplateRequest, namespace: str, **kwargs
     ) -> CreateNotificationTemplateV1Admin:
         instance = cls()
         instance.body = body

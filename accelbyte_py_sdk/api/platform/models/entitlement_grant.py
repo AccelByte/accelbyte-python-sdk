@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -189,6 +189,7 @@ class EntitlementGrant(Model):
         source: Optional[Union[str, SourceEnum]] = None,
         start_date: Optional[str] = None,
         store_id: Optional[str] = None,
+        **kwargs,
     ) -> EntitlementGrant:
         instance = cls()
         instance.item_id = item_id

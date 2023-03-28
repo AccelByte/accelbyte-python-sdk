@@ -71,8 +71,7 @@ class ModelsMultipleEventLevel(Model):
 
     @classmethod
     def create(
-        cls,
-        event_level: List[ModelsEventLevel],
+        cls, event_level: List[ModelsEventLevel], **kwargs
     ) -> ModelsMultipleEventLevel:
         instance = cls()
         instance.event_level = event_level

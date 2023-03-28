@@ -155,9 +155,7 @@ class GetDefaultProvider(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> GetDefaultProvider:
+    def create(cls, **kwargs) -> GetDefaultProvider:
         instance = cls()
         return instance
 

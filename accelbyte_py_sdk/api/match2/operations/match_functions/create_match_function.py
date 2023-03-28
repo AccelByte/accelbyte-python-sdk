@@ -234,9 +234,7 @@ class CreateMatchFunction(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ApiMatchFunctionRequest,
-        namespace: str,
+        cls, body: ApiMatchFunctionRequest, namespace: str, **kwargs
     ) -> CreateMatchFunction:
         instance = cls()
         instance.body = body

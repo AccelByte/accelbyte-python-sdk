@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -299,6 +299,7 @@ class ModelPublicUserResponse(Model):
         platform_user_id: Optional[str] = None,
         username: Optional[str] = None,
         xuid: Optional[str] = None,
+        **kwargs,
     ) -> ModelPublicUserResponse:
         instance = cls()
         instance.auth_type = auth_type

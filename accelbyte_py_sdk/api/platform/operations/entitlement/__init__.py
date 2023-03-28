@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.25.0"
+__version__ = "4.27.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -85,6 +85,7 @@ from .public_query_user_entit_2398e5 import PublicQueryUserEntitlementsByAppType
 from .public_query_user_entit_2398e5 import (
     AppTypeEnum as PublicQueryUserEntitlementsByAppTypeAppTypeEnum,
 )
+from .public_sell_user_entitlement import PublicSellUserEntitlement
 from .query_entitlements import QueryEntitlements
 from .query_entitlements import (
     AppTypeEnum as QueryEntitlementsAppTypeEnum,
@@ -101,4 +102,5 @@ from .query_user_entitlements_22cea1 import (
 )
 from .revoke_user_entitlement import RevokeUserEntitlement
 from .revoke_user_entitlements import RevokeUserEntitlements
+from .sell_user_entitlement import SellUserEntitlement
 from .update_user_entitlement import UpdateUserEntitlement

@@ -76,9 +76,7 @@ class ModelsRegisterServerRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        custom_attribute: str,
-        pod_name: str,
+        cls, custom_attribute: str, pod_name: str, **kwargs
     ) -> ModelsRegisterServerRequest:
         instance = cls()
         instance.custom_attribute = custom_attribute

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,8 +67,7 @@ class ApimodelsUpdateGameSessionBackfillRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        backfill_ticket_id: str,
+        cls, backfill_ticket_id: str, **kwargs
     ) -> ApimodelsUpdateGameSessionBackfillRequest:
         instance = cls()
         instance.backfill_ticket_id = backfill_ticket_id

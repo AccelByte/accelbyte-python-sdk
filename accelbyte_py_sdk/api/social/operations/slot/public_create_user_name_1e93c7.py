@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -291,6 +291,7 @@ class PublicCreateUserNamespaceSlot(Operation):
         file: Optional[Any] = None,
         label: Optional[str] = None,
         tags: Optional[List[str]] = None,
+        **kwargs,
     ) -> PublicCreateUserNamespaceSlot:
         instance = cls()
         instance.namespace = namespace

@@ -98,11 +98,7 @@ class ModelsUpdatePodConfigRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        cpu_limit: int,
-        mem_limit: int,
-        name: str,
-        params: str,
+        cls, cpu_limit: int, mem_limit: int, name: str, params: str, **kwargs
     ) -> ModelsUpdatePodConfigRequest:
         instance = cls()
         instance.cpu_limit = cpu_limit

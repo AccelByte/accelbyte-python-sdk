@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -98,11 +98,7 @@ class ModelsPagingCursor(Model):
 
     @classmethod
     def create(
-        cls,
-        first: str,
-        last: str,
-        next_: str,
-        previous: str,
+        cls, first: str, last: str, next_: str, previous: str, **kwargs
     ) -> ModelsPagingCursor:
         instance = cls()
         instance.first = first

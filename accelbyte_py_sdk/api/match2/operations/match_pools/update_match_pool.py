@@ -263,10 +263,7 @@ class UpdateMatchPool(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ApiMatchPoolConfig,
-        namespace: str,
-        pool: str,
+        cls, body: ApiMatchPoolConfig, namespace: str, pool: str, **kwargs
     ) -> UpdateMatchPool:
         instance = cls()
         instance.body = body

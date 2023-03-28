@@ -170,6 +170,7 @@ class SeasonSummary(Model):
         pass_codes: Optional[List[str]] = None,
         previous: Optional[SeasonSummary] = None,
         published_at: Optional[str] = None,
+        **kwargs,
     ) -> SeasonSummary:
         instance = cls()
         instance.end = end

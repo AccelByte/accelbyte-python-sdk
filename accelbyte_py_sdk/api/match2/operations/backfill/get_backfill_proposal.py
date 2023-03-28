@@ -237,11 +237,7 @@ class GetBackfillProposal(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        session_id: str,
-    ) -> GetBackfillProposal:
+    def create(cls, namespace: str, session_id: str, **kwargs) -> GetBackfillProposal:
         instance = cls()
         instance.namespace = namespace
         instance.session_id = session_id

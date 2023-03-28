@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -79,6 +79,7 @@ class SlotConfigUpdate(Model):
         cls,
         max_slot_size: Optional[int] = None,
         max_slots: Optional[int] = None,
+        **kwargs,
     ) -> SlotConfigUpdate:
         instance = cls()
         if max_slot_size is not None:

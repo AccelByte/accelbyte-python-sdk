@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -217,8 +217,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
 
     @classmethod
     def create(
-        cls,
-        code: Optional[str] = None,
+        cls, code: Optional[str] = None, **kwargs
     ) -> AdminEnableMyAuthenticatorV4:
         instance = cls()
         if code is not None:

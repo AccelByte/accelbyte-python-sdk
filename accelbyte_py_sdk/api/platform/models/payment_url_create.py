@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -129,6 +129,7 @@ class PaymentUrlCreate(Model):
         return_url: Optional[str] = None,
         ui: Optional[str] = None,
         zip_code: Optional[str] = None,
+        **kwargs,
     ) -> PaymentUrlCreate:
         instance = cls()
         instance.payment_order_no = payment_order_no

@@ -78,9 +78,7 @@ class ModelsAdminVerifyMessageProfanityRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        message: str,
-        profanity_level: str,
+        cls, message: str, profanity_level: str, **kwargs
     ) -> ModelsAdminVerifyMessageProfanityRequest:
         instance = cls()
         instance.message = message

@@ -66,10 +66,7 @@ class ModelsSessionResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        session: ModelsSession,
-    ) -> ModelsSessionResponse:
+    def create(cls, session: ModelsSession, **kwargs) -> ModelsSessionResponse:
         instance = cls()
         instance.session = session
         return instance

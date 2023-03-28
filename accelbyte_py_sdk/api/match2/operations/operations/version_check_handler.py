@@ -151,9 +151,7 @@ class VersionCheckHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> VersionCheckHandler:
+    def create(cls, **kwargs) -> VersionCheckHandler:
         instance = cls()
         return instance
 

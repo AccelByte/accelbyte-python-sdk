@@ -180,9 +180,7 @@ class GetRegisteredEventsHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> GetRegisteredEventsHandler:
+    def create(cls, **kwargs) -> GetRegisteredEventsHandler:
         instance = cls()
         return instance
 

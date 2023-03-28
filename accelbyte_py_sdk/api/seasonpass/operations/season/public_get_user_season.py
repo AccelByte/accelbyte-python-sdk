@@ -225,10 +225,7 @@ class PublicGetUserSeason(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        season_id: str,
-        user_id: str,
+        cls, namespace: str, season_id: str, user_id: str, **kwargs
     ) -> PublicGetUserSeason:
         instance = cls()
         instance.namespace = namespace

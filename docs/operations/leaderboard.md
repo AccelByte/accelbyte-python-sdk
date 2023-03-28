@@ -2,10 +2,15 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Leaderboard Service Index (2.19.3)
+# AccelByte Gaming Services Leaderboard Service Index (2.19.5)
 
 
 ## Operations
+
+### Anonymization
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/leaderboards | DELETE | adminAnonymizeUserLeaderboardAdminV1 | `false` | [AdminAnonymizeUserLeaderboardAdminV1](../../accelbyte_py_sdk/api/leaderboard/operations/anonymization/admin_anonymize_user_le_6fbe1f.py) | [admin_anonymize_user_leaderboard_admin_v1](../../accelbyte_py_sdk/api/leaderboard/wrappers/_anonymization.py) | [accelbyte_py_sdk_cli leaderboard-admin-anonymize-user-leaderboard-admin-v1](../../samples/cli/accelbyte_py_sdk_cli/leaderboard/_admin_anonymize_user_leaderboard_admin_v1.py) |
 
 ### LeaderboardConfiguration
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |

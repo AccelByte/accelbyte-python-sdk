@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -242,11 +242,7 @@ class FeatureItem(Operation):
 
     @classmethod
     def create(
-        cls,
-        feature: str,
-        item_id: str,
-        namespace: str,
-        store_id: str,
+        cls, feature: str, item_id: str, namespace: str, store_id: str, **kwargs
     ) -> FeatureItem:
         instance = cls()
         instance.feature = feature

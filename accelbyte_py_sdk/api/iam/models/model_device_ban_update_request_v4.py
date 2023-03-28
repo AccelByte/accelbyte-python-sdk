@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelDeviceBanUpdateRequestV4(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        enabled: bool,
-    ) -> ModelDeviceBanUpdateRequestV4:
+    def create(cls, enabled: bool, **kwargs) -> ModelDeviceBanUpdateRequestV4:
         instance = cls()
         instance.enabled = enabled
         return instance

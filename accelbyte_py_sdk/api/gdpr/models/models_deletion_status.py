@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Gdpr Service (1.19.2)
+# AccelByte Gaming Services Gdpr Service (1.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -115,6 +115,7 @@ class ModelsDeletionStatus(Model):
         status: str,
         user_id: str,
         execution_date: Optional[str] = None,
+        **kwargs,
     ) -> ModelsDeletionStatus:
         instance = cls()
         instance.deletion_status = deletion_status

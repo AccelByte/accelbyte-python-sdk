@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -107,6 +107,7 @@ class RevokeCurrency(Model):
         balance_origin: Optional[Union[str, BalanceOriginEnum]] = None,
         currency_code: Optional[str] = None,
         namespace: Optional[str] = None,
+        **kwargs,
     ) -> RevokeCurrency:
         instance = cls()
         if balance_origin is not None:

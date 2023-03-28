@@ -233,6 +233,7 @@ class RestapiReportResponse(Model):
         updated_at: str,
         user_id: str,
         extension_category: Optional[str] = None,
+        **kwargs,
     ) -> RestapiReportResponse:
         instance = cls()
         instance.additional_info = additional_info

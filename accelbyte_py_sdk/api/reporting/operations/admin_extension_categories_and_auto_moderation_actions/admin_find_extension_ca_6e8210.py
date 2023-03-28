@@ -232,6 +232,7 @@ class AdminFindExtensionCategoryList(Operation):
         cls,
         order: Optional[Union[str, OrderEnum]] = None,
         sort_by: Optional[Union[str, SortByEnum]] = None,
+        **kwargs,
     ) -> AdminFindExtensionCategoryList:
         instance = cls()
         if order is not None:

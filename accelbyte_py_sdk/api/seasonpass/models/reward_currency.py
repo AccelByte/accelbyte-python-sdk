@@ -75,11 +75,7 @@ class RewardCurrency(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        currency_code: str,
-        namespace: str,
-    ) -> RewardCurrency:
+    def create(cls, currency_code: str, namespace: str, **kwargs) -> RewardCurrency:
         instance = cls()
         instance.currency_code = currency_code
         instance.namespace = namespace

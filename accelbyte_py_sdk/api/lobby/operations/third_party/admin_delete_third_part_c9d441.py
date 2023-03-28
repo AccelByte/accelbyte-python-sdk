@@ -207,10 +207,7 @@ class AdminDeleteThirdPartyConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> AdminDeleteThirdPartyConfig:
+    def create(cls, namespace: str, **kwargs) -> AdminDeleteThirdPartyConfig:
         instance = cls()
         instance.namespace = namespace
         return instance

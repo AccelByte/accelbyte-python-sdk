@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class ClientRequestParameter(Model):
         language: Optional[str] = None,
         price: Optional[float] = None,
         region: Optional[str] = None,
+        **kwargs,
     ) -> ClientRequestParameter:
         instance = cls()
         if currency_code is not None:

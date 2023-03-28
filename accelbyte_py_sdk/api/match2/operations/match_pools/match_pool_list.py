@@ -242,6 +242,7 @@ class MatchPoolList(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> MatchPoolList:
         instance = cls()
         instance.namespace = namespace

@@ -65,8 +65,7 @@ class ModelsAdminSetProfanityRuleForNamespaceRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        rule: str,
+        cls, rule: str, **kwargs
     ) -> ModelsAdminSetProfanityRuleForNamespaceRequest:
         instance = cls()
         instance.rule = rule

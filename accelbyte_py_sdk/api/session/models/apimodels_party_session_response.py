@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,8 +35,6 @@ class ApimodelsPartySessionResponse(Model):
     """Apimodels party session response (apimodels.PartySessionResponse)
 
     Properties:
-        attributes: (attributes) REQUIRED Dict[str, Any]
-
         configuration: (configuration) REQUIRED ApimodelsPublicConfiguration
 
         created_at: (createdAt) REQUIRED str
@@ -55,11 +53,11 @@ class ApimodelsPartySessionResponse(Model):
 
         namespace: (namespace) REQUIRED str
 
-        persistent: (persistent) REQUIRED bool
-
         updated_at: (updatedAt) REQUIRED str
 
         version: (version) REQUIRED int
+
+        attributes: (attributes) OPTIONAL Dict[str, Any]
 
         code: (code) OPTIONAL str
 
@@ -68,7 +66,6 @@ class ApimodelsPartySessionResponse(Model):
 
     # region fields
 
-    attributes: Dict[str, Any]  # REQUIRED
     configuration: ApimodelsPublicConfiguration  # REQUIRED
     created_at: str  # REQUIRED
     created_by: str  # REQUIRED
@@ -78,19 +75,15 @@ class ApimodelsPartySessionResponse(Model):
     leader_id: str  # REQUIRED
     members: List[ApimodelsUserResponse]  # REQUIRED
     namespace: str  # REQUIRED
-    persistent: bool  # REQUIRED
     updated_at: str  # REQUIRED
     version: int  # REQUIRED
+    attributes: Dict[str, Any]  # OPTIONAL
     code: str  # OPTIONAL
     expired_at: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_attributes(self, value: Dict[str, Any]) -> ApimodelsPartySessionResponse:
-        self.attributes = value
-        return self
 
     def with_configuration(
         self, value: ApimodelsPublicConfiguration
@@ -132,16 +125,16 @@ class ApimodelsPartySessionResponse(Model):
         self.namespace = value
         return self
 
-    def with_persistent(self, value: bool) -> ApimodelsPartySessionResponse:
-        self.persistent = value
-        return self
-
     def with_updated_at(self, value: str) -> ApimodelsPartySessionResponse:
         self.updated_at = value
         return self
 
     def with_version(self, value: int) -> ApimodelsPartySessionResponse:
         self.version = value
+        return self
+
+    def with_attributes(self, value: Dict[str, Any]) -> ApimodelsPartySessionResponse:
+        self.attributes = value
         return self
 
     def with_code(self, value: str) -> ApimodelsPartySessionResponse:
@@ -158,10 +151,6 @@ class ApimodelsPartySessionResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "attributes"):
-            result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
-        elif include_empty:
-            result["attributes"] = {}
         if hasattr(self, "configuration"):
             result["configuration"] = self.configuration.to_dict(
                 include_empty=include_empty
@@ -202,10 +191,6 @@ class ApimodelsPartySessionResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "persistent"):
-            result["persistent"] = bool(self.persistent)
-        elif include_empty:
-            result["persistent"] = False
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -214,6 +199,10 @@ class ApimodelsPartySessionResponse(Model):
             result["version"] = int(self.version)
         elif include_empty:
             result["version"] = 0
+        if hasattr(self, "attributes"):
+            result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
+        elif include_empty:
+            result["attributes"] = {}
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
@@ -231,7 +220,6 @@ class ApimodelsPartySessionResponse(Model):
     @classmethod
     def create(
         cls,
-        attributes: Dict[str, Any],
         configuration: ApimodelsPublicConfiguration,
         created_at: str,
         created_by: str,
@@ -241,14 +229,14 @@ class ApimodelsPartySessionResponse(Model):
         leader_id: str,
         members: List[ApimodelsUserResponse],
         namespace: str,
-        persistent: bool,
         updated_at: str,
         version: int,
+        attributes: Optional[Dict[str, Any]] = None,
         code: Optional[str] = None,
         expired_at: Optional[str] = None,
+        **kwargs,
     ) -> ApimodelsPartySessionResponse:
         instance = cls()
-        instance.attributes = attributes
         instance.configuration = configuration
         instance.created_at = created_at
         instance.created_by = created_by
@@ -258,9 +246,10 @@ class ApimodelsPartySessionResponse(Model):
         instance.leader_id = leader_id
         instance.members = members
         instance.namespace = namespace
-        instance.persistent = persistent
         instance.updated_at = updated_at
         instance.version = version
+        if attributes is not None:
+            instance.attributes = attributes
         if code is not None:
             instance.code = code
         if expired_at is not None:
@@ -274,12 +263,6 @@ class ApimodelsPartySessionResponse(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "attributes" in dict_ and dict_["attributes"] is not None:
-            instance.attributes = {
-                str(k0): v0 for k0, v0 in dict_["attributes"].items()
-            }
-        elif include_empty:
-            instance.attributes = {}
         if "configuration" in dict_ and dict_["configuration"] is not None:
             instance.configuration = ApimodelsPublicConfiguration.create_from_dict(
                 dict_["configuration"], include_empty=include_empty
@@ -321,10 +304,6 @@ class ApimodelsPartySessionResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "persistent" in dict_ and dict_["persistent"] is not None:
-            instance.persistent = bool(dict_["persistent"])
-        elif include_empty:
-            instance.persistent = False
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -333,6 +312,12 @@ class ApimodelsPartySessionResponse(Model):
             instance.version = int(dict_["version"])
         elif include_empty:
             instance.version = 0
+        if "attributes" in dict_ and dict_["attributes"] is not None:
+            instance.attributes = {
+                str(k0): v0 for k0, v0 in dict_["attributes"].items()
+            }
+        elif include_empty:
+            instance.attributes = {}
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
@@ -384,7 +369,6 @@ class ApimodelsPartySessionResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "attributes": "attributes",
             "configuration": "configuration",
             "createdAt": "created_at",
             "createdBy": "created_by",
@@ -394,9 +378,9 @@ class ApimodelsPartySessionResponse(Model):
             "leaderID": "leader_id",
             "members": "members",
             "namespace": "namespace",
-            "persistent": "persistent",
             "updatedAt": "updated_at",
             "version": "version",
+            "attributes": "attributes",
             "code": "code",
             "expiredAt": "expired_at",
         }
@@ -404,7 +388,6 @@ class ApimodelsPartySessionResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "attributes": True,
             "configuration": True,
             "createdAt": True,
             "createdBy": True,
@@ -414,9 +397,9 @@ class ApimodelsPartySessionResponse(Model):
             "leaderID": True,
             "members": True,
             "namespace": True,
-            "persistent": True,
             "updatedAt": True,
             "version": True,
+            "attributes": False,
             "code": False,
             "expiredAt": False,
         }

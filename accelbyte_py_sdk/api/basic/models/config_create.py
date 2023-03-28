@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ConfigCreate(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        key: str,
-        value: str,
-    ) -> ConfigCreate:
+    def create(cls, key: str, value: str, **kwargs) -> ConfigCreate:
         instance = cls()
         instance.key = key
         instance.value = value

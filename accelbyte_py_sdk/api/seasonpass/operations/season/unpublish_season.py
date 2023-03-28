@@ -234,10 +234,7 @@ class UnpublishSeason(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        season_id: str,
-        force: Optional[bool] = None,
+        cls, namespace: str, season_id: str, force: Optional[bool] = None, **kwargs
     ) -> UnpublishSeason:
         instance = cls()
         instance.namespace = namespace

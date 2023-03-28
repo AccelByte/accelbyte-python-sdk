@@ -408,6 +408,7 @@ class ListTerminatedServers(Operation):
         start_date: Optional[str] = None,
         status: Optional[str] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> ListTerminatedServers:
         instance = cls()
         instance.namespace = namespace

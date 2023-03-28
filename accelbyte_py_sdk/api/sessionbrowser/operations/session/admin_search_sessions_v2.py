@@ -352,6 +352,7 @@ class AdminSearchSessionsV2(Operation):
         session_type: Optional[str] = None,
         status: Optional[str] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> AdminSearchSessionsV2:
         instance = cls()
         instance.namespace = namespace

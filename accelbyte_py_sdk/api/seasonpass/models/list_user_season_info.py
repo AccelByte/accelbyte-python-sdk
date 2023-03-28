@@ -165,6 +165,7 @@ class ListUserSeasonInfo(Model):
         season: SeasonSummary,
         season_id: str,
         user_id: str,
+        **kwargs,
     ) -> ListUserSeasonInfo:
         instance = cls()
         instance.cleared = cleared

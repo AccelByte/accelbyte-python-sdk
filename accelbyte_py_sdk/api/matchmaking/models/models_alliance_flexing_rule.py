@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -131,6 +131,7 @@ class ModelsAllianceFlexingRule(Model):
         min_number: int,
         player_max_number: int,
         player_min_number: int,
+        **kwargs,
     ) -> ModelsAllianceFlexingRule:
         instance = cls()
         instance.combination = combination

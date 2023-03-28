@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,8 +67,7 @@ class StatResetInfo(Model):
 
     @classmethod
     def create(
-        cls,
-        additional_data: Optional[Dict[str, Any]] = None,
+        cls, additional_data: Optional[Dict[str, Any]] = None, **kwargs
     ) -> StatResetInfo:
         instance = cls()
         if additional_data is not None:

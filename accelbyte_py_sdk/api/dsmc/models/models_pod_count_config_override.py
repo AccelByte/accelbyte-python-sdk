@@ -139,6 +139,7 @@ class ModelsPodCountConfigOverride(Model):
         name: str,
         unlimited: bool,
         use_buffer_percent: bool,
+        **kwargs,
     ) -> ModelsPodCountConfigOverride:
         instance = cls()
         instance.buffer_count = buffer_count

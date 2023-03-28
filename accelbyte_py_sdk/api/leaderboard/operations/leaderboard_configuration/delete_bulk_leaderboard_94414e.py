@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -232,9 +232,7 @@ class DeleteBulkLeaderboardConfigurationAdminV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsDeleteBulkLeaderboardsReq,
-        namespace: str,
+        cls, body: ModelsDeleteBulkLeaderboardsReq, namespace: str, **kwargs
     ) -> DeleteBulkLeaderboardConfigurationAdminV1:
         instance = cls()
         instance.body = body

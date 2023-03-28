@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Gdpr Service (1.19.2)
+# AccelByte Gaming Services Gdpr Service (1.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -98,11 +98,7 @@ class ModelsDeletionData(Model):
 
     @classmethod
     def create(
-        cls,
-        display_name: str,
-        request_date: str,
-        status: str,
-        user_id: str,
+        cls, display_name: str, request_date: str, status: str, user_id: str, **kwargs
     ) -> ModelsDeletionData:
         instance = cls()
         instance.display_name = display_name

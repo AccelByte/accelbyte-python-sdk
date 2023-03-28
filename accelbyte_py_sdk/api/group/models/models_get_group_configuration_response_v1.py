@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -177,6 +177,7 @@ class ModelsGetGroupConfigurationResponseV1(Model):
         group_member_role_id: str,
         name: str,
         namespace: str,
+        **kwargs,
     ) -> ModelsGetGroupConfigurationResponseV1:
         instance = cls()
         instance.allow_multiple = allow_multiple

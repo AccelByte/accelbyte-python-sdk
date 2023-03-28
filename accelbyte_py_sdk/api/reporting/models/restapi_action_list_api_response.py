@@ -71,8 +71,7 @@ class RestapiActionListApiResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[RestapiActionApiResponse],
+        cls, data: List[RestapiActionApiResponse], **kwargs
     ) -> RestapiActionListApiResponse:
         instance = cls()
         instance.data = data

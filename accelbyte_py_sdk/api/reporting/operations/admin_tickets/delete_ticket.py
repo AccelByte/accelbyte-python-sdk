@@ -204,11 +204,7 @@ class DeleteTicket(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        ticket_id: str,
-    ) -> DeleteTicket:
+    def create(cls, namespace: str, ticket_id: str, **kwargs) -> DeleteTicket:
         instance = cls()
         instance.namespace = namespace
         instance.ticket_id = ticket_id

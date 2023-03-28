@@ -262,6 +262,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
         cls,
         body: List[TelemetryBody],
         cookie: Optional[Union[str, HeaderStr]] = None,
+        **kwargs,
     ) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
         instance = cls()
         instance.body = body

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -96,6 +96,7 @@ class ImportStoreResult(Model):
         errors: Optional[List[ImportStoreError]] = None,
         store_info: Optional[StoreInfo] = None,
         success: Optional[bool] = None,
+        **kwargs,
     ) -> ImportStoreResult:
         instance = cls()
         if errors is not None:

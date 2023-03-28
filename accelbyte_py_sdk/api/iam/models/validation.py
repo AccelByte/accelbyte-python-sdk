@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -267,6 +267,7 @@ class Validation(Model):
         regex: str,
         special_character_location: str,
         special_characters: List[str],
+        **kwargs,
     ) -> Validation:
         instance = cls()
         instance.allow_all_special_characters = allow_all_special_characters

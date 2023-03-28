@@ -76,9 +76,7 @@ class ModelsAdminAddProfanityFilterIntoListRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        filter_: str,
-        note: str,
+        cls, filter_: str, note: str, **kwargs
     ) -> ModelsAdminAddProfanityFilterIntoListRequest:
         instance = cls()
         instance.filter_ = filter_

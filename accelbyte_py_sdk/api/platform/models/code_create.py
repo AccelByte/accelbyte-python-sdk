@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class CodeCreate(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        quantity: int,
-    ) -> CodeCreate:
+    def create(cls, quantity: int, **kwargs) -> CodeCreate:
         instance = cls()
         instance.quantity = quantity
         return instance

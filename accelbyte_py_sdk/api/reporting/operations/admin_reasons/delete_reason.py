@@ -197,11 +197,7 @@ class DeleteReason(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        reason_id: str,
-    ) -> DeleteReason:
+    def create(cls, namespace: str, reason_id: str, **kwargs) -> DeleteReason:
         instance = cls()
         instance.namespace = namespace
         instance.reason_id = reason_id

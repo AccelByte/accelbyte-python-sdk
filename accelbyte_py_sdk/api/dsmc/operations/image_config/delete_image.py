@@ -249,10 +249,7 @@ class DeleteImage(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        image_uri: str,
-        version: str,
+        cls, namespace: str, image_uri: str, version: str, **kwargs
     ) -> DeleteImage:
         instance = cls()
         instance.namespace = namespace

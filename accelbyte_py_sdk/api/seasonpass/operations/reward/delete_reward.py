@@ -229,10 +229,7 @@ class DeleteReward(Operation):
 
     @classmethod
     def create(
-        cls,
-        code: str,
-        namespace: str,
-        season_id: str,
+        cls, code: str, namespace: str, season_id: str, **kwargs
     ) -> DeleteReward:
         instance = cls()
         instance.code = code

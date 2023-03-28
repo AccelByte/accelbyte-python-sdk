@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -69,8 +69,7 @@ class IAPItemConfigUpdate(Model):
 
     @classmethod
     def create(
-        cls,
-        data: Optional[List[IAPItemEntry]] = None,
+        cls, data: Optional[List[IAPItemEntry]] = None, **kwargs
     ) -> IAPItemConfigUpdate:
         instance = cls()
         if data is not None:

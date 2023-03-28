@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -266,6 +266,7 @@ class GetArchivedLeaderboardRankingDataV1Handler(Operation):
         namespace: str,
         leaderboard_codes: str,
         slug: Optional[str] = None,
+        **kwargs,
     ) -> GetArchivedLeaderboardRankingDataV1Handler:
         instance = cls()
         instance.leaderboard_code = leaderboard_code

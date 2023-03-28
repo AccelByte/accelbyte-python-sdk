@@ -25,7 +25,6 @@ from ....core import generate_websocket_message_id
 
 
 class UnfriendNotif(WebSocketMessage):
-
     # region fields
 
     friend_id: str

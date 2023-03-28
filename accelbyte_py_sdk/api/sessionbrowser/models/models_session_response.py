@@ -231,6 +231,7 @@ class ModelsSessionResponse(Model):
         spectators: List[str],
         user_id: str,
         username: str,
+        **kwargs,
     ) -> ModelsSessionResponse:
         instance = cls()
         instance.all_players = all_players

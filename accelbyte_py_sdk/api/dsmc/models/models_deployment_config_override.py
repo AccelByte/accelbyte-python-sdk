@@ -220,6 +220,7 @@ class ModelsDeploymentConfigOverride(Model):
         unlimited: bool,
         use_buffer_percent: bool,
         session_timeout: Optional[int] = None,
+        **kwargs,
     ) -> ModelsDeploymentConfigOverride:
         instance = cls()
         instance.buffer_count = buffer_count

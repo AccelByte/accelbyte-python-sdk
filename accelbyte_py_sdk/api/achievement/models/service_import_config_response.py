@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class ServiceImportConfigResponse(Model):
         ignored_configs: List[str],
         new_configs: List[str],
         replaced_configs: List[str],
+        **kwargs,
     ) -> ServiceImportConfigResponse:
         instance = cls()
         instance.failed_configs = failed_configs

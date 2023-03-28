@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -115,6 +115,7 @@ class UserReportRequest(Model):
         description: Optional[str] = None,
         game_session_id: Optional[str] = None,
         subcategory: Optional[str] = None,
+        **kwargs,
     ) -> UserReportRequest:
         instance = cls()
         instance.category = category

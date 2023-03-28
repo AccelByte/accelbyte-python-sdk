@@ -95,6 +95,7 @@ class RestapiExtensionCategoryApiResponse(Model):
         extension_category: str,
         extension_category_name: str,
         service_source: str,
+        **kwargs,
     ) -> RestapiExtensionCategoryApiResponse:
         instance = cls()
         instance.extension_category = extension_category

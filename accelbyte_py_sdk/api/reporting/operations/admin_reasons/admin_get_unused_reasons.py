@@ -235,6 +235,7 @@ class AdminGetUnusedReasons(Operation):
         namespace: str,
         category: str,
         extension_category: Optional[str] = None,
+        **kwargs,
     ) -> AdminGetUnusedReasons:
         instance = cls()
         instance.namespace = namespace

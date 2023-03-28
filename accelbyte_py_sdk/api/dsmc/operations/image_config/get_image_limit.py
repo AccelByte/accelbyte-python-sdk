@@ -207,10 +207,7 @@ class GetImageLimit(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> GetImageLimit:
+    def create(cls, namespace: str, **kwargs) -> GetImageLimit:
         instance = cls()
         instance.namespace = namespace
         return instance

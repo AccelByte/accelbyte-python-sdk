@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,9 +78,7 @@ class ModelLinkHeadlessAccountRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        chosen_namespaces: List[str],
-        one_time_link_code: str,
+        cls, chosen_namespaces: List[str], one_time_link_code: str, **kwargs
     ) -> ModelLinkHeadlessAccountRequest:
         instance = cls()
         instance.chosen_namespaces = chosen_namespaces

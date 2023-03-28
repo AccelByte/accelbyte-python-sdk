@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -213,9 +213,7 @@ class GenerateTokenByNewHeadlessAccountV3(Operation):
 
     @classmethod
     def create(
-        cls,
-        linking_token: str,
-        extend_exp: Optional[bool] = None,
+        cls, linking_token: str, extend_exp: Optional[bool] = None, **kwargs
     ) -> GenerateTokenByNewHeadlessAccountV3:
         instance = cls()
         instance.linking_token = linking_token

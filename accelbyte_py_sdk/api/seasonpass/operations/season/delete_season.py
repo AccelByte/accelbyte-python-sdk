@@ -213,11 +213,7 @@ class DeleteSeason(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        season_id: str,
-    ) -> DeleteSeason:
+    def create(cls, namespace: str, season_id: str, **kwargs) -> DeleteSeason:
         instance = cls()
         instance.namespace = namespace
         instance.season_id = season_id

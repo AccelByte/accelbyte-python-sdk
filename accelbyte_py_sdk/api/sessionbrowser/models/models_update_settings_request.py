@@ -73,8 +73,7 @@ class ModelsUpdateSettingsRequest(Model, MutableMapping):
 
     @classmethod
     def create(
-        cls,
-        dict_: Optional[dict] = None,
+        cls, dict_: Optional[dict] = None, **kwargs
     ) -> ModelsUpdateSettingsRequest:
         instance = cls()
         if dict_ is not None:

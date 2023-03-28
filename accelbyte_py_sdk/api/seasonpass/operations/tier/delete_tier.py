@@ -226,12 +226,7 @@ class DeleteTier(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        id_: str,
-        namespace: str,
-        season_id: str,
-    ) -> DeleteTier:
+    def create(cls, id_: str, namespace: str, season_id: str, **kwargs) -> DeleteTier:
         instance = cls()
         instance.id_ = id_
         instance.namespace = namespace

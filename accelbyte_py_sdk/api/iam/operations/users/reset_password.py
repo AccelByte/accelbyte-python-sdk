@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -234,9 +234,7 @@ class ResetPassword(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelResetPasswordRequest,
-        namespace: str,
+        cls, body: ModelResetPasswordRequest, namespace: str, **kwargs
     ) -> ResetPassword:
         instance = cls()
         instance.body = body

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -337,6 +337,8 @@ class PlatformTokenGrantV3(Operation):
         401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
 
         403: Forbidden - OauthmodelErrorResponse (Forbidden)
+
+        503: Service Unavailable - OauthmodelErrorResponse (Third Party Server timeout or unavailable)
     """
 
     # region fields
@@ -502,6 +504,8 @@ class PlatformTokenGrantV3(Operation):
 
         403: Forbidden - OauthmodelErrorResponse (Forbidden)
 
+        503: Service Unavailable - OauthmodelErrorResponse (Third Party Server timeout or unavailable)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -523,6 +527,8 @@ class PlatformTokenGrantV3(Operation):
             return None, OauthmodelErrorResponse.create_from_dict(content)
         if code == 403:
             return None, OauthmodelErrorResponse.create_from_dict(content)
+        if code == 503:
+            return None, OauthmodelErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -541,6 +547,7 @@ class PlatformTokenGrantV3(Operation):
         device_id: Optional[str] = None,
         mac_address: Optional[str] = None,
         platform_token: Optional[str] = None,
+        **kwargs,
     ) -> PlatformTokenGrantV3:
         instance = cls()
         instance.platform_id = platform_id

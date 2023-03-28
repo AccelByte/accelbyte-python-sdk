@@ -87,10 +87,7 @@ class ModelsDownloadLogsRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        alloc_id: str,
-        namespace: str,
-        pod_name: str,
+        cls, alloc_id: str, namespace: str, pod_name: str, **kwargs
     ) -> ModelsDownloadLogsRequest:
         instance = cls()
         instance.alloc_id = alloc_id

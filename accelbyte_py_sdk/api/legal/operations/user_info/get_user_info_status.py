@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -188,10 +188,7 @@ class GetUserInfoStatus(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespaces: Optional[str] = None,
-    ) -> GetUserInfoStatus:
+    def create(cls, namespaces: Optional[str] = None, **kwargs) -> GetUserInfoStatus:
         instance = cls()
         if namespaces is not None:
             instance.namespaces = namespaces

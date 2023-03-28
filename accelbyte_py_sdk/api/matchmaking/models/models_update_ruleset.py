@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -153,6 +153,7 @@ class ModelsUpdateRuleset(Model):
         match_options: Optional[ModelsMatchOptionRule] = None,
         matching_rules: Optional[List[ModelsMatchingRule]] = None,
         sub_game_modes: Optional[ModelsUpdateRulesetSubGameModes] = None,
+        **kwargs,
     ) -> ModelsUpdateRuleset:
         instance = cls()
         instance.alliance = alliance

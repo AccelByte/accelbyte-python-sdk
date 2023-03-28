@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class EpicGamesIAPConfigRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        sandbox_id: str,
-    ) -> EpicGamesIAPConfigRequest:
+    def create(cls, sandbox_id: str, **kwargs) -> EpicGamesIAPConfigRequest:
         instance = cls()
         instance.sandbox_id = sandbox_id
         return instance

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelsUpdateMemberRoleRequestV1(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        member_role_name: str,
-    ) -> ModelsUpdateMemberRoleRequestV1:
+    def create(cls, member_role_name: str, **kwargs) -> ModelsUpdateMemberRoleRequestV1:
         instance = cls()
         instance.member_role_name = member_role_name
         return instance

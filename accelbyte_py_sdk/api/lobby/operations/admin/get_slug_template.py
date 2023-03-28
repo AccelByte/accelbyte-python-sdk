@@ -275,6 +275,7 @@ class GetSlugTemplate(Operation):
         after: Optional[str] = None,
         before: Optional[str] = None,
         limit: Optional[int] = None,
+        **kwargs,
     ) -> GetSlugTemplate:
         instance = cls()
         instance.namespace = namespace

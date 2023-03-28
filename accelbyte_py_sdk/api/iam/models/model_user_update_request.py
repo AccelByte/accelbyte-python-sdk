@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class ModelUserUpdateRequest(Model):
         date_of_birth: Optional[str] = None,
         display_name: Optional[str] = None,
         language_tag: Optional[str] = None,
+        **kwargs,
     ) -> ModelUserUpdateRequest:
         instance = cls()
         if country is not None:

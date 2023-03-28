@@ -228,11 +228,7 @@ class DeletePodConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        name: str,
-        namespace: str,
-    ) -> DeletePodConfig:
+    def create(cls, name: str, namespace: str, **kwargs) -> DeletePodConfig:
         instance = cls()
         instance.name = name
         instance.namespace = namespace

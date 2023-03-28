@@ -303,6 +303,7 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         start_time: Optional[str] = None,
+        **kwargs,
     ) -> GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet:
         instance = cls()
         instance.namespace = namespace

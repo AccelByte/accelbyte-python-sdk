@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -55,7 +55,7 @@ class AdminDeleteConfigurationTemplateV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - ResponseError (No Content)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -169,7 +169,7 @@ class AdminDeleteConfigurationTemplateV1(Operation):
     ) -> Tuple[None, Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        204: No Content - ResponseError (No Content)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -213,9 +213,7 @@ class AdminDeleteConfigurationTemplateV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        name: str,
-        namespace: str,
+        cls, name: str, namespace: str, **kwargs
     ) -> AdminDeleteConfigurationTemplateV1:
         instance = cls()
         instance.name = name

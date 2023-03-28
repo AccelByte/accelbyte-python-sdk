@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -254,11 +254,7 @@ class AdminUpdateGameSessionMember(Operation):
 
     @classmethod
     def create(
-        cls,
-        member_id: str,
-        namespace: str,
-        session_id: str,
-        status_type: str,
+        cls, member_id: str, namespace: str, session_id: str, status_type: str, **kwargs
     ) -> AdminUpdateGameSessionMember:
         instance = cls()
         instance.member_id = member_id

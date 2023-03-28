@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.25.0"
+__version__ = "4.27.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -223,6 +223,8 @@ from ._entitlement import public_query_user_entitlements
 from ._entitlement import public_query_user_entitlements_async
 from ._entitlement import public_query_user_entitlements_by_app_type
 from ._entitlement import public_query_user_entitlements_by_app_type_async
+from ._entitlement import public_sell_user_entitlement
+from ._entitlement import public_sell_user_entitlement_async
 from ._entitlement import query_entitlements
 from ._entitlement import query_entitlements_async
 from ._entitlement import query_user_entitlements
@@ -233,6 +235,8 @@ from ._entitlement import revoke_user_entitlement
 from ._entitlement import revoke_user_entitlement_async
 from ._entitlement import revoke_user_entitlements
 from ._entitlement import revoke_user_entitlements_async
+from ._entitlement import sell_user_entitlement
+from ._entitlement import sell_user_entitlement_async
 from ._entitlement import update_user_entitlement
 from ._entitlement import update_user_entitlement_async
 
@@ -350,6 +354,8 @@ from ._item import acquire_item
 from ._item import acquire_item_async
 from ._item import bulk_get_locale_items
 from ._item import bulk_get_locale_items_async
+from ._item import bulk_update_region_data
+from ._item import bulk_update_region_data_async
 from ._item import create_item
 from ._item import create_item_async
 from ._item import create_item_type_config

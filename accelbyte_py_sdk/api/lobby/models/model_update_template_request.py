@@ -64,10 +64,7 @@ class ModelUpdateTemplateRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        template_content: str,
-    ) -> ModelUpdateTemplateRequest:
+    def create(cls, template_content: str, **kwargs) -> ModelUpdateTemplateRequest:
         instance = cls()
         instance.template_content = template_content
         return instance

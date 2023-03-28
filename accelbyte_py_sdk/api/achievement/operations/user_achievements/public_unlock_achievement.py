@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -233,10 +233,7 @@ class PublicUnlockAchievement(Operation):
 
     @classmethod
     def create(
-        cls,
-        achievement_code: str,
-        namespace: str,
-        user_id: str,
+        cls, achievement_code: str, namespace: str, user_id: str, **kwargs
     ) -> PublicUnlockAchievement:
         instance = cls()
         instance.achievement_code = achievement_code

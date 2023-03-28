@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.25.0"
+__version__ = "4.27.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -231,6 +231,8 @@ from .wrappers import public_query_user_entitlements
 from .wrappers import public_query_user_entitlements_async
 from .wrappers import public_query_user_entitlements_by_app_type
 from .wrappers import public_query_user_entitlements_by_app_type_async
+from .wrappers import public_sell_user_entitlement
+from .wrappers import public_sell_user_entitlement_async
 from .wrappers import query_entitlements
 from .wrappers import query_entitlements_async
 from .wrappers import query_user_entitlements
@@ -241,6 +243,8 @@ from .wrappers import revoke_user_entitlement
 from .wrappers import revoke_user_entitlement_async
 from .wrappers import revoke_user_entitlements
 from .wrappers import revoke_user_entitlements_async
+from .wrappers import sell_user_entitlement
+from .wrappers import sell_user_entitlement_async
 from .wrappers import update_user_entitlement
 from .wrappers import update_user_entitlement_async
 
@@ -365,6 +369,8 @@ from .wrappers import acquire_item
 from .wrappers import acquire_item_async
 from .wrappers import bulk_get_locale_items
 from .wrappers import bulk_get_locale_items_async
+from .wrappers import bulk_update_region_data
+from .wrappers import bulk_update_region_data_async
 from .wrappers import create_item
 from .wrappers import create_item_async
 from .wrappers import create_item_type_config

@@ -322,6 +322,7 @@ class QueryUserExpGrantHistory(Operation):
         source: Optional[Union[str, SourceEnum]] = None,
         tags: Optional[List[str]] = None,
         to: Optional[str] = None,
+        **kwargs,
     ) -> QueryUserExpGrantHistory:
         instance = cls()
         instance.namespace = namespace

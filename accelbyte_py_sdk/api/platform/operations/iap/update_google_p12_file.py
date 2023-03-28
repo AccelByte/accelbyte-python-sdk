@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -201,9 +201,7 @@ class UpdateGoogleP12File(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        file: Optional[Any] = None,
+        cls, namespace: str, file: Optional[Any] = None, **kwargs
     ) -> UpdateGoogleP12File:
         instance = cls()
         instance.namespace = namespace

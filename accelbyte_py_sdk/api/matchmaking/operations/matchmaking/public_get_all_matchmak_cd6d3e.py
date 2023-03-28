@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -208,10 +208,7 @@ class PublicGetAllMatchmakingChannel(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> PublicGetAllMatchmakingChannel:
+    def create(cls, namespace: str, **kwargs) -> PublicGetAllMatchmakingChannel:
         instance = cls()
         instance.namespace = namespace
         return instance

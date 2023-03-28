@@ -218,6 +218,7 @@ class Get(Operation):
         cls,
         namespace: str,
         category: Optional[Union[str, CategoryEnum]] = None,
+        **kwargs,
     ) -> Get:
         instance = cls()
         instance.namespace = namespace

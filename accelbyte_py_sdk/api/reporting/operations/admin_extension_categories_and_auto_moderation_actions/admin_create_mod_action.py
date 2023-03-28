@@ -195,10 +195,7 @@ class AdminCreateModAction(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: RestapiActionApiRequest,
-    ) -> AdminCreateModAction:
+    def create(cls, body: RestapiActionApiRequest, **kwargs) -> AdminCreateModAction:
         instance = cls()
         instance.body = body
         return instance

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.6.2)
+# AccelByte Gaming Services Cloudsave Service (3.6.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelsBulkUserIDsRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        user_ids: List[str],
-    ) -> ModelsBulkUserIDsRequest:
+    def create(cls, user_ids: List[str], **kwargs) -> ModelsBulkUserIDsRequest:
         instance = cls()
         instance.user_ids = user_ids
         return instance

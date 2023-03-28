@@ -109,6 +109,7 @@ class RestapiModerationRuleActionsResponse(Model):
         delete_chat: Optional[bool] = None,
         extension_action_ids: Optional[List[str]] = None,
         hide_content: Optional[bool] = None,
+        **kwargs,
     ) -> RestapiModerationRuleActionsResponse:
         instance = cls()
         if ban_account is not None:

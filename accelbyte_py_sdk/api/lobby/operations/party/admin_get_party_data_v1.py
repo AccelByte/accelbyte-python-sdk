@@ -230,11 +230,7 @@ class AdminGetPartyDataV1(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        party_id: str,
-    ) -> AdminGetPartyDataV1:
+    def create(cls, namespace: str, party_id: str, **kwargs) -> AdminGetPartyDataV1:
         instance = cls()
         instance.namespace = namespace
         instance.party_id = party_id

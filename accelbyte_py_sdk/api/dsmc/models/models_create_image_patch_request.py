@@ -151,6 +151,7 @@ class ModelsCreateImagePatchRequest(Model):
         patch_version: str,
         persistent: bool,
         version: str,
+        **kwargs,
     ) -> ModelsCreateImagePatchRequest:
         instance = cls()
         instance.artifact_path = artifact_path

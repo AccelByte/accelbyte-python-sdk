@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -251,6 +251,7 @@ class CreateUserFromInvitationV4(Operation):
         body: ModelUserCreateFromInvitationRequestV4,
         invitation_id: str,
         namespace: str,
+        **kwargs,
     ) -> CreateUserFromInvitationV4:
         instance = cls()
         instance.body = body

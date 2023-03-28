@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Gdpr Service (1.19.2)
+# AccelByte Gaming Services Gdpr Service (1.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -143,6 +143,7 @@ class ModelsPersonalData(Model):
         service_statuses: Dict[str, str],
         status: str,
         user_id: str,
+        **kwargs,
     ) -> ModelsPersonalData:
         instance = cls()
         instance.data_expiration_date = data_expiration_date

@@ -175,6 +175,7 @@ class ModelsImageRecord(Model):
         persistent: bool,
         updated_at: str,
         version: str,
+        **kwargs,
     ) -> ModelsImageRecord:
         instance = cls()
         instance.artifact_path = artifact_path

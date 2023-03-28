@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -82,9 +82,7 @@ class ModelInputValidationsResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ModelInputValidationData],
-        version: int,
+        cls, data: List[ModelInputValidationData], version: int, **kwargs
     ) -> ModelInputValidationsResponse:
         instance = cls()
         instance.data = data

@@ -232,10 +232,7 @@ class UpdateReason(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: RestapiCreateReasonRequest,
-        namespace: str,
-        reason_id: str,
+        cls, body: RestapiCreateReasonRequest, namespace: str, reason_id: str, **kwargs
     ) -> UpdateReason:
         instance = cls()
         instance.body = body

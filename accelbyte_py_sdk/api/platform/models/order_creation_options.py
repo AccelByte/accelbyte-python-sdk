@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,8 +65,7 @@ class OrderCreationOptions(Model):
 
     @classmethod
     def create(
-        cls,
-        skip_price_validation: Optional[bool] = None,
+        cls, skip_price_validation: Optional[bool] = None, **kwargs
     ) -> OrderCreationOptions:
         instance = cls()
         if skip_price_validation is not None:

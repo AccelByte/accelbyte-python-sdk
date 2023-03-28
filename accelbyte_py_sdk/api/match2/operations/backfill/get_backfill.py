@@ -231,11 +231,7 @@ class GetBackfill(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        backfill_id: str,
-        namespace: str,
-    ) -> GetBackfill:
+    def create(cls, backfill_id: str, namespace: str, **kwargs) -> GetBackfill:
         instance = cls()
         instance.backfill_id = backfill_id
         instance.namespace = namespace

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -50,11 +50,11 @@ class ApimodelsPublicConfiguration(Model):
 
         persistent: (persistent) REQUIRED bool
 
-        requested_regions: (requestedRegions) REQUIRED List[str]
-
         text_chat: (textChat) REQUIRED bool
 
         type_: (type) REQUIRED str
+
+        requested_regions: (requestedRegions) OPTIONAL List[str]
     """
 
     # region fields
@@ -68,9 +68,9 @@ class ApimodelsPublicConfiguration(Model):
     min_players: int  # REQUIRED
     name: str  # REQUIRED
     persistent: bool  # REQUIRED
-    requested_regions: List[str]  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
+    requested_regions: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -112,16 +112,16 @@ class ApimodelsPublicConfiguration(Model):
         self.persistent = value
         return self
 
-    def with_requested_regions(self, value: List[str]) -> ApimodelsPublicConfiguration:
-        self.requested_regions = value
-        return self
-
     def with_text_chat(self, value: bool) -> ApimodelsPublicConfiguration:
         self.text_chat = value
         return self
 
     def with_type(self, value: str) -> ApimodelsPublicConfiguration:
         self.type_ = value
+        return self
+
+    def with_requested_regions(self, value: List[str]) -> ApimodelsPublicConfiguration:
+        self.requested_regions = value
         return self
 
     # endregion with_x methods
@@ -166,10 +166,6 @@ class ApimodelsPublicConfiguration(Model):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
             result["persistent"] = False
-        if hasattr(self, "requested_regions"):
-            result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
-        elif include_empty:
-            result["requestedRegions"] = []
         if hasattr(self, "text_chat"):
             result["textChat"] = bool(self.text_chat)
         elif include_empty:
@@ -178,6 +174,10 @@ class ApimodelsPublicConfiguration(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "requested_regions"):
+            result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
+        elif include_empty:
+            result["requestedRegions"] = []
         return result
 
     # endregion to methods
@@ -196,9 +196,10 @@ class ApimodelsPublicConfiguration(Model):
         min_players: int,
         name: str,
         persistent: bool,
-        requested_regions: List[str],
         text_chat: bool,
         type_: str,
+        requested_regions: Optional[List[str]] = None,
+        **kwargs,
     ) -> ApimodelsPublicConfiguration:
         instance = cls()
         instance.client_version = client_version
@@ -210,9 +211,10 @@ class ApimodelsPublicConfiguration(Model):
         instance.min_players = min_players
         instance.name = name
         instance.persistent = persistent
-        instance.requested_regions = requested_regions
         instance.text_chat = text_chat
         instance.type_ = type_
+        if requested_regions is not None:
+            instance.requested_regions = requested_regions
         return instance
 
     @classmethod
@@ -258,10 +260,6 @@ class ApimodelsPublicConfiguration(Model):
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
             instance.persistent = False
-        if "requestedRegions" in dict_ and dict_["requestedRegions"] is not None:
-            instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
-        elif include_empty:
-            instance.requested_regions = []
         if "textChat" in dict_ and dict_["textChat"] is not None:
             instance.text_chat = bool(dict_["textChat"])
         elif include_empty:
@@ -270,6 +268,10 @@ class ApimodelsPublicConfiguration(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "requestedRegions" in dict_ and dict_["requestedRegions"] is not None:
+            instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
+        elif include_empty:
+            instance.requested_regions = []
         return instance
 
     @classmethod
@@ -322,9 +324,9 @@ class ApimodelsPublicConfiguration(Model):
             "minPlayers": "min_players",
             "name": "name",
             "persistent": "persistent",
-            "requestedRegions": "requested_regions",
             "textChat": "text_chat",
             "type": "type_",
+            "requestedRegions": "requested_regions",
         }
 
     @staticmethod
@@ -339,9 +341,9 @@ class ApimodelsPublicConfiguration(Model):
             "minPlayers": True,
             "name": True,
             "persistent": True,
-            "requestedRegions": True,
             "textChat": True,
             "type": True,
+            "requestedRegions": False,
         }
 
     # endregion static methods

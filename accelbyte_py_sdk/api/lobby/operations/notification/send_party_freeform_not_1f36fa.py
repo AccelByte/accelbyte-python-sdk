@@ -245,6 +245,7 @@ class SendPartyFreeformNotificationV1Admin(Operation):
         body: ModelFreeFormNotificationRequestV1,
         namespace: str,
         party_id: str,
+        **kwargs,
     ) -> SendPartyFreeformNotificationV1Admin:
         instance = cls()
         instance.body = body

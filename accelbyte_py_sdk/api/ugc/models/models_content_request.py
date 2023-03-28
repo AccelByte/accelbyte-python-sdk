@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -195,6 +195,7 @@ class ModelsContentRequest(Model):
         update_content_file: bool,
         custom_attributes: Optional[Dict[str, Any]] = None,
         preview_metadata: Optional[ModelsPreviewMetadata] = None,
+        **kwargs,
     ) -> ModelsContentRequest:
         instance = cls()
         instance.content_type = content_type

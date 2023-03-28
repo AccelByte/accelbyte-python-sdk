@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -230,6 +230,7 @@ class ReturnItem(Operation):
         item_id: str,
         namespace: str,
         body: Optional[ItemReturnRequest] = None,
+        **kwargs,
     ) -> ReturnItem:
         instance = cls()
         instance.item_id = item_id

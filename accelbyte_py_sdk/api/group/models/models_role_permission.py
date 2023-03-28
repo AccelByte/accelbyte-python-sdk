@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ModelsRolePermission(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        action: int,
-        resource_name: str,
-    ) -> ModelsRolePermission:
+    def create(cls, action: int, resource_name: str, **kwargs) -> ModelsRolePermission:
         instance = cls()
         instance.action = action
         instance.resource_name = resource_name

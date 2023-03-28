@@ -87,10 +87,7 @@ class RestapiActionApiResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        action_id: str,
-        action_name: str,
-        event_name: str,
+        cls, action_id: str, action_name: str, event_name: str, **kwargs
     ) -> RestapiActionApiResponse:
         instance = cls()
         instance.action_id = action_id

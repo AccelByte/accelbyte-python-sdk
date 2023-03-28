@@ -69,8 +69,7 @@ class HTTPValidationError(Model):
 
     @classmethod
     def create(
-        cls,
-        detail: Optional[List[ValidationError]] = None,
+        cls, detail: Optional[List[ValidationError]] = None, **kwargs
     ) -> HTTPValidationError:
         instance = cls()
         if detail is not None:

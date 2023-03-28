@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class RetrieveUserInfoCacheStatusResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        last_updated_at: str,
-        namespace: str,
+        cls, last_updated_at: str, namespace: str, **kwargs
     ) -> RetrieveUserInfoCacheStatusResponse:
         instance = cls()
         instance.last_updated_at = last_updated_at

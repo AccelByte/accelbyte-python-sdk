@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Basic Service Index (2.6.1)
+# AccelByte Gaming Services Basic Service Index (2.8.0)
 
 
 ## Operations
@@ -18,6 +18,7 @@
 | /basic/v1/admin/namespaces/{namespace}/configs | POST | createConfig | `false` | [CreateConfig](../../accelbyte_py_sdk/api/basic/operations/config/create_config.py) | [create_config](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-create-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_create_config.py) |
 | /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | DELETE | deleteConfig_1 | `false` | [DeleteConfig1](../../accelbyte_py_sdk/api/basic/operations/config/delete_config_1.py) | [delete_config_1](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-delete-config-1](../../samples/cli/accelbyte_py_sdk_cli/basic/_delete_config_1.py) |
 | /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | GET | getConfig_1 | `false` | [GetConfig1](../../accelbyte_py_sdk/api/basic/operations/config/get_config_1.py) | [get_config_1](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-get-config-1](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_config_1.py) |
+| /basic/v1/admin/namespaces/{namespace}/publisher/configs/{configKey} | GET | getPublisherConfig | `false` | [GetPublisherConfig](../../accelbyte_py_sdk/api/basic/operations/config/get_publisher_config.py) | [get_publisher_config](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-get-publisher-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_publisher_config.py) |
 | /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | PATCH | updateConfig_1 | `false` | [UpdateConfig1](../../accelbyte_py_sdk/api/basic/operations/config/update_config_1.py) | [update_config_1](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-update-config-1](../../samples/cli/accelbyte_py_sdk_cli/basic/_update_config_1.py) |
 
 ### EQU8Config
@@ -140,7 +141,6 @@
 | UserProfileInfo | [UserProfileInfo](../../accelbyte_py_sdk/api/basic/models/user_profile_info.py) |
 | UserProfilePrivateCreate | [UserProfilePrivateCreate](../../accelbyte_py_sdk/api/basic/models/user_profile_private_create.py) |
 | UserProfilePrivateInfo | [UserProfilePrivateInfo](../../accelbyte_py_sdk/api/basic/models/user_profile_private_info.py) |
-| UserProfilePrivateUpdate | [UserProfilePrivateUpdate](../../accelbyte_py_sdk/api/basic/models/user_profile_private_update.py) |
 | UserProfilePublicInfo | [UserProfilePublicInfo](../../accelbyte_py_sdk/api/basic/models/user_profile_public_info.py) |
 | UserProfileStatusUpdate | [UserProfileStatusUpdate](../../accelbyte_py_sdk/api/basic/models/user_profile_status_update.py) |
 | UserProfileUpdate | [UserProfileUpdate](../../accelbyte_py_sdk/api/basic/models/user_profile_update.py) |

@@ -241,10 +241,7 @@ class GetAllPodConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        count: int,
-        offset: int,
+        cls, namespace: str, count: int, offset: int, **kwargs
     ) -> GetAllPodConfig:
         instance = cls()
         instance.namespace = namespace

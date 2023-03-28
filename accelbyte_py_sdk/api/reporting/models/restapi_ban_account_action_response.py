@@ -115,6 +115,7 @@ class RestapiBanAccountActionResponse(Model):
         skip_notif: bool,
         type_: str,
         comment: Optional[str] = None,
+        **kwargs,
     ) -> RestapiBanAccountActionResponse:
         instance = cls()
         instance.duration = duration

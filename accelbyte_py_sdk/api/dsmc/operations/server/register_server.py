@@ -233,9 +233,7 @@ class RegisterServer(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsRegisterServerRequest,
-        namespace: str,
+        cls, body: ModelsRegisterServerRequest, namespace: str, **kwargs
     ) -> RegisterServer:
         instance = cls()
         instance.body = body

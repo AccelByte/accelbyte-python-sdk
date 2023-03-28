@@ -269,6 +269,7 @@ class GetModerationRules(Operation):
         extension_category: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> GetModerationRules:
         instance = cls()
         instance.namespace = namespace

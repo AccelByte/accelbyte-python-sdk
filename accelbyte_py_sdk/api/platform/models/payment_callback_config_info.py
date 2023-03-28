@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class PaymentCallbackConfigInfo(Model):
         dry_run: Optional[bool] = None,
         notify_url: Optional[str] = None,
         private_key: Optional[str] = None,
+        **kwargs,
     ) -> PaymentCallbackConfigInfo:
         instance = cls()
         instance.namespace = namespace

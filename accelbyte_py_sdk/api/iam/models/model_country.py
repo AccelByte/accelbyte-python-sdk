@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class ModelCountry(Model):
         country_code: str,
         country_name: str,
         enable: bool,
+        **kwargs,
     ) -> ModelCountry:
         instance = cls()
         instance.age_restriction = age_restriction

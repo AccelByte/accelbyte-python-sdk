@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Gdpr Service (1.19.2)
+# AccelByte Gaming Services Gdpr Service (1.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelsUserDataURL(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        url: str,
-    ) -> ModelsUserDataURL:
+    def create(cls, url: str, **kwargs) -> ModelsUserDataURL:
         instance = cls()
         instance.url = url
         return instance

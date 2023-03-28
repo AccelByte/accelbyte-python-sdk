@@ -230,9 +230,7 @@ class AdminImportConfigV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        file: Optional[Any] = None,
+        cls, namespace: str, file: Optional[Any] = None, **kwargs
     ) -> AdminImportConfigV1:
         instance = cls()
         instance.namespace = namespace

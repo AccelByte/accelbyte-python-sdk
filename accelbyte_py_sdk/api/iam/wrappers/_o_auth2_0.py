@@ -1439,6 +1439,8 @@ def platform_token_grant_v3(
         401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
 
         403: Forbidden - OauthmodelErrorResponse (Forbidden)
+
+        503: Service Unavailable - OauthmodelErrorResponse (Third Party Server timeout or unavailable)
     """
     request = PlatformTokenGrantV3.create(
         platform_id=platform_id,
@@ -1765,6 +1767,8 @@ async def platform_token_grant_v3_async(
         401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
 
         403: Forbidden - OauthmodelErrorResponse (Forbidden)
+
+        503: Service Unavailable - OauthmodelErrorResponse (Third Party Server timeout or unavailable)
     """
     request = PlatformTokenGrantV3.create(
         platform_id=platform_id,

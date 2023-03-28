@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class AdditionalData(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        card_summary: Optional[str] = None,
-    ) -> AdditionalData:
+    def create(cls, card_summary: Optional[str] = None, **kwargs) -> AdditionalData:
         instance = cls()
         if card_summary is not None:
             instance.card_summary = card_summary

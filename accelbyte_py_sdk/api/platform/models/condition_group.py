@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -89,6 +89,7 @@ class ConditionGroup(Model):
         cls,
         operator: Optional[Union[str, OperatorEnum]] = None,
         predicates: Optional[List[Predicate]] = None,
+        **kwargs,
     ) -> ConditionGroup:
         instance = cls()
         if operator is not None:

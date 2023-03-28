@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Gdpr Service (1.19.2)
+# AccelByte Gaming Services Gdpr Service (1.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -83,9 +83,7 @@ class ModelsUserPersonalDataResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ModelsUserPersonalData],
-        paging: ModelsPagination,
+        cls, data: List[ModelsUserPersonalData], paging: ModelsPagination, **kwargs
     ) -> ModelsUserPersonalDataResponse:
         instance = cls()
         instance.data = data

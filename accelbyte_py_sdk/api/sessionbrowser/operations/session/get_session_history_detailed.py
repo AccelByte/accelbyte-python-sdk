@@ -232,9 +232,7 @@ class GetSessionHistoryDetailed(Operation):
 
     @classmethod
     def create(
-        cls,
-        match_id: str,
-        namespace: str,
+        cls, match_id: str, namespace: str, **kwargs
     ) -> GetSessionHistoryDetailed:
         instance = cls()
         instance.match_id = match_id

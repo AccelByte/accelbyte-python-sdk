@@ -123,6 +123,7 @@ class PassUpdate(Model):
         images: Optional[List[Image]] = None,
         localizations: Optional[Dict[str, Localization]] = None,
         pass_item_id: Optional[str] = None,
+        **kwargs,
     ) -> PassUpdate:
         instance = cls()
         if auto_enroll is not None:

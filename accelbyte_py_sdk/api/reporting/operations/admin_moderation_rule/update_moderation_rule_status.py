@@ -239,6 +239,7 @@ class UpdateModerationRuleStatus(Operation):
         body: RestapiModerationRuleActiveRequest,
         namespace: str,
         rule_id: str,
+        **kwargs,
     ) -> UpdateModerationRuleStatus:
         instance = cls()
         instance.body = body

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -209,11 +209,7 @@ class PublishAll(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        store_id: str,
-    ) -> PublishAll:
+    def create(cls, namespace: str, store_id: str, **kwargs) -> PublishAll:
         instance = cls()
         instance.namespace = namespace
         instance.store_id = store_id

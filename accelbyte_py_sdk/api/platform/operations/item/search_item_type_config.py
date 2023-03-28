@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -219,9 +219,7 @@ class SearchItemTypeConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        item_type: Union[str, ItemTypeEnum],
-        clazz: Optional[str] = None,
+        cls, item_type: Union[str, ItemTypeEnum], clazz: Optional[str] = None, **kwargs
     ) -> SearchItemTypeConfig:
         instance = cls()
         instance.item_type = item_type

@@ -236,9 +236,7 @@ class AdminCreateProfanityList(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsAdminCreateProfanityListRequest,
-        namespace: str,
+        cls, body: ModelsAdminCreateProfanityListRequest, namespace: str, **kwargs
     ) -> AdminCreateProfanityList:
         instance = cls()
         instance.body = body

@@ -226,6 +226,7 @@ class ExistsAnyPassByPassCodes(Operation):
         namespace: str,
         user_id: str,
         pass_codes: Optional[List[str]] = None,
+        **kwargs,
     ) -> ExistsAnyPassByPassCodes:
         instance = cls()
         instance.namespace = namespace

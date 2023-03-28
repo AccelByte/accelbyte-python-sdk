@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -236,10 +236,7 @@ class AdminDeleteRolePermissionV3(Operation):
 
     @classmethod
     def create(
-        cls,
-        action: int,
-        resource: str,
-        role_id: str,
+        cls, action: int, resource: str, role_id: str, **kwargs
     ) -> AdminDeleteRolePermissionV3:
         instance = cls()
         instance.action = action

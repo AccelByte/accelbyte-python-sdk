@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -98,6 +98,7 @@ class RevocationConfigInfo(Model):
         entitlement: Optional[EntitlementRevocationConfig] = None,
         namespace: Optional[str] = None,
         wallet: Optional[WalletRevocationConfig] = None,
+        **kwargs,
     ) -> RevocationConfigInfo:
         instance = cls()
         if entitlement is not None:

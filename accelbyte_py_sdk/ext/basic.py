@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -55,7 +55,6 @@ from ..api.basic.models import UserProfileCreate
 from ..api.basic.models import UserProfileInfo
 from ..api.basic.models import UserProfilePrivateCreate
 from ..api.basic.models import UserProfilePrivateInfo
-from ..api.basic.models import UserProfilePrivateUpdate
 from ..api.basic.models import UserProfilePublicInfo
 from ..api.basic.models import UserProfileStatusUpdate
 from ..api.basic.models import UserProfileUpdate
@@ -72,13 +71,17 @@ def create_a_dto_for_unban_user_api_call_example() -> ADTOForUnbanUserAPICall:
     return instance
 
 
-def create_a_dto_for_update_equ8_config_api_call_example() -> ADTOForUpdateEqu8ConfigAPICall:
+def create_a_dto_for_update_equ8_config_api_call_example() -> (
+    ADTOForUpdateEqu8ConfigAPICall
+):
     instance = ADTOForUpdateEqu8ConfigAPICall()
     instance.api_key = randomize()
     return instance
 
 
-def create_a_dto_object_for_equ8_user_ban_status_example() -> ADTOObjectForEqu8UserBanStatus:
+def create_a_dto_object_for_equ8_user_ban_status_example() -> (
+    ADTOObjectForEqu8UserBanStatus
+):
     instance = ADTOObjectForEqu8UserBanStatus()
     instance.expires = randomize("date")
     instance.user_id = randomize("uid")
@@ -273,6 +276,7 @@ def create_user_profile_admin_example() -> UserProfileAdmin:
     instance.first_name = randomize("first_name")
     instance.language = randomize()
     instance.last_name = randomize("last_name")
+    instance.private_custom_attributes = {randomize(): randomize()}
     instance.status = randomize()
     instance.time_zone = randomize()
     instance.zip_code = randomize("zip_code")
@@ -353,22 +357,6 @@ def create_user_profile_private_info_example() -> UserProfilePrivateInfo:
     return instance
 
 
-def create_user_profile_private_update_example() -> UserProfilePrivateUpdate:
-    instance = UserProfilePrivateUpdate()
-    instance.avatar_large_url = randomize("url")
-    instance.avatar_small_url = randomize("url")
-    instance.avatar_url = randomize("url")
-    instance.custom_attributes = {randomize(): randomize()}
-    instance.date_of_birth = randomize("adult_birthdate")
-    instance.first_name = randomize("first_name")
-    instance.language = randomize()
-    instance.last_name = randomize("last_name")
-    instance.private_custom_attributes = {randomize(): randomize()}
-    instance.time_zone = randomize()
-    instance.zip_code = randomize("zip_code")
-    return instance
-
-
 def create_user_profile_public_info_example() -> UserProfilePublicInfo:
     instance = UserProfilePublicInfo()
     instance.avatar_large_url = randomize("url")
@@ -398,6 +386,7 @@ def create_user_profile_update_example() -> UserProfileUpdate:
     instance.first_name = randomize("first_name")
     instance.language = randomize()
     instance.last_name = randomize("last_name")
+    instance.private_custom_attributes = {randomize(): randomize()}
     instance.time_zone = randomize()
     instance.zip_code = randomize("zip_code")
     return instance

@@ -264,6 +264,7 @@ class UpdateReward(Operation):
         namespace: str,
         season_id: str,
         body: Optional[RewardUpdate] = None,
+        **kwargs,
     ) -> UpdateReward:
         instance = cls()
         instance.code = code

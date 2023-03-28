@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -189,8 +189,7 @@ class ChangePreferenceConsent1(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: Optional[List[AcceptAgreementRequest]] = None,
+        cls, body: Optional[List[AcceptAgreementRequest]] = None, **kwargs
     ) -> ChangePreferenceConsent1:
         instance = cls()
         if body is not None:

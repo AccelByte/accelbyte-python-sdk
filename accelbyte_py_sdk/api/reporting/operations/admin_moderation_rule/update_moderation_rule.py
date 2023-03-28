@@ -284,10 +284,7 @@ class UpdateModerationRule(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: RestapiModerationRuleRequest,
-        namespace: str,
-        rule_id: str,
+        cls, body: RestapiModerationRuleRequest, namespace: str, rule_id: str, **kwargs
     ) -> UpdateModerationRule:
         instance = cls()
         instance.body = body

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -155,6 +155,7 @@ class CurrencyWallet(Model):
         total_permanent_balance: Optional[int] = None,
         total_time_limited_balance: Optional[int] = None,
         wallet_infos: Optional[List[WalletInfo]] = None,
+        **kwargs,
     ) -> CurrencyWallet:
         instance = cls()
         instance.balance = balance

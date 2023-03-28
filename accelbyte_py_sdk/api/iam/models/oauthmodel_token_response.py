@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -261,6 +261,7 @@ class OauthmodelTokenResponse(Model):
         platform_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
         refresh_expires_in: Optional[int] = None,
+        **kwargs,
     ) -> OauthmodelTokenResponse:
         instance = cls()
         instance.access_token = access_token

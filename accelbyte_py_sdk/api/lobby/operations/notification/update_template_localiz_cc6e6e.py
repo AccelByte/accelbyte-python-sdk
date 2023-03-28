@@ -267,6 +267,7 @@ class UpdateTemplateLocalizationV1Admin(Operation):
         namespace: str,
         template_language: str,
         template_slug: str,
+        **kwargs,
     ) -> UpdateTemplateLocalizationV1Admin:
         instance = cls()
         instance.body = body

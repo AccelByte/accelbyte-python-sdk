@@ -93,6 +93,7 @@ class ApiRuleSetPayload(Model):
         data: Dict[str, Any],
         enable_custom_match_function: bool,
         name: str,
+        **kwargs,
     ) -> ApiRuleSetPayload:
         instance = cls()
         instance.data = data

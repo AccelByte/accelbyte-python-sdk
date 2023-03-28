@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -265,11 +265,7 @@ class DeleteUserFromSessionInChannel(Operation):
 
     @classmethod
     def create(
-        cls,
-        channel_name: str,
-        match_id: str,
-        namespace: str,
-        user_id: str,
+        cls, channel_name: str, match_id: str, namespace: str, user_id: str, **kwargs
     ) -> DeleteUserFromSessionInChannel:
         instance = cls()
         instance.channel_name = channel_name

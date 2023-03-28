@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -59,6 +59,7 @@ class StatusEnum(StrEnum):
     CONSUMED = "CONSUMED"
     INACTIVE = "INACTIVE"
     REVOKED = "REVOKED"
+    SOLD = "SOLD"
 
 
 class TypeEnum(StrEnum):
@@ -432,6 +433,7 @@ class EntitlementDecrementResult(Model):
         start_date: Optional[str] = None,
         store_id: Optional[str] = None,
         use_count: Optional[int] = None,
+        **kwargs,
     ) -> EntitlementDecrementResult:
         instance = cls()
         instance.clazz = clazz
@@ -726,7 +728,7 @@ class EntitlementDecrementResult(Model):
                 "REFERRAL_BONUS",
                 "REWARD",
             ],
-            "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED"],
+            "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED", "SOLD"],
             "type": ["CONSUMABLE", "DURABLE"],
             "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
         }

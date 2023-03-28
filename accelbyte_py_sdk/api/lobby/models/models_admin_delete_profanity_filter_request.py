@@ -64,10 +64,7 @@ class ModelsAdminDeleteProfanityFilterRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        filter_: str,
-    ) -> ModelsAdminDeleteProfanityFilterRequest:
+    def create(cls, filter_: str, **kwargs) -> ModelsAdminDeleteProfanityFilterRequest:
         instance = cls()
         instance.filter_ = filter_
         return instance

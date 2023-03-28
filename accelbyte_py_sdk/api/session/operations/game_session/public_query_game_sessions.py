@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -228,9 +228,7 @@ class PublicQueryGameSessions(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: Dict[str, Any],
-        namespace: str,
+        cls, body: Dict[str, Any], namespace: str, **kwargs
     ) -> PublicQueryGameSessions:
         instance = cls()
         instance.body = body

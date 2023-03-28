@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -222,9 +222,7 @@ class AdminGetContentBulk(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsAdminGetContentBulkRequest,
-        namespace: str,
+        cls, body: ModelsAdminGetContentBulkRequest, namespace: str, **kwargs
     ) -> AdminGetContentBulk:
         instance = cls()
         instance.body = body

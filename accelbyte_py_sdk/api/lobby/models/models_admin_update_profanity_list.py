@@ -87,10 +87,7 @@ class ModelsAdminUpdateProfanityList(Model):
 
     @classmethod
     def create(
-        cls,
-        is_enabled: bool,
-        is_mandatory: bool,
-        new_name: str,
+        cls, is_enabled: bool, is_mandatory: bool, new_name: str, **kwargs
     ) -> ModelsAdminUpdateProfanityList:
         instance = cls()
         instance.is_enabled = is_enabled

@@ -85,9 +85,7 @@ class ModelsActiveMatchmakingGameResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        pagination: ModelsPagingCursor,
-        sessions: List[ModelsGameSession],
+        cls, pagination: ModelsPagingCursor, sessions: List[ModelsGameSession], **kwargs
     ) -> ModelsActiveMatchmakingGameResponse:
         instance = cls()
         instance.pagination = pagination

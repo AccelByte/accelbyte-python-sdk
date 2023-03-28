@@ -234,9 +234,7 @@ class AdminGetPlayerBlockedPlayersV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
+        cls, namespace: str, user_id: str, **kwargs
     ) -> AdminGetPlayerBlockedPlayersV1:
         instance = cls()
         instance.namespace = namespace

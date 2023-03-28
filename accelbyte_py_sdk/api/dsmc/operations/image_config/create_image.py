@@ -218,10 +218,7 @@ class CreateImage(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: ModelsCreateImageRequest,
-    ) -> CreateImage:
+    def create(cls, body: ModelsCreateImageRequest, **kwargs) -> CreateImage:
         instance = cls()
         instance.body = body
         return instance

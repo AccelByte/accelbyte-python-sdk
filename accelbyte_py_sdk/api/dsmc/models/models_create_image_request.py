@@ -139,6 +139,7 @@ class ModelsCreateImageRequest(Model):
         namespace: str,
         persistent: bool,
         version: str,
+        **kwargs,
     ) -> ModelsCreateImageRequest:
         instance = cls()
         instance.artifact_path = artifact_path

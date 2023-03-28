@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -212,10 +212,7 @@ class GetClient(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        client_id: str,
-    ) -> GetClient:
+    def create(cls, client_id: str, **kwargs) -> GetClient:
         instance = cls()
         instance.client_id = client_id
         return instance

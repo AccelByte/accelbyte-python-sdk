@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -182,6 +182,7 @@ class UserProfilePrivateCreate(Model):
         last_name: Optional[str] = None,
         private_custom_attributes: Optional[Dict[str, Any]] = None,
         time_zone: Optional[str] = None,
+        **kwargs,
     ) -> UserProfilePrivateCreate:
         instance = cls()
         if avatar_large_url is not None:

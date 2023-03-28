@@ -39,6 +39,8 @@ from ..models import EntitlementHistoryInfo
 from ..models import EntitlementInfo
 from ..models import EntitlementOwnership
 from ..models import EntitlementPagingSlicedResult
+from ..models import EntitlementSoldRequest
+from ..models import EntitlementSoldResult
 from ..models import EntitlementUpdate
 from ..models import ErrorEntity
 from ..models import Ownership
@@ -110,6 +112,7 @@ from ..operations.entitlement import (
 )
 from ..operations.entitlement import PublicQueryUserEntitlementsByAppType
 from ..operations.entitlement import PublicQueryUserEntitlementsByAppTypeAppTypeEnum
+from ..operations.entitlement import PublicSellUserEntitlement
 from ..operations.entitlement import QueryEntitlements
 from ..operations.entitlement import (
     QueryEntitlementsAppTypeEnum,
@@ -124,6 +127,7 @@ from ..operations.entitlement import QueryUserEntitlementsByAppType
 from ..operations.entitlement import QueryUserEntitlementsByAppTypeAppTypeEnum
 from ..operations.entitlement import RevokeUserEntitlement
 from ..operations.entitlement import RevokeUserEntitlements
+from ..operations.entitlement import SellUserEntitlement
 from ..operations.entitlement import UpdateUserEntitlement
 from ..models import AppEntitlementInfoAppTypeEnum, AppEntitlementInfoStatusEnum
 from ..models import (
@@ -4326,6 +4330,128 @@ async def public_query_user_entitlements_by_app_type_async(
     )
 
 
+@same_doc_as(PublicSellUserEntitlement)
+def public_sell_user_entitlement(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[EntitlementSoldRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sell user entitlement (publicSellUserEntitlement)
+
+    Sell user entitlement. If the entitlement is consumable, useCount is 0, the status will be CONSUMED. If the entitlement is durable, the status will be SOLD. Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/sell
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementSoldRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementSoldResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 20006: optimistic lock)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSellUserEntitlement.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicSellUserEntitlement)
+async def public_sell_user_entitlement_async(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[EntitlementSoldRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sell user entitlement (publicSellUserEntitlement)
+
+    Sell user entitlement. If the entitlement is consumable, useCount is 0, the status will be CONSUMED. If the entitlement is durable, the status will be SOLD. Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/sell
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementSoldRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementSoldResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 20006: optimistic lock)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSellUserEntitlement.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(QueryEntitlements)
 def query_entitlements(
     active_only: Optional[bool] = None,
@@ -5005,6 +5131,122 @@ async def revoke_user_entitlements_async(
     request = RevokeUserEntitlements.create(
         entitlement_ids=entitlement_ids,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(SellUserEntitlement)
+def sell_user_entitlement(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[EntitlementSoldRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sell user entitlement (sellUserEntitlement)
+
+    Sell user entitlement. If the entitlement is consumable, useCount is 0, the status will be CONSUMED. If the entitlement is durable, the status will be SOLD. Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT, action=4 (UPDATE)
+      *  Returns : entitlement
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/sell
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementSoldRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementSoldResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 20006: optimistic lock)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SellUserEntitlement.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(SellUserEntitlement)
+async def sell_user_entitlement_async(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[EntitlementSoldRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sell user entitlement (sellUserEntitlement)
+
+    Sell user entitlement. If the entitlement is consumable, useCount is 0, the status will be CONSUMED. If the entitlement is durable, the status will be SOLD. Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT, action=4 (UPDATE)
+      *  Returns : entitlement
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/sell
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementSoldRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementSoldResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 20006: optimistic lock)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SellUserEntitlement.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

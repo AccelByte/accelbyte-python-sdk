@@ -86,6 +86,7 @@ class RestapiPublicReasonListResponse(Model):
         cls,
         data: List[RestapiPublicReasonResponse],
         paging: RestapiPagination,
+        **kwargs,
     ) -> RestapiPublicReasonListResponse:
         instance = cls()
         instance.data = data

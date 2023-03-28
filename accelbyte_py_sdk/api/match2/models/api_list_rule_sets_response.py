@@ -83,9 +83,7 @@ class ApiListRuleSetsResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ApiMatchRuleSetNameData],
-        pagination: ModelsPagination,
+        cls, data: List[ApiMatchRuleSetNameData], pagination: ModelsPagination, **kwargs
     ) -> ApiListRuleSetsResponse:
         instance = cls()
         instance.data = data

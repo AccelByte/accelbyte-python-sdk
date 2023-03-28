@@ -250,6 +250,7 @@ class SendPartyTemplatedNotificationV1Admin(Operation):
         body: ModelNotificationWithTemplateRequestV1,
         namespace: str,
         party_id: str,
+        **kwargs,
     ) -> SendPartyTemplatedNotificationV1Admin:
         instance = cls()
         instance.body = body

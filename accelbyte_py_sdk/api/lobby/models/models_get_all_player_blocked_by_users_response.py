@@ -71,8 +71,7 @@ class ModelsGetAllPlayerBlockedByUsersResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ModelsBlockedByPlayerData],
+        cls, data: List[ModelsBlockedByPlayerData], **kwargs
     ) -> ModelsGetAllPlayerBlockedByUsersResponse:
         instance = cls()
         instance.data = data

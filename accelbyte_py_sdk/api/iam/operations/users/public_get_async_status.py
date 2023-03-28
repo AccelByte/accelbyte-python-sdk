@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -211,11 +211,7 @@ class PublicGetAsyncStatus(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        request_id: str,
-    ) -> PublicGetAsyncStatus:
+    def create(cls, namespace: str, request_id: str, **kwargs) -> PublicGetAsyncStatus:
         instance = cls()
         instance.namespace = namespace
         instance.request_id = request_id

@@ -64,10 +64,7 @@ class ModelsMatchAttributes(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        first_ticket_created_at: int,
-    ) -> ModelsMatchAttributes:
+    def create(cls, first_ticket_created_at: int, **kwargs) -> ModelsMatchAttributes:
         instance = cls()
         instance.first_ticket_created_at = first_ticket_created_at
         return instance

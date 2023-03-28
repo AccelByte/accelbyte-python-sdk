@@ -239,10 +239,7 @@ class AddPlayerToSession(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsAddPlayerRequest,
-        namespace: str,
-        session_id: str,
+        cls, body: ModelsAddPlayerRequest, namespace: str, session_id: str, **kwargs
     ) -> AddPlayerToSession:
         instance = cls()
         instance.body = body

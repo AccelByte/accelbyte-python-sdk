@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -126,7 +126,9 @@ def create_create_base_policy_response_example() -> CreateBasePolicyResponse:
     return instance
 
 
-def create_create_localized_policy_version_request_example() -> CreateLocalizedPolicyVersionRequest:
+def create_create_localized_policy_version_request_example() -> (
+    CreateLocalizedPolicyVersionRequest
+):
     instance = CreateLocalizedPolicyVersionRequest()
     instance.content_type = randomize()
     instance.description = randomize()
@@ -134,7 +136,9 @@ def create_create_localized_policy_version_request_example() -> CreateLocalizedP
     return instance
 
 
-def create_create_localized_policy_version_response_example() -> CreateLocalizedPolicyVersionResponse:
+def create_create_localized_policy_version_response_example() -> (
+    CreateLocalizedPolicyVersionResponse
+):
     instance = CreateLocalizedPolicyVersionResponse()
     instance.id_ = randomize()
     instance.created_at = randomize("date")
@@ -206,7 +210,9 @@ def create_localized_policy_version_object_example() -> LocalizedPolicyVersionOb
     return instance
 
 
-def create_paged_retrieve_user_accepted_agreement_response_example() -> PagedRetrieveUserAcceptedAgreementResponse:
+def create_paged_retrieve_user_accepted_agreement_response_example() -> (
+    PagedRetrieveUserAcceptedAgreementResponse
+):
     instance = PagedRetrieveUserAcceptedAgreementResponse()
     instance.data = [create_retrieve_user_accepted_agreement_response_example()]
     instance.paging = create_paging_example()
@@ -251,7 +257,9 @@ def create_policy_version_object_example() -> PolicyVersionObject:
     return instance
 
 
-def create_policy_version_with_localized_version_object_example() -> PolicyVersionWithLocalizedVersionObject:
+def create_policy_version_with_localized_version_object_example() -> (
+    PolicyVersionWithLocalizedVersionObject
+):
     instance = PolicyVersionWithLocalizedVersionObject()
     instance.display_version = randomize()
     instance.id_ = randomize()
@@ -268,7 +276,9 @@ def create_policy_version_with_localized_version_object_example() -> PolicyVersi
     return instance
 
 
-def create_retrieve_accepted_agreement_response_example() -> RetrieveAcceptedAgreementResponse:
+def create_retrieve_accepted_agreement_response_example() -> (
+    RetrieveAcceptedAgreementResponse
+):
     instance = RetrieveAcceptedAgreementResponse()
     instance.id_ = randomize()
     instance.country_code = randomize()
@@ -282,6 +292,7 @@ def create_retrieve_accepted_agreement_response_example() -> RetrieveAcceptedAgr
     instance.policy_name = randomize()
     instance.policy_type = randomize()
     instance.signing_date = randomize("date")
+    instance.tags = [randomize()]
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
     return instance
@@ -303,7 +314,9 @@ def create_retrieve_base_policy_response_example() -> RetrieveBasePolicyResponse
     return instance
 
 
-def create_retrieve_localized_policy_version_public_response_example() -> RetrieveLocalizedPolicyVersionPublicResponse:
+def create_retrieve_localized_policy_version_public_response_example() -> (
+    RetrieveLocalizedPolicyVersionPublicResponse
+):
     instance = RetrieveLocalizedPolicyVersionPublicResponse()
     instance.id_ = randomize()
     instance.locale_code = randomize()
@@ -323,7 +336,9 @@ def create_retrieve_localized_policy_version_public_response_example() -> Retrie
     return instance
 
 
-def create_retrieve_localized_policy_version_response_example() -> RetrieveLocalizedPolicyVersionResponse:
+def create_retrieve_localized_policy_version_response_example() -> (
+    RetrieveLocalizedPolicyVersionResponse
+):
     instance = RetrieveLocalizedPolicyVersionResponse()
     instance.id_ = randomize()
     instance.locale_code = randomize()
@@ -413,7 +428,9 @@ def create_retrieve_policy_version_response_example() -> RetrievePolicyVersionRe
     return instance
 
 
-def create_retrieve_user_accepted_agreement_response_example() -> RetrieveUserAcceptedAgreementResponse:
+def create_retrieve_user_accepted_agreement_response_example() -> (
+    RetrieveUserAcceptedAgreementResponse
+):
     instance = RetrieveUserAcceptedAgreementResponse()
     instance.id_ = randomize()
     instance.created_at = randomize("date")
@@ -432,13 +449,17 @@ def create_retrieve_user_accepted_agreement_response_example() -> RetrieveUserAc
     return instance
 
 
-def create_retrieve_user_eligibilities_indirect_response_example() -> RetrieveUserEligibilitiesIndirectResponse:
+def create_retrieve_user_eligibilities_indirect_response_example() -> (
+    RetrieveUserEligibilitiesIndirectResponse
+):
     instance = RetrieveUserEligibilitiesIndirectResponse()
     instance.is_comply = randomize("bool")
     return instance
 
 
-def create_retrieve_user_eligibilities_response_example() -> RetrieveUserEligibilitiesResponse:
+def create_retrieve_user_eligibilities_response_example() -> (
+    RetrieveUserEligibilitiesResponse
+):
     instance = RetrieveUserEligibilitiesResponse()
     instance.country_code = randomize()
     instance.is_accepted = randomize("bool")
@@ -457,7 +478,9 @@ def create_retrieve_user_eligibilities_response_example() -> RetrieveUserEligibi
     return instance
 
 
-def create_retrieve_user_info_cache_status_response_example() -> RetrieveUserInfoCacheStatusResponse:
+def create_retrieve_user_info_cache_status_response_example() -> (
+    RetrieveUserInfoCacheStatusResponse
+):
     instance = RetrieveUserInfoCacheStatusResponse()
     instance.last_updated_at = randomize("date")
     instance.namespace = randomize("slug")
@@ -501,7 +524,9 @@ def create_update_base_policy_response_example() -> UpdateBasePolicyResponse:
     return instance
 
 
-def create_update_localized_policy_version_request_example() -> UpdateLocalizedPolicyVersionRequest:
+def create_update_localized_policy_version_request_example() -> (
+    UpdateLocalizedPolicyVersionRequest
+):
     instance = UpdateLocalizedPolicyVersionRequest()
     instance.attachment_checksum = randomize()
     instance.attachment_location = randomize()
@@ -511,7 +536,9 @@ def create_update_localized_policy_version_request_example() -> UpdateLocalizedP
     return instance
 
 
-def create_update_localized_policy_version_response_example() -> UpdateLocalizedPolicyVersionResponse:
+def create_update_localized_policy_version_response_example() -> (
+    UpdateLocalizedPolicyVersionResponse
+):
     instance = UpdateLocalizedPolicyVersionResponse()
     instance.id_ = randomize()
     instance.attachment_checksum = randomize()
@@ -558,7 +585,9 @@ def create_update_policy_version_response_example() -> UpdatePolicyVersionRespon
     return instance
 
 
-def create_upload_localized_policy_version_attachment_response_example() -> UploadLocalizedPolicyVersionAttachmentResponse:
+def create_upload_localized_policy_version_attachment_response_example() -> (
+    UploadLocalizedPolicyVersionAttachmentResponse
+):
     instance = UploadLocalizedPolicyVersionAttachmentResponse()
     instance.attachment_checksum = randomize()
     instance.attachment_location = randomize()
@@ -566,7 +595,9 @@ def create_upload_localized_policy_version_attachment_response_example() -> Uplo
     return instance
 
 
-def create_upload_policy_version_attachment_request_example() -> UploadPolicyVersionAttachmentRequest:
+def create_upload_policy_version_attachment_request_example() -> (
+    UploadPolicyVersionAttachmentRequest
+):
     instance = UploadPolicyVersionAttachmentRequest()
     instance.content_md5 = randomize()
     instance.content_type = randomize()
@@ -583,6 +614,7 @@ def create_user_agreements_response_example() -> UserAgreementsResponse:
 def create_users_agreements_request_example() -> UsersAgreementsRequest:
     instance = UsersAgreementsRequest()
     instance.user_ids = [randomize()]
+    instance.current_published_only = randomize("bool")
     return instance
 
 

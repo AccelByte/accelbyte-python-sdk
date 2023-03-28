@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,9 +78,7 @@ class ModelsDeleteBulkLeaderboardFailedResp(Model):
 
     @classmethod
     def create(
-        cls,
-        error: str,
-        leaderboard_code: str,
+        cls, error: str, leaderboard_code: str, **kwargs
     ) -> ModelsDeleteBulkLeaderboardFailedResp:
         instance = cls()
         instance.error = error

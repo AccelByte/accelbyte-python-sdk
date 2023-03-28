@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -218,10 +218,7 @@ class GetMyProfileInfo(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> GetMyProfileInfo:
+    def create(cls, namespace: str, **kwargs) -> GetMyProfileInfo:
         instance = cls()
         instance.namespace = namespace
         return instance

@@ -220,11 +220,7 @@ class AdminDeleteSession(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        session_id: str,
-    ) -> AdminDeleteSession:
+    def create(cls, namespace: str, session_id: str, **kwargs) -> AdminDeleteSession:
         instance = cls()
         instance.namespace = namespace
         instance.session_id = session_id

@@ -75,11 +75,7 @@ class ModelsProfanityRule(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        rule: str,
-    ) -> ModelsProfanityRule:
+    def create(cls, namespace: str, rule: str, **kwargs) -> ModelsProfanityRule:
         instance = cls()
         instance.namespace = namespace
         instance.rule = rule

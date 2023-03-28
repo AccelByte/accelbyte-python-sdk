@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -251,6 +251,7 @@ class IndirectBulkAcceptVersionedPolicyV2(Operation):
         namespace: str,
         user_id: str,
         body: Optional[List[AcceptAgreementRequest]] = None,
+        **kwargs,
     ) -> IndirectBulkAcceptVersionedPolicyV2:
         instance = cls()
         instance.client_id = client_id

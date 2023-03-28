@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ApimodelsAppendTeamGameSessionRequest
 from ..models import ApimodelsCreateGameSessionRequest
 from ..models import ApimodelsGameSessionQueryResponse
 from ..models import ApimodelsGameSessionResponse
@@ -40,6 +41,7 @@ from ..models import ResponseError
 
 from ..operations.game_session import AdminQueryGameSessions
 from ..operations.game_session import AdminUpdateGameSessionMember
+from ..operations.game_session import AppendTeamGameSession
 from ..operations.game_session import CreateGameSession
 from ..operations.game_session import DeleteGameSession
 from ..operations.game_session import GetGameSession
@@ -61,6 +63,7 @@ def admin_query_game_sessions(
     ds_pod_name: Optional[str] = None,
     from_time: Optional[str] = None,
     game_mode: Optional[str] = None,
+    is_persistent: Optional[str] = None,
     is_soft_deleted: Optional[str] = None,
     joinability: Optional[str] = None,
     limit: Optional[int] = None,
@@ -107,6 +110,8 @@ def admin_query_game_sessions(
 
         game_mode: (gameMode) OPTIONAL str in query
 
+        is_persistent: (isPersistent) OPTIONAL str in query
+
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
         joinability: (joinability) OPTIONAL str in query
@@ -151,6 +156,7 @@ def admin_query_game_sessions(
         ds_pod_name=ds_pod_name,
         from_time=from_time,
         game_mode=game_mode,
+        is_persistent=is_persistent,
         is_soft_deleted=is_soft_deleted,
         joinability=joinability,
         limit=limit,
@@ -174,6 +180,7 @@ async def admin_query_game_sessions_async(
     ds_pod_name: Optional[str] = None,
     from_time: Optional[str] = None,
     game_mode: Optional[str] = None,
+    is_persistent: Optional[str] = None,
     is_soft_deleted: Optional[str] = None,
     joinability: Optional[str] = None,
     limit: Optional[int] = None,
@@ -220,6 +227,8 @@ async def admin_query_game_sessions_async(
 
         game_mode: (gameMode) OPTIONAL str in query
 
+        is_persistent: (isPersistent) OPTIONAL str in query
+
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
         joinability: (joinability) OPTIONAL str in query
@@ -264,6 +273,7 @@ async def admin_query_game_sessions_async(
         ds_pod_name=ds_pod_name,
         from_time=from_time,
         game_mode=game_mode,
+        is_persistent=is_persistent,
         is_soft_deleted=is_soft_deleted,
         joinability=joinability,
         limit=limit,
@@ -398,6 +408,116 @@ async def admin_update_game_session_member_async(
         member_id=member_id,
         session_id=session_id,
         status_type=status_type,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AppendTeamGameSession)
+def append_team_game_session(
+    body: ApimodelsAppendTeamGameSessionRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Append new member or team to session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (appendTeamGameSession)
+
+    Append new member or team to session
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/teams
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsAppendTeamGameSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AppendTeamGameSession.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AppendTeamGameSession)
+async def append_team_game_session_async(
+    body: ApimodelsAppendTeamGameSessionRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Append new member or team to session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (appendTeamGameSession)
+
+    Append new member or team to session
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/teams
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsAppendTeamGameSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AppendTeamGameSession.create(
+        body=body,
+        session_id=session_id,
         namespace=namespace,
     )
     return await run_request_async(

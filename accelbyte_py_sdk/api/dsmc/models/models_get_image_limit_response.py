@@ -71,8 +71,7 @@ class ModelsGetImageLimitResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: ModelsGetImageLimitResponseData,
+        cls, data: ModelsGetImageLimitResponseData, **kwargs
     ) -> ModelsGetImageLimitResponse:
         instance = cls()
         instance.data = data

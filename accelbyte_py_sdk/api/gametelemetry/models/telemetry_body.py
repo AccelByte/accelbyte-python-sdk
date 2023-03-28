@@ -115,6 +115,7 @@ class TelemetryBody(Model):
         payload: Dict[str, Any],
         event_id: Optional[str] = None,
         event_timestamp: Optional[str] = None,
+        **kwargs,
     ) -> TelemetryBody:
         instance = cls()
         instance.event_name = event_name

@@ -153,9 +153,7 @@ class ListProviders(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> ListProviders:
+    def create(cls, **kwargs) -> ListProviders:
         instance = cls()
         return instance
 

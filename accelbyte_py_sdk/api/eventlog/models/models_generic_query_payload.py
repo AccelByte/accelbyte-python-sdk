@@ -141,6 +141,7 @@ class ModelsGenericQueryPayload(Model):
         trace_id: str,
         user_id: str,
         version: int,
+        **kwargs,
     ) -> ModelsGenericQueryPayload:
         instance = cls()
         instance.client_id = client_id

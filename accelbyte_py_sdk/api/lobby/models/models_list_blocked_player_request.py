@@ -67,8 +67,7 @@ class ModelsListBlockedPlayerRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        list_blocked_user_id: List[str],
+        cls, list_blocked_user_id: List[str], **kwargs
     ) -> ModelsListBlockedPlayerRequest:
         instance = cls()
         instance.list_blocked_user_id = list_blocked_user_id

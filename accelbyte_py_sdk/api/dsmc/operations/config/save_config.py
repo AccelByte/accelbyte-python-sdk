@@ -273,10 +273,7 @@ class SaveConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: ModelsDSMConfigRecord,
-    ) -> SaveConfig:
+    def create(cls, body: ModelsDSMConfigRecord, **kwargs) -> SaveConfig:
         instance = cls()
         instance.body = body
         return instance

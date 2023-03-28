@@ -220,11 +220,7 @@ class DeleteTemplateSlug(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        template_slug: str,
-    ) -> DeleteTemplateSlug:
+    def create(cls, namespace: str, template_slug: str, **kwargs) -> DeleteTemplateSlug:
         instance = cls()
         instance.namespace = namespace
         instance.template_slug = template_slug

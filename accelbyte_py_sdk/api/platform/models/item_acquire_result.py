@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ItemAcquireResult(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        max_count: int,
-        success: bool,
-    ) -> ItemAcquireResult:
+    def create(cls, max_count: int, success: bool, **kwargs) -> ItemAcquireResult:
         instance = cls()
         instance.max_count = max_count
         instance.success = success

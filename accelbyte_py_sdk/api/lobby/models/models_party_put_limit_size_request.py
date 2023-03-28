@@ -64,10 +64,7 @@ class ModelsPartyPUTLimitSizeRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        limit: int,
-    ) -> ModelsPartyPUTLimitSizeRequest:
+    def create(cls, limit: int, **kwargs) -> ModelsPartyPUTLimitSizeRequest:
         instance = cls()
         instance.limit = limit
         return instance

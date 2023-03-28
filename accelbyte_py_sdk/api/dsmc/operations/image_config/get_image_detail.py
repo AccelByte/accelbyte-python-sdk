@@ -220,11 +220,7 @@ class GetImageDetail(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        version: str,
-    ) -> GetImageDetail:
+    def create(cls, namespace: str, version: str, **kwargs) -> GetImageDetail:
         instance = cls()
         instance.namespace = namespace
         instance.version = version

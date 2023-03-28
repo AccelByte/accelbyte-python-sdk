@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ModelGetUserMapping(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        user_id: str,
-    ) -> ModelGetUserMapping:
+    def create(cls, namespace: str, user_id: str, **kwargs) -> ModelGetUserMapping:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ClientmodelClientUpdateSecretRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        new_secret: str,
-    ) -> ClientmodelClientUpdateSecretRequest:
+    def create(cls, new_secret: str, **kwargs) -> ClientmodelClientUpdateSecretRequest:
         instance = cls()
         instance.new_secret = new_secret
         return instance

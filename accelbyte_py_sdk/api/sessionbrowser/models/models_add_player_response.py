@@ -64,10 +64,7 @@ class ModelsAddPlayerResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        status: bool,
-    ) -> ModelsAddPlayerResponse:
+    def create(cls, status: bool, **kwargs) -> ModelsAddPlayerResponse:
         instance = cls()
         instance.status = status
         return instance

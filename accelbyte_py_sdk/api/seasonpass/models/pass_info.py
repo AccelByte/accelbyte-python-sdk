@@ -195,6 +195,7 @@ class PassInfo(Model):
         season_id: str,
         updated_at: str,
         images: Optional[List[Image]] = None,
+        **kwargs,
     ) -> PassInfo:
         instance = cls()
         instance.auto_enroll = auto_enroll

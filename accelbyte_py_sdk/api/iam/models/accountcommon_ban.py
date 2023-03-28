@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class AccountcommonBan(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        ban: str,
-        description: str,
-    ) -> AccountcommonBan:
+    def create(cls, ban: str, description: str, **kwargs) -> AccountcommonBan:
         instance = cls()
         instance.ban = ban
         instance.description = description

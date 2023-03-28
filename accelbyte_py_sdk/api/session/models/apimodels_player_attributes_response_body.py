@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -111,6 +111,7 @@ class ApimodelsPlayerAttributesResponseBody(Model):
         data: Dict[str, Any],
         platforms: List[ModelsUserPlatformInfo],
         user_id: str,
+        **kwargs,
     ) -> ApimodelsPlayerAttributesResponseBody:
         instance = cls()
         instance.crossplay_enabled = crossplay_enabled

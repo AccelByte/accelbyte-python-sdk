@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,11 +39,11 @@ class DeleteConfig1(Operation):
     Delete a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=8 (DELETE)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=8 (DELETE)
       *  Returns : created config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [DELETE]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -71,7 +71,7 @@ class DeleteConfig1(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
 
     # region fields
@@ -185,7 +185,7 @@ class DeleteConfig1(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -220,11 +220,7 @@ class DeleteConfig1(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        config_key: str,
-        namespace: str,
-    ) -> DeleteConfig1:
+    def create(cls, config_key: str, namespace: str, **kwargs) -> DeleteConfig1:
         instance = cls()
         instance.config_key = config_key
         instance.namespace = namespace

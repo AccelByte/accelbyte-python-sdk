@@ -269,6 +269,7 @@ class ListReports(Operation):
         offset: Optional[int] = None,
         reported_user_id: Optional[str] = None,
         sort_by: Optional[str] = None,
+        **kwargs,
     ) -> ListReports:
         instance = cls()
         instance.namespace = namespace

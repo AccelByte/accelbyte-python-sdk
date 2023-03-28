@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ApimodelsSessionInviteRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        user_id: str,
-    ) -> ApimodelsSessionInviteRequest:
+    def create(cls, user_id: str, **kwargs) -> ApimodelsSessionInviteRequest:
         instance = cls()
         instance.user_id = user_id
         return instance

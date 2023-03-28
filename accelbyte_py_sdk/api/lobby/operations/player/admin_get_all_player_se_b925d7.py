@@ -224,9 +224,7 @@ class AdminGetAllPlayerSessionAttribute(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
+        cls, namespace: str, user_id: str, **kwargs
     ) -> AdminGetAllPlayerSessionAttribute:
         instance = cls()
         instance.namespace = namespace

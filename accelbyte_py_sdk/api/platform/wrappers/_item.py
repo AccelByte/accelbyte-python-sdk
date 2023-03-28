@@ -33,6 +33,7 @@ from ..models import AppInfo
 from ..models import AppUpdate
 from ..models import AvailablePredicate
 from ..models import BasicItem
+from ..models import BulkRegionDataChangeRequest
 from ..models import ErrorEntity
 from ..models import FullAppInfo
 from ..models import FullItemInfo
@@ -58,6 +59,7 @@ from ..models import ValidationErrorEntity
 
 from ..operations.item import AcquireItem
 from ..operations.item import BulkGetLocaleItems
+from ..operations.item import BulkUpdateRegionData
 from ..operations.item import CreateItem
 from ..operations.item import CreateItemTypeConfig
 from ..operations.item import DefeatureItem
@@ -439,6 +441,128 @@ async def bulk_get_locale_items_async(
     )
 
 
+@same_doc_as(BulkUpdateRegionData)
+def bulk_update_region_data(
+    store_id: str,
+    body: Optional[BulkRegionDataChangeRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update item's region data in bulk (bulkUpdateRegionData)
+
+    This API is used to update region data of items in bulk
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/regiondata
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkRegionDataChangeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ErrorEntity (30022: Default region [{region}] is required | 30321: Invalid item discount amount | 30327: Invalid item trial price | 30330: Invalid item region price currency namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkUpdateRegionData.create(
+        store_id=store_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkUpdateRegionData)
+async def bulk_update_region_data_async(
+    store_id: str,
+    body: Optional[BulkRegionDataChangeRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update item's region data in bulk (bulkUpdateRegionData)
+
+    This API is used to update region data of items in bulk
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/regiondata
+
+        method: PUT
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkRegionDataChangeRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in query
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ErrorEntity (30022: Default region [{region}] is required | 30321: Invalid item discount amount | 30327: Invalid item trial price | 30330: Invalid item region price currency namespace [{namespace}])
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+
+        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkUpdateRegionData.create(
+        store_id=store_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(CreateItem)
 def create_item(
     store_id: str,
@@ -698,7 +822,7 @@ def create_item(
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}] | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -973,7 +1097,7 @@ async def create_item_async(
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}])
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}] | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -6093,7 +6217,7 @@ def update_item(
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30371: Item maxCount not allow reduce | 30372: ItemType is not updatable)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30371: Item maxCount not allow reduce | 30372: ItemType is not updatable | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -6374,7 +6498,7 @@ async def update_item_async(
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30371: Item maxCount not allow reduce | 30372: ItemType is not updatable)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30371: Item maxCount not allow reduce | 30372: ItemType is not updatable | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """

@@ -75,11 +75,7 @@ class ModelsUX(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        description: str,
-        ux: int,
-    ) -> ModelsUX:
+    def create(cls, description: str, ux: int, **kwargs) -> ModelsUX:
         instance = cls()
         instance.description = description
         instance.ux = ux

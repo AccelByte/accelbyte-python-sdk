@@ -76,9 +76,7 @@ class Paging(Model):
 
     @classmethod
     def create(
-        cls,
-        next_: Optional[str] = None,
-        previous: Optional[str] = None,
+        cls, next_: Optional[str] = None, previous: Optional[str] = None, **kwargs
     ) -> Paging:
         instance = cls()
         if next_ is not None:

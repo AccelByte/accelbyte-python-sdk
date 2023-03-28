@@ -103,6 +103,7 @@ class ModelsPaging(Model):
         last: Optional[str] = None,
         next_: Optional[str] = None,
         previous: Optional[str] = None,
+        **kwargs,
     ) -> ModelsPaging:
         instance = cls()
         if first is not None:

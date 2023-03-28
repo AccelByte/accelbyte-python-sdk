@@ -93,6 +93,7 @@ class TierCreate(Model):
         index: Optional[int] = None,
         quantity: Optional[int] = None,
         tier: Optional[TierInput] = None,
+        **kwargs,
     ) -> TierCreate:
         instance = cls()
         if index is not None:

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,8 +71,7 @@ class ModelRoleManagersRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        managers: List[AccountcommonRoleManager],
+        cls, managers: List[AccountcommonRoleManager], **kwargs
     ) -> ModelRoleManagersRequest:
         instance = cls()
         instance.managers = managers

@@ -76,9 +76,7 @@ class ModelFreeFormNotificationRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        message: str,
-        topic: str,
+        cls, message: str, topic: str, **kwargs
     ) -> ModelFreeFormNotificationRequest:
         instance = cls()
         instance.message = message

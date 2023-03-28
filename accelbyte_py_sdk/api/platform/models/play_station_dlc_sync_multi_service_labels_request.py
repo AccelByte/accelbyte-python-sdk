@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,8 +67,7 @@ class PlayStationDLCSyncMultiServiceLabelsRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        service_labels: Optional[List[int]] = None,
+        cls, service_labels: Optional[List[int]] = None, **kwargs
     ) -> PlayStationDLCSyncMultiServiceLabelsRequest:
         instance = cls()
         if service_labels is not None:

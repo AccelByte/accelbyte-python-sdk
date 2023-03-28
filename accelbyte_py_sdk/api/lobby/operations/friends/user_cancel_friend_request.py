@@ -222,9 +222,7 @@ class UserCancelFriendRequest(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelUserCancelFriendRequest,
-        namespace: str,
+        cls, body: ModelUserCancelFriendRequest, namespace: str, **kwargs
     ) -> UserCancelFriendRequest:
         instance = cls()
         instance.body = body

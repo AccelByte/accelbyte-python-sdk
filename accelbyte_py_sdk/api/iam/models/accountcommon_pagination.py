@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -98,11 +98,7 @@ class AccountcommonPagination(Model):
 
     @classmethod
     def create(
-        cls,
-        first: str,
-        last: str,
-        next_: str,
-        previous: str,
+        cls, first: str, last: str, next_: str, previous: str, **kwargs
     ) -> AccountcommonPagination:
         instance = cls()
         instance.first = first

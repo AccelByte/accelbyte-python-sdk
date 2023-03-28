@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -70,13 +70,17 @@ from ..api.ugc.models import ModelsUserFollowResponse
 from ..api.ugc.models import ResponseError
 
 
-def create_models_add_download_count_response_example() -> ModelsAddDownloadCountResponse:
+def create_models_add_download_count_response_example() -> (
+    ModelsAddDownloadCountResponse
+):
     instance = ModelsAddDownloadCountResponse()
     instance.content_id = randomize()
     return instance
 
 
-def create_models_admin_get_content_bulk_request_example() -> ModelsAdminGetContentBulkRequest:
+def create_models_admin_get_content_bulk_request_example() -> (
+    ModelsAdminGetContentBulkRequest
+):
     instance = ModelsAdminGetContentBulkRequest()
     instance.content_ids = [randomize()]
     return instance
@@ -235,7 +239,9 @@ def create_models_create_screenshot_request_example() -> ModelsCreateScreenshotR
     return instance
 
 
-def create_models_create_screenshot_request_item_example() -> ModelsCreateScreenshotRequestItem:
+def create_models_create_screenshot_request_item_example() -> (
+    ModelsCreateScreenshotRequestItem
+):
     instance = ModelsCreateScreenshotRequestItem()
     instance.content_type = randomize()
     instance.description = randomize()
@@ -243,7 +249,9 @@ def create_models_create_screenshot_request_item_example() -> ModelsCreateScreen
     return instance
 
 
-def create_models_create_screenshot_response_example() -> ModelsCreateScreenshotResponse:
+def create_models_create_screenshot_response_example() -> (
+    ModelsCreateScreenshotResponse
+):
     instance = ModelsCreateScreenshotResponse()
     instance.screenshots = [create_models_screenshot_response_example()]
     return instance
@@ -310,7 +318,9 @@ def create_models_creator_response_example() -> ModelsCreatorResponse:
     return instance
 
 
-def create_models_get_content_preview_response_example() -> ModelsGetContentPreviewResponse:
+def create_models_get_content_preview_response_example() -> (
+    ModelsGetContentPreviewResponse
+):
     instance = ModelsGetContentPreviewResponse()
     instance.preview = randomize()
     instance.preview_url = randomize("url")
@@ -330,21 +340,27 @@ def create_models_like_state_example() -> ModelsLikeState:
     return instance
 
 
-def create_models_paginated_content_download_response_example() -> ModelsPaginatedContentDownloadResponse:
+def create_models_paginated_content_download_response_example() -> (
+    ModelsPaginatedContentDownloadResponse
+):
     instance = ModelsPaginatedContentDownloadResponse()
     instance.data = [create_models_content_download_response_example()]
     instance.paging = create_models_paging_cursor_example()
     return instance
 
 
-def create_models_paginated_creator_overview_response_example() -> ModelsPaginatedCreatorOverviewResponse:
+def create_models_paginated_creator_overview_response_example() -> (
+    ModelsPaginatedCreatorOverviewResponse
+):
     instance = ModelsPaginatedCreatorOverviewResponse()
     instance.data = [create_models_creator_overview_response_example()]
     instance.paging = create_models_paging_cursor_example()
     return instance
 
 
-def create_models_paginated_get_channel_response_example() -> ModelsPaginatedGetChannelResponse:
+def create_models_paginated_get_channel_response_example() -> (
+    ModelsPaginatedGetChannelResponse
+):
     instance = ModelsPaginatedGetChannelResponse()
     instance.data = [create_models_channel_response_example()]
     instance.paging = create_models_paging_cursor_example()
@@ -358,7 +374,9 @@ def create_models_paginated_get_tag_response_example() -> ModelsPaginatedGetTagR
     return instance
 
 
-def create_models_paginated_get_type_response_example() -> ModelsPaginatedGetTypeResponse:
+def create_models_paginated_get_type_response_example() -> (
+    ModelsPaginatedGetTypeResponse
+):
     instance = ModelsPaginatedGetTypeResponse()
     instance.data = [create_models_create_type_response_example()]
     instance.paging = create_models_paging_cursor_example()
@@ -402,7 +420,9 @@ def create_models_preview_url_example() -> ModelsPreviewURL:
     return instance
 
 
-def create_models_public_get_content_bulk_request_example() -> ModelsPublicGetContentBulkRequest:
+def create_models_public_get_content_bulk_request_example() -> (
+    ModelsPublicGetContentBulkRequest
+):
     instance = ModelsPublicGetContentBulkRequest()
     instance.content_ids = [randomize()]
     return instance
@@ -432,7 +452,9 @@ def create_models_update_screenshot_request_example() -> ModelsUpdateScreenshotR
     return instance
 
 
-def create_models_update_screenshot_response_example() -> ModelsUpdateScreenshotResponse:
+def create_models_update_screenshot_response_example() -> (
+    ModelsUpdateScreenshotResponse
+):
     instance = ModelsUpdateScreenshotResponse()
     instance.screenshots = [create_models_update_screenshot_example()]
     return instance

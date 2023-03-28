@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -226,11 +226,7 @@ class AdminDecryptDeviceV4(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        device_id: str,
-        namespace: str,
-    ) -> AdminDecryptDeviceV4:
+    def create(cls, device_id: str, namespace: str, **kwargs) -> AdminDecryptDeviceV4:
         instance = cls()
         instance.device_id = device_id
         instance.namespace = namespace

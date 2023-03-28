@@ -212,10 +212,7 @@ class UpdateImage(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: ModelsImageRecordUpdate,
-    ) -> UpdateImage:
+    def create(cls, body: ModelsImageRecordUpdate, **kwargs) -> UpdateImage:
         instance = cls()
         instance.body = body
         return instance

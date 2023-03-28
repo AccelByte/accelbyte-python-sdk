@@ -218,6 +218,7 @@ class ListSeasonInfo(Model):
         updated_at: str,
         pass_codes: Optional[List[str]] = None,
         published_at: Optional[str] = None,
+        **kwargs,
     ) -> ListSeasonInfo:
         instance = cls()
         instance.created_at = created_at

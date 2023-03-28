@@ -83,9 +83,7 @@ class RestapiAdminReasonListResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[RestapiAdminReasonResponse],
-        paging: RestapiPagination,
+        cls, data: List[RestapiAdminReasonResponse], paging: RestapiPagination, **kwargs
     ) -> RestapiAdminReasonListResponse:
         instance = cls()
         instance.data = data

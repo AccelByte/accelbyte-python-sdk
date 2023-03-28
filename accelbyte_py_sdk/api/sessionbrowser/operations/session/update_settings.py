@@ -245,6 +245,7 @@ class UpdateSettings(Operation):
         body: ModelsUpdateSettingsRequest,
         namespace: str,
         session_id: str,
+        **kwargs,
     ) -> UpdateSettings:
         instance = cls()
         instance.body = body

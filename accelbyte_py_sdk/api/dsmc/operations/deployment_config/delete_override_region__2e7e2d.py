@@ -253,11 +253,7 @@ class DeleteOverrideRegionOverride(Operation):
 
     @classmethod
     def create(
-        cls,
-        deployment: str,
-        namespace: str,
-        region: str,
-        version: str,
+        cls, deployment: str, namespace: str, region: str, version: str, **kwargs
     ) -> DeleteOverrideRegionOverride:
         instance = cls()
         instance.deployment = deployment

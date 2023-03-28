@@ -71,8 +71,7 @@ class ModelsRecentPlayerQueryResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ModelsRecentPlayerHistory],
+        cls, data: List[ModelsRecentPlayerHistory], **kwargs
     ) -> ModelsRecentPlayerQueryResponse:
         instance = cls()
         instance.data = data

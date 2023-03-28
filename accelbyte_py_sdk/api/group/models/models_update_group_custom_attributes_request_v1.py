@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -69,8 +69,7 @@ class ModelsUpdateGroupCustomAttributesRequestV1(Model):
 
     @classmethod
     def create(
-        cls,
-        custom_attributes: Dict[str, Any],
+        cls, custom_attributes: Dict[str, Any], **kwargs
     ) -> ModelsUpdateGroupCustomAttributesRequestV1:
         instance = cls()
         instance.custom_attributes = custom_attributes

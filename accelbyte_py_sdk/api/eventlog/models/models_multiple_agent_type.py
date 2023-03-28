@@ -69,8 +69,7 @@ class ModelsMultipleAgentType(Model):
 
     @classmethod
     def create(
-        cls,
-        agent_types: List[ModelsAgentType],
+        cls, agent_types: List[ModelsAgentType], **kwargs
     ) -> ModelsMultipleAgentType:
         instance = cls()
         instance.agent_types = agent_types

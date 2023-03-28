@@ -64,10 +64,7 @@ class ModelsRequestMatchMember(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        user_id: str,
-    ) -> ModelsRequestMatchMember:
+    def create(cls, user_id: str, **kwargs) -> ModelsRequestMatchMember:
         instance = cls()
         instance.user_id = user_id
         return instance

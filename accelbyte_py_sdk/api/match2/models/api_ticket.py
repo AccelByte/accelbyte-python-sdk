@@ -159,6 +159,7 @@ class ApiTicket(Model):
         players: Optional[List[ApiPlayerData]] = None,
         ticket_attributes: Optional[Dict[str, Any]] = None,
         ticket_id: Optional[str] = None,
+        **kwargs,
     ) -> ApiTicket:
         instance = cls()
         if created_at is not None:

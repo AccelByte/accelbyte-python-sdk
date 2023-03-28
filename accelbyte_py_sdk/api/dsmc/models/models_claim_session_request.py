@@ -64,10 +64,7 @@ class ModelsClaimSessionRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        session_id: str,
-    ) -> ModelsClaimSessionRequest:
+    def create(cls, session_id: str, **kwargs) -> ModelsClaimSessionRequest:
         instance = cls()
         instance.session_id = session_id
         return instance

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -31,7 +31,7 @@ from .....core import HttpResponse
 
 from ...models import ErrorEntity
 from ...models import UserProfilePrivateInfo
-from ...models import UserProfilePrivateUpdate
+from ...models import UserProfileUpdate
 from ...models import ValidationErrorEntity
 
 
@@ -67,7 +67,7 @@ class UpdateMyProfile(Operation):
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        body: (body) OPTIONAL UserProfilePrivateUpdate in body
+        body: (body) OPTIONAL UserProfileUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -92,7 +92,7 @@ class UpdateMyProfile(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: UserProfilePrivateUpdate  # OPTIONAL in [body]
+    body: UserProfileUpdate  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -156,7 +156,7 @@ class UpdateMyProfile(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: UserProfilePrivateUpdate) -> UpdateMyProfile:
+    def with_body(self, value: UserProfileUpdate) -> UpdateMyProfile:
         self.body = value
         return self
 
@@ -173,7 +173,7 @@ class UpdateMyProfile(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = UserProfilePrivateUpdate()
+            result["body"] = UserProfileUpdate()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -237,9 +237,7 @@ class UpdateMyProfile(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        body: Optional[UserProfilePrivateUpdate] = None,
+        cls, namespace: str, body: Optional[UserProfileUpdate] = None, **kwargs
     ) -> UpdateMyProfile:
         instance = cls()
         instance.namespace = namespace
@@ -253,11 +251,11 @@ class UpdateMyProfile(Operation):
     ) -> UpdateMyProfile:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = UserProfilePrivateUpdate.create_from_dict(
+            instance.body = UserProfileUpdate.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = UserProfilePrivateUpdate()
+            instance.body = UserProfileUpdate()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

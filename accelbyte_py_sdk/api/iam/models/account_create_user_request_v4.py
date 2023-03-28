@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -200,6 +200,7 @@ class AccountCreateUserRequestV4(Model):
         password: Optional[str] = None,
         password_md5_sum: Optional[str] = None,
         reach_minimum_age: Optional[bool] = None,
+        **kwargs,
     ) -> AccountCreateUserRequestV4:
         instance = cls()
         instance.auth_type = auth_type

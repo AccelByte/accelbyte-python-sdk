@@ -222,11 +222,7 @@ class DeleteBackfill(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        backfill_id: str,
-        namespace: str,
-    ) -> DeleteBackfill:
+    def create(cls, backfill_id: str, namespace: str, **kwargs) -> DeleteBackfill:
         instance = cls()
         instance.backfill_id = backfill_id
         instance.namespace = namespace

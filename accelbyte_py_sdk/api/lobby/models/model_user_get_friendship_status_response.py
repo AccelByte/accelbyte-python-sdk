@@ -76,9 +76,7 @@ class ModelUserGetFriendshipStatusResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        code: int,
-        name: str,
+        cls, code: int, name: str, **kwargs
     ) -> ModelUserGetFriendshipStatusResponse:
         instance = cls()
         instance.code = code

@@ -76,9 +76,7 @@ class ModelUserRequestFriendRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        friend_id: str,
-        friend_public_id: str,
+        cls, friend_id: str, friend_public_id: str, **kwargs
     ) -> ModelUserRequestFriendRequest:
         instance = cls()
         instance.friend_id = friend_id

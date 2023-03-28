@@ -222,11 +222,7 @@ class DeleteMatchPool(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        pool: str,
-    ) -> DeleteMatchPool:
+    def create(cls, namespace: str, pool: str, **kwargs) -> DeleteMatchPool:
         instance = cls()
         instance.namespace = namespace
         instance.pool = pool

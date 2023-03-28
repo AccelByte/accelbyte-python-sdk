@@ -238,6 +238,7 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
         playtime: str,
         steam_id: str,
         cookie: Optional[Union[str, HeaderStr]] = None,
+        **kwargs,
     ) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         instance = cls()
         instance.playtime = playtime

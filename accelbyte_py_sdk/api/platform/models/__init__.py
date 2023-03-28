@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.25.0"
+__version__ = "4.27.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -68,6 +68,7 @@ from .billing_history_info import StatusEnum as BillingHistoryInfoStatusEnum
 from .billing_history_paging_sliced_result import BillingHistoryPagingSlicedResult
 from .box_item import BoxItem
 from .bulk_operation_result import BulkOperationResult
+from .bulk_region_data_change_request import BulkRegionDataChangeRequest
 from .bundled_item_info import BundledItemInfo
 from .bundled_item_info import (
     AppTypeEnum as BundledItemInfoAppTypeEnum,
@@ -192,6 +193,8 @@ from .entitlement_paging_sliced_result import EntitlementPagingSlicedResult
 from .entitlement_revocation import EntitlementRevocation
 from .entitlement_revocation import StatusEnum as EntitlementRevocationStatusEnum
 from .entitlement_revocation_config import EntitlementRevocationConfig
+from .entitlement_sold_request import EntitlementSoldRequest
+from .entitlement_sold_result import EntitlementSoldResult
 from .entitlement_summary import EntitlementSummary
 from .entitlement_summary import (
     ClazzEnum as EntitlementSummaryClazzEnum,
@@ -564,6 +567,10 @@ from .redeem_history_paging_sliced_result import RedeemHistoryPagingSlicedResult
 from .redeem_request import RedeemRequest
 from .redeem_result import RedeemResult
 from .redeemable_item import RedeemableItem
+from .region_data_change import RegionDataChange
+from .region_data_change import (
+    ItemIdentityTypeEnum as RegionDataChangeItemIdentityTypeEnum,
+)
 from .region_data_item import RegionDataItem
 from .region_data_item import CurrencyTypeEnum as RegionDataItemCurrencyTypeEnum
 from .request_history import RequestHistory
@@ -603,6 +610,7 @@ from .rewards_request import (
     OriginEnum as RewardsRequestOriginEnum,
     SourceEnum as RewardsRequestSourceEnum,
 )
+from .sale_config import SaleConfig
 from .section_create import SectionCreate
 from .section_create import RotationTypeEnum as SectionCreateRotationTypeEnum
 from .section_info import SectionInfo

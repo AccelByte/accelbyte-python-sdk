@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -88,6 +88,7 @@ class ModelsGetMemberRequestsListResponseV1(Model):
         cls,
         data: List[ModelsMemberRequestResponseV1],
         paging: ModelsPagination,
+        **kwargs,
     ) -> ModelsGetMemberRequestsListResponseV1:
         instance = cls()
         instance.data = data

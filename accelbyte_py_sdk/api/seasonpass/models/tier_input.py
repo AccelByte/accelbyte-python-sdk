@@ -81,6 +81,7 @@ class TierInput(Model):
         cls,
         required_exp: Optional[int] = None,
         rewards: Optional[Dict[str, List[str]]] = None,
+        **kwargs,
     ) -> TierInput:
         instance = cls()
         if required_exp is not None:

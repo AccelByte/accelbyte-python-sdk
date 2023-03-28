@@ -180,9 +180,7 @@ class ListServer(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> ListServer:
+    def create(cls, **kwargs) -> ListServer:
         instance = cls()
         return instance
 

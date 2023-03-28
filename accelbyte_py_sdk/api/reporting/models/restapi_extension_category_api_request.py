@@ -93,6 +93,7 @@ class RestapiExtensionCategoryApiRequest(Model):
         extension_category: str,
         extension_category_name: str,
         service_source: str,
+        **kwargs,
     ) -> RestapiExtensionCategoryApiRequest:
         instance = cls()
         instance.extension_category = extension_category

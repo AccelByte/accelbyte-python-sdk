@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -181,6 +181,7 @@ class ApimodelsCreatePartyRequest(Model):
         min_players: int,
         text_chat: bool,
         type_: str,
+        **kwargs,
     ) -> ApimodelsCreatePartyRequest:
         instance = cls()
         instance.attributes = attributes

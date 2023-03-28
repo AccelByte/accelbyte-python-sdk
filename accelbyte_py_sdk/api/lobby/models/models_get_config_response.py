@@ -75,11 +75,7 @@ class ModelsGetConfigResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        api_key: str,
-        namespace: str,
-    ) -> ModelsGetConfigResponse:
+    def create(cls, api_key: str, namespace: str, **kwargs) -> ModelsGetConfigResponse:
         instance = cls()
         instance.api_key = api_key
         instance.namespace = namespace

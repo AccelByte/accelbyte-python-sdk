@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -115,6 +115,7 @@ class AccountcommonJWTBanV3(Model):
         end_date: str,
         targeted_namespace: str,
         disabled_date: Optional[str] = None,
+        **kwargs,
     ) -> AccountcommonJWTBanV3:
         instance = cls()
         instance.ban = ban

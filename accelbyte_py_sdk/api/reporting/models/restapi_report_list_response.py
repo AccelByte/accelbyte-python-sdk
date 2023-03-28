@@ -83,9 +83,7 @@ class RestapiReportListResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[RestapiReportResponse],
-        paging: RestapiPagination,
+        cls, data: List[RestapiReportResponse], paging: RestapiPagination, **kwargs
     ) -> RestapiReportListResponse:
         instance = cls()
         instance.data = data

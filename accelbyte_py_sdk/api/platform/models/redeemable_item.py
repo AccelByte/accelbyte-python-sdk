@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class RedeemableItem(Model):
         item_name: str,
         extra_subscription_days: Optional[int] = None,
         quantity: Optional[int] = None,
+        **kwargs,
     ) -> RedeemableItem:
         instance = cls()
         instance.item_id = item_id

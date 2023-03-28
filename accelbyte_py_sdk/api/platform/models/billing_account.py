@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -109,6 +109,7 @@ class BillingAccount(Model):
         additional_data: Optional[AdditionalData] = None,
         payment_method: Optional[str] = None,
         payment_provider: Optional[Union[str, PaymentProviderEnum]] = None,
+        **kwargs,
     ) -> BillingAccount:
         instance = cls()
         if additional_data is not None:

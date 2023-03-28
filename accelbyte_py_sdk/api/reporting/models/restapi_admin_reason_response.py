@@ -147,6 +147,7 @@ class RestapiAdminReasonResponse(Model):
         title: str,
         updated_at: str,
         groups: Optional[List[RestapiPublicReasonGroupResponse]] = None,
+        **kwargs,
     ) -> RestapiAdminReasonResponse:
         instance = cls()
         instance.created_at = created_at

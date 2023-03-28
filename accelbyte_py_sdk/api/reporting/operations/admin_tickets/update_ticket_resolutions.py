@@ -229,6 +229,7 @@ class UpdateTicketResolutions(Operation):
         body: RestapiUpdateTicketResolutionsRequest,
         namespace: str,
         ticket_id: str,
+        **kwargs,
     ) -> UpdateTicketResolutions:
         instance = cls()
         instance.body = body

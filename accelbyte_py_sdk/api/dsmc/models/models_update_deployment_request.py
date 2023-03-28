@@ -201,6 +201,7 @@ class ModelsUpdateDeploymentRequest(Model):
         session_timeout: int,
         unlimited: bool,
         use_buffer_percent: bool,
+        **kwargs,
     ) -> ModelsUpdateDeploymentRequest:
         instance = cls()
         instance.allow_version_override = allow_version_override

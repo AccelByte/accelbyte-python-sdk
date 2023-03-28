@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ModelsIcon(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        slug: str,
-        url: str,
-    ) -> ModelsIcon:
+    def create(cls, slug: str, url: str, **kwargs) -> ModelsIcon:
         instance = cls()
         instance.slug = slug
         instance.url = url

@@ -217,11 +217,7 @@ class GetServer(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        pod_name: str,
-    ) -> GetServer:
+    def create(cls, namespace: str, pod_name: str, **kwargs) -> GetServer:
         instance = cls()
         instance.namespace = namespace
         instance.pod_name = pod_name

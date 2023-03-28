@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -151,9 +151,7 @@ class GetHealthcheckInfoV1(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> GetHealthcheckInfoV1:
+    def create(cls, **kwargs) -> GetHealthcheckInfoV1:
         instance = cls()
         return instance
 

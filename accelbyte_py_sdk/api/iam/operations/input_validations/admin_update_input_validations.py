@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -289,8 +289,7 @@ class AdminUpdateInputValidations(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: List[ModelInputValidationUpdatePayload],
+        cls, body: List[ModelInputValidationUpdatePayload], **kwargs
     ) -> AdminUpdateInputValidations:
         instance = cls()
         instance.body = body

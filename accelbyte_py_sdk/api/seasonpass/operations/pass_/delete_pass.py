@@ -228,12 +228,7 @@ class DeletePass(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        code: str,
-        namespace: str,
-        season_id: str,
-    ) -> DeletePass:
+    def create(cls, code: str, namespace: str, season_id: str, **kwargs) -> DeletePass:
         instance = cls()
         instance.code = code
         instance.namespace = namespace

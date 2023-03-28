@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -723,6 +723,7 @@ class PaymentOrder(Model):
         user_id: Optional[str] = None,
         vat: Optional[int] = None,
         zip_code: Optional[str] = None,
+        **kwargs,
     ) -> PaymentOrder:
         instance = cls()
         if authorised_time is not None:

@@ -260,11 +260,7 @@ class DeleteImagePatch(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        image_uri: str,
-        version: str,
-        version_patch: str,
+        cls, namespace: str, image_uri: str, version: str, version_patch: str, **kwargs
     ) -> DeleteImagePatch:
         instance = cls()
         instance.namespace = namespace

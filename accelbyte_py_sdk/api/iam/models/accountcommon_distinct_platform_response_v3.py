@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -73,8 +73,7 @@ class AccountcommonDistinctPlatformResponseV3(Model):
 
     @classmethod
     def create(
-        cls,
-        platforms: List[AccountcommonDistinctLinkedPlatformV3],
+        cls, platforms: List[AccountcommonDistinctLinkedPlatformV3], **kwargs
     ) -> AccountcommonDistinctPlatformResponseV3:
         instance = cls()
         instance.platforms = platforms

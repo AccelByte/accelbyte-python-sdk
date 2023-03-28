@@ -165,9 +165,7 @@ class PublicGetMessages(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> PublicGetMessages:
+    def create(cls, **kwargs) -> PublicGetMessages:
         instance = cls()
         return instance
 

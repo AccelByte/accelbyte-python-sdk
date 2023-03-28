@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -93,10 +93,7 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        code: str,
-        login_id: str,
-        password: str,
+        cls, code: str, login_id: str, password: str, **kwargs
     ) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequest:
         instance = cls()
         instance.code = code

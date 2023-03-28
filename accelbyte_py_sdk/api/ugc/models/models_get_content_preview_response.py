@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -80,9 +80,7 @@ class ModelsGetContentPreviewResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        preview: str,
-        preview_url: Optional[ModelsPreviewURL] = None,
+        cls, preview: str, preview_url: Optional[ModelsPreviewURL] = None, **kwargs
     ) -> ModelsGetContentPreviewResponse:
         instance = cls()
         instance.preview = preview

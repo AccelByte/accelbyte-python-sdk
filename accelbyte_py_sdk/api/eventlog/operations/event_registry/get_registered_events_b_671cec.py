@@ -212,10 +212,7 @@ class GetRegisteredEventsByEventTypeHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        event_type: str,
-    ) -> GetRegisteredEventsByEventTypeHandler:
+    def create(cls, event_type: str, **kwargs) -> GetRegisteredEventsByEventTypeHandler:
         instance = cls()
         instance.event_type = event_type
         return instance

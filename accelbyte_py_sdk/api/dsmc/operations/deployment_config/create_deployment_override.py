@@ -271,6 +271,7 @@ class CreateDeploymentOverride(Operation):
         deployment: str,
         namespace: str,
         version: str,
+        **kwargs,
     ) -> CreateDeploymentOverride:
         instance = cls()
         instance.body = body

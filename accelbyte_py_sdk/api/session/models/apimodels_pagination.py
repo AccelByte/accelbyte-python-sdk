@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -98,11 +98,7 @@ class ApimodelsPagination(Model):
 
     @classmethod
     def create(
-        cls,
-        first: str,
-        last: str,
-        next_: str,
-        previous: str,
+        cls, first: str, last: str, next_: str, previous: str, **kwargs
     ) -> ApimodelsPagination:
         instance = cls()
         instance.first = first

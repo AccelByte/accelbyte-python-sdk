@@ -98,6 +98,7 @@ class ApiListMatchFunctionsResponse(Model):
         configs: List[ApiMatchFunctionConfig],
         functions: List[str],
         pagination: ModelsPagination,
+        **kwargs,
     ) -> ApiListMatchFunctionsResponse:
         instance = cls()
         instance.configs = configs

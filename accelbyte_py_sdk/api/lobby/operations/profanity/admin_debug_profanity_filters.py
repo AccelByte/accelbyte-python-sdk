@@ -238,9 +238,7 @@ class AdminDebugProfanityFilters(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsDebugProfanityFilterRequest,
-        namespace: str,
+        cls, body: ModelsDebugProfanityFilterRequest, namespace: str, **kwargs
     ) -> AdminDebugProfanityFilters:
         instance = cls()
         instance.body = body

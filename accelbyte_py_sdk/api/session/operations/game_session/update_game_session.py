@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -250,6 +250,7 @@ class UpdateGameSession(Operation):
         body: ApimodelsUpdateGameSessionRequest,
         namespace: str,
         session_id: str,
+        **kwargs,
     ) -> UpdateGameSession:
         instance = cls()
         instance.body = body

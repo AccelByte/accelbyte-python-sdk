@@ -187,8 +187,7 @@ class SpecificEventTypeDescriptionHandler(Operation):
 
     @classmethod
     def create(
-        cls,
-        event_types: Optional[str] = None,
+        cls, event_types: Optional[str] = None, **kwargs
     ) -> SpecificEventTypeDescriptionHandler:
         instance = cls()
         if event_types is not None:

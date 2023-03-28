@@ -304,6 +304,7 @@ class LocalizedSeasonInfo(Model):
         pass_codes: Optional[List[str]] = None,
         published_at: Optional[str] = None,
         title: Optional[str] = None,
+        **kwargs,
     ) -> LocalizedSeasonInfo:
         instance = cls()
         instance.auto_claim = auto_claim

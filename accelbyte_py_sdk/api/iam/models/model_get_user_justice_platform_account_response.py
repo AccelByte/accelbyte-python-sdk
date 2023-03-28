@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,9 +78,7 @@ class ModelGetUserJusticePlatformAccountResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        designated_namespace: str,
-        user_id: str,
+        cls, designated_namespace: str, user_id: str, **kwargs
     ) -> ModelGetUserJusticePlatformAccountResponse:
         instance = cls()
         instance.designated_namespace = designated_namespace

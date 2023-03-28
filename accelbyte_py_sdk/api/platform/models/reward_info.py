@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -203,6 +203,7 @@ class RewardInfo(Model):
         reward_conditions: Optional[List[RewardCondition]] = None,
         updated_at: Optional[str] = None,
         user_id_expression: Optional[str] = None,
+        **kwargs,
     ) -> RewardInfo:
         instance = cls()
         instance.event_topic = event_topic

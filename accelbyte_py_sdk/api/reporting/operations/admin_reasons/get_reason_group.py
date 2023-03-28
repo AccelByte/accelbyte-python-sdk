@@ -207,11 +207,7 @@ class GetReasonGroup(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        group_id: str,
-        namespace: str,
-    ) -> GetReasonGroup:
+    def create(cls, group_id: str, namespace: str, **kwargs) -> GetReasonGroup:
         instance = cls()
         instance.group_id = group_id
         instance.namespace = namespace

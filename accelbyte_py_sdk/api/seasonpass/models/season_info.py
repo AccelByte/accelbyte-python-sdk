@@ -301,6 +301,7 @@ class SeasonInfo(Model):
         images: Optional[List[Image]] = None,
         pass_codes: Optional[List[str]] = None,
         published_at: Optional[str] = None,
+        **kwargs,
     ) -> SeasonInfo:
         instance = cls()
         instance.auto_claim = auto_claim

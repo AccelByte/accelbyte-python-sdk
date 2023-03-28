@@ -121,6 +121,7 @@ class ModelTemplateLocalization(Model):
         template_content: ModelTemplateContent,
         template_language: str,
         template_slug: str,
+        **kwargs,
     ) -> ModelTemplateLocalization:
         instance = cls()
         instance.last_draft_at = last_draft_at

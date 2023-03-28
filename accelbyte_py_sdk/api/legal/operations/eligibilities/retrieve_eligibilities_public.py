@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -198,10 +198,7 @@ class RetrieveEligibilitiesPublic(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> RetrieveEligibilitiesPublic:
+    def create(cls, namespace: str, **kwargs) -> RetrieveEligibilitiesPublic:
         instance = cls()
         instance.namespace = namespace
         return instance

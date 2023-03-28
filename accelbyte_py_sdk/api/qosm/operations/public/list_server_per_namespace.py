@@ -219,9 +219,7 @@ class ListServerPerNamespace(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        status: Optional[str] = None,
+        cls, namespace: str, status: Optional[str] = None, **kwargs
     ) -> ListServerPerNamespace:
         instance = cls()
         instance.namespace = namespace

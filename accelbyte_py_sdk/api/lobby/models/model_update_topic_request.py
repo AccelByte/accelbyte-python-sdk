@@ -64,10 +64,7 @@ class ModelUpdateTopicRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        description: str,
-    ) -> ModelUpdateTopicRequest:
+    def create(cls, description: str, **kwargs) -> ModelUpdateTopicRequest:
         instance = cls()
         instance.description = description
         return instance

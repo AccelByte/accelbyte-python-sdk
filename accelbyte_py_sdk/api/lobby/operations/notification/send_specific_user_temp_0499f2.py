@@ -254,6 +254,7 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
         body: ModelNotificationWithTemplateRequestV1,
         namespace: str,
         user_id: str,
+        **kwargs,
     ) -> SendSpecificUserTemplatedNotificationV1Admin:
         instance = cls()
         instance.body = body

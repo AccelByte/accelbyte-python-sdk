@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -235,9 +235,7 @@ class AdminRemoveRoleManagersV3(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelRoleManagersRequestV3,
-        role_id: str,
+        cls, body: ModelRoleManagersRequestV3, role_id: str, **kwargs
     ) -> AdminRemoveRoleManagersV3:
         instance = cls()
         instance.body = body

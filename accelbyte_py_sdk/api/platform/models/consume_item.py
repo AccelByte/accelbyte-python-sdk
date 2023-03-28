@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -99,6 +99,7 @@ class ConsumeItem(Model):
         ext_item_id: Optional[str] = None,
         item_identity: Optional[str] = None,
         item_identity_type: Optional[Union[str, ItemIdentityTypeEnum]] = None,
+        **kwargs,
     ) -> ConsumeItem:
         instance = cls()
         if ext_item_id is not None:

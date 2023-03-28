@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class ModelRoleV4Request(Model):
         is_wildcard: bool,
         role_name: str,
         deletable: Optional[bool] = None,
+        **kwargs,
     ) -> ModelRoleV4Request:
         instance = cls()
         instance.admin_role = admin_role

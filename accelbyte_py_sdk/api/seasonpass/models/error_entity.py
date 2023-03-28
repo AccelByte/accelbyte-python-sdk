@@ -105,6 +105,7 @@ class ErrorEntity(Model):
         error_message: str,
         dev_stack_trace: Optional[str] = None,
         message_variables: Optional[Dict[str, str]] = None,
+        **kwargs,
     ) -> ErrorEntity:
         instance = cls()
         instance.error_code = error_code

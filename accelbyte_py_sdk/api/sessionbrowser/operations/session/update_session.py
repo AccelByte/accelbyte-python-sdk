@@ -239,10 +239,7 @@ class UpdateSession(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsUpdateSessionRequest,
-        namespace: str,
-        session_id: str,
+        cls, body: ModelsUpdateSessionRequest, namespace: str, session_id: str, **kwargs
     ) -> UpdateSession:
         instance = cls()
         instance.body = body

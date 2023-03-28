@@ -136,6 +136,7 @@ class RewardCreate(Model):
         image: Optional[Image] = None,
         item_id: Optional[str] = None,
         quantity: Optional[int] = None,
+        **kwargs,
     ) -> RewardCreate:
         instance = cls()
         instance.code = code

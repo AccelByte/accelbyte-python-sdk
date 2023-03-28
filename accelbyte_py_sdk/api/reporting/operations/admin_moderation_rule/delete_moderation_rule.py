@@ -208,11 +208,7 @@ class DeleteModerationRule(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        rule_id: str,
-    ) -> DeleteModerationRule:
+    def create(cls, namespace: str, rule_id: str, **kwargs) -> DeleteModerationRule:
         instance = cls()
         instance.namespace = namespace
         instance.rule_id = rule_id

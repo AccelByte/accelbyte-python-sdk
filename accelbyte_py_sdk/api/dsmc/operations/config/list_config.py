@@ -180,9 +180,7 @@ class ListConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> ListConfig:
+    def create(cls, **kwargs) -> ListConfig:
         instance = cls()
         return instance
 

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,13 +34,13 @@ class ModelUpdateUserStatusRequest(Model):
     Properties:
         enabled: (enabled) REQUIRED bool
 
-        reason: (reason) REQUIRED str
+        reason: (reason) OPTIONAL str
     """
 
     # region fields
 
     enabled: bool  # REQUIRED
-    reason: str  # REQUIRED
+    reason: str  # OPTIONAL
 
     # endregion fields
 
@@ -76,13 +76,12 @@ class ModelUpdateUserStatusRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        enabled: bool,
-        reason: str,
+        cls, enabled: bool, reason: Optional[str] = None, **kwargs
     ) -> ModelUpdateUserStatusRequest:
         instance = cls()
         instance.enabled = enabled
-        instance.reason = reason
+        if reason is not None:
+            instance.reason = reason
         return instance
 
     @classmethod
@@ -151,7 +150,7 @@ class ModelUpdateUserStatusRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "enabled": True,
-            "reason": True,
+            "reason": False,
         }
 
     # endregion static methods

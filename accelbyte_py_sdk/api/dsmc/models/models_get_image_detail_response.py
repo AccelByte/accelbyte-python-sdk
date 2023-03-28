@@ -66,10 +66,7 @@ class ModelsGetImageDetailResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        data: ModelsImageRecord,
-    ) -> ModelsGetImageDetailResponse:
+    def create(cls, data: ModelsImageRecord, **kwargs) -> ModelsGetImageDetailResponse:
         instance = cls()
         instance.data = data
         return instance

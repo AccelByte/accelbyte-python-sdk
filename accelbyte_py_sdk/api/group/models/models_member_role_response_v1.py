@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -98,6 +98,7 @@ class ModelsMemberRoleResponseV1(Model):
         member_role_id: str,
         member_role_name: str,
         member_role_permissions: List[ModelsRolePermission],
+        **kwargs,
     ) -> ModelsMemberRoleResponseV1:
         instance = cls()
         instance.member_role_id = member_role_id

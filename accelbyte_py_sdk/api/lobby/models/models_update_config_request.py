@@ -64,10 +64,7 @@ class ModelsUpdateConfigRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        api_key: str,
-    ) -> ModelsUpdateConfigRequest:
+    def create(cls, api_key: str, **kwargs) -> ModelsUpdateConfigRequest:
         instance = cls()
         instance.api_key = api_key
         return instance

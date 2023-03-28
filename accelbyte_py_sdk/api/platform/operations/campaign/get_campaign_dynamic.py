@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -204,11 +204,7 @@ class GetCampaignDynamic(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        campaign_id: str,
-        namespace: str,
-    ) -> GetCampaignDynamic:
+    def create(cls, campaign_id: str, namespace: str, **kwargs) -> GetCampaignDynamic:
         instance = cls()
         instance.campaign_id = campaign_id
         instance.namespace = namespace

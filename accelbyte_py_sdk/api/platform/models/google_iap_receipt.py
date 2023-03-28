@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -152,6 +152,7 @@ class GoogleIAPReceipt(Model):
         auto_ack: Optional[bool] = None,
         language: Optional[str] = None,
         region: Optional[str] = None,
+        **kwargs,
     ) -> GoogleIAPReceipt:
         instance = cls()
         instance.order_id = order_id

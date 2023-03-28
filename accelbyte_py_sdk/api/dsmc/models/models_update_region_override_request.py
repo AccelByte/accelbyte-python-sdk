@@ -127,6 +127,7 @@ class ModelsUpdateRegionOverrideRequest(Model):
         min_count: int,
         unlimited: bool,
         use_buffer_percent: bool,
+        **kwargs,
     ) -> ModelsUpdateRegionOverrideRequest:
         instance = cls()
         instance.buffer_count = buffer_count

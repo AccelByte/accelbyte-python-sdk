@@ -76,9 +76,7 @@ class ModelsAddPlayerRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        as_spectator: bool,
-        user_id: str,
+        cls, as_spectator: bool, user_id: str, **kwargs
     ) -> ModelsAddPlayerRequest:
         instance = cls()
         instance.as_spectator = as_spectator

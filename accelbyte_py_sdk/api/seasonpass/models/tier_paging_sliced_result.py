@@ -96,6 +96,7 @@ class TierPagingSlicedResult(Model):
         data: List[Tier],
         paging: Optional[Paging] = None,
         total: Optional[int] = None,
+        **kwargs,
     ) -> TierPagingSlicedResult:
         instance = cls()
         instance.data = data

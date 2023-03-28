@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,8 +71,7 @@ class ModelPublicUsersResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        users: Optional[List[ModelPublicUserResponse]] = None,
+        cls, users: Optional[List[ModelPublicUserResponse]] = None, **kwargs
     ) -> ModelPublicUsersResponse:
         instance = cls()
         if users is not None:

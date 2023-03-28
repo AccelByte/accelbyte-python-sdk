@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -244,6 +244,7 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
         state: str,
         code: Optional[str] = None,
         error: Optional[str] = None,
+        **kwargs,
     ) -> PlatformAuthenticateSAMLV3Handler:
         instance = cls()
         instance.platform_id = platform_id

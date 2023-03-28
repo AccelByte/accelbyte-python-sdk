@@ -213,9 +213,7 @@ class PublicGetCurrentSeason(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        language: Optional[str] = None,
+        cls, namespace: str, language: Optional[str] = None, **kwargs
     ) -> PublicGetCurrentSeason:
         instance = cls()
         instance.namespace = namespace

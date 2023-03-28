@@ -349,6 +349,7 @@ class UserQuerySession(Operation):
         offset: Optional[int] = None,
         server_status: Optional[str] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> UserQuerySession:
         instance = cls()
         instance.namespace = namespace

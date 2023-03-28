@@ -224,6 +224,7 @@ class TicketStatistic(Operation):
         namespace: str,
         category: str,
         extension_category: Optional[str] = None,
+        **kwargs,
     ) -> TicketStatistic:
         instance = cls()
         instance.namespace = namespace

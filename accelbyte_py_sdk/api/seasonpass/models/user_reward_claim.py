@@ -87,10 +87,7 @@ class UserRewardClaim(Model):
 
     @classmethod
     def create(
-        cls,
-        pass_code: str,
-        reward_code: str,
-        tier_index: int,
+        cls, pass_code: str, reward_code: str, tier_index: int, **kwargs
     ) -> UserRewardClaim:
         instance = cls()
         instance.pass_code = pass_code

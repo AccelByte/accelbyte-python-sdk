@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class Attribute(Model):
 
     @classmethod
     def create(
-        cls,
-        name: Optional[str] = None,
-        value: Optional[str] = None,
+        cls, name: Optional[str] = None, value: Optional[str] = None, **kwargs
     ) -> Attribute:
         instance = cls()
         if name is not None:

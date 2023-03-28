@@ -32,6 +32,8 @@ class ModelsConfigReq(Model):
     """Models config req (models.ConfigReq)
 
     Properties:
+        unregister_delay: (unregisterDelay) REQUIRED int
+
         allow_invite_non_connected_user: (allowInviteNonConnectedUser) OPTIONAL bool
 
         allow_join_party_during_matchmaking: (allowJoinPartyDuringMatchmaking) OPTIONAL bool
@@ -73,6 +75,7 @@ class ModelsConfigReq(Model):
 
     # region fields
 
+    unregister_delay: int  # REQUIRED
     allow_invite_non_connected_user: bool  # OPTIONAL
     allow_join_party_during_matchmaking: bool  # OPTIONAL
     auto_kick_on_disconnect: bool  # OPTIONAL
@@ -96,6 +99,10 @@ class ModelsConfigReq(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_unregister_delay(self, value: int) -> ModelsConfigReq:
+        self.unregister_delay = value
+        return self
 
     def with_allow_invite_non_connected_user(self, value: bool) -> ModelsConfigReq:
         self.allow_invite_non_connected_user = value
@@ -179,6 +186,10 @@ class ModelsConfigReq(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "unregister_delay"):
+            result["unregisterDelay"] = int(self.unregister_delay)
+        elif include_empty:
+            result["unregisterDelay"] = 0
         if hasattr(self, "allow_invite_non_connected_user"):
             result["allowInviteNonConnectedUser"] = bool(
                 self.allow_invite_non_connected_user
@@ -274,6 +285,7 @@ class ModelsConfigReq(Model):
     @classmethod
     def create(
         cls,
+        unregister_delay: int,
         allow_invite_non_connected_user: Optional[bool] = None,
         allow_join_party_during_matchmaking: Optional[bool] = None,
         auto_kick_on_disconnect: Optional[bool] = None,
@@ -293,8 +305,10 @@ class ModelsConfigReq(Model):
         max_party_member: Optional[int] = None,
         profanity_filter: Optional[bool] = None,
         ready_consent_timeout: Optional[int] = None,
+        **kwargs,
     ) -> ModelsConfigReq:
         instance = cls()
+        instance.unregister_delay = unregister_delay
         if allow_invite_non_connected_user is not None:
             instance.allow_invite_non_connected_user = allow_invite_non_connected_user
         if allow_join_party_during_matchmaking is not None:
@@ -346,6 +360,10 @@ class ModelsConfigReq(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "unregisterDelay" in dict_ and dict_["unregisterDelay"] is not None:
+            instance.unregister_delay = int(dict_["unregisterDelay"])
+        elif include_empty:
+            instance.unregister_delay = 0
         if (
             "allowInviteNonConnectedUser" in dict_
             and dict_["allowInviteNonConnectedUser"] is not None
@@ -508,6 +526,7 @@ class ModelsConfigReq(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "unregisterDelay": "unregister_delay",
             "allowInviteNonConnectedUser": "allow_invite_non_connected_user",
             "allowJoinPartyDuringMatchmaking": "allow_join_party_during_matchmaking",
             "autoKickOnDisconnect": "auto_kick_on_disconnect",
@@ -532,6 +551,7 @@ class ModelsConfigReq(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "unregisterDelay": True,
             "allowInviteNonConnectedUser": False,
             "allowJoinPartyDuringMatchmaking": False,
             "autoKickOnDisconnect": False,

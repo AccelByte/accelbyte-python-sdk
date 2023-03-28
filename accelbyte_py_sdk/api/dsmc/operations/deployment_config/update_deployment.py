@@ -251,6 +251,7 @@ class UpdateDeployment(Operation):
         body: ModelsUpdateDeploymentRequest,
         deployment: str,
         namespace: str,
+        **kwargs,
     ) -> UpdateDeployment:
         instance = cls()
         instance.body = body

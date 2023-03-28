@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -141,6 +141,7 @@ class AccountcommonPlatformUserInformationV3(Model):
         display_name: Optional[str] = None,
         email_address: Optional[str] = None,
         xbox_user_id: Optional[str] = None,
+        **kwargs,
     ) -> AccountcommonPlatformUserInformationV3:
         instance = cls()
         instance.linked_at = linked_at

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -99,6 +99,7 @@ class ModelLinkingHistoryResponseWithPaginationV3(Model):
         data: List[str],
         paging: AccountcommonPaginationV3,
         total_data: int,
+        **kwargs,
     ) -> ModelLinkingHistoryResponseWithPaginationV3:
         instance = cls()
         instance.data = data

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -79,6 +79,7 @@ class UploadPolicyVersionAttachmentRequest(Model):
         cls,
         content_md5: Optional[str] = None,
         content_type: Optional[str] = None,
+        **kwargs,
     ) -> UploadPolicyVersionAttachmentRequest:
         instance = cls()
         if content_md5 is not None:

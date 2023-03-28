@@ -242,6 +242,7 @@ class CloneSeason(Operation):
         namespace: str,
         season_id: str,
         body: Optional[SeasonCloneRequest] = None,
+        **kwargs,
     ) -> CloneSeason:
         instance = cls()
         instance.namespace = namespace

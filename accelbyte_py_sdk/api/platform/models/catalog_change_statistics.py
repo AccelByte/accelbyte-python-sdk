@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class CatalogChangeStatistics(Model):
 
     @classmethod
     def create(
-        cls,
-        count: int,
-        selected_count: int,
+        cls, count: int, selected_count: int, **kwargs
     ) -> CatalogChangeStatistics:
         instance = cls()
         instance.count = count

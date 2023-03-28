@@ -64,10 +64,7 @@ class ModelsDefaultProvider(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        provider_name: str,
-    ) -> ModelsDefaultProvider:
+    def create(cls, provider_name: str, **kwargs) -> ModelsDefaultProvider:
         instance = cls()
         instance.provider_name = provider_name
         return instance

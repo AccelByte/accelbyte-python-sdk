@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -215,10 +215,7 @@ class PublicWebLinkPlatformEstablish(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        platform_id: str,
-        state: str,
+        cls, namespace: str, platform_id: str, state: str, **kwargs
     ) -> PublicWebLinkPlatformEstablish:
         instance = cls()
         instance.namespace = namespace

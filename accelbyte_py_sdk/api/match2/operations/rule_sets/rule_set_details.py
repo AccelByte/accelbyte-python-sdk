@@ -219,11 +219,7 @@ class RuleSetDetails(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        ruleset: str,
-    ) -> RuleSetDetails:
+    def create(cls, namespace: str, ruleset: str, **kwargs) -> RuleSetDetails:
         instance = cls()
         instance.namespace = namespace
         instance.ruleset = ruleset

@@ -209,11 +209,7 @@ class QueryPasses(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        season_id: str,
-    ) -> QueryPasses:
+    def create(cls, namespace: str, season_id: str, **kwargs) -> QueryPasses:
         instance = cls()
         instance.namespace = namespace
         instance.season_id = season_id

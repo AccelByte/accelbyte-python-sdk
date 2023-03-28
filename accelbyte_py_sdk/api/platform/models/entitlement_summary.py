@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -251,6 +251,7 @@ class EntitlementSummary(Model):
         stacked_use_count: Optional[int] = None,
         start_date: Optional[str] = None,
         store_id: Optional[str] = None,
+        **kwargs,
     ) -> EntitlementSummary:
         instance = cls()
         instance.clazz = clazz

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -163,6 +163,7 @@ class RedeemHistoryInfo(Model):
         user_id: str,
         order_no: Optional[str] = None,
         redeemed_at: Optional[str] = None,
+        **kwargs,
     ) -> RedeemHistoryInfo:
         instance = cls()
         instance.campaign_id = campaign_id

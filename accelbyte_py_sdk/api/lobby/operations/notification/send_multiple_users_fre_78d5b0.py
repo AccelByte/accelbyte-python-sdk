@@ -227,9 +227,7 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelBulkUsersFreeFormNotificationRequestV1,
-        namespace: str,
+        cls, body: ModelBulkUsersFreeFormNotificationRequestV1, namespace: str, **kwargs
     ) -> SendMultipleUsersFreeformNotificationV1Admin:
         instance = cls()
         instance.body = body

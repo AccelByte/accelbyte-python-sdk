@@ -86,9 +86,7 @@ class RestapiUpdateTicketResolutionsRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        notes: str,
-        status: Union[str, StatusEnum],
+        cls, notes: str, status: Union[str, StatusEnum], **kwargs
     ) -> RestapiUpdateTicketResolutionsRequest:
         instance = cls()
         instance.notes = notes

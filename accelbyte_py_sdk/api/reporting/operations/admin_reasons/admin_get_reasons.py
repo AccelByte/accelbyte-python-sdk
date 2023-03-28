@@ -253,6 +253,7 @@ class AdminGetReasons(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         title: Optional[str] = None,
+        **kwargs,
     ) -> AdminGetReasons:
         instance = cls()
         instance.namespace = namespace

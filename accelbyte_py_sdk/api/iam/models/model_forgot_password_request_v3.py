@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelForgotPasswordRequestV3(Model):
 
     @classmethod
     def create(
-        cls,
-        email_address: str,
-        language_tag: Optional[str] = None,
+        cls, email_address: str, language_tag: Optional[str] = None, **kwargs
     ) -> ModelForgotPasswordRequestV3:
         instance = cls()
         instance.email_address = email_address

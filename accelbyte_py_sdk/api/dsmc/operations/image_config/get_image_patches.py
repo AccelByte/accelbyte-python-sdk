@@ -218,11 +218,7 @@ class GetImagePatches(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        version: str,
-    ) -> GetImagePatches:
+    def create(cls, namespace: str, version: str, **kwargs) -> GetImagePatches:
         instance = cls()
         instance.namespace = namespace
         instance.version = version

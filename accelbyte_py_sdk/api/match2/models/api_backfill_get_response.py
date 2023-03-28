@@ -119,6 +119,7 @@ class ApiBackfillGetResponse(Model):
         match_session_id: Optional[str] = None,
         partial_match: Optional[ApiMatch] = None,
         ticket_id: Optional[str] = None,
+        **kwargs,
     ) -> ApiBackfillGetResponse:
         instance = cls()
         if created_at is not None:

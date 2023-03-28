@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -98,11 +98,7 @@ class ModelsGetLeaderboardConfigPublicResp(Model):
 
     @classmethod
     def create(
-        cls,
-        icon_url: str,
-        leaderboard_code: str,
-        name: str,
-        stat_code: str,
+        cls, icon_url: str, leaderboard_code: str, name: str, stat_code: str, **kwargs
     ) -> ModelsGetLeaderboardConfigPublicResp:
         instance = cls()
         instance.icon_url = icon_url

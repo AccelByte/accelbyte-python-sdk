@@ -151,6 +151,7 @@ class ModelsPodConfigRecord(Model):
         namespace: str,
         params: str,
         updated_at: str,
+        **kwargs,
     ) -> ModelsPodConfigRecord:
         instance = cls()
         instance.cpu_limit = cpu_limit

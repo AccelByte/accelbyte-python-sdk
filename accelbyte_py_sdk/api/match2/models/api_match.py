@@ -148,6 +148,7 @@ class ApiMatch(Model):
         server_name: Optional[str] = None,
         teams: Optional[List[ApiTeam]] = None,
         tickets: Optional[List[ApiTicket]] = None,
+        **kwargs,
     ) -> ApiMatch:
         instance = cls()
         if backfill is not None:

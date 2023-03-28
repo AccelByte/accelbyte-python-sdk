@@ -64,10 +64,7 @@ class ModelsServerSessionResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        session_id: str,
-    ) -> ModelsServerSessionResponse:
+    def create(cls, session_id: str, **kwargs) -> ModelsServerSessionResponse:
         instance = cls()
         instance.session_id = session_id
         return instance

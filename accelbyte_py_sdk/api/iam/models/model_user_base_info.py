@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -117,6 +117,7 @@ class ModelUserBaseInfo(Model):
         platform_user_ids: Dict[str, str],
         user_id: str,
         username: Optional[str] = None,
+        **kwargs,
     ) -> ModelUserBaseInfo:
         instance = cls()
         instance.avatar_url = avatar_url

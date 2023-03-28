@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -93,6 +93,7 @@ class SteamIAPConfigInfo(Model):
         namespace: str,
         publisher_authentication_key: str,
         app_id: Optional[str] = None,
+        **kwargs,
     ) -> SteamIAPConfigInfo:
         instance = cls()
         instance.namespace = namespace

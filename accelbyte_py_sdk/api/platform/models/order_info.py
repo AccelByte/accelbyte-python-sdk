@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -547,6 +547,7 @@ class OrderInfo(Model):
         total_price: Optional[int] = None,
         total_tax: Optional[int] = None,
         vat: Optional[int] = None,
+        **kwargs,
     ) -> OrderInfo:
         instance = cls()
         instance.created_at = created_at

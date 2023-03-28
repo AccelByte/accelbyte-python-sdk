@@ -75,11 +75,7 @@ class ResponseError(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        error_code: int,
-        error_message: str,
-    ) -> ResponseError:
+    def create(cls, error_code: int, error_message: str, **kwargs) -> ResponseError:
         instance = cls()
         instance.error_code = error_code
         instance.error_message = error_message

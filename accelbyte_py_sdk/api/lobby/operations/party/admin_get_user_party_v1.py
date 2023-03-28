@@ -230,11 +230,7 @@ class AdminGetUserPartyV1(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        user_id: str,
-    ) -> AdminGetUserPartyV1:
+    def create(cls, namespace: str, user_id: str, **kwargs) -> AdminGetUserPartyV1:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id

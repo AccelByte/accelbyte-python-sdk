@@ -228,10 +228,7 @@ class QueryRewards(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        season_id: str,
-        q: Optional[str] = None,
+        cls, namespace: str, season_id: str, q: Optional[str] = None, **kwargs
     ) -> QueryRewards:
         instance = cls()
         instance.namespace = namespace

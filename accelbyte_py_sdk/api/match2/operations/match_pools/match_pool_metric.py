@@ -228,11 +228,7 @@ class MatchPoolMetric(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        pool: str,
-    ) -> MatchPoolMetric:
+    def create(cls, namespace: str, pool: str, **kwargs) -> MatchPoolMetric:
         instance = cls()
         instance.namespace = namespace
         instance.pool = pool

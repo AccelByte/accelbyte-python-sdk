@@ -262,6 +262,7 @@ class ReorderTier(Operation):
         namespace: str,
         season_id: str,
         body: Optional[TierReorder] = None,
+        **kwargs,
     ) -> ReorderTier:
         instance = cls()
         instance.id_ = id_

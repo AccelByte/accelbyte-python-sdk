@@ -243,9 +243,7 @@ class CreateBackfill(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ApiBackFillCreateRequest,
-        namespace: str,
+        cls, body: ApiBackFillCreateRequest, namespace: str, **kwargs
     ) -> CreateBackfill:
         instance = cls()
         instance.body = body

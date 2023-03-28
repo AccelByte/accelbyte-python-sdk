@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelsPreviewURL(Model):
 
     @classmethod
     def create(
-        cls,
-        source: Optional[str] = None,
-        url: Optional[str] = None,
+        cls, source: Optional[str] = None, url: Optional[str] = None, **kwargs
     ) -> ModelsPreviewURL:
         instance = cls()
         if source is not None:

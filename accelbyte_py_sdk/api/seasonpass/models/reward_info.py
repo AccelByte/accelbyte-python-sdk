@@ -210,6 +210,7 @@ class RewardInfo(Model):
         item_sku: Optional[str] = None,
         item_type: Optional[Union[str, ItemTypeEnum]] = None,
         quantity: Optional[int] = None,
+        **kwargs,
     ) -> RewardInfo:
         instance = cls()
         instance.code = code

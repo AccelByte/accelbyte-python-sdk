@@ -90,6 +90,7 @@ class ModelLoadOutgoingFriendsWithTimeResponse(Model):
         cls,
         data: List[ModelOutgoingFriendsWithTimeData],
         paging: ModelPagination,
+        **kwargs,
     ) -> ModelLoadOutgoingFriendsWithTimeResponse:
         instance = cls()
         instance.data = data

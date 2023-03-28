@@ -87,10 +87,7 @@ class ModelCreateTemplateRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        template_content: str,
-        template_language: str,
-        template_slug: str,
+        cls, template_content: str, template_language: str, template_slug: str, **kwargs
     ) -> ModelCreateTemplateRequest:
         instance = cls()
         instance.template_content = template_content

@@ -17,3 +17,4 @@ __email__ = "dev@accelbyte.net"
 from .create_match_function import CreateMatchFunction
 from .delete_match_function import DeleteMatchFunction
 from .match_function_list import MatchFunctionList
+from .update_match_function import UpdateMatchFunction

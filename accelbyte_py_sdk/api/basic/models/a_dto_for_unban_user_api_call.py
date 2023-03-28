@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ADTOForUnbanUserAPICall(Model):
 
     @classmethod
     def create(
-        cls,
-        user_ids: List[str],
-        comment: Optional[str] = None,
+        cls, user_ids: List[str], comment: Optional[str] = None, **kwargs
     ) -> ADTOForUnbanUserAPICall:
         instance = cls()
         instance.user_ids = user_ids

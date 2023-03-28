@@ -246,10 +246,7 @@ class AdminChatHistory(Operation):
 
     @classmethod
     def create(
-        cls,
-        friend_id: str,
-        namespace: str,
-        user_id: str,
+        cls, friend_id: str, namespace: str, user_id: str, **kwargs
     ) -> AdminChatHistory:
         instance = cls()
         instance.friend_id = friend_id

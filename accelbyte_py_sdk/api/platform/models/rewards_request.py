@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -122,6 +122,7 @@ class RewardsRequest(Model):
         rewards: List[PlatformReward],
         origin: Optional[Union[str, OriginEnum]] = None,
         source: Optional[Union[str, SourceEnum]] = None,
+        **kwargs,
     ) -> RewardsRequest:
         instance = cls()
         instance.rewards = rewards

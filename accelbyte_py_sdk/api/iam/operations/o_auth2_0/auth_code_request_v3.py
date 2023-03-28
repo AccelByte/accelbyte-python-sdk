@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -285,6 +285,7 @@ class AuthCodeRequestV3(Operation):
         request_id: str,
         client_id: Optional[str] = None,
         redirect_uri: Optional[str] = None,
+        **kwargs,
     ) -> AuthCodeRequestV3:
         instance = cls()
         instance.platform_id = platform_id

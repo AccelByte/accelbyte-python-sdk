@@ -225,9 +225,7 @@ class CreateSeason(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        body: Optional[SeasonCreate] = None,
+        cls, namespace: str, body: Optional[SeasonCreate] = None, **kwargs
     ) -> CreateSeason:
         instance = cls()
         instance.namespace = namespace

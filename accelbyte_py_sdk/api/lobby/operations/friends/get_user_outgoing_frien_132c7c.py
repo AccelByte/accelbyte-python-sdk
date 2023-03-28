@@ -210,10 +210,7 @@ class GetUserOutgoingFriendsWithTime(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> GetUserOutgoingFriendsWithTime:
+    def create(cls, namespace: str, **kwargs) -> GetUserOutgoingFriendsWithTime:
         instance = cls()
         instance.namespace = namespace
         return instance

@@ -223,6 +223,7 @@ class ModelsEvent(Model):
         time: str,
         user_id: str,
         ux: int,
+        **kwargs,
     ) -> ModelsEvent:
         instance = cls()
         instance.agent_type = agent_type

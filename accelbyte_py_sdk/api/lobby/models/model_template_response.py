@@ -82,9 +82,7 @@ class ModelTemplateResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        localizations: List[ModelLocalization],
-        template_slug: str,
+        cls, localizations: List[ModelLocalization], template_slug: str, **kwargs
     ) -> ModelTemplateResponse:
         instance = cls()
         instance.localizations = localizations

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -135,6 +135,7 @@ class AccountcommonNetflixCertificates(Model):
         public_certificate_name: str,
         root_certificate: str,
         root_certificate_name: str,
+        **kwargs,
     ) -> AccountcommonNetflixCertificates:
         instance = cls()
         instance.encrypted_private_key = encrypted_private_key

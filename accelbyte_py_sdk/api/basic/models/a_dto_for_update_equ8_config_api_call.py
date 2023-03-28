@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,8 +65,7 @@ class ADTOForUpdateEqu8ConfigAPICall(Model):
 
     @classmethod
     def create(
-        cls,
-        api_key: Optional[str] = None,
+        cls, api_key: Optional[str] = None, **kwargs
     ) -> ADTOForUpdateEqu8ConfigAPICall:
         instance = cls()
         if api_key is not None:

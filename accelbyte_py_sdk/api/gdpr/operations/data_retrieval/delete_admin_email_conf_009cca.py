@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Gdpr Service (1.19.2)
+# AccelByte Gaming Services Gdpr Service (1.20.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -233,9 +233,7 @@ class DeleteAdminEmailConfiguration(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        emails: List[str],
+        cls, namespace: str, emails: List[str], **kwargs
     ) -> DeleteAdminEmailConfiguration:
         instance = cls()
         instance.namespace = namespace

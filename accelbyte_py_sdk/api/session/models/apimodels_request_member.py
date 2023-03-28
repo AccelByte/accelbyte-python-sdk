@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,10 +87,7 @@ class ApimodelsRequestMember(Model):
 
     @classmethod
     def create(
-        cls,
-        id_: str,
-        platform_id: str,
-        platform_user_id: str,
+        cls, id_: str, platform_id: str, platform_user_id: str, **kwargs
     ) -> ApimodelsRequestMember:
         instance = cls()
         instance.id_ = id_

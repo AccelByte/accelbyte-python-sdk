@@ -236,10 +236,7 @@ class UpdateServerConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsUpdateServerRequest,
-        namespace: str,
-        region: str,
+        cls, body: ModelsUpdateServerRequest, namespace: str, region: str, **kwargs
     ) -> UpdateServerConfig:
         instance = cls()
         instance.body = body

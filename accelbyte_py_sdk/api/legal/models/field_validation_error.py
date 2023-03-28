@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -117,6 +117,7 @@ class FieldValidationError(Model):
         error_message: Optional[str] = None,
         error_value: Optional[str] = None,
         message_variables: Optional[Dict[str, str]] = None,
+        **kwargs,
     ) -> FieldValidationError:
         instance = cls()
         if error_code is not None:

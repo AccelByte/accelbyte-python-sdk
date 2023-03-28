@@ -34,7 +34,7 @@ class ApiMatchFunctionOverride(Model):
     Properties:
         backfill_matches: (backfill_matches) OPTIONAL str
 
-        hydration: (hydration) OPTIONAL List[str]
+        enrichment: (enrichment) OPTIONAL List[str]
 
         make_matches: (make_matches) OPTIONAL str
 
@@ -46,7 +46,7 @@ class ApiMatchFunctionOverride(Model):
     # region fields
 
     backfill_matches: str  # OPTIONAL
-    hydration: List[str]  # OPTIONAL
+    enrichment: List[str]  # OPTIONAL
     make_matches: str  # OPTIONAL
     stat_codes: List[str]  # OPTIONAL
     validation: List[str]  # OPTIONAL
@@ -59,8 +59,8 @@ class ApiMatchFunctionOverride(Model):
         self.backfill_matches = value
         return self
 
-    def with_hydration(self, value: List[str]) -> ApiMatchFunctionOverride:
-        self.hydration = value
+    def with_enrichment(self, value: List[str]) -> ApiMatchFunctionOverride:
+        self.enrichment = value
         return self
 
     def with_make_matches(self, value: str) -> ApiMatchFunctionOverride:
@@ -85,10 +85,10 @@ class ApiMatchFunctionOverride(Model):
             result["backfill_matches"] = str(self.backfill_matches)
         elif include_empty:
             result["backfill_matches"] = ""
-        if hasattr(self, "hydration"):
-            result["hydration"] = [str(i0) for i0 in self.hydration]
+        if hasattr(self, "enrichment"):
+            result["enrichment"] = [str(i0) for i0 in self.enrichment]
         elif include_empty:
-            result["hydration"] = []
+            result["enrichment"] = []
         if hasattr(self, "make_matches"):
             result["make_matches"] = str(self.make_matches)
         elif include_empty:
@@ -111,16 +111,17 @@ class ApiMatchFunctionOverride(Model):
     def create(
         cls,
         backfill_matches: Optional[str] = None,
-        hydration: Optional[List[str]] = None,
+        enrichment: Optional[List[str]] = None,
         make_matches: Optional[str] = None,
         stat_codes: Optional[List[str]] = None,
         validation: Optional[List[str]] = None,
+        **kwargs,
     ) -> ApiMatchFunctionOverride:
         instance = cls()
         if backfill_matches is not None:
             instance.backfill_matches = backfill_matches
-        if hydration is not None:
-            instance.hydration = hydration
+        if enrichment is not None:
+            instance.enrichment = enrichment
         if make_matches is not None:
             instance.make_matches = make_matches
         if stat_codes is not None:
@@ -140,10 +141,10 @@ class ApiMatchFunctionOverride(Model):
             instance.backfill_matches = str(dict_["backfill_matches"])
         elif include_empty:
             instance.backfill_matches = ""
-        if "hydration" in dict_ and dict_["hydration"] is not None:
-            instance.hydration = [str(i0) for i0 in dict_["hydration"]]
+        if "enrichment" in dict_ and dict_["enrichment"] is not None:
+            instance.enrichment = [str(i0) for i0 in dict_["enrichment"]]
         elif include_empty:
-            instance.hydration = []
+            instance.enrichment = []
         if "make_matches" in dict_ and dict_["make_matches"] is not None:
             instance.make_matches = str(dict_["make_matches"])
         elif include_empty:
@@ -200,7 +201,7 @@ class ApiMatchFunctionOverride(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "backfill_matches": "backfill_matches",
-            "hydration": "hydration",
+            "enrichment": "enrichment",
             "make_matches": "make_matches",
             "stat_codes": "stat_codes",
             "validation": "validation",
@@ -210,7 +211,7 @@ class ApiMatchFunctionOverride(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "backfill_matches": False,
-            "hydration": False,
+            "enrichment": False,
             "make_matches": False,
             "stat_codes": False,
             "validation": False,

@@ -213,11 +213,7 @@ class CheckServerLogs(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        pod_name: str,
-    ) -> CheckServerLogs:
+    def create(cls, namespace: str, pod_name: str, **kwargs) -> CheckServerLogs:
         instance = cls()
         instance.namespace = namespace
         instance.pod_name = pod_name

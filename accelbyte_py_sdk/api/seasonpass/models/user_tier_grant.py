@@ -97,6 +97,7 @@ class UserTierGrant(Model):
         count: Optional[int] = None,
         source: Optional[Union[str, SourceEnum]] = None,
         tags: Optional[List[str]] = None,
+        **kwargs,
     ) -> UserTierGrant:
         instance = cls()
         if count is not None:

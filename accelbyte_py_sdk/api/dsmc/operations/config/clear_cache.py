@@ -197,10 +197,7 @@ class ClearCache(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> ClearCache:
+    def create(cls, namespace: str, **kwargs) -> ClearCache:
         instance = cls()
         instance.namespace = namespace
         return instance

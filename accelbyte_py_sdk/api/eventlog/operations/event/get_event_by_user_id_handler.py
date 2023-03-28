@@ -290,6 +290,7 @@ class GetEventByUserIDHandler(Operation):
         page_size: int,
         start_date: str,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> GetEventByUserIDHandler:
         instance = cls()
         instance.namespace = namespace

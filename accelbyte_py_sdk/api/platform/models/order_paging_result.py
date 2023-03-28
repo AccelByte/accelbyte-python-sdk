@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -96,6 +96,7 @@ class OrderPagingResult(Model):
         data: List[OrderInfo],
         paging: Optional[Paging] = None,
         total: Optional[int] = None,
+        **kwargs,
     ) -> OrderPagingResult:
         instance = cls()
         instance.data = data

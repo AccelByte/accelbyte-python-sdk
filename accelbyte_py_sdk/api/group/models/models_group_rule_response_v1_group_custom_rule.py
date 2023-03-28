@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -73,8 +73,7 @@ class ModelsGroupRuleResponseV1GroupCustomRule(Model, MutableMapping):
 
     @classmethod
     def create(
-        cls,
-        dict_: Optional[dict] = None,
+        cls, dict_: Optional[dict] = None, **kwargs
     ) -> ModelsGroupRuleResponseV1GroupCustomRule:
         instance = cls()
         if dict_ is not None:

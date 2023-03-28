@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -107,6 +107,7 @@ class ModelPlatformDomainUpdateRequest(Model):
         assigned_namespaces: List[str],
         domain: str,
         role_id: str,
+        **kwargs,
     ) -> ModelPlatformDomainUpdateRequest:
         instance = cls()
         instance.affected_client_i_ds = affected_client_i_ds

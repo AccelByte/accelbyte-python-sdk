@@ -33,6 +33,8 @@ from ._match_functions import delete_match_function
 from ._match_functions import delete_match_function_async
 from ._match_functions import match_function_list
 from ._match_functions import match_function_list_async
+from ._match_functions import update_match_function
+from ._match_functions import update_match_function_async
 
 from ._match_pools import create_match_pool
 from ._match_pools import create_match_pool_async

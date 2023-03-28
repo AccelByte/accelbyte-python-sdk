@@ -95,6 +95,7 @@ class ValidationErrorEntity(Model):
         error_code: int,
         error_message: str,
         errors: Optional[List[FieldValidationError]] = None,
+        **kwargs,
     ) -> ValidationErrorEntity:
         instance = cls()
         instance.error_code = error_code

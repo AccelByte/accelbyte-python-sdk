@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -79,6 +79,7 @@ class ServicePluginConfigInfo(Model):
         cls,
         grpc_server_address: Optional[str] = None,
         namespace: Optional[str] = None,
+        **kwargs,
     ) -> ServicePluginConfigInfo:
         instance = cls()
         if grpc_server_address is not None:

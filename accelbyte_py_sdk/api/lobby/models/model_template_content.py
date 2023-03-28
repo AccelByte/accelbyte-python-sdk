@@ -75,11 +75,7 @@ class ModelTemplateContent(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        draft: str,
-        published: str,
-    ) -> ModelTemplateContent:
+    def create(cls, draft: str, published: str, **kwargs) -> ModelTemplateContent:
         instance = cls()
         instance.draft = draft
         instance.published = published

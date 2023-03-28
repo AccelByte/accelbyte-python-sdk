@@ -234,10 +234,7 @@ class GetImagePatchDetail(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        version: str,
-        version_patch: str,
+        cls, namespace: str, version: str, version_patch: str, **kwargs
     ) -> GetImagePatchDetail:
         instance = cls()
         instance.namespace = namespace

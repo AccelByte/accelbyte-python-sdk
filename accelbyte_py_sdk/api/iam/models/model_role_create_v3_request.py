@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -155,6 +155,7 @@ class ModelRoleCreateV3Request(Model):
         permissions: List[AccountcommonPermissionV3],
         role_name: str,
         deletable: Optional[bool] = None,
+        **kwargs,
     ) -> ModelRoleCreateV3Request:
         instance = cls()
         instance.admin_role = admin_role

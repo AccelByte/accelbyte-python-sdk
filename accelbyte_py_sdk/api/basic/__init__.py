@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.6.1"
+__version__ = "2.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -25,6 +25,8 @@ from .wrappers import delete_config_1
 from .wrappers import delete_config_1_async
 from .wrappers import get_config_1
 from .wrappers import get_config_1_async
+from .wrappers import get_publisher_config
+from .wrappers import get_publisher_config_async
 from .wrappers import update_config_1
 from .wrappers import update_config_1_async
 

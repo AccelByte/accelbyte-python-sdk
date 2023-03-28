@@ -242,9 +242,7 @@ class AdminUpdateConfigV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsConfigReq,
-        namespace: str,
+        cls, body: ModelsConfigReq, namespace: str, **kwargs
     ) -> AdminUpdateConfigV1:
         instance = cls()
         instance.body = body

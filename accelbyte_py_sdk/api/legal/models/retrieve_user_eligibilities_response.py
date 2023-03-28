@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -207,6 +207,7 @@ class RetrieveUserEligibilitiesResponse(Model):
         description: Optional[str] = None,
         policy_versions: Optional[List[PolicyVersionWithLocalizedVersionObject]] = None,
         readable_id: Optional[str] = None,
+        **kwargs,
     ) -> RetrieveUserEligibilitiesResponse:
         instance = cls()
         instance.country_code = country_code

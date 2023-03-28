@@ -64,10 +64,7 @@ class ModelsGetLobbyCcuResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        count_current_users: int,
-    ) -> ModelsGetLobbyCcuResponse:
+    def create(cls, count_current_users: int, **kwargs) -> ModelsGetLobbyCcuResponse:
         instance = cls()
         instance.count_current_users = count_current_users
         return instance

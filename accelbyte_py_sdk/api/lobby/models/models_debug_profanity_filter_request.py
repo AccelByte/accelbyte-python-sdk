@@ -64,10 +64,7 @@ class ModelsDebugProfanityFilterRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        text: str,
-    ) -> ModelsDebugProfanityFilterRequest:
+    def create(cls, text: str, **kwargs) -> ModelsDebugProfanityFilterRequest:
         instance = cls()
         instance.text = text
         return instance

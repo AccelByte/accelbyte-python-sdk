@@ -212,10 +212,7 @@ class GetRegisteredEventIDHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        event_id: str,
-    ) -> GetRegisteredEventIDHandler:
+    def create(cls, event_id: str, **kwargs) -> GetRegisteredEventIDHandler:
         instance = cls()
         instance.event_id = event_id
         return instance

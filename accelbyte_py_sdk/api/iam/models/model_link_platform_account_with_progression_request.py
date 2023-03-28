@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -80,9 +80,7 @@ class ModelLinkPlatformAccountWithProgressionRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        chosen_namespaces: List[str],
-        request_id: str,
+        cls, chosen_namespaces: List[str], request_id: str, **kwargs
     ) -> ModelLinkPlatformAccountWithProgressionRequest:
         instance = cls()
         instance.chosen_namespaces = chosen_namespaces

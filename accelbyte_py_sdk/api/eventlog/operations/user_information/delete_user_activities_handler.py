@@ -218,9 +218,7 @@ class DeleteUserActivitiesHandler(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
+        cls, namespace: str, user_id: str, **kwargs
     ) -> DeleteUserActivitiesHandler:
         instance = cls()
         instance.namespace = namespace

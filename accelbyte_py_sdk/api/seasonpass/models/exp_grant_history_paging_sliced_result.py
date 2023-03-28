@@ -98,6 +98,7 @@ class ExpGrantHistoryPagingSlicedResult(Model):
         data: List[ExpGrantHistoryInfo],
         paging: Optional[Paging] = None,
         total: Optional[int] = None,
+        **kwargs,
     ) -> ExpGrantHistoryPagingSlicedResult:
         instance = cls()
         instance.data = data

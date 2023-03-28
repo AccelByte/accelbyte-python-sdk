@@ -257,6 +257,7 @@ class AdminDeleteProfanityFilter(Operation):
         body: ModelsAdminDeleteProfanityFilterRequest,
         list_: str,
         namespace: str,
+        **kwargs,
     ) -> AdminDeleteProfanityFilter:
         instance = cls()
         instance.body = body

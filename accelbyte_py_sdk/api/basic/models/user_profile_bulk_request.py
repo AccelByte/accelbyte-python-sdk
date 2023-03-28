@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,8 +65,7 @@ class UserProfileBulkRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        user_ids: Optional[List[str]] = None,
+        cls, user_ids: Optional[List[str]] = None, **kwargs
     ) -> UserProfileBulkRequest:
         instance = cls()
         if user_ids is not None:

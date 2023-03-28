@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ModelsUserPlatformInfo(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        name: str,
-        user_id: str,
-    ) -> ModelsUserPlatformInfo:
+    def create(cls, name: str, user_id: str, **kwargs) -> ModelsUserPlatformInfo:
         instance = cls()
         instance.name = name
         instance.user_id = user_id

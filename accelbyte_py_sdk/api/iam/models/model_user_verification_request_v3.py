@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class ModelUserVerificationRequestV3(Model):
         contact_type: str,
         language_tag: Optional[str] = None,
         validate_only: Optional[bool] = None,
+        **kwargs,
     ) -> ModelUserVerificationRequestV3:
         instance = cls()
         instance.code = code

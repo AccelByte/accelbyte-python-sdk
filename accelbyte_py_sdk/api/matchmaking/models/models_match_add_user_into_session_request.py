@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -93,6 +93,7 @@ class ModelsMatchAddUserIntoSessionRequest(Model):
         user_id: str,
         blocked_players: Optional[List[str]] = None,
         party_id: Optional[str] = None,
+        **kwargs,
     ) -> ModelsMatchAddUserIntoSessionRequest:
         instance = cls()
         instance.user_id = user_id

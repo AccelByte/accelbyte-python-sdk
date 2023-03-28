@@ -25,7 +25,6 @@ from ....core import generate_websocket_message_id
 
 
 class MessageNotif(WebSocketMessage):
-
     # region fields
 
     from_: str

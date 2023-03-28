@@ -248,10 +248,7 @@ class AdminImportProfanityFiltersFromFile(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: List[int],
-        list_: str,
-        namespace: str,
+        cls, body: List[int], list_: str, namespace: str, **kwargs
     ) -> AdminImportProfanityFiltersFromFile:
         instance = cls()
         instance.body = body

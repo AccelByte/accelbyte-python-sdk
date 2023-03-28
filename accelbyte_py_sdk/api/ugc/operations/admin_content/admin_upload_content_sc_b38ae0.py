@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -251,6 +251,7 @@ class AdminUploadContentScreenshot(Operation):
         body: ModelsCreateScreenshotRequest,
         content_id: str,
         namespace: str,
+        **kwargs,
     ) -> AdminUploadContentScreenshot:
         instance = cls()
         instance.body = body

@@ -249,10 +249,7 @@ class AdminUpdateProfanityList(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsAdminUpdateProfanityList,
-        list_: str,
-        namespace: str,
+        cls, body: ModelsAdminUpdateProfanityList, list_: str, namespace: str, **kwargs
     ) -> AdminUpdateProfanityList:
         instance = cls()
         instance.body = body

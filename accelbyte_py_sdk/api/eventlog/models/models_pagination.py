@@ -76,9 +76,7 @@ class ModelsPagination(Model):
 
     @classmethod
     def create(
-        cls,
-        next_: Optional[str] = None,
-        previous: Optional[str] = None,
+        cls, next_: Optional[str] = None, previous: Optional[str] = None, **kwargs
     ) -> ModelsPagination:
         instance = cls()
         if next_ is not None:

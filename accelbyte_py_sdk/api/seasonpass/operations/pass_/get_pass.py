@@ -224,12 +224,7 @@ class GetPass(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        code: str,
-        namespace: str,
-        season_id: str,
-    ) -> GetPass:
+    def create(cls, code: str, namespace: str, season_id: str, **kwargs) -> GetPass:
         instance = cls()
         instance.code = code
         instance.namespace = namespace

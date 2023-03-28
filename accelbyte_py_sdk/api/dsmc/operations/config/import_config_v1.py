@@ -239,9 +239,7 @@ class ImportConfigV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        file: Optional[Any] = None,
+        cls, namespace: str, file: Optional[Any] = None, **kwargs
     ) -> ImportConfigV1:
         instance = cls()
         instance.namespace = namespace

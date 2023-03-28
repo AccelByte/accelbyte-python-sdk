@@ -68,10 +68,7 @@ class ModelsListServerResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        servers: List[ModelsServer],
-    ) -> ModelsListServerResponse:
+    def create(cls, servers: List[ModelsServer], **kwargs) -> ModelsListServerResponse:
         instance = cls()
         instance.servers = servers
         return instance

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -431,6 +431,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         user_info_http_method: str,
         allowed_clients: Optional[List[str]] = None,
         token_claims_mapping: Optional[Dict[str, str]] = None,
+        **kwargs,
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
         instance = cls()
         instance.acsurl = acsurl

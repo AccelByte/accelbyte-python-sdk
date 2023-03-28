@@ -8,12 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.6.9"
+__version__ = "2.7.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .apimodels_append_team_game_session_request import (
+    ApimodelsAppendTeamGameSessionRequest,
+)
 from .apimodels_configuration_template_response import (
     ApimodelsConfigurationTemplateResponse,
 )
@@ -55,6 +58,8 @@ from .apimodels_update_game_session_member_status_response import (
 from .apimodels_update_game_session_request import ApimodelsUpdateGameSessionRequest
 from .apimodels_update_party_request import ApimodelsUpdatePartyRequest
 from .apimodels_user_response import ApimodelsUserResponse
+from .models_default_dsmc_config import ModelsDefaultDSMCConfig
+from .models_dsm_config_record import ModelsDSMConfigRecord
 from .models_game_server import ModelsGameServer
 from .models_party_members import ModelsPartyMembers
 from .models_team import ModelsTeam

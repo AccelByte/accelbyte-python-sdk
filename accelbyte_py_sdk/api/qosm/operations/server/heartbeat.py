@@ -196,10 +196,7 @@ class Heartbeat(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: ModelsHeartbeatRequest,
-    ) -> Heartbeat:
+    def create(cls, body: ModelsHeartbeatRequest, **kwargs) -> Heartbeat:
         instance = cls()
         instance.body = body
         return instance

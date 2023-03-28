@@ -211,10 +211,7 @@ class DeleteConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> DeleteConfig:
+    def create(cls, namespace: str, **kwargs) -> DeleteConfig:
         instance = cls()
         instance.namespace = namespace
         return instance

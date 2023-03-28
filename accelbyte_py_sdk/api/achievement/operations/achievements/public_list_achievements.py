@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -315,6 +315,7 @@ class PublicListAchievements(Operation):
         offset: Optional[int] = None,
         sort_by: Optional[Union[str, SortByEnum]] = None,
         tags: Optional[List[str]] = None,
+        **kwargs,
     ) -> PublicListAchievements:
         instance = cls()
         instance.namespace = namespace

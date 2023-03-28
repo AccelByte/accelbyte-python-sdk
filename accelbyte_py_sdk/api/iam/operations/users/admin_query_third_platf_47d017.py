@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -277,6 +277,7 @@ class AdminQueryThirdPlatformLinkHistoryV3(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         platform_user_id: Optional[str] = None,
+        **kwargs,
     ) -> AdminQueryThirdPlatformLinkHistoryV3:
         instance = cls()
         instance.namespace = namespace

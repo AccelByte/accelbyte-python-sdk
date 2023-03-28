@@ -231,9 +231,7 @@ class CreateTopic(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelCreateTopicRequest,
-        namespace: str,
+        cls, body: ModelCreateTopicRequest, namespace: str, **kwargs
     ) -> CreateTopic:
         instance = cls()
         instance.body = body

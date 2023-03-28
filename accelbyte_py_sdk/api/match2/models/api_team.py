@@ -83,6 +83,7 @@ class ApiTeam(Model):
         cls,
         parties: Optional[List[ApiParty]] = None,
         user_i_ds: Optional[List[str]] = None,
+        **kwargs,
     ) -> ApiTeam:
         instance = cls()
         if parties is not None:

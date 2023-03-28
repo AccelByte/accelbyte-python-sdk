@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,9 +78,7 @@ class OrderStatistics(Model):
 
     @classmethod
     def create(
-        cls,
-        status_count: Dict[str, int],
-        total: int,
+        cls, status_count: Dict[str, int], total: int, **kwargs
     ) -> OrderStatistics:
         instance = cls()
         instance.status_count = status_count

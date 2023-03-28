@@ -175,6 +175,7 @@ class ApiMatchPool(Model):
         rule_set: str,
         session_template: str,
         ticket_expiration_seconds: int,
+        **kwargs,
     ) -> ApiMatchPool:
         instance = cls()
         instance.auto_accept_backfill_proposal = auto_accept_backfill_proposal

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -51,6 +51,8 @@ class ModelsUpdateChannelRequest(Model):
         social_matchmaking: (socialMatchmaking) REQUIRED bool
 
         use_sub_gamemode: (use_sub_gamemode) REQUIRED bool
+
+        region_expansion_rate_ms: (region_expansion_rate_ms) OPTIONAL int
     """
 
     # region fields
@@ -64,6 +66,7 @@ class ModelsUpdateChannelRequest(Model):
     session_queue_timeout_seconds: int  # REQUIRED
     social_matchmaking: bool  # REQUIRED
     use_sub_gamemode: bool  # REQUIRED
+    region_expansion_rate_ms: int  # OPTIONAL
 
     # endregion fields
 
@@ -105,6 +108,10 @@ class ModelsUpdateChannelRequest(Model):
 
     def with_use_sub_gamemode(self, value: bool) -> ModelsUpdateChannelRequest:
         self.use_sub_gamemode = value
+        return self
+
+    def with_region_expansion_rate_ms(self, value: int) -> ModelsUpdateChannelRequest:
+        self.region_expansion_rate_ms = value
         return self
 
     # endregion with_x methods
@@ -151,6 +158,10 @@ class ModelsUpdateChannelRequest(Model):
             result["use_sub_gamemode"] = bool(self.use_sub_gamemode)
         elif include_empty:
             result["use_sub_gamemode"] = False
+        if hasattr(self, "region_expansion_rate_ms"):
+            result["region_expansion_rate_ms"] = int(self.region_expansion_rate_ms)
+        elif include_empty:
+            result["region_expansion_rate_ms"] = 0
         return result
 
     # endregion to methods
@@ -169,6 +180,8 @@ class ModelsUpdateChannelRequest(Model):
         session_queue_timeout_seconds: int,
         social_matchmaking: bool,
         use_sub_gamemode: bool,
+        region_expansion_rate_ms: Optional[int] = None,
+        **kwargs,
     ) -> ModelsUpdateChannelRequest:
         instance = cls()
         instance.deployment = deployment
@@ -180,6 +193,8 @@ class ModelsUpdateChannelRequest(Model):
         instance.session_queue_timeout_seconds = session_queue_timeout_seconds
         instance.social_matchmaking = social_matchmaking
         instance.use_sub_gamemode = use_sub_gamemode
+        if region_expansion_rate_ms is not None:
+            instance.region_expansion_rate_ms = region_expansion_rate_ms
         return instance
 
     @classmethod
@@ -235,6 +250,13 @@ class ModelsUpdateChannelRequest(Model):
             instance.use_sub_gamemode = bool(dict_["use_sub_gamemode"])
         elif include_empty:
             instance.use_sub_gamemode = False
+        if (
+            "region_expansion_rate_ms" in dict_
+            and dict_["region_expansion_rate_ms"] is not None
+        ):
+            instance.region_expansion_rate_ms = int(dict_["region_expansion_rate_ms"])
+        elif include_empty:
+            instance.region_expansion_rate_ms = 0
         return instance
 
     @classmethod
@@ -287,6 +309,7 @@ class ModelsUpdateChannelRequest(Model):
             "sessionQueueTimeoutSeconds": "session_queue_timeout_seconds",
             "socialMatchmaking": "social_matchmaking",
             "use_sub_gamemode": "use_sub_gamemode",
+            "region_expansion_rate_ms": "region_expansion_rate_ms",
         }
 
     @staticmethod
@@ -301,6 +324,7 @@ class ModelsUpdateChannelRequest(Model):
             "sessionQueueTimeoutSeconds": True,
             "socialMatchmaking": True,
             "use_sub_gamemode": True,
+            "region_expansion_rate_ms": False,
         }
 
     # endregion static methods

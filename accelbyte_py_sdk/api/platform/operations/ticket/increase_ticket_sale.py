@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -235,6 +235,7 @@ class IncreaseTicketSale(Operation):
         booth_name: str,
         namespace: str,
         body: Optional[TicketSaleIncrementRequest] = None,
+        **kwargs,
     ) -> IncreaseTicketSale:
         instance = cls()
         instance.booth_name = booth_name

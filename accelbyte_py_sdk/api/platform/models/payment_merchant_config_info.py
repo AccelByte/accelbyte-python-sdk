@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -294,6 +294,7 @@ class PaymentMerchantConfigInfo(Model):
         wx_pay_config: Optional[WxPayConfigInfo] = None,
         xsolla_config: Optional[XsollaConfig] = None,
         xsolla_paywall_config: Optional[XsollaPaywallConfig] = None,
+        **kwargs,
     ) -> PaymentMerchantConfigInfo:
         instance = cls()
         instance.created_at = created_at

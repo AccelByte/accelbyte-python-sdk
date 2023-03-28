@@ -103,6 +103,7 @@ class ModelNotificationTopicResponseV1(Model):
         description: str,
         namespace: str,
         topic_name: str,
+        **kwargs,
     ) -> ModelNotificationTopicResponseV1:
         instance = cls()
         instance.created_at = created_at

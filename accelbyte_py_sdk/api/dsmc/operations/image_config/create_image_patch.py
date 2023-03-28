@@ -219,10 +219,7 @@ class CreateImagePatch(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: ModelsCreateImagePatchRequest,
-    ) -> CreateImagePatch:
+    def create(cls, body: ModelsCreateImagePatchRequest, **kwargs) -> CreateImagePatch:
         instance = cls()
         instance.body = body
         return instance

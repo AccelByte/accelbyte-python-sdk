@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class NamespaceCreate(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        display_name: str,
-        namespace: str,
-    ) -> NamespaceCreate:
+    def create(cls, display_name: str, namespace: str, **kwargs) -> NamespaceCreate:
         instance = cls()
         instance.display_name = display_name
         instance.namespace = namespace

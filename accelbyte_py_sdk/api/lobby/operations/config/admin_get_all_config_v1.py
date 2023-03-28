@@ -198,9 +198,7 @@ class AdminGetAllConfigV1(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> AdminGetAllConfigV1:
+    def create(cls, **kwargs) -> AdminGetAllConfigV1:
         instance = cls()
         return instance
 

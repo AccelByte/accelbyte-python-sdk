@@ -220,9 +220,7 @@ class CountSession(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        region: Optional[str] = None,
+        cls, namespace: str, region: Optional[str] = None, **kwargs
     ) -> CountSession:
         instance = cls()
         instance.namespace = namespace

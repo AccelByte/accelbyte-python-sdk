@@ -248,6 +248,7 @@ class CreateReward(Operation):
         namespace: str,
         season_id: str,
         body: Optional[RewardCreate] = None,
+        **kwargs,
     ) -> CreateReward:
         instance = cls()
         instance.namespace = namespace

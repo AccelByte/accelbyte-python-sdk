@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,8 +65,7 @@ class RetrieveTimeResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        current_time: Optional[str] = None,
+        cls, current_time: Optional[str] = None, **kwargs
     ) -> RetrieveTimeResponse:
         instance = cls()
         if current_time is not None:

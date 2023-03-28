@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class FileUploadUrlInfo(Model):
         content_type: Optional[str] = None,
         method: Optional[str] = None,
         url: Optional[str] = None,
+        **kwargs,
     ) -> FileUploadUrlInfo:
         instance = cls()
         if access_url is not None:

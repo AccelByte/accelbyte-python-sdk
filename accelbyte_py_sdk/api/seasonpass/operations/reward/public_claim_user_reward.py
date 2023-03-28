@@ -238,6 +238,7 @@ class PublicClaimUserReward(Operation):
         namespace: str,
         user_id: str,
         body: Optional[UserRewardClaim] = None,
+        **kwargs,
     ) -> PublicClaimUserReward:
         instance = cls()
         instance.namespace = namespace

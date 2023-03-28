@@ -91,10 +91,7 @@ class ModelBulkUsersFreeFormNotificationRequestV1(Model):
 
     @classmethod
     def create(
-        cls,
-        message: str,
-        topic_name: str,
-        user_ids: List[str],
+        cls, message: str, topic_name: str, user_ids: List[str], **kwargs
     ) -> ModelBulkUsersFreeFormNotificationRequestV1:
         instance = cls()
         instance.message = message

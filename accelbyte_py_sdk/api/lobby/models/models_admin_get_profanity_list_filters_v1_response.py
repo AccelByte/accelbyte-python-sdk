@@ -71,8 +71,7 @@ class ModelsAdminGetProfanityListFiltersV1Response(Model):
 
     @classmethod
     def create(
-        cls,
-        filters: List[ModelsProfanityFilter],
+        cls, filters: List[ModelsProfanityFilter], **kwargs
     ) -> ModelsAdminGetProfanityListFiltersV1Response:
         instance = cls()
         instance.filters = filters

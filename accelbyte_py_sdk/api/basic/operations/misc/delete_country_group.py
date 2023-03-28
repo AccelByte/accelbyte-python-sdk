@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -225,9 +225,7 @@ class DeleteCountryGroup(Operation):
 
     @classmethod
     def create(
-        cls,
-        country_group_code: str,
-        namespace: str,
+        cls, country_group_code: str, namespace: str, **kwargs
     ) -> DeleteCountryGroup:
         instance = cls()
         instance.country_group_code = country_group_code

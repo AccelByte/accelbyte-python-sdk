@@ -215,11 +215,7 @@ class Upsert(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: RestapiReportingLimit,
-        namespace: str,
-    ) -> Upsert:
+    def create(cls, body: RestapiReportingLimit, namespace: str, **kwargs) -> Upsert:
         instance = cls()
         instance.body = body
         instance.namespace = namespace

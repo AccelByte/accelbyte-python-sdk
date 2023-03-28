@@ -76,9 +76,7 @@ class ModelsImportResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        affected: List[str],
-        failed: List[str],
+        cls, affected: List[str], failed: List[str], **kwargs
     ) -> ModelsImportResponse:
         instance = cls()
         instance.affected = affected

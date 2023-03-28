@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -90,6 +90,7 @@ class ModelsGetAllLeaderboardConfigsPublicResp(Model):
         cls,
         data: List[ModelsGetLeaderboardConfigPublicResp],
         paging: ModelsPagination,
+        **kwargs,
     ) -> ModelsGetAllLeaderboardConfigsPublicResp:
         instance = cls()
         instance.data = data

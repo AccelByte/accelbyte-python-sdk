@@ -228,11 +228,7 @@ class GetDeployment(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        deployment: str,
-        namespace: str,
-    ) -> GetDeployment:
+    def create(cls, deployment: str, namespace: str, **kwargs) -> GetDeployment:
         instance = cls()
         instance.deployment = deployment
         instance.namespace = namespace

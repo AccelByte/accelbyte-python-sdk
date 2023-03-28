@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -562,6 +562,7 @@ class TokenGrant(Operation):
         redirect_uri: Optional[str] = None,
         refresh_token: Optional[str] = None,
         username: Optional[str] = None,
+        **kwargs,
     ) -> TokenGrant:
         instance = cls()
         instance.grant_type = grant_type

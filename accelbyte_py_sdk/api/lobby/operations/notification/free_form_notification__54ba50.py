@@ -245,6 +245,7 @@ class FreeFormNotificationByUserID(Operation):
         body: ModelFreeFormNotificationRequest,
         namespace: str,
         user_id: str,
+        **kwargs,
     ) -> FreeFormNotificationByUserID:
         instance = cls()
         instance.body = body

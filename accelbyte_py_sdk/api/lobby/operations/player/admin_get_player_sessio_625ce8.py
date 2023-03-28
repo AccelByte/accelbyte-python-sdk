@@ -247,10 +247,7 @@ class AdminGetPlayerSessionAttribute(Operation):
 
     @classmethod
     def create(
-        cls,
-        attribute: str,
-        namespace: str,
-        user_id: str,
+        cls, attribute: str, namespace: str, user_id: str, **kwargs
     ) -> AdminGetPlayerSessionAttribute:
         instance = cls()
         instance.attribute = attribute

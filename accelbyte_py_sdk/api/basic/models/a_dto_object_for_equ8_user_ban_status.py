@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ADTOObjectForEqu8UserBanStatus(Model):
 
     @classmethod
     def create(
-        cls,
-        expires: Optional[str] = None,
-        user_id: Optional[str] = None,
+        cls, expires: Optional[str] = None, user_id: Optional[str] = None, **kwargs
     ) -> ADTOObjectForEqu8UserBanStatus:
         instance = cls()
         if expires is not None:

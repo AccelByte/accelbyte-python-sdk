@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.6.2)
+# AccelByte Gaming Services Cloudsave Service (3.6.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,9 +78,7 @@ class ModelsListGameRecordKeysResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[str],
-        paging: ModelsPagination,
+        cls, data: List[str], paging: ModelsPagination, **kwargs
     ) -> ModelsListGameRecordKeysResponse:
         instance = cls()
         instance.data = data

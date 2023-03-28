@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,11 +33,14 @@ class UsersAgreementsRequest(Model):
 
     Properties:
         user_ids: (userIds) REQUIRED List[str]
+
+        current_published_only: (currentPublishedOnly) OPTIONAL bool
     """
 
     # region fields
 
     user_ids: List[str]  # REQUIRED
+    current_published_only: bool  # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class UsersAgreementsRequest(Model):
 
     def with_user_ids(self, value: List[str]) -> UsersAgreementsRequest:
         self.user_ids = value
+        return self
+
+    def with_current_published_only(self, value: bool) -> UsersAgreementsRequest:
+        self.current_published_only = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class UsersAgreementsRequest(Model):
             result["userIds"] = [str(i0) for i0 in self.user_ids]
         elif include_empty:
             result["userIds"] = []
+        if hasattr(self, "current_published_only"):
+            result["currentPublishedOnly"] = bool(self.current_published_only)
+        elif include_empty:
+            result["currentPublishedOnly"] = False
         return result
 
     # endregion to methods
@@ -67,9 +78,13 @@ class UsersAgreementsRequest(Model):
     def create(
         cls,
         user_ids: List[str],
+        current_published_only: Optional[bool] = None,
+        **kwargs,
     ) -> UsersAgreementsRequest:
         instance = cls()
         instance.user_ids = user_ids
+        if current_published_only is not None:
+            instance.current_published_only = current_published_only
         return instance
 
     @classmethod
@@ -83,6 +98,13 @@ class UsersAgreementsRequest(Model):
             instance.user_ids = [str(i0) for i0 in dict_["userIds"]]
         elif include_empty:
             instance.user_ids = []
+        if (
+            "currentPublishedOnly" in dict_
+            and dict_["currentPublishedOnly"] is not None
+        ):
+            instance.current_published_only = bool(dict_["currentPublishedOnly"])
+        elif include_empty:
+            instance.current_published_only = False
         return instance
 
     @classmethod
@@ -127,12 +149,14 @@ class UsersAgreementsRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "userIds": "user_ids",
+            "currentPublishedOnly": "current_published_only",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "userIds": True,
+            "currentPublishedOnly": False,
         }
 
     # endregion static methods

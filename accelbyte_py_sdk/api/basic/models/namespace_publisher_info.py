@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -79,6 +79,7 @@ class NamespacePublisherInfo(Model):
         cls,
         publisher: Optional[bool] = None,
         publisher_namespace: Optional[str] = None,
+        **kwargs,
     ) -> NamespacePublisherInfo:
         instance = cls()
         if publisher is not None:

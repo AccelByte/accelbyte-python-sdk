@@ -89,10 +89,7 @@ class ModelsAdminGetProfanityListsListResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        is_enabled: bool,
-        is_mandatory: bool,
-        name: str,
+        cls, is_enabled: bool, is_mandatory: bool, name: str, **kwargs
     ) -> ModelsAdminGetProfanityListsListResponse:
         instance = cls()
         instance.is_enabled = is_enabled

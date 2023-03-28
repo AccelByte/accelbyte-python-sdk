@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -91,6 +91,7 @@ class ModelSendVerificationCodeRequestV3(Model):
         email_address: str,
         context: Optional[str] = None,
         language_tag: Optional[str] = None,
+        **kwargs,
     ) -> ModelSendVerificationCodeRequestV3:
         instance = cls()
         instance.email_address = email_address

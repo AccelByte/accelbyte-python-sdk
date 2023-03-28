@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -166,6 +166,7 @@ class ModelUserCreateFromInvitationRequestV4(Model):
         username: str,
         accepted_policies: Optional[List[LegalAcceptedPoliciesRequest]] = None,
         date_of_birth: Optional[str] = None,
+        **kwargs,
     ) -> ModelUserCreateFromInvitationRequestV4:
         instance = cls()
         instance.auth_type = auth_type

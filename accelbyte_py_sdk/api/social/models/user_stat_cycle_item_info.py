@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -187,6 +187,7 @@ class UserStatCycleItemInfo(Model):
         user_id: str,
         value: float,
         tags: Optional[List[str]] = None,
+        **kwargs,
     ) -> UserStatCycleItemInfo:
         instance = cls()
         instance.created_at = created_at

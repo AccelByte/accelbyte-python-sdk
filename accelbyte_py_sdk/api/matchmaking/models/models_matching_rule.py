@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,10 +87,7 @@ class ModelsMatchingRule(Model):
 
     @classmethod
     def create(
-        cls,
-        attribute: str,
-        criteria: str,
-        reference: float,
+        cls, attribute: str, criteria: str, reference: float, **kwargs
     ) -> ModelsMatchingRule:
         instance = cls()
         instance.attribute = attribute

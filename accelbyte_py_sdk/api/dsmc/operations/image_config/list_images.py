@@ -298,6 +298,7 @@ class ListImages(Operation):
         q: Optional[str] = None,
         sort_by: Optional[Union[str, SortByEnum]] = None,
         sort_direction: Optional[Union[str, SortDirectionEnum]] = None,
+        **kwargs,
     ) -> ListImages:
         instance = cls()
         instance.namespace = namespace

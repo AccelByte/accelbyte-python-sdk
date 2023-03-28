@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.6.2)
+# AccelByte Gaming Services Cloudsave Service (3.6.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -351,6 +351,7 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
         key: str,
         namespace: str,
         user_id: str,
+        **kwargs,
     ) -> PutPlayerPublicRecordConcurrentHandlerV1:
         instance = cls()
         instance.body = body

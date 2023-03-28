@@ -250,6 +250,7 @@ class NotificationWithTemplateByUserID(Operation):
         body: ModelNotificationWithTemplateRequest,
         namespace: str,
         user_id: str,
+        **kwargs,
     ) -> NotificationWithTemplateByUserID:
         instance = cls()
         instance.body = body

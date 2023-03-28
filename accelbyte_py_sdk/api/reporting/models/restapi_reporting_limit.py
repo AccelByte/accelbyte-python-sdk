@@ -101,6 +101,7 @@ class RestapiReportingLimit(Model):
         category_limits: List[RestapiCategoryLimit],
         time_interval: int,
         user_max_report_per_time_interval: int,
+        **kwargs,
     ) -> RestapiReportingLimit:
         instance = cls()
         instance.category_limits = category_limits

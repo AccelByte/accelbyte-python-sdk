@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -332,6 +332,7 @@ class IAPOrderInfo(Model):
         sandbox: Optional[bool] = None,
         status_reason: Optional[str] = None,
         transaction_id: Optional[str] = None,
+        **kwargs,
     ) -> IAPOrderInfo:
         instance = cls()
         instance.created_at = created_at

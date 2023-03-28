@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -119,6 +119,7 @@ class AcceptAgreementRequest(Model):
         policy_id: str,
         policy_version_id: str,
         is_need_to_send_event_marketing: Optional[bool] = None,
+        **kwargs,
     ) -> AcceptAgreementRequest:
         instance = cls()
         instance.is_accepted = is_accepted

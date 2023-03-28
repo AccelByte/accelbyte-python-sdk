@@ -207,11 +207,7 @@ class AdminGetReason(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        reason_id: str,
-    ) -> AdminGetReason:
+    def create(cls, namespace: str, reason_id: str, **kwargs) -> AdminGetReason:
         instance = cls()
         instance.namespace = namespace
         instance.reason_id = reason_id

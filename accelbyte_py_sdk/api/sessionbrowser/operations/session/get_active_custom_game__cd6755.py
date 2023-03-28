@@ -265,6 +265,7 @@ class GetActiveCustomGameSessions(Operation):
         offset: Optional[int] = None,
         server_region: Optional[str] = None,
         session_id: Optional[str] = None,
+        **kwargs,
     ) -> GetActiveCustomGameSessions:
         instance = cls()
         instance.namespace = namespace

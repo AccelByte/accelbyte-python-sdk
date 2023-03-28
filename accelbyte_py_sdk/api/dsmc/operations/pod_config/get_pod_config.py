@@ -225,11 +225,7 @@ class GetPodConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        name: str,
-        namespace: str,
-    ) -> GetPodConfig:
+    def create(cls, name: str, namespace: str, **kwargs) -> GetPodConfig:
         instance = cls()
         instance.name = name
         instance.namespace = namespace

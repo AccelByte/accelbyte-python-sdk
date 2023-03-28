@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class OwnershipToken(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        ownership_token: Optional[str] = None,
-    ) -> OwnershipToken:
+    def create(cls, ownership_token: Optional[str] = None, **kwargs) -> OwnershipToken:
         instance = cls()
         if ownership_token is not None:
             instance.ownership_token = ownership_token

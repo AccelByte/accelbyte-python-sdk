@@ -296,6 +296,7 @@ class ModelsDeploymentWithOverride(Model):
         updated_at: str,
         use_buffer_percent: bool,
         session_timeout: Optional[int] = None,
+        **kwargs,
     ) -> ModelsDeploymentWithOverride:
         instance = cls()
         instance.allow_version_override = allow_version_override

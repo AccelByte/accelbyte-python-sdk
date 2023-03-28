@@ -250,10 +250,7 @@ class AdminJoinPartyV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        party_id: str,
-        user_id: str,
+        cls, namespace: str, party_id: str, user_id: str, **kwargs
     ) -> AdminJoinPartyV1:
         instance = cls()
         instance.namespace = namespace

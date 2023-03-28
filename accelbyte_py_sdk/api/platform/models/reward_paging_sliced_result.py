@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -81,9 +81,7 @@ class RewardPagingSlicedResult(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[RewardInfo],
-        paging: Optional[Paging] = None,
+        cls, data: List[RewardInfo], paging: Optional[Paging] = None, **kwargs
     ) -> RewardPagingSlicedResult:
         instance = cls()
         instance.data = data

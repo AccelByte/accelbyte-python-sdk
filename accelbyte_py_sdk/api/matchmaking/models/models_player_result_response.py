@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -82,9 +82,7 @@ class ModelsPlayerResultResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        current_score: List[ModelsResultAttributeResponse],
-        user_id: str,
+        cls, current_score: List[ModelsResultAttributeResponse], user_id: str, **kwargs
     ) -> ModelsPlayerResultResponse:
         instance = cls()
         instance.current_score = current_score

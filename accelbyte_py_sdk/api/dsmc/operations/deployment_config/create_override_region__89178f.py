@@ -285,6 +285,7 @@ class CreateOverrideRegionOverride(Operation):
         namespace: str,
         region: str,
         version: str,
+        **kwargs,
     ) -> CreateOverrideRegionOverride:
         instance = cls()
         instance.body = body

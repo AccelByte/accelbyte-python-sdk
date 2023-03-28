@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,7 @@ class ActionEnum(StrEnum):
     ENABLE = "ENABLE"
     GRANT = "GRANT"
     REVOKE = "REVOKE"
+    SELL_BACK = "SELL_BACK"
     UPDATE = "UPDATE"
 
 
@@ -161,6 +162,7 @@ class EntitlementHistoryInfo(Model):
         updated_at: str,
         user_id: str,
         use_count: Optional[int] = None,
+        **kwargs,
     ) -> EntitlementHistoryInfo:
         instance = cls()
         instance.action = action
@@ -282,7 +284,15 @@ class EntitlementHistoryInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "action": ["DECREMENT", "DISABLE", "ENABLE", "GRANT", "REVOKE", "UPDATE"],
+            "action": [
+                "DECREMENT",
+                "DISABLE",
+                "ENABLE",
+                "GRANT",
+                "REVOKE",
+                "SELL_BACK",
+                "UPDATE",
+            ],
         }
 
     # endregion static methods

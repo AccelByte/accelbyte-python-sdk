@@ -239,6 +239,7 @@ class GetReportsByTicket(Operation):
         ticket_id: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> GetReportsByTicket:
         instance = cls()
         instance.namespace = namespace

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,11 +41,11 @@ class CreateConfig(Operation):
     Create a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=1 (CREATE)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=1 (CREATE)
       *  Returns : created config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [CREATE]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs
@@ -73,7 +73,7 @@ class CreateConfig(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (12336: Unable to {action}: Config already exists)
+        409: Conflict - ErrorEntity (11771: Unable to {action}: Config already exists)
     """
 
     # region fields
@@ -194,7 +194,7 @@ class CreateConfig(Operation):
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (12336: Unable to {action}: Config already exists)
+        409: Conflict - ErrorEntity (11771: Unable to {action}: Config already exists)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -230,9 +230,7 @@ class CreateConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        body: Optional[ConfigCreate] = None,
+        cls, namespace: str, body: Optional[ConfigCreate] = None, **kwargs
     ) -> CreateConfig:
         instance = cls()
         instance.namespace = namespace

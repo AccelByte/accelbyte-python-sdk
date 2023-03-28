@@ -219,9 +219,7 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
 
     @classmethod
     def create(
-        cls,
-        steam_id: str,
-        cookie: Optional[Union[str, HeaderStr]] = None,
+        cls, steam_id: str, cookie: Optional[Union[str, HeaderStr]] = None, **kwargs
     ) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
         instance = cls()
         instance.steam_id = steam_id

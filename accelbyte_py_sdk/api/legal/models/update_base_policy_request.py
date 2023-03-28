@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -127,6 +127,7 @@ class UpdateBasePolicyRequest(Model):
         description: Optional[str] = None,
         namespace: Optional[str] = None,
         tags: Optional[List[str]] = None,
+        **kwargs,
     ) -> UpdateBasePolicyRequest:
         instance = cls()
         if affected_client_ids is not None:

@@ -87,10 +87,7 @@ class ModelsSessionPlayerHistory(Model):
 
     @classmethod
     def create(
-        cls,
-        action: str,
-        date: str,
-        user_id: str,
+        cls, action: str, date: str, user_id: str, **kwargs
     ) -> ModelsSessionPlayerHistory:
         instance = cls()
         instance.action = action

@@ -230,9 +230,7 @@ class GetPersonalChatHistoryV1Public(Operation):
 
     @classmethod
     def create(
-        cls,
-        friend_id: str,
-        namespace: str,
+        cls, friend_id: str, namespace: str, **kwargs
     ) -> GetPersonalChatHistoryV1Public:
         instance = cls()
         instance.friend_id = friend_id

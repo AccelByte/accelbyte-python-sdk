@@ -83,6 +83,7 @@ class ClaimableRewards(Model):
         cls,
         claiming_rewards: Dict[str, Any],
         to_claim_rewards: Dict[str, Any],
+        **kwargs,
     ) -> ClaimableRewards:
         instance = cls()
         instance.claiming_rewards = claiming_rewards

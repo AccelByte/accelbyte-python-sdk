@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -225,12 +225,7 @@ class GetGroup(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        group_id: str,
-        namespace: str,
-        user_id: str,
-    ) -> GetGroup:
+    def create(cls, group_id: str, namespace: str, user_id: str, **kwargs) -> GetGroup:
         instance = cls()
         instance.group_id = group_id
         instance.namespace = namespace

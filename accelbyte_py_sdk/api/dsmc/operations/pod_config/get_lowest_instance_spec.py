@@ -180,9 +180,7 @@ class GetLowestInstanceSpec(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> GetLowestInstanceSpec:
+    def create(cls, **kwargs) -> GetLowestInstanceSpec:
         instance = cls()
         return instance
 

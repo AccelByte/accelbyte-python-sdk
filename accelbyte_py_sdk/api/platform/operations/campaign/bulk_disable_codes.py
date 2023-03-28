@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -216,10 +216,7 @@ class BulkDisableCodes(Operation):
 
     @classmethod
     def create(
-        cls,
-        campaign_id: str,
-        namespace: str,
-        batch_no: Optional[int] = None,
+        cls, campaign_id: str, namespace: str, batch_no: Optional[int] = None, **kwargs
     ) -> BulkDisableCodes:
         instance = cls()
         instance.campaign_id = campaign_id

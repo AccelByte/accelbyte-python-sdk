@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -115,6 +115,7 @@ class ConfigInfo(Model):
         namespace: Optional[str] = None,
         updated_at: Optional[str] = None,
         value: Optional[str] = None,
+        **kwargs,
     ) -> ConfigInfo:
         instance = cls()
         if created_at is not None:

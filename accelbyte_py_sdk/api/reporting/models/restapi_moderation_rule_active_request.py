@@ -64,10 +64,7 @@ class RestapiModerationRuleActiveRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        active: bool,
-    ) -> RestapiModerationRuleActiveRequest:
+    def create(cls, active: bool, **kwargs) -> RestapiModerationRuleActiveRequest:
         instance = cls()
         instance.active = active
         return instance

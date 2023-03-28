@@ -64,10 +64,7 @@ class ModelUserRejectFriendRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        friend_id: str,
-    ) -> ModelUserRejectFriendRequest:
+    def create(cls, friend_id: str, **kwargs) -> ModelUserRejectFriendRequest:
         instance = cls()
         instance.friend_id = friend_id
         return instance

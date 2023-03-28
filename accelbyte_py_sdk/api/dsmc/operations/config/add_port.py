@@ -250,10 +250,7 @@ class AddPort(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsCreatePortRequest,
-        name: str,
-        namespace: str,
+        cls, body: ModelsCreatePortRequest, name: str, namespace: str, **kwargs
     ) -> AddPort:
         instance = cls()
         instance.body = body

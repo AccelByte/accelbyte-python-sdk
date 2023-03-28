@@ -76,9 +76,7 @@ class Localization(Model):
 
     @classmethod
     def create(
-        cls,
-        description: Optional[str] = None,
-        title: Optional[str] = None,
+        cls, description: Optional[str] = None, title: Optional[str] = None, **kwargs
     ) -> Localization:
         instance = cls()
         if description is not None:

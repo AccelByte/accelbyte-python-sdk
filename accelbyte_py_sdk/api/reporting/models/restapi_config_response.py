@@ -97,6 +97,7 @@ class RestapiConfigResponse(Model):
         namespace: str,
         reporting_limit: RestapiReportingLimit,
         updated_at: str,
+        **kwargs,
     ) -> RestapiConfigResponse:
         instance = cls()
         instance.namespace = namespace

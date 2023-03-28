@@ -71,8 +71,7 @@ class ModelsSessionByUserIDsResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ModelsGameSession],
+        cls, data: List[ModelsGameSession], **kwargs
     ) -> ModelsSessionByUserIDsResponse:
         instance = cls()
         instance.data = data

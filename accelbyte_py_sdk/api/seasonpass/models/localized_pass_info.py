@@ -203,6 +203,7 @@ class LocalizedPassInfo(Model):
         description: Optional[str] = None,
         images: Optional[List[Image]] = None,
         title: Optional[str] = None,
+        **kwargs,
     ) -> LocalizedPassInfo:
         instance = cls()
         instance.auto_enroll = auto_enroll

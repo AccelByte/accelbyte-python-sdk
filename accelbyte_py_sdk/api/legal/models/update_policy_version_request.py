@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,10 +87,7 @@ class UpdatePolicyVersionRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        description: str,
-        display_version: str,
-        is_committed: bool,
+        cls, description: str, display_version: str, is_committed: bool, **kwargs
     ) -> UpdatePolicyVersionRequest:
         instance = cls()
         instance.description = description

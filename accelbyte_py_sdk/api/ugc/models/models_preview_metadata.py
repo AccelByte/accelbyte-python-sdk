@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelsPreviewMetadata(Model):
 
     @classmethod
     def create(
-        cls,
-        preview_content_type: str,
-        preview_file_extension: str,
+        cls, preview_content_type: str, preview_file_extension: str, **kwargs
     ) -> ModelsPreviewMetadata:
         instance = cls()
         instance.preview_content_type = preview_content_type

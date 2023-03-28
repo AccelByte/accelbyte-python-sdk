@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,8 +65,7 @@ class EpicGamesDLCSyncRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        epic_games_jwt_token: Optional[str] = None,
+        cls, epic_games_jwt_token: Optional[str] = None, **kwargs
     ) -> EpicGamesDLCSyncRequest:
         instance = cls()
         if epic_games_jwt_token is not None:

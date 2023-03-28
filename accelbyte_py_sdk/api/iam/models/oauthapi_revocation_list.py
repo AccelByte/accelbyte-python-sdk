@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -90,6 +90,7 @@ class OauthapiRevocationList(Model):
         cls,
         revoked_tokens: BloomFilterJSON,
         revoked_users: List[OauthcommonUserRevocationListRecord],
+        **kwargs,
     ) -> OauthapiRevocationList:
         instance = cls()
         instance.revoked_tokens = revoked_tokens

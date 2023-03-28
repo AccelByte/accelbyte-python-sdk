@@ -252,10 +252,7 @@ class UpdateNotificationTopicV1Admin(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelUpdateTopicRequest,
-        namespace: str,
-        topic_name: str,
+        cls, body: ModelUpdateTopicRequest, namespace: str, topic_name: str, **kwargs
     ) -> UpdateNotificationTopicV1Admin:
         instance = cls()
         instance.body = body

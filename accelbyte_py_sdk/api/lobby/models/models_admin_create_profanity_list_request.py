@@ -87,10 +87,7 @@ class ModelsAdminCreateProfanityListRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        is_enabled: bool,
-        is_mandatory: bool,
-        name: str,
+        cls, is_enabled: bool, is_mandatory: bool, name: str, **kwargs
     ) -> ModelsAdminCreateProfanityListRequest:
         instance = cls()
         instance.is_enabled = is_enabled

@@ -222,9 +222,7 @@ class UserRejectFriendRequest(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelUserRejectFriendRequest,
-        namespace: str,
+        cls, body: ModelUserRejectFriendRequest, namespace: str, **kwargs
     ) -> UserRejectFriendRequest:
         instance = cls()
         instance.body = body

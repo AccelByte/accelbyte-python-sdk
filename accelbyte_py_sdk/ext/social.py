@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,14 +71,18 @@ from ..api.social.models import UserStatItemPagingSlicedResult
 from ..api.social.models import ValidationErrorEntity
 
 
-def create_a_dto_object_for_resetting_user_stat_items_example() -> ADTOObjectForResettingUserStatItems:
+def create_a_dto_object_for_resetting_user_stat_items_example() -> (
+    ADTOObjectForResettingUserStatItems
+):
     instance = ADTOObjectForResettingUserStatItems()
     instance.stat_code = randomize()
     instance.additional_data = {randomize(): randomize()}
     return instance
 
 
-def create_a_dto_object_for_user_stat_item_value_example() -> ADTOObjectForUserStatItemValue:
+def create_a_dto_object_for_user_stat_item_value_example() -> (
+    ADTOObjectForUserStatItemValue
+):
     instance = ADTOObjectForUserStatItemValue()
     instance.profile_id = randomize()
     instance.stat_code = randomize()
@@ -242,7 +246,9 @@ def create_global_stat_item_info_example() -> GlobalStatItemInfo:
     return instance
 
 
-def create_global_stat_item_paging_sliced_result_example() -> GlobalStatItemPagingSlicedResult:
+def create_global_stat_item_paging_sliced_result_example() -> (
+    GlobalStatItemPagingSlicedResult
+):
     instance = GlobalStatItemPagingSlicedResult()
     instance.data = [create_global_stat_item_info_example()]
     instance.paging = create_paging_example()
@@ -477,7 +483,9 @@ def create_user_stat_cycle_item_info_example() -> UserStatCycleItemInfo:
     return instance
 
 
-def create_user_stat_cycle_item_paging_sliced_result_example() -> UserStatCycleItemPagingSlicedResult:
+def create_user_stat_cycle_item_paging_sliced_result_example() -> (
+    UserStatCycleItemPagingSlicedResult
+):
     instance = UserStatCycleItemPagingSlicedResult()
     instance.data = [create_user_stat_cycle_item_info_example()]
     instance.paging = create_paging_example()
@@ -497,7 +505,9 @@ def create_user_stat_item_info_example() -> UserStatItemInfo:
     return instance
 
 
-def create_user_stat_item_paging_sliced_result_example() -> UserStatItemPagingSlicedResult:
+def create_user_stat_item_paging_sliced_result_example() -> (
+    UserStatItemPagingSlicedResult
+):
     instance = UserStatItemPagingSlicedResult()
     instance.data = [create_user_stat_item_info_example()]
     instance.paging = create_paging_example()

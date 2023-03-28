@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Social Service Index (2.1.0)
+# AccelByte Gaming Services Social Service Index (2.3.0)
 
 
 ## Operations
@@ -75,6 +75,7 @@
 | /social/v1/public/namespaces/{namespace}/statCycles/{cycleId} | GET | getStatCycle_1 | `false` | [GetStatCycle1](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/get_stat_cycle_1.py) | [get_stat_cycle_1](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-get-stat-cycle-1](../../samples/cli/accelbyte_py_sdk_cli/social/_get_stat_cycle_1.py) |
 | /social/v1/admin/namespaces/{namespace}/statCycles | GET | getStatCycles | `false` | [GetStatCycles](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/get_stat_cycles.py) | [get_stat_cycles](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-get-stat-cycles](../../samples/cli/accelbyte_py_sdk_cli/social/_get_stat_cycles.py) |
 | /social/v1/public/namespaces/{namespace}/statCycles | GET | getStatCycles_1 | `false` | [GetStatCycles1](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/get_stat_cycles_1.py) | [get_stat_cycles_1](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-get-stat-cycles-1](../../samples/cli/accelbyte_py_sdk_cli/social/_get_stat_cycles_1.py) |
+| /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}/stop | PUT | stopStatCycle | `false` | [StopStatCycle](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/stop_stat_cycle.py) | [stop_stat_cycle](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-stop-stat-cycle](../../samples/cli/accelbyte_py_sdk_cli/social/_stop_stat_cycle.py) |
 | /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId} | PUT | updateStatCycle | `false` | [UpdateStatCycle](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/update_stat_cycle.py) | [update_stat_cycle](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-update-stat-cycle](../../samples/cli/accelbyte_py_sdk_cli/social/_update_stat_cycle.py) |
 
 ### UserStatistic

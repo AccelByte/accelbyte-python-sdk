@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -254,10 +254,7 @@ class RequestOneTimeLinkingCodeV3(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        platform_id: str,
-    ) -> RequestOneTimeLinkingCodeV3:
+    def create(cls, platform_id: str, **kwargs) -> RequestOneTimeLinkingCodeV3:
         instance = cls()
         instance.platform_id = platform_id
         return instance

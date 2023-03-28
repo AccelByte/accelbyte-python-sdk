@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -68,6 +68,8 @@ class GetUserStatCycleItems1(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         stat_codes: (statCodes) OPTIONAL str in query
 
     Responses:
@@ -90,6 +92,7 @@ class GetUserStatCycleItems1(Operation):
     user_id: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    sort_by: str  # OPTIONAL in [query]
     stat_codes: str  # OPTIONAL in [query]
 
     # endregion fields
@@ -150,6 +153,8 @@ class GetUserStatCycleItems1(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
         if hasattr(self, "stat_codes"):
             result["statCodes"] = self.stat_codes
         return result
@@ -182,6 +187,10 @@ class GetUserStatCycleItems1(Operation):
         self.offset = value
         return self
 
+    def with_sort_by(self, value: str) -> GetUserStatCycleItems1:
+        self.sort_by = value
+        return self
+
     def with_stat_codes(self, value: str) -> GetUserStatCycleItems1:
         self.stat_codes = value
         return self
@@ -212,6 +221,10 @@ class GetUserStatCycleItems1(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = ""
         if hasattr(self, "stat_codes") and self.stat_codes:
             result["statCodes"] = str(self.stat_codes)
         elif include_empty:
@@ -269,7 +282,9 @@ class GetUserStatCycleItems1(Operation):
         user_id: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        sort_by: Optional[str] = None,
         stat_codes: Optional[str] = None,
+        **kwargs,
     ) -> GetUserStatCycleItems1:
         instance = cls()
         instance.cycle_id = cycle_id
@@ -279,6 +294,8 @@ class GetUserStatCycleItems1(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if sort_by is not None:
+            instance.sort_by = sort_by
         if stat_codes is not None:
             instance.stat_codes = stat_codes
         return instance
@@ -308,6 +325,10 @@ class GetUserStatCycleItems1(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = ""
         if "statCodes" in dict_ and dict_["statCodes"] is not None:
             instance.stat_codes = str(dict_["statCodes"])
         elif include_empty:
@@ -322,6 +343,7 @@ class GetUserStatCycleItems1(Operation):
             "userId": "user_id",
             "limit": "limit",
             "offset": "offset",
+            "sortBy": "sort_by",
             "statCodes": "stat_codes",
         }
 
@@ -333,6 +355,7 @@ class GetUserStatCycleItems1(Operation):
             "userId": True,
             "limit": False,
             "offset": False,
+            "sortBy": False,
             "statCodes": False,
         }
 

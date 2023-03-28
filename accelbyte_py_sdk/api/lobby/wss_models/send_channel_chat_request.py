@@ -25,7 +25,6 @@ from ....core import generate_websocket_message_id
 
 
 class SendChannelChatRequest(WebSocketMessage):
-
     # region fields
 
     channel_slug: str

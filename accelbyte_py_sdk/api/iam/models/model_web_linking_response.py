@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelWebLinkingResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        third_party_url: str,
-    ) -> ModelWebLinkingResponse:
+    def create(cls, third_party_url: str, **kwargs) -> ModelWebLinkingResponse:
         instance = cls()
         instance.third_party_url = third_party_url
         return instance

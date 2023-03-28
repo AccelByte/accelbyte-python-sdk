@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.6.9"
+__version__ = "2.7.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,14 +23,24 @@ from .wrappers import admin_get_all_configuration_templates_v1
 from .wrappers import admin_get_all_configuration_templates_v1_async
 from .wrappers import admin_get_configuration_template_v1
 from .wrappers import admin_get_configuration_template_v1_async
+from .wrappers import admin_get_dsmc_configuration
+from .wrappers import admin_get_dsmc_configuration_async
+from .wrappers import admin_sync_dsmc_configuration
+from .wrappers import admin_sync_dsmc_configuration_async
 from .wrappers import admin_update_configuration_template_v1
 from .wrappers import admin_update_configuration_template_v1_async
+
+# dsmc_default_configuration
+from .wrappers import admin_get_dsmc_configuration_default
+from .wrappers import admin_get_dsmc_configuration_default_async
 
 # game_session
 from .wrappers import admin_query_game_sessions
 from .wrappers import admin_query_game_sessions_async
 from .wrappers import admin_update_game_session_member
 from .wrappers import admin_update_game_session_member_async
+from .wrappers import append_team_game_session
+from .wrappers import append_team_game_session_async
 from .wrappers import create_game_session
 from .wrappers import create_game_session_async
 from .wrappers import delete_game_session

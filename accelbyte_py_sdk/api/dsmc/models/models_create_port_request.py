@@ -64,10 +64,7 @@ class ModelsCreatePortRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        port: int,
-    ) -> ModelsCreatePortRequest:
+    def create(cls, port: int, **kwargs) -> ModelsCreatePortRequest:
         instance = cls()
         instance.port = port
         return instance

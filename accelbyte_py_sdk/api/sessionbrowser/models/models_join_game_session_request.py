@@ -64,10 +64,7 @@ class ModelsJoinGameSessionRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        password: str,
-    ) -> ModelsJoinGameSessionRequest:
+    def create(cls, password: str, **kwargs) -> ModelsJoinGameSessionRequest:
         instance = cls()
         instance.password = password
         return instance

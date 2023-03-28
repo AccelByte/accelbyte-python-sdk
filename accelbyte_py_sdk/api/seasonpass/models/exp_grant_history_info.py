@@ -157,6 +157,7 @@ class ExpGrantHistoryInfo(Model):
         user_id: str,
         source: Optional[Union[str, SourceEnum]] = None,
         tags: Optional[List[str]] = None,
+        **kwargs,
     ) -> ExpGrantHistoryInfo:
         instance = cls()
         instance.created_at = created_at

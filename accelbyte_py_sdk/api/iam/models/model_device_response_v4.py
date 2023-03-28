@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -129,6 +129,7 @@ class ModelDeviceResponseV4(Model):
         last_login_time: int,
         ban: Optional[ModelDeviceBanResponseV4] = None,
         ext: Optional[Dict[str, Any]] = None,
+        **kwargs,
     ) -> ModelDeviceResponseV4:
         instance = cls()
         instance.device_id = device_id

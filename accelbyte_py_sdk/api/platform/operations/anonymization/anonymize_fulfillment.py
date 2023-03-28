@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -192,11 +192,7 @@ class AnonymizeFulfillment(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        user_id: str,
-    ) -> AnonymizeFulfillment:
+    def create(cls, namespace: str, user_id: str, **kwargs) -> AnonymizeFulfillment:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id

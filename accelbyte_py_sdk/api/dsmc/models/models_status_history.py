@@ -75,11 +75,7 @@ class ModelsStatusHistory(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        status: str,
-        time_stamp: str,
-    ) -> ModelsStatusHistory:
+    def create(cls, status: str, time_stamp: str, **kwargs) -> ModelsStatusHistory:
         instance = cls()
         instance.status = status
         instance.time_stamp = time_stamp

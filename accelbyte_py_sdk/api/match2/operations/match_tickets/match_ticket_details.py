@@ -225,11 +225,7 @@ class MatchTicketDetails(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        ticketid: str,
-    ) -> MatchTicketDetails:
+    def create(cls, namespace: str, ticketid: str, **kwargs) -> MatchTicketDetails:
         instance = cls()
         instance.namespace = namespace
         instance.ticketid = ticketid

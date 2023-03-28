@@ -263,6 +263,7 @@ class AdminUpdatePartyAttributesV1(Operation):
         body: ModelsPartyPUTCustomAttributesRequest,
         namespace: str,
         party_id: str,
+        **kwargs,
     ) -> AdminUpdatePartyAttributesV1:
         instance = cls()
         instance.body = body

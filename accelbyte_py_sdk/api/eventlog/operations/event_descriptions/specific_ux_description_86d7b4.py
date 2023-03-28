@@ -186,10 +186,7 @@ class SpecificUXDescriptionHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        ux: Optional[str] = None,
-    ) -> SpecificUXDescriptionHandler:
+    def create(cls, ux: Optional[str] = None, **kwargs) -> SpecificUXDescriptionHandler:
         instance = cls()
         if ux is not None:
             instance.ux = ux

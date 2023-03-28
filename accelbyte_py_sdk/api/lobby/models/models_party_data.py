@@ -141,6 +141,7 @@ class ModelsPartyData(Model):
         namespace: str,
         party_id: str,
         updated_at: int,
+        **kwargs,
     ) -> ModelsPartyData:
         instance = cls()
         instance.custom_attribute = custom_attribute

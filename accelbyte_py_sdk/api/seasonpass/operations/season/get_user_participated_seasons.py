@@ -243,6 +243,7 @@ class GetUserParticipatedSeasons(Operation):
         user_id: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> GetUserParticipatedSeasons:
         instance = cls()
         instance.namespace = namespace

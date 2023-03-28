@@ -243,9 +243,7 @@ class CreateMatchTicket(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ApiMatchTicketRequest,
-        namespace: str,
+        cls, body: ApiMatchTicketRequest, namespace: str, **kwargs
     ) -> CreateMatchTicket:
         instance = cls()
         instance.body = body

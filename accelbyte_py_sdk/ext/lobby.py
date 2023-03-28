@@ -105,7 +105,9 @@ from ..api.lobby.models import RestapiErrorResponseBody
 from ..api.lobby.models import RestapiErrorResponseV1
 
 
-def create_handlers_get_users_presence_response_example() -> HandlersGetUsersPresenceResponse:
+def create_handlers_get_users_presence_response_example() -> (
+    HandlersGetUsersPresenceResponse
+):
     instance = HandlersGetUsersPresenceResponse()
     instance.away = randomize("int", min_val=1, max_val=1000)
     instance.busy = randomize("int", min_val=1, max_val=1000)
@@ -143,7 +145,9 @@ def create_model_bulk_add_friends_request_example() -> ModelBulkAddFriendsReques
     return instance
 
 
-def create_model_bulk_users_free_form_notification_request_v1_example() -> ModelBulkUsersFreeFormNotificationRequestV1:
+def create_model_bulk_users_free_form_notification_request_v1_example() -> (
+    ModelBulkUsersFreeFormNotificationRequestV1
+):
     instance = ModelBulkUsersFreeFormNotificationRequestV1()
     instance.message = randomize()
     instance.topic_name = randomize()
@@ -183,28 +187,36 @@ def create_model_create_topic_request_v1_example() -> ModelCreateTopicRequestV1:
     return instance
 
 
-def create_model_free_form_notification_request_example() -> ModelFreeFormNotificationRequest:
+def create_model_free_form_notification_request_example() -> (
+    ModelFreeFormNotificationRequest
+):
     instance = ModelFreeFormNotificationRequest()
     instance.message = randomize()
     instance.topic = randomize()
     return instance
 
 
-def create_model_free_form_notification_request_v1_example() -> ModelFreeFormNotificationRequestV1:
+def create_model_free_form_notification_request_v1_example() -> (
+    ModelFreeFormNotificationRequestV1
+):
     instance = ModelFreeFormNotificationRequestV1()
     instance.message = randomize()
     instance.topic_name = randomize()
     return instance
 
 
-def create_model_get_all_notification_template_slug_resp_example() -> ModelGetAllNotificationTemplateSlugResp:
+def create_model_get_all_notification_template_slug_resp_example() -> (
+    ModelGetAllNotificationTemplateSlugResp
+):
     instance = ModelGetAllNotificationTemplateSlugResp()
     instance.data = [create_model_localization_example()]
     instance.paging = create_model_pagination_example()
     return instance
 
 
-def create_model_get_all_notification_topics_response_example() -> ModelGetAllNotificationTopicsResponse:
+def create_model_get_all_notification_topics_response_example() -> (
+    ModelGetAllNotificationTopicsResponse
+):
     instance = ModelGetAllNotificationTopicsResponse()
     instance.data = [create_model_notification_topic_response_v1_example()]
     instance.paging = create_model_pagination_example()
@@ -225,35 +237,45 @@ def create_model_get_user_friends_response_example() -> ModelGetUserFriendsRespo
     return instance
 
 
-def create_model_get_user_incoming_friends_response_example() -> ModelGetUserIncomingFriendsResponse:
+def create_model_get_user_incoming_friends_response_example() -> (
+    ModelGetUserIncomingFriendsResponse
+):
     instance = ModelGetUserIncomingFriendsResponse()
     instance.friend_i_ds = [randomize()]
     instance.paging = create_model_pagination_example()
     return instance
 
 
-def create_model_get_user_outgoing_friends_response_example() -> ModelGetUserOutgoingFriendsResponse:
+def create_model_get_user_outgoing_friends_response_example() -> (
+    ModelGetUserOutgoingFriendsResponse
+):
     instance = ModelGetUserOutgoingFriendsResponse()
     instance.friend_i_ds = [randomize()]
     instance.paging = create_model_pagination_example()
     return instance
 
 
-def create_model_incoming_friends_with_time_data_example() -> ModelIncomingFriendsWithTimeData:
+def create_model_incoming_friends_with_time_data_example() -> (
+    ModelIncomingFriendsWithTimeData
+):
     instance = ModelIncomingFriendsWithTimeData()
     instance.friend_id = randomize()
     instance.requested_at = randomize("date")
     return instance
 
 
-def create_model_load_incoming_friends_with_time_response_example() -> ModelLoadIncomingFriendsWithTimeResponse:
+def create_model_load_incoming_friends_with_time_response_example() -> (
+    ModelLoadIncomingFriendsWithTimeResponse
+):
     instance = ModelLoadIncomingFriendsWithTimeResponse()
     instance.data = [create_model_incoming_friends_with_time_data_example()]
     instance.paging = create_model_pagination_example()
     return instance
 
 
-def create_model_load_outgoing_friends_with_time_response_example() -> ModelLoadOutgoingFriendsWithTimeResponse:
+def create_model_load_outgoing_friends_with_time_response_example() -> (
+    ModelLoadOutgoingFriendsWithTimeResponse
+):
     instance = ModelLoadOutgoingFriendsWithTimeResponse()
     instance.data = [create_model_outgoing_friends_with_time_data_example()]
     instance.paging = create_model_pagination_example()
@@ -269,14 +291,18 @@ def create_model_localization_example() -> ModelLocalization:
     return instance
 
 
-def create_model_notification_template_response_example() -> ModelNotificationTemplateResponse:
+def create_model_notification_template_response_example() -> (
+    ModelNotificationTemplateResponse
+):
     instance = ModelNotificationTemplateResponse()
     instance.template_localizations = [create_model_localization_example()]
     instance.template_slug = randomize()
     return instance
 
 
-def create_model_notification_topic_response_example() -> ModelNotificationTopicResponse:
+def create_model_notification_topic_response_example() -> (
+    ModelNotificationTopicResponse
+):
     instance = ModelNotificationTopicResponse()
     instance.created_at = randomize("int", min_val=1, max_val=1000)
     instance.description = randomize()
@@ -285,7 +311,9 @@ def create_model_notification_topic_response_example() -> ModelNotificationTopic
     return instance
 
 
-def create_model_notification_topic_response_v1_example() -> ModelNotificationTopicResponseV1:
+def create_model_notification_topic_response_v1_example() -> (
+    ModelNotificationTopicResponseV1
+):
     instance = ModelNotificationTopicResponseV1()
     instance.created_at = randomize("int", min_val=1, max_val=1000)
     instance.description = randomize()
@@ -294,7 +322,9 @@ def create_model_notification_topic_response_v1_example() -> ModelNotificationTo
     return instance
 
 
-def create_model_notification_with_template_request_example() -> ModelNotificationWithTemplateRequest:
+def create_model_notification_with_template_request_example() -> (
+    ModelNotificationWithTemplateRequest
+):
     instance = ModelNotificationWithTemplateRequest()
     instance.template_context = {randomize(): randomize()}
     instance.template_language = randomize()
@@ -303,7 +333,9 @@ def create_model_notification_with_template_request_example() -> ModelNotificati
     return instance
 
 
-def create_model_notification_with_template_request_v1_example() -> ModelNotificationWithTemplateRequestV1:
+def create_model_notification_with_template_request_v1_example() -> (
+    ModelNotificationWithTemplateRequestV1
+):
     instance = ModelNotificationWithTemplateRequestV1()
     instance.template_context = {randomize(): randomize()}
     instance.template_language = randomize()
@@ -312,7 +344,9 @@ def create_model_notification_with_template_request_v1_example() -> ModelNotific
     return instance
 
 
-def create_model_outgoing_friends_with_time_data_example() -> ModelOutgoingFriendsWithTimeData:
+def create_model_outgoing_friends_with_time_data_example() -> (
+    ModelOutgoingFriendsWithTimeData
+):
     instance = ModelOutgoingFriendsWithTimeData()
     instance.friend_id = randomize()
     instance.requested_at = randomize("date")
@@ -345,7 +379,9 @@ def create_model_template_localization_example() -> ModelTemplateLocalization:
     return instance
 
 
-def create_model_template_localization_response_example() -> ModelTemplateLocalizationResponse:
+def create_model_template_localization_response_example() -> (
+    ModelTemplateLocalizationResponse
+):
     instance = ModelTemplateLocalizationResponse()
     instance.first = randomize()
     instance.last = randomize()
@@ -362,7 +398,9 @@ def create_model_template_response_example() -> ModelTemplateResponse:
     return instance
 
 
-def create_model_topic_by_namespaces_response_example() -> ModelTopicByNamespacesResponse:
+def create_model_topic_by_namespaces_response_example() -> (
+    ModelTopicByNamespacesResponse
+):
     instance = ModelTopicByNamespacesResponse()
     instance.first = randomize()
     instance.last = randomize()
@@ -396,7 +434,9 @@ def create_model_user_cancel_friend_request_example() -> ModelUserCancelFriendRe
     return instance
 
 
-def create_model_user_get_friendship_status_response_example() -> ModelUserGetFriendshipStatusResponse:
+def create_model_user_get_friendship_status_response_example() -> (
+    ModelUserGetFriendshipStatusResponse
+):
     instance = ModelUserGetFriendshipStatusResponse()
     instance.code = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
@@ -422,21 +462,27 @@ def create_model_user_unfriend_request_example() -> ModelUserUnfriendRequest:
     return instance
 
 
-def create_models_admin_add_profanity_filter_into_list_request_example() -> ModelsAdminAddProfanityFilterIntoListRequest:
+def create_models_admin_add_profanity_filter_into_list_request_example() -> (
+    ModelsAdminAddProfanityFilterIntoListRequest
+):
     instance = ModelsAdminAddProfanityFilterIntoListRequest()
     instance.filter_ = randomize()
     instance.note = randomize()
     return instance
 
 
-def create_models_admin_add_profanity_filters_filter_request_example() -> ModelsAdminAddProfanityFiltersFilterRequest:
+def create_models_admin_add_profanity_filters_filter_request_example() -> (
+    ModelsAdminAddProfanityFiltersFilterRequest
+):
     instance = ModelsAdminAddProfanityFiltersFilterRequest()
     instance.filter_ = randomize()
     instance.note = randomize()
     return instance
 
 
-def create_models_admin_add_profanity_filters_request_example() -> ModelsAdminAddProfanityFiltersRequest:
+def create_models_admin_add_profanity_filters_request_example() -> (
+    ModelsAdminAddProfanityFiltersRequest
+):
     instance = ModelsAdminAddProfanityFiltersRequest()
     instance.filters = [
         create_models_admin_add_profanity_filters_filter_request_example()
@@ -444,7 +490,9 @@ def create_models_admin_add_profanity_filters_request_example() -> ModelsAdminAd
     return instance
 
 
-def create_models_admin_create_profanity_list_request_example() -> ModelsAdminCreateProfanityListRequest:
+def create_models_admin_create_profanity_list_request_example() -> (
+    ModelsAdminCreateProfanityListRequest
+):
     instance = ModelsAdminCreateProfanityListRequest()
     instance.is_enabled = randomize("bool")
     instance.is_mandatory = randomize("bool")
@@ -452,19 +500,25 @@ def create_models_admin_create_profanity_list_request_example() -> ModelsAdminCr
     return instance
 
 
-def create_models_admin_delete_profanity_filter_request_example() -> ModelsAdminDeleteProfanityFilterRequest:
+def create_models_admin_delete_profanity_filter_request_example() -> (
+    ModelsAdminDeleteProfanityFilterRequest
+):
     instance = ModelsAdminDeleteProfanityFilterRequest()
     instance.filter_ = randomize()
     return instance
 
 
-def create_models_admin_get_profanity_list_filters_v1_response_example() -> ModelsAdminGetProfanityListFiltersV1Response:
+def create_models_admin_get_profanity_list_filters_v1_response_example() -> (
+    ModelsAdminGetProfanityListFiltersV1Response
+):
     instance = ModelsAdminGetProfanityListFiltersV1Response()
     instance.filters = [create_models_profanity_filter_example()]
     return instance
 
 
-def create_models_admin_get_profanity_lists_list_response_example() -> ModelsAdminGetProfanityListsListResponse:
+def create_models_admin_get_profanity_lists_list_response_example() -> (
+    ModelsAdminGetProfanityListsListResponse
+):
     instance = ModelsAdminGetProfanityListsListResponse()
     instance.is_enabled = randomize("bool")
     instance.is_mandatory = randomize("bool")
@@ -472,13 +526,17 @@ def create_models_admin_get_profanity_lists_list_response_example() -> ModelsAdm
     return instance
 
 
-def create_models_admin_set_profanity_rule_for_namespace_request_example() -> ModelsAdminSetProfanityRuleForNamespaceRequest:
+def create_models_admin_set_profanity_rule_for_namespace_request_example() -> (
+    ModelsAdminSetProfanityRuleForNamespaceRequest
+):
     instance = ModelsAdminSetProfanityRuleForNamespaceRequest()
     instance.rule = randomize()
     return instance
 
 
-def create_models_admin_update_profanity_list_example() -> ModelsAdminUpdateProfanityList:
+def create_models_admin_update_profanity_list_example() -> (
+    ModelsAdminUpdateProfanityList
+):
     instance = ModelsAdminUpdateProfanityList()
     instance.is_enabled = randomize("bool")
     instance.is_mandatory = randomize("bool")
@@ -486,14 +544,18 @@ def create_models_admin_update_profanity_list_example() -> ModelsAdminUpdateProf
     return instance
 
 
-def create_models_admin_verify_message_profanity_request_example() -> ModelsAdminVerifyMessageProfanityRequest:
+def create_models_admin_verify_message_profanity_request_example() -> (
+    ModelsAdminVerifyMessageProfanityRequest
+):
     instance = ModelsAdminVerifyMessageProfanityRequest()
     instance.message = randomize()
     instance.profanity_level = randomize()
     return instance
 
 
-def create_models_admin_verify_message_profanity_response_example() -> ModelsAdminVerifyMessageProfanityResponse:
+def create_models_admin_verify_message_profanity_response_example() -> (
+    ModelsAdminVerifyMessageProfanityResponse
+):
     instance = ModelsAdminVerifyMessageProfanityResponse()
     instance.filtered_message = randomize()
     instance.has_profanity = randomize("bool")
@@ -517,6 +579,7 @@ def create_models_blocked_player_data_example() -> ModelsBlockedPlayerData:
 def create_models_config_example() -> ModelsConfig:
     instance = ModelsConfig()
     instance.max_ds_wait_time = randomize("int", min_val=1, max_val=1000)
+    instance.unregister_delay = randomize("int", min_val=1, max_val=1000)
     instance.allow_invite_non_connected_user = randomize("bool")
     instance.allow_join_party_during_matchmaking = randomize("bool")
     instance.auto_kick_on_disconnect = randomize("bool")
@@ -547,6 +610,7 @@ def create_models_config_list_example() -> ModelsConfigList:
 
 def create_models_config_req_example() -> ModelsConfigReq:
     instance = ModelsConfigReq()
+    instance.unregister_delay = randomize("int", min_val=1, max_val=1000)
     instance.allow_invite_non_connected_user = randomize("bool")
     instance.allow_join_party_during_matchmaking = randomize("bool")
     instance.auto_kick_on_disconnect = randomize("bool")
@@ -582,25 +646,33 @@ def create_models_create_config_response_example() -> ModelsCreateConfigResponse
     return instance
 
 
-def create_models_debug_profanity_filter_request_example() -> ModelsDebugProfanityFilterRequest:
+def create_models_debug_profanity_filter_request_example() -> (
+    ModelsDebugProfanityFilterRequest
+):
     instance = ModelsDebugProfanityFilterRequest()
     instance.text = randomize()
     return instance
 
 
-def create_models_get_all_player_blocked_by_users_response_example() -> ModelsGetAllPlayerBlockedByUsersResponse:
+def create_models_get_all_player_blocked_by_users_response_example() -> (
+    ModelsGetAllPlayerBlockedByUsersResponse
+):
     instance = ModelsGetAllPlayerBlockedByUsersResponse()
     instance.data = [create_models_blocked_by_player_data_example()]
     return instance
 
 
-def create_models_get_all_player_blocked_users_response_example() -> ModelsGetAllPlayerBlockedUsersResponse:
+def create_models_get_all_player_blocked_users_response_example() -> (
+    ModelsGetAllPlayerBlockedUsersResponse
+):
     instance = ModelsGetAllPlayerBlockedUsersResponse()
     instance.data = [create_models_blocked_player_data_example()]
     return instance
 
 
-def create_models_get_all_player_session_attribute_response_example() -> ModelsGetAllPlayerSessionAttributeResponse:
+def create_models_get_all_player_session_attribute_response_example() -> (
+    ModelsGetAllPlayerSessionAttributeResponse
+):
     instance = ModelsGetAllPlayerSessionAttributeResponse()
     instance.attributes = {randomize(): randomize()}
     return instance
@@ -619,7 +691,9 @@ def create_models_get_lobby_ccu_response_example() -> ModelsGetLobbyCcuResponse:
     return instance
 
 
-def create_models_get_player_session_attribute_response_example() -> ModelsGetPlayerSessionAttributeResponse:
+def create_models_get_player_session_attribute_response_example() -> (
+    ModelsGetPlayerSessionAttributeResponse
+):
     instance = ModelsGetPlayerSessionAttributeResponse()
     instance.key = randomize()
     instance.value = randomize()
@@ -635,7 +709,9 @@ def create_models_import_config_response_example() -> ModelsImportConfigResponse
     return instance
 
 
-def create_models_list_blocked_player_request_example() -> ModelsListBlockedPlayerRequest:
+def create_models_list_blocked_player_request_example() -> (
+    ModelsListBlockedPlayerRequest
+):
     instance = ModelsListBlockedPlayerRequest()
     instance.list_blocked_user_id = [randomize()]
     return instance
@@ -653,14 +729,18 @@ def create_models_party_data_example() -> ModelsPartyData:
     return instance
 
 
-def create_models_party_put_custom_attributes_request_example() -> ModelsPartyPUTCustomAttributesRequest:
+def create_models_party_put_custom_attributes_request_example() -> (
+    ModelsPartyPUTCustomAttributesRequest
+):
     instance = ModelsPartyPUTCustomAttributesRequest()
     instance.custom_attribute = {randomize(): randomize()}
     instance.updated_at = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
-def create_models_party_put_limit_size_request_example() -> ModelsPartyPUTLimitSizeRequest:
+def create_models_party_put_limit_size_request_example() -> (
+    ModelsPartyPUTLimitSizeRequest
+):
     instance = ModelsPartyPUTLimitSizeRequest()
     instance.limit = randomize("int", min_val=1, max_val=1000)
     return instance
@@ -682,7 +762,9 @@ def create_models_profanity_rule_example() -> ModelsProfanityRule:
     return instance
 
 
-def create_models_set_player_session_attribute_request_example() -> ModelsSetPlayerSessionAttributeRequest:
+def create_models_set_player_session_attribute_request_example() -> (
+    ModelsSetPlayerSessionAttributeRequest
+):
     instance = ModelsSetPlayerSessionAttributeRequest()
     instance.attributes = {randomize(): randomize()}
     return instance

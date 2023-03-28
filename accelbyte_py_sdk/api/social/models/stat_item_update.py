@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class StatItemUpdate(Model):
         update_strategy: Union[str, UpdateStrategyEnum],
         value: float,
         additional_data: Optional[Dict[str, Any]] = None,
+        **kwargs,
     ) -> StatItemUpdate:
         instance = cls()
         instance.update_strategy = update_strategy

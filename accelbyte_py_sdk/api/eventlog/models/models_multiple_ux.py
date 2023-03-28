@@ -66,10 +66,7 @@ class ModelsMultipleUX(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        ux: List[ModelsUX],
-    ) -> ModelsMultipleUX:
+    def create(cls, ux: List[ModelsUX], **kwargs) -> ModelsMultipleUX:
         instance = cls()
         instance.ux = ux
         return instance

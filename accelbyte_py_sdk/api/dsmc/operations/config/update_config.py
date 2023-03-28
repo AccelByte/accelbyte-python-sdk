@@ -260,9 +260,7 @@ class UpdateConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsUpdateDSMConfigRequest,
-        namespace: str,
+        cls, body: ModelsUpdateDSMConfigRequest, namespace: str, **kwargs
     ) -> UpdateConfig:
         instance = cls()
         instance.body = body

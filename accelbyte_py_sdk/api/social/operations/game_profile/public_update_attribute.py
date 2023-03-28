@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -259,6 +259,7 @@ class PublicUpdateAttribute(Operation):
         profile_id: str,
         user_id: str,
         body: Optional[Attribute] = None,
+        **kwargs,
     ) -> PublicUpdateAttribute:
         instance = cls()
         instance.attribute_name = attribute_name

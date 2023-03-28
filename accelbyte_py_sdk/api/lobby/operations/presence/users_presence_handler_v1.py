@@ -229,10 +229,7 @@ class UsersPresenceHandlerV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_ids: str,
-        count_only: Optional[bool] = None,
+        cls, namespace: str, user_ids: str, count_only: Optional[bool] = None, **kwargs
     ) -> UsersPresenceHandlerV1:
         instance = cls()
         instance.namespace = namespace

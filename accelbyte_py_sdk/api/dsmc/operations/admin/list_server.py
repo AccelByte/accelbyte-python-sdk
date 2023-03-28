@@ -252,6 +252,7 @@ class ListServer(Operation):
         count: int,
         offset: int,
         region: Optional[str] = None,
+        **kwargs,
     ) -> ListServer:
         instance = cls()
         instance.namespace = namespace

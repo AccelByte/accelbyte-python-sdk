@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -137,6 +137,7 @@ class RevocationResult(Model):
         credit_revocations: Optional[List[CreditRevocation]] = None,
         entitlement_revocations: Optional[List[EntitlementRevocation]] = None,
         item_revocations: Optional[List[ItemRevocation]] = None,
+        **kwargs,
     ) -> RevocationResult:
         instance = cls()
         instance.id_ = id_

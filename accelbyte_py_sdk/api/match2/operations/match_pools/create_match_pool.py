@@ -251,11 +251,7 @@ class CreateMatchPool(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: ApiMatchPool,
-        namespace: str,
-    ) -> CreateMatchPool:
+    def create(cls, body: ApiMatchPool, namespace: str, **kwargs) -> CreateMatchPool:
         instance = cls()
         instance.body = body
         instance.namespace = namespace

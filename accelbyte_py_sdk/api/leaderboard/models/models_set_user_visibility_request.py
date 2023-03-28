@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelsSetUserVisibilityRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        visibility: bool,
-    ) -> ModelsSetUserVisibilityRequest:
+    def create(cls, visibility: bool, **kwargs) -> ModelsSetUserVisibilityRequest:
         instance = cls()
         instance.visibility = visibility
         return instance

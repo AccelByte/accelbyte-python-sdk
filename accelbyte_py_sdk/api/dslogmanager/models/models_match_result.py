@@ -109,6 +109,7 @@ class ModelsMatchResult(Model):
         matching_allies: List[ModelsRequestMatchingAlly],
         namespace: str,
         session_id: str,
+        **kwargs,
     ) -> ModelsMatchResult:
         instance = cls()
         instance.game_mode = game_mode

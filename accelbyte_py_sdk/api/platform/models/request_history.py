@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -124,6 +124,7 @@ class RequestHistory(Model):
         response_time: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         status_code: Optional[int] = None,
+        **kwargs,
     ) -> RequestHistory:
         instance = cls()
         if request_time is not None:

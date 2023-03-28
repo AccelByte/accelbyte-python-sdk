@@ -163,6 +163,7 @@ class RestapiSubmitReportRequest(Model):
         extension_category: Optional[str] = None,
         object_id: Optional[str] = None,
         object_type: Optional[str] = None,
+        **kwargs,
     ) -> RestapiSubmitReportRequest:
         instance = cls()
         instance.category = category

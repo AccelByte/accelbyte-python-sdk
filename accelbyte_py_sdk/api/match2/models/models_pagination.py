@@ -98,11 +98,7 @@ class ModelsPagination(Model):
 
     @classmethod
     def create(
-        cls,
-        first: str,
-        last: str,
-        next_: str,
-        previous: str,
+        cls, first: str, last: str, next_: str, previous: str, **kwargs
     ) -> ModelsPagination:
         instance = cls()
         instance.first = first

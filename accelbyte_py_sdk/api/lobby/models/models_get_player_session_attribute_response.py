@@ -76,9 +76,7 @@ class ModelsGetPlayerSessionAttributeResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        key: str,
-        value: str,
+        cls, key: str, value: str, **kwargs
     ) -> ModelsGetPlayerSessionAttributeResponse:
         instance = cls()
         instance.key = key

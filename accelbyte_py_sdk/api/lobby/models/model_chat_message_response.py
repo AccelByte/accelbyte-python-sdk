@@ -109,12 +109,7 @@ class ModelChatMessageResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        from_: str,
-        id_: str,
-        payload: str,
-        received_at: int,
-        to: str,
+        cls, from_: str, id_: str, payload: str, received_at: int, to: str, **kwargs
     ) -> ModelChatMessageResponse:
         instance = cls()
         instance.from_ = from_

@@ -121,6 +121,7 @@ class ModelTopicByNamespacesResponse(Model):
         next_: str,
         previous: str,
         topics: List[ModelNotificationTopicResponse],
+        **kwargs,
     ) -> ModelTopicByNamespacesResponse:
         instance = cls()
         instance.first = first

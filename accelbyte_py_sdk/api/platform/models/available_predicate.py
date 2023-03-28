@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -125,6 +125,7 @@ class AvailablePredicate(Model):
         predicate_type: Optional[Union[str, PredicateTypeEnum]] = None,
         show_any_of: Optional[bool] = None,
         value_type: Optional[Union[str, ValueTypeEnum]] = None,
+        **kwargs,
     ) -> AvailablePredicate:
         instance = cls()
         if available_comparisons is not None:

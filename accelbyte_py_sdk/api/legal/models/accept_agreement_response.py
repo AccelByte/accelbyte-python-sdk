@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,10 +87,7 @@ class AcceptAgreementResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        comply: bool,
-        proceed: bool,
-        ext: Optional[Dict[str, Any]] = None,
+        cls, comply: bool, proceed: bool, ext: Optional[Dict[str, Any]] = None, **kwargs
     ) -> AcceptAgreementResponse:
         instance = cls()
         instance.comply = comply

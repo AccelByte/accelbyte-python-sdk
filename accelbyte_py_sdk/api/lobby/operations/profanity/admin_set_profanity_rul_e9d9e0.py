@@ -239,6 +239,7 @@ class AdminSetProfanityRuleForNamespace(Operation):
         cls,
         body: ModelsAdminSetProfanityRuleForNamespaceRequest,
         namespace: str,
+        **kwargs,
     ) -> AdminSetProfanityRuleForNamespace:
         instance = cls()
         instance.body = body

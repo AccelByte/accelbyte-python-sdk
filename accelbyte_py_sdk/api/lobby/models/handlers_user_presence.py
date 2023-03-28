@@ -115,6 +115,7 @@ class HandlersUserPresence(Model):
         last_seen_at: str,
         namespace: str,
         user_id: str,
+        **kwargs,
     ) -> HandlersUserPresence:
         instance = cls()
         instance.activity = activity

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -127,6 +127,7 @@ class BasicCategoryInfo(Model):
         parent_category_path: str,
         updated_at: str,
         root: Optional[bool] = None,
+        **kwargs,
     ) -> BasicCategoryInfo:
         instance = cls()
         instance.category_path = category_path

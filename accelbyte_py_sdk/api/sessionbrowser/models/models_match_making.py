@@ -267,6 +267,7 @@ class ModelsMatchMaking(Model):
         sub_game_mode: List[str],
         joinable: Optional[bool] = None,
         party_id: Optional[str] = None,
+        **kwargs,
     ) -> ModelsMatchMaking:
         instance = cls()
         instance.channel = channel

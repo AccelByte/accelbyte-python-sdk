@@ -75,11 +75,7 @@ class ModelsUpdatePortRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        name: str,
-        port: int,
-    ) -> ModelsUpdatePortRequest:
+    def create(cls, name: str, port: int, **kwargs) -> ModelsUpdatePortRequest:
         instance = cls()
         instance.name = name
         instance.port = port

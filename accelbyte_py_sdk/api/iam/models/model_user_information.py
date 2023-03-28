@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -146,6 +146,7 @@ class ModelUserInformation(Model):
         phone_number: str,
         username: str,
         xuid: Optional[str] = None,
+        **kwargs,
     ) -> ModelUserInformation:
         instance = cls()
         instance.country = country

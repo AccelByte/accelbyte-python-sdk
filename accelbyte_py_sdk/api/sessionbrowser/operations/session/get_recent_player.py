@@ -214,11 +214,7 @@ class GetRecentPlayer(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        user_id: str,
-    ) -> GetRecentPlayer:
+    def create(cls, namespace: str, user_id: str, **kwargs) -> GetRecentPlayer:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id

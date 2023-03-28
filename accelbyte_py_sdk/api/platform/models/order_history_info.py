@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -167,6 +167,7 @@ class OrderHistoryInfo(Model):
         updated_at: str,
         user_id: str,
         reason: Optional[str] = None,
+        **kwargs,
     ) -> OrderHistoryInfo:
         instance = cls()
         instance.action = action

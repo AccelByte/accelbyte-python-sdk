@@ -265,9 +265,7 @@ class CreateModerationRule(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: RestapiModerationRuleRequest,
-        namespace: str,
+        cls, body: RestapiModerationRuleRequest, namespace: str, **kwargs
     ) -> CreateModerationRule:
         instance = cls()
         instance.body = body

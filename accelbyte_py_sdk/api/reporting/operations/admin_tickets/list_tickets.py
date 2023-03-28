@@ -312,6 +312,7 @@ class ListTickets(Operation):
         reported_user_id: Optional[str] = None,
         sort_by: Optional[str] = None,
         status: Optional[str] = None,
+        **kwargs,
     ) -> ListTickets:
         instance = cls()
         instance.namespace = namespace

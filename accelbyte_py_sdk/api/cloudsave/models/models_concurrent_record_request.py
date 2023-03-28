@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.6.2)
+# AccelByte Gaming Services Cloudsave Service (3.6.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelsConcurrentRecordRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        updated_at: str,
-        value: Dict[str, Any],
+        cls, updated_at: str, value: Dict[str, Any], **kwargs
     ) -> ModelsConcurrentRecordRequest:
         instance = cls()
         instance.updated_at = updated_at

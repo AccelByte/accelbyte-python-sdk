@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class StatItemIncResult(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        current_value: float,
-    ) -> StatItemIncResult:
+    def create(cls, current_value: float, **kwargs) -> StatItemIncResult:
         instance = cls()
         instance.current_value = current_value
         return instance

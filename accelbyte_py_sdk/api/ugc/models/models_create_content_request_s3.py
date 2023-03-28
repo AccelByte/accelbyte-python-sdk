@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -173,6 +173,7 @@ class ModelsCreateContentRequestS3(Model):
         custom_attributes: Optional[Dict[str, Any]] = None,
         file_extension: Optional[str] = None,
         preview_metadata: Optional[ModelsPreviewMetadata] = None,
+        **kwargs,
     ) -> ModelsCreateContentRequestS3:
         instance = cls()
         instance.name = name

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -323,6 +323,7 @@ class QueryEntitlements(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> QueryEntitlements:
         instance = cls()
         instance.namespace = namespace

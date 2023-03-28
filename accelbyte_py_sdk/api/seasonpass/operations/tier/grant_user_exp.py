@@ -224,10 +224,7 @@ class GrantUserExp(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        body: Optional[UserExpGrant] = None,
+        cls, namespace: str, user_id: str, body: Optional[UserExpGrant] = None, **kwargs
     ) -> GrantUserExp:
         instance = cls()
         instance.namespace = namespace

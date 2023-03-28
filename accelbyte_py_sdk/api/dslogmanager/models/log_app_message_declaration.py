@@ -127,6 +127,7 @@ class LogAppMessageDeclaration(Model):
         section: str,
         service: str,
         text: str,
+        **kwargs,
     ) -> LogAppMessageDeclaration:
         instance = cls()
         instance.attributes = attributes

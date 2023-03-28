@@ -246,6 +246,7 @@ class SendSpecificUserFreeformNotificationV1Admin(Operation):
         body: ModelFreeFormNotificationRequestV1,
         namespace: str,
         user_id: str,
+        **kwargs,
     ) -> SendSpecificUserFreeformNotificationV1Admin:
         instance = cls()
         instance.body = body

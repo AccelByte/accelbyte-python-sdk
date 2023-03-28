@@ -211,10 +211,7 @@ class RegisterEventHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: ModelsEventRegistry,
-    ) -> RegisterEventHandler:
+    def create(cls, body: ModelsEventRegistry, **kwargs) -> RegisterEventHandler:
         instance = cls()
         instance.body = body
         return instance

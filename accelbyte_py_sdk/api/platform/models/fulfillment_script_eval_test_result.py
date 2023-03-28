@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -79,6 +79,7 @@ class FulfillmentScriptEvalTestResult(Model):
         cls,
         error_stack_trace: Optional[str] = None,
         result: Optional[Dict[str, Any]] = None,
+        **kwargs,
     ) -> FulfillmentScriptEvalTestResult:
         instance = cls()
         if error_stack_trace is not None:

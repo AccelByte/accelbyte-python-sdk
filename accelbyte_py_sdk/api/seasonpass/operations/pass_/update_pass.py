@@ -264,6 +264,7 @@ class UpdatePass(Operation):
         namespace: str,
         season_id: str,
         body: Optional[PassUpdate] = None,
+        **kwargs,
     ) -> UpdatePass:
         instance = cls()
         instance.code = code

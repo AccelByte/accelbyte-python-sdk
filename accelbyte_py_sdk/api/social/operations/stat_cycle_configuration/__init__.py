@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Social Service."""
 
-__version__ = "2.1.0"
+__version__ = "2.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -29,4 +29,5 @@ from .get_stat_cycles_1 import (
     CycleTypeEnum as GetStatCycles1CycleTypeEnum,
     StatusEnum as GetStatCycles1StatusEnum,
 )
+from .stop_stat_cycle import StopStatCycle
 from .update_stat_cycle import UpdateStatCycle

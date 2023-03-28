@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -121,6 +121,7 @@ class XsollaPaywallConfig(Model):
         show_close_button: bool,
         size: Union[str, SizeEnum],
         theme: Union[str, ThemeEnum],
+        **kwargs,
     ) -> XsollaPaywallConfig:
         instance = cls()
         instance.device = device

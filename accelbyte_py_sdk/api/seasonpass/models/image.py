@@ -127,6 +127,7 @@ class Image(Model):
         as_: Optional[str] = None,
         caption: Optional[str] = None,
         small_image_url: Optional[str] = None,
+        **kwargs,
     ) -> Image:
         instance = cls()
         instance.height = height

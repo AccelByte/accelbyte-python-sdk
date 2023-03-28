@@ -71,8 +71,7 @@ class ModelsListImagePatchesResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        images: List[ModelsPatchImageRecord],
+        cls, images: List[ModelsPatchImageRecord], **kwargs
     ) -> ModelsListImagePatchesResponse:
         instance = cls()
         instance.images = images

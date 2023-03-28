@@ -87,10 +87,7 @@ class ModelsHeartbeatRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        ip: str,
-        port: int,
-        region: str,
+        cls, ip: str, port: int, region: str, **kwargs
     ) -> ModelsHeartbeatRequest:
         instance = cls()
         instance.ip = ip

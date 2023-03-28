@@ -105,6 +105,7 @@ class ApiMatchTicketRequest(Model):
         latencies: Dict[str, int],
         match_pool: str,
         session_id: str,
+        **kwargs,
     ) -> ApiMatchTicketRequest:
         instance = cls()
         instance.attributes = attributes

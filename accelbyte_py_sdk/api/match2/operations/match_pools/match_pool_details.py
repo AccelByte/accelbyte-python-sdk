@@ -217,11 +217,7 @@ class MatchPoolDetails(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        pool: str,
-    ) -> MatchPoolDetails:
+    def create(cls, namespace: str, pool: str, **kwargs) -> MatchPoolDetails:
         instance = cls()
         instance.namespace = namespace
         instance.pool = pool

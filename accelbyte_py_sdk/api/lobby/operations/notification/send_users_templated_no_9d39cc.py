@@ -237,9 +237,7 @@ class SendUsersTemplatedNotificationV1Admin(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelNotificationWithTemplateRequestV1,
-        namespace: str,
+        cls, body: ModelNotificationWithTemplateRequestV1, namespace: str, **kwargs
     ) -> SendUsersTemplatedNotificationV1Admin:
         instance = cls()
         instance.body = body

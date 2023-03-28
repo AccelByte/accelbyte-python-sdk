@@ -86,6 +86,7 @@ class ModelNotificationTemplateResponse(Model):
         cls,
         template_localizations: List[ModelLocalization],
         template_slug: str,
+        **kwargs,
     ) -> ModelNotificationTemplateResponse:
         instance = cls()
         instance.template_localizations = template_localizations

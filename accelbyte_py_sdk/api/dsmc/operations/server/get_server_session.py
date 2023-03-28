@@ -229,11 +229,7 @@ class GetServerSession(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        pod_name: str,
-    ) -> GetServerSession:
+    def create(cls, namespace: str, pod_name: str, **kwargs) -> GetServerSession:
         instance = cls()
         instance.namespace = namespace
         instance.pod_name = pod_name

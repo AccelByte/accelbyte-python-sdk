@@ -161,6 +161,7 @@ class RestapiModerationRuleRequest(Model):
         action: Optional[Union[str, ActionEnum]] = None,
         actions: Optional[RestapiModerationRuleActionsRequest] = None,
         extension_category: Optional[str] = None,
+        **kwargs,
     ) -> RestapiModerationRuleRequest:
         instance = cls()
         instance.active = active

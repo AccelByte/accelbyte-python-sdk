@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class BannedBy(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        display_name: str,
-        user_id: str,
-    ) -> BannedBy:
+    def create(cls, display_name: str, user_id: str, **kwargs) -> BannedBy:
         instance = cls()
         instance.display_name = display_name
         instance.user_id = user_id

@@ -76,9 +76,7 @@ class RestapiErrorResponseV1(Model):
 
     @classmethod
     def create(
-        cls,
-        error_code: int,
-        error_message: str,
+        cls, error_code: int, error_message: str, **kwargs
     ) -> RestapiErrorResponseV1:
         instance = cls()
         instance.error_code = error_code

@@ -309,6 +309,7 @@ class GetEventSpecificUserV2Handler(Operation):
         offset: Optional[int] = None,
         page_size: Optional[int] = None,
         start_date: Optional[str] = None,
+        **kwargs,
     ) -> GetEventSpecificUserV2Handler:
         instance = cls()
         instance.namespace = namespace

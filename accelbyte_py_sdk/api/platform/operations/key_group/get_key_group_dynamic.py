@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -204,11 +204,7 @@ class GetKeyGroupDynamic(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        key_group_id: str,
-        namespace: str,
-    ) -> GetKeyGroupDynamic:
+    def create(cls, key_group_id: str, namespace: str, **kwargs) -> GetKeyGroupDynamic:
         instance = cls()
         instance.key_group_id = key_group_id
         instance.namespace = namespace

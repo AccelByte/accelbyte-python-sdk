@@ -175,9 +175,7 @@ class AdminFindActionList(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> AdminFindActionList:
+    def create(cls, **kwargs) -> AdminFindActionList:
         instance = cls()
         return instance
 

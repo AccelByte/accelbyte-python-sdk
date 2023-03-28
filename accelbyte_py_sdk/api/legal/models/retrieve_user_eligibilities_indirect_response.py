@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,8 +65,7 @@ class RetrieveUserEligibilitiesIndirectResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        is_comply: bool,
+        cls, is_comply: bool, **kwargs
     ) -> RetrieveUserEligibilitiesIndirectResponse:
         instance = cls()
         instance.is_comply = is_comply

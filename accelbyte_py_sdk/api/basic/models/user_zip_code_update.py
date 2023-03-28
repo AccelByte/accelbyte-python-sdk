@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class UserZipCodeUpdate(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        zip_code: str,
-    ) -> UserZipCodeUpdate:
+    def create(cls, zip_code: str, **kwargs) -> UserZipCodeUpdate:
         instance = cls()
         instance.zip_code = zip_code
         return instance

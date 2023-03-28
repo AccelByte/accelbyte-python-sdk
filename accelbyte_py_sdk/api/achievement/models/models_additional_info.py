@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -95,6 +95,7 @@ class ModelsAdditionalInfo(Model):
         number_of_achievements: int,
         number_of_hidden_achievements: int,
         number_of_visible_achievements: int,
+        **kwargs,
     ) -> ModelsAdditionalInfo:
         instance = cls()
         instance.number_of_achievements = number_of_achievements

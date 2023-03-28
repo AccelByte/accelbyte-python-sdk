@@ -187,6 +187,7 @@ class ModelsPatchImageRecord(Model):
         persistent: bool,
         updated_at: str,
         version: str,
+        **kwargs,
     ) -> ModelsPatchImageRecord:
         instance = cls()
         instance.artifact_path = artifact_path

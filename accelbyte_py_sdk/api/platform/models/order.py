@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -629,6 +629,7 @@ class Order(Model):
         updated_at: Optional[str] = None,
         user_id: Optional[str] = None,
         vat: Optional[int] = None,
+        **kwargs,
     ) -> Order:
         instance = cls()
         if chargeback_reversed_time is not None:

@@ -85,9 +85,7 @@ class ModelGetAllNotificationTemplateSlugResp(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ModelLocalization],
-        paging: ModelPagination,
+        cls, data: List[ModelLocalization], paging: ModelPagination, **kwargs
     ) -> ModelGetAllNotificationTemplateSlugResp:
         instance = cls()
         instance.data = data

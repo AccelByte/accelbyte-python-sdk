@@ -90,6 +90,7 @@ class ModelsListTerminatedServersResponse(Model):
         cls,
         data: List[ModelsNotifPayloadServerStatusChange],
         paging: ModelsPagingCursor,
+        **kwargs,
     ) -> ModelsListTerminatedServersResponse:
         instance = cls()
         instance.data = data

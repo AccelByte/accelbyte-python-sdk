@@ -127,6 +127,7 @@ class ModelsRecentPlayerHistory(Model):
         other_id: str,
         updated_at: str,
         user_id: str,
+        **kwargs,
     ) -> ModelsRecentPlayerHistory:
         instance = cls()
         instance.created_at = created_at

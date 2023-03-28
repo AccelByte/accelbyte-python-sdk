@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class SteamDLCSyncRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        steam_id: str,
-        app_id: Optional[str] = None,
+        cls, steam_id: str, app_id: Optional[str] = None, **kwargs
     ) -> SteamDLCSyncRequest:
         instance = cls()
         instance.steam_id = steam_id

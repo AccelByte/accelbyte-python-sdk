@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -48,6 +48,8 @@ class ModelsChannelV1(Model):
 
         namespace: (namespace) REQUIRED str
 
+        region_expansion_rate_ms: (region_expansion_rate_ms) REQUIRED int
+
         rule_set: (ruleSet) REQUIRED ModelsRuleSetV1
 
         session_queue_timeout_seconds: (sessionQueueTimeoutSeconds) REQUIRED int
@@ -70,6 +72,7 @@ class ModelsChannelV1(Model):
     joinable: bool  # REQUIRED
     max_delay_ms: int  # REQUIRED
     namespace: str  # REQUIRED
+    region_expansion_rate_ms: int  # REQUIRED
     rule_set: ModelsRuleSetV1  # REQUIRED
     session_queue_timeout_seconds: int  # REQUIRED
     slug: str  # REQUIRED
@@ -107,6 +110,10 @@ class ModelsChannelV1(Model):
 
     def with_namespace(self, value: str) -> ModelsChannelV1:
         self.namespace = value
+        return self
+
+    def with_region_expansion_rate_ms(self, value: int) -> ModelsChannelV1:
+        self.region_expansion_rate_ms = value
         return self
 
     def with_rule_set(self, value: ModelsRuleSetV1) -> ModelsChannelV1:
@@ -167,6 +174,10 @@ class ModelsChannelV1(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "region_expansion_rate_ms"):
+            result["region_expansion_rate_ms"] = int(self.region_expansion_rate_ms)
+        elif include_empty:
+            result["region_expansion_rate_ms"] = 0
         if hasattr(self, "rule_set"):
             result["ruleSet"] = self.rule_set.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -209,12 +220,14 @@ class ModelsChannelV1(Model):
         joinable: bool,
         max_delay_ms: int,
         namespace: str,
+        region_expansion_rate_ms: int,
         rule_set: ModelsRuleSetV1,
         session_queue_timeout_seconds: int,
         slug: str,
         social_matchmaking: bool,
         updated_at: str,
         use_sub_gamemode: bool,
+        **kwargs,
     ) -> ModelsChannelV1:
         instance = cls()
         instance.deployment = deployment
@@ -224,6 +237,7 @@ class ModelsChannelV1(Model):
         instance.joinable = joinable
         instance.max_delay_ms = max_delay_ms
         instance.namespace = namespace
+        instance.region_expansion_rate_ms = region_expansion_rate_ms
         instance.rule_set = rule_set
         instance.session_queue_timeout_seconds = session_queue_timeout_seconds
         instance.slug = slug
@@ -270,6 +284,13 @@ class ModelsChannelV1(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if (
+            "region_expansion_rate_ms" in dict_
+            and dict_["region_expansion_rate_ms"] is not None
+        ):
+            instance.region_expansion_rate_ms = int(dict_["region_expansion_rate_ms"])
+        elif include_empty:
+            instance.region_expansion_rate_ms = 0
         if "ruleSet" in dict_ and dict_["ruleSet"] is not None:
             instance.rule_set = ModelsRuleSetV1.create_from_dict(
                 dict_["ruleSet"], include_empty=include_empty
@@ -347,6 +368,7 @@ class ModelsChannelV1(Model):
             "joinable": "joinable",
             "max_delay_ms": "max_delay_ms",
             "namespace": "namespace",
+            "region_expansion_rate_ms": "region_expansion_rate_ms",
             "ruleSet": "rule_set",
             "sessionQueueTimeoutSeconds": "session_queue_timeout_seconds",
             "slug": "slug",
@@ -365,6 +387,7 @@ class ModelsChannelV1(Model):
             "joinable": True,
             "max_delay_ms": True,
             "namespace": True,
+            "region_expansion_rate_ms": True,
             "ruleSet": True,
             "sessionQueueTimeoutSeconds": True,
             "slug": True,

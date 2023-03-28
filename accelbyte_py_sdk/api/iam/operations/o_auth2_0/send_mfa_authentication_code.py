@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -236,10 +236,7 @@ class SendMFAAuthenticationCode(Operation):
 
     @classmethod
     def create(
-        cls,
-        client_id: str,
-        factor: str,
-        mfa_token: str,
+        cls, client_id: str, factor: str, mfa_token: str, **kwargs
     ) -> SendMFAAuthenticationCode:
         instance = cls()
         instance.client_id = client_id

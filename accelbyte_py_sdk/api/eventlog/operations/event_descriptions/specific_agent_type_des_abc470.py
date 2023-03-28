@@ -187,8 +187,7 @@ class SpecificAgentTypeDescriptionHandler(Operation):
 
     @classmethod
     def create(
-        cls,
-        agent_types: Optional[str] = None,
+        cls, agent_types: Optional[str] = None, **kwargs
     ) -> SpecificAgentTypeDescriptionHandler:
         instance = cls()
         if agent_types is not None:

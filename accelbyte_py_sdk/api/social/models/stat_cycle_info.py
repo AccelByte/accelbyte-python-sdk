@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -274,6 +274,7 @@ class StatCycleInfo(Model):
         reset_day: Optional[int] = None,
         reset_month: Optional[int] = None,
         season_period: Optional[int] = None,
+        **kwargs,
     ) -> StatCycleInfo:
         instance = cls()
         instance.created_at = created_at

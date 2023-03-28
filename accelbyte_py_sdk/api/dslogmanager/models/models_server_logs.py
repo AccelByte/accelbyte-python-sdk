@@ -75,11 +75,7 @@ class ModelsServerLogs(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        std_err_logs: str,
-        std_out_logs: str,
-    ) -> ModelsServerLogs:
+    def create(cls, std_err_logs: str, std_out_logs: str, **kwargs) -> ModelsServerLogs:
         instance = cls()
         instance.std_err_logs = std_err_logs
         instance.std_out_logs = std_out_logs

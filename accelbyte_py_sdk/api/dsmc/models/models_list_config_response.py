@@ -71,8 +71,7 @@ class ModelsListConfigResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        configs: List[ModelsDSMConfigRecord],
+        cls, configs: List[ModelsDSMConfigRecord], **kwargs
     ) -> ModelsListConfigResponse:
         instance = cls()
         instance.configs = configs

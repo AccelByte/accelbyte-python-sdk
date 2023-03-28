@@ -198,8 +198,7 @@ class AdminCreateExtensionCategory(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: RestapiExtensionCategoryApiRequest,
+        cls, body: RestapiExtensionCategoryApiRequest, **kwargs
     ) -> AdminCreateExtensionCategory:
         instance = cls()
         instance.body = body

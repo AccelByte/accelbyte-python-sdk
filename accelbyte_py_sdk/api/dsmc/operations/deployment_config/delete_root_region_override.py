@@ -240,10 +240,7 @@ class DeleteRootRegionOverride(Operation):
 
     @classmethod
     def create(
-        cls,
-        deployment: str,
-        namespace: str,
-        region: str,
+        cls, deployment: str, namespace: str, region: str, **kwargs
     ) -> DeleteRootRegionOverride:
         instance = cls()
         instance.deployment = deployment

@@ -224,11 +224,7 @@ class GetTopicByTopicName(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        topic: str,
-    ) -> GetTopicByTopicName:
+    def create(cls, namespace: str, topic: str, **kwargs) -> GetTopicByTopicName:
         instance = cls()
         instance.namespace = namespace
         instance.topic = topic

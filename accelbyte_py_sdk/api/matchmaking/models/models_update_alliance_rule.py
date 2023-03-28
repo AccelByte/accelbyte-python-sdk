@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -119,6 +119,7 @@ class ModelsUpdateAllianceRule(Model):
         min_number: Optional[int] = None,
         player_max_number: Optional[int] = None,
         player_min_number: Optional[int] = None,
+        **kwargs,
     ) -> ModelsUpdateAllianceRule:
         instance = cls()
         if combination is not None:

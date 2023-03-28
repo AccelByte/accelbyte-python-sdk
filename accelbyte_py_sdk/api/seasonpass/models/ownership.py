@@ -64,10 +64,7 @@ class Ownership(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        owned: bool,
-    ) -> Ownership:
+    def create(cls, owned: bool, **kwargs) -> Ownership:
         instance = cls()
         instance.owned = owned
         return instance

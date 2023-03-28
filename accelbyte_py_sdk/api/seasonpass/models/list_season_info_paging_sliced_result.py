@@ -83,9 +83,7 @@ class ListSeasonInfoPagingSlicedResult(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ListSeasonInfo],
-        paging: Optional[Paging] = None,
+        cls, data: List[ListSeasonInfo], paging: Optional[Paging] = None, **kwargs
     ) -> ListSeasonInfoPagingSlicedResult:
         instance = cls()
         instance.data = data

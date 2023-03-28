@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -88,6 +88,7 @@ class PagedRetrieveUserAcceptedAgreementResponse(Model):
         cls,
         data: Optional[List[RetrieveUserAcceptedAgreementResponse]] = None,
         paging: Optional[Paging] = None,
+        **kwargs,
     ) -> PagedRetrieveUserAcceptedAgreementResponse:
         instance = cls()
         if data is not None:

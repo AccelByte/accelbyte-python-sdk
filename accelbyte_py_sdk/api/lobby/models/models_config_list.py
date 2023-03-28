@@ -68,10 +68,7 @@ class ModelsConfigList(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        configs: List[ModelsConfig],
-    ) -> ModelsConfigList:
+    def create(cls, configs: List[ModelsConfig], **kwargs) -> ModelsConfigList:
         instance = cls()
         instance.configs = configs
         return instance

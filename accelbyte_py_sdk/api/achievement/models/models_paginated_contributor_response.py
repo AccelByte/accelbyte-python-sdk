@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -85,9 +85,7 @@ class ModelsPaginatedContributorResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ModelsContributorResponse],
-        paging: ModelsPagination,
+        cls, data: List[ModelsContributorResponse], paging: ModelsPagination, **kwargs
     ) -> ModelsPaginatedContributorResponse:
         instance = cls()
         instance.data = data

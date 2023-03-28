@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -91,6 +91,7 @@ class ModelBackupCodesResponseV4(Model):
         generated_at: int,
         invalid_codes: Optional[List[str]] = None,
         valid_codes: Optional[List[str]] = None,
+        **kwargs,
     ) -> ModelBackupCodesResponseV4:
         instance = cls()
         instance.generated_at = generated_at

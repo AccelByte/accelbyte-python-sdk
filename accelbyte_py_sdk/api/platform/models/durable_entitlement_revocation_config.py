@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -86,6 +86,7 @@ class DurableEntitlementRevocationConfig(Model):
         cls,
         enabled: Optional[bool] = None,
         strategy: Optional[Union[str, StrategyEnum]] = None,
+        **kwargs,
     ) -> DurableEntitlementRevocationConfig:
         instance = cls()
         if enabled is not None:

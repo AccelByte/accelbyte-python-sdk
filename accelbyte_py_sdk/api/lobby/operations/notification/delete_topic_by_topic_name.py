@@ -223,11 +223,7 @@ class DeleteTopicByTopicName(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        topic: str,
-    ) -> DeleteTopicByTopicName:
+    def create(cls, namespace: str, topic: str, **kwargs) -> DeleteTopicByTopicName:
         instance = cls()
         instance.namespace = namespace
         instance.topic = topic

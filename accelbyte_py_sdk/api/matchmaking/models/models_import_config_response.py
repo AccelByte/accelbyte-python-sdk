@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class ModelsImportConfigResponse(Model):
         ignored_configs: List[str],
         new_configs: List[str],
         replaced_configs: List[str],
+        **kwargs,
     ) -> ModelsImportConfigResponse:
         instance = cls()
         instance.failed_configs = failed_configs

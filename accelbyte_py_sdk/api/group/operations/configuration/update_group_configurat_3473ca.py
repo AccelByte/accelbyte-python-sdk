@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -281,6 +281,7 @@ class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
         allowed_action: str,
         configuration_code: str,
         namespace: str,
+        **kwargs,
     ) -> UpdateGroupConfigurationGlobalRuleAdminV1:
         instance = cls()
         instance.body = body

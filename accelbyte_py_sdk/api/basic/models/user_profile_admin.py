@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -55,6 +55,8 @@ class UserProfileAdmin(Model):
 
         last_name: (lastName) OPTIONAL str
 
+        private_custom_attributes: (privateCustomAttributes) OPTIONAL Dict[str, Any]
+
         status: (status) OPTIONAL Union[str, StatusEnum]
 
         time_zone: (timeZone) OPTIONAL str
@@ -72,6 +74,7 @@ class UserProfileAdmin(Model):
     first_name: str  # OPTIONAL
     language: str  # OPTIONAL
     last_name: str  # OPTIONAL
+    private_custom_attributes: Dict[str, Any]  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
     time_zone: str  # OPTIONAL
     zip_code: str  # OPTIONAL
@@ -110,6 +113,10 @@ class UserProfileAdmin(Model):
 
     def with_last_name(self, value: str) -> UserProfileAdmin:
         self.last_name = value
+        return self
+
+    def with_private_custom_attributes(self, value: Dict[str, Any]) -> UserProfileAdmin:
+        self.private_custom_attributes = value
         return self
 
     def with_status(self, value: Union[str, StatusEnum]) -> UserProfileAdmin:
@@ -164,6 +171,12 @@ class UserProfileAdmin(Model):
             result["lastName"] = str(self.last_name)
         elif include_empty:
             result["lastName"] = ""
+        if hasattr(self, "private_custom_attributes"):
+            result["privateCustomAttributes"] = {
+                str(k0): v0 for k0, v0 in self.private_custom_attributes.items()
+            }
+        elif include_empty:
+            result["privateCustomAttributes"] = {}
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -193,9 +206,11 @@ class UserProfileAdmin(Model):
         first_name: Optional[str] = None,
         language: Optional[str] = None,
         last_name: Optional[str] = None,
+        private_custom_attributes: Optional[Dict[str, Any]] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         time_zone: Optional[str] = None,
         zip_code: Optional[str] = None,
+        **kwargs,
     ) -> UserProfileAdmin:
         instance = cls()
         if avatar_large_url is not None:
@@ -214,6 +229,8 @@ class UserProfileAdmin(Model):
             instance.language = language
         if last_name is not None:
             instance.last_name = last_name
+        if private_custom_attributes is not None:
+            instance.private_custom_attributes = private_custom_attributes
         if status is not None:
             instance.status = status
         if time_zone is not None:
@@ -263,6 +280,15 @@ class UserProfileAdmin(Model):
             instance.last_name = str(dict_["lastName"])
         elif include_empty:
             instance.last_name = ""
+        if (
+            "privateCustomAttributes" in dict_
+            and dict_["privateCustomAttributes"] is not None
+        ):
+            instance.private_custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["privateCustomAttributes"].items()
+            }
+        elif include_empty:
+            instance.private_custom_attributes = {}
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -322,6 +348,7 @@ class UserProfileAdmin(Model):
             "firstName": "first_name",
             "language": "language",
             "lastName": "last_name",
+            "privateCustomAttributes": "private_custom_attributes",
             "status": "status",
             "timeZone": "time_zone",
             "zipCode": "zip_code",
@@ -338,6 +365,7 @@ class UserProfileAdmin(Model):
             "firstName": False,
             "language": False,
             "lastName": False,
+            "privateCustomAttributes": False,
             "status": False,
             "timeZone": False,
             "zipCode": False,

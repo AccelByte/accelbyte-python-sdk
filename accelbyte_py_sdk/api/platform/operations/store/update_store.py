@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -238,10 +238,7 @@ class UpdateStore(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        store_id: str,
-        body: Optional[StoreUpdate] = None,
+        cls, namespace: str, store_id: str, body: Optional[StoreUpdate] = None, **kwargs
     ) -> UpdateStore:
         instance = cls()
         instance.namespace = namespace

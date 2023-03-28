@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.6.1"
+__version__ = "2.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -50,7 +50,6 @@ from .user_profile_info import StatusEnum as UserProfileInfoStatusEnum
 from .user_profile_private_create import UserProfilePrivateCreate
 from .user_profile_private_info import UserProfilePrivateInfo
 from .user_profile_private_info import StatusEnum as UserProfilePrivateInfoStatusEnum
-from .user_profile_private_update import UserProfilePrivateUpdate
 from .user_profile_public_info import UserProfilePublicInfo
 from .user_profile_status_update import UserProfileStatusUpdate
 from .user_profile_status_update import StatusEnum as UserProfileStatusUpdateStatusEnum

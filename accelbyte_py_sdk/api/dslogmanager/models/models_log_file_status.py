@@ -64,10 +64,7 @@ class ModelsLogFileStatus(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        log_existence: bool,
-    ) -> ModelsLogFileStatus:
+    def create(cls, log_existence: bool, **kwargs) -> ModelsLogFileStatus:
         instance = cls()
         instance.log_existence = log_existence
         return instance

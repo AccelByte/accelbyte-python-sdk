@@ -75,11 +75,7 @@ class ModelsAgentType(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        agent_type: int,
-        description: str,
-    ) -> ModelsAgentType:
+    def create(cls, agent_type: int, description: str, **kwargs) -> ModelsAgentType:
         instance = cls()
         instance.agent_type = agent_type
         instance.description = description

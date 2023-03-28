@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -184,10 +184,7 @@ class RetrieveAcceptedAgreements(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        user_id: str,
-    ) -> RetrieveAcceptedAgreements:
+    def create(cls, user_id: str, **kwargs) -> RetrieveAcceptedAgreements:
         instance = cls()
         instance.user_id = user_id
         return instance

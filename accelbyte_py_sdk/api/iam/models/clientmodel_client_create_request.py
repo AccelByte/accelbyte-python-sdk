@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -146,6 +146,7 @@ class ClientmodelClientCreateRequest(Model):
         redirect_uri: str,
         secret: str,
         two_factor_enabled: bool,
+        **kwargs,
     ) -> ClientmodelClientCreateRequest:
         instance = cls()
         instance.client_id = client_id

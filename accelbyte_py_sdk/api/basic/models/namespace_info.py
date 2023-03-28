@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -146,6 +146,7 @@ class NamespaceInfo(Model):
         parent_namespace: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         updated_at: Optional[str] = None,
+        **kwargs,
     ) -> NamespaceInfo:
         instance = cls()
         if client_id is not None:

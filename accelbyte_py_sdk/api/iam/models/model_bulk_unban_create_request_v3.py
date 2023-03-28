@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,8 +71,7 @@ class ModelBulkUnbanCreateRequestV3(Model):
 
     @classmethod
     def create(
-        cls,
-        bans: Optional[List[ModelUserUnbanCreateRequestV3]] = None,
+        cls, bans: Optional[List[ModelUserUnbanCreateRequestV3]] = None, **kwargs
     ) -> ModelBulkUnbanCreateRequestV3:
         instance = cls()
         if bans is not None:

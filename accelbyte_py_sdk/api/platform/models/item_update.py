@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,7 @@ from ..models.loot_box_config import LootBoxConfig
 from ..models.option_box_config import OptionBoxConfig
 from ..models.recurring import Recurring
 from ..models.region_data_item import RegionDataItem
+from ..models.sale_config import SaleConfig
 
 
 class EntitlementTypeEnum(StrEnum):
@@ -124,7 +125,11 @@ class ItemUpdate(Model):
 
         region_data: (regionData) OPTIONAL Dict[str, List[RegionDataItem]]
 
+        sale_config: (saleConfig) OPTIONAL SaleConfig
+
         season_type: (seasonType) OPTIONAL Union[str, SeasonTypeEnum]
+
+        sellable: (sellable) OPTIONAL bool
 
         sku: (sku) OPTIONAL str
 
@@ -169,7 +174,9 @@ class ItemUpdate(Model):
     purchasable: bool  # OPTIONAL
     recurring: Recurring  # OPTIONAL
     region_data: Dict[str, List[RegionDataItem]]  # OPTIONAL
+    sale_config: SaleConfig  # OPTIONAL
     season_type: Union[str, SeasonTypeEnum]  # OPTIONAL
+    sellable: bool  # OPTIONAL
     sku: str  # OPTIONAL
     stackable: bool  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
@@ -281,8 +288,16 @@ class ItemUpdate(Model):
         self.region_data = value
         return self
 
+    def with_sale_config(self, value: SaleConfig) -> ItemUpdate:
+        self.sale_config = value
+        return self
+
     def with_season_type(self, value: Union[str, SeasonTypeEnum]) -> ItemUpdate:
         self.season_type = value
+        return self
+
+    def with_sellable(self, value: bool) -> ItemUpdate:
+        self.sellable = value
         return self
 
     def with_sku(self, value: str) -> ItemUpdate:
@@ -431,10 +446,18 @@ class ItemUpdate(Model):
             }
         elif include_empty:
             result["regionData"] = {}
+        if hasattr(self, "sale_config"):
+            result["saleConfig"] = self.sale_config.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["saleConfig"] = SaleConfig()
         if hasattr(self, "season_type"):
             result["seasonType"] = str(self.season_type)
         elif include_empty:
             result["seasonType"] = Union[str, SeasonTypeEnum]()
+        if hasattr(self, "sellable"):
+            result["sellable"] = bool(self.sellable)
+        elif include_empty:
+            result["sellable"] = False
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -500,7 +523,9 @@ class ItemUpdate(Model):
         purchasable: Optional[bool] = None,
         recurring: Optional[Recurring] = None,
         region_data: Optional[Dict[str, List[RegionDataItem]]] = None,
+        sale_config: Optional[SaleConfig] = None,
         season_type: Optional[Union[str, SeasonTypeEnum]] = None,
+        sellable: Optional[bool] = None,
         sku: Optional[str] = None,
         stackable: Optional[bool] = None,
         status: Optional[Union[str, StatusEnum]] = None,
@@ -509,6 +534,7 @@ class ItemUpdate(Model):
         target_namespace: Optional[str] = None,
         thumbnail_url: Optional[str] = None,
         use_count: Optional[int] = None,
+        **kwargs,
     ) -> ItemUpdate:
         instance = cls()
         instance.entitlement_type = entitlement_type
@@ -557,8 +583,12 @@ class ItemUpdate(Model):
             instance.recurring = recurring
         if region_data is not None:
             instance.region_data = region_data
+        if sale_config is not None:
+            instance.sale_config = sale_config
         if season_type is not None:
             instance.season_type = season_type
+        if sellable is not None:
+            instance.sellable = sellable
         if sku is not None:
             instance.sku = sku
         if stackable is not None:
@@ -698,10 +728,20 @@ class ItemUpdate(Model):
             }
         elif include_empty:
             instance.region_data = {}
+        if "saleConfig" in dict_ and dict_["saleConfig"] is not None:
+            instance.sale_config = SaleConfig.create_from_dict(
+                dict_["saleConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.sale_config = SaleConfig()
         if "seasonType" in dict_ and dict_["seasonType"] is not None:
             instance.season_type = str(dict_["seasonType"])
         elif include_empty:
             instance.season_type = Union[str, SeasonTypeEnum]()
+        if "sellable" in dict_ and dict_["sellable"] is not None:
+            instance.sellable = bool(dict_["sellable"])
+        elif include_empty:
+            instance.sellable = False
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -797,7 +837,9 @@ class ItemUpdate(Model):
             "purchasable": "purchasable",
             "recurring": "recurring",
             "regionData": "region_data",
+            "saleConfig": "sale_config",
             "seasonType": "season_type",
+            "sellable": "sellable",
             "sku": "sku",
             "stackable": "stackable",
             "status": "status",
@@ -835,7 +877,9 @@ class ItemUpdate(Model):
             "purchasable": False,
             "recurring": False,
             "regionData": False,
+            "saleConfig": False,
             "seasonType": False,
+            "sellable": False,
             "sku": False,
             "stackable": False,
             "status": False,

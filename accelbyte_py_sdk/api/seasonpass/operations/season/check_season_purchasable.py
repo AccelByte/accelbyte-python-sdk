@@ -236,6 +236,7 @@ class CheckSeasonPurchasable(Operation):
         namespace: str,
         user_id: str,
         body: Optional[UserPurchasable] = None,
+        **kwargs,
     ) -> CheckSeasonPurchasable:
         instance = cls()
         instance.namespace = namespace

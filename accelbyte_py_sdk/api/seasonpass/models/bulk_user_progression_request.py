@@ -65,8 +65,7 @@ class BulkUserProgressionRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        user_ids: Optional[List[str]] = None,
+        cls, user_ids: Optional[List[str]] = None, **kwargs
     ) -> BulkUserProgressionRequest:
         instance = cls()
         if user_ids is not None:

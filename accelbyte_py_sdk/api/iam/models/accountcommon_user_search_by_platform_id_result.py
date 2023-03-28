@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -127,6 +127,7 @@ class AccountcommonUserSearchByPlatformIDResult(Model):
         linked_platforms: List[AccountcommonUserLinkedPlatform],
         phone_number: str,
         user_id: str,
+        **kwargs,
     ) -> AccountcommonUserSearchByPlatformIDResult:
         instance = cls()
         instance.display_name = display_name

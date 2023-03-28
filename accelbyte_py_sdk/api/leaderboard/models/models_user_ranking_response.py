@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -139,6 +139,7 @@ class ModelsUserRankingResponse(Model):
         monthly: ModelsUserRankingResponseDetail,
         user_id: str,
         weekly: ModelsUserRankingResponseDetail,
+        **kwargs,
     ) -> ModelsUserRankingResponse:
         instance = cls()
         instance.all_time = all_time

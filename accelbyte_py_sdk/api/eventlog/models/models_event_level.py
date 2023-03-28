@@ -75,11 +75,7 @@ class ModelsEventLevel(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        description: str,
-        event_level: int,
-    ) -> ModelsEventLevel:
+    def create(cls, description: str, event_level: int, **kwargs) -> ModelsEventLevel:
         instance = cls()
         instance.description = description
         instance.event_level = event_level

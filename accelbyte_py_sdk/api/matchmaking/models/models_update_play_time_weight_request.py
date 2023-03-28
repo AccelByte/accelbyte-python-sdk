@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,10 +87,7 @@ class ModelsUpdatePlayTimeWeightRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        playtime: int,
-        user_id: str,
-        weight: float,
+        cls, playtime: int, user_id: str, weight: float, **kwargs
     ) -> ModelsUpdatePlayTimeWeightRequest:
         instance = cls()
         instance.playtime = playtime

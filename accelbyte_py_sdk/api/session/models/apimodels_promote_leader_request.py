@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ApimodelsPromoteLeaderRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        leader_id: str,
-    ) -> ApimodelsPromoteLeaderRequest:
+    def create(cls, leader_id: str, **kwargs) -> ApimodelsPromoteLeaderRequest:
         instance = cls()
         instance.leader_id = leader_id
         return instance

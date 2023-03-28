@@ -87,10 +87,7 @@ class ModelsAllocationEvent(Model):
 
     @classmethod
     def create(
-        cls,
-        description: str,
-        time_stamp: str,
-        type_: str,
+        cls, description: str, time_stamp: str, type_: str, **kwargs
     ) -> ModelsAllocationEvent:
         instance = cls()
         instance.description = description

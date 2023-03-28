@@ -3716,7 +3716,7 @@ def admin_get_third_party_platform_token_link_status_v3(
     Responses:
         200: OK - ModelTokenThirdPartyLinkStatusResponse (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10208: platform token expired)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -3871,7 +3871,7 @@ async def admin_get_third_party_platform_token_link_status_v3_async(
     Responses:
         200: OK - ModelTokenThirdPartyLinkStatusResponse (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10208: platform token expired)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -21159,6 +21159,7 @@ async def public_validate_user_by_user_id_and_password_v3_async(
 @same_doc_as(PublicVerifyHeadlessAccountV3)
 def public_verify_headless_account_v3(
     body: ModelUpgradeHeadlessAccountV3Request,
+    need_verification_code: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -21167,6 +21168,16 @@ def public_verify_headless_account_v3(
 
     Require valid user authorization
     action code : 10124
+
+
+
+
+    if set NeedVerificationCode = true, IAM will send verification code into email
+
+
+
+
+    user can use that verification code to verify user through /iam/v3/public/namespaces/{namespace}/users/me/code/verify
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify
@@ -21184,6 +21195,8 @@ def public_verify_headless_account_v3(
         body: (body) REQUIRED ModelUpgradeHeadlessAccountV3Request in body
 
         namespace: (namespace) REQUIRED str in path
+
+        need_verification_code: (needVerificationCode) OPTIONAL bool in query
 
     Responses:
         200: OK - ModelUserResponseV3 (OK)
@@ -21204,6 +21217,7 @@ def public_verify_headless_account_v3(
             return None, error
     request = PublicVerifyHeadlessAccountV3.create(
         body=body,
+        need_verification_code=need_verification_code,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -21212,6 +21226,7 @@ def public_verify_headless_account_v3(
 @same_doc_as(PublicVerifyHeadlessAccountV3)
 async def public_verify_headless_account_v3_async(
     body: ModelUpgradeHeadlessAccountV3Request,
+    need_verification_code: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -21220,6 +21235,16 @@ async def public_verify_headless_account_v3_async(
 
     Require valid user authorization
     action code : 10124
+
+
+
+
+    if set NeedVerificationCode = true, IAM will send verification code into email
+
+
+
+
+    user can use that verification code to verify user through /iam/v3/public/namespaces/{namespace}/users/me/code/verify
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify
@@ -21237,6 +21262,8 @@ async def public_verify_headless_account_v3_async(
         body: (body) REQUIRED ModelUpgradeHeadlessAccountV3Request in body
 
         namespace: (namespace) REQUIRED str in path
+
+        need_verification_code: (needVerificationCode) OPTIONAL bool in query
 
     Responses:
         200: OK - ModelUserResponseV3 (OK)
@@ -21257,6 +21284,7 @@ async def public_verify_headless_account_v3_async(
             return None, error
     request = PublicVerifyHeadlessAccountV3.create(
         body=body,
+        need_verification_code=need_verification_code,
         namespace=namespace,
     )
     return await run_request_async(

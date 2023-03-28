@@ -274,6 +274,7 @@ class GetServerLogs(Operation):
         log_type: Optional[str] = None,
         offset: Optional[int] = None,
         origin: Optional[str] = None,
+        **kwargs,
     ) -> GetServerLogs:
         instance = cls()
         instance.namespace = namespace

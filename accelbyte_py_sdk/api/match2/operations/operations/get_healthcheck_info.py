@@ -151,9 +151,7 @@ class GetHealthcheckInfo(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> GetHealthcheckInfo:
+    def create(cls, **kwargs) -> GetHealthcheckInfo:
         instance = cls()
         return instance
 

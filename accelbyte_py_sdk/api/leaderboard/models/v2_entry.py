@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -93,6 +93,7 @@ class V2Entry(Model):
         point: float,
         additional_data: Optional[Dict[str, Any]] = None,
         hidden: Optional[bool] = None,
+        **kwargs,
     ) -> V2Entry:
         instance = cls()
         instance.point = point

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -91,6 +91,7 @@ class RecurringChargeResult(Model):
         triggered: bool,
         code: Optional[str] = None,
         detail: Optional[str] = None,
+        **kwargs,
     ) -> RecurringChargeResult:
         instance = cls()
         instance.triggered = triggered

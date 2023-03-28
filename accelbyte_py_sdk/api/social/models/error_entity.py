@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -105,6 +105,7 @@ class ErrorEntity(Model):
         error_message: str,
         dev_stack_trace: Optional[str] = None,
         message_variables: Optional[Dict[str, str]] = None,
+        **kwargs,
     ) -> ErrorEntity:
         instance = cls()
         instance.error_code = error_code

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -253,6 +253,7 @@ class AdminUpdateCountryAgeRestrictionV3(Operation):
         body: ModelCountryAgeRestrictionV3Request,
         country_code: str,
         namespace: str,
+        **kwargs,
     ) -> AdminUpdateCountryAgeRestrictionV3:
         instance = cls()
         instance.body = body

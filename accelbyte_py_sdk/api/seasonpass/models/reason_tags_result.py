@@ -64,10 +64,7 @@ class ReasonTagsResult(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        tags: List[str],
-    ) -> ReasonTagsResult:
+    def create(cls, tags: List[str], **kwargs) -> ReasonTagsResult:
         instance = cls()
         instance.tags = tags
         return instance

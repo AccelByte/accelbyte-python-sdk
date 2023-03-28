@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -115,6 +115,7 @@ class CreateLocalizedPolicyVersionResponse(Model):
         description: Optional[str] = None,
         locale_code: Optional[str] = None,
         updated_at: Optional[str] = None,
+        **kwargs,
     ) -> CreateLocalizedPolicyVersionResponse:
         instance = cls()
         instance.id_ = id_

@@ -244,10 +244,7 @@ class UpdatePort(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsUpdatePortRequest,
-        name: str,
-        namespace: str,
+        cls, body: ModelsUpdatePortRequest, name: str, namespace: str, **kwargs
     ) -> UpdatePort:
         instance = cls()
         instance.body = body

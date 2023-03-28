@@ -227,9 +227,7 @@ class DeregisterLocalServer(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsDeregisterLocalServerRequest,
-        namespace: str,
+        cls, body: ModelsDeregisterLocalServerRequest, namespace: str, **kwargs
     ) -> DeregisterLocalServer:
         instance = cls()
         instance.body = body

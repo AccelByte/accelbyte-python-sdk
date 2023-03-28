@@ -38,6 +38,7 @@ from ..models import ValidationErrorEntity
 from ..operations.config import CreateConfig
 from ..operations.config import DeleteConfig1
 from ..operations.config import GetConfig1
+from ..operations.config import GetPublisherConfig
 from ..operations.config import UpdateConfig1
 
 
@@ -53,11 +54,11 @@ def create_config(
     Create a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=1 (CREATE)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=1 (CREATE)
       *  Returns : created config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [CREATE]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs
@@ -85,7 +86,7 @@ def create_config(
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (12336: Unable to {action}: Config already exists)
+        409: Conflict - ErrorEntity (11771: Unable to {action}: Config already exists)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -110,11 +111,11 @@ async def create_config_async(
     Create a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=1 (CREATE)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=1 (CREATE)
       *  Returns : created config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [CREATE]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs
@@ -142,7 +143,7 @@ async def create_config_async(
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        409: Conflict - ErrorEntity (12336: Unable to {action}: Config already exists)
+        409: Conflict - ErrorEntity (11771: Unable to {action}: Config already exists)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -169,11 +170,11 @@ def delete_config_1(
     Delete a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=8 (DELETE)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=8 (DELETE)
       *  Returns : created config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [DELETE]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -201,7 +202,7 @@ def delete_config_1(
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -226,11 +227,11 @@ async def delete_config_1_async(
     Delete a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=8 (DELETE)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=8 (DELETE)
       *  Returns : created config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [DELETE]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -258,7 +259,7 @@ async def delete_config_1_async(
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -285,11 +286,11 @@ def get_config_1(
     Get a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=2 (READ)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=2 (READ)
       *  Returns : config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [READ]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -317,7 +318,7 @@ def get_config_1(
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -342,11 +343,11 @@ async def get_config_1_async(
     Get a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=2 (READ)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=2 (READ)
       *  Returns : config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [READ]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -374,13 +375,131 @@ async def get_config_1_async(
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetConfig1.create(
+        config_key=config_key,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetPublisherConfig)
+def get_publisher_config(
+    config_key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get a publisher config (getPublisherConfig)
+
+    Get a publisher config.
+    It will return a publisher namespace config of the given namespace and key.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=2 (READ)
+      *  Returns : config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/publisher/configs/{configKey}
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        config_key: (configKey) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ConfigInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPublisherConfig.create(
+        config_key=config_key,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetPublisherConfig)
+async def get_publisher_config_async(
+    config_key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get a publisher config (getPublisherConfig)
+
+    Get a publisher config.
+    It will return a publisher namespace config of the given namespace and key.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=2 (READ)
+      *  Returns : config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/publisher/configs/{configKey}
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        config_key: (configKey) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ConfigInfo (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPublisherConfig.create(
         config_key=config_key,
         namespace=namespace,
     )
@@ -402,11 +521,11 @@ def update_config_1(
     Update a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=4 (UPDATE)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=4 (UPDATE)
       *  Returns : created config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [UPDATE]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -436,7 +555,7 @@ def update_config_1(
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -463,11 +582,11 @@ async def update_config_1_async(
     Update a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:CONFIG" , action=4 (UPDATE)
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=4 (UPDATE)
       *  Returns : created config
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONFIG [UPDATE]
+        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -497,7 +616,7 @@ async def update_config_1_async(
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
-        404: Not Found - ErrorEntity (12337: Unable to {action}: Config not found)
+        404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

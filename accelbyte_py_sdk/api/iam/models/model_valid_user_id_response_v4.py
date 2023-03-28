@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ModelValidUserIDResponseV4(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        exists: bool,
-        user_id: str,
-    ) -> ModelValidUserIDResponseV4:
+    def create(cls, exists: bool, user_id: str, **kwargs) -> ModelValidUserIDResponseV4:
         instance = cls()
         instance.exists = exists
         instance.user_id = user_id

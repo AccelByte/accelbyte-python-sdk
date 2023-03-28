@@ -224,11 +224,7 @@ class DeleteDeployment(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        deployment: str,
-        namespace: str,
-    ) -> DeleteDeployment:
+    def create(cls, deployment: str, namespace: str, **kwargs) -> DeleteDeployment:
         instance = cls()
         instance.deployment = deployment
         instance.namespace = namespace

@@ -117,6 +117,7 @@ class ModelsSession(Model):
         provider: str,
         region: str,
         server: ModelsServer,
+        **kwargs,
     ) -> ModelsSession:
         instance = cls()
         instance.id_ = id_

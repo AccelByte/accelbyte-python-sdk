@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,8 +37,6 @@ class ApimodelsGameSessionResponse(Model):
     """Apimodels game session response (apimodels.GameSessionResponse)
 
     Properties:
-        attributes: (attributes) REQUIRED Dict[str, Any]
-
         backfill_ticket_id: (backfillTicketID) REQUIRED str
 
         configuration: (configuration) REQUIRED ApimodelsPublicConfiguration
@@ -63,22 +61,21 @@ class ApimodelsGameSessionResponse(Model):
 
         namespace: (namespace) REQUIRED str
 
-        persistent: (persistent) REQUIRED bool
-
-        teams: (teams) REQUIRED List[ModelsTeam]
-
-        ticket_i_ds: (ticketIDs) REQUIRED List[str]
-
         updated_at: (updatedAt) REQUIRED str
 
         version: (version) REQUIRED int
 
+        attributes: (attributes) OPTIONAL Dict[str, Any]
+
         expired_at: (expiredAt) OPTIONAL str
+
+        teams: (teams) OPTIONAL List[ModelsTeam]
+
+        ticket_i_ds: (ticketIDs) OPTIONAL List[str]
     """
 
     # region fields
 
-    attributes: Dict[str, Any]  # REQUIRED
     backfill_ticket_id: str  # REQUIRED
     configuration: ApimodelsPublicConfiguration  # REQUIRED
     created_at: str  # REQUIRED
@@ -91,20 +88,16 @@ class ApimodelsGameSessionResponse(Model):
     match_pool: str  # REQUIRED
     members: List[ApimodelsUserResponse]  # REQUIRED
     namespace: str  # REQUIRED
-    persistent: bool  # REQUIRED
-    teams: List[ModelsTeam]  # REQUIRED
-    ticket_i_ds: List[str]  # REQUIRED
     updated_at: str  # REQUIRED
     version: int  # REQUIRED
+    attributes: Dict[str, Any]  # OPTIONAL
     expired_at: str  # OPTIONAL
+    teams: List[ModelsTeam]  # OPTIONAL
+    ticket_i_ds: List[str]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_attributes(self, value: Dict[str, Any]) -> ApimodelsGameSessionResponse:
-        self.attributes = value
-        return self
 
     def with_backfill_ticket_id(self, value: str) -> ApimodelsGameSessionResponse:
         self.backfill_ticket_id = value
@@ -160,8 +153,20 @@ class ApimodelsGameSessionResponse(Model):
         self.namespace = value
         return self
 
-    def with_persistent(self, value: bool) -> ApimodelsGameSessionResponse:
-        self.persistent = value
+    def with_updated_at(self, value: str) -> ApimodelsGameSessionResponse:
+        self.updated_at = value
+        return self
+
+    def with_version(self, value: int) -> ApimodelsGameSessionResponse:
+        self.version = value
+        return self
+
+    def with_attributes(self, value: Dict[str, Any]) -> ApimodelsGameSessionResponse:
+        self.attributes = value
+        return self
+
+    def with_expired_at(self, value: str) -> ApimodelsGameSessionResponse:
+        self.expired_at = value
         return self
 
     def with_teams(self, value: List[ModelsTeam]) -> ApimodelsGameSessionResponse:
@@ -172,28 +177,12 @@ class ApimodelsGameSessionResponse(Model):
         self.ticket_i_ds = value
         return self
 
-    def with_updated_at(self, value: str) -> ApimodelsGameSessionResponse:
-        self.updated_at = value
-        return self
-
-    def with_version(self, value: int) -> ApimodelsGameSessionResponse:
-        self.version = value
-        return self
-
-    def with_expired_at(self, value: str) -> ApimodelsGameSessionResponse:
-        self.expired_at = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "attributes"):
-            result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
-        elif include_empty:
-            result["attributes"] = {}
         if hasattr(self, "backfill_ticket_id"):
             result["backfillTicketID"] = str(self.backfill_ticket_id)
         elif include_empty:
@@ -248,10 +237,22 @@ class ApimodelsGameSessionResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "persistent"):
-            result["persistent"] = bool(self.persistent)
+        if hasattr(self, "updated_at"):
+            result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["persistent"] = False
+            result["updatedAt"] = ""
+        if hasattr(self, "version"):
+            result["version"] = int(self.version)
+        elif include_empty:
+            result["version"] = 0
+        if hasattr(self, "attributes"):
+            result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
+        elif include_empty:
+            result["attributes"] = {}
+        if hasattr(self, "expired_at"):
+            result["expiredAt"] = str(self.expired_at)
+        elif include_empty:
+            result["expiredAt"] = ""
         if hasattr(self, "teams"):
             result["teams"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.teams
@@ -262,18 +263,6 @@ class ApimodelsGameSessionResponse(Model):
             result["ticketIDs"] = [str(i0) for i0 in self.ticket_i_ds]
         elif include_empty:
             result["ticketIDs"] = []
-        if hasattr(self, "updated_at"):
-            result["updatedAt"] = str(self.updated_at)
-        elif include_empty:
-            result["updatedAt"] = ""
-        if hasattr(self, "version"):
-            result["version"] = int(self.version)
-        elif include_empty:
-            result["version"] = 0
-        if hasattr(self, "expired_at"):
-            result["expiredAt"] = str(self.expired_at)
-        elif include_empty:
-            result["expiredAt"] = ""
         return result
 
     # endregion to methods
@@ -283,7 +272,6 @@ class ApimodelsGameSessionResponse(Model):
     @classmethod
     def create(
         cls,
-        attributes: Dict[str, Any],
         backfill_ticket_id: str,
         configuration: ApimodelsPublicConfiguration,
         created_at: str,
@@ -296,15 +284,15 @@ class ApimodelsGameSessionResponse(Model):
         match_pool: str,
         members: List[ApimodelsUserResponse],
         namespace: str,
-        persistent: bool,
-        teams: List[ModelsTeam],
-        ticket_i_ds: List[str],
         updated_at: str,
         version: int,
+        attributes: Optional[Dict[str, Any]] = None,
         expired_at: Optional[str] = None,
+        teams: Optional[List[ModelsTeam]] = None,
+        ticket_i_ds: Optional[List[str]] = None,
+        **kwargs,
     ) -> ApimodelsGameSessionResponse:
         instance = cls()
-        instance.attributes = attributes
         instance.backfill_ticket_id = backfill_ticket_id
         instance.configuration = configuration
         instance.created_at = created_at
@@ -317,13 +305,16 @@ class ApimodelsGameSessionResponse(Model):
         instance.match_pool = match_pool
         instance.members = members
         instance.namespace = namespace
-        instance.persistent = persistent
-        instance.teams = teams
-        instance.ticket_i_ds = ticket_i_ds
         instance.updated_at = updated_at
         instance.version = version
+        if attributes is not None:
+            instance.attributes = attributes
         if expired_at is not None:
             instance.expired_at = expired_at
+        if teams is not None:
+            instance.teams = teams
+        if ticket_i_ds is not None:
+            instance.ticket_i_ds = ticket_i_ds
         return instance
 
     @classmethod
@@ -333,12 +324,6 @@ class ApimodelsGameSessionResponse(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "attributes" in dict_ and dict_["attributes"] is not None:
-            instance.attributes = {
-                str(k0): v0 for k0, v0 in dict_["attributes"].items()
-            }
-        elif include_empty:
-            instance.attributes = {}
         if "backfillTicketID" in dict_ and dict_["backfillTicketID"] is not None:
             instance.backfill_ticket_id = str(dict_["backfillTicketID"])
         elif include_empty:
@@ -394,10 +379,24 @@ class ApimodelsGameSessionResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "persistent" in dict_ and dict_["persistent"] is not None:
-            instance.persistent = bool(dict_["persistent"])
+        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
+            instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.persistent = False
+            instance.updated_at = ""
+        if "version" in dict_ and dict_["version"] is not None:
+            instance.version = int(dict_["version"])
+        elif include_empty:
+            instance.version = 0
+        if "attributes" in dict_ and dict_["attributes"] is not None:
+            instance.attributes = {
+                str(k0): v0 for k0, v0 in dict_["attributes"].items()
+            }
+        elif include_empty:
+            instance.attributes = {}
+        if "expiredAt" in dict_ and dict_["expiredAt"] is not None:
+            instance.expired_at = str(dict_["expiredAt"])
+        elif include_empty:
+            instance.expired_at = ""
         if "teams" in dict_ and dict_["teams"] is not None:
             instance.teams = [
                 ModelsTeam.create_from_dict(i0, include_empty=include_empty)
@@ -409,18 +408,6 @@ class ApimodelsGameSessionResponse(Model):
             instance.ticket_i_ds = [str(i0) for i0 in dict_["ticketIDs"]]
         elif include_empty:
             instance.ticket_i_ds = []
-        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
-            instance.updated_at = str(dict_["updatedAt"])
-        elif include_empty:
-            instance.updated_at = ""
-        if "version" in dict_ and dict_["version"] is not None:
-            instance.version = int(dict_["version"])
-        elif include_empty:
-            instance.version = 0
-        if "expiredAt" in dict_ and dict_["expiredAt"] is not None:
-            instance.expired_at = str(dict_["expiredAt"])
-        elif include_empty:
-            instance.expired_at = ""
         return instance
 
     @classmethod
@@ -464,7 +451,6 @@ class ApimodelsGameSessionResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "attributes": "attributes",
             "backfillTicketID": "backfill_ticket_id",
             "configuration": "configuration",
             "createdAt": "created_at",
@@ -477,18 +463,17 @@ class ApimodelsGameSessionResponse(Model):
             "matchPool": "match_pool",
             "members": "members",
             "namespace": "namespace",
-            "persistent": "persistent",
-            "teams": "teams",
-            "ticketIDs": "ticket_i_ds",
             "updatedAt": "updated_at",
             "version": "version",
+            "attributes": "attributes",
             "expiredAt": "expired_at",
+            "teams": "teams",
+            "ticketIDs": "ticket_i_ds",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "attributes": True,
             "backfillTicketID": True,
             "configuration": True,
             "createdAt": True,
@@ -501,12 +486,12 @@ class ApimodelsGameSessionResponse(Model):
             "matchPool": True,
             "members": True,
             "namespace": True,
-            "persistent": True,
-            "teams": True,
-            "ticketIDs": True,
             "updatedAt": True,
             "version": True,
+            "attributes": False,
             "expiredAt": False,
+            "teams": False,
+            "ticketIDs": False,
         }
 
     # endregion static methods

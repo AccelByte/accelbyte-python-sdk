@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -285,6 +285,7 @@ class AdminGetBannedDevicesV4(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         start_date: Optional[str] = None,
+        **kwargs,
     ) -> AdminGetBannedDevicesV4:
         instance = cls()
         instance.namespace = namespace

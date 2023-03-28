@@ -279,6 +279,7 @@ class UpdateOverrideRegionOverride(Operation):
         namespace: str,
         region: str,
         version: str,
+        **kwargs,
     ) -> UpdateOverrideRegionOverride:
         instance = cls()
         instance.body = body

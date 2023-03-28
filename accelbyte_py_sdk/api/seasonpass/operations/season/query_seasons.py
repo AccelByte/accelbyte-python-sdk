@@ -250,6 +250,7 @@ class QuerySeasons(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         status: Optional[List[Union[str, StatusEnum]]] = None,
+        **kwargs,
     ) -> QuerySeasons:
         instance = cls()
         instance.namespace = namespace

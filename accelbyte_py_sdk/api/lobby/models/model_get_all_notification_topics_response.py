@@ -90,6 +90,7 @@ class ModelGetAllNotificationTopicsResponse(Model):
         cls,
         data: List[ModelNotificationTopicResponseV1],
         paging: ModelPagination,
+        **kwargs,
     ) -> ModelGetAllNotificationTopicsResponse:
         instance = cls()
         instance.data = data

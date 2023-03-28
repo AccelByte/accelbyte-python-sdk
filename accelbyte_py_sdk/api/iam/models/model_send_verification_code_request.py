@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,10 +87,7 @@ class ModelSendVerificationCodeRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        language_tag: str,
-        login_id: str,
-        context: Optional[str] = None,
+        cls, language_tag: str, login_id: str, context: Optional[str] = None, **kwargs
     ) -> ModelSendVerificationCodeRequest:
         instance = cls()
         instance.language_tag = language_tag

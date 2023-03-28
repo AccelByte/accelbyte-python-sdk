@@ -122,6 +122,7 @@ class ModelTemplateLocalizationResponse(Model):
         next_: str,
         previous: str,
         template_localization: List[ModelTemplateLocalization],
+        **kwargs,
     ) -> ModelTemplateLocalizationResponse:
         instance = cls()
         instance.first = first

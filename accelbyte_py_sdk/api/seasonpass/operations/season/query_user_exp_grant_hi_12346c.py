@@ -223,10 +223,7 @@ class QueryUserExpGrantHistoryTag(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        season_id: Optional[str] = None,
+        cls, namespace: str, user_id: str, season_id: Optional[str] = None, **kwargs
     ) -> QueryUserExpGrantHistoryTag:
         instance = cls()
         instance.namespace = namespace

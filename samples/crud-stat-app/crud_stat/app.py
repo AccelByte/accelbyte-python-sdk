@@ -31,7 +31,6 @@ class Environment(object):
 
 
 def lambda_handler(event, context):
-
     # 01. Load Environment Variables.
     env = Environment(keys=ENVIRONMENT_KEYS)
     log_done("load environment variables")

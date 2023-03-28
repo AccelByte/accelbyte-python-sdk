@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ApimodelsJoinByCodeRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        code: str,
-    ) -> ApimodelsJoinByCodeRequest:
+    def create(cls, code: str, **kwargs) -> ApimodelsJoinByCodeRequest:
         instance = cls()
         instance.code = code
         return instance

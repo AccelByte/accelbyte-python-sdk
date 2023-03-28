@@ -220,11 +220,7 @@ class ImageDetailClient(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        version: str,
-    ) -> ImageDetailClient:
+    def create(cls, namespace: str, version: str, **kwargs) -> ImageDetailClient:
         instance = cls()
         instance.namespace = namespace
         instance.version = version

@@ -304,6 +304,7 @@ class GetEventByUserIDAndEventTypeHandler(Operation):
         page_size: int,
         start_date: str,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> GetEventByUserIDAndEventTypeHandler:
         instance = cls()
         instance.event_type = event_type

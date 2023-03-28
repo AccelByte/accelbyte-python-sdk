@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -207,6 +207,7 @@ class SectionUpdate(Model):
         items: Optional[List[SectionItem]] = None,
         rotation_type: Optional[Union[str, RotationTypeEnum]] = None,
         view_id: Optional[str] = None,
+        **kwargs,
     ) -> SectionUpdate:
         instance = cls()
         instance.end_date = end_date

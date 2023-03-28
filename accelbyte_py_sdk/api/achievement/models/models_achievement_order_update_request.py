@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelsAchievementOrderUpdateRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        target_order: int,
-    ) -> ModelsAchievementOrderUpdateRequest:
+    def create(cls, target_order: int, **kwargs) -> ModelsAchievementOrderUpdateRequest:
         instance = cls()
         instance.target_order = target_order
         return instance

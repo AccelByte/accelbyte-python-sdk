@@ -75,11 +75,7 @@ class ModelCreateTopicRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        description: str,
-        topic: str,
-    ) -> ModelCreateTopicRequest:
+    def create(cls, description: str, topic: str, **kwargs) -> ModelCreateTopicRequest:
         instance = cls()
         instance.description = description
         instance.topic = topic

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -239,11 +239,7 @@ class Verify2faCode(Operation):
 
     @classmethod
     def create(
-        cls,
-        code: str,
-        factor: str,
-        mfa_token: str,
-        remember_device: bool,
+        cls, code: str, factor: str, mfa_token: str, remember_device: bool, **kwargs
     ) -> Verify2faCode:
         instance = cls()
         instance.code = code

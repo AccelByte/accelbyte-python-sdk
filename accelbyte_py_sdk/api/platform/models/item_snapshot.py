@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,6 +32,7 @@ from ..models.loot_box_config import LootBoxConfig
 from ..models.option_box_config import OptionBoxConfig
 from ..models.recurring import Recurring
 from ..models.region_data_item import RegionDataItem
+from ..models.sale_config import SaleConfig
 
 
 class EntitlementTypeEnum(StrEnum):
@@ -119,7 +120,11 @@ class ItemSnapshot(Model):
 
         region_data_item: (regionDataItem) OPTIONAL RegionDataItem
 
+        sale_config: (saleConfig) OPTIONAL SaleConfig
+
         season_type: (seasonType) OPTIONAL Union[str, SeasonTypeEnum]
+
+        sellable: (sellable) OPTIONAL bool
 
         sku: (sku) OPTIONAL str
 
@@ -165,7 +170,9 @@ class ItemSnapshot(Model):
     purchasable: bool  # OPTIONAL
     recurring: Recurring  # OPTIONAL
     region_data_item: RegionDataItem  # OPTIONAL
+    sale_config: SaleConfig  # OPTIONAL
     season_type: Union[str, SeasonTypeEnum]  # OPTIONAL
+    sellable: bool  # OPTIONAL
     sku: str  # OPTIONAL
     stackable: bool  # OPTIONAL
     target_currency_code: str  # OPTIONAL
@@ -281,8 +288,16 @@ class ItemSnapshot(Model):
         self.region_data_item = value
         return self
 
+    def with_sale_config(self, value: SaleConfig) -> ItemSnapshot:
+        self.sale_config = value
+        return self
+
     def with_season_type(self, value: Union[str, SeasonTypeEnum]) -> ItemSnapshot:
         self.season_type = value
+        return self
+
+    def with_sellable(self, value: bool) -> ItemSnapshot:
+        self.sellable = value
         return self
 
     def with_sku(self, value: str) -> ItemSnapshot:
@@ -429,10 +444,18 @@ class ItemSnapshot(Model):
             )
         elif include_empty:
             result["regionDataItem"] = RegionDataItem()
+        if hasattr(self, "sale_config"):
+            result["saleConfig"] = self.sale_config.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["saleConfig"] = SaleConfig()
         if hasattr(self, "season_type"):
             result["seasonType"] = str(self.season_type)
         elif include_empty:
             result["seasonType"] = Union[str, SeasonTypeEnum]()
+        if hasattr(self, "sellable"):
+            result["sellable"] = bool(self.sellable)
+        elif include_empty:
+            result["sellable"] = False
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -499,7 +522,9 @@ class ItemSnapshot(Model):
         purchasable: Optional[bool] = None,
         recurring: Optional[Recurring] = None,
         region_data_item: Optional[RegionDataItem] = None,
+        sale_config: Optional[SaleConfig] = None,
         season_type: Optional[Union[str, SeasonTypeEnum]] = None,
+        sellable: Optional[bool] = None,
         sku: Optional[str] = None,
         stackable: Optional[bool] = None,
         target_currency_code: Optional[str] = None,
@@ -508,6 +533,7 @@ class ItemSnapshot(Model):
         thumbnail_url: Optional[str] = None,
         updated_at: Optional[str] = None,
         use_count: Optional[int] = None,
+        **kwargs,
     ) -> ItemSnapshot:
         instance = cls()
         instance.entitlement_type = entitlement_type
@@ -552,8 +578,12 @@ class ItemSnapshot(Model):
             instance.recurring = recurring
         if region_data_item is not None:
             instance.region_data_item = region_data_item
+        if sale_config is not None:
+            instance.sale_config = sale_config
         if season_type is not None:
             instance.season_type = season_type
+        if sellable is not None:
+            instance.sellable = sellable
         if sku is not None:
             instance.sku = sku
         if stackable is not None:
@@ -687,10 +717,20 @@ class ItemSnapshot(Model):
             )
         elif include_empty:
             instance.region_data_item = RegionDataItem()
+        if "saleConfig" in dict_ and dict_["saleConfig"] is not None:
+            instance.sale_config = SaleConfig.create_from_dict(
+                dict_["saleConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.sale_config = SaleConfig()
         if "seasonType" in dict_ and dict_["seasonType"] is not None:
             instance.season_type = str(dict_["seasonType"])
         elif include_empty:
             instance.season_type = Union[str, SeasonTypeEnum]()
+        if "sellable" in dict_ and dict_["sellable"] is not None:
+            instance.sellable = bool(dict_["sellable"])
+        elif include_empty:
+            instance.sellable = False
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -787,7 +827,9 @@ class ItemSnapshot(Model):
             "purchasable": "purchasable",
             "recurring": "recurring",
             "regionDataItem": "region_data_item",
+            "saleConfig": "sale_config",
             "seasonType": "season_type",
+            "sellable": "sellable",
             "sku": "sku",
             "stackable": "stackable",
             "targetCurrencyCode": "target_currency_code",
@@ -826,7 +868,9 @@ class ItemSnapshot(Model):
             "purchasable": False,
             "recurring": False,
             "regionDataItem": False,
+            "saleConfig": False,
             "seasonType": False,
+            "sellable": False,
             "sku": False,
             "stackable": False,
             "targetCurrencyCode": False,

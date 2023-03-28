@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class PayPalConfig(Model):
         client_secret: Optional[str] = None,
         return_url: Optional[str] = None,
         web_hook_id: Optional[str] = None,
+        **kwargs,
     ) -> PayPalConfig:
         instance = cls()
         if client_id is not None:

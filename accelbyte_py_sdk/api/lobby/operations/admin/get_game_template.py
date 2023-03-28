@@ -211,10 +211,7 @@ class GetGameTemplate(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> GetGameTemplate:
+    def create(cls, namespace: str, **kwargs) -> GetGameTemplate:
         instance = cls()
         instance.namespace = namespace
         return instance

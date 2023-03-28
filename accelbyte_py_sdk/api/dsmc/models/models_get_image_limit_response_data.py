@@ -111,6 +111,7 @@ class ModelsGetImageLimitResponseData(Model):
         image_limit: int,
         non_persistent_image_number: int,
         non_persistent_image_used_in_deployment_number: int,
+        **kwargs,
     ) -> ModelsGetImageLimitResponseData:
         instance = cls()
         instance.image_count = image_count

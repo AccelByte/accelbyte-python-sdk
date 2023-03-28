@@ -284,6 +284,7 @@ class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
         after: Optional[str] = None,
         before: Optional[str] = None,
         limit: Optional[int] = None,
+        **kwargs,
     ) -> GetTemplateSlugLocalizationsTemplateV1Admin:
         instance = cls()
         instance.namespace = namespace

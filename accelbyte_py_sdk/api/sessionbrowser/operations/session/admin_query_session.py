@@ -347,6 +347,7 @@ class AdminQuerySession(Operation):
         offset: Optional[int] = None,
         server_status: Optional[str] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> AdminQuerySession:
         instance = cls()
         instance.namespace = namespace

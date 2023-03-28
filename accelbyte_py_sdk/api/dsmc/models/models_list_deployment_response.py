@@ -86,6 +86,7 @@ class ModelsListDeploymentResponse(Model):
         cls,
         deployments: List[ModelsDeploymentWithOverride],
         paging: ModelsPagingCursor,
+        **kwargs,
     ) -> ModelsListDeploymentResponse:
         instance = cls()
         instance.deployments = deployments

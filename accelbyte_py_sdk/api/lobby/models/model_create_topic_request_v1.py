@@ -76,9 +76,7 @@ class ModelCreateTopicRequestV1(Model):
 
     @classmethod
     def create(
-        cls,
-        description: str,
-        topic_name: str,
+        cls, description: str, topic_name: str, **kwargs
     ) -> ModelCreateTopicRequestV1:
         instance = cls()
         instance.description = description

@@ -97,6 +97,7 @@ class UserExpGrant(Model):
         exp: Optional[int] = None,
         source: Optional[Union[str, SourceEnum]] = None,
         tags: Optional[List[str]] = None,
+        **kwargs,
     ) -> UserExpGrant:
         instance = cls()
         if exp is not None:

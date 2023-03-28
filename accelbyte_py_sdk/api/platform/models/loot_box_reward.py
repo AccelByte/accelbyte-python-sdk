@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -126,6 +126,7 @@ class LootBoxReward(Model):
         odds: Optional[float] = None,
         type_: Optional[Union[str, TypeEnum]] = None,
         weight: Optional[int] = None,
+        **kwargs,
     ) -> LootBoxReward:
         instance = cls()
         if loot_box_items is not None:

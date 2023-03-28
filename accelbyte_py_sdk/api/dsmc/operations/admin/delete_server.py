@@ -216,11 +216,7 @@ class DeleteServer(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        pod_name: str,
-    ) -> DeleteServer:
+    def create(cls, namespace: str, pod_name: str, **kwargs) -> DeleteServer:
         instance = cls()
         instance.namespace = namespace
         instance.pod_name = pod_name

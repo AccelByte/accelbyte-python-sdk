@@ -114,6 +114,7 @@ class ModelsMatchingParty(Model):
         party_attributes: Dict[str, Any],
         party_id: str,
         party_members: List[ModelsPartyMember],
+        **kwargs,
     ) -> ModelsMatchingParty:
         instance = cls()
         instance.match_attributes = match_attributes

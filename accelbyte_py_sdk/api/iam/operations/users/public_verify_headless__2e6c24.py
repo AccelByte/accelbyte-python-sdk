@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,6 +40,16 @@ class PublicVerifyHeadlessAccountV3(Operation):
     Require valid user authorization
     action code : 10124
 
+
+
+
+    if set NeedVerificationCode = true, IAM will send verification code into email
+
+
+
+
+    user can use that verification code to verify user through /iam/v3/public/namespaces/{namespace}/users/me/code/verify
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify
 
@@ -56,6 +66,8 @@ class PublicVerifyHeadlessAccountV3(Operation):
         body: (body) REQUIRED ModelUpgradeHeadlessAccountV3Request in body
 
         namespace: (namespace) REQUIRED str in path
+
+        need_verification_code: (needVerificationCode) OPTIONAL bool in query
 
     Responses:
         200: OK - ModelUserResponseV3 (OK)
@@ -82,6 +94,7 @@ class PublicVerifyHeadlessAccountV3(Operation):
 
     body: ModelUpgradeHeadlessAccountV3Request  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
+    need_verification_code: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -123,6 +136,7 @@ class PublicVerifyHeadlessAccountV3(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -134,6 +148,12 @@ class PublicVerifyHeadlessAccountV3(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "need_verification_code"):
+            result["needVerificationCode"] = self.need_verification_code
         return result
 
     # endregion get_x_params methods
@@ -154,6 +174,10 @@ class PublicVerifyHeadlessAccountV3(Operation):
         self.namespace = value
         return self
 
+    def with_need_verification_code(self, value: bool) -> PublicVerifyHeadlessAccountV3:
+        self.need_verification_code = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -168,6 +192,10 @@ class PublicVerifyHeadlessAccountV3(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "need_verification_code") and self.need_verification_code:
+            result["needVerificationCode"] = bool(self.need_verification_code)
+        elif include_empty:
+            result["needVerificationCode"] = False
         return result
 
     # endregion to methods
@@ -233,10 +261,14 @@ class PublicVerifyHeadlessAccountV3(Operation):
         cls,
         body: ModelUpgradeHeadlessAccountV3Request,
         namespace: str,
+        need_verification_code: Optional[bool] = None,
+        **kwargs,
     ) -> PublicVerifyHeadlessAccountV3:
         instance = cls()
         instance.body = body
         instance.namespace = namespace
+        if need_verification_code is not None:
+            instance.need_verification_code = need_verification_code
         return instance
 
     @classmethod
@@ -254,6 +286,13 @@ class PublicVerifyHeadlessAccountV3(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if (
+            "needVerificationCode" in dict_
+            and dict_["needVerificationCode"] is not None
+        ):
+            instance.need_verification_code = bool(dict_["needVerificationCode"])
+        elif include_empty:
+            instance.need_verification_code = False
         return instance
 
     @staticmethod
@@ -261,6 +300,7 @@ class PublicVerifyHeadlessAccountV3(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
+            "needVerificationCode": "need_verification_code",
         }
 
     @staticmethod
@@ -268,6 +308,7 @@ class PublicVerifyHeadlessAccountV3(Operation):
         return {
             "body": True,
             "namespace": True,
+            "needVerificationCode": False,
         }
 
     # endregion static methods

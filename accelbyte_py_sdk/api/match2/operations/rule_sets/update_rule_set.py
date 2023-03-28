@@ -251,10 +251,7 @@ class UpdateRuleSet(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ApiRuleSetPayload,
-        namespace: str,
-        ruleset: str,
+        cls, body: ApiRuleSetPayload, namespace: str, ruleset: str, **kwargs
     ) -> UpdateRuleSet:
         instance = cls()
         instance.body = body

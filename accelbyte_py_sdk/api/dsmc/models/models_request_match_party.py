@@ -99,6 +99,7 @@ class ModelsRequestMatchParty(Model):
         party_attributes: Dict[str, Any],
         party_id: str,
         party_members: List[ModelsRequestMatchMember],
+        **kwargs,
     ) -> ModelsRequestMatchParty:
         instance = cls()
         instance.party_attributes = party_attributes

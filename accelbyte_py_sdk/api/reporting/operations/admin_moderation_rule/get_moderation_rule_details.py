@@ -212,11 +212,7 @@ class GetModerationRuleDetails(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        rule_id: str,
-    ) -> GetModerationRuleDetails:
+    def create(cls, namespace: str, rule_id: str, **kwargs) -> GetModerationRuleDetails:
         instance = cls()
         instance.namespace = namespace
         instance.rule_id = rule_id

@@ -200,10 +200,7 @@ class CountServer(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> CountServer:
+    def create(cls, namespace: str, **kwargs) -> CountServer:
         instance = cls()
         instance.namespace = namespace
         return instance

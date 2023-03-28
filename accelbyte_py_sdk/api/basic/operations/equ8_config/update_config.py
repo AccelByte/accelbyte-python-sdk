@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -213,6 +213,7 @@ class UpdateConfig(Operation):
         cls,
         namespace: str,
         body: Optional[ADTOForUpdateEqu8ConfigAPICall] = None,
+        **kwargs,
     ) -> UpdateConfig:
         instance = cls()
         instance.namespace = namespace

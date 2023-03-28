@@ -238,6 +238,7 @@ class UpdateReasonGroup(Operation):
         body: RestapiUpdateReasonGroupRequest,
         group_id: str,
         namespace: str,
+        **kwargs,
     ) -> UpdateReasonGroup:
         instance = cls()
         instance.body = body

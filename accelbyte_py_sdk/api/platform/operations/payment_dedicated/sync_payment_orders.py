@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -209,10 +209,7 @@ class SyncPaymentOrders(Operation):
 
     @classmethod
     def create(
-        cls,
-        end: str,
-        start: str,
-        next_evaluated_key: Optional[str] = None,
+        cls, end: str, start: str, next_evaluated_key: Optional[str] = None, **kwargs
     ) -> SyncPaymentOrders:
         instance = cls()
         instance.end = end

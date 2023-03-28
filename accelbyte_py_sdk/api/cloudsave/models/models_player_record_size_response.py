@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.6.2)
+# AccelByte Gaming Services Cloudsave Service (3.6.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -115,6 +115,7 @@ class ModelsPlayerRecordSizeResponse(Model):
         namespace: str,
         remaining_size: int,
         user_id: str,
+        **kwargs,
     ) -> ModelsPlayerRecordSizeResponse:
         instance = cls()
         instance.current_size = current_size

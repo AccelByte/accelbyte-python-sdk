@@ -215,11 +215,7 @@ class PublishSeason(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        season_id: str,
-    ) -> PublishSeason:
+    def create(cls, namespace: str, season_id: str, **kwargs) -> PublishSeason:
         instance = cls()
         instance.namespace = namespace
         instance.season_id = season_id

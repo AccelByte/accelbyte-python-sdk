@@ -211,6 +211,7 @@ class ModelsDSMConfigRecord(Model):
         session_timeout: int,
         unreachable_timeout: int,
         updated_at: str,
+        **kwargs,
     ) -> ModelsDSMConfigRecord:
         instance = cls()
         instance.claim_timeout = claim_timeout

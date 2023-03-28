@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ResponseError(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        error_code: int,
-        error_message: str,
-    ) -> ResponseError:
+    def create(cls, error_code: int, error_message: str, **kwargs) -> ResponseError:
         instance = cls()
         instance.error_code = error_code
         instance.error_message = error_message

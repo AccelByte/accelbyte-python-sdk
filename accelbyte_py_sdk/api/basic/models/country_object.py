@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class CountryObject(Model):
 
     @classmethod
     def create(
-        cls,
-        code: Optional[str] = None,
-        name: Optional[str] = None,
+        cls, code: Optional[str] = None, name: Optional[str] = None, **kwargs
     ) -> CountryObject:
         instance = cls()
         if code is not None:

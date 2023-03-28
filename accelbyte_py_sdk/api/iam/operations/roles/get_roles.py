@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -206,10 +206,7 @@ class GetRoles(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        is_wildcard: Optional[str] = None,
-    ) -> GetRoles:
+    def create(cls, is_wildcard: Optional[str] = None, **kwargs) -> GetRoles:
         instance = cls()
         if is_wildcard is not None:
             instance.is_wildcard = is_wildcard

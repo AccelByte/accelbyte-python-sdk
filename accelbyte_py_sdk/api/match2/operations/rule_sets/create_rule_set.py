@@ -238,11 +238,7 @@ class CreateRuleSet(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: ApiRuleSetPayload,
-        namespace: str,
-    ) -> CreateRuleSet:
+    def create(cls, body: ApiRuleSetPayload, namespace: str, **kwargs) -> CreateRuleSet:
         instance = cls()
         instance.body = body
         instance.namespace = namespace

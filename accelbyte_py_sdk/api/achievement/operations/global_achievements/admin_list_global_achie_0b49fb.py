@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -270,6 +270,7 @@ class AdminListGlobalAchievementContributors(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         sort_by: Optional[str] = None,
+        **kwargs,
     ) -> AdminListGlobalAchievementContributors:
         instance = cls()
         instance.achievement_code = achievement_code

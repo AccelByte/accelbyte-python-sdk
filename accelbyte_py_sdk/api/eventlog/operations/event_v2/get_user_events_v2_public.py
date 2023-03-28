@@ -303,6 +303,7 @@ class GetUserEventsV2Public(Operation):
         offset: Optional[int] = None,
         page_size: Optional[int] = None,
         start_date: Optional[str] = None,
+        **kwargs,
     ) -> GetUserEventsV2Public:
         instance = cls()
         instance.namespace = namespace

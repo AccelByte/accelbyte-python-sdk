@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class ModelsCreateScreenshotRequestItem(Model):
         content_type: str,
         description: str,
         file_extension: Union[str, FileExtensionEnum],
+        **kwargs,
     ) -> ModelsCreateScreenshotRequestItem:
         instance = cls()
         instance.content_type = content_type

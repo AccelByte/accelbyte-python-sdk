@@ -276,6 +276,7 @@ class GetEventByNamespaceHandler(Operation):
         page_size: int,
         start_date: str,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> GetEventByNamespaceHandler:
         instance = cls()
         instance.namespace = namespace

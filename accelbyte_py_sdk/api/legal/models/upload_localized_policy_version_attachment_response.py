@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -97,6 +97,7 @@ class UploadLocalizedPolicyVersionAttachmentResponse(Model):
         attachment_checksum: Optional[str] = None,
         attachment_location: Optional[str] = None,
         attachment_upload_url: Optional[str] = None,
+        **kwargs,
     ) -> UploadLocalizedPolicyVersionAttachmentResponse:
         instance = cls()
         if attachment_checksum is not None:

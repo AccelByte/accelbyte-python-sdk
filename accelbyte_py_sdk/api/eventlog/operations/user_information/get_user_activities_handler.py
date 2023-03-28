@@ -262,6 +262,7 @@ class GetUserActivitiesHandler(Operation):
         user_id: str,
         page_size: int,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> GetUserActivitiesHandler:
         instance = cls()
         instance.namespace = namespace

@@ -230,9 +230,7 @@ class CreateTemplate(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelCreateTemplateRequest,
-        namespace: str,
+        cls, body: ModelCreateTemplateRequest, namespace: str, **kwargs
     ) -> CreateTemplate:
         instance = cls()
         instance.body = body

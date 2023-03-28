@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -247,6 +247,7 @@ class SetUserVisibilityStatusV2(Operation):
         body: ModelsSetUserVisibilityRequest,
         namespace: str,
         user_id: str,
+        **kwargs,
     ) -> SetUserVisibilityStatusV2:
         instance = cls()
         instance.body = body

@@ -64,10 +64,7 @@ class ModelsCountServerResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        count: int,
-    ) -> ModelsCountServerResponse:
+    def create(cls, count: int, **kwargs) -> ModelsCountServerResponse:
         instance = cls()
         instance.count = count
         return instance

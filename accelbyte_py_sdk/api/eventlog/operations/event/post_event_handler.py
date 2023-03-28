@@ -223,11 +223,7 @@ class PostEventHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        body: ModelsEvent,
-        namespace: str,
-    ) -> PostEventHandler:
+    def create(cls, body: ModelsEvent, namespace: str, **kwargs) -> PostEventHandler:
         instance = cls()
         instance.body = body
         instance.namespace = namespace

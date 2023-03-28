@@ -236,10 +236,7 @@ class RemovePlayerFromSession(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        session_id: str,
-        user_id: str,
+        cls, namespace: str, session_id: str, user_id: str, **kwargs
     ) -> RemovePlayerFromSession:
         instance = cls()
         instance.namespace = namespace

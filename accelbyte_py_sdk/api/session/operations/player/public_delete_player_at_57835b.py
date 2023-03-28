@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -199,10 +199,7 @@ class PublicDeletePlayerAttributes(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> PublicDeletePlayerAttributes:
+    def create(cls, namespace: str, **kwargs) -> PublicDeletePlayerAttributes:
         instance = cls()
         instance.namespace = namespace
         return instance

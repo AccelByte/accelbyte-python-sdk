@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,10 +87,7 @@ class ModelsCombinationAlliances(Model):
 
     @classmethod
     def create(
-        cls,
-        max: int,
-        min: int,
-        name: str,
+        cls, max: int, min: int, name: str, **kwargs
     ) -> ModelsCombinationAlliances:
         instance = cls()
         instance.max = max

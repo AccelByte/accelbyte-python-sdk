@@ -87,10 +87,7 @@ class ModelsCountActiveSessionResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        custom_game: int,
-        matchmaking_game: int,
-        total: int,
+        cls, custom_game: int, matchmaking_game: int, total: int, **kwargs
     ) -> ModelsCountActiveSessionResponse:
         instance = cls()
         instance.custom_game = custom_game

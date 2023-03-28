@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -122,6 +122,7 @@ class IAPItemFlatEntry(Model):
         item_identity_type: Optional[Union[str, ItemIdentityTypeEnum]] = None,
         platform: Optional[Union[str, PlatformEnum]] = None,
         platform_product_id: Optional[str] = None,
+        **kwargs,
     ) -> IAPItemFlatEntry:
         instance = cls()
         if item_identity is not None:

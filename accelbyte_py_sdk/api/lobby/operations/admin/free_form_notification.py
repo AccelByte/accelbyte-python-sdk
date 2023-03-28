@@ -230,9 +230,7 @@ class FreeFormNotification(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelFreeFormNotificationRequest,
-        namespace: str,
+        cls, body: ModelFreeFormNotificationRequest, namespace: str, **kwargs
     ) -> FreeFormNotification:
         instance = cls()
         instance.body = body

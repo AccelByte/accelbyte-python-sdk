@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -198,10 +198,7 @@ class GetNamespaces(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        active_only: Optional[bool] = None,
-    ) -> GetNamespaces:
+    def create(cls, active_only: Optional[bool] = None, **kwargs) -> GetNamespaces:
         instance = cls()
         if active_only is not None:
             instance.active_only = active_only

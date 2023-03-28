@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -246,6 +246,7 @@ class PublicCancelSubscription(Operation):
         subscription_id: str,
         user_id: str,
         body: Optional[CancelRequest] = None,
+        **kwargs,
     ) -> PublicCancelSubscription:
         instance = cls()
         instance.namespace = namespace

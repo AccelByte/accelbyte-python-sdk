@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,8 +65,7 @@ class GoogleReceiptResolveResult(Model):
 
     @classmethod
     def create(
-        cls,
-        need_consume: Optional[bool] = None,
+        cls, need_consume: Optional[bool] = None, **kwargs
     ) -> GoogleReceiptResolveResult:
         instance = cls()
         if need_consume is not None:

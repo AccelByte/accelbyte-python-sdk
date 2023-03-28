@@ -117,6 +117,7 @@ class RestapiErrorResponseV2(Model):
         error_message: str,
         message: str,
         name: str,
+        **kwargs,
     ) -> RestapiErrorResponseV2:
         instance = cls()
         instance.attributes = attributes

@@ -71,8 +71,7 @@ class ModelsBatchDownloadLogsRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        downloads: List[ModelsDownloadLogsRequest],
+        cls, downloads: List[ModelsDownloadLogsRequest], **kwargs
     ) -> ModelsBatchDownloadLogsRequest:
         instance = cls()
         instance.downloads = downloads

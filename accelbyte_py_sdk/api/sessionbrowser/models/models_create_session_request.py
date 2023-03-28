@@ -121,6 +121,7 @@ class ModelsCreateSessionRequest(Model):
         namespace: str,
         session_type: str,
         username: str,
+        **kwargs,
     ) -> ModelsCreateSessionRequest:
         instance = cls()
         instance.game_session_setting = game_session_setting

@@ -212,10 +212,7 @@ class ExportImages(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> ExportImages:
+    def create(cls, namespace: str, **kwargs) -> ExportImages:
         instance = cls()
         instance.namespace = namespace
         return instance

@@ -244,10 +244,7 @@ class CreatePass(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        season_id: str,
-        body: Optional[PassCreate] = None,
+        cls, namespace: str, season_id: str, body: Optional[PassCreate] = None, **kwargs
     ) -> CreatePass:
         instance = cls()
         instance.namespace = namespace

@@ -242,10 +242,7 @@ class GetSingleTemplateLocalizationV1Admin(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        template_language: str,
-        template_slug: str,
+        cls, namespace: str, template_language: str, template_slug: str, **kwargs
     ) -> GetSingleTemplateLocalizationV1Admin:
         instance = cls()
         instance.namespace = namespace

@@ -241,9 +241,7 @@ class AdminVerifyMessageProfanityResponse(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsAdminVerifyMessageProfanityRequest,
-        namespace: str,
+        cls, body: ModelsAdminVerifyMessageProfanityRequest, namespace: str, **kwargs
     ) -> AdminVerifyMessageProfanityResponse:
         instance = cls()
         instance.body = body

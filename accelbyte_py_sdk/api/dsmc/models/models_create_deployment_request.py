@@ -238,6 +238,7 @@ class ModelsCreateDeploymentRequest(Model):
         unlimited: bool,
         use_buffer_percent: bool,
         session_timeout: Optional[int] = None,
+        **kwargs,
     ) -> ModelsCreateDeploymentRequest:
         instance = cls()
         instance.allow_version_override = allow_version_override

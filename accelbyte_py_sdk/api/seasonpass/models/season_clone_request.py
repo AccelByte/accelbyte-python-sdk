@@ -86,12 +86,7 @@ class SeasonCloneRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        end: str,
-        name: str,
-        start: str,
-    ) -> SeasonCloneRequest:
+    def create(cls, end: str, name: str, start: str, **kwargs) -> SeasonCloneRequest:
         instance = cls()
         instance.end = end
         instance.name = name

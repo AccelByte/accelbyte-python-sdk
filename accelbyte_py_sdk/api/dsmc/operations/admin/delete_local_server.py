@@ -211,11 +211,7 @@ class DeleteLocalServer(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        name: str,
-        namespace: str,
-    ) -> DeleteLocalServer:
+    def create(cls, name: str, namespace: str, **kwargs) -> DeleteLocalServer:
         instance = cls()
         instance.name = name
         instance.namespace = namespace

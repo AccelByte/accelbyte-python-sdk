@@ -87,10 +87,7 @@ class ModelsUserLastActivity(Model):
 
     @classmethod
     def create(
-        cls,
-        last_activity_time: str,
-        namespace: str,
-        user_id: str,
+        cls, last_activity_time: str, namespace: str, user_id: str, **kwargs
     ) -> ModelsUserLastActivity:
         instance = cls()
         instance.last_activity_time = last_activity_time

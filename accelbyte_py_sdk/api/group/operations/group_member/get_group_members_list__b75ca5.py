@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -283,6 +283,7 @@ class GetGroupMembersListPublicV1(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         order: Optional[str] = None,
+        **kwargs,
     ) -> GetGroupMembersListPublicV1:
         instance = cls()
         instance.group_id = group_id

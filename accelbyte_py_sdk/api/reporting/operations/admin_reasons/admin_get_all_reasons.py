@@ -193,10 +193,7 @@ class AdminGetAllReasons(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> AdminGetAllReasons:
+    def create(cls, namespace: str, **kwargs) -> AdminGetAllReasons:
         instance = cls()
         instance.namespace = namespace
         return instance

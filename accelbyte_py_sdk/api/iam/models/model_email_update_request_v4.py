@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelEmailUpdateRequestV4(Model):
 
     @classmethod
     def create(
-        cls,
-        code: str,
-        email_address: str,
+        cls, code: str, email_address: str, **kwargs
     ) -> ModelEmailUpdateRequestV4:
         instance = cls()
         instance.code = code

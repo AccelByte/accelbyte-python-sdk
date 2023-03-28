@@ -218,10 +218,7 @@ class AdminGetConfigV1(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> AdminGetConfigV1:
+    def create(cls, namespace: str, **kwargs) -> AdminGetConfigV1:
         instance = cls()
         instance.namespace = namespace
         return instance

@@ -218,9 +218,7 @@ class GetTotalActiveSession(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        session_type: Optional[str] = None,
+        cls, namespace: str, session_type: Optional[str] = None, **kwargs
     ) -> GetTotalActiveSession:
         instance = cls()
         instance.namespace = namespace

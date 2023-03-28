@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -86,6 +86,7 @@ class InvoiceSummary(Model):
         cls,
         invoice_currency_summary: List[InvoiceCurrencySummary],
         total_sales_volume: int,
+        **kwargs,
     ) -> InvoiceSummary:
         instance = cls()
         instance.invoice_currency_summary = invoice_currency_summary

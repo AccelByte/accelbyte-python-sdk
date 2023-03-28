@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -91,6 +91,7 @@ class TwitchIAPConfigRequest(Model):
         client_id: Optional[str] = None,
         client_secret: Optional[str] = None,
         organization_id: Optional[str] = None,
+        **kwargs,
     ) -> TwitchIAPConfigRequest:
         instance = cls()
         if client_id is not None:

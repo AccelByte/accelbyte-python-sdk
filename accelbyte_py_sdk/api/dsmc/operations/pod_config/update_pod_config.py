@@ -250,10 +250,7 @@ class UpdatePodConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsUpdatePodConfigRequest,
-        name: str,
-        namespace: str,
+        cls, body: ModelsUpdatePodConfigRequest, name: str, namespace: str, **kwargs
     ) -> UpdatePodConfig:
         instance = cls()
         instance.body = body

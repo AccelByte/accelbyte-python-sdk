@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -209,6 +209,7 @@ class IAPConsumeHistoryInfo(Model):
         request_url: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> IAPConsumeHistoryInfo:
         instance = cls()
         if client_request_parameter is not None:

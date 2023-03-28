@@ -217,10 +217,7 @@ class PublicGetPlayerBlockedPlayersV1(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> PublicGetPlayerBlockedPlayersV1:
+    def create(cls, namespace: str, **kwargs) -> PublicGetPlayerBlockedPlayersV1:
         instance = cls()
         instance.namespace = namespace
         return instance

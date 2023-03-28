@@ -221,10 +221,7 @@ class GetAllNotificationTemplatesV1Admin(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> GetAllNotificationTemplatesV1Admin:
+    def create(cls, namespace: str, **kwargs) -> GetAllNotificationTemplatesV1Admin:
         instance = cls()
         instance.namespace = namespace
         return instance

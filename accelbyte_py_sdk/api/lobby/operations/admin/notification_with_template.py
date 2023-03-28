@@ -235,9 +235,7 @@ class NotificationWithTemplate(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelNotificationWithTemplateRequest,
-        namespace: str,
+        cls, body: ModelNotificationWithTemplateRequest, namespace: str, **kwargs
     ) -> NotificationWithTemplate:
         instance = cls()
         instance.body = body

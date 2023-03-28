@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.6.1"
+__version__ = "2.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -17,4 +17,5 @@ __email__ = "dev@accelbyte.net"
 from .create_config import CreateConfig
 from .delete_config_1 import DeleteConfig1
 from .get_config_1 import GetConfig1
+from .get_publisher_config import GetPublisherConfig
 from .update_config_1 import UpdateConfig1

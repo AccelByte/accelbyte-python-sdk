@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -217,10 +217,7 @@ class RetrievePolicyCountry1(Operation):
 
     @classmethod
     def create(
-        cls,
-        base_policy_id: str,
-        country_code: str,
-        namespace: str,
+        cls, base_policy_id: str, country_code: str, namespace: str, **kwargs
     ) -> RetrievePolicyCountry1:
         instance = cls()
         instance.base_policy_id = base_policy_id

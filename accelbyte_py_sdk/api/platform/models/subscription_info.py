@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -608,6 +608,7 @@ class SubscriptionInfo(Model):
         trialed_cycles: Optional[int] = None,
         unsubscribe_reason: Optional[str] = None,
         unsubscribed_at: Optional[str] = None,
+        **kwargs,
     ) -> SubscriptionInfo:
         instance = cls()
         instance.charge_status = charge_status

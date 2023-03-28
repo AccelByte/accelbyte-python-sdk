@@ -211,10 +211,7 @@ class AdminGetThirdPartyConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> AdminGetThirdPartyConfig:
+    def create(cls, namespace: str, **kwargs) -> AdminGetThirdPartyConfig:
         instance = cls()
         instance.namespace = namespace
         return instance

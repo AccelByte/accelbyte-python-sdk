@@ -133,6 +133,7 @@ class HandlersGetUsersPresenceResponse(Model):
         invisible: int,
         offline: int,
         online: int,
+        **kwargs,
     ) -> HandlersGetUsersPresenceResponse:
         instance = cls()
         instance.away = away

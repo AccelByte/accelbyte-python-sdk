@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,8 +32,6 @@ class ModelsGameServer(Model):
     """Models game server (models.GameServer)
 
     Properties:
-        alternate_ips: (alternate_ips) REQUIRED List[str]
-
         custom_attribute: (custom_attribute) REQUIRED str
 
         deployment: (deployment) REQUIRED str
@@ -65,11 +63,12 @@ class ModelsGameServer(Model):
         session_id: (session_id) REQUIRED str
 
         status: (status) REQUIRED str
+
+        alternate_ips: (alternate_ips) OPTIONAL List[str]
     """
 
     # region fields
 
-    alternate_ips: List[str]  # REQUIRED
     custom_attribute: str  # REQUIRED
     deployment: str  # REQUIRED
     game_version: str  # REQUIRED
@@ -86,14 +85,11 @@ class ModelsGameServer(Model):
     region: str  # REQUIRED
     session_id: str  # REQUIRED
     status: str  # REQUIRED
+    alternate_ips: List[str]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_alternate_ips(self, value: List[str]) -> ModelsGameServer:
-        self.alternate_ips = value
-        return self
 
     def with_custom_attribute(self, value: str) -> ModelsGameServer:
         self.custom_attribute = value
@@ -159,16 +155,16 @@ class ModelsGameServer(Model):
         self.status = value
         return self
 
+    def with_alternate_ips(self, value: List[str]) -> ModelsGameServer:
+        self.alternate_ips = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "alternate_ips"):
-            result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
-        elif include_empty:
-            result["alternate_ips"] = []
         if hasattr(self, "custom_attribute"):
             result["custom_attribute"] = str(self.custom_attribute)
         elif include_empty:
@@ -233,6 +229,10 @@ class ModelsGameServer(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "alternate_ips"):
+            result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
+        elif include_empty:
+            result["alternate_ips"] = []
         return result
 
     # endregion to methods
@@ -242,7 +242,6 @@ class ModelsGameServer(Model):
     @classmethod
     def create(
         cls,
-        alternate_ips: List[str],
         custom_attribute: str,
         deployment: str,
         game_version: str,
@@ -259,9 +258,10 @@ class ModelsGameServer(Model):
         region: str,
         session_id: str,
         status: str,
+        alternate_ips: Optional[List[str]] = None,
+        **kwargs,
     ) -> ModelsGameServer:
         instance = cls()
-        instance.alternate_ips = alternate_ips
         instance.custom_attribute = custom_attribute
         instance.deployment = deployment
         instance.game_version = game_version
@@ -278,6 +278,8 @@ class ModelsGameServer(Model):
         instance.region = region
         instance.session_id = session_id
         instance.status = status
+        if alternate_ips is not None:
+            instance.alternate_ips = alternate_ips
         return instance
 
     @classmethod
@@ -287,10 +289,6 @@ class ModelsGameServer(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "alternate_ips" in dict_ and dict_["alternate_ips"] is not None:
-            instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
-        elif include_empty:
-            instance.alternate_ips = []
         if "custom_attribute" in dict_ and dict_["custom_attribute"] is not None:
             instance.custom_attribute = str(dict_["custom_attribute"])
         elif include_empty:
@@ -358,6 +356,10 @@ class ModelsGameServer(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "alternate_ips" in dict_ and dict_["alternate_ips"] is not None:
+            instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
+        elif include_empty:
+            instance.alternate_ips = []
         return instance
 
     @classmethod
@@ -397,7 +399,6 @@ class ModelsGameServer(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "alternate_ips": "alternate_ips",
             "custom_attribute": "custom_attribute",
             "deployment": "deployment",
             "game_version": "game_version",
@@ -414,12 +415,12 @@ class ModelsGameServer(Model):
             "region": "region",
             "session_id": "session_id",
             "status": "status",
+            "alternate_ips": "alternate_ips",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "alternate_ips": True,
             "custom_attribute": True,
             "deployment": True,
             "game_version": True,
@@ -436,6 +437,7 @@ class ModelsGameServer(Model):
             "region": True,
             "session_id": True,
             "status": True,
+            "alternate_ips": False,
         }
 
     # endregion static methods

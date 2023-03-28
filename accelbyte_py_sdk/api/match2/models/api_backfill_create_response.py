@@ -64,10 +64,7 @@ class ApiBackfillCreateResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        id_: str,
-    ) -> ApiBackfillCreateResponse:
+    def create(cls, id_: str, **kwargs) -> ApiBackfillCreateResponse:
         instance = cls()
         instance.id_ = id_
         return instance

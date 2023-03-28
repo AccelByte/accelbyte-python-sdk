@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -435,6 +435,7 @@ class AuthorizeV3(Operation):
         state: Optional[str] = None,
         target_auth_page: Optional[str] = None,
         use_redirect_uri_as_login_url_when_locked: Optional[bool] = None,
+        **kwargs,
     ) -> AuthorizeV3:
         instance = cls()
         instance.client_id = client_id

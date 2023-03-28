@@ -222,9 +222,7 @@ class UserUnfriendRequest(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelUserUnfriendRequest,
-        namespace: str,
+        cls, body: ModelUserUnfriendRequest, namespace: str, **kwargs
     ) -> UserUnfriendRequest:
         instance = cls()
         instance.body = body

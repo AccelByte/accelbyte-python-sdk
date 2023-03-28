@@ -87,10 +87,7 @@ class RestapiTicketStatisticResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        moderated_count: int,
-        open_count: int,
-        total_count: int,
+        cls, moderated_count: int, open_count: int, total_count: int, **kwargs
     ) -> RestapiTicketStatisticResponse:
         instance = cls()
         instance.moderated_count = moderated_count

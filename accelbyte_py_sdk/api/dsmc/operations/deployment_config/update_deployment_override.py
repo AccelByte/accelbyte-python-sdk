@@ -265,6 +265,7 @@ class UpdateDeploymentOverride(Operation):
         deployment: str,
         namespace: str,
         version: str,
+        **kwargs,
     ) -> UpdateDeploymentOverride:
         instance = cls()
         instance.body = body

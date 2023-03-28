@@ -71,8 +71,7 @@ class ModelsMatchingAlly(Model):
 
     @classmethod
     def create(
-        cls,
-        matching_parties: List[ModelsMatchingParty],
+        cls, matching_parties: List[ModelsMatchingParty], **kwargs
     ) -> ModelsMatchingAlly:
         instance = cls()
         instance.matching_parties = matching_parties

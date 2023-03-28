@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,6 +63,8 @@ class AdminQueryGameSessions(Operation):
         from_time: (fromTime) OPTIONAL str in query
 
         game_mode: (gameMode) OPTIONAL str in query
+
+        is_persistent: (isPersistent) OPTIONAL str in query
 
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
@@ -114,6 +116,7 @@ class AdminQueryGameSessions(Operation):
     ds_pod_name: str  # OPTIONAL in [query]
     from_time: str  # OPTIONAL in [query]
     game_mode: str  # OPTIONAL in [query]
+    is_persistent: str  # OPTIONAL in [query]
     is_soft_deleted: str  # OPTIONAL in [query]
     joinability: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
@@ -185,6 +188,8 @@ class AdminQueryGameSessions(Operation):
             result["fromTime"] = self.from_time
         if hasattr(self, "game_mode"):
             result["gameMode"] = self.game_mode
+        if hasattr(self, "is_persistent"):
+            result["isPersistent"] = self.is_persistent
         if hasattr(self, "is_soft_deleted"):
             result["isSoftDeleted"] = self.is_soft_deleted
         if hasattr(self, "joinability"):
@@ -237,6 +242,10 @@ class AdminQueryGameSessions(Operation):
 
     def with_game_mode(self, value: str) -> AdminQueryGameSessions:
         self.game_mode = value
+        return self
+
+    def with_is_persistent(self, value: str) -> AdminQueryGameSessions:
+        self.is_persistent = value
         return self
 
     def with_is_soft_deleted(self, value: str) -> AdminQueryGameSessions:
@@ -313,6 +322,10 @@ class AdminQueryGameSessions(Operation):
             result["gameMode"] = str(self.game_mode)
         elif include_empty:
             result["gameMode"] = ""
+        if hasattr(self, "is_persistent") and self.is_persistent:
+            result["isPersistent"] = str(self.is_persistent)
+        elif include_empty:
+            result["isPersistent"] = ""
         if hasattr(self, "is_soft_deleted") and self.is_soft_deleted:
             result["isSoftDeleted"] = str(self.is_soft_deleted)
         elif include_empty:
@@ -426,6 +439,7 @@ class AdminQueryGameSessions(Operation):
         ds_pod_name: Optional[str] = None,
         from_time: Optional[str] = None,
         game_mode: Optional[str] = None,
+        is_persistent: Optional[str] = None,
         is_soft_deleted: Optional[str] = None,
         joinability: Optional[str] = None,
         limit: Optional[int] = None,
@@ -438,6 +452,7 @@ class AdminQueryGameSessions(Operation):
         status: Optional[str] = None,
         status_v2: Optional[str] = None,
         to_time: Optional[str] = None,
+        **kwargs,
     ) -> AdminQueryGameSessions:
         instance = cls()
         instance.namespace = namespace
@@ -449,6 +464,8 @@ class AdminQueryGameSessions(Operation):
             instance.from_time = from_time
         if game_mode is not None:
             instance.game_mode = game_mode
+        if is_persistent is not None:
+            instance.is_persistent = is_persistent
         if is_soft_deleted is not None:
             instance.is_soft_deleted = is_soft_deleted
         if joinability is not None:
@@ -500,6 +517,10 @@ class AdminQueryGameSessions(Operation):
             instance.game_mode = str(dict_["gameMode"])
         elif include_empty:
             instance.game_mode = ""
+        if "isPersistent" in dict_ and dict_["isPersistent"] is not None:
+            instance.is_persistent = str(dict_["isPersistent"])
+        elif include_empty:
+            instance.is_persistent = ""
         if "isSoftDeleted" in dict_ and dict_["isSoftDeleted"] is not None:
             instance.is_soft_deleted = str(dict_["isSoftDeleted"])
         elif include_empty:
@@ -558,6 +579,7 @@ class AdminQueryGameSessions(Operation):
             "dsPodName": "ds_pod_name",
             "fromTime": "from_time",
             "gameMode": "game_mode",
+            "isPersistent": "is_persistent",
             "isSoftDeleted": "is_soft_deleted",
             "joinability": "joinability",
             "limit": "limit",
@@ -580,6 +602,7 @@ class AdminQueryGameSessions(Operation):
             "dsPodName": False,
             "fromTime": False,
             "gameMode": False,
+            "isPersistent": False,
             "isSoftDeleted": False,
             "joinability": False,
             "limit": False,

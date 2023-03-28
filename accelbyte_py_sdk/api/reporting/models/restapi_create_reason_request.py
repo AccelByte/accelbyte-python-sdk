@@ -87,10 +87,7 @@ class RestapiCreateReasonRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        description: str,
-        group_ids: List[str],
-        title: str,
+        cls, description: str, group_ids: List[str], title: str, **kwargs
     ) -> RestapiCreateReasonRequest:
         instance = cls()
         instance.description = description

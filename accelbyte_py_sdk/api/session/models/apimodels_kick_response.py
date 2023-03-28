@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -95,6 +95,7 @@ class ApimodelsKickResponse(Model):
         leader_id: str,
         members: List[ApimodelsUserResponse],
         party_id: str,
+        **kwargs,
     ) -> ApimodelsKickResponse:
         instance = cls()
         instance.leader_id = leader_id

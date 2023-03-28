@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -115,6 +115,7 @@ class ItemDynamicDataInfo(Model):
         namespace: str,
         user_available_count: int,
         user_purchase_limit: int,
+        **kwargs,
     ) -> ItemDynamicDataInfo:
         instance = cls()
         instance.available_count = available_count

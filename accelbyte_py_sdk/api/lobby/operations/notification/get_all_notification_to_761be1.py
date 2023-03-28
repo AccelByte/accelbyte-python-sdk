@@ -263,6 +263,7 @@ class GetAllNotificationTopicsV1Admin(Operation):
         after: Optional[str] = None,
         before: Optional[str] = None,
         limit: Optional[int] = None,
+        **kwargs,
     ) -> GetAllNotificationTopicsV1Admin:
         instance = cls()
         instance.namespace = namespace

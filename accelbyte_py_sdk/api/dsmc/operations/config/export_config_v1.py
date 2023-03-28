@@ -209,10 +209,7 @@ class ExportConfigV1(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> ExportConfigV1:
+    def create(cls, namespace: str, **kwargs) -> ExportConfigV1:
         instance = cls()
         instance.namespace = namespace
         return instance

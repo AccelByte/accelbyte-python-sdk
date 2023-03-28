@@ -76,9 +76,7 @@ class ModelOutgoingFriendsWithTimeData(Model):
 
     @classmethod
     def create(
-        cls,
-        friend_id: str,
-        requested_at: str,
+        cls, friend_id: str, requested_at: str, **kwargs
     ) -> ModelOutgoingFriendsWithTimeData:
         instance = cls()
         instance.friend_id = friend_id

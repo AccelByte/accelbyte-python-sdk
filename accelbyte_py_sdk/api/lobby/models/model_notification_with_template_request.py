@@ -109,6 +109,7 @@ class ModelNotificationWithTemplateRequest(Model):
         template_language: str,
         template_slug: str,
         topic: str,
+        **kwargs,
     ) -> ModelNotificationWithTemplateRequest:
         instance = cls()
         instance.template_context = template_context

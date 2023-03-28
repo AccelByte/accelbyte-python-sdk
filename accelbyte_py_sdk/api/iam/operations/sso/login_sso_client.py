@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -190,9 +190,7 @@ class LoginSSOClient(Operation):
 
     @classmethod
     def create(
-        cls,
-        platform_id: str,
-        payload: Optional[str] = None,
+        cls, platform_id: str, payload: Optional[str] = None, **kwargs
     ) -> LoginSSOClient:
         instance = cls()
         instance.platform_id = platform_id

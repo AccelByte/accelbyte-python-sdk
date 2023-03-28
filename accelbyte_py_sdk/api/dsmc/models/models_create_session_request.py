@@ -188,6 +188,7 @@ class ModelsCreateSessionRequest(Model):
         region: str,
         session_id: str,
         notification_payload: Optional[ModelsMatchResultNotificationPayload] = None,
+        **kwargs,
     ) -> ModelsCreateSessionRequest:
         instance = cls()
         instance.client_version = client_version

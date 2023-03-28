@@ -90,6 +90,7 @@ class ModelsGetSessionHistorySearchResponseV2(Model):
         cls,
         data: List[ModelsGetSessionHistorySearchResponseItemV2],
         pagination: ModelsPagination,
+        **kwargs,
     ) -> ModelsGetSessionHistorySearchResponseV2:
         instance = cls()
         instance.data = data

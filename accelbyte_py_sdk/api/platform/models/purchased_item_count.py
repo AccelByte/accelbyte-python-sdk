@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class PurchasedItemCount(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        count: Optional[int] = None,
-    ) -> PurchasedItemCount:
+    def create(cls, count: Optional[int] = None, **kwargs) -> PurchasedItemCount:
         instance = cls()
         if count is not None:
             instance.count = count

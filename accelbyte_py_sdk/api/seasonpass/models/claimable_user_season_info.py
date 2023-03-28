@@ -289,6 +289,7 @@ class ClaimableUserSeasonInfo(Model):
         total_exp: Optional[int] = None,
         total_paid_for_exp: Optional[int] = None,
         total_sweat_exp: Optional[int] = None,
+        **kwargs,
     ) -> ClaimableUserSeasonInfo:
         instance = cls()
         instance.claiming_rewards = claiming_rewards

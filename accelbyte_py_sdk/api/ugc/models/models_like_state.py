@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ModelsLikeState(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        state: bool,
-        user_id: str,
-    ) -> ModelsLikeState:
+    def create(cls, state: bool, user_id: str, **kwargs) -> ModelsLikeState:
         instance = cls()
         instance.state = state
         instance.user_id = user_id

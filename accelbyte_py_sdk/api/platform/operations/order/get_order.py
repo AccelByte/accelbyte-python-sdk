@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -202,11 +202,7 @@ class GetOrder(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        order_no: str,
-    ) -> GetOrder:
+    def create(cls, namespace: str, order_no: str, **kwargs) -> GetOrder:
         instance = cls()
         instance.namespace = namespace
         instance.order_no = order_no

@@ -69,8 +69,7 @@ class ModelsMultipleEventType(Model):
 
     @classmethod
     def create(
-        cls,
-        event_type: List[ModelsEventType],
+        cls, event_type: List[ModelsEventType], **kwargs
     ) -> ModelsMultipleEventType:
         instance = cls()
         instance.event_type = event_type

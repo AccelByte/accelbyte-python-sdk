@@ -97,6 +97,7 @@ class ApiMatchTicketStatus(Model):
         match_found: bool,
         session_id: str,
         proposed_proposal: Optional[ApiProposedProposal] = None,
+        **kwargs,
     ) -> ApiMatchTicketStatus:
         instance = cls()
         instance.match_found = match_found

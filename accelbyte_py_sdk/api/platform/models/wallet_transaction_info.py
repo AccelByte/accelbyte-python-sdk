@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -55,13 +55,13 @@ class WalletTransactionInfo(Model):
 
         user_id: (userId) REQUIRED str
 
-        wallet_action: (walletAction) REQUIRED Union[str, WalletActionEnum]
-
         balance_source: (balanceSource) OPTIONAL str
 
         reason: (reason) OPTIONAL str
 
         transaction_amount_details: (transactionAmountDetails) OPTIONAL List[TransactionAmountDetails]
+
+        wallet_action: (walletAction) OPTIONAL Union[str, WalletActionEnum]
     """
 
     # region fields
@@ -73,10 +73,10 @@ class WalletTransactionInfo(Model):
     operator: str  # REQUIRED
     updated_at: str  # REQUIRED
     user_id: str  # REQUIRED
-    wallet_action: Union[str, WalletActionEnum]  # REQUIRED
     balance_source: str  # OPTIONAL
     reason: str  # OPTIONAL
     transaction_amount_details: List[TransactionAmountDetails]  # OPTIONAL
+    wallet_action: Union[str, WalletActionEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -110,12 +110,6 @@ class WalletTransactionInfo(Model):
         self.user_id = value
         return self
 
-    def with_wallet_action(
-        self, value: Union[str, WalletActionEnum]
-    ) -> WalletTransactionInfo:
-        self.wallet_action = value
-        return self
-
     def with_balance_source(self, value: str) -> WalletTransactionInfo:
         self.balance_source = value
         return self
@@ -128,6 +122,12 @@ class WalletTransactionInfo(Model):
         self, value: List[TransactionAmountDetails]
     ) -> WalletTransactionInfo:
         self.transaction_amount_details = value
+        return self
+
+    def with_wallet_action(
+        self, value: Union[str, WalletActionEnum]
+    ) -> WalletTransactionInfo:
+        self.wallet_action = value
         return self
 
     # endregion with_x methods
@@ -164,10 +164,6 @@ class WalletTransactionInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
-        if hasattr(self, "wallet_action"):
-            result["walletAction"] = str(self.wallet_action)
-        elif include_empty:
-            result["walletAction"] = Union[str, WalletActionEnum]()
         if hasattr(self, "balance_source"):
             result["balanceSource"] = str(self.balance_source)
         elif include_empty:
@@ -183,6 +179,10 @@ class WalletTransactionInfo(Model):
             ]
         elif include_empty:
             result["transactionAmountDetails"] = []
+        if hasattr(self, "wallet_action"):
+            result["walletAction"] = str(self.wallet_action)
+        elif include_empty:
+            result["walletAction"] = Union[str, WalletActionEnum]()
         return result
 
     # endregion to methods
@@ -199,10 +199,11 @@ class WalletTransactionInfo(Model):
         operator: str,
         updated_at: str,
         user_id: str,
-        wallet_action: Union[str, WalletActionEnum],
         balance_source: Optional[str] = None,
         reason: Optional[str] = None,
         transaction_amount_details: Optional[List[TransactionAmountDetails]] = None,
+        wallet_action: Optional[Union[str, WalletActionEnum]] = None,
+        **kwargs,
     ) -> WalletTransactionInfo:
         instance = cls()
         instance.amount = amount
@@ -212,13 +213,14 @@ class WalletTransactionInfo(Model):
         instance.operator = operator
         instance.updated_at = updated_at
         instance.user_id = user_id
-        instance.wallet_action = wallet_action
         if balance_source is not None:
             instance.balance_source = balance_source
         if reason is not None:
             instance.reason = reason
         if transaction_amount_details is not None:
             instance.transaction_amount_details = transaction_amount_details
+        if wallet_action is not None:
+            instance.wallet_action = wallet_action
         return instance
 
     @classmethod
@@ -256,10 +258,6 @@ class WalletTransactionInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
-        if "walletAction" in dict_ and dict_["walletAction"] is not None:
-            instance.wallet_action = str(dict_["walletAction"])
-        elif include_empty:
-            instance.wallet_action = Union[str, WalletActionEnum]()
         if "balanceSource" in dict_ and dict_["balanceSource"] is not None:
             instance.balance_source = str(dict_["balanceSource"])
         elif include_empty:
@@ -280,6 +278,10 @@ class WalletTransactionInfo(Model):
             ]
         elif include_empty:
             instance.transaction_amount_details = []
+        if "walletAction" in dict_ and dict_["walletAction"] is not None:
+            instance.wallet_action = str(dict_["walletAction"])
+        elif include_empty:
+            instance.wallet_action = Union[str, WalletActionEnum]()
         return instance
 
     @classmethod
@@ -330,10 +332,10 @@ class WalletTransactionInfo(Model):
             "operator": "operator",
             "updatedAt": "updated_at",
             "userId": "user_id",
-            "walletAction": "wallet_action",
             "balanceSource": "balance_source",
             "reason": "reason",
             "transactionAmountDetails": "transaction_amount_details",
+            "walletAction": "wallet_action",
         }
 
     @staticmethod
@@ -346,10 +348,10 @@ class WalletTransactionInfo(Model):
             "operator": True,
             "updatedAt": True,
             "userId": True,
-            "walletAction": True,
             "balanceSource": False,
             "reason": False,
             "transactionAmountDetails": False,
+            "walletAction": False,
         }
 
     @staticmethod

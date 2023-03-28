@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -109,6 +109,7 @@ class ModelRoleResponse(Model):
         permissions: List[AccountcommonPermission],
         role_id: str,
         role_name: str,
+        **kwargs,
     ) -> ModelRoleResponse:
         instance = cls()
         instance.is_wildcard = is_wildcard

@@ -232,9 +232,7 @@ class AdminUpdateThirdPartyConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsUpdateConfigRequest,
-        namespace: str,
+        cls, body: ModelsUpdateConfigRequest, namespace: str, **kwargs
     ) -> AdminUpdateThirdPartyConfig:
         instance = cls()
         instance.body = body

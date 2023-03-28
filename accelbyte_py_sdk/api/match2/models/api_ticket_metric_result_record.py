@@ -64,10 +64,7 @@ class ApiTicketMetricResultRecord(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        queue_time: int,
-    ) -> ApiTicketMetricResultRecord:
+    def create(cls, queue_time: int, **kwargs) -> ApiTicketMetricResultRecord:
         instance = cls()
         instance.queue_time = queue_time
         return instance

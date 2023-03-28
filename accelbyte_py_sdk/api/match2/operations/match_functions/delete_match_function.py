@@ -222,11 +222,7 @@ class DeleteMatchFunction(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        name: str,
-        namespace: str,
-    ) -> DeleteMatchFunction:
+    def create(cls, name: str, namespace: str, **kwargs) -> DeleteMatchFunction:
         instance = cls()
         instance.name = name
         instance.namespace = namespace

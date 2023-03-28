@@ -35,6 +35,8 @@ from .wrappers import delete_match_function
 from .wrappers import delete_match_function_async
 from .wrappers import match_function_list
 from .wrappers import match_function_list_async
+from .wrappers import update_match_function
+from .wrappers import update_match_function_async
 
 # match_pools
 from .wrappers import create_match_pool

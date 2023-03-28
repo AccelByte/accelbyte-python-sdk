@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -100,6 +100,7 @@ class ModelsRuleInformation(Model):
         rule_attribute: str,
         rule_criteria: Union[str, RuleCriteriaEnum],
         rule_value: float,
+        **kwargs,
     ) -> ModelsRuleInformation:
         instance = cls()
         instance.rule_attribute = rule_attribute

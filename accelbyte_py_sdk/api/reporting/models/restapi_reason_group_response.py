@@ -97,6 +97,7 @@ class RestapiReasonGroupResponse(Model):
         id_: str,
         title: str,
         reasons: Optional[List[RestapiAdminReasonResponse]] = None,
+        **kwargs,
     ) -> RestapiReasonGroupResponse:
         instance = cls()
         instance.id_ = id_

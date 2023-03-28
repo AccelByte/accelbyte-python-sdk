@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.6.2)
+# AccelByte Gaming Services Cloudsave Service (3.6.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -127,6 +127,7 @@ class ModelsGameRecordResponse(Model):
         updated_at: str,
         value: Dict[str, Any],
         set_by: Optional[str] = None,
+        **kwargs,
     ) -> ModelsGameRecordResponse:
         instance = cls()
         instance.created_at = created_at

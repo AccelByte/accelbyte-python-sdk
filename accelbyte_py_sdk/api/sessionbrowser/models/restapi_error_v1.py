@@ -75,11 +75,7 @@ class RestapiErrorV1(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        error_code: int,
-        error_message: str,
-    ) -> RestapiErrorV1:
+    def create(cls, error_code: int, error_message: str, **kwargs) -> RestapiErrorV1:
         instance = cls()
         instance.error_code = error_code
         instance.error_message = error_message

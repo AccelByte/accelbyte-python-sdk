@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -174,6 +174,7 @@ class PaymentProviderConfigEdit(Model):
         tax_jar_api_token: Optional[str] = None,
         tax_jar_enabled: Optional[bool] = None,
         use_global_tax_jar_api_token: Optional[bool] = None,
+        **kwargs,
     ) -> PaymentProviderConfigEdit:
         instance = cls()
         instance.namespace = namespace

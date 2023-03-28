@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -70,10 +70,7 @@ class NamespaceStatusUpdate(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        status: Union[str, StatusEnum],
-    ) -> NamespaceStatusUpdate:
+    def create(cls, status: Union[str, StatusEnum], **kwargs) -> NamespaceStatusUpdate:
         instance = cls()
         instance.status = status
         return instance

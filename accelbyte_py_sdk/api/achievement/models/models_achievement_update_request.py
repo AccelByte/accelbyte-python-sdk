@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -199,6 +199,7 @@ class ModelsAchievementUpdateRequest(Model):
         tags: List[str],
         unlocked_icons: List[ModelsIcon],
         global_: Optional[bool] = None,
+        **kwargs,
     ) -> ModelsAchievementUpdateRequest:
         instance = cls()
         instance.default_language = default_language

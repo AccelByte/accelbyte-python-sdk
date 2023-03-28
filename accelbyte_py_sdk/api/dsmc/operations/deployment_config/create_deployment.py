@@ -251,6 +251,7 @@ class CreateDeployment(Operation):
         body: ModelsCreateDeploymentRequest,
         deployment: str,
         namespace: str,
+        **kwargs,
     ) -> CreateDeployment:
         instance = cls()
         instance.body = body

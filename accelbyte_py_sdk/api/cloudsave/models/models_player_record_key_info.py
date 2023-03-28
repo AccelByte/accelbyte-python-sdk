@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.6.2)
+# AccelByte Gaming Services Cloudsave Service (3.6.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ModelsPlayerRecordKeyInfo(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        key: str,
-        user_id: str,
-    ) -> ModelsPlayerRecordKeyInfo:
+    def create(cls, key: str, user_id: str, **kwargs) -> ModelsPlayerRecordKeyInfo:
         instance = cls()
         instance.key = key
         instance.user_id = user_id

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -196,9 +196,7 @@ class RecurringChargeSubscription(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        subscription_id: str,
+        cls, namespace: str, subscription_id: str, **kwargs
     ) -> RecurringChargeSubscription:
         instance = cls()
         instance.namespace = namespace

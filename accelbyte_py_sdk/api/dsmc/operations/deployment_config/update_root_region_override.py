@@ -265,6 +265,7 @@ class UpdateRootRegionOverride(Operation):
         deployment: str,
         namespace: str,
         region: str,
+        **kwargs,
     ) -> UpdateRootRegionOverride:
         instance = cls()
         instance.body = body

@@ -219,9 +219,7 @@ class BulkGetUserSeasonProgression(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        body: Optional[BulkUserProgressionRequest] = None,
+        cls, namespace: str, body: Optional[BulkUserProgressionRequest] = None, **kwargs
     ) -> BulkGetUserSeasonProgression:
         instance = cls()
         instance.namespace = namespace

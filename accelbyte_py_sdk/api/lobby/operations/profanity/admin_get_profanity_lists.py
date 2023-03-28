@@ -220,10 +220,7 @@ class AdminGetProfanityLists(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> AdminGetProfanityLists:
+    def create(cls, namespace: str, **kwargs) -> AdminGetProfanityLists:
         instance = cls()
         instance.namespace = namespace
         return instance

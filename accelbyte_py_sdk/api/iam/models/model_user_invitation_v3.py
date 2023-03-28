@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -133,6 +133,7 @@ class ModelUserInvitationV3(Model):
         id_: Optional[str] = None,
         namespace: Optional[str] = None,
         namespace_display_name: Optional[str] = None,
+        **kwargs,
     ) -> ModelUserInvitationV3:
         instance = cls()
         instance.email = email

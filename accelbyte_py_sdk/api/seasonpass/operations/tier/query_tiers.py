@@ -248,6 +248,7 @@ class QueryTiers(Operation):
         season_id: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> QueryTiers:
         instance = cls()
         instance.namespace = namespace

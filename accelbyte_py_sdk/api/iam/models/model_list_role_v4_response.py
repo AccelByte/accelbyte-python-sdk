@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -84,6 +84,7 @@ class ModelListRoleV4Response(Model):
         cls,
         data: List[ModelRoleV4Response],
         paging: AccountcommonPaginationV3,
+        **kwargs,
     ) -> ModelListRoleV4Response:
         instance = cls()
         instance.data = data

@@ -261,6 +261,7 @@ class GetTopicByNamespace(Operation):
         after: Optional[str] = None,
         before: Optional[str] = None,
         limit: Optional[int] = None,
+        **kwargs,
     ) -> GetTopicByNamespace:
         instance = cls()
         instance.namespace = namespace

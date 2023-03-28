@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -24,6 +24,7 @@
 
 from .utils import randomize
 
+from ..api.session.models import ApimodelsAppendTeamGameSessionRequest
 from ..api.session.models import ApimodelsConfigurationTemplateResponse
 from ..api.session.models import ApimodelsConfigurationTemplatesResponse
 from ..api.session.models import ApimodelsCreateConfigurationTemplateRequest
@@ -49,6 +50,8 @@ from ..api.session.models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..api.session.models import ApimodelsUpdateGameSessionRequest
 from ..api.session.models import ApimodelsUpdatePartyRequest
 from ..api.session.models import ApimodelsUserResponse
+from ..api.session.models import ModelsDSMConfigRecord
+from ..api.session.models import ModelsDefaultDSMCConfig
 from ..api.session.models import ModelsGameServer
 from ..api.session.models import ModelsPartyMembers
 from ..api.session.models import ModelsTeam
@@ -56,7 +59,19 @@ from ..api.session.models import ModelsUserPlatformInfo
 from ..api.session.models import ResponseError
 
 
-def create_apimodels_configuration_template_response_example() -> ApimodelsConfigurationTemplateResponse:
+def create_apimodels_append_team_game_session_request_example() -> (
+    ApimodelsAppendTeamGameSessionRequest
+):
+    instance = ApimodelsAppendTeamGameSessionRequest()
+    instance.additional_members = [create_models_party_members_example()]
+    instance.proposed_teams = [create_models_team_example()]
+    instance.version = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_apimodels_configuration_template_response_example() -> (
+    ApimodelsConfigurationTemplateResponse
+):
     instance = ApimodelsConfigurationTemplateResponse()
     instance.client_version = randomize()
     instance.created_at = randomize()
@@ -70,21 +85,25 @@ def create_apimodels_configuration_template_response_example() -> ApimodelsConfi
     instance.name = randomize()
     instance.namespace = randomize("slug")
     instance.persistent = randomize("bool")
-    instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.updated_at = randomize()
+    instance.requested_regions = [randomize()]
     return instance
 
 
-def create_apimodels_configuration_templates_response_example() -> ApimodelsConfigurationTemplatesResponse:
+def create_apimodels_configuration_templates_response_example() -> (
+    ApimodelsConfigurationTemplatesResponse
+):
     instance = ApimodelsConfigurationTemplatesResponse()
     instance.data = [create_apimodels_configuration_template_response_example()]
     instance.paging = create_apimodels_pagination_example()
     return instance
 
 
-def create_apimodels_create_configuration_template_request_example() -> ApimodelsCreateConfigurationTemplateRequest:
+def create_apimodels_create_configuration_template_request_example() -> (
+    ApimodelsCreateConfigurationTemplateRequest
+):
     instance = ApimodelsCreateConfigurationTemplateRequest()
     instance.client_version = randomize()
     instance.deployment = randomize()
@@ -94,15 +113,16 @@ def create_apimodels_create_configuration_template_request_example() -> Apimodel
     instance.max_players = randomize("int", min_val=1, max_val=1000)
     instance.min_players = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
+    instance.persistent = randomize("bool")
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
-    instance.persistent = randomize("bool")
-    instance.persistent_ttl = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
-def create_apimodels_create_game_session_request_example() -> ApimodelsCreateGameSessionRequest:
+def create_apimodels_create_game_session_request_example() -> (
+    ApimodelsCreateGameSessionRequest
+):
     instance = ApimodelsCreateGameSessionRequest()
     instance.attributes = {randomize(): randomize()}
     instance.backfill_ticket_id = randomize()
@@ -121,8 +141,6 @@ def create_apimodels_create_game_session_request_example() -> ApimodelsCreateGam
     instance.text_chat = randomize("bool")
     instance.ticket_i_ds = [randomize()]
     instance.type_ = randomize()
-    instance.persistent = randomize("bool")
-    instance.persistent_ttl = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -141,16 +159,20 @@ def create_apimodels_create_party_request_example() -> ApimodelsCreatePartyReque
     return instance
 
 
-def create_apimodels_ds_information_response_example() -> ApimodelsDSInformationResponse:
+def create_apimodels_ds_information_response_example() -> (
+    ApimodelsDSInformationResponse
+):
     instance = ApimodelsDSInformationResponse()
     instance.requested_at = randomize()
-    instance.server = create_models_game_server_example()
     instance.status = randomize()
     instance.status_v2 = randomize()
+    instance.server = create_models_game_server_example()
     return instance
 
 
-def create_apimodels_game_session_query_response_example() -> ApimodelsGameSessionQueryResponse:
+def create_apimodels_game_session_query_response_example() -> (
+    ApimodelsGameSessionQueryResponse
+):
     instance = ApimodelsGameSessionQueryResponse()
     instance.data = [create_apimodels_game_session_response_example()]
     instance.paging = create_apimodels_pagination_example()
@@ -159,7 +181,6 @@ def create_apimodels_game_session_query_response_example() -> ApimodelsGameSessi
 
 def create_apimodels_game_session_response_example() -> ApimodelsGameSessionResponse:
     instance = ApimodelsGameSessionResponse()
-    instance.attributes = {randomize(): randomize()}
     instance.backfill_ticket_id = randomize()
     instance.configuration = create_apimodels_public_configuration_example()
     instance.created_at = randomize()
@@ -172,12 +193,12 @@ def create_apimodels_game_session_response_example() -> ApimodelsGameSessionResp
     instance.match_pool = randomize()
     instance.members = [create_apimodels_user_response_example()]
     instance.namespace = randomize("slug")
-    instance.persistent = randomize("bool")
-    instance.teams = [create_models_team_example()]
-    instance.ticket_i_ds = [randomize()]
     instance.updated_at = randomize()
     instance.version = randomize("int", min_val=1, max_val=1000)
+    instance.attributes = {randomize(): randomize()}
     instance.expired_at = randomize()
+    instance.teams = [create_models_team_example()]
+    instance.ticket_i_ds = [randomize()]
     return instance
 
 
@@ -213,7 +234,6 @@ def create_apimodels_party_query_response_example() -> ApimodelsPartyQueryRespon
 
 def create_apimodels_party_session_response_example() -> ApimodelsPartySessionResponse:
     instance = ApimodelsPartySessionResponse()
-    instance.attributes = {randomize(): randomize()}
     instance.configuration = create_apimodels_public_configuration_example()
     instance.created_at = randomize()
     instance.created_by = randomize()
@@ -223,15 +243,17 @@ def create_apimodels_party_session_response_example() -> ApimodelsPartySessionRe
     instance.leader_id = randomize()
     instance.members = [create_apimodels_user_response_example()]
     instance.namespace = randomize("slug")
-    instance.persistent = randomize("bool")
     instance.updated_at = randomize()
     instance.version = randomize("int", min_val=1, max_val=1000)
+    instance.attributes = {randomize(): randomize()}
     instance.code = randomize()
     instance.expired_at = randomize()
     return instance
 
 
-def create_apimodels_player_attributes_request_body_example() -> ApimodelsPlayerAttributesRequestBody:
+def create_apimodels_player_attributes_request_body_example() -> (
+    ApimodelsPlayerAttributesRequestBody
+):
     instance = ApimodelsPlayerAttributesRequestBody()
     instance.crossplay_enabled = randomize("bool")
     instance.data = {randomize(): randomize()}
@@ -239,7 +261,9 @@ def create_apimodels_player_attributes_request_body_example() -> ApimodelsPlayer
     return instance
 
 
-def create_apimodels_player_attributes_response_body_example() -> ApimodelsPlayerAttributesResponseBody:
+def create_apimodels_player_attributes_response_body_example() -> (
+    ApimodelsPlayerAttributesResponseBody
+):
     instance = ApimodelsPlayerAttributesResponseBody()
     instance.crossplay_enabled = randomize("bool")
     instance.data = {randomize(): randomize()}
@@ -265,9 +289,9 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.min_players = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     instance.persistent = randomize("bool")
-    instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.requested_regions = [randomize()]
     return instance
 
 
@@ -285,7 +309,9 @@ def create_apimodels_session_invite_request_example() -> ApimodelsSessionInviteR
     return instance
 
 
-def create_apimodels_update_configuration_template_request_example() -> ApimodelsUpdateConfigurationTemplateRequest:
+def create_apimodels_update_configuration_template_request_example() -> (
+    ApimodelsUpdateConfigurationTemplateRequest
+):
     instance = ApimodelsUpdateConfigurationTemplateRequest()
     instance.client_version = randomize()
     instance.deployment = randomize()
@@ -295,26 +321,33 @@ def create_apimodels_update_configuration_template_request_example() -> Apimodel
     instance.max_players = randomize("int", min_val=1, max_val=1000)
     instance.min_players = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
+    instance.persistent = randomize("bool")
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     return instance
 
 
-def create_apimodels_update_game_session_backfill_request_example() -> ApimodelsUpdateGameSessionBackfillRequest:
+def create_apimodels_update_game_session_backfill_request_example() -> (
+    ApimodelsUpdateGameSessionBackfillRequest
+):
     instance = ApimodelsUpdateGameSessionBackfillRequest()
     instance.backfill_ticket_id = randomize()
     return instance
 
 
-def create_apimodels_update_game_session_member_status_response_example() -> ApimodelsUpdateGameSessionMemberStatusResponse:
+def create_apimodels_update_game_session_member_status_response_example() -> (
+    ApimodelsUpdateGameSessionMemberStatusResponse
+):
     instance = ApimodelsUpdateGameSessionMemberStatusResponse()
     instance.status = randomize()
     instance.status_v2 = randomize()
     return instance
 
 
-def create_apimodels_update_game_session_request_example() -> ApimodelsUpdateGameSessionRequest:
+def create_apimodels_update_game_session_request_example() -> (
+    ApimodelsUpdateGameSessionRequest
+):
     instance = ApimodelsUpdateGameSessionRequest()
     instance.attributes = {randomize(): randomize()}
     instance.backfill_ticket_id = randomize()
@@ -358,9 +391,25 @@ def create_apimodels_user_response_example() -> ApimodelsUserResponse:
     return instance
 
 
+def create_models_default_dsmc_config_example() -> ModelsDefaultDSMCConfig:
+    instance = ModelsDefaultDSMCConfig()
+    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_dsm_config_record_example() -> ModelsDSMConfigRecord:
+    instance = ModelsDSMConfigRecord()
+    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.created_at = randomize("date")
+    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    return instance
+
+
 def create_models_game_server_example() -> ModelsGameServer:
     instance = ModelsGameServer()
-    instance.alternate_ips = [randomize()]
     instance.custom_attribute = randomize()
     instance.deployment = randomize()
     instance.game_version = randomize("version")
@@ -377,6 +426,7 @@ def create_models_game_server_example() -> ModelsGameServer:
     instance.region = randomize()
     instance.session_id = randomize("uid")
     instance.status = randomize()
+    instance.alternate_ips = [randomize()]
     return instance
 
 
@@ -389,8 +439,8 @@ def create_models_party_members_example() -> ModelsPartyMembers:
 
 def create_models_team_example() -> ModelsTeam:
     instance = ModelsTeam()
-    instance.parties = [create_models_party_members_example()]
     instance.user_i_ds = [randomize()]
+    instance.parties = [create_models_party_members_example()]
     return instance
 
 

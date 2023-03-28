@@ -235,9 +235,7 @@ class SubmitReport(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: RestapiSubmitReportRequest,
-        namespace: str,
+        cls, body: RestapiSubmitReportRequest, namespace: str, **kwargs
     ) -> SubmitReport:
         instance = cls()
         instance.body = body

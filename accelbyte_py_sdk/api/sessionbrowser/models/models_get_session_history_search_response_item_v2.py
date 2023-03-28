@@ -230,6 +230,7 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
         status: str,
         sub_game_mode: List[str],
         user_id: str,
+        **kwargs,
     ) -> ModelsGetSessionHistorySearchResponseItemV2:
         instance = cls()
         instance.created_at = created_at

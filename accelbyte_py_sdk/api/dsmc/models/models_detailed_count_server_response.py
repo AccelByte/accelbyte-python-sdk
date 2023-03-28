@@ -103,6 +103,7 @@ class ModelsDetailedCountServerResponse(Model):
         creating_count: int,
         ready_count: int,
         unreachable_count: int,
+        **kwargs,
     ) -> ModelsDetailedCountServerResponse:
         instance = cls()
         instance.busy_count = busy_count

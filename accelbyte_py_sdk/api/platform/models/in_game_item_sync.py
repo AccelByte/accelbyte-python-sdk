@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,10 +87,7 @@ class InGameItemSync(Model):
 
     @classmethod
     def create(
-        cls,
-        category_path: str,
-        target_item_id: str,
-        target_namespace: str,
+        cls, category_path: str, target_item_id: str, target_namespace: str, **kwargs
     ) -> InGameItemSync:
         instance = cls()
         instance.category_path = category_path

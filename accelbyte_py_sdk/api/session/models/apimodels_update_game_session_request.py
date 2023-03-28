@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.6.9)
+# AccelByte Gaming Services Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -243,6 +243,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
         ticket_i_ds: List[str],
         type_: str,
         version: int,
+        **kwargs,
     ) -> ApimodelsUpdateGameSessionRequest:
         instance = cls()
         instance.attributes = attributes

@@ -243,10 +243,7 @@ class CreateTier(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        season_id: str,
-        body: Optional[TierCreate] = None,
+        cls, namespace: str, season_id: str, body: Optional[TierCreate] = None, **kwargs
     ) -> CreateTier:
         instance = cls()
         instance.namespace = namespace

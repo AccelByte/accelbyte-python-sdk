@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -237,6 +237,7 @@ class UpdateStatCycle(Operation):
         cycle_id: str,
         namespace: str,
         body: Optional[StatCycleUpdate] = None,
+        **kwargs,
     ) -> UpdateStatCycle:
         instance = cls()
         instance.cycle_id = cycle_id

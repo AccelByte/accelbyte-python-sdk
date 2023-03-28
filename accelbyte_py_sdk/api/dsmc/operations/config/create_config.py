@@ -259,9 +259,7 @@ class CreateConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsCreateDSMConfigRequest,
-        namespace: str,
+        cls, body: ModelsCreateDSMConfigRequest, namespace: str, **kwargs
     ) -> CreateConfig:
         instance = cls()
         instance.body = body

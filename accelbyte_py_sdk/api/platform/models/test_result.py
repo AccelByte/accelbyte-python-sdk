@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class TestResult(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        success: bool,
-        msg: Optional[str] = None,
-    ) -> TestResult:
+    def create(cls, success: bool, msg: Optional[str] = None, **kwargs) -> TestResult:
         instance = cls()
         instance.success = success
         if msg is not None:

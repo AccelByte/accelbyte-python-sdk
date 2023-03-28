@@ -234,9 +234,7 @@ class AdminGetProfanityListFiltersV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        list_: str,
-        namespace: str,
+        cls, list_: str, namespace: str, **kwargs
     ) -> AdminGetProfanityListFiltersV1:
         instance = cls()
         instance.list_ = list_

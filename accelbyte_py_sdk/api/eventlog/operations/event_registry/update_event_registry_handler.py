@@ -230,9 +230,7 @@ class UpdateEventRegistryHandler(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsEventRegistry,
-        event_id: str,
+        cls, body: ModelsEventRegistry, event_id: str, **kwargs
     ) -> UpdateEventRegistryHandler:
         instance = cls()
         instance.body = body

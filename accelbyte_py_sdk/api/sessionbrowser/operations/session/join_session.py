@@ -249,6 +249,7 @@ class JoinSession(Operation):
         body: ModelsJoinGameSessionRequest,
         namespace: str,
         session_id: str,
+        **kwargs,
     ) -> JoinSession:
         instance = cls()
         instance.body = body

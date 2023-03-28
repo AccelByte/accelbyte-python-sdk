@@ -64,10 +64,7 @@ class ModelsSetAliasRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        alias: str,
-    ) -> ModelsSetAliasRequest:
+    def create(cls, alias: str, **kwargs) -> ModelsSetAliasRequest:
         instance = cls()
         instance.alias = alias
         return instance

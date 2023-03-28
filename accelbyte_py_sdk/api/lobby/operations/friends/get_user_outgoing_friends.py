@@ -209,10 +209,7 @@ class GetUserOutgoingFriends(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> GetUserOutgoingFriends:
+    def create(cls, namespace: str, **kwargs) -> GetUserOutgoingFriends:
         instance = cls()
         instance.namespace = namespace
         return instance

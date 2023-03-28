@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -186,10 +186,7 @@ class DeleteItemTypeConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        id_: str,
-    ) -> DeleteItemTypeConfig:
+    def create(cls, id_: str, **kwargs) -> DeleteItemTypeConfig:
         instance = cls()
         instance.id_ = id_
         return instance

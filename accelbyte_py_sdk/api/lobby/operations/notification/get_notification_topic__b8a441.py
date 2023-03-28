@@ -227,9 +227,7 @@ class GetNotificationTopicV1Admin(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        topic_name: str,
+        cls, namespace: str, topic_name: str, **kwargs
     ) -> GetNotificationTopicV1Admin:
         instance = cls()
         instance.namespace = namespace

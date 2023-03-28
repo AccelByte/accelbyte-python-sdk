@@ -98,11 +98,7 @@ class ModelsEventRegistry(Model):
 
     @classmethod
     def create(
-        cls,
-        event_id: int,
-        event_level: int,
-        event_type: int,
-        ux: int,
+        cls, event_id: int, event_level: int, event_type: int, ux: int, **kwargs
     ) -> ModelsEventRegistry:
         instance = cls()
         instance.event_id = event_id

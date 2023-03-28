@@ -98,11 +98,7 @@ class ModelsRegisterLocalServerRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        custom_attribute: str,
-        ip: str,
-        name: str,
-        port: int,
+        cls, custom_attribute: str, ip: str, name: str, port: int, **kwargs
     ) -> ModelsRegisterLocalServerRequest:
         instance = cls()
         instance.custom_attribute = custom_attribute

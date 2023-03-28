@@ -64,10 +64,7 @@ class ModelBulkAddFriendsRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        friend_ids: List[str],
-    ) -> ModelBulkAddFriendsRequest:
+    def create(cls, friend_ids: List[str], **kwargs) -> ModelBulkAddFriendsRequest:
         instance = cls()
         instance.friend_ids = friend_ids
         return instance

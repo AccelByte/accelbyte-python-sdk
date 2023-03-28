@@ -323,6 +323,7 @@ class ModelsServer(Model):
         session_id: str,
         status: str,
         status_history: List[ModelsStatusHistory],
+        **kwargs,
     ) -> ModelsServer:
         instance = cls()
         instance.allocation_id = allocation_id

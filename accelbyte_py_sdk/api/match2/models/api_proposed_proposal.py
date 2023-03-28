@@ -91,6 +91,7 @@ class ApiProposedProposal(Model):
         backfill_id: Optional[str] = None,
         proposal_id: Optional[str] = None,
         status: Optional[str] = None,
+        **kwargs,
     ) -> ApiProposedProposal:
         instance = cls()
         if backfill_id is not None:

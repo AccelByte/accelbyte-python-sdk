@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -313,6 +313,7 @@ class QueryRevocationHistories(Operation):
         status: Optional[Union[str, StatusEnum]] = None,
         transaction_id: Optional[str] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> QueryRevocationHistories:
         instance = cls()
         instance.namespace = namespace

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelsUpdateScreenshot(Model):
 
     @classmethod
     def create(
-        cls,
-        description: str,
-        screenshot_id: str,
+        cls, description: str, screenshot_id: str, **kwargs
     ) -> ModelsUpdateScreenshot:
         instance = cls()
         instance.description = description

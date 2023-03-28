@@ -207,11 +207,7 @@ class GetTicketDetail(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        ticket_id: str,
-    ) -> GetTicketDetail:
+    def create(cls, namespace: str, ticket_id: str, **kwargs) -> GetTicketDetail:
         instance = cls()
         instance.namespace = namespace
         instance.ticket_id = ticket_id

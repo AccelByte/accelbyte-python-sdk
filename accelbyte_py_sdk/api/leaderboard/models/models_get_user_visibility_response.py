@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,10 +87,7 @@ class ModelsGetUserVisibilityResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        visibility: bool,
+        cls, namespace: str, user_id: str, visibility: bool, **kwargs
     ) -> ModelsGetUserVisibilityResponse:
         instance = cls()
         instance.namespace = namespace

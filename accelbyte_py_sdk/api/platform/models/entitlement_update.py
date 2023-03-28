@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,7 @@ class StatusEnum(StrEnum):
     CONSUMED = "CONSUMED"
     INACTIVE = "INACTIVE"
     REVOKED = "REVOKED"
+    SOLD = "SOLD"
 
 
 class EntitlementUpdate(Model):
@@ -123,6 +124,7 @@ class EntitlementUpdate(Model):
         start_date: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         use_count: Optional[int] = None,
+        **kwargs,
     ) -> EntitlementUpdate:
         instance = cls()
         if end_date is not None:
@@ -225,7 +227,7 @@ class EntitlementUpdate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED"],
+            "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED", "SOLD"],
         }
 
     # endregion static methods

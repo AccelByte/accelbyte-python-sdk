@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -209,11 +209,7 @@ class AdminDeleteType(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        type_id: str,
-    ) -> AdminDeleteType:
+    def create(cls, namespace: str, type_id: str, **kwargs) -> AdminDeleteType:
         instance = cls()
         instance.namespace = namespace
         instance.type_id = type_id

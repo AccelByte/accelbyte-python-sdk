@@ -81,9 +81,7 @@ class ModelsListSessionResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        paging: ModelsPagingCursor,
-        sessions: List[ModelsSession],
+        cls, paging: ModelsPagingCursor, sessions: List[ModelsSession], **kwargs
     ) -> ModelsListSessionResponse:
         instance = cls()
         instance.paging = paging

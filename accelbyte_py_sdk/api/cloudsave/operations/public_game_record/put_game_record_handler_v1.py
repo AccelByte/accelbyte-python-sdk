@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.6.2)
+# AccelByte Gaming Services Cloudsave Service (3.6.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -305,10 +305,7 @@ class PutGameRecordHandlerV1(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsGameRecordRequest,
-        key: str,
-        namespace: str,
+        cls, body: ModelsGameRecordRequest, key: str, namespace: str, **kwargs
     ) -> PutGameRecordHandlerV1:
         instance = cls()
         instance.body = body

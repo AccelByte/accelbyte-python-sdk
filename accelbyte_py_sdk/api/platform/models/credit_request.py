@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -54,6 +54,7 @@ class SourceEnum(StrEnum):
     REFERRAL_BONUS = "REFERRAL_BONUS"
     REFUND = "REFUND"
     REWARD = "REWARD"
+    SELL_BACK = "SELL_BACK"
 
 
 class CreditRequest(Model):
@@ -143,6 +144,7 @@ class CreditRequest(Model):
         origin: Optional[Union[str, OriginEnum]] = None,
         reason: Optional[str] = None,
         source: Optional[Union[str, SourceEnum]] = None,
+        **kwargs,
     ) -> CreditRequest:
         instance = cls()
         instance.amount = amount
@@ -266,6 +268,7 @@ class CreditRequest(Model):
                 "REFERRAL_BONUS",
                 "REFUND",
                 "REWARD",
+                "SELL_BACK",
             ],
         }
 

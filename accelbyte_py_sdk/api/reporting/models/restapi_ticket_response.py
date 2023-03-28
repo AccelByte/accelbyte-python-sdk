@@ -214,6 +214,7 @@ class RestapiTicketResponse(Model):
         updated_at: str,
         user_id: str,
         extension_category: Optional[str] = None,
+        **kwargs,
     ) -> RestapiTicketResponse:
         instance = cls()
         instance.category = category

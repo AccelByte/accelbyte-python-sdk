@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.19.3)
+# AccelByte Gaming Services Leaderboard Service (2.19.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,9 +78,7 @@ class ModelsGetHiddenUserResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[str],
-        paging: ModelsPagination,
+        cls, data: List[str], paging: ModelsPagination, **kwargs
     ) -> ModelsGetHiddenUserResponse:
         instance = cls()
         instance.data = data

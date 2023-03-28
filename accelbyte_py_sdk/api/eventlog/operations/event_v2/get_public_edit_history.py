@@ -331,6 +331,7 @@ class GetPublicEditHistory(Operation):
         page_size: Optional[int] = None,
         start_date: Optional[str] = None,
         type_: Optional[str] = None,
+        **kwargs,
     ) -> GetPublicEditHistory:
         instance = cls()
         instance.namespace = namespace

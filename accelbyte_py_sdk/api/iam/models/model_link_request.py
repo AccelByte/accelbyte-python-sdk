@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -257,6 +257,7 @@ class ModelLinkRequest(Model):
         platform_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
         refresh_token: Optional[str] = None,
+        **kwargs,
     ) -> ModelLinkRequest:
         instance = cls()
         instance.client_id = client_id

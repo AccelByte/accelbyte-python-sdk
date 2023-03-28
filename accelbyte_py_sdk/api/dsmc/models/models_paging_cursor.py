@@ -75,11 +75,7 @@ class ModelsPagingCursor(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        next_: str,
-        previous: str,
-    ) -> ModelsPagingCursor:
+    def create(cls, next_: str, previous: str, **kwargs) -> ModelsPagingCursor:
         instance = cls()
         instance.next_ = next_
         instance.previous = previous

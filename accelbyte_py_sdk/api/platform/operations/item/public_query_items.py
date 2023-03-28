@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -428,6 +428,7 @@ class PublicQueryItems(Operation):
         sort_by: Optional[List[Union[str, SortByEnum]]] = None,
         store_id: Optional[str] = None,
         tags: Optional[str] = None,
+        **kwargs,
     ) -> PublicQueryItems:
         instance = cls()
         instance.namespace = namespace

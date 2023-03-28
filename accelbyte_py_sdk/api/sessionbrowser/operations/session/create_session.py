@@ -233,9 +233,7 @@ class CreateSession(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsCreateSessionRequest,
-        namespace: str,
+        cls, body: ModelsCreateSessionRequest, namespace: str, **kwargs
     ) -> CreateSession:
         instance = cls()
         instance.body = body

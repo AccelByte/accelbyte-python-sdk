@@ -249,10 +249,7 @@ class AcceptBackfill(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ApiBackFillAcceptRequest,
-        backfill_id: str,
-        namespace: str,
+        cls, body: ApiBackFillAcceptRequest, backfill_id: str, namespace: str, **kwargs
     ) -> AcceptBackfill:
         instance = cls()
         instance.body = body

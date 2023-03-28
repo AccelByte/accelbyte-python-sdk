@@ -224,10 +224,7 @@ class ImportImages(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        file: Any,
-    ) -> ImportImages:
+    def create(cls, file: Any, **kwargs) -> ImportImages:
         instance = cls()
         instance.file = file
         return instance

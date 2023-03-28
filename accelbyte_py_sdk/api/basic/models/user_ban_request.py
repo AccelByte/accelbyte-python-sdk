@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.6.1)
+# AccelByte Gaming Services Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -91,6 +91,7 @@ class UserBanRequest(Model):
         action_id: int,
         user_ids: List[str],
         comment: Optional[str] = None,
+        **kwargs,
     ) -> UserBanRequest:
         instance = cls()
         instance.action_id = action_id

@@ -242,10 +242,7 @@ class UpdateTopicByTopicName(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelUpdateTopicRequest,
-        namespace: str,
-        topic: str,
+        cls, body: ModelUpdateTopicRequest, namespace: str, topic: str, **kwargs
     ) -> UpdateTopicByTopicName:
         instance = cls()
         instance.body = body

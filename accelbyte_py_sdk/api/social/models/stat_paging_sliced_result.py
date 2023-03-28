@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.1.0)
+# AccelByte Gaming Services Social Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -81,9 +81,7 @@ class StatPagingSlicedResult(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[StatInfo],
-        paging: Optional[Paging] = None,
+        cls, data: List[StatInfo], paging: Optional[Paging] = None, **kwargs
     ) -> StatPagingSlicedResult:
         instance = cls()
         instance.data = data

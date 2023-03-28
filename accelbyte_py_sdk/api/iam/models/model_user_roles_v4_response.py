@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,10 +87,7 @@ class ModelUserRolesV4Response(Model):
 
     @classmethod
     def create(
-        cls,
-        assigned_namespaces: List[str],
-        role_id: str,
-        role_name: str,
+        cls, assigned_namespaces: List[str], role_id: str, role_name: str, **kwargs
     ) -> ModelUserRolesV4Response:
         instance = cls()
         instance.assigned_namespaces = assigned_namespaces

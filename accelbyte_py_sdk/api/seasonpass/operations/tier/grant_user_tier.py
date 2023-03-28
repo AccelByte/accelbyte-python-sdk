@@ -234,6 +234,7 @@ class GrantUserTier(Operation):
         namespace: str,
         user_id: str,
         body: Optional[UserTierGrant] = None,
+        **kwargs,
     ) -> GrantUserTier:
         instance = cls()
         instance.namespace = namespace

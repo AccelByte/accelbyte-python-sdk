@@ -64,10 +64,7 @@ class ModelUserUnfriendRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        friend_id: str,
-    ) -> ModelUserUnfriendRequest:
+    def create(cls, friend_id: str, **kwargs) -> ModelUserUnfriendRequest:
         instance = cls()
         instance.friend_id = friend_id
         return instance

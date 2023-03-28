@@ -231,6 +231,7 @@ class ModelsGameSession(Model):
         spectators: List[str],
         user_id: str,
         username: str,
+        **kwargs,
     ) -> ModelsGameSession:
         instance = cls()
         instance.all_players = all_players

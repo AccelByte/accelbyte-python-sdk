@@ -221,9 +221,7 @@ class CreateReasonGroup(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: RestapiCreateReasonGroupRequest,
-        namespace: str,
+        cls, body: RestapiCreateReasonGroupRequest, namespace: str, **kwargs
     ) -> CreateReasonGroup:
         instance = cls()
         instance.body = body

@@ -253,6 +253,7 @@ class AdminAddProfanityFilterIntoList(Operation):
         body: ModelsAdminAddProfanityFilterIntoListRequest,
         list_: str,
         namespace: str,
+        **kwargs,
     ) -> AdminAddProfanityFilterIntoList:
         instance = cls()
         instance.body = body

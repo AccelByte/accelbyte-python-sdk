@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -241,6 +241,7 @@ class UpdateKeyGroup(Operation):
         key_group_id: str,
         namespace: str,
         body: Optional[KeyGroupUpdate] = None,
+        **kwargs,
     ) -> UpdateKeyGroup:
         instance = cls()
         instance.key_group_id = key_group_id

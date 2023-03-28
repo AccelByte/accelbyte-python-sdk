@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,8 +44,6 @@ class RegionDataItem(Model):
 
         currency_type: (currencyType) REQUIRED Union[str, CurrencyTypeEnum]
 
-        price: (price) REQUIRED int
-
         discount_amount: (discountAmount) OPTIONAL int
 
         discount_expire_at: (discountExpireAt) OPTIONAL str
@@ -58,6 +56,8 @@ class RegionDataItem(Model):
 
         expire_at: (expireAt) OPTIONAL str
 
+        price: (price) OPTIONAL int
+
         purchase_at: (purchaseAt) OPTIONAL str
 
         trial_price: (trialPrice) OPTIONAL int
@@ -68,13 +68,13 @@ class RegionDataItem(Model):
     currency_code: str  # REQUIRED
     currency_namespace: str  # REQUIRED
     currency_type: Union[str, CurrencyTypeEnum]  # REQUIRED
-    price: int  # REQUIRED
     discount_amount: int  # OPTIONAL
     discount_expire_at: str  # OPTIONAL
     discount_percentage: int  # OPTIONAL
     discount_purchase_at: str  # OPTIONAL
     discounted_price: int  # OPTIONAL
     expire_at: str  # OPTIONAL
+    price: int  # OPTIONAL
     purchase_at: str  # OPTIONAL
     trial_price: int  # OPTIONAL
 
@@ -92,10 +92,6 @@ class RegionDataItem(Model):
 
     def with_currency_type(self, value: Union[str, CurrencyTypeEnum]) -> RegionDataItem:
         self.currency_type = value
-        return self
-
-    def with_price(self, value: int) -> RegionDataItem:
-        self.price = value
         return self
 
     def with_discount_amount(self, value: int) -> RegionDataItem:
@@ -120,6 +116,10 @@ class RegionDataItem(Model):
 
     def with_expire_at(self, value: str) -> RegionDataItem:
         self.expire_at = value
+        return self
+
+    def with_price(self, value: int) -> RegionDataItem:
+        self.price = value
         return self
 
     def with_purchase_at(self, value: str) -> RegionDataItem:
@@ -148,10 +148,6 @@ class RegionDataItem(Model):
             result["currencyType"] = str(self.currency_type)
         elif include_empty:
             result["currencyType"] = Union[str, CurrencyTypeEnum]()
-        if hasattr(self, "price"):
-            result["price"] = int(self.price)
-        elif include_empty:
-            result["price"] = 0
         if hasattr(self, "discount_amount"):
             result["discountAmount"] = int(self.discount_amount)
         elif include_empty:
@@ -176,6 +172,10 @@ class RegionDataItem(Model):
             result["expireAt"] = str(self.expire_at)
         elif include_empty:
             result["expireAt"] = ""
+        if hasattr(self, "price"):
+            result["price"] = int(self.price)
+        elif include_empty:
+            result["price"] = 0
         if hasattr(self, "purchase_at"):
             result["purchaseAt"] = str(self.purchase_at)
         elif include_empty:
@@ -196,21 +196,21 @@ class RegionDataItem(Model):
         currency_code: str,
         currency_namespace: str,
         currency_type: Union[str, CurrencyTypeEnum],
-        price: int,
         discount_amount: Optional[int] = None,
         discount_expire_at: Optional[str] = None,
         discount_percentage: Optional[int] = None,
         discount_purchase_at: Optional[str] = None,
         discounted_price: Optional[int] = None,
         expire_at: Optional[str] = None,
+        price: Optional[int] = None,
         purchase_at: Optional[str] = None,
         trial_price: Optional[int] = None,
+        **kwargs,
     ) -> RegionDataItem:
         instance = cls()
         instance.currency_code = currency_code
         instance.currency_namespace = currency_namespace
         instance.currency_type = currency_type
-        instance.price = price
         if discount_amount is not None:
             instance.discount_amount = discount_amount
         if discount_expire_at is not None:
@@ -223,6 +223,8 @@ class RegionDataItem(Model):
             instance.discounted_price = discounted_price
         if expire_at is not None:
             instance.expire_at = expire_at
+        if price is not None:
+            instance.price = price
         if purchase_at is not None:
             instance.purchase_at = purchase_at
         if trial_price is not None:
@@ -248,10 +250,6 @@ class RegionDataItem(Model):
             instance.currency_type = str(dict_["currencyType"])
         elif include_empty:
             instance.currency_type = Union[str, CurrencyTypeEnum]()
-        if "price" in dict_ and dict_["price"] is not None:
-            instance.price = int(dict_["price"])
-        elif include_empty:
-            instance.price = 0
         if "discountAmount" in dict_ and dict_["discountAmount"] is not None:
             instance.discount_amount = int(dict_["discountAmount"])
         elif include_empty:
@@ -276,6 +274,10 @@ class RegionDataItem(Model):
             instance.expire_at = str(dict_["expireAt"])
         elif include_empty:
             instance.expire_at = ""
+        if "price" in dict_ and dict_["price"] is not None:
+            instance.price = int(dict_["price"])
+        elif include_empty:
+            instance.price = 0
         if "purchaseAt" in dict_ and dict_["purchaseAt"] is not None:
             instance.purchase_at = str(dict_["purchaseAt"])
         elif include_empty:
@@ -326,13 +328,13 @@ class RegionDataItem(Model):
             "currencyCode": "currency_code",
             "currencyNamespace": "currency_namespace",
             "currencyType": "currency_type",
-            "price": "price",
             "discountAmount": "discount_amount",
             "discountExpireAt": "discount_expire_at",
             "discountPercentage": "discount_percentage",
             "discountPurchaseAt": "discount_purchase_at",
             "discountedPrice": "discounted_price",
             "expireAt": "expire_at",
+            "price": "price",
             "purchaseAt": "purchase_at",
             "trialPrice": "trial_price",
         }
@@ -343,13 +345,13 @@ class RegionDataItem(Model):
             "currencyCode": True,
             "currencyNamespace": True,
             "currencyType": True,
-            "price": True,
             "discountAmount": False,
             "discountExpireAt": False,
             "discountPercentage": False,
             "discountPurchaseAt": False,
             "discountedPrice": False,
             "expireAt": False,
+            "price": False,
             "purchaseAt": False,
             "trialPrice": False,
         }

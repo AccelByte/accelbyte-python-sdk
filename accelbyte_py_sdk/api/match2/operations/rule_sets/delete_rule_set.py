@@ -222,11 +222,7 @@ class DeleteRuleSet(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        ruleset: str,
-    ) -> DeleteRuleSet:
+    def create(cls, namespace: str, ruleset: str, **kwargs) -> DeleteRuleSet:
         instance = cls()
         instance.namespace = namespace
         instance.ruleset = ruleset

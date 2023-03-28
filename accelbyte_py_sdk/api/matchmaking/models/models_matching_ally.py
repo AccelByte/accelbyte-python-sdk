@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,8 +71,7 @@ class ModelsMatchingAlly(Model):
 
     @classmethod
     def create(
-        cls,
-        matching_parties: List[ModelsMatchingParty],
+        cls, matching_parties: List[ModelsMatchingParty], **kwargs
     ) -> ModelsMatchingAlly:
         instance = cls()
         instance.matching_parties = matching_parties

@@ -36,7 +36,6 @@ from ..models import UserProfileCreate
 from ..models import UserProfileInfo
 from ..models import UserProfilePrivateCreate
 from ..models import UserProfilePrivateInfo
-from ..models import UserProfilePrivateUpdate
 from ..models import UserProfilePublicInfo
 from ..models import UserProfileStatusUpdate
 from ..models import UserProfileUpdate
@@ -2508,7 +2507,7 @@ async def update_my_private_custom_attributes_partially_async(
 
 @same_doc_as(UpdateMyProfile)
 def update_my_profile(
-    body: Optional[UserProfilePrivateUpdate] = None,
+    body: Optional[UserProfileUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2544,7 +2543,7 @@ def update_my_profile(
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        body: (body) OPTIONAL UserProfilePrivateUpdate in body
+        body: (body) OPTIONAL UserProfileUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2572,7 +2571,7 @@ def update_my_profile(
 
 @same_doc_as(UpdateMyProfile)
 async def update_my_profile_async(
-    body: Optional[UserProfilePrivateUpdate] = None,
+    body: Optional[UserProfileUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2608,7 +2607,7 @@ async def update_my_profile_async(
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        body: (body) OPTIONAL UserProfilePrivateUpdate in body
+        body: (body) OPTIONAL UserProfileUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 

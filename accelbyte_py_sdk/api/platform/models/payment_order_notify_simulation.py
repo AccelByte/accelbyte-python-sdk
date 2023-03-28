@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -148,6 +148,7 @@ class PaymentOrderNotifySimulation(Model):
         amount: Optional[int] = None,
         sales_tax: Optional[int] = None,
         vat: Optional[int] = None,
+        **kwargs,
     ) -> PaymentOrderNotifySimulation:
         instance = cls()
         instance.currency_code = currency_code

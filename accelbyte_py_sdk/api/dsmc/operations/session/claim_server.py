@@ -240,9 +240,7 @@ class ClaimServer(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsClaimSessionRequest,
-        namespace: str,
+        cls, body: ModelsClaimSessionRequest, namespace: str, **kwargs
     ) -> ClaimServer:
         instance = cls()
         instance.body = body

@@ -204,10 +204,7 @@ class UnregisterEventIDHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        event_id: str,
-    ) -> UnregisterEventIDHandler:
+    def create(cls, event_id: str, **kwargs) -> UnregisterEventIDHandler:
         instance = cls()
         instance.event_id = event_id
         return instance

@@ -221,11 +221,7 @@ class GetSession(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        session_id: str,
-    ) -> GetSession:
+    def create(cls, namespace: str, session_id: str, **kwargs) -> GetSession:
         instance = cls()
         instance.namespace = namespace
         instance.session_id = session_id

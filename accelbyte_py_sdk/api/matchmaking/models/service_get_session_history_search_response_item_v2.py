@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -161,6 +161,7 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         namespace: str,
         status: str,
         sub_game_mode: List[str],
+        **kwargs,
     ) -> ServiceGetSessionHistorySearchResponseItemV2:
         instance = cls()
         instance.created_at = created_at

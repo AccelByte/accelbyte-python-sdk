@@ -88,6 +88,7 @@ class ModelsActiveCustomGameResponse(Model):
         cls,
         pagination: ModelsPagingCursor,
         sessions: List[ModelsCustomGameResponse],
+        **kwargs,
     ) -> ModelsActiveCustomGameResponse:
         instance = cls()
         instance.pagination = pagination

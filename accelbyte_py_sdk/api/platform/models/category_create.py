@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,9 +78,7 @@ class CategoryCreate(Model):
 
     @classmethod
     def create(
-        cls,
-        category_path: str,
-        localization_display_names: Dict[str, str],
+        cls, category_path: str, localization_display_names: Dict[str, str], **kwargs
     ) -> CategoryCreate:
         instance = cls()
         instance.category_path = category_path

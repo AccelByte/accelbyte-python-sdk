@@ -266,6 +266,7 @@ class ListSession(Operation):
         offset: int,
         region: Optional[str] = None,
         with_server: Optional[bool] = None,
+        **kwargs,
     ) -> ListSession:
         instance = cls()
         instance.namespace = namespace

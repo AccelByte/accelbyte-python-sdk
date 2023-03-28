@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -229,6 +229,7 @@ class PublishPolicyVersion1(Operation):
         namespace: str,
         policy_version_id: str,
         should_notify: Optional[bool] = None,
+        **kwargs,
     ) -> PublishPolicyVersion1:
         instance = cls()
         instance.namespace = namespace

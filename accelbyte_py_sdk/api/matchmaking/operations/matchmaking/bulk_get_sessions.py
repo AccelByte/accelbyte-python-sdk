@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -241,9 +241,7 @@ class BulkGetSessions(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        match_i_ds: Optional[str] = None,
+        cls, namespace: str, match_i_ds: Optional[str] = None, **kwargs
     ) -> BulkGetSessions:
         instance = cls()
         instance.namespace = namespace

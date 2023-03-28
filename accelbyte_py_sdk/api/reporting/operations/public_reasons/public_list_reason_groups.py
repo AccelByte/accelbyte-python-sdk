@@ -221,6 +221,7 @@ class PublicListReasonGroups(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> PublicListReasonGroups:
         instance = cls()
         instance.namespace = namespace

@@ -76,9 +76,7 @@ class RestapiCreateReasonGroupRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        title: str,
-        reason_ids: Optional[List[str]] = None,
+        cls, title: str, reason_ids: Optional[List[str]] = None, **kwargs
     ) -> RestapiCreateReasonGroupRequest:
         instance = cls()
         instance.title = title

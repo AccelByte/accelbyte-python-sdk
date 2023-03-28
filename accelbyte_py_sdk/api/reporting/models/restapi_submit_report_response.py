@@ -192,6 +192,7 @@ class RestapiSubmitReportResponse(Model):
         updated_at: str,
         user_id: str,
         extension_category: Optional[str] = None,
+        **kwargs,
     ) -> RestapiSubmitReportResponse:
         instance = cls()
         instance.category = category

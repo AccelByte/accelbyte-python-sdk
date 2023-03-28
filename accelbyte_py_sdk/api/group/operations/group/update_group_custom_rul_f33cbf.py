@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -259,6 +259,7 @@ class UpdateGroupCustomRulePublicV2(Operation):
         body: ModelsUpdateGroupCustomRuleRequestV1,
         group_id: str,
         namespace: str,
+        **kwargs,
     ) -> UpdateGroupCustomRulePublicV2:
         instance = cls()
         instance.body = body

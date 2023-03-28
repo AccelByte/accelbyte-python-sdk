@@ -223,9 +223,7 @@ class SetServerAlias(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsSetAliasRequest,
-        region: str,
+        cls, body: ModelsSetAliasRequest, region: str, **kwargs
     ) -> SetServerAlias:
         instance = cls()
         instance.body = body

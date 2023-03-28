@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class ModelVerificationCodeResponse(Model):
         account_upgrade: str,
         password_reset: str,
         update_email: str,
+        **kwargs,
     ) -> ModelVerificationCodeResponse:
         instance = cls()
         instance.account_registration = account_registration

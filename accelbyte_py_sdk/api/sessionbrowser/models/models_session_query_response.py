@@ -83,9 +83,7 @@ class ModelsSessionQueryResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        pagination: ModelsPagingCursor,
-        sessions: List[ModelsGameSession],
+        cls, pagination: ModelsPagingCursor, sessions: List[ModelsGameSession], **kwargs
     ) -> ModelsSessionQueryResponse:
         instance = cls()
         instance.pagination = pagination

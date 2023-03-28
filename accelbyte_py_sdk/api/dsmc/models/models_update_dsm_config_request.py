@@ -151,6 +151,7 @@ class ModelsUpdateDSMConfigRequest(Model):
         providers: List[str],
         session_timeout: int,
         unreachable_timeout: int,
+        **kwargs,
     ) -> ModelsUpdateDSMConfigRequest:
         instance = cls()
         instance.claim_timeout = claim_timeout

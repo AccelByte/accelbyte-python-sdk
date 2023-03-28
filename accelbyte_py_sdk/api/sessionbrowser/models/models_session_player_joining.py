@@ -87,10 +87,7 @@ class ModelsSessionPlayerJoining(Model):
 
     @classmethod
     def create(
-        cls,
-        date: str,
-        state: str,
-        user_id: str,
+        cls, date: str, state: str, user_id: str, **kwargs
     ) -> ModelsSessionPlayerJoining:
         instance = cls()
         instance.date = date

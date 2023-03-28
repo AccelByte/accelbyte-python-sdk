@@ -219,9 +219,7 @@ class CreateReason(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: RestapiCreateReasonRequest,
-        namespace: str,
+        cls, body: RestapiCreateReasonRequest, namespace: str, **kwargs
     ) -> CreateReason:
         instance = cls()
         instance.body = body

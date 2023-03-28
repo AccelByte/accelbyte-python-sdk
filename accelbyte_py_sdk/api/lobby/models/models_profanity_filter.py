@@ -98,11 +98,7 @@ class ModelsProfanityFilter(Model):
 
     @classmethod
     def create(
-        cls,
-        filter_: str,
-        list_name: str,
-        namespace: str,
-        note: str,
+        cls, filter_: str, list_name: str, namespace: str, note: str, **kwargs
     ) -> ModelsProfanityFilter:
         instance = cls()
         instance.filter_ = filter_

@@ -200,8 +200,7 @@ class BatchDownloadServerLogs(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsBatchDownloadLogsRequest,
+        cls, body: ModelsBatchDownloadLogsRequest, **kwargs
     ) -> BatchDownloadServerLogs:
         instance = cls()
         instance.body = body

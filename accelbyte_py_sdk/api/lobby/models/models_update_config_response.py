@@ -76,9 +76,7 @@ class ModelsUpdateConfigResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        api_key: str,
-        namespace: str,
+        cls, api_key: str, namespace: str, **kwargs
     ) -> ModelsUpdateConfigResponse:
         instance = cls()
         instance.api_key = api_key

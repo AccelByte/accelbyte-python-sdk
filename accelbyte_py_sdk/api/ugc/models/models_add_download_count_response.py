@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelsAddDownloadCountResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        content_id: str,
-    ) -> ModelsAddDownloadCountResponse:
+    def create(cls, content_id: str, **kwargs) -> ModelsAddDownloadCountResponse:
         instance = cls()
         instance.content_id = content_id
         return instance

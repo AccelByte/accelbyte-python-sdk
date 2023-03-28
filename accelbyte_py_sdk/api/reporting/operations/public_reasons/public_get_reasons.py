@@ -253,6 +253,7 @@ class PublicGetReasons(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         title: Optional[str] = None,
+        **kwargs,
     ) -> PublicGetReasons:
         instance = cls()
         instance.namespace = namespace

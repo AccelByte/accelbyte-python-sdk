@@ -154,9 +154,7 @@ class UXNameDescriptionHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> UXNameDescriptionHandler:
+    def create(cls, **kwargs) -> UXNameDescriptionHandler:
         instance = cls()
         return instance
 

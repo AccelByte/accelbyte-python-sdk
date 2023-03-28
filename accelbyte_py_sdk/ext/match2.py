@@ -147,7 +147,7 @@ def create_api_match_function_config_example() -> ApiMatchFunctionConfig:
 def create_api_match_function_override_example() -> ApiMatchFunctionOverride:
     instance = ApiMatchFunctionOverride()
     instance.backfill_matches = randomize()
-    instance.hydration = [randomize()]
+    instance.enrichment = [randomize()]
     instance.make_matches = randomize()
     instance.stat_codes = [randomize()]
     instance.validation = [randomize()]
@@ -214,6 +214,7 @@ def create_api_match_ticket_request_example() -> ApiMatchTicketRequest:
 def create_api_match_ticket_response_example() -> ApiMatchTicketResponse:
     instance = ApiMatchTicketResponse()
     instance.match_ticket_id = randomize()
+    instance.queue_time = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

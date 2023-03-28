@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -58,6 +58,8 @@ class RetrieveAcceptedAgreementResponse(Model):
 
         signing_date: (signingDate) OPTIONAL str
 
+        tags: (tags) OPTIONAL List[str]
+
         updated_at: (updatedAt) OPTIONAL str
 
         user_id: (userId) OPTIONAL str
@@ -77,6 +79,7 @@ class RetrieveAcceptedAgreementResponse(Model):
     policy_name: str  # OPTIONAL
     policy_type: str  # OPTIONAL
     signing_date: str  # OPTIONAL
+    tags: List[str]  # OPTIONAL
     updated_at: str  # OPTIONAL
     user_id: str  # OPTIONAL
 
@@ -132,6 +135,10 @@ class RetrieveAcceptedAgreementResponse(Model):
 
     def with_signing_date(self, value: str) -> RetrieveAcceptedAgreementResponse:
         self.signing_date = value
+        return self
+
+    def with_tags(self, value: List[str]) -> RetrieveAcceptedAgreementResponse:
+        self.tags = value
         return self
 
     def with_updated_at(self, value: str) -> RetrieveAcceptedAgreementResponse:
@@ -198,6 +205,10 @@ class RetrieveAcceptedAgreementResponse(Model):
             result["signingDate"] = str(self.signing_date)
         elif include_empty:
             result["signingDate"] = ""
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -227,8 +238,10 @@ class RetrieveAcceptedAgreementResponse(Model):
         policy_name: Optional[str] = None,
         policy_type: Optional[str] = None,
         signing_date: Optional[str] = None,
+        tags: Optional[List[str]] = None,
         updated_at: Optional[str] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> RetrieveAcceptedAgreementResponse:
         instance = cls()
         instance.id_ = id_
@@ -254,6 +267,8 @@ class RetrieveAcceptedAgreementResponse(Model):
             instance.policy_type = policy_type
         if signing_date is not None:
             instance.signing_date = signing_date
+        if tags is not None:
+            instance.tags = tags
         if updated_at is not None:
             instance.updated_at = updated_at
         if user_id is not None:
@@ -322,6 +337,10 @@ class RetrieveAcceptedAgreementResponse(Model):
             instance.signing_date = str(dict_["signingDate"])
         elif include_empty:
             instance.signing_date = ""
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -385,6 +404,7 @@ class RetrieveAcceptedAgreementResponse(Model):
             "policyName": "policy_name",
             "policyType": "policy_type",
             "signingDate": "signing_date",
+            "tags": "tags",
             "updatedAt": "updated_at",
             "userId": "user_id",
         }
@@ -404,6 +424,7 @@ class RetrieveAcceptedAgreementResponse(Model):
             "policyName": False,
             "policyType": False,
             "signingDate": False,
+            "tags": False,
             "updatedAt": False,
             "userId": False,
         }

@@ -86,6 +86,7 @@ class ModelsListPodConfigResponse(Model):
         cls,
         paging: ModelsPagingCursor,
         pod_configs: List[ModelsPodConfigRecord],
+        **kwargs,
     ) -> ModelsListPodConfigResponse:
         instance = cls()
         instance.paging = paging

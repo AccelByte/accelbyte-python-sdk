@@ -227,9 +227,7 @@ class CreateNotificationTopicV1Admin(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelCreateTopicRequestV1,
-        namespace: str,
+        cls, body: ModelCreateTopicRequestV1, namespace: str, **kwargs
     ) -> CreateNotificationTopicV1Admin:
         instance = cls()
         instance.body = body

@@ -236,9 +236,7 @@ class RegisterLocalServer(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsRegisterLocalServerRequest,
-        namespace: str,
+        cls, body: ModelsRegisterLocalServerRequest, namespace: str, **kwargs
     ) -> RegisterLocalServer:
         instance = cls()
         instance.body = body

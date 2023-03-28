@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.16.0)
+# AccelByte Gaming Services Achievement Service (2.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ModelsPagination(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        next_: str,
-        previous: str,
-    ) -> ModelsPagination:
+    def create(cls, next_: str, previous: str, **kwargs) -> ModelsPagination:
         instance = cls()
         instance.next_ = next_
         instance.previous = previous

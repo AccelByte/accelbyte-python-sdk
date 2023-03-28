@@ -79,6 +79,7 @@ class UserPassGrant(Model):
         cls,
         pass_code: Optional[str] = None,
         pass_item_id: Optional[str] = None,
+        **kwargs,
     ) -> UserPassGrant:
         instance = cls()
         if pass_code is not None:

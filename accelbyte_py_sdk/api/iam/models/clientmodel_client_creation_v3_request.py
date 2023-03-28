@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -308,6 +308,7 @@ class ClientmodelClientCreationV3Request(Model):
         parent_namespace: Optional[str] = None,
         scopes: Optional[List[str]] = None,
         two_factor_enabled: Optional[bool] = None,
+        **kwargs,
     ) -> ClientmodelClientCreationV3Request:
         instance = cls()
         instance.audiences = audiences

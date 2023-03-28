@@ -81,9 +81,7 @@ class ModelsListImageResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        images: List[ModelsImageRecord],
-        paging: ModelsPagingCursor,
+        cls, images: List[ModelsImageRecord], paging: ModelsPagingCursor, **kwargs
     ) -> ModelsListImageResponse:
         instance = cls()
         instance.images = images

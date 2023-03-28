@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -109,6 +109,7 @@ class XblAchievementUpdateRequest(Model):
         service_config_id: Optional[str] = None,
         title_id: Optional[str] = None,
         xbox_user_id: Optional[str] = None,
+        **kwargs,
     ) -> XblAchievementUpdateRequest:
         instance = cls()
         if achievements is not None:

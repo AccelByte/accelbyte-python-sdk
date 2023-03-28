@@ -146,6 +146,7 @@ class ApiBackfillProposalResponse(Model):
         proposal_id: Optional[str] = None,
         proposed_teams: Optional[List[ApiTeam]] = None,
         tickets: Optional[List[ApiTicket]] = None,
+        **kwargs,
     ) -> ApiBackfillProposalResponse:
         instance = cls()
         if backfill_ticket_id is not None:

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -181,6 +181,7 @@ class KeyInfo(Model):
         value: str,
         acquire_order_no: Optional[str] = None,
         acquire_user_id: Optional[str] = None,
+        **kwargs,
     ) -> KeyInfo:
         instance = cls()
         instance.created_at = created_at

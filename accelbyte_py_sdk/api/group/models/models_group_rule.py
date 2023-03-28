@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -89,6 +89,7 @@ class ModelsGroupRule(Model):
         cls,
         group_custom_rule: ModelsGroupRuleGroupCustomRule,
         group_predefined_rules: List[ModelsRule],
+        **kwargs,
     ) -> ModelsGroupRule:
         instance = cls()
         instance.group_custom_rule = group_custom_rule

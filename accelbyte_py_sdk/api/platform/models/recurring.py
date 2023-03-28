@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -111,6 +111,7 @@ class Recurring(Model):
         fixed_free_days: int,
         fixed_trial_cycles: int,
         grace_days: int,
+        **kwargs,
     ) -> Recurring:
         instance = cls()
         instance.cycle = cycle

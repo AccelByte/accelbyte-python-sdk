@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ class GoogleIAPConfigInfo(Model):
         application_name: Optional[str] = None,
         p12_file_name: Optional[str] = None,
         service_account_id: Optional[str] = None,
+        **kwargs,
     ) -> GoogleIAPConfigInfo:
         instance = cls()
         instance.namespace = namespace

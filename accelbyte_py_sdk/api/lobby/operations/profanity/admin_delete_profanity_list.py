@@ -228,11 +228,7 @@ class AdminDeleteProfanityList(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        list_: str,
-        namespace: str,
-    ) -> AdminDeleteProfanityList:
+    def create(cls, list_: str, namespace: str, **kwargs) -> AdminDeleteProfanityList:
         instance = cls()
         instance.list_ = list_
         instance.namespace = namespace

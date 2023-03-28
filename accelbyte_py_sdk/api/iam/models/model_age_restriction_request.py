@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,9 +76,7 @@ class ModelAgeRestrictionRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        age_restriction: int,
-        enable: bool,
+        cls, age_restriction: int, enable: bool, **kwargs
     ) -> ModelAgeRestrictionRequest:
         instance = cls()
         instance.age_restriction = age_restriction

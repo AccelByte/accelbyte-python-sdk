@@ -243,6 +243,7 @@ class MatchFunctionList(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> MatchFunctionList:
         instance = cls()
         instance.namespace = namespace

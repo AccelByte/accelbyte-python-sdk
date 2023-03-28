@@ -242,6 +242,7 @@ class RuleSetList(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs,
     ) -> RuleSetList:
         instance = cls()
         instance.namespace = namespace

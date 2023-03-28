@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,8 +65,7 @@ class ModelUnlinkUserPlatformRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        platform_namespace: Optional[str] = None,
+        cls, platform_namespace: Optional[str] = None, **kwargs
     ) -> ModelUnlinkUserPlatformRequest:
         instance = cls()
         if platform_namespace is not None:

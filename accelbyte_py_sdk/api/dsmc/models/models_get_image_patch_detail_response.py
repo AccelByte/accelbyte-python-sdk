@@ -69,8 +69,7 @@ class ModelsGetImagePatchDetailResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: ModelsPatchImageRecord,
+        cls, data: ModelsPatchImageRecord, **kwargs
     ) -> ModelsGetImagePatchDetailResponse:
         instance = cls()
         instance.data = data

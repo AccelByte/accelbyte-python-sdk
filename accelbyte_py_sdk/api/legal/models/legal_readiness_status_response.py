@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.27.1)
+# AccelByte Gaming Services Legal Service (1.28.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,8 +65,7 @@ class LegalReadinessStatusResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        is_ready: Optional[bool] = None,
+        cls, is_ready: Optional[bool] = None, **kwargs
     ) -> LegalReadinessStatusResponse:
         instance = cls()
         if is_ready is not None:

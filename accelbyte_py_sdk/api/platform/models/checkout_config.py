@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -79,6 +79,7 @@ class CheckoutConfig(Model):
         cls,
         public_key: Optional[str] = None,
         secret_key: Optional[str] = None,
+        **kwargs,
     ) -> CheckoutConfig:
         instance = cls()
         if public_key is not None:

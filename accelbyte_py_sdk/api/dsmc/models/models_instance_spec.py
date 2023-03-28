@@ -75,11 +75,7 @@ class ModelsInstanceSpec(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        cpu: int,
-        mem: int,
-    ) -> ModelsInstanceSpec:
+    def create(cls, cpu: int, mem: int, **kwargs) -> ModelsInstanceSpec:
         instance = cls()
         instance.cpu = cpu
         instance.mem = mem

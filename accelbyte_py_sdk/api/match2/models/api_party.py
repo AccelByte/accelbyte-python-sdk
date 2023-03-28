@@ -79,6 +79,7 @@ class ApiParty(Model):
         cls,
         party_id: Optional[str] = None,
         user_i_ds: Optional[List[str]] = None,
+        **kwargs,
     ) -> ApiParty:
         instance = cls()
         if party_id is not None:

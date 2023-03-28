@@ -154,9 +154,7 @@ class EventIDDescriptionHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> EventIDDescriptionHandler:
+    def create(cls, **kwargs) -> EventIDDescriptionHandler:
         instance = cls()
         return instance
 

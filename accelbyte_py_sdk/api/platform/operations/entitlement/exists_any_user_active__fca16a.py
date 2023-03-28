@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.25.0)
+# AccelByte Gaming Services Platform Service (4.27.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -246,6 +246,7 @@ class ExistsAnyUserActiveEntitlement(Operation):
         app_ids: Optional[List[str]] = None,
         item_ids: Optional[List[str]] = None,
         skus: Optional[List[str]] = None,
+        **kwargs,
     ) -> ExistsAnyUserActiveEntitlement:
         instance = cls()
         instance.namespace = namespace

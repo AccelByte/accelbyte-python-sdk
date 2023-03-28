@@ -154,9 +154,7 @@ class AgentTypeDescriptionHandler(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-    ) -> AgentTypeDescriptionHandler:
+    def create(cls, **kwargs) -> AgentTypeDescriptionHandler:
         instance = cls()
         return instance
 

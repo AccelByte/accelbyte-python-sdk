@@ -136,6 +136,7 @@ class RewardUpdate(Model):
         null_fields: Optional[List[str]] = None,
         quantity: Optional[int] = None,
         type_: Optional[Union[str, TypeEnum]] = None,
+        **kwargs,
     ) -> RewardUpdate:
         instance = cls()
         if currency is not None:

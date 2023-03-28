@@ -211,6 +211,7 @@ class UserSeasonSummary(Model):
         required_exp: Optional[int] = None,
         season_id: Optional[str] = None,
         updated_at: Optional[str] = None,
+        **kwargs,
     ) -> UserSeasonSummary:
         instance = cls()
         instance.namespace = namespace

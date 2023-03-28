@@ -192,10 +192,7 @@ class DeleteServer(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        region: str,
-    ) -> DeleteServer:
+    def create(cls, region: str, **kwargs) -> DeleteServer:
         instance = cls()
         instance.region = region
         return instance

@@ -228,9 +228,7 @@ class ShutdownServer(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsShutdownServerRequest,
-        namespace: str,
+        cls, body: ModelsShutdownServerRequest, namespace: str, **kwargs
     ) -> ShutdownServer:
         instance = cls()
         instance.body = body

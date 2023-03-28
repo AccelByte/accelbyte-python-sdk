@@ -76,9 +76,7 @@ class ApiBackFillCreateRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        match_pool: str,
-        session_id: str,
+        cls, match_pool: str, session_id: str, **kwargs
     ) -> ApiBackFillCreateRequest:
         instance = cls()
         instance.match_pool = match_pool

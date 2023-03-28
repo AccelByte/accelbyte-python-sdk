@@ -260,6 +260,7 @@ class UpdateTier(Operation):
         namespace: str,
         season_id: str,
         body: Optional[TierInput] = None,
+        **kwargs,
     ) -> UpdateTier:
         instance = cls()
         instance.id_ = id_

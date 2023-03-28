@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.2)
+# AccelByte Gaming Services Ugc Service (2.9.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,10 +64,7 @@ class ModelsUserFollowRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        follow_status: bool,
-    ) -> ModelsUserFollowRequest:
+    def create(cls, follow_status: bool, **kwargs) -> ModelsUserFollowRequest:
         instance = cls()
         instance.follow_status = follow_status
         return instance

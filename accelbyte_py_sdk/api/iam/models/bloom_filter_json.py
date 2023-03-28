@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -86,12 +86,7 @@ class BloomFilterJSON(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        bits: List[int],
-        k: int,
-        m: int,
-    ) -> BloomFilterJSON:
+    def create(cls, bits: List[int], k: int, m: int, **kwargs) -> BloomFilterJSON:
         instance = cls()
         instance.bits = bits
         instance.k = k

@@ -81,9 +81,7 @@ class ApiListMatchPoolsResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ApiMatchPool],
-        pagination: ModelsPagination,
+        cls, data: List[ApiMatchPool], pagination: ModelsPagination, **kwargs
     ) -> ApiListMatchPoolsResponse:
         instance = cls()
         instance.data = data

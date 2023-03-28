@@ -25,7 +25,6 @@ from ....core import generate_websocket_message_id
 
 
 class StartMatchmakingRequest(WebSocketMessage):
-
     # region fields
 
     extra_attributes: str

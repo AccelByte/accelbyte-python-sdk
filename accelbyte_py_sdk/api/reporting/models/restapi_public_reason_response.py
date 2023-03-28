@@ -76,9 +76,7 @@ class RestapiPublicReasonResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        description: str,
-        title: str,
+        cls, description: str, title: str, **kwargs
     ) -> RestapiPublicReasonResponse:
         instance = cls()
         instance.description = description

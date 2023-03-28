@@ -76,9 +76,7 @@ class ModelsShutdownServerRequest(Model):
 
     @classmethod
     def create(
-        cls,
-        kill_me: bool,
-        pod_name: str,
+        cls, kill_me: bool, pod_name: str, **kwargs
     ) -> ModelsShutdownServerRequest:
         instance = cls()
         instance.kill_me = kill_me

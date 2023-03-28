@@ -217,10 +217,7 @@ class AdminGetLobbyCCU(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> AdminGetLobbyCCU:
+    def create(cls, namespace: str, **kwargs) -> AdminGetLobbyCCU:
         instance = cls()
         instance.namespace = namespace
         return instance

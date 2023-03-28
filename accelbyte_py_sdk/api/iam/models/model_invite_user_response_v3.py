@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.29.0)
+# AccelByte Gaming Services Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,8 +71,7 @@ class ModelInviteUserResponseV3(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[ModelUserInvitationV3],
+        cls, data: List[ModelUserInvitationV3], **kwargs
     ) -> ModelInviteUserResponseV3:
         instance = cls()
         instance.data = data

@@ -200,10 +200,7 @@ class ListLocalServer(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-    ) -> ListLocalServer:
+    def create(cls, namespace: str, **kwargs) -> ListLocalServer:
         instance = cls()
         instance.namespace = namespace
         return instance

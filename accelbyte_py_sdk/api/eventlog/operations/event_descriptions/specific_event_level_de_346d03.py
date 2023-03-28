@@ -187,8 +187,7 @@ class SpecificEventLevelDescriptionHandler(Operation):
 
     @classmethod
     def create(
-        cls,
-        event_levels: Optional[str] = None,
+        cls, event_levels: Optional[str] = None, **kwargs
     ) -> SpecificEventLevelDescriptionHandler:
         instance = cls()
         if event_levels is not None:

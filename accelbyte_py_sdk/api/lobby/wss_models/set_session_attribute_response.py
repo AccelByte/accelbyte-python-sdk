@@ -25,7 +25,6 @@ from ....core import generate_websocket_message_id
 
 
 class SetSessionAttributeResponse(WebSocketMessage):
-
     # region fields
 
     code: int

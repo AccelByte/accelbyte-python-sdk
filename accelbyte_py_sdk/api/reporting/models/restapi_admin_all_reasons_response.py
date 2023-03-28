@@ -71,8 +71,7 @@ class RestapiAdminAllReasonsResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        data: List[RestapiPublicReasonResponse],
+        cls, data: List[RestapiPublicReasonResponse], **kwargs
     ) -> RestapiAdminAllReasonsResponse:
         instance = cls()
         instance.data = data

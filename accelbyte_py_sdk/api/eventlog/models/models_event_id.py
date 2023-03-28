@@ -75,11 +75,7 @@ class ModelsEventID(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        description: str,
-        event_id: int,
-    ) -> ModelsEventID:
+    def create(cls, description: str, event_id: int, **kwargs) -> ModelsEventID:
         instance = cls()
         instance.description = description
         instance.event_id = event_id

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Group Service (2.15.2)
+# AccelByte Gaming Services Group Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -80,9 +80,7 @@ class ModelsRule(Model):
 
     @classmethod
     def create(
-        cls,
-        allowed_action: str,
-        rule_detail: List[ModelsRuleInformation],
+        cls, allowed_action: str, rule_detail: List[ModelsRuleInformation], **kwargs
     ) -> ModelsRule:
         instance = cls()
         instance.allowed_action = allowed_action

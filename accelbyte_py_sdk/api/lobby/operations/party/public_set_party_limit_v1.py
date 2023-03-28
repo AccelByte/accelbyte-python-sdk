@@ -246,6 +246,7 @@ class PublicSetPartyLimitV1(Operation):
         body: ModelsPartyPUTLimitSizeRequest,
         namespace: str,
         party_id: str,
+        **kwargs,
     ) -> PublicSetPartyLimitV1:
         instance = cls()
         instance.body = body

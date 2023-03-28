@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.21.4)
+# AccelByte Gaming Services Matchmaking Service (2.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,11 +75,7 @@ class ResponseErrorV1(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        error_code: int,
-        error_message: str,
-    ) -> ResponseErrorV1:
+    def create(cls, error_code: int, error_message: str, **kwargs) -> ResponseErrorV1:
         instance = cls()
         instance.error_code = error_code
         instance.error_message = error_message

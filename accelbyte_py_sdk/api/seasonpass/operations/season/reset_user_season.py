@@ -203,11 +203,7 @@ class ResetUserSeason(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        user_id: str,
-    ) -> ResetUserSeason:
+    def create(cls, namespace: str, user_id: str, **kwargs) -> ResetUserSeason:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
