@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-basic-service (2.6.1)
+# justice-basic-service (2.8.0)
 
 from ._get_namespaces import get_namespaces
 from ._create_namespace import create_namespace
@@ -40,6 +40,7 @@ from ._admin_get_user_profile_public_info_by_ids import (
     admin_get_user_profile_public_info_by_ids,
 )
 from ._get_namespace_publisher import get_namespace_publisher
+from ._get_publisher_config import get_publisher_config
 from ._change_namespace_status import change_namespace_status
 from ._anonymize_user_profile import anonymize_user_profile
 from ._generated_user_upload_content_url import generated_user_upload_content_url
@@ -123,6 +124,7 @@ commands = [
     get_user_profile_info_by_public_id,
     admin_get_user_profile_public_info_by_ids,
     get_namespace_publisher,
+    get_publisher_config,
     change_namespace_status,
     anonymize_user_profile,
     generated_user_upload_content_url,

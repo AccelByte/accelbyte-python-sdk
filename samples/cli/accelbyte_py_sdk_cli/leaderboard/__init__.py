@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-leaderboard-service (2.19.3)
+# justice-leaderboard-service (2.19.5)
 
 from ._get_leaderboard_configurations_admin_v1 import (
     get_leaderboard_configurations_admin_v1,
@@ -51,6 +51,9 @@ from ._get_current_week_leaderboard_ranking_admin_v1 import (
     get_current_week_leaderboard_ranking_admin_v1,
 )
 from ._delete_user_rankings_admin_v1 import delete_user_rankings_admin_v1
+from ._admin_anonymize_user_leaderboard_admin_v1 import (
+    admin_anonymize_user_leaderboard_admin_v1,
+)
 from ._get_user_leaderboard_rankings_admin_v1 import (
     get_user_leaderboard_rankings_admin_v1,
 )
@@ -112,6 +115,7 @@ commands = [
     delete_user_ranking_admin_v1,
     get_current_week_leaderboard_ranking_admin_v1,
     delete_user_rankings_admin_v1,
+    admin_anonymize_user_leaderboard_admin_v1,
     get_user_leaderboard_rankings_admin_v1,
     get_leaderboard_configurations_public_v1,
     create_leaderboard_configuration_public_v1,

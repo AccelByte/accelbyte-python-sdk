@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (5.29.0)
+# AGS Iam Service (5.31.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,12 +40,14 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 @click.command()
 @click.argument("body", type=str)
+@click.option("--need_verification_code", "need_verification_code", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_verify_headless_account_v3(
     body: str,
+    need_verification_code: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -67,6 +69,7 @@ def public_verify_headless_account_v3(
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = public_verify_headless_account_v3_internal(
         body=body,
+        need_verification_code=need_verification_code,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-cloudsave-service (3.6.2)
+# justice-cloudsave-service (3.6.4)
 
 from ._admin_put_game_record_concurrent_handler_v1 import (
     admin_put_game_record_concurrent_handler_v1,

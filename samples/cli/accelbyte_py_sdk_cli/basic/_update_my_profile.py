@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Basic Service (2.6.1)
+# AGS Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import update_my_profile as update_my_profile_internal
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import UserProfilePrivateInfo
-from accelbyte_py_sdk.api.basic.models import UserProfilePrivateUpdate
+from accelbyte_py_sdk.api.basic.models import UserProfileUpdate
 from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 
 
@@ -61,7 +61,7 @@ def update_my_profile(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = UserProfilePrivateUpdate.create_from_dict(body_json)
+            body = UserProfileUpdate.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = update_my_profile_internal(

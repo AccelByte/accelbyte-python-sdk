@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Basic Service (2.6.1)
+# AGS Basic Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

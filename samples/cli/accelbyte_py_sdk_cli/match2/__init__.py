@@ -18,6 +18,7 @@ from ._accept_backfill import accept_backfill
 from ._reject_backfill import reject_backfill
 from ._match_function_list import match_function_list
 from ._create_match_function import create_match_function
+from ._update_match_function import update_match_function
 from ._delete_match_function import delete_match_function
 from ._match_pool_list import match_pool_list
 from ._create_match_pool import create_match_pool
@@ -47,6 +48,7 @@ commands = [
     reject_backfill,
     match_function_list,
     create_match_function,
+    update_match_function,
     delete_match_function,
     match_pool_list,
     create_match_pool,

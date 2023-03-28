@@ -6,10 +6,11 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (2.6.9)
+# justice-session-service (2.7.3)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
+from ._admin_get_dsmc_configuration_default import admin_get_dsmc_configuration_default
 from ._admin_create_configuration_template_v1 import (
     admin_create_configuration_template_v1,
 )
@@ -23,6 +24,8 @@ from ._admin_update_configuration_template_v1 import (
 from ._admin_delete_configuration_template_v1 import (
     admin_delete_configuration_template_v1,
 )
+from ._admin_get_dsmc_configuration import admin_get_dsmc_configuration
+from ._admin_sync_dsmc_configuration import admin_sync_dsmc_configuration
 from ._admin_query_game_sessions import admin_query_game_sessions
 from ._admin_update_game_session_member import admin_update_game_session_member
 from ._admin_query_parties import admin_query_parties
@@ -42,6 +45,7 @@ from ._public_game_session_invite import public_game_session_invite
 from ._join_game_session import join_game_session
 from ._leave_game_session import leave_game_session
 from ._public_game_session_reject import public_game_session_reject
+from ._append_team_game_session import append_team_game_session
 from ._public_party_join_code import public_party_join_code
 from ._public_get_party import public_get_party
 from ._public_update_party import public_update_party
@@ -65,11 +69,14 @@ from ._public_query_my_parties import public_query_my_parties
 commands = [
     get_healthcheck_info,
     get_healthcheck_info_v1,
+    admin_get_dsmc_configuration_default,
     admin_create_configuration_template_v1,
     admin_get_all_configuration_templates_v1,
     admin_get_configuration_template_v1,
     admin_update_configuration_template_v1,
     admin_delete_configuration_template_v1,
+    admin_get_dsmc_configuration,
+    admin_sync_dsmc_configuration,
     admin_query_game_sessions,
     admin_update_game_session_member,
     admin_query_parties,
@@ -87,6 +94,7 @@ commands = [
     join_game_session,
     leave_game_session,
     public_game_session_reject,
+    append_team_game_session,
     public_party_join_code,
     public_get_party,
     public_update_party,

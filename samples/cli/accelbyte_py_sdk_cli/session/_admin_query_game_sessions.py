@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Service (2.6.9)
+# AGS Session Service (2.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,6 +42,7 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 @click.option("--ds_pod_name", "ds_pod_name", type=str)
 @click.option("--from_time", "from_time", type=str)
 @click.option("--game_mode", "game_mode", type=str)
+@click.option("--is_persistent", "is_persistent", type=str)
 @click.option("--is_soft_deleted", "is_soft_deleted", type=str)
 @click.option("--joinability", "joinability", type=str)
 @click.option("--limit", "limit", type=int)
@@ -63,6 +64,7 @@ def admin_query_game_sessions(
     ds_pod_name: Optional[str] = None,
     from_time: Optional[str] = None,
     game_mode: Optional[str] = None,
+    is_persistent: Optional[str] = None,
     is_soft_deleted: Optional[str] = None,
     joinability: Optional[str] = None,
     limit: Optional[int] = None,
@@ -93,6 +95,7 @@ def admin_query_game_sessions(
         ds_pod_name=ds_pod_name,
         from_time=from_time,
         game_mode=game_mode,
+        is_persistent=is_persistent,
         is_soft_deleted=is_soft_deleted,
         joinability=joinability,
         limit=limit,

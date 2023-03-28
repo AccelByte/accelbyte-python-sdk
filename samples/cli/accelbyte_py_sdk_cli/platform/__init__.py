@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.25.0)
+# justice-platform-service (4.27.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -100,6 +100,7 @@ from ._get_bulk_item_id_by_skus import get_bulk_item_id_by_skus
 from ._bulk_get_locale_items import bulk_get_locale_items
 from ._get_available_predicate_types import get_available_predicate_types
 from ._validate_item_purchase_condition import validate_item_purchase_condition
+from ._bulk_update_region_data import bulk_update_region_data
 from ._search_items import search_items
 from ._query_uncategorized_items import query_uncategorized_items
 from ._get_item import get_item
@@ -233,6 +234,7 @@ from ._disable_user_entitlement import disable_user_entitlement
 from ._enable_user_entitlement import enable_user_entitlement
 from ._get_user_entitlement_histories import get_user_entitlement_histories
 from ._revoke_user_entitlement import revoke_user_entitlement
+from ._sell_user_entitlement import sell_user_entitlement
 from ._fulfill_item import fulfill_item
 from ._redeem_code import redeem_code
 from ._fulfill_rewards import fulfill_rewards
@@ -415,6 +417,7 @@ from ._public_get_user_entitlement_ownership_by_sku import (
 )
 from ._public_get_user_entitlement import public_get_user_entitlement
 from ._public_consume_user_entitlement import public_consume_user_entitlement
+from ._public_sell_user_entitlement import public_sell_user_entitlement
 from ._public_redeem_code import public_redeem_code
 from ._public_fulfill_apple_iap_item import public_fulfill_apple_iap_item
 from ._sync_epic_games_inventory import sync_epic_games_inventory
@@ -549,6 +552,7 @@ commands = [
     bulk_get_locale_items,
     get_available_predicate_types,
     validate_item_purchase_condition,
+    bulk_update_region_data,
     search_items,
     query_uncategorized_items,
     get_item,
@@ -670,6 +674,7 @@ commands = [
     enable_user_entitlement,
     get_user_entitlement_histories,
     revoke_user_entitlement,
+    sell_user_entitlement,
     fulfill_item,
     redeem_code,
     fulfill_rewards,
@@ -810,6 +815,7 @@ commands = [
     public_get_user_entitlement_ownership_by_sku,
     public_get_user_entitlement,
     public_consume_user_entitlement,
+    public_sell_user_entitlement,
     public_redeem_code,
     public_fulfill_apple_iap_item,
     sync_epic_games_inventory,
