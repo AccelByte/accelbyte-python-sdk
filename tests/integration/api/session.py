@@ -177,7 +177,7 @@ class SessionTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
         if not (game_session_id := getattr(result, "id_", None)):
-            self.fail(msd=f"unable to find game session id")
+            self.fail(msg=f"unable to find game session id")
 
         # act & assert (join_game_sesion)
         result, error = session_service.join_game_session(
@@ -263,10 +263,10 @@ class SessionTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
         if not (party_id := getattr(result, "id_", None)):
-            self.fail(msd=f"unable to find party id")
+            self.fail(msg=f"unable to find party id")
 
         if not (party_code := getattr(result, "code", None)):
-            self.fail(msd=f"unable to find party code")
+            self.fail(msg=f"unable to find party code")
 
         # act & assert (public_party_join_code)
         result, error = session_service.public_party_join_code(
