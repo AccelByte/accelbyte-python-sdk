@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.37.0
+- Add `**kwargs` argument for `create()` class methods.
+- Fix integration tests.
+- Fix broken links in docs.
+- Remove outdated sample app.
+- Update spec for AccelByte Cloud v3.45.0.
+
 ## v0.36.0
 - Add guide for creating custom operations and models.
 - Rename AccelByte Cloud to AccelByte Gaming Services.
