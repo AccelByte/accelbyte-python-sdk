@@ -259,6 +259,9 @@ class HttpxHttpClient(HttpClient):
         )
         self.client = httpx.Client(transport=self.transport)
         self.client_async = httpx.AsyncClient(transport=self.transport_async)
+        self.allowed_kwarg_keys = {
+            "timeout",
+        }
 
     def close(self) -> None:
         if self.client is not None:
@@ -275,7 +278,7 @@ class HttpxHttpClient(HttpClient):
         return True
 
     def create_request(self, proto: ProtoHttpRequest) -> Any:
-        httpx_request = httpx.Request(
+        httpx_request = httpx.Request(  # should be using self.client.build_request(...)
             method=proto.method,
             url=proto.url,
             headers=proto.headers,
@@ -312,6 +315,11 @@ class HttpxHttpClient(HttpClient):
         attempts = 0
         elapsed = timedelta(0)
         error = None
+        filtered_kwargs = {
+            k: v for k, v in kwargs.items() if k in self.allowed_kwarg_keys
+        }
+        if "timeout" in filtered_kwargs:  # overwrite timeout value
+            request.extensions["timeout"] = httpx.Timeout(filtered_kwargs["timeout"]).as_dict()
         while True:
             self.log_request(request)
             raw_response = self.client.send(request)
