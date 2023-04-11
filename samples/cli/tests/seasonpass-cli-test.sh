@@ -252,7 +252,7 @@ eval_tap $? 21 'DeleteReward' test.out
 $PYTHON -m $MODULE 'seasonpass-update-reward' \
     'o7dwV9DB' \
     'qFKHQkET' \
-    --body '{"currency": {"currencyCode": "JyTlUrwD", "namespace": "TnoujQD4"}, "image": {"as": "IEiH9Z5q", "caption": "Xn3aoRtl", "height": 34, "imageUrl": "eTH26IUJ", "smallImageUrl": "NvYuGRUv", "width": 32}, "itemId": "8X1A3PrI", "nullFields": ["ORBVXTII", "Me4L3mDW", "fapq5AAe"], "quantity": 73, "type": "ITEM"}' \
+    --body '{"currency": {"currencyCode": "JyTlUrwD", "namespace": "TnoujQD4"}, "image": {"as": "IEiH9Z5q", "caption": "Xn3aoRtl", "height": 34, "imageUrl": "eTH26IUJ", "smallImageUrl": "NvYuGRUv", "width": 32}, "itemId": "8X1A3PrI", "nullFields": ["Me4L3mDW", "ORBVXTII", "fapq5AAe"], "quantity": 73, "type": "ITEM"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 22 'UpdateReward' test.out
