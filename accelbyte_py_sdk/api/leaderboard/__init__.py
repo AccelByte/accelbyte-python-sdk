@@ -35,6 +35,8 @@ from .wrappers import get_leaderboard_configurations_public_v1
 from .wrappers import get_leaderboard_configurations_public_v1_async
 from .wrappers import get_leaderboard_configurations_public_v2
 from .wrappers import get_leaderboard_configurations_public_v2_async
+from .wrappers import hard_delete_leaderboard_admin_v1
+from .wrappers import hard_delete_leaderboard_admin_v1_async
 from .wrappers import update_leaderboard_configuration_admin_v1
 from .wrappers import update_leaderboard_configuration_admin_v1_async
 
@@ -45,6 +47,8 @@ from .wrappers import create_archived_leaderboard_ranking_data_v1_handler
 from .wrappers import create_archived_leaderboard_ranking_data_v1_handler_async
 from .wrappers import delete_user_ranking_admin_v1
 from .wrappers import delete_user_ranking_admin_v1_async
+from .wrappers import delete_user_ranking_by_leaderboard_code_admin_v1
+from .wrappers import delete_user_ranking_by_leaderboard_code_admin_v1_async
 from .wrappers import delete_user_ranking_public_v1
 from .wrappers import delete_user_ranking_public_v1_async
 from .wrappers import delete_user_rankings_admin_v1

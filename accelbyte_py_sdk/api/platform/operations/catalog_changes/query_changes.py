@@ -128,7 +128,7 @@ class QueryChanges(Operation):
         updated_at_start: (updatedAtStart) OPTIONAL str in query
 
     Responses:
-        200: OK - List[CatalogChangePagingSlicedResult] (successful operation)
+        200: OK - CatalogChangePagingSlicedResult (successful operation)
     """
 
     # region fields
@@ -357,12 +357,10 @@ class QueryChanges(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, List[CatalogChangePagingSlicedResult]], Union[None, HttpResponse]
-    ]:
+    ) -> Tuple[Union[None, CatalogChangePagingSlicedResult], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - List[CatalogChangePagingSlicedResult] (successful operation)
+        200: OK - CatalogChangePagingSlicedResult (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -378,9 +376,7 @@ class QueryChanges(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [
-                CatalogChangePagingSlicedResult.create_from_dict(i) for i in content
-            ], None
+            return CatalogChangePagingSlicedResult.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

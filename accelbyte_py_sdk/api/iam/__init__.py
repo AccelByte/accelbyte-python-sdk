@@ -677,6 +677,8 @@ from .wrappers import admin_get_my_backup_codes_v4
 from .wrappers import admin_get_my_backup_codes_v4_async
 from .wrappers import admin_get_my_enabled_factors_v4
 from .wrappers import admin_get_my_enabled_factors_v4_async
+from .wrappers import admin_invite_user_new_v4
+from .wrappers import admin_invite_user_new_v4_async
 from .wrappers import admin_invite_user_v4
 from .wrappers import admin_invite_user_v4_async
 from .wrappers import admin_list_user_roles_v4

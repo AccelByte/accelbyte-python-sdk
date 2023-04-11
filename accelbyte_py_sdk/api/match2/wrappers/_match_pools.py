@@ -32,11 +32,13 @@ from ....core import same_doc_as
 from ..models import ApiListMatchPoolsResponse
 from ..models import ApiMatchPool
 from ..models import ApiMatchPoolConfig
+from ..models import ApiPlayerMetricRecord
 from ..models import ApiTicketMetricResultRecord
 from ..models import ResponseError
 
 from ..operations.match_pools import CreateMatchPool
 from ..operations.match_pools import DeleteMatchPool
+from ..operations.match_pools import GetPlayerMetric
 from ..operations.match_pools import MatchPoolDetails
 from ..operations.match_pools import MatchPoolList
 from ..operations.match_pools import MatchPoolMetric
@@ -319,6 +321,128 @@ async def delete_match_pool_async(
         if error:
             return None, error
     request = DeleteMatchPool.create(
+        pool=pool,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetPlayerMetric)
+def get_player_metric(
+    pool: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get metrics player for a specific match pool (GetPlayerMetric)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
+
+    Required Scope: social
+
+    Get player metric for a specific match pool
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/player
+
+        method: GET
+
+        tags: ["Match-Pools", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pool: (pool) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiPlayerMetricRecord (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPlayerMetric.create(
+        pool=pool,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetPlayerMetric)
+async def get_player_metric_async(
+    pool: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get metrics player for a specific match pool (GetPlayerMetric)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
+
+    Required Scope: social
+
+    Get player metric for a specific match pool
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/player
+
+        method: GET
+
+        tags: ["Match-Pools", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pool: (pool) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiPlayerMetricRecord (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPlayerMetric.create(
         pool=pool,
         namespace=namespace,
     )

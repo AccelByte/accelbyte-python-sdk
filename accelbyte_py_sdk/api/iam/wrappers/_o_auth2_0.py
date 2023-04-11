@@ -1133,6 +1133,7 @@ def platform_token_grant_v3(
     device_id: Optional[str] = None,
     mac_address: Optional[str] = None,
     platform_token: Optional[str] = None,
+    skip_set_cookie: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -1429,6 +1430,8 @@ def platform_token_grant_v3(
 
         platform_token: (platform_token) OPTIONAL str in form_data
 
+        skip_set_cookie: (skipSetCookie) OPTIONAL bool in form_data
+
         platform_id: (platformId) REQUIRED str in path
 
     Responses:
@@ -1449,6 +1452,7 @@ def platform_token_grant_v3(
         device_id=device_id,
         mac_address=mac_address,
         platform_token=platform_token,
+        skip_set_cookie=skip_set_cookie,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -1461,6 +1465,7 @@ async def platform_token_grant_v3_async(
     device_id: Optional[str] = None,
     mac_address: Optional[str] = None,
     platform_token: Optional[str] = None,
+    skip_set_cookie: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -1757,6 +1762,8 @@ async def platform_token_grant_v3_async(
 
         platform_token: (platform_token) OPTIONAL str in form_data
 
+        skip_set_cookie: (skipSetCookie) OPTIONAL bool in form_data
+
         platform_id: (platformId) REQUIRED str in path
 
     Responses:
@@ -1777,6 +1784,7 @@ async def platform_token_grant_v3_async(
         device_id=device_id,
         mac_address=mac_address,
         platform_token=platform_token,
+        skip_set_cookie=skip_set_cookie,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

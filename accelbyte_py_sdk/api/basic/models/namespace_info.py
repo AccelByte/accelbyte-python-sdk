@@ -39,13 +39,13 @@ class NamespaceInfo(Model):
     """Namespace info (NamespaceInfo)
 
     Properties:
+        display_name: (displayName) REQUIRED str
+
+        namespace: (namespace) REQUIRED str
+
         client_id: (clientId) OPTIONAL str
 
         created_at: (createdAt) OPTIONAL str
-
-        display_name: (displayName) OPTIONAL str
-
-        namespace: (namespace) OPTIONAL str
 
         parent_namespace: (parentNamespace) OPTIONAL str
 
@@ -56,10 +56,10 @@ class NamespaceInfo(Model):
 
     # region fields
 
+    display_name: str  # REQUIRED
+    namespace: str  # REQUIRED
     client_id: str  # OPTIONAL
     created_at: str  # OPTIONAL
-    display_name: str  # OPTIONAL
-    namespace: str  # OPTIONAL
     parent_namespace: str  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
     updated_at: str  # OPTIONAL
@@ -68,20 +68,20 @@ class NamespaceInfo(Model):
 
     # region with_x methods
 
-    def with_client_id(self, value: str) -> NamespaceInfo:
-        self.client_id = value
-        return self
-
-    def with_created_at(self, value: str) -> NamespaceInfo:
-        self.created_at = value
-        return self
-
     def with_display_name(self, value: str) -> NamespaceInfo:
         self.display_name = value
         return self
 
     def with_namespace(self, value: str) -> NamespaceInfo:
         self.namespace = value
+        return self
+
+    def with_client_id(self, value: str) -> NamespaceInfo:
+        self.client_id = value
+        return self
+
+    def with_created_at(self, value: str) -> NamespaceInfo:
+        self.created_at = value
         return self
 
     def with_parent_namespace(self, value: str) -> NamespaceInfo:
@@ -102,14 +102,6 @@ class NamespaceInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "client_id"):
-            result["clientId"] = str(self.client_id)
-        elif include_empty:
-            result["clientId"] = ""
-        if hasattr(self, "created_at"):
-            result["createdAt"] = str(self.created_at)
-        elif include_empty:
-            result["createdAt"] = ""
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
@@ -118,6 +110,14 @@ class NamespaceInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "client_id"):
+            result["clientId"] = str(self.client_id)
+        elif include_empty:
+            result["clientId"] = ""
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = ""
         if hasattr(self, "parent_namespace"):
             result["parentNamespace"] = str(self.parent_namespace)
         elif include_empty:
@@ -139,24 +139,22 @@ class NamespaceInfo(Model):
     @classmethod
     def create(
         cls,
+        display_name: str,
+        namespace: str,
         client_id: Optional[str] = None,
         created_at: Optional[str] = None,
-        display_name: Optional[str] = None,
-        namespace: Optional[str] = None,
         parent_namespace: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         updated_at: Optional[str] = None,
         **kwargs,
     ) -> NamespaceInfo:
         instance = cls()
+        instance.display_name = display_name
+        instance.namespace = namespace
         if client_id is not None:
             instance.client_id = client_id
         if created_at is not None:
             instance.created_at = created_at
-        if display_name is not None:
-            instance.display_name = display_name
-        if namespace is not None:
-            instance.namespace = namespace
         if parent_namespace is not None:
             instance.parent_namespace = parent_namespace
         if status is not None:
@@ -172,14 +170,6 @@ class NamespaceInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "clientId" in dict_ and dict_["clientId"] is not None:
-            instance.client_id = str(dict_["clientId"])
-        elif include_empty:
-            instance.client_id = ""
-        if "createdAt" in dict_ and dict_["createdAt"] is not None:
-            instance.created_at = str(dict_["createdAt"])
-        elif include_empty:
-            instance.created_at = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
@@ -188,6 +178,14 @@ class NamespaceInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "clientId" in dict_ and dict_["clientId"] is not None:
+            instance.client_id = str(dict_["clientId"])
+        elif include_empty:
+            instance.client_id = ""
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = ""
         if "parentNamespace" in dict_ and dict_["parentNamespace"] is not None:
             instance.parent_namespace = str(dict_["parentNamespace"])
         elif include_empty:
@@ -239,10 +237,10 @@ class NamespaceInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "clientId": "client_id",
-            "createdAt": "created_at",
             "displayName": "display_name",
             "namespace": "namespace",
+            "clientId": "client_id",
+            "createdAt": "created_at",
             "parentNamespace": "parent_namespace",
             "status": "status",
             "updatedAt": "updated_at",
@@ -251,10 +249,10 @@ class NamespaceInfo(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "displayName": True,
+            "namespace": True,
             "clientId": False,
             "createdAt": False,
-            "displayName": False,
-            "namespace": False,
             "parentNamespace": False,
             "status": False,
             "updatedAt": False,

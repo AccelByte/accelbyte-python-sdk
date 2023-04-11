@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Event Log Service."""
 
-__version__ = ""
+__version__ = "2.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

@@ -14,7 +14,7 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-from .create_channel import CreateChannel
 from .delete_channel import DeleteChannel
 from .get_channels import GetChannels
+from .public_create_channel import PublicCreateChannel
 from .update_channel import UpdateChannel

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Match Service V2 (2.2.1)
+# AccelByte Gaming Services Match Service V2 (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,6 +45,7 @@ from ..api.match2.models import ApiMatchTicketResponse
 from ..api.match2.models import ApiMatchTicketStatus
 from ..api.match2.models import ApiParty
 from ..api.match2.models import ApiPlayerData
+from ..api.match2.models import ApiPlayerMetricRecord
 from ..api.match2.models import ApiProposedProposal
 from ..api.match2.models import ApiRuleSetPayload
 from ..api.match2.models import ApiTeam
@@ -238,6 +239,12 @@ def create_api_player_data_example() -> ApiPlayerData:
     instance.attributes = {randomize(): randomize()}
     instance.party_id = randomize("uid")
     instance.player_id = randomize()
+    return instance
+
+
+def create_api_player_metric_record_example() -> ApiPlayerMetricRecord:
+    instance = ApiPlayerMetricRecord()
+    instance.player_in_queue = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsCreateContentRequestS3
 from ...models import ModelsCreateContentResponse
+from ...models import ModelsPublicCreateContentRequestS3
 from ...models import ResponseError
 
 
@@ -63,7 +63,7 @@ class CreateContentS3(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsCreateContentRequestS3 in body
+        body: (body) REQUIRED ModelsPublicCreateContentRequestS3 in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -90,7 +90,7 @@ class CreateContentS3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsCreateContentRequestS3  # REQUIRED in [body]
+    body: ModelsPublicCreateContentRequestS3  # REQUIRED in [body]
     channel_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -160,7 +160,7 @@ class CreateContentS3(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelsCreateContentRequestS3) -> CreateContentS3:
+    def with_body(self, value: ModelsPublicCreateContentRequestS3) -> CreateContentS3:
         self.body = value
         return self
 
@@ -185,7 +185,7 @@ class CreateContentS3(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelsCreateContentRequestS3()
+            result["body"] = ModelsPublicCreateContentRequestS3()
         if hasattr(self, "channel_id") and self.channel_id:
             result["channelId"] = str(self.channel_id)
         elif include_empty:
@@ -254,7 +254,7 @@ class CreateContentS3(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelsCreateContentRequestS3,
+        body: ModelsPublicCreateContentRequestS3,
         channel_id: str,
         namespace: str,
         user_id: str,
@@ -273,11 +273,11 @@ class CreateContentS3(Operation):
     ) -> CreateContentS3:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsCreateContentRequestS3.create_from_dict(
+            instance.body = ModelsPublicCreateContentRequestS3.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelsCreateContentRequestS3()
+            instance.body = ModelsPublicCreateContentRequestS3()
         if "channelId" in dict_ and dict_["channelId"] is not None:
             instance.channel_id = str(dict_["channelId"])
         elif include_empty:

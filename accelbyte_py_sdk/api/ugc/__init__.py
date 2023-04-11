@@ -135,12 +135,12 @@ from .wrappers import delete_all_user_states
 from .wrappers import delete_all_user_states_async
 
 # public_channel
-from .wrappers import create_channel
-from .wrappers import create_channel_async
 from .wrappers import delete_channel
 from .wrappers import delete_channel_async
 from .wrappers import get_channels
 from .wrappers import get_channels_async
+from .wrappers import public_create_channel
+from .wrappers import public_create_channel_async
 from .wrappers import update_channel
 from .wrappers import update_channel_async
 

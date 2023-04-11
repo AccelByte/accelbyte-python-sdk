@@ -30,6 +30,7 @@ from ....core import StrEnum
 
 
 class StrategyEnum(StrEnum):
+    CUSTOM = "CUSTOM"
     REVOKE_OR_REPORT = "REVOKE_OR_REPORT"
 
 
@@ -167,7 +168,7 @@ class DurableEntitlementRevocationConfig(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "strategy": ["REVOKE_OR_REPORT"],
+            "strategy": ["CUSTOM", "REVOKE_OR_REPORT"],
         }
 
     # endregion static methods

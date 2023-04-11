@@ -17510,6 +17510,7 @@ async def public_get_user_by_platform_user_idv3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetUserByUserIdV3)
 def public_get_user_by_user_id_v3(
     user_id: str,
@@ -17558,6 +17559,7 @@ def public_get_user_by_user_id_v3(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetUserByUserIdV3)
 async def public_get_user_by_user_id_v3_async(
     user_id: str,

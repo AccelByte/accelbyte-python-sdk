@@ -33,11 +33,14 @@ class ModelsChannelRequest(Model):
 
     Properties:
         name: (name) REQUIRED str
+
+        id_: (id) OPTIONAL str
     """
 
     # region fields
 
     name: str  # REQUIRED
+    id_: str  # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class ModelsChannelRequest(Model):
 
     def with_name(self, value: str) -> ModelsChannelRequest:
         self.name = value
+        return self
+
+    def with_id(self, value: str) -> ModelsChannelRequest:
+        self.id_ = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class ModelsChannelRequest(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "id_"):
+            result["id"] = str(self.id_)
+        elif include_empty:
+            result["id"] = ""
         return result
 
     # endregion to methods
@@ -64,9 +75,13 @@ class ModelsChannelRequest(Model):
     # region static methods
 
     @classmethod
-    def create(cls, name: str, **kwargs) -> ModelsChannelRequest:
+    def create(
+        cls, name: str, id_: Optional[str] = None, **kwargs
+    ) -> ModelsChannelRequest:
         instance = cls()
         instance.name = name
+        if id_ is not None:
+            instance.id_ = id_
         return instance
 
     @classmethod
@@ -80,6 +95,10 @@ class ModelsChannelRequest(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "id" in dict_ and dict_["id"] is not None:
+            instance.id_ = str(dict_["id"])
+        elif include_empty:
+            instance.id_ = ""
         return instance
 
     @classmethod
@@ -124,12 +143,14 @@ class ModelsChannelRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "name": "name",
+            "id": "id_",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "name": True,
+            "id": False,
         }
 
     # endregion static methods

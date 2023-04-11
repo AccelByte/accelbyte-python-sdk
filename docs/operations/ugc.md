@@ -88,9 +88,9 @@
 ### Public Channel
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels | POST | CreateChannel | `false` | [CreateChannel](../../accelbyte_py_sdk/api/ugc/operations/public_channel/create_channel.py) | [create_channel](../../accelbyte_py_sdk/api/ugc/wrappers/_public_channel.py) | [accelbyte_py_sdk_cli ugc-create-channel](../../samples/cli/accelbyte_py_sdk_cli/ugc/_create_channel.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId} | DELETE | DeleteChannel | `false` | [DeleteChannel](../../accelbyte_py_sdk/api/ugc/operations/public_channel/delete_channel.py) | [delete_channel](../../accelbyte_py_sdk/api/ugc/wrappers/_public_channel.py) | [accelbyte_py_sdk_cli ugc-delete-channel](../../samples/cli/accelbyte_py_sdk_cli/ugc/_delete_channel.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels | GET | GetChannels | `false` | [GetChannels](../../accelbyte_py_sdk/api/ugc/operations/public_channel/get_channels.py) | [get_channels](../../accelbyte_py_sdk/api/ugc/wrappers/_public_channel.py) | [accelbyte_py_sdk_cli ugc-get-channels](../../samples/cli/accelbyte_py_sdk_cli/ugc/_get_channels.py) |
+| /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels | POST | PublicCreateChannel | `false` | [PublicCreateChannel](../../accelbyte_py_sdk/api/ugc/operations/public_channel/public_create_channel.py) | [public_create_channel](../../accelbyte_py_sdk/api/ugc/wrappers/_public_channel.py) | [accelbyte_py_sdk_cli ugc-public-create-channel](../../samples/cli/accelbyte_py_sdk_cli/ugc/_public_create_channel.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId} | PUT | UpdateChannel | `false` | [UpdateChannel](../../accelbyte_py_sdk/api/ugc/operations/public_channel/update_channel.py) | [update_channel](../../accelbyte_py_sdk/api/ugc/wrappers/_public_channel.py) | [accelbyte_py_sdk_cli ugc-update-channel](../../samples/cli/accelbyte_py_sdk_cli/ugc/_update_channel.py) |
 
 ### Public Content
@@ -169,7 +169,6 @@
 | models.ContentDownloadResponse | [ModelsContentDownloadResponse](../../accelbyte_py_sdk/api/ugc/models/models_content_download_response.py) |
 | models.ContentLikeRequest | [ModelsContentLikeRequest](../../accelbyte_py_sdk/api/ugc/models/models_content_like_request.py) |
 | models.ContentLikeResponse | [ModelsContentLikeResponse](../../accelbyte_py_sdk/api/ugc/models/models_content_like_response.py) |
-| models.ContentRequest | [ModelsContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_content_request.py) |
 | models.CreateContentRequest | [ModelsCreateContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_create_content_request.py) |
 | models.CreateContentRequestS3 | [ModelsCreateContentRequestS3](../../accelbyte_py_sdk/api/ugc/models/models_create_content_request_s3.py) |
 | models.CreateContentResponse | [ModelsCreateContentResponse](../../accelbyte_py_sdk/api/ugc/models/models_create_content_response.py) |
@@ -198,8 +197,12 @@
 | models.PayloadURL | [ModelsPayloadURL](../../accelbyte_py_sdk/api/ugc/models/models_payload_url.py) |
 | models.previewMetadata | [ModelsPreviewMetadata](../../accelbyte_py_sdk/api/ugc/models/models_preview_metadata.py) |
 | models.PreviewURL | [ModelsPreviewURL](../../accelbyte_py_sdk/api/ugc/models/models_preview_url.py) |
+| models.PublicChannelRequest | [ModelsPublicChannelRequest](../../accelbyte_py_sdk/api/ugc/models/models_public_channel_request.py) |
+| models.PublicCreateContentRequestS3 | [ModelsPublicCreateContentRequestS3](../../accelbyte_py_sdk/api/ugc/models/models_public_create_content_request_s3.py) |
 | models.PublicGetContentBulkRequest | [ModelsPublicGetContentBulkRequest](../../accelbyte_py_sdk/api/ugc/models/models_public_get_content_bulk_request.py) |
 | models.ScreenshotResponse | [ModelsScreenshotResponse](../../accelbyte_py_sdk/api/ugc/models/models_screenshot_response.py) |
+| models.UpdateChannelRequest | [ModelsUpdateChannelRequest](../../accelbyte_py_sdk/api/ugc/models/models_update_channel_request.py) |
+| models.UpdateContentRequest | [ModelsUpdateContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_update_content_request.py) |
 | models.updateScreenshot | [ModelsUpdateScreenshot](../../accelbyte_py_sdk/api/ugc/models/models_update_screenshot.py) |
 | models.UpdateScreenshotRequest | [ModelsUpdateScreenshotRequest](../../accelbyte_py_sdk/api/ugc/models/models_update_screenshot_request.py) |
 | models.UpdateScreenshotResponse | [ModelsUpdateScreenshotResponse](../../accelbyte_py_sdk/api/ugc/models/models_update_screenshot_response.py) |

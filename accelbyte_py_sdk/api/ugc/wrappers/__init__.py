@@ -128,12 +128,12 @@ from ._anonymization import delete_all_user_group_async
 from ._anonymization import delete_all_user_states
 from ._anonymization import delete_all_user_states_async
 
-from ._public_channel import create_channel
-from ._public_channel import create_channel_async
 from ._public_channel import delete_channel
 from ._public_channel import delete_channel_async
 from ._public_channel import get_channels
 from ._public_channel import get_channels_async
+from ._public_channel import public_create_channel
+from ._public_channel import public_create_channel_async
 from ._public_channel import update_channel
 from ._public_channel import update_channel_async
 

@@ -27,6 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.consumable_entitlement_revocation_config import (
+    ConsumableEntitlementRevocationConfig,
+)
 from ..models.durable_entitlement_revocation_config import (
     DurableEntitlementRevocationConfig,
 )
@@ -36,16 +39,25 @@ class EntitlementRevocationConfig(Model):
     """Entitlement revocation config (EntitlementRevocationConfig)
 
     Properties:
+        consumable: (consumable) OPTIONAL ConsumableEntitlementRevocationConfig
+
         durable: (durable) OPTIONAL DurableEntitlementRevocationConfig
     """
 
     # region fields
 
+    consumable: ConsumableEntitlementRevocationConfig  # OPTIONAL
     durable: DurableEntitlementRevocationConfig  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_consumable(
+        self, value: ConsumableEntitlementRevocationConfig
+    ) -> EntitlementRevocationConfig:
+        self.consumable = value
+        return self
 
     def with_durable(
         self, value: DurableEntitlementRevocationConfig
@@ -59,6 +71,10 @@ class EntitlementRevocationConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "consumable"):
+            result["consumable"] = self.consumable.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["consumable"] = ConsumableEntitlementRevocationConfig()
         if hasattr(self, "durable"):
             result["durable"] = self.durable.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -71,9 +87,14 @@ class EntitlementRevocationConfig(Model):
 
     @classmethod
     def create(
-        cls, durable: Optional[DurableEntitlementRevocationConfig] = None, **kwargs
+        cls,
+        consumable: Optional[ConsumableEntitlementRevocationConfig] = None,
+        durable: Optional[DurableEntitlementRevocationConfig] = None,
+        **kwargs,
     ) -> EntitlementRevocationConfig:
         instance = cls()
+        if consumable is not None:
+            instance.consumable = consumable
         if durable is not None:
             instance.durable = durable
         return instance
@@ -85,6 +106,14 @@ class EntitlementRevocationConfig(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "consumable" in dict_ and dict_["consumable"] is not None:
+            instance.consumable = (
+                ConsumableEntitlementRevocationConfig.create_from_dict(
+                    dict_["consumable"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.consumable = ConsumableEntitlementRevocationConfig()
         if "durable" in dict_ and dict_["durable"] is not None:
             instance.durable = DurableEntitlementRevocationConfig.create_from_dict(
                 dict_["durable"], include_empty=include_empty
@@ -134,12 +163,14 @@ class EntitlementRevocationConfig(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "consumable": "consumable",
             "durable": "durable",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "consumable": False,
             "durable": False,
         }
 

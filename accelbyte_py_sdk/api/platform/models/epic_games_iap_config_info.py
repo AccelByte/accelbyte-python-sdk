@@ -34,13 +34,13 @@ class EpicGamesIAPConfigInfo(Model):
     Properties:
         namespace: (namespace) REQUIRED str
 
-        sandbox_id: (sandboxId) REQUIRED str
+        sandbox_id: (sandboxId) OPTIONAL str
     """
 
     # region fields
 
     namespace: str  # REQUIRED
-    sandbox_id: str  # REQUIRED
+    sandbox_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -76,11 +76,12 @@ class EpicGamesIAPConfigInfo(Model):
 
     @classmethod
     def create(
-        cls, namespace: str, sandbox_id: str, **kwargs
+        cls, namespace: str, sandbox_id: Optional[str] = None, **kwargs
     ) -> EpicGamesIAPConfigInfo:
         instance = cls()
         instance.namespace = namespace
-        instance.sandbox_id = sandbox_id
+        if sandbox_id is not None:
+            instance.sandbox_id = sandbox_id
         return instance
 
     @classmethod
@@ -149,7 +150,7 @@ class EpicGamesIAPConfigInfo(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "sandboxId": True,
+            "sandboxId": False,
         }
 
     # endregion static methods

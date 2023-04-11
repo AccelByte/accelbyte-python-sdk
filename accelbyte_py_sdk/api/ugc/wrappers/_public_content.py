@@ -31,15 +31,15 @@ from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsContentDownloadResponse
-from ..models import ModelsContentRequest
 from ..models import ModelsCreateContentRequest
-from ..models import ModelsCreateContentRequestS3
 from ..models import ModelsCreateContentResponse
 from ..models import ModelsCreateScreenshotRequest
 from ..models import ModelsCreateScreenshotResponse
 from ..models import ModelsGetContentPreviewResponse
 from ..models import ModelsPaginatedContentDownloadResponse
+from ..models import ModelsPublicCreateContentRequestS3
 from ..models import ModelsPublicGetContentBulkRequest
+from ..models import ModelsUpdateContentRequest
 from ..models import ModelsUpdateScreenshotRequest
 from ..models import ModelsUpdateScreenshotResponse
 from ..models import ResponseError
@@ -189,7 +189,7 @@ async def create_content_direct_async(
 
 @same_doc_as(CreateContentS3)
 def create_content_s3(
-    body: ModelsCreateContentRequestS3,
+    body: ModelsPublicCreateContentRequestS3,
     channel_id: str,
     user_id: str,
     namespace: Optional[str] = None,
@@ -224,7 +224,7 @@ def create_content_s3(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsCreateContentRequestS3 in body
+        body: (body) REQUIRED ModelsPublicCreateContentRequestS3 in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -256,7 +256,7 @@ def create_content_s3(
 
 @same_doc_as(CreateContentS3)
 async def create_content_s3_async(
-    body: ModelsCreateContentRequestS3,
+    body: ModelsPublicCreateContentRequestS3,
     channel_id: str,
     user_id: str,
     namespace: Optional[str] = None,
@@ -291,7 +291,7 @@ async def create_content_s3_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsCreateContentRequestS3 in body
+        body: (body) REQUIRED ModelsPublicCreateContentRequestS3 in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -1669,7 +1669,7 @@ async def update_content_direct_async(
 
 @same_doc_as(UpdateContentS3)
 def update_content_s3(
-    body: ModelsContentRequest,
+    body: ModelsUpdateContentRequest,
     channel_id: str,
     content_id: str,
     user_id: str,
@@ -1705,7 +1705,7 @@ def update_content_s3(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsContentRequest in body
+        body: (body) REQUIRED ModelsUpdateContentRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -1742,7 +1742,7 @@ def update_content_s3(
 
 @same_doc_as(UpdateContentS3)
 async def update_content_s3_async(
-    body: ModelsContentRequest,
+    body: ModelsUpdateContentRequest,
     channel_id: str,
     content_id: str,
     user_id: str,
@@ -1778,7 +1778,7 @@ async def update_content_s3_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsContentRequest in body
+        body: (body) REQUIRED ModelsUpdateContentRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.7.3"
+__version__ = "2.7.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -28,6 +28,12 @@ from .apimodels_create_configuration_template_request import (
 )
 from .apimodels_create_game_session_request import ApimodelsCreateGameSessionRequest
 from .apimodels_create_party_request import ApimodelsCreatePartyRequest
+from .apimodels_delete_bulk_game_session_request import (
+    ApimodelsDeleteBulkGameSessionRequest,
+)
+from .apimodels_delete_bulk_game_sessions_api_response import (
+    ApimodelsDeleteBulkGameSessionsAPIResponse,
+)
 from .apimodels_ds_information_response import ApimodelsDSInformationResponse
 from .apimodels_game_session_query_response import ApimodelsGameSessionQueryResponse
 from .apimodels_game_session_response import ApimodelsGameSessionResponse
@@ -45,6 +51,9 @@ from .apimodels_player_attributes_response_body import (
 from .apimodels_promote_leader_request import ApimodelsPromoteLeaderRequest
 from .apimodels_public_configuration import ApimodelsPublicConfiguration
 from .apimodels_request_member import ApimodelsRequestMember
+from .apimodels_response_delete_bulk_game_sessions import (
+    ApimodelsResponseDeleteBulkGameSessions,
+)
 from .apimodels_session_invite_request import ApimodelsSessionInviteRequest
 from .apimodels_update_configuration_template_request import (
     ApimodelsUpdateConfigurationTemplateRequest,

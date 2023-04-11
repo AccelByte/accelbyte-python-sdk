@@ -319,7 +319,9 @@ class HttpxHttpClient(HttpClient):
             k: v for k, v in kwargs.items() if k in self.allowed_kwarg_keys
         }
         if "timeout" in filtered_kwargs:  # overwrite timeout value
-            request.extensions["timeout"] = httpx.Timeout(filtered_kwargs["timeout"]).as_dict()
+            request.extensions["timeout"] = httpx.Timeout(
+                filtered_kwargs["timeout"]
+            ).as_dict()
         while True:
             self.log_request(request)
             raw_response = self.client.send(request)

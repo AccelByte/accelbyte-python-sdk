@@ -37,17 +37,6 @@ class ChannelEnum(StrEnum):
     INTERNAL = "INTERNAL"
 
 
-class PaymentProviderEnum(StrEnum):
-    ADYEN = "ADYEN"
-    ALIPAY = "ALIPAY"
-    CHECKOUT = "CHECKOUT"
-    PAYPAL = "PAYPAL"
-    STRIPE = "STRIPE"
-    WALLET = "WALLET"
-    WXPAY = "WXPAY"
-    XSOLLA = "XSOLLA"
-
-
 class StatusEnum(StrEnum):
     AUTHORISED = "AUTHORISED"
     AUTHORISE_FAILED = "AUTHORISE_FAILED"
@@ -78,6 +67,17 @@ class ItemTypeEnum(StrEnum):
     SUBSCRIPTION = "SUBSCRIPTION"
 
 
+class PaymentProviderEnum(StrEnum):
+    ADYEN = "ADYEN"
+    ALIPAY = "ALIPAY"
+    CHECKOUT = "CHECKOUT"
+    PAYPAL = "PAYPAL"
+    STRIPE = "STRIPE"
+    WALLET = "WALLET"
+    WXPAY = "WXPAY"
+    XSOLLA = "XSOLLA"
+
+
 class PaymentOrderInfo(Model):
     """Payment order info (PaymentOrderInfo)
 
@@ -93,8 +93,6 @@ class PaymentOrderInfo(Model):
         namespace: (namespace) REQUIRED str
 
         payment_order_no: (paymentOrderNo) REQUIRED str
-
-        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum]
 
         price: (price) REQUIRED int
 
@@ -139,6 +137,8 @@ class PaymentOrderInfo(Model):
         payment_method: (paymentMethod) OPTIONAL str
 
         payment_method_fee: (paymentMethodFee) OPTIONAL int
+
+        payment_provider: (paymentProvider) OPTIONAL Union[str, PaymentProviderEnum]
 
         payment_provider_fee: (paymentProviderFee) OPTIONAL int
 
@@ -185,7 +185,6 @@ class PaymentOrderInfo(Model):
     ext_order_no: str  # REQUIRED
     namespace: str  # REQUIRED
     payment_order_no: str  # REQUIRED
-    payment_provider: Union[str, PaymentProviderEnum]  # REQUIRED
     price: int  # REQUIRED
     sandbox: bool  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
@@ -208,6 +207,7 @@ class PaymentOrderInfo(Model):
     omit_notification: bool  # OPTIONAL
     payment_method: str  # OPTIONAL
     payment_method_fee: int  # OPTIONAL
+    payment_provider: Union[str, PaymentProviderEnum]  # OPTIONAL
     payment_provider_fee: int  # OPTIONAL
     payment_station_url: str  # OPTIONAL
     recurring_payment_order_no: str  # OPTIONAL
@@ -253,12 +253,6 @@ class PaymentOrderInfo(Model):
 
     def with_payment_order_no(self, value: str) -> PaymentOrderInfo:
         self.payment_order_no = value
-        return self
-
-    def with_payment_provider(
-        self, value: Union[str, PaymentProviderEnum]
-    ) -> PaymentOrderInfo:
-        self.payment_provider = value
         return self
 
     def with_price(self, value: int) -> PaymentOrderInfo:
@@ -347,6 +341,12 @@ class PaymentOrderInfo(Model):
 
     def with_payment_method_fee(self, value: int) -> PaymentOrderInfo:
         self.payment_method_fee = value
+        return self
+
+    def with_payment_provider(
+        self, value: Union[str, PaymentProviderEnum]
+    ) -> PaymentOrderInfo:
+        self.payment_provider = value
         return self
 
     def with_payment_provider_fee(self, value: int) -> PaymentOrderInfo:
@@ -451,10 +451,6 @@ class PaymentOrderInfo(Model):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
             result["paymentOrderNo"] = ""
-        if hasattr(self, "payment_provider"):
-            result["paymentProvider"] = str(self.payment_provider)
-        elif include_empty:
-            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
@@ -545,6 +541,10 @@ class PaymentOrderInfo(Model):
             result["paymentMethodFee"] = int(self.payment_method_fee)
         elif include_empty:
             result["paymentMethodFee"] = 0
+        if hasattr(self, "payment_provider"):
+            result["paymentProvider"] = str(self.payment_provider)
+        elif include_empty:
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "payment_provider_fee"):
             result["paymentProviderFee"] = int(self.payment_provider_fee)
         elif include_empty:
@@ -634,7 +634,6 @@ class PaymentOrderInfo(Model):
         ext_order_no: str,
         namespace: str,
         payment_order_no: str,
-        payment_provider: Union[str, PaymentProviderEnum],
         price: int,
         sandbox: bool,
         status: Union[str, StatusEnum],
@@ -657,6 +656,7 @@ class PaymentOrderInfo(Model):
         omit_notification: Optional[bool] = None,
         payment_method: Optional[str] = None,
         payment_method_fee: Optional[int] = None,
+        payment_provider: Optional[Union[str, PaymentProviderEnum]] = None,
         payment_provider_fee: Optional[int] = None,
         payment_station_url: Optional[str] = None,
         recurring_payment_order_no: Optional[str] = None,
@@ -684,7 +684,6 @@ class PaymentOrderInfo(Model):
         instance.ext_order_no = ext_order_no
         instance.namespace = namespace
         instance.payment_order_no = payment_order_no
-        instance.payment_provider = payment_provider
         instance.price = price
         instance.sandbox = sandbox
         instance.status = status
@@ -723,6 +722,8 @@ class PaymentOrderInfo(Model):
             instance.payment_method = payment_method
         if payment_method_fee is not None:
             instance.payment_method_fee = payment_method_fee
+        if payment_provider is not None:
+            instance.payment_provider = payment_provider
         if payment_provider_fee is not None:
             instance.payment_provider_fee = payment_provider_fee
         if payment_station_url is not None:
@@ -794,10 +795,6 @@ class PaymentOrderInfo(Model):
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
             instance.payment_order_no = ""
-        if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
-            instance.payment_provider = str(dict_["paymentProvider"])
-        elif include_empty:
-            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:
@@ -893,6 +890,10 @@ class PaymentOrderInfo(Model):
             instance.payment_method_fee = int(dict_["paymentMethodFee"])
         elif include_empty:
             instance.payment_method_fee = 0
+        if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
+            instance.payment_provider = str(dict_["paymentProvider"])
+        elif include_empty:
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
             instance.payment_provider_fee = int(dict_["paymentProviderFee"])
         elif include_empty:
@@ -1016,7 +1017,6 @@ class PaymentOrderInfo(Model):
             "extOrderNo": "ext_order_no",
             "namespace": "namespace",
             "paymentOrderNo": "payment_order_no",
-            "paymentProvider": "payment_provider",
             "price": "price",
             "sandbox": "sandbox",
             "status": "status",
@@ -1039,6 +1039,7 @@ class PaymentOrderInfo(Model):
             "omitNotification": "omit_notification",
             "paymentMethod": "payment_method",
             "paymentMethodFee": "payment_method_fee",
+            "paymentProvider": "payment_provider",
             "paymentProviderFee": "payment_provider_fee",
             "paymentStationUrl": "payment_station_url",
             "recurringPaymentOrderNo": "recurring_payment_order_no",
@@ -1068,7 +1069,6 @@ class PaymentOrderInfo(Model):
             "extOrderNo": True,
             "namespace": True,
             "paymentOrderNo": True,
-            "paymentProvider": True,
             "price": True,
             "sandbox": True,
             "status": True,
@@ -1091,6 +1091,7 @@ class PaymentOrderInfo(Model):
             "omitNotification": False,
             "paymentMethod": False,
             "paymentMethodFee": False,
+            "paymentProvider": False,
             "paymentProviderFee": False,
             "paymentStationUrl": False,
             "recurringPaymentOrderNo": False,
@@ -1115,16 +1116,6 @@ class PaymentOrderInfo(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "channel": ["EXTERNAL", "INTERNAL"],
-            "paymentProvider": [
-                "ADYEN",
-                "ALIPAY",
-                "CHECKOUT",
-                "PAYPAL",
-                "STRIPE",
-                "WALLET",
-                "WXPAY",
-                "XSOLLA",
-            ],
             "status": [
                 "AUTHORISED",
                 "AUTHORISE_FAILED",
@@ -1152,6 +1143,16 @@ class PaymentOrderInfo(Model):
                 "OPTIONBOX",
                 "SEASON",
                 "SUBSCRIPTION",
+            ],
+            "paymentProvider": [
+                "ADYEN",
+                "ALIPAY",
+                "CHECKOUT",
+                "PAYPAL",
+                "STRIPE",
+                "WALLET",
+                "WXPAY",
+                "XSOLLA",
             ],
         }
 

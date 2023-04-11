@@ -16,7 +16,7 @@ __email__ = "dev@accelbyte.net"
 
 from .delete_revocation_config import DeleteRevocationConfig
 from .do_revocation import DoRevocation
-from .get_payment_callback_config_1 import GetPaymentCallbackConfig1
+from .get_revocation_config import GetRevocationConfig
 from .query_revocation_histories import QueryRevocationHistories
 from .query_revocation_histories import (
     SourceEnum as QueryRevocationHistoriesSourceEnum,

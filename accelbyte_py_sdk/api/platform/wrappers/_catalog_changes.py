@@ -500,7 +500,7 @@ def query_changes(
         updated_at_start: (updatedAtStart) OPTIONAL str in query
 
     Responses:
-        200: OK - List[CatalogChangePagingSlicedResult] (successful operation)
+        200: OK - CatalogChangePagingSlicedResult (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -594,7 +594,7 @@ async def query_changes_async(
         updated_at_start: (updatedAtStart) OPTIONAL str in query
 
     Responses:
-        200: OK - List[CatalogChangePagingSlicedResult] (successful operation)
+        200: OK - CatalogChangePagingSlicedResult (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

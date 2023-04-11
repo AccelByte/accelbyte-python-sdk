@@ -1501,8 +1501,8 @@ def create_model_invite_user_request_v4_example() -> ModelInviteUserRequestV4:
     instance.assigned_namespaces = [randomize()]
     instance.email_addresses = [randomize()]
     instance.is_admin = randomize("bool")
-    instance.role_id = randomize("uid")
     instance.namespace = randomize("slug")
+    instance.role_id = randomize("uid")
     return instance
 
 
@@ -2790,6 +2790,7 @@ def create_oauthmodel_token_response_example() -> OauthmodelTokenResponse:
     instance.roles = [randomize()]
     instance.token_type = randomize()
     instance.user_id = randomize("uid")
+    instance.device_id = randomize()
     instance.is_comply = randomize("bool")
     instance.jflgs = randomize("int", min_val=1, max_val=1000)
     instance.platform_id = randomize()

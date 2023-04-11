@@ -31,6 +31,8 @@ from ....core import same_doc_as
 
 from ..models import ApimodelsAppendTeamGameSessionRequest
 from ..models import ApimodelsCreateGameSessionRequest
+from ..models import ApimodelsDeleteBulkGameSessionRequest
+from ..models import ApimodelsDeleteBulkGameSessionsAPIResponse
 from ..models import ApimodelsGameSessionQueryResponse
 from ..models import ApimodelsGameSessionResponse
 from ..models import ApimodelsSessionInviteRequest
@@ -39,6 +41,7 @@ from ..models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..models import ApimodelsUpdateGameSessionRequest
 from ..models import ResponseError
 
+from ..operations.game_session import AdminDeleteBulkGameSessions
 from ..operations.game_session import AdminQueryGameSessions
 from ..operations.game_session import AdminUpdateGameSessionMember
 from ..operations.game_session import AppendTeamGameSession
@@ -55,6 +58,108 @@ from ..operations.game_session import PublicQueryGameSessions
 from ..operations.game_session import PublicQueryMyGameSessions
 from ..operations.game_session import UpdateGameSession
 from ..operations.game_session import UpdateGameSessionBackfillTicketID
+
+
+@same_doc_as(AdminDeleteBulkGameSessions)
+def admin_delete_bulk_game_sessions(
+    body: ApimodelsDeleteBulkGameSessionRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete bulk game sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [DELETE] (adminDeleteBulkGameSessions)
+
+    Delete bulk game sessions.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions/bulk
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsDeleteBulkGameSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsDeleteBulkGameSessionsAPIResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteBulkGameSessions.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminDeleteBulkGameSessions)
+async def admin_delete_bulk_game_sessions_async(
+    body: ApimodelsDeleteBulkGameSessionRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete bulk game sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [DELETE] (adminDeleteBulkGameSessions)
+
+    Delete bulk game sessions.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions/bulk
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsDeleteBulkGameSessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsDeleteBulkGameSessionsAPIResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteBulkGameSessions.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminQueryGameSessions)

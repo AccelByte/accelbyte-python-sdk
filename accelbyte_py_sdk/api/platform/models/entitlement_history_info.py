@@ -57,7 +57,11 @@ class EntitlementHistoryInfo(Model):
 
         user_id: (userId) REQUIRED str
 
+        reason: (reason) OPTIONAL str
+
         use_count: (useCount) OPTIONAL int
+
+        use_count_change: (useCountChange) OPTIONAL int
     """
 
     # region fields
@@ -69,7 +73,9 @@ class EntitlementHistoryInfo(Model):
     operator: str  # REQUIRED
     updated_at: str  # REQUIRED
     user_id: str  # REQUIRED
+    reason: str  # OPTIONAL
     use_count: int  # OPTIONAL
+    use_count_change: int  # OPTIONAL
 
     # endregion fields
 
@@ -103,8 +109,16 @@ class EntitlementHistoryInfo(Model):
         self.user_id = value
         return self
 
+    def with_reason(self, value: str) -> EntitlementHistoryInfo:
+        self.reason = value
+        return self
+
     def with_use_count(self, value: int) -> EntitlementHistoryInfo:
         self.use_count = value
+        return self
+
+    def with_use_count_change(self, value: int) -> EntitlementHistoryInfo:
+        self.use_count_change = value
         return self
 
     # endregion with_x methods
@@ -141,10 +155,18 @@ class EntitlementHistoryInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "reason"):
+            result["reason"] = str(self.reason)
+        elif include_empty:
+            result["reason"] = ""
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
             result["useCount"] = 0
+        if hasattr(self, "use_count_change"):
+            result["useCountChange"] = int(self.use_count_change)
+        elif include_empty:
+            result["useCountChange"] = 0
         return result
 
     # endregion to methods
@@ -161,7 +183,9 @@ class EntitlementHistoryInfo(Model):
         operator: str,
         updated_at: str,
         user_id: str,
+        reason: Optional[str] = None,
         use_count: Optional[int] = None,
+        use_count_change: Optional[int] = None,
         **kwargs,
     ) -> EntitlementHistoryInfo:
         instance = cls()
@@ -172,8 +196,12 @@ class EntitlementHistoryInfo(Model):
         instance.operator = operator
         instance.updated_at = updated_at
         instance.user_id = user_id
+        if reason is not None:
+            instance.reason = reason
         if use_count is not None:
             instance.use_count = use_count
+        if use_count_change is not None:
+            instance.use_count_change = use_count_change
         return instance
 
     @classmethod
@@ -211,10 +239,18 @@ class EntitlementHistoryInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "reason" in dict_ and dict_["reason"] is not None:
+            instance.reason = str(dict_["reason"])
+        elif include_empty:
+            instance.reason = ""
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
             instance.use_count = 0
+        if "useCountChange" in dict_ and dict_["useCountChange"] is not None:
+            instance.use_count_change = int(dict_["useCountChange"])
+        elif include_empty:
+            instance.use_count_change = 0
         return instance
 
     @classmethod
@@ -265,7 +301,9 @@ class EntitlementHistoryInfo(Model):
             "operator": "operator",
             "updatedAt": "updated_at",
             "userId": "user_id",
+            "reason": "reason",
             "useCount": "use_count",
+            "useCountChange": "use_count_change",
         }
 
     @staticmethod
@@ -278,7 +316,9 @@ class EntitlementHistoryInfo(Model):
             "operator": True,
             "updatedAt": True,
             "userId": True,
+            "reason": False,
             "useCount": False,
+            "useCountChange": False,
         }
 
     @staticmethod

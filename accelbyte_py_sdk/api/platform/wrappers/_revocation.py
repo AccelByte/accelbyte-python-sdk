@@ -38,7 +38,7 @@ from ..models import RevocationResult
 
 from ..operations.revocation import DeleteRevocationConfig
 from ..operations.revocation import DoRevocation
-from ..operations.revocation import GetPaymentCallbackConfig1
+from ..operations.revocation import GetRevocationConfig
 from ..operations.revocation import QueryRevocationHistories
 from ..operations.revocation import (
     QueryRevocationHistoriesSourceEnum,
@@ -235,13 +235,13 @@ async def do_revocation_async(
     )
 
 
-@same_doc_as(GetPaymentCallbackConfig1)
-def get_payment_callback_config_1(
+@same_doc_as(GetRevocationConfig)
+def get_revocation_config(
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get revocation configuration (getPaymentCallbackConfig_1)
+    """Get revocation configuration (getRevocationConfig)
 
     Get revocation configuration.
     Other detail info:
@@ -273,19 +273,19 @@ def get_payment_callback_config_1(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetPaymentCallbackConfig1.create(
+    request = GetRevocationConfig.create(
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(GetPaymentCallbackConfig1)
-async def get_payment_callback_config_1_async(
+@same_doc_as(GetRevocationConfig)
+async def get_revocation_config_async(
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get revocation configuration (getPaymentCallbackConfig_1)
+    """Get revocation configuration (getRevocationConfig)
 
     Get revocation configuration.
     Other detail info:
@@ -317,7 +317,7 @@ async def get_payment_callback_config_1_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetPaymentCallbackConfig1.create(
+    request = GetRevocationConfig.create(
         namespace=namespace,
     )
     return await run_request_async(

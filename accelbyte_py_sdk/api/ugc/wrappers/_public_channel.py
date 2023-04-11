@@ -29,127 +29,16 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import ModelsChannelRequest
 from ..models import ModelsChannelResponse
 from ..models import ModelsPaginatedGetChannelResponse
+from ..models import ModelsPublicChannelRequest
+from ..models import ModelsUpdateChannelRequest
 from ..models import ResponseError
 
-from ..operations.public_channel import CreateChannel
 from ..operations.public_channel import DeleteChannel
 from ..operations.public_channel import GetChannels
+from ..operations.public_channel import PublicCreateChannel
 from ..operations.public_channel import UpdateChannel
-
-
-@same_doc_as(CreateChannel)
-def create_channel(
-    body: ModelsChannelRequest,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Create Channel (CreateChannel)
-
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
-
-    Properties:
-        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
-
-        method: POST
-
-        tags: ["Public Channel"]
-
-        consumes: ["application/json", "application/octet-stream"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) REQUIRED ModelsChannelRequest in body
-
-        namespace: (namespace) REQUIRED str in path
-
-        user_id: (userId) REQUIRED str in path
-
-    Responses:
-        201: Created - ModelsChannelResponse (Created)
-
-        400: Bad Request - ResponseError (Bad Request)
-
-        401: Unauthorized - ResponseError (Unauthorized)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = CreateChannel.create(
-        body=body,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(CreateChannel)
-async def create_channel_async(
-    body: ModelsChannelRequest,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Create Channel (CreateChannel)
-
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
-
-    Properties:
-        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
-
-        method: POST
-
-        tags: ["Public Channel"]
-
-        consumes: ["application/json", "application/octet-stream"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) REQUIRED ModelsChannelRequest in body
-
-        namespace: (namespace) REQUIRED str in path
-
-        user_id: (userId) REQUIRED str in path
-
-    Responses:
-        201: Created - ModelsChannelResponse (Created)
-
-        400: Bad Request - ResponseError (Bad Request)
-
-        401: Unauthorized - ResponseError (Unauthorized)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = CreateChannel.create(
-        body=body,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
 
 
 @same_doc_as(DeleteChannel)
@@ -384,9 +273,121 @@ async def get_channels_async(
     )
 
 
+@same_doc_as(PublicCreateChannel)
+def public_create_channel(
+    body: ModelsPublicChannelRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create Channel (PublicCreateChannel)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
+
+        method: POST
+
+        tags: ["Public Channel"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPublicChannelRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsChannelResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicCreateChannel.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicCreateChannel)
+async def public_create_channel_async(
+    body: ModelsPublicChannelRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create Channel (PublicCreateChannel)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
+
+        method: POST
+
+        tags: ["Public Channel"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsPublicChannelRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsChannelResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicCreateChannel.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(UpdateChannel)
 def update_channel(
-    body: ModelsChannelRequest,
+    body: ModelsUpdateChannelRequest,
     channel_id: str,
     user_id: str,
     namespace: Optional[str] = None,
@@ -413,7 +414,7 @@ def update_channel(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsChannelRequest in body
+        body: (body) REQUIRED ModelsUpdateChannelRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -447,7 +448,7 @@ def update_channel(
 
 @same_doc_as(UpdateChannel)
 async def update_channel_async(
-    body: ModelsChannelRequest,
+    body: ModelsUpdateChannelRequest,
     channel_id: str,
     user_id: str,
     namespace: Optional[str] = None,
@@ -474,7 +475,7 @@ async def update_channel_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsChannelRequest in body
+        body: (body) REQUIRED ModelsUpdateChannelRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 

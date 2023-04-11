@@ -57,6 +57,8 @@ class ItemRevocation(Model):
     Properties:
         credit_revocations: (creditRevocations) OPTIONAL List[CreditRevocation]
 
+        custom_revocation: (customRevocation) OPTIONAL Dict[str, Any]
+
         entitlement_revocations: (entitlementRevocations) OPTIONAL List[EntitlementRevocation]
 
         item_id: (itemId) OPTIONAL str
@@ -69,22 +71,29 @@ class ItemRevocation(Model):
 
         quantity: (quantity) OPTIONAL int
 
+        reason: (reason) OPTIONAL str
+
         skipped: (skipped) OPTIONAL bool
 
         status: (status) OPTIONAL Union[str, StatusEnum]
+
+        strategy: (strategy) OPTIONAL str
     """
 
     # region fields
 
     credit_revocations: List[CreditRevocation]  # OPTIONAL
+    custom_revocation: Dict[str, Any]  # OPTIONAL
     entitlement_revocations: List[EntitlementRevocation]  # OPTIONAL
     item_id: str  # OPTIONAL
     item_revocations: List[ItemRevocation]  # OPTIONAL
     item_sku: str  # OPTIONAL
     item_type: Union[str, ItemTypeEnum]  # OPTIONAL
     quantity: int  # OPTIONAL
+    reason: str  # OPTIONAL
     skipped: bool  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
+    strategy: str  # OPTIONAL
 
     # endregion fields
 
@@ -92,6 +101,10 @@ class ItemRevocation(Model):
 
     def with_credit_revocations(self, value: List[CreditRevocation]) -> ItemRevocation:
         self.credit_revocations = value
+        return self
+
+    def with_custom_revocation(self, value: Dict[str, Any]) -> ItemRevocation:
+        self.custom_revocation = value
         return self
 
     def with_entitlement_revocations(
@@ -120,12 +133,20 @@ class ItemRevocation(Model):
         self.quantity = value
         return self
 
+    def with_reason(self, value: str) -> ItemRevocation:
+        self.reason = value
+        return self
+
     def with_skipped(self, value: bool) -> ItemRevocation:
         self.skipped = value
         return self
 
     def with_status(self, value: Union[str, StatusEnum]) -> ItemRevocation:
         self.status = value
+        return self
+
+    def with_strategy(self, value: str) -> ItemRevocation:
+        self.strategy = value
         return self
 
     # endregion with_x methods
@@ -141,6 +162,12 @@ class ItemRevocation(Model):
             ]
         elif include_empty:
             result["creditRevocations"] = []
+        if hasattr(self, "custom_revocation"):
+            result["customRevocation"] = {
+                str(k0): v0 for k0, v0 in self.custom_revocation.items()
+            }
+        elif include_empty:
+            result["customRevocation"] = {}
         if hasattr(self, "entitlement_revocations"):
             result["entitlementRevocations"] = [
                 i0.to_dict(include_empty=include_empty)
@@ -170,6 +197,10 @@ class ItemRevocation(Model):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = 0
+        if hasattr(self, "reason"):
+            result["reason"] = str(self.reason)
+        elif include_empty:
+            result["reason"] = ""
         if hasattr(self, "skipped"):
             result["skipped"] = bool(self.skipped)
         elif include_empty:
@@ -178,6 +209,10 @@ class ItemRevocation(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = Union[str, StatusEnum]()
+        if hasattr(self, "strategy"):
+            result["strategy"] = str(self.strategy)
+        elif include_empty:
+            result["strategy"] = ""
         return result
 
     # endregion to methods
@@ -188,19 +223,24 @@ class ItemRevocation(Model):
     def create(
         cls,
         credit_revocations: Optional[List[CreditRevocation]] = None,
+        custom_revocation: Optional[Dict[str, Any]] = None,
         entitlement_revocations: Optional[List[EntitlementRevocation]] = None,
         item_id: Optional[str] = None,
         item_revocations: Optional[List[ItemRevocation]] = None,
         item_sku: Optional[str] = None,
         item_type: Optional[Union[str, ItemTypeEnum]] = None,
         quantity: Optional[int] = None,
+        reason: Optional[str] = None,
         skipped: Optional[bool] = None,
         status: Optional[Union[str, StatusEnum]] = None,
+        strategy: Optional[str] = None,
         **kwargs,
     ) -> ItemRevocation:
         instance = cls()
         if credit_revocations is not None:
             instance.credit_revocations = credit_revocations
+        if custom_revocation is not None:
+            instance.custom_revocation = custom_revocation
         if entitlement_revocations is not None:
             instance.entitlement_revocations = entitlement_revocations
         if item_id is not None:
@@ -213,10 +253,14 @@ class ItemRevocation(Model):
             instance.item_type = item_type
         if quantity is not None:
             instance.quantity = quantity
+        if reason is not None:
+            instance.reason = reason
         if skipped is not None:
             instance.skipped = skipped
         if status is not None:
             instance.status = status
+        if strategy is not None:
+            instance.strategy = strategy
         return instance
 
     @classmethod
@@ -233,6 +277,12 @@ class ItemRevocation(Model):
             ]
         elif include_empty:
             instance.credit_revocations = []
+        if "customRevocation" in dict_ and dict_["customRevocation"] is not None:
+            instance.custom_revocation = {
+                str(k0): v0 for k0, v0 in dict_["customRevocation"].items()
+            }
+        elif include_empty:
+            instance.custom_revocation = {}
         if (
             "entitlementRevocations" in dict_
             and dict_["entitlementRevocations"] is not None
@@ -266,6 +316,10 @@ class ItemRevocation(Model):
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
             instance.quantity = 0
+        if "reason" in dict_ and dict_["reason"] is not None:
+            instance.reason = str(dict_["reason"])
+        elif include_empty:
+            instance.reason = ""
         if "skipped" in dict_ and dict_["skipped"] is not None:
             instance.skipped = bool(dict_["skipped"])
         elif include_empty:
@@ -274,6 +328,10 @@ class ItemRevocation(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = Union[str, StatusEnum]()
+        if "strategy" in dict_ and dict_["strategy"] is not None:
+            instance.strategy = str(dict_["strategy"])
+        elif include_empty:
+            instance.strategy = ""
         return instance
 
     @classmethod
@@ -314,28 +372,34 @@ class ItemRevocation(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "creditRevocations": "credit_revocations",
+            "customRevocation": "custom_revocation",
             "entitlementRevocations": "entitlement_revocations",
             "itemId": "item_id",
             "itemRevocations": "item_revocations",
             "itemSku": "item_sku",
             "itemType": "item_type",
             "quantity": "quantity",
+            "reason": "reason",
             "skipped": "skipped",
             "status": "status",
+            "strategy": "strategy",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "creditRevocations": False,
+            "customRevocation": False,
             "entitlementRevocations": False,
             "itemId": False,
             "itemRevocations": False,
             "itemSku": False,
             "itemType": False,
             "quantity": False,
+            "reason": False,
             "skipped": False,
             "status": False,
+            "strategy": False,
         }
 
     @staticmethod

@@ -62,10 +62,6 @@ class FullSectionInfo(Model):
 
         updated_at: (updatedAt) REQUIRED str
 
-        view_id: (viewId) REQUIRED str
-
-        view_name: (viewName) REQUIRED str
-
         display_order: (displayOrder) OPTIONAL int
 
         ext: (ext) OPTIONAL Dict[str, Any]
@@ -77,6 +73,10 @@ class FullSectionInfo(Model):
         items: (items) OPTIONAL List[SectionItem]
 
         rotation_type: (rotationType) OPTIONAL Union[str, RotationTypeEnum]
+
+        view_id: (viewId) OPTIONAL str
+
+        view_name: (viewName) OPTIONAL str
     """
 
     # region fields
@@ -90,14 +90,14 @@ class FullSectionInfo(Model):
     section_id: str  # REQUIRED
     start_date: str  # REQUIRED
     updated_at: str  # REQUIRED
-    view_id: str  # REQUIRED
-    view_name: str  # REQUIRED
     display_order: int  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     fixed_period_rotation_config: FixedPeriodRotationConfig  # OPTIONAL
     item_namings: List[ItemNaming]  # OPTIONAL
     items: List[SectionItem]  # OPTIONAL
     rotation_type: Union[str, RotationTypeEnum]  # OPTIONAL
+    view_id: str  # OPTIONAL
+    view_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -139,14 +139,6 @@ class FullSectionInfo(Model):
         self.updated_at = value
         return self
 
-    def with_view_id(self, value: str) -> FullSectionInfo:
-        self.view_id = value
-        return self
-
-    def with_view_name(self, value: str) -> FullSectionInfo:
-        self.view_name = value
-        return self
-
     def with_display_order(self, value: int) -> FullSectionInfo:
         self.display_order = value
         return self
@@ -173,6 +165,14 @@ class FullSectionInfo(Model):
         self, value: Union[str, RotationTypeEnum]
     ) -> FullSectionInfo:
         self.rotation_type = value
+        return self
+
+    def with_view_id(self, value: str) -> FullSectionInfo:
+        self.view_id = value
+        return self
+
+    def with_view_name(self, value: str) -> FullSectionInfo:
+        self.view_name = value
         return self
 
     # endregion with_x methods
@@ -220,14 +220,6 @@ class FullSectionInfo(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
-        if hasattr(self, "view_id"):
-            result["viewId"] = str(self.view_id)
-        elif include_empty:
-            result["viewId"] = ""
-        if hasattr(self, "view_name"):
-            result["viewName"] = str(self.view_name)
-        elif include_empty:
-            result["viewName"] = ""
         if hasattr(self, "display_order"):
             result["displayOrder"] = int(self.display_order)
         elif include_empty:
@@ -258,6 +250,14 @@ class FullSectionInfo(Model):
             result["rotationType"] = str(self.rotation_type)
         elif include_empty:
             result["rotationType"] = Union[str, RotationTypeEnum]()
+        if hasattr(self, "view_id"):
+            result["viewId"] = str(self.view_id)
+        elif include_empty:
+            result["viewId"] = ""
+        if hasattr(self, "view_name"):
+            result["viewName"] = str(self.view_name)
+        elif include_empty:
+            result["viewName"] = ""
         return result
 
     # endregion to methods
@@ -276,14 +276,14 @@ class FullSectionInfo(Model):
         section_id: str,
         start_date: str,
         updated_at: str,
-        view_id: str,
-        view_name: str,
         display_order: Optional[int] = None,
         ext: Optional[Dict[str, Any]] = None,
         fixed_period_rotation_config: Optional[FixedPeriodRotationConfig] = None,
         item_namings: Optional[List[ItemNaming]] = None,
         items: Optional[List[SectionItem]] = None,
         rotation_type: Optional[Union[str, RotationTypeEnum]] = None,
+        view_id: Optional[str] = None,
+        view_name: Optional[str] = None,
         **kwargs,
     ) -> FullSectionInfo:
         instance = cls()
@@ -296,8 +296,6 @@ class FullSectionInfo(Model):
         instance.section_id = section_id
         instance.start_date = start_date
         instance.updated_at = updated_at
-        instance.view_id = view_id
-        instance.view_name = view_name
         if display_order is not None:
             instance.display_order = display_order
         if ext is not None:
@@ -310,6 +308,10 @@ class FullSectionInfo(Model):
             instance.items = items
         if rotation_type is not None:
             instance.rotation_type = rotation_type
+        if view_id is not None:
+            instance.view_id = view_id
+        if view_name is not None:
+            instance.view_name = view_name
         return instance
 
     @classmethod
@@ -358,14 +360,6 @@ class FullSectionInfo(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
-        if "viewId" in dict_ and dict_["viewId"] is not None:
-            instance.view_id = str(dict_["viewId"])
-        elif include_empty:
-            instance.view_id = ""
-        if "viewName" in dict_ and dict_["viewName"] is not None:
-            instance.view_name = str(dict_["viewName"])
-        elif include_empty:
-            instance.view_name = ""
         if "displayOrder" in dict_ and dict_["displayOrder"] is not None:
             instance.display_order = int(dict_["displayOrder"])
         elif include_empty:
@@ -403,6 +397,14 @@ class FullSectionInfo(Model):
             instance.rotation_type = str(dict_["rotationType"])
         elif include_empty:
             instance.rotation_type = Union[str, RotationTypeEnum]()
+        if "viewId" in dict_ and dict_["viewId"] is not None:
+            instance.view_id = str(dict_["viewId"])
+        elif include_empty:
+            instance.view_id = ""
+        if "viewName" in dict_ and dict_["viewName"] is not None:
+            instance.view_name = str(dict_["viewName"])
+        elif include_empty:
+            instance.view_name = ""
         return instance
 
     @classmethod
@@ -451,14 +453,14 @@ class FullSectionInfo(Model):
             "sectionId": "section_id",
             "startDate": "start_date",
             "updatedAt": "updated_at",
-            "viewId": "view_id",
-            "viewName": "view_name",
             "displayOrder": "display_order",
             "ext": "ext",
             "fixedPeriodRotationConfig": "fixed_period_rotation_config",
             "itemNamings": "item_namings",
             "items": "items",
             "rotationType": "rotation_type",
+            "viewId": "view_id",
+            "viewName": "view_name",
         }
 
     @staticmethod
@@ -473,14 +475,14 @@ class FullSectionInfo(Model):
             "sectionId": True,
             "startDate": True,
             "updatedAt": True,
-            "viewId": True,
-            "viewName": True,
             "displayOrder": False,
             "ext": False,
             "fixedPeriodRotationConfig": False,
             "itemNamings": False,
             "items": False,
             "rotationType": False,
+            "viewId": False,
+            "viewName": False,
         }
 
     @staticmethod

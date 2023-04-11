@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.7.3"
+__version__ = "2.7.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .admin_delete_bulk_game__144132 import AdminDeleteBulkGameSessions
 from .admin_query_game_sessions import AdminQueryGameSessions
 from .admin_update_game_sessi_718745 import AdminUpdateGameSessionMember
 from .append_team_game_session import AppendTeamGameSession

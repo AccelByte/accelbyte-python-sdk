@@ -31,6 +31,7 @@ from ....core import StrEnum
 from ..models.credit_revocation import CreditRevocation
 from ..models.entitlement_revocation import EntitlementRevocation
 from ..models.item_revocation import ItemRevocation
+from ..models.revocation_error import RevocationError
 from ..models.revoke_entry import RevokeEntry
 
 
@@ -57,11 +58,15 @@ class RevocationHistoryInfo(Model):
 
         namespace: (namespace) OPTIONAL str
 
+        revocation_errors: (revocationErrors) OPTIONAL List[RevocationError]
+
         revoke_entries: (revokeEntries) OPTIONAL List[RevokeEntry]
 
         source: (source) OPTIONAL str
 
         status: (status) OPTIONAL Union[str, StatusEnum]
+
+        transaction_id: (transactionId) OPTIONAL str
 
         updated_at: (updatedAt) OPTIONAL str
 
@@ -77,9 +82,11 @@ class RevocationHistoryInfo(Model):
     item_revocations: List[ItemRevocation]  # OPTIONAL
     meta: Dict[str, Any]  # OPTIONAL
     namespace: str  # OPTIONAL
+    revocation_errors: List[RevocationError]  # OPTIONAL
     revoke_entries: List[RevokeEntry]  # OPTIONAL
     source: str  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
+    transaction_id: str  # OPTIONAL
     updated_at: str  # OPTIONAL
     user_id: str  # OPTIONAL
 
@@ -121,6 +128,12 @@ class RevocationHistoryInfo(Model):
         self.namespace = value
         return self
 
+    def with_revocation_errors(
+        self, value: List[RevocationError]
+    ) -> RevocationHistoryInfo:
+        self.revocation_errors = value
+        return self
+
     def with_revoke_entries(self, value: List[RevokeEntry]) -> RevocationHistoryInfo:
         self.revoke_entries = value
         return self
@@ -131,6 +144,10 @@ class RevocationHistoryInfo(Model):
 
     def with_status(self, value: Union[str, StatusEnum]) -> RevocationHistoryInfo:
         self.status = value
+        return self
+
+    def with_transaction_id(self, value: str) -> RevocationHistoryInfo:
+        self.transaction_id = value
         return self
 
     def with_updated_at(self, value: str) -> RevocationHistoryInfo:
@@ -183,6 +200,12 @@ class RevocationHistoryInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "revocation_errors"):
+            result["revocationErrors"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.revocation_errors
+            ]
+        elif include_empty:
+            result["revocationErrors"] = []
         if hasattr(self, "revoke_entries"):
             result["revokeEntries"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.revoke_entries
@@ -197,6 +220,10 @@ class RevocationHistoryInfo(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = Union[str, StatusEnum]()
+        if hasattr(self, "transaction_id"):
+            result["transactionId"] = str(self.transaction_id)
+        elif include_empty:
+            result["transactionId"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -221,9 +248,11 @@ class RevocationHistoryInfo(Model):
         item_revocations: Optional[List[ItemRevocation]] = None,
         meta: Optional[Dict[str, Any]] = None,
         namespace: Optional[str] = None,
+        revocation_errors: Optional[List[RevocationError]] = None,
         revoke_entries: Optional[List[RevokeEntry]] = None,
         source: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
+        transaction_id: Optional[str] = None,
         updated_at: Optional[str] = None,
         user_id: Optional[str] = None,
         **kwargs,
@@ -243,12 +272,16 @@ class RevocationHistoryInfo(Model):
             instance.meta = meta
         if namespace is not None:
             instance.namespace = namespace
+        if revocation_errors is not None:
+            instance.revocation_errors = revocation_errors
         if revoke_entries is not None:
             instance.revoke_entries = revoke_entries
         if source is not None:
             instance.source = source
         if status is not None:
             instance.status = status
+        if transaction_id is not None:
+            instance.transaction_id = transaction_id
         if updated_at is not None:
             instance.updated_at = updated_at
         if user_id is not None:
@@ -302,6 +335,13 @@ class RevocationHistoryInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "revocationErrors" in dict_ and dict_["revocationErrors"] is not None:
+            instance.revocation_errors = [
+                RevocationError.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["revocationErrors"]
+            ]
+        elif include_empty:
+            instance.revocation_errors = []
         if "revokeEntries" in dict_ and dict_["revokeEntries"] is not None:
             instance.revoke_entries = [
                 RevokeEntry.create_from_dict(i0, include_empty=include_empty)
@@ -317,6 +357,10 @@ class RevocationHistoryInfo(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = Union[str, StatusEnum]()
+        if "transactionId" in dict_ and dict_["transactionId"] is not None:
+            instance.transaction_id = str(dict_["transactionId"])
+        elif include_empty:
+            instance.transaction_id = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -375,9 +419,11 @@ class RevocationHistoryInfo(Model):
             "itemRevocations": "item_revocations",
             "meta": "meta",
             "namespace": "namespace",
+            "revocationErrors": "revocation_errors",
             "revokeEntries": "revoke_entries",
             "source": "source",
             "status": "status",
+            "transactionId": "transaction_id",
             "updatedAt": "updated_at",
             "userId": "user_id",
         }
@@ -392,9 +438,11 @@ class RevocationHistoryInfo(Model):
             "itemRevocations": False,
             "meta": False,
             "namespace": False,
+            "revocationErrors": False,
             "revokeEntries": False,
             "source": False,
             "status": False,
+            "transactionId": False,
             "updatedAt": False,
             "userId": False,
         }

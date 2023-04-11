@@ -43,6 +43,7 @@ from ..operations.leaderboard_data import (
 )
 from ..operations.leaderboard_data import CreateArchivedLeaderboardRankingDataV1Handler
 from ..operations.leaderboard_data import DeleteUserRankingAdminV1
+from ..operations.leaderboard_data import DeleteUserRankingByLeaderboardCodeAdminV1
 from ..operations.leaderboard_data import DeleteUserRankingPublicV1
 from ..operations.leaderboard_data import DeleteUserRankingsAdminV1
 from ..operations.leaderboard_data import GetAllTimeLeaderboardRankingAdminV1
@@ -419,6 +420,144 @@ async def delete_user_ranking_admin_v1_async(
     request = DeleteUserRankingAdminV1.create(
         leaderboard_code=leaderboard_code,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteUserRankingByLeaderboardCodeAdminV1)
+def delete_user_ranking_by_leaderboard_code_admin_v1(
+    leaderboard_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """delete all user ranking by leaderboard code (deleteUserRankingByLeaderboardCodeAdminV1)
+
+    [Test Facility Only]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+
+
+
+
+    This endpoint will delete user ranking by leaderboard code
+
+
+
+
+    Note: this endpoint only works on development environment.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset
+
+        method: DELETE
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteUserRankingByLeaderboardCodeAdminV1.create(
+        leaderboard_code=leaderboard_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteUserRankingByLeaderboardCodeAdminV1)
+async def delete_user_ranking_by_leaderboard_code_admin_v1_async(
+    leaderboard_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """delete all user ranking by leaderboard code (deleteUserRankingByLeaderboardCodeAdminV1)
+
+    [Test Facility Only]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+
+
+
+
+    This endpoint will delete user ranking by leaderboard code
+
+
+
+
+    Note: this endpoint only works on development environment.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset
+
+        method: DELETE
+
+        tags: ["LeaderboardData"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteUserRankingByLeaderboardCodeAdminV1.create(
+        leaderboard_code=leaderboard_code,
         namespace=namespace,
     )
     return await run_request_async(

@@ -38,6 +38,8 @@ class EntitlementRevocation(Model):
     """Entitlement revocation (EntitlementRevocation)
 
     Properties:
+        custom_revocation: (customRevocation) OPTIONAL Dict[str, Any]
+
         entitlement_id: (entitlementId) OPTIONAL str
 
         item_id: (itemId) OPTIONAL str
@@ -57,6 +59,7 @@ class EntitlementRevocation(Model):
 
     # region fields
 
+    custom_revocation: Dict[str, Any]  # OPTIONAL
     entitlement_id: str  # OPTIONAL
     item_id: str  # OPTIONAL
     item_sku: str  # OPTIONAL
@@ -69,6 +72,10 @@ class EntitlementRevocation(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_custom_revocation(self, value: Dict[str, Any]) -> EntitlementRevocation:
+        self.custom_revocation = value
+        return self
 
     def with_entitlement_id(self, value: str) -> EntitlementRevocation:
         self.entitlement_id = value
@@ -108,6 +115,12 @@ class EntitlementRevocation(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "custom_revocation"):
+            result["customRevocation"] = {
+                str(k0): v0 for k0, v0 in self.custom_revocation.items()
+            }
+        elif include_empty:
+            result["customRevocation"] = {}
         if hasattr(self, "entitlement_id"):
             result["entitlementId"] = str(self.entitlement_id)
         elif include_empty:
@@ -149,6 +162,7 @@ class EntitlementRevocation(Model):
     @classmethod
     def create(
         cls,
+        custom_revocation: Optional[Dict[str, Any]] = None,
         entitlement_id: Optional[str] = None,
         item_id: Optional[str] = None,
         item_sku: Optional[str] = None,
@@ -160,6 +174,8 @@ class EntitlementRevocation(Model):
         **kwargs,
     ) -> EntitlementRevocation:
         instance = cls()
+        if custom_revocation is not None:
+            instance.custom_revocation = custom_revocation
         if entitlement_id is not None:
             instance.entitlement_id = entitlement_id
         if item_id is not None:
@@ -185,6 +201,12 @@ class EntitlementRevocation(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "customRevocation" in dict_ and dict_["customRevocation"] is not None:
+            instance.custom_revocation = {
+                str(k0): v0 for k0, v0 in dict_["customRevocation"].items()
+            }
+        elif include_empty:
+            instance.custom_revocation = {}
         if "entitlementId" in dict_ and dict_["entitlementId"] is not None:
             instance.entitlement_id = str(dict_["entitlementId"])
         elif include_empty:
@@ -260,6 +282,7 @@ class EntitlementRevocation(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "customRevocation": "custom_revocation",
             "entitlementId": "entitlement_id",
             "itemId": "item_id",
             "itemSku": "item_sku",
@@ -273,6 +296,7 @@ class EntitlementRevocation(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "customRevocation": False,
             "entitlementId": False,
             "itemId": False,
             "itemSku": False,

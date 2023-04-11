@@ -65,7 +65,7 @@ class RetrieveAllUsersByPolicyVersion(Operation):
         policy_version_id: (policyVersionId) REQUIRED str in query
 
     Responses:
-        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
 
         404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """
@@ -193,12 +193,12 @@ class RetrieveAllUsersByPolicyVersion(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[PagedRetrieveUserAcceptedAgreementResponse]],
+        Union[None, PagedRetrieveUserAcceptedAgreementResponse],
         Union[None, ErrorEntity, HttpResponse],
     ]:
         """Parse the given response.
 
-        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
 
         404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
 
@@ -216,10 +216,10 @@ class RetrieveAllUsersByPolicyVersion(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [
-                PagedRetrieveUserAcceptedAgreementResponse.create_from_dict(i)
-                for i in content
-            ], None
+            return (
+                PagedRetrieveUserAcceptedAgreementResponse.create_from_dict(content),
+                None,
+            )
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 

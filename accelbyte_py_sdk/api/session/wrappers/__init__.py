@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.7.3"
+__version__ = "2.7.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -32,6 +32,8 @@ from ._configuration_template import admin_update_configuration_template_v1_asyn
 from ._dsmc_default_configuration import admin_get_dsmc_configuration_default
 from ._dsmc_default_configuration import admin_get_dsmc_configuration_default_async
 
+from ._game_session import admin_delete_bulk_game_sessions
+from ._game_session import admin_delete_bulk_game_sessions_async
 from ._game_session import admin_query_game_sessions
 from ._game_session import admin_query_game_sessions_async
 from ._game_session import admin_update_game_session_member

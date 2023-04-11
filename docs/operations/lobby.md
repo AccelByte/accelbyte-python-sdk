@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Lobby Server Index (staging)
+# AccelByte Gaming Services Lobby Server Index (3.17.0)
 
 
 ## Operations

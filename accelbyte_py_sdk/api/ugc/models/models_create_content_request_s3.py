@@ -51,6 +51,8 @@ class ModelsCreateContentRequestS3(Model):
         file_extension: (fileExtension) OPTIONAL str
 
         preview_metadata: (previewMetadata) OPTIONAL ModelsPreviewMetadata
+
+        share_code: (shareCode) OPTIONAL str
     """
 
     # region fields
@@ -64,6 +66,7 @@ class ModelsCreateContentRequestS3(Model):
     custom_attributes: Dict[str, Any]  # OPTIONAL
     file_extension: str  # OPTIONAL
     preview_metadata: ModelsPreviewMetadata  # OPTIONAL
+    share_code: str  # OPTIONAL
 
     # endregion fields
 
@@ -107,6 +110,10 @@ class ModelsCreateContentRequestS3(Model):
         self, value: ModelsPreviewMetadata
     ) -> ModelsCreateContentRequestS3:
         self.preview_metadata = value
+        return self
+
+    def with_share_code(self, value: str) -> ModelsCreateContentRequestS3:
+        self.share_code = value
         return self
 
     # endregion with_x methods
@@ -155,6 +162,10 @@ class ModelsCreateContentRequestS3(Model):
             )
         elif include_empty:
             result["previewMetadata"] = ModelsPreviewMetadata()
+        if hasattr(self, "share_code"):
+            result["shareCode"] = str(self.share_code)
+        elif include_empty:
+            result["shareCode"] = ""
         return result
 
     # endregion to methods
@@ -173,6 +184,7 @@ class ModelsCreateContentRequestS3(Model):
         custom_attributes: Optional[Dict[str, Any]] = None,
         file_extension: Optional[str] = None,
         preview_metadata: Optional[ModelsPreviewMetadata] = None,
+        share_code: Optional[str] = None,
         **kwargs,
     ) -> ModelsCreateContentRequestS3:
         instance = cls()
@@ -189,6 +201,8 @@ class ModelsCreateContentRequestS3(Model):
             instance.file_extension = file_extension
         if preview_metadata is not None:
             instance.preview_metadata = preview_metadata
+        if share_code is not None:
+            instance.share_code = share_code
         return instance
 
     @classmethod
@@ -238,6 +252,10 @@ class ModelsCreateContentRequestS3(Model):
             )
         elif include_empty:
             instance.preview_metadata = ModelsPreviewMetadata()
+        if "shareCode" in dict_ and dict_["shareCode"] is not None:
+            instance.share_code = str(dict_["shareCode"])
+        elif include_empty:
+            instance.share_code = ""
         return instance
 
     @classmethod
@@ -290,6 +308,7 @@ class ModelsCreateContentRequestS3(Model):
             "customAttributes": "custom_attributes",
             "fileExtension": "file_extension",
             "previewMetadata": "preview_metadata",
+            "shareCode": "share_code",
         }
 
     @staticmethod
@@ -304,6 +323,7 @@ class ModelsCreateContentRequestS3(Model):
             "customAttributes": False,
             "fileExtension": False,
             "previewMetadata": False,
+            "shareCode": False,
         }
 
     # endregion static methods

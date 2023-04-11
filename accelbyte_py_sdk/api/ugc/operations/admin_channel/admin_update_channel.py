@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsChannelRequest
 from ...models import ModelsChannelResponse
+from ...models import ModelsUpdateChannelRequest
 from ...models import ResponseError
 
 
@@ -55,7 +55,7 @@ class AdminUpdateChannel(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsChannelRequest in body
+        body: (body) REQUIRED ModelsUpdateChannelRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -86,7 +86,7 @@ class AdminUpdateChannel(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsChannelRequest  # REQUIRED in [body]
+    body: ModelsUpdateChannelRequest  # REQUIRED in [body]
     channel_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -156,7 +156,7 @@ class AdminUpdateChannel(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelsChannelRequest) -> AdminUpdateChannel:
+    def with_body(self, value: ModelsUpdateChannelRequest) -> AdminUpdateChannel:
         self.body = value
         return self
 
@@ -181,7 +181,7 @@ class AdminUpdateChannel(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelsChannelRequest()
+            result["body"] = ModelsUpdateChannelRequest()
         if hasattr(self, "channel_id") and self.channel_id:
             result["channelId"] = str(self.channel_id)
         elif include_empty:
@@ -253,7 +253,7 @@ class AdminUpdateChannel(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelsChannelRequest,
+        body: ModelsUpdateChannelRequest,
         channel_id: str,
         namespace: str,
         user_id: str,
@@ -272,11 +272,11 @@ class AdminUpdateChannel(Operation):
     ) -> AdminUpdateChannel:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsChannelRequest.create_from_dict(
+            instance.body = ModelsUpdateChannelRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelsChannelRequest()
+            instance.body = ModelsUpdateChannelRequest()
         if "channelId" in dict_ and dict_["channelId"] is not None:
             instance.channel_id = str(dict_["channelId"])
         elif include_empty:

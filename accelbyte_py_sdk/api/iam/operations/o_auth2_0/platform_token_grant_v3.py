@@ -327,6 +327,8 @@ class PlatformTokenGrantV3(Operation):
 
         platform_token: (platform_token) OPTIONAL str in form_data
 
+        skip_set_cookie: (skipSetCookie) OPTIONAL bool in form_data
+
         platform_id: (platformId) REQUIRED str in path
 
     Responses:
@@ -355,6 +357,7 @@ class PlatformTokenGrantV3(Operation):
     device_id: str  # OPTIONAL in [form_data]
     mac_address: str  # OPTIONAL in [form_data]
     platform_token: str  # OPTIONAL in [form_data]
+    skip_set_cookie: bool  # OPTIONAL in [form_data]
     platform_id: str  # REQUIRED in [path]
 
     # endregion fields
@@ -411,6 +414,8 @@ class PlatformTokenGrantV3(Operation):
             result["macAddress"] = self.mac_address
         if hasattr(self, "platform_token"):
             result["platform_token"] = self.platform_token
+        if hasattr(self, "skip_set_cookie"):
+            result["skipSetCookie"] = self.skip_set_cookie
         return result
 
     def get_path_params(self) -> dict:
@@ -447,6 +452,10 @@ class PlatformTokenGrantV3(Operation):
         self.platform_token = value
         return self
 
+    def with_skip_set_cookie(self, value: bool) -> PlatformTokenGrantV3:
+        self.skip_set_cookie = value
+        return self
+
     def with_platform_id(self, value: str) -> PlatformTokenGrantV3:
         self.platform_id = value
         return self
@@ -477,6 +486,10 @@ class PlatformTokenGrantV3(Operation):
             result["platform_token"] = str(self.platform_token)
         elif include_empty:
             result["platform_token"] = ""
+        if hasattr(self, "skip_set_cookie") and self.skip_set_cookie:
+            result["skipSetCookie"] = bool(self.skip_set_cookie)
+        elif include_empty:
+            result["skipSetCookie"] = False
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
@@ -547,6 +560,7 @@ class PlatformTokenGrantV3(Operation):
         device_id: Optional[str] = None,
         mac_address: Optional[str] = None,
         platform_token: Optional[str] = None,
+        skip_set_cookie: Optional[bool] = None,
         **kwargs,
     ) -> PlatformTokenGrantV3:
         instance = cls()
@@ -561,6 +575,8 @@ class PlatformTokenGrantV3(Operation):
             instance.mac_address = mac_address
         if platform_token is not None:
             instance.platform_token = platform_token
+        if skip_set_cookie is not None:
+            instance.skip_set_cookie = skip_set_cookie
         return instance
 
     @classmethod
@@ -588,6 +604,10 @@ class PlatformTokenGrantV3(Operation):
             instance.platform_token = str(dict_["platform_token"])
         elif include_empty:
             instance.platform_token = ""
+        if "skipSetCookie" in dict_ and dict_["skipSetCookie"] is not None:
+            instance.skip_set_cookie = bool(dict_["skipSetCookie"])
+        elif include_empty:
+            instance.skip_set_cookie = False
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
@@ -602,6 +622,7 @@ class PlatformTokenGrantV3(Operation):
             "device_id": "device_id",
             "macAddress": "mac_address",
             "platform_token": "platform_token",
+            "skipSetCookie": "skip_set_cookie",
             "platformId": "platform_id",
         }
 
@@ -613,6 +634,7 @@ class PlatformTokenGrantV3(Operation):
             "device_id": False,
             "macAddress": False,
             "platform_token": False,
+            "skipSetCookie": False,
             "platformId": True,
         }
 

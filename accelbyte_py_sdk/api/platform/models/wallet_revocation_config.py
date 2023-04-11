@@ -31,6 +31,7 @@ from ....core import StrEnum
 
 class StrategyEnum(StrEnum):
     ALWAYS_REVOKE = "ALWAYS_REVOKE"
+    CUSTOM = "CUSTOM"
     REVOKE_OR_REPORT = "REVOKE_OR_REPORT"
 
 
@@ -166,7 +167,7 @@ class WalletRevocationConfig(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "strategy": ["ALWAYS_REVOKE", "REVOKE_OR_REPORT"],
+            "strategy": ["ALWAYS_REVOKE", "CUSTOM", "REVOKE_OR_REPORT"],
         }
 
     # endregion static methods

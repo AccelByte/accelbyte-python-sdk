@@ -38,9 +38,9 @@ class ModelInviteUserRequestV4(Model):
 
         is_admin: (isAdmin) REQUIRED bool
 
-        role_id: (roleId) REQUIRED str
-
         namespace: (namespace) OPTIONAL str
+
+        role_id: (roleId) OPTIONAL str
     """
 
     # region fields
@@ -48,8 +48,8 @@ class ModelInviteUserRequestV4(Model):
     assigned_namespaces: List[str]  # REQUIRED
     email_addresses: List[str]  # REQUIRED
     is_admin: bool  # REQUIRED
-    role_id: str  # REQUIRED
     namespace: str  # OPTIONAL
+    role_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -67,12 +67,12 @@ class ModelInviteUserRequestV4(Model):
         self.is_admin = value
         return self
 
-    def with_role_id(self, value: str) -> ModelInviteUserRequestV4:
-        self.role_id = value
-        return self
-
     def with_namespace(self, value: str) -> ModelInviteUserRequestV4:
         self.namespace = value
+        return self
+
+    def with_role_id(self, value: str) -> ModelInviteUserRequestV4:
+        self.role_id = value
         return self
 
     # endregion with_x methods
@@ -93,14 +93,14 @@ class ModelInviteUserRequestV4(Model):
             result["isAdmin"] = bool(self.is_admin)
         elif include_empty:
             result["isAdmin"] = False
-        if hasattr(self, "role_id"):
-            result["roleId"] = str(self.role_id)
-        elif include_empty:
-            result["roleId"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "role_id"):
+            result["roleId"] = str(self.role_id)
+        elif include_empty:
+            result["roleId"] = ""
         return result
 
     # endregion to methods
@@ -113,17 +113,18 @@ class ModelInviteUserRequestV4(Model):
         assigned_namespaces: List[str],
         email_addresses: List[str],
         is_admin: bool,
-        role_id: str,
         namespace: Optional[str] = None,
+        role_id: Optional[str] = None,
         **kwargs,
     ) -> ModelInviteUserRequestV4:
         instance = cls()
         instance.assigned_namespaces = assigned_namespaces
         instance.email_addresses = email_addresses
         instance.is_admin = is_admin
-        instance.role_id = role_id
         if namespace is not None:
             instance.namespace = namespace
+        if role_id is not None:
+            instance.role_id = role_id
         return instance
 
     @classmethod
@@ -147,14 +148,14 @@ class ModelInviteUserRequestV4(Model):
             instance.is_admin = bool(dict_["isAdmin"])
         elif include_empty:
             instance.is_admin = False
-        if "roleId" in dict_ and dict_["roleId"] is not None:
-            instance.role_id = str(dict_["roleId"])
-        elif include_empty:
-            instance.role_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "roleId" in dict_ and dict_["roleId"] is not None:
+            instance.role_id = str(dict_["roleId"])
+        elif include_empty:
+            instance.role_id = ""
         return instance
 
     @classmethod
@@ -201,8 +202,8 @@ class ModelInviteUserRequestV4(Model):
             "assignedNamespaces": "assigned_namespaces",
             "emailAddresses": "email_addresses",
             "isAdmin": "is_admin",
-            "roleId": "role_id",
             "namespace": "namespace",
+            "roleId": "role_id",
         }
 
     @staticmethod
@@ -211,8 +212,8 @@ class ModelInviteUserRequestV4(Model):
             "assignedNamespaces": True,
             "emailAddresses": True,
             "isAdmin": True,
-            "roleId": True,
             "namespace": False,
+            "roleId": False,
         }
 
     # endregion static methods

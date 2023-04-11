@@ -21,6 +21,7 @@ from .create_archived_leaderb_5492e4 import (
     CreateArchivedLeaderboardRankingDataV1Handler,
 )
 from .delete_user_ranking_admin_v1 import DeleteUserRankingAdminV1
+from .delete_user_ranking_by__ed6de1 import DeleteUserRankingByLeaderboardCodeAdminV1
 from .delete_user_ranking_public_v1 import DeleteUserRankingPublicV1
 from .delete_user_rankings_admin_v1 import DeleteUserRankingsAdminV1
 from .get_all_time_leaderboar_d0fb4b import GetAllTimeLeaderboardRankingAdminV1

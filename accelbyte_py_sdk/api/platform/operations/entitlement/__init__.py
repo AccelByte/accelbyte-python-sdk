@@ -100,6 +100,8 @@ from .query_user_entitlements_22cea1 import QueryUserEntitlementsByAppType
 from .query_user_entitlements_22cea1 import (
     AppTypeEnum as QueryUserEntitlementsByAppTypeAppTypeEnum,
 )
+from .revoke_all_entitlements import RevokeAllEntitlements
+from .revoke_use_count import RevokeUseCount
 from .revoke_user_entitlement import RevokeUserEntitlement
 from .revoke_user_entitlements import RevokeUserEntitlements
 from .sell_user_entitlement import SellUserEntitlement

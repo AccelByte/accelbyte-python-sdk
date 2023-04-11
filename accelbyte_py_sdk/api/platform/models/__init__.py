@@ -124,6 +124,12 @@ from .condition_group import ConditionGroup
 from .condition_group import OperatorEnum as ConditionGroupOperatorEnum
 from .condition_group_validate_result import ConditionGroupValidateResult
 from .condition_match_result import ConditionMatchResult
+from .consumable_entitlement_revocation_config import (
+    ConsumableEntitlementRevocationConfig,
+)
+from .consumable_entitlement_revocation_config import (
+    StrategyEnum as ConsumableEntitlementRevocationConfigStrategyEnum,
+)
 from .consume_item import ConsumeItem
 from .consume_item import ItemIdentityTypeEnum as ConsumeItemItemIdentityTypeEnum
 from .credit_request import CreditRequest
@@ -578,6 +584,7 @@ from .request_history import StatusEnum as RequestHistoryStatusEnum
 from .requirement import Requirement
 from .revocation_config_info import RevocationConfigInfo
 from .revocation_config_update import RevocationConfigUpdate
+from .revocation_error import RevocationError
 from .revocation_history_info import RevocationHistoryInfo
 from .revocation_history_info import StatusEnum as RevocationHistoryInfoStatusEnum
 from .revocation_history_paging_sliced_result import RevocationHistoryPagingSlicedResult
@@ -599,6 +606,7 @@ from .revoke_item_summary import RevokeItemSummary
 from .revoke_item_summary import RevokeStatusEnum as RevokeItemSummaryRevokeStatusEnum
 from .revoke_result import RevokeResult
 from .revoke_result import StatusEnum as RevokeResultStatusEnum
+from .revoke_use_count_request import RevokeUseCountRequest
 from .reward_condition import RewardCondition
 from .reward_create import RewardCreate
 from .reward_info import RewardInfo

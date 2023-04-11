@@ -71,6 +71,8 @@ class AdminUploadContentDirect(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        409: Conflict - ResponseError (Conflict)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
@@ -201,6 +203,8 @@ class AdminUploadContentDirect(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        409: Conflict - ResponseError (Conflict)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -221,6 +225,8 @@ class AdminUploadContentDirect(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 409:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

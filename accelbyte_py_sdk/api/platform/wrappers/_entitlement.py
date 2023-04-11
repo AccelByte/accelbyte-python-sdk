@@ -45,6 +45,7 @@ from ..models import EntitlementUpdate
 from ..models import ErrorEntity
 from ..models import Ownership
 from ..models import OwnershipToken
+from ..models import RevokeUseCountRequest
 from ..models import StackableEntitlementInfo
 from ..models import TimedOwnership
 from ..models import ValidationErrorEntity
@@ -125,6 +126,8 @@ from ..operations.entitlement import (
 )
 from ..operations.entitlement import QueryUserEntitlementsByAppType
 from ..operations.entitlement import QueryUserEntitlementsByAppTypeAppTypeEnum
+from ..operations.entitlement import RevokeAllEntitlements
+from ..operations.entitlement import RevokeUseCount
 from ..operations.entitlement import RevokeUserEntitlement
 from ..operations.entitlement import RevokeUserEntitlements
 from ..operations.entitlement import SellUserEntitlement
@@ -4911,6 +4914,226 @@ async def query_user_entitlements_by_app_type_async(
         active_only=active_only,
         limit=limit,
         offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RevokeAllEntitlements)
+def revoke_all_entitlements(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Revoke all entitlements of a user (This API is for testing purpose only) (revokeAllEntitlements)
+
+    Revoke all entitlements of a user (This API is for testing purpose only)
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : revoked entitlements count
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/revoke
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkOperationResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RevokeAllEntitlements.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RevokeAllEntitlements)
+async def revoke_all_entitlements_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Revoke all entitlements of a user (This API is for testing purpose only) (revokeAllEntitlements)
+
+    Revoke all entitlements of a user (This API is for testing purpose only)
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : revoked entitlements count
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/revoke
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkOperationResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RevokeAllEntitlements.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RevokeUseCount)
+def revoke_use_count(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[RevokeUseCountRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Revoke specified use count of user entitlement (revokeUseCount)
+
+    Revoke specified use count of user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : revoke entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revokeByUseCount
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RevokeUseCountRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RevokeUseCount.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RevokeUseCount)
+async def revoke_use_count_async(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[RevokeUseCountRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Revoke specified use count of user entitlement (revokeUseCount)
+
+    Revoke specified use count of user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : revoke entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revokeByUseCount
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RevokeUseCountRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RevokeUseCount.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

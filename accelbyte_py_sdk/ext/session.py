@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.7.3)
+# AccelByte Gaming Services Session Service (2.7.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,8 @@ from ..api.session.models import ApimodelsCreateConfigurationTemplateRequest
 from ..api.session.models import ApimodelsCreateGameSessionRequest
 from ..api.session.models import ApimodelsCreatePartyRequest
 from ..api.session.models import ApimodelsDSInformationResponse
+from ..api.session.models import ApimodelsDeleteBulkGameSessionRequest
+from ..api.session.models import ApimodelsDeleteBulkGameSessionsAPIResponse
 from ..api.session.models import ApimodelsGameSessionQueryResponse
 from ..api.session.models import ApimodelsGameSessionResponse
 from ..api.session.models import ApimodelsJoinByCodeRequest
@@ -43,6 +45,7 @@ from ..api.session.models import ApimodelsPlayerAttributesResponseBody
 from ..api.session.models import ApimodelsPromoteLeaderRequest
 from ..api.session.models import ApimodelsPublicConfiguration
 from ..api.session.models import ApimodelsRequestMember
+from ..api.session.models import ApimodelsResponseDeleteBulkGameSessions
 from ..api.session.models import ApimodelsSessionInviteRequest
 from ..api.session.models import ApimodelsUpdateConfigurationTemplateRequest
 from ..api.session.models import ApimodelsUpdateGameSessionBackfillRequest
@@ -156,6 +159,23 @@ def create_apimodels_create_party_request_example() -> ApimodelsCreatePartyReque
     instance.min_players = randomize("int", min_val=1, max_val=1000)
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    return instance
+
+
+def create_apimodels_delete_bulk_game_session_request_example() -> (
+    ApimodelsDeleteBulkGameSessionRequest
+):
+    instance = ApimodelsDeleteBulkGameSessionRequest()
+    instance.ids = [randomize()]
+    return instance
+
+
+def create_apimodels_delete_bulk_game_sessions_api_response_example() -> (
+    ApimodelsDeleteBulkGameSessionsAPIResponse
+):
+    instance = ApimodelsDeleteBulkGameSessionsAPIResponse()
+    instance.failed = [create_apimodels_response_delete_bulk_game_sessions_example()]
+    instance.success = [randomize()]
     return instance
 
 
@@ -300,6 +320,15 @@ def create_apimodels_request_member_example() -> ApimodelsRequestMember:
     instance.id_ = randomize()
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
+    return instance
+
+
+def create_apimodels_response_delete_bulk_game_sessions_example() -> (
+    ApimodelsResponseDeleteBulkGameSessions
+):
+    instance = ApimodelsResponseDeleteBulkGameSessions()
+    instance.error = randomize()
+    instance.id_ = randomize()
     return instance
 
 

@@ -58,6 +58,8 @@ class OauthmodelTokenResponse(Model):
 
         user_id: (user_id) REQUIRED str
 
+        device_id: (device_id) OPTIONAL str
+
         is_comply: (is_comply) OPTIONAL bool
 
         jflgs: (jflgs) OPTIONAL int
@@ -82,6 +84,7 @@ class OauthmodelTokenResponse(Model):
     roles: List[str]  # REQUIRED
     token_type: str  # REQUIRED
     user_id: str  # REQUIRED
+    device_id: str  # OPTIONAL
     is_comply: bool  # OPTIONAL
     jflgs: int  # OPTIONAL
     platform_id: str  # OPTIONAL
@@ -138,6 +141,10 @@ class OauthmodelTokenResponse(Model):
 
     def with_user_id(self, value: str) -> OauthmodelTokenResponse:
         self.user_id = value
+        return self
+
+    def with_device_id(self, value: str) -> OauthmodelTokenResponse:
+        self.device_id = value
         return self
 
     def with_is_comply(self, value: bool) -> OauthmodelTokenResponse:
@@ -216,6 +223,10 @@ class OauthmodelTokenResponse(Model):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = ""
+        if hasattr(self, "device_id"):
+            result["device_id"] = str(self.device_id)
+        elif include_empty:
+            result["device_id"] = ""
         if hasattr(self, "is_comply"):
             result["is_comply"] = bool(self.is_comply)
         elif include_empty:
@@ -256,6 +267,7 @@ class OauthmodelTokenResponse(Model):
         roles: List[str],
         token_type: str,
         user_id: str,
+        device_id: Optional[str] = None,
         is_comply: Optional[bool] = None,
         jflgs: Optional[int] = None,
         platform_id: Optional[str] = None,
@@ -275,6 +287,8 @@ class OauthmodelTokenResponse(Model):
         instance.roles = roles
         instance.token_type = token_type
         instance.user_id = user_id
+        if device_id is not None:
+            instance.device_id = device_id
         if is_comply is not None:
             instance.is_comply = is_comply
         if jflgs is not None:
@@ -351,6 +365,10 @@ class OauthmodelTokenResponse(Model):
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
             instance.user_id = ""
+        if "device_id" in dict_ and dict_["device_id"] is not None:
+            instance.device_id = str(dict_["device_id"])
+        elif include_empty:
+            instance.device_id = ""
         if "is_comply" in dict_ and dict_["is_comply"] is not None:
             instance.is_comply = bool(dict_["is_comply"])
         elif include_empty:
@@ -425,6 +443,7 @@ class OauthmodelTokenResponse(Model):
             "roles": "roles",
             "token_type": "token_type",
             "user_id": "user_id",
+            "device_id": "device_id",
             "is_comply": "is_comply",
             "jflgs": "jflgs",
             "platform_id": "platform_id",
@@ -446,6 +465,7 @@ class OauthmodelTokenResponse(Model):
             "roles": True,
             "token_type": True,
             "user_id": True,
+            "device_id": False,
             "is_comply": False,
             "jflgs": False,
             "platform_id": False,

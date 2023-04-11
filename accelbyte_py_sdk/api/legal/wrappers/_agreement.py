@@ -802,7 +802,7 @@ def retrieve_all_users_by_policy_version(
         policy_version_id: (policyVersionId) REQUIRED str in query
 
     Responses:
-        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
 
         404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """
@@ -855,7 +855,7 @@ async def retrieve_all_users_by_policy_version_async(
         policy_version_id: (policyVersionId) REQUIRED str in query
 
     Responses:
-        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
 
         404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """

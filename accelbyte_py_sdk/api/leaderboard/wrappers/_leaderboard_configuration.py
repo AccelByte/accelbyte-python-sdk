@@ -51,6 +51,7 @@ from ..operations.leaderboard_configuration import GetLeaderboardConfigurationAd
 from ..operations.leaderboard_configuration import GetLeaderboardConfigurationsAdminV1
 from ..operations.leaderboard_configuration import GetLeaderboardConfigurationsPublicV1
 from ..operations.leaderboard_configuration import GetLeaderboardConfigurationsPublicV2
+from ..operations.leaderboard_configuration import HardDeleteLeaderboardAdminV1
 from ..operations.leaderboard_configuration import UpdateLeaderboardConfigurationAdminV1
 
 
@@ -1155,6 +1156,148 @@ async def get_leaderboard_configurations_public_v2_async(
     request = GetLeaderboardConfigurationsPublicV2.create(
         limit=limit,
         offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(HardDeleteLeaderboardAdminV1)
+def hard_delete_leaderboard_admin_v1(
+    leaderboard_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """hard delete leaderboard config and data by leaderboard code (hardDeleteLeaderboardAdminV1)
+
+    [Test Facility Only]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+
+
+
+
+    This endpoint will delete leaderboard configuration and its data
+
+
+
+
+    Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard
+
+        method: DELETE
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = HardDeleteLeaderboardAdminV1.create(
+        leaderboard_code=leaderboard_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(HardDeleteLeaderboardAdminV1)
+async def hard_delete_leaderboard_admin_v1_async(
+    leaderboard_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """hard delete leaderboard config and data by leaderboard code (hardDeleteLeaderboardAdminV1)
+
+    [Test Facility Only]
+
+
+
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+
+
+
+
+    This endpoint will delete leaderboard configuration and its data
+
+
+
+
+    Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
+
+    Properties:
+        url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard
+
+        method: DELETE
+
+        tags: ["LeaderboardConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = HardDeleteLeaderboardAdminV1.create(
+        leaderboard_code=leaderboard_code,
         namespace=namespace,
     )
     return await run_request_async(

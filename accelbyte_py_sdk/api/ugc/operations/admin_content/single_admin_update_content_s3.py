@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsContentRequest
 from ...models import ModelsCreateContentResponse
+from ...models import ModelsUpdateContentRequest
 from ...models import ResponseError
 
 
@@ -63,7 +63,7 @@ class SingleAdminUpdateContentS3(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsContentRequest in body
+        body: (body) REQUIRED ModelsUpdateContentRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -92,7 +92,7 @@ class SingleAdminUpdateContentS3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsContentRequest  # REQUIRED in [body]
+    body: ModelsUpdateContentRequest  # REQUIRED in [body]
     channel_id: str  # REQUIRED in [path]
     content_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
@@ -162,7 +162,9 @@ class SingleAdminUpdateContentS3(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelsContentRequest) -> SingleAdminUpdateContentS3:
+    def with_body(
+        self, value: ModelsUpdateContentRequest
+    ) -> SingleAdminUpdateContentS3:
         self.body = value
         return self
 
@@ -187,7 +189,7 @@ class SingleAdminUpdateContentS3(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelsContentRequest()
+            result["body"] = ModelsUpdateContentRequest()
         if hasattr(self, "channel_id") and self.channel_id:
             result["channelId"] = str(self.channel_id)
         elif include_empty:
@@ -260,7 +262,7 @@ class SingleAdminUpdateContentS3(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelsContentRequest,
+        body: ModelsUpdateContentRequest,
         channel_id: str,
         content_id: str,
         namespace: str,
@@ -279,11 +281,11 @@ class SingleAdminUpdateContentS3(Operation):
     ) -> SingleAdminUpdateContentS3:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsContentRequest.create_from_dict(
+            instance.body = ModelsUpdateContentRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelsContentRequest()
+            instance.body = ModelsUpdateContentRequest()
         if "channelId" in dict_ and dict_["channelId"] is not None:
             instance.channel_id = str(dict_["channelId"])
         elif include_empty:

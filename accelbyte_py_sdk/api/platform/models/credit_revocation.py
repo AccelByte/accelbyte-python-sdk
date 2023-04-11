@@ -44,6 +44,8 @@ class CreditRevocation(Model):
 
         currency_code: (currencyCode) OPTIONAL str
 
+        custom_revocation: (customRevocation) OPTIONAL Dict[str, Any]
+
         reason: (reason) OPTIONAL str
 
         revocation_strategy: (revocationStrategy) OPTIONAL str
@@ -60,6 +62,7 @@ class CreditRevocation(Model):
     amount: int  # OPTIONAL
     balance_origin: str  # OPTIONAL
     currency_code: str  # OPTIONAL
+    custom_revocation: Dict[str, Any]  # OPTIONAL
     reason: str  # OPTIONAL
     revocation_strategy: str  # OPTIONAL
     skipped: bool  # OPTIONAL
@@ -80,6 +83,10 @@ class CreditRevocation(Model):
 
     def with_currency_code(self, value: str) -> CreditRevocation:
         self.currency_code = value
+        return self
+
+    def with_custom_revocation(self, value: Dict[str, Any]) -> CreditRevocation:
+        self.custom_revocation = value
         return self
 
     def with_reason(self, value: str) -> CreditRevocation:
@@ -120,6 +127,12 @@ class CreditRevocation(Model):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
             result["currencyCode"] = ""
+        if hasattr(self, "custom_revocation"):
+            result["customRevocation"] = {
+                str(k0): v0 for k0, v0 in self.custom_revocation.items()
+            }
+        elif include_empty:
+            result["customRevocation"] = {}
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
@@ -152,6 +165,7 @@ class CreditRevocation(Model):
         amount: Optional[int] = None,
         balance_origin: Optional[str] = None,
         currency_code: Optional[str] = None,
+        custom_revocation: Optional[Dict[str, Any]] = None,
         reason: Optional[str] = None,
         revocation_strategy: Optional[str] = None,
         skipped: Optional[bool] = None,
@@ -166,6 +180,8 @@ class CreditRevocation(Model):
             instance.balance_origin = balance_origin
         if currency_code is not None:
             instance.currency_code = currency_code
+        if custom_revocation is not None:
+            instance.custom_revocation = custom_revocation
         if reason is not None:
             instance.reason = reason
         if revocation_strategy is not None:
@@ -197,6 +213,12 @@ class CreditRevocation(Model):
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
             instance.currency_code = ""
+        if "customRevocation" in dict_ and dict_["customRevocation"] is not None:
+            instance.custom_revocation = {
+                str(k0): v0 for k0, v0 in dict_["customRevocation"].items()
+            }
+        elif include_empty:
+            instance.custom_revocation = {}
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
@@ -259,6 +281,7 @@ class CreditRevocation(Model):
             "amount": "amount",
             "balanceOrigin": "balance_origin",
             "currencyCode": "currency_code",
+            "customRevocation": "custom_revocation",
             "reason": "reason",
             "revocationStrategy": "revocation_strategy",
             "skipped": "skipped",
@@ -272,6 +295,7 @@ class CreditRevocation(Model):
             "amount": False,
             "balanceOrigin": False,
             "currencyCode": False,
+            "customRevocation": False,
             "reason": False,
             "revocationStrategy": False,
             "skipped": False,

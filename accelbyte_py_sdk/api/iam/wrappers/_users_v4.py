@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import AccountCreateTestUserRequestV4
@@ -69,6 +70,7 @@ from ..operations.users_v4 import AdminGenerateMyAuthenticatorKeyV4
 from ..operations.users_v4 import AdminGenerateMyBackupCodesV4
 from ..operations.users_v4 import AdminGetMyBackupCodesV4
 from ..operations.users_v4 import AdminGetMyEnabledFactorsV4
+from ..operations.users_v4 import AdminInviteUserNewV4
 from ..operations.users_v4 import AdminInviteUserV4
 from ..operations.users_v4 import AdminListUserRolesV4
 from ..operations.users_v4 import AdminMakeFactorMyDefaultV4
@@ -1591,6 +1593,139 @@ async def admin_get_my_enabled_factors_v4_async(
     )
 
 
+@same_doc_as(AdminInviteUserNewV4)
+def admin_invite_user_new_v4(
+    body: ModelInviteUserRequestV4,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin invite User v4 (AdminInviteUserNewV4)
+
+    Required permission 'ADMIN:USER:INVITE [CREATE]
+
+    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace. An admin user can only
+    assign role with namespaces that the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
+
+    Detail request body :
+    - Email Address is required, List of email addresses that will be invited
+    - isAdmin is required, true if user is admin, false if user is not admin
+    - Namespace is optional. Only works on multi tenant mode,
+    if not specified then it will be assigned Publisher namespace,
+    if specified, it will become that studio/publisher where user is invited to.
+    - Role is optional, if not specified then it will only assign User role.
+    - Assigned Namespaces is optional, List of namespaces which the Role will be assigned to the user, only works when Role is not empty.
+
+    The invited admin will also assigned with "User" role by default.
+
+    Required Permission(s):
+        - ADMIN:USER:INVITE [CREATE]
+
+    Properties:
+        url: /iam/v4/admin/users/invite
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelInviteUserRequestV4 in body
+
+    Responses:
+        201: Created - ModelInviteUserResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        422: Unprocessable Entity - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminInviteUserNewV4.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminInviteUserNewV4)
+async def admin_invite_user_new_v4_async(
+    body: ModelInviteUserRequestV4,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin invite User v4 (AdminInviteUserNewV4)
+
+    Required permission 'ADMIN:USER:INVITE [CREATE]
+
+    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace. An admin user can only
+    assign role with namespaces that the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
+
+    Detail request body :
+    - Email Address is required, List of email addresses that will be invited
+    - isAdmin is required, true if user is admin, false if user is not admin
+    - Namespace is optional. Only works on multi tenant mode,
+    if not specified then it will be assigned Publisher namespace,
+    if specified, it will become that studio/publisher where user is invited to.
+    - Role is optional, if not specified then it will only assign User role.
+    - Assigned Namespaces is optional, List of namespaces which the Role will be assigned to the user, only works when Role is not empty.
+
+    The invited admin will also assigned with "User" role by default.
+
+    Required Permission(s):
+        - ADMIN:USER:INVITE [CREATE]
+
+    Properties:
+        url: /iam/v4/admin/users/invite
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelInviteUserRequestV4 in body
+
+    Responses:
+        201: Created - ModelInviteUserResponseV3 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        422: Unprocessable Entity - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminInviteUserNewV4.create(
+        body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
 @same_doc_as(AdminInviteUserV4)
 def admin_invite_user_v4(
     body: ModelInviteUserRequestV4,
@@ -1605,15 +1740,17 @@ def admin_invite_user_v4(
     assign role with namespaces that the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
 
     Detail request body :
-    - Assigned Namespaces is required, List of namespaces that will be assigned to the user.
     - Email Address is required, List of email addresses that will be invited
     - isAdmin is required, true if user is admin, false if user is not admin
     - Namespace is optional. Only works on multi tenant mode,
     if not specified then it will be assigned Publisher namespace,
     if specified, it will become that studio/publisher where user is invited to.
     - Role is optional, if not specified then it will only assign User role.
+    - Assigned Namespaces is optional, List of namespaces which the Role will be assigned to the user, only works when Role is not empty.
 
     The invited admin will also assigned with "User" role by default.
+
+    Substitute endpoint: /iam/v4/admin/users/invite
 
     Required Permission(s):
         - ADMIN:USER:INVITE [CREATE]
@@ -1656,6 +1793,7 @@ def admin_invite_user_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminInviteUserV4)
 async def admin_invite_user_v4_async(
     body: ModelInviteUserRequestV4,
@@ -1670,15 +1808,17 @@ async def admin_invite_user_v4_async(
     assign role with namespaces that the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
 
     Detail request body :
-    - Assigned Namespaces is required, List of namespaces that will be assigned to the user.
     - Email Address is required, List of email addresses that will be invited
     - isAdmin is required, true if user is admin, false if user is not admin
     - Namespace is optional. Only works on multi tenant mode,
     if not specified then it will be assigned Publisher namespace,
     if specified, it will become that studio/publisher where user is invited to.
     - Role is optional, if not specified then it will only assign User role.
+    - Assigned Namespaces is optional, List of namespaces which the Role will be assigned to the user, only works when Role is not empty.
 
     The invited admin will also assigned with "User" role by default.
+
+    Substitute endpoint: /iam/v4/admin/users/invite
 
     Required Permission(s):
         - ADMIN:USER:INVITE [CREATE]

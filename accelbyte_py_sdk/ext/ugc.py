@@ -31,7 +31,6 @@ from ..api.ugc.models import ModelsChannelResponse
 from ..api.ugc.models import ModelsContentDownloadResponse
 from ..api.ugc.models import ModelsContentLikeRequest
 from ..api.ugc.models import ModelsContentLikeResponse
-from ..api.ugc.models import ModelsContentRequest
 from ..api.ugc.models import ModelsCreateContentRequest
 from ..api.ugc.models import ModelsCreateContentRequestS3
 from ..api.ugc.models import ModelsCreateContentResponse
@@ -60,8 +59,12 @@ from ..api.ugc.models import ModelsPagingCursor
 from ..api.ugc.models import ModelsPayloadURL
 from ..api.ugc.models import ModelsPreviewMetadata
 from ..api.ugc.models import ModelsPreviewURL
+from ..api.ugc.models import ModelsPublicChannelRequest
+from ..api.ugc.models import ModelsPublicCreateContentRequestS3
 from ..api.ugc.models import ModelsPublicGetContentBulkRequest
 from ..api.ugc.models import ModelsScreenshotResponse
+from ..api.ugc.models import ModelsUpdateChannelRequest
+from ..api.ugc.models import ModelsUpdateContentRequest
 from ..api.ugc.models import ModelsUpdateScreenshot
 from ..api.ugc.models import ModelsUpdateScreenshotRequest
 from ..api.ugc.models import ModelsUpdateScreenshotResponse
@@ -89,6 +92,7 @@ def create_models_admin_get_content_bulk_request_example() -> (
 def create_models_channel_request_example() -> ModelsChannelRequest:
     instance = ModelsChannelRequest()
     instance.name = randomize()
+    instance.id_ = randomize()
     return instance
 
 
@@ -145,22 +149,6 @@ def create_models_content_like_response_example() -> ModelsContentLikeResponse:
     return instance
 
 
-def create_models_content_request_example() -> ModelsContentRequest:
-    instance = ModelsContentRequest()
-    instance.content_type = randomize()
-    instance.file_extension = randomize()
-    instance.name = randomize()
-    instance.payload = randomize()
-    instance.preview = randomize()
-    instance.sub_type = randomize()
-    instance.tags = [randomize()]
-    instance.type_ = randomize()
-    instance.update_content_file = randomize("bool")
-    instance.custom_attributes = {randomize(): randomize()}
-    instance.preview_metadata = create_models_preview_metadata_example()
-    return instance
-
-
 def create_models_create_content_request_example() -> ModelsCreateContentRequest:
     instance = ModelsCreateContentRequest()
     instance.name = randomize()
@@ -185,6 +173,7 @@ def create_models_create_content_request_s3_example() -> ModelsCreateContentRequ
     instance.custom_attributes = {randomize(): randomize()}
     instance.file_extension = randomize()
     instance.preview_metadata = create_models_preview_metadata_example()
+    instance.share_code = randomize()
     return instance
 
 
@@ -420,6 +409,28 @@ def create_models_preview_url_example() -> ModelsPreviewURL:
     return instance
 
 
+def create_models_public_channel_request_example() -> ModelsPublicChannelRequest:
+    instance = ModelsPublicChannelRequest()
+    instance.name = randomize()
+    return instance
+
+
+def create_models_public_create_content_request_s3_example() -> (
+    ModelsPublicCreateContentRequestS3
+):
+    instance = ModelsPublicCreateContentRequestS3()
+    instance.name = randomize()
+    instance.preview = randomize()
+    instance.sub_type = randomize()
+    instance.tags = [randomize()]
+    instance.type_ = randomize()
+    instance.content_type = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.file_extension = randomize()
+    instance.preview_metadata = create_models_preview_metadata_example()
+    return instance
+
+
 def create_models_public_get_content_bulk_request_example() -> (
     ModelsPublicGetContentBulkRequest
 ):
@@ -436,6 +447,28 @@ def create_models_screenshot_response_example() -> ModelsScreenshotResponse:
     instance.source = randomize()
     instance.url = randomize("url")
     instance.content_type = randomize()
+    return instance
+
+
+def create_models_update_channel_request_example() -> ModelsUpdateChannelRequest:
+    instance = ModelsUpdateChannelRequest()
+    instance.name = randomize()
+    return instance
+
+
+def create_models_update_content_request_example() -> ModelsUpdateContentRequest:
+    instance = ModelsUpdateContentRequest()
+    instance.content_type = randomize()
+    instance.file_extension = randomize()
+    instance.name = randomize()
+    instance.payload = randomize()
+    instance.preview = randomize()
+    instance.sub_type = randomize()
+    instance.tags = [randomize()]
+    instance.type_ = randomize()
+    instance.update_content_file = randomize("bool")
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.preview_metadata = create_models_preview_metadata_example()
     return instance
 
 

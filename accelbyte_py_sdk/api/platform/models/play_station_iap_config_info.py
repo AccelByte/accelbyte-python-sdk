@@ -32,26 +32,26 @@ class PlayStationIAPConfigInfo(Model):
     """Play station IAP config info (PlayStationIAPConfigInfo)
 
     Properties:
-        environment: (environment) REQUIRED str
-
         namespace: (namespace) REQUIRED str
+
+        environment: (environment) OPTIONAL str
     """
 
     # region fields
 
-    environment: str  # REQUIRED
     namespace: str  # REQUIRED
+    environment: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_environment(self, value: str) -> PlayStationIAPConfigInfo:
-        self.environment = value
-        return self
-
     def with_namespace(self, value: str) -> PlayStationIAPConfigInfo:
         self.namespace = value
+        return self
+
+    def with_environment(self, value: str) -> PlayStationIAPConfigInfo:
+        self.environment = value
         return self
 
     # endregion with_x methods
@@ -60,14 +60,14 @@ class PlayStationIAPConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "environment"):
-            result["environment"] = str(self.environment)
-        elif include_empty:
-            result["environment"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "environment"):
+            result["environment"] = str(self.environment)
+        elif include_empty:
+            result["environment"] = ""
         return result
 
     # endregion to methods
@@ -76,11 +76,12 @@ class PlayStationIAPConfigInfo(Model):
 
     @classmethod
     def create(
-        cls, environment: str, namespace: str, **kwargs
+        cls, namespace: str, environment: Optional[str] = None, **kwargs
     ) -> PlayStationIAPConfigInfo:
         instance = cls()
-        instance.environment = environment
         instance.namespace = namespace
+        if environment is not None:
+            instance.environment = environment
         return instance
 
     @classmethod
@@ -90,14 +91,14 @@ class PlayStationIAPConfigInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "environment" in dict_ and dict_["environment"] is not None:
-            instance.environment = str(dict_["environment"])
-        elif include_empty:
-            instance.environment = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "environment" in dict_ and dict_["environment"] is not None:
+            instance.environment = str(dict_["environment"])
+        elif include_empty:
+            instance.environment = ""
         return instance
 
     @classmethod
@@ -141,15 +142,15 @@ class PlayStationIAPConfigInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "environment": "environment",
             "namespace": "namespace",
+            "environment": "environment",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "environment": True,
             "namespace": True,
+            "environment": False,
         }
 
     # endregion static methods

@@ -239,6 +239,10 @@ from .wrappers import query_user_entitlements
 from .wrappers import query_user_entitlements_async
 from .wrappers import query_user_entitlements_by_app_type
 from .wrappers import query_user_entitlements_by_app_type_async
+from .wrappers import revoke_all_entitlements
+from .wrappers import revoke_all_entitlements_async
+from .wrappers import revoke_use_count
+from .wrappers import revoke_use_count_async
 from .wrappers import revoke_user_entitlement
 from .wrappers import revoke_user_entitlement_async
 from .wrappers import revoke_user_entitlements
@@ -657,8 +661,8 @@ from .wrappers import delete_revocation_config
 from .wrappers import delete_revocation_config_async
 from .wrappers import do_revocation
 from .wrappers import do_revocation_async
-from .wrappers import get_payment_callback_config_1
-from .wrappers import get_payment_callback_config_1_async
+from .wrappers import get_revocation_config
+from .wrappers import get_revocation_config_async
 from .wrappers import query_revocation_histories
 from .wrappers import query_revocation_histories_async
 from .wrappers import update_revocation_config

@@ -32,7 +32,6 @@ from ....core import same_doc_as
 
 from ..models import ModelsAdminGetContentBulkRequest
 from ..models import ModelsContentDownloadResponse
-from ..models import ModelsContentRequest
 from ..models import ModelsCreateContentRequest
 from ..models import ModelsCreateContentRequestS3
 from ..models import ModelsCreateContentResponse
@@ -41,6 +40,7 @@ from ..models import ModelsCreateScreenshotResponse
 from ..models import ModelsGetContentPreviewResponse
 from ..models import ModelsHideContentRequest
 from ..models import ModelsPaginatedContentDownloadResponse
+from ..models import ModelsUpdateContentRequest
 from ..models import ModelsUpdateScreenshotRequest
 from ..models import ModelsUpdateScreenshotResponse
 from ..models import ResponseError
@@ -1561,7 +1561,7 @@ async def admin_update_content_direct_async(
 
 @same_doc_as(AdminUpdateContentS3)
 def admin_update_content_s3(
-    body: ModelsContentRequest,
+    body: ModelsUpdateContentRequest,
     channel_id: str,
     content_id: str,
     user_id: str,
@@ -1597,7 +1597,7 @@ def admin_update_content_s3(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsContentRequest in body
+        body: (body) REQUIRED ModelsUpdateContentRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -1634,7 +1634,7 @@ def admin_update_content_s3(
 
 @same_doc_as(AdminUpdateContentS3)
 async def admin_update_content_s3_async(
-    body: ModelsContentRequest,
+    body: ModelsUpdateContentRequest,
     channel_id: str,
     content_id: str,
     user_id: str,
@@ -1670,7 +1670,7 @@ async def admin_update_content_s3_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsContentRequest in body
+        body: (body) REQUIRED ModelsUpdateContentRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -1871,6 +1871,8 @@ def admin_upload_content_direct(
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        409: Conflict - ResponseError (Conflict)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
@@ -1928,6 +1930,8 @@ async def admin_upload_content_direct_async(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (Conflict)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -1994,6 +1998,8 @@ def admin_upload_content_s3(
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        409: Conflict - ResponseError (Conflict)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
@@ -2056,6 +2062,8 @@ async def admin_upload_content_s3_async(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (Conflict)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -2559,7 +2567,7 @@ async def single_admin_update_content_direct_async(
 
 @same_doc_as(SingleAdminUpdateContentS3)
 def single_admin_update_content_s3(
-    body: ModelsContentRequest,
+    body: ModelsUpdateContentRequest,
     channel_id: str,
     content_id: str,
     namespace: Optional[str] = None,
@@ -2594,7 +2602,7 @@ def single_admin_update_content_s3(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsContentRequest in body
+        body: (body) REQUIRED ModelsUpdateContentRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -2628,7 +2636,7 @@ def single_admin_update_content_s3(
 
 @same_doc_as(SingleAdminUpdateContentS3)
 async def single_admin_update_content_s3_async(
-    body: ModelsContentRequest,
+    body: ModelsUpdateContentRequest,
     channel_id: str,
     content_id: str,
     namespace: Optional[str] = None,
@@ -2663,7 +2671,7 @@ async def single_admin_update_content_s3_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsContentRequest in body
+        body: (body) REQUIRED ModelsUpdateContentRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 

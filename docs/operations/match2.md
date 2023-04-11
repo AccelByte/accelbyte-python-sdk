@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Match Service V2 Index (2.2.1)
+# AccelByte Gaming Services Match Service V2 Index (2.3.0)
 
 
 ## Operations
@@ -30,6 +30,7 @@
 |---|---|---|---|---|---|---|
 | /match2/v1/namespaces/{namespace}/match-pools | POST | CreateMatchPool | `false` | [CreateMatchPool](../../accelbyte_py_sdk/api/match2/operations/match_pools/create_match_pool.py) | [create_match_pool](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-create-match-pool](../../samples/cli/accelbyte_py_sdk_cli/match2/_create_match_pool.py) |
 | /match2/v1/namespaces/{namespace}/match-pools/{pool} | DELETE | DeleteMatchPool | `false` | [DeleteMatchPool](../../accelbyte_py_sdk/api/match2/operations/match_pools/delete_match_pool.py) | [delete_match_pool](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-delete-match-pool](../../samples/cli/accelbyte_py_sdk_cli/match2/_delete_match_pool.py) |
+| /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/player | GET | GetPlayerMetric | `false` | [GetPlayerMetric](../../accelbyte_py_sdk/api/match2/operations/match_pools/get_player_metric.py) | [get_player_metric](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-get-player-metric](../../samples/cli/accelbyte_py_sdk_cli/match2/_get_player_metric.py) |
 | /match2/v1/namespaces/{namespace}/match-pools/{pool} | GET | MatchPoolDetails | `false` | [MatchPoolDetails](../../accelbyte_py_sdk/api/match2/operations/match_pools/match_pool_details.py) | [match_pool_details](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-match-pool-details](../../samples/cli/accelbyte_py_sdk_cli/match2/_match_pool_details.py) |
 | /match2/v1/namespaces/{namespace}/match-pools | GET | MatchPoolList | `false` | [MatchPoolList](../../accelbyte_py_sdk/api/match2/operations/match_pools/match_pool_list.py) | [match_pool_list](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-match-pool-list](../../samples/cli/accelbyte_py_sdk_cli/match2/_match_pool_list.py) |
 | /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics | GET | MatchPoolMetric | `false` | [MatchPoolMetric](../../accelbyte_py_sdk/api/match2/operations/match_pools/match_pool_metric.py) | [match_pool_metric](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-match-pool-metric](../../samples/cli/accelbyte_py_sdk_cli/match2/_match_pool_metric.py) |
@@ -83,6 +84,7 @@
 | api.MatchTicketStatus | [ApiMatchTicketStatus](../../accelbyte_py_sdk/api/match2/models/api_match_ticket_status.py) |
 | api.Party | [ApiParty](../../accelbyte_py_sdk/api/match2/models/api_party.py) |
 | api.PlayerData | [ApiPlayerData](../../accelbyte_py_sdk/api/match2/models/api_player_data.py) |
+| api.PlayerMetricRecord | [ApiPlayerMetricRecord](../../accelbyte_py_sdk/api/match2/models/api_player_metric_record.py) |
 | api.ProposedProposal | [ApiProposedProposal](../../accelbyte_py_sdk/api/match2/models/api_proposed_proposal.py) |
 | api.RuleSetPayload | [ApiRuleSetPayload](../../accelbyte_py_sdk/api/match2/models/api_rule_set_payload.py) |
 | api.Team | [ApiTeam](../../accelbyte_py_sdk/api/match2/models/api_team.py) |

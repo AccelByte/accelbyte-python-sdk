@@ -32,6 +32,7 @@ from ....core import same_doc_as
 from ..models import ModelsChannelRequest
 from ..models import ModelsChannelResponse
 from ..models import ModelsPaginatedGetChannelResponse
+from ..models import ModelsUpdateChannelRequest
 from ..models import ResponseError
 
 from ..operations.admin_channel import AdminCreateChannel
@@ -80,6 +81,8 @@ def admin_create_channel(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (Conflict)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -131,6 +134,8 @@ async def admin_create_channel_async(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (Conflict)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -381,7 +386,7 @@ async def admin_get_channel_async(
 
 @same_doc_as(AdminUpdateChannel)
 def admin_update_channel(
-    body: ModelsChannelRequest,
+    body: ModelsUpdateChannelRequest,
     channel_id: str,
     user_id: str,
     namespace: Optional[str] = None,
@@ -408,7 +413,7 @@ def admin_update_channel(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsChannelRequest in body
+        body: (body) REQUIRED ModelsUpdateChannelRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -442,7 +447,7 @@ def admin_update_channel(
 
 @same_doc_as(AdminUpdateChannel)
 async def admin_update_channel_async(
-    body: ModelsChannelRequest,
+    body: ModelsUpdateChannelRequest,
     channel_id: str,
     user_id: str,
     namespace: Optional[str] = None,
@@ -469,7 +474,7 @@ async def admin_update_channel_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsChannelRequest in body
+        body: (body) REQUIRED ModelsUpdateChannelRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -721,7 +726,7 @@ async def single_admin_get_channel_async(
 
 @same_doc_as(SingleAdminUpdateChannel)
 def single_admin_update_channel(
-    body: ModelsChannelRequest,
+    body: ModelsUpdateChannelRequest,
     channel_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -747,7 +752,7 @@ def single_admin_update_channel(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsChannelRequest in body
+        body: (body) REQUIRED ModelsUpdateChannelRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -778,7 +783,7 @@ def single_admin_update_channel(
 
 @same_doc_as(SingleAdminUpdateChannel)
 async def single_admin_update_channel_async(
-    body: ModelsChannelRequest,
+    body: ModelsUpdateChannelRequest,
     channel_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -804,7 +809,7 @@ async def single_admin_update_channel_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsChannelRequest in body
+        body: (body) REQUIRED ModelsUpdateChannelRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 

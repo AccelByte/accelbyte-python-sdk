@@ -231,6 +231,10 @@ from ._entitlement import query_user_entitlements
 from ._entitlement import query_user_entitlements_async
 from ._entitlement import query_user_entitlements_by_app_type
 from ._entitlement import query_user_entitlements_by_app_type_async
+from ._entitlement import revoke_all_entitlements
+from ._entitlement import revoke_all_entitlements_async
+from ._entitlement import revoke_use_count
+from ._entitlement import revoke_use_count_async
 from ._entitlement import revoke_user_entitlement
 from ._entitlement import revoke_user_entitlement_async
 from ._entitlement import revoke_user_entitlements
@@ -632,8 +636,8 @@ from ._revocation import delete_revocation_config
 from ._revocation import delete_revocation_config_async
 from ._revocation import do_revocation
 from ._revocation import do_revocation_async
-from ._revocation import get_payment_callback_config_1
-from ._revocation import get_payment_callback_config_1_async
+from ._revocation import get_revocation_config
+from ._revocation import get_revocation_config_async
 from ._revocation import query_revocation_histories
 from ._revocation import query_revocation_histories_async
 from ._revocation import update_revocation_config
