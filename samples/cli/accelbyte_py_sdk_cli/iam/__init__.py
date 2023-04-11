@@ -392,6 +392,7 @@ from ._admin_delete_role_permissions_v4 import admin_delete_role_permissions_v4
 from ._admin_list_assigned_users_v4 import admin_list_assigned_users_v4
 from ._admin_assign_user_to_role_v4 import admin_assign_user_to_role_v4
 from ._admin_revoke_user_from_role_v4 import admin_revoke_user_from_role_v4
+from ._admin_invite_user_new_v4 import admin_invite_user_new_v4
 from ._admin_update_my_user_v4 import admin_update_my_user_v4
 from ._admin_disable_my_authenticator_v4 import admin_disable_my_authenticator_v4
 from ._admin_enable_my_authenticator_v4 import admin_enable_my_authenticator_v4
@@ -748,6 +749,7 @@ commands = [
     admin_list_assigned_users_v4,
     admin_assign_user_to_role_v4,
     admin_revoke_user_from_role_v4,
+    admin_invite_user_new_v4,
     admin_update_my_user_v4,
     admin_disable_my_authenticator_v4,
     admin_enable_my_authenticator_v4,

@@ -69,4 +69,4 @@ def public_get_user_by_user_id_v3(
 
 
 public_get_user_by_user_id_v3.operation_id = "PublicGetUserByUserIdV3"
-public_get_user_by_user_id_v3.is_deprecated = False
+public_get_user_by_user_id_v3.is_deprecated = True

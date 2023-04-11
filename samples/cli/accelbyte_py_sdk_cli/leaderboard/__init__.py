@@ -35,8 +35,12 @@ from ._delete_leaderboard_configuration_admin_v1 import (
 from ._get_all_time_leaderboard_ranking_admin_v1 import (
     get_all_time_leaderboard_ranking_admin_v1,
 )
+from ._hard_delete_leaderboard_admin_v1 import hard_delete_leaderboard_admin_v1
 from ._get_current_month_leaderboard_ranking_admin_v1 import (
     get_current_month_leaderboard_ranking_admin_v1,
+)
+from ._delete_user_ranking_by_leaderboard_code_admin_v1 import (
+    delete_user_ranking_by_leaderboard_code_admin_v1,
 )
 from ._get_current_season_leaderboard_ranking_admin_v1 import (
     get_current_season_leaderboard_ranking_admin_v1,
@@ -107,7 +111,9 @@ commands = [
     update_leaderboard_configuration_admin_v1,
     delete_leaderboard_configuration_admin_v1,
     get_all_time_leaderboard_ranking_admin_v1,
+    hard_delete_leaderboard_admin_v1,
     get_current_month_leaderboard_ranking_admin_v1,
+    delete_user_ranking_by_leaderboard_code_admin_v1,
     get_current_season_leaderboard_ranking_admin_v1,
     get_today_leaderboard_ranking_admin_v1,
     get_user_ranking_admin_v1,

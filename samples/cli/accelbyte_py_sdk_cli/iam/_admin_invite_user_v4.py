@@ -73,4 +73,4 @@ def admin_invite_user_v4(
 
 
 admin_invite_user_v4.operation_id = "AdminInviteUserV4"
-admin_invite_user_v4.is_deprecated = False
+admin_invite_user_v4.is_deprecated = True

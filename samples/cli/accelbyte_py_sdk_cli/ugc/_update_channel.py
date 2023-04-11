@@ -31,8 +31,8 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import update_channel as update_channel_internal
-from accelbyte_py_sdk.api.ugc.models import ModelsChannelRequest
 from accelbyte_py_sdk.api.ugc.models import ModelsChannelResponse
+from accelbyte_py_sdk.api.ugc.models import ModelsUpdateChannelRequest
 from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
@@ -64,7 +64,7 @@ def update_channel(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelsChannelRequest.create_from_dict(body_json)
+            body = ModelsUpdateChannelRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = update_channel_internal(

@@ -143,7 +143,7 @@ from ._get_payment_order_charge_status import get_payment_order_charge_status
 from ._get_platform_wallet_config import get_platform_wallet_config
 from ._update_platform_wallet_config import update_platform_wallet_config
 from ._reset_platform_wallet_config import reset_platform_wallet_config
-from ._get_payment_callback_config_1 import get_payment_callback_config_1
+from ._get_revocation_config import get_revocation_config
 from ._update_revocation_config import update_revocation_config
 from ._delete_revocation_config import delete_revocation_config
 from ._query_revocation_histories import query_revocation_histories
@@ -226,6 +226,7 @@ from ._get_user_entitlement_ownership_by_item_ids import (
 from ._get_user_entitlement_ownership_by_sku import (
     get_user_entitlement_ownership_by_sku,
 )
+from ._revoke_all_entitlements import revoke_all_entitlements
 from ._revoke_user_entitlements import revoke_user_entitlements
 from ._get_user_entitlement import get_user_entitlement
 from ._update_user_entitlement import update_user_entitlement
@@ -234,6 +235,7 @@ from ._disable_user_entitlement import disable_user_entitlement
 from ._enable_user_entitlement import enable_user_entitlement
 from ._get_user_entitlement_histories import get_user_entitlement_histories
 from ._revoke_user_entitlement import revoke_user_entitlement
+from ._revoke_use_count import revoke_use_count
 from ._sell_user_entitlement import sell_user_entitlement
 from ._fulfill_item import fulfill_item
 from ._redeem_code import redeem_code
@@ -595,7 +597,7 @@ commands = [
     get_platform_wallet_config,
     update_platform_wallet_config,
     reset_platform_wallet_config,
-    get_payment_callback_config_1,
+    get_revocation_config,
     update_revocation_config,
     delete_revocation_config,
     query_revocation_histories,
@@ -666,6 +668,7 @@ commands = [
     get_user_entitlement_ownership_by_item_id,
     get_user_entitlement_ownership_by_item_ids,
     get_user_entitlement_ownership_by_sku,
+    revoke_all_entitlements,
     revoke_user_entitlements,
     get_user_entitlement,
     update_user_entitlement,
@@ -674,6 +677,7 @@ commands = [
     enable_user_entitlement,
     get_user_entitlement_histories,
     revoke_user_entitlement,
+    revoke_use_count,
     sell_user_entitlement,
     fulfill_item,
     redeem_code,

@@ -31,7 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
-    get_payment_callback_config_1 as get_payment_callback_config_1_internal,
+    get_revocation_config as get_revocation_config_internal,
 )
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import RevocationConfigInfo
@@ -42,28 +42,28 @@ from accelbyte_py_sdk.api.platform.models import RevocationConfigInfo
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def get_payment_callback_config_1(
+def get_revocation_config(
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_payment_callback_config_1_internal.__doc__)
+        click.echo(get_revocation_config_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = get_payment_callback_config_1_internal(
+    result, error = get_revocation_config_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"getPaymentCallbackConfig_1 failed: {str(error)}")
+        raise Exception(f"getRevocationConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-get_payment_callback_config_1.operation_id = "getPaymentCallbackConfig_1"
-get_payment_callback_config_1.is_deprecated = False
+get_revocation_config.operation_id = "getRevocationConfig"
+get_revocation_config.is_deprecated = False

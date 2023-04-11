@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# Justice Match Service v2 (2.2.1)
+# Justice Match Service v2 (2.3.0)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
@@ -26,6 +26,7 @@ from ._match_pool_details import match_pool_details
 from ._update_match_pool import update_match_pool
 from ._delete_match_pool import delete_match_pool
 from ._match_pool_metric import match_pool_metric
+from ._get_player_metric import get_player_metric
 from ._create_match_ticket import create_match_ticket
 from ._match_ticket_details import match_ticket_details
 from ._delete_match_ticket import delete_match_ticket
@@ -56,6 +57,7 @@ commands = [
     update_match_pool,
     delete_match_pool,
     match_pool_metric,
+    get_player_metric,
     create_match_ticket,
     match_ticket_details,
     delete_match_ticket,

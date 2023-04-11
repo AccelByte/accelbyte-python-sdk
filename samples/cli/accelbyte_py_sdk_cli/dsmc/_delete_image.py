@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Dsm Controller Service (6.2.2)
+# AGS Dsm Controller Service (6.2.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

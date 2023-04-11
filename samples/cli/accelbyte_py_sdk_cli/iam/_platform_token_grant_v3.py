@@ -44,6 +44,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 @click.option("--device_id", "device_id", type=str)
 @click.option("--mac_address", "mac_address", type=str)
 @click.option("--platform_token", "platform_token", type=str)
+@click.option("--skip_set_cookie", "skip_set_cookie", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
@@ -54,6 +55,7 @@ def platform_token_grant_v3(
     device_id: Optional[str] = None,
     mac_address: Optional[str] = None,
     platform_token: Optional[str] = None,
+    skip_set_cookie: Optional[bool] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -73,6 +75,7 @@ def platform_token_grant_v3(
         device_id=device_id,
         mac_address=mac_address,
         platform_token=platform_token,
+        skip_set_cookie=skip_set_cookie,
         x_additional_headers=x_additional_headers,
     )
     if error:
