@@ -1,13 +1,12 @@
 import os
-from typing import List
 from uuid import uuid4
 from datetime import datetime, timedelta
 
 
 from accelbyte_py_sdk.api.platform.models.localization import Localization
-from accelbyte_py_sdk.api.platform.models.region_data_item import (
+from accelbyte_py_sdk.api.platform.models.region_data_item_dto import (
     CurrencyTypeEnum,
-    RegionDataItem,
+    RegionDataItemDTO,
 )
 
 from tests.integration.test_case import IntegrationTestCase
@@ -89,7 +88,7 @@ class SeasonPassTestCase(IntegrationTestCase):
             .with_region_data(
                 {
                     "US": [
-                        RegionDataItem()
+                        RegionDataItemDTO()
                         .with_currency_code(currencyCode)
                         .with_currency_namespace(self.namespace)
                         .with_currency_type(CurrencyTypeEnum.REAL)

@@ -132,7 +132,6 @@ class PlatformTestCase(IntegrationTestCase):
     def test_export_store(self):
         from pathlib import Path
         from accelbyte_py_sdk.api.platform import export_store_1
-        from accelbyte_py_sdk.api.platform.models import ExportStoreRequest
 
         # arrange
         exported_file_path = Path(self.exported_filename)
