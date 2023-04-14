@@ -7,7 +7,6 @@ from accelbyte_py_sdk.api.matchmaking.models import ModelsAllianceRule
 from accelbyte_py_sdk.api.matchmaking.models import ModelsAllianceFlexingRule
 from accelbyte_py_sdk.api.matchmaking.models import ModelsChannelRequest
 from accelbyte_py_sdk.api.matchmaking.models import ModelsCombination
-from accelbyte_py_sdk.api.matchmaking.models import ModelsCombinationAlliances
 from accelbyte_py_sdk.api.matchmaking.models import ModelsFlexingRule
 from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchingRule
 from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchOption
