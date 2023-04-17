@@ -50,6 +50,8 @@ class OrderCreate(Model):
         region: (region) OPTIONAL str
 
         return_url: (returnUrl) OPTIONAL str
+
+        section_id: (sectionId) OPTIONAL str
     """
 
     # region fields
@@ -63,6 +65,7 @@ class OrderCreate(Model):
     language: str  # OPTIONAL
     region: str  # OPTIONAL
     return_url: str  # OPTIONAL
+    section_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -102,6 +105,10 @@ class OrderCreate(Model):
 
     def with_return_url(self, value: str) -> OrderCreate:
         self.return_url = value
+        return self
+
+    def with_section_id(self, value: str) -> OrderCreate:
+        self.section_id = value
         return self
 
     # endregion with_x methods
@@ -146,6 +153,10 @@ class OrderCreate(Model):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
             result["returnUrl"] = ""
+        if hasattr(self, "section_id"):
+            result["sectionId"] = str(self.section_id)
+        elif include_empty:
+            result["sectionId"] = ""
         return result
 
     # endregion to methods
@@ -164,6 +175,7 @@ class OrderCreate(Model):
         language: Optional[str] = None,
         region: Optional[str] = None,
         return_url: Optional[str] = None,
+        section_id: Optional[str] = None,
         **kwargs,
     ) -> OrderCreate:
         instance = cls()
@@ -180,6 +192,8 @@ class OrderCreate(Model):
             instance.region = region
         if return_url is not None:
             instance.return_url = return_url
+        if section_id is not None:
+            instance.section_id = section_id
         return instance
 
     @classmethod
@@ -223,6 +237,10 @@ class OrderCreate(Model):
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
             instance.return_url = ""
+        if "sectionId" in dict_ and dict_["sectionId"] is not None:
+            instance.section_id = str(dict_["sectionId"])
+        elif include_empty:
+            instance.section_id = ""
         return instance
 
     @classmethod
@@ -271,6 +289,7 @@ class OrderCreate(Model):
             "language": "language",
             "region": "region",
             "returnUrl": "return_url",
+            "sectionId": "section_id",
         }
 
     @staticmethod
@@ -285,6 +304,7 @@ class OrderCreate(Model):
             "language": False,
             "region": False,
             "returnUrl": False,
+            "sectionId": False,
         }
 
     @staticmethod

@@ -20,6 +20,8 @@ from .get_dlc_item_config import GetDLCItemConfig
 from .get_platform_dlc_config import GetPlatformDLCConfig
 from .get_user_dlc import GetUserDLC
 from .get_user_dlc import TypeEnum as GetUserDLCTypeEnum
+from .get_user_dlc_by_platform import GetUserDLCByPlatform
+from .get_user_dlc_by_platform import TypeEnum as GetUserDLCByPlatformTypeEnum
 from .public_sync_psn_dlc_inventory import PublicSyncPsnDlcInventory
 from .public_sync_psn_dlc_inv_429118 import (
     PublicSyncPsnDlcInventoryWithMultipleServiceLabels,

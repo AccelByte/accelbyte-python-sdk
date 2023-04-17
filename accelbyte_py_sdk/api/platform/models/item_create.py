@@ -33,7 +33,7 @@ from ..models.localization import Localization
 from ..models.loot_box_config import LootBoxConfig
 from ..models.option_box_config import OptionBoxConfig
 from ..models.recurring import Recurring
-from ..models.region_data_item import RegionDataItem
+from ..models.region_data_item_dto import RegionDataItemDTO
 from ..models.sale_config import SaleConfig
 
 
@@ -87,7 +87,7 @@ class ItemCreate(Model):
 
         name: (name) REQUIRED str
 
-        region_data: (regionData) REQUIRED Dict[str, List[RegionDataItem]]
+        region_data: (regionData) REQUIRED Dict[str, List[RegionDataItemDTO]]
 
         status: (status) REQUIRED Union[str, StatusEnum]
 
@@ -131,6 +131,8 @@ class ItemCreate(Model):
 
         season_type: (seasonType) OPTIONAL Union[str, SeasonTypeEnum]
 
+        section_exclusive: (sectionExclusive) OPTIONAL bool
+
         sellable: (sellable) OPTIONAL bool
 
         sku: (sku) OPTIONAL str
@@ -155,7 +157,7 @@ class ItemCreate(Model):
     item_type: Union[str, ItemTypeEnum]  # REQUIRED
     localizations: Dict[str, Localization]  # REQUIRED
     name: str  # REQUIRED
-    region_data: Dict[str, List[RegionDataItem]]  # REQUIRED
+    region_data: Dict[str, List[RegionDataItemDTO]]  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
     app_id: str  # OPTIONAL
     app_type: Union[str, AppTypeEnum]  # OPTIONAL
@@ -177,6 +179,7 @@ class ItemCreate(Model):
     recurring: Recurring  # OPTIONAL
     sale_config: SaleConfig  # OPTIONAL
     season_type: Union[str, SeasonTypeEnum]  # OPTIONAL
+    section_exclusive: bool  # OPTIONAL
     sellable: bool  # OPTIONAL
     sku: str  # OPTIONAL
     stackable: bool  # OPTIONAL
@@ -212,7 +215,7 @@ class ItemCreate(Model):
         self.name = value
         return self
 
-    def with_region_data(self, value: Dict[str, List[RegionDataItem]]) -> ItemCreate:
+    def with_region_data(self, value: Dict[str, List[RegionDataItemDTO]]) -> ItemCreate:
         self.region_data = value
         return self
 
@@ -298,6 +301,10 @@ class ItemCreate(Model):
 
     def with_season_type(self, value: Union[str, SeasonTypeEnum]) -> ItemCreate:
         self.season_type = value
+        return self
+
+    def with_section_exclusive(self, value: bool) -> ItemCreate:
+        self.section_exclusive = value
         return self
 
     def with_sellable(self, value: bool) -> ItemCreate:
@@ -458,6 +465,10 @@ class ItemCreate(Model):
             result["seasonType"] = str(self.season_type)
         elif include_empty:
             result["seasonType"] = Union[str, SeasonTypeEnum]()
+        if hasattr(self, "section_exclusive"):
+            result["sectionExclusive"] = bool(self.section_exclusive)
+        elif include_empty:
+            result["sectionExclusive"] = False
         if hasattr(self, "sellable"):
             result["sellable"] = bool(self.sellable)
         elif include_empty:
@@ -504,7 +515,7 @@ class ItemCreate(Model):
         item_type: Union[str, ItemTypeEnum],
         localizations: Dict[str, Localization],
         name: str,
-        region_data: Dict[str, List[RegionDataItem]],
+        region_data: Dict[str, List[RegionDataItemDTO]],
         status: Union[str, StatusEnum],
         app_id: Optional[str] = None,
         app_type: Optional[Union[str, AppTypeEnum]] = None,
@@ -526,6 +537,7 @@ class ItemCreate(Model):
         recurring: Optional[Recurring] = None,
         sale_config: Optional[SaleConfig] = None,
         season_type: Optional[Union[str, SeasonTypeEnum]] = None,
+        section_exclusive: Optional[bool] = None,
         sellable: Optional[bool] = None,
         sku: Optional[str] = None,
         stackable: Optional[bool] = None,
@@ -584,6 +596,8 @@ class ItemCreate(Model):
             instance.sale_config = sale_config
         if season_type is not None:
             instance.season_type = season_type
+        if section_exclusive is not None:
+            instance.section_exclusive = section_exclusive
         if sellable is not None:
             instance.sellable = sellable
         if sku is not None:
@@ -633,7 +647,7 @@ class ItemCreate(Model):
         if "regionData" in dict_ and dict_["regionData"] is not None:
             instance.region_data = {
                 str(k0): [
-                    RegionDataItem.create_from_dict(i1, include_empty=include_empty)
+                    RegionDataItemDTO.create_from_dict(i1, include_empty=include_empty)
                     for i1 in v0
                 ]
                 for k0, v0 in dict_["regionData"].items()
@@ -737,6 +751,10 @@ class ItemCreate(Model):
             instance.season_type = str(dict_["seasonType"])
         elif include_empty:
             instance.season_type = Union[str, SeasonTypeEnum]()
+        if "sectionExclusive" in dict_ and dict_["sectionExclusive"] is not None:
+            instance.section_exclusive = bool(dict_["sectionExclusive"])
+        elif include_empty:
+            instance.section_exclusive = False
         if "sellable" in dict_ and dict_["sellable"] is not None:
             instance.sellable = bool(dict_["sellable"])
         elif include_empty:
@@ -835,6 +853,7 @@ class ItemCreate(Model):
             "recurring": "recurring",
             "saleConfig": "sale_config",
             "seasonType": "season_type",
+            "sectionExclusive": "section_exclusive",
             "sellable": "sellable",
             "sku": "sku",
             "stackable": "stackable",
@@ -875,6 +894,7 @@ class ItemCreate(Model):
             "recurring": False,
             "saleConfig": False,
             "seasonType": False,
+            "sectionExclusive": False,
             "sellable": False,
             "sku": False,
             "stackable": False,

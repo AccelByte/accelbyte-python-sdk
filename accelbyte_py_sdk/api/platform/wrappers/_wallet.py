@@ -30,6 +30,10 @@ from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
+from ..models import BulkCreditRequest
+from ..models import BulkCreditResult
+from ..models import BulkDebitRequest
+from ..models import BulkDebitResult
 from ..models import CreditRequest
 from ..models import CurrencyWallet
 from ..models import DebitByCurrencyCodeRequest
@@ -45,6 +49,8 @@ from ..models import WalletInfo
 from ..models import WalletPagingSlicedResult
 from ..models import WalletTransactionPagingSlicedResult
 
+from ..operations.wallet import BulkCredit
+from ..operations.wallet import BulkDebit
 from ..operations.wallet import CheckWallet
 from ..operations.wallet import CheckWalletOriginEnum
 from ..operations.wallet import CreditUserWallet
@@ -69,12 +75,222 @@ from ..operations.wallet import ResetPlatformWalletConfig
 from ..operations.wallet import ResetPlatformWalletConfigPlatformEnum
 from ..operations.wallet import UpdatePlatformWalletConfig
 from ..operations.wallet import UpdatePlatformWalletConfigPlatformEnum
+from ..models import BulkCreditResultStatusEnum
+from ..models import BulkDebitResultStatusEnum
 from ..models import CreditRequestOriginEnum, CreditRequestSourceEnum
 from ..models import DebitByCurrencyCodeRequestBalanceOriginEnum
 from ..models import PaymentRequestWalletPlatformEnum
 from ..models import PlatformWalletStatusEnum, PlatformWalletWalletStatusEnum
 from ..models import PlatformWalletConfigUpdateAllowedBalanceOriginsEnum
 from ..models import WalletInfoStatusEnum
+
+
+@same_doc_as(BulkCredit)
+def bulk_credit(
+    body: Optional[List[BulkCreditRequest]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Credit different users' wallets (bulkCredit)
+
+    Credit different users' wallets.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=4 (UPDATE)
+      *  Returns : bulk credit result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallets/credit
+
+        method: POST
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkCreditRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkCreditResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkCredit.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkCredit)
+async def bulk_credit_async(
+    body: Optional[List[BulkCreditRequest]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Credit different users' wallets (bulkCredit)
+
+    Credit different users' wallets.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=4 (UPDATE)
+      *  Returns : bulk credit result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallets/credit
+
+        method: POST
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkCreditRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkCreditResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkCredit.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(BulkDebit)
+def bulk_debit(
+    body: Optional[List[BulkDebitRequest]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Debit different users' wallets (bulkDebit)
+
+    Debit different users' wallets.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=4 (UPDATE)
+      *  Returns : bulk credit result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallets/debit
+
+        method: POST
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkDebitRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkDebitResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkDebit.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkDebit)
+async def bulk_debit_async(
+    body: Optional[List[BulkDebitRequest]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Debit different users' wallets (bulkDebit)
+
+    Debit different users' wallets.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=4 (UPDATE)
+      *  Returns : bulk credit result
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallets/debit
+
+        method: POST
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[BulkDebitRequest] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkDebitResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkDebit.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated

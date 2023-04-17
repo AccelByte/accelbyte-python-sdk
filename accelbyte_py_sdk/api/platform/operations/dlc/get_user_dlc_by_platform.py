@@ -30,7 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
-from ...models import UserDLCRecord
+from ...models import UserDLC
 
 
 class TypeEnum(StrEnum):
@@ -40,10 +40,10 @@ class TypeEnum(StrEnum):
     XBOX = "XBOX"
 
 
-class GetUserDLC(Operation):
-    """Get user dlc records (getUserDLC)
+class GetUserDLCByPlatform(Operation):
+    """Get user dlc by platform (getUserDLCByPlatform)
 
-    Get user dlc records.
+    Get user dlc by platform.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
@@ -53,7 +53,7 @@ class GetUserDLC(Operation):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/users/{userId}/dlc/records
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/dlc
 
         method: GET
 
@@ -69,15 +69,15 @@ class GetUserDLC(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        type_: (type) OPTIONAL Union[str, TypeEnum] in query
+        type_: (type) REQUIRED Union[str, TypeEnum] in query
 
     Responses:
-        200: OK - List[UserDLCRecord] (successful operation)
+        200: OK - UserDLC (successful operation)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/users/{userId}/dlc/records"
+    _url: str = "/platform/admin/namespaces/{namespace}/users/{userId}/dlc"
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
@@ -86,7 +86,7 @@ class GetUserDLC(Operation):
 
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
-    type_: Union[str, TypeEnum]  # OPTIONAL in [query]
+    type_: Union[str, TypeEnum]  # REQUIRED in [query]
 
     # endregion fields
 
@@ -152,15 +152,15 @@ class GetUserDLC(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetUserDLC:
+    def with_namespace(self, value: str) -> GetUserDLCByPlatform:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> GetUserDLC:
+    def with_user_id(self, value: str) -> GetUserDLCByPlatform:
         self.user_id = value
         return self
 
-    def with_type_(self, value: Union[str, TypeEnum]) -> GetUserDLC:
+    def with_type_(self, value: Union[str, TypeEnum]) -> GetUserDLCByPlatform:
         self.type_ = value
         return self
 
@@ -191,10 +191,10 @@ class GetUserDLC(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, List[UserDLCRecord]], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, UserDLC], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - List[UserDLCRecord] (successful operation)
+        200: OK - UserDLC (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -210,7 +210,7 @@ class GetUserDLC(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [UserDLCRecord.create_from_dict(i) for i in content], None
+            return UserDLC.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -222,21 +222,18 @@ class GetUserDLC(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        type_: Optional[Union[str, TypeEnum]] = None,
-        **kwargs,
-    ) -> GetUserDLC:
+        cls, namespace: str, user_id: str, type_: Union[str, TypeEnum], **kwargs
+    ) -> GetUserDLCByPlatform:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
-        if type_ is not None:
-            instance.type_ = type_
+        instance.type_ = type_
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetUserDLC:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> GetUserDLCByPlatform:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
@@ -265,7 +262,7 @@ class GetUserDLC(Operation):
         return {
             "namespace": True,
             "userId": True,
-            "type": False,
+            "type": True,
         }
 
     @staticmethod

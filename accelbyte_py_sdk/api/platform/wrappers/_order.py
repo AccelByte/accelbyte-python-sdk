@@ -118,7 +118,7 @@ def admin_create_user_order(
     Responses:
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists | 32124: Invalid currency namespace)
+        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 32126: Section ID is required for placing this order | 38121: Duplicate permanent item exists | 32124: Invalid currency namespace)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 
@@ -184,7 +184,7 @@ async def admin_create_user_order_async(
     Responses:
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists | 32124: Invalid currency namespace)
+        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 32126: Section ID is required for placing this order | 38121: Duplicate permanent item exists | 32124: Invalid currency namespace)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 
@@ -1355,7 +1355,7 @@ def public_create_user_order(
     Responses:
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
+        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 
@@ -1420,7 +1420,7 @@ async def public_create_user_order_async(
     Responses:
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
+        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 

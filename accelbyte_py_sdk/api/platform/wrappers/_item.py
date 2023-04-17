@@ -4779,6 +4779,7 @@ def query_items_1(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
+    section_exclusive: Optional[bool] = None,
     sort_by: Optional[List[Union[str, QueryItems1SortByEnum]]] = None,
     store_id: Optional[str] = None,
     tags: Optional[str] = None,
@@ -4842,6 +4843,8 @@ def query_items_1(
 
         region: (region) OPTIONAL str in query
 
+        section_exclusive: (sectionExclusive) OPTIONAL bool in query
+
         sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
 
         store_id: (storeId) OPTIONAL str in query
@@ -4874,6 +4877,7 @@ def query_items_1(
         limit=limit,
         offset=offset,
         region=region,
+        section_exclusive=section_exclusive,
         sort_by=sort_by,
         store_id=store_id,
         tags=tags,
@@ -4897,6 +4901,7 @@ async def query_items_1_async(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
+    section_exclusive: Optional[bool] = None,
     sort_by: Optional[List[Union[str, QueryItems1SortByEnum]]] = None,
     store_id: Optional[str] = None,
     tags: Optional[str] = None,
@@ -4960,6 +4965,8 @@ async def query_items_1_async(
 
         region: (region) OPTIONAL str in query
 
+        section_exclusive: (sectionExclusive) OPTIONAL bool in query
+
         sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
 
         store_id: (storeId) OPTIONAL str in query
@@ -4992,6 +4999,7 @@ async def query_items_1_async(
         limit=limit,
         offset=offset,
         region=region,
+        section_exclusive=section_exclusive,
         sort_by=sort_by,
         store_id=store_id,
         tags=tags,

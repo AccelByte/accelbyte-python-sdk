@@ -14,6 +14,8 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .bulk_credit import BulkCredit
+from .bulk_debit import BulkDebit
 from .check_wallet import CheckWallet
 from .check_wallet import OriginEnum as CheckWalletOriginEnum
 from .credit_user_wallet import CreditUserWallet

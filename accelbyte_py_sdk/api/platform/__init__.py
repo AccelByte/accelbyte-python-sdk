@@ -147,6 +147,8 @@ from .wrappers import get_platform_dlc_config
 from .wrappers import get_platform_dlc_config_async
 from .wrappers import get_user_dlc
 from .wrappers import get_user_dlc_async
+from .wrappers import get_user_dlc_by_platform
+from .wrappers import get_user_dlc_by_platform_async
 from .wrappers import public_sync_psn_dlc_inventory
 from .wrappers import public_sync_psn_dlc_inventory_async
 from .wrappers import public_sync_psn_dlc_inventory_with_multiple_service_labels
@@ -195,6 +197,8 @@ from .wrappers import get_user_entitlement_ownership_by_item_ids
 from .wrappers import get_user_entitlement_ownership_by_item_ids_async
 from .wrappers import get_user_entitlement_ownership_by_sku
 from .wrappers import get_user_entitlement_ownership_by_sku_async
+from .wrappers import grant_entitlements
+from .wrappers import grant_entitlements_async
 from .wrappers import grant_user_entitlement
 from .wrappers import grant_user_entitlement_async
 from .wrappers import public_consume_user_entitlement
@@ -235,12 +239,16 @@ from .wrappers import public_sell_user_entitlement
 from .wrappers import public_sell_user_entitlement_async
 from .wrappers import query_entitlements
 from .wrappers import query_entitlements_async
+from .wrappers import query_entitlements_1
+from .wrappers import query_entitlements_1_async
 from .wrappers import query_user_entitlements
 from .wrappers import query_user_entitlements_async
 from .wrappers import query_user_entitlements_by_app_type
 from .wrappers import query_user_entitlements_by_app_type_async
 from .wrappers import revoke_all_entitlements
 from .wrappers import revoke_all_entitlements_async
+from .wrappers import revoke_entitlements
+from .wrappers import revoke_entitlements_async
 from .wrappers import revoke_use_count
 from .wrappers import revoke_use_count_async
 from .wrappers import revoke_user_entitlement
@@ -817,6 +825,10 @@ from .wrappers import update_view
 from .wrappers import update_view_async
 
 # wallet
+from .wrappers import bulk_credit
+from .wrappers import bulk_credit_async
+from .wrappers import bulk_debit
+from .wrappers import bulk_debit_async
 from .wrappers import check_wallet
 from .wrappers import check_wallet_async
 from .wrappers import credit_user_wallet

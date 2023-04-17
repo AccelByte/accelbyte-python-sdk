@@ -28,36 +28,29 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
-from .....core import StrEnum
 
-from ...models import UserDLCRecord
-
-
-class TypeEnum(StrEnum):
-    EPICGAMES = "EPICGAMES"
-    PSN = "PSN"
-    STEAM = "STEAM"
-    XBOX = "XBOX"
+from ...models import EntitlementPagingSlicedResult
 
 
-class GetUserDLC(Operation):
-    """Get user dlc records (getUserDLC)
+class QueryEntitlements1(Operation):
+    """Query entitlements by Item Ids (queryEntitlements_1)
 
-    Get user dlc records.
+    Query entitlements by Item Ids.
+
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : user dlc
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement list
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/users/{userId}/dlc/records
+        url: /platform/admin/namespaces/{namespace}/entitlements/byItemIds
 
         method: GET
 
-        tags: ["DLC"]
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -67,17 +60,21 @@ class GetUserDLC(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
+        active_only: (activeOnly) OPTIONAL bool in query
 
-        type_: (type) OPTIONAL Union[str, TypeEnum] in query
+        item_ids: (itemIds) OPTIONAL List[str] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - List[UserDLCRecord] (successful operation)
+        200: OK - EntitlementPagingSlicedResult (successful operation)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/users/{userId}/dlc/records"
+    _url: str = "/platform/admin/namespaces/{namespace}/entitlements/byItemIds"
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
@@ -85,8 +82,10 @@ class GetUserDLC(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
-    type_: Union[str, TypeEnum]  # OPTIONAL in [query]
+    active_only: bool  # OPTIONAL in [query]
+    item_ids: List[str]  # OPTIONAL in [query]
+    limit: int  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -134,14 +133,18 @@ class GetUserDLC(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         return result
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "type_"):
-            result["type"] = self.type_
+        if hasattr(self, "active_only"):
+            result["activeOnly"] = self.active_only
+        if hasattr(self, "item_ids"):
+            result["itemIds"] = self.item_ids
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -152,16 +155,24 @@ class GetUserDLC(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetUserDLC:
+    def with_namespace(self, value: str) -> QueryEntitlements1:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> GetUserDLC:
-        self.user_id = value
+    def with_active_only(self, value: bool) -> QueryEntitlements1:
+        self.active_only = value
         return self
 
-    def with_type_(self, value: Union[str, TypeEnum]) -> GetUserDLC:
-        self.type_ = value
+    def with_item_ids(self, value: List[str]) -> QueryEntitlements1:
+        self.item_ids = value
+        return self
+
+    def with_limit(self, value: int) -> QueryEntitlements1:
+        self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> QueryEntitlements1:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -174,14 +185,22 @@ class GetUserDLC(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
+        if hasattr(self, "active_only") and self.active_only:
+            result["activeOnly"] = bool(self.active_only)
         elif include_empty:
-            result["userId"] = ""
-        if hasattr(self, "type_") and self.type_:
-            result["type"] = str(self.type_)
+            result["activeOnly"] = False
+        if hasattr(self, "item_ids") and self.item_ids:
+            result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
-            result["type"] = Union[str, TypeEnum]()
+            result["itemIds"] = []
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = 0
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -191,10 +210,10 @@ class GetUserDLC(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, List[UserDLCRecord]], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, EntitlementPagingSlicedResult], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - List[UserDLCRecord] (successful operation)
+        200: OK - EntitlementPagingSlicedResult (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -210,7 +229,7 @@ class GetUserDLC(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [UserDLCRecord.create_from_dict(i) for i in content], None
+            return EntitlementPagingSlicedResult.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -224,54 +243,75 @@ class GetUserDLC(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
-        type_: Optional[Union[str, TypeEnum]] = None,
+        active_only: Optional[bool] = None,
+        item_ids: Optional[List[str]] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
         **kwargs,
-    ) -> GetUserDLC:
+    ) -> QueryEntitlements1:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
-        if type_ is not None:
-            instance.type_ = type_
+        if active_only is not None:
+            instance.active_only = active_only
+        if item_ids is not None:
+            instance.item_ids = item_ids
+        if limit is not None:
+            instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetUserDLC:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> QueryEntitlements1:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+        if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
+            instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
-            instance.user_id = ""
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
+            instance.active_only = False
+        if "itemIds" in dict_ and dict_["itemIds"] is not None:
+            instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
-            instance.type_ = Union[str, TypeEnum]()
+            instance.item_ids = []
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = 0
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
-            "type": "type_",
+            "activeOnly": "active_only",
+            "itemIds": "item_ids",
+            "limit": "limit",
+            "offset": "offset",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "userId": True,
-            "type": False,
+            "activeOnly": False,
+            "itemIds": False,
+            "limit": False,
+            "offset": False,
         }
 
     @staticmethod
-    def get_enum_map() -> Dict[str, List[Any]]:
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
-            "type": ["EPICGAMES", "PSN", "STEAM", "XBOX"],  # in query
+            "itemIds": "multi",  # in query
         }
 
     # endregion static methods

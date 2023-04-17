@@ -144,6 +144,8 @@ class FullItemInfo(Model):
 
         season_type: (seasonType) OPTIONAL Union[str, SeasonTypeEnum]
 
+        section_exclusive: (sectionExclusive) OPTIONAL bool
+
         sellable: (sellable) OPTIONAL bool
 
         sku: (sku) OPTIONAL str
@@ -198,6 +200,7 @@ class FullItemInfo(Model):
     recurring: Recurring  # OPTIONAL
     sale_config: SaleConfig  # OPTIONAL
     season_type: Union[str, SeasonTypeEnum]  # OPTIONAL
+    section_exclusive: bool  # OPTIONAL
     sellable: bool  # OPTIONAL
     sku: str  # OPTIONAL
     stackable: bool  # OPTIONAL
@@ -344,6 +347,10 @@ class FullItemInfo(Model):
 
     def with_season_type(self, value: Union[str, SeasonTypeEnum]) -> FullItemInfo:
         self.season_type = value
+        return self
+
+    def with_section_exclusive(self, value: bool) -> FullItemInfo:
+        self.section_exclusive = value
         return self
 
     def with_sellable(self, value: bool) -> FullItemInfo:
@@ -534,6 +541,10 @@ class FullItemInfo(Model):
             result["seasonType"] = str(self.season_type)
         elif include_empty:
             result["seasonType"] = Union[str, SeasonTypeEnum]()
+        if hasattr(self, "section_exclusive"):
+            result["sectionExclusive"] = bool(self.section_exclusive)
+        elif include_empty:
+            result["sectionExclusive"] = False
         if hasattr(self, "sellable"):
             result["sellable"] = bool(self.sellable)
         elif include_empty:
@@ -612,6 +623,7 @@ class FullItemInfo(Model):
         recurring: Optional[Recurring] = None,
         sale_config: Optional[SaleConfig] = None,
         season_type: Optional[Union[str, SeasonTypeEnum]] = None,
+        section_exclusive: Optional[bool] = None,
         sellable: Optional[bool] = None,
         sku: Optional[str] = None,
         stackable: Optional[bool] = None,
@@ -679,6 +691,8 @@ class FullItemInfo(Model):
             instance.sale_config = sale_config
         if season_type is not None:
             instance.season_type = season_type
+        if section_exclusive is not None:
+            instance.section_exclusive = section_exclusive
         if sellable is not None:
             instance.sellable = sellable
         if sku is not None:
@@ -860,6 +874,10 @@ class FullItemInfo(Model):
             instance.season_type = str(dict_["seasonType"])
         elif include_empty:
             instance.season_type = Union[str, SeasonTypeEnum]()
+        if "sectionExclusive" in dict_ and dict_["sectionExclusive"] is not None:
+            instance.section_exclusive = bool(dict_["sectionExclusive"])
+        elif include_empty:
+            instance.section_exclusive = False
         if "sellable" in dict_ and dict_["sellable"] is not None:
             instance.sellable = bool(dict_["sellable"])
         elif include_empty:
@@ -968,6 +986,7 @@ class FullItemInfo(Model):
             "recurring": "recurring",
             "saleConfig": "sale_config",
             "seasonType": "season_type",
+            "sectionExclusive": "section_exclusive",
             "sellable": "sellable",
             "sku": "sku",
             "stackable": "stackable",
@@ -1015,6 +1034,7 @@ class FullItemInfo(Model):
             "recurring": False,
             "saleConfig": False,
             "seasonType": False,
+            "sectionExclusive": False,
             "sellable": False,
             "sku": False,
             "stackable": False,

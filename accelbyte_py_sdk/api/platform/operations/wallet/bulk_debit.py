@@ -28,65 +28,58 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
-from .....core import StrEnum
 
-from ...models import UserDLCRecord
-
-
-class TypeEnum(StrEnum):
-    EPICGAMES = "EPICGAMES"
-    PSN = "PSN"
-    STEAM = "STEAM"
-    XBOX = "XBOX"
+from ...models import BulkDebitRequest
+from ...models import BulkDebitResult
+from ...models import ValidationErrorEntity
 
 
-class GetUserDLC(Operation):
-    """Get user dlc records (getUserDLC)
+class BulkDebit(Operation):
+    """Debit different users' wallets (bulkDebit)
 
-    Get user dlc records.
+    Debit different users' wallets.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : user dlc
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=4 (UPDATE)
+      *  Returns : bulk credit result
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+        - ADMIN:NAMESPACE:{namespace}:WALLET [UPDATE]
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/users/{userId}/dlc/records
+        url: /platform/admin/namespaces/{namespace}/wallets/debit
 
-        method: GET
+        method: POST
 
-        tags: ["DLC"]
+        tags: ["Wallet"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
+        body: (body) OPTIONAL List[BulkDebitRequest] in body
+
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
-        type_: (type) OPTIONAL Union[str, TypeEnum] in query
-
     Responses:
-        200: OK - List[UserDLCRecord] (successful operation)
+        200: OK - BulkDebitResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/users/{userId}/dlc/records"
-    _method: str = "GET"
-    _consumes: List[str] = []
+    _url: str = "/platform/admin/namespaces/{namespace}/wallets/debit"
+    _method: str = "POST"
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
+    body: List[BulkDebitRequest]  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
-    type_: Union[str, TypeEnum]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -126,22 +119,19 @@ class GetUserDLC(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
-            "query": self.get_query_params(),
         }
+
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return [i.to_dict() for i in self.body]
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
-        return result
-
-    def get_query_params(self) -> dict:
-        result = {}
-        if hasattr(self, "type_"):
-            result["type"] = self.type_
         return result
 
     # endregion get_x_params methods
@@ -152,16 +142,12 @@ class GetUserDLC(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetUserDLC:
+    def with_body(self, value: List[BulkDebitRequest]) -> BulkDebit:
+        self.body = value
+        return self
+
+    def with_namespace(self, value: str) -> BulkDebit:
         self.namespace = value
-        return self
-
-    def with_user_id(self, value: str) -> GetUserDLC:
-        self.user_id = value
-        return self
-
-    def with_type_(self, value: Union[str, TypeEnum]) -> GetUserDLC:
-        self.type_ = value
         return self
 
     # endregion with_x methods
@@ -170,18 +156,16 @@ class GetUserDLC(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "body") and self.body:
+            result["body"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.body
+            ]
+        elif include_empty:
+            result["body"] = []
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
-        if hasattr(self, "type_") and self.type_:
-            result["type"] = str(self.type_)
-        elif include_empty:
-            result["type"] = Union[str, TypeEnum]()
         return result
 
     # endregion to methods
@@ -191,10 +175,14 @@ class GetUserDLC(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, List[UserDLCRecord]], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, BulkDebitResult], Union[None, HttpResponse, ValidationErrorEntity]
+    ]:
         """Parse the given response.
 
-        200: OK - List[UserDLCRecord] (successful operation)
+        200: OK - BulkDebitResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -210,7 +198,9 @@ class GetUserDLC(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [UserDLCRecord.create_from_dict(i) for i in content], None
+            return BulkDebitResult.create_from_dict(content), None
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -222,56 +212,42 @@ class GetUserDLC(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        type_: Optional[Union[str, TypeEnum]] = None,
-        **kwargs,
-    ) -> GetUserDLC:
+        cls, namespace: str, body: Optional[List[BulkDebitRequest]] = None, **kwargs
+    ) -> BulkDebit:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
-        if type_ is not None:
-            instance.type_ = type_
+        if body is not None:
+            instance.body = body
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetUserDLC:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BulkDebit:
         instance = cls()
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = [
+                BulkDebitRequest.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["body"]
+            ]
+        elif include_empty:
+            instance.body = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
-        elif include_empty:
-            instance.type_ = Union[str, TypeEnum]()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "body": "body",
             "namespace": "namespace",
-            "userId": "user_id",
-            "type": "type_",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "body": False,
             "namespace": True,
-            "userId": True,
-            "type": False,
-        }
-
-    @staticmethod
-    def get_enum_map() -> Dict[str, List[Any]]:
-        return {
-            "type": ["EPICGAMES", "PSN", "STEAM", "XBOX"],  # in query
         }
 
     # endregion static methods

@@ -67,6 +67,21 @@ from .billing_history_info import BillingHistoryInfo
 from .billing_history_info import StatusEnum as BillingHistoryInfoStatusEnum
 from .billing_history_paging_sliced_result import BillingHistoryPagingSlicedResult
 from .box_item import BoxItem
+from .bulk_credit_request import BulkCreditRequest
+from .bulk_credit_result import BulkCreditResult
+from .bulk_credit_result import StatusEnum as BulkCreditResultStatusEnum
+from .bulk_debit_request import BulkDebitRequest
+from .bulk_debit_result import BulkDebitResult
+from .bulk_debit_result import StatusEnum as BulkDebitResultStatusEnum
+from .bulk_entitlement_grant_request import BulkEntitlementGrantRequest
+from .bulk_entitlement_grant_result import BulkEntitlementGrantResult
+from .bulk_entitlement_grant_result import (
+    StatusEnum as BulkEntitlementGrantResultStatusEnum,
+)
+from .bulk_entitlement_revoke_result import BulkEntitlementRevokeResult
+from .bulk_entitlement_revoke_result import (
+    StatusEnum as BulkEntitlementRevokeResultStatusEnum,
+)
 from .bulk_operation_result import BulkOperationResult
 from .bulk_region_data_change_request import BulkRegionDataChangeRequest
 from .bundled_item_info import BundledItemInfo
@@ -137,6 +152,7 @@ from .credit_request import (
     OriginEnum as CreditRequestOriginEnum,
     SourceEnum as CreditRequestSourceEnum,
 )
+from .credit_result import CreditResult
 from .credit_revocation import CreditRevocation
 from .credit_revocation import StatusEnum as CreditRevocationStatusEnum
 from .credit_summary import CreditSummary
@@ -155,6 +171,7 @@ from .debit_by_currency_code_request import (
     BalanceOriginEnum as DebitByCurrencyCodeRequestBalanceOriginEnum,
 )
 from .debit_request import DebitRequest
+from .debit_result import DebitResult
 from .delete_reward_condition_request import DeleteRewardConditionRequest
 from .detailed_wallet_transaction_info import DetailedWalletTransactionInfo
 from .detailed_wallet_transaction_info import (
@@ -183,6 +200,7 @@ from .entitlement_decrement_result import (
 )
 from .entitlement_grant import EntitlementGrant
 from .entitlement_grant import SourceEnum as EntitlementGrantSourceEnum
+from .entitlement_grant_result import EntitlementGrantResult
 from .entitlement_history_info import EntitlementHistoryInfo
 from .entitlement_history_info import ActionEnum as EntitlementHistoryInfoActionEnum
 from .entitlement_info import EntitlementInfo
@@ -199,6 +217,7 @@ from .entitlement_paging_sliced_result import EntitlementPagingSlicedResult
 from .entitlement_revocation import EntitlementRevocation
 from .entitlement_revocation import StatusEnum as EntitlementRevocationStatusEnum
 from .entitlement_revocation_config import EntitlementRevocationConfig
+from .entitlement_revoke_result import EntitlementRevokeResult
 from .entitlement_sold_request import EntitlementSoldRequest
 from .entitlement_sold_result import EntitlementSoldResult
 from .entitlement_summary import EntitlementSummary
@@ -579,6 +598,8 @@ from .region_data_change import (
 )
 from .region_data_item import RegionDataItem
 from .region_data_item import CurrencyTypeEnum as RegionDataItemCurrencyTypeEnum
+from .region_data_item_dto import RegionDataItemDTO
+from .region_data_item_dto import CurrencyTypeEnum as RegionDataItemDTOCurrencyTypeEnum
 from .request_history import RequestHistory
 from .request_history import StatusEnum as RequestHistoryStatusEnum
 from .requirement import Requirement
@@ -702,6 +723,11 @@ from .twitch_sync_result import TwitchSyncResult
 from .twitch_sync_result import IapOrderStatusEnum as TwitchSyncResultIapOrderStatusEnum
 from .user_dlc import UserDLC
 from .user_dlc import PlatformEnum as UserDLCPlatformEnum
+from .user_dlc_record import UserDLCRecord
+from .user_dlc_record import (
+    PlatformEnum as UserDLCRecordPlatformEnum,
+    StatusEnum as UserDLCRecordStatusEnum,
+)
 from .validation_error_entity import ValidationErrorEntity
 from .view_create import ViewCreate
 from .view_info import ViewInfo

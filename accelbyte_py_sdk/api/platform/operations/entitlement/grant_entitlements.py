@@ -29,32 +29,29 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ErrorEntity
-from ...models import OrderCreate
-from ...models import OrderInfo
+from ...models import BulkEntitlementGrantRequest
+from ...models import BulkEntitlementGrantResult
 from ...models import ValidationErrorEntity
 
 
-class PublicCreateUserOrder(Operation):
-    """Create an order (publicCreateUserOrder)
+class GrantEntitlements(Operation):
+    """Grant entitlements to different users (grantEntitlements)
 
-    Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.
+    Grant entitlements to multiple users, skipped granting will be treated as fail.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
-      *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
-      * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
-      *  Returns : created order
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : bulk grant entitlements result
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
 
     Properties:
-        url: /platform/public/namespaces/{namespace}/users/{userId}/orders
+        url: /platform/admin/namespaces/{namespace}/entitlements/grant
 
         method: POST
 
-        tags: ["Order"]
+        tags: ["Entitlement"]
 
         consumes: ["application/json"]
 
@@ -62,38 +59,27 @@ class PublicCreateUserOrder(Operation):
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        body: (body) OPTIONAL OrderCreate in body
+        body: (body) OPTIONAL BulkEntitlementGrantRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
     Responses:
-        201: Created - OrderInfo (successful operation)
-
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
-
-        403: Forbidden - ErrorEntity (20016: action is banned)
-
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
-
-        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+        200: OK - BulkEntitlementGrantResult (successful operation)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
 
-    _url: str = "/platform/public/namespaces/{namespace}/users/{userId}/orders"
+    _url: str = "/platform/admin/namespaces/{namespace}/entitlements/grant"
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: OrderCreate  # OPTIONAL in [body]
+    body: BulkEntitlementGrantRequest  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -146,8 +132,6 @@ class PublicCreateUserOrder(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -158,16 +142,12 @@ class PublicCreateUserOrder(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: OrderCreate) -> PublicCreateUserOrder:
+    def with_body(self, value: BulkEntitlementGrantRequest) -> GrantEntitlements:
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> PublicCreateUserOrder:
+    def with_namespace(self, value: str) -> GrantEntitlements:
         self.namespace = value
-        return self
-
-    def with_user_id(self, value: str) -> PublicCreateUserOrder:
-        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -179,15 +159,11 @@ class PublicCreateUserOrder(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = OrderCreate()
+            result["body"] = BulkEntitlementGrantRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -198,20 +174,12 @@ class PublicCreateUserOrder(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, OrderInfo],
-        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
+        Union[None, BulkEntitlementGrantResult],
+        Union[None, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
-        201: Created - OrderInfo (successful operation)
-
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
-
-        403: Forbidden - ErrorEntity (20016: action is banned)
-
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
-
-        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+        200: OK - BulkEntitlementGrantResult (successful operation)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -228,16 +196,8 @@ class PublicCreateUserOrder(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 201:
-            return OrderInfo.create_from_dict(content), None
-        if code == 400:
-            return None, ErrorEntity.create_from_dict(content)
-        if code == 403:
-            return None, ErrorEntity.create_from_dict(content)
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
-        if code == 409:
-            return None, ErrorEntity.create_from_dict(content)
+        if code == 200:
+            return BulkEntitlementGrantResult.create_from_dict(content), None
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 
@@ -251,11 +211,13 @@ class PublicCreateUserOrder(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, user_id: str, body: Optional[OrderCreate] = None, **kwargs
-    ) -> PublicCreateUserOrder:
+        cls,
+        namespace: str,
+        body: Optional[BulkEntitlementGrantRequest] = None,
+        **kwargs,
+    ) -> GrantEntitlements:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         if body is not None:
             instance.body = body
         return instance
@@ -263,22 +225,18 @@ class PublicCreateUserOrder(Operation):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> PublicCreateUserOrder:
+    ) -> GrantEntitlements:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = OrderCreate.create_from_dict(
+            instance.body = BulkEntitlementGrantRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = OrderCreate()
+            instance.body = BulkEntitlementGrantRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
         return instance
 
     @staticmethod
@@ -286,7 +244,6 @@ class PublicCreateUserOrder(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "userId": "user_id",
         }
 
     @staticmethod
@@ -294,7 +251,6 @@ class PublicCreateUserOrder(Operation):
         return {
             "body": False,
             "namespace": True,
-            "userId": True,
         }
 
     # endregion static methods

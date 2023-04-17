@@ -42,6 +42,7 @@ from .get_user_entitlement_ow_dab0ca import GetUserEntitlementOwnershipBySku
 from .get_user_entitlement_ow_dab0ca import (
     EntitlementClazzEnum as GetUserEntitlementOwnershipBySkuEntitlementClazzEnum,
 )
+from .grant_entitlements import GrantEntitlements
 from .grant_user_entitlement import GrantUserEntitlement
 from .public_consume_user_ent_7254fa import PublicConsumeUserEntitlement
 from .public_exists_any_my_ac_dbd2a5 import PublicExistsAnyMyActiveEntitlement
@@ -91,6 +92,7 @@ from .query_entitlements import (
     AppTypeEnum as QueryEntitlementsAppTypeEnum,
     EntitlementClazzEnum as QueryEntitlementsEntitlementClazzEnum,
 )
+from .query_entitlements_1 import QueryEntitlements1
 from .query_user_entitlements import QueryUserEntitlements
 from .query_user_entitlements import (
     AppTypeEnum as QueryUserEntitlementsAppTypeEnum,
@@ -101,6 +103,7 @@ from .query_user_entitlements_22cea1 import (
     AppTypeEnum as QueryUserEntitlementsByAppTypeAppTypeEnum,
 )
 from .revoke_all_entitlements import RevokeAllEntitlements
+from .revoke_entitlements import RevokeEntitlements
 from .revoke_use_count import RevokeUseCount
 from .revoke_user_entitlement import RevokeUserEntitlement
 from .revoke_user_entitlements import RevokeUserEntitlements

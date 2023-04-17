@@ -140,6 +140,8 @@ from ._dlc import get_platform_dlc_config
 from ._dlc import get_platform_dlc_config_async
 from ._dlc import get_user_dlc
 from ._dlc import get_user_dlc_async
+from ._dlc import get_user_dlc_by_platform
+from ._dlc import get_user_dlc_by_platform_async
 from ._dlc import public_sync_psn_dlc_inventory
 from ._dlc import public_sync_psn_dlc_inventory_async
 from ._dlc import public_sync_psn_dlc_inventory_with_multiple_service_labels
@@ -187,6 +189,8 @@ from ._entitlement import get_user_entitlement_ownership_by_item_ids
 from ._entitlement import get_user_entitlement_ownership_by_item_ids_async
 from ._entitlement import get_user_entitlement_ownership_by_sku
 from ._entitlement import get_user_entitlement_ownership_by_sku_async
+from ._entitlement import grant_entitlements
+from ._entitlement import grant_entitlements_async
 from ._entitlement import grant_user_entitlement
 from ._entitlement import grant_user_entitlement_async
 from ._entitlement import public_consume_user_entitlement
@@ -227,12 +231,16 @@ from ._entitlement import public_sell_user_entitlement
 from ._entitlement import public_sell_user_entitlement_async
 from ._entitlement import query_entitlements
 from ._entitlement import query_entitlements_async
+from ._entitlement import query_entitlements_1
+from ._entitlement import query_entitlements_1_async
 from ._entitlement import query_user_entitlements
 from ._entitlement import query_user_entitlements_async
 from ._entitlement import query_user_entitlements_by_app_type
 from ._entitlement import query_user_entitlements_by_app_type_async
 from ._entitlement import revoke_all_entitlements
 from ._entitlement import revoke_all_entitlements_async
+from ._entitlement import revoke_entitlements
+from ._entitlement import revoke_entitlements_async
 from ._entitlement import revoke_use_count
 from ._entitlement import revoke_use_count_async
 from ._entitlement import revoke_user_entitlement
@@ -784,6 +792,10 @@ from ._view import public_list_views_async
 from ._view import update_view
 from ._view import update_view_async
 
+from ._wallet import bulk_credit
+from ._wallet import bulk_credit_async
+from ._wallet import bulk_debit
+from ._wallet import bulk_debit_async
 from ._wallet import check_wallet
 from ._wallet import check_wallet_async
 from ._wallet import credit_user_wallet

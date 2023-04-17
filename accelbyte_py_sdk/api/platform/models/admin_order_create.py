@@ -71,6 +71,8 @@ class AdminOrderCreate(Model):
         return_url: (returnUrl) OPTIONAL str
 
         sandbox: (sandbox) OPTIONAL bool
+
+        section_id: (sectionId) OPTIONAL str
     """
 
     # region fields
@@ -88,6 +90,7 @@ class AdminOrderCreate(Model):
     platform: Union[str, PlatformEnum]  # OPTIONAL
     return_url: str  # OPTIONAL
     sandbox: bool  # OPTIONAL
+    section_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -143,6 +146,10 @@ class AdminOrderCreate(Model):
 
     def with_sandbox(self, value: bool) -> AdminOrderCreate:
         self.sandbox = value
+        return self
+
+    def with_section_id(self, value: str) -> AdminOrderCreate:
+        self.section_id = value
         return self
 
     # endregion with_x methods
@@ -203,6 +210,10 @@ class AdminOrderCreate(Model):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
             result["sandbox"] = False
+        if hasattr(self, "section_id"):
+            result["sectionId"] = str(self.section_id)
+        elif include_empty:
+            result["sectionId"] = ""
         return result
 
     # endregion to methods
@@ -225,6 +236,7 @@ class AdminOrderCreate(Model):
         platform: Optional[Union[str, PlatformEnum]] = None,
         return_url: Optional[str] = None,
         sandbox: Optional[bool] = None,
+        section_id: Optional[str] = None,
         **kwargs,
     ) -> AdminOrderCreate:
         instance = cls()
@@ -248,6 +260,8 @@ class AdminOrderCreate(Model):
             instance.return_url = return_url
         if sandbox is not None:
             instance.sandbox = sandbox
+        if section_id is not None:
+            instance.section_id = section_id
         return instance
 
     @classmethod
@@ -311,6 +325,10 @@ class AdminOrderCreate(Model):
             instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
             instance.sandbox = False
+        if "sectionId" in dict_ and dict_["sectionId"] is not None:
+            instance.section_id = str(dict_["sectionId"])
+        elif include_empty:
+            instance.section_id = ""
         return instance
 
     @classmethod
@@ -363,6 +381,7 @@ class AdminOrderCreate(Model):
             "platform": "platform",
             "returnUrl": "return_url",
             "sandbox": "sandbox",
+            "sectionId": "section_id",
         }
 
     @staticmethod
@@ -381,6 +400,7 @@ class AdminOrderCreate(Model):
             "platform": False,
             "returnUrl": False,
             "sandbox": False,
+            "sectionId": False,
         }
 
     @staticmethod
