@@ -30,43 +30,48 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import get_user_dlc as get_user_dlc_internal
-from accelbyte_py_sdk.api.platform.models import UserDLCRecord
+from accelbyte_py_sdk.api.platform import bulk_credit as bulk_credit_internal
+from accelbyte_py_sdk.api.platform.models import BulkCreditRequest
+from accelbyte_py_sdk.api.platform.models import BulkCreditResult
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()
-@click.argument("user_id", type=str)
-@click.option("--type", "type_", type=str)
+@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def get_user_dlc(
-    user_id: str,
-    type_: Optional[str] = None,
+def bulk_credit(
+    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_user_dlc_internal.__doc__)
+        click.echo(bulk_credit_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = get_user_dlc_internal(
-        user_id=user_id,
-        type_=type_,
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = [BulkCreditRequest.create_from_dict(i0) for i0 in body_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    result, error = bulk_credit_internal(
+        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"getUserDLC failed: {str(error)}")
+        raise Exception(f"bulkCredit failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-get_user_dlc.operation_id = "getUserDLC"
-get_user_dlc.is_deprecated = False
+bulk_credit.operation_id = "bulkCredit"
+bulk_credit.is_deprecated = False

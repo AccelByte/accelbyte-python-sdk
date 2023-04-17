@@ -30,43 +30,57 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import get_user_dlc as get_user_dlc_internal
-from accelbyte_py_sdk.api.platform.models import UserDLCRecord
+from accelbyte_py_sdk.api.platform import (
+    query_entitlements_1 as query_entitlements_1_internal,
+)
+from accelbyte_py_sdk.api.platform.models import EntitlementPagingSlicedResult
 
 
 @click.command()
-@click.argument("user_id", type=str)
-@click.option("--type", "type_", type=str)
+@click.option("--active_only", "active_only", type=bool)
+@click.option("--item_ids", "item_ids", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def get_user_dlc(
-    user_id: str,
-    type_: Optional[str] = None,
+def query_entitlements_1(
+    active_only: Optional[bool] = None,
+    item_ids: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_user_dlc_internal.__doc__)
+        click.echo(query_entitlements_1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = get_user_dlc_internal(
-        user_id=user_id,
-        type_=type_,
+    if item_ids is not None:
+        try:
+            item_ids_json = json.loads(item_ids)
+            item_ids = [str(i0) for i0 in item_ids_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'itemIds'. {str(e)}") from e
+    result, error = query_entitlements_1_internal(
+        active_only=active_only,
+        item_ids=item_ids,
+        limit=limit,
+        offset=offset,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"getUserDLC failed: {str(error)}")
+        raise Exception(f"queryEntitlements_1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-get_user_dlc.operation_id = "getUserDLC"
-get_user_dlc.is_deprecated = False
+query_entitlements_1.operation_id = "queryEntitlements_1"
+query_entitlements_1.is_deprecated = False

@@ -49,6 +49,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--region", "region", type=str)
+@click.option("--section_exclusive", "section_exclusive", type=bool)
 @click.option("--sort_by", "sort_by", type=str)
 @click.option("--store_id", "store_id", type=str)
 @click.option("--tags", "tags", type=str)
@@ -70,6 +71,7 @@ def query_items_1(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
+    section_exclusive: Optional[bool] = None,
     sort_by: Optional[str] = None,
     store_id: Optional[str] = None,
     tags: Optional[str] = None,
@@ -106,6 +108,7 @@ def query_items_1(
         limit=limit,
         offset=offset,
         region=region,
+        section_exclusive=section_exclusive,
         sort_by=sort_by,
         store_id=store_id,
         tags=tags,

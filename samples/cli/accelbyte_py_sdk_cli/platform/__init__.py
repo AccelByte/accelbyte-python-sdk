@@ -58,6 +58,9 @@ from ._get_platform_dlc_config import get_platform_dlc_config
 from ._update_platform_dlc_config import update_platform_dlc_config
 from ._delete_platform_dlc_config import delete_platform_dlc_config
 from ._query_entitlements import query_entitlements
+from ._query_entitlements_1 import query_entitlements_1
+from ._grant_entitlements import grant_entitlements
+from ._revoke_entitlements import revoke_entitlements
 from ._get_entitlement import get_entitlement
 from ._query_fulfillment_histories import query_fulfillment_histories
 from ._get_apple_iap_config import get_apple_iap_config
@@ -200,6 +203,7 @@ from ._anonymize_payment import anonymize_payment
 from ._anonymize_revocation import anonymize_revocation
 from ._anonymize_subscription import anonymize_subscription
 from ._anonymize_wallet import anonymize_wallet
+from ._get_user_dlc_by_platform import get_user_dlc_by_platform
 from ._get_user_dlc import get_user_dlc
 from ._query_user_entitlements import query_user_entitlements
 from ._grant_user_entitlement import grant_user_entitlement
@@ -292,6 +296,8 @@ from ._get_view import get_view
 from ._update_view import update_view
 from ._delete_view import delete_view
 from ._query_wallets import query_wallets
+from ._bulk_credit import bulk_credit
+from ._bulk_debit import bulk_debit
 from ._get_wallet import get_wallet
 from ._sync_orders import sync_orders
 from ._test_adyen_config import test_adyen_config
@@ -512,6 +518,9 @@ commands = [
     update_platform_dlc_config,
     delete_platform_dlc_config,
     query_entitlements,
+    query_entitlements_1,
+    grant_entitlements,
+    revoke_entitlements,
     get_entitlement,
     query_fulfillment_histories,
     get_apple_iap_config,
@@ -654,6 +663,7 @@ commands = [
     anonymize_revocation,
     anonymize_subscription,
     anonymize_wallet,
+    get_user_dlc_by_platform,
     get_user_dlc,
     query_user_entitlements,
     grant_user_entitlement,
@@ -728,6 +738,8 @@ commands = [
     update_view,
     delete_view,
     query_wallets,
+    bulk_credit,
+    bulk_debit,
     get_wallet,
     sync_orders,
     test_adyen_config,
