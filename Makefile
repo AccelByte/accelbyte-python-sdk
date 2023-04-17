@@ -112,3 +112,28 @@ version:
 			echo $${VERSION_NEW} > version.txt && \
 			sed -i "s/VERSION = \"[0-9]\+\.[0-9]\+\.[0-9]\+\"/VERSION = \"$$VERSION_NEW\"/" setup.py && \
 			sed -i "s/__version__ = \"[0-9]\+\.[0-9]\+\.[0-9]\+\"/__version__ = \"$$VERSION_NEW\"/" accelbyte_py_sdk/__init__.py
+
+outstanding_deprecation:
+	find * -type f -iname '*.py' \
+		| xargs awk ' \
+				BEGIN { \
+					count_ok = 0; \
+					count_not_ok = 0; \
+					"date +%s -d \"6 months ago\"" | getline limit_epoch; \
+				} \
+				match($$0,/@deprecated\("([0-9]{4}-[0-9]{1,2}-[0-9]{1,2})/,since_date) { \
+					"date +%s -d " since_date[1] | getline since_epoch; \
+					if (limit_epoch < since_epoch) { \
+						count_ok += 1; \
+						print "ok - " FILENAME ":" $$0; \
+					} \
+					else { \
+						count_not_ok += 1; \
+						print "not ok - " FILENAME ":" $$0; \
+					} \
+				} \
+				END { \
+					exit (count_not_ok ? 1 : 0); \
+				}' \
+		| tee outstanding_deprecation.out
+	@echo 1..$$(grep -c '^\(not \)\?ok' outstanding_deprecation.out) 
