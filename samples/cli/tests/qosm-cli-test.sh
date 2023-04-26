@@ -29,12 +29,12 @@ touch "tmp.dat"
 if [ "$BATCH" = true ] ; then
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
-qosm-update-server-config '{"status": "EAxcVpFr"}' 'ttufHIRd' --login_with_auth "Bearer foo"
-qosm-delete-server 'H9UzVRiX' --login_with_auth "Bearer foo"
-qosm-set-server-alias '{"alias": "bqlAw7r6"}' 'W2ktQG0h' --login_with_auth "Bearer foo"
+qosm-update-server-config '{"status": "EAxcVpFrttufHIRd"}' 'H9UzVRiXbqlAw7r6' --login_with_auth "Bearer foo"
+qosm-delete-server 'W2ktQG0h5JAav5kR' --login_with_auth "Bearer foo"
+qosm-set-server-alias '{"alias": "a62WopBJHPtcDs8b"}' 'BZLCXLx8bbgorQeF' --login_with_auth "Bearer foo"
 qosm-list-server-per-namespace --login_with_auth "Bearer foo"
 qosm-list-server --login_with_auth "Bearer foo"
-qosm-heartbeat '{"ip": "5JAav5kR", "port": 0, "region": "4n8mzZ0m"}' --login_with_auth "Bearer foo"
+qosm-heartbeat '{"ip": "bQ1g7qbPngUNB1vR", "port": 29, "region": "xwElFHHdgs21Jub7"}' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -65,23 +65,23 @@ fi
 
 #- 2 UpdateServerConfig
 $PYTHON -m $MODULE 'qosm-update-server-config' \
-    '{"status": "8SAMTwE6"}' \
-    'I56IaRDB' \
+    '{"status": "4CUkNmKJfh5pUkHO"}' \
+    'DpoMF78NY4YkHs1c' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 2 'UpdateServerConfig' test.out
 
 #- 3 DeleteServer
 $PYTHON -m $MODULE 'qosm-delete-server' \
-    'XxyaNoMR' \
+    'nz1JSDgY1TXp38zs' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 3 'DeleteServer' test.out
 
 #- 4 SetServerAlias
 $PYTHON -m $MODULE 'qosm-set-server-alias' \
-    '{"alias": "6hkspInr"}' \
-    'Aip6lyzS' \
+    '{"alias": "CTCrbCbPOyNQkT7N"}' \
+    'vyE3cwyALczNIicX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 4 'SetServerAlias' test.out
@@ -100,7 +100,7 @@ eval_tap $? 6 'ListServer' test.out
 
 #- 7 Heartbeat
 $PYTHON -m $MODULE 'qosm-heartbeat' \
-    '{"ip": "xwElFHHd", "port": 13, "region": "Dpv8N7ZQ"}' \
+    '{"ip": "m7agSrjJW2OQNOs1", "port": 86, "region": "D6QVKNCWP75TB0i7"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'Heartbeat' test.out
