@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Match Service V2 (2.3.0)
+# AccelByte Gaming Services Match Service V2 (2.3.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,7 +41,33 @@ class CreateMatchTicket(Operation):
 
     Required Scope: social
 
-    Creates a new request for matchmaking
+    Creates a new request for matchmaking.
+
+    Cross Platform: Allow player to play game with "any" registered plaftforms.
+    1. Cross Platform can be enabled through session service or create match ticket.
+    a. via ticket: specify several cross_platform on create match ticket attributes.
+    This value will override player attributes in session service. e.g. cross_platform:[xbox,psn,steam]
+    b. via session service: set player/party cross_platform attributes.
+    c. Enable match options ruleset with name cross_platform and type "any".
+    {
+    "name": "co-op",
+    "data": {
+    "alliance": {
+    "min_number": 1,
+    "max_number": 1,
+    "player_min_number": 1,
+    "player_max_number": 4
+    },
+    "match_options": {
+    "options": [
+    {ânameâ: âcross_platformâ, âtypeâ: âanyâ}
+    ]
+    }
+    }
+    }
+    2. Cross Platform can be disabled with specify only ONE cross_platform. Current matchmaking use this behavior. e.g. cross_platform:[xbox]
+    3. Matchmaking will consider Party leader cross_platform preference or Session attribute cross_platform preference.
+    4. This behavior only works for Default Matchmaker. Custom matchmaker (custom gRPC matchmaker) need to consider this on its own implementation.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:MATCHMAKING:TICKET [CREATE]

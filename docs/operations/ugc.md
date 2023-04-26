@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Ugc Service Index (2.9.3)
+# AccelByte Gaming Services Ugc Service Index (2.10.1)
 
 
 ## Operations
@@ -164,6 +164,7 @@
 |---|---|
 | models.AddDownloadCountResponse | [ModelsAddDownloadCountResponse](../../accelbyte_py_sdk/api/ugc/models/models_add_download_count_response.py) |
 | models.AdminGetContentBulkRequest | [ModelsAdminGetContentBulkRequest](../../accelbyte_py_sdk/api/ugc/models/models_admin_get_content_bulk_request.py) |
+| models.AdminUpdateContentRequest | [ModelsAdminUpdateContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_admin_update_content_request.py) |
 | models.ChannelRequest | [ModelsChannelRequest](../../accelbyte_py_sdk/api/ugc/models/models_channel_request.py) |
 | models.ChannelResponse | [ModelsChannelResponse](../../accelbyte_py_sdk/api/ugc/models/models_channel_response.py) |
 | models.ContentDownloadResponse | [ModelsContentDownloadResponse](../../accelbyte_py_sdk/api/ugc/models/models_content_download_response.py) |

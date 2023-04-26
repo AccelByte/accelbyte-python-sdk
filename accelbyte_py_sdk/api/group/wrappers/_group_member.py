@@ -43,6 +43,7 @@ from ..operations.group_member import AcceptGroupInvitationPublicV1
 from ..operations.group_member import AcceptGroupInvitationPublicV2
 from ..operations.group_member import AcceptGroupJoinRequestPublicV1
 from ..operations.group_member import AcceptGroupJoinRequestPublicV2
+from ..operations.group_member import AdminGetUserGroupStatusInformationV2
 from ..operations.group_member import CancelGroupJoinRequestV1
 from ..operations.group_member import CancelInvitationGroupMemberV2
 from ..operations.group_member import GetGroupMembersListAdminV1
@@ -724,6 +725,132 @@ async def accept_group_join_request_public_v2_async(
         if error:
             return None, error
     request = AcceptGroupJoinRequestPublicV2.create(
+        group_id=group_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetUserGroupStatusInformationV2)
+def admin_get_user_group_status_information_v2(
+    group_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """User Group Status Information (AdminGetUserGroupStatusInformationV2)
+
+    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]"
+
+
+
+
+    This endpoint is used to get user group status information.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
+
+    Properties:
+        url: /group/v2/admin/namespaces/{namespace}/users/{userId}/groups/{groupId}/status
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserGroupStatusInformationV2.create(
+        group_id=group_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetUserGroupStatusInformationV2)
+async def admin_get_user_group_status_information_v2_async(
+    group_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """User Group Status Information (AdminGetUserGroupStatusInformationV2)
+
+    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]"
+
+
+
+
+    This endpoint is used to get user group status information.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
+
+    Properties:
+        url: /group/v2/admin/namespaces/{namespace}/users/{userId}/groups/{groupId}/status
+
+        method: GET
+
+        tags: ["Group Member"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserGroupStatusInformationV2.create(
         group_id=group_id,
         user_id=user_id,
         namespace=namespace,

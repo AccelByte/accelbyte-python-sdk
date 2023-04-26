@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.3)
+# AccelByte Gaming Services Ugc Service (2.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,7 @@ from .utils import randomize
 
 from ..api.ugc.models import ModelsAddDownloadCountResponse
 from ..api.ugc.models import ModelsAdminGetContentBulkRequest
+from ..api.ugc.models import ModelsAdminUpdateContentRequest
 from ..api.ugc.models import ModelsChannelRequest
 from ..api.ugc.models import ModelsChannelResponse
 from ..api.ugc.models import ModelsContentDownloadResponse
@@ -86,6 +87,25 @@ def create_models_admin_get_content_bulk_request_example() -> (
 ):
     instance = ModelsAdminGetContentBulkRequest()
     instance.content_ids = [randomize()]
+    return instance
+
+
+def create_models_admin_update_content_request_example() -> (
+    ModelsAdminUpdateContentRequest
+):
+    instance = ModelsAdminUpdateContentRequest()
+    instance.content_type = randomize()
+    instance.file_extension = randomize()
+    instance.name = randomize()
+    instance.payload = randomize()
+    instance.preview = randomize()
+    instance.sub_type = randomize()
+    instance.tags = [randomize()]
+    instance.type_ = randomize()
+    instance.update_content_file = randomize("bool")
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.preview_metadata = create_models_preview_metadata_example()
+    instance.share_code = randomize()
     return instance
 
 

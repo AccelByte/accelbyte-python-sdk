@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.9.3)
+# AccelByte Gaming Services Social Service (2.4.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,60 +29,54 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsChannelRequest
-from ...models import ModelsChannelResponse
-from ...models import ResponseError
+from ...models import BulkStatCycleRequest
+from ...models import BulkStatCycleResult
 
 
-class CreateChannel(Operation):
-    """Create Channel (CreateChannel)
+class BulkGetStatCycle1(Operation):
+    """Bulk get stat cycle (bulkGetStatCycle_1)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+    Bulk get stat cycle.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : list of stat cycles
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+        - NAMESPACE:{namespace}:STAT [READ]
 
     Properties:
-        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
+        url: /social/v1/public/namespaces/{namespace}/statCycles/bulk
 
         method: POST
 
-        tags: ["Public Channel"]
+        tags: ["StatCycleConfiguration"]
 
-        consumes: ["application/json", "application/octet-stream"]
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsChannelRequest in body
+        body: (body) OPTIONAL BulkStatCycleRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
     Responses:
-        201: Created - ModelsChannelResponse (Created)
-
-        400: Bad Request - ResponseError (Bad Request)
-
-        401: Unauthorized - ResponseError (Unauthorized)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        200: OK - BulkStatCycleResult (successful operation)
     """
 
     # region fields
 
-    _url: str = "/ugc/v1/public/namespaces/{namespace}/users/{userId}/channels"
+    _url: str = "/social/v1/public/namespaces/{namespace}/statCycles/bulk"
     _method: str = "POST"
-    _consumes: List[str] = ["application/json", "application/octet-stream"]
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsChannelRequest  # REQUIRED in [body]
+    body: BulkStatCycleRequest  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -135,8 +129,6 @@ class CreateChannel(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -147,16 +139,12 @@ class CreateChannel(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelsChannelRequest) -> CreateChannel:
+    def with_body(self, value: BulkStatCycleRequest) -> BulkGetStatCycle1:
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> CreateChannel:
+    def with_namespace(self, value: str) -> BulkGetStatCycle1:
         self.namespace = value
-        return self
-
-    def with_user_id(self, value: str) -> CreateChannel:
-        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -168,15 +156,11 @@ class CreateChannel(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelsChannelRequest()
+            result["body"] = BulkStatCycleRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -186,18 +170,10 @@ class CreateChannel(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ModelsChannelResponse], Union[None, HttpResponse, ResponseError]
-    ]:
+    ) -> Tuple[Union[None, BulkStatCycleResult], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        201: Created - ModelsChannelResponse (Created)
-
-        400: Bad Request - ResponseError (Bad Request)
-
-        401: Unauthorized - ResponseError (Unauthorized)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        200: OK - BulkStatCycleResult (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -212,14 +188,8 @@ class CreateChannel(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 201:
-            return ModelsChannelResponse.create_from_dict(content), None
-        if code == 400:
-            return None, ResponseError.create_from_dict(content)
-        if code == 401:
-            return None, ResponseError.create_from_dict(content)
-        if code == 500:
-            return None, ResponseError.create_from_dict(content)
+        if code == 200:
+            return BulkStatCycleResult.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -231,33 +201,29 @@ class CreateChannel(Operation):
 
     @classmethod
     def create(
-        cls, body: ModelsChannelRequest, namespace: str, user_id: str, **kwargs
-    ) -> CreateChannel:
+        cls, namespace: str, body: Optional[BulkStatCycleRequest] = None, **kwargs
+    ) -> BulkGetStatCycle1:
         instance = cls()
-        instance.body = body
         instance.namespace = namespace
-        instance.user_id = user_id
+        if body is not None:
+            instance.body = body
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> CreateChannel:
+    ) -> BulkGetStatCycle1:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsChannelRequest.create_from_dict(
+            instance.body = BulkStatCycleRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelsChannelRequest()
+            instance.body = BulkStatCycleRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
         return instance
 
     @staticmethod
@@ -265,15 +231,13 @@ class CreateChannel(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "userId": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": True,
+            "body": False,
             "namespace": True,
-            "userId": True,
         }
 
     # endregion static methods

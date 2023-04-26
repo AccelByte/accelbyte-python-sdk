@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.22.0)
+# AccelByte Gaming Services Matchmaking Service (2.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,8 +41,6 @@ class ModelsRuleSet(Model):
     Properties:
         alliance: (alliance) REQUIRED ModelsAllianceRule
 
-        alliance_flexing_rule: (alliance_flexing_rule) REQUIRED List[ModelsAllianceFlexingRule]
-
         flexing_rule: (flexing_rule) REQUIRED List[ModelsFlexingRule]
 
         match_options: (match_options) REQUIRED ModelsMatchOptionRule
@@ -51,18 +49,20 @@ class ModelsRuleSet(Model):
 
         rebalance_enable: (rebalance_enable) REQUIRED bool
 
-        sub_game_modes: (sub_game_modes) REQUIRED Dict[str, ModelsSubGameMode]
+        alliance_flexing_rule: (alliance_flexing_rule) OPTIONAL List[ModelsAllianceFlexingRule]
+
+        sub_game_modes: (sub_game_modes) OPTIONAL Dict[str, ModelsSubGameMode]
     """
 
     # region fields
 
     alliance: ModelsAllianceRule  # REQUIRED
-    alliance_flexing_rule: List[ModelsAllianceFlexingRule]  # REQUIRED
     flexing_rule: List[ModelsFlexingRule]  # REQUIRED
     match_options: ModelsMatchOptionRule  # REQUIRED
     matching_rule: List[ModelsMatchingRule]  # REQUIRED
     rebalance_enable: bool  # REQUIRED
-    sub_game_modes: Dict[str, ModelsSubGameMode]  # REQUIRED
+    alliance_flexing_rule: List[ModelsAllianceFlexingRule]  # OPTIONAL
+    sub_game_modes: Dict[str, ModelsSubGameMode]  # OPTIONAL
 
     # endregion fields
 
@@ -70,12 +70,6 @@ class ModelsRuleSet(Model):
 
     def with_alliance(self, value: ModelsAllianceRule) -> ModelsRuleSet:
         self.alliance = value
-        return self
-
-    def with_alliance_flexing_rule(
-        self, value: List[ModelsAllianceFlexingRule]
-    ) -> ModelsRuleSet:
-        self.alliance_flexing_rule = value
         return self
 
     def with_flexing_rule(self, value: List[ModelsFlexingRule]) -> ModelsRuleSet:
@@ -94,6 +88,12 @@ class ModelsRuleSet(Model):
         self.rebalance_enable = value
         return self
 
+    def with_alliance_flexing_rule(
+        self, value: List[ModelsAllianceFlexingRule]
+    ) -> ModelsRuleSet:
+        self.alliance_flexing_rule = value
+        return self
+
     def with_sub_game_modes(self, value: Dict[str, ModelsSubGameMode]) -> ModelsRuleSet:
         self.sub_game_modes = value
         return self
@@ -108,13 +108,6 @@ class ModelsRuleSet(Model):
             result["alliance"] = self.alliance.to_dict(include_empty=include_empty)
         elif include_empty:
             result["alliance"] = ModelsAllianceRule()
-        if hasattr(self, "alliance_flexing_rule"):
-            result["alliance_flexing_rule"] = [
-                i0.to_dict(include_empty=include_empty)
-                for i0 in self.alliance_flexing_rule
-            ]
-        elif include_empty:
-            result["alliance_flexing_rule"] = []
         if hasattr(self, "flexing_rule"):
             result["flexing_rule"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.flexing_rule
@@ -137,6 +130,13 @@ class ModelsRuleSet(Model):
             result["rebalance_enable"] = bool(self.rebalance_enable)
         elif include_empty:
             result["rebalance_enable"] = False
+        if hasattr(self, "alliance_flexing_rule"):
+            result["alliance_flexing_rule"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.alliance_flexing_rule
+            ]
+        elif include_empty:
+            result["alliance_flexing_rule"] = []
         if hasattr(self, "sub_game_modes"):
             result["sub_game_modes"] = {
                 str(k0): v0.to_dict(include_empty=include_empty)
@@ -154,22 +154,24 @@ class ModelsRuleSet(Model):
     def create(
         cls,
         alliance: ModelsAllianceRule,
-        alliance_flexing_rule: List[ModelsAllianceFlexingRule],
         flexing_rule: List[ModelsFlexingRule],
         match_options: ModelsMatchOptionRule,
         matching_rule: List[ModelsMatchingRule],
         rebalance_enable: bool,
-        sub_game_modes: Dict[str, ModelsSubGameMode],
+        alliance_flexing_rule: Optional[List[ModelsAllianceFlexingRule]] = None,
+        sub_game_modes: Optional[Dict[str, ModelsSubGameMode]] = None,
         **kwargs,
     ) -> ModelsRuleSet:
         instance = cls()
         instance.alliance = alliance
-        instance.alliance_flexing_rule = alliance_flexing_rule
         instance.flexing_rule = flexing_rule
         instance.match_options = match_options
         instance.matching_rule = matching_rule
         instance.rebalance_enable = rebalance_enable
-        instance.sub_game_modes = sub_game_modes
+        if alliance_flexing_rule is not None:
+            instance.alliance_flexing_rule = alliance_flexing_rule
+        if sub_game_modes is not None:
+            instance.sub_game_modes = sub_game_modes
         return instance
 
     @classmethod
@@ -185,18 +187,6 @@ class ModelsRuleSet(Model):
             )
         elif include_empty:
             instance.alliance = ModelsAllianceRule()
-        if (
-            "alliance_flexing_rule" in dict_
-            and dict_["alliance_flexing_rule"] is not None
-        ):
-            instance.alliance_flexing_rule = [
-                ModelsAllianceFlexingRule.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["alliance_flexing_rule"]
-            ]
-        elif include_empty:
-            instance.alliance_flexing_rule = []
         if "flexing_rule" in dict_ and dict_["flexing_rule"] is not None:
             instance.flexing_rule = [
                 ModelsFlexingRule.create_from_dict(i0, include_empty=include_empty)
@@ -221,6 +211,18 @@ class ModelsRuleSet(Model):
             instance.rebalance_enable = bool(dict_["rebalance_enable"])
         elif include_empty:
             instance.rebalance_enable = False
+        if (
+            "alliance_flexing_rule" in dict_
+            and dict_["alliance_flexing_rule"] is not None
+        ):
+            instance.alliance_flexing_rule = [
+                ModelsAllianceFlexingRule.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["alliance_flexing_rule"]
+            ]
+        elif include_empty:
+            instance.alliance_flexing_rule = []
         if "sub_game_modes" in dict_ and dict_["sub_game_modes"] is not None:
             instance.sub_game_modes = {
                 str(k0): ModelsSubGameMode.create_from_dict(
@@ -270,11 +272,11 @@ class ModelsRuleSet(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "alliance": "alliance",
-            "alliance_flexing_rule": "alliance_flexing_rule",
             "flexing_rule": "flexing_rule",
             "match_options": "match_options",
             "matching_rule": "matching_rule",
             "rebalance_enable": "rebalance_enable",
+            "alliance_flexing_rule": "alliance_flexing_rule",
             "sub_game_modes": "sub_game_modes",
         }
 
@@ -282,12 +284,12 @@ class ModelsRuleSet(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "alliance": True,
-            "alliance_flexing_rule": True,
             "flexing_rule": True,
             "match_options": True,
             "matching_rule": True,
             "rebalance_enable": True,
-            "sub_game_modes": True,
+            "alliance_flexing_rule": False,
+            "sub_game_modes": False,
         }
 
     # endregion static methods

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.22.0)
+# AccelByte Gaming Services Matchmaking Service (2.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,12 +34,12 @@ class ModelsMatchOptionRule(Model):
     """Models match option rule (models.MatchOptionRule)
 
     Properties:
-        options: (options) REQUIRED List[ModelsMatchOption]
+        options: (options) OPTIONAL List[ModelsMatchOption]
     """
 
     # region fields
 
-    options: List[ModelsMatchOption]  # REQUIRED
+    options: List[ModelsMatchOption]  # OPTIONAL
 
     # endregion fields
 
@@ -69,10 +69,11 @@ class ModelsMatchOptionRule(Model):
 
     @classmethod
     def create(
-        cls, options: List[ModelsMatchOption], **kwargs
+        cls, options: Optional[List[ModelsMatchOption]] = None, **kwargs
     ) -> ModelsMatchOptionRule:
         instance = cls()
-        instance.options = options
+        if options is not None:
+            instance.options = options
         return instance
 
     @classmethod
@@ -138,7 +139,7 @@ class ModelsMatchOptionRule(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "options": True,
+            "options": False,
         }
 
     # endregion static methods

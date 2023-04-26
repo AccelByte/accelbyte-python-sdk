@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.17.0)
+# AccelByte Gaming Services Group Service (2.15.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,66 +29,66 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelChatMessageResponse
-from ...models import RestapiErrorResponseBody
+from ...models import ModelsGetUserGroupInformationResponseV1
+from ...models import ResponseErrorResponse
 
 
-class PersonalChatHistory(Operation):
-    """load personal chat history (personalChatHistory)
+class AdminGetUserGroupStatusInformationV2(Operation):
+    """User Group Status Information (AdminGetUserGroupStatusInformationV2)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with scope `social`
+    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]"
 
-    load personal chat history in a namespace.
+
+
+
+    This endpoint is used to get user group status information.
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]
-
-    Required Scope(s):
-        - social
+        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
 
     Properties:
-        url: /lobby/chat/namespaces/{namespace}/users/{userId}/friend/{friendId}
+        url: /group/v2/admin/namespaces/{namespace}/users/{userId}/groups/{groupId}/status
 
         method: GET
 
-        tags: ["chat", "public"]
+        tags: ["Group Member"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
-        friend_id: (friendId) REQUIRED str in path
+        group_id: (groupId) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelChatMessageResponse] (OK)
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
 
-        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
 
-        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
 
-        404: Not Found - RestapiErrorResponseBody (Not Found)
-
-        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/lobby/chat/namespaces/{namespace}/users/{userId}/friend/{friendId}"
+    _url: str = (
+        "/group/v2/admin/namespaces/{namespace}/users/{userId}/groups/{groupId}/status"
+    )
     _method: str = "GET"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    friend_id: str  # REQUIRED in [path]
+    group_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -135,8 +135,8 @@ class PersonalChatHistory(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "friend_id"):
-            result["friendId"] = self.friend_id
+        if hasattr(self, "group_id"):
+            result["groupId"] = self.group_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
@@ -151,15 +151,15 @@ class PersonalChatHistory(Operation):
 
     # region with_x methods
 
-    def with_friend_id(self, value: str) -> PersonalChatHistory:
-        self.friend_id = value
+    def with_group_id(self, value: str) -> AdminGetUserGroupStatusInformationV2:
+        self.group_id = value
         return self
 
-    def with_namespace(self, value: str) -> PersonalChatHistory:
+    def with_namespace(self, value: str) -> AdminGetUserGroupStatusInformationV2:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> PersonalChatHistory:
+    def with_user_id(self, value: str) -> AdminGetUserGroupStatusInformationV2:
         self.user_id = value
         return self
 
@@ -169,10 +169,10 @@ class PersonalChatHistory(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "friend_id") and self.friend_id:
-            result["friendId"] = str(self.friend_id)
+        if hasattr(self, "group_id") and self.group_id:
+            result["groupId"] = str(self.group_id)
         elif include_empty:
-            result["friendId"] = ""
+            result["groupId"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -191,22 +191,20 @@ class PersonalChatHistory(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[ModelChatMessageResponse]],
-        Union[None, HttpResponse, RestapiErrorResponseBody],
+        Union[None, ModelsGetUserGroupInformationResponseV1],
+        Union[None, HttpResponse, ResponseErrorResponse],
     ]:
         """Parse the given response.
 
-        200: OK - List[ModelChatMessageResponse] (OK)
+        200: OK - ModelsGetUserGroupInformationResponseV1 (OK)
 
-        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
 
-        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
 
-        404: Not Found - RestapiErrorResponseBody (Not Found)
-
-        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -222,17 +220,18 @@ class PersonalChatHistory(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ModelChatMessageResponse.create_from_dict(i) for i in content], None
-        if code == 400:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return (
+                ModelsGetUserGroupInformationResponseV1.create_from_dict(content),
+                None,
+            )
         if code == 401:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ResponseErrorResponse.create_from_dict(content)
         if code == 404:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ResponseErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -244,10 +243,10 @@ class PersonalChatHistory(Operation):
 
     @classmethod
     def create(
-        cls, friend_id: str, namespace: str, user_id: str, **kwargs
-    ) -> PersonalChatHistory:
+        cls, group_id: str, namespace: str, user_id: str, **kwargs
+    ) -> AdminGetUserGroupStatusInformationV2:
         instance = cls()
-        instance.friend_id = friend_id
+        instance.group_id = group_id
         instance.namespace = namespace
         instance.user_id = user_id
         return instance
@@ -255,12 +254,12 @@ class PersonalChatHistory(Operation):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> PersonalChatHistory:
+    ) -> AdminGetUserGroupStatusInformationV2:
         instance = cls()
-        if "friendId" in dict_ and dict_["friendId"] is not None:
-            instance.friend_id = str(dict_["friendId"])
+        if "groupId" in dict_ and dict_["groupId"] is not None:
+            instance.group_id = str(dict_["groupId"])
         elif include_empty:
-            instance.friend_id = ""
+            instance.group_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -274,7 +273,7 @@ class PersonalChatHistory(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "friendId": "friend_id",
+            "groupId": "group_id",
             "namespace": "namespace",
             "userId": "user_id",
         }
@@ -282,7 +281,7 @@ class PersonalChatHistory(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "friendId": True,
+            "groupId": True,
             "namespace": True,
             "userId": True,
         }

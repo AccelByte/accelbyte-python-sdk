@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.17.0"
+__version__ = "3.19.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -34,13 +34,6 @@ from ._admin import publish_template
 from ._admin import publish_template_async
 from ._admin import update_localization_template
 from ._admin import update_localization_template_async
-
-from ._chat import admin_chat_history
-from ._chat import admin_chat_history_async
-from ._chat import get_personal_chat_history_v1_public
-from ._chat import get_personal_chat_history_v1_public_async
-from ._chat import personal_chat_history
-from ._chat import personal_chat_history_async
 
 from ._config import admin_export_config_v1
 from ._config import admin_export_config_v1_async

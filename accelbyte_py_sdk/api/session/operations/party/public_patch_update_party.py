@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.7.4)
+# AccelByte Gaming Services Session Service (2.8.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,6 +38,11 @@ class PublicPatchUpdateParty(Operation):
     """Patch update a party. Requires NAMESPACE:{namespace}:SESSION:PARTY [UPDATE] (publicPatchUpdateParty)
 
     Update specified fields from party data. Note: Join type can only be updated by the party's leader.
+
+    Reserved attributes key:
+    1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
+    the session regardless the leader changes.
+    2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Lobby Server (3.17.0)
+# AccelByte Gaming Services Lobby Server (3.19.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,7 +29,6 @@ from ..api.lobby.models import HandlersUserPresence
 from ..api.lobby.models import LogAppMessageDeclaration
 from ..api.lobby.models import ModelBulkAddFriendsRequest
 from ..api.lobby.models import ModelBulkUsersFreeFormNotificationRequestV1
-from ..api.lobby.models import ModelChatMessageResponse
 from ..api.lobby.models import ModelCreateTemplateRequest
 from ..api.lobby.models import ModelCreateTopicRequest
 from ..api.lobby.models import ModelCreateTopicRequestV1
@@ -152,16 +151,6 @@ def create_model_bulk_users_free_form_notification_request_v1_example() -> (
     instance.message = randomize()
     instance.topic_name = randomize()
     instance.user_ids = [randomize()]
-    return instance
-
-
-def create_model_chat_message_response_example() -> ModelChatMessageResponse:
-    instance = ModelChatMessageResponse()
-    instance.from_ = randomize()
-    instance.id_ = randomize()
-    instance.payload = randomize()
-    instance.received_at = randomize("int", min_val=1, max_val=1000)
-    instance.to = randomize()
     return instance
 
 

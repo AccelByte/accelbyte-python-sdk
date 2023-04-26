@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.22.0)
+# AccelByte Gaming Services Matchmaking Service (2.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,8 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class ModelsCombinationAlliances(Model):
-    """Models combination alliances (models.Combination.alliances)
+class ModelsRole(Model):
+    """Models role (models.Role)
 
     Properties:
         max: (max) REQUIRED int
@@ -49,15 +49,15 @@ class ModelsCombinationAlliances(Model):
 
     # region with_x methods
 
-    def with_max(self, value: int) -> ModelsCombinationAlliances:
+    def with_max(self, value: int) -> ModelsRole:
         self.max = value
         return self
 
-    def with_min(self, value: int) -> ModelsCombinationAlliances:
+    def with_min(self, value: int) -> ModelsRole:
         self.min = value
         return self
 
-    def with_name(self, value: str) -> ModelsCombinationAlliances:
+    def with_name(self, value: str) -> ModelsRole:
         self.name = value
         return self
 
@@ -86,9 +86,7 @@ class ModelsCombinationAlliances(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls, max: int, min: int, name: str, **kwargs
-    ) -> ModelsCombinationAlliances:
+    def create(cls, max: int, min: int, name: str, **kwargs) -> ModelsRole:
         instance = cls()
         instance.max = max
         instance.min = min
@@ -96,9 +94,7 @@ class ModelsCombinationAlliances(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsCombinationAlliances:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsRole:
         instance = cls()
         if not dict_:
             return instance
@@ -119,7 +115,7 @@ class ModelsCombinationAlliances(Model):
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsCombinationAlliances]:
+    ) -> Dict[str, ModelsRole]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -129,7 +125,7 @@ class ModelsCombinationAlliances(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsCombinationAlliances]:
+    ) -> List[ModelsRole]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -139,11 +135,7 @@ class ModelsCombinationAlliances(Model):
     @classmethod
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsCombinationAlliances,
-        List[ModelsCombinationAlliances],
-        Dict[Any, ModelsCombinationAlliances],
-    ]:
+    ) -> Union[ModelsRole, List[ModelsRole], Dict[Any, ModelsRole]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

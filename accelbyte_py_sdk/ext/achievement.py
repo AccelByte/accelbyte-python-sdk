@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.17.0)
+# AccelByte Gaming Services Achievement Service (2.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -69,6 +69,7 @@ def create_models_achievement_request_example() -> ModelsAchievementRequest:
     instance.stat_code = randomize()
     instance.tags = [randomize()]
     instance.unlocked_icons = [create_models_icon_example()]
+    instance.custom_attributes = {randomize(): randomize()}
     instance.global_ = randomize("bool")
     return instance
 
@@ -89,6 +90,7 @@ def create_models_achievement_response_example() -> ModelsAchievementResponse:
     instance.tags = [randomize()]
     instance.unlocked_icons = [create_models_icon_example()]
     instance.updated_at = randomize("date")
+    instance.custom_attributes = {randomize(): randomize()}
     instance.goal_value = randomize("int", min_val=1, max_val=1000)
     instance.stat_code = randomize()
     instance.status = randomize()
@@ -109,6 +111,7 @@ def create_models_achievement_update_request_example() -> (
     instance.stat_code = randomize()
     instance.tags = [randomize()]
     instance.unlocked_icons = [create_models_icon_example()]
+    instance.custom_attributes = {randomize(): randomize()}
     instance.global_ = randomize("bool")
     return instance
 
@@ -233,6 +236,7 @@ def create_models_public_achievement_response_example() -> (
     instance.tags = [randomize()]
     instance.unlocked_icons = [create_models_icon_example()]
     instance.updated_at = randomize("date")
+    instance.custom_attributes = {randomize(): randomize()}
     instance.goal_value = randomize("int", min_val=1, max_val=1000)
     instance.stat_code = randomize()
     instance.status = randomize()

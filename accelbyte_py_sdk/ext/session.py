@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.7.4)
+# AccelByte Gaming Services Session Service (2.8.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -56,6 +56,7 @@ from ..api.session.models import ApimodelsUserResponse
 from ..api.session.models import ModelsDSMConfigRecord
 from ..api.session.models import ModelsDefaultDSMCConfig
 from ..api.session.models import ModelsGameServer
+from ..api.session.models import ModelsNativeSessionSetting
 from ..api.session.models import ModelsPartyMembers
 from ..api.session.models import ModelsTeam
 from ..api.session.models import ModelsUserPlatformInfo
@@ -91,6 +92,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.updated_at = randomize()
+    instance.native_session_setting = create_models_native_session_setting_example()
     instance.requested_regions = [randomize()]
     return instance
 
@@ -120,6 +122,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.native_session_setting = create_models_native_session_setting_example()
     return instance
 
 
@@ -276,6 +279,7 @@ def create_apimodels_player_attributes_request_body_example() -> (
 ):
     instance = ApimodelsPlayerAttributesRequestBody()
     instance.crossplay_enabled = randomize("bool")
+    instance.current_platform = randomize()
     instance.data = {randomize(): randomize()}
     instance.platforms = [create_models_user_platform_info_example()]
     return instance
@@ -286,6 +290,7 @@ def create_apimodels_player_attributes_response_body_example() -> (
 ):
     instance = ApimodelsPlayerAttributesResponseBody()
     instance.crossplay_enabled = randomize("bool")
+    instance.current_platform = randomize()
     instance.data = {randomize(): randomize()}
     instance.platforms = [create_models_user_platform_info_example()]
     instance.user_id = randomize("uid")
@@ -334,6 +339,7 @@ def create_apimodels_response_delete_bulk_game_sessions_example() -> (
 
 def create_apimodels_session_invite_request_example() -> ApimodelsSessionInviteRequest:
     instance = ApimodelsSessionInviteRequest()
+    instance.platform_id = randomize()
     instance.user_id = randomize("uid")
     return instance
 
@@ -354,6 +360,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.native_session_setting = create_models_native_session_setting_example()
     return instance
 
 
@@ -456,6 +463,15 @@ def create_models_game_server_example() -> ModelsGameServer:
     instance.session_id = randomize("uid")
     instance.status = randomize()
     instance.alternate_ips = [randomize()]
+    return instance
+
+
+def create_models_native_session_setting_example() -> ModelsNativeSessionSetting:
+    instance = ModelsNativeSessionSetting()
+    instance.psn_service_label = randomize("int", min_val=1, max_val=1000)
+    instance.session_title = randomize()
+    instance.xbox_service_config_id = randomize()
+    instance.xbox_session_template_name = randomize()
     return instance
 
 

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Social Service."""
 
-__version__ = "2.3.0"
+__version__ = "2.4.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -103,6 +103,10 @@ from .wrappers import update_stat_async
 # stat_cycle_configuration
 from .wrappers import bulk_add_stats
 from .wrappers import bulk_add_stats_async
+from .wrappers import bulk_get_stat_cycle
+from .wrappers import bulk_get_stat_cycle_async
+from .wrappers import bulk_get_stat_cycle_1
+from .wrappers import bulk_get_stat_cycle_1_async
 from .wrappers import create_stat_cycle
 from .wrappers import create_stat_cycle_async
 from .wrappers import delete_stat_cycle

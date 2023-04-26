@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.17.0)
+# AccelByte Gaming Services Achievement Service (2.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,6 +62,8 @@ class ModelsAchievementResponse(Model):
 
         updated_at: (updatedAt) REQUIRED str
 
+        custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
+
         goal_value: (goalValue) OPTIONAL float
 
         stat_code: (statCode) OPTIONAL str
@@ -85,6 +87,7 @@ class ModelsAchievementResponse(Model):
     tags: List[str]  # REQUIRED
     unlocked_icons: List[ModelsIcon]  # REQUIRED
     updated_at: str  # REQUIRED
+    custom_attributes: Dict[str, Any]  # OPTIONAL
     goal_value: float  # OPTIONAL
     stat_code: str  # OPTIONAL
     status: str  # OPTIONAL
@@ -147,6 +150,12 @@ class ModelsAchievementResponse(Model):
 
     def with_updated_at(self, value: str) -> ModelsAchievementResponse:
         self.updated_at = value
+        return self
+
+    def with_custom_attributes(
+        self, value: Dict[str, Any]
+    ) -> ModelsAchievementResponse:
+        self.custom_attributes = value
         return self
 
     def with_goal_value(self, value: float) -> ModelsAchievementResponse:
@@ -229,6 +238,12 @@ class ModelsAchievementResponse(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "custom_attributes"):
+            result["customAttributes"] = {
+                str(k0): v0 for k0, v0 in self.custom_attributes.items()
+            }
+        elif include_empty:
+            result["customAttributes"] = {}
         if hasattr(self, "goal_value"):
             result["goalValue"] = float(self.goal_value)
         elif include_empty:
@@ -264,6 +279,7 @@ class ModelsAchievementResponse(Model):
         tags: List[str],
         unlocked_icons: List[ModelsIcon],
         updated_at: str,
+        custom_attributes: Optional[Dict[str, Any]] = None,
         goal_value: Optional[float] = None,
         stat_code: Optional[str] = None,
         status: Optional[str] = None,
@@ -284,6 +300,8 @@ class ModelsAchievementResponse(Model):
         instance.tags = tags
         instance.unlocked_icons = unlocked_icons
         instance.updated_at = updated_at
+        if custom_attributes is not None:
+            instance.custom_attributes = custom_attributes
         if goal_value is not None:
             instance.goal_value = goal_value
         if stat_code is not None:
@@ -363,6 +381,12 @@ class ModelsAchievementResponse(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
+            instance.custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
+            }
+        elif include_empty:
+            instance.custom_attributes = {}
         if "goalValue" in dict_ and dict_["goalValue"] is not None:
             instance.goal_value = float(dict_["goalValue"])
         elif include_empty:
@@ -432,6 +456,7 @@ class ModelsAchievementResponse(Model):
             "tags": "tags",
             "unlockedIcons": "unlocked_icons",
             "updatedAt": "updated_at",
+            "customAttributes": "custom_attributes",
             "goalValue": "goal_value",
             "statCode": "stat_code",
             "status": "status",
@@ -454,6 +479,7 @@ class ModelsAchievementResponse(Model):
             "tags": True,
             "unlockedIcons": True,
             "updatedAt": True,
+            "customAttributes": False,
             "goalValue": False,
             "statCode": False,
             "status": False,

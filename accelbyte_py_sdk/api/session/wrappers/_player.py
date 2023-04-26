@@ -55,9 +55,10 @@ def admin_get_player_attributes(
     - userID : user who owns the attributes.
     - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
     - platforms : list of the player's 3rd party platform account information.
-    - name : platform name. supported platforms: STEAM
+    - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - currentPlatform : latest user game platform.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/{userId}/attributes
@@ -113,9 +114,10 @@ async def admin_get_player_attributes_async(
     - userID : user who owns the attributes.
     - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
     - platforms : list of the player's 3rd party platform account information.
-    - name : platform name. supported platforms: STEAM
+    - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - currentPlatform : latest user game platform.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/{userId}/attributes
@@ -173,9 +175,10 @@ def admin_query_player_attributes(
     - userID : user who owns the attributes.
     - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
     - platforms : list of the player's 3rd party platform account information.
-    - name : platform name. supported platforms: STEAM
+    - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - currentPlatform : latest user game platform.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/attributes
@@ -231,9 +234,10 @@ async def admin_query_player_attributes_async(
     - userID : user who owns the attributes.
     - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
     - platforms : list of the player's 3rd party platform account information.
-    - name : platform name. supported platforms: STEAM
+    - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - currentPlatform : latest user game platform.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/attributes
@@ -384,9 +388,10 @@ def public_get_player_attributes(
     - userID : user who owns the attributes.
     - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
     - platforms : list of the player's 3rd party platform account information.
-    - name : platform name. supported platforms: STEAM
+    - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - currentPlatform : latest user game platform.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/users/me/attributes
@@ -438,9 +443,10 @@ async def public_get_player_attributes_async(
     - userID : user who owns the attributes.
     - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
     - platforms : list of the player's 3rd party platform account information.
-    - name : platform name. supported platforms: STEAM
+    - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - currentPlatform : latest user game platform.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/users/me/attributes
@@ -495,9 +501,10 @@ def public_store_player_attributes(
     - userID : user who owns the attributes.
     - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
     - platforms : list of the player's 3rd party platform account information.
-    - name : platform name. supported platforms: STEAM
+    - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - currentPlatform : latest user game platform.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/users/me/attributes
@@ -551,9 +558,10 @@ async def public_store_player_attributes_async(
     - userID : user who owns the attributes.
     - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
     - platforms : list of the player's 3rd party platform account information.
-    - name : platform name. supported platforms: STEAM
+    - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - currentPlatform : latest user game platform.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/users/me/attributes

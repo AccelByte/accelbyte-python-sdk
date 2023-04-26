@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.27.0)
+# AccelByte Gaming Services Social Service (2.4.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,49 +29,53 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ErrorEntity
-from ...models import RevocationConfigInfo
+from ...models import BulkStatCycleRequest
+from ...models import BulkStatCycleResult
 
 
-class GetPaymentCallbackConfig1(Operation):
-    """Get revocation configuration (getPaymentCallbackConfig_1)
+class BulkGetStatCycle(Operation):
+    """Bulk get stat cycle (bulkGetStatCycle)
 
-    Get revocation configuration.
+    Bulk get stat cycle.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
-      *  Returns : Revocation config
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : list of stat cycles
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/revocation/config
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/bulk
 
-        method: GET
+        method: POST
 
-        tags: ["Revocation"]
+        tags: ["StatCycleConfiguration"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkStatCycleRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - RevocationConfigInfo (successful operation)
-
-        404: Not Found - ErrorEntity (33243: Payment callback config for [{namespace}] does not exist)
+        200: OK - BulkStatCycleResult (successful operation)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/revocation/config"
-    _method: str = "GET"
-    _consumes: List[str] = []
+    _url: str = "/social/v1/admin/namespaces/{namespace}/statCycles/bulk"
+    _method: str = "POST"
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
+    body: BulkStatCycleRequest  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -112,8 +116,14 @@ class GetPaymentCallbackConfig1(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
+
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
@@ -129,7 +139,11 @@ class GetPaymentCallbackConfig1(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetPaymentCallbackConfig1:
+    def with_body(self, value: BulkStatCycleRequest) -> BulkGetStatCycle:
+        self.body = value
+        return self
+
+    def with_namespace(self, value: str) -> BulkGetStatCycle:
         self.namespace = value
         return self
 
@@ -139,6 +153,10 @@ class GetPaymentCallbackConfig1(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["body"] = BulkStatCycleRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -152,14 +170,10 @@ class GetPaymentCallbackConfig1(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, RevocationConfigInfo], Union[None, ErrorEntity, HttpResponse]
-    ]:
+    ) -> Tuple[Union[None, BulkStatCycleResult], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - RevocationConfigInfo (successful operation)
-
-        404: Not Found - ErrorEntity (33243: Payment callback config for [{namespace}] does not exist)
+        200: OK - BulkStatCycleResult (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -175,9 +189,7 @@ class GetPaymentCallbackConfig1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return RevocationConfigInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
+            return BulkStatCycleResult.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -188,16 +200,26 @@ class GetPaymentCallbackConfig1(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> GetPaymentCallbackConfig1:
+    def create(
+        cls, namespace: str, body: Optional[BulkStatCycleRequest] = None, **kwargs
+    ) -> BulkGetStatCycle:
         instance = cls()
         instance.namespace = namespace
+        if body is not None:
+            instance.body = body
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> GetPaymentCallbackConfig1:
+    ) -> BulkGetStatCycle:
         instance = cls()
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = BulkStatCycleRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.body = BulkStatCycleRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -207,12 +229,14 @@ class GetPaymentCallbackConfig1(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "body": "body",
             "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "body": False,
             "namespace": True,
         }
 

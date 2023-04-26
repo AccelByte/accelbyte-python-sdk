@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Group Service."""
 
-__version__ = "2.15.3"
+__version__ = "2.15.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,6 +18,7 @@ from .accept_group_invitation_27bb3d import AcceptGroupInvitationPublicV1
 from .accept_group_invitation_eae968 import AcceptGroupInvitationPublicV2
 from .accept_group_join_reque_5995a4 import AcceptGroupJoinRequestPublicV1
 from .accept_group_join_reque_fe83bc import AcceptGroupJoinRequestPublicV2
+from .admin_get_user_group_st_657089 import AdminGetUserGroupStatusInformationV2
 from .cancel_group_join_request_v1 import CancelGroupJoinRequestV1
 from .cancel_invitation_group_02cc21 import CancelInvitationGroupMemberV2
 from .get_group_members_list__2e05f5 import GetGroupMembersListAdminV1

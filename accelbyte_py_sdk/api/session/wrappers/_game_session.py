@@ -1433,6 +1433,11 @@ def public_game_session_invite(
     """Invite a user to a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (publicGameSessionInvite)
 
     Invite a user to a game session.
+    platformID represents the native platform of the invitee. API will return the corresponding native platform's userID.
+    supported platforms:
+    - STEAM
+    - XBOX
+    - PSN
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/invite
@@ -1489,6 +1494,11 @@ async def public_game_session_invite_async(
     """Invite a user to a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (publicGameSessionInvite)
 
     Invite a user to a game session.
+    platformID represents the native platform of the invitee. API will return the corresponding native platform's userID.
+    supported platforms:
+    - STEAM
+    - XBOX
+    - PSN
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/invite

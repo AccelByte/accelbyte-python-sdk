@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.7.4)
+# AccelByte Gaming Services Session Service (2.8.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -55,6 +55,13 @@ class PublicCreateParty(Operation):
 
     Supported platforms:
     1. STEAM
+    2. PSN
+    3. XBOX
+
+    Reserved attributes key:
+    1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
+    the session regardless the leader changes.
+    2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/party

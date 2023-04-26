@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.17.0)
+# AccelByte Gaming Services Cloudsave Service (3.6.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,29 +29,34 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelChatMessageResponse
-from ...models import RestapiErrorResponseBody
+from ...models import ModelsBulkGetPlayerRecordResponse
+from ...models import ModelsBulkGetPlayerRecordsRequest
+from ...models import ModelsResponseError
 
 
-class AdminChatHistory(Operation):
-    """admin get chat history (adminChatHistory)
+class GetOtherPlayerPublicRecordHandlerV1(Operation):
+    """Get other player public record bulk (getOtherPlayerPublicRecordHandlerV1)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]` with scope `social`
+    Required valid user token with permission: `NAMESPACE:{namespace}:USER:*:PUBLIC:CLOUDSAVE:RECORD [READ]`
 
-    get chat history in a namespace.
+    Required scope: `social`
+
+    Retrieve other player public record key and payload in bulk under given namespace.
+
+    Maximum bulk key limit per request 20
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHAT [READ]
+        - NAMESPACE:{namespace}:USER:*:PUBLIC:CLOUDSAVE:RECORD [READ]
 
     Required Scope(s):
         - social
 
     Properties:
-        url: /lobby/v1/admin/chat/namespaces/{namespace}/users/{userId}/friends/{friendId}
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/public/bulk
 
-        method: GET
+        method: POST
 
-        tags: ["chat"]
+        tags: ["PublicPlayerRecord"]
 
         consumes: ["application/json"]
 
@@ -59,38 +64,36 @@ class AdminChatHistory(Operation):
 
         securities: [BEARER_AUTH]
 
-        friend_id: (friendId) REQUIRED str in path
+        body: (body) REQUIRED ModelsBulkGetPlayerRecordsRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelChatMessageResponse] (OK)
+        200: OK - ModelsBulkGetPlayerRecordResponse (Successful operation)
 
-        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+        400: Bad Request - ModelsResponseError (Bad Request)
 
-        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
 
-        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+        403: Forbidden - ModelsResponseError (Forbidden)
 
-        404: Not Found - RestapiErrorResponseBody (Not Found)
-
-        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
 
     # region fields
 
     _url: str = (
-        "/lobby/v1/admin/chat/namespaces/{namespace}/users/{userId}/friends/{friendId}"
+        "/cloudsave/v1/namespaces/{namespace}/users/{userId}/records/public/bulk"
     )
-    _method: str = "GET"
+    _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    friend_id: str  # REQUIRED in [path]
+    body: ModelsBulkGetPlayerRecordsRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -132,13 +135,17 @@ class AdminChatHistory(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
 
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
+
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "friend_id"):
-            result["friendId"] = self.friend_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
@@ -153,15 +160,17 @@ class AdminChatHistory(Operation):
 
     # region with_x methods
 
-    def with_friend_id(self, value: str) -> AdminChatHistory:
-        self.friend_id = value
+    def with_body(
+        self, value: ModelsBulkGetPlayerRecordsRequest
+    ) -> GetOtherPlayerPublicRecordHandlerV1:
+        self.body = value
         return self
 
-    def with_namespace(self, value: str) -> AdminChatHistory:
+    def with_namespace(self, value: str) -> GetOtherPlayerPublicRecordHandlerV1:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> AdminChatHistory:
+    def with_user_id(self, value: str) -> GetOtherPlayerPublicRecordHandlerV1:
         self.user_id = value
         return self
 
@@ -171,10 +180,10 @@ class AdminChatHistory(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "friend_id") and self.friend_id:
-            result["friendId"] = str(self.friend_id)
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["friendId"] = ""
+            result["body"] = ModelsBulkGetPlayerRecordsRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -193,22 +202,20 @@ class AdminChatHistory(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[ModelChatMessageResponse]],
-        Union[None, HttpResponse, RestapiErrorResponseBody],
+        Union[None, ModelsBulkGetPlayerRecordResponse],
+        Union[None, HttpResponse, ModelsResponseError],
     ]:
         """Parse the given response.
 
-        200: OK - List[ModelChatMessageResponse] (OK)
+        200: OK - ModelsBulkGetPlayerRecordResponse (Successful operation)
 
-        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+        400: Bad Request - ModelsResponseError (Bad Request)
 
-        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
 
-        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+        403: Forbidden - ModelsResponseError (Forbidden)
 
-        404: Not Found - RestapiErrorResponseBody (Not Found)
-
-        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -224,17 +231,15 @@ class AdminChatHistory(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ModelChatMessageResponse.create_from_dict(i) for i in content], None
+            return ModelsBulkGetPlayerRecordResponse.create_from_dict(content), None
         if code == 400:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 403:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
-        if code == 404:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -246,10 +251,14 @@ class AdminChatHistory(Operation):
 
     @classmethod
     def create(
-        cls, friend_id: str, namespace: str, user_id: str, **kwargs
-    ) -> AdminChatHistory:
+        cls,
+        body: ModelsBulkGetPlayerRecordsRequest,
+        namespace: str,
+        user_id: str,
+        **kwargs,
+    ) -> GetOtherPlayerPublicRecordHandlerV1:
         instance = cls()
-        instance.friend_id = friend_id
+        instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
         return instance
@@ -257,12 +266,14 @@ class AdminChatHistory(Operation):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> AdminChatHistory:
+    ) -> GetOtherPlayerPublicRecordHandlerV1:
         instance = cls()
-        if "friendId" in dict_ and dict_["friendId"] is not None:
-            instance.friend_id = str(dict_["friendId"])
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = ModelsBulkGetPlayerRecordsRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
-            instance.friend_id = ""
+            instance.body = ModelsBulkGetPlayerRecordsRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -276,7 +287,7 @@ class AdminChatHistory(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "friendId": "friend_id",
+            "body": "body",
             "namespace": "namespace",
             "userId": "user_id",
         }
@@ -284,7 +295,7 @@ class AdminChatHistory(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "friendId": True,
+            "body": True,
             "namespace": True,
             "userId": True,
         }

@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.27.0)
+# AccelByte Gaming Services Platform Service (4.28.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -462,7 +462,9 @@ def create_app_entitlement_info_example() -> AppEntitlementInfo:
     return instance
 
 
-def create_app_entitlement_paging_sliced_result_example() -> AppEntitlementPagingSlicedResult:
+def create_app_entitlement_paging_sliced_result_example() -> (
+    AppEntitlementPagingSlicedResult
+):
     instance = AppEntitlementPagingSlicedResult()
     instance.data = [create_app_entitlement_info_example()]
     instance.paging = create_paging_example()
@@ -626,7 +628,9 @@ def create_billing_history_info_example() -> BillingHistoryInfo:
     return instance
 
 
-def create_billing_history_paging_sliced_result_example() -> BillingHistoryPagingSlicedResult:
+def create_billing_history_paging_sliced_result_example() -> (
+    BillingHistoryPagingSlicedResult
+):
     instance = BillingHistoryPagingSlicedResult()
     instance.data = [create_billing_history_info_example()]
     instance.paging = create_paging_example()
@@ -769,9 +773,13 @@ def create_campaign_create_example() -> CampaignCreate:
     instance.name = randomize()
     instance.description = randomize()
     instance.items = [create_redeemable_item_example()]
-    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.redeem_end = randomize("date")
     instance.redeem_start = randomize("date")
@@ -797,9 +805,13 @@ def create_campaign_info_example() -> CampaignInfo:
     instance.booth_name = randomize()
     instance.created_at = randomize("date")
     instance.id_ = randomize()
-    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     instance.namespace = randomize("slug")
@@ -827,9 +839,13 @@ def create_campaign_update_example() -> CampaignUpdate:
     instance.name = randomize()
     instance.description = randomize()
     instance.items = [create_redeemable_item_example()]
-    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.redeem_end = randomize("date")
     instance.redeem_start = randomize("date")
@@ -869,7 +885,9 @@ def create_catalog_change_info_example() -> CatalogChangeInfo:
     return instance
 
 
-def create_catalog_change_paging_sliced_result_example() -> CatalogChangePagingSlicedResult:
+def create_catalog_change_paging_sliced_result_example() -> (
+    CatalogChangePagingSlicedResult
+):
     instance = CatalogChangePagingSlicedResult()
     instance.data = [create_catalog_change_info_example()]
     instance.paging = create_paging_example()
@@ -942,9 +960,13 @@ def create_code_info_example() -> CodeInfo:
     instance.campaign_id = randomize()
     instance.created_at = randomize("date")
     instance.id_ = randomize()
-    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.namespace = randomize("slug")
     instance.redeem_type = randomize()
     instance.redeemed_count = randomize("int", min_val=1, max_val=1000)
@@ -989,7 +1011,9 @@ def create_condition_match_result_example() -> ConditionMatchResult:
     return instance
 
 
-def create_consumable_entitlement_revocation_config_example() -> ConsumableEntitlementRevocationConfig:
+def create_consumable_entitlement_revocation_config_example() -> (
+    ConsumableEntitlementRevocationConfig
+):
     instance = ConsumableEntitlementRevocationConfig()
     instance.enabled = randomize("bool")
     instance.strategy = randomize()
@@ -1159,7 +1183,9 @@ def create_detailed_wallet_transaction_info_example() -> DetailedWalletTransacti
     return instance
 
 
-def create_detailed_wallet_transaction_paging_sliced_result_example() -> DetailedWalletTransactionPagingSlicedResult:
+def create_detailed_wallet_transaction_paging_sliced_result_example() -> (
+    DetailedWalletTransactionPagingSlicedResult
+):
     instance = DetailedWalletTransactionPagingSlicedResult()
     instance.data = [create_detailed_wallet_transaction_info_example()]
     instance.paging = create_paging_example()
@@ -1200,7 +1226,9 @@ def create_dlc_record_example() -> DLCRecord:
     return instance
 
 
-def create_durable_entitlement_revocation_config_example() -> DurableEntitlementRevocationConfig:
+def create_durable_entitlement_revocation_config_example() -> (
+    DurableEntitlementRevocationConfig
+):
     instance = DurableEntitlementRevocationConfig()
     instance.enabled = randomize("bool")
     instance.strategy = randomize()
@@ -1554,7 +1582,9 @@ def create_fulfillment_history_info_example() -> FulfillmentHistoryInfo:
     instance.code = randomize()
     instance.credit_summaries = [create_credit_summary_example()]
     instance.entitlement_summaries = [create_entitlement_summary_example()]
-    instance.extension_fulfillment_summaries = [create_extension_fulfillment_summary_example()]
+    instance.extension_fulfillment_summaries = [
+        create_extension_fulfillment_summary_example()
+    ]
     instance.fulfill_items = [create_fulfillment_item_example()]
     instance.fulfillment_error = create_fulfillment_error_example()
     instance.granted_item_ids = [randomize()]
@@ -1562,7 +1592,9 @@ def create_fulfillment_history_info_example() -> FulfillmentHistoryInfo:
     return instance
 
 
-def create_fulfillment_history_paging_sliced_result_example() -> FulfillmentHistoryPagingSlicedResult:
+def create_fulfillment_history_paging_sliced_result_example() -> (
+    FulfillmentHistoryPagingSlicedResult
+):
     instance = FulfillmentHistoryPagingSlicedResult()
     instance.data = [create_fulfillment_history_info_example()]
     instance.paging = create_paging_example()
@@ -1624,7 +1656,9 @@ def create_fulfillment_script_create_example() -> FulfillmentScriptCreate:
     return instance
 
 
-def create_fulfillment_script_eval_test_request_example() -> FulfillmentScriptEvalTestRequest:
+def create_fulfillment_script_eval_test_request_example() -> (
+    FulfillmentScriptEvalTestRequest
+):
     instance = FulfillmentScriptEvalTestRequest()
     instance.context = create_fulfillment_script_context_example()
     instance.script = randomize()
@@ -1632,7 +1666,9 @@ def create_fulfillment_script_eval_test_request_example() -> FulfillmentScriptEv
     return instance
 
 
-def create_fulfillment_script_eval_test_result_example() -> FulfillmentScriptEvalTestResult:
+def create_fulfillment_script_eval_test_result_example() -> (
+    FulfillmentScriptEvalTestResult
+):
     instance = FulfillmentScriptEvalTestResult()
     instance.error_stack_trace = randomize()
     instance.result = {randomize(): randomize()}
@@ -1751,7 +1787,9 @@ def create_full_section_info_example() -> FullSectionInfo:
     instance.updated_at = randomize("date")
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
-    instance.fixed_period_rotation_config = create_fixed_period_rotation_config_example()
+    instance.fixed_period_rotation_config = (
+        create_fixed_period_rotation_config_example()
+    )
     instance.item_namings = [create_item_naming_example()]
     instance.items = [create_section_item_example()]
     instance.rotation_type = randomize()
@@ -1842,7 +1880,9 @@ def create_iap_consume_history_info_example() -> IAPConsumeHistoryInfo:
     return instance
 
 
-def create_iap_consume_history_paging_sliced_result_example() -> IAPConsumeHistoryPagingSlicedResult:
+def create_iap_consume_history_paging_sliced_result_example() -> (
+    IAPConsumeHistoryPagingSlicedResult
+):
     instance = IAPConsumeHistoryPagingSlicedResult()
     instance.data = [create_iap_consume_history_info_example()]
     instance.paging = create_paging_example()
@@ -2135,13 +2175,17 @@ def create_item_paging_sliced_result_example() -> ItemPagingSlicedResult:
     return instance
 
 
-def create_item_purchase_condition_validate_request_example() -> ItemPurchaseConditionValidateRequest:
+def create_item_purchase_condition_validate_request_example() -> (
+    ItemPurchaseConditionValidateRequest
+):
     instance = ItemPurchaseConditionValidateRequest()
     instance.item_ids = [randomize()]
     return instance
 
 
-def create_item_purchase_condition_validate_result_example() -> ItemPurchaseConditionValidateResult:
+def create_item_purchase_condition_validate_result_example() -> (
+    ItemPurchaseConditionValidateResult
+):
     instance = ItemPurchaseConditionValidateResult()
     instance.item_id = randomize()
     instance.purchasable = randomize("bool")
@@ -2700,7 +2744,9 @@ def create_payment_notification_info_example() -> PaymentNotificationInfo:
     return instance
 
 
-def create_payment_notification_paging_sliced_result_example() -> PaymentNotificationPagingSlicedResult:
+def create_payment_notification_paging_sliced_result_example() -> (
+    PaymentNotificationPagingSlicedResult
+):
     instance = PaymentNotificationPagingSlicedResult()
     instance.data = [create_payment_notification_info_example()]
     instance.paging = create_paging_example()
@@ -2892,7 +2938,9 @@ def create_payment_order_notify_simulation_example() -> PaymentOrderNotifySimula
     return instance
 
 
-def create_payment_order_paging_sliced_result_example() -> PaymentOrderPagingSlicedResult:
+def create_payment_order_paging_sliced_result_example() -> (
+    PaymentOrderPagingSlicedResult
+):
     instance = PaymentOrderPagingSlicedResult()
     instance.data = [create_payment_order_info_example()]
     instance.paging = create_paging_example()
@@ -2968,7 +3016,9 @@ def create_payment_provider_config_info_example() -> PaymentProviderConfigInfo:
     return instance
 
 
-def create_payment_provider_config_paging_sliced_result_example() -> PaymentProviderConfigPagingSlicedResult:
+def create_payment_provider_config_paging_sliced_result_example() -> (
+    PaymentProviderConfigPagingSlicedResult
+):
     instance = PaymentProviderConfigPagingSlicedResult()
     instance.data = [create_payment_provider_config_info_example()]
     instance.paging = create_paging_example()
@@ -3112,7 +3162,9 @@ def create_platform_wallet_config_update_example() -> PlatformWalletConfigUpdate
     return instance
 
 
-def create_play_station_dlc_sync_multi_service_labels_request_example() -> PlayStationDLCSyncMultiServiceLabelsRequest:
+def create_play_station_dlc_sync_multi_service_labels_request_example() -> (
+    PlayStationDLCSyncMultiServiceLabelsRequest
+):
     instance = PlayStationDLCSyncMultiServiceLabelsRequest()
     instance.service_labels = [randomize("int", min_val=1, max_val=1000)]
     return instance
@@ -3131,7 +3183,9 @@ def create_play_station_iap_config_info_example() -> PlayStationIAPConfigInfo:
     return instance
 
 
-def create_play_station_multi_service_labels_reconcile_request_example() -> PlayStationMultiServiceLabelsReconcileRequest:
+def create_play_station_multi_service_labels_reconcile_request_example() -> (
+    PlayStationMultiServiceLabelsReconcileRequest
+):
     instance = PlayStationMultiServiceLabelsReconcileRequest()
     instance.currency_code = randomize()
     instance.price = randomize("int", min_val=1, max_val=1000)
@@ -3289,7 +3343,9 @@ def create_redeem_history_info_example() -> RedeemHistoryInfo:
     return instance
 
 
-def create_redeem_history_paging_sliced_result_example() -> RedeemHistoryPagingSlicedResult:
+def create_redeem_history_paging_sliced_result_example() -> (
+    RedeemHistoryPagingSlicedResult
+):
     instance = RedeemHistoryPagingSlicedResult()
     instance.data = [create_redeem_history_info_example()]
     instance.paging = create_paging_example()
@@ -3425,7 +3481,9 @@ def create_revocation_history_info_example() -> RevocationHistoryInfo:
     return instance
 
 
-def create_revocation_history_paging_sliced_result_example() -> RevocationHistoryPagingSlicedResult:
+def create_revocation_history_paging_sliced_result_example() -> (
+    RevocationHistoryPagingSlicedResult
+):
     instance = RevocationHistoryPagingSlicedResult()
     instance.data = [create_revocation_history_info_example()]
     instance.paging = create_paging_example()
@@ -3598,7 +3656,9 @@ def create_section_create_example() -> SectionCreate:
     instance.active = randomize("bool")
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
-    instance.fixed_period_rotation_config = create_fixed_period_rotation_config_example()
+    instance.fixed_period_rotation_config = (
+        create_fixed_period_rotation_config_example()
+    )
     instance.items = [create_section_item_example()]
     instance.rotation_type = randomize()
     instance.view_id = randomize()
@@ -3650,7 +3710,9 @@ def create_section_update_example() -> SectionUpdate:
     instance.active = randomize("bool")
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
-    instance.fixed_period_rotation_config = create_fixed_period_rotation_config_example()
+    instance.fixed_period_rotation_config = (
+        create_fixed_period_rotation_config_example()
+    )
     instance.items = [create_section_item_example()]
     instance.rotation_type = randomize()
     instance.view_id = randomize()
@@ -3859,7 +3921,9 @@ def create_subscription_activity_info_example() -> SubscriptionActivityInfo:
     return instance
 
 
-def create_subscription_activity_paging_sliced_result_example() -> SubscriptionActivityPagingSlicedResult:
+def create_subscription_activity_paging_sliced_result_example() -> (
+    SubscriptionActivityPagingSlicedResult
+):
     instance = SubscriptionActivityPagingSlicedResult()
     instance.data = [create_subscription_activity_info_example()]
     instance.paging = create_paging_example()
@@ -3914,7 +3978,9 @@ def create_subscription_info_example() -> SubscriptionInfo:
     return instance
 
 
-def create_subscription_paging_sliced_result_example() -> SubscriptionPagingSlicedResult:
+def create_subscription_paging_sliced_result_example() -> (
+    SubscriptionPagingSlicedResult
+):
     instance = SubscriptionPagingSlicedResult()
     instance.data = [create_subscription_info_example()]
     instance.paging = create_paging_example()
@@ -4240,7 +4306,9 @@ def create_wallet_transaction_info_example() -> WalletTransactionInfo:
     return instance
 
 
-def create_wallet_transaction_paging_sliced_result_example() -> WalletTransactionPagingSlicedResult:
+def create_wallet_transaction_paging_sliced_result_example() -> (
+    WalletTransactionPagingSlicedResult
+):
     instance = WalletTransactionPagingSlicedResult()
     instance.data = [create_wallet_transaction_info_example()]
     instance.paging = create_paging_example()

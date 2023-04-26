@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.17.0"
+__version__ = "3.19.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,7 +21,6 @@ from .model_bulk_add_friends_request import ModelBulkAddFriendsRequest
 from .model_bulk_users_free_form_notification_request_v1 import (
     ModelBulkUsersFreeFormNotificationRequestV1,
 )
-from .model_chat_message_response import ModelChatMessageResponse
 from .model_create_template_request import ModelCreateTemplateRequest
 from .model_create_topic_request import ModelCreateTopicRequest
 from .model_create_topic_request_v1 import ModelCreateTopicRequestV1

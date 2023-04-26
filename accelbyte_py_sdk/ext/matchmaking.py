@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.22.0)
+# AccelByte Gaming Services Matchmaking Service (2.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,7 +32,6 @@ from ..api.matchmaking.models import ModelsChannel
 from ..api.matchmaking.models import ModelsChannelRequest
 from ..api.matchmaking.models import ModelsChannelV1
 from ..api.matchmaking.models import ModelsCombination
-from ..api.matchmaking.models import ModelsCombinationAlliances
 from ..api.matchmaking.models import ModelsCreateChannelResponse
 from ..api.matchmaking.models import ModelsDequeueRequest
 from ..api.matchmaking.models import ModelsFlexingRule
@@ -55,6 +54,7 @@ from ..api.matchmaking.models import ModelsRebalanceRequest
 from ..api.matchmaking.models import ModelsRebalanceResponse
 from ..api.matchmaking.models import ModelsResultAttributeRequest
 from ..api.matchmaking.models import ModelsResultAttributeResponse
+from ..api.matchmaking.models import ModelsRole
 from ..api.matchmaking.models import ModelsRuleSet
 from ..api.matchmaking.models import ModelsRuleSetV1
 from ..api.matchmaking.models import ModelsSubGameMode
@@ -171,19 +171,11 @@ def create_models_channel_v1_example() -> ModelsChannelV1:
 
 def create_models_combination_example() -> ModelsCombination:
     instance = ModelsCombination()
-    instance.alliances = [create_models_combination_alliances_example()]
+    instance.alliances = [[create_models_role_example()]]
     instance.has_combination = randomize("bool")
     instance.role_flexing_enable = randomize("bool")
     instance.role_flexing_player = randomize("int", min_val=1, max_val=1000)
     instance.role_flexing_second = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
-def create_models_combination_alliances_example() -> ModelsCombinationAlliances:
-    instance = ModelsCombinationAlliances()
-    instance.max = randomize("int", min_val=1, max_val=1000)
-    instance.min = randomize("int", min_val=1, max_val=1000)
-    instance.name = randomize()
     return instance
 
 
@@ -379,14 +371,22 @@ def create_models_result_attribute_response_example() -> ModelsResultAttributeRe
     return instance
 
 
+def create_models_role_example() -> ModelsRole:
+    instance = ModelsRole()
+    instance.max = randomize("int", min_val=1, max_val=1000)
+    instance.min = randomize("int", min_val=1, max_val=1000)
+    instance.name = randomize()
+    return instance
+
+
 def create_models_rule_set_example() -> ModelsRuleSet:
     instance = ModelsRuleSet()
     instance.alliance = create_models_alliance_rule_example()
-    instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
     instance.flexing_rule = [create_models_flexing_rule_example()]
     instance.match_options = create_models_match_option_rule_example()
     instance.matching_rule = [create_models_matching_rule_example()]
     instance.rebalance_enable = randomize("bool")
+    instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
     instance.sub_game_modes = {}
     return instance
 

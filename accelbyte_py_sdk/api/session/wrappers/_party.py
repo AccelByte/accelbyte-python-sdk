@@ -253,6 +253,13 @@ def public_create_party(
 
     Supported platforms:
     1. STEAM
+    2. PSN
+    3. XBOX
+
+    Reserved attributes key:
+    1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
+    the session regardless the leader changes.
+    2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/party
@@ -318,6 +325,13 @@ async def public_create_party_async(
 
     Supported platforms:
     1. STEAM
+    2. PSN
+    3. XBOX
+
+    Reserved attributes key:
+    1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
+    the session regardless the leader changes.
+    2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/party
@@ -573,6 +587,11 @@ def public_party_invite(
     """Invite a user to a party. Requires NAMESPACE:{namespace}:SESSION:PARTY:PLAYER [CREATE] (publicPartyInvite)
 
     Invite a user to a party.
+    platformID represents the native platform of the invitee. API will return the corresponding native platform's userID.
+    supported platforms:
+    - STEAM
+    - XBOX
+    - PSN
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/invite
@@ -629,6 +648,11 @@ async def public_party_invite_async(
     """Invite a user to a party. Requires NAMESPACE:{namespace}:SESSION:PARTY:PLAYER [CREATE] (publicPartyInvite)
 
     Invite a user to a party.
+    platformID represents the native platform of the invitee. API will return the corresponding native platform's userID.
+    supported platforms:
+    - STEAM
+    - XBOX
+    - PSN
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/invite
@@ -1218,6 +1242,11 @@ def public_patch_update_party(
 
     Update specified fields from party data. Note: Join type can only be updated by the party's leader.
 
+    Reserved attributes key:
+    1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
+    the session regardless the leader changes.
+    2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
+
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}
 
@@ -1273,6 +1302,11 @@ async def public_patch_update_party_async(
     """Patch update a party. Requires NAMESPACE:{namespace}:SESSION:PARTY [UPDATE] (publicPatchUpdateParty)
 
     Update specified fields from party data. Note: Join type can only be updated by the party's leader.
+
+    Reserved attributes key:
+    1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
+    the session regardless the leader changes.
+    2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}
@@ -1671,6 +1705,11 @@ def public_update_party(
     method : PATCH
     API : /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
 
+    Reserved attributes key:
+    1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
+    the session regardless the leader changes.
+    2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
+
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}
 
@@ -1731,6 +1770,11 @@ async def public_update_party_async(
     To update only specified fields, please use following endpoint:
     method : PATCH
     API : /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+
+    Reserved attributes key:
+    1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
+    the session regardless the leader changes.
+    2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}

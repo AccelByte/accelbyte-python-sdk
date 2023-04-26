@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Achievement Service (2.17.0)
+# AccelByte Gaming Services Achievement Service (2.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -56,6 +56,8 @@ class ModelsAchievementRequest(Model):
 
         unlocked_icons: (unlockedIcons) REQUIRED List[ModelsIcon]
 
+        custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
+
         global_: (global) OPTIONAL bool
     """
 
@@ -72,6 +74,7 @@ class ModelsAchievementRequest(Model):
     stat_code: str  # REQUIRED
     tags: List[str]  # REQUIRED
     unlocked_icons: List[ModelsIcon]  # REQUIRED
+    custom_attributes: Dict[str, Any]  # OPTIONAL
     global_: bool  # OPTIONAL
 
     # endregion fields
@@ -120,6 +123,10 @@ class ModelsAchievementRequest(Model):
 
     def with_unlocked_icons(self, value: List[ModelsIcon]) -> ModelsAchievementRequest:
         self.unlocked_icons = value
+        return self
+
+    def with_custom_attributes(self, value: Dict[str, Any]) -> ModelsAchievementRequest:
+        self.custom_attributes = value
         return self
 
     def with_global(self, value: bool) -> ModelsAchievementRequest:
@@ -182,6 +189,12 @@ class ModelsAchievementRequest(Model):
             ]
         elif include_empty:
             result["unlockedIcons"] = []
+        if hasattr(self, "custom_attributes"):
+            result["customAttributes"] = {
+                str(k0): v0 for k0, v0 in self.custom_attributes.items()
+            }
+        elif include_empty:
+            result["customAttributes"] = {}
         if hasattr(self, "global_"):
             result["global"] = bool(self.global_)
         elif include_empty:
@@ -206,6 +219,7 @@ class ModelsAchievementRequest(Model):
         stat_code: str,
         tags: List[str],
         unlocked_icons: List[ModelsIcon],
+        custom_attributes: Optional[Dict[str, Any]] = None,
         global_: Optional[bool] = None,
         **kwargs,
     ) -> ModelsAchievementRequest:
@@ -221,6 +235,8 @@ class ModelsAchievementRequest(Model):
         instance.stat_code = stat_code
         instance.tags = tags
         instance.unlocked_icons = unlocked_icons
+        if custom_attributes is not None:
+            instance.custom_attributes = custom_attributes
         if global_ is not None:
             instance.global_ = global_
         return instance
@@ -284,6 +300,12 @@ class ModelsAchievementRequest(Model):
             ]
         elif include_empty:
             instance.unlocked_icons = []
+        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
+            instance.custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
+            }
+        elif include_empty:
+            instance.custom_attributes = {}
         if "global" in dict_ and dict_["global"] is not None:
             instance.global_ = bool(dict_["global"])
         elif include_empty:
@@ -342,6 +364,7 @@ class ModelsAchievementRequest(Model):
             "statCode": "stat_code",
             "tags": "tags",
             "unlockedIcons": "unlocked_icons",
+            "customAttributes": "custom_attributes",
             "global": "global_",
         }
 
@@ -359,6 +382,7 @@ class ModelsAchievementRequest(Model):
             "statCode": True,
             "tags": True,
             "unlockedIcons": True,
+            "customAttributes": False,
             "global": False,
         }
 

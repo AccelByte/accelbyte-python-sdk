@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.7.4)
+# AccelByte Gaming Services Session Service (2.8.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,8 @@ class ApimodelsPlayerAttributesRequestBody(Model):
     Properties:
         crossplay_enabled: (crossplayEnabled) REQUIRED bool
 
+        current_platform: (currentPlatform) REQUIRED str
+
         data: (data) REQUIRED Dict[str, Any]
 
         platforms: (platforms) REQUIRED List[ModelsUserPlatformInfo]
@@ -44,6 +46,7 @@ class ApimodelsPlayerAttributesRequestBody(Model):
     # region fields
 
     crossplay_enabled: bool  # REQUIRED
+    current_platform: str  # REQUIRED
     data: Dict[str, Any]  # REQUIRED
     platforms: List[ModelsUserPlatformInfo]  # REQUIRED
 
@@ -55,6 +58,10 @@ class ApimodelsPlayerAttributesRequestBody(Model):
         self, value: bool
     ) -> ApimodelsPlayerAttributesRequestBody:
         self.crossplay_enabled = value
+        return self
+
+    def with_current_platform(self, value: str) -> ApimodelsPlayerAttributesRequestBody:
+        self.current_platform = value
         return self
 
     def with_data(self, value: Dict[str, Any]) -> ApimodelsPlayerAttributesRequestBody:
@@ -77,6 +84,10 @@ class ApimodelsPlayerAttributesRequestBody(Model):
             result["crossplayEnabled"] = bool(self.crossplay_enabled)
         elif include_empty:
             result["crossplayEnabled"] = False
+        if hasattr(self, "current_platform"):
+            result["currentPlatform"] = str(self.current_platform)
+        elif include_empty:
+            result["currentPlatform"] = ""
         if hasattr(self, "data"):
             result["data"] = {str(k0): v0 for k0, v0 in self.data.items()}
         elif include_empty:
@@ -97,12 +108,14 @@ class ApimodelsPlayerAttributesRequestBody(Model):
     def create(
         cls,
         crossplay_enabled: bool,
+        current_platform: str,
         data: Dict[str, Any],
         platforms: List[ModelsUserPlatformInfo],
         **kwargs,
     ) -> ApimodelsPlayerAttributesRequestBody:
         instance = cls()
         instance.crossplay_enabled = crossplay_enabled
+        instance.current_platform = current_platform
         instance.data = data
         instance.platforms = platforms
         return instance
@@ -118,6 +131,10 @@ class ApimodelsPlayerAttributesRequestBody(Model):
             instance.crossplay_enabled = bool(dict_["crossplayEnabled"])
         elif include_empty:
             instance.crossplay_enabled = False
+        if "currentPlatform" in dict_ and dict_["currentPlatform"] is not None:
+            instance.current_platform = str(dict_["currentPlatform"])
+        elif include_empty:
+            instance.current_platform = ""
         if "data" in dict_ and dict_["data"] is not None:
             instance.data = {str(k0): v0 for k0, v0 in dict_["data"].items()}
         elif include_empty:
@@ -173,6 +190,7 @@ class ApimodelsPlayerAttributesRequestBody(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "crossplayEnabled": "crossplay_enabled",
+            "currentPlatform": "current_platform",
             "data": "data",
             "platforms": "platforms",
         }
@@ -181,6 +199,7 @@ class ApimodelsPlayerAttributesRequestBody(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "crossplayEnabled": True,
+            "currentPlatform": True,
             "data": True,
             "platforms": True,
         }

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.22.0)
+# AccelByte Gaming Services Matchmaking Service (2.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,14 +27,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_combination_alliances import ModelsCombinationAlliances
+from ..models.models_role import ModelsRole
 
 
 class ModelsCombination(Model):
     """Models combination (models.Combination)
 
     Properties:
-        alliances: (alliances) REQUIRED List[ModelsCombinationAlliances]
+        alliances: (alliances) REQUIRED List[List[ModelsRole]]
 
         has_combination: (has_combination) REQUIRED bool
 
@@ -47,7 +47,7 @@ class ModelsCombination(Model):
 
     # region fields
 
-    alliances: List[ModelsCombinationAlliances]  # REQUIRED
+    alliances: List[List[ModelsRole]]  # REQUIRED
     has_combination: bool  # REQUIRED
     role_flexing_enable: bool  # REQUIRED
     role_flexing_player: int  # REQUIRED
@@ -57,9 +57,7 @@ class ModelsCombination(Model):
 
     # region with_x methods
 
-    def with_alliances(
-        self, value: List[ModelsCombinationAlliances]
-    ) -> ModelsCombination:
+    def with_alliances(self, value: List[List[ModelsRole]]) -> ModelsCombination:
         self.alliances = value
         return self
 
@@ -87,7 +85,8 @@ class ModelsCombination(Model):
         result: dict = {}
         if hasattr(self, "alliances"):
             result["alliances"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.alliances
+                [i1.to_dict(include_empty=include_empty) for i1 in i0]
+                for i0 in self.alliances
             ]
         elif include_empty:
             result["alliances"] = []
@@ -116,7 +115,7 @@ class ModelsCombination(Model):
     @classmethod
     def create(
         cls,
-        alliances: List[ModelsCombinationAlliances],
+        alliances: List[List[ModelsRole]],
         has_combination: bool,
         role_flexing_enable: bool,
         role_flexing_player: int,
@@ -140,9 +139,10 @@ class ModelsCombination(Model):
             return instance
         if "alliances" in dict_ and dict_["alliances"] is not None:
             instance.alliances = [
-                ModelsCombinationAlliances.create_from_dict(
-                    i0, include_empty=include_empty
-                )
+                [
+                    ModelsRole.create_from_dict(i1, include_empty=include_empty)
+                    for i1 in i0
+                ]
                 for i0 in dict_["alliances"]
             ]
         elif include_empty:

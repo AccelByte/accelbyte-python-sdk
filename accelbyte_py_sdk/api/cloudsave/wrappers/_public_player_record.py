@@ -39,6 +39,8 @@ from ..models import ModelsResponseError
 
 from ..operations.public_player_record import BulkGetPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import DeletePlayerRecordHandlerV1
+from ..operations.public_player_record import GetOtherPlayerPublicRecordHandlerV1
+from ..operations.public_player_record import GetOtherPlayerPublicRecordKeyHandlerV1
 from ..operations.public_player_record import GetPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import GetPlayerRecordHandlerV1
 from ..operations.public_player_record import GetPlayerRecordsBulkHandlerV1
@@ -323,6 +325,274 @@ async def delete_player_record_handler_v1_async(
     request = DeletePlayerRecordHandlerV1.create(
         key=key,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetOtherPlayerPublicRecordHandlerV1)
+def get_other_player_public_record_handler_v1(
+    body: ModelsBulkGetPlayerRecordsRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get other player public record bulk (getOtherPlayerPublicRecordHandlerV1)
+
+    Required valid user token with permission: `NAMESPACE:{namespace}:USER:*:PUBLIC:CLOUDSAVE:RECORD [READ]`
+
+    Required scope: `social`
+
+    Retrieve other player public record key and payload in bulk under given namespace.
+
+    Maximum bulk key limit per request 20
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:*:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/public/bulk
+
+        method: POST
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkGetPlayerRecordsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkGetPlayerRecordResponse (Successful operation)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (Forbidden)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetOtherPlayerPublicRecordHandlerV1.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetOtherPlayerPublicRecordHandlerV1)
+async def get_other_player_public_record_handler_v1_async(
+    body: ModelsBulkGetPlayerRecordsRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get other player public record bulk (getOtherPlayerPublicRecordHandlerV1)
+
+    Required valid user token with permission: `NAMESPACE:{namespace}:USER:*:PUBLIC:CLOUDSAVE:RECORD [READ]`
+
+    Required scope: `social`
+
+    Retrieve other player public record key and payload in bulk under given namespace.
+
+    Maximum bulk key limit per request 20
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:*:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/public/bulk
+
+        method: POST
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkGetPlayerRecordsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkGetPlayerRecordResponse (Successful operation)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        403: Forbidden - ModelsResponseError (Forbidden)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetOtherPlayerPublicRecordHandlerV1.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetOtherPlayerPublicRecordKeyHandlerV1)
+def get_other_player_public_record_key_handler_v1(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query other player public record key (getOtherPlayerPublicRecordKeyHandlerV1)
+
+    Required valid user token with permission: `NAMESPACE:{namespace}:USER:*:PUBLIC:CLOUDSAVE:RECORD [READ]`
+
+    Required scope: `social`
+
+    Retrieve list of other public player records key under given namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:*:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/public
+
+        method: GET
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsListPlayerRecordKeysResponse (Successful operation)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetOtherPlayerPublicRecordKeyHandlerV1.create(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetOtherPlayerPublicRecordKeyHandlerV1)
+async def get_other_player_public_record_key_handler_v1_async(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query other player public record key (getOtherPlayerPublicRecordKeyHandlerV1)
+
+    Required valid user token with permission: `NAMESPACE:{namespace}:USER:*:PUBLIC:CLOUDSAVE:RECORD [READ]`
+
+    Required scope: `social`
+
+    Retrieve list of other public player records key under given namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:*:PUBLIC:CLOUDSAVE:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/public
+
+        method: GET
+
+        tags: ["PublicPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsListPlayerRecordKeysResponse (Successful operation)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetOtherPlayerPublicRecordKeyHandlerV1.create(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.9.3)
+# AccelByte Gaming Services Ugc Service (2.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,8 +30,8 @@ from ....core import Model
 from ..models.models_preview_metadata import ModelsPreviewMetadata
 
 
-class ModelsContentRequest(Model):
-    """Models content request (models.ContentRequest)
+class ModelsAdminUpdateContentRequest(Model):
+    """Models admin update content request (models.AdminUpdateContentRequest)
 
     Properties:
         content_type: (contentType) REQUIRED str
@@ -55,6 +55,8 @@ class ModelsContentRequest(Model):
         custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
 
         preview_metadata: (previewMetadata) OPTIONAL ModelsPreviewMetadata
+
+        share_code: (shareCode) OPTIONAL str
     """
 
     # region fields
@@ -70,55 +72,62 @@ class ModelsContentRequest(Model):
     update_content_file: bool  # REQUIRED
     custom_attributes: Dict[str, Any]  # OPTIONAL
     preview_metadata: ModelsPreviewMetadata  # OPTIONAL
+    share_code: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_content_type(self, value: str) -> ModelsContentRequest:
+    def with_content_type(self, value: str) -> ModelsAdminUpdateContentRequest:
         self.content_type = value
         return self
 
-    def with_file_extension(self, value: str) -> ModelsContentRequest:
+    def with_file_extension(self, value: str) -> ModelsAdminUpdateContentRequest:
         self.file_extension = value
         return self
 
-    def with_name(self, value: str) -> ModelsContentRequest:
+    def with_name(self, value: str) -> ModelsAdminUpdateContentRequest:
         self.name = value
         return self
 
-    def with_payload(self, value: str) -> ModelsContentRequest:
+    def with_payload(self, value: str) -> ModelsAdminUpdateContentRequest:
         self.payload = value
         return self
 
-    def with_preview(self, value: str) -> ModelsContentRequest:
+    def with_preview(self, value: str) -> ModelsAdminUpdateContentRequest:
         self.preview = value
         return self
 
-    def with_sub_type(self, value: str) -> ModelsContentRequest:
+    def with_sub_type(self, value: str) -> ModelsAdminUpdateContentRequest:
         self.sub_type = value
         return self
 
-    def with_tags(self, value: List[str]) -> ModelsContentRequest:
+    def with_tags(self, value: List[str]) -> ModelsAdminUpdateContentRequest:
         self.tags = value
         return self
 
-    def with_type(self, value: str) -> ModelsContentRequest:
+    def with_type(self, value: str) -> ModelsAdminUpdateContentRequest:
         self.type_ = value
         return self
 
-    def with_update_content_file(self, value: bool) -> ModelsContentRequest:
+    def with_update_content_file(self, value: bool) -> ModelsAdminUpdateContentRequest:
         self.update_content_file = value
         return self
 
-    def with_custom_attributes(self, value: Dict[str, Any]) -> ModelsContentRequest:
+    def with_custom_attributes(
+        self, value: Dict[str, Any]
+    ) -> ModelsAdminUpdateContentRequest:
         self.custom_attributes = value
         return self
 
     def with_preview_metadata(
         self, value: ModelsPreviewMetadata
-    ) -> ModelsContentRequest:
+    ) -> ModelsAdminUpdateContentRequest:
         self.preview_metadata = value
+        return self
+
+    def with_share_code(self, value: str) -> ModelsAdminUpdateContentRequest:
+        self.share_code = value
         return self
 
     # endregion with_x methods
@@ -175,6 +184,10 @@ class ModelsContentRequest(Model):
             )
         elif include_empty:
             result["previewMetadata"] = ModelsPreviewMetadata()
+        if hasattr(self, "share_code"):
+            result["shareCode"] = str(self.share_code)
+        elif include_empty:
+            result["shareCode"] = ""
         return result
 
     # endregion to methods
@@ -195,8 +208,9 @@ class ModelsContentRequest(Model):
         update_content_file: bool,
         custom_attributes: Optional[Dict[str, Any]] = None,
         preview_metadata: Optional[ModelsPreviewMetadata] = None,
+        share_code: Optional[str] = None,
         **kwargs,
-    ) -> ModelsContentRequest:
+    ) -> ModelsAdminUpdateContentRequest:
         instance = cls()
         instance.content_type = content_type
         instance.file_extension = file_extension
@@ -211,12 +225,14 @@ class ModelsContentRequest(Model):
             instance.custom_attributes = custom_attributes
         if preview_metadata is not None:
             instance.preview_metadata = preview_metadata
+        if share_code is not None:
+            instance.share_code = share_code
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsContentRequest:
+    ) -> ModelsAdminUpdateContentRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -268,12 +284,16 @@ class ModelsContentRequest(Model):
             )
         elif include_empty:
             instance.preview_metadata = ModelsPreviewMetadata()
+        if "shareCode" in dict_ and dict_["shareCode"] is not None:
+            instance.share_code = str(dict_["shareCode"])
+        elif include_empty:
+            instance.share_code = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsContentRequest]:
+    ) -> Dict[str, ModelsAdminUpdateContentRequest]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -283,7 +303,7 @@ class ModelsContentRequest(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsContentRequest]:
+    ) -> List[ModelsAdminUpdateContentRequest]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -294,9 +314,9 @@ class ModelsContentRequest(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ModelsContentRequest,
-        List[ModelsContentRequest],
-        Dict[Any, ModelsContentRequest],
+        ModelsAdminUpdateContentRequest,
+        List[ModelsAdminUpdateContentRequest],
+        Dict[Any, ModelsAdminUpdateContentRequest],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -322,6 +342,7 @@ class ModelsContentRequest(Model):
             "updateContentFile": "update_content_file",
             "customAttributes": "custom_attributes",
             "previewMetadata": "preview_metadata",
+            "shareCode": "share_code",
         }
 
     @staticmethod
@@ -338,6 +359,7 @@ class ModelsContentRequest(Model):
             "updateContentFile": True,
             "customAttributes": False,
             "previewMetadata": False,
+            "shareCode": False,
         }
 
     # endregion static methods

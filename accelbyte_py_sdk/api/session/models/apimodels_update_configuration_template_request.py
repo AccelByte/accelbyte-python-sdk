@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.7.4)
+# AccelByte Gaming Services Session Service (2.8.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,8 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+
+from ..models.models_native_session_setting import ModelsNativeSessionSetting
 
 
 class ApimodelsUpdateConfigurationTemplateRequest(Model):
@@ -55,6 +57,8 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         text_chat: (textChat) REQUIRED bool
 
         type_: (type) REQUIRED str
+
+        native_session_setting: (NativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
     """
 
     # region fields
@@ -71,6 +75,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
     requested_regions: List[str]  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
+    native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
 
     # endregion fields
 
@@ -144,6 +149,12 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         self.type_ = value
         return self
 
+    def with_native_session_setting(
+        self, value: ModelsNativeSessionSetting
+    ) -> ApimodelsUpdateConfigurationTemplateRequest:
+        self.native_session_setting = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -198,6 +209,12 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "native_session_setting"):
+            result["NativeSessionSetting"] = self.native_session_setting.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["NativeSessionSetting"] = ModelsNativeSessionSetting()
         return result
 
     # endregion to methods
@@ -219,6 +236,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         requested_regions: List[str],
         text_chat: bool,
         type_: str,
+        native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         **kwargs,
     ) -> ApimodelsUpdateConfigurationTemplateRequest:
         instance = cls()
@@ -234,6 +252,8 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         instance.requested_regions = requested_regions
         instance.text_chat = text_chat
         instance.type_ = type_
+        if native_session_setting is not None:
+            instance.native_session_setting = native_session_setting
         return instance
 
     @classmethod
@@ -291,6 +311,17 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if (
+            "NativeSessionSetting" in dict_
+            and dict_["NativeSessionSetting"] is not None
+        ):
+            instance.native_session_setting = (
+                ModelsNativeSessionSetting.create_from_dict(
+                    dict_["NativeSessionSetting"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.native_session_setting = ModelsNativeSessionSetting()
         return instance
 
     @classmethod
@@ -346,6 +377,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             "requestedRegions": "requested_regions",
             "textChat": "text_chat",
             "type": "type_",
+            "NativeSessionSetting": "native_session_setting",
         }
 
     @staticmethod
@@ -363,6 +395,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             "requestedRegions": True,
             "textChat": True,
             "type": True,
+            "NativeSessionSetting": False,
         }
 
     # endregion static methods

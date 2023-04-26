@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Matchmaking Service Index (2.22.0)
+# AccelByte Gaming Services Matchmaking Service Index (2.23.0)
 
 
 ## Operations
@@ -60,7 +60,6 @@
 | models.ChannelRequest | [ModelsChannelRequest](../../accelbyte_py_sdk/api/matchmaking/models/models_channel_request.py) |
 | models.ChannelV1 | [ModelsChannelV1](../../accelbyte_py_sdk/api/matchmaking/models/models_channel_v1.py) |
 | models.Combination | [ModelsCombination](../../accelbyte_py_sdk/api/matchmaking/models/models_combination.py) |
-| models.Combination.alliances | [ModelsCombinationAlliances](../../accelbyte_py_sdk/api/matchmaking/models/models_combination_alliances.py) |
 | models.CreateChannelResponse | [ModelsCreateChannelResponse](../../accelbyte_py_sdk/api/matchmaking/models/models_create_channel_response.py) |
 | models.DequeueRequest | [ModelsDequeueRequest](../../accelbyte_py_sdk/api/matchmaking/models/models_dequeue_request.py) |
 | models.FlexingRule | [ModelsFlexingRule](../../accelbyte_py_sdk/api/matchmaking/models/models_flexing_rule.py) |
@@ -83,6 +82,7 @@
 | models.RebalanceResponse | [ModelsRebalanceResponse](../../accelbyte_py_sdk/api/matchmaking/models/models_rebalance_response.py) |
 | models.ResultAttributeRequest | [ModelsResultAttributeRequest](../../accelbyte_py_sdk/api/matchmaking/models/models_result_attribute_request.py) |
 | models.ResultAttributeResponse | [ModelsResultAttributeResponse](../../accelbyte_py_sdk/api/matchmaking/models/models_result_attribute_response.py) |
+| models.Role | [ModelsRole](../../accelbyte_py_sdk/api/matchmaking/models/models_role.py) |
 | models.RuleSet | [ModelsRuleSet](../../accelbyte_py_sdk/api/matchmaking/models/models_rule_set.py) |
 | models.RuleSetV1 | [ModelsRuleSetV1](../../accelbyte_py_sdk/api/matchmaking/models/models_rule_set_v1.py) |
 | models.SubGameMode | [ModelsSubGameMode](../../accelbyte_py_sdk/api/matchmaking/models/models_sub_game_mode.py) |

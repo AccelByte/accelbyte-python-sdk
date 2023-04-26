@@ -30,6 +30,8 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import BulkCycleStatsAdd
+from ..models import BulkStatCycleRequest
+from ..models import BulkStatCycleResult
 from ..models import BulkStatOperationResult
 from ..models import ErrorEntity
 from ..models import StatCycleCreate
@@ -38,6 +40,8 @@ from ..models import StatCyclePagingSlicedResult
 from ..models import StatCycleUpdate
 
 from ..operations.stat_cycle_configuration import BulkAddStats
+from ..operations.stat_cycle_configuration import BulkGetStatCycle
+from ..operations.stat_cycle_configuration import BulkGetStatCycle1
 from ..operations.stat_cycle_configuration import CreateStatCycle
 from ..operations.stat_cycle_configuration import DeleteStatCycle
 from ..operations.stat_cycle_configuration import GetStatCycle
@@ -161,6 +165,206 @@ async def bulk_add_stats_async(
             return None, error
     request = BulkAddStats.create(
         cycle_id=cycle_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(BulkGetStatCycle)
+def bulk_get_stat_cycle(
+    body: Optional[BulkStatCycleRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get stat cycle (bulkGetStatCycle)
+
+    Bulk get stat cycle.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : list of stat cycles
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/bulk
+
+        method: POST
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkStatCycleRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkStatCycleResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetStatCycle.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkGetStatCycle)
+async def bulk_get_stat_cycle_async(
+    body: Optional[BulkStatCycleRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get stat cycle (bulkGetStatCycle)
+
+    Bulk get stat cycle.
+    Other detail info:
+
+      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : list of stat cycles
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/bulk
+
+        method: POST
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkStatCycleRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkStatCycleResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetStatCycle.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(BulkGetStatCycle1)
+def bulk_get_stat_cycle_1(
+    body: Optional[BulkStatCycleRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get stat cycle (bulkGetStatCycle_1)
+
+    Bulk get stat cycle.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : list of stat cycles
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/statCycles/bulk
+
+        method: POST
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkStatCycleRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkStatCycleResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetStatCycle1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkGetStatCycle1)
+async def bulk_get_stat_cycle_1_async(
+    body: Optional[BulkStatCycleRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get stat cycle (bulkGetStatCycle_1)
+
+    Bulk get stat cycle.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:STAT", action=2 (READ)
+      *  Returns : list of stat cycles
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/statCycles/bulk
+
+        method: POST
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkStatCycleRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - BulkStatCycleResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetStatCycle1.create(
         body=body,
         namespace=namespace,
     )

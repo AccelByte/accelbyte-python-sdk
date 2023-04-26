@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.9.3)
+# AccelByte Gaming Services Ugc Service (2.10.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,13 +39,19 @@ class AdminUploadContentS3(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
 
-    All request body are required except preview, tags, contentType and customAttributes.
-    contentType values is used to enforce the Content-Type header needed by the client when uploading the content using the S3 presigned URL.
-    If not specified, it will use fileExtension value.
+    All request body are required except `preview`, `tags`, `contentType`, `customAttributes` and `shareCode`.
+
+    `contentType` values is used to enforce the Content-Type header needed by the client when uploading the content using the S3 presigned URL. If not specified, it will use fileExtension value.
+
+    `shareCode` format should follows:
+
+    Length: 7
+    Available characters: abcdefhkpqrstuxyz
 
 
 
-    NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
+
+     NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]

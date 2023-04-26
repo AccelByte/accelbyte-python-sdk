@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.7.4)
+# AccelByte Gaming Services Session Service (2.8.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,16 +32,23 @@ class ApimodelsSessionInviteRequest(Model):
     """Apimodels session invite request (apimodels.SessionInviteRequest)
 
     Properties:
+        platform_id: (platformID) REQUIRED str
+
         user_id: (userID) REQUIRED str
     """
 
     # region fields
 
+    platform_id: str  # REQUIRED
     user_id: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
+
+    def with_platform_id(self, value: str) -> ApimodelsSessionInviteRequest:
+        self.platform_id = value
+        return self
 
     def with_user_id(self, value: str) -> ApimodelsSessionInviteRequest:
         self.user_id = value
@@ -53,6 +60,10 @@ class ApimodelsSessionInviteRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "platform_id"):
+            result["platformID"] = str(self.platform_id)
+        elif include_empty:
+            result["platformID"] = ""
         if hasattr(self, "user_id"):
             result["userID"] = str(self.user_id)
         elif include_empty:
@@ -64,8 +75,11 @@ class ApimodelsSessionInviteRequest(Model):
     # region static methods
 
     @classmethod
-    def create(cls, user_id: str, **kwargs) -> ApimodelsSessionInviteRequest:
+    def create(
+        cls, platform_id: str, user_id: str, **kwargs
+    ) -> ApimodelsSessionInviteRequest:
         instance = cls()
+        instance.platform_id = platform_id
         instance.user_id = user_id
         return instance
 
@@ -76,6 +90,10 @@ class ApimodelsSessionInviteRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "platformID" in dict_ and dict_["platformID"] is not None:
+            instance.platform_id = str(dict_["platformID"])
+        elif include_empty:
+            instance.platform_id = ""
         if "userID" in dict_ and dict_["userID"] is not None:
             instance.user_id = str(dict_["userID"])
         elif include_empty:
@@ -123,12 +141,14 @@ class ApimodelsSessionInviteRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "platformID": "platform_id",
             "userID": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "platformID": True,
             "userID": True,
         }
 

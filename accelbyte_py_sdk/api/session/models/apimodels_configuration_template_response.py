@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.7.4)
+# AccelByte Gaming Services Session Service (2.8.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,8 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+
+from ..models.models_native_session_setting import ModelsNativeSessionSetting
 
 
 class ApimodelsConfigurationTemplateResponse(Model):
@@ -62,6 +64,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         updated_at: (updatedAt) REQUIRED str
 
+        native_session_setting: (nativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
+
         requested_regions: (requestedRegions) OPTIONAL List[str]
     """
 
@@ -82,6 +86,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
     updated_at: str  # REQUIRED
+    native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
     requested_regions: List[str]  # OPTIONAL
 
     # endregion fields
@@ -148,6 +153,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
     def with_updated_at(self, value: str) -> ApimodelsConfigurationTemplateResponse:
         self.updated_at = value
+        return self
+
+    def with_native_session_setting(
+        self, value: ModelsNativeSessionSetting
+    ) -> ApimodelsConfigurationTemplateResponse:
+        self.native_session_setting = value
         return self
 
     def with_requested_regions(
@@ -222,6 +233,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "native_session_setting"):
+            result["nativeSessionSetting"] = self.native_session_setting.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["nativeSessionSetting"] = ModelsNativeSessionSetting()
         if hasattr(self, "requested_regions"):
             result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
         elif include_empty:
@@ -250,6 +267,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         text_chat: bool,
         type_: str,
         updated_at: str,
+        native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         requested_regions: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsConfigurationTemplateResponse:
@@ -269,6 +287,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
         instance.text_chat = text_chat
         instance.type_ = type_
         instance.updated_at = updated_at
+        if native_session_setting is not None:
+            instance.native_session_setting = native_session_setting
         if requested_regions is not None:
             instance.requested_regions = requested_regions
         return instance
@@ -340,6 +360,17 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if (
+            "nativeSessionSetting" in dict_
+            and dict_["nativeSessionSetting"] is not None
+        ):
+            instance.native_session_setting = (
+                ModelsNativeSessionSetting.create_from_dict(
+                    dict_["nativeSessionSetting"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.native_session_setting = ModelsNativeSessionSetting()
         if "requestedRegions" in dict_ and dict_["requestedRegions"] is not None:
             instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
         elif include_empty:
@@ -402,6 +433,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "textChat": "text_chat",
             "type": "type_",
             "updatedAt": "updated_at",
+            "nativeSessionSetting": "native_session_setting",
             "requestedRegions": "requested_regions",
         }
 
@@ -423,6 +455,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "textChat": True,
             "type": True,
             "updatedAt": True,
+            "nativeSessionSetting": False,
             "requestedRegions": False,
         }
 

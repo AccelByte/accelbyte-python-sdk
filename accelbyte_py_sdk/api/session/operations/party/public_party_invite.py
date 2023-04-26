@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.7.4)
+# AccelByte Gaming Services Session Service (2.8.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,6 +37,11 @@ class PublicPartyInvite(Operation):
     """Invite a user to a party. Requires NAMESPACE:{namespace}:SESSION:PARTY:PLAYER [CREATE] (publicPartyInvite)
 
     Invite a user to a party.
+    platformID represents the native platform of the invitee. API will return the corresponding native platform's userID.
+    supported platforms:
+    - STEAM
+    - XBOX
+    - PSN
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/invite

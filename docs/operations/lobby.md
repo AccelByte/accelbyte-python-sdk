@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Lobby Server Index (3.17.0)
+# AccelByte Gaming Services Lobby Server Index (3.19.0)
 
 
 ## Operations
@@ -20,13 +20,6 @@
 | /notification/namespaces/{namespace}/templated | POST | notificationWithTemplate | `false` | [NotificationWithTemplate](../../accelbyte_py_sdk/api/lobby/operations/admin/notification_with_template.py) | [notification_with_template](../../accelbyte_py_sdk/api/lobby/wrappers/_admin.py) | [accelbyte_py_sdk_cli lobby-notification-with-template](../../samples/cli/accelbyte_py_sdk_cli/lobby/_notification_with_template.py) |
 | /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish | POST | publishTemplate | `false` | [PublishTemplate](../../accelbyte_py_sdk/api/lobby/operations/admin/publish_template.py) | [publish_template](../../accelbyte_py_sdk/api/lobby/wrappers/_admin.py) | [accelbyte_py_sdk_cli lobby-publish-template](../../samples/cli/accelbyte_py_sdk_cli/lobby/_publish_template.py) |
 | /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage} | PUT | updateLocalizationTemplate | `false` | [UpdateLocalizationTemplate](../../accelbyte_py_sdk/api/lobby/operations/admin/update_localization_template.py) | [update_localization_template](../../accelbyte_py_sdk/api/lobby/wrappers/_admin.py) | [accelbyte_py_sdk_cli lobby-update-localization-template](../../samples/cli/accelbyte_py_sdk_cli/lobby/_update_localization_template.py) |
-
-### chat
-| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
-|---|---|---|---|---|---|---|
-| /lobby/v1/admin/chat/namespaces/{namespace}/users/{userId}/friends/{friendId} | GET | adminChatHistory | `false` | [AdminChatHistory](../../accelbyte_py_sdk/api/lobby/operations/chat/admin_chat_history.py) | [admin_chat_history](../../accelbyte_py_sdk/api/lobby/wrappers/_chat.py) | [accelbyte_py_sdk_cli lobby-admin-chat-history](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_chat_history.py) |
-| /lobby/v1/public/chat/namespaces/{namespace}/users/me/friends/{friendId} | GET | getPersonalChatHistoryV1Public | `false` | [GetPersonalChatHistoryV1Public](../../accelbyte_py_sdk/api/lobby/operations/chat/get_personal_chat_histo_cd5919.py) | [get_personal_chat_history_v1_public](../../accelbyte_py_sdk/api/lobby/wrappers/_chat.py) | [accelbyte_py_sdk_cli lobby-get-personal-chat-history-v1-public](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_personal_chat_history_v1_public.py) |
-| /lobby/chat/namespaces/{namespace}/users/{userId}/friend/{friendId} | GET | personalChatHistory | `false` | [PersonalChatHistory](../../accelbyte_py_sdk/api/lobby/operations/chat/personal_chat_history.py) | [personal_chat_history](../../accelbyte_py_sdk/api/lobby/wrappers/_chat.py) | [accelbyte_py_sdk_cli lobby-personal-chat-history](../../samples/cli/accelbyte_py_sdk_cli/lobby/_personal_chat_history.py) |
 
 ### config
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -153,7 +146,6 @@
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../../accelbyte_py_sdk/api/lobby/models/log_app_message_declaration.py) |
 | model.BulkAddFriendsRequest | [ModelBulkAddFriendsRequest](../../accelbyte_py_sdk/api/lobby/models/model_bulk_add_friends_request.py) |
 | model.BulkUsersFreeFormNotificationRequestV1 | [ModelBulkUsersFreeFormNotificationRequestV1](../../accelbyte_py_sdk/api/lobby/models/model_bulk_users_free_form_notification_request_v1.py) |
-| model.ChatMessageResponse | [ModelChatMessageResponse](../../accelbyte_py_sdk/api/lobby/models/model_chat_message_response.py) |
 | model.CreateTemplateRequest | [ModelCreateTemplateRequest](../../accelbyte_py_sdk/api/lobby/models/model_create_template_request.py) |
 | model.CreateTopicRequest | [ModelCreateTopicRequest](../../accelbyte_py_sdk/api/lobby/models/model_create_topic_request.py) |
 | model.CreateTopicRequestV1 | [ModelCreateTopicRequestV1](../../accelbyte_py_sdk/api/lobby/models/model_create_topic_request_v1.py) |

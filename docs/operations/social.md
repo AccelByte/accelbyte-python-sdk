@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Social Service Index (2.3.0)
+# AccelByte Gaming Services Social Service Index (2.4.1)
 
 
 ## Operations
@@ -69,6 +69,8 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}/stats/add/bulk | POST | bulkAddStats | `false` | [BulkAddStats](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/bulk_add_stats.py) | [bulk_add_stats](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-bulk-add-stats](../../samples/cli/accelbyte_py_sdk_cli/social/_bulk_add_stats.py) |
+| /social/v1/admin/namespaces/{namespace}/statCycles/bulk | POST | bulkGetStatCycle | `false` | [BulkGetStatCycle](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/bulk_get_stat_cycle.py) | [bulk_get_stat_cycle](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-bulk-get-stat-cycle](../../samples/cli/accelbyte_py_sdk_cli/social/_bulk_get_stat_cycle.py) |
+| /social/v1/public/namespaces/{namespace}/statCycles/bulk | POST | bulkGetStatCycle_1 | `false` | [BulkGetStatCycle1](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/bulk_get_stat_cycle_1.py) | [bulk_get_stat_cycle_1](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-bulk-get-stat-cycle-1](../../samples/cli/accelbyte_py_sdk_cli/social/_bulk_get_stat_cycle_1.py) |
 | /social/v1/admin/namespaces/{namespace}/statCycles | POST | createStatCycle | `false` | [CreateStatCycle](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/create_stat_cycle.py) | [create_stat_cycle](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-create-stat-cycle](../../samples/cli/accelbyte_py_sdk_cli/social/_create_stat_cycle.py) |
 | /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId} | DELETE | deleteStatCycle | `false` | [DeleteStatCycle](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/delete_stat_cycle.py) | [delete_stat_cycle](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-delete-stat-cycle](../../samples/cli/accelbyte_py_sdk_cli/social/_delete_stat_cycle.py) |
 | /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId} | GET | getStatCycle | `false` | [GetStatCycle](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/get_stat_cycle.py) | [get_stat_cycle](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-get-stat-cycle](../../samples/cli/accelbyte_py_sdk_cli/social/_get_stat_cycle.py) |
@@ -135,6 +137,8 @@
 | A DTO object for user stat item value | [ADTOObjectForUserStatItemValue](../../accelbyte_py_sdk/api/social/models/a_dto_object_for_user_stat_item_value.py) |
 | Attribute | [Attribute](../../accelbyte_py_sdk/api/social/models/attribute.py) |
 | BulkCycleStatsAdd | [BulkCycleStatsAdd](../../accelbyte_py_sdk/api/social/models/bulk_cycle_stats_add.py) |
+| BulkStatCycleRequest | [BulkStatCycleRequest](../../accelbyte_py_sdk/api/social/models/bulk_stat_cycle_request.py) |
+| BulkStatCycleResult | [BulkStatCycleResult](../../accelbyte_py_sdk/api/social/models/bulk_stat_cycle_result.py) |
 | BulkStatItemCreate | [BulkStatItemCreate](../../accelbyte_py_sdk/api/social/models/bulk_stat_item_create.py) |
 | BulkStatItemInc | [BulkStatItemInc](../../accelbyte_py_sdk/api/social/models/bulk_stat_item_inc.py) |
 | BulkStatItemReset | [BulkStatItemReset](../../accelbyte_py_sdk/api/social/models/bulk_stat_item_reset.py) |

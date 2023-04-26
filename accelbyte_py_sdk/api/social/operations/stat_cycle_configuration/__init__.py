@@ -8,13 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Social Service."""
 
-__version__ = "2.3.0"
+__version__ = "2.4.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .bulk_add_stats import BulkAddStats
+from .bulk_get_stat_cycle import BulkGetStatCycle
+from .bulk_get_stat_cycle_1 import BulkGetStatCycle1
 from .create_stat_cycle import CreateStatCycle
 from .delete_stat_cycle import DeleteStatCycle
 from .get_stat_cycle import GetStatCycle

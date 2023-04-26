@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.6.4"
+__version__ = "3.6.5"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -85,6 +85,10 @@ from ._public_player_record import bulk_get_player_public_record_handler_v1
 from ._public_player_record import bulk_get_player_public_record_handler_v1_async
 from ._public_player_record import delete_player_record_handler_v1
 from ._public_player_record import delete_player_record_handler_v1_async
+from ._public_player_record import get_other_player_public_record_handler_v1
+from ._public_player_record import get_other_player_public_record_handler_v1_async
+from ._public_player_record import get_other_player_public_record_key_handler_v1
+from ._public_player_record import get_other_player_public_record_key_handler_v1_async
 from ._public_player_record import get_player_public_record_handler_v1
 from ._public_player_record import get_player_public_record_handler_v1_async
 from ._public_player_record import get_player_record_handler_v1

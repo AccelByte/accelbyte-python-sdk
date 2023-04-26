@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.7.4)
+# AccelByte Gaming Services Session Service (2.8.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -42,9 +42,10 @@ class AdminQueryPlayerAttributes(Operation):
     - userID : user who owns the attributes.
     - crossplayEnabled : set to true if the player wants to enable crossplay to their session (default: false).
     - platforms : list of the player's 3rd party platform account information.
-    - name : platform name. supported platforms: STEAM
+    - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - currentPlatform : latest user game platform.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/attributes

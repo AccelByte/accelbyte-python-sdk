@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (2.7.4)
+# AccelByte Gaming Services Session Service Index (2.8.2)
 
 
 ## Operations
@@ -114,6 +114,7 @@
 | models.DefaultDSMCConfig | [ModelsDefaultDSMCConfig](../../accelbyte_py_sdk/api/session/models/models_default_dsmc_config.py) |
 | models.DSMConfigRecord | [ModelsDSMConfigRecord](../../accelbyte_py_sdk/api/session/models/models_dsm_config_record.py) |
 | models.GameServer | [ModelsGameServer](../../accelbyte_py_sdk/api/session/models/models_game_server.py) |
+| models.NativeSessionSetting | [ModelsNativeSessionSetting](../../accelbyte_py_sdk/api/session/models/models_native_session_setting.py) |
 | models.PartyMembers | [ModelsPartyMembers](../../accelbyte_py_sdk/api/session/models/models_party_members.py) |
 | models.Team | [ModelsTeam](../../accelbyte_py_sdk/api/session/models/models_team.py) |
 | models.UserPlatformInfo | [ModelsUserPlatformInfo](../../accelbyte_py_sdk/api/session/models/models_user_platform_info.py) |

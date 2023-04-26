@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Matchmaking Service."""
 
-__version__ = "2.22.0"
+__version__ = "2.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,7 +22,6 @@ from .models_channel import ModelsChannel
 from .models_channel_request import ModelsChannelRequest
 from .models_channel_v1 import ModelsChannelV1
 from .models_combination import ModelsCombination
-from .models_combination_alliances import ModelsCombinationAlliances
 from .models_create_channel_response import ModelsCreateChannelResponse
 from .models_dequeue_request import ModelsDequeueRequest
 from .models_flexing_rule import ModelsFlexingRule
@@ -47,6 +46,7 @@ from .models_rebalance_request import ModelsRebalanceRequest
 from .models_rebalance_response import ModelsRebalanceResponse
 from .models_result_attribute_request import ModelsResultAttributeRequest
 from .models_result_attribute_response import ModelsResultAttributeResponse
+from .models_role import ModelsRole
 from .models_rule_set import ModelsRuleSet
 from .models_rule_set_v1 import ModelsRuleSetV1
 from .models_sub_game_mode import ModelsSubGameMode
