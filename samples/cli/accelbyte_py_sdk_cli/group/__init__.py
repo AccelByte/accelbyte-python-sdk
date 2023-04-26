@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-group-service (2.15.3)
+# justice-group-service (2.15.4)
 
 from ._list_group_configuration_admin_v1 import list_group_configuration_admin_v1
 from ._create_group_configuration_admin_v1 import create_group_configuration_admin_v1
@@ -71,6 +71,9 @@ from ._kick_group_member_public_v1 import kick_group_member_public_v1
 from ._get_list_group_by_i_ds_admin_v2 import get_list_group_by_i_ds_admin_v2
 from ._get_user_joined_group_information_public_v2 import (
     get_user_joined_group_information_public_v2,
+)
+from ._admin_get_user_group_status_information_v2 import (
+    admin_get_user_group_status_information_v2,
 )
 from ._create_new_group_public_v2 import create_new_group_public_v2
 from ._get_list_group_by_i_ds_v2 import get_list_group_by_i_ds_v2
@@ -153,6 +156,7 @@ commands = [
     kick_group_member_public_v1,
     get_list_group_by_i_ds_admin_v2,
     get_user_joined_group_information_public_v2,
+    admin_get_user_group_status_information_v2,
     create_new_group_public_v2,
     get_list_group_by_i_ds_v2,
     update_put_single_group_public_v2,

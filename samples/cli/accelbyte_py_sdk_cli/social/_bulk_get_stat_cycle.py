@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Lobby Server (staging)
+# AGS Social Service (2.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,44 +30,49 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.lobby import admin_chat_history as admin_chat_history_internal
-from accelbyte_py_sdk.api.lobby.models import ModelChatMessageResponse
-from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
+from accelbyte_py_sdk.api.social import (
+    bulk_get_stat_cycle as bulk_get_stat_cycle_internal,
+)
+from accelbyte_py_sdk.api.social.models import BulkStatCycleRequest
+from accelbyte_py_sdk.api.social.models import BulkStatCycleResult
 
 
 @click.command()
-@click.argument("friend_id", type=str)
-@click.argument("user_id", type=str)
+@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def admin_chat_history(
-    friend_id: str,
-    user_id: str,
+def bulk_get_stat_cycle(
+    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(admin_chat_history_internal.__doc__)
+        click.echo(bulk_get_stat_cycle_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = admin_chat_history_internal(
-        friend_id=friend_id,
-        user_id=user_id,
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = BulkStatCycleRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    result, error = bulk_get_stat_cycle_internal(
+        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"adminChatHistory failed: {str(error)}")
+        raise Exception(f"bulkGetStatCycle failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-admin_chat_history.operation_id = "adminChatHistory"
-admin_chat_history.is_deprecated = False
+bulk_get_stat_cycle.operation_id = "bulkGetStatCycle"
+bulk_get_stat_cycle.is_deprecated = False

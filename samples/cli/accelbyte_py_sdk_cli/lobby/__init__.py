@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-lobby-server (3.17.0)
+# justice-lobby-server (3.19.0)
 
 from ._get_user_friends_updated import get_user_friends_updated
 from ._get_user_incoming_friends import get_user_incoming_friends
@@ -20,8 +20,6 @@ from ._user_reject_friend_request import user_reject_friend_request
 from ._user_get_friendship_status import user_get_friendship_status
 from ._user_unfriend_request import user_unfriend_request
 from ._add_friends_without_confirmation import add_friends_without_confirmation
-from ._personal_chat_history import personal_chat_history
-from ._admin_chat_history import admin_chat_history
 from ._admin_get_all_config_v1 import admin_get_all_config_v1
 from ._admin_get_config_v1 import admin_get_config_v1
 from ._admin_update_config_v1 import admin_update_config_v1
@@ -117,7 +115,6 @@ from ._admin_update_third_party_config import admin_update_third_party_config
 from ._admin_create_third_party_config import admin_create_third_party_config
 from ._admin_delete_third_party_config import admin_delete_third_party_config
 from ._public_get_messages import public_get_messages
-from ._get_personal_chat_history_v1_public import get_personal_chat_history_v1_public
 from ._public_get_party_data_v1 import public_get_party_data_v1
 from ._public_update_party_attributes_v1 import public_update_party_attributes_v1
 from ._public_set_party_limit_v1 import public_set_party_limit_v1
@@ -160,8 +157,6 @@ commands = [
     user_get_friendship_status,
     user_unfriend_request,
     add_friends_without_confirmation,
-    personal_chat_history,
-    admin_chat_history,
     admin_get_all_config_v1,
     admin_get_config_v1,
     admin_update_config_v1,
@@ -217,7 +212,6 @@ commands = [
     admin_create_third_party_config,
     admin_delete_third_party_config,
     public_get_messages,
-    get_personal_chat_history_v1_public,
     public_get_party_data_v1,
     public_update_party_attributes_v1,
     public_set_party_limit_v1,

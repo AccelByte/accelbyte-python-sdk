@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Ugc Service (2.9.3)
+# AGS Ugc Service (2.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,8 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import (
     admin_update_content_s3 as admin_update_content_s3_internal,
 )
+from accelbyte_py_sdk.api.ugc.models import ModelsAdminUpdateContentRequest
 from accelbyte_py_sdk.api.ugc.models import ModelsCreateContentResponse
-from accelbyte_py_sdk.api.ugc.models import ModelsUpdateContentRequest
 from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
@@ -68,7 +68,7 @@ def admin_update_content_s3(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelsUpdateContentRequest.create_from_dict(body_json)
+            body = ModelsAdminUpdateContentRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = admin_update_content_s3_internal(

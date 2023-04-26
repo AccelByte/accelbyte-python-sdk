@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-social-service (2.3.0)
+# justice-social-service (2.4.1)
 
 from ._get_namespace_slot_config import get_namespace_slot_config
 from ._update_namespace_slot_config import update_namespace_slot_config
@@ -38,6 +38,7 @@ from ._get_global_stat_items import get_global_stat_items
 from ._get_global_stat_item_by_stat_code import get_global_stat_item_by_stat_code
 from ._get_stat_cycles import get_stat_cycles
 from ._create_stat_cycle import create_stat_cycle
+from ._bulk_get_stat_cycle import bulk_get_stat_cycle
 from ._get_stat_cycle import get_stat_cycle
 from ._update_stat_cycle import update_stat_cycle
 from ._delete_stat_cycle import delete_stat_cycle
@@ -70,6 +71,7 @@ from ._reset_user_stat_item_value import reset_user_stat_item_value
 from ._get_global_stat_items_1 import get_global_stat_items_1
 from ._get_global_stat_item_by_stat_code_1 import get_global_stat_item_by_stat_code_1
 from ._get_stat_cycles_1 import get_stat_cycles_1
+from ._bulk_get_stat_cycle_1 import bulk_get_stat_cycle_1
 from ._get_stat_cycle_1 import get_stat_cycle_1
 from ._bulk_fetch_stat_items_1 import bulk_fetch_stat_items_1
 from ._public_bulk_inc_user_stat_item import public_bulk_inc_user_stat_item
@@ -129,6 +131,7 @@ commands = [
     get_global_stat_item_by_stat_code,
     get_stat_cycles,
     create_stat_cycle,
+    bulk_get_stat_cycle,
     get_stat_cycle,
     update_stat_cycle,
     delete_stat_cycle,
@@ -161,6 +164,7 @@ commands = [
     get_global_stat_items_1,
     get_global_stat_item_by_stat_code_1,
     get_stat_cycles_1,
+    bulk_get_stat_cycle_1,
     get_stat_cycle_1,
     bulk_fetch_stat_items_1,
     public_bulk_inc_user_stat_item,
