@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.39.0
+- Fix integration tests for `matchmaking` and `seasonpass`.
+- Update spec for AccelByte Cloud v3.47.0.
+
 ## v0.38.0
 - Fix `HttpXHttpClient` not reading timeout argument.
 - Update spec for AccelByte Cloud v3.46.0.
