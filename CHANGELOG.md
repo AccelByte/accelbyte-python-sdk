@@ -1,5 +1,3 @@
-# Changelog
-
 ## v0.39.0
 - Fix integration tests for `matchmaking` and `seasonpass`.
 - Update spec for AccelByte Cloud v3.47.0.
