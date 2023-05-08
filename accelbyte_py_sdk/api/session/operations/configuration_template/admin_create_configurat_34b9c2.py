@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.8.2)
+# AccelByte Gaming Services Session Service (2.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -55,6 +55,7 @@ class AdminCreateConfigurationTemplateV1(Operation):
     - XboxServiceConfigID: the XBox service configuration ID.
     - PSNServiceLabel: the PSN service label.
     - SessionTitle: the session title. In PSN, this will be used to define name of the session thats displayed on PlayStation system UI.
+    - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration

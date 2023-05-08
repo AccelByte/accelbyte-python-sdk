@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Event Log Service Index (2.0.1)
+# AccelByte Gaming Services Event Log Service Index (2.0.2)
 
 
 ## Operations

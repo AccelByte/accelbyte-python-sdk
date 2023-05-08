@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.32.0)
+# AccelByte Gaming Services Iam Service (5.34.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -2200,6 +2200,7 @@ def create_model_update_user_deletion_status_request_example() -> (
 ):
     instance = ModelUpdateUserDeletionStatusRequest()
     instance.enabled = randomize("bool")
+    instance.deletion_date = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2534,6 +2535,7 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.user_id = randomize("uid")
     instance.avatar_url = randomize("url")
     instance.date_of_birth = randomize("adult_birthdate")
+    instance.deletion_date = randomize()
     instance.new_email_address = randomize()
     instance.old_email_address = randomize()
     instance.phone_number = randomize()

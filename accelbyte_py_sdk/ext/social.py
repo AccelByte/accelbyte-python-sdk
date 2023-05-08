@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.4.1)
+# AccelByte Gaming Services Social Service (2.6.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -493,6 +493,7 @@ def create_user_stat_cycle_item_info_example() -> UserStatCycleItemInfo:
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
     instance.value = randomize("int", min_val=1, max_val=1000)
+    instance.additional_data = {randomize(): randomize()}
     instance.tags = [randomize()]
     return instance
 
@@ -515,6 +516,7 @@ def create_user_stat_item_info_example() -> UserStatItemInfo:
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
     instance.value = randomize("int", min_val=1, max_val=1000)
+    instance.additional_data = {randomize(): randomize()}
     instance.tags = [randomize()]
     return instance
 

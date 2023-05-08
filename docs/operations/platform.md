@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.28.0)
+# AccelByte Gaming Services Platform Service Index (4.30.0)
 
 
 ## Operations
@@ -439,6 +439,11 @@
 | /platform/admin/namespaces/{namespace}/configs/servicePlugin | DELETE | deleteServicePluginConfig | `false` | [DeleteServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/delete_service_plugin_config.py) | [delete_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-delete-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_service_plugin_config.py) |
 | /platform/admin/namespaces/{namespace}/configs/servicePlugin | GET | getServicePluginConfig | `false` | [GetServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/get_service_plugin_config.py) | [get_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-get-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_service_plugin_config.py) |
 | /platform/admin/namespaces/{namespace}/configs/servicePlugin | PUT | updateServicePluginConfig | `false` | [UpdateServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/update_service_plugin_config.py) | [update_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-update-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_service_plugin_config.py) |
+
+### SessionPlatform
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/users/{userId}/session/xbl | PUT | registerXblSessions | `false` | [RegisterXblSessions](../../accelbyte_py_sdk/api/platform/operations/session_platform/register_xbl_sessions.py) | [register_xbl_sessions](../../accelbyte_py_sdk/api/platform/wrappers/_session_platform.py) | [accelbyte_py_sdk_cli platform-register-xbl-sessions](../../samples/cli/accelbyte_py_sdk_cli/platform/_register_xbl_sessions.py) |
 
 ### Store
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -877,6 +882,7 @@
 | XblReconcileRequest | [XblReconcileRequest](../../accelbyte_py_sdk/api/platform/models/xbl_reconcile_request.py) |
 | XblReconcileResult | [XblReconcileResult](../../accelbyte_py_sdk/api/platform/models/xbl_reconcile_result.py) |
 | XblUserAchievements | [XblUserAchievements](../../accelbyte_py_sdk/api/platform/models/xbl_user_achievements.py) |
+| XblUserSessionRequest | [XblUserSessionRequest](../../accelbyte_py_sdk/api/platform/models/xbl_user_session_request.py) |
 | XsollaConfig | [XsollaConfig](../../accelbyte_py_sdk/api/platform/models/xsolla_config.py) |
 | XsollaPaywallConfig | [XsollaPaywallConfig](../../accelbyte_py_sdk/api/platform/models/xsolla_paywall_config.py) |
 | XsollaPaywallConfigRequest | [XsollaPaywallConfigRequest](../../accelbyte_py_sdk/api/platform/models/xsolla_paywall_config_request.py) |

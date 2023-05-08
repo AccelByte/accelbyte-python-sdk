@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.28.0)
+# AccelByte Gaming Services Platform Service (4.30.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,10 @@ class BoxItem(Model):
     Properties:
         count: (count) OPTIONAL int
 
+        duration: (duration) OPTIONAL int
+
+        end_date: (endDate) OPTIONAL str
+
         item_id: (itemId) OPTIONAL str
 
         item_sku: (itemSku) OPTIONAL str
@@ -44,6 +48,8 @@ class BoxItem(Model):
     # region fields
 
     count: int  # OPTIONAL
+    duration: int  # OPTIONAL
+    end_date: str  # OPTIONAL
     item_id: str  # OPTIONAL
     item_sku: str  # OPTIONAL
     item_type: str  # OPTIONAL
@@ -54,6 +60,14 @@ class BoxItem(Model):
 
     def with_count(self, value: int) -> BoxItem:
         self.count = value
+        return self
+
+    def with_duration(self, value: int) -> BoxItem:
+        self.duration = value
+        return self
+
+    def with_end_date(self, value: str) -> BoxItem:
+        self.end_date = value
         return self
 
     def with_item_id(self, value: str) -> BoxItem:
@@ -78,6 +92,14 @@ class BoxItem(Model):
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = 0
+        if hasattr(self, "duration"):
+            result["duration"] = int(self.duration)
+        elif include_empty:
+            result["duration"] = 0
+        if hasattr(self, "end_date"):
+            result["endDate"] = str(self.end_date)
+        elif include_empty:
+            result["endDate"] = ""
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -100,6 +122,8 @@ class BoxItem(Model):
     def create(
         cls,
         count: Optional[int] = None,
+        duration: Optional[int] = None,
+        end_date: Optional[str] = None,
         item_id: Optional[str] = None,
         item_sku: Optional[str] = None,
         item_type: Optional[str] = None,
@@ -108,6 +132,10 @@ class BoxItem(Model):
         instance = cls()
         if count is not None:
             instance.count = count
+        if duration is not None:
+            instance.duration = duration
+        if end_date is not None:
+            instance.end_date = end_date
         if item_id is not None:
             instance.item_id = item_id
         if item_sku is not None:
@@ -125,6 +153,14 @@ class BoxItem(Model):
             instance.count = int(dict_["count"])
         elif include_empty:
             instance.count = 0
+        if "duration" in dict_ and dict_["duration"] is not None:
+            instance.duration = int(dict_["duration"])
+        elif include_empty:
+            instance.duration = 0
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
+        elif include_empty:
+            instance.end_date = ""
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -177,6 +213,8 @@ class BoxItem(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "count": "count",
+            "duration": "duration",
+            "endDate": "end_date",
             "itemId": "item_id",
             "itemSku": "item_sku",
             "itemType": "item_type",
@@ -186,6 +224,8 @@ class BoxItem(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "count": False,
+            "duration": False,
+            "endDate": False,
             "itemId": False,
             "itemSku": False,
             "itemType": False,

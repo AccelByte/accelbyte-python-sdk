@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.8.2)
+# AccelByte Gaming Services Session Service (2.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,8 @@ class ModelsNativeSessionSetting(Model):
         xbox_service_config_id: (XboxServiceConfigID) REQUIRED str
 
         xbox_session_template_name: (XboxSessionTemplateName) REQUIRED str
+
+        should_sync: (ShouldSync) OPTIONAL bool
     """
 
     # region fields
@@ -47,6 +49,7 @@ class ModelsNativeSessionSetting(Model):
     session_title: str  # REQUIRED
     xbox_service_config_id: str  # REQUIRED
     xbox_session_template_name: str  # REQUIRED
+    should_sync: bool  # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +69,10 @@ class ModelsNativeSessionSetting(Model):
 
     def with_xbox_session_template_name(self, value: str) -> ModelsNativeSessionSetting:
         self.xbox_session_template_name = value
+        return self
+
+    def with_should_sync(self, value: bool) -> ModelsNativeSessionSetting:
+        self.should_sync = value
         return self
 
     # endregion with_x methods
@@ -90,6 +97,10 @@ class ModelsNativeSessionSetting(Model):
             result["XboxSessionTemplateName"] = str(self.xbox_session_template_name)
         elif include_empty:
             result["XboxSessionTemplateName"] = ""
+        if hasattr(self, "should_sync"):
+            result["ShouldSync"] = bool(self.should_sync)
+        elif include_empty:
+            result["ShouldSync"] = False
         return result
 
     # endregion to methods
@@ -103,6 +114,7 @@ class ModelsNativeSessionSetting(Model):
         session_title: str,
         xbox_service_config_id: str,
         xbox_session_template_name: str,
+        should_sync: Optional[bool] = None,
         **kwargs,
     ) -> ModelsNativeSessionSetting:
         instance = cls()
@@ -110,6 +122,8 @@ class ModelsNativeSessionSetting(Model):
         instance.session_title = session_title
         instance.xbox_service_config_id = xbox_service_config_id
         instance.xbox_session_template_name = xbox_session_template_name
+        if should_sync is not None:
+            instance.should_sync = should_sync
         return instance
 
     @classmethod
@@ -138,6 +152,10 @@ class ModelsNativeSessionSetting(Model):
             instance.xbox_session_template_name = str(dict_["XboxSessionTemplateName"])
         elif include_empty:
             instance.xbox_session_template_name = ""
+        if "ShouldSync" in dict_ and dict_["ShouldSync"] is not None:
+            instance.should_sync = bool(dict_["ShouldSync"])
+        elif include_empty:
+            instance.should_sync = False
         return instance
 
     @classmethod
@@ -185,6 +203,7 @@ class ModelsNativeSessionSetting(Model):
             "SessionTitle": "session_title",
             "XboxServiceConfigID": "xbox_service_config_id",
             "XboxSessionTemplateName": "xbox_session_template_name",
+            "ShouldSync": "should_sync",
         }
 
     @staticmethod
@@ -194,6 +213,7 @@ class ModelsNativeSessionSetting(Model):
             "SessionTitle": True,
             "XboxServiceConfigID": True,
             "XboxSessionTemplateName": True,
+            "ShouldSync": False,
         }
 
     # endregion static methods

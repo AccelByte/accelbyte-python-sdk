@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Leaderboard Service."""
 
-__version__ = "2.20.1"
+__version__ = "2.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -39,6 +39,26 @@ from .wrappers import hard_delete_leaderboard_admin_v1
 from .wrappers import hard_delete_leaderboard_admin_v1_async
 from .wrappers import update_leaderboard_configuration_admin_v1
 from .wrappers import update_leaderboard_configuration_admin_v1_async
+
+# leaderboard_configuration_v3
+from .wrappers import create_leaderboard_configuration_admin_v3
+from .wrappers import create_leaderboard_configuration_admin_v3_async
+from .wrappers import delete_bulk_leaderboard_configuration_admin_v3
+from .wrappers import delete_bulk_leaderboard_configuration_admin_v3_async
+from .wrappers import delete_leaderboard_configuration_admin_v3
+from .wrappers import delete_leaderboard_configuration_admin_v3_async
+from .wrappers import get_leaderboard_configuration_admin_v3
+from .wrappers import get_leaderboard_configuration_admin_v3_async
+from .wrappers import get_leaderboard_configuration_public_v3
+from .wrappers import get_leaderboard_configuration_public_v3_async
+from .wrappers import get_leaderboard_configurations_admin_v3
+from .wrappers import get_leaderboard_configurations_admin_v3_async
+from .wrappers import get_leaderboard_configurations_public_v3
+from .wrappers import get_leaderboard_configurations_public_v3_async
+from .wrappers import hard_delete_leaderboard_admin_v3
+from .wrappers import hard_delete_leaderboard_admin_v3_async
+from .wrappers import update_leaderboard_configuration_admin_v3
+from .wrappers import update_leaderboard_configuration_admin_v3_async
 
 # leaderboard_data
 from .wrappers import admin_get_archived_leaderboard_ranking_data_v1_handler
@@ -83,6 +103,26 @@ from .wrappers import get_user_ranking_public_v1
 from .wrappers import get_user_ranking_public_v1_async
 from .wrappers import update_user_point_admin_v1
 from .wrappers import update_user_point_admin_v1_async
+
+# leaderboard_data_v3
+from .wrappers import delete_user_ranking_admin_v3
+from .wrappers import delete_user_ranking_admin_v3_async
+from .wrappers import delete_user_ranking_by_leaderboard_code_admin_v3
+from .wrappers import delete_user_ranking_by_leaderboard_code_admin_v3_async
+from .wrappers import delete_user_rankings_admin_v3
+from .wrappers import delete_user_rankings_admin_v3_async
+from .wrappers import get_all_time_leaderboard_ranking_admin_v3
+from .wrappers import get_all_time_leaderboard_ranking_admin_v3_async
+from .wrappers import get_all_time_leaderboard_ranking_public_v3
+from .wrappers import get_all_time_leaderboard_ranking_public_v3_async
+from .wrappers import get_current_cycle_leaderboard_ranking_admin_v3
+from .wrappers import get_current_cycle_leaderboard_ranking_admin_v3_async
+from .wrappers import get_current_cycle_leaderboard_ranking_public_v3
+from .wrappers import get_current_cycle_leaderboard_ranking_public_v3_async
+from .wrappers import get_user_ranking_admin_v3
+from .wrappers import get_user_ranking_admin_v3_async
+from .wrappers import get_user_ranking_public_v3
+from .wrappers import get_user_ranking_public_v3_async
 
 # user_data
 from .wrappers import get_user_leaderboard_rankings_admin_v1

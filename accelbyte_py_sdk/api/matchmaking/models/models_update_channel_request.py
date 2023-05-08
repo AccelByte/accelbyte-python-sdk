@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.23.0)
+# AccelByte Gaming Services Matchmaking Service (2.24.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -52,7 +52,13 @@ class ModelsUpdateChannelRequest(Model):
 
         use_sub_gamemode: (use_sub_gamemode) REQUIRED bool
 
+        region_expansion_range_ms: (region_expansion_range_ms) OPTIONAL int
+
         region_expansion_rate_ms: (region_expansion_rate_ms) OPTIONAL int
+
+        region_latency_initial_range_ms: (region_latency_initial_range_ms) OPTIONAL int
+
+        region_latency_max_ms: (region_latency_max_ms) OPTIONAL int
     """
 
     # region fields
@@ -66,7 +72,10 @@ class ModelsUpdateChannelRequest(Model):
     session_queue_timeout_seconds: int  # REQUIRED
     social_matchmaking: bool  # REQUIRED
     use_sub_gamemode: bool  # REQUIRED
+    region_expansion_range_ms: int  # OPTIONAL
     region_expansion_rate_ms: int  # OPTIONAL
+    region_latency_initial_range_ms: int  # OPTIONAL
+    region_latency_max_ms: int  # OPTIONAL
 
     # endregion fields
 
@@ -110,8 +119,22 @@ class ModelsUpdateChannelRequest(Model):
         self.use_sub_gamemode = value
         return self
 
+    def with_region_expansion_range_ms(self, value: int) -> ModelsUpdateChannelRequest:
+        self.region_expansion_range_ms = value
+        return self
+
     def with_region_expansion_rate_ms(self, value: int) -> ModelsUpdateChannelRequest:
         self.region_expansion_rate_ms = value
+        return self
+
+    def with_region_latency_initial_range_ms(
+        self, value: int
+    ) -> ModelsUpdateChannelRequest:
+        self.region_latency_initial_range_ms = value
+        return self
+
+    def with_region_latency_max_ms(self, value: int) -> ModelsUpdateChannelRequest:
+        self.region_latency_max_ms = value
         return self
 
     # endregion with_x methods
@@ -158,10 +181,24 @@ class ModelsUpdateChannelRequest(Model):
             result["use_sub_gamemode"] = bool(self.use_sub_gamemode)
         elif include_empty:
             result["use_sub_gamemode"] = False
+        if hasattr(self, "region_expansion_range_ms"):
+            result["region_expansion_range_ms"] = int(self.region_expansion_range_ms)
+        elif include_empty:
+            result["region_expansion_range_ms"] = 0
         if hasattr(self, "region_expansion_rate_ms"):
             result["region_expansion_rate_ms"] = int(self.region_expansion_rate_ms)
         elif include_empty:
             result["region_expansion_rate_ms"] = 0
+        if hasattr(self, "region_latency_initial_range_ms"):
+            result["region_latency_initial_range_ms"] = int(
+                self.region_latency_initial_range_ms
+            )
+        elif include_empty:
+            result["region_latency_initial_range_ms"] = 0
+        if hasattr(self, "region_latency_max_ms"):
+            result["region_latency_max_ms"] = int(self.region_latency_max_ms)
+        elif include_empty:
+            result["region_latency_max_ms"] = 0
         return result
 
     # endregion to methods
@@ -180,7 +217,10 @@ class ModelsUpdateChannelRequest(Model):
         session_queue_timeout_seconds: int,
         social_matchmaking: bool,
         use_sub_gamemode: bool,
+        region_expansion_range_ms: Optional[int] = None,
         region_expansion_rate_ms: Optional[int] = None,
+        region_latency_initial_range_ms: Optional[int] = None,
+        region_latency_max_ms: Optional[int] = None,
         **kwargs,
     ) -> ModelsUpdateChannelRequest:
         instance = cls()
@@ -193,8 +233,14 @@ class ModelsUpdateChannelRequest(Model):
         instance.session_queue_timeout_seconds = session_queue_timeout_seconds
         instance.social_matchmaking = social_matchmaking
         instance.use_sub_gamemode = use_sub_gamemode
+        if region_expansion_range_ms is not None:
+            instance.region_expansion_range_ms = region_expansion_range_ms
         if region_expansion_rate_ms is not None:
             instance.region_expansion_rate_ms = region_expansion_rate_ms
+        if region_latency_initial_range_ms is not None:
+            instance.region_latency_initial_range_ms = region_latency_initial_range_ms
+        if region_latency_max_ms is not None:
+            instance.region_latency_max_ms = region_latency_max_ms
         return instance
 
     @classmethod
@@ -251,12 +297,35 @@ class ModelsUpdateChannelRequest(Model):
         elif include_empty:
             instance.use_sub_gamemode = False
         if (
+            "region_expansion_range_ms" in dict_
+            and dict_["region_expansion_range_ms"] is not None
+        ):
+            instance.region_expansion_range_ms = int(dict_["region_expansion_range_ms"])
+        elif include_empty:
+            instance.region_expansion_range_ms = 0
+        if (
             "region_expansion_rate_ms" in dict_
             and dict_["region_expansion_rate_ms"] is not None
         ):
             instance.region_expansion_rate_ms = int(dict_["region_expansion_rate_ms"])
         elif include_empty:
             instance.region_expansion_rate_ms = 0
+        if (
+            "region_latency_initial_range_ms" in dict_
+            and dict_["region_latency_initial_range_ms"] is not None
+        ):
+            instance.region_latency_initial_range_ms = int(
+                dict_["region_latency_initial_range_ms"]
+            )
+        elif include_empty:
+            instance.region_latency_initial_range_ms = 0
+        if (
+            "region_latency_max_ms" in dict_
+            and dict_["region_latency_max_ms"] is not None
+        ):
+            instance.region_latency_max_ms = int(dict_["region_latency_max_ms"])
+        elif include_empty:
+            instance.region_latency_max_ms = 0
         return instance
 
     @classmethod
@@ -309,7 +378,10 @@ class ModelsUpdateChannelRequest(Model):
             "sessionQueueTimeoutSeconds": "session_queue_timeout_seconds",
             "socialMatchmaking": "social_matchmaking",
             "use_sub_gamemode": "use_sub_gamemode",
+            "region_expansion_range_ms": "region_expansion_range_ms",
             "region_expansion_rate_ms": "region_expansion_rate_ms",
+            "region_latency_initial_range_ms": "region_latency_initial_range_ms",
+            "region_latency_max_ms": "region_latency_max_ms",
         }
 
     @staticmethod
@@ -324,7 +396,10 @@ class ModelsUpdateChannelRequest(Model):
             "sessionQueueTimeoutSeconds": True,
             "socialMatchmaking": True,
             "use_sub_gamemode": True,
+            "region_expansion_range_ms": False,
             "region_expansion_rate_ms": False,
+            "region_latency_initial_range_ms": False,
+            "region_latency_max_ms": False,
         }
 
     # endregion static methods

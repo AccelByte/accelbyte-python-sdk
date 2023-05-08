@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.8.2)
+# AccelByte Gaming Services Session Service (2.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -472,6 +472,7 @@ def create_models_native_session_setting_example() -> ModelsNativeSessionSetting
     instance.session_title = randomize()
     instance.xbox_service_config_id = randomize()
     instance.xbox_session_template_name = randomize()
+    instance.should_sync = randomize("bool")
     return instance
 
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.28.2)
+# AccelByte Gaming Services Legal Service (1.29.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

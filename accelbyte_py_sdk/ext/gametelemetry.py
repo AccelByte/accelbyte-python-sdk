@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Analytics Game Telemetry (1.17.1)
+# Analytics Game Telemetry (1.17.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

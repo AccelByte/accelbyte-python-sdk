@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Matchmaking Service."""
 
-__version__ = "2.23.0"
+__version__ = "2.24.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -50,6 +50,7 @@ from .models_role import ModelsRole
 from .models_rule_set import ModelsRuleSet
 from .models_rule_set_v1 import ModelsRuleSetV1
 from .models_sub_game_mode import ModelsSubGameMode
+from .models_ticket_metric_result_record import ModelsTicketMetricResultRecord
 from .models_update_alliance_rule import ModelsUpdateAllianceRule
 from .models_update_channel_request import ModelsUpdateChannelRequest
 from .models_update_play_time_weight_request import ModelsUpdatePlayTimeWeightRequest

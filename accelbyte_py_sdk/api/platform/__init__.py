@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.28.0"
+__version__ = "4.30.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -725,6 +725,10 @@ from .wrappers import get_service_plugin_config
 from .wrappers import get_service_plugin_config_async
 from .wrappers import update_service_plugin_config
 from .wrappers import update_service_plugin_config_async
+
+# session_platform
+from .wrappers import register_xbl_sessions
+from .wrappers import register_xbl_sessions_async
 
 # store
 from .wrappers import clone_store

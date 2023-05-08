@@ -1112,6 +1112,7 @@ async def request_one_time_linking_code_v3_async(
 def request_token_by_one_time_link_code_response_v3(
     client_id: str,
     one_time_link_code: str,
+    is_transient: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -1122,6 +1123,17 @@ def request_token_by_one_time_link_code_response_v3(
     It require publisher ClientID
 
     It required a code which can be generated from /iam/v3/link/code/request.
+
+
+
+
+
+
+    This endpoint support creating transient token by utilizing isTransient param:
+
+    isTransient=true will generate a transient token with a short Time Expiration and without a refresh token
+
+    isTransient=false will consume the one-time code and generate the access token with a refresh token.
 
     Properties:
         url: /iam/v3/link/token/exchange
@@ -1136,6 +1148,8 @@ def request_token_by_one_time_link_code_response_v3(
 
         securities: [BEARER_AUTH]
 
+        is_transient: (isTransient) OPTIONAL bool in form_data
+
         client_id: (client_id) REQUIRED str in form_data
 
         one_time_link_code: (oneTimeLinkCode) REQUIRED str in form_data
@@ -1146,6 +1160,7 @@ def request_token_by_one_time_link_code_response_v3(
     request = RequestTokenByOneTimeLinkCodeResponseV3.create(
         client_id=client_id,
         one_time_link_code=one_time_link_code,
+        is_transient=is_transient,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -1154,6 +1169,7 @@ def request_token_by_one_time_link_code_response_v3(
 async def request_token_by_one_time_link_code_response_v3_async(
     client_id: str,
     one_time_link_code: str,
+    is_transient: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -1164,6 +1180,17 @@ async def request_token_by_one_time_link_code_response_v3_async(
     It require publisher ClientID
 
     It required a code which can be generated from /iam/v3/link/code/request.
+
+
+
+
+
+
+    This endpoint support creating transient token by utilizing isTransient param:
+
+    isTransient=true will generate a transient token with a short Time Expiration and without a refresh token
+
+    isTransient=false will consume the one-time code and generate the access token with a refresh token.
 
     Properties:
         url: /iam/v3/link/token/exchange
@@ -1178,6 +1205,8 @@ async def request_token_by_one_time_link_code_response_v3_async(
 
         securities: [BEARER_AUTH]
 
+        is_transient: (isTransient) OPTIONAL bool in form_data
+
         client_id: (client_id) REQUIRED str in form_data
 
         one_time_link_code: (oneTimeLinkCode) REQUIRED str in form_data
@@ -1188,6 +1217,7 @@ async def request_token_by_one_time_link_code_response_v3_async(
     request = RequestTokenByOneTimeLinkCodeResponseV3.create(
         client_id=client_id,
         one_time_link_code=one_time_link_code,
+        is_transient=is_transient,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

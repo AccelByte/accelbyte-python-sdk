@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-legal-service (1.28.2)
+# justice-legal-service (1.29.0)
 
 from ._change_preference_consent import change_preference_consent
 from ._retrieve_accepted_agreements import retrieve_accepted_agreements

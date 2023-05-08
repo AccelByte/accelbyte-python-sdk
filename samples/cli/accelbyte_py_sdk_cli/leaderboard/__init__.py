@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-leaderboard-service (2.20.1)
+# justice-leaderboard-service (2.21.0)
 
 from ._get_leaderboard_configurations_admin_v1 import (
     get_leaderboard_configurations_admin_v1,
@@ -99,6 +99,50 @@ from ._get_leaderboard_configurations_public_v2 import (
 from ._get_all_time_leaderboard_ranking_public_v2 import (
     get_all_time_leaderboard_ranking_public_v2,
 )
+from ._get_leaderboard_configurations_admin_v3 import (
+    get_leaderboard_configurations_admin_v3,
+)
+from ._create_leaderboard_configuration_admin_v3 import (
+    create_leaderboard_configuration_admin_v3,
+)
+from ._delete_bulk_leaderboard_configuration_admin_v3 import (
+    delete_bulk_leaderboard_configuration_admin_v3,
+)
+from ._get_leaderboard_configuration_admin_v3 import (
+    get_leaderboard_configuration_admin_v3,
+)
+from ._update_leaderboard_configuration_admin_v3 import (
+    update_leaderboard_configuration_admin_v3,
+)
+from ._delete_leaderboard_configuration_admin_v3 import (
+    delete_leaderboard_configuration_admin_v3,
+)
+from ._get_all_time_leaderboard_ranking_admin_v3 import (
+    get_all_time_leaderboard_ranking_admin_v3,
+)
+from ._get_current_cycle_leaderboard_ranking_admin_v3 import (
+    get_current_cycle_leaderboard_ranking_admin_v3,
+)
+from ._hard_delete_leaderboard_admin_v3 import hard_delete_leaderboard_admin_v3
+from ._delete_user_ranking_by_leaderboard_code_admin_v3 import (
+    delete_user_ranking_by_leaderboard_code_admin_v3,
+)
+from ._get_user_ranking_admin_v3 import get_user_ranking_admin_v3
+from ._delete_user_ranking_admin_v3 import delete_user_ranking_admin_v3
+from ._delete_user_rankings_admin_v3 import delete_user_rankings_admin_v3
+from ._get_leaderboard_configurations_public_v3 import (
+    get_leaderboard_configurations_public_v3,
+)
+from ._get_leaderboard_configuration_public_v3 import (
+    get_leaderboard_configuration_public_v3,
+)
+from ._get_all_time_leaderboard_ranking_public_v3 import (
+    get_all_time_leaderboard_ranking_public_v3,
+)
+from ._get_current_cycle_leaderboard_ranking_public_v3 import (
+    get_current_cycle_leaderboard_ranking_public_v3,
+)
+from ._get_user_ranking_public_v3 import get_user_ranking_public_v3
 
 
 commands = [
@@ -139,4 +183,22 @@ commands = [
     set_user_visibility_status_v2,
     get_leaderboard_configurations_public_v2,
     get_all_time_leaderboard_ranking_public_v2,
+    get_leaderboard_configurations_admin_v3,
+    create_leaderboard_configuration_admin_v3,
+    delete_bulk_leaderboard_configuration_admin_v3,
+    get_leaderboard_configuration_admin_v3,
+    update_leaderboard_configuration_admin_v3,
+    delete_leaderboard_configuration_admin_v3,
+    get_all_time_leaderboard_ranking_admin_v3,
+    get_current_cycle_leaderboard_ranking_admin_v3,
+    hard_delete_leaderboard_admin_v3,
+    delete_user_ranking_by_leaderboard_code_admin_v3,
+    get_user_ranking_admin_v3,
+    delete_user_ranking_admin_v3,
+    delete_user_rankings_admin_v3,
+    get_leaderboard_configurations_public_v3,
+    get_leaderboard_configuration_public_v3,
+    get_all_time_leaderboard_ranking_public_v3,
+    get_current_cycle_leaderboard_ranking_public_v3,
+    get_user_ranking_public_v3,
 ]

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Reporting Service (0.1.26)
+# AGS Reporting Service (0.1.27)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

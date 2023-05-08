@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Matchmaking Service."""
 
-__version__ = "2.23.0"
+__version__ = "2.24.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -38,6 +38,8 @@ from ._matchmaking import get_all_party_in_channel
 from ._matchmaking import get_all_party_in_channel_async
 from ._matchmaking import get_all_sessions_in_channel
 from ._matchmaking import get_all_sessions_in_channel_async
+from ._matchmaking import get_match_pool_metric
+from ._matchmaking import get_match_pool_metric_async
 from ._matchmaking import get_session_history_detailed
 from ._matchmaking import get_session_history_detailed_async
 from ._matchmaking import get_single_matchmaking_channel

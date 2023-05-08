@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Gdpr Service (1.21.0)
+# AccelByte Gaming Services Gdpr Service (1.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,6 +32,8 @@ class ModelsDeletionStatus(Model):
     """Models deletion status (models.DeletionStatus)
 
     Properties:
+        deletion_date: (DeletionDate) REQUIRED str
+
         deletion_status: (DeletionStatus) REQUIRED bool
 
         display_name: (DisplayName) REQUIRED str
@@ -45,6 +47,7 @@ class ModelsDeletionStatus(Model):
 
     # region fields
 
+    deletion_date: str  # REQUIRED
     deletion_status: bool  # REQUIRED
     display_name: str  # REQUIRED
     status: str  # REQUIRED
@@ -54,6 +57,10 @@ class ModelsDeletionStatus(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_deletion_date(self, value: str) -> ModelsDeletionStatus:
+        self.deletion_date = value
+        return self
 
     def with_deletion_status(self, value: bool) -> ModelsDeletionStatus:
         self.deletion_status = value
@@ -81,6 +88,10 @@ class ModelsDeletionStatus(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "deletion_date"):
+            result["DeletionDate"] = str(self.deletion_date)
+        elif include_empty:
+            result["DeletionDate"] = ""
         if hasattr(self, "deletion_status"):
             result["DeletionStatus"] = bool(self.deletion_status)
         elif include_empty:
@@ -110,6 +121,7 @@ class ModelsDeletionStatus(Model):
     @classmethod
     def create(
         cls,
+        deletion_date: str,
         deletion_status: bool,
         display_name: str,
         status: str,
@@ -118,6 +130,7 @@ class ModelsDeletionStatus(Model):
         **kwargs,
     ) -> ModelsDeletionStatus:
         instance = cls()
+        instance.deletion_date = deletion_date
         instance.deletion_status = deletion_status
         instance.display_name = display_name
         instance.status = status
@@ -133,6 +146,10 @@ class ModelsDeletionStatus(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "DeletionDate" in dict_ and dict_["DeletionDate"] is not None:
+            instance.deletion_date = str(dict_["DeletionDate"])
+        elif include_empty:
+            instance.deletion_date = ""
         if "DeletionStatus" in dict_ and dict_["DeletionStatus"] is not None:
             instance.deletion_status = bool(dict_["DeletionStatus"])
         elif include_empty:
@@ -196,6 +213,7 @@ class ModelsDeletionStatus(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "DeletionDate": "deletion_date",
             "DeletionStatus": "deletion_status",
             "DisplayName": "display_name",
             "Status": "status",
@@ -206,6 +224,7 @@ class ModelsDeletionStatus(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "DeletionDate": True,
             "DeletionStatus": True,
             "DisplayName": True,
             "Status": True,

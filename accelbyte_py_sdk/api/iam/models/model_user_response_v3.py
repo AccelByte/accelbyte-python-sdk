@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.32.0)
+# AccelByte Gaming Services Iam Service (5.34.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -74,6 +74,8 @@ class ModelUserResponseV3(Model):
 
         date_of_birth: (dateOfBirth) OPTIONAL str
 
+        deletion_date: (deletionDate) OPTIONAL str
+
         new_email_address: (newEmailAddress) OPTIONAL str
 
         old_email_address: (oldEmailAddress) OPTIONAL str
@@ -112,6 +114,7 @@ class ModelUserResponseV3(Model):
     user_id: str  # REQUIRED
     avatar_url: str  # OPTIONAL
     date_of_birth: str  # OPTIONAL
+    deletion_date: str  # OPTIONAL
     new_email_address: str  # OPTIONAL
     old_email_address: str  # OPTIONAL
     phone_number: str  # OPTIONAL
@@ -205,6 +208,10 @@ class ModelUserResponseV3(Model):
 
     def with_date_of_birth(self, value: str) -> ModelUserResponseV3:
         self.date_of_birth = value
+        return self
+
+    def with_deletion_date(self, value: str) -> ModelUserResponseV3:
+        self.deletion_date = value
         return self
 
     def with_new_email_address(self, value: str) -> ModelUserResponseV3:
@@ -329,6 +336,10 @@ class ModelUserResponseV3(Model):
             result["dateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
             result["dateOfBirth"] = ""
+        if hasattr(self, "deletion_date"):
+            result["deletionDate"] = str(self.deletion_date)
+        elif include_empty:
+            result["deletionDate"] = ""
         if hasattr(self, "new_email_address"):
             result["newEmailAddress"] = str(self.new_email_address)
         elif include_empty:
@@ -389,6 +400,7 @@ class ModelUserResponseV3(Model):
         user_id: str,
         avatar_url: Optional[str] = None,
         date_of_birth: Optional[str] = None,
+        deletion_date: Optional[str] = None,
         new_email_address: Optional[str] = None,
         old_email_address: Optional[str] = None,
         phone_number: Optional[str] = None,
@@ -421,6 +433,8 @@ class ModelUserResponseV3(Model):
             instance.avatar_url = avatar_url
         if date_of_birth is not None:
             instance.date_of_birth = date_of_birth
+        if deletion_date is not None:
+            instance.deletion_date = deletion_date
         if new_email_address is not None:
             instance.new_email_address = new_email_address
         if old_email_address is not None:
@@ -545,6 +559,10 @@ class ModelUserResponseV3(Model):
             instance.date_of_birth = str(dict_["dateOfBirth"])
         elif include_empty:
             instance.date_of_birth = ""
+        if "deletionDate" in dict_ and dict_["deletionDate"] is not None:
+            instance.deletion_date = str(dict_["deletionDate"])
+        elif include_empty:
+            instance.deletion_date = ""
         if "newEmailAddress" in dict_ and dict_["newEmailAddress"] is not None:
             instance.new_email_address = str(dict_["newEmailAddress"])
         elif include_empty:
@@ -637,6 +655,7 @@ class ModelUserResponseV3(Model):
             "userId": "user_id",
             "avatarUrl": "avatar_url",
             "dateOfBirth": "date_of_birth",
+            "deletionDate": "deletion_date",
             "newEmailAddress": "new_email_address",
             "oldEmailAddress": "old_email_address",
             "phoneNumber": "phone_number",
@@ -669,6 +688,7 @@ class ModelUserResponseV3(Model):
             "userId": True,
             "avatarUrl": False,
             "dateOfBirth": False,
+            "deletionDate": False,
             "newEmailAddress": False,
             "oldEmailAddress": False,
             "phoneNumber": False,

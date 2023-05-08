@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Leaderboard Service (2.20.1)
+# AccelByte Gaming Services Leaderboard Service (2.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,24 +31,34 @@ from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardFailedResp
 from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardsReq
 from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardsResp
 from ..api.leaderboard.models import ModelsGetAllLeaderboardConfigsPublicResp
+from ..api.leaderboard.models import ModelsGetAllLeaderboardConfigsPublicRespV3
 from ..api.leaderboard.models import ModelsGetAllLeaderboardConfigsResp
+from ..api.leaderboard.models import ModelsGetAllLeaderboardConfigsRespV3
 from ..api.leaderboard.models import ModelsGetAllUserLeaderboardsResp
 from ..api.leaderboard.models import ModelsGetHiddenUserResponse
 from ..api.leaderboard.models import ModelsGetLeaderboardConfigPublicResp
+from ..api.leaderboard.models import ModelsGetLeaderboardConfigPublicRespV3
 from ..api.leaderboard.models import ModelsGetLeaderboardConfigResp
+from ..api.leaderboard.models import ModelsGetLeaderboardConfigRespV3
 from ..api.leaderboard.models import ModelsGetLeaderboardRankingResp
 from ..api.leaderboard.models import ModelsGetUserVisibilityResponse
 from ..api.leaderboard.models import ModelsLeaderboardConfigReq
+from ..api.leaderboard.models import ModelsLeaderboardConfigReqV3
 from ..api.leaderboard.models import ModelsMonthlyConfig
 from ..api.leaderboard.models import ModelsPagination
+from ..api.leaderboard.models import ModelsPaginationV3
 from ..api.leaderboard.models import ModelsSetUserVisibilityRequest
 from ..api.leaderboard.models import ModelsUpdateLeaderboardConfigReq
+from ..api.leaderboard.models import ModelsUpdateLeaderboardConfigReqV3
 from ..api.leaderboard.models import ModelsUpdateUserPointAdminV1Request
 from ..api.leaderboard.models import ModelsUpdateUserPointAdminV1Response
+from ..api.leaderboard.models import ModelsUserCycleRankingResponseDetail
 from ..api.leaderboard.models import ModelsUserLeaderboardRanking
 from ..api.leaderboard.models import ModelsUserPoint
 from ..api.leaderboard.models import ModelsUserRankingResponse
 from ..api.leaderboard.models import ModelsUserRankingResponseDetail
+from ..api.leaderboard.models import ModelsUserRankingResponseDetailV3
+from ..api.leaderboard.models import ModelsUserRankingResponseV3
 from ..api.leaderboard.models import ModelsWeeklyConfig
 from ..api.leaderboard.models import ResponseErrorResponse
 from ..api.leaderboard.models import V2Entry
@@ -115,12 +125,30 @@ def create_models_get_all_leaderboard_configs_public_resp_example() -> (
     return instance
 
 
+def create_models_get_all_leaderboard_configs_public_resp_v3_example() -> (
+    ModelsGetAllLeaderboardConfigsPublicRespV3
+):
+    instance = ModelsGetAllLeaderboardConfigsPublicRespV3()
+    instance.data = [create_models_get_leaderboard_config_public_resp_v3_example()]
+    instance.paging = create_models_pagination_v3_example()
+    return instance
+
+
 def create_models_get_all_leaderboard_configs_resp_example() -> (
     ModelsGetAllLeaderboardConfigsResp
 ):
     instance = ModelsGetAllLeaderboardConfigsResp()
     instance.data = [create_models_get_leaderboard_config_resp_example()]
     instance.paging = create_models_pagination_example()
+    return instance
+
+
+def create_models_get_all_leaderboard_configs_resp_v3_example() -> (
+    ModelsGetAllLeaderboardConfigsRespV3
+):
+    instance = ModelsGetAllLeaderboardConfigsRespV3()
+    instance.data = [create_models_get_leaderboard_config_resp_v3_example()]
+    instance.paging = create_models_pagination_v3_example()
     return instance
 
 
@@ -151,6 +179,19 @@ def create_models_get_leaderboard_config_public_resp_example() -> (
     return instance
 
 
+def create_models_get_leaderboard_config_public_resp_v3_example() -> (
+    ModelsGetLeaderboardConfigPublicRespV3
+):
+    instance = ModelsGetLeaderboardConfigPublicRespV3()
+    instance.all_time = randomize("bool")
+    instance.cycle_ids = [randomize()]
+    instance.icon_url = randomize("url")
+    instance.leaderboard_code = randomize()
+    instance.name = randomize()
+    instance.stat_code = randomize()
+    return instance
+
+
 def create_models_get_leaderboard_config_resp_example() -> (
     ModelsGetLeaderboardConfigResp
 ):
@@ -168,6 +209,25 @@ def create_models_get_leaderboard_config_resp_example() -> (
     instance.stat_code = randomize()
     instance.weekly = create_models_weekly_config_example()
     instance.deleted_at = randomize("date")
+    return instance
+
+
+def create_models_get_leaderboard_config_resp_v3_example() -> (
+    ModelsGetLeaderboardConfigRespV3
+):
+    instance = ModelsGetLeaderboardConfigRespV3()
+    instance.all_time = randomize("bool")
+    instance.created_at = randomize("date")
+    instance.cycle_ids = [randomize()]
+    instance.descending = randomize("bool")
+    instance.is_deleted = randomize("bool")
+    instance.leaderboard_code = randomize()
+    instance.name = randomize()
+    instance.stat_code = randomize()
+    instance.updated_at = randomize("date")
+    instance.deleted_at = randomize("date")
+    instance.description = randomize()
+    instance.icon_url = randomize("url")
     return instance
 
 
@@ -205,6 +265,19 @@ def create_models_leaderboard_config_req_example() -> ModelsLeaderboardConfigReq
     return instance
 
 
+def create_models_leaderboard_config_req_v3_example() -> ModelsLeaderboardConfigReqV3:
+    instance = ModelsLeaderboardConfigReqV3()
+    instance.all_time = randomize("bool")
+    instance.descending = randomize("bool")
+    instance.leaderboard_code = randomize()
+    instance.name = randomize()
+    instance.stat_code = randomize()
+    instance.cycle_ids = [randomize()]
+    instance.description = randomize()
+    instance.icon_url = randomize("url")
+    return instance
+
+
 def create_models_monthly_config_example() -> ModelsMonthlyConfig:
     instance = ModelsMonthlyConfig()
     instance.reset_date = randomize("int", min_val=1, max_val=1000)
@@ -214,6 +287,15 @@ def create_models_monthly_config_example() -> ModelsMonthlyConfig:
 
 def create_models_pagination_example() -> ModelsPagination:
     instance = ModelsPagination()
+    instance.first = randomize()
+    instance.last = randomize()
+    instance.next_ = randomize()
+    instance.previous = randomize()
+    return instance
+
+
+def create_models_pagination_v3_example() -> ModelsPaginationV3:
+    instance = ModelsPaginationV3()
     instance.first = randomize()
     instance.last = randomize()
     instance.next_ = randomize()
@@ -245,6 +327,19 @@ def create_models_update_leaderboard_config_req_example() -> (
     return instance
 
 
+def create_models_update_leaderboard_config_req_v3_example() -> (
+    ModelsUpdateLeaderboardConfigReqV3
+):
+    instance = ModelsUpdateLeaderboardConfigReqV3()
+    instance.all_time = randomize("bool")
+    instance.descending = randomize("bool")
+    instance.name = randomize()
+    instance.cycle_ids = [randomize()]
+    instance.description = randomize()
+    instance.icon_url = randomize("url")
+    return instance
+
+
 def create_models_update_user_point_admin_v1_request_example() -> (
     ModelsUpdateUserPointAdminV1Request
 ):
@@ -260,6 +355,18 @@ def create_models_update_user_point_admin_v1_response_example() -> (
     instance = ModelsUpdateUserPointAdminV1Response()
     instance.point = randomize("int", min_val=1, max_val=1000)
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_user_cycle_ranking_response_detail_example() -> (
+    ModelsUserCycleRankingResponseDetail
+):
+    instance = ModelsUserCycleRankingResponseDetail()
+    instance.cycle_id = randomize()
+    instance.point = randomize("int", min_val=1, max_val=1000)
+    instance.rank = randomize("int", min_val=1, max_val=1000)
+    instance.additional_data = {randomize(): randomize()}
+    instance.hidden = randomize("bool")
     return instance
 
 
@@ -304,6 +411,25 @@ def create_models_user_ranking_response_detail_example() -> (
     instance.point = randomize("int", min_val=1, max_val=1000)
     instance.rank = randomize("int", min_val=1, max_val=1000)
     instance.hidden = randomize("bool")
+    return instance
+
+
+def create_models_user_ranking_response_detail_v3_example() -> (
+    ModelsUserRankingResponseDetailV3
+):
+    instance = ModelsUserRankingResponseDetailV3()
+    instance.point = randomize("int", min_val=1, max_val=1000)
+    instance.rank = randomize("int", min_val=1, max_val=1000)
+    instance.additional_data = {randomize(): randomize()}
+    instance.hidden = randomize("bool")
+    return instance
+
+
+def create_models_user_ranking_response_v3_example() -> ModelsUserRankingResponseV3:
+    instance = ModelsUserRankingResponseV3()
+    instance.cycles = [create_models_user_cycle_ranking_response_detail_example()]
+    instance.user_id = randomize("uid")
+    instance.all_time = create_models_user_ranking_response_detail_v3_example()
     return instance
 
 

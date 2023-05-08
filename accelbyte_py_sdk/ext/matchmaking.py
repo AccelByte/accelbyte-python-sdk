@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.23.0)
+# AccelByte Gaming Services Matchmaking Service (2.24.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -58,6 +58,7 @@ from ..api.matchmaking.models import ModelsRole
 from ..api.matchmaking.models import ModelsRuleSet
 from ..api.matchmaking.models import ModelsRuleSetV1
 from ..api.matchmaking.models import ModelsSubGameMode
+from ..api.matchmaking.models import ModelsTicketMetricResultRecord
 from ..api.matchmaking.models import ModelsUpdateAllianceRule
 from ..api.matchmaking.models import ModelsUpdateChannelRequest
 from ..api.matchmaking.models import ModelsUpdatePlayTimeWeightRequest
@@ -124,7 +125,10 @@ def create_models_channel_example() -> ModelsChannel:
     instance.joinable = randomize("bool")
     instance.max_delay_ms = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
+    instance.region_expansion_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
+    instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)
+    instance.region_latency_max_ms = randomize("int", min_val=1, max_val=1000)
     instance.ruleset = create_models_rule_set_example()
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.slug = randomize()
@@ -144,7 +148,10 @@ def create_models_channel_request_example() -> ModelsChannelRequest:
     instance.rule_set = create_models_rule_set_example()
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.joinable = randomize("bool")
+    instance.region_expansion_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
+    instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)
+    instance.region_latency_max_ms = randomize("int", min_val=1, max_val=1000)
     instance.social_matchmaking = randomize("bool")
     instance.use_sub_gamemode = randomize("bool")
     return instance
@@ -159,7 +166,10 @@ def create_models_channel_v1_example() -> ModelsChannelV1:
     instance.joinable = randomize("bool")
     instance.max_delay_ms = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
+    instance.region_expansion_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
+    instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)
+    instance.region_latency_max_ms = randomize("int", min_val=1, max_val=1000)
     instance.rule_set = create_models_rule_set_v1_example()
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.slug = randomize()
@@ -188,7 +198,10 @@ def create_models_create_channel_response_example() -> ModelsCreateChannelRespon
     instance.joinable = randomize("bool")
     instance.max_delay_ms = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
+    instance.region_expansion_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
+    instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)
+    instance.region_latency_max_ms = randomize("int", min_val=1, max_val=1000)
     instance.ruleset = create_models_rule_set_example()
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.slug = randomize()
@@ -410,6 +423,14 @@ def create_models_sub_game_mode_example() -> ModelsSubGameMode:
     return instance
 
 
+def create_models_ticket_metric_result_record_example() -> (
+    ModelsTicketMetricResultRecord
+):
+    instance = ModelsTicketMetricResultRecord()
+    instance.queue_time = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_models_update_alliance_rule_example() -> ModelsUpdateAllianceRule:
     instance = ModelsUpdateAllianceRule()
     instance.combination = create_models_combination_example()
@@ -431,7 +452,10 @@ def create_models_update_channel_request_example() -> ModelsUpdateChannelRequest
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.social_matchmaking = randomize("bool")
     instance.use_sub_gamemode = randomize("bool")
+    instance.region_expansion_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
+    instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)
+    instance.region_latency_max_ms = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

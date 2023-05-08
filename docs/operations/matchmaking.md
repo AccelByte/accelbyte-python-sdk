@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Matchmaking Service Index (2.23.0)
+# AccelByte Gaming Services Matchmaking Service Index (2.24.1)
 
 
 ## Operations
@@ -22,6 +22,7 @@
 | /matchmaking/v1/admin/namespaces/{namespace}/channels/all/parties | GET | GetAllPartyInAllChannel | `false` | [GetAllPartyInAllChannel](../../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/get_all_party_in_all_channel.py) | [get_all_party_in_all_channel](../../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-get-all-party-in-all-channel](../../samples/cli/accelbyte_py_sdk_cli/matchmaking/_get_all_party_in_all_channel.py) |
 | /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/parties | GET | GetAllPartyInChannel | `false` | [GetAllPartyInChannel](../../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/get_all_party_in_channel.py) | [get_all_party_in_channel](../../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-get-all-party-in-channel](../../samples/cli/accelbyte_py_sdk_cli/matchmaking/_get_all_party_in_channel.py) |
 | /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions | GET | GetAllSessionsInChannel | `false` | [GetAllSessionsInChannel](../../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/get_all_sessions_in_channel.py) | [get_all_sessions_in_channel](../../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-get-all-sessions-in-channel](../../samples/cli/accelbyte_py_sdk_cli/matchmaking/_get_all_sessions_in_channel.py) |
+| /matchmaking/namespaces/{namespace}/channels/{channelName}/metrics | GET | GetMatchPoolMetric | `false` | [GetMatchPoolMetric](../../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/get_match_pool_metric.py) | [get_match_pool_metric](../../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-get-match-pool-metric](../../samples/cli/accelbyte_py_sdk_cli/matchmaking/_get_match_pool_metric.py) |
 | /matchmaking/v1/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed | GET | GetSessionHistoryDetailed | `true` | [GetSessionHistoryDetailed](../../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/get_session_history_detailed.py) | [get_session_history_detailed](../../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-get-session-history-detailed](../../samples/cli/accelbyte_py_sdk_cli/matchmaking/_get_session_history_detailed.py) |
 | /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName} | GET | GetSingleMatchmakingChannel | `false` | [GetSingleMatchmakingChannel](../../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/get_single_matchmaking_channel.py) | [get_single_matchmaking_channel](../../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-get-single-matchmaking-channel](../../samples/cli/accelbyte_py_sdk_cli/matchmaking/_get_single_matchmaking_channel.py) |
 | /matchmaking/v1/admin/namespaces/{namespace}/channels/import | POST | ImportChannels | `false` | [ImportChannels](../../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/import_channels.py) | [import_channels](../../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-import-channels](../../samples/cli/accelbyte_py_sdk_cli/matchmaking/_import_channels.py) |
@@ -86,6 +87,7 @@
 | models.RuleSet | [ModelsRuleSet](../../accelbyte_py_sdk/api/matchmaking/models/models_rule_set.py) |
 | models.RuleSetV1 | [ModelsRuleSetV1](../../accelbyte_py_sdk/api/matchmaking/models/models_rule_set_v1.py) |
 | models.SubGameMode | [ModelsSubGameMode](../../accelbyte_py_sdk/api/matchmaking/models/models_sub_game_mode.py) |
+| models.TicketMetricResultRecord | [ModelsTicketMetricResultRecord](../../accelbyte_py_sdk/api/matchmaking/models/models_ticket_metric_result_record.py) |
 | models.UpdateAllianceRule | [ModelsUpdateAllianceRule](../../accelbyte_py_sdk/api/matchmaking/models/models_update_alliance_rule.py) |
 | models.UpdateChannelRequest | [ModelsUpdateChannelRequest](../../accelbyte_py_sdk/api/matchmaking/models/models_update_channel_request.py) |
 | models.UpdatePlayTimeWeightRequest | [ModelsUpdatePlayTimeWeightRequest](../../accelbyte_py_sdk/api/matchmaking/models/models_update_play_time_weight_request.py) |

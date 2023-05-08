@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.4.1)
+# AccelByte Gaming Services Social Service (2.6.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -52,6 +52,8 @@ class UserStatCycleItemInfo(Model):
 
         value: (value) REQUIRED float
 
+        additional_data: (additionalData) OPTIONAL Dict[str, Any]
+
         tags: (tags) OPTIONAL List[str]
     """
 
@@ -67,6 +69,7 @@ class UserStatCycleItemInfo(Model):
     updated_at: str  # REQUIRED
     user_id: str  # REQUIRED
     value: float  # REQUIRED
+    additional_data: Dict[str, Any]  # OPTIONAL
     tags: List[str]  # OPTIONAL
 
     # endregion fields
@@ -111,6 +114,10 @@ class UserStatCycleItemInfo(Model):
 
     def with_value(self, value: float) -> UserStatCycleItemInfo:
         self.value = value
+        return self
+
+    def with_additional_data(self, value: Dict[str, Any]) -> UserStatCycleItemInfo:
+        self.additional_data = value
         return self
 
     def with_tags(self, value: List[str]) -> UserStatCycleItemInfo:
@@ -163,6 +170,12 @@ class UserStatCycleItemInfo(Model):
             result["value"] = float(self.value)
         elif include_empty:
             result["value"] = 0.0
+        if hasattr(self, "additional_data"):
+            result["additionalData"] = {
+                str(k0): v0 for k0, v0 in self.additional_data.items()
+            }
+        elif include_empty:
+            result["additionalData"] = {}
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -186,6 +199,7 @@ class UserStatCycleItemInfo(Model):
         updated_at: str,
         user_id: str,
         value: float,
+        additional_data: Optional[Dict[str, Any]] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
     ) -> UserStatCycleItemInfo:
@@ -200,6 +214,8 @@ class UserStatCycleItemInfo(Model):
         instance.updated_at = updated_at
         instance.user_id = user_id
         instance.value = value
+        if additional_data is not None:
+            instance.additional_data = additional_data
         if tags is not None:
             instance.tags = tags
         return instance
@@ -251,6 +267,12 @@ class UserStatCycleItemInfo(Model):
             instance.value = float(dict_["value"])
         elif include_empty:
             instance.value = 0.0
+        if "additionalData" in dict_ and dict_["additionalData"] is not None:
+            instance.additional_data = {
+                str(k0): v0 for k0, v0 in dict_["additionalData"].items()
+            }
+        elif include_empty:
+            instance.additional_data = {}
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -308,6 +330,7 @@ class UserStatCycleItemInfo(Model):
             "updatedAt": "updated_at",
             "userId": "user_id",
             "value": "value",
+            "additionalData": "additional_data",
             "tags": "tags",
         }
 
@@ -324,6 +347,7 @@ class UserStatCycleItemInfo(Model):
             "updatedAt": True,
             "userId": True,
             "value": True,
+            "additionalData": False,
             "tags": False,
         }
 

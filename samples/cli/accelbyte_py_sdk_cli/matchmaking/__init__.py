@@ -6,12 +6,13 @@
 
 # template_file: python-cli-init.j2
 
-# Justice Matchmaking Service (2.23.0)
+# Justice Matchmaking Service (2.24.1)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._handler_v3_healthz import handler_v3_healthz
 from ._get_all_channels_handler import get_all_channels_handler
 from ._create_channel_handler import create_channel_handler
+from ._get_match_pool_metric import get_match_pool_metric
 from ._delete_channel_handler import delete_channel_handler
 from ._store_match_results import store_match_results
 from ._rebalance import rebalance
@@ -46,6 +47,7 @@ commands = [
     handler_v3_healthz,
     get_all_channels_handler,
     create_channel_handler,
+    get_match_pool_metric,
     delete_channel_handler,
     store_match_results,
     rebalance,

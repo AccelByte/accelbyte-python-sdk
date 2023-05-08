@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.23.0)
+# AccelByte Gaming Services Matchmaking Service (2.24.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -48,7 +48,13 @@ class ModelsChannel(Model):
 
         namespace: (namespace) REQUIRED str
 
+        region_expansion_range_ms: (region_expansion_range_ms) REQUIRED int
+
         region_expansion_rate_ms: (region_expansion_rate_ms) REQUIRED int
+
+        region_latency_initial_range_ms: (region_latency_initial_range_ms) REQUIRED int
+
+        region_latency_max_ms: (region_latency_max_ms) REQUIRED int
 
         ruleset: (ruleset) REQUIRED ModelsRuleSet
 
@@ -72,7 +78,10 @@ class ModelsChannel(Model):
     joinable: bool  # REQUIRED
     max_delay_ms: int  # REQUIRED
     namespace: str  # REQUIRED
+    region_expansion_range_ms: int  # REQUIRED
     region_expansion_rate_ms: int  # REQUIRED
+    region_latency_initial_range_ms: int  # REQUIRED
+    region_latency_max_ms: int  # REQUIRED
     ruleset: ModelsRuleSet  # REQUIRED
     session_queue_timeout_seconds: int  # REQUIRED
     slug: str  # REQUIRED
@@ -112,8 +121,20 @@ class ModelsChannel(Model):
         self.namespace = value
         return self
 
+    def with_region_expansion_range_ms(self, value: int) -> ModelsChannel:
+        self.region_expansion_range_ms = value
+        return self
+
     def with_region_expansion_rate_ms(self, value: int) -> ModelsChannel:
         self.region_expansion_rate_ms = value
+        return self
+
+    def with_region_latency_initial_range_ms(self, value: int) -> ModelsChannel:
+        self.region_latency_initial_range_ms = value
+        return self
+
+    def with_region_latency_max_ms(self, value: int) -> ModelsChannel:
+        self.region_latency_max_ms = value
         return self
 
     def with_ruleset(self, value: ModelsRuleSet) -> ModelsChannel:
@@ -174,10 +195,24 @@ class ModelsChannel(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "region_expansion_range_ms"):
+            result["region_expansion_range_ms"] = int(self.region_expansion_range_ms)
+        elif include_empty:
+            result["region_expansion_range_ms"] = 0
         if hasattr(self, "region_expansion_rate_ms"):
             result["region_expansion_rate_ms"] = int(self.region_expansion_rate_ms)
         elif include_empty:
             result["region_expansion_rate_ms"] = 0
+        if hasattr(self, "region_latency_initial_range_ms"):
+            result["region_latency_initial_range_ms"] = int(
+                self.region_latency_initial_range_ms
+            )
+        elif include_empty:
+            result["region_latency_initial_range_ms"] = 0
+        if hasattr(self, "region_latency_max_ms"):
+            result["region_latency_max_ms"] = int(self.region_latency_max_ms)
+        elif include_empty:
+            result["region_latency_max_ms"] = 0
         if hasattr(self, "ruleset"):
             result["ruleset"] = self.ruleset.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -220,7 +255,10 @@ class ModelsChannel(Model):
         joinable: bool,
         max_delay_ms: int,
         namespace: str,
+        region_expansion_range_ms: int,
         region_expansion_rate_ms: int,
+        region_latency_initial_range_ms: int,
+        region_latency_max_ms: int,
         ruleset: ModelsRuleSet,
         session_queue_timeout_seconds: int,
         slug: str,
@@ -237,7 +275,10 @@ class ModelsChannel(Model):
         instance.joinable = joinable
         instance.max_delay_ms = max_delay_ms
         instance.namespace = namespace
+        instance.region_expansion_range_ms = region_expansion_range_ms
         instance.region_expansion_rate_ms = region_expansion_rate_ms
+        instance.region_latency_initial_range_ms = region_latency_initial_range_ms
+        instance.region_latency_max_ms = region_latency_max_ms
         instance.ruleset = ruleset
         instance.session_queue_timeout_seconds = session_queue_timeout_seconds
         instance.slug = slug
@@ -287,12 +328,35 @@ class ModelsChannel(Model):
         elif include_empty:
             instance.namespace = ""
         if (
+            "region_expansion_range_ms" in dict_
+            and dict_["region_expansion_range_ms"] is not None
+        ):
+            instance.region_expansion_range_ms = int(dict_["region_expansion_range_ms"])
+        elif include_empty:
+            instance.region_expansion_range_ms = 0
+        if (
             "region_expansion_rate_ms" in dict_
             and dict_["region_expansion_rate_ms"] is not None
         ):
             instance.region_expansion_rate_ms = int(dict_["region_expansion_rate_ms"])
         elif include_empty:
             instance.region_expansion_rate_ms = 0
+        if (
+            "region_latency_initial_range_ms" in dict_
+            and dict_["region_latency_initial_range_ms"] is not None
+        ):
+            instance.region_latency_initial_range_ms = int(
+                dict_["region_latency_initial_range_ms"]
+            )
+        elif include_empty:
+            instance.region_latency_initial_range_ms = 0
+        if (
+            "region_latency_max_ms" in dict_
+            and dict_["region_latency_max_ms"] is not None
+        ):
+            instance.region_latency_max_ms = int(dict_["region_latency_max_ms"])
+        elif include_empty:
+            instance.region_latency_max_ms = 0
         if "ruleset" in dict_ and dict_["ruleset"] is not None:
             instance.ruleset = ModelsRuleSet.create_from_dict(
                 dict_["ruleset"], include_empty=include_empty
@@ -370,7 +434,10 @@ class ModelsChannel(Model):
             "joinable": "joinable",
             "max_delay_ms": "max_delay_ms",
             "namespace": "namespace",
+            "region_expansion_range_ms": "region_expansion_range_ms",
             "region_expansion_rate_ms": "region_expansion_rate_ms",
+            "region_latency_initial_range_ms": "region_latency_initial_range_ms",
+            "region_latency_max_ms": "region_latency_max_ms",
             "ruleset": "ruleset",
             "session_queue_timeout_seconds": "session_queue_timeout_seconds",
             "slug": "slug",
@@ -389,7 +456,10 @@ class ModelsChannel(Model):
             "joinable": True,
             "max_delay_ms": True,
             "namespace": True,
+            "region_expansion_range_ms": True,
             "region_expansion_rate_ms": True,
+            "region_latency_initial_range_ms": True,
+            "region_latency_max_ms": True,
             "ruleset": True,
             "session_queue_timeout_seconds": True,
             "slug": True,

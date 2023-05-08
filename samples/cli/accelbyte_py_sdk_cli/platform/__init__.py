@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.28.0)
+# justice-platform-service (4.30.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -262,6 +262,7 @@ from ._create_user_payment_order import create_user_payment_order
 from ._refund_user_payment_order import refund_user_payment_order
 from ._apply_user_redemption import apply_user_redemption
 from ._do_revocation import do_revocation
+from ._register_xbl_sessions import register_xbl_sessions
 from ._query_user_subscriptions import query_user_subscriptions
 from ._get_user_subscription_activities import get_user_subscription_activities
 from ._platform_subscribe_subscription import platform_subscribe_subscription
@@ -710,6 +711,7 @@ commands = [
     refund_user_payment_order,
     apply_user_redemption,
     do_revocation,
+    register_xbl_sessions,
     query_user_subscriptions,
     get_user_subscription_activities,
     platform_subscribe_subscription,

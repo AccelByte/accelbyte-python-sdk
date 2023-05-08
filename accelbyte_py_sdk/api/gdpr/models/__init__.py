@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "1.21.0"
+__version__ = "1.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

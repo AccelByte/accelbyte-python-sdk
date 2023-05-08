@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.28.0"
+__version__ = "4.30.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -754,6 +754,7 @@ from .xbl_reconcile_result import (
     IapOrderStatusEnum as XblReconcileResultIapOrderStatusEnum,
 )
 from .xbl_user_achievements import XblUserAchievements
+from .xbl_user_session_request import XblUserSessionRequest
 from .xsolla_config import XsollaConfig
 from .xsolla_paywall_config import XsollaPaywallConfig
 from .xsolla_paywall_config import (

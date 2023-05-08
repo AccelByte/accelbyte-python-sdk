@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Dsm Controller Service Index (6.2.5)
+# AccelByte Gaming Services Dsm Controller Service Index (6.2.7)
 
 
 ## Operations

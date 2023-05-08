@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.32.0)
+# AccelByte Gaming Services Iam Service (5.34.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,11 +33,14 @@ class ModelUpdateUserDeletionStatusRequest(Model):
 
     Properties:
         enabled: (enabled) REQUIRED bool
+
+        deletion_date: (deletionDate) OPTIONAL int
     """
 
     # region fields
 
     enabled: bool  # REQUIRED
+    deletion_date: int  # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class ModelUpdateUserDeletionStatusRequest(Model):
 
     def with_enabled(self, value: bool) -> ModelUpdateUserDeletionStatusRequest:
         self.enabled = value
+        return self
+
+    def with_deletion_date(self, value: int) -> ModelUpdateUserDeletionStatusRequest:
+        self.deletion_date = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class ModelUpdateUserDeletionStatusRequest(Model):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
             result["enabled"] = False
+        if hasattr(self, "deletion_date"):
+            result["deletionDate"] = int(self.deletion_date)
+        elif include_empty:
+            result["deletionDate"] = 0
         return result
 
     # endregion to methods
@@ -64,9 +75,13 @@ class ModelUpdateUserDeletionStatusRequest(Model):
     # region static methods
 
     @classmethod
-    def create(cls, enabled: bool, **kwargs) -> ModelUpdateUserDeletionStatusRequest:
+    def create(
+        cls, enabled: bool, deletion_date: Optional[int] = None, **kwargs
+    ) -> ModelUpdateUserDeletionStatusRequest:
         instance = cls()
         instance.enabled = enabled
+        if deletion_date is not None:
+            instance.deletion_date = deletion_date
         return instance
 
     @classmethod
@@ -80,6 +95,10 @@ class ModelUpdateUserDeletionStatusRequest(Model):
             instance.enabled = bool(dict_["enabled"])
         elif include_empty:
             instance.enabled = False
+        if "deletionDate" in dict_ and dict_["deletionDate"] is not None:
+            instance.deletion_date = int(dict_["deletionDate"])
+        elif include_empty:
+            instance.deletion_date = 0
         return instance
 
     @classmethod
@@ -124,12 +143,14 @@ class ModelUpdateUserDeletionStatusRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "enabled": "enabled",
+            "deletionDate": "deletion_date",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "enabled": True,
+            "deletionDate": False,
         }
 
     # endregion static methods

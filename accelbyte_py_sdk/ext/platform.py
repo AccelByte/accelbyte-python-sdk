@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.28.0)
+# AccelByte Gaming Services Platform Service (4.30.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -371,6 +371,7 @@ from ..api.platform.models import XblIAPConfigRequest
 from ..api.platform.models import XblReconcileRequest
 from ..api.platform.models import XblReconcileResult
 from ..api.platform.models import XblUserAchievements
+from ..api.platform.models import XblUserSessionRequest
 from ..api.platform.models import XsollaConfig
 from ..api.platform.models import XsollaPaywallConfig
 from ..api.platform.models import XsollaPaywallConfigRequest
@@ -640,6 +641,8 @@ def create_billing_history_paging_sliced_result_example() -> (
 def create_box_item_example() -> BoxItem:
     instance = BoxItem()
     instance.count = randomize("int", min_val=1, max_val=1000)
+    instance.duration = randomize("int", min_val=1, max_val=1000)
+    instance.end_date = randomize("date")
     instance.item_id = randomize()
     instance.item_sku = randomize()
     instance.item_type = randomize()
@@ -2246,6 +2249,7 @@ def create_item_snapshot_example() -> ItemSnapshot:
     instance.region_data_item = create_region_data_item_example()
     instance.sale_config = create_sale_config_example()
     instance.season_type = randomize()
+    instance.section_exclusive = randomize("bool")
     instance.sellable = randomize("bool")
     instance.sku = randomize("slug")
     instance.stackable = randomize("bool")
@@ -3607,6 +3611,7 @@ def create_reward_info_example() -> RewardInfo:
 def create_reward_item_example() -> RewardItem:
     instance = RewardItem()
     instance.duration = randomize("int", min_val=1, max_val=1000)
+    instance.end_date = randomize("date")
     instance.item_id = randomize()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     return instance
@@ -4386,6 +4391,15 @@ def create_xbl_reconcile_result_example() -> XblReconcileResult:
 def create_xbl_user_achievements_example() -> XblUserAchievements:
     instance = XblUserAchievements()
     instance.achievements = [create_achievement_info_example()]
+    return instance
+
+
+def create_xbl_user_session_request_example() -> XblUserSessionRequest:
+    instance = XblUserSessionRequest()
+    instance.game_session_id = randomize()
+    instance.payload = {randomize(): randomize()}
+    instance.scid = randomize()
+    instance.session_template_name = randomize()
     return instance
 
 

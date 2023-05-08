@@ -43,6 +43,7 @@ from ..models import ModelsMatchingParty
 from ..models import ModelsMatchmakingResult
 from ..models import ModelsRebalanceRequest
 from ..models import ModelsRebalanceResponse
+from ..models import ModelsTicketMetricResultRecord
 from ..models import ModelsUpdateChannelRequest
 from ..models import ResponseError
 from ..models import ResponseErrorV1
@@ -62,6 +63,7 @@ from ..operations.matchmaking import GetAllChannelsHandler
 from ..operations.matchmaking import GetAllPartyInAllChannel
 from ..operations.matchmaking import GetAllPartyInChannel
 from ..operations.matchmaking import GetAllSessionsInChannel
+from ..operations.matchmaking import GetMatchPoolMetric
 from ..operations.matchmaking import GetSessionHistoryDetailed
 from ..operations.matchmaking import GetSingleMatchmakingChannel
 from ..operations.matchmaking import ImportChannels
@@ -1646,6 +1648,132 @@ async def get_all_sessions_in_channel_async(
         if error:
             return None, error
     request = GetAllSessionsInChannel.create(
+        channel_name=channel_name,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetMatchPoolMetric)
+def get_match_pool_metric(
+    channel_name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get metrics for a specific channel (GetMatchPoolMetric)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]
+
+    Required Scope: social
+
+    Get metric for a specific match pool
+
+    Result: queue_time in seconds
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/channels/{channelName}/metrics
+
+        method: GET
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsTicketMetricResultRecord (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMatchPoolMetric.create(
+        channel_name=channel_name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetMatchPoolMetric)
+async def get_match_pool_metric_async(
+    channel_name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get metrics for a specific channel (GetMatchPoolMetric)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]
+
+    Required Scope: social
+
+    Get metric for a specific match pool
+
+    Result: queue_time in seconds
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/namespaces/{namespace}/channels/{channelName}/metrics
+
+        method: GET
+
+        tags: ["Matchmaking", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsTicketMetricResultRecord (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMatchPoolMetric.create(
         channel_name=channel_name,
         namespace=namespace,
     )
