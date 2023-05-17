@@ -44,7 +44,7 @@ test_core:
 test_integration:
 	@test -n "$(ENV_FILE_PATH)" || (echo "ENV_FILE_PATH is not set" ; exit 1)
 	rm -f test_integration.err
-	docker run --rm --tty --user $$(id -u):$$(id -g) --env PIP_CACHE_DIR=/tmp/pip --env PHANTAUTH_URL=$(PHANTAUTH_URL) --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
+	docker run --rm --tty --user $$(id -u):$$(id -g) --env PIP_CACHE_DIR=/tmp/pip --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
 			-c 'python -m venv /tmp && \
 				/tmp/bin/pip install -r requirements-test.txt && \
 				rm -f /data/test_integration.tap && \

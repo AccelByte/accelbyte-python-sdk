@@ -47,7 +47,7 @@ class AuthServicesTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.services.auth import login_platform
 
         # arrange
-        phantauth_url = os.environ.get("PHANTAUTH_URL")
+        phantauth_url = os.environ.get("AB_PHANTAUTH_BASE_URL")
 
         client_id = "test.client"
         client_secret = "UTBcWwt5"
