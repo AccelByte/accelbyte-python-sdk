@@ -1,4 +1,16 @@
 ## v0.40.0
+
+Update spec for AccelByte Cloud v3.49.0.
+
+### fix
+- **tests:** update phantauth environment variable
+- **integration tests:** fix leaderboard tests
+- **core tests:** disable http bin tests
+### chore
+- **jenkinsfile:** update generate spec target
+
+
+## v0.40.0
 - Update spec for AccelByte Cloud v3.48.0.
 
 ## v0.39.0

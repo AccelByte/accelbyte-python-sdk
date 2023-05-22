@@ -2286,6 +2286,8 @@ def create_user_stat_item(
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12274: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2343,6 +2345,8 @@ async def create_user_stat_item_async(
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12274: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2405,6 +2409,8 @@ def delete_user_stat_items(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2465,6 +2471,8 @@ async def delete_user_stat_items_async(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2526,6 +2534,8 @@ def delete_user_stat_items_1(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2585,6 +2595,8 @@ async def delete_user_stat_items_1_async(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2653,6 +2665,8 @@ def delete_user_stat_items_2(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2720,6 +2734,8 @@ async def delete_user_stat_items_2_async(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2788,6 +2804,8 @@ def get_user_stat_items(
 
     Responses:
         200: OK - UserStatItemPagingSlicedResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2857,6 +2875,8 @@ async def get_user_stat_items_async(
 
     Responses:
         200: OK - UserStatItemPagingSlicedResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2925,6 +2945,8 @@ def inc_user_stat_item_value(
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2988,6 +3010,8 @@ async def inc_user_stat_item_value_async(
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -3480,6 +3504,8 @@ def public_create_user_stat_item(
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12274: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -3537,6 +3563,8 @@ async def public_create_user_stat_item_async(
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12274: Stat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -3601,6 +3629,8 @@ def public_inc_user_stat_item(
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -3664,6 +3694,8 @@ async def public_inc_user_stat_item_async(
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -3729,6 +3761,8 @@ def public_inc_user_stat_item_value(
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -3792,6 +3826,8 @@ async def public_inc_user_stat_item_value_async(
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (12273: Stat [{statCode}] is not decreasable | 12275: [{action}] value: [{value}] of stat [{statCode}]  is out of range while minimum [{minimum}] and maximum [{maximum}] in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -3860,6 +3896,8 @@ def public_query_user_stat_items(
 
     Responses:
         200: OK - UserStatItemPagingSlicedResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -3929,6 +3967,8 @@ async def public_query_user_stat_items_async(
 
     Responses:
         200: OK - UserStatItemPagingSlicedResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -4275,6 +4315,8 @@ def reset_user_stat_item_value(
         400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
 
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -4341,6 +4383,8 @@ async def reset_user_stat_item_value_async(
         400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
 
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -4403,6 +4447,8 @@ def reset_user_stat_item_value_1(
         400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
 
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -4461,6 +4507,8 @@ async def reset_user_stat_item_value_1_async(
         400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
 
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

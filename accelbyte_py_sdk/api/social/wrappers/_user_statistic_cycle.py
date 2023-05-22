@@ -31,6 +31,7 @@ from ....core import same_doc_as
 
 from ..models import ErrorEntity
 from ..models import UserStatCycleItemPagingSlicedResult
+from ..models import ValidationErrorEntity
 
 from ..operations.user_statistic_cycle import GetUserStatCycleItems
 from ..operations.user_statistic_cycle import GetUserStatCycleItems1
@@ -90,6 +91,8 @@ def get_user_stat_cycle_items(
         200: OK - UserStatCycleItemPagingSlicedResult (successful operation)
 
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -161,6 +164,8 @@ async def get_user_stat_cycle_items_async(
         200: OK - UserStatCycleItemPagingSlicedResult (successful operation)
 
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -234,6 +239,8 @@ def get_user_stat_cycle_items_1(
         200: OK - UserStatCycleItemPagingSlicedResult (successful operation)
 
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -305,6 +312,8 @@ async def get_user_stat_cycle_items_1_async(
         200: OK - UserStatCycleItemPagingSlicedResult (successful operation)
 
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

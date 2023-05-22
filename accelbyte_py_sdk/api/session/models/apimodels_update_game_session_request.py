@@ -63,6 +63,10 @@ class ApimodelsUpdateGameSessionRequest(Model):
         type_: (type) REQUIRED str
 
         version: (version) REQUIRED int
+
+        fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
+
+        preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
     """
 
     # region fields
@@ -82,6 +86,8 @@ class ApimodelsUpdateGameSessionRequest(Model):
     ticket_i_ds: List[str]  # REQUIRED
     type_: str  # REQUIRED
     version: int  # REQUIRED
+    fallback_claim_keys: List[str]  # OPTIONAL
+    preferred_claim_keys: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -149,6 +155,18 @@ class ApimodelsUpdateGameSessionRequest(Model):
 
     def with_version(self, value: int) -> ApimodelsUpdateGameSessionRequest:
         self.version = value
+        return self
+
+    def with_fallback_claim_keys(
+        self, value: List[str]
+    ) -> ApimodelsUpdateGameSessionRequest:
+        self.fallback_claim_keys = value
+        return self
+
+    def with_preferred_claim_keys(
+        self, value: List[str]
+    ) -> ApimodelsUpdateGameSessionRequest:
+        self.preferred_claim_keys = value
         return self
 
     # endregion with_x methods
@@ -219,6 +237,14 @@ class ApimodelsUpdateGameSessionRequest(Model):
             result["version"] = int(self.version)
         elif include_empty:
             result["version"] = 0
+        if hasattr(self, "fallback_claim_keys"):
+            result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
+        elif include_empty:
+            result["fallbackClaimKeys"] = []
+        if hasattr(self, "preferred_claim_keys"):
+            result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
+        elif include_empty:
+            result["preferredClaimKeys"] = []
         return result
 
     # endregion to methods
@@ -243,6 +269,8 @@ class ApimodelsUpdateGameSessionRequest(Model):
         ticket_i_ds: List[str],
         type_: str,
         version: int,
+        fallback_claim_keys: Optional[List[str]] = None,
+        preferred_claim_keys: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsUpdateGameSessionRequest:
         instance = cls()
@@ -261,6 +289,10 @@ class ApimodelsUpdateGameSessionRequest(Model):
         instance.ticket_i_ds = ticket_i_ds
         instance.type_ = type_
         instance.version = version
+        if fallback_claim_keys is not None:
+            instance.fallback_claim_keys = fallback_claim_keys
+        if preferred_claim_keys is not None:
+            instance.preferred_claim_keys = preferred_claim_keys
         return instance
 
     @classmethod
@@ -335,6 +367,18 @@ class ApimodelsUpdateGameSessionRequest(Model):
             instance.version = int(dict_["version"])
         elif include_empty:
             instance.version = 0
+        if "fallbackClaimKeys" in dict_ and dict_["fallbackClaimKeys"] is not None:
+            instance.fallback_claim_keys = [
+                str(i0) for i0 in dict_["fallbackClaimKeys"]
+            ]
+        elif include_empty:
+            instance.fallback_claim_keys = []
+        if "preferredClaimKeys" in dict_ and dict_["preferredClaimKeys"] is not None:
+            instance.preferred_claim_keys = [
+                str(i0) for i0 in dict_["preferredClaimKeys"]
+            ]
+        elif include_empty:
+            instance.preferred_claim_keys = []
         return instance
 
     @classmethod
@@ -393,6 +437,8 @@ class ApimodelsUpdateGameSessionRequest(Model):
             "ticketIDs": "ticket_i_ds",
             "type": "type_",
             "version": "version",
+            "fallbackClaimKeys": "fallback_claim_keys",
+            "preferredClaimKeys": "preferred_claim_keys",
         }
 
     @staticmethod
@@ -413,6 +459,8 @@ class ApimodelsUpdateGameSessionRequest(Model):
             "ticketIDs": True,
             "type": True,
             "version": True,
+            "fallbackClaimKeys": False,
+            "preferredClaimKeys": False,
         }
 
     # endregion static methods

@@ -62,6 +62,8 @@ class ModelsGameServer(Model):
 
         session_id: (session_id) REQUIRED str
 
+        source: (source) REQUIRED str
+
         status: (status) REQUIRED str
 
         alternate_ips: (alternate_ips) OPTIONAL List[str]
@@ -84,6 +86,7 @@ class ModelsGameServer(Model):
     provider: str  # REQUIRED
     region: str  # REQUIRED
     session_id: str  # REQUIRED
+    source: str  # REQUIRED
     status: str  # REQUIRED
     alternate_ips: List[str]  # OPTIONAL
 
@@ -149,6 +152,10 @@ class ModelsGameServer(Model):
 
     def with_session_id(self, value: str) -> ModelsGameServer:
         self.session_id = value
+        return self
+
+    def with_source(self, value: str) -> ModelsGameServer:
+        self.source = value
         return self
 
     def with_status(self, value: str) -> ModelsGameServer:
@@ -225,6 +232,10 @@ class ModelsGameServer(Model):
             result["session_id"] = str(self.session_id)
         elif include_empty:
             result["session_id"] = ""
+        if hasattr(self, "source"):
+            result["source"] = str(self.source)
+        elif include_empty:
+            result["source"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -257,6 +268,7 @@ class ModelsGameServer(Model):
         provider: str,
         region: str,
         session_id: str,
+        source: str,
         status: str,
         alternate_ips: Optional[List[str]] = None,
         **kwargs,
@@ -277,6 +289,7 @@ class ModelsGameServer(Model):
         instance.provider = provider
         instance.region = region
         instance.session_id = session_id
+        instance.source = source
         instance.status = status
         if alternate_ips is not None:
             instance.alternate_ips = alternate_ips
@@ -352,6 +365,10 @@ class ModelsGameServer(Model):
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
             instance.session_id = ""
+        if "source" in dict_ and dict_["source"] is not None:
+            instance.source = str(dict_["source"])
+        elif include_empty:
+            instance.source = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -414,6 +431,7 @@ class ModelsGameServer(Model):
             "provider": "provider",
             "region": "region",
             "session_id": "session_id",
+            "source": "source",
             "status": "status",
             "alternate_ips": "alternate_ips",
         }
@@ -436,6 +454,7 @@ class ModelsGameServer(Model):
             "provider": True,
             "region": True,
             "session_id": True,
+            "source": True,
             "status": True,
             "alternate_ips": False,
         }

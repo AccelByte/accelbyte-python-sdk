@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Ds Log Manager Service Index (3.2.0)
+# AccelByte Gaming Services Ds Log Manager Service Index (3.3.0)
 
 
 ## Operations

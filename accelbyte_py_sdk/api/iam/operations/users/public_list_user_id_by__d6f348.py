@@ -62,6 +62,8 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
 
         platform_id: (platformId) REQUIRED str in path
 
+        raw_puid: (rawPUID) OPTIONAL bool in query
+
     Responses:
         200: OK - AccountcommonUserPlatforms (OK)
 
@@ -86,6 +88,7 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
     body: ModelPlatformUserIDRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     platform_id: str  # REQUIRED in [path]
+    raw_puid: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -127,6 +130,7 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -140,6 +144,12 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
             result["namespace"] = self.namespace
         if hasattr(self, "platform_id"):
             result["platformId"] = self.platform_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "raw_puid"):
+            result["rawPUID"] = self.raw_puid
         return result
 
     # endregion get_x_params methods
@@ -164,6 +174,10 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
         self.platform_id = value
         return self
 
+    def with_raw_puid(self, value: bool) -> PublicListUserIDByPlatformUserIDsV3:
+        self.raw_puid = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -182,6 +196,10 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = ""
+        if hasattr(self, "raw_puid") and self.raw_puid:
+            result["rawPUID"] = bool(self.raw_puid)
+        elif include_empty:
+            result["rawPUID"] = False
         return result
 
     # endregion to methods
@@ -245,12 +263,15 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
         body: ModelPlatformUserIDRequest,
         namespace: str,
         platform_id: str,
+        raw_puid: Optional[bool] = None,
         **kwargs,
     ) -> PublicListUserIDByPlatformUserIDsV3:
         instance = cls()
         instance.body = body
         instance.namespace = namespace
         instance.platform_id = platform_id
+        if raw_puid is not None:
+            instance.raw_puid = raw_puid
         return instance
 
     @classmethod
@@ -272,6 +293,10 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = ""
+        if "rawPUID" in dict_ and dict_["rawPUID"] is not None:
+            instance.raw_puid = bool(dict_["rawPUID"])
+        elif include_empty:
+            instance.raw_puid = False
         return instance
 
     @staticmethod
@@ -280,6 +305,7 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
             "body": "body",
             "namespace": "namespace",
             "platformId": "platform_id",
+            "rawPUID": "raw_puid",
         }
 
     @staticmethod
@@ -288,6 +314,7 @@ class PublicListUserIDByPlatformUserIDsV3(Operation):
             "body": True,
             "namespace": True,
             "platformId": True,
+            "rawPUID": False,
         }
 
     # endregion static methods

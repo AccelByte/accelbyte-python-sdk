@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.2.7)
+# AccelByte Gaming Services Dsm Controller Service (6.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,7 +37,9 @@ from ..api.dsmc.models import ModelsCreateImageRequest
 from ..api.dsmc.models import ModelsCreatePodConfigRequest
 from ..api.dsmc.models import ModelsCreatePortRequest
 from ..api.dsmc.models import ModelsCreateRegionOverrideRequest
+from ..api.dsmc.models import ModelsCreateRepositoryRequest
 from ..api.dsmc.models import ModelsCreateSessionRequest
+from ..api.dsmc.models import ModelsDSHeartbeatRequest
 from ..api.dsmc.models import ModelsDSMConfigRecord
 from ..api.dsmc.models import ModelsDefaultProvider
 from ..api.dsmc.models import ModelsDeploymentConfigOverride
@@ -66,10 +68,12 @@ from ..api.dsmc.models import ModelsPodConfigRecord
 from ..api.dsmc.models import ModelsPodCountConfigOverride
 from ..api.dsmc.models import ModelsRegisterLocalServerRequest
 from ..api.dsmc.models import ModelsRegisterServerRequest
+from ..api.dsmc.models import ModelsRepositoryRecord
 from ..api.dsmc.models import ModelsRequestMatchMember
 from ..api.dsmc.models import ModelsRequestMatchParty
 from ..api.dsmc.models import ModelsRequestMatchingAlly
 from ..api.dsmc.models import ModelsServer
+from ..api.dsmc.models import ModelsServerDeploymentConfigSessionTimeoutResponse
 from ..api.dsmc.models import ModelsServerSessionResponse
 from ..api.dsmc.models import ModelsSession
 from ..api.dsmc.models import ModelsSessionResponse
@@ -81,6 +85,7 @@ from ..api.dsmc.models import ModelsUpdateDeploymentRequest
 from ..api.dsmc.models import ModelsUpdatePodConfigRequest
 from ..api.dsmc.models import ModelsUpdatePortRequest
 from ..api.dsmc.models import ModelsUpdateRegionOverrideRequest
+from ..api.dsmc.models import ModelsUploaderFlag
 from ..api.dsmc.models import ResponseError
 
 
@@ -136,6 +141,7 @@ def create_models_create_deployment_override_request_example() -> (
     instance.regions = [randomize()]
     instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
+    instance.extendable_session = randomize("bool")
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -155,6 +161,7 @@ def create_models_create_deployment_request_example() -> ModelsCreateDeploymentR
     instance.regions = [randomize()]
     instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
+    instance.extendable_session = randomize("bool")
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -182,6 +189,7 @@ def create_models_create_image_patch_request_example() -> ModelsCreateImagePatch
     instance.namespace = randomize("slug")
     instance.patch_version = randomize()
     instance.persistent = randomize("bool")
+    instance.uploader_flags = [create_models_uploader_flag_example()]
     instance.version = randomize("version")
     return instance
 
@@ -225,6 +233,13 @@ def create_models_create_region_override_request_example() -> (
     return instance
 
 
+def create_models_create_repository_request_example() -> ModelsCreateRepositoryRequest:
+    instance = ModelsCreateRepositoryRequest()
+    instance.namespace = randomize("slug")
+    instance.repository = randomize()
+    return instance
+
+
 def create_models_create_session_request_example() -> ModelsCreateSessionRequest:
     instance = ModelsCreateSessionRequest()
     instance.client_version = randomize()
@@ -264,6 +279,7 @@ def create_models_deployment_config_override_example() -> (
     instance.regions = [randomize()]
     instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
+    instance.extendable_session = randomize("bool")
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -288,6 +304,7 @@ def create_models_deployment_with_override_example() -> ModelsDeploymentWithOver
     instance.unlimited = randomize("bool")
     instance.updated_at = randomize("date")
     instance.use_buffer_percent = randomize("bool")
+    instance.extendable_session = randomize("bool")
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -308,6 +325,12 @@ def create_models_detailed_count_server_response_example() -> (
     instance.creating_count = randomize("int", min_val=1, max_val=1000)
     instance.ready_count = randomize("int", min_val=1, max_val=1000)
     instance.unreachable_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_ds_heartbeat_request_example() -> ModelsDSHeartbeatRequest:
+    instance = ModelsDSHeartbeatRequest()
+    instance.pod_name = randomize()
     return instance
 
 
@@ -476,6 +499,7 @@ def create_models_patch_image_record_example() -> ModelsPatchImageRecord:
     instance.patch_version = randomize()
     instance.persistent = randomize("bool")
     instance.updated_at = randomize("date")
+    instance.uploader_flags = [create_models_uploader_flag_example()]
     instance.version = randomize("version")
     return instance
 
@@ -520,6 +544,16 @@ def create_models_register_server_request_example() -> ModelsRegisterServerReque
     instance = ModelsRegisterServerRequest()
     instance.custom_attribute = randomize()
     instance.pod_name = randomize()
+    return instance
+
+
+def create_models_repository_record_example() -> ModelsRepositoryRecord:
+    instance = ModelsRepositoryRecord()
+    instance.created_at = randomize("date")
+    instance.modified_by = randomize()
+    instance.namespace = randomize("slug")
+    instance.repository = randomize()
+    instance.updated_at = randomize("date")
     return instance
 
 
@@ -572,6 +606,14 @@ def create_models_server_example() -> ModelsServer:
     instance.status = randomize()
     instance.status_history = [create_models_status_history_example()]
     instance.termination_reason = randomize()
+    return instance
+
+
+def create_models_server_deployment_config_session_timeout_response_example() -> (
+    ModelsServerDeploymentConfigSessionTimeoutResponse
+):
+    instance = ModelsServerDeploymentConfigSessionTimeoutResponse()
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -643,6 +685,7 @@ def create_models_update_deployment_request_example() -> ModelsUpdateDeploymentR
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
+    instance.extendable_session = randomize("bool")
     return instance
 
 
@@ -685,6 +728,14 @@ def create_models_update_region_override_request_example() -> (
     instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
+    return instance
+
+
+def create_models_uploader_flag_example() -> ModelsUploaderFlag:
+    instance = ModelsUploaderFlag()
+    instance.name = randomize()
+    instance.shorthand = randomize()
+    instance.value = randomize()
     return instance
 
 

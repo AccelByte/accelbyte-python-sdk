@@ -59,6 +59,7 @@ def admin_get_player_attributes(
     - userID : platform userID
     - data : other data that the player wants to store.
     - currentPlatform : latest user game platform.
+    - roles : user role for matchmaking role base support.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/{userId}/attributes
@@ -118,6 +119,7 @@ async def admin_get_player_attributes_async(
     - userID : platform userID
     - data : other data that the player wants to store.
     - currentPlatform : latest user game platform.
+    - roles : user role for matchmaking role base support.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/{userId}/attributes
@@ -179,6 +181,7 @@ def admin_query_player_attributes(
     - userID : platform userID
     - data : other data that the player wants to store.
     - currentPlatform : latest user game platform.
+    - roles : user role for matchmaking role base support.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/attributes
@@ -238,6 +241,7 @@ async def admin_query_player_attributes_async(
     - userID : platform userID
     - data : other data that the player wants to store.
     - currentPlatform : latest user game platform.
+    - roles : user role for matchmaking role base support.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/attributes
@@ -392,6 +396,7 @@ def public_get_player_attributes(
     - userID : platform userID
     - data : other data that the player wants to store.
     - currentPlatform : latest user game platform.
+    - roles : user role for matchmaking role base support.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/users/me/attributes
@@ -447,6 +452,7 @@ async def public_get_player_attributes_async(
     - userID : platform userID
     - data : other data that the player wants to store.
     - currentPlatform : latest user game platform.
+    - roles : user role for matchmaking role base support.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/users/me/attributes
@@ -505,6 +511,7 @@ def public_store_player_attributes(
     - userID : platform userID
     - data : other data that the player wants to store.
     - currentPlatform : latest user game platform.
+    - roles : user role for matchmaking role base support.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/users/me/attributes
@@ -562,6 +569,7 @@ async def public_store_player_attributes_async(
     - userID : platform userID
     - data : other data that the player wants to store.
     - currentPlatform : latest user game platform.
+    - roles : user role for matchmaking role base support.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/users/me/attributes

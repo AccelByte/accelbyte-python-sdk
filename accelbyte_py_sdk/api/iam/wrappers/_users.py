@@ -18462,6 +18462,7 @@ async def public_list_user_all_platform_accounts_distinct_v3_async(
 def public_list_user_id_by_platform_user_i_ds_v3(
     body: ModelPlatformUserIDRequest,
     platform_id: str,
+    raw_puid: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -18493,6 +18494,8 @@ def public_list_user_id_by_platform_user_i_ds_v3(
 
         platform_id: (platformId) REQUIRED str in path
 
+        raw_puid: (rawPUID) OPTIONAL bool in query
+
     Responses:
         200: OK - AccountcommonUserPlatforms (OK)
 
@@ -18511,6 +18514,7 @@ def public_list_user_id_by_platform_user_i_ds_v3(
     request = PublicListUserIDByPlatformUserIDsV3.create(
         body=body,
         platform_id=platform_id,
+        raw_puid=raw_puid,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -18520,6 +18524,7 @@ def public_list_user_id_by_platform_user_i_ds_v3(
 async def public_list_user_id_by_platform_user_i_ds_v3_async(
     body: ModelPlatformUserIDRequest,
     platform_id: str,
+    raw_puid: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -18551,6 +18556,8 @@ async def public_list_user_id_by_platform_user_i_ds_v3_async(
 
         platform_id: (platformId) REQUIRED str in path
 
+        raw_puid: (rawPUID) OPTIONAL bool in query
+
     Responses:
         200: OK - AccountcommonUserPlatforms (OK)
 
@@ -18569,6 +18576,7 @@ async def public_list_user_id_by_platform_user_i_ds_v3_async(
     request = PublicListUserIDByPlatformUserIDsV3.create(
         body=body,
         platform_id=platform_id,
+        raw_puid=raw_puid,
         namespace=namespace,
     )
     return await run_request_async(

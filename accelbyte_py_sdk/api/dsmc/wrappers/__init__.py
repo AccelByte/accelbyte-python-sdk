@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.2.7"
+__version__ = "6.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -62,6 +62,8 @@ from ._config import update_port_async
 
 from ._deployment_config import create_deployment
 from ._deployment_config import create_deployment_async
+from ._deployment_config import create_deployment_client
+from ._deployment_config import create_deployment_client_async
 from ._deployment_config import create_deployment_override
 from ._deployment_config import create_deployment_override_async
 from ._deployment_config import create_override_region_override
@@ -70,6 +72,8 @@ from ._deployment_config import create_root_region_override
 from ._deployment_config import create_root_region_override_async
 from ._deployment_config import delete_deployment
 from ._deployment_config import delete_deployment_async
+from ._deployment_config import delete_deployment_client
+from ._deployment_config import delete_deployment_client_async
 from ._deployment_config import delete_deployment_override
 from ._deployment_config import delete_deployment_override_async
 from ._deployment_config import delete_override_region_override
@@ -78,6 +82,8 @@ from ._deployment_config import delete_root_region_override
 from ._deployment_config import delete_root_region_override_async
 from ._deployment_config import get_all_deployment
 from ._deployment_config import get_all_deployment_async
+from ._deployment_config import get_all_deployment_client
+from ._deployment_config import get_all_deployment_client_async
 from ._deployment_config import get_deployment
 from ._deployment_config import get_deployment_async
 from ._deployment_config import update_deployment
@@ -96,6 +102,8 @@ from ._image_config import create_image
 from ._image_config import create_image_async
 from ._image_config import create_image_patch
 from ._image_config import create_image_patch_async
+from ._image_config import create_repository
+from ._image_config import create_repository_async
 from ._image_config import delete_image
 from ._image_config import delete_image_async
 from ._image_config import delete_image_patch
@@ -110,6 +118,8 @@ from ._image_config import get_image_patch_detail
 from ._image_config import get_image_patch_detail_async
 from ._image_config import get_image_patches
 from ._image_config import get_image_patches_async
+from ._image_config import get_repository
+from ._image_config import get_repository_async
 from ._image_config import image_detail_client
 from ._image_config import image_detail_client_async
 from ._image_config import image_limit_client
@@ -123,10 +133,16 @@ from ._image_config import update_image_async
 
 from ._pod_config import create_pod_config
 from ._pod_config import create_pod_config_async
+from ._pod_config import create_pod_config_client
+from ._pod_config import create_pod_config_client_async
 from ._pod_config import delete_pod_config
 from ._pod_config import delete_pod_config_async
+from ._pod_config import delete_pod_config_client
+from ._pod_config import delete_pod_config_client_async
 from ._pod_config import get_all_pod_config
 from ._pod_config import get_all_pod_config_async
+from ._pod_config import get_all_pod_config_client
+from ._pod_config import get_all_pod_config_client_async
 from ._pod_config import get_lowest_instance_spec
 from ._pod_config import get_lowest_instance_spec_async
 from ._pod_config import get_pod_config
@@ -145,13 +161,21 @@ from ._server import deregister_local_server
 from ._server import deregister_local_server_async
 from ._server import get_server_session
 from ._server import get_server_session_async
+from ._server import get_server_session_timeout
+from ._server import get_server_session_timeout_async
+from ._server import list_server_client
+from ._server import list_server_client_async
 from ._server import register_local_server
 from ._server import register_local_server_async
 from ._server import register_server
 from ._server import register_server_async
+from ._server import server_heartbeat
+from ._server import server_heartbeat_async
 from ._server import shutdown_server
 from ._server import shutdown_server_async
 
+from ._session import cancel_session
+from ._session import cancel_session_async
 from ._session import claim_server
 from ._session import claim_server_async
 from ._session import create_session

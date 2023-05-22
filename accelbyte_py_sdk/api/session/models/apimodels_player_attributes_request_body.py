@@ -41,6 +41,8 @@ class ApimodelsPlayerAttributesRequestBody(Model):
         data: (data) REQUIRED Dict[str, Any]
 
         platforms: (platforms) REQUIRED List[ModelsUserPlatformInfo]
+
+        roles: (roles) OPTIONAL List[str]
     """
 
     # region fields
@@ -49,6 +51,7 @@ class ApimodelsPlayerAttributesRequestBody(Model):
     current_platform: str  # REQUIRED
     data: Dict[str, Any]  # REQUIRED
     platforms: List[ModelsUserPlatformInfo]  # REQUIRED
+    roles: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -72,6 +75,10 @@ class ApimodelsPlayerAttributesRequestBody(Model):
         self, value: List[ModelsUserPlatformInfo]
     ) -> ApimodelsPlayerAttributesRequestBody:
         self.platforms = value
+        return self
+
+    def with_roles(self, value: List[str]) -> ApimodelsPlayerAttributesRequestBody:
+        self.roles = value
         return self
 
     # endregion with_x methods
@@ -98,6 +105,10 @@ class ApimodelsPlayerAttributesRequestBody(Model):
             ]
         elif include_empty:
             result["platforms"] = []
+        if hasattr(self, "roles"):
+            result["roles"] = [str(i0) for i0 in self.roles]
+        elif include_empty:
+            result["roles"] = []
         return result
 
     # endregion to methods
@@ -111,6 +122,7 @@ class ApimodelsPlayerAttributesRequestBody(Model):
         current_platform: str,
         data: Dict[str, Any],
         platforms: List[ModelsUserPlatformInfo],
+        roles: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsPlayerAttributesRequestBody:
         instance = cls()
@@ -118,6 +130,8 @@ class ApimodelsPlayerAttributesRequestBody(Model):
         instance.current_platform = current_platform
         instance.data = data
         instance.platforms = platforms
+        if roles is not None:
+            instance.roles = roles
         return instance
 
     @classmethod
@@ -146,6 +160,10 @@ class ApimodelsPlayerAttributesRequestBody(Model):
             ]
         elif include_empty:
             instance.platforms = []
+        if "roles" in dict_ and dict_["roles"] is not None:
+            instance.roles = [str(i0) for i0 in dict_["roles"]]
+        elif include_empty:
+            instance.roles = []
         return instance
 
     @classmethod
@@ -193,6 +211,7 @@ class ApimodelsPlayerAttributesRequestBody(Model):
             "currentPlatform": "current_platform",
             "data": "data",
             "platforms": "platforms",
+            "roles": "roles",
         }
 
     @staticmethod
@@ -202,6 +221,7 @@ class ApimodelsPlayerAttributesRequestBody(Model):
             "currentPlatform": True,
             "data": True,
             "platforms": True,
+            "roles": False,
         }
 
     # endregion static methods

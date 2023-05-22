@@ -40,6 +40,8 @@ class HandlersUserPresence(Model):
 
         namespace: (namespace) REQUIRED str
 
+        platform: (platform) REQUIRED str
+
         user_id: (userID) REQUIRED str
     """
 
@@ -49,6 +51,7 @@ class HandlersUserPresence(Model):
     availability: str  # REQUIRED
     last_seen_at: str  # REQUIRED
     namespace: str  # REQUIRED
+    platform: str  # REQUIRED
     user_id: str  # REQUIRED
 
     # endregion fields
@@ -69,6 +72,10 @@ class HandlersUserPresence(Model):
 
     def with_namespace(self, value: str) -> HandlersUserPresence:
         self.namespace = value
+        return self
+
+    def with_platform(self, value: str) -> HandlersUserPresence:
+        self.platform = value
         return self
 
     def with_user_id(self, value: str) -> HandlersUserPresence:
@@ -97,6 +104,10 @@ class HandlersUserPresence(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "platform"):
+            result["platform"] = str(self.platform)
+        elif include_empty:
+            result["platform"] = ""
         if hasattr(self, "user_id"):
             result["userID"] = str(self.user_id)
         elif include_empty:
@@ -114,6 +125,7 @@ class HandlersUserPresence(Model):
         availability: str,
         last_seen_at: str,
         namespace: str,
+        platform: str,
         user_id: str,
         **kwargs,
     ) -> HandlersUserPresence:
@@ -122,6 +134,7 @@ class HandlersUserPresence(Model):
         instance.availability = availability
         instance.last_seen_at = last_seen_at
         instance.namespace = namespace
+        instance.platform = platform
         instance.user_id = user_id
         return instance
 
@@ -148,6 +161,10 @@ class HandlersUserPresence(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "platform" in dict_ and dict_["platform"] is not None:
+            instance.platform = str(dict_["platform"])
+        elif include_empty:
+            instance.platform = ""
         if "userID" in dict_ and dict_["userID"] is not None:
             instance.user_id = str(dict_["userID"])
         elif include_empty:
@@ -199,6 +216,7 @@ class HandlersUserPresence(Model):
             "availability": "availability",
             "lastSeenAt": "last_seen_at",
             "namespace": "namespace",
+            "platform": "platform",
             "userID": "user_id",
         }
 
@@ -209,6 +227,7 @@ class HandlersUserPresence(Model):
             "availability": True,
             "lastSeenAt": True,
             "namespace": True,
+            "platform": True,
             "userID": True,
         }
 

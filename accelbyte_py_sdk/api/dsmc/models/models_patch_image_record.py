@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.2.7)
+# AccelByte Gaming Services Dsm Controller Service (6.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,8 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+
+from ..models.models_uploader_flag import ModelsUploaderFlag
 
 
 class ModelsPatchImageRecord(Model):
@@ -52,6 +54,8 @@ class ModelsPatchImageRecord(Model):
 
         updated_at: (updatedAt) REQUIRED str
 
+        uploader_flags: (uploaderFlags) REQUIRED List[ModelsUploaderFlag]
+
         version: (version) REQUIRED str
     """
 
@@ -67,6 +71,7 @@ class ModelsPatchImageRecord(Model):
     patch_version: str  # REQUIRED
     persistent: bool  # REQUIRED
     updated_at: str  # REQUIRED
+    uploader_flags: List[ModelsUploaderFlag]  # REQUIRED
     version: str  # REQUIRED
 
     # endregion fields
@@ -111,6 +116,12 @@ class ModelsPatchImageRecord(Model):
 
     def with_updated_at(self, value: str) -> ModelsPatchImageRecord:
         self.updated_at = value
+        return self
+
+    def with_uploader_flags(
+        self, value: List[ModelsUploaderFlag]
+    ) -> ModelsPatchImageRecord:
+        self.uploader_flags = value
         return self
 
     def with_version(self, value: str) -> ModelsPatchImageRecord:
@@ -163,6 +174,12 @@ class ModelsPatchImageRecord(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "uploader_flags"):
+            result["uploaderFlags"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.uploader_flags
+            ]
+        elif include_empty:
+            result["uploaderFlags"] = []
         if hasattr(self, "version"):
             result["version"] = str(self.version)
         elif include_empty:
@@ -186,6 +203,7 @@ class ModelsPatchImageRecord(Model):
         patch_version: str,
         persistent: bool,
         updated_at: str,
+        uploader_flags: List[ModelsUploaderFlag],
         version: str,
         **kwargs,
     ) -> ModelsPatchImageRecord:
@@ -200,6 +218,7 @@ class ModelsPatchImageRecord(Model):
         instance.patch_version = patch_version
         instance.persistent = persistent
         instance.updated_at = updated_at
+        instance.uploader_flags = uploader_flags
         instance.version = version
         return instance
 
@@ -250,6 +269,13 @@ class ModelsPatchImageRecord(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "uploaderFlags" in dict_ and dict_["uploaderFlags"] is not None:
+            instance.uploader_flags = [
+                ModelsUploaderFlag.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["uploaderFlags"]
+            ]
+        elif include_empty:
+            instance.uploader_flags = []
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = str(dict_["version"])
         elif include_empty:
@@ -307,6 +333,7 @@ class ModelsPatchImageRecord(Model):
             "patchVersion": "patch_version",
             "persistent": "persistent",
             "updatedAt": "updated_at",
+            "uploaderFlags": "uploader_flags",
             "version": "version",
         }
 
@@ -323,6 +350,7 @@ class ModelsPatchImageRecord(Model):
             "patchVersion": True,
             "persistent": True,
             "updatedAt": True,
+            "uploaderFlags": True,
             "version": True,
         }
 

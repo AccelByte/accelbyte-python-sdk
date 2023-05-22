@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Dsm Controller Service (6.2.7)
+# AccelByte Gaming Services Dsm Controller Service (6.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,14 +35,14 @@ from ...models import ResponseError
 class DeleteDeployment(Operation):
     """Delete Deployment (DeleteDeployment)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
 
     Required scope: social
 
     This endpoint delete a dedicated server deployment in a namespace
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
 
     Required Scope(s):
         - social

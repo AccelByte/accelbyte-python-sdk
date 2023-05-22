@@ -40,14 +40,17 @@ from ..models import ModelsUpdateRegionOverrideRequest
 from ..models import ResponseError
 
 from ..operations.deployment_config import CreateDeployment
+from ..operations.deployment_config import CreateDeploymentClient
 from ..operations.deployment_config import CreateDeploymentOverride
 from ..operations.deployment_config import CreateOverrideRegionOverride
 from ..operations.deployment_config import CreateRootRegionOverride
 from ..operations.deployment_config import DeleteDeployment
+from ..operations.deployment_config import DeleteDeploymentClient
 from ..operations.deployment_config import DeleteDeploymentOverride
 from ..operations.deployment_config import DeleteOverrideRegionOverride
 from ..operations.deployment_config import DeleteRootRegionOverride
 from ..operations.deployment_config import GetAllDeployment
+from ..operations.deployment_config import GetAllDeploymentClient
 from ..operations.deployment_config import GetDeployment
 from ..operations.deployment_config import UpdateDeployment
 from ..operations.deployment_config import UpdateDeploymentOverride
@@ -176,6 +179,136 @@ async def create_deployment_async(
         if error:
             return None, error
     request = CreateDeployment.create(
+        body=body,
+        deployment=deployment,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(CreateDeploymentClient)
+def create_deployment_client(
+    body: ModelsCreateDeploymentRequest,
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create deployment for client (CreateDeploymentClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint create a dedicated servers deployment in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: POST
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateDeploymentRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDeploymentWithOverride (deployment created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (deployment already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreateDeploymentClient.create(
+        body=body,
+        deployment=deployment,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CreateDeploymentClient)
+async def create_deployment_client_async(
+    body: ModelsCreateDeploymentRequest,
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create deployment for client (CreateDeploymentClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint create a dedicated servers deployment in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: POST
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateDeploymentRequest in body
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsDeploymentWithOverride (deployment created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (deployment already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreateDeploymentClient.create(
         body=body,
         deployment=deployment,
         namespace=namespace,
@@ -628,14 +761,14 @@ def delete_deployment(
 ):
     """Delete Deployment (DeleteDeployment)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
 
     Required scope: social
 
     This endpoint delete a dedicated server deployment in a namespace
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
 
     Required Scope(s):
         - social
@@ -688,14 +821,14 @@ async def delete_deployment_async(
 ):
     """Delete Deployment (DeleteDeployment)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
 
     Required scope: social
 
     This endpoint delete a dedicated server deployment in a namespace
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
 
     Required Scope(s):
         - social
@@ -733,6 +866,128 @@ async def delete_deployment_async(
         if error:
             return None, error
     request = DeleteDeployment.create(
+        deployment=deployment,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteDeploymentClient)
+def delete_deployment_client(
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete Deployment for client (DeleteDeploymentClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment in a namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: DELETE
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteDeploymentClient.create(
+        deployment=deployment,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteDeploymentClient)
+async def delete_deployment_client_async(
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete Deployment for client (DeleteDeploymentClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server deployment in a namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
+
+        method: DELETE
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        deployment: (deployment) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (deployment not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteDeploymentClient.create(
         deployment=deployment,
         namespace=namespace,
     )
@@ -1277,6 +1532,144 @@ async def get_all_deployment_async(
     )
 
 
+@same_doc_as(GetAllDeploymentClient)
+def get_all_deployment_client(
+    count: int,
+    offset: int,
+    name: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get All Deployments for client (GetAllDeploymentClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a all deployments in a namespace
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/deployments
+
+        method: GET
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        name: (name) OPTIONAL str in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListDeploymentResponse (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetAllDeploymentClient.create(
+        count=count,
+        offset=offset,
+        name=name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetAllDeploymentClient)
+async def get_all_deployment_client_async(
+    count: int,
+    offset: int,
+    name: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get All Deployments for client (GetAllDeploymentClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a all deployments in a namespace
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/deployments
+
+        method: GET
+
+        tags: ["Deployment Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        name: (name) OPTIONAL str in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListDeploymentResponse (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetAllDeploymentClient.create(
+        count=count,
+        offset=offset,
+        name=name,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetDeployment)
 def get_deployment(
     deployment: str,
@@ -1449,6 +1842,8 @@ def update_deployment(
 
         404: Not Found - ResponseError (config not found)
 
+        422: Unprocessable Entity - ResponseError (invalid game version)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
@@ -1512,6 +1907,8 @@ async def update_deployment_async(
         401: Unauthorized - ResponseError (Unauthorized)
 
         404: Not Found - ResponseError (config not found)
+
+        422: Unprocessable Entity - ResponseError (invalid game version)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """

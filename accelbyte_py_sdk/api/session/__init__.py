@@ -15,18 +15,26 @@ __email__ = "dev@accelbyte.net"
 # pylint: disable=line-too-long
 
 # configuration_template
+from .wrappers import admin_create_configuration_alert_v1
+from .wrappers import admin_create_configuration_alert_v1_async
 from .wrappers import admin_create_configuration_template_v1
 from .wrappers import admin_create_configuration_template_v1_async
+from .wrappers import admin_delete_configuration_alert_v1
+from .wrappers import admin_delete_configuration_alert_v1_async
 from .wrappers import admin_delete_configuration_template_v1
 from .wrappers import admin_delete_configuration_template_v1_async
 from .wrappers import admin_get_all_configuration_templates_v1
 from .wrappers import admin_get_all_configuration_templates_v1_async
+from .wrappers import admin_get_configuration_alert_v1
+from .wrappers import admin_get_configuration_alert_v1_async
 from .wrappers import admin_get_configuration_template_v1
 from .wrappers import admin_get_configuration_template_v1_async
 from .wrappers import admin_get_dsmc_configuration
 from .wrappers import admin_get_dsmc_configuration_async
 from .wrappers import admin_sync_dsmc_configuration
 from .wrappers import admin_sync_dsmc_configuration_async
+from .wrappers import admin_update_configuration_alert_v1
+from .wrappers import admin_update_configuration_alert_v1_async
 from .wrappers import admin_update_configuration_template_v1
 from .wrappers import admin_update_configuration_template_v1_async
 

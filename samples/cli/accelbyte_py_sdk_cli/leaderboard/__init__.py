@@ -127,9 +127,13 @@ from ._hard_delete_leaderboard_admin_v3 import hard_delete_leaderboard_admin_v3
 from ._delete_user_ranking_by_leaderboard_code_admin_v3 import (
     delete_user_ranking_by_leaderboard_code_admin_v3,
 )
+from ._get_hidden_users_v3 import get_hidden_users_v3
 from ._get_user_ranking_admin_v3 import get_user_ranking_admin_v3
 from ._delete_user_ranking_admin_v3 import delete_user_ranking_admin_v3
+from ._get_user_visibility_status_v3 import get_user_visibility_status_v3
+from ._set_user_leaderboard_visibility_v3 import set_user_leaderboard_visibility_v3
 from ._delete_user_rankings_admin_v3 import delete_user_rankings_admin_v3
+from ._set_user_visibility_v3 import set_user_visibility_v3
 from ._get_leaderboard_configurations_public_v3 import (
     get_leaderboard_configurations_public_v3,
 )
@@ -193,9 +197,13 @@ commands = [
     get_current_cycle_leaderboard_ranking_admin_v3,
     hard_delete_leaderboard_admin_v3,
     delete_user_ranking_by_leaderboard_code_admin_v3,
+    get_hidden_users_v3,
     get_user_ranking_admin_v3,
     delete_user_ranking_admin_v3,
+    get_user_visibility_status_v3,
+    set_user_leaderboard_visibility_v3,
     delete_user_rankings_admin_v3,
+    set_user_visibility_v3,
     get_leaderboard_configurations_public_v3,
     get_leaderboard_configuration_public_v3,
     get_all_time_leaderboard_ranking_public_v3,

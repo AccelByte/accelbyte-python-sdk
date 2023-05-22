@@ -54,6 +54,12 @@ class ApimodelsPublicConfiguration(Model):
 
         type_: (type) REQUIRED str
 
+        ds_source: (dsSource) OPTIONAL str
+
+        fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
+
+        preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
+
         requested_regions: (requestedRegions) OPTIONAL List[str]
     """
 
@@ -70,6 +76,9 @@ class ApimodelsPublicConfiguration(Model):
     persistent: bool  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
+    ds_source: str  # OPTIONAL
+    fallback_claim_keys: List[str]  # OPTIONAL
+    preferred_claim_keys: List[str]  # OPTIONAL
     requested_regions: List[str]  # OPTIONAL
 
     # endregion fields
@@ -118,6 +127,22 @@ class ApimodelsPublicConfiguration(Model):
 
     def with_type(self, value: str) -> ApimodelsPublicConfiguration:
         self.type_ = value
+        return self
+
+    def with_ds_source(self, value: str) -> ApimodelsPublicConfiguration:
+        self.ds_source = value
+        return self
+
+    def with_fallback_claim_keys(
+        self, value: List[str]
+    ) -> ApimodelsPublicConfiguration:
+        self.fallback_claim_keys = value
+        return self
+
+    def with_preferred_claim_keys(
+        self, value: List[str]
+    ) -> ApimodelsPublicConfiguration:
+        self.preferred_claim_keys = value
         return self
 
     def with_requested_regions(self, value: List[str]) -> ApimodelsPublicConfiguration:
@@ -174,6 +199,18 @@ class ApimodelsPublicConfiguration(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "ds_source"):
+            result["dsSource"] = str(self.ds_source)
+        elif include_empty:
+            result["dsSource"] = ""
+        if hasattr(self, "fallback_claim_keys"):
+            result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
+        elif include_empty:
+            result["fallbackClaimKeys"] = []
+        if hasattr(self, "preferred_claim_keys"):
+            result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
+        elif include_empty:
+            result["preferredClaimKeys"] = []
         if hasattr(self, "requested_regions"):
             result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
         elif include_empty:
@@ -198,6 +235,9 @@ class ApimodelsPublicConfiguration(Model):
         persistent: bool,
         text_chat: bool,
         type_: str,
+        ds_source: Optional[str] = None,
+        fallback_claim_keys: Optional[List[str]] = None,
+        preferred_claim_keys: Optional[List[str]] = None,
         requested_regions: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsPublicConfiguration:
@@ -213,6 +253,12 @@ class ApimodelsPublicConfiguration(Model):
         instance.persistent = persistent
         instance.text_chat = text_chat
         instance.type_ = type_
+        if ds_source is not None:
+            instance.ds_source = ds_source
+        if fallback_claim_keys is not None:
+            instance.fallback_claim_keys = fallback_claim_keys
+        if preferred_claim_keys is not None:
+            instance.preferred_claim_keys = preferred_claim_keys
         if requested_regions is not None:
             instance.requested_regions = requested_regions
         return instance
@@ -268,6 +314,22 @@ class ApimodelsPublicConfiguration(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "dsSource" in dict_ and dict_["dsSource"] is not None:
+            instance.ds_source = str(dict_["dsSource"])
+        elif include_empty:
+            instance.ds_source = ""
+        if "fallbackClaimKeys" in dict_ and dict_["fallbackClaimKeys"] is not None:
+            instance.fallback_claim_keys = [
+                str(i0) for i0 in dict_["fallbackClaimKeys"]
+            ]
+        elif include_empty:
+            instance.fallback_claim_keys = []
+        if "preferredClaimKeys" in dict_ and dict_["preferredClaimKeys"] is not None:
+            instance.preferred_claim_keys = [
+                str(i0) for i0 in dict_["preferredClaimKeys"]
+            ]
+        elif include_empty:
+            instance.preferred_claim_keys = []
         if "requestedRegions" in dict_ and dict_["requestedRegions"] is not None:
             instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
         elif include_empty:
@@ -326,6 +388,9 @@ class ApimodelsPublicConfiguration(Model):
             "persistent": "persistent",
             "textChat": "text_chat",
             "type": "type_",
+            "dsSource": "ds_source",
+            "fallbackClaimKeys": "fallback_claim_keys",
+            "preferredClaimKeys": "preferred_claim_keys",
             "requestedRegions": "requested_regions",
         }
 
@@ -343,6 +408,9 @@ class ApimodelsPublicConfiguration(Model):
             "persistent": True,
             "textChat": True,
             "type": True,
+            "dsSource": False,
+            "fallbackClaimKeys": False,
+            "preferredClaimKeys": False,
             "requestedRegions": False,
         }
 

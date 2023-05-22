@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.2.7)
+# AccelByte Gaming Services Dsm Controller Service (6.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_uploader_flag import ModelsUploaderFlag
+
 
 class ModelsCreateImagePatchRequest(Model):
     """Models create image patch request (models.CreateImagePatchRequest)
@@ -46,6 +48,8 @@ class ModelsCreateImagePatchRequest(Model):
 
         persistent: (persistent) REQUIRED bool
 
+        uploader_flags: (uploaderFlags) REQUIRED List[ModelsUploaderFlag]
+
         version: (version) REQUIRED str
     """
 
@@ -58,6 +62,7 @@ class ModelsCreateImagePatchRequest(Model):
     namespace: str  # REQUIRED
     patch_version: str  # REQUIRED
     persistent: bool  # REQUIRED
+    uploader_flags: List[ModelsUploaderFlag]  # REQUIRED
     version: str  # REQUIRED
 
     # endregion fields
@@ -90,6 +95,12 @@ class ModelsCreateImagePatchRequest(Model):
 
     def with_persistent(self, value: bool) -> ModelsCreateImagePatchRequest:
         self.persistent = value
+        return self
+
+    def with_uploader_flags(
+        self, value: List[ModelsUploaderFlag]
+    ) -> ModelsCreateImagePatchRequest:
+        self.uploader_flags = value
         return self
 
     def with_version(self, value: str) -> ModelsCreateImagePatchRequest:
@@ -130,6 +141,12 @@ class ModelsCreateImagePatchRequest(Model):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
             result["persistent"] = False
+        if hasattr(self, "uploader_flags"):
+            result["uploaderFlags"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.uploader_flags
+            ]
+        elif include_empty:
+            result["uploaderFlags"] = []
         if hasattr(self, "version"):
             result["version"] = str(self.version)
         elif include_empty:
@@ -150,6 +167,7 @@ class ModelsCreateImagePatchRequest(Model):
         namespace: str,
         patch_version: str,
         persistent: bool,
+        uploader_flags: List[ModelsUploaderFlag],
         version: str,
         **kwargs,
     ) -> ModelsCreateImagePatchRequest:
@@ -161,6 +179,7 @@ class ModelsCreateImagePatchRequest(Model):
         instance.namespace = namespace
         instance.patch_version = patch_version
         instance.persistent = persistent
+        instance.uploader_flags = uploader_flags
         instance.version = version
         return instance
 
@@ -199,6 +218,13 @@ class ModelsCreateImagePatchRequest(Model):
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
             instance.persistent = False
+        if "uploaderFlags" in dict_ and dict_["uploaderFlags"] is not None:
+            instance.uploader_flags = [
+                ModelsUploaderFlag.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["uploaderFlags"]
+            ]
+        elif include_empty:
+            instance.uploader_flags = []
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = str(dict_["version"])
         elif include_empty:
@@ -253,6 +279,7 @@ class ModelsCreateImagePatchRequest(Model):
             "namespace": "namespace",
             "patchVersion": "patch_version",
             "persistent": "persistent",
+            "uploaderFlags": "uploader_flags",
             "version": "version",
         }
 
@@ -266,6 +293,7 @@ class ModelsCreateImagePatchRequest(Model):
             "namespace": True,
             "patchVersion": True,
             "persistent": True,
+            "uploaderFlags": True,
             "version": True,
         }
 

@@ -11,6 +11,10 @@
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
 from ._admin_get_dsmc_configuration_default import admin_get_dsmc_configuration_default
+from ._admin_get_configuration_alert_v1 import admin_get_configuration_alert_v1
+from ._admin_update_configuration_alert_v1 import admin_update_configuration_alert_v1
+from ._admin_create_configuration_alert_v1 import admin_create_configuration_alert_v1
+from ._admin_delete_configuration_alert_v1 import admin_delete_configuration_alert_v1
 from ._admin_create_configuration_template_v1 import (
     admin_create_configuration_template_v1,
 )
@@ -71,6 +75,10 @@ commands = [
     get_healthcheck_info,
     get_healthcheck_info_v1,
     admin_get_dsmc_configuration_default,
+    admin_get_configuration_alert_v1,
+    admin_update_configuration_alert_v1,
+    admin_create_configuration_alert_v1,
+    admin_delete_configuration_alert_v1,
     admin_create_configuration_template_v1,
     admin_get_all_configuration_templates_v1,
     admin_get_configuration_template_v1,

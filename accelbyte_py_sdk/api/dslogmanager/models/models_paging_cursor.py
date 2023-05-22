@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ds Log Manager Service (3.2.0)
+# AccelByte Gaming Services Ds Log Manager Service (3.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

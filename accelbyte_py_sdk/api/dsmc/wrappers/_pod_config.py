@@ -37,8 +37,11 @@ from ..models import ModelsUpdatePodConfigRequest
 from ..models import ResponseError
 
 from ..operations.pod_config import CreatePodConfig
+from ..operations.pod_config import CreatePodConfigClient
 from ..operations.pod_config import DeletePodConfig
+from ..operations.pod_config import DeletePodConfigClient
 from ..operations.pod_config import GetAllPodConfig
+from ..operations.pod_config import GetAllPodConfigClient
 from ..operations.pod_config import GetLowestInstanceSpec
 from ..operations.pod_config import GetPodConfig
 from ..operations.pod_config import UpdatePodConfig
@@ -174,6 +177,136 @@ async def create_pod_config_async(
     )
 
 
+@same_doc_as(CreatePodConfigClient)
+def create_pod_config_client(
+    body: ModelsCreatePodConfigRequest,
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create pod config for client (CreatePodConfigClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint create a dedicated servers pod config in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/pods/{name}
+
+        method: POST
+
+        tags: ["Pod Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreatePodConfigRequest in body
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsPodConfigRecord (pod config created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (pod config already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreatePodConfigClient.create(
+        body=body,
+        name=name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CreatePodConfigClient)
+async def create_pod_config_client_async(
+    body: ModelsCreatePodConfigRequest,
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create pod config for client (CreatePodConfigClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required scope: social
+
+    This endpoint create a dedicated servers pod config in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/pods/{name}
+
+        method: POST
+
+        tags: ["Pod Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreatePodConfigRequest in body
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsPodConfigRecord (pod config created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        409: Conflict - ResponseError (pod config already exists)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreatePodConfigClient.create(
+        body=body,
+        name=name,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(DeletePodConfig)
 def delete_pod_config(
     name: str,
@@ -292,6 +425,132 @@ async def delete_pod_config_async(
         if error:
             return None, error
     request = DeletePodConfig.create(
+        name=name,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeletePodConfigClient)
+def delete_pod_config_client(
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete pod config for client (DeletePodConfigClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server pod config in a namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/pods/{name}
+
+        method: DELETE
+
+        tags: ["Pod Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (pod config deleted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (pod config not found)
+
+        409: Conflict - ResponseError (pod config in use)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeletePodConfigClient.create(
+        name=name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeletePodConfigClient)
+async def delete_pod_config_client_async(
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete pod config for client (DeletePodConfigClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required scope: social
+
+    This endpoint delete a dedicated server pod config in a namespace
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/pods/{name}
+
+        method: DELETE
+
+        tags: ["Pod Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (pod config deleted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (pod config not found)
+
+        409: Conflict - ResponseError (pod config in use)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeletePodConfigClient.create(
         name=name,
         namespace=namespace,
     )
@@ -421,6 +680,136 @@ async def get_all_pod_config_async(
         if error:
             return None, error
     request = GetAllPodConfig.create(
+        count=count,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetAllPodConfigClient)
+def get_all_pod_config_client(
+    count: int,
+    offset: int,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get all pod configs for client (GetAllPodConfigClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a all pod configs in a namespace
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/pods
+
+        method: GET
+
+        tags: ["Pod Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListPodConfigResponse (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetAllPodConfigClient.create(
+        count=count,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetAllPodConfigClient)
+async def get_all_pod_config_client_async(
+    count: int,
+    offset: int,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get all pod configs for client (GetAllPodConfigClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a all pod configs in a namespace
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/configs/pods
+
+        method: GET
+
+        tags: ["Pod Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListPodConfigResponse (ok)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetAllPodConfigClient.create(
         count=count,
         offset=offset,
         namespace=namespace,

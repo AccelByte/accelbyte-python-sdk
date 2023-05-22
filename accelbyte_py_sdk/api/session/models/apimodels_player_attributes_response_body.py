@@ -42,6 +42,8 @@ class ApimodelsPlayerAttributesResponseBody(Model):
 
         platforms: (platforms) REQUIRED List[ModelsUserPlatformInfo]
 
+        roles: (roles) REQUIRED List[str]
+
         user_id: (userID) REQUIRED str
     """
 
@@ -51,6 +53,7 @@ class ApimodelsPlayerAttributesResponseBody(Model):
     current_platform: str  # REQUIRED
     data: Dict[str, Any]  # REQUIRED
     platforms: List[ModelsUserPlatformInfo]  # REQUIRED
+    roles: List[str]  # REQUIRED
     user_id: str  # REQUIRED
 
     # endregion fields
@@ -77,6 +80,10 @@ class ApimodelsPlayerAttributesResponseBody(Model):
         self, value: List[ModelsUserPlatformInfo]
     ) -> ApimodelsPlayerAttributesResponseBody:
         self.platforms = value
+        return self
+
+    def with_roles(self, value: List[str]) -> ApimodelsPlayerAttributesResponseBody:
+        self.roles = value
         return self
 
     def with_user_id(self, value: str) -> ApimodelsPlayerAttributesResponseBody:
@@ -107,6 +114,10 @@ class ApimodelsPlayerAttributesResponseBody(Model):
             ]
         elif include_empty:
             result["platforms"] = []
+        if hasattr(self, "roles"):
+            result["roles"] = [str(i0) for i0 in self.roles]
+        elif include_empty:
+            result["roles"] = []
         if hasattr(self, "user_id"):
             result["userID"] = str(self.user_id)
         elif include_empty:
@@ -124,6 +135,7 @@ class ApimodelsPlayerAttributesResponseBody(Model):
         current_platform: str,
         data: Dict[str, Any],
         platforms: List[ModelsUserPlatformInfo],
+        roles: List[str],
         user_id: str,
         **kwargs,
     ) -> ApimodelsPlayerAttributesResponseBody:
@@ -132,6 +144,7 @@ class ApimodelsPlayerAttributesResponseBody(Model):
         instance.current_platform = current_platform
         instance.data = data
         instance.platforms = platforms
+        instance.roles = roles
         instance.user_id = user_id
         return instance
 
@@ -161,6 +174,10 @@ class ApimodelsPlayerAttributesResponseBody(Model):
             ]
         elif include_empty:
             instance.platforms = []
+        if "roles" in dict_ and dict_["roles"] is not None:
+            instance.roles = [str(i0) for i0 in dict_["roles"]]
+        elif include_empty:
+            instance.roles = []
         if "userID" in dict_ and dict_["userID"] is not None:
             instance.user_id = str(dict_["userID"])
         elif include_empty:
@@ -212,6 +229,7 @@ class ApimodelsPlayerAttributesResponseBody(Model):
             "currentPlatform": "current_platform",
             "data": "data",
             "platforms": "platforms",
+            "roles": "roles",
             "userID": "user_id",
         }
 
@@ -222,6 +240,7 @@ class ApimodelsPlayerAttributesResponseBody(Model):
             "currentPlatform": True,
             "data": True,
             "platforms": True,
+            "roles": True,
             "userID": True,
         }
 

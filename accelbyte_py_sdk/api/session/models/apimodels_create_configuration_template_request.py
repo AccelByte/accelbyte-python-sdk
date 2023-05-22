@@ -58,7 +58,13 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
 
         type_: (type) REQUIRED str
 
+        ds_source: (dsSource) OPTIONAL str
+
+        fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
+
         native_session_setting: (NativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
+
+        preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
     """
 
     # region fields
@@ -75,7 +81,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
     requested_regions: List[str]  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
+    ds_source: str  # OPTIONAL
+    fallback_claim_keys: List[str]  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
+    preferred_claim_keys: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -149,10 +158,26 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         self.type_ = value
         return self
 
+    def with_ds_source(self, value: str) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.ds_source = value
+        return self
+
+    def with_fallback_claim_keys(
+        self, value: List[str]
+    ) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.fallback_claim_keys = value
+        return self
+
     def with_native_session_setting(
         self, value: ModelsNativeSessionSetting
     ) -> ApimodelsCreateConfigurationTemplateRequest:
         self.native_session_setting = value
+        return self
+
+    def with_preferred_claim_keys(
+        self, value: List[str]
+    ) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.preferred_claim_keys = value
         return self
 
     # endregion with_x methods
@@ -209,12 +234,24 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "ds_source"):
+            result["dsSource"] = str(self.ds_source)
+        elif include_empty:
+            result["dsSource"] = ""
+        if hasattr(self, "fallback_claim_keys"):
+            result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
+        elif include_empty:
+            result["fallbackClaimKeys"] = []
         if hasattr(self, "native_session_setting"):
             result["NativeSessionSetting"] = self.native_session_setting.to_dict(
                 include_empty=include_empty
             )
         elif include_empty:
             result["NativeSessionSetting"] = ModelsNativeSessionSetting()
+        if hasattr(self, "preferred_claim_keys"):
+            result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
+        elif include_empty:
+            result["preferredClaimKeys"] = []
         return result
 
     # endregion to methods
@@ -236,7 +273,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         requested_regions: List[str],
         text_chat: bool,
         type_: str,
+        ds_source: Optional[str] = None,
+        fallback_claim_keys: Optional[List[str]] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
+        preferred_claim_keys: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsCreateConfigurationTemplateRequest:
         instance = cls()
@@ -252,8 +292,14 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         instance.requested_regions = requested_regions
         instance.text_chat = text_chat
         instance.type_ = type_
+        if ds_source is not None:
+            instance.ds_source = ds_source
+        if fallback_claim_keys is not None:
+            instance.fallback_claim_keys = fallback_claim_keys
         if native_session_setting is not None:
             instance.native_session_setting = native_session_setting
+        if preferred_claim_keys is not None:
+            instance.preferred_claim_keys = preferred_claim_keys
         return instance
 
     @classmethod
@@ -311,6 +357,16 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "dsSource" in dict_ and dict_["dsSource"] is not None:
+            instance.ds_source = str(dict_["dsSource"])
+        elif include_empty:
+            instance.ds_source = ""
+        if "fallbackClaimKeys" in dict_ and dict_["fallbackClaimKeys"] is not None:
+            instance.fallback_claim_keys = [
+                str(i0) for i0 in dict_["fallbackClaimKeys"]
+            ]
+        elif include_empty:
+            instance.fallback_claim_keys = []
         if (
             "NativeSessionSetting" in dict_
             and dict_["NativeSessionSetting"] is not None
@@ -322,6 +378,12 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             )
         elif include_empty:
             instance.native_session_setting = ModelsNativeSessionSetting()
+        if "preferredClaimKeys" in dict_ and dict_["preferredClaimKeys"] is not None:
+            instance.preferred_claim_keys = [
+                str(i0) for i0 in dict_["preferredClaimKeys"]
+            ]
+        elif include_empty:
+            instance.preferred_claim_keys = []
         return instance
 
     @classmethod
@@ -377,7 +439,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "requestedRegions": "requested_regions",
             "textChat": "text_chat",
             "type": "type_",
+            "dsSource": "ds_source",
+            "fallbackClaimKeys": "fallback_claim_keys",
             "NativeSessionSetting": "native_session_setting",
+            "preferredClaimKeys": "preferred_claim_keys",
         }
 
     @staticmethod
@@ -395,7 +460,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "requestedRegions": True,
             "textChat": True,
             "type": True,
+            "dsSource": False,
+            "fallbackClaimKeys": False,
             "NativeSessionSetting": False,
+            "preferredClaimKeys": False,
         }
 
     # endregion static methods

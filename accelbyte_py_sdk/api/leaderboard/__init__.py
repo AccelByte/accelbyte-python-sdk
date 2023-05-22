@@ -137,3 +137,13 @@ from .wrappers import set_user_leaderboard_visibility_status_v2
 from .wrappers import set_user_leaderboard_visibility_status_v2_async
 from .wrappers import set_user_visibility_status_v2
 from .wrappers import set_user_visibility_status_v2_async
+
+# user_visibility_v3
+from .wrappers import get_hidden_users_v3
+from .wrappers import get_hidden_users_v3_async
+from .wrappers import get_user_visibility_status_v3
+from .wrappers import get_user_visibility_status_v3_async
+from .wrappers import set_user_leaderboard_visibility_v3
+from .wrappers import set_user_leaderboard_visibility_v3_async
+from .wrappers import set_user_visibility_v3
+from .wrappers import set_user_visibility_v3_async

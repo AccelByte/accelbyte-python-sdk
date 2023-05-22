@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Dsm Controller Service (6.2.7)
+# AccelByte Gaming Services Dsm Controller Service (6.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -76,6 +76,8 @@ class RegisterServer(Operation):
         400: Bad Request - ResponseError (malformed request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (allocation not found)
 
         409: Conflict - ResponseError (server with same name already registered)
 
@@ -195,6 +197,8 @@ class RegisterServer(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (allocation not found)
+
         409: Conflict - ResponseError (server with same name already registered)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -217,6 +221,8 @@ class RegisterServer(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 404:
             return None, ResponseError.create_from_dict(content)
         if code == 409:
             return None, ResponseError.create_from_dict(content)

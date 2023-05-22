@@ -45,8 +45,9 @@ class CreateGameSession(Operation):
     - maxPlayers
     - inviteTimeout
     - inactiveTimeout
+    - dsSource
 
-    When the session type is a DS, a DS creation request will be sent to DSMC if number of active players reaches session's minPlayers.
+    When the session type is a DS, a DS creation request will be sent if number of active players reaches session's minPlayers.
 
     Active user is a user who present within the session, has status CONNECTED/JOINED.
 
@@ -55,6 +56,12 @@ class CreateGameSession(Operation):
     - REQUESTED: DS is being requested to DSMC.
     - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
     - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    By default, DS requests are sent to DSMC, but if dsSource is set to "AMS":
+    - A DS will be requested from AMS instead of DSMC.
+    - The server will be chosen based on a set of claim keys, in order of preference, to match with fleets.
+    - The claim key list is built build from the preferredClaimKeys, fallbackClaimKeys, and clientVersion as follows:
+    [preferredClaimKeys.., clientVersion, fallbackClaimKeys...]
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesession

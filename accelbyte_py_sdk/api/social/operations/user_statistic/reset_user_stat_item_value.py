@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.6.0)
+# AccelByte Gaming Services Social Service (2.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -32,6 +32,7 @@ from .....core import HttpResponse
 from ...models import ErrorEntity
 from ...models import StatItemIncResult
 from ...models import StatResetInfo
+from ...models import ValidationErrorEntity
 
 
 class ResetUserStatItemValue(Operation):
@@ -76,6 +77,8 @@ class ResetUserStatItemValue(Operation):
         400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
 
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
@@ -220,7 +223,10 @@ class ResetUserStatItemValue(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, StatItemIncResult], Union[None, ErrorEntity, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, StatItemIncResult],
+        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
+    ]:
         """Parse the given response.
 
         200: OK - StatItemIncResult (successful operation)
@@ -228,6 +234,8 @@ class ResetUserStatItemValue(Operation):
         400: Bad Request - ErrorEntity (12221: Invalid stat operator, expect [{expected}] but actual [{actual}])
 
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -248,6 +256,8 @@ class ResetUserStatItemValue(Operation):
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

@@ -31,6 +31,7 @@ from ....core import same_doc_as
 
 from ..models import ModelsCreateImagePatchRequest
 from ..models import ModelsCreateImageRequest
+from ..models import ModelsCreateRepositoryRequest
 from ..models import ModelsGetImageDetailResponse
 from ..models import ModelsGetImageLimitResponse
 from ..models import ModelsGetImagePatchDetailResponse
@@ -39,10 +40,12 @@ from ..models import ModelsImageRecordUpdate
 from ..models import ModelsImportResponse
 from ..models import ModelsListImagePatchesResponse
 from ..models import ModelsListImageResponse
+from ..models import ModelsRepositoryRecord
 from ..models import ResponseError
 
 from ..operations.image_config import CreateImage
 from ..operations.image_config import CreateImagePatch
+from ..operations.image_config import CreateRepository
 from ..operations.image_config import DeleteImage
 from ..operations.image_config import DeleteImagePatch
 from ..operations.image_config import ExportImages
@@ -50,6 +53,7 @@ from ..operations.image_config import GetImageDetail
 from ..operations.image_config import GetImageLimit
 from ..operations.image_config import GetImagePatchDetail
 from ..operations.image_config import GetImagePatches
+from ..operations.image_config import GetRepository
 from ..operations.image_config import ImageDetailClient
 from ..operations.image_config import ImageLimitClient
 from ..operations.image_config import ImportImages
@@ -301,6 +305,122 @@ async def create_image_patch_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     request = CreateImagePatch.create(
+        body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(CreateRepository)
+def create_repository(
+    body: ModelsCreateRepositoryRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create repository (CreateRepository)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+    Required scope: social
+
+    This endpoint will create image repository.
+
+    Sample repository:
+    {
+    "namespace":"testing",
+    "repository":"ds-testing-924623",
+    }
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/repository
+
+        method: POST
+
+        tags: ["Image Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateRepositoryRequest in body
+
+    Responses:
+        204: No Content - (repository created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    request = CreateRepository.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CreateRepository)
+async def create_repository_async(
+    body: ModelsCreateRepositoryRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create repository (CreateRepository)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+    Required scope: social
+
+    This endpoint will create image repository.
+
+    Sample repository:
+    {
+    "namespace":"testing",
+    "repository":"ds-testing-924623",
+    }
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/repository
+
+        method: POST
+
+        tags: ["Image Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCreateRepositoryRequest in body
+
+    Responses:
+        204: No Content - (repository created)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    request = CreateRepository.create(
         body=body,
     )
     return await run_request_async(
@@ -1167,6 +1287,116 @@ async def get_image_patches_async(
             return None, error
     request = GetImagePatches.create(
         version=version,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetRepository)
+def get_repository(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get repository for a namespace (GetRepository)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a dedicated servers repository name in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/repository
+
+        method: GET
+
+        tags: ["Image Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsRepositoryRecord (repository retrieved)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (repository not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetRepository.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetRepository)
+async def get_repository_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get repository for a namespace (GetRepository)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint get a dedicated servers repository name in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/admin/namespaces/{namespace}/repository
+
+        method: GET
+
+        tags: ["Image Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsRepositoryRecord (repository retrieved)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (repository not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetRepository.create(
         namespace=namespace,
     )
     return await run_request_async(

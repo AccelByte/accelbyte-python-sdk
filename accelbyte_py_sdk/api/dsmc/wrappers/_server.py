@@ -30,17 +30,23 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsDeregisterLocalServerRequest
+from ..models import ModelsDSHeartbeatRequest
+from ..models import ModelsListServerResponse
 from ..models import ModelsRegisterLocalServerRequest
 from ..models import ModelsRegisterServerRequest
 from ..models import ModelsServer
+from ..models import ModelsServerDeploymentConfigSessionTimeoutResponse
 from ..models import ModelsServerSessionResponse
 from ..models import ModelsShutdownServerRequest
 from ..models import ResponseError
 
 from ..operations.server import DeregisterLocalServer
 from ..operations.server import GetServerSession
+from ..operations.server import GetServerSessionTimeout
+from ..operations.server import ListServerClient
 from ..operations.server import RegisterLocalServer
 from ..operations.server import RegisterServer
+from ..operations.server import ServerHeartbeat
 from ..operations.server import ShutdownServer
 
 
@@ -296,6 +302,268 @@ async def get_server_session_async(
     )
 
 
+@same_doc_as(GetServerSessionTimeout)
+def get_server_session_timeout(
+    pod_name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get the session timeout that will be used for the server (GetServerSessionTimeout)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ]
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server
+    to get the session timeout that will be used for the DS.
+    DS will use this session timeout to make sure it regularly make heartbeat
+    call to the DSMC, before the session timeout.```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/config/sessiontimeout
+
+        method: GET
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsServerDeploymentConfigSessionTimeoutResponse (session timout successfully retrieved)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetServerSessionTimeout.create(
+        pod_name=pod_name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetServerSessionTimeout)
+async def get_server_session_timeout_async(
+    pod_name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get the session timeout that will be used for the server (GetServerSessionTimeout)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ]
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server
+    to get the session timeout that will be used for the DS.
+    DS will use this session timeout to make sure it regularly make heartbeat
+    call to the DSMC, before the session timeout.```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/config/sessiontimeout
+
+        method: GET
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pod_name: (podName) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsServerDeploymentConfigSessionTimeoutResponse (session timout successfully retrieved)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetServerSessionTimeout.create(
+        pod_name=pod_name,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ListServerClient)
+def list_server_client(
+    count: int,
+    offset: int,
+    region: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List all managed servers in a region for client (ListServerClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint lists all of dedicated servers in a namespace managed by this service.
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers
+
+        method: GET
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListServerClient.create(
+        count=count,
+        offset=offset,
+        region=region,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ListServerClient)
+async def list_server_client_async(
+    count: int,
+    offset: int,
+    region: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List all managed servers in a region for client (ListServerClient)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint lists all of dedicated servers in a namespace managed by this service.
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers
+
+        method: GET
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
+
+    Responses:
+        200: OK - ModelsListServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListServerClient.create(
+        count=count,
+        offset=offset,
+        region=region,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(RegisterLocalServer)
 def register_local_server(
     body: ModelsRegisterLocalServerRequest,
@@ -481,6 +749,8 @@ def register_server(
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (allocation not found)
+
         409: Conflict - ResponseError (server with same name already registered)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -545,6 +815,8 @@ async def register_server_async(
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (allocation not found)
+
         409: Conflict - ResponseError (server with same name already registered)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -554,6 +826,140 @@ async def register_server_async(
         if error:
             return None, error
     request = RegisterServer.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ServerHeartbeat)
+def server_heartbeat(
+    body: ModelsDSHeartbeatRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Server Heartbeat (ServerHeartbeat)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server
+    which already has claimed to extend its lifetime.
+    DS should call this periodically after it claimed.
+    The timeframe between 2 heartbeat call should be smaller than
+    the session timout in the deployment configuration.
+    If the last heartbeat is longer than the session timout, the server.
+    will be considered as expired and will be terminated by DSMC.```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/heartbeat
+
+        method: PUT
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDSHeartbeatRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (heartbeat accepted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ServerHeartbeat.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ServerHeartbeat)
+async def server_heartbeat_async(
+    body: ModelsDSHeartbeatRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Server Heartbeat (ServerHeartbeat)
+
+    ```
+    Required permission: NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+    Required scope: social
+
+    This endpoint is intended to be called by dedicated server
+    which already has claimed to extend its lifetime.
+    DS should call this periodically after it claimed.
+    The timeframe between 2 heartbeat call should be smaller than
+    the session timout in the deployment configuration.
+    If the last heartbeat is longer than the session timout, the server.
+    will be considered as expired and will be terminated by DSMC.```
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/heartbeat
+
+        method: PUT
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsDSHeartbeatRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (heartbeat accepted)
+
+        400: Bad Request - ResponseError (malformed request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ServerHeartbeat.create(
         body=body,
         namespace=namespace,
     )

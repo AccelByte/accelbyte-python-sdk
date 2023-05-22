@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.2.7"
+__version__ = "6.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,6 +16,9 @@ __email__ = "dev@accelbyte.net"
 
 from .deregister_local_server import DeregisterLocalServer
 from .get_server_session import GetServerSession
+from .get_server_session_timeout import GetServerSessionTimeout
+from .list_server_client import ListServerClient
 from .register_local_server import RegisterLocalServer
 from .register_server import RegisterServer
+from .server_heartbeat import ServerHeartbeat
 from .shutdown_server import ShutdownServer

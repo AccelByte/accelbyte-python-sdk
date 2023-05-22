@@ -123,6 +123,7 @@ def create_handlers_user_presence_example() -> HandlersUserPresence:
     instance.availability = randomize()
     instance.last_seen_at = randomize()
     instance.namespace = randomize("slug")
+    instance.platform = randomize()
     instance.user_id = randomize("uid")
     return instance
 

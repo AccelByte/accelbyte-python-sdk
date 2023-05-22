@@ -146,3 +146,12 @@ from ._user_visibility import set_user_leaderboard_visibility_status_v2
 from ._user_visibility import set_user_leaderboard_visibility_status_v2_async
 from ._user_visibility import set_user_visibility_status_v2
 from ._user_visibility import set_user_visibility_status_v2_async
+
+from ._user_visibility_v3 import get_hidden_users_v3
+from ._user_visibility_v3 import get_hidden_users_v3_async
+from ._user_visibility_v3 import get_user_visibility_status_v3
+from ._user_visibility_v3 import get_user_visibility_status_v3_async
+from ._user_visibility_v3 import set_user_leaderboard_visibility_v3
+from ._user_visibility_v3 import set_user_leaderboard_visibility_v3_async
+from ._user_visibility_v3 import set_user_visibility_v3
+from ._user_visibility_v3 import set_user_visibility_v3_async

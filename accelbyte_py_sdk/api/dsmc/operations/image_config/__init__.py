@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.2.7"
+__version__ = "6.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,6 +16,7 @@ __email__ = "dev@accelbyte.net"
 
 from .create_image import CreateImage
 from .create_image_patch import CreateImagePatch
+from .create_repository import CreateRepository
 from .delete_image import DeleteImage
 from .delete_image_patch import DeleteImagePatch
 from .export_images import ExportImages
@@ -23,6 +24,7 @@ from .get_image_detail import GetImageDetail
 from .get_image_limit import GetImageLimit
 from .get_image_patch_detail import GetImagePatchDetail
 from .get_image_patches import GetImagePatches
+from .get_repository import GetRepository
 from .image_detail_client import ImageDetailClient
 from .image_limit_client import ImageLimitClient
 from .import_images import ImportImages

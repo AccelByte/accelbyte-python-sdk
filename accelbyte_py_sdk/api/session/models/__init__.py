@@ -17,6 +17,8 @@ __email__ = "dev@accelbyte.net"
 from .apimodels_append_team_game_session_request import (
     ApimodelsAppendTeamGameSessionRequest,
 )
+from .apimodels_config_alert_request_create import ApimodelsConfigAlertRequestCreate
+from .apimodels_config_alert_response import ApimodelsConfigAlertResponse
 from .apimodels_configuration_template_response import (
     ApimodelsConfigurationTemplateResponse,
 )

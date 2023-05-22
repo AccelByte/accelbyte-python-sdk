@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.2.7)
+# AccelByte Gaming Services Dsm Controller Service (6.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -55,6 +55,8 @@ class ModelsUpdateDeploymentRequest(Model):
         unlimited: (unlimited) REQUIRED bool
 
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
+
+        extendable_session: (extendable_session) OPTIONAL bool
     """
 
     # region fields
@@ -71,6 +73,7 @@ class ModelsUpdateDeploymentRequest(Model):
     session_timeout: int  # REQUIRED
     unlimited: bool  # REQUIRED
     use_buffer_percent: bool  # REQUIRED
+    extendable_session: bool  # OPTIONAL
 
     # endregion fields
 
@@ -124,6 +127,10 @@ class ModelsUpdateDeploymentRequest(Model):
 
     def with_use_buffer_percent(self, value: bool) -> ModelsUpdateDeploymentRequest:
         self.use_buffer_percent = value
+        return self
+
+    def with_extendable_session(self, value: bool) -> ModelsUpdateDeploymentRequest:
+        self.extendable_session = value
         return self
 
     # endregion with_x methods
@@ -180,6 +187,10 @@ class ModelsUpdateDeploymentRequest(Model):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
             result["use_buffer_percent"] = False
+        if hasattr(self, "extendable_session"):
+            result["extendable_session"] = bool(self.extendable_session)
+        elif include_empty:
+            result["extendable_session"] = False
         return result
 
     # endregion to methods
@@ -201,6 +212,7 @@ class ModelsUpdateDeploymentRequest(Model):
         session_timeout: int,
         unlimited: bool,
         use_buffer_percent: bool,
+        extendable_session: Optional[bool] = None,
         **kwargs,
     ) -> ModelsUpdateDeploymentRequest:
         instance = cls()
@@ -216,6 +228,8 @@ class ModelsUpdateDeploymentRequest(Model):
         instance.session_timeout = session_timeout
         instance.unlimited = unlimited
         instance.use_buffer_percent = use_buffer_percent
+        if extendable_session is not None:
+            instance.extendable_session = extendable_session
         return instance
 
     @classmethod
@@ -279,6 +293,10 @@ class ModelsUpdateDeploymentRequest(Model):
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
             instance.use_buffer_percent = False
+        if "extendable_session" in dict_ and dict_["extendable_session"] is not None:
+            instance.extendable_session = bool(dict_["extendable_session"])
+        elif include_empty:
+            instance.extendable_session = False
         return instance
 
     @classmethod
@@ -334,6 +352,7 @@ class ModelsUpdateDeploymentRequest(Model):
             "session_timeout": "session_timeout",
             "unlimited": "unlimited",
             "use_buffer_percent": "use_buffer_percent",
+            "extendable_session": "extendable_session",
         }
 
     @staticmethod
@@ -351,6 +370,7 @@ class ModelsUpdateDeploymentRequest(Model):
             "session_timeout": True,
             "unlimited": True,
             "use_buffer_percent": True,
+            "extendable_session": False,
         }
 
     # endregion static methods

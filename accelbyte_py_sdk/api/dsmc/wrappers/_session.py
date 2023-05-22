@@ -34,9 +34,132 @@ from ..models import ModelsCreateSessionRequest
 from ..models import ModelsSessionResponse
 from ..models import ResponseError
 
+from ..operations.session import CancelSession
 from ..operations.session import ClaimServer
 from ..operations.session import CreateSession
 from ..operations.session import GetSession
+
+
+@same_doc_as(CancelSession)
+def cancel_session(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Cancel session of a Temporary DS (CancelSession)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [DELETE]
+
+    Required scope: social
+
+    This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to cancel a temporary dedicated server. The dedicated server cannot be canceled unless the status is CREATING
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}/cancel
+
+        method: DELETE
+
+        tags: ["Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionID) REQUIRED str in path
+
+    Responses:
+        204: No Content - (DS creation successfully canceled)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (session not found)
+
+        422: Unprocessable Entity - ResponseError (session cannot be canceled)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CancelSession.create(
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CancelSession)
+async def cancel_session_async(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Cancel session of a Temporary DS (CancelSession)
+
+    Required permission: NAMESPACE:{namespace}:DSM:SESSION [DELETE]
+
+    Required scope: social
+
+    This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to cancel a temporary dedicated server. The dedicated server cannot be canceled unless the status is CREATING
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:DSM:SESSION [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}/cancel
+
+        method: DELETE
+
+        tags: ["Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionID) REQUIRED str in path
+
+    Responses:
+        204: No Content - (DS creation successfully canceled)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (session not found)
+
+        422: Unprocessable Entity - ResponseError (session cannot be canceled)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CancelSession.create(
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ClaimServer)

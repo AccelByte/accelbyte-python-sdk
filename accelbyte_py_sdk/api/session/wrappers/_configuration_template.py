@@ -29,6 +29,8 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ApimodelsConfigAlertRequestCreate
+from ..models import ApimodelsConfigAlertResponse
 from ..models import ApimodelsConfigurationTemplateResponse
 from ..models import ApimodelsConfigurationTemplatesResponse
 from ..models import ApimodelsCreateConfigurationTemplateRequest
@@ -36,13 +38,133 @@ from ..models import ApimodelsUpdateConfigurationTemplateRequest
 from ..models import ModelsDSMConfigRecord
 from ..models import ResponseError
 
+from ..operations.configuration_template import AdminCreateConfigurationAlertV1
 from ..operations.configuration_template import AdminCreateConfigurationTemplateV1
+from ..operations.configuration_template import AdminDeleteConfigurationAlertV1
 from ..operations.configuration_template import AdminDeleteConfigurationTemplateV1
 from ..operations.configuration_template import AdminGetAllConfigurationTemplatesV1
+from ..operations.configuration_template import AdminGetConfigurationAlertV1
 from ..operations.configuration_template import AdminGetConfigurationTemplateV1
 from ..operations.configuration_template import AdminGetDSMCConfiguration
 from ..operations.configuration_template import AdminSyncDSMCConfiguration
+from ..operations.configuration_template import AdminUpdateConfigurationAlertV1
 from ..operations.configuration_template import AdminUpdateConfigurationTemplateV1
+
+
+@same_doc_as(AdminCreateConfigurationAlertV1)
+def admin_create_configuration_alert_v1(
+    body: ApimodelsConfigAlertRequestCreate,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminCreateConfigurationAlertV1)
+
+    Create configuration alert
+    configuration alert mandatory :
+    - namespace
+    - durationDays must be greater than 0
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/alerts-configuration
+
+        method: POST
+
+        tags: ["Configuration Template"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsConfigAlertRequestCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ApimodelsConfigAlertResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCreateConfigurationAlertV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminCreateConfigurationAlertV1)
+async def admin_create_configuration_alert_v1_async(
+    body: ApimodelsConfigAlertRequestCreate,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminCreateConfigurationAlertV1)
+
+    Create configuration alert
+    configuration alert mandatory :
+    - namespace
+    - durationDays must be greater than 0
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/alerts-configuration
+
+        method: POST
+
+        tags: ["Configuration Template"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsConfigAlertRequestCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ApimodelsConfigAlertResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCreateConfigurationAlertV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminCreateConfigurationTemplateV1)
@@ -180,6 +302,100 @@ async def admin_create_configuration_template_v1_async(
             return None, error
     request = AdminCreateConfigurationTemplateV1.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminDeleteConfigurationAlertV1)
+def admin_delete_configuration_alert_v1(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete configuration alert Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [DELETE] (adminDeleteConfigurationAlertV1)
+
+    Delete configuration alert.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/alerts-configuration
+
+        method: DELETE
+
+        tags: ["Configuration Template"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteConfigurationAlertV1.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminDeleteConfigurationAlertV1)
+async def admin_delete_configuration_alert_v1_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete configuration alert Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [DELETE] (adminDeleteConfigurationAlertV1)
+
+    Delete configuration alert.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/alerts-configuration
+
+        method: DELETE
+
+        tags: ["Configuration Template"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteConfigurationAlertV1.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -392,6 +608,104 @@ async def admin_get_all_configuration_templates_v1_async(
     request = AdminGetAllConfigurationTemplatesV1.create(
         limit=limit,
         offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetConfigurationAlertV1)
+def admin_get_configuration_alert_v1(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetConfigurationAlertV1)
+
+    Get a configuration alert.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/alerts-configuration
+
+        method: GET
+
+        tags: ["Configuration Template"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsConfigAlertResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetConfigurationAlertV1.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetConfigurationAlertV1)
+async def admin_get_configuration_alert_v1_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetConfigurationAlertV1)
+
+    Get a configuration alert.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/alerts-configuration
+
+        method: GET
+
+        tags: ["Configuration Template"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsConfigAlertResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetConfigurationAlertV1.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -694,6 +1008,118 @@ async def admin_sync_dsmc_configuration_async(
         if error:
             return None, error
     request = AdminSyncDSMCConfiguration.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminUpdateConfigurationAlertV1)
+def admin_update_configuration_alert_v1(
+    body: ApimodelsConfigAlertRequestCreate,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationAlertV1)
+
+    Update configuration alert
+    configuration alert mandatory :
+    - namespace
+    - durationDays must be greater than 0
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/alerts-configuration
+
+        method: PUT
+
+        tags: ["Configuration Template"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsConfigAlertRequestCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsConfigAlertResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateConfigurationAlertV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminUpdateConfigurationAlertV1)
+async def admin_update_configuration_alert_v1_async(
+    body: ApimodelsConfigAlertRequestCreate,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationAlertV1)
+
+    Update configuration alert
+    configuration alert mandatory :
+    - namespace
+    - durationDays must be greater than 0
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/alerts-configuration
+
+        method: PUT
+
+        tags: ["Configuration Template"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsConfigAlertRequestCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsConfigAlertResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateConfigurationAlertV1.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

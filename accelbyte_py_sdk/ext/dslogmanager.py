@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ds Log Manager Service (3.2.0)
+# AccelByte Gaming Services Ds Log Manager Service (3.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -146,6 +146,7 @@ def create_models_server_example() -> ModelsServer:
     instance.alternate_ips = [randomize()]
     instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
     instance.deployment = randomize()
+    instance.deployment_override = randomize()
     instance.game_version = randomize("version")
     instance.image_version = randomize()
     instance.ip = randomize()

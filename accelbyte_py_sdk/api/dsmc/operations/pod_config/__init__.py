@@ -8,15 +8,18 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.2.7"
+__version__ = "6.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .create_pod_config import CreatePodConfig
+from .create_pod_config_client import CreatePodConfigClient
 from .delete_pod_config import DeletePodConfig
+from .delete_pod_config_client import DeletePodConfigClient
 from .get_all_pod_config import GetAllPodConfig
+from .get_all_pod_config_client import GetAllPodConfigClient
 from .get_lowest_instance_spec import GetLowestInstanceSpec
 from .get_pod_config import GetPodConfig
 from .update_pod_config import UpdatePodConfig

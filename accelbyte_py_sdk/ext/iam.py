@@ -2804,21 +2804,21 @@ def create_oauthmodel_token_response_example() -> OauthmodelTokenResponse:
 def create_oauthmodel_token_response_v3_example() -> OauthmodelTokenResponseV3:
     instance = OauthmodelTokenResponseV3()
     instance.access_token = randomize()
-    instance.bans = [create_accountcommon_jwt_ban_v3_example()]
     instance.expires_in = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
-    instance.namespace_roles = [create_accountcommon_namespace_role_example()]
     instance.permissions = [create_accountcommon_permission_v3_example()]
-    instance.roles = [randomize()]
     instance.scope = randomize()
     instance.token_type = randomize()
+    instance.bans = [create_accountcommon_jwt_ban_v3_example()]
     instance.display_name = randomize("slug")
     instance.is_comply = randomize("bool")
     instance.jflgs = randomize("int", min_val=1, max_val=1000)
+    instance.namespace_roles = [create_accountcommon_namespace_role_example()]
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
     instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
     instance.refresh_token = randomize()
+    instance.roles = [randomize()]
     instance.user_id = randomize("uid")
     instance.xuid = randomize()
     return instance
@@ -2838,22 +2838,22 @@ def create_oauthmodel_token_with_device_cookie_response_v3_example() -> (
 ):
     instance = OauthmodelTokenWithDeviceCookieResponseV3()
     instance.access_token = randomize()
-    instance.bans = [create_accountcommon_jwt_ban_v3_example()]
     instance.expires_in = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
-    instance.namespace_roles = [create_accountcommon_namespace_role_example()]
     instance.permissions = [create_accountcommon_permission_v3_example()]
-    instance.roles = [randomize()]
     instance.scope = randomize()
     instance.token_type = randomize()
     instance.auth_trust_id = randomize()
+    instance.bans = [create_accountcommon_jwt_ban_v3_example()]
     instance.display_name = randomize("slug")
     instance.is_comply = randomize("bool")
     instance.jflgs = randomize("int", min_val=1, max_val=1000)
+    instance.namespace_roles = [create_accountcommon_namespace_role_example()]
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
     instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
     instance.refresh_token = randomize()
+    instance.roles = [randomize()]
     instance.user_id = randomize("uid")
     instance.xuid = randomize()
     return instance

@@ -47,6 +47,7 @@ class PublicStorePlayerAttributes(Operation):
     - userID : platform userID
     - data : other data that the player wants to store.
     - currentPlatform : latest user game platform.
+    - roles : user role for matchmaking role base support.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/users/me/attributes

@@ -19,7 +19,9 @@ class LeaderboardTestCase(IntegrationTestCase):
     reset_time: str = "23:59"
     season_period: int = 32  # Season Period must be greater than 31 days.
     start_time: str = f"{datetime.utcnow().year + 1}-01-01T00:00:00.00Z"
-    stat_create: StatCreate = StatCreate.create_from_dict({"defaultValue": 1, "setBy": "SERVER"})
+    stat_create: StatCreate = StatCreate.create_from_dict(
+        {"defaultValue": 1, "setBy": "SERVER"}
+    )
     models_leaderboard_config_req = ModelsLeaderboardConfigReq.create(
         daily=ModelsDailyConfig.create(reset_time=reset_time),
         descending=True,

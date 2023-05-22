@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.2.7)
+# AccelByte Gaming Services Dsm Controller Service (6.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,6 +71,8 @@ class ModelsDeploymentWithOverride(Model):
 
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
 
+        extendable_session: (extendable_session) OPTIONAL bool
+
         session_timeout: (session_timeout) OPTIONAL int
     """
 
@@ -94,6 +96,7 @@ class ModelsDeploymentWithOverride(Model):
     unlimited: bool  # REQUIRED
     updated_at: str  # REQUIRED
     use_buffer_percent: bool  # REQUIRED
+    extendable_session: bool  # OPTIONAL
     session_timeout: int  # OPTIONAL
 
     # endregion fields
@@ -174,6 +177,10 @@ class ModelsDeploymentWithOverride(Model):
 
     def with_use_buffer_percent(self, value: bool) -> ModelsDeploymentWithOverride:
         self.use_buffer_percent = value
+        return self
+
+    def with_extendable_session(self, value: bool) -> ModelsDeploymentWithOverride:
+        self.extendable_session = value
         return self
 
     def with_session_timeout(self, value: int) -> ModelsDeploymentWithOverride:
@@ -264,6 +271,10 @@ class ModelsDeploymentWithOverride(Model):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
             result["use_buffer_percent"] = False
+        if hasattr(self, "extendable_session"):
+            result["extendable_session"] = bool(self.extendable_session)
+        elif include_empty:
+            result["extendable_session"] = False
         if hasattr(self, "session_timeout"):
             result["session_timeout"] = int(self.session_timeout)
         elif include_empty:
@@ -295,6 +306,7 @@ class ModelsDeploymentWithOverride(Model):
         unlimited: bool,
         updated_at: str,
         use_buffer_percent: bool,
+        extendable_session: Optional[bool] = None,
         session_timeout: Optional[int] = None,
         **kwargs,
     ) -> ModelsDeploymentWithOverride:
@@ -317,6 +329,8 @@ class ModelsDeploymentWithOverride(Model):
         instance.unlimited = unlimited
         instance.updated_at = updated_at
         instance.use_buffer_percent = use_buffer_percent
+        if extendable_session is not None:
+            instance.extendable_session = extendable_session
         if session_timeout is not None:
             instance.session_timeout = session_timeout
         return instance
@@ -416,6 +430,10 @@ class ModelsDeploymentWithOverride(Model):
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
             instance.use_buffer_percent = False
+        if "extendable_session" in dict_ and dict_["extendable_session"] is not None:
+            instance.extendable_session = bool(dict_["extendable_session"])
+        elif include_empty:
+            instance.extendable_session = False
         if "session_timeout" in dict_ and dict_["session_timeout"] is not None:
             instance.session_timeout = int(dict_["session_timeout"])
         elif include_empty:
@@ -481,6 +499,7 @@ class ModelsDeploymentWithOverride(Model):
             "unlimited": "unlimited",
             "updatedAt": "updated_at",
             "use_buffer_percent": "use_buffer_percent",
+            "extendable_session": "extendable_session",
             "session_timeout": "session_timeout",
         }
 
@@ -505,6 +524,7 @@ class ModelsDeploymentWithOverride(Model):
             "unlimited": True,
             "updatedAt": True,
             "use_buffer_percent": True,
+            "extendable_session": False,
             "session_timeout": False,
         }
 

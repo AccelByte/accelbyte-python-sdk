@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# Justice QoS Manager Service (1.18.0)
+# Justice QoS Manager Service (1.18.1)
 
 from ._update_server_config import update_server_config
 from ._delete_server import delete_server

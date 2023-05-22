@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-dsm-controller-service (6.2.7)
+# justice-dsm-controller-service (6.3.0)
 
 from ._list_config import list_config
 from ._save_config import save_config
@@ -50,6 +50,7 @@ from ._delete_image_patch import delete_image_patch
 from ._get_image_detail import get_image_detail
 from ._get_image_patches import get_image_patches
 from ._get_image_patch_detail import get_image_patch_detail
+from ._get_repository import get_repository
 from ._list_server import list_server
 from ._count_server import count_server
 from ._count_server_detailed import count_server_detailed
@@ -60,18 +61,29 @@ from ._delete_server import delete_server
 from ._list_session import list_session
 from ._count_session import count_session
 from ._delete_session import delete_session
+from ._create_repository import create_repository
 from ._export_config_v1 import export_config_v1
 from ._import_config_v1 import import_config_v1
+from ._get_all_deployment_client import get_all_deployment_client
+from ._create_deployment_client import create_deployment_client
+from ._delete_deployment_client import delete_deployment_client
+from ._get_all_pod_config_client import get_all_pod_config_client
+from ._create_pod_config_client import create_pod_config_client
+from ._delete_pod_config_client import delete_pod_config_client
 from ._image_limit_client import image_limit_client
 from ._image_detail_client import image_detail_client
+from ._list_server_client import list_server_client
+from ._server_heartbeat import server_heartbeat
 from ._deregister_local_server import deregister_local_server
 from ._register_local_server import register_local_server
 from ._register_server import register_server
 from ._shutdown_server import shutdown_server
+from ._get_server_session_timeout import get_server_session_timeout
 from ._get_server_session import get_server_session
 from ._create_session import create_session
 from ._claim_server import claim_server
 from ._get_session import get_session
+from ._cancel_session import cancel_session
 from ._get_default_provider import get_default_provider
 from ._list_providers import list_providers
 from ._list_providers_by_region import list_providers_by_region
@@ -121,6 +133,7 @@ commands = [
     get_image_detail,
     get_image_patches,
     get_image_patch_detail,
+    get_repository,
     list_server,
     count_server,
     count_server_detailed,
@@ -131,18 +144,29 @@ commands = [
     list_session,
     count_session,
     delete_session,
+    create_repository,
     export_config_v1,
     import_config_v1,
+    get_all_deployment_client,
+    create_deployment_client,
+    delete_deployment_client,
+    get_all_pod_config_client,
+    create_pod_config_client,
+    delete_pod_config_client,
     image_limit_client,
     image_detail_client,
+    list_server_client,
+    server_heartbeat,
     deregister_local_server,
     register_local_server,
     register_server,
     shutdown_server,
+    get_server_session_timeout,
     get_server_session,
     create_session,
     claim_server,
     get_session,
+    cancel_session,
     get_default_provider,
     list_providers,
     list_providers_by_region,

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ds Log Manager Service (3.2.0)
+# AccelByte Gaming Services Ds Log Manager Service (3.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,6 +44,8 @@ class ModelsServer(Model):
         cpu_limit: (cpu_limit) REQUIRED int
 
         deployment: (deployment) REQUIRED str
+
+        deployment_override: (deployment_override) REQUIRED str
 
         game_version: (game_version) REQUIRED str
 
@@ -93,6 +95,7 @@ class ModelsServer(Model):
     alternate_ips: List[str]  # REQUIRED
     cpu_limit: int  # REQUIRED
     deployment: str  # REQUIRED
+    deployment_override: str  # REQUIRED
     game_version: str  # REQUIRED
     image_version: str  # REQUIRED
     ip: str  # REQUIRED
@@ -138,6 +141,10 @@ class ModelsServer(Model):
 
     def with_deployment(self, value: str) -> ModelsServer:
         self.deployment = value
+        return self
+
+    def with_deployment_override(self, value: str) -> ModelsServer:
+        self.deployment_override = value
         return self
 
     def with_game_version(self, value: str) -> ModelsServer:
@@ -248,6 +255,10 @@ class ModelsServer(Model):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = ""
+        if hasattr(self, "deployment_override"):
+            result["deployment_override"] = str(self.deployment_override)
+        elif include_empty:
+            result["deployment_override"] = ""
         if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
@@ -344,6 +355,7 @@ class ModelsServer(Model):
         alternate_ips: List[str],
         cpu_limit: int,
         deployment: str,
+        deployment_override: str,
         game_version: str,
         image_version: str,
         ip: str,
@@ -372,6 +384,7 @@ class ModelsServer(Model):
         instance.alternate_ips = alternate_ips
         instance.cpu_limit = cpu_limit
         instance.deployment = deployment
+        instance.deployment_override = deployment_override
         instance.game_version = game_version
         instance.image_version = image_version
         instance.ip = ip
@@ -422,6 +435,10 @@ class ModelsServer(Model):
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = ""
+        if "deployment_override" in dict_ and dict_["deployment_override"] is not None:
+            instance.deployment_override = str(dict_["deployment_override"])
+        elif include_empty:
+            instance.deployment_override = ""
         if "game_version" in dict_ and dict_["game_version"] is not None:
             instance.game_version = str(dict_["game_version"])
         elif include_empty:
@@ -552,6 +569,7 @@ class ModelsServer(Model):
             "alternate_ips": "alternate_ips",
             "cpu_limit": "cpu_limit",
             "deployment": "deployment",
+            "deployment_override": "deployment_override",
             "game_version": "game_version",
             "image_version": "image_version",
             "ip": "ip",
@@ -582,6 +600,7 @@ class ModelsServer(Model):
             "alternate_ips": True,
             "cpu_limit": True,
             "deployment": True,
+            "deployment_override": True,
             "game_version": True,
             "image_version": True,
             "ip": True,

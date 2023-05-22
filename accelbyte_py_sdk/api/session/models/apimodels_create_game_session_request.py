@@ -67,6 +67,12 @@ class ApimodelsCreateGameSessionRequest(Model):
         ticket_i_ds: (ticketIDs) REQUIRED List[str]
 
         type_: (type) REQUIRED str
+
+        ds_source: (dsSource) OPTIONAL str
+
+        fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
+
+        preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
     """
 
     # region fields
@@ -88,6 +94,9 @@ class ApimodelsCreateGameSessionRequest(Model):
     text_chat: bool  # REQUIRED
     ticket_i_ds: List[str]  # REQUIRED
     type_: str  # REQUIRED
+    ds_source: str  # OPTIONAL
+    fallback_claim_keys: List[str]  # OPTIONAL
+    preferred_claim_keys: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -163,6 +172,22 @@ class ApimodelsCreateGameSessionRequest(Model):
 
     def with_type(self, value: str) -> ApimodelsCreateGameSessionRequest:
         self.type_ = value
+        return self
+
+    def with_ds_source(self, value: str) -> ApimodelsCreateGameSessionRequest:
+        self.ds_source = value
+        return self
+
+    def with_fallback_claim_keys(
+        self, value: List[str]
+    ) -> ApimodelsCreateGameSessionRequest:
+        self.fallback_claim_keys = value
+        return self
+
+    def with_preferred_claim_keys(
+        self, value: List[str]
+    ) -> ApimodelsCreateGameSessionRequest:
+        self.preferred_claim_keys = value
         return self
 
     # endregion with_x methods
@@ -241,6 +266,18 @@ class ApimodelsCreateGameSessionRequest(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "ds_source"):
+            result["dsSource"] = str(self.ds_source)
+        elif include_empty:
+            result["dsSource"] = ""
+        if hasattr(self, "fallback_claim_keys"):
+            result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
+        elif include_empty:
+            result["fallbackClaimKeys"] = []
+        if hasattr(self, "preferred_claim_keys"):
+            result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
+        elif include_empty:
+            result["preferredClaimKeys"] = []
         return result
 
     # endregion to methods
@@ -267,6 +304,9 @@ class ApimodelsCreateGameSessionRequest(Model):
         text_chat: bool,
         ticket_i_ds: List[str],
         type_: str,
+        ds_source: Optional[str] = None,
+        fallback_claim_keys: Optional[List[str]] = None,
+        preferred_claim_keys: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsCreateGameSessionRequest:
         instance = cls()
@@ -287,6 +327,12 @@ class ApimodelsCreateGameSessionRequest(Model):
         instance.text_chat = text_chat
         instance.ticket_i_ds = ticket_i_ds
         instance.type_ = type_
+        if ds_source is not None:
+            instance.ds_source = ds_source
+        if fallback_claim_keys is not None:
+            instance.fallback_claim_keys = fallback_claim_keys
+        if preferred_claim_keys is not None:
+            instance.preferred_claim_keys = preferred_claim_keys
         return instance
 
     @classmethod
@@ -369,6 +415,22 @@ class ApimodelsCreateGameSessionRequest(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "dsSource" in dict_ and dict_["dsSource"] is not None:
+            instance.ds_source = str(dict_["dsSource"])
+        elif include_empty:
+            instance.ds_source = ""
+        if "fallbackClaimKeys" in dict_ and dict_["fallbackClaimKeys"] is not None:
+            instance.fallback_claim_keys = [
+                str(i0) for i0 in dict_["fallbackClaimKeys"]
+            ]
+        elif include_empty:
+            instance.fallback_claim_keys = []
+        if "preferredClaimKeys" in dict_ and dict_["preferredClaimKeys"] is not None:
+            instance.preferred_claim_keys = [
+                str(i0) for i0 in dict_["preferredClaimKeys"]
+            ]
+        elif include_empty:
+            instance.preferred_claim_keys = []
         return instance
 
     @classmethod
@@ -429,6 +491,9 @@ class ApimodelsCreateGameSessionRequest(Model):
             "textChat": "text_chat",
             "ticketIDs": "ticket_i_ds",
             "type": "type_",
+            "dsSource": "ds_source",
+            "fallbackClaimKeys": "fallback_claim_keys",
+            "preferredClaimKeys": "preferred_claim_keys",
         }
 
     @staticmethod
@@ -451,6 +516,9 @@ class ApimodelsCreateGameSessionRequest(Model):
             "textChat": True,
             "ticketIDs": True,
             "type": True,
+            "dsSource": False,
+            "fallbackClaimKeys": False,
+            "preferredClaimKeys": False,
         }
 
     # endregion static methods

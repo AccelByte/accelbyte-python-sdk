@@ -25,6 +25,8 @@
 from .utils import randomize
 
 from ..api.session.models import ApimodelsAppendTeamGameSessionRequest
+from ..api.session.models import ApimodelsConfigAlertRequestCreate
+from ..api.session.models import ApimodelsConfigAlertResponse
 from ..api.session.models import ApimodelsConfigurationTemplateResponse
 from ..api.session.models import ApimodelsConfigurationTemplatesResponse
 from ..api.session.models import ApimodelsCreateConfigurationTemplateRequest
@@ -73,6 +75,23 @@ def create_apimodels_append_team_game_session_request_example() -> (
     return instance
 
 
+def create_apimodels_config_alert_request_create_example() -> (
+    ApimodelsConfigAlertRequestCreate
+):
+    instance = ApimodelsConfigAlertRequestCreate()
+    instance.duration_days = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_apimodels_config_alert_response_example() -> ApimodelsConfigAlertResponse:
+    instance = ApimodelsConfigAlertResponse()
+    instance.created_at = randomize("date")
+    instance.duration_days = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    return instance
+
+
 def create_apimodels_configuration_template_response_example() -> (
     ApimodelsConfigurationTemplateResponse
 ):
@@ -92,7 +111,10 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.updated_at = randomize()
+    instance.ds_source = randomize()
+    instance.fallback_claim_keys = [randomize()]
     instance.native_session_setting = create_models_native_session_setting_example()
+    instance.preferred_claim_keys = [randomize()]
     instance.requested_regions = [randomize()]
     return instance
 
@@ -122,7 +144,10 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.ds_source = randomize()
+    instance.fallback_claim_keys = [randomize()]
     instance.native_session_setting = create_models_native_session_setting_example()
+    instance.preferred_claim_keys = [randomize()]
     return instance
 
 
@@ -147,6 +172,9 @@ def create_apimodels_create_game_session_request_example() -> (
     instance.text_chat = randomize("bool")
     instance.ticket_i_ds = [randomize()]
     instance.type_ = randomize()
+    instance.ds_source = randomize()
+    instance.fallback_claim_keys = [randomize()]
+    instance.preferred_claim_keys = [randomize()]
     return instance
 
 
@@ -282,6 +310,7 @@ def create_apimodels_player_attributes_request_body_example() -> (
     instance.current_platform = randomize()
     instance.data = {randomize(): randomize()}
     instance.platforms = [create_models_user_platform_info_example()]
+    instance.roles = [randomize()]
     return instance
 
 
@@ -293,6 +322,7 @@ def create_apimodels_player_attributes_response_body_example() -> (
     instance.current_platform = randomize()
     instance.data = {randomize(): randomize()}
     instance.platforms = [create_models_user_platform_info_example()]
+    instance.roles = [randomize()]
     instance.user_id = randomize("uid")
     return instance
 
@@ -316,6 +346,9 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.persistent = randomize("bool")
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.ds_source = randomize()
+    instance.fallback_claim_keys = [randomize()]
+    instance.preferred_claim_keys = [randomize()]
     instance.requested_regions = [randomize()]
     return instance
 
@@ -360,7 +393,10 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.ds_source = randomize()
+    instance.fallback_claim_keys = [randomize()]
     instance.native_session_setting = create_models_native_session_setting_example()
+    instance.preferred_claim_keys = [randomize()]
     return instance
 
 
@@ -400,6 +436,8 @@ def create_apimodels_update_game_session_request_example() -> (
     instance.ticket_i_ds = [randomize()]
     instance.type_ = randomize()
     instance.version = randomize("int", min_val=1, max_val=1000)
+    instance.fallback_claim_keys = [randomize()]
+    instance.preferred_claim_keys = [randomize()]
     return instance
 
 
@@ -461,6 +499,7 @@ def create_models_game_server_example() -> ModelsGameServer:
     instance.provider = randomize()
     instance.region = randomize()
     instance.session_id = randomize("uid")
+    instance.source = randomize()
     instance.status = randomize()
     instance.alternate_ips = [randomize()]
     return instance
