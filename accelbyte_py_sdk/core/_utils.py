@@ -301,7 +301,7 @@ def is_file(key: str, value: Any) -> bool:
 def is_json_mime_type(content_type: Optional[str]) -> bool:
     if content_type is None:
         return False
-    parts = content_type.split("; ")
+    parts = [x.strip() for x in content_type.split(";")]
     for part in parts:
         if "/" not in part:
             continue
