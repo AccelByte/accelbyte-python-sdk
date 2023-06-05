@@ -1,0 +1,20 @@
+import json
+import yaml
+
+from .._utils import to_dict
+from accelbyte_py_sdk.api.ams import fleet_claim_by_keys
+from accelbyte_py_sdk.api.ams.models import ApiFleetClaimReq
+from accelbyte_py_sdk.api.ams.models import ApiFleetClaimResponse
+from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
+
+// body:
+// Definition: ApiFleetClaimReq
+// region: str
+
+// Example: '{"region": "KMieXtgqg5moKtVA"}'
+
+result, error = fleet_claim_by_keys(
+    body=body,
+    namespace=namespace,
+    x_additional_headers=x_additional_headers,
+)

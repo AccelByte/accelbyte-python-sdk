@@ -1,0 +1,24 @@
+import json
+import yaml
+
+from .._utils import to_dict
+from accelbyte_py_sdk.api.ams import image_patch
+from accelbyte_py_sdk.api.ams.models import ApiImageDetails
+from accelbyte_py_sdk.api.ams.models import ApiImageUpdate
+from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
+
+// body:
+// Definition: ApiImageUpdate
+// added_tags: List[str]
+// is_protected: bool
+// name: str
+// removed_tags: List[str]
+
+// Example: '{"addedTags": ["CmqEHys0jZVES1GS", "7kPiVNzUiHoHCVMQ", "WOk0V3eroqSyL27e"], "isProtected": false, "name": "ZqxIcopKQcINb2He", "removedTags": ["NPtx2YeAL49FrK14", "zC6Yqdbr1anJl4oq", "CuUjXgaijUWR1IoM"]}'
+
+result, error = image_patch(
+    body=body,
+    image_id=image_id,
+    namespace=namespace,
+    x_additional_headers=x_additional_headers,
+)

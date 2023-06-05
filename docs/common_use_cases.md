@@ -155,6 +155,52 @@ def test_admin_update_achievement(self):
     self.assertIn("ID", result.name)
     self.assertEqual("NAMA", result.name["ID"])
 ```
+## AMS
+
+Source: [ams.py](../tests/integration/api/ams.py)
+
+### Health Check
+
+```python
+def test_health_check(self):
+    from accelbyte_py_sdk.api.ams import basic_health_check
+
+    # arrange
+
+    # act
+    _, error = basic_health_check()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Info Regions
+
+```python
+def test_info_regions(self):
+    from accelbyte_py_sdk.api.ams import info_regions
+
+    # arrange
+
+    # act
+    _, error = info_regions()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Info Supported Instances
+
+```python
+def test_info_supported_instances(self):
+    from accelbyte_py_sdk.api.ams import info_supported_instances
+
+    # arrange
+
+    # act
+    _, error = info_supported_instances()
+
+    # assert
+    self.assertIsNone(error, error)
+```
 ## Basic
 
 Source: [basic.py](../tests/integration/api/basic.py)
@@ -1315,7 +1361,7 @@ def test_update_user(self):
             name=self.models_leaderboard_config_req.name,
             season_period=self.models_leaderboard_config_req.season_period,
             start_time=self.models_leaderboard_config_req.start_time,
-            stat_code="KODE_STATUS",
+            stat_code=f"{self.leaderboard_code}2",
             weekly=self.models_leaderboard_config_req.weekly,
         ),
         leaderboard_code=self.models_leaderboard_config_req.leaderboard_code,
@@ -1325,7 +1371,7 @@ def test_update_user(self):
     self.assertIsNone(error, error)
     self.assertIsNotNone(result)
     self.assertIsInstance(result, ModelsGetLeaderboardConfigResp)
-    self.assertEqual(result.stat_code, "KODE_STATUS")
+    self.assertEqual(result.stat_code, f"{self.leaderboard_code}2")
 ```
 ## Legal
 
@@ -1945,7 +1991,6 @@ def test_export_rewards(self):
 def test_export_store(self):
     from pathlib import Path
     from accelbyte_py_sdk.api.platform import export_store_1
-    from accelbyte_py_sdk.api.platform.models import ExportStoreRequest
 
     # arrange
     exported_file_path = Path(self.exported_filename)
@@ -2280,7 +2325,7 @@ def test_game_session_flow(self):
     self.assertIsNone(error, error)
 
     if not (game_session_id := getattr(result, "id_", None)):
-        self.fail(msd=f"unable to find game session id")
+        self.fail(msg=f"unable to find game session id")
 
     # act & assert (join_game_sesion)
     result, error = session_service.join_game_session(
@@ -2365,10 +2410,10 @@ def test_party_flow(self):
     self.assertIsNone(error, error)
 
     if not (party_id := getattr(result, "id_", None)):
-        self.fail(msd=f"unable to find party id")
+        self.fail(msg=f"unable to find party id")
 
     if not (party_code := getattr(result, "code", None)):
-        self.fail(msd=f"unable to find party code")
+        self.fail(msg=f"unable to find party code")
 
     # act & assert (public_party_join_code)
     result, error = session_service.public_party_join_code(
