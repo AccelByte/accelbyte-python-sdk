@@ -1,6 +1,7 @@
 from .docs import DocsTestCase
 
 from .api.achievement import AchievementTestCase
+from .api.ams import AMSTestCase
 from .api.basic import BasicTestCase
 from .api.cloudsave import CloudSaveTestCase
 from .api.dslogmanager import DSLogManagerTestCase
