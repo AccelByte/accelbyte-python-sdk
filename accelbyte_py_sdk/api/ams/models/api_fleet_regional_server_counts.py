@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -43,10 +43,10 @@ class ApiFleetRegionalServerCounts(Model):
 
     # region fields
 
-    claimed_server_count: int                                                                      # REQUIRED
-    ready_server_count: int                                                                        # REQUIRED
-    region: str                                                                                    # REQUIRED
-    running_vm_count: int                                                                          # REQUIRED
+    claimed_server_count: int  # REQUIRED
+    ready_server_count: int  # REQUIRED
+    region: str  # REQUIRED
+    running_vm_count: int  # REQUIRED
 
     # endregion fields
 
@@ -103,7 +103,7 @@ class ApiFleetRegionalServerCounts(Model):
         ready_server_count: int,
         region: str,
         running_vm_count: int,
-    **kwargs
+        **kwargs,
     ) -> ApiFleetRegionalServerCounts:
         instance = cls()
         instance.claimed_server_count = claimed_server_count
@@ -113,7 +113,9 @@ class ApiFleetRegionalServerCounts(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ApiFleetRegionalServerCounts:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ApiFleetRegionalServerCounts:
         instance = cls()
         if not dict_:
             return instance
@@ -136,15 +138,33 @@ class ApiFleetRegionalServerCounts(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ApiFleetRegionalServerCounts]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ApiFleetRegionalServerCounts]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ApiFleetRegionalServerCounts]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ApiFleetRegionalServerCounts]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ApiFleetRegionalServerCounts, List[ApiFleetRegionalServerCounts], Dict[Any, ApiFleetRegionalServerCounts]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ApiFleetRegionalServerCounts,
+        List[ApiFleetRegionalServerCounts],
+        Dict[Any, ApiFleetRegionalServerCounts],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

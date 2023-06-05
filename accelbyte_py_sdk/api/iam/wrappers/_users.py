@@ -16523,7 +16523,9 @@ def public_get_async_status(
 ):
     """Get Linking Progress Status (PublicGetAsyncStatus)
 
+
     This endpoint is used to get linking status.
+    This API need logged user and user can only request its own linking status.'
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status
@@ -16571,7 +16573,9 @@ async def public_get_async_status_async(
 ):
     """Get Linking Progress Status (PublicGetAsyncStatus)
 
+
     This endpoint is used to get linking status.
+    This API need logged user and user can only request its own linking status.'
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status

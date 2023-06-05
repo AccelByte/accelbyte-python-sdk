@@ -80,6 +80,8 @@ from ..operations.user_statistic import PublicBulkIncUserStatItemValue
 from ..operations.user_statistic import PublicCreateUserStatItem
 from ..operations.user_statistic import PublicIncUserStatItem
 from ..operations.user_statistic import PublicIncUserStatItemValue
+from ..operations.user_statistic import PublicListAllMyStatItems
+from ..operations.user_statistic import PublicListMyStatItems
 from ..operations.user_statistic import PublicQueryUserStatItems
 from ..operations.user_statistic import PublicQueryUserStatItems1
 from ..operations.user_statistic import PublicQueryUserStatItems2
@@ -2755,6 +2757,7 @@ async def delete_user_stat_items_2_async(
 @same_doc_as(GetUserStatItems)
 def get_user_stat_items(
     user_id: str,
+    is_public: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[str] = None,
@@ -2792,6 +2795,8 @@ def get_user_stat_items(
 
         user_id: (userId) REQUIRED str in path
 
+        is_public: (isPublic) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -2813,6 +2818,7 @@ def get_user_stat_items(
             return None, error
     request = GetUserStatItems.create(
         user_id=user_id,
+        is_public=is_public,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
@@ -2826,6 +2832,7 @@ def get_user_stat_items(
 @same_doc_as(GetUserStatItems)
 async def get_user_stat_items_async(
     user_id: str,
+    is_public: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[str] = None,
@@ -2863,6 +2870,8 @@ async def get_user_stat_items_async(
 
         user_id: (userId) REQUIRED str in path
 
+        is_public: (isPublic) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -2884,6 +2893,7 @@ async def get_user_stat_items_async(
             return None, error
     request = GetUserStatItems.create(
         user_id=user_id,
+        is_public=is_public,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
@@ -3844,6 +3854,276 @@ async def public_inc_user_stat_item_value_async(
     )
 
 
+@same_doc_as(PublicListAllMyStatItems)
+def public_list_all_my_stat_items(
+    additional_key: Optional[str] = None,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Public list user's statItems (publicListAllMyStatItems)
+
+    Public list all statItems of user.
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
+
+    Other detail info:
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/me/statitems/value/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL List[str] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListAllMyStatItems.create(
+        additional_key=additional_key,
+        stat_codes=stat_codes,
+        tags=tags,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicListAllMyStatItems)
+async def public_list_all_my_stat_items_async(
+    additional_key: Optional[str] = None,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Public list user's statItems (publicListAllMyStatItems)
+
+    Public list all statItems of user.
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
+
+    Other detail info:
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/me/statitems/value/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL List[str] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListAllMyStatItems.create(
+        additional_key=additional_key,
+        stat_codes=stat_codes,
+        tags=tags,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicListMyStatItems)
+def public_list_my_stat_items(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Public list user's statItems (publicListMyStatItems)
+
+    Public list all statItems by pagination.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/me/statitems
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL List[str] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - UserStatItemPagingSlicedResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListMyStatItems.create(
+        limit=limit,
+        offset=offset,
+        sort_by=sort_by,
+        stat_codes=stat_codes,
+        tags=tags,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicListMyStatItems)
+async def public_list_my_stat_items_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Public list user's statItems (publicListMyStatItems)
+
+    Public list all statItems by pagination.
+    Other detail info:
+
+      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+      *  Returns : stat items
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v1/public/namespaces/{namespace}/users/me/statitems
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL List[str] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - UserStatItemPagingSlicedResult (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListMyStatItems.create(
+        limit=limit,
+        offset=offset,
+        sort_by=sort_by,
+        stat_codes=stat_codes,
+        tags=tags,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicQueryUserStatItems)
 def public_query_user_stat_items(
     user_id: str,
@@ -3991,6 +4271,7 @@ async def public_query_user_stat_items_async(
 @same_doc_as(PublicQueryUserStatItems1)
 def public_query_user_stat_items_1(
     user_id: str,
+    additional_key: Optional[str] = None,
     stat_codes: Optional[List[str]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
@@ -4028,6 +4309,8 @@ def public_query_user_stat_items_1(
 
         user_id: (userId) REQUIRED str in path
 
+        additional_key: (additionalKey) OPTIONAL str in query
+
         stat_codes: (statCodes) OPTIONAL List[str] in query
 
         tags: (tags) OPTIONAL List[str] in query
@@ -4047,6 +4330,7 @@ def public_query_user_stat_items_1(
             return None, error
     request = PublicQueryUserStatItems1.create(
         user_id=user_id,
+        additional_key=additional_key,
         stat_codes=stat_codes,
         tags=tags,
         namespace=namespace,
@@ -4057,6 +4341,7 @@ def public_query_user_stat_items_1(
 @same_doc_as(PublicQueryUserStatItems1)
 async def public_query_user_stat_items_1_async(
     user_id: str,
+    additional_key: Optional[str] = None,
     stat_codes: Optional[List[str]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
@@ -4094,6 +4379,8 @@ async def public_query_user_stat_items_1_async(
 
         user_id: (userId) REQUIRED str in path
 
+        additional_key: (additionalKey) OPTIONAL str in query
+
         stat_codes: (statCodes) OPTIONAL List[str] in query
 
         tags: (tags) OPTIONAL List[str] in query
@@ -4113,6 +4400,7 @@ async def public_query_user_stat_items_1_async(
             return None, error
     request = PublicQueryUserStatItems1.create(
         user_id=user_id,
+        additional_key=additional_key,
         stat_codes=stat_codes,
         tags=tags,
         namespace=namespace,

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.12.0"
+__version__ = "2.15.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -17,5 +17,6 @@ __email__ = "dev@accelbyte.net"
 from .admin_get_player_attributes import AdminGetPlayerAttributes
 from .admin_query_player_attributes import AdminQueryPlayerAttributes
 from .public_delete_player_at_57835b import PublicDeletePlayerAttributes
+from .public_get_bulk_player__da8481 import PublicGetBulkPlayerCurrentPlatform
 from .public_get_player_attributes import PublicGetPlayerAttributes
 from .public_store_player_attributes import PublicStorePlayerAttributes

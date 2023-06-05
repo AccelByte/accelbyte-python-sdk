@@ -678,6 +678,7 @@ async def get_stat_async(
 def get_stats(
     cycle_ids: Optional[str] = None,
     is_global: Optional[bool] = None,
+    is_public: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -714,6 +715,8 @@ def get_stats(
 
         is_global: (isGlobal) OPTIONAL bool in query
 
+        is_public: (isPublic) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -728,6 +731,7 @@ def get_stats(
     request = GetStats.create(
         cycle_ids=cycle_ids,
         is_global=is_global,
+        is_public=is_public,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -739,6 +743,7 @@ def get_stats(
 async def get_stats_async(
     cycle_ids: Optional[str] = None,
     is_global: Optional[bool] = None,
+    is_public: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -775,6 +780,8 @@ async def get_stats_async(
 
         is_global: (isGlobal) OPTIONAL bool in query
 
+        is_public: (isPublic) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -789,6 +796,7 @@ async def get_stats_async(
     request = GetStats.create(
         cycle_ids=cycle_ids,
         is_global=is_global,
+        is_public=is_public,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -914,6 +922,7 @@ async def import_stats_async(
 def query_stats(
     keyword: str,
     is_global: Optional[bool] = None,
+    is_public: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -948,6 +957,8 @@ def query_stats(
 
         is_global: (isGlobal) OPTIONAL bool in query
 
+        is_public: (isPublic) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -964,6 +975,7 @@ def query_stats(
     request = QueryStats.create(
         keyword=keyword,
         is_global=is_global,
+        is_public=is_public,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -975,6 +987,7 @@ def query_stats(
 async def query_stats_async(
     keyword: str,
     is_global: Optional[bool] = None,
+    is_public: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -1009,6 +1022,8 @@ async def query_stats_async(
 
         is_global: (isGlobal) OPTIONAL bool in query
 
+        is_public: (isPublic) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -1025,6 +1040,7 @@ async def query_stats_async(
     request = QueryStats.create(
         keyword=keyword,
         is_global=is_global,
+        is_public=is_public,
         limit=limit,
         offset=offset,
         namespace=namespace,

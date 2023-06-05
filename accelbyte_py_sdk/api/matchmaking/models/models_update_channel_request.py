@@ -59,6 +59,8 @@ class ModelsUpdateChannelRequest(Model):
         region_latency_initial_range_ms: (region_latency_initial_range_ms) OPTIONAL int
 
         region_latency_max_ms: (region_latency_max_ms) OPTIONAL int
+
+        ticket_observability_enable: (ticket_observability_enable) OPTIONAL bool
     """
 
     # region fields
@@ -76,6 +78,7 @@ class ModelsUpdateChannelRequest(Model):
     region_expansion_rate_ms: int  # OPTIONAL
     region_latency_initial_range_ms: int  # OPTIONAL
     region_latency_max_ms: int  # OPTIONAL
+    ticket_observability_enable: bool  # OPTIONAL
 
     # endregion fields
 
@@ -135,6 +138,12 @@ class ModelsUpdateChannelRequest(Model):
 
     def with_region_latency_max_ms(self, value: int) -> ModelsUpdateChannelRequest:
         self.region_latency_max_ms = value
+        return self
+
+    def with_ticket_observability_enable(
+        self, value: bool
+    ) -> ModelsUpdateChannelRequest:
+        self.ticket_observability_enable = value
         return self
 
     # endregion with_x methods
@@ -199,6 +208,12 @@ class ModelsUpdateChannelRequest(Model):
             result["region_latency_max_ms"] = int(self.region_latency_max_ms)
         elif include_empty:
             result["region_latency_max_ms"] = 0
+        if hasattr(self, "ticket_observability_enable"):
+            result["ticket_observability_enable"] = bool(
+                self.ticket_observability_enable
+            )
+        elif include_empty:
+            result["ticket_observability_enable"] = False
         return result
 
     # endregion to methods
@@ -221,6 +236,7 @@ class ModelsUpdateChannelRequest(Model):
         region_expansion_rate_ms: Optional[int] = None,
         region_latency_initial_range_ms: Optional[int] = None,
         region_latency_max_ms: Optional[int] = None,
+        ticket_observability_enable: Optional[bool] = None,
         **kwargs,
     ) -> ModelsUpdateChannelRequest:
         instance = cls()
@@ -241,6 +257,8 @@ class ModelsUpdateChannelRequest(Model):
             instance.region_latency_initial_range_ms = region_latency_initial_range_ms
         if region_latency_max_ms is not None:
             instance.region_latency_max_ms = region_latency_max_ms
+        if ticket_observability_enable is not None:
+            instance.ticket_observability_enable = ticket_observability_enable
         return instance
 
     @classmethod
@@ -326,6 +344,15 @@ class ModelsUpdateChannelRequest(Model):
             instance.region_latency_max_ms = int(dict_["region_latency_max_ms"])
         elif include_empty:
             instance.region_latency_max_ms = 0
+        if (
+            "ticket_observability_enable" in dict_
+            and dict_["ticket_observability_enable"] is not None
+        ):
+            instance.ticket_observability_enable = bool(
+                dict_["ticket_observability_enable"]
+            )
+        elif include_empty:
+            instance.ticket_observability_enable = False
         return instance
 
     @classmethod
@@ -382,6 +409,7 @@ class ModelsUpdateChannelRequest(Model):
             "region_expansion_rate_ms": "region_expansion_rate_ms",
             "region_latency_initial_range_ms": "region_latency_initial_range_ms",
             "region_latency_max_ms": "region_latency_max_ms",
+            "ticket_observability_enable": "ticket_observability_enable",
         }
 
     @staticmethod
@@ -400,6 +428,7 @@ class ModelsUpdateChannelRequest(Model):
             "region_expansion_rate_ms": False,
             "region_latency_initial_range_ms": False,
             "region_latency_max_ms": False,
+            "ticket_observability_enable": False,
         }
 
     # endregion static methods

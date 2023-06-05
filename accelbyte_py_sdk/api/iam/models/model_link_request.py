@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.34.0)
+# AccelByte Gaming Services Iam Service (6.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,6 +67,8 @@ class ModelLinkRequest(Model):
         platform_user_id: (platform_user_id) OPTIONAL str
 
         refresh_token: (refreshToken) OPTIONAL str
+
+        user_id: (userID) OPTIONAL str
     """
 
     # region fields
@@ -87,6 +89,7 @@ class ModelLinkRequest(Model):
     platform_id: str  # OPTIONAL
     platform_user_id: str  # OPTIONAL
     refresh_token: str  # OPTIONAL
+    user_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -156,6 +159,10 @@ class ModelLinkRequest(Model):
 
     def with_refresh_token(self, value: str) -> ModelLinkRequest:
         self.refresh_token = value
+        return self
+
+    def with_user_id(self, value: str) -> ModelLinkRequest:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -232,6 +239,10 @@ class ModelLinkRequest(Model):
             result["refreshToken"] = str(self.refresh_token)
         elif include_empty:
             result["refreshToken"] = ""
+        if hasattr(self, "user_id"):
+            result["userID"] = str(self.user_id)
+        elif include_empty:
+            result["userID"] = ""
         return result
 
     # endregion to methods
@@ -257,6 +268,7 @@ class ModelLinkRequest(Model):
         platform_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
         refresh_token: Optional[str] = None,
+        user_id: Optional[str] = None,
         **kwargs,
     ) -> ModelLinkRequest:
         instance = cls()
@@ -285,6 +297,8 @@ class ModelLinkRequest(Model):
             instance.platform_user_id = platform_user_id
         if refresh_token is not None:
             instance.refresh_token = refresh_token
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -377,6 +391,10 @@ class ModelLinkRequest(Model):
             instance.refresh_token = str(dict_["refreshToken"])
         elif include_empty:
             instance.refresh_token = ""
+        if "userID" in dict_ and dict_["userID"] is not None:
+            instance.user_id = str(dict_["userID"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @classmethod
@@ -432,6 +450,7 @@ class ModelLinkRequest(Model):
             "platformID": "platform_id",
             "platform_user_id": "platform_user_id",
             "refreshToken": "refresh_token",
+            "userID": "user_id",
         }
 
     @staticmethod
@@ -453,6 +472,7 @@ class ModelLinkRequest(Model):
             "platformID": False,
             "platform_user_id": False,
             "refreshToken": False,
+            "userID": False,
         }
 
     # endregion static methods

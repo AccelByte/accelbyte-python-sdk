@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-social-service (2.7.0)
+# justice-social-service (2.8.0)
 
 from ._get_namespace_slot_config import get_namespace_slot_config
 from ._update_namespace_slot_config import update_namespace_slot_config
@@ -78,6 +78,9 @@ from ._public_bulk_inc_user_stat_item import public_bulk_inc_user_stat_item
 from ._public_bulk_inc_user_stat_item_value import public_bulk_inc_user_stat_item_value
 from ._bulk_reset_user_stat_item_2 import bulk_reset_user_stat_item_2
 from ._create_stat_1 import create_stat_1
+from ._public_list_my_stat_cycle_items import public_list_my_stat_cycle_items
+from ._public_list_my_stat_items import public_list_my_stat_items
+from ._public_list_all_my_stat_items import public_list_all_my_stat_items
 from ._get_user_stat_cycle_items_1 import get_user_stat_cycle_items_1
 from ._public_query_user_stat_items import public_query_user_stat_items
 from ._public_bulk_create_user_stat_items import public_bulk_create_user_stat_items
@@ -171,6 +174,9 @@ commands = [
     public_bulk_inc_user_stat_item_value,
     bulk_reset_user_stat_item_2,
     create_stat_1,
+    public_list_my_stat_cycle_items,
+    public_list_my_stat_items,
+    public_list_all_my_stat_items,
     get_user_stat_cycle_items_1,
     public_query_user_stat_items,
     public_bulk_create_user_stat_items,

@@ -31,11 +31,14 @@ from ....core import same_doc_as
 
 from ..models import ApimodelsPlayerAttributesRequestBody
 from ..models import ApimodelsPlayerAttributesResponseBody
+from ..models import ApimodelsPlayersCurrentPlatformRequest
+from ..models import ApimodelsPlayersCurrentPlatformResponse
 from ..models import ResponseError
 
 from ..operations.player import AdminGetPlayerAttributes
 from ..operations.player import AdminQueryPlayerAttributes
 from ..operations.player import PublicDeletePlayerAttributes
+from ..operations.player import PublicGetBulkPlayerCurrentPlatform
 from ..operations.player import PublicGetPlayerAttributes
 from ..operations.player import PublicStorePlayerAttributes
 
@@ -371,6 +374,108 @@ async def public_delete_player_attributes_async(
         if error:
             return None, error
     request = PublicDeletePlayerAttributes.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetBulkPlayerCurrentPlatform)
+def public_get_bulk_player_current_platform(
+    body: ApimodelsPlayersCurrentPlatformRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get player current platform in bulk. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetBulkPlayerCurrentPlatform)
+
+    Get bulk players current platform.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/users/bulk/platform
+
+        method: POST
+
+        tags: ["Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsPlayersCurrentPlatformRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsPlayersCurrentPlatformResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetBulkPlayerCurrentPlatform.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetBulkPlayerCurrentPlatform)
+async def public_get_bulk_player_current_platform_async(
+    body: ApimodelsPlayersCurrentPlatformRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get player current platform in bulk. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetBulkPlayerCurrentPlatform)
+
+    Get bulk players current platform.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/users/bulk/platform
+
+        method: POST
+
+        tags: ["Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsPlayersCurrentPlatformRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsPlayersCurrentPlatformResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetBulkPlayerCurrentPlatform.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

@@ -195,6 +195,7 @@ def admin_create_configuration_template_v1(
     - PSNServiceLabel: the PSN service label.
     - SessionTitle: the session title. In PSN, this will be used to define name of the session thats displayed on PlayStation system UI.
     - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
+    - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -265,6 +266,7 @@ async def admin_create_configuration_template_v1_async(
     - PSNServiceLabel: the PSN service label.
     - SessionTitle: the session title. In PSN, this will be used to define name of the session thats displayed on PlayStation system UI.
     - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
+    - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -1156,6 +1158,7 @@ def admin_update_configuration_template_v1(
     - PSNServiceLabel: the PSN service label.
     - SessionTitle: the session title. In PSN, this will be used to define name of the session thats displayed on PlayStation system UI.
     - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
+    - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}
@@ -1230,6 +1233,7 @@ async def admin_update_configuration_template_v1_async(
     - PSNServiceLabel: the PSN service label.
     - SessionTitle: the session title. In PSN, this will be used to define name of the session thats displayed on PlayStation system UI.
     - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
+    - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}

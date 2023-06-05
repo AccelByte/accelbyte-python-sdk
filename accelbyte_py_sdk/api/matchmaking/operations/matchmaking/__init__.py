@@ -29,6 +29,7 @@ from .get_all_sessions_in_channel import GetAllSessionsInChannel
 from .get_match_pool_metric import GetMatchPoolMetric
 from .get_session_history_detailed import GetSessionHistoryDetailed
 from .get_single_matchmaking_channel import GetSingleMatchmakingChannel
+from .get_stat_data import GetStatData
 from .import_channels import ImportChannels
 from .public_get_all_matchmak_cd6d3e import PublicGetAllMatchmakingChannel
 from .public_get_single_match_188a61 import PublicGetSingleMatchmakingChannel

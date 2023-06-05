@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Lobby Server Index (3.19.0)
+# AccelByte Gaming Services Lobby Server Index (3.21.0)
 
 
 ## Operations
@@ -34,8 +34,11 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /friends/namespaces/{namespace}/users/{userId}/add/bulk | POST | addFriendsWithoutConfirmation | `false` | [AddFriendsWithoutConfirmation](../../accelbyte_py_sdk/api/lobby/operations/friends/add_friends_without_con_a5cd59.py) | [add_friends_without_confirmation](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-add-friends-without-confirmation](../../samples/cli/accelbyte_py_sdk_cli/lobby/_add_friends_without_confirmation.py) |
+| /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}/incoming | GET | get incoming friend requests | `false` | [GetIncomingFriendRequests](../../accelbyte_py_sdk/api/lobby/operations/friends/get_incoming_friend_requests.py) | [get_incoming_friend_requests](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-incoming-friend-requests](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_incoming_friend_requests.py) |
 | /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId} | GET | get list of friends | `false` | [GetListOfFriends](../../accelbyte_py_sdk/api/lobby/operations/friends/get_list_of_friends.py) | [get_list_of_friends](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-list-of-friends](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_list_of_friends.py) |
+| /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}/outgoing | GET | get outgoing friend requests | `false` | [GetOutgoingFriendRequests](../../accelbyte_py_sdk/api/lobby/operations/friends/get_outgoing_friend_requests.py) | [get_outgoing_friend_requests](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-outgoing-friend-requests](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_outgoing_friend_requests.py) |
 | /friends/namespaces/{namespace}/me | GET | getUserFriendsUpdated | `false` | [GetUserFriendsUpdated](../../accelbyte_py_sdk/api/lobby/operations/friends/get_user_friends_updated.py) | [get_user_friends_updated](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-user-friends-updated](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_user_friends_updated.py) |
+| /friends/namespaces/{namespace}/me/platforms | GET | getUserFriendsWithPlatform | `false` | [GetUserFriendsWithPlatform](../../accelbyte_py_sdk/api/lobby/operations/friends/get_user_friends_with_platform.py) | [get_user_friends_with_platform](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-user-friends-with-platform](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_user_friends_with_platform.py) |
 | /friends/namespaces/{namespace}/me/incoming | GET | getUserIncomingFriends | `false` | [GetUserIncomingFriends](../../accelbyte_py_sdk/api/lobby/operations/friends/get_user_incoming_friends.py) | [get_user_incoming_friends](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-user-incoming-friends](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_user_incoming_friends.py) |
 | /friends/namespaces/{namespace}/me/incoming-time | GET | getUserIncomingFriendsWithTime | `false` | [GetUserIncomingFriendsWithTime](../../accelbyte_py_sdk/api/lobby/operations/friends/get_user_incoming_frien_a30279.py) | [get_user_incoming_friends_with_time](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-user-incoming-friends-with-time](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_user_incoming_friends_with_time.py) |
 | /friends/namespaces/{namespace}/me/outgoing | GET | getUserOutgoingFriends | `false` | [GetUserOutgoingFriends](../../accelbyte_py_sdk/api/lobby/operations/friends/get_user_outgoing_friends.py) | [get_user_outgoing_friends](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-user-outgoing-friends](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_user_outgoing_friends.py) |
@@ -99,6 +102,7 @@
 |---|---|---|---|---|---|---|
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/bulk/block | POST | adminBulkBlockPlayersV1 | `false` | [AdminBulkBlockPlayersV1](../../accelbyte_py_sdk/api/lobby/operations/player/admin_bulk_block_players_v1.py) | [admin_bulk_block_players_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-bulk-block-players-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_bulk_block_players_v1.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes | GET | adminGetAllPlayerSessionAttribute | `false` | [AdminGetAllPlayerSessionAttribute](../../accelbyte_py_sdk/api/lobby/operations/player/admin_get_all_player_se_b925d7.py) | [admin_get_all_player_session_attribute](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-get-all-player-session-attribute](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_all_player_session_attribute.py) |
+| /lobby/v1/admin/player/namespaces/{namespace}/users/bulk/blocked | POST | adminGetBulkPlayerBlockedPlayersV1 | `false` | [AdminGetBulkPlayerBlockedPlayersV1](../../accelbyte_py_sdk/api/lobby/operations/player/admin_get_bulk_player_b_0addc5.py) | [admin_get_bulk_player_blocked_players_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-get-bulk-player-blocked-players-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_bulk_player_blocked_players_v1.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/ccu | GET | adminGetLobbyCCU | `false` | [AdminGetLobbyCCU](../../accelbyte_py_sdk/api/lobby/operations/player/admin_get_lobby_ccu.py) | [admin_get_lobby_ccu](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-get-lobby-ccu](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_lobby_ccu.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/blocked-by | GET | adminGetPlayerBlockedByPlayersV1 | `false` | [AdminGetPlayerBlockedByPlayersV1](../../accelbyte_py_sdk/api/lobby/operations/player/admin_get_player_blocke_8955db.py) | [admin_get_player_blocked_by_players_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-get-player-blocked-by-players-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_player_blocked_by_players_v1.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/blocked | GET | adminGetPlayerBlockedPlayersV1 | `false` | [AdminGetPlayerBlockedPlayersV1](../../accelbyte_py_sdk/api/lobby/operations/player/admin_get_player_blocke_7da3f3.py) | [admin_get_player_blocked_players_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-get-player-blocked-players-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_player_blocked_players_v1.py) |
@@ -158,6 +162,7 @@
 | model.GetUserIncomingFriendsResponse | [ModelGetUserIncomingFriendsResponse](../../accelbyte_py_sdk/api/lobby/models/model_get_user_incoming_friends_response.py) |
 | model.GetUserOutgoingFriendsResponse | [ModelGetUserOutgoingFriendsResponse](../../accelbyte_py_sdk/api/lobby/models/model_get_user_outgoing_friends_response.py) |
 | model.IncomingFriendsWithTimeData | [ModelIncomingFriendsWithTimeData](../../accelbyte_py_sdk/api/lobby/models/model_incoming_friends_with_time_data.py) |
+| model.ListBulkUserPlatformsResponse | [ModelListBulkUserPlatformsResponse](../../accelbyte_py_sdk/api/lobby/models/model_list_bulk_user_platforms_response.py) |
 | model.LoadIncomingFriendsWithTimeResponse | [ModelLoadIncomingFriendsWithTimeResponse](../../accelbyte_py_sdk/api/lobby/models/model_load_incoming_friends_with_time_response.py) |
 | model.LoadOutgoingFriendsWithTimeResponse | [ModelLoadOutgoingFriendsWithTimeResponse](../../accelbyte_py_sdk/api/lobby/models/model_load_outgoing_friends_with_time_response.py) |
 | model.Localization | [ModelLocalization](../../accelbyte_py_sdk/api/lobby/models/model_localization.py) |
@@ -178,9 +183,11 @@
 | model.UserAcceptFriendRequest | [ModelUserAcceptFriendRequest](../../accelbyte_py_sdk/api/lobby/models/model_user_accept_friend_request.py) |
 | model.UserCancelFriendRequest | [ModelUserCancelFriendRequest](../../accelbyte_py_sdk/api/lobby/models/model_user_cancel_friend_request.py) |
 | model.UserGetFriendshipStatusResponse | [ModelUserGetFriendshipStatusResponse](../../accelbyte_py_sdk/api/lobby/models/model_user_get_friendship_status_response.py) |
+| model.UserPlatformInfo | [ModelUserPlatformInfo](../../accelbyte_py_sdk/api/lobby/models/model_user_platform_info.py) |
 | model.UserRejectFriendRequest | [ModelUserRejectFriendRequest](../../accelbyte_py_sdk/api/lobby/models/model_user_reject_friend_request.py) |
 | model.UserRequestFriendRequest | [ModelUserRequestFriendRequest](../../accelbyte_py_sdk/api/lobby/models/model_user_request_friend_request.py) |
 | model.UserUnfriendRequest | [ModelUserUnfriendRequest](../../accelbyte_py_sdk/api/lobby/models/model_user_unfriend_request.py) |
+| model.UserWithPlatformInfo | [ModelUserWithPlatformInfo](../../accelbyte_py_sdk/api/lobby/models/model_user_with_platform_info.py) |
 | models.AdminAddProfanityFilterIntoListRequest | [ModelsAdminAddProfanityFilterIntoListRequest](../../accelbyte_py_sdk/api/lobby/models/models_admin_add_profanity_filter_into_list_request.py) |
 | models.AdminAddProfanityFiltersFilterRequest | [ModelsAdminAddProfanityFiltersFilterRequest](../../accelbyte_py_sdk/api/lobby/models/models_admin_add_profanity_filters_filter_request.py) |
 | models.AdminAddProfanityFiltersRequest | [ModelsAdminAddProfanityFiltersRequest](../../accelbyte_py_sdk/api/lobby/models/models_admin_add_profanity_filters_request.py) |
@@ -203,6 +210,8 @@
 | models.GetAllPlayerBlockedByUsersResponse | [ModelsGetAllPlayerBlockedByUsersResponse](../../accelbyte_py_sdk/api/lobby/models/models_get_all_player_blocked_by_users_response.py) |
 | models.GetAllPlayerBlockedUsersResponse | [ModelsGetAllPlayerBlockedUsersResponse](../../accelbyte_py_sdk/api/lobby/models/models_get_all_player_blocked_users_response.py) |
 | models.GetAllPlayerSessionAttributeResponse | [ModelsGetAllPlayerSessionAttributeResponse](../../accelbyte_py_sdk/api/lobby/models/models_get_all_player_session_attribute_response.py) |
+| models.GetBulkAllPlayerBlockedUsersRequest | [ModelsGetBulkAllPlayerBlockedUsersRequest](../../accelbyte_py_sdk/api/lobby/models/models_get_bulk_all_player_blocked_users_request.py) |
+| models.GetBulkAllPlayerBlockedUsersResponse | [ModelsGetBulkAllPlayerBlockedUsersResponse](../../accelbyte_py_sdk/api/lobby/models/models_get_bulk_all_player_blocked_users_response.py) |
 | models.GetConfigResponse | [ModelsGetConfigResponse](../../accelbyte_py_sdk/api/lobby/models/models_get_config_response.py) |
 | models.GetLobbyCcuResponse | [ModelsGetLobbyCcuResponse](../../accelbyte_py_sdk/api/lobby/models/models_get_lobby_ccu_response.py) |
 | models.GetPlayerSessionAttributeResponse | [ModelsGetPlayerSessionAttributeResponse](../../accelbyte_py_sdk/api/lobby/models/models_get_player_session_attribute_response.py) |

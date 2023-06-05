@@ -62,6 +62,24 @@ def create_view(
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
       *  Returns : created a view
 
+
+
+    ## Restrictions for localization extension
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
 
@@ -123,6 +141,24 @@ async def create_view_async(
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
       *  Returns : created a view
+
+
+
+    ## Restrictions for localization extension
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
@@ -645,6 +681,24 @@ def update_view(
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
       *  Returns : updated view data
 
+
+
+    ## Restrictions for localization extension
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
@@ -710,6 +764,24 @@ async def update_view_async(
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
       *  Returns : updated view data
+
+
+
+    ## Restrictions for localization extension
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]

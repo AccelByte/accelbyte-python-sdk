@@ -60,6 +60,8 @@ class ModelsChannelRequest(Model):
 
         social_matchmaking: (social_matchmaking) OPTIONAL bool
 
+        ticket_observability_enable: (ticket_observability_enable) OPTIONAL bool
+
         use_sub_gamemode: (use_sub_gamemode) OPTIONAL bool
     """
 
@@ -78,6 +80,7 @@ class ModelsChannelRequest(Model):
     region_latency_initial_range_ms: int  # OPTIONAL
     region_latency_max_ms: int  # OPTIONAL
     social_matchmaking: bool  # OPTIONAL
+    ticket_observability_enable: bool  # OPTIONAL
     use_sub_gamemode: bool  # OPTIONAL
 
     # endregion fields
@@ -134,6 +137,10 @@ class ModelsChannelRequest(Model):
 
     def with_social_matchmaking(self, value: bool) -> ModelsChannelRequest:
         self.social_matchmaking = value
+        return self
+
+    def with_ticket_observability_enable(self, value: bool) -> ModelsChannelRequest:
+        self.ticket_observability_enable = value
         return self
 
     def with_use_sub_gamemode(self, value: bool) -> ModelsChannelRequest:
@@ -202,6 +209,12 @@ class ModelsChannelRequest(Model):
             result["social_matchmaking"] = bool(self.social_matchmaking)
         elif include_empty:
             result["social_matchmaking"] = False
+        if hasattr(self, "ticket_observability_enable"):
+            result["ticket_observability_enable"] = bool(
+                self.ticket_observability_enable
+            )
+        elif include_empty:
+            result["ticket_observability_enable"] = False
         if hasattr(self, "use_sub_gamemode"):
             result["use_sub_gamemode"] = bool(self.use_sub_gamemode)
         elif include_empty:
@@ -228,6 +241,7 @@ class ModelsChannelRequest(Model):
         region_latency_initial_range_ms: Optional[int] = None,
         region_latency_max_ms: Optional[int] = None,
         social_matchmaking: Optional[bool] = None,
+        ticket_observability_enable: Optional[bool] = None,
         use_sub_gamemode: Optional[bool] = None,
         **kwargs,
     ) -> ModelsChannelRequest:
@@ -251,6 +265,8 @@ class ModelsChannelRequest(Model):
             instance.region_latency_max_ms = region_latency_max_ms
         if social_matchmaking is not None:
             instance.social_matchmaking = social_matchmaking
+        if ticket_observability_enable is not None:
+            instance.ticket_observability_enable = ticket_observability_enable
         if use_sub_gamemode is not None:
             instance.use_sub_gamemode = use_sub_gamemode
         return instance
@@ -340,6 +356,15 @@ class ModelsChannelRequest(Model):
             instance.social_matchmaking = bool(dict_["social_matchmaking"])
         elif include_empty:
             instance.social_matchmaking = False
+        if (
+            "ticket_observability_enable" in dict_
+            and dict_["ticket_observability_enable"] is not None
+        ):
+            instance.ticket_observability_enable = bool(
+                dict_["ticket_observability_enable"]
+            )
+        elif include_empty:
+            instance.ticket_observability_enable = False
         if "use_sub_gamemode" in dict_ and dict_["use_sub_gamemode"] is not None:
             instance.use_sub_gamemode = bool(dict_["use_sub_gamemode"])
         elif include_empty:
@@ -400,6 +425,7 @@ class ModelsChannelRequest(Model):
             "region_latency_initial_range_ms": "region_latency_initial_range_ms",
             "region_latency_max_ms": "region_latency_max_ms",
             "social_matchmaking": "social_matchmaking",
+            "ticket_observability_enable": "ticket_observability_enable",
             "use_sub_gamemode": "use_sub_gamemode",
         }
 
@@ -419,6 +445,7 @@ class ModelsChannelRequest(Model):
             "region_latency_initial_range_ms": False,
             "region_latency_max_ms": False,
             "social_matchmaking": False,
+            "ticket_observability_enable": False,
             "use_sub_gamemode": False,
         }
 

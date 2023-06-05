@@ -93,6 +93,24 @@ def admin_create_user_order(
       * platform default value is Other
       *  Returns : created order
 
+
+
+    ## Restrictions for ext field
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
 
@@ -158,6 +176,24 @@ async def admin_create_user_order_async(
       * sandbox default value is false
       * platform default value is Other
       *  Returns : created order
+
+
+
+    ## Restrictions for ext field
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
@@ -1330,6 +1366,24 @@ def public_create_user_order(
       * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created order
 
+
+
+    ## Restrictions for ext field
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
 
@@ -1394,6 +1448,24 @@ async def public_create_user_order_async(
       *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
       * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created order
+
+
+
+    ## Restrictions for ext field
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]

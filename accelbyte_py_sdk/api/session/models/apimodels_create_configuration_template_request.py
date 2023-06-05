@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.12.0)
+# AccelByte Gaming Services Session Service (2.15.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,6 +62,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
 
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
+        max_active_sessions: (maxActiveSessions) OPTIONAL int
+
         native_session_setting: (NativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
 
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
@@ -83,6 +85,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
     type_: str  # REQUIRED
     ds_source: str  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
+    max_active_sessions: int  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
 
@@ -168,6 +171,12 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         self.fallback_claim_keys = value
         return self
 
+    def with_max_active_sessions(
+        self, value: int
+    ) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.max_active_sessions = value
+        return self
+
     def with_native_session_setting(
         self, value: ModelsNativeSessionSetting
     ) -> ApimodelsCreateConfigurationTemplateRequest:
@@ -242,6 +251,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
             result["fallbackClaimKeys"] = []
+        if hasattr(self, "max_active_sessions"):
+            result["maxActiveSessions"] = int(self.max_active_sessions)
+        elif include_empty:
+            result["maxActiveSessions"] = 0
         if hasattr(self, "native_session_setting"):
             result["NativeSessionSetting"] = self.native_session_setting.to_dict(
                 include_empty=include_empty
@@ -275,6 +288,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         type_: str,
         ds_source: Optional[str] = None,
         fallback_claim_keys: Optional[List[str]] = None,
+        max_active_sessions: Optional[int] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         preferred_claim_keys: Optional[List[str]] = None,
         **kwargs,
@@ -296,6 +310,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.ds_source = ds_source
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
+        if max_active_sessions is not None:
+            instance.max_active_sessions = max_active_sessions
         if native_session_setting is not None:
             instance.native_session_setting = native_session_setting
         if preferred_claim_keys is not None:
@@ -367,6 +383,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             ]
         elif include_empty:
             instance.fallback_claim_keys = []
+        if "maxActiveSessions" in dict_ and dict_["maxActiveSessions"] is not None:
+            instance.max_active_sessions = int(dict_["maxActiveSessions"])
+        elif include_empty:
+            instance.max_active_sessions = 0
         if (
             "NativeSessionSetting" in dict_
             and dict_["NativeSessionSetting"] is not None
@@ -441,6 +461,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "type": "type_",
             "dsSource": "ds_source",
             "fallbackClaimKeys": "fallback_claim_keys",
+            "maxActiveSessions": "max_active_sessions",
             "NativeSessionSetting": "native_session_setting",
             "preferredClaimKeys": "preferred_claim_keys",
         }
@@ -462,6 +483,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "type": True,
             "dsSource": False,
             "fallbackClaimKeys": False,
+            "maxActiveSessions": False,
             "NativeSessionSetting": False,
             "preferredClaimKeys": False,
         }

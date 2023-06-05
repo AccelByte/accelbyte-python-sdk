@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (2.12.0)
+# justice-session-service (2.15.1)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
@@ -38,6 +38,7 @@ from ._admin_query_player_attributes import admin_query_player_attributes
 from ._admin_get_player_attributes import admin_get_player_attributes
 from ._create_game_session import create_game_session
 from ._public_query_game_sessions import public_query_game_sessions
+from ._public_session_join_code import public_session_join_code
 from ._get_game_session_by_pod_name import get_game_session_by_pod_name
 from ._get_game_session import get_game_session
 from ._update_game_session import update_game_session
@@ -46,6 +47,8 @@ from ._patch_update_game_session import patch_update_game_session
 from ._update_game_session_backfill_ticket_id import (
     update_game_session_backfill_ticket_id,
 )
+from ._game_session_generate_code import game_session_generate_code
+from ._public_revoke_game_session_code import public_revoke_game_session_code
 from ._public_game_session_invite import public_game_session_invite
 from ._join_game_session import join_game_session
 from ._leave_game_session import leave_game_session
@@ -64,6 +67,9 @@ from ._public_party_leave import public_party_leave
 from ._public_party_reject import public_party_reject
 from ._public_party_kick import public_party_kick
 from ._public_create_party import public_create_party
+from ._public_get_bulk_player_current_platform import (
+    public_get_bulk_player_current_platform,
+)
 from ._public_get_player_attributes import public_get_player_attributes
 from ._public_store_player_attributes import public_store_player_attributes
 from ._public_delete_player_attributes import public_delete_player_attributes
@@ -94,12 +100,15 @@ commands = [
     admin_get_player_attributes,
     create_game_session,
     public_query_game_sessions,
+    public_session_join_code,
     get_game_session_by_pod_name,
     get_game_session,
     update_game_session,
     delete_game_session,
     patch_update_game_session,
     update_game_session_backfill_ticket_id,
+    game_session_generate_code,
+    public_revoke_game_session_code,
     public_game_session_invite,
     join_game_session,
     leave_game_session,
@@ -118,6 +127,7 @@ commands = [
     public_party_reject,
     public_party_kick,
     public_create_party,
+    public_get_bulk_player_current_platform,
     public_get_player_attributes,
     public_store_player_attributes,
     public_delete_player_attributes,

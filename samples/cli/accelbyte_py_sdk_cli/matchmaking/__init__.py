@@ -26,11 +26,19 @@ from ._export_channels import export_channels
 from ._import_channels import import_channels
 from ._get_single_matchmaking_channel import get_single_matchmaking_channel
 from ._update_matchmaking_channel import update_matchmaking_channel
+from ._clean_all_mocks import clean_all_mocks
+from ._get_all_mock_matches import get_all_mock_matches
+from ._get_mock_matches_by_timestamp import get_mock_matches_by_timestamp
+from ._get_all_mock_tickets import get_all_mock_tickets
+from ._create_mock_tickets import create_mock_tickets
+from ._bulk_create_mock_tickets import bulk_create_mock_tickets
+from ._get_mock_tickets_by_timestamp import get_mock_tickets_by_timestamp
 from ._get_all_party_in_channel import get_all_party_in_channel
 from ._get_all_sessions_in_channel import get_all_sessions_in_channel
 from ._add_user_into_session_in_channel import add_user_into_session_in_channel
 from ._delete_session_in_channel import delete_session_in_channel
 from ._delete_user_from_session_in_channel import delete_user_from_session_in_channel
+from ._get_stat_data import get_stat_data
 from ._search_sessions import search_sessions
 from ._get_session_history_detailed import get_session_history_detailed
 from ._public_get_messages import public_get_messages
@@ -61,11 +69,19 @@ commands = [
     import_channels,
     get_single_matchmaking_channel,
     update_matchmaking_channel,
+    clean_all_mocks,
+    get_all_mock_matches,
+    get_mock_matches_by_timestamp,
+    get_all_mock_tickets,
+    create_mock_tickets,
+    bulk_create_mock_tickets,
+    get_mock_tickets_by_timestamp,
     get_all_party_in_channel,
     get_all_sessions_in_channel,
     add_user_into_session_in_channel,
     delete_session_in_channel,
     delete_user_from_session_in_channel,
+    get_stat_data,
     search_sessions,
     get_session_history_detailed,
     public_get_messages,

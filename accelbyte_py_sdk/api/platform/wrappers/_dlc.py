@@ -1306,6 +1306,24 @@ def update_platform_dlc_config(
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
       *  Returns : updated Platform DLC config
 
+
+
+    ## Restrictions for platform dlc map
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
 
@@ -1355,6 +1373,24 @@ async def update_platform_dlc_config_async(
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
       *  Returns : updated Platform DLC config
+
+
+
+    ## Restrictions for platform dlc map
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]

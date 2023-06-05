@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.7.0)
+# AccelByte Gaming Services Social Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -66,6 +66,8 @@ class PublicQueryUserStatItems1(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        additional_key: (additionalKey) OPTIONAL str in query
+
         stat_codes: (statCodes) OPTIONAL List[str] in query
 
         tags: (tags) OPTIONAL List[str] in query
@@ -93,6 +95,7 @@ class PublicQueryUserStatItems1(Operation):
 
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    additional_key: str  # OPTIONAL in [query]
     stat_codes: List[str]  # OPTIONAL in [query]
     tags: List[str]  # OPTIONAL in [query]
 
@@ -148,6 +151,8 @@ class PublicQueryUserStatItems1(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "additional_key"):
+            result["additionalKey"] = self.additional_key
         if hasattr(self, "stat_codes"):
             result["statCodes"] = self.stat_codes
         if hasattr(self, "tags"):
@@ -168,6 +173,10 @@ class PublicQueryUserStatItems1(Operation):
 
     def with_user_id(self, value: str) -> PublicQueryUserStatItems1:
         self.user_id = value
+        return self
+
+    def with_additional_key(self, value: str) -> PublicQueryUserStatItems1:
+        self.additional_key = value
         return self
 
     def with_stat_codes(self, value: List[str]) -> PublicQueryUserStatItems1:
@@ -192,6 +201,10 @@ class PublicQueryUserStatItems1(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "additional_key") and self.additional_key:
+            result["additionalKey"] = str(self.additional_key)
+        elif include_empty:
+            result["additionalKey"] = ""
         if hasattr(self, "stat_codes") and self.stat_codes:
             result["statCodes"] = [str(i0) for i0 in self.stat_codes]
         elif include_empty:
@@ -260,6 +273,7 @@ class PublicQueryUserStatItems1(Operation):
         cls,
         namespace: str,
         user_id: str,
+        additional_key: Optional[str] = None,
         stat_codes: Optional[List[str]] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
@@ -267,6 +281,8 @@ class PublicQueryUserStatItems1(Operation):
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
+        if additional_key is not None:
+            instance.additional_key = additional_key
         if stat_codes is not None:
             instance.stat_codes = stat_codes
         if tags is not None:
@@ -286,6 +302,10 @@ class PublicQueryUserStatItems1(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "additionalKey" in dict_ and dict_["additionalKey"] is not None:
+            instance.additional_key = str(dict_["additionalKey"])
+        elif include_empty:
+            instance.additional_key = ""
         if "statCodes" in dict_ and dict_["statCodes"] is not None:
             instance.stat_codes = [str(i0) for i0 in dict_["statCodes"]]
         elif include_empty:
@@ -301,6 +321,7 @@ class PublicQueryUserStatItems1(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+            "additionalKey": "additional_key",
             "statCodes": "stat_codes",
             "tags": "tags",
         }
@@ -310,6 +331,7 @@ class PublicQueryUserStatItems1(Operation):
         return {
             "namespace": True,
             "userId": True,
+            "additionalKey": False,
             "statCodes": False,
             "tags": False,
         }

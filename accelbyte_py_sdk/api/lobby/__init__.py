@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.19.0"
+__version__ = "3.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -51,10 +51,16 @@ from .wrappers import admin_update_config_v1_async
 # friends
 from .wrappers import add_friends_without_confirmation
 from .wrappers import add_friends_without_confirmation_async
+from .wrappers import get_incoming_friend_requests
+from .wrappers import get_incoming_friend_requests_async
 from .wrappers import get_list_of_friends
 from .wrappers import get_list_of_friends_async
+from .wrappers import get_outgoing_friend_requests
+from .wrappers import get_outgoing_friend_requests_async
 from .wrappers import get_user_friends_updated
 from .wrappers import get_user_friends_updated_async
+from .wrappers import get_user_friends_with_platform
+from .wrappers import get_user_friends_with_platform_async
 from .wrappers import get_user_incoming_friends
 from .wrappers import get_user_incoming_friends_async
 from .wrappers import get_user_incoming_friends_with_time
@@ -157,6 +163,8 @@ from .wrappers import admin_bulk_block_players_v1
 from .wrappers import admin_bulk_block_players_v1_async
 from .wrappers import admin_get_all_player_session_attribute
 from .wrappers import admin_get_all_player_session_attribute_async
+from .wrappers import admin_get_bulk_player_blocked_players_v1
+from .wrappers import admin_get_bulk_player_blocked_players_v1_async
 from .wrappers import admin_get_lobby_ccu
 from .wrappers import admin_get_lobby_ccu_async
 from .wrappers import admin_get_player_blocked_by_players_v1

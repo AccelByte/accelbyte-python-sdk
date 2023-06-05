@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.7.0)
+# AccelByte Gaming Services Social Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -326,7 +326,9 @@ def create_stat_create_example() -> StatCreate:
     instance.stat_code = randomize()
     instance.cycle_ids = [randomize()]
     instance.description = randomize()
+    instance.ignore_additional_data_on_value_rejected = randomize("bool")
     instance.increment_only = randomize("bool")
+    instance.is_public = randomize("bool")
     instance.maximum = randomize("int", min_val=1, max_val=1000)
     instance.minimum = randomize("int", min_val=1, max_val=1000)
     instance.set_as_global = randomize("bool")
@@ -406,7 +408,9 @@ def create_stat_info_example() -> StatInfo:
     instance = StatInfo()
     instance.created_at = randomize("date")
     instance.default_value = randomize("int", min_val=1, max_val=1000)
+    instance.ignore_additional_data_on_value_rejected = randomize("bool")
     instance.increment_only = randomize("bool")
+    instance.is_public = randomize("bool")
     instance.name = randomize()
     instance.namespace = randomize("slug")
     instance.set_as_global = randomize("bool")
@@ -460,6 +464,8 @@ def create_stat_update_example() -> StatUpdate:
     instance.cycle_ids = [randomize()]
     instance.default_value = randomize("int", min_val=1, max_val=1000)
     instance.description = randomize()
+    instance.ignore_additional_data_on_value_rejected = randomize("bool")
+    instance.is_public = randomize("bool")
     instance.name = randomize()
     instance.tags = [randomize()]
     return instance

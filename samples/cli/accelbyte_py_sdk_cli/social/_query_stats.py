@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Social Service (2.7.0)
+# AGS Social Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,6 +37,7 @@ from accelbyte_py_sdk.api.social.models import StatPagingSlicedResult
 @click.command()
 @click.argument("keyword", type=str)
 @click.option("--is_global", "is_global", type=bool)
+@click.option("--is_public", "is_public", type=bool)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
@@ -46,6 +47,7 @@ from accelbyte_py_sdk.api.social.models import StatPagingSlicedResult
 def query_stats(
     keyword: str,
     is_global: Optional[bool] = None,
+    is_public: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -64,6 +66,7 @@ def query_stats(
     result, error = query_stats_internal(
         keyword=keyword,
         is_global=is_global,
+        is_public=is_public,
         limit=limit,
         offset=offset,
         namespace=namespace,

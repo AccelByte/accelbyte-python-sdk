@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Service (2.12.0)
+# AGS Session Service (2.15.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -47,6 +47,7 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 @click.option("--offset", "offset", type=int)
 @click.option("--order", "order", type=str)
 @click.option("--order_by", "order_by", type=str)
+@click.option("--party_id", "party_id", type=str)
 @click.option("--value", "value", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -62,6 +63,7 @@ def admin_query_parties(
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
+    party_id: Optional[str] = None,
     value: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -86,6 +88,7 @@ def admin_query_parties(
         offset=offset,
         order=order,
         order_by=order_by,
+        party_id=party_id,
         value=value,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

@@ -46,6 +46,8 @@ class ModelsMatchmakingResult(Model):
 
         game_mode: (game_mode) REQUIRED str
 
+        is_mock: (is_mock) REQUIRED str
+
         match_id: (match_id) REQUIRED str
 
         matching_allies: (matching_allies) REQUIRED List[ModelsMatchingAlly]
@@ -79,6 +81,7 @@ class ModelsMatchmakingResult(Model):
     error_code: int  # REQUIRED
     error_message: str  # REQUIRED
     game_mode: str  # REQUIRED
+    is_mock: str  # REQUIRED
     match_id: str  # REQUIRED
     matching_allies: List[ModelsMatchingAlly]  # REQUIRED
     namespace: str  # REQUIRED
@@ -118,6 +121,10 @@ class ModelsMatchmakingResult(Model):
 
     def with_game_mode(self, value: str) -> ModelsMatchmakingResult:
         self.game_mode = value
+        return self
+
+    def with_is_mock(self, value: str) -> ModelsMatchmakingResult:
+        self.is_mock = value
         return self
 
     def with_match_id(self, value: str) -> ModelsMatchmakingResult:
@@ -200,6 +207,10 @@ class ModelsMatchmakingResult(Model):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
             result["game_mode"] = ""
+        if hasattr(self, "is_mock"):
+            result["is_mock"] = str(self.is_mock)
+        elif include_empty:
+            result["is_mock"] = ""
         if hasattr(self, "match_id"):
             result["match_id"] = str(self.match_id)
         elif include_empty:
@@ -267,6 +278,7 @@ class ModelsMatchmakingResult(Model):
         error_code: int,
         error_message: str,
         game_mode: str,
+        is_mock: str,
         match_id: str,
         matching_allies: List[ModelsMatchingAlly],
         namespace: str,
@@ -288,6 +300,7 @@ class ModelsMatchmakingResult(Model):
         instance.error_code = error_code
         instance.error_message = error_message
         instance.game_mode = game_mode
+        instance.is_mock = is_mock
         instance.match_id = match_id
         instance.matching_allies = matching_allies
         instance.namespace = namespace
@@ -335,6 +348,10 @@ class ModelsMatchmakingResult(Model):
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
             instance.game_mode = ""
+        if "is_mock" in dict_ and dict_["is_mock"] is not None:
+            instance.is_mock = str(dict_["is_mock"])
+        elif include_empty:
+            instance.is_mock = ""
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
@@ -437,6 +454,7 @@ class ModelsMatchmakingResult(Model):
             "error_code": "error_code",
             "error_message": "error_message",
             "game_mode": "game_mode",
+            "is_mock": "is_mock",
             "match_id": "match_id",
             "matching_allies": "matching_allies",
             "namespace": "namespace",
@@ -460,6 +478,7 @@ class ModelsMatchmakingResult(Model):
             "error_code": True,
             "error_message": True,
             "game_mode": True,
+            "is_mock": True,
             "match_id": True,
             "matching_allies": True,
             "namespace": True,

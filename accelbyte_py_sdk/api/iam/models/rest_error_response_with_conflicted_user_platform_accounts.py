@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.34.0)
+# AccelByte Gaming Services Iam Service (6.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,9 @@ from ....core import Model
 from ..models.accountcommon_conflicted_user_platform_accounts import (
     AccountcommonConflictedUserPlatformAccounts,
 )
+from ..models.accountcommon_platform_linking_history import (
+    AccountcommonPlatformLinkingHistory,
+)
 
 
 class RestErrorResponseWithConflictedUserPlatformAccounts(Model):
@@ -41,6 +44,8 @@ class RestErrorResponseWithConflictedUserPlatformAccounts(Model):
         error_message: (errorMessage) REQUIRED str
 
         message_variables: (messageVariables) OPTIONAL AccountcommonConflictedUserPlatformAccounts
+
+        previous_linked_platform_account: (previousLinkedPlatformAccount) OPTIONAL AccountcommonPlatformLinkingHistory
     """
 
     # region fields
@@ -48,6 +53,7 @@ class RestErrorResponseWithConflictedUserPlatformAccounts(Model):
     error_code: int  # REQUIRED
     error_message: str  # REQUIRED
     message_variables: AccountcommonConflictedUserPlatformAccounts  # OPTIONAL
+    previous_linked_platform_account: AccountcommonPlatformLinkingHistory  # OPTIONAL
 
     # endregion fields
 
@@ -71,6 +77,12 @@ class RestErrorResponseWithConflictedUserPlatformAccounts(Model):
         self.message_variables = value
         return self
 
+    def with_previous_linked_platform_account(
+        self, value: AccountcommonPlatformLinkingHistory
+    ) -> RestErrorResponseWithConflictedUserPlatformAccounts:
+        self.previous_linked_platform_account = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -91,6 +103,16 @@ class RestErrorResponseWithConflictedUserPlatformAccounts(Model):
             )
         elif include_empty:
             result["messageVariables"] = AccountcommonConflictedUserPlatformAccounts()
+        if hasattr(self, "previous_linked_platform_account"):
+            result[
+                "previousLinkedPlatformAccount"
+            ] = self.previous_linked_platform_account.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result[
+                "previousLinkedPlatformAccount"
+            ] = AccountcommonPlatformLinkingHistory()
         return result
 
     # endregion to methods
@@ -103,6 +125,9 @@ class RestErrorResponseWithConflictedUserPlatformAccounts(Model):
         error_code: int,
         error_message: str,
         message_variables: Optional[AccountcommonConflictedUserPlatformAccounts] = None,
+        previous_linked_platform_account: Optional[
+            AccountcommonPlatformLinkingHistory
+        ] = None,
         **kwargs,
     ) -> RestErrorResponseWithConflictedUserPlatformAccounts:
         instance = cls()
@@ -110,6 +135,8 @@ class RestErrorResponseWithConflictedUserPlatformAccounts(Model):
         instance.error_message = error_message
         if message_variables is not None:
             instance.message_variables = message_variables
+        if previous_linked_platform_account is not None:
+            instance.previous_linked_platform_account = previous_linked_platform_account
         return instance
 
     @classmethod
@@ -135,6 +162,19 @@ class RestErrorResponseWithConflictedUserPlatformAccounts(Model):
             )
         elif include_empty:
             instance.message_variables = AccountcommonConflictedUserPlatformAccounts()
+        if (
+            "previousLinkedPlatformAccount" in dict_
+            and dict_["previousLinkedPlatformAccount"] is not None
+        ):
+            instance.previous_linked_platform_account = (
+                AccountcommonPlatformLinkingHistory.create_from_dict(
+                    dict_["previousLinkedPlatformAccount"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.previous_linked_platform_account = (
+                AccountcommonPlatformLinkingHistory()
+            )
         return instance
 
     @classmethod
@@ -181,6 +221,7 @@ class RestErrorResponseWithConflictedUserPlatformAccounts(Model):
             "errorCode": "error_code",
             "errorMessage": "error_message",
             "messageVariables": "message_variables",
+            "previousLinkedPlatformAccount": "previous_linked_platform_account",
         }
 
     @staticmethod
@@ -189,6 +230,7 @@ class RestErrorResponseWithConflictedUserPlatformAccounts(Model):
             "errorCode": True,
             "errorMessage": True,
             "messageVariables": False,
+            "previousLinkedPlatformAccount": False,
         }
 
     # endregion static methods

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.12.0"
+__version__ = "2.15.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,6 +20,7 @@ from .admin_update_game_sessi_718745 import AdminUpdateGameSessionMember
 from .append_team_game_session import AppendTeamGameSession
 from .create_game_session import CreateGameSession
 from .delete_game_session import DeleteGameSession
+from .game_session_generate_code import GameSessionGenerateCode
 from .get_game_session import GetGameSession
 from .get_game_session_by_pod_name import GetGameSessionByPodName
 from .join_game_session import JoinGameSession
@@ -29,5 +30,7 @@ from .public_game_session_invite import PublicGameSessionInvite
 from .public_game_session_reject import PublicGameSessionReject
 from .public_query_game_sessions import PublicQueryGameSessions
 from .public_query_my_game_sessions import PublicQueryMyGameSessions
+from .public_revoke_game_sess_c2a52e import PublicRevokeGameSessionCode
+from .public_session_join_code import PublicSessionJoinCode
 from .update_game_session import UpdateGameSession
 from .update_game_session_bac_df8b84 import UpdateGameSessionBackfillTicketID

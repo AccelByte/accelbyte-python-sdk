@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (5.34.0)
+# AccelByte Gaming Services Iam Service Index (6.0.1)
 
 
 ## Operations
@@ -457,6 +457,7 @@
 | accountcommon.Permissions | [AccountcommonPermissions](../../accelbyte_py_sdk/api/iam/models/accountcommon_permissions.py) |
 | accountcommon.PermissionsV3 | [AccountcommonPermissionsV3](../../accelbyte_py_sdk/api/iam/models/accountcommon_permissions_v3.py) |
 | accountcommon.PlatformAccount | [AccountcommonPlatformAccount](../../accelbyte_py_sdk/api/iam/models/accountcommon_platform_account.py) |
+| accountcommon.PlatformLinkingHistory | [AccountcommonPlatformLinkingHistory](../../accelbyte_py_sdk/api/iam/models/accountcommon_platform_linking_history.py) |
 | accountcommon.PlatformUserInformationV3 | [AccountcommonPlatformUserInformationV3](../../accelbyte_py_sdk/api/iam/models/accountcommon_platform_user_information_v3.py) |
 | accountcommon.RegisteredDomain | [AccountcommonRegisteredDomain](../../accelbyte_py_sdk/api/iam/models/accountcommon_registered_domain.py) |
 | accountcommon.Role | [AccountcommonRole](../../accelbyte_py_sdk/api/iam/models/accountcommon_role.py) |

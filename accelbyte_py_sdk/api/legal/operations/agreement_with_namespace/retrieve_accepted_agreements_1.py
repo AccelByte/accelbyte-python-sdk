@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.29.1)
+# AccelByte Gaming Services Legal Service (1.29.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -59,6 +59,8 @@ class RetrieveAcceptedAgreements1(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        exclude_other_namespaces_policies: (excludeOtherNamespacesPolicies) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
     """
@@ -76,6 +78,7 @@ class RetrieveAcceptedAgreements1(Operation):
 
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    exclude_other_namespaces_policies: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -116,6 +119,7 @@ class RetrieveAcceptedAgreements1(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -124,6 +128,14 @@ class RetrieveAcceptedAgreements1(Operation):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "exclude_other_namespaces_policies"):
+            result[
+                "excludeOtherNamespacesPolicies"
+            ] = self.exclude_other_namespaces_policies
         return result
 
     # endregion get_x_params methods
@@ -142,6 +154,12 @@ class RetrieveAcceptedAgreements1(Operation):
         self.user_id = value
         return self
 
+    def with_exclude_other_namespaces_policies(
+        self, value: bool
+    ) -> RetrieveAcceptedAgreements1:
+        self.exclude_other_namespaces_policies = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -156,6 +174,15 @@ class RetrieveAcceptedAgreements1(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if (
+            hasattr(self, "exclude_other_namespaces_policies")
+            and self.exclude_other_namespaces_policies
+        ):
+            result["excludeOtherNamespacesPolicies"] = bool(
+                self.exclude_other_namespaces_policies
+            )
+        elif include_empty:
+            result["excludeOtherNamespacesPolicies"] = False
         return result
 
     # endregion to methods
@@ -200,11 +227,19 @@ class RetrieveAcceptedAgreements1(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, user_id: str, **kwargs
+        cls,
+        namespace: str,
+        user_id: str,
+        exclude_other_namespaces_policies: Optional[bool] = None,
+        **kwargs,
     ) -> RetrieveAcceptedAgreements1:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
+        if exclude_other_namespaces_policies is not None:
+            instance.exclude_other_namespaces_policies = (
+                exclude_other_namespaces_policies
+            )
         return instance
 
     @classmethod
@@ -220,6 +255,15 @@ class RetrieveAcceptedAgreements1(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if (
+            "excludeOtherNamespacesPolicies" in dict_
+            and dict_["excludeOtherNamespacesPolicies"] is not None
+        ):
+            instance.exclude_other_namespaces_policies = bool(
+                dict_["excludeOtherNamespacesPolicies"]
+            )
+        elif include_empty:
+            instance.exclude_other_namespaces_policies = False
         return instance
 
     @staticmethod
@@ -227,6 +271,7 @@ class RetrieveAcceptedAgreements1(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+            "excludeOtherNamespacesPolicies": "exclude_other_namespaces_policies",
         }
 
     @staticmethod
@@ -234,6 +279,7 @@ class RetrieveAcceptedAgreements1(Operation):
         return {
             "namespace": True,
             "userId": True,
+            "excludeOtherNamespacesPolicies": False,
         }
 
     # endregion static methods

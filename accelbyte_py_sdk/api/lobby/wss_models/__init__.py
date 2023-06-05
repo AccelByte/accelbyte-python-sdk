@@ -94,7 +94,6 @@ from .shutdown_notif import ShutdownNotif
 from .signaling_p2p_notif import SignalingP2PNotif
 from .start_matchmaking_request import StartMatchmakingRequest
 from .start_matchmaking_response import StartMatchmakingResponse
-from .system_components_status import SystemComponentsStatus
 from .unblock_player_notif import UnblockPlayerNotif
 from .unblock_player_request import UnblockPlayerRequest
 from .unblock_player_response import UnblockPlayerResponse
@@ -201,7 +200,6 @@ models = {
     SignalingP2PNotif.get_type(): SignalingP2PNotif,
     StartMatchmakingRequest.get_type(): StartMatchmakingRequest,
     StartMatchmakingResponse.get_type(): StartMatchmakingResponse,
-    SystemComponentsStatus.get_type(): SystemComponentsStatus,
     UnblockPlayerNotif.get_type(): UnblockPlayerNotif,
     UnblockPlayerRequest.get_type(): UnblockPlayerRequest,
     UnblockPlayerResponse.get_type(): UnblockPlayerResponse,

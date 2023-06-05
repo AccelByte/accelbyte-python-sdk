@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Social Service."""
 
-__version__ = "2.7.0"
+__version__ = "2.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,3 +16,4 @@ __email__ = "dev@accelbyte.net"
 
 from .get_user_stat_cycle_items import GetUserStatCycleItems
 from .get_user_stat_cycle_items_1 import GetUserStatCycleItems1
+from .public_list_my_stat_cyc_a54f9a import PublicListMyStatCycleItems

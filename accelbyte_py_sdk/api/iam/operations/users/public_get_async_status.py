@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (5.34.0)
+# AccelByte Gaming Services Iam Service (6.0.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,7 +36,9 @@ from ...models import RestErrorResponse
 class PublicGetAsyncStatus(Operation):
     """Get Linking Progress Status (PublicGetAsyncStatus)
 
+
     This endpoint is used to get linking status.
+    This API need logged user and user can only request its own linking status.'
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status

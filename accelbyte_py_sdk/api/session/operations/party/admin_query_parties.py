@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.12.0)
+# AccelByte Gaming Services Session Service (2.15.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -71,6 +71,8 @@ class AdminQueryParties(Operation):
 
         order_by: (orderBy) OPTIONAL str in query
 
+        party_id: (partyID) OPTIONAL str in query
+
         value: (value) OPTIONAL str in query
 
     Responses:
@@ -102,6 +104,7 @@ class AdminQueryParties(Operation):
     offset: int  # OPTIONAL in [query]
     order: str  # OPTIONAL in [query]
     order_by: str  # OPTIONAL in [query]
+    party_id: str  # OPTIONAL in [query]
     value: str  # OPTIONAL in [query]
 
     # endregion fields
@@ -172,6 +175,8 @@ class AdminQueryParties(Operation):
             result["order"] = self.order
         if hasattr(self, "order_by"):
             result["orderBy"] = self.order_by
+        if hasattr(self, "party_id"):
+            result["partyID"] = self.party_id
         if hasattr(self, "value"):
             result["value"] = self.value
         return result
@@ -224,6 +229,10 @@ class AdminQueryParties(Operation):
         self.order_by = value
         return self
 
+    def with_party_id(self, value: str) -> AdminQueryParties:
+        self.party_id = value
+        return self
+
     def with_value(self, value: str) -> AdminQueryParties:
         self.value = value
         return self
@@ -274,6 +283,10 @@ class AdminQueryParties(Operation):
             result["orderBy"] = str(self.order_by)
         elif include_empty:
             result["orderBy"] = ""
+        if hasattr(self, "party_id") and self.party_id:
+            result["partyID"] = str(self.party_id)
+        elif include_empty:
+            result["partyID"] = ""
         if hasattr(self, "value") and self.value:
             result["value"] = str(self.value)
         elif include_empty:
@@ -344,6 +357,7 @@ class AdminQueryParties(Operation):
         offset: Optional[int] = None,
         order: Optional[str] = None,
         order_by: Optional[str] = None,
+        party_id: Optional[str] = None,
         value: Optional[str] = None,
         **kwargs,
     ) -> AdminQueryParties:
@@ -367,6 +381,8 @@ class AdminQueryParties(Operation):
             instance.order = order
         if order_by is not None:
             instance.order_by = order_by
+        if party_id is not None:
+            instance.party_id = party_id
         if value is not None:
             instance.value = value
         return instance
@@ -416,6 +432,10 @@ class AdminQueryParties(Operation):
             instance.order_by = str(dict_["orderBy"])
         elif include_empty:
             instance.order_by = ""
+        if "partyID" in dict_ and dict_["partyID"] is not None:
+            instance.party_id = str(dict_["partyID"])
+        elif include_empty:
+            instance.party_id = ""
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = str(dict_["value"])
         elif include_empty:
@@ -435,6 +455,7 @@ class AdminQueryParties(Operation):
             "offset": "offset",
             "order": "order",
             "orderBy": "order_by",
+            "partyID": "party_id",
             "value": "value",
         }
 
@@ -451,6 +472,7 @@ class AdminQueryParties(Operation):
             "offset": False,
             "order": False,
             "orderBy": False,
+            "partyID": False,
             "value": False,
         }
 

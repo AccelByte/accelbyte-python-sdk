@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Legal Service (1.29.1)
+# AGS Legal Service (1.29.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.legal.models import PagedRetrieveUserAcceptedAgreement
 
 @click.command()
 @click.argument("policy_version_id", type=str)
+@click.option("--convert_game_user_id", "convert_game_user_id", type=bool)
 @click.option("--keyword", "keyword", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
@@ -48,6 +49,7 @@ from accelbyte_py_sdk.api.legal.models import PagedRetrieveUserAcceptedAgreement
 @click.option("--doc", type=bool)
 def retrieve_all_users_by_policy_version_1(
     policy_version_id: str,
+    convert_game_user_id: Optional[bool] = None,
     keyword: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -66,6 +68,7 @@ def retrieve_all_users_by_policy_version_1(
         login_as_internal(login_as)
     result, error = retrieve_all_users_by_policy_version_1_internal(
         policy_version_id=policy_version_id,
+        convert_game_user_id=convert_game_user_id,
         keyword=keyword,
         limit=limit,
         offset=offset,

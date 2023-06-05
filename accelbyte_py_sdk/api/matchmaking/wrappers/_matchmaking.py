@@ -43,6 +43,7 @@ from ..models import ModelsMatchingParty
 from ..models import ModelsMatchmakingResult
 from ..models import ModelsRebalanceRequest
 from ..models import ModelsRebalanceResponse
+from ..models import ModelsStatResumeResponse
 from ..models import ModelsTicketMetricResultRecord
 from ..models import ModelsUpdateChannelRequest
 from ..models import ResponseError
@@ -66,6 +67,7 @@ from ..operations.matchmaking import GetAllSessionsInChannel
 from ..operations.matchmaking import GetMatchPoolMetric
 from ..operations.matchmaking import GetSessionHistoryDetailed
 from ..operations.matchmaking import GetSingleMatchmakingChannel
+from ..operations.matchmaking import GetStatData
 from ..operations.matchmaking import ImportChannels
 from ..operations.matchmaking import PublicGetAllMatchmakingChannel
 from ..operations.matchmaking import PublicGetSingleMatchmakingChannel
@@ -2080,6 +2082,134 @@ async def get_single_matchmaking_channel_async(
         if error:
             return None, error
     request = GetSingleMatchmakingChannel.create(
+        channel_name=channel_name,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetStatData)
+def get_stat_data(
+    channel_name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get stats (GetStatData)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Get a channel's stat data (mean, stddev, min, max) according to the stats collected from statistics service.
+    '
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/stats
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsStatResumeResponse (Stats queried)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetStatData.create(
+        channel_name=channel_name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetStatData)
+async def get_stat_data_async(
+    channel_name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get stats (GetStatData)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope: social
+
+    Get a channel's stat data (mean, stddev, min, max) according to the stats collected from statistics service.
+    '
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/stats
+
+        method: GET
+
+        tags: ["Matchmaking"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_name: (channelName) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsStatResumeResponse (Stats queried)
+
+        400: Bad Request - ResponseErrorV1 (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorV1 (20013: insufficient permissions | 20014: invalid audience | 20015: insufficient scope)
+
+        404: Not Found - ResponseErrorV1 (510110: channel not found)
+
+        500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetStatData.create(
         channel_name=channel_name,
         namespace=namespace,
     )

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Legal Service (1.29.1)
+# AGS Legal Service (1.29.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,12 +38,18 @@ from accelbyte_py_sdk.api.legal.models import RetrieveAcceptedAgreementResponse
 
 @click.command()
 @click.argument("user_id", type=str)
+@click.option(
+    "--exclude_other_namespaces_policies",
+    "exclude_other_namespaces_policies",
+    type=bool,
+)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_accepted_agreements_1(
     user_id: str,
+    exclude_other_namespaces_policies: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -59,6 +65,7 @@ def retrieve_accepted_agreements_1(
         login_as_internal(login_as)
     result, error = retrieve_accepted_agreements_1_internal(
         user_id=user_id,
+        exclude_other_namespaces_policies=exclude_other_namespaces_policies,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

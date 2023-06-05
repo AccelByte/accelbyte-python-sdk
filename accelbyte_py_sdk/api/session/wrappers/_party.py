@@ -67,6 +67,7 @@ def admin_query_parties(
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
+    party_id: Optional[str] = None,
     value: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -109,6 +110,8 @@ def admin_query_parties(
 
         order_by: (orderBy) OPTIONAL str in query
 
+        party_id: (partyID) OPTIONAL str in query
+
         value: (value) OPTIONAL str in query
 
     Responses:
@@ -134,6 +137,7 @@ def admin_query_parties(
         offset=offset,
         order=order,
         order_by=order_by,
+        party_id=party_id,
         value=value,
         namespace=namespace,
     )
@@ -151,6 +155,7 @@ async def admin_query_parties_async(
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
+    party_id: Optional[str] = None,
     value: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -193,6 +198,8 @@ async def admin_query_parties_async(
 
         order_by: (orderBy) OPTIONAL str in query
 
+        party_id: (partyID) OPTIONAL str in query
+
         value: (value) OPTIONAL str in query
 
     Responses:
@@ -218,6 +225,7 @@ async def admin_query_parties_async(
         offset=offset,
         order=order,
         order_by=order_by,
+        party_id=party_id,
         value=value,
         namespace=namespace,
     )

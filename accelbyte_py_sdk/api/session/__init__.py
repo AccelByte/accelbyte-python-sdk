@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.12.0"
+__version__ = "2.15.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -55,6 +55,8 @@ from .wrappers import create_game_session
 from .wrappers import create_game_session_async
 from .wrappers import delete_game_session
 from .wrappers import delete_game_session_async
+from .wrappers import game_session_generate_code
+from .wrappers import game_session_generate_code_async
 from .wrappers import get_game_session
 from .wrappers import get_game_session_async
 from .wrappers import get_game_session_by_pod_name
@@ -73,6 +75,10 @@ from .wrappers import public_query_game_sessions
 from .wrappers import public_query_game_sessions_async
 from .wrappers import public_query_my_game_sessions
 from .wrappers import public_query_my_game_sessions_async
+from .wrappers import public_revoke_game_session_code
+from .wrappers import public_revoke_game_session_code_async
+from .wrappers import public_session_join_code
+from .wrappers import public_session_join_code_async
 from .wrappers import update_game_session
 from .wrappers import update_game_session_async
 from .wrappers import update_game_session_backfill_ticket_id
@@ -123,6 +129,8 @@ from .wrappers import admin_query_player_attributes
 from .wrappers import admin_query_player_attributes_async
 from .wrappers import public_delete_player_attributes
 from .wrappers import public_delete_player_attributes_async
+from .wrappers import public_get_bulk_player_current_platform
+from .wrappers import public_get_bulk_player_current_platform_async
 from .wrappers import public_get_player_attributes
 from .wrappers import public_get_player_attributes_async
 from .wrappers import public_store_player_attributes

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.7.0)
+# AccelByte Gaming Services Social Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,10 @@ class StatUpdate(Model):
 
         description: (description) OPTIONAL str
 
+        ignore_additional_data_on_value_rejected: (ignoreAdditionalDataOnValueRejected) OPTIONAL bool
+
+        is_public: (isPublic) OPTIONAL bool
+
         name: (name) OPTIONAL str
 
         tags: (tags) OPTIONAL List[str]
@@ -48,6 +52,8 @@ class StatUpdate(Model):
     cycle_ids: List[str]  # OPTIONAL
     default_value: float  # OPTIONAL
     description: str  # OPTIONAL
+    ignore_additional_data_on_value_rejected: bool  # OPTIONAL
+    is_public: bool  # OPTIONAL
     name: str  # OPTIONAL
     tags: List[str]  # OPTIONAL
 
@@ -65,6 +71,14 @@ class StatUpdate(Model):
 
     def with_description(self, value: str) -> StatUpdate:
         self.description = value
+        return self
+
+    def with_ignore_additional_data_on_value_rejected(self, value: bool) -> StatUpdate:
+        self.ignore_additional_data_on_value_rejected = value
+        return self
+
+    def with_is_public(self, value: bool) -> StatUpdate:
+        self.is_public = value
         return self
 
     def with_name(self, value: str) -> StatUpdate:
@@ -93,6 +107,16 @@ class StatUpdate(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "ignore_additional_data_on_value_rejected"):
+            result["ignoreAdditionalDataOnValueRejected"] = bool(
+                self.ignore_additional_data_on_value_rejected
+            )
+        elif include_empty:
+            result["ignoreAdditionalDataOnValueRejected"] = False
+        if hasattr(self, "is_public"):
+            result["isPublic"] = bool(self.is_public)
+        elif include_empty:
+            result["isPublic"] = False
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -113,6 +137,8 @@ class StatUpdate(Model):
         cycle_ids: Optional[List[str]] = None,
         default_value: Optional[float] = None,
         description: Optional[str] = None,
+        ignore_additional_data_on_value_rejected: Optional[bool] = None,
+        is_public: Optional[bool] = None,
         name: Optional[str] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
@@ -124,6 +150,12 @@ class StatUpdate(Model):
             instance.default_value = default_value
         if description is not None:
             instance.description = description
+        if ignore_additional_data_on_value_rejected is not None:
+            instance.ignore_additional_data_on_value_rejected = (
+                ignore_additional_data_on_value_rejected
+            )
+        if is_public is not None:
+            instance.is_public = is_public
         if name is not None:
             instance.name = name
         if tags is not None:
@@ -147,6 +179,19 @@ class StatUpdate(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if (
+            "ignoreAdditionalDataOnValueRejected" in dict_
+            and dict_["ignoreAdditionalDataOnValueRejected"] is not None
+        ):
+            instance.ignore_additional_data_on_value_rejected = bool(
+                dict_["ignoreAdditionalDataOnValueRejected"]
+            )
+        elif include_empty:
+            instance.ignore_additional_data_on_value_rejected = False
+        if "isPublic" in dict_ and dict_["isPublic"] is not None:
+            instance.is_public = bool(dict_["isPublic"])
+        elif include_empty:
+            instance.is_public = False
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -197,6 +242,8 @@ class StatUpdate(Model):
             "cycleIds": "cycle_ids",
             "defaultValue": "default_value",
             "description": "description",
+            "ignoreAdditionalDataOnValueRejected": "ignore_additional_data_on_value_rejected",
+            "isPublic": "is_public",
             "name": "name",
             "tags": "tags",
         }
@@ -207,6 +254,8 @@ class StatUpdate(Model):
             "cycleIds": False,
             "defaultValue": False,
             "description": False,
+            "ignoreAdditionalDataOnValueRejected": False,
+            "isPublic": False,
             "name": False,
             "tags": False,
         }

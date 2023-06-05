@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Social Service (2.7.0)
+# AGS Social Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 
 @click.command()
 @click.argument("user_id", type=str)
+@click.option("--is_public", "is_public", type=bool)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--sort_by", "sort_by", type=str)
@@ -50,6 +51,7 @@ from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 @click.option("--doc", type=bool)
 def get_user_stat_items(
     user_id: str,
+    is_public: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[str] = None,
@@ -70,6 +72,7 @@ def get_user_stat_items(
         login_as_internal(login_as)
     result, error = get_user_stat_items_internal(
         user_id=user_id,
+        is_public=is_public,
         limit=limit,
         offset=offset,
         sort_by=sort_by,

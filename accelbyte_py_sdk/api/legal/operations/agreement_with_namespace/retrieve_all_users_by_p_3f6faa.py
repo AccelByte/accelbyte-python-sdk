@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.29.1)
+# AccelByte Gaming Services Legal Service (1.29.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -58,6 +58,8 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        convert_game_user_id: (convertGameUserId) OPTIONAL bool in query
+
         keyword: (keyword) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -67,7 +69,7 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
         policy_version_id: (policyVersionId) REQUIRED str in query
 
     Responses:
-        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
 
         404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """
@@ -84,6 +86,7 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    convert_game_user_id: bool  # OPTIONAL in [query]
     keyword: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
@@ -139,6 +142,8 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "convert_game_user_id"):
+            result["convertGameUserId"] = self.convert_game_user_id
         if hasattr(self, "keyword"):
             result["keyword"] = self.keyword
         if hasattr(self, "limit"):
@@ -159,6 +164,12 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
 
     def with_namespace(self, value: str) -> RetrieveAllUsersByPolicyVersion1:
         self.namespace = value
+        return self
+
+    def with_convert_game_user_id(
+        self, value: bool
+    ) -> RetrieveAllUsersByPolicyVersion1:
+        self.convert_game_user_id = value
         return self
 
     def with_keyword(self, value: str) -> RetrieveAllUsersByPolicyVersion1:
@@ -187,6 +198,10 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "convert_game_user_id") and self.convert_game_user_id:
+            result["convertGameUserId"] = bool(self.convert_game_user_id)
+        elif include_empty:
+            result["convertGameUserId"] = False
         if hasattr(self, "keyword") and self.keyword:
             result["keyword"] = str(self.keyword)
         elif include_empty:
@@ -213,12 +228,12 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[PagedRetrieveUserAcceptedAgreementResponse]],
+        Union[None, PagedRetrieveUserAcceptedAgreementResponse],
         Union[None, ErrorEntity, HttpResponse],
     ]:
         """Parse the given response.
 
-        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
 
         404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
 
@@ -236,10 +251,10 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [
-                PagedRetrieveUserAcceptedAgreementResponse.create_from_dict(i)
-                for i in content
-            ], None
+            return (
+                PagedRetrieveUserAcceptedAgreementResponse.create_from_dict(content),
+                None,
+            )
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
@@ -256,6 +271,7 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
         cls,
         namespace: str,
         policy_version_id: str,
+        convert_game_user_id: Optional[bool] = None,
         keyword: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -264,6 +280,8 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
         instance = cls()
         instance.namespace = namespace
         instance.policy_version_id = policy_version_id
+        if convert_game_user_id is not None:
+            instance.convert_game_user_id = convert_game_user_id
         if keyword is not None:
             instance.keyword = keyword
         if limit is not None:
@@ -281,6 +299,10 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "convertGameUserId" in dict_ and dict_["convertGameUserId"] is not None:
+            instance.convert_game_user_id = bool(dict_["convertGameUserId"])
+        elif include_empty:
+            instance.convert_game_user_id = False
         if "keyword" in dict_ and dict_["keyword"] is not None:
             instance.keyword = str(dict_["keyword"])
         elif include_empty:
@@ -303,6 +325,7 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "convertGameUserId": "convert_game_user_id",
             "keyword": "keyword",
             "limit": "limit",
             "offset": "offset",
@@ -313,6 +336,7 @@ class RetrieveAllUsersByPolicyVersion1(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "convertGameUserId": False,
             "keyword": False,
             "limit": False,
             "offset": False,

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Social Service (2.7.0)
+# AGS Social Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 
 @click.command()
 @click.argument("user_id", type=str)
+@click.option("--additional_key", "additional_key", type=str)
 @click.option("--stat_codes", "stat_codes", type=str)
 @click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
@@ -48,6 +49,7 @@ from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 @click.option("--doc", type=bool)
 def public_query_user_stat_items_1(
     user_id: str,
+    additional_key: Optional[str] = None,
     stat_codes: Optional[str] = None,
     tags: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -77,6 +79,7 @@ def public_query_user_stat_items_1(
             raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = public_query_user_stat_items_1_internal(
         user_id=user_id,
+        additional_key=additional_key,
         stat_codes=stat_codes,
         tags=tags,
         namespace=namespace,

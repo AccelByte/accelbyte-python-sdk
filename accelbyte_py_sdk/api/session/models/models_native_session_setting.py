@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.12.0)
+# AccelByte Gaming Services Session Service (2.15.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ class ModelsNativeSessionSetting(Model):
 
         xbox_session_template_name: (XboxSessionTemplateName) REQUIRED str
 
+        psn_supported_platforms: (PSNSupportedPlatforms) OPTIONAL List[str]
+
         should_sync: (ShouldSync) OPTIONAL bool
     """
 
@@ -49,6 +51,7 @@ class ModelsNativeSessionSetting(Model):
     session_title: str  # REQUIRED
     xbox_service_config_id: str  # REQUIRED
     xbox_session_template_name: str  # REQUIRED
+    psn_supported_platforms: List[str]  # OPTIONAL
     should_sync: bool  # OPTIONAL
 
     # endregion fields
@@ -69,6 +72,12 @@ class ModelsNativeSessionSetting(Model):
 
     def with_xbox_session_template_name(self, value: str) -> ModelsNativeSessionSetting:
         self.xbox_session_template_name = value
+        return self
+
+    def with_psn_supported_platforms(
+        self, value: List[str]
+    ) -> ModelsNativeSessionSetting:
+        self.psn_supported_platforms = value
         return self
 
     def with_should_sync(self, value: bool) -> ModelsNativeSessionSetting:
@@ -97,6 +106,12 @@ class ModelsNativeSessionSetting(Model):
             result["XboxSessionTemplateName"] = str(self.xbox_session_template_name)
         elif include_empty:
             result["XboxSessionTemplateName"] = ""
+        if hasattr(self, "psn_supported_platforms"):
+            result["PSNSupportedPlatforms"] = [
+                str(i0) for i0 in self.psn_supported_platforms
+            ]
+        elif include_empty:
+            result["PSNSupportedPlatforms"] = []
         if hasattr(self, "should_sync"):
             result["ShouldSync"] = bool(self.should_sync)
         elif include_empty:
@@ -114,6 +129,7 @@ class ModelsNativeSessionSetting(Model):
         session_title: str,
         xbox_service_config_id: str,
         xbox_session_template_name: str,
+        psn_supported_platforms: Optional[List[str]] = None,
         should_sync: Optional[bool] = None,
         **kwargs,
     ) -> ModelsNativeSessionSetting:
@@ -122,6 +138,8 @@ class ModelsNativeSessionSetting(Model):
         instance.session_title = session_title
         instance.xbox_service_config_id = xbox_service_config_id
         instance.xbox_session_template_name = xbox_session_template_name
+        if psn_supported_platforms is not None:
+            instance.psn_supported_platforms = psn_supported_platforms
         if should_sync is not None:
             instance.should_sync = should_sync
         return instance
@@ -152,6 +170,15 @@ class ModelsNativeSessionSetting(Model):
             instance.xbox_session_template_name = str(dict_["XboxSessionTemplateName"])
         elif include_empty:
             instance.xbox_session_template_name = ""
+        if (
+            "PSNSupportedPlatforms" in dict_
+            and dict_["PSNSupportedPlatforms"] is not None
+        ):
+            instance.psn_supported_platforms = [
+                str(i0) for i0 in dict_["PSNSupportedPlatforms"]
+            ]
+        elif include_empty:
+            instance.psn_supported_platforms = []
         if "ShouldSync" in dict_ and dict_["ShouldSync"] is not None:
             instance.should_sync = bool(dict_["ShouldSync"])
         elif include_empty:
@@ -203,6 +230,7 @@ class ModelsNativeSessionSetting(Model):
             "SessionTitle": "session_title",
             "XboxServiceConfigID": "xbox_service_config_id",
             "XboxSessionTemplateName": "xbox_session_template_name",
+            "PSNSupportedPlatforms": "psn_supported_platforms",
             "ShouldSync": "should_sync",
         }
 
@@ -213,6 +241,7 @@ class ModelsNativeSessionSetting(Model):
             "SessionTitle": True,
             "XboxServiceConfigID": True,
             "XboxSessionTemplateName": True,
+            "PSNSupportedPlatforms": False,
             "ShouldSync": False,
         }
 

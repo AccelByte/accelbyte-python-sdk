@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -44,7 +44,12 @@ from ..operations.account import AccountLinkTokenGet
 
 
 @same_doc_as(AccountCreate)
-def account_create(body: ApiAccountCreateRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def account_create(
+    body: ApiAccountCreateRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Create a new AMS account (AccountCreate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
@@ -90,7 +95,12 @@ def account_create(body: ApiAccountCreateRequest, namespace: Optional[str] = Non
 
 
 @same_doc_as(AccountCreate)
-async def account_create_async(body: ApiAccountCreateRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def account_create_async(
+    body: ApiAccountCreateRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Create a new AMS account (AccountCreate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
@@ -132,11 +142,17 @@ async def account_create_async(body: ApiAccountCreateRequest, namespace: Optiona
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AccountGet)
-def account_get(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def account_get(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Get the account associated with the namespace. (AccountGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
@@ -181,7 +197,11 @@ def account_get(namespace: Optional[str] = None, x_additional_headers: Optional[
 
 
 @same_doc_as(AccountGet)
-async def account_get_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def account_get_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Get the account associated with the namespace. (AccountGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
@@ -222,11 +242,18 @@ async def account_get_async(namespace: Optional[str] = None, x_additional_header
     request = AccountGet.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AccountLink)
-def account_link(body: ApiAccountLinkRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def account_link(
+    body: ApiAccountLinkRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Link an account to the namespace.  Will attempt to register the linkage in AMS shipyard.  Requires a valid link token for the account. Fails if an account is already linked (AccountLink)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
@@ -272,7 +299,12 @@ def account_link(body: ApiAccountLinkRequest, namespace: Optional[str] = None, x
 
 
 @same_doc_as(AccountLink)
-async def account_link_async(body: ApiAccountLinkRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def account_link_async(
+    body: ApiAccountLinkRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Link an account to the namespace.  Will attempt to register the linkage in AMS shipyard.  Requires a valid link token for the account. Fails if an account is already linked (AccountLink)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
@@ -314,11 +346,17 @@ async def account_link_async(body: ApiAccountLinkRequest, namespace: Optional[st
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AccountLinkTokenGet)
-def account_link_token_get(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def account_link_token_get(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Get a linking token for another namespace to use to link to the account to which this namespace is linked.  Fails if no account linked. (AccountLinkTokenGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
@@ -363,7 +401,11 @@ def account_link_token_get(namespace: Optional[str] = None, x_additional_headers
 
 
 @same_doc_as(AccountLinkTokenGet)
-async def account_link_token_get_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def account_link_token_get_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Get a linking token for another namespace to use to link to the account to which this namespace is linked.  Fails if no account linked. (AccountLinkTokenGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
@@ -404,4 +446,6 @@ async def account_link_token_get_async(namespace: Optional[str] = None, x_additi
     request = AccountLinkTokenGet.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

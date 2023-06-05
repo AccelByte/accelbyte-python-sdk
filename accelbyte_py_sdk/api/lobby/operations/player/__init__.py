@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.19.0"
+__version__ = "3.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,6 +16,7 @@ __email__ = "dev@accelbyte.net"
 
 from .admin_bulk_block_players_v1 import AdminBulkBlockPlayersV1
 from .admin_get_all_player_se_b925d7 import AdminGetAllPlayerSessionAttribute
+from .admin_get_bulk_player_b_0addc5 import AdminGetBulkPlayerBlockedPlayersV1
 from .admin_get_lobby_ccu import AdminGetLobbyCCU
 from .admin_get_player_blocke_8955db import AdminGetPlayerBlockedByPlayersV1
 from .admin_get_player_blocke_7da3f3 import AdminGetPlayerBlockedPlayersV1

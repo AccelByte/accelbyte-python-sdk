@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.7.0)
+# AccelByte Gaming Services Social Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -50,7 +50,11 @@ class StatCreate(Model):
 
         description: (description) OPTIONAL str
 
+        ignore_additional_data_on_value_rejected: (ignoreAdditionalDataOnValueRejected) OPTIONAL bool
+
         increment_only: (incrementOnly) OPTIONAL bool
+
+        is_public: (isPublic) OPTIONAL bool
 
         maximum: (maximum) OPTIONAL float
 
@@ -69,7 +73,9 @@ class StatCreate(Model):
     stat_code: str  # REQUIRED
     cycle_ids: List[str]  # OPTIONAL
     description: str  # OPTIONAL
+    ignore_additional_data_on_value_rejected: bool  # OPTIONAL
     increment_only: bool  # OPTIONAL
+    is_public: bool  # OPTIONAL
     maximum: float  # OPTIONAL
     minimum: float  # OPTIONAL
     set_as_global: bool  # OPTIONAL
@@ -103,8 +109,16 @@ class StatCreate(Model):
         self.description = value
         return self
 
+    def with_ignore_additional_data_on_value_rejected(self, value: bool) -> StatCreate:
+        self.ignore_additional_data_on_value_rejected = value
+        return self
+
     def with_increment_only(self, value: bool) -> StatCreate:
         self.increment_only = value
+        return self
+
+    def with_is_public(self, value: bool) -> StatCreate:
+        self.is_public = value
         return self
 
     def with_maximum(self, value: float) -> StatCreate:
@@ -153,10 +167,20 @@ class StatCreate(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "ignore_additional_data_on_value_rejected"):
+            result["ignoreAdditionalDataOnValueRejected"] = bool(
+                self.ignore_additional_data_on_value_rejected
+            )
+        elif include_empty:
+            result["ignoreAdditionalDataOnValueRejected"] = False
         if hasattr(self, "increment_only"):
             result["incrementOnly"] = bool(self.increment_only)
         elif include_empty:
             result["incrementOnly"] = False
+        if hasattr(self, "is_public"):
+            result["isPublic"] = bool(self.is_public)
+        elif include_empty:
+            result["isPublic"] = False
         if hasattr(self, "maximum"):
             result["maximum"] = float(self.maximum)
         elif include_empty:
@@ -188,7 +212,9 @@ class StatCreate(Model):
         stat_code: str,
         cycle_ids: Optional[List[str]] = None,
         description: Optional[str] = None,
+        ignore_additional_data_on_value_rejected: Optional[bool] = None,
         increment_only: Optional[bool] = None,
+        is_public: Optional[bool] = None,
         maximum: Optional[float] = None,
         minimum: Optional[float] = None,
         set_as_global: Optional[bool] = None,
@@ -204,8 +230,14 @@ class StatCreate(Model):
             instance.cycle_ids = cycle_ids
         if description is not None:
             instance.description = description
+        if ignore_additional_data_on_value_rejected is not None:
+            instance.ignore_additional_data_on_value_rejected = (
+                ignore_additional_data_on_value_rejected
+            )
         if increment_only is not None:
             instance.increment_only = increment_only
+        if is_public is not None:
+            instance.is_public = is_public
         if maximum is not None:
             instance.maximum = maximum
         if minimum is not None:
@@ -245,10 +277,23 @@ class StatCreate(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if (
+            "ignoreAdditionalDataOnValueRejected" in dict_
+            and dict_["ignoreAdditionalDataOnValueRejected"] is not None
+        ):
+            instance.ignore_additional_data_on_value_rejected = bool(
+                dict_["ignoreAdditionalDataOnValueRejected"]
+            )
+        elif include_empty:
+            instance.ignore_additional_data_on_value_rejected = False
         if "incrementOnly" in dict_ and dict_["incrementOnly"] is not None:
             instance.increment_only = bool(dict_["incrementOnly"])
         elif include_empty:
             instance.increment_only = False
+        if "isPublic" in dict_ and dict_["isPublic"] is not None:
+            instance.is_public = bool(dict_["isPublic"])
+        elif include_empty:
+            instance.is_public = False
         if "maximum" in dict_ and dict_["maximum"] is not None:
             instance.maximum = float(dict_["maximum"])
         elif include_empty:
@@ -310,7 +355,9 @@ class StatCreate(Model):
             "statCode": "stat_code",
             "cycleIds": "cycle_ids",
             "description": "description",
+            "ignoreAdditionalDataOnValueRejected": "ignore_additional_data_on_value_rejected",
             "incrementOnly": "increment_only",
+            "isPublic": "is_public",
             "maximum": "maximum",
             "minimum": "minimum",
             "setAsGlobal": "set_as_global",
@@ -326,7 +373,9 @@ class StatCreate(Model):
             "statCode": True,
             "cycleIds": False,
             "description": False,
+            "ignoreAdditionalDataOnValueRejected": False,
             "incrementOnly": False,
+            "isPublic": False,
             "maximum": False,
             "minimum": False,
             "setAsGlobal": False,

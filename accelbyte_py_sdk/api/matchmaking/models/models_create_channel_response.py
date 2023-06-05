@@ -67,6 +67,8 @@ class ModelsCreateChannelResponse(Model):
         updated_at: (updated_at) REQUIRED str
 
         use_sub_gamemode: (use_sub_gamemode) REQUIRED bool
+
+        ticket_observability_enable: (ticket_observability_enable) OPTIONAL bool
     """
 
     # region fields
@@ -88,6 +90,7 @@ class ModelsCreateChannelResponse(Model):
     social_matchmaking: bool  # REQUIRED
     updated_at: str  # REQUIRED
     use_sub_gamemode: bool  # REQUIRED
+    ticket_observability_enable: bool  # OPTIONAL
 
     # endregion fields
 
@@ -165,6 +168,12 @@ class ModelsCreateChannelResponse(Model):
 
     def with_use_sub_gamemode(self, value: bool) -> ModelsCreateChannelResponse:
         self.use_sub_gamemode = value
+        return self
+
+    def with_ticket_observability_enable(
+        self, value: bool
+    ) -> ModelsCreateChannelResponse:
+        self.ticket_observability_enable = value
         return self
 
     # endregion with_x methods
@@ -245,6 +254,12 @@ class ModelsCreateChannelResponse(Model):
             result["use_sub_gamemode"] = bool(self.use_sub_gamemode)
         elif include_empty:
             result["use_sub_gamemode"] = False
+        if hasattr(self, "ticket_observability_enable"):
+            result["ticket_observability_enable"] = bool(
+                self.ticket_observability_enable
+            )
+        elif include_empty:
+            result["ticket_observability_enable"] = False
         return result
 
     # endregion to methods
@@ -271,6 +286,7 @@ class ModelsCreateChannelResponse(Model):
         social_matchmaking: bool,
         updated_at: str,
         use_sub_gamemode: bool,
+        ticket_observability_enable: Optional[bool] = None,
         **kwargs,
     ) -> ModelsCreateChannelResponse:
         instance = cls()
@@ -291,6 +307,8 @@ class ModelsCreateChannelResponse(Model):
         instance.social_matchmaking = social_matchmaking
         instance.updated_at = updated_at
         instance.use_sub_gamemode = use_sub_gamemode
+        if ticket_observability_enable is not None:
+            instance.ticket_observability_enable = ticket_observability_enable
         return instance
 
     @classmethod
@@ -394,6 +412,15 @@ class ModelsCreateChannelResponse(Model):
             instance.use_sub_gamemode = bool(dict_["use_sub_gamemode"])
         elif include_empty:
             instance.use_sub_gamemode = False
+        if (
+            "ticket_observability_enable" in dict_
+            and dict_["ticket_observability_enable"] is not None
+        ):
+            instance.ticket_observability_enable = bool(
+                dict_["ticket_observability_enable"]
+            )
+        elif include_empty:
+            instance.ticket_observability_enable = False
         return instance
 
     @classmethod
@@ -454,6 +481,7 @@ class ModelsCreateChannelResponse(Model):
             "social_matchmaking": "social_matchmaking",
             "updated_at": "updated_at",
             "use_sub_gamemode": "use_sub_gamemode",
+            "ticket_observability_enable": "ticket_observability_enable",
         }
 
     @staticmethod
@@ -476,6 +504,7 @@ class ModelsCreateChannelResponse(Model):
             "social_matchmaking": True,
             "updated_at": True,
             "use_sub_gamemode": True,
+            "ticket_observability_enable": False,
         }
 
     # endregion static methods

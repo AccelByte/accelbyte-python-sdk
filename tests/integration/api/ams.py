@@ -2,7 +2,6 @@ from tests.integration.test_case import IntegrationTestCase
 
 
 class AMSTestCase(IntegrationTestCase):
-
     # region test:health_check
 
     def test_health_check(self):

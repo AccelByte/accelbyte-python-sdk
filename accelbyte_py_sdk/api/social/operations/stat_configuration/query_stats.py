@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.7.0)
+# AccelByte Gaming Services Social Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -61,6 +61,8 @@ class QueryStats(Operation):
 
         is_global: (isGlobal) OPTIONAL bool in query
 
+        is_public: (isPublic) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -82,6 +84,7 @@ class QueryStats(Operation):
 
     namespace: str  # REQUIRED in [path]
     is_global: bool  # OPTIONAL in [query]
+    is_public: bool  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     keyword: str  # REQUIRED in [query]
@@ -138,6 +141,8 @@ class QueryStats(Operation):
         result = {}
         if hasattr(self, "is_global"):
             result["isGlobal"] = self.is_global
+        if hasattr(self, "is_public"):
+            result["isPublic"] = self.is_public
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -160,6 +165,10 @@ class QueryStats(Operation):
 
     def with_is_global(self, value: bool) -> QueryStats:
         self.is_global = value
+        return self
+
+    def with_is_public(self, value: bool) -> QueryStats:
+        self.is_public = value
         return self
 
     def with_limit(self, value: int) -> QueryStats:
@@ -188,6 +197,10 @@ class QueryStats(Operation):
             result["isGlobal"] = bool(self.is_global)
         elif include_empty:
             result["isGlobal"] = False
+        if hasattr(self, "is_public") and self.is_public:
+            result["isPublic"] = bool(self.is_public)
+        elif include_empty:
+            result["isPublic"] = False
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -244,6 +257,7 @@ class QueryStats(Operation):
         namespace: str,
         keyword: str,
         is_global: Optional[bool] = None,
+        is_public: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         **kwargs,
@@ -253,6 +267,8 @@ class QueryStats(Operation):
         instance.keyword = keyword
         if is_global is not None:
             instance.is_global = is_global
+        if is_public is not None:
+            instance.is_public = is_public
         if limit is not None:
             instance.limit = limit
         if offset is not None:
@@ -270,6 +286,10 @@ class QueryStats(Operation):
             instance.is_global = bool(dict_["isGlobal"])
         elif include_empty:
             instance.is_global = False
+        if "isPublic" in dict_ and dict_["isPublic"] is not None:
+            instance.is_public = bool(dict_["isPublic"])
+        elif include_empty:
+            instance.is_public = False
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -289,6 +309,7 @@ class QueryStats(Operation):
         return {
             "namespace": "namespace",
             "isGlobal": "is_global",
+            "isPublic": "is_public",
             "limit": "limit",
             "offset": "offset",
             "keyword": "keyword",
@@ -299,6 +320,7 @@ class QueryStats(Operation):
         return {
             "namespace": True,
             "isGlobal": False,
+            "isPublic": False,
             "limit": False,
             "offset": False,
             "keyword": True,

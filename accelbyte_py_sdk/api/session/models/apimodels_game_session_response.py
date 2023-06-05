@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.12.0)
+# AccelByte Gaming Services Session Service (2.15.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,6 +67,8 @@ class ApimodelsGameSessionResponse(Model):
 
         attributes: (attributes) OPTIONAL Dict[str, Any]
 
+        code: (code) OPTIONAL str
+
         expired_at: (expiredAt) OPTIONAL str
 
         teams: (teams) OPTIONAL List[ModelsTeam]
@@ -91,6 +93,7 @@ class ApimodelsGameSessionResponse(Model):
     updated_at: str  # REQUIRED
     version: int  # REQUIRED
     attributes: Dict[str, Any]  # OPTIONAL
+    code: str  # OPTIONAL
     expired_at: str  # OPTIONAL
     teams: List[ModelsTeam]  # OPTIONAL
     ticket_i_ds: List[str]  # OPTIONAL
@@ -163,6 +166,10 @@ class ApimodelsGameSessionResponse(Model):
 
     def with_attributes(self, value: Dict[str, Any]) -> ApimodelsGameSessionResponse:
         self.attributes = value
+        return self
+
+    def with_code(self, value: str) -> ApimodelsGameSessionResponse:
+        self.code = value
         return self
 
     def with_expired_at(self, value: str) -> ApimodelsGameSessionResponse:
@@ -249,6 +256,10 @@ class ApimodelsGameSessionResponse(Model):
             result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
         elif include_empty:
             result["attributes"] = {}
+        if hasattr(self, "code"):
+            result["code"] = str(self.code)
+        elif include_empty:
+            result["code"] = ""
         if hasattr(self, "expired_at"):
             result["expiredAt"] = str(self.expired_at)
         elif include_empty:
@@ -287,6 +298,7 @@ class ApimodelsGameSessionResponse(Model):
         updated_at: str,
         version: int,
         attributes: Optional[Dict[str, Any]] = None,
+        code: Optional[str] = None,
         expired_at: Optional[str] = None,
         teams: Optional[List[ModelsTeam]] = None,
         ticket_i_ds: Optional[List[str]] = None,
@@ -309,6 +321,8 @@ class ApimodelsGameSessionResponse(Model):
         instance.version = version
         if attributes is not None:
             instance.attributes = attributes
+        if code is not None:
+            instance.code = code
         if expired_at is not None:
             instance.expired_at = expired_at
         if teams is not None:
@@ -393,6 +407,10 @@ class ApimodelsGameSessionResponse(Model):
             }
         elif include_empty:
             instance.attributes = {}
+        if "code" in dict_ and dict_["code"] is not None:
+            instance.code = str(dict_["code"])
+        elif include_empty:
+            instance.code = ""
         if "expiredAt" in dict_ and dict_["expiredAt"] is not None:
             instance.expired_at = str(dict_["expiredAt"])
         elif include_empty:
@@ -466,6 +484,7 @@ class ApimodelsGameSessionResponse(Model):
             "updatedAt": "updated_at",
             "version": "version",
             "attributes": "attributes",
+            "code": "code",
             "expiredAt": "expired_at",
             "teams": "teams",
             "ticketIDs": "ticket_i_ds",
@@ -489,6 +508,7 @@ class ApimodelsGameSessionResponse(Model):
             "updatedAt": True,
             "version": True,
             "attributes": False,
+            "code": False,
             "expiredAt": False,
             "teams": False,
             "ticketIDs": False,

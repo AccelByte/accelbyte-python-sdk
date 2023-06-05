@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Lobby Server (3.19.0)
+# AccelByte Gaming Services Lobby Server (3.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,6 +41,7 @@ from ..api.lobby.models import ModelGetUserFriendsResponse
 from ..api.lobby.models import ModelGetUserIncomingFriendsResponse
 from ..api.lobby.models import ModelGetUserOutgoingFriendsResponse
 from ..api.lobby.models import ModelIncomingFriendsWithTimeData
+from ..api.lobby.models import ModelListBulkUserPlatformsResponse
 from ..api.lobby.models import ModelLoadIncomingFriendsWithTimeResponse
 from ..api.lobby.models import ModelLoadOutgoingFriendsWithTimeResponse
 from ..api.lobby.models import ModelLocalization
@@ -61,9 +62,11 @@ from ..api.lobby.models import ModelUpdateTopicRequest
 from ..api.lobby.models import ModelUserAcceptFriendRequest
 from ..api.lobby.models import ModelUserCancelFriendRequest
 from ..api.lobby.models import ModelUserGetFriendshipStatusResponse
+from ..api.lobby.models import ModelUserPlatformInfo
 from ..api.lobby.models import ModelUserRejectFriendRequest
 from ..api.lobby.models import ModelUserRequestFriendRequest
 from ..api.lobby.models import ModelUserUnfriendRequest
+from ..api.lobby.models import ModelUserWithPlatformInfo
 from ..api.lobby.models import ModelsAdminAddProfanityFilterIntoListRequest
 from ..api.lobby.models import ModelsAdminAddProfanityFiltersFilterRequest
 from ..api.lobby.models import ModelsAdminAddProfanityFiltersRequest
@@ -86,6 +89,8 @@ from ..api.lobby.models import ModelsDebugProfanityFilterRequest
 from ..api.lobby.models import ModelsGetAllPlayerBlockedByUsersResponse
 from ..api.lobby.models import ModelsGetAllPlayerBlockedUsersResponse
 from ..api.lobby.models import ModelsGetAllPlayerSessionAttributeResponse
+from ..api.lobby.models import ModelsGetBulkAllPlayerBlockedUsersRequest
+from ..api.lobby.models import ModelsGetBulkAllPlayerBlockedUsersResponse
 from ..api.lobby.models import ModelsGetConfigResponse
 from ..api.lobby.models import ModelsGetLobbyCcuResponse
 from ..api.lobby.models import ModelsGetPlayerSessionAttributeResponse
@@ -216,6 +221,7 @@ def create_model_get_all_notification_topics_response_example() -> (
 def create_model_get_friends_response_example() -> ModelGetFriendsResponse:
     instance = ModelGetFriendsResponse()
     instance.friend_i_ds = [randomize()]
+    instance.friends_since_times = [randomize()]
     instance.paging = create_model_pagination_example()
     return instance
 
@@ -251,6 +257,14 @@ def create_model_incoming_friends_with_time_data_example() -> (
     instance = ModelIncomingFriendsWithTimeData()
     instance.friend_id = randomize()
     instance.requested_at = randomize("date")
+    return instance
+
+
+def create_model_list_bulk_user_platforms_response_example() -> (
+    ModelListBulkUserPlatformsResponse
+):
+    instance = ModelListBulkUserPlatformsResponse()
+    instance.data = [create_model_user_with_platform_info_example()]
     return instance
 
 
@@ -433,6 +447,14 @@ def create_model_user_get_friendship_status_response_example() -> (
     return instance
 
 
+def create_model_user_platform_info_example() -> ModelUserPlatformInfo:
+    instance = ModelUserPlatformInfo()
+    instance.platform_display_name = randomize()
+    instance.platform_name = randomize()
+    instance.platform_user_id = randomize()
+    return instance
+
+
 def create_model_user_reject_friend_request_example() -> ModelUserRejectFriendRequest:
     instance = ModelUserRejectFriendRequest()
     instance.friend_id = randomize()
@@ -449,6 +471,16 @@ def create_model_user_request_friend_request_example() -> ModelUserRequestFriend
 def create_model_user_unfriend_request_example() -> ModelUserUnfriendRequest:
     instance = ModelUserUnfriendRequest()
     instance.friend_id = randomize()
+    return instance
+
+
+def create_model_user_with_platform_info_example() -> ModelUserWithPlatformInfo:
+    instance = ModelUserWithPlatformInfo()
+    instance.avatar_url = randomize("url")
+    instance.display_name = randomize("slug")
+    instance.platform_infos = [create_model_user_platform_info_example()]
+    instance.user_id = randomize("uid")
+    instance.username = randomize("slug")
     return instance
 
 
@@ -665,6 +697,22 @@ def create_models_get_all_player_session_attribute_response_example() -> (
 ):
     instance = ModelsGetAllPlayerSessionAttributeResponse()
     instance.attributes = {randomize(): randomize()}
+    return instance
+
+
+def create_models_get_bulk_all_player_blocked_users_request_example() -> (
+    ModelsGetBulkAllPlayerBlockedUsersRequest
+):
+    instance = ModelsGetBulkAllPlayerBlockedUsersRequest()
+    instance.list_blocked_user_id = [randomize()]
+    return instance
+
+
+def create_models_get_bulk_all_player_blocked_users_response_example() -> (
+    ModelsGetBulkAllPlayerBlockedUsersResponse
+):
+    instance = ModelsGetBulkAllPlayerBlockedUsersResponse()
+    instance.data = {}
     return instance
 
 

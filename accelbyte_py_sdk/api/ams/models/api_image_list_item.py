@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -53,15 +53,15 @@ class ApiImageListItem(Model):
 
     # region fields
 
-    id_: str                                                                                       # REQUIRED
-    is_protected: bool                                                                             # REQUIRED
-    name: str                                                                                      # REQUIRED
-    referencing_fleets: int                                                                        # REQUIRED
-    size_in_byte: int                                                                              # REQUIRED
-    status: str                                                                                    # REQUIRED
-    tags: List[str]                                                                                # REQUIRED
-    uploaded_at: str                                                                               # REQUIRED
-    uploaded_by: str                                                                               # REQUIRED
+    id_: str  # REQUIRED
+    is_protected: bool  # REQUIRED
+    name: str  # REQUIRED
+    referencing_fleets: int  # REQUIRED
+    size_in_byte: int  # REQUIRED
+    status: str  # REQUIRED
+    tags: List[str]  # REQUIRED
+    uploaded_at: str  # REQUIRED
+    uploaded_by: str  # REQUIRED
 
     # endregion fields
 
@@ -163,7 +163,7 @@ class ApiImageListItem(Model):
         tags: List[str],
         uploaded_at: str,
         uploaded_by: str,
-    **kwargs
+        **kwargs,
     ) -> ApiImageListItem:
         instance = cls()
         instance.id_ = id_
@@ -178,7 +178,9 @@ class ApiImageListItem(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ApiImageListItem:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ApiImageListItem:
         instance = cls()
         if not dict_:
             return instance
@@ -221,15 +223,29 @@ class ApiImageListItem(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ApiImageListItem]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ApiImageListItem]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ApiImageListItem]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ApiImageListItem]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ApiImageListItem, List[ApiImageListItem], Dict[Any, ApiImageListItem]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[ApiImageListItem, List[ApiImageListItem], Dict[Any, ApiImageListItem]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

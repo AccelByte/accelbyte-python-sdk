@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.7.0)
+# AccelByte Gaming Services Social Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -47,7 +47,11 @@ class StatInfo(Model):
 
         default_value: (defaultValue) REQUIRED float
 
+        ignore_additional_data_on_value_rejected: (ignoreAdditionalDataOnValueRejected) REQUIRED bool
+
         increment_only: (incrementOnly) REQUIRED bool
+
+        is_public: (isPublic) REQUIRED bool
 
         name: (name) REQUIRED str
 
@@ -78,7 +82,9 @@ class StatInfo(Model):
 
     created_at: str  # REQUIRED
     default_value: float  # REQUIRED
+    ignore_additional_data_on_value_rejected: bool  # REQUIRED
     increment_only: bool  # REQUIRED
+    is_public: bool  # REQUIRED
     name: str  # REQUIRED
     namespace: str  # REQUIRED
     set_as_global: bool  # REQUIRED
@@ -104,8 +110,16 @@ class StatInfo(Model):
         self.default_value = value
         return self
 
+    def with_ignore_additional_data_on_value_rejected(self, value: bool) -> StatInfo:
+        self.ignore_additional_data_on_value_rejected = value
+        return self
+
     def with_increment_only(self, value: bool) -> StatInfo:
         self.increment_only = value
+        return self
+
+    def with_is_public(self, value: bool) -> StatInfo:
+        self.is_public = value
         return self
 
     def with_name(self, value: str) -> StatInfo:
@@ -170,10 +184,20 @@ class StatInfo(Model):
             result["defaultValue"] = float(self.default_value)
         elif include_empty:
             result["defaultValue"] = 0.0
+        if hasattr(self, "ignore_additional_data_on_value_rejected"):
+            result["ignoreAdditionalDataOnValueRejected"] = bool(
+                self.ignore_additional_data_on_value_rejected
+            )
+        elif include_empty:
+            result["ignoreAdditionalDataOnValueRejected"] = False
         if hasattr(self, "increment_only"):
             result["incrementOnly"] = bool(self.increment_only)
         elif include_empty:
             result["incrementOnly"] = False
+        if hasattr(self, "is_public"):
+            result["isPublic"] = bool(self.is_public)
+        elif include_empty:
+            result["isPublic"] = False
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -233,7 +257,9 @@ class StatInfo(Model):
         cls,
         created_at: str,
         default_value: float,
+        ignore_additional_data_on_value_rejected: bool,
         increment_only: bool,
+        is_public: bool,
         name: str,
         namespace: str,
         set_as_global: bool,
@@ -251,7 +277,11 @@ class StatInfo(Model):
         instance = cls()
         instance.created_at = created_at
         instance.default_value = default_value
+        instance.ignore_additional_data_on_value_rejected = (
+            ignore_additional_data_on_value_rejected
+        )
         instance.increment_only = increment_only
+        instance.is_public = is_public
         instance.name = name
         instance.namespace = namespace
         instance.set_as_global = set_as_global
@@ -284,10 +314,23 @@ class StatInfo(Model):
             instance.default_value = float(dict_["defaultValue"])
         elif include_empty:
             instance.default_value = 0.0
+        if (
+            "ignoreAdditionalDataOnValueRejected" in dict_
+            and dict_["ignoreAdditionalDataOnValueRejected"] is not None
+        ):
+            instance.ignore_additional_data_on_value_rejected = bool(
+                dict_["ignoreAdditionalDataOnValueRejected"]
+            )
+        elif include_empty:
+            instance.ignore_additional_data_on_value_rejected = False
         if "incrementOnly" in dict_ and dict_["incrementOnly"] is not None:
             instance.increment_only = bool(dict_["incrementOnly"])
         elif include_empty:
             instance.increment_only = False
+        if "isPublic" in dict_ and dict_["isPublic"] is not None:
+            instance.is_public = bool(dict_["isPublic"])
+        elif include_empty:
+            instance.is_public = False
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -377,7 +420,9 @@ class StatInfo(Model):
         return {
             "createdAt": "created_at",
             "defaultValue": "default_value",
+            "ignoreAdditionalDataOnValueRejected": "ignore_additional_data_on_value_rejected",
             "incrementOnly": "increment_only",
+            "isPublic": "is_public",
             "name": "name",
             "namespace": "namespace",
             "setAsGlobal": "set_as_global",
@@ -397,7 +442,9 @@ class StatInfo(Model):
         return {
             "createdAt": True,
             "defaultValue": True,
+            "ignoreAdditionalDataOnValueRejected": True,
             "incrementOnly": True,
+            "isPublic": True,
             "name": True,
             "namespace": True,
             "setAsGlobal": True,

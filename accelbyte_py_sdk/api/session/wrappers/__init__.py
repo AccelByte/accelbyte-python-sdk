@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.12.0"
+__version__ = "2.15.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -52,6 +52,8 @@ from ._game_session import create_game_session
 from ._game_session import create_game_session_async
 from ._game_session import delete_game_session
 from ._game_session import delete_game_session_async
+from ._game_session import game_session_generate_code
+from ._game_session import game_session_generate_code_async
 from ._game_session import get_game_session
 from ._game_session import get_game_session_async
 from ._game_session import get_game_session_by_pod_name
@@ -70,6 +72,10 @@ from ._game_session import public_query_game_sessions
 from ._game_session import public_query_game_sessions_async
 from ._game_session import public_query_my_game_sessions
 from ._game_session import public_query_my_game_sessions_async
+from ._game_session import public_revoke_game_session_code
+from ._game_session import public_revoke_game_session_code_async
+from ._game_session import public_session_join_code
+from ._game_session import public_session_join_code_async
 from ._game_session import update_game_session
 from ._game_session import update_game_session_async
 from ._game_session import update_game_session_backfill_ticket_id
@@ -117,6 +123,8 @@ from ._player import admin_query_player_attributes
 from ._player import admin_query_player_attributes_async
 from ._player import public_delete_player_attributes
 from ._player import public_delete_player_attributes_async
+from ._player import public_get_bulk_player_current_platform
+from ._player import public_get_bulk_player_current_platform_async
 from ._player import public_get_player_attributes
 from ._player import public_get_player_attributes_async
 from ._player import public_store_player_attributes

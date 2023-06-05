@@ -29,6 +29,7 @@ from ....core import Model
 
 from ..models.models_alliance_flexing_rule import ModelsAllianceFlexingRule
 from ..models.models_alliance_rule_v1 import ModelsAllianceRuleV1
+from ..models.models_bucket_mmr_rule import ModelsBucketMMRRule
 from ..models.models_flexing_rule import ModelsFlexingRule
 from ..models.models_match_option_rule import ModelsMatchOptionRule
 from ..models.models_matching_rule import ModelsMatchingRule
@@ -50,6 +51,10 @@ class ModelsRuleSetV1(Model):
         matching_rules: (matchingRules) REQUIRED List[ModelsMatchingRule]
 
         sub_game_modes: (sub_game_modes) REQUIRED Dict[str, ModelsSubGameMode]
+
+        bucket_mmr_rule: (bucket_mmr_rule) OPTIONAL ModelsBucketMMRRule
+
+        use_newest_ticket_for_flexing: (use_newest_ticket_for_flexing) OPTIONAL bool
     """
 
     # region fields
@@ -60,6 +65,8 @@ class ModelsRuleSetV1(Model):
     match_options: ModelsMatchOptionRule  # REQUIRED
     matching_rules: List[ModelsMatchingRule]  # REQUIRED
     sub_game_modes: Dict[str, ModelsSubGameMode]  # REQUIRED
+    bucket_mmr_rule: ModelsBucketMMRRule  # OPTIONAL
+    use_newest_ticket_for_flexing: bool  # OPTIONAL
 
     # endregion fields
 
@@ -91,6 +98,14 @@ class ModelsRuleSetV1(Model):
         self, value: Dict[str, ModelsSubGameMode]
     ) -> ModelsRuleSetV1:
         self.sub_game_modes = value
+        return self
+
+    def with_bucket_mmr_rule(self, value: ModelsBucketMMRRule) -> ModelsRuleSetV1:
+        self.bucket_mmr_rule = value
+        return self
+
+    def with_use_newest_ticket_for_flexing(self, value: bool) -> ModelsRuleSetV1:
+        self.use_newest_ticket_for_flexing = value
         return self
 
     # endregion with_x methods
@@ -135,6 +150,18 @@ class ModelsRuleSetV1(Model):
             }
         elif include_empty:
             result["sub_game_modes"] = {}
+        if hasattr(self, "bucket_mmr_rule"):
+            result["bucket_mmr_rule"] = self.bucket_mmr_rule.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["bucket_mmr_rule"] = ModelsBucketMMRRule()
+        if hasattr(self, "use_newest_ticket_for_flexing"):
+            result["use_newest_ticket_for_flexing"] = bool(
+                self.use_newest_ticket_for_flexing
+            )
+        elif include_empty:
+            result["use_newest_ticket_for_flexing"] = False
         return result
 
     # endregion to methods
@@ -150,6 +177,8 @@ class ModelsRuleSetV1(Model):
         match_options: ModelsMatchOptionRule,
         matching_rules: List[ModelsMatchingRule],
         sub_game_modes: Dict[str, ModelsSubGameMode],
+        bucket_mmr_rule: Optional[ModelsBucketMMRRule] = None,
+        use_newest_ticket_for_flexing: Optional[bool] = None,
         **kwargs,
     ) -> ModelsRuleSetV1:
         instance = cls()
@@ -159,6 +188,10 @@ class ModelsRuleSetV1(Model):
         instance.match_options = match_options
         instance.matching_rules = matching_rules
         instance.sub_game_modes = sub_game_modes
+        if bucket_mmr_rule is not None:
+            instance.bucket_mmr_rule = bucket_mmr_rule
+        if use_newest_ticket_for_flexing is not None:
+            instance.use_newest_ticket_for_flexing = use_newest_ticket_for_flexing
         return instance
 
     @classmethod
@@ -215,6 +248,21 @@ class ModelsRuleSetV1(Model):
             }
         elif include_empty:
             instance.sub_game_modes = {}
+        if "bucket_mmr_rule" in dict_ and dict_["bucket_mmr_rule"] is not None:
+            instance.bucket_mmr_rule = ModelsBucketMMRRule.create_from_dict(
+                dict_["bucket_mmr_rule"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.bucket_mmr_rule = ModelsBucketMMRRule()
+        if (
+            "use_newest_ticket_for_flexing" in dict_
+            and dict_["use_newest_ticket_for_flexing"] is not None
+        ):
+            instance.use_newest_ticket_for_flexing = bool(
+                dict_["use_newest_ticket_for_flexing"]
+            )
+        elif include_empty:
+            instance.use_newest_ticket_for_flexing = False
         return instance
 
     @classmethod
@@ -260,6 +308,8 @@ class ModelsRuleSetV1(Model):
             "match_options": "match_options",
             "matchingRules": "matching_rules",
             "sub_game_modes": "sub_game_modes",
+            "bucket_mmr_rule": "bucket_mmr_rule",
+            "use_newest_ticket_for_flexing": "use_newest_ticket_for_flexing",
         }
 
     @staticmethod
@@ -271,6 +321,8 @@ class ModelsRuleSetV1(Model):
             "match_options": True,
             "matchingRules": True,
             "sub_game_modes": True,
+            "bucket_mmr_rule": False,
+            "use_newest_ticket_for_flexing": False,
         }
 
     # endregion static methods

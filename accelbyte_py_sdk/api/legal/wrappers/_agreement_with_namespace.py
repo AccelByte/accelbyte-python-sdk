@@ -45,6 +45,7 @@ from ..operations.agreement_with_namespace import RetrieveAllUsersByPolicyVersio
 @same_doc_as(RetrieveAcceptedAgreements1)
 def retrieve_accepted_agreements_1(
     user_id: str,
+    exclude_other_namespaces_policies: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -75,6 +76,8 @@ def retrieve_accepted_agreements_1(
 
         user_id: (userId) REQUIRED str in path
 
+        exclude_other_namespaces_policies: (excludeOtherNamespacesPolicies) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
     """
@@ -84,6 +87,7 @@ def retrieve_accepted_agreements_1(
             return None, error
     request = RetrieveAcceptedAgreements1.create(
         user_id=user_id,
+        exclude_other_namespaces_policies=exclude_other_namespaces_policies,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -92,6 +96,7 @@ def retrieve_accepted_agreements_1(
 @same_doc_as(RetrieveAcceptedAgreements1)
 async def retrieve_accepted_agreements_1_async(
     user_id: str,
+    exclude_other_namespaces_policies: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -122,6 +127,8 @@ async def retrieve_accepted_agreements_1_async(
 
         user_id: (userId) REQUIRED str in path
 
+        exclude_other_namespaces_policies: (excludeOtherNamespacesPolicies) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
     """
@@ -131,6 +138,7 @@ async def retrieve_accepted_agreements_1_async(
             return None, error
     request = RetrieveAcceptedAgreements1.create(
         user_id=user_id,
+        exclude_other_namespaces_policies=exclude_other_namespaces_policies,
         namespace=namespace,
     )
     return await run_request_async(
@@ -237,6 +245,7 @@ async def retrieve_accepted_agreements_for_multi_users_async(
 @same_doc_as(RetrieveAllUsersByPolicyVersion1)
 def retrieve_all_users_by_policy_version_1(
     policy_version_id: str,
+    convert_game_user_id: Optional[bool] = None,
     keyword: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -268,6 +277,8 @@ def retrieve_all_users_by_policy_version_1(
 
         namespace: (namespace) REQUIRED str in path
 
+        convert_game_user_id: (convertGameUserId) OPTIONAL bool in query
+
         keyword: (keyword) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -277,7 +288,7 @@ def retrieve_all_users_by_policy_version_1(
         policy_version_id: (policyVersionId) REQUIRED str in query
 
     Responses:
-        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
 
         404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """
@@ -287,6 +298,7 @@ def retrieve_all_users_by_policy_version_1(
             return None, error
     request = RetrieveAllUsersByPolicyVersion1.create(
         policy_version_id=policy_version_id,
+        convert_game_user_id=convert_game_user_id,
         keyword=keyword,
         limit=limit,
         offset=offset,
@@ -298,6 +310,7 @@ def retrieve_all_users_by_policy_version_1(
 @same_doc_as(RetrieveAllUsersByPolicyVersion1)
 async def retrieve_all_users_by_policy_version_1_async(
     policy_version_id: str,
+    convert_game_user_id: Optional[bool] = None,
     keyword: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -329,6 +342,8 @@ async def retrieve_all_users_by_policy_version_1_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        convert_game_user_id: (convertGameUserId) OPTIONAL bool in query
+
         keyword: (keyword) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -338,7 +353,7 @@ async def retrieve_all_users_by_policy_version_1_async(
         policy_version_id: (policyVersionId) REQUIRED str in query
 
     Responses:
-        200: OK - List[PagedRetrieveUserAcceptedAgreementResponse] (successful operation)
+        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
 
         404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """
@@ -348,6 +363,7 @@ async def retrieve_all_users_by_policy_version_1_async(
             return None, error
     request = RetrieveAllUsersByPolicyVersion1.create(
         policy_version_id=policy_version_id,
+        convert_game_user_id=convert_game_user_id,
         keyword=keyword,
         limit=limit,
         offset=offset,

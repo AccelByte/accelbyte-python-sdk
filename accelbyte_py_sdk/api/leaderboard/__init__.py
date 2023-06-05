@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Leaderboard Service."""
 
-__version__ = "2.21.0"
+__version__ = "2.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -127,6 +127,10 @@ from .wrappers import get_user_ranking_public_v3_async
 # user_data
 from .wrappers import get_user_leaderboard_rankings_admin_v1
 from .wrappers import get_user_leaderboard_rankings_admin_v1_async
+
+# user_data_v3
+from .wrappers import get_user_leaderboard_rankings_admin_v3
+from .wrappers import get_user_leaderboard_rankings_admin_v3_async
 
 # user_visibility
 from .wrappers import get_hidden_users_v2

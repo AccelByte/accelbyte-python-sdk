@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Lobby Server (3.19.0)
+# AccelByte Gaming Services Lobby Server (3.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,12 +36,15 @@ class ModelGetFriendsResponse(Model):
     Properties:
         friend_i_ds: (friendIDs) REQUIRED List[str]
 
+        friends_since_times: (friendsSinceTimes) REQUIRED List[str]
+
         paging: (paging) REQUIRED ModelPagination
     """
 
     # region fields
 
     friend_i_ds: List[str]  # REQUIRED
+    friends_since_times: List[str]  # REQUIRED
     paging: ModelPagination  # REQUIRED
 
     # endregion fields
@@ -50,6 +53,10 @@ class ModelGetFriendsResponse(Model):
 
     def with_friend_i_ds(self, value: List[str]) -> ModelGetFriendsResponse:
         self.friend_i_ds = value
+        return self
+
+    def with_friends_since_times(self, value: List[str]) -> ModelGetFriendsResponse:
+        self.friends_since_times = value
         return self
 
     def with_paging(self, value: ModelPagination) -> ModelGetFriendsResponse:
@@ -66,6 +73,10 @@ class ModelGetFriendsResponse(Model):
             result["friendIDs"] = [str(i0) for i0 in self.friend_i_ds]
         elif include_empty:
             result["friendIDs"] = []
+        if hasattr(self, "friends_since_times"):
+            result["friendsSinceTimes"] = [str(i0) for i0 in self.friends_since_times]
+        elif include_empty:
+            result["friendsSinceTimes"] = []
         if hasattr(self, "paging"):
             result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -78,10 +89,15 @@ class ModelGetFriendsResponse(Model):
 
     @classmethod
     def create(
-        cls, friend_i_ds: List[str], paging: ModelPagination, **kwargs
+        cls,
+        friend_i_ds: List[str],
+        friends_since_times: List[str],
+        paging: ModelPagination,
+        **kwargs,
     ) -> ModelGetFriendsResponse:
         instance = cls()
         instance.friend_i_ds = friend_i_ds
+        instance.friends_since_times = friends_since_times
         instance.paging = paging
         return instance
 
@@ -96,6 +112,12 @@ class ModelGetFriendsResponse(Model):
             instance.friend_i_ds = [str(i0) for i0 in dict_["friendIDs"]]
         elif include_empty:
             instance.friend_i_ds = []
+        if "friendsSinceTimes" in dict_ and dict_["friendsSinceTimes"] is not None:
+            instance.friends_since_times = [
+                str(i0) for i0 in dict_["friendsSinceTimes"]
+            ]
+        elif include_empty:
+            instance.friends_since_times = []
         if "paging" in dict_ and dict_["paging"] is not None:
             instance.paging = ModelPagination.create_from_dict(
                 dict_["paging"], include_empty=include_empty
@@ -146,6 +168,7 @@ class ModelGetFriendsResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "friendIDs": "friend_i_ds",
+            "friendsSinceTimes": "friends_since_times",
             "paging": "paging",
         }
 
@@ -153,6 +176,7 @@ class ModelGetFriendsResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "friendIDs": True,
+            "friendsSinceTimes": True,
             "paging": True,
         }
 

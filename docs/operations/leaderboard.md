@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Leaderboard Service Index (2.21.0)
+# AccelByte Gaming Services Leaderboard Service Index (2.23.0)
 
 
 ## Operations
@@ -82,6 +82,11 @@
 |---|---|---|---|---|---|---|
 | /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}/leaderboards | GET | getUserLeaderboardRankingsAdminV1 | `false` | [GetUserLeaderboardRankingsAdminV1](../../accelbyte_py_sdk/api/leaderboard/operations/user_data/get_user_leaderboard_ra_d2aae2.py) | [get_user_leaderboard_rankings_admin_v1](../../accelbyte_py_sdk/api/leaderboard/wrappers/_user_data.py) | [accelbyte_py_sdk_cli leaderboard-get-user-leaderboard-rankings-admin-v1](../../samples/cli/accelbyte_py_sdk_cli/leaderboard/_get_user_leaderboard_rankings_admin_v1.py) |
 
+### UserDataV3
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /leaderboard/v3/admin/namespaces/{namespace}/users/{userId}/leaderboards | GET | getUserLeaderboardRankingsAdminV3 | `false` | [GetUserLeaderboardRankingsAdminV3](../../accelbyte_py_sdk/api/leaderboard/operations/user_data_v3/get_user_leaderboard_ra_e5b21a.py) | [get_user_leaderboard_rankings_admin_v3](../../accelbyte_py_sdk/api/leaderboard/wrappers/_user_data_v3.py) | [accelbyte_py_sdk_cli leaderboard-get-user-leaderboard-rankings-admin-v3](../../samples/cli/accelbyte_py_sdk_cli/leaderboard/_get_user_leaderboard_rankings_admin_v3.py) |
+
 ### UserVisibility
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -113,6 +118,7 @@
 | models.GetAllLeaderboardConfigsResp | [ModelsGetAllLeaderboardConfigsResp](../../accelbyte_py_sdk/api/leaderboard/models/models_get_all_leaderboard_configs_resp.py) |
 | models.GetAllLeaderboardConfigsRespV3 | [ModelsGetAllLeaderboardConfigsRespV3](../../accelbyte_py_sdk/api/leaderboard/models/models_get_all_leaderboard_configs_resp_v3.py) |
 | models.GetAllUserLeaderboardsResp | [ModelsGetAllUserLeaderboardsResp](../../accelbyte_py_sdk/api/leaderboard/models/models_get_all_user_leaderboards_resp.py) |
+| models.GetAllUserLeaderboardsRespV3 | [ModelsGetAllUserLeaderboardsRespV3](../../accelbyte_py_sdk/api/leaderboard/models/models_get_all_user_leaderboards_resp_v3.py) |
 | models.GetHiddenUserResponse | [ModelsGetHiddenUserResponse](../../accelbyte_py_sdk/api/leaderboard/models/models_get_hidden_user_response.py) |
 | models.GetLeaderboardConfigPublicResp | [ModelsGetLeaderboardConfigPublicResp](../../accelbyte_py_sdk/api/leaderboard/models/models_get_leaderboard_config_public_resp.py) |
 | models.GetLeaderboardConfigPublicRespV3 | [ModelsGetLeaderboardConfigPublicRespV3](../../accelbyte_py_sdk/api/leaderboard/models/models_get_leaderboard_config_public_resp_v3.py) |
@@ -132,6 +138,7 @@
 | models.UpdateUserPointAdminV1Response | [ModelsUpdateUserPointAdminV1Response](../../accelbyte_py_sdk/api/leaderboard/models/models_update_user_point_admin_v1_response.py) |
 | models.UserCycleRankingResponseDetail | [ModelsUserCycleRankingResponseDetail](../../accelbyte_py_sdk/api/leaderboard/models/models_user_cycle_ranking_response_detail.py) |
 | models.UserLeaderboardRanking | [ModelsUserLeaderboardRanking](../../accelbyte_py_sdk/api/leaderboard/models/models_user_leaderboard_ranking.py) |
+| models.UserLeaderboardRankingV3 | [ModelsUserLeaderboardRankingV3](../../accelbyte_py_sdk/api/leaderboard/models/models_user_leaderboard_ranking_v3.py) |
 | models.UserPoint | [ModelsUserPoint](../../accelbyte_py_sdk/api/leaderboard/models/models_user_point.py) |
 | models.UserRankingResponse | [ModelsUserRankingResponse](../../accelbyte_py_sdk/api/leaderboard/models/models_user_ranking_response.py) |
 | models.UserRankingResponseDetail | [ModelsUserRankingResponseDetail](../../accelbyte_py_sdk/api/leaderboard/models/models_user_ranking_response_detail.py) |

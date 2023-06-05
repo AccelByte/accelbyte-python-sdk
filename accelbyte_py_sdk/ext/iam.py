@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (5.34.0)
+# AccelByte Gaming Services Iam Service (6.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,6 +66,7 @@ from ..api.iam.models import AccountcommonPermissionV3
 from ..api.iam.models import AccountcommonPermissions
 from ..api.iam.models import AccountcommonPermissionsV3
 from ..api.iam.models import AccountcommonPlatformAccount
+from ..api.iam.models import AccountcommonPlatformLinkingHistory
 from ..api.iam.models import AccountcommonPlatformUserInformationV3
 from ..api.iam.models import AccountcommonRegisteredDomain
 from ..api.iam.models import AccountcommonRole
@@ -690,6 +691,16 @@ def create_accountcommon_platform_account_example() -> AccountcommonPlatformAcco
     instance.namespace = randomize("slug")
     instance.platform_user_id = randomize()
     instance.platform_id = randomize()
+    return instance
+
+
+def create_accountcommon_platform_linking_history_example() -> (
+    AccountcommonPlatformLinkingHistory
+):
+    instance = AccountcommonPlatformLinkingHistory()
+    instance.platform_display_name = randomize()
+    instance.platform_id = randomize()
+    instance.platform_user_id = randomize()
     return instance
 
 
@@ -1559,6 +1570,7 @@ def create_model_link_request_example() -> ModelLinkRequest:
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
     instance.refresh_token = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -2883,6 +2895,9 @@ def create_rest_error_response_with_conflicted_user_platform_accounts_example() 
     instance.error_message = randomize()
     instance.message_variables = (
         create_accountcommon_conflicted_user_platform_accounts_example()
+    )
+    instance.previous_linked_platform_account = (
+        create_accountcommon_platform_linking_history_example()
     )
     return instance
 

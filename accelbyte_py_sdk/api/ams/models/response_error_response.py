@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -39,8 +39,8 @@ class ResponseErrorResponse(Model):
 
     # region fields
 
-    error_message: str                                                                             # REQUIRED
-    trace_id: str                                                                                  # REQUIRED
+    error_message: str  # REQUIRED
+    trace_id: str  # REQUIRED
 
     # endregion fields
 
@@ -76,10 +76,7 @@ class ResponseErrorResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        error_message: str,
-        trace_id: str,
-    **kwargs
+        cls, error_message: str, trace_id: str, **kwargs
     ) -> ResponseErrorResponse:
         instance = cls()
         instance.error_message = error_message
@@ -87,7 +84,9 @@ class ResponseErrorResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ResponseErrorResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ResponseErrorResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -102,15 +101,33 @@ class ResponseErrorResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ResponseErrorResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ResponseErrorResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ResponseErrorResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ResponseErrorResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ResponseErrorResponse, List[ResponseErrorResponse], Dict[Any, ResponseErrorResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ResponseErrorResponse,
+        List[ResponseErrorResponse],
+        Dict[Any, ResponseErrorResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

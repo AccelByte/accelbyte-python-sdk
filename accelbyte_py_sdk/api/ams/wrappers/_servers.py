@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -40,7 +40,12 @@ from ..operations.servers import ServerHistory
 
 
 @same_doc_as(FleetServerHistory)
-def fleet_server_history(fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def fleet_server_history(
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get history records of a specific dedicated server for a fleet (FleetServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -88,7 +93,12 @@ def fleet_server_history(fleet_id: str, namespace: Optional[str] = None, x_addit
 
 
 @same_doc_as(FleetServerHistory)
-async def fleet_server_history_async(fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def fleet_server_history_async(
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get history records of a specific dedicated server for a fleet (FleetServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -132,11 +142,18 @@ async def fleet_server_history_async(fleet_id: str, namespace: Optional[str] = N
         fleet_id=fleet_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FleetServerInfo)
-def fleet_server_info(server_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def fleet_server_info(
+    server_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get information about a specific dedicated server (FleetServerInfo)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -184,7 +201,12 @@ def fleet_server_info(server_id: str, namespace: Optional[str] = None, x_additio
 
 
 @same_doc_as(FleetServerInfo)
-async def fleet_server_info_async(server_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def fleet_server_info_async(
+    server_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get information about a specific dedicated server (FleetServerInfo)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -228,11 +250,18 @@ async def fleet_server_info_async(server_id: str, namespace: Optional[str] = Non
         server_id=server_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ServerHistory)
-def server_history(server_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def server_history(
+    server_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get history records of a specific dedicated server (ServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -280,7 +309,12 @@ def server_history(server_id: str, namespace: Optional[str] = None, x_additional
 
 
 @same_doc_as(ServerHistory)
-async def server_history_async(server_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def server_history_async(
+    server_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get history records of a specific dedicated server (ServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -324,4 +358,6 @@ async def server_history_async(server_id: str, namespace: Optional[str] = None, 
         server_id=server_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

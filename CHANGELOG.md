@@ -1,6 +1,16 @@
-## v0.40.0
+## v0.42.0
+- Update spec for AccelByte Cloud v3.50.0.
 
-Update spec for AccelByte Cloud v3.49.0.
+### fix
+- **core:** handle application/json;charset=utf-8 returned by public_get_my_user_v3
+### chore
+- **sdk:** generate python extend sdk - AMS
+### test
+- **sdk:** add AMS integration tests
+
+
+## v0.41.0
+- Update spec for AccelByte Cloud v3.49.0.
 
 ### fix
 - **tests:** update phantauth environment variable
@@ -8,7 +18,6 @@ Update spec for AccelByte Cloud v3.49.0.
 - **core tests:** disable http bin tests
 ### chore
 - **jenkinsfile:** update generate spec target
-
 
 ## v0.40.0
 - Update spec for AccelByte Cloud v3.48.0.

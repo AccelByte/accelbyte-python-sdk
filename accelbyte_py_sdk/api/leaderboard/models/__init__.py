@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Leaderboard Service."""
 
-__version__ = "2.21.0"
+__version__ = "2.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -35,6 +35,7 @@ from .models_get_all_leaderboard_configs_resp_v3 import (
     ModelsGetAllLeaderboardConfigsRespV3,
 )
 from .models_get_all_user_leaderboards_resp import ModelsGetAllUserLeaderboardsResp
+from .models_get_all_user_leaderboards_resp_v3 import ModelsGetAllUserLeaderboardsRespV3
 from .models_get_hidden_user_response import ModelsGetHiddenUserResponse
 from .models_get_leaderboard_config_public_resp import (
     ModelsGetLeaderboardConfigPublicResp,
@@ -64,6 +65,7 @@ from .models_user_cycle_ranking_response_detail import (
     ModelsUserCycleRankingResponseDetail,
 )
 from .models_user_leaderboard_ranking import ModelsUserLeaderboardRanking
+from .models_user_leaderboard_ranking_v3 import ModelsUserLeaderboardRankingV3
 from .models_user_point import ModelsUserPoint
 from .models_user_ranking_response import ModelsUserRankingResponse
 from .models_user_ranking_response_detail import ModelsUserRankingResponseDetail

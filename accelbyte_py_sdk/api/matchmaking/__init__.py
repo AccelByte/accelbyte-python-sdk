@@ -45,6 +45,8 @@ from .wrappers import get_session_history_detailed
 from .wrappers import get_session_history_detailed_async
 from .wrappers import get_single_matchmaking_channel
 from .wrappers import get_single_matchmaking_channel_async
+from .wrappers import get_stat_data
+from .wrappers import get_stat_data_async
 from .wrappers import import_channels
 from .wrappers import import_channels_async
 from .wrappers import public_get_all_matchmaking_channel
@@ -75,6 +77,22 @@ from .wrappers import public_get_messages
 from .wrappers import public_get_messages_async
 from .wrappers import version_check_handler
 from .wrappers import version_check_handler_async
+
+# mock_matchmaking
+from .wrappers import bulk_create_mock_tickets
+from .wrappers import bulk_create_mock_tickets_async
+from .wrappers import clean_all_mocks
+from .wrappers import clean_all_mocks_async
+from .wrappers import create_mock_tickets
+from .wrappers import create_mock_tickets_async
+from .wrappers import get_all_mock_matches
+from .wrappers import get_all_mock_matches_async
+from .wrappers import get_all_mock_tickets
+from .wrappers import get_all_mock_tickets_async
+from .wrappers import get_mock_matches_by_timestamp
+from .wrappers import get_mock_matches_by_timestamp_async
+from .wrappers import get_mock_tickets_by_timestamp
+from .wrappers import get_mock_tickets_by_timestamp_async
 
 # social_matchmaking
 from .wrappers import update_play_time_weight

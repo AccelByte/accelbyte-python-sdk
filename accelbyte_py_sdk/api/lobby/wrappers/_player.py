@@ -32,6 +32,8 @@ from ....core import same_doc_as
 from ..models import ModelsGetAllPlayerBlockedByUsersResponse
 from ..models import ModelsGetAllPlayerBlockedUsersResponse
 from ..models import ModelsGetAllPlayerSessionAttributeResponse
+from ..models import ModelsGetBulkAllPlayerBlockedUsersRequest
+from ..models import ModelsGetBulkAllPlayerBlockedUsersResponse
 from ..models import ModelsGetLobbyCcuResponse
 from ..models import ModelsGetPlayerSessionAttributeResponse
 from ..models import ModelsListBlockedPlayerRequest
@@ -40,6 +42,7 @@ from ..models import RestapiErrorResponseBody
 
 from ..operations.player import AdminBulkBlockPlayersV1
 from ..operations.player import AdminGetAllPlayerSessionAttribute
+from ..operations.player import AdminGetBulkPlayerBlockedPlayersV1
 from ..operations.player import AdminGetLobbyCCU
 from ..operations.player import AdminGetPlayerBlockedByPlayersV1
 from ..operations.player import AdminGetPlayerBlockedPlayersV1
@@ -282,6 +285,128 @@ async def admin_get_all_player_session_attribute_async(
             return None, error
     request = AdminGetAllPlayerSessionAttribute.create(
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetBulkPlayerBlockedPlayersV1)
+def admin_get_bulk_player_blocked_players_v1(
+    body: ModelsGetBulkAllPlayerBlockedUsersRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """admin get blocked players by bulk user ids (adminGetBulkPlayerBlockedPlayersV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]` with scope `social`
+
+    get blocked players data by bulk user ids in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/player/namespaces/{namespace}/users/bulk/blocked
+
+        method: POST
+
+        tags: ["player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGetBulkAllPlayerBlockedUsersRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetBulkAllPlayerBlockedUsersResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetBulkPlayerBlockedPlayersV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetBulkPlayerBlockedPlayersV1)
+async def admin_get_bulk_player_blocked_players_v1_async(
+    body: ModelsGetBulkAllPlayerBlockedUsersRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """admin get blocked players by bulk user ids (adminGetBulkPlayerBlockedPlayersV1)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]` with scope `social`
+
+    get blocked players data by bulk user ids in a namespace.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/player/namespaces/{namespace}/users/bulk/blocked
+
+        method: POST
+
+        tags: ["player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGetBulkAllPlayerBlockedUsersRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetBulkAllPlayerBlockedUsersResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetBulkPlayerBlockedPlayersV1.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
