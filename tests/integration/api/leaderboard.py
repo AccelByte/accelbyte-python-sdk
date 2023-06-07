@@ -39,20 +39,22 @@ class LeaderboardTestCase(IntegrationTestCase):
 
     def init_leaderboard_config(self):
         from accelbyte_py_sdk.api.social import create_stat
+        from accelbyte_py_sdk.core import generate_id
 
-        self.leaderboard_code = f"ldrbrd{str(randint(0, 1_000_000)).rjust(7, '0')}"
+        suffix = generate_id(64)
+        self.leaderboard_code = f"ldrbrd{suffix}"
         self.models_leaderboard_config_req.leaderboard_code = self.leaderboard_code
         self.models_leaderboard_config_req.stat_code = self.leaderboard_code
         self.stat_create.name = self.leaderboard_code
         self.stat_create.stat_code = self.leaderboard_code
 
-        _, error = create_stat(body=self.stat_create)
+        _, error = create_stat(body=self.stat_create, namespace=self.namespace)
         if error:
             self.skipTest(reason=f"Failed to create stat: {error}")
 
         self.stat_create.name = f"{self.leaderboard_code}2"
         self.stat_create.stat_code = f"{self.leaderboard_code}2"
-        _, error = create_stat(body=self.stat_create)
+        _, error = create_stat(body=self.stat_create, namespace=self.namespace)
         if error:
             self.skipTest(reason=f"Failed to create stat 2: {error}")
 
@@ -62,6 +64,7 @@ class LeaderboardTestCase(IntegrationTestCase):
         )
         from accelbyte_py_sdk.api.social import (
             delete_stat,
+            get_stat,
         )
 
         _, error = delete_leaderboard_configuration_admin_v1(
@@ -72,15 +75,15 @@ class LeaderboardTestCase(IntegrationTestCase):
             condition=error is not None,
         )
 
-        if self.stat_create and self.stat_create.stat_code:
-            _, error = delete_stat(stat_code=self.stat_create.stat_code)
+        if self.stat_create and self.stat_create.stat_code and self.leaderboard_code:
+            _, error = delete_stat(stat_code=self.leaderboard_code, namespace=self.namespace)
             self.log_warning(
-                msg=f"Failed to tear down stat: {self.stat_create.stat_code}. {str(error)}",
+                msg=f"Failed to tear down stat: {self.leaderboard_code}. {str(error)}",
                 condition=error is not None,
             )
-            _, error = delete_stat(stat_code=f"{self.stat_create.stat_code}2")
+            _, error = delete_stat(stat_code=f"{self.leaderboard_code}2", namespace=self.namespace)
             self.log_warning(
-                msg=f"Failed to tear down stat: {self.stat_create.stat_code}2. {str(error)}",
+                msg=f"Failed to tear down stat: {self.leaderboard_code}2. {str(error)}",
                 condition=error is not None,
             )
 
