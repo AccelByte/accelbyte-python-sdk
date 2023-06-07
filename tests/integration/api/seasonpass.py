@@ -47,8 +47,12 @@ class SeasonPassTestCase(IntegrationTestCase):
             namespace=self.namespace,
         )
         self.assertIsNone(error, error)
+
         if len(result) > 0:
-            return result[0]
+            for store_info in result:
+                if not store_info.published:
+                    return store_info
+
         body = (
             StoreCreate()
             .with_default_language("en-US")
@@ -56,6 +60,7 @@ class SeasonPassTestCase(IntegrationTestCase):
             .with_title(self.storeTitle)
             .with_description(self.storeTitle)
         )
+
         result, error = create_store(namespace=self.namespace, body=body)
         return result
 
@@ -110,9 +115,9 @@ class SeasonPassTestCase(IntegrationTestCase):
             namespace=self.namespace,
         )
         self.assertIsNone(error, error)
-        for storeInfo in result:
-            if not storeInfo.published:
-                _, error = delete_store(store_id=storeInfo.store_id)
+        for store_info in result:
+            if not store_info.published:
+                _, error = delete_store(store_id=store_info.store_id)
                 self.assertIsNone(error, error)
 
     # region test:season_crud
