@@ -72,6 +72,7 @@
 | api.DSHistoryEvent | [ApiDSHistoryEvent](../../accelbyte_py_sdk/api/ams/models/api_ds_history_event.py) |
 | api.DSHistoryList | [ApiDSHistoryList](../../accelbyte_py_sdk/api/ams/models/api_ds_history_list.py) |
 | api.DSHostConfiguration | [ApiDSHostConfiguration](../../accelbyte_py_sdk/api/ams/models/api_ds_host_configuration.py) |
+| api.FleetClaimByKeysReq | [ApiFleetClaimByKeysReq](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_by_keys_req.py) |
 | api.FleetClaimReq | [ApiFleetClaimReq](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_req.py) |
 | api.FleetClaimResponse | [ApiFleetClaimResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_response.py) |
 | api.FleetCreateResponse | [ApiFleetCreateResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_create_response.py) |
@@ -96,4 +97,3 @@
 | api.RegionsResponse | [ApiRegionsResponse](../../accelbyte_py_sdk/api/ams/models/api_regions_response.py) |
 | api.Timeout | [ApiTimeout](../../accelbyte_py_sdk/api/ams/models/api_timeout.py) |
 | response.ErrorResponse | [ResponseErrorResponse](../../accelbyte_py_sdk/api/ams/models/response_error_response.py) |
-| tid.ID | [TidID](../../accelbyte_py_sdk/api/ams/models/tid_id.py) |

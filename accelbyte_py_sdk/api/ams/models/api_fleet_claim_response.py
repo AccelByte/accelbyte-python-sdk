@@ -36,6 +36,8 @@ class ApiFleetClaimResponse(Model):
 
         ports: (ports) REQUIRED Dict[str, int]
 
+        region: (region) REQUIRED str
+
         server_id: (serverId) REQUIRED str
     """
 
@@ -43,6 +45,7 @@ class ApiFleetClaimResponse(Model):
 
     ip: str  # REQUIRED
     ports: Dict[str, int]  # REQUIRED
+    region: str  # REQUIRED
     server_id: str  # REQUIRED
 
     # endregion fields
@@ -55,6 +58,10 @@ class ApiFleetClaimResponse(Model):
 
     def with_ports(self, value: Dict[str, int]) -> ApiFleetClaimResponse:
         self.ports = value
+        return self
+
+    def with_region(self, value: str) -> ApiFleetClaimResponse:
+        self.region = value
         return self
 
     def with_server_id(self, value: str) -> ApiFleetClaimResponse:
@@ -75,6 +82,10 @@ class ApiFleetClaimResponse(Model):
             result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
         elif include_empty:
             result["ports"] = {}
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = ""
         if hasattr(self, "server_id"):
             result["serverId"] = str(self.server_id)
         elif include_empty:
@@ -87,11 +98,12 @@ class ApiFleetClaimResponse(Model):
 
     @classmethod
     def create(
-        cls, ip: str, ports: Dict[str, int], server_id: str, **kwargs
+        cls, ip: str, ports: Dict[str, int], region: str, server_id: str, **kwargs
     ) -> ApiFleetClaimResponse:
         instance = cls()
         instance.ip = ip
         instance.ports = ports
+        instance.region = region
         instance.server_id = server_id
         return instance
 
@@ -110,6 +122,10 @@ class ApiFleetClaimResponse(Model):
             instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
         elif include_empty:
             instance.ports = {}
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = ""
         if "serverId" in dict_ and dict_["serverId"] is not None:
             instance.server_id = str(dict_["serverId"])
         elif include_empty:
@@ -159,6 +175,7 @@ class ApiFleetClaimResponse(Model):
         return {
             "ip": "ip",
             "ports": "ports",
+            "region": "region",
             "serverId": "server_id",
         }
 
@@ -167,6 +184,7 @@ class ApiFleetClaimResponse(Model):
         return {
             "ip": True,
             "ports": True,
+            "region": True,
             "serverId": True,
         }
 

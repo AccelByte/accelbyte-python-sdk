@@ -28,30 +28,30 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class TidID(Model):
-    """Tid ID (tid.ID)
+class ApiFleetClaimByKeysReq(Model):
+    """Api fleet claim by keys req (api.FleetClaimByKeysReq)
 
     Properties:
-        type_: (Type) REQUIRED str
+        claim_keys: (claimKeys) REQUIRED List[str]
 
-        uuid: (UUID) REQUIRED str
+        regions: (regions) REQUIRED List[str]
     """
 
     # region fields
 
-    type_: str  # REQUIRED
-    uuid: str  # REQUIRED
+    claim_keys: List[str]  # REQUIRED
+    regions: List[str]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_type(self, value: str) -> TidID:
-        self.type_ = value
+    def with_claim_keys(self, value: List[str]) -> ApiFleetClaimByKeysReq:
+        self.claim_keys = value
         return self
 
-    def with_uuid(self, value: str) -> TidID:
-        self.uuid = value
+    def with_regions(self, value: List[str]) -> ApiFleetClaimByKeysReq:
+        self.regions = value
         return self
 
     # endregion with_x methods
@@ -60,14 +60,14 @@ class TidID(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "type_"):
-            result["Type"] = str(self.type_)
+        if hasattr(self, "claim_keys"):
+            result["claimKeys"] = [str(i0) for i0 in self.claim_keys]
         elif include_empty:
-            result["Type"] = ""
-        if hasattr(self, "uuid"):
-            result["UUID"] = str(self.uuid)
+            result["claimKeys"] = []
+        if hasattr(self, "regions"):
+            result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
-            result["UUID"] = ""
+            result["regions"] = []
         return result
 
     # endregion to methods
@@ -75,31 +75,35 @@ class TidID(Model):
     # region static methods
 
     @classmethod
-    def create(cls, type_: str, uuid: str, **kwargs) -> TidID:
+    def create(
+        cls, claim_keys: List[str], regions: List[str], **kwargs
+    ) -> ApiFleetClaimByKeysReq:
         instance = cls()
-        instance.type_ = type_
-        instance.uuid = uuid
+        instance.claim_keys = claim_keys
+        instance.regions = regions
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> TidID:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ApiFleetClaimByKeysReq:
         instance = cls()
         if not dict_:
             return instance
-        if "Type" in dict_ and dict_["Type"] is not None:
-            instance.type_ = str(dict_["Type"])
+        if "claimKeys" in dict_ and dict_["claimKeys"] is not None:
+            instance.claim_keys = [str(i0) for i0 in dict_["claimKeys"]]
         elif include_empty:
-            instance.type_ = ""
-        if "UUID" in dict_ and dict_["UUID"] is not None:
-            instance.uuid = str(dict_["UUID"])
+            instance.claim_keys = []
+        if "regions" in dict_ and dict_["regions"] is not None:
+            instance.regions = [str(i0) for i0 in dict_["regions"]]
         elif include_empty:
-            instance.uuid = ""
+            instance.regions = []
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, TidID]:
+    ) -> Dict[str, ApiFleetClaimByKeysReq]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -109,7 +113,7 @@ class TidID(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[TidID]:
+    ) -> List[ApiFleetClaimByKeysReq]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -119,7 +123,11 @@ class TidID(Model):
     @classmethod
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[TidID, List[TidID], Dict[Any, TidID]]:
+    ) -> Union[
+        ApiFleetClaimByKeysReq,
+        List[ApiFleetClaimByKeysReq],
+        Dict[Any, ApiFleetClaimByKeysReq],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -133,15 +141,15 @@ class TidID(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "Type": "type_",
-            "UUID": "uuid",
+            "claimKeys": "claim_keys",
+            "regions": "regions",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "Type": True,
-            "UUID": True,
+            "claimKeys": True,
+            "regions": True,
         }
 
     # endregion static methods

@@ -27,8 +27,6 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.tid_id import TidID
-
 
 class ApiFleetServerHistoryEventResponse(Model):
     """Api fleet server history event response (api.FleetServerHistoryEventResponse)
@@ -38,7 +36,7 @@ class ApiFleetServerHistoryEventResponse(Model):
 
         exit_code: (exitCode) REQUIRED int
 
-        fleet_id: (fleetId) REQUIRED TidID
+        fleet_id: (fleetId) REQUIRED str
 
         new_state: (newState) REQUIRED str
 
@@ -46,18 +44,18 @@ class ApiFleetServerHistoryEventResponse(Model):
 
         reason: (reason) REQUIRED str
 
-        server_id: (serverId) REQUIRED TidID
+        server_id: (serverId) REQUIRED str
     """
 
     # region fields
 
     created_at: str  # REQUIRED
     exit_code: int  # REQUIRED
-    fleet_id: TidID  # REQUIRED
+    fleet_id: str  # REQUIRED
     new_state: str  # REQUIRED
     old_state: str  # REQUIRED
     reason: str  # REQUIRED
-    server_id: TidID  # REQUIRED
+    server_id: str  # REQUIRED
 
     # endregion fields
 
@@ -71,7 +69,7 @@ class ApiFleetServerHistoryEventResponse(Model):
         self.exit_code = value
         return self
 
-    def with_fleet_id(self, value: TidID) -> ApiFleetServerHistoryEventResponse:
+    def with_fleet_id(self, value: str) -> ApiFleetServerHistoryEventResponse:
         self.fleet_id = value
         return self
 
@@ -87,7 +85,7 @@ class ApiFleetServerHistoryEventResponse(Model):
         self.reason = value
         return self
 
-    def with_server_id(self, value: TidID) -> ApiFleetServerHistoryEventResponse:
+    def with_server_id(self, value: str) -> ApiFleetServerHistoryEventResponse:
         self.server_id = value
         return self
 
@@ -106,9 +104,9 @@ class ApiFleetServerHistoryEventResponse(Model):
         elif include_empty:
             result["exitCode"] = 0
         if hasattr(self, "fleet_id"):
-            result["fleetId"] = self.fleet_id.to_dict(include_empty=include_empty)
+            result["fleetId"] = str(self.fleet_id)
         elif include_empty:
-            result["fleetId"] = TidID()
+            result["fleetId"] = ""
         if hasattr(self, "new_state"):
             result["newState"] = str(self.new_state)
         elif include_empty:
@@ -122,9 +120,9 @@ class ApiFleetServerHistoryEventResponse(Model):
         elif include_empty:
             result["reason"] = ""
         if hasattr(self, "server_id"):
-            result["serverId"] = self.server_id.to_dict(include_empty=include_empty)
+            result["serverId"] = str(self.server_id)
         elif include_empty:
-            result["serverId"] = TidID()
+            result["serverId"] = ""
         return result
 
     # endregion to methods
@@ -136,11 +134,11 @@ class ApiFleetServerHistoryEventResponse(Model):
         cls,
         created_at: str,
         exit_code: int,
-        fleet_id: TidID,
+        fleet_id: str,
         new_state: str,
         old_state: str,
         reason: str,
-        server_id: TidID,
+        server_id: str,
         **kwargs,
     ) -> ApiFleetServerHistoryEventResponse:
         instance = cls()
@@ -169,11 +167,9 @@ class ApiFleetServerHistoryEventResponse(Model):
         elif include_empty:
             instance.exit_code = 0
         if "fleetId" in dict_ and dict_["fleetId"] is not None:
-            instance.fleet_id = TidID.create_from_dict(
-                dict_["fleetId"], include_empty=include_empty
-            )
+            instance.fleet_id = str(dict_["fleetId"])
         elif include_empty:
-            instance.fleet_id = TidID()
+            instance.fleet_id = ""
         if "newState" in dict_ and dict_["newState"] is not None:
             instance.new_state = str(dict_["newState"])
         elif include_empty:
@@ -187,11 +183,9 @@ class ApiFleetServerHistoryEventResponse(Model):
         elif include_empty:
             instance.reason = ""
         if "serverId" in dict_ and dict_["serverId"] is not None:
-            instance.server_id = TidID.create_from_dict(
-                dict_["serverId"], include_empty=include_empty
-            )
+            instance.server_id = str(dict_["serverId"])
         elif include_empty:
-            instance.server_id = TidID()
+            instance.server_id = ""
         return instance
 
     @classmethod

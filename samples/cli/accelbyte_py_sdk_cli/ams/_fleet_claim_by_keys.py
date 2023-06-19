@@ -31,7 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.ams import fleet_claim_by_keys as fleet_claim_by_keys_internal
-from accelbyte_py_sdk.api.ams.models import ApiFleetClaimReq
+from accelbyte_py_sdk.api.ams.models import ApiFleetClaimByKeysReq
 from accelbyte_py_sdk.api.ams.models import ApiFleetClaimResponse
 from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
@@ -60,7 +60,7 @@ def fleet_claim_by_keys(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ApiFleetClaimReq.create_from_dict(body_json)
+            body = ApiFleetClaimByKeysReq.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = fleet_claim_by_keys_internal(

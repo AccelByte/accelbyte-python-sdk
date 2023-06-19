@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ApiFleetClaimByKeysReq
 from ..models import ApiFleetClaimReq
 from ..models import ApiFleetClaimResponse
 from ..models import ApiFleetCreateResponse
@@ -58,10 +59,10 @@ def fleet_claim_by_id(
 ):
     """claim a Dedicated Server from a specific fleet (FleetClaimByID)
 
-    Required Permission: NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+    Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/fleets/{fleetID}/claim
@@ -117,10 +118,10 @@ async def fleet_claim_by_id_async(
 ):
     """claim a Dedicated Server from a specific fleet (FleetClaimByID)
 
-    Required Permission: NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+    Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/fleets/{fleetID}/claim
@@ -170,17 +171,17 @@ async def fleet_claim_by_id_async(
 
 @same_doc_as(FleetClaimByKeys)
 def fleet_claim_by_keys(
-    body: ApiFleetClaimReq,
+    body: ApiFleetClaimByKeysReq,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """claim a Dedicated Server from fleets with matching claim keys (FleetClaimByKeys)
 
-    Required Permission: NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+    Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/servers/claim
@@ -195,7 +196,7 @@ def fleet_claim_by_keys(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApiFleetClaimReq in body
+        body: (body) REQUIRED ApiFleetClaimByKeysReq in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -208,7 +209,7 @@ def fleet_claim_by_keys(
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (fleet not found)
+        404: Not Found - ResponseErrorResponse (no matching DS available)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -225,17 +226,17 @@ def fleet_claim_by_keys(
 
 @same_doc_as(FleetClaimByKeys)
 async def fleet_claim_by_keys_async(
-    body: ApiFleetClaimReq,
+    body: ApiFleetClaimByKeysReq,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """claim a Dedicated Server from fleets with matching claim keys (FleetClaimByKeys)
 
-    Required Permission: NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+    Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/servers/claim
@@ -250,7 +251,7 @@ async def fleet_claim_by_keys_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApiFleetClaimReq in body
+        body: (body) REQUIRED ApiFleetClaimByKeysReq in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -263,7 +264,7 @@ async def fleet_claim_by_keys_async(
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (fleet not found)
+        404: Not Found - ResponseErrorResponse (no matching DS available)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """

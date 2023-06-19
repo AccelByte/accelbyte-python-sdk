@@ -29,10 +29,13 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsBulkUserIDsRequest
+from ..models import ModelsBulkUserRankingResponseV3
 from ..models import ModelsGetLeaderboardRankingResp
 from ..models import ModelsUserRankingResponseV3
 from ..models import ResponseErrorResponse
 
+from ..operations.leaderboard_data_v3 import BulkGetUsersRankingPublicV3
 from ..operations.leaderboard_data_v3 import DeleteUserRankingAdminV3
 from ..operations.leaderboard_data_v3 import DeleteUserRankingByLeaderboardCodeAdminV3
 from ..operations.leaderboard_data_v3 import DeleteUserRankingsAdminV3
@@ -42,6 +45,116 @@ from ..operations.leaderboard_data_v3 import GetCurrentCycleLeaderboardRankingAd
 from ..operations.leaderboard_data_v3 import GetCurrentCycleLeaderboardRankingPublicV3
 from ..operations.leaderboard_data_v3 import GetUserRankingAdminV3
 from ..operations.leaderboard_data_v3 import GetUserRankingPublicV3
+
+
+@same_doc_as(BulkGetUsersRankingPublicV3)
+def bulk_get_users_ranking_public_v3(
+    body: ModelsBulkUserIDsRequest,
+    leaderboard_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get users ranking (bulkGetUsersRankingPublicV3)
+
+    Bulk get users ranking in leaderboard, max allowed 20 userIDs at a time.
+
+    Properties:
+        url: /leaderboard/v3/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/bulk
+
+        method: POST
+
+        tags: ["LeaderboardDataV3"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUserIDsRequest in body
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkUserRankingResponseV3 (OK)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetUsersRankingPublicV3.create(
+        body=body,
+        leaderboard_code=leaderboard_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkGetUsersRankingPublicV3)
+async def bulk_get_users_ranking_public_v3_async(
+    body: ModelsBulkUserIDsRequest,
+    leaderboard_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get users ranking (bulkGetUsersRankingPublicV3)
+
+    Bulk get users ranking in leaderboard, max allowed 20 userIDs at a time.
+
+    Properties:
+        url: /leaderboard/v3/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/bulk
+
+        method: POST
+
+        tags: ["LeaderboardDataV3"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUserIDsRequest in body
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkUserRankingResponseV3 (OK)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetUsersRankingPublicV3.create(
+        body=body,
+        leaderboard_code=leaderboard_code,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteUserRankingAdminV3)

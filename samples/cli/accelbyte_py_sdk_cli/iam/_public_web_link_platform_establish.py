@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.iam import (
 @click.command()
 @click.argument("platform_id", type=str)
 @click.argument("state", type=str)
+@click.option("--code", "code", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -45,6 +46,7 @@ from accelbyte_py_sdk.api.iam import (
 def public_web_link_platform_establish(
     platform_id: str,
     state: str,
+    code: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -61,6 +63,7 @@ def public_web_link_platform_establish(
     result, error = public_web_link_platform_establish_internal(
         platform_id=platform_id,
         state=state,
+        code=code,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

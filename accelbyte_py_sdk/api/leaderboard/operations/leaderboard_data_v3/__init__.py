@@ -14,6 +14,7 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .bulk_get_users_ranking__e7e5b3 import BulkGetUsersRankingPublicV3
 from .delete_user_ranking_admin_v3 import DeleteUserRankingAdminV3
 from .delete_user_ranking_by__c762e5 import DeleteUserRankingByLeaderboardCodeAdminV3
 from .delete_user_rankings_admin_v3 import DeleteUserRankingsAdminV3

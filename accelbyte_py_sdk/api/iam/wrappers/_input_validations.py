@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelInputValidationConfigVersion
 from ..models import ModelInputValidationUpdatePayload
 from ..models import ModelInputValidationsPublicResponse
 from ..models import ModelInputValidationsResponse
@@ -37,6 +38,7 @@ from ..models import RestErrorResponse
 from ..operations.input_validations import AdminGetInputValidations
 from ..operations.input_validations import AdminResetInputValidations
 from ..operations.input_validations import AdminUpdateInputValidations
+from ..operations.input_validations import PublicGetInputValidationByField
 from ..operations.input_validations import PublicGetInputValidations
 
 
@@ -254,6 +256,9 @@ def admin_update_input_validations(
       * email
 
 
+      * avatar
+
+
 
 
 
@@ -317,6 +322,11 @@ def admin_update_input_validations(
 
 
     If `blockedWord` is set by admin, any input from user which contain kind of blocked word(s) will be blocked for create/upgrade/update account
+
+
+
+
+    If `avatarConfig` is set, will use this config and skip all the other validation conditions
 
     Required Permission(s):
         - ADMIN:CONFIGURATION [UPDATE]
@@ -385,6 +395,9 @@ async def admin_update_input_validations_async(
       * email
 
 
+      * avatar
+
+
 
 
 
@@ -449,6 +462,11 @@ async def admin_update_input_validations_async(
 
     If `blockedWord` is set by admin, any input from user which contain kind of blocked word(s) will be blocked for create/upgrade/update account
 
+
+
+
+    If `avatarConfig` is set, will use this config and skip all the other validation conditions
+
     Required Permission(s):
         - ADMIN:CONFIGURATION [UPDATE]
 
@@ -478,6 +496,80 @@ async def admin_update_input_validations_async(
     """
     request = AdminUpdateInputValidations.create(
         body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetInputValidationByField)
+def public_get_input_validation_by_field(
+    field: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Public Get Input Validation by field (PublicGetInputValidationByField)
+
+    This endpoint is to get input validation configuration by field.
+
+    Properties:
+        url: /iam/v3/public/inputValidations/{field}
+
+        method: GET
+
+        tags: ["InputValidations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        field: (field) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelInputValidationConfigVersion (OK)
+
+        404: Not Found - (Data not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicGetInputValidationByField.create(
+        field=field,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetInputValidationByField)
+async def public_get_input_validation_by_field_async(
+    field: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Public Get Input Validation by field (PublicGetInputValidationByField)
+
+    This endpoint is to get input validation configuration by field.
+
+    Properties:
+        url: /iam/v3/public/inputValidations/{field}
+
+        method: GET
+
+        tags: ["InputValidations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        field: (field) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelInputValidationConfigVersion (OK)
+
+        404: Not Found - (Data not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicGetInputValidationByField.create(
+        field=field,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

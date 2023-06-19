@@ -37,10 +37,10 @@ from ...models import ResponseErrorResponse
 class FleetClaimByID(Operation):
     """claim a Dedicated Server from a specific fleet (FleetClaimByID)
 
-    Required Permission: NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+    Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/fleets/{fleetID}/claim

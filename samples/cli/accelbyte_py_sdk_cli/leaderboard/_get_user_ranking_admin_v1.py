@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 @click.command()
 @click.argument("leaderboard_code", type=str)
 @click.argument("user_id", type=str)
+@click.option("--previous_version", "previous_version", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 def get_user_ranking_admin_v1(
     leaderboard_code: str,
     user_id: str,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -63,6 +65,7 @@ def get_user_ranking_admin_v1(
     result, error = get_user_ranking_admin_v1_internal(
         leaderboard_code=leaderboard_code,
         user_id=user_id,
+        previous_version=previous_version,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

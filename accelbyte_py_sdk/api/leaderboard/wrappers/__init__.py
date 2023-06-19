@@ -116,6 +116,8 @@ from ._leaderboard_data import get_user_ranking_public_v1_async
 from ._leaderboard_data import update_user_point_admin_v1
 from ._leaderboard_data import update_user_point_admin_v1_async
 
+from ._leaderboard_data_v3 import bulk_get_users_ranking_public_v3
+from ._leaderboard_data_v3 import bulk_get_users_ranking_public_v3_async
 from ._leaderboard_data_v3 import delete_user_ranking_admin_v3
 from ._leaderboard_data_v3 import delete_user_ranking_admin_v3_async
 from ._leaderboard_data_v3 import delete_user_ranking_by_leaderboard_code_admin_v3

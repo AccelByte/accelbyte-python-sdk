@@ -1,3 +1,8 @@
+## v0.43.0
+- Update spec for AccelByte Cloud v3.51.0.
+- **integration tests:** fix do_get_store to return only draft stores
+- **integration tests:** fix leaderboard code collisions
+
 ## v0.42.0
 - Update spec for AccelByte Cloud v3.50.0.
 

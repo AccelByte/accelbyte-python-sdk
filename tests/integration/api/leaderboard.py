@@ -76,12 +76,16 @@ class LeaderboardTestCase(IntegrationTestCase):
         )
 
         if self.stat_create and self.stat_create.stat_code and self.leaderboard_code:
-            _, error = delete_stat(stat_code=self.leaderboard_code, namespace=self.namespace)
+            _, error = delete_stat(
+                stat_code=self.leaderboard_code, namespace=self.namespace
+            )
             self.log_warning(
                 msg=f"Failed to tear down stat: {self.leaderboard_code}. {str(error)}",
                 condition=error is not None,
             )
-            _, error = delete_stat(stat_code=f"{self.leaderboard_code}2", namespace=self.namespace)
+            _, error = delete_stat(
+                stat_code=f"{self.leaderboard_code}2", namespace=self.namespace
+            )
             self.log_warning(
                 msg=f"Failed to tear down stat: {self.leaderboard_code}2. {str(error)}",
                 condition=error is not None,

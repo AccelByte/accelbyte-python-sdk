@@ -62,6 +62,9 @@ class AdminUpdateInputValidations(Operation):
       * email
 
 
+      * avatar
+
+
 
 
 
@@ -125,6 +128,11 @@ class AdminUpdateInputValidations(Operation):
 
 
     If `blockedWord` is set by admin, any input from user which contain kind of blocked word(s) will be blocked for create/upgrade/update account
+
+
+
+
+    If `avatarConfig` is set, will use this config and skip all the other validation conditions
 
     Required Permission(s):
         - ADMIN:CONFIGURATION [UPDATE]

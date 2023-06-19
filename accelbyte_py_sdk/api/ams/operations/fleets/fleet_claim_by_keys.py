@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApiFleetClaimReq
+from ...models import ApiFleetClaimByKeysReq
 from ...models import ApiFleetClaimResponse
 from ...models import ResponseErrorResponse
 
@@ -37,10 +37,10 @@ from ...models import ResponseErrorResponse
 class FleetClaimByKeys(Operation):
     """claim a Dedicated Server from fleets with matching claim keys (FleetClaimByKeys)
 
-    Required Permission: NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+    Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/servers/claim
@@ -55,7 +55,7 @@ class FleetClaimByKeys(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApiFleetClaimReq in body
+        body: (body) REQUIRED ApiFleetClaimByKeysReq in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -68,7 +68,7 @@ class FleetClaimByKeys(Operation):
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (fleet not found)
+        404: Not Found - ResponseErrorResponse (no matching DS available)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -82,7 +82,7 @@ class FleetClaimByKeys(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ApiFleetClaimReq  # REQUIRED in [body]
+    body: ApiFleetClaimByKeysReq  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -146,7 +146,7 @@ class FleetClaimByKeys(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ApiFleetClaimReq) -> FleetClaimByKeys:
+    def with_body(self, value: ApiFleetClaimByKeysReq) -> FleetClaimByKeys:
         self.body = value
         return self
 
@@ -163,7 +163,7 @@ class FleetClaimByKeys(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ApiFleetClaimReq()
+            result["body"] = ApiFleetClaimByKeysReq()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -191,7 +191,7 @@ class FleetClaimByKeys(Operation):
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (fleet not found)
+        404: Not Found - ResponseErrorResponse (no matching DS available)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
 
@@ -231,7 +231,7 @@ class FleetClaimByKeys(Operation):
 
     @classmethod
     def create(
-        cls, body: ApiFleetClaimReq, namespace: str, **kwargs
+        cls, body: ApiFleetClaimByKeysReq, namespace: str, **kwargs
     ) -> FleetClaimByKeys:
         instance = cls()
         instance.body = body
@@ -244,11 +244,11 @@ class FleetClaimByKeys(Operation):
     ) -> FleetClaimByKeys:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ApiFleetClaimReq.create_from_dict(
+            instance.body = ApiFleetClaimByKeysReq.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ApiFleetClaimReq()
+            instance.body = ApiFleetClaimByKeysReq()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

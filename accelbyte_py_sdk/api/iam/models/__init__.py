@@ -35,6 +35,7 @@ from .account_upgrade_headless_account_with_verification_code_request_v4 import 
 from .account_user_active_ban_response_v4 import AccountUserActiveBanResponseV4
 from .account_user_permissions_response_v4 import AccountUserPermissionsResponseV4
 from .account_user_response_v4 import AccountUserResponseV4
+from .accountcommon_avatar_config import AccountcommonAvatarConfig
 from .accountcommon_ban import AccountcommonBan
 from .accountcommon_ban_reason import AccountcommonBanReason
 from .accountcommon_ban_reason_v3 import AccountcommonBanReasonV3
@@ -179,6 +180,7 @@ from .model_get_user_mapping_v3 import ModelGetUserMappingV3
 from .model_get_users_response_with_pagination_v3 import (
     ModelGetUsersResponseWithPaginationV3,
 )
+from .model_input_validation_config_version import ModelInputValidationConfigVersion
 from .model_input_validation_data import ModelInputValidationData
 from .model_input_validation_data_public import ModelInputValidationDataPublic
 from .model_input_validation_update_payload import ModelInputValidationUpdatePayload

@@ -66,6 +66,7 @@
 | /iam/v3/admin/inputValidations | GET | AdminGetInputValidations | `false` | [AdminGetInputValidations](../../accelbyte_py_sdk/api/iam/operations/input_validations/admin_get_input_validations.py) | [admin_get_input_validations](../../accelbyte_py_sdk/api/iam/wrappers/_input_validations.py) | [accelbyte_py_sdk_cli iam-admin-get-input-validations](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_input_validations.py) |
 | /iam/v3/admin/inputValidations/{field} | DELETE | AdminResetInputValidations | `false` | [AdminResetInputValidations](../../accelbyte_py_sdk/api/iam/operations/input_validations/admin_reset_input_validations.py) | [admin_reset_input_validations](../../accelbyte_py_sdk/api/iam/wrappers/_input_validations.py) | [accelbyte_py_sdk_cli iam-admin-reset-input-validations](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_reset_input_validations.py) |
 | /iam/v3/admin/inputValidations | PUT | AdminUpdateInputValidations | `false` | [AdminUpdateInputValidations](../../accelbyte_py_sdk/api/iam/operations/input_validations/admin_update_input_validations.py) | [admin_update_input_validations](../../accelbyte_py_sdk/api/iam/wrappers/_input_validations.py) | [accelbyte_py_sdk_cli iam-admin-update-input-validations](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_update_input_validations.py) |
+| /iam/v3/public/inputValidations/{field} | GET | PublicGetInputValidationByField | `false` | [PublicGetInputValidationByField](../../accelbyte_py_sdk/api/iam/operations/input_validations/public_get_input_valida_e97ee4.py) | [public_get_input_validation_by_field](../../accelbyte_py_sdk/api/iam/wrappers/_input_validations.py) | [accelbyte_py_sdk_cli iam-public-get-input-validation-by-field](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_get_input_validation_by_field.py) |
 | /iam/v3/public/inputValidations | GET | PublicGetInputValidations | `false` | [PublicGetInputValidations](../../accelbyte_py_sdk/api/iam/operations/input_validations/public_get_input_validations.py) | [public_get_input_validations](../../accelbyte_py_sdk/api/iam/wrappers/_input_validations.py) | [accelbyte_py_sdk_cli iam-public-get-input-validations](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_get_input_validations.py) |
 
 ### OAuth
@@ -426,6 +427,7 @@
 | account.UserActiveBanResponseV4 | [AccountUserActiveBanResponseV4](../../accelbyte_py_sdk/api/iam/models/account_user_active_ban_response_v4.py) |
 | account.UserPermissionsResponseV4 | [AccountUserPermissionsResponseV4](../../accelbyte_py_sdk/api/iam/models/account_user_permissions_response_v4.py) |
 | account.UserResponseV4 | [AccountUserResponseV4](../../accelbyte_py_sdk/api/iam/models/account_user_response_v4.py) |
+| accountcommon.AvatarConfig | [AccountcommonAvatarConfig](../../accelbyte_py_sdk/api/iam/models/accountcommon_avatar_config.py) |
 | accountcommon.Ban | [AccountcommonBan](../../accelbyte_py_sdk/api/iam/models/accountcommon_ban.py) |
 | accountcommon.BanReason | [AccountcommonBanReason](../../accelbyte_py_sdk/api/iam/models/accountcommon_ban_reason.py) |
 | accountcommon.BanReasonV3 | [AccountcommonBanReasonV3](../../accelbyte_py_sdk/api/iam/models/accountcommon_ban_reason_v3.py) |
@@ -536,6 +538,7 @@
 | model.GetUserMapping | [ModelGetUserMapping](../../accelbyte_py_sdk/api/iam/models/model_get_user_mapping.py) |
 | model.GetUserMappingV3 | [ModelGetUserMappingV3](../../accelbyte_py_sdk/api/iam/models/model_get_user_mapping_v3.py) |
 | model.GetUsersResponseWithPaginationV3 | [ModelGetUsersResponseWithPaginationV3](../../accelbyte_py_sdk/api/iam/models/model_get_users_response_with_pagination_v3.py) |
+| model.InputValidationConfigVersion | [ModelInputValidationConfigVersion](../../accelbyte_py_sdk/api/iam/models/model_input_validation_config_version.py) |
 | model.InputValidationData | [ModelInputValidationData](../../accelbyte_py_sdk/api/iam/models/model_input_validation_data.py) |
 | model.InputValidationDataPublic | [ModelInputValidationDataPublic](../../accelbyte_py_sdk/api/iam/models/model_input_validation_data_public.py) |
 | model.InputValidationUpdatePayload | [ModelInputValidationUpdatePayload](../../accelbyte_py_sdk/api/iam/models/model_input_validation_update_payload.py) |

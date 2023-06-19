@@ -149,6 +149,7 @@ from ._get_all_time_leaderboard_ranking_public_v3 import (
 from ._get_current_cycle_leaderboard_ranking_public_v3 import (
     get_current_cycle_leaderboard_ranking_public_v3,
 )
+from ._bulk_get_users_ranking_public_v3 import bulk_get_users_ranking_public_v3
 from ._get_user_ranking_public_v3 import get_user_ranking_public_v3
 
 
@@ -212,5 +213,6 @@ commands = [
     get_leaderboard_configuration_public_v3,
     get_all_time_leaderboard_ranking_public_v3,
     get_current_cycle_leaderboard_ranking_public_v3,
+    bulk_get_users_ranking_public_v3,
     get_user_ranking_public_v3,
 ]

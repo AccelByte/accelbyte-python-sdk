@@ -35,6 +35,7 @@ from ..api.iam.models import AccountUpgradeHeadlessAccountWithVerificationCodeRe
 from ..api.iam.models import AccountUserActiveBanResponseV4
 from ..api.iam.models import AccountUserPermissionsResponseV4
 from ..api.iam.models import AccountUserResponseV4
+from ..api.iam.models import AccountcommonAvatarConfig
 from ..api.iam.models import AccountcommonBan
 from ..api.iam.models import AccountcommonBanReason
 from ..api.iam.models import AccountcommonBanReasonV3
@@ -145,6 +146,7 @@ from ..api.iam.models import ModelGetUserJusticePlatformAccountResponse
 from ..api.iam.models import ModelGetUserMapping
 from ..api.iam.models import ModelGetUserMappingV3
 from ..api.iam.models import ModelGetUsersResponseWithPaginationV3
+from ..api.iam.models import ModelInputValidationConfigVersion
 from ..api.iam.models import ModelInputValidationData
 from ..api.iam.models import ModelInputValidationDataPublic
 from ..api.iam.models import ModelInputValidationUpdatePayload
@@ -435,6 +437,14 @@ def create_account_user_response_v4_example() -> AccountUserResponseV4:
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
     instance.username = randomize("slug")
+    return instance
+
+
+def create_accountcommon_avatar_config_example() -> AccountcommonAvatarConfig:
+    instance = AccountcommonAvatarConfig()
+    instance.allowed_prefixes = [randomize()]
+    instance.prefer_regex = randomize("bool")
+    instance.regex = randomize()
     return instance
 
 
@@ -1454,6 +1464,31 @@ def create_model_get_users_response_with_pagination_v3_example() -> (
     instance = ModelGetUsersResponseWithPaginationV3()
     instance.data = [create_model_user_response_v3_example()]
     instance.paging = create_accountcommon_pagination_v3_example()
+    return instance
+
+
+def create_model_input_validation_config_version_example() -> (
+    ModelInputValidationConfigVersion
+):
+    instance = ModelInputValidationConfigVersion()
+    instance.allow_all_special_characters = randomize("bool")
+    instance.allow_digit = randomize("bool")
+    instance.allow_letter = randomize("bool")
+    instance.allow_space = randomize("bool")
+    instance.allow_unicode = randomize("bool")
+    instance.blocked_word = [randomize()]
+    instance.is_custom_regex = randomize("bool")
+    instance.letter_case = randomize()
+    instance.max_length = randomize("int", min_val=1, max_val=1000)
+    instance.max_repeating_alpha_num = randomize("int", min_val=1, max_val=1000)
+    instance.max_repeating_special_character = randomize("int", min_val=1, max_val=1000)
+    instance.min_char_type = randomize("int", min_val=1, max_val=1000)
+    instance.min_length = randomize("int", min_val=1, max_val=1000)
+    instance.regex = randomize()
+    instance.special_character_location = randomize()
+    instance.special_characters = [randomize()]
+    instance.version = randomize("int", min_val=1, max_val=1000)
+    instance.avatar_config = create_accountcommon_avatar_config_example()
     return instance
 
 
@@ -2642,6 +2677,7 @@ def create_model_validation_detail_example() -> ModelValidationDetail:
     instance.regex = randomize()
     instance.special_character_location = randomize()
     instance.special_characters = [randomize()]
+    instance.avatar_config = create_accountcommon_avatar_config_example()
     return instance
 
 
@@ -2664,6 +2700,7 @@ def create_model_validation_detail_public_example() -> ModelValidationDetailPubl
     instance.regex = randomize()
     instance.special_character_location = randomize()
     instance.special_characters = [randomize()]
+    instance.avatar_config = create_accountcommon_avatar_config_example()
     return instance
 
 
@@ -2921,6 +2958,7 @@ def create_validation_example() -> Validation:
     instance.regex = randomize()
     instance.special_character_location = randomize()
     instance.special_characters = [randomize()]
+    instance.avatar_config = create_accountcommon_avatar_config_example()
     return instance
 
 

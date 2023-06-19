@@ -118,6 +118,8 @@ from ._stat_cycle_configuration import stop_stat_cycle_async
 from ._stat_cycle_configuration import update_stat_cycle
 from ._stat_cycle_configuration import update_stat_cycle_async
 
+from ._user_statistic import admin_list_users_stat_items
+from ._user_statistic import admin_list_users_stat_items_async
 from ._user_statistic import bulk_create_user_stat_items
 from ._user_statistic import bulk_create_user_stat_items_async
 from ._user_statistic import bulk_fetch_or_default_stat_items

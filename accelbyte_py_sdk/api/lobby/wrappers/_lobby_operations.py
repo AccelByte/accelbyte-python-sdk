@@ -66,7 +66,7 @@ def admin_join_party_v1(
 
         tags: ["Lobby Operations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -132,7 +132,7 @@ async def admin_join_party_v1_async(
 
         tags: ["Lobby Operations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

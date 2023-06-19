@@ -27,6 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.accountcommon_avatar_config import AccountcommonAvatarConfig
 from ..models.accountcommon_input_validation_description import (
     AccountcommonInputValidationDescription,
 )
@@ -69,6 +70,8 @@ class ModelValidationDetailPublic(Model):
         special_character_location: (specialCharacterLocation) REQUIRED str
 
         special_characters: (specialCharacters) REQUIRED List[str]
+
+        avatar_config: (avatarConfig) OPTIONAL AccountcommonAvatarConfig
     """
 
     # region fields
@@ -90,6 +93,7 @@ class ModelValidationDetailPublic(Model):
     regex: str  # REQUIRED
     special_character_location: str  # REQUIRED
     special_characters: List[str]  # REQUIRED
+    avatar_config: AccountcommonAvatarConfig  # OPTIONAL
 
     # endregion fields
 
@@ -169,6 +173,12 @@ class ModelValidationDetailPublic(Model):
 
     def with_special_characters(self, value: List[str]) -> ModelValidationDetailPublic:
         self.special_characters = value
+        return self
+
+    def with_avatar_config(
+        self, value: AccountcommonAvatarConfig
+    ) -> ModelValidationDetailPublic:
+        self.avatar_config = value
         return self
 
     # endregion with_x methods
@@ -251,6 +261,12 @@ class ModelValidationDetailPublic(Model):
             result["specialCharacters"] = [str(i0) for i0 in self.special_characters]
         elif include_empty:
             result["specialCharacters"] = []
+        if hasattr(self, "avatar_config"):
+            result["avatarConfig"] = self.avatar_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["avatarConfig"] = AccountcommonAvatarConfig()
         return result
 
     # endregion to methods
@@ -277,6 +293,7 @@ class ModelValidationDetailPublic(Model):
         regex: str,
         special_character_location: str,
         special_characters: List[str],
+        avatar_config: Optional[AccountcommonAvatarConfig] = None,
         **kwargs,
     ) -> ModelValidationDetailPublic:
         instance = cls()
@@ -297,6 +314,8 @@ class ModelValidationDetailPublic(Model):
         instance.regex = regex
         instance.special_character_location = special_character_location
         instance.special_characters = special_characters
+        if avatar_config is not None:
+            instance.avatar_config = avatar_config
         return instance
 
     @classmethod
@@ -394,6 +413,12 @@ class ModelValidationDetailPublic(Model):
             instance.special_characters = [str(i0) for i0 in dict_["specialCharacters"]]
         elif include_empty:
             instance.special_characters = []
+        if "avatarConfig" in dict_ and dict_["avatarConfig"] is not None:
+            instance.avatar_config = AccountcommonAvatarConfig.create_from_dict(
+                dict_["avatarConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.avatar_config = AccountcommonAvatarConfig()
         return instance
 
     @classmethod
@@ -454,6 +479,7 @@ class ModelValidationDetailPublic(Model):
             "regex": "regex",
             "specialCharacterLocation": "special_character_location",
             "specialCharacters": "special_characters",
+            "avatarConfig": "avatar_config",
         }
 
     @staticmethod
@@ -476,6 +502,7 @@ class ModelValidationDetailPublic(Model):
             "regex": True,
             "specialCharacterLocation": True,
             "specialCharacters": True,
+            "avatarConfig": False,
         }
 
     # endregion static methods

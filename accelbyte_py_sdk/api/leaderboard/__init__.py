@@ -105,6 +105,8 @@ from .wrappers import update_user_point_admin_v1
 from .wrappers import update_user_point_admin_v1_async
 
 # leaderboard_data_v3
+from .wrappers import bulk_get_users_ranking_public_v3
+from .wrappers import bulk_get_users_ranking_public_v3_async
 from .wrappers import delete_user_ranking_admin_v3
 from .wrappers import delete_user_ranking_admin_v3_async
 from .wrappers import delete_user_ranking_by_leaderboard_code_admin_v3

@@ -268,6 +268,7 @@ async def admin_delete_channel_async(
 def admin_get_channel(
     user_id: str,
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -299,6 +300,8 @@ def admin_get_channel(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -317,6 +320,7 @@ def admin_get_channel(
     request = AdminGetChannel.create(
         user_id=user_id,
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
     )
@@ -327,6 +331,7 @@ def admin_get_channel(
 async def admin_get_channel_async(
     user_id: str,
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -358,6 +363,8 @@ async def admin_get_channel_async(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -376,6 +383,7 @@ async def admin_get_channel_async(
     request = AdminGetChannel.create(
         user_id=user_id,
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
     )

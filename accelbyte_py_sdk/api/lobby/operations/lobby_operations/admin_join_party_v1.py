@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.21.0)
+# AccelByte Gaming Services Lobby Server (3.22.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -52,7 +52,7 @@ class AdminJoinPartyV1(Operation):
 
         tags: ["Lobby Operations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -86,7 +86,7 @@ class AdminJoinPartyV1(Operation):
         "/lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId}"
     )
     _method: str = "POST"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None

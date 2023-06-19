@@ -53,6 +53,8 @@ class ApiFleetServerInfoResponse(Model):
         region: (region) REQUIRED str
 
         server_id: (serverId) REQUIRED str
+
+        status: (status) REQUIRED str
     """
 
     # region fields
@@ -67,6 +69,7 @@ class ApiFleetServerInfoResponse(Model):
     port_configuration: List[ApiPortConfiguration]  # REQUIRED
     region: str  # REQUIRED
     server_id: str  # REQUIRED
+    status: str  # REQUIRED
 
     # endregion fields
 
@@ -112,6 +115,10 @@ class ApiFleetServerInfoResponse(Model):
 
     def with_server_id(self, value: str) -> ApiFleetServerInfoResponse:
         self.server_id = value
+        return self
+
+    def with_status(self, value: str) -> ApiFleetServerInfoResponse:
+        self.status = value
         return self
 
     # endregion with_x methods
@@ -163,6 +170,10 @@ class ApiFleetServerInfoResponse(Model):
             result["serverId"] = str(self.server_id)
         elif include_empty:
             result["serverId"] = ""
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = ""
         return result
 
     # endregion to methods
@@ -182,6 +193,7 @@ class ApiFleetServerInfoResponse(Model):
         port_configuration: List[ApiPortConfiguration],
         region: str,
         server_id: str,
+        status: str,
         **kwargs,
     ) -> ApiFleetServerInfoResponse:
         instance = cls()
@@ -195,6 +207,7 @@ class ApiFleetServerInfoResponse(Model):
         instance.port_configuration = port_configuration
         instance.region = region
         instance.server_id = server_id
+        instance.status = status
         return instance
 
     @classmethod
@@ -247,6 +260,10 @@ class ApiFleetServerInfoResponse(Model):
             instance.server_id = str(dict_["serverId"])
         elif include_empty:
             instance.server_id = ""
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = ""
         return instance
 
     @classmethod
@@ -300,6 +317,7 @@ class ApiFleetServerInfoResponse(Model):
             "portConfiguration": "port_configuration",
             "region": "region",
             "serverId": "server_id",
+            "status": "status",
         }
 
     @staticmethod
@@ -315,6 +333,7 @@ class ApiFleetServerInfoResponse(Model):
             "portConfiguration": True,
             "region": True,
             "serverId": True,
+            "status": True,
         }
 
     # endregion static methods

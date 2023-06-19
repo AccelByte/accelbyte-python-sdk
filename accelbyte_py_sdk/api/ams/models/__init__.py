@@ -24,6 +24,7 @@ from .api_available_instance_types_response import ApiAvailableInstanceTypesResp
 from .api_ds_history_event import ApiDSHistoryEvent
 from .api_ds_history_list import ApiDSHistoryList
 from .api_ds_host_configuration import ApiDSHostConfiguration
+from .api_fleet_claim_by_keys_req import ApiFleetClaimByKeysReq
 from .api_fleet_claim_req import ApiFleetClaimReq
 from .api_fleet_claim_response import ApiFleetClaimResponse
 from .api_fleet_create_response import ApiFleetCreateResponse
@@ -48,4 +49,3 @@ from .api_region_config import ApiRegionConfig
 from .api_regions_response import ApiRegionsResponse
 from .api_timeout import ApiTimeout
 from .response_error_response import ResponseErrorResponse
-from .tid_id import TidID

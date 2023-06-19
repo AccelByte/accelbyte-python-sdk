@@ -48,6 +48,7 @@ from ..models import UserStatItemInfo
 from ..models import UserStatItemPagingSlicedResult
 from ..models import ValidationErrorEntity
 
+from ..operations.user_statistic import AdminListUsersStatItems
 from ..operations.user_statistic import BulkCreateUserStatItems
 from ..operations.user_statistic import BulkFetchOrDefaultStatItems
 from ..operations.user_statistic import BulkFetchOrDefaultStatItems1
@@ -92,6 +93,142 @@ from ..operations.user_statistic import UpdateUserStatItemValue1
 from ..models import BulkStatItemUpdateUpdateStrategyEnum
 from ..models import BulkUserStatItemUpdateUpdateStrategyEnum
 from ..models import StatItemUpdateUpdateStrategyEnum
+
+
+@same_doc_as(AdminListUsersStatItems)
+def admin_list_users_stat_items(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin list user's statItems (AdminListUsersStatItems)
+
+    Admin list all statItems of user
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
+
+    Other detail info:+ *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
+
+      *  Returns : stat items
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL List[str] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminListUsersStatItems.create(
+        user_id=user_id,
+        additional_key=additional_key,
+        stat_codes=stat_codes,
+        tags=tags,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminListUsersStatItems)
+async def admin_list_users_stat_items_async(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin list user's statItems (AdminListUsersStatItems)
+
+    Admin list all statItems of user
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
+
+    Other detail info:+ *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
+
+      *  Returns : stat items
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+
+        method: GET
+
+        tags: ["UserStatistic"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL List[str] in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminListUsersStatItems.create(
+        user_id=user_id,
+        additional_key=additional_key,
+        stat_codes=stat_codes,
+        tags=tags,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkCreateUserStatItems)

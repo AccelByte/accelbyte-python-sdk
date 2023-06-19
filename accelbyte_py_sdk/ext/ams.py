@@ -34,6 +34,7 @@ from ..api.ams.models import ApiAvailableInstanceTypesResponse
 from ..api.ams.models import ApiDSHistoryEvent
 from ..api.ams.models import ApiDSHistoryList
 from ..api.ams.models import ApiDSHostConfiguration
+from ..api.ams.models import ApiFleetClaimByKeysReq
 from ..api.ams.models import ApiFleetClaimReq
 from ..api.ams.models import ApiFleetClaimResponse
 from ..api.ams.models import ApiFleetCreateResponse
@@ -58,7 +59,6 @@ from ..api.ams.models import ApiRegionConfig
 from ..api.ams.models import ApiRegionsResponse
 from ..api.ams.models import ApiTimeout
 from ..api.ams.models import ResponseErrorResponse
-from ..api.ams.models import TidID
 
 
 def create_api_account_create_request_example() -> ApiAccountCreateRequest:
@@ -117,11 +117,11 @@ def create_api_ds_history_event_example() -> ApiDSHistoryEvent:
     instance = ApiDSHistoryEvent()
     instance.created_at = randomize("date")
     instance.exit_code = randomize("int", min_val=1, max_val=1000)
-    instance.game_session = create_tid_id_example()
+    instance.game_session = randomize()
     instance.ip_address = randomize()
     instance.reason = randomize()
     instance.region = randomize()
-    instance.server_id = create_tid_id_example()
+    instance.server_id = randomize()
     instance.status = randomize()
     return instance
 
@@ -140,6 +140,13 @@ def create_api_ds_host_configuration_example() -> ApiDSHostConfiguration:
     return instance
 
 
+def create_api_fleet_claim_by_keys_req_example() -> ApiFleetClaimByKeysReq:
+    instance = ApiFleetClaimByKeysReq()
+    instance.claim_keys = [randomize()]
+    instance.regions = [randomize()]
+    return instance
+
+
 def create_api_fleet_claim_req_example() -> ApiFleetClaimReq:
     instance = ApiFleetClaimReq()
     instance.region = randomize()
@@ -150,6 +157,7 @@ def create_api_fleet_claim_response_example() -> ApiFleetClaimResponse:
     instance = ApiFleetClaimResponse()
     instance.ip = randomize()
     instance.ports = {}
+    instance.region = randomize()
     instance.server_id = randomize()
     return instance
 
@@ -207,6 +215,8 @@ def create_api_fleet_regional_server_counts_example() -> ApiFleetRegionalServerC
     instance.ready_server_count = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
     instance.running_vm_count = randomize("int", min_val=1, max_val=1000)
+    instance.target_ds_count = randomize("int", min_val=1, max_val=1000)
+    instance.target_vm_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -216,11 +226,11 @@ def create_api_fleet_server_history_event_response_example() -> (
     instance = ApiFleetServerHistoryEventResponse()
     instance.created_at = randomize("date")
     instance.exit_code = randomize("int", min_val=1, max_val=1000)
-    instance.fleet_id = create_tid_id_example()
+    instance.fleet_id = randomize()
     instance.new_state = randomize()
     instance.old_state = randomize()
     instance.reason = randomize()
-    instance.server_id = create_tid_id_example()
+    instance.server_id = randomize()
     return instance
 
 
@@ -242,6 +252,7 @@ def create_api_fleet_server_info_response_example() -> ApiFleetServerInfoRespons
     instance.port_configuration = [create_api_port_configuration_example()]
     instance.region = randomize()
     instance.server_id = randomize()
+    instance.status = randomize()
     return instance
 
 
@@ -360,11 +371,4 @@ def create_response_error_response_example() -> ResponseErrorResponse:
     instance = ResponseErrorResponse()
     instance.error_message = randomize()
     instance.trace_id = randomize()
-    return instance
-
-
-def create_tid_id_example() -> TidID:
-    instance = TidID()
-    instance.type_ = randomize()
-    instance.uuid = randomize()
     return instance

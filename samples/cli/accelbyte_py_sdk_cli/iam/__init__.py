@@ -286,6 +286,7 @@ from ._token_grant_v3 import token_grant_v3
 from ._verify_token_v3 import verify_token_v3
 from ._platform_authentication_v3 import platform_authentication_v3
 from ._public_get_input_validations import public_get_input_validations
+from ._public_get_input_validation_by_field import public_get_input_validation_by_field
 from ._public_get_country_age_restriction_v3 import (
     public_get_country_age_restriction_v3,
 )
@@ -665,6 +666,7 @@ commands = [
     verify_token_v3,
     platform_authentication_v3,
     public_get_input_validations,
+    public_get_input_validation_by_field,
     public_get_country_age_restriction_v3,
     retrieve_all_active_third_party_login_platform_credential_public_v3,
     retrieve_active_oidc_clients_public_v3,

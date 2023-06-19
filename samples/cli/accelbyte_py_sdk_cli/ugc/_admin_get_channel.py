@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 @click.command()
 @click.argument("user_id", type=str)
 @click.option("--limit", "limit", type=int)
+@click.option("--name", "name", type=str)
 @click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -46,6 +47,7 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 def admin_get_channel(
     user_id: str,
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -63,6 +65,7 @@ def admin_get_channel(
     result, error = admin_get_channel_internal(
         user_id=user_id,
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

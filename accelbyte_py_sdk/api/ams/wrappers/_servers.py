@@ -42,6 +42,8 @@ from ..operations.servers import ServerHistory
 @same_doc_as(FleetServerHistory)
 def fleet_server_history(
     fleet_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -70,6 +72,10 @@ def fleet_server_history(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - ApiDSHistoryList (success)
 
@@ -87,6 +93,8 @@ def fleet_server_history(
             return None, error
     request = FleetServerHistory.create(
         fleet_id=fleet_id,
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -95,6 +103,8 @@ def fleet_server_history(
 @same_doc_as(FleetServerHistory)
 async def fleet_server_history_async(
     fleet_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -123,6 +133,10 @@ async def fleet_server_history_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - ApiDSHistoryList (success)
 
@@ -140,6 +154,8 @@ async def fleet_server_history_async(
             return None, error
     request = FleetServerHistory.create(
         fleet_id=fleet_id,
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(

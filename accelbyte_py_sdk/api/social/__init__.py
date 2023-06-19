@@ -125,6 +125,8 @@ from .wrappers import update_stat_cycle
 from .wrappers import update_stat_cycle_async
 
 # user_statistic
+from .wrappers import admin_list_users_stat_items
+from .wrappers import admin_list_users_stat_items_async
 from .wrappers import bulk_create_user_stat_items
 from .wrappers import bulk_create_user_stat_items_async
 from .wrappers import bulk_fetch_or_default_stat_items

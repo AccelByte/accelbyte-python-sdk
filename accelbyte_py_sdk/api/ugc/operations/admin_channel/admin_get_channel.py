@@ -60,6 +60,8 @@ class AdminGetChannel(Operation):
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -84,6 +86,7 @@ class AdminGetChannel(Operation):
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
+    name: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
 
     # endregion fields
@@ -140,6 +143,8 @@ class AdminGetChannel(Operation):
         result = {}
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "name"):
+            result["name"] = self.name
         if hasattr(self, "offset"):
             result["offset"] = self.offset
         return result
@@ -164,6 +169,10 @@ class AdminGetChannel(Operation):
         self.limit = value
         return self
 
+    def with_name(self, value: str) -> AdminGetChannel:
+        self.name = value
+        return self
+
     def with_offset(self, value: int) -> AdminGetChannel:
         self.offset = value
         return self
@@ -186,6 +195,10 @@ class AdminGetChannel(Operation):
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = 0
+        if hasattr(self, "name") and self.name:
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = ""
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
@@ -249,6 +262,7 @@ class AdminGetChannel(Operation):
         namespace: str,
         user_id: str,
         limit: Optional[int] = None,
+        name: Optional[str] = None,
         offset: Optional[int] = None,
         **kwargs,
     ) -> AdminGetChannel:
@@ -257,6 +271,8 @@ class AdminGetChannel(Operation):
         instance.user_id = user_id
         if limit is not None:
             instance.limit = limit
+        if name is not None:
+            instance.name = name
         if offset is not None:
             instance.offset = offset
         return instance
@@ -278,6 +294,10 @@ class AdminGetChannel(Operation):
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = 0
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = ""
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
@@ -290,6 +310,7 @@ class AdminGetChannel(Operation):
             "namespace": "namespace",
             "userId": "user_id",
             "limit": "limit",
+            "name": "name",
             "offset": "offset",
         }
 
@@ -299,6 +320,7 @@ class AdminGetChannel(Operation):
             "namespace": True,
             "userId": True,
             "limit": False,
+            "name": False,
             "offset": False,
         }
 

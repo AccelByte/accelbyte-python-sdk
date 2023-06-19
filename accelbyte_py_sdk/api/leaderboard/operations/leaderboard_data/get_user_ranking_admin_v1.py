@@ -65,6 +65,8 @@ class GetUserRankingAdminV1(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsUserRankingResponse (OK)
 
@@ -89,6 +91,7 @@ class GetUserRankingAdminV1(Operation):
     leaderboard_code: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    previous_version: int  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -129,6 +132,7 @@ class GetUserRankingAdminV1(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -139,6 +143,12 @@ class GetUserRankingAdminV1(Operation):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "previous_version"):
+            result["previousVersion"] = self.previous_version
         return result
 
     # endregion get_x_params methods
@@ -161,6 +171,10 @@ class GetUserRankingAdminV1(Operation):
         self.user_id = value
         return self
 
+    def with_previous_version(self, value: int) -> GetUserRankingAdminV1:
+        self.previous_version = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -179,6 +193,10 @@ class GetUserRankingAdminV1(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "previous_version") and self.previous_version:
+            result["previousVersion"] = int(self.previous_version)
+        elif include_empty:
+            result["previousVersion"] = 0
         return result
 
     # endregion to methods
@@ -238,12 +256,19 @@ class GetUserRankingAdminV1(Operation):
 
     @classmethod
     def create(
-        cls, leaderboard_code: str, namespace: str, user_id: str, **kwargs
+        cls,
+        leaderboard_code: str,
+        namespace: str,
+        user_id: str,
+        previous_version: Optional[int] = None,
+        **kwargs,
     ) -> GetUserRankingAdminV1:
         instance = cls()
         instance.leaderboard_code = leaderboard_code
         instance.namespace = namespace
         instance.user_id = user_id
+        if previous_version is not None:
+            instance.previous_version = previous_version
         return instance
 
     @classmethod
@@ -263,6 +288,10 @@ class GetUserRankingAdminV1(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "previousVersion" in dict_ and dict_["previousVersion"] is not None:
+            instance.previous_version = int(dict_["previousVersion"])
+        elif include_empty:
+            instance.previous_version = 0
         return instance
 
     @staticmethod
@@ -271,6 +300,7 @@ class GetUserRankingAdminV1(Operation):
             "leaderboardCode": "leaderboard_code",
             "namespace": "namespace",
             "userId": "user_id",
+            "previousVersion": "previous_version",
         }
 
     @staticmethod
@@ -279,6 +309,7 @@ class GetUserRankingAdminV1(Operation):
             "leaderboardCode": True,
             "namespace": True,
             "userId": True,
+            "previousVersion": False,
         }
 
     # endregion static methods

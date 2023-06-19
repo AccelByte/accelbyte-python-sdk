@@ -26,6 +26,8 @@ from .utils import randomize
 
 from ..api.leaderboard.models import ModelsArchiveLeaderboardReq
 from ..api.leaderboard.models import ModelsArchiveLeaderboardSignedURLResponse
+from ..api.leaderboard.models import ModelsBulkUserIDsRequest
+from ..api.leaderboard.models import ModelsBulkUserRankingResponseV3
 from ..api.leaderboard.models import ModelsDailyConfig
 from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardFailedResp
 from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardsReq
@@ -84,6 +86,20 @@ def create_models_archive_leaderboard_signed_url_response_example() -> (
     instance = ModelsArchiveLeaderboardSignedURLResponse()
     instance.leaderboard_code = randomize()
     instance.url = randomize("url")
+    return instance
+
+
+def create_models_bulk_user_i_ds_request_example() -> ModelsBulkUserIDsRequest:
+    instance = ModelsBulkUserIDsRequest()
+    instance.user_ids = [randomize()]
+    return instance
+
+
+def create_models_bulk_user_ranking_response_v3_example() -> (
+    ModelsBulkUserRankingResponseV3
+):
+    instance = ModelsBulkUserRankingResponseV3()
+    instance.data = [create_models_user_ranking_response_v3_example()]
     return instance
 
 

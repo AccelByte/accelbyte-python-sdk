@@ -157,6 +157,7 @@ async def delete_channel_async(
 def get_channels(
     user_id: str,
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -188,6 +189,8 @@ def get_channels(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -206,6 +209,7 @@ def get_channels(
     request = GetChannels.create(
         user_id=user_id,
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
     )
@@ -216,6 +220,7 @@ def get_channels(
 async def get_channels_async(
     user_id: str,
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -247,6 +252,8 @@ async def get_channels_async(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -265,6 +272,7 @@ async def get_channels_async(
     request = GetChannels.create(
         user_id=user_id,
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
     )
