@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Match Service V2 (2.5.2)
+# AccelByte Gaming Services Match Service V2 (2.6.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -141,6 +141,7 @@ def create_api_match_example() -> ApiMatch:
 def create_api_match_function_config_example() -> ApiMatchFunctionConfig:
     instance = ApiMatchFunctionConfig()
     instance.match_function = randomize()
+    instance.service_app_name = randomize()
     instance.url = randomize("url")
     return instance
 
@@ -158,6 +159,7 @@ def create_api_match_function_override_example() -> ApiMatchFunctionOverride:
 def create_api_match_function_request_example() -> ApiMatchFunctionRequest:
     instance = ApiMatchFunctionRequest()
     instance.match_function = randomize()
+    instance.service_app_name = randomize()
     instance.url = randomize("url")
     return instance
 

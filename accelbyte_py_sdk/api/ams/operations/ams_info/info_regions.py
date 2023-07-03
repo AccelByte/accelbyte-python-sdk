@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Command (0.1.0)
+# Fleet Commander (0.2.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,9 +37,6 @@ class InfoRegions(Operation):
     """Get the list of available AMS regions. (InfoRegions)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/regions

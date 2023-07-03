@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Event Log Service (2.0.2)
+# AGS Event Log Service (2.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

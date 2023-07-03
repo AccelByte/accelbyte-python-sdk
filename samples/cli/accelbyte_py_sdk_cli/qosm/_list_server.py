@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Justice Qo S Manager Service (1.18.1)
+# Justice Qo S Manager Service (1.18.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

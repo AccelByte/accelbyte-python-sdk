@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.30.2)
+# AGS Platform Service (4.30.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,4 +65,4 @@ def get_service_plugin_config(
 
 
 get_service_plugin_config.operation_id = "getServicePluginConfig"
-get_service_plugin_config.is_deprecated = False
+get_service_plugin_config.is_deprecated = True

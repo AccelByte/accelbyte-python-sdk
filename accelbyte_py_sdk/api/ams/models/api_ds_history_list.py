@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Command (0.1.0)
+# Fleet Commander (0.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.api_ds_history_event import ApiDSHistoryEvent
+from ..models.api_paging_info import ApiPagingInfo
 
 
 class ApiDSHistoryList(Model):
@@ -35,11 +36,14 @@ class ApiDSHistoryList(Model):
 
     Properties:
         events: (events) REQUIRED List[ApiDSHistoryEvent]
+
+        paging: (paging) REQUIRED ApiPagingInfo
     """
 
     # region fields
 
     events: List[ApiDSHistoryEvent]  # REQUIRED
+    paging: ApiPagingInfo  # REQUIRED
 
     # endregion fields
 
@@ -47,6 +51,10 @@ class ApiDSHistoryList(Model):
 
     def with_events(self, value: List[ApiDSHistoryEvent]) -> ApiDSHistoryList:
         self.events = value
+        return self
+
+    def with_paging(self, value: ApiPagingInfo) -> ApiDSHistoryList:
+        self.paging = value
         return self
 
     # endregion with_x methods
@@ -61,6 +69,10 @@ class ApiDSHistoryList(Model):
             ]
         elif include_empty:
             result["events"] = []
+        if hasattr(self, "paging"):
+            result["paging"] = self.paging.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["paging"] = ApiPagingInfo()
         return result
 
     # endregion to methods
@@ -68,9 +80,12 @@ class ApiDSHistoryList(Model):
     # region static methods
 
     @classmethod
-    def create(cls, events: List[ApiDSHistoryEvent], **kwargs) -> ApiDSHistoryList:
+    def create(
+        cls, events: List[ApiDSHistoryEvent], paging: ApiPagingInfo, **kwargs
+    ) -> ApiDSHistoryList:
         instance = cls()
         instance.events = events
+        instance.paging = paging
         return instance
 
     @classmethod
@@ -87,6 +102,12 @@ class ApiDSHistoryList(Model):
             ]
         elif include_empty:
             instance.events = []
+        if "paging" in dict_ and dict_["paging"] is not None:
+            instance.paging = ApiPagingInfo.create_from_dict(
+                dict_["paging"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.paging = ApiPagingInfo()
         return instance
 
     @classmethod
@@ -127,12 +148,14 @@ class ApiDSHistoryList(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "events": "events",
+            "paging": "paging",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "events": True,
+            "paging": True,
         }
 
     # endregion static methods

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.3)
+# AccelByte Gaming Services Dsm Controller Service (6.3.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

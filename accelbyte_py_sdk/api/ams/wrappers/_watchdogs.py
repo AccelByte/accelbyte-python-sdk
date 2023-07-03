@@ -44,9 +44,6 @@ def watchdog_connect(
 
     Required Permission: NAMESPACE:{namespace}:ARMADA:WATCHDOG [CREATE]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ARMADA:WATCHDOG [CREATE]
-
     Properties:
         url: /ams/v1/namespaces/{namespace}/watchdogs/{watchdogID}/connect
 
@@ -88,9 +85,6 @@ async def watchdog_connect_async(
     """connect a watchdog (WatchdogConnect)
 
     Required Permission: NAMESPACE:{namespace}:ARMADA:WATCHDOG [CREATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ARMADA:WATCHDOG [CREATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/watchdogs/{watchdogID}/connect

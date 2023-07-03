@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (6.0.1)
+# AGS Iam Service (6.0.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,11 +38,13 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponseV3
 
 @click.command()
 @click.argument("code", type=str)
+@click.option("--additional_data", "additional_data", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def request_game_token_response_v3(
     code: str,
+    additional_data: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -57,6 +59,7 @@ def request_game_token_response_v3(
         login_as_internal(login_as)
     result, error = request_game_token_response_v3_internal(
         code=code,
+        additional_data=additional_data,
         x_additional_headers=x_additional_headers,
     )
     if error:

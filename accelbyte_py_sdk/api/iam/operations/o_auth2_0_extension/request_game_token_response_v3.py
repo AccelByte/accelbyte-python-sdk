@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (6.0.1)
+# AccelByte Gaming Services Iam Service (6.0.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -54,6 +54,8 @@ class RequestGameTokenResponseV3(Operation):
 
         securities: [BEARER_AUTH]
 
+        additional_data: (additionalData) OPTIONAL str in form_data
+
         code: (code) REQUIRED str in form_data
 
     Responses:
@@ -69,6 +71,7 @@ class RequestGameTokenResponseV3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    additional_data: str  # OPTIONAL in [form_data]
     code: str  # REQUIRED in [form_data]
 
     # endregion fields
@@ -114,6 +117,8 @@ class RequestGameTokenResponseV3(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
+        if hasattr(self, "additional_data"):
+            result["additionalData"] = self.additional_data
         if hasattr(self, "code"):
             result["code"] = self.code
         return result
@@ -126,6 +131,10 @@ class RequestGameTokenResponseV3(Operation):
 
     # region with_x methods
 
+    def with_additional_data(self, value: str) -> RequestGameTokenResponseV3:
+        self.additional_data = value
+        return self
+
     def with_code(self, value: str) -> RequestGameTokenResponseV3:
         self.code = value
         return self
@@ -136,6 +145,10 @@ class RequestGameTokenResponseV3(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "additional_data") and self.additional_data:
+            result["additionalData"] = str(self.additional_data)
+        elif include_empty:
+            result["additionalData"] = ""
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
@@ -179,9 +192,13 @@ class RequestGameTokenResponseV3(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, code: str, **kwargs) -> RequestGameTokenResponseV3:
+    def create(
+        cls, code: str, additional_data: Optional[str] = None, **kwargs
+    ) -> RequestGameTokenResponseV3:
         instance = cls()
         instance.code = code
+        if additional_data is not None:
+            instance.additional_data = additional_data
         return instance
 
     @classmethod
@@ -189,6 +206,10 @@ class RequestGameTokenResponseV3(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> RequestGameTokenResponseV3:
         instance = cls()
+        if "additionalData" in dict_ and dict_["additionalData"] is not None:
+            instance.additional_data = str(dict_["additionalData"])
+        elif include_empty:
+            instance.additional_data = ""
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
@@ -198,12 +219,14 @@ class RequestGameTokenResponseV3(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "additionalData": "additional_data",
             "code": "code",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "additionalData": False,
             "code": True,
         }
 

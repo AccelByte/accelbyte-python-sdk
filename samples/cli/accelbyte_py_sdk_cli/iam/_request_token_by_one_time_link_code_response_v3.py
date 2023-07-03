@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (6.0.1)
+# AGS Iam Service (6.0.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponseV3
 @click.command()
 @click.argument("client_id", type=str)
 @click.argument("one_time_link_code", type=str)
+@click.option("--additional_data", "additional_data", type=str)
 @click.option("--is_transient", "is_transient", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -46,6 +47,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponseV3
 def request_token_by_one_time_link_code_response_v3(
     client_id: str,
     one_time_link_code: str,
+    additional_data: Optional[str] = None,
     is_transient: Optional[bool] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -62,6 +64,7 @@ def request_token_by_one_time_link_code_response_v3(
     result, error = request_token_by_one_time_link_code_response_v3_internal(
         client_id=client_id,
         one_time_link_code=one_time_link_code,
+        additional_data=additional_data,
         is_transient=is_transient,
         x_additional_headers=x_additional_headers,
     )

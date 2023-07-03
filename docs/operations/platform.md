@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.30.2)
+# AccelByte Gaming Services Platform Service Index (4.30.3)
 
 
 ## Operations
@@ -436,9 +436,22 @@
 ### ServicePluginConfig
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /platform/admin/namespaces/{namespace}/configs/servicePlugin | DELETE | deleteServicePluginConfig | `false` | [DeleteServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/delete_service_plugin_config.py) | [delete_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-delete-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_service_plugin_config.py) |
-| /platform/admin/namespaces/{namespace}/configs/servicePlugin | GET | getServicePluginConfig | `false` | [GetServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/get_service_plugin_config.py) | [get_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-get-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_service_plugin_config.py) |
-| /platform/admin/namespaces/{namespace}/configs/servicePlugin | PUT | updateServicePluginConfig | `false` | [UpdateServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/update_service_plugin_config.py) | [update_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-update-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_service_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/catalog/plugins/lootbox | DELETE | deleteLootBoxPluginConfig | `false` | [DeleteLootBoxPluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/delete_loot_box_plugin_config.py) | [delete_loot_box_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-delete-loot-box-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_loot_box_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/revocation/plugins/revocation | DELETE | deleteLootBoxPluginConfig_1 | `false` | [DeleteLootBoxPluginConfig1](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/delete_loot_box_plugin__7eaf23.py) | [delete_loot_box_plugin_config_1](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-delete-loot-box-plugin-config-1](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_loot_box_plugin_config_1.py) |
+| /platform/admin/namespaces/{namespace}/catalog/plugins/section | DELETE | deleteSectionPluginConfig | `false` | [DeleteSectionPluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/delete_section_plugin_config.py) | [delete_section_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-delete-section-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_section_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/configs/servicePlugin | DELETE | deleteServicePluginConfig | `true` | [DeleteServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/delete_service_plugin_config.py) | [delete_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-delete-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_service_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/catalog/plugins/lootbox/grpcInfo | GET | getLootBoxGrpcInfo | `false` | [GetLootBoxGrpcInfo](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/get_loot_box_grpc_info.py) | [get_loot_box_grpc_info](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-get-loot-box-grpc-info](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_loot_box_grpc_info.py) |
+| /platform/admin/namespaces/{namespace}/catalog/plugins/lootbox | GET | getLootBoxPluginConfig | `false` | [GetLootBoxPluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/get_loot_box_plugin_config.py) | [get_loot_box_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-get-loot-box-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_loot_box_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/revocation/plugins/revocation | GET | getLootBoxPluginConfig_1 | `false` | [GetLootBoxPluginConfig1](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/get_loot_box_plugin_config_1.py) | [get_loot_box_plugin_config_1](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-get-loot-box-plugin-config-1](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_loot_box_plugin_config_1.py) |
+| /platform/admin/namespaces/{namespace}/catalog/plugins/section | GET | getSectionPluginConfig | `false` | [GetSectionPluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/get_section_plugin_config.py) | [get_section_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-get-section-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_section_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/configs/servicePlugin | GET | getServicePluginConfig | `true` | [GetServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/get_service_plugin_config.py) | [get_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-get-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_service_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/catalog/plugins/lootbox | PUT | updateLootBoxPluginConfig | `false` | [UpdateLootBoxPluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/update_loot_box_plugin_config.py) | [update_loot_box_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-update-loot-box-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_loot_box_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/revocation/plugins/revocation | PUT | updateLootBoxPluginConfig_1 | `false` | [UpdateLootBoxPluginConfig1](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/update_loot_box_plugin__3b22e2.py) | [update_loot_box_plugin_config_1](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-update-loot-box-plugin-config-1](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_loot_box_plugin_config_1.py) |
+| /platform/admin/namespaces/{namespace}/catalog/plugins/section | PUT | updateSectionPluginConfig | `false` | [UpdateSectionPluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/update_section_plugin_config.py) | [update_section_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-update-section-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_section_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/configs/servicePlugin | PUT | updateServicePluginConfig | `true` | [UpdateServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/update_service_plugin_config.py) | [update_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-update-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_service_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/revocation/plugins/revocation/revocation/customConfig/cert | PUT | uploadRevocationPluginConfigCert | `false` | [UploadRevocationPluginConfigCert](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/upload_revocation_plugi_6c586a.py) | [upload_revocation_plugin_config_cert](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-upload-revocation-plugin-config-cert](../../samples/cli/accelbyte_py_sdk_cli/platform/_upload_revocation_plugin_config_cert.py) |
+| /platform/admin/namespaces/{namespace}/catalog/plugins/section/customConfig/cert | PUT | uploadSectionPluginConfigCert | `false` | [UploadSectionPluginConfigCert](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/upload_section_plugin_c_780cdd.py) | [upload_section_plugin_config_cert](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-upload-section-plugin-config-cert](../../samples/cli/accelbyte_py_sdk_cli/platform/_upload_section_plugin_config_cert.py) |
+| /platform/admin/namespaces/{namespace}/catalog/plugins/lootbox/customConfig/cert | PUT | uplodLootBoxPluginConfigCert | `false` | [UplodLootBoxPluginConfigCert](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/uplod_loot_box_plugin_c_5c5812.py) | [uplod_loot_box_plugin_config_cert](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-uplod-loot-box-plugin-config-cert](../../samples/cli/accelbyte_py_sdk_cli/platform/_uplod_loot_box_plugin_config_cert.py) |
 
 ### SessionPlatform
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -541,6 +554,7 @@
 | AdminOrderCreate | [AdminOrderCreate](../../accelbyte_py_sdk/api/platform/models/admin_order_create.py) |
 | AdyenConfig | [AdyenConfig](../../accelbyte_py_sdk/api/platform/models/adyen_config.py) |
 | AliPayConfig | [AliPayConfig](../../accelbyte_py_sdk/api/platform/models/ali_pay_config.py) |
+| AppConfig | [AppConfig](../../accelbyte_py_sdk/api/platform/models/app_config.py) |
 | AppEntitlementInfo | [AppEntitlementInfo](../../accelbyte_py_sdk/api/platform/models/app_entitlement_info.py) |
 | AppEntitlementPagingSlicedResult | [AppEntitlementPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/app_entitlement_paging_sliced_result.py) |
 | AppInfo | [AppInfo](../../accelbyte_py_sdk/api/platform/models/app_info.py) |
@@ -551,6 +565,8 @@
 | AppleIAPReceipt | [AppleIAPReceipt](../../accelbyte_py_sdk/api/platform/models/apple_iap_receipt.py) |
 | AvailableComparison | [AvailableComparison](../../accelbyte_py_sdk/api/platform/models/available_comparison.py) |
 | AvailablePredicate | [AvailablePredicate](../../accelbyte_py_sdk/api/platform/models/available_predicate.py) |
+| BaseCustomConfig | [BaseCustomConfig](../../accelbyte_py_sdk/api/platform/models/base_custom_config.py) |
+| BaseTLSConfig | [BaseTLSConfig](../../accelbyte_py_sdk/api/platform/models/base_tls_config.py) |
 | BasicCategoryInfo | [BasicCategoryInfo](../../accelbyte_py_sdk/api/platform/models/basic_category_info.py) |
 | BasicItem | [BasicItem](../../accelbyte_py_sdk/api/platform/models/basic_item.py) |
 | BillingAccount | [BillingAccount](../../accelbyte_py_sdk/api/platform/models/billing_account.py) |
@@ -664,6 +680,7 @@
 | GoogleIAPReceipt | [GoogleIAPReceipt](../../accelbyte_py_sdk/api/platform/models/google_iap_receipt.py) |
 | GoogleReceiptResolveResult | [GoogleReceiptResolveResult](../../accelbyte_py_sdk/api/platform/models/google_receipt_resolve_result.py) |
 | GrantSubscriptionDaysRequest | [GrantSubscriptionDaysRequest](../../accelbyte_py_sdk/api/platform/models/grant_subscription_days_request.py) |
+| GrpcServerInfo | [GrpcServerInfo](../../accelbyte_py_sdk/api/platform/models/grpc_server_info.py) |
 | HierarchicalCategoryInfo | [HierarchicalCategoryInfo](../../accelbyte_py_sdk/api/platform/models/hierarchical_category_info.py) |
 | IAPConsumeHistoryInfo | [IAPConsumeHistoryInfo](../../accelbyte_py_sdk/api/platform/models/iap_consume_history_info.py) |
 | IAPConsumeHistoryPagingSlicedResult | [IAPConsumeHistoryPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/iap_consume_history_paging_sliced_result.py) |
@@ -709,6 +726,8 @@
 | ListViewInfo | [ListViewInfo](../../accelbyte_py_sdk/api/platform/models/list_view_info.py) |
 | Localization | [Localization](../../accelbyte_py_sdk/api/platform/models/localization.py) |
 | LootBoxConfig | [LootBoxConfig](../../accelbyte_py_sdk/api/platform/models/loot_box_config.py) |
+| LootBoxPluginConfigInfo | [LootBoxPluginConfigInfo](../../accelbyte_py_sdk/api/platform/models/loot_box_plugin_config_info.py) |
+| LootBoxPluginConfigUpdate | [LootBoxPluginConfigUpdate](../../accelbyte_py_sdk/api/platform/models/loot_box_plugin_config_update.py) |
 | LootBoxReward | [LootBoxReward](../../accelbyte_py_sdk/api/platform/models/loot_box_reward.py) |
 | MockIAPReceipt | [MockIAPReceipt](../../accelbyte_py_sdk/api/platform/models/mock_iap_receipt.py) |
 | NotificationProcessResult | [NotificationProcessResult](../../accelbyte_py_sdk/api/platform/models/notification_process_result.py) |
@@ -780,6 +799,7 @@
 | PopulatedItemInfo | [PopulatedItemInfo](../../accelbyte_py_sdk/api/platform/models/populated_item_info.py) |
 | Predicate | [Predicate](../../accelbyte_py_sdk/api/platform/models/predicate.py) |
 | PredicateValidateResult | [PredicateValidateResult](../../accelbyte_py_sdk/api/platform/models/predicate_validate_result.py) |
+| PublicCustomConfigInfo | [PublicCustomConfigInfo](../../accelbyte_py_sdk/api/platform/models/public_custom_config_info.py) |
 | PurchaseCondition | [PurchaseCondition](../../accelbyte_py_sdk/api/platform/models/purchase_condition.py) |
 | PurchaseConditionUpdate | [PurchaseConditionUpdate](../../accelbyte_py_sdk/api/platform/models/purchase_condition_update.py) |
 | PurchasedItemCount | [PurchasedItemCount](../../accelbyte_py_sdk/api/platform/models/purchased_item_count.py) |
@@ -800,6 +820,8 @@
 | RevocationError | [RevocationError](../../accelbyte_py_sdk/api/platform/models/revocation_error.py) |
 | RevocationHistoryInfo | [RevocationHistoryInfo](../../accelbyte_py_sdk/api/platform/models/revocation_history_info.py) |
 | RevocationHistoryPagingSlicedResult | [RevocationHistoryPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/revocation_history_paging_sliced_result.py) |
+| RevocationPluginConfigInfo | [RevocationPluginConfigInfo](../../accelbyte_py_sdk/api/platform/models/revocation_plugin_config_info.py) |
+| RevocationPluginConfigUpdate | [RevocationPluginConfigUpdate](../../accelbyte_py_sdk/api/platform/models/revocation_plugin_config_update.py) |
 | RevocationRequest | [RevocationRequest](../../accelbyte_py_sdk/api/platform/models/revocation_request.py) |
 | RevocationResult | [RevocationResult](../../accelbyte_py_sdk/api/platform/models/revocation_result.py) |
 | RevokeCurrency | [RevokeCurrency](../../accelbyte_py_sdk/api/platform/models/revoke_currency.py) |
@@ -821,6 +843,8 @@
 | SectionInfo | [SectionInfo](../../accelbyte_py_sdk/api/platform/models/section_info.py) |
 | SectionItem | [SectionItem](../../accelbyte_py_sdk/api/platform/models/section_item.py) |
 | SectionPagingSlicedResult | [SectionPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/section_paging_sliced_result.py) |
+| SectionPluginConfigInfo | [SectionPluginConfigInfo](../../accelbyte_py_sdk/api/platform/models/section_plugin_config_info.py) |
+| SectionPluginConfigUpdate | [SectionPluginConfigUpdate](../../accelbyte_py_sdk/api/platform/models/section_plugin_config_update.py) |
 | SectionUpdate | [SectionUpdate](../../accelbyte_py_sdk/api/platform/models/section_update.py) |
 | ServicePluginConfigInfo | [ServicePluginConfigInfo](../../accelbyte_py_sdk/api/platform/models/service_plugin_config_info.py) |
 | ServicePluginConfigUpdate | [ServicePluginConfigUpdate](../../accelbyte_py_sdk/api/platform/models/service_plugin_config_update.py) |
@@ -855,6 +879,7 @@
 | TicketSaleIncrementResult | [TicketSaleIncrementResult](../../accelbyte_py_sdk/api/platform/models/ticket_sale_increment_result.py) |
 | Time-limited balance | [TimeLimitedBalance](../../accelbyte_py_sdk/api/platform/models/time_limited_balance.py) |
 | TimedOwnership | [TimedOwnership](../../accelbyte_py_sdk/api/platform/models/timed_ownership.py) |
+| TLSConfig | [TLSConfig](../../accelbyte_py_sdk/api/platform/models/tls_config.py) |
 | TradeNotification | [TradeNotification](../../accelbyte_py_sdk/api/platform/models/trade_notification.py) |
 | Transaction | [Transaction](../../accelbyte_py_sdk/api/platform/models/transaction.py) |
 | TransactionAmountDetails | [TransactionAmountDetails](../../accelbyte_py_sdk/api/platform/models/transaction_amount_details.py) |

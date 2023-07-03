@@ -1138,6 +1138,7 @@ async def import_store_async(
 def import_store_1(
     file: Optional[Any] = None,
     store_id: Optional[str] = None,
+    strict_mode: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1172,6 +1173,8 @@ def import_store_1(
 
         store_id: (storeId) OPTIONAL str in query
 
+        strict_mode: (strictMode) OPTIONAL bool in query
+
     Responses:
         200: OK - ImportStoreResult (successful operation)
 
@@ -1186,6 +1189,7 @@ def import_store_1(
     request = ImportStore1.create(
         file=file,
         store_id=store_id,
+        strict_mode=strict_mode,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1195,6 +1199,7 @@ def import_store_1(
 async def import_store_1_async(
     file: Optional[Any] = None,
     store_id: Optional[str] = None,
+    strict_mode: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1229,6 +1234,8 @@ async def import_store_1_async(
 
         store_id: (storeId) OPTIONAL str in query
 
+        strict_mode: (strictMode) OPTIONAL bool in query
+
     Responses:
         200: OK - ImportStoreResult (successful operation)
 
@@ -1243,6 +1250,7 @@ async def import_store_1_async(
     request = ImportStore1.create(
         file=file,
         store_id=store_id,
+        strict_mode=strict_mode,
         namespace=namespace,
     )
     return await run_request_async(

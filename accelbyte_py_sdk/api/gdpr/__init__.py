@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "2.0.1"
+__version__ = "2.1.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,10 +23,16 @@ from .wrappers import admin_get_user_account_deletion_request
 from .wrappers import admin_get_user_account_deletion_request_async
 from .wrappers import admin_submit_user_account_deletion_request
 from .wrappers import admin_submit_user_account_deletion_request_async
+from .wrappers import public_cancel_my_account_deletion_request
+from .wrappers import public_cancel_my_account_deletion_request_async
 from .wrappers import public_cancel_user_account_deletion_request
 from .wrappers import public_cancel_user_account_deletion_request_async
+from .wrappers import public_get_my_account_deletion_status
+from .wrappers import public_get_my_account_deletion_status_async
 from .wrappers import public_get_user_account_deletion_status
 from .wrappers import public_get_user_account_deletion_status_async
+from .wrappers import public_submit_my_account_deletion_request
+from .wrappers import public_submit_my_account_deletion_request_async
 from .wrappers import public_submit_user_account_deletion_request
 from .wrappers import public_submit_user_account_deletion_request_async
 

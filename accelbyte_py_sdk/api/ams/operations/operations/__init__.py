@@ -6,13 +6,12 @@
 
 # template file: ags_py_codegen
 
-"""Auto-generated package that contains models used by the Fleet Command."""
+"""Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .basic_health_check import BasicHealthCheck
-from .func1 import Func1

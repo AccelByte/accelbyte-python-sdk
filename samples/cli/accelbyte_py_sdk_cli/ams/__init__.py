@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# fleet-command (0.1.0)
+# fleet-commander (0.2.0)
 
 from ._account_get import account_get
 from ._account_create import account_create

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (6.0.1)
+# AccelByte Gaming Services Iam Service (6.0.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -303,6 +303,8 @@ class TokenGrantV3(Operation):
 
         device_id: (device_id) OPTIONAL Union[str, HeaderStr] in header
 
+        additional_data: (additionalData) OPTIONAL str in form_data
+
         client_id: (client_id) OPTIONAL str in form_data
 
         code: (code) OPTIONAL str in form_data
@@ -344,6 +346,7 @@ class TokenGrantV3(Operation):
 
     auth_trust_id: Union[str, HeaderStr]  # OPTIONAL in [header]
     device_id: Union[str, HeaderStr]  # OPTIONAL in [header]
+    additional_data: str  # OPTIONAL in [form_data]
     client_id: str  # OPTIONAL in [form_data]
     code: str  # OPTIONAL in [form_data]
     code_verifier: str  # OPTIONAL in [form_data]
@@ -406,6 +409,8 @@ class TokenGrantV3(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
+        if hasattr(self, "additional_data"):
+            result["additionalData"] = self.additional_data
         if hasattr(self, "client_id"):
             result["client_id"] = self.client_id
         if hasattr(self, "code"):
@@ -440,6 +445,10 @@ class TokenGrantV3(Operation):
 
     def with_device_id(self, value: Union[str, HeaderStr]) -> TokenGrantV3:
         self.device_id = value
+        return self
+
+    def with_additional_data(self, value: str) -> TokenGrantV3:
+        self.additional_data = value
         return self
 
     def with_client_id(self, value: str) -> TokenGrantV3:
@@ -492,6 +501,10 @@ class TokenGrantV3(Operation):
             result["device_id"] = str(self.device_id)
         elif include_empty:
             result["device_id"] = ""
+        if hasattr(self, "additional_data") and self.additional_data:
+            result["additionalData"] = str(self.additional_data)
+        elif include_empty:
+            result["additionalData"] = ""
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:
@@ -594,6 +607,7 @@ class TokenGrantV3(Operation):
         grant_type: Union[str, GrantTypeEnum],
         auth_trust_id: Optional[Union[str, HeaderStr]] = None,
         device_id: Optional[Union[str, HeaderStr]] = None,
+        additional_data: Optional[str] = None,
         client_id: Optional[str] = None,
         code: Optional[str] = None,
         code_verifier: Optional[str] = None,
@@ -610,6 +624,8 @@ class TokenGrantV3(Operation):
             instance.auth_trust_id = auth_trust_id
         if device_id is not None:
             instance.device_id = device_id
+        if additional_data is not None:
+            instance.additional_data = additional_data
         if client_id is not None:
             instance.client_id = client_id
         if code is not None:
@@ -639,6 +655,10 @@ class TokenGrantV3(Operation):
             instance.device_id = str(dict_["device_id"])
         elif include_empty:
             instance.device_id = ""
+        if "additionalData" in dict_ and dict_["additionalData"] is not None:
+            instance.additional_data = str(dict_["additionalData"])
+        elif include_empty:
+            instance.additional_data = ""
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
@@ -682,6 +702,7 @@ class TokenGrantV3(Operation):
         return {
             "Auth-Trust-Id": "auth_trust_id",
             "device_id": "device_id",
+            "additionalData": "additional_data",
             "client_id": "client_id",
             "code": "code",
             "code_verifier": "code_verifier",
@@ -698,6 +719,7 @@ class TokenGrantV3(Operation):
         return {
             "Auth-Trust-Id": False,
             "device_id": False,
+            "additionalData": False,
             "client_id": False,
             "code": False,
             "code_verifier": False,

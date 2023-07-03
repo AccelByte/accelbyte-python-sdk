@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (6.0.1)
+# AccelByte Gaming Services Iam Service (6.0.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,6 +65,8 @@ class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
 
         securities: [BEARER_AUTH]
 
+        additional_data: (additionalData) OPTIONAL str in form_data
+
         is_transient: (isTransient) OPTIONAL bool in form_data
 
         client_id: (client_id) REQUIRED str in form_data
@@ -84,6 +86,7 @@ class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    additional_data: str  # OPTIONAL in [form_data]
     is_transient: bool  # OPTIONAL in [form_data]
     client_id: str  # REQUIRED in [form_data]
     one_time_link_code: str  # REQUIRED in [form_data]
@@ -131,6 +134,8 @@ class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
+        if hasattr(self, "additional_data"):
+            result["additionalData"] = self.additional_data
         if hasattr(self, "is_transient"):
             result["isTransient"] = self.is_transient
         if hasattr(self, "client_id"):
@@ -146,6 +151,12 @@ class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
     # endregion is/has methods
 
     # region with_x methods
+
+    def with_additional_data(
+        self, value: str
+    ) -> RequestTokenByOneTimeLinkCodeResponseV3:
+        self.additional_data = value
+        return self
 
     def with_is_transient(self, value: bool) -> RequestTokenByOneTimeLinkCodeResponseV3:
         self.is_transient = value
@@ -167,6 +178,10 @@ class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "additional_data") and self.additional_data:
+            result["additionalData"] = str(self.additional_data)
+        elif include_empty:
+            result["additionalData"] = ""
         if hasattr(self, "is_transient") and self.is_transient:
             result["isTransient"] = bool(self.is_transient)
         elif include_empty:
@@ -222,12 +237,15 @@ class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
         cls,
         client_id: str,
         one_time_link_code: str,
+        additional_data: Optional[str] = None,
         is_transient: Optional[bool] = None,
         **kwargs,
     ) -> RequestTokenByOneTimeLinkCodeResponseV3:
         instance = cls()
         instance.client_id = client_id
         instance.one_time_link_code = one_time_link_code
+        if additional_data is not None:
+            instance.additional_data = additional_data
         if is_transient is not None:
             instance.is_transient = is_transient
         return instance
@@ -237,6 +255,10 @@ class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> RequestTokenByOneTimeLinkCodeResponseV3:
         instance = cls()
+        if "additionalData" in dict_ and dict_["additionalData"] is not None:
+            instance.additional_data = str(dict_["additionalData"])
+        elif include_empty:
+            instance.additional_data = ""
         if "isTransient" in dict_ and dict_["isTransient"] is not None:
             instance.is_transient = bool(dict_["isTransient"])
         elif include_empty:
@@ -254,6 +276,7 @@ class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "additionalData": "additional_data",
             "isTransient": "is_transient",
             "client_id": "client_id",
             "oneTimeLinkCode": "one_time_link_code",
@@ -262,6 +285,7 @@ class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "additionalData": False,
             "isTransient": False,
             "client_id": True,
             "oneTimeLinkCode": True,

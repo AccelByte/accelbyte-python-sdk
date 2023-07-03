@@ -42,7 +42,7 @@ from ..operations.servers import ServerHistory
 @same_doc_as(FleetServerHistory)
 def fleet_server_history(
     fleet_id: str,
-    limit: Optional[int] = None,
+    count: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -51,9 +51,6 @@ def fleet_server_history(
     """get history records of a specific dedicated server for a fleet (FleetServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers/history
@@ -72,7 +69,7 @@ def fleet_server_history(
 
         namespace: (namespace) REQUIRED str in path
 
-        limit: (limit) OPTIONAL int in query
+        count: (count) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -93,7 +90,7 @@ def fleet_server_history(
             return None, error
     request = FleetServerHistory.create(
         fleet_id=fleet_id,
-        limit=limit,
+        count=count,
         offset=offset,
         namespace=namespace,
     )
@@ -103,7 +100,7 @@ def fleet_server_history(
 @same_doc_as(FleetServerHistory)
 async def fleet_server_history_async(
     fleet_id: str,
-    limit: Optional[int] = None,
+    count: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -112,9 +109,6 @@ async def fleet_server_history_async(
     """get history records of a specific dedicated server for a fleet (FleetServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers/history
@@ -133,7 +127,7 @@ async def fleet_server_history_async(
 
         namespace: (namespace) REQUIRED str in path
 
-        limit: (limit) OPTIONAL int in query
+        count: (count) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -154,7 +148,7 @@ async def fleet_server_history_async(
             return None, error
     request = FleetServerHistory.create(
         fleet_id=fleet_id,
-        limit=limit,
+        count=count,
         offset=offset,
         namespace=namespace,
     )
@@ -173,9 +167,6 @@ def fleet_server_info(
     """get information about a specific dedicated server (FleetServerInfo)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}
@@ -226,9 +217,6 @@ async def fleet_server_info_async(
     """get information about a specific dedicated server (FleetServerInfo)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}
@@ -282,9 +270,6 @@ def server_history(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/history
 
@@ -334,9 +319,6 @@ async def server_history_async(
     """get history records of a specific dedicated server (ServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/history

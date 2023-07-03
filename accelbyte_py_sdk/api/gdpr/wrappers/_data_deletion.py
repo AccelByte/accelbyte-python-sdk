@@ -39,8 +39,11 @@ from ..operations.data_deletion import AdminCancelUserAccountDeletionRequest
 from ..operations.data_deletion import AdminGetListDeletionDataRequest
 from ..operations.data_deletion import AdminGetUserAccountDeletionRequest
 from ..operations.data_deletion import AdminSubmitUserAccountDeletionRequest
+from ..operations.data_deletion import PublicCancelMyAccountDeletionRequest
 from ..operations.data_deletion import PublicCancelUserAccountDeletionRequest
+from ..operations.data_deletion import PublicGetMyAccountDeletionStatus
 from ..operations.data_deletion import PublicGetUserAccountDeletionStatus
+from ..operations.data_deletion import PublicSubmitMyAccountDeletionRequest
 from ..operations.data_deletion import PublicSubmitUserAccountDeletionRequest
 
 
@@ -532,6 +535,80 @@ async def admin_submit_user_account_deletion_request_async(
     )
 
 
+@same_doc_as(PublicCancelMyAccountDeletionRequest)
+def public_cancel_my_account_deletion_request(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Cancel my account deletion request (PublicCancelMyAccountDeletionRequest)
+
+    Requires valid user access token
+
+    Properties:
+        url: /gdpr/public/users/me/deletions
+
+        method: DELETE
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    request = PublicCancelMyAccountDeletionRequest.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicCancelMyAccountDeletionRequest)
+async def public_cancel_my_account_deletion_request_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Cancel my account deletion request (PublicCancelMyAccountDeletionRequest)
+
+    Requires valid user access token
+
+    Properties:
+        url: /gdpr/public/users/me/deletions
+
+        method: DELETE
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    request = PublicCancelMyAccountDeletionRequest.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicCancelUserAccountDeletionRequest)
 def public_cancel_user_account_deletion_request(
     user_id: str,
@@ -634,6 +711,76 @@ async def public_cancel_user_account_deletion_request_async(
     )
 
 
+@same_doc_as(PublicGetMyAccountDeletionStatus)
+def public_get_my_account_deletion_status(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Retrieve my account deletion status (PublicGetMyAccountDeletionStatus)
+
+    Requires valid user access token
+
+    Properties:
+        url: /gdpr/public/users/me/deletions/status
+
+        method: GET
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsDeletionStatus (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    request = PublicGetMyAccountDeletionStatus.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetMyAccountDeletionStatus)
+async def public_get_my_account_deletion_status_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Retrieve my account deletion status (PublicGetMyAccountDeletionStatus)
+
+    Requires valid user access token
+
+    Properties:
+        url: /gdpr/public/users/me/deletions/status
+
+        method: GET
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelsDeletionStatus (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    request = PublicGetMyAccountDeletionStatus.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGetUserAccountDeletionStatus)
 def public_get_user_account_deletion_status(
     user_id: str,
@@ -726,6 +873,108 @@ async def public_get_user_account_deletion_status_async(
     request = PublicGetUserAccountDeletionStatus.create(
         user_id=user_id,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicSubmitMyAccountDeletionRequest)
+def public_submit_my_account_deletion_request(
+    platform_id: str,
+    platform_token: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Submit my account deletion requests. (PublicSubmitMyAccountDeletionRequest)
+
+    Requires valid user access token
+
+    This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
+
+    Properties:
+        url: /gdpr/public/users/me/deletions
+
+        method: POST
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) REQUIRED str in form_data
+
+        platform_token: (platformToken) REQUIRED str in form_data
+
+    Responses:
+        201: Created - ModelsRequestDeleteResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    request = PublicSubmitMyAccountDeletionRequest.create(
+        platform_id=platform_id,
+        platform_token=platform_token,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicSubmitMyAccountDeletionRequest)
+async def public_submit_my_account_deletion_request_async(
+    platform_id: str,
+    platform_token: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Submit my account deletion requests. (PublicSubmitMyAccountDeletionRequest)
+
+    Requires valid user access token
+
+    This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
+
+    Properties:
+        url: /gdpr/public/users/me/deletions
+
+        method: POST
+
+        tags: ["Data Deletion"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) REQUIRED str in form_data
+
+        platform_token: (platformToken) REQUIRED str in form_data
+
+    Responses:
+        201: Created - ModelsRequestDeleteResponse (Created)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    request = PublicSubmitMyAccountDeletionRequest.create(
+        platform_id=platform_id,
+        platform_token=platform_token,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

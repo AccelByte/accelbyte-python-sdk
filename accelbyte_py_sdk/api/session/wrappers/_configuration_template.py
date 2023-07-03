@@ -196,6 +196,18 @@ def admin_create_configuration_template_v1(
     - SessionTitle: the session title. In PSN, this will be used to define name of the session thats displayed on PlayStation system UI.
     - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
     - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
+    - PSNBaseUrl this is for base URL PSN if not set will be default value https://s2s.sp-int.playstation.net. In a single namespace only 1 PSN Env that can be used. Multiple session template should refers to the same PSN Env as we have in IAM Service.
+    - https://s2s.sp-int.playstation.net (DEV, need IP Whitelist)
+    - https://s2s.prod-qa.playstation.net (QA Environment/PSN Certification)
+    - https://s2s.np.playstation.net (Production)
+    - localizedSessionName : for localized name and default language
+    example payload :
+    "localizedSessionName":{
+    "defaultLanguage" : "en-US"
+    "localizedText" :{
+    "en-US" : "title"
+    }
+    }
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -267,6 +279,18 @@ async def admin_create_configuration_template_v1_async(
     - SessionTitle: the session title. In PSN, this will be used to define name of the session thats displayed on PlayStation system UI.
     - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
     - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
+    - PSNBaseUrl this is for base URL PSN if not set will be default value https://s2s.sp-int.playstation.net. In a single namespace only 1 PSN Env that can be used. Multiple session template should refers to the same PSN Env as we have in IAM Service.
+    - https://s2s.sp-int.playstation.net (DEV, need IP Whitelist)
+    - https://s2s.prod-qa.playstation.net (QA Environment/PSN Certification)
+    - https://s2s.np.playstation.net (Production)
+    - localizedSessionName : for localized name and default language
+    example payload :
+    "localizedSessionName":{
+    "defaultLanguage" : "en-US"
+    "localizedText" :{
+    "en-US" : "title"
+    }
+    }
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -1159,6 +1183,18 @@ def admin_update_configuration_template_v1(
     - SessionTitle: the session title. In PSN, this will be used to define name of the session thats displayed on PlayStation system UI.
     - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
     - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
+    - PSNBaseUrl this is for base URL PSN if not set will be default value https://s2s.sp-int.playstation.net. In a single namespace only 1 PSN Env that can be used. Multiple session template should refers to the same PSN Env as we have in IAM Service.
+    - https://s2s.sp-int.playstation.net (DEV, need IP Whitelist)
+    - https://s2s.prod-qa.playstation.net (QA Environment/PSN Certification)
+    - https://s2s.np.playstation.net (Production)
+    - localizedSessionName : for localized name and default language
+    example payload :
+    "localizedSessionName":{
+    "defaultLanguage" : "en-US"
+    "localizedText" :{
+    "en-US" : "title"
+    }
+    }
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}
@@ -1234,6 +1270,18 @@ async def admin_update_configuration_template_v1_async(
     - SessionTitle: the session title. In PSN, this will be used to define name of the session thats displayed on PlayStation system UI.
     - ShouldSync: to define whether the service needs to do session sync with native platform(s). Default: false (disabled).
     - PSNSupportedPlatforms: the PSN supported platforms. In PSN, if ShouldSync true and PSNSupportedPlatforms is empty, then PS5 will be set as default value.
+    - PSNBaseUrl this is for base URL PSN if not set will be default value https://s2s.sp-int.playstation.net. In a single namespace only 1 PSN Env that can be used. Multiple session template should refers to the same PSN Env as we have in IAM Service.
+    - https://s2s.sp-int.playstation.net (DEV, need IP Whitelist)
+    - https://s2s.prod-qa.playstation.net (QA Environment/PSN Certification)
+    - https://s2s.np.playstation.net (Production)
+    - localizedSessionName : for localized name and default language
+    example payload :
+    "localizedSessionName":{
+    "defaultLanguage" : "en-US"
+    "localizedText" :{
+    "en-US" : "title"
+    }
+    }
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}

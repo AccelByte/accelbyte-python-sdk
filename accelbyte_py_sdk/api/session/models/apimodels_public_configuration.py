@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.15.4)
+# AccelByte Gaming Services Session Service (2.18.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,8 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+
+from ..models.models_native_session_setting import ModelsNativeSessionSetting
 
 
 class ApimodelsPublicConfiguration(Model):
@@ -58,7 +60,11 @@ class ApimodelsPublicConfiguration(Model):
 
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
+        native_session_setting: (native_session_setting) OPTIONAL ModelsNativeSessionSetting
+
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
+
+        psn_base_url: (PSNBaseUrl) OPTIONAL str
 
         requested_regions: (requestedRegions) OPTIONAL List[str]
     """
@@ -78,7 +84,9 @@ class ApimodelsPublicConfiguration(Model):
     type_: str  # REQUIRED
     ds_source: str  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
+    native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
+    psn_base_url: str  # OPTIONAL
     requested_regions: List[str]  # OPTIONAL
 
     # endregion fields
@@ -139,10 +147,20 @@ class ApimodelsPublicConfiguration(Model):
         self.fallback_claim_keys = value
         return self
 
+    def with_native_session_setting(
+        self, value: ModelsNativeSessionSetting
+    ) -> ApimodelsPublicConfiguration:
+        self.native_session_setting = value
+        return self
+
     def with_preferred_claim_keys(
         self, value: List[str]
     ) -> ApimodelsPublicConfiguration:
         self.preferred_claim_keys = value
+        return self
+
+    def with_psn_base_url(self, value: str) -> ApimodelsPublicConfiguration:
+        self.psn_base_url = value
         return self
 
     def with_requested_regions(self, value: List[str]) -> ApimodelsPublicConfiguration:
@@ -207,10 +225,20 @@ class ApimodelsPublicConfiguration(Model):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
             result["fallbackClaimKeys"] = []
+        if hasattr(self, "native_session_setting"):
+            result["native_session_setting"] = self.native_session_setting.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["native_session_setting"] = ModelsNativeSessionSetting()
         if hasattr(self, "preferred_claim_keys"):
             result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
         elif include_empty:
             result["preferredClaimKeys"] = []
+        if hasattr(self, "psn_base_url"):
+            result["PSNBaseUrl"] = str(self.psn_base_url)
+        elif include_empty:
+            result["PSNBaseUrl"] = ""
         if hasattr(self, "requested_regions"):
             result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
         elif include_empty:
@@ -237,7 +265,9 @@ class ApimodelsPublicConfiguration(Model):
         type_: str,
         ds_source: Optional[str] = None,
         fallback_claim_keys: Optional[List[str]] = None,
+        native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         preferred_claim_keys: Optional[List[str]] = None,
+        psn_base_url: Optional[str] = None,
         requested_regions: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsPublicConfiguration:
@@ -257,8 +287,12 @@ class ApimodelsPublicConfiguration(Model):
             instance.ds_source = ds_source
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
+        if native_session_setting is not None:
+            instance.native_session_setting = native_session_setting
         if preferred_claim_keys is not None:
             instance.preferred_claim_keys = preferred_claim_keys
+        if psn_base_url is not None:
+            instance.psn_base_url = psn_base_url
         if requested_regions is not None:
             instance.requested_regions = requested_regions
         return instance
@@ -324,12 +358,27 @@ class ApimodelsPublicConfiguration(Model):
             ]
         elif include_empty:
             instance.fallback_claim_keys = []
+        if (
+            "native_session_setting" in dict_
+            and dict_["native_session_setting"] is not None
+        ):
+            instance.native_session_setting = (
+                ModelsNativeSessionSetting.create_from_dict(
+                    dict_["native_session_setting"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.native_session_setting = ModelsNativeSessionSetting()
         if "preferredClaimKeys" in dict_ and dict_["preferredClaimKeys"] is not None:
             instance.preferred_claim_keys = [
                 str(i0) for i0 in dict_["preferredClaimKeys"]
             ]
         elif include_empty:
             instance.preferred_claim_keys = []
+        if "PSNBaseUrl" in dict_ and dict_["PSNBaseUrl"] is not None:
+            instance.psn_base_url = str(dict_["PSNBaseUrl"])
+        elif include_empty:
+            instance.psn_base_url = ""
         if "requestedRegions" in dict_ and dict_["requestedRegions"] is not None:
             instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
         elif include_empty:
@@ -390,7 +439,9 @@ class ApimodelsPublicConfiguration(Model):
             "type": "type_",
             "dsSource": "ds_source",
             "fallbackClaimKeys": "fallback_claim_keys",
+            "native_session_setting": "native_session_setting",
             "preferredClaimKeys": "preferred_claim_keys",
+            "PSNBaseUrl": "psn_base_url",
             "requestedRegions": "requested_regions",
         }
 
@@ -410,7 +461,9 @@ class ApimodelsPublicConfiguration(Model):
             "type": True,
             "dsSource": False,
             "fallbackClaimKeys": False,
+            "native_session_setting": False,
             "preferredClaimKeys": False,
+            "PSNBaseUrl": False,
             "requestedRegions": False,
         }
 

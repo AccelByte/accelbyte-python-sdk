@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.30.2)
+# justice-platform-service (4.30.3)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -25,6 +25,15 @@ from ._create_campaign import create_campaign
 from ._get_campaign import get_campaign
 from ._update_campaign import update_campaign
 from ._get_campaign_dynamic import get_campaign_dynamic
+from ._get_loot_box_plugin_config import get_loot_box_plugin_config
+from ._update_loot_box_plugin_config import update_loot_box_plugin_config
+from ._delete_loot_box_plugin_config import delete_loot_box_plugin_config
+from ._uplod_loot_box_plugin_config_cert import uplod_loot_box_plugin_config_cert
+from ._get_loot_box_grpc_info import get_loot_box_grpc_info
+from ._get_section_plugin_config import get_section_plugin_config
+from ._update_section_plugin_config import update_section_plugin_config
+from ._delete_section_plugin_config import delete_section_plugin_config
+from ._upload_section_plugin_config_cert import upload_section_plugin_config_cert
 from ._get_root_categories import get_root_categories
 from ._create_category import create_category
 from ._list_categories_basic import list_categories_basic
@@ -150,6 +159,10 @@ from ._get_revocation_config import get_revocation_config
 from ._update_revocation_config import update_revocation_config
 from ._delete_revocation_config import delete_revocation_config
 from ._query_revocation_histories import query_revocation_histories
+from ._get_loot_box_plugin_config_1 import get_loot_box_plugin_config_1
+from ._update_loot_box_plugin_config_1 import update_loot_box_plugin_config_1
+from ._delete_loot_box_plugin_config_1 import delete_loot_box_plugin_config_1
+from ._upload_revocation_plugin_config_cert import upload_revocation_plugin_config_cert
 from ._create_reward import create_reward
 from ._query_rewards import query_rewards
 from ._export_rewards import export_rewards
@@ -486,6 +499,15 @@ commands = [
     get_campaign,
     update_campaign,
     get_campaign_dynamic,
+    get_loot_box_plugin_config,
+    update_loot_box_plugin_config,
+    delete_loot_box_plugin_config,
+    uplod_loot_box_plugin_config_cert,
+    get_loot_box_grpc_info,
+    get_section_plugin_config,
+    update_section_plugin_config,
+    delete_section_plugin_config,
+    upload_section_plugin_config_cert,
     get_root_categories,
     create_category,
     list_categories_basic,
@@ -611,6 +633,10 @@ commands = [
     update_revocation_config,
     delete_revocation_config,
     query_revocation_histories,
+    get_loot_box_plugin_config_1,
+    update_loot_box_plugin_config_1,
+    delete_loot_box_plugin_config_1,
+    upload_revocation_plugin_config_cert,
     create_reward,
     query_rewards,
     export_rewards,

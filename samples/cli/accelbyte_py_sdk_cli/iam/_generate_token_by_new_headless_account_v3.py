@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (6.0.1)
+# AGS Iam Service (6.0.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,12 +39,14 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 @click.command()
 @click.argument("linking_token", type=str)
+@click.option("--additional_data", "additional_data", type=str)
 @click.option("--extend_exp", "extend_exp", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def generate_token_by_new_headless_account_v3(
     linking_token: str,
+    additional_data: Optional[str] = None,
     extend_exp: Optional[bool] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -60,6 +62,7 @@ def generate_token_by_new_headless_account_v3(
         login_as_internal(login_as)
     result, error = generate_token_by_new_headless_account_v3_internal(
         linking_token=linking_token,
+        additional_data=additional_data,
         extend_exp=extend_exp,
         x_additional_headers=x_additional_headers,
     )

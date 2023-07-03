@@ -54,9 +54,6 @@ def account_create(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/account
 
@@ -104,9 +101,6 @@ async def account_create_async(
     """Create a new AMS account (AccountCreate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/account
@@ -157,9 +151,6 @@ def account_get(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/account
 
@@ -205,9 +196,6 @@ async def account_get_async(
     """Get the account associated with the namespace. (AccountGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/account
@@ -258,9 +246,6 @@ def account_link(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/account/link
 
@@ -308,9 +293,6 @@ async def account_link_async(
     """Link an account to the namespace.  Will attempt to register the linkage in AMS shipyard.  Requires a valid link token for the account. Fails if an account is already linked (AccountLink)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/account/link
@@ -361,9 +343,6 @@ def account_link_token_get(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/account/link
 
@@ -409,9 +388,6 @@ async def account_link_token_get_async(
     """Get a linking token for another namespace to use to link to the account to which this namespace is linked.  Fails if no account linked. (AccountLinkTokenGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/account/link

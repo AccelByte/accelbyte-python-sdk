@@ -189,6 +189,7 @@ async def authentication_with_platform_link_v3_async(
 @same_doc_as(GenerateTokenByNewHeadlessAccountV3)
 def generate_token_by_new_headless_account_v3(
     linking_token: str,
+    additional_data: Optional[str] = None,
     extend_exp: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -212,6 +213,8 @@ def generate_token_by_new_headless_account_v3(
 
         securities: [BEARER_AUTH]
 
+        additional_data: (additionalData) OPTIONAL str in form_data
+
         extend_exp: (extend_exp) OPTIONAL bool in form_data
 
         linking_token: (linkingToken) REQUIRED str in form_data
@@ -227,6 +230,7 @@ def generate_token_by_new_headless_account_v3(
     """
     request = GenerateTokenByNewHeadlessAccountV3.create(
         linking_token=linking_token,
+        additional_data=additional_data,
         extend_exp=extend_exp,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -235,6 +239,7 @@ def generate_token_by_new_headless_account_v3(
 @same_doc_as(GenerateTokenByNewHeadlessAccountV3)
 async def generate_token_by_new_headless_account_v3_async(
     linking_token: str,
+    additional_data: Optional[str] = None,
     extend_exp: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -258,6 +263,8 @@ async def generate_token_by_new_headless_account_v3_async(
 
         securities: [BEARER_AUTH]
 
+        additional_data: (additionalData) OPTIONAL str in form_data
+
         extend_exp: (extend_exp) OPTIONAL bool in form_data
 
         linking_token: (linkingToken) REQUIRED str in form_data
@@ -273,6 +280,7 @@ async def generate_token_by_new_headless_account_v3_async(
     """
     request = GenerateTokenByNewHeadlessAccountV3.create(
         linking_token=linking_token,
+        additional_data=additional_data,
         extend_exp=extend_exp,
     )
     return await run_request_async(
@@ -816,7 +824,10 @@ async def request_game_token_code_response_v3_async(
 
 @same_doc_as(RequestGameTokenResponseV3)
 def request_game_token_response_v3(
-    code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    code: str,
+    additional_data: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Generate game token by code (RequestGameTokenResponseV3)
 
@@ -839,6 +850,8 @@ def request_game_token_response_v3(
 
         securities: [BEARER_AUTH]
 
+        additional_data: (additionalData) OPTIONAL str in form_data
+
         code: (code) REQUIRED str in form_data
 
     Responses:
@@ -846,13 +859,17 @@ def request_game_token_response_v3(
     """
     request = RequestGameTokenResponseV3.create(
         code=code,
+        additional_data=additional_data,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RequestGameTokenResponseV3)
 async def request_game_token_response_v3_async(
-    code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    code: str,
+    additional_data: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Generate game token by code (RequestGameTokenResponseV3)
 
@@ -875,6 +892,8 @@ async def request_game_token_response_v3_async(
 
         securities: [BEARER_AUTH]
 
+        additional_data: (additionalData) OPTIONAL str in form_data
+
         code: (code) REQUIRED str in form_data
 
     Responses:
@@ -882,6 +901,7 @@ async def request_game_token_response_v3_async(
     """
     request = RequestGameTokenResponseV3.create(
         code=code,
+        additional_data=additional_data,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -1112,6 +1132,7 @@ async def request_one_time_linking_code_v3_async(
 def request_token_by_one_time_link_code_response_v3(
     client_id: str,
     one_time_link_code: str,
+    additional_data: Optional[str] = None,
     is_transient: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1148,6 +1169,8 @@ def request_token_by_one_time_link_code_response_v3(
 
         securities: [BEARER_AUTH]
 
+        additional_data: (additionalData) OPTIONAL str in form_data
+
         is_transient: (isTransient) OPTIONAL bool in form_data
 
         client_id: (client_id) REQUIRED str in form_data
@@ -1160,6 +1183,7 @@ def request_token_by_one_time_link_code_response_v3(
     request = RequestTokenByOneTimeLinkCodeResponseV3.create(
         client_id=client_id,
         one_time_link_code=one_time_link_code,
+        additional_data=additional_data,
         is_transient=is_transient,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1169,6 +1193,7 @@ def request_token_by_one_time_link_code_response_v3(
 async def request_token_by_one_time_link_code_response_v3_async(
     client_id: str,
     one_time_link_code: str,
+    additional_data: Optional[str] = None,
     is_transient: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1205,6 +1230,8 @@ async def request_token_by_one_time_link_code_response_v3_async(
 
         securities: [BEARER_AUTH]
 
+        additional_data: (additionalData) OPTIONAL str in form_data
+
         is_transient: (isTransient) OPTIONAL bool in form_data
 
         client_id: (client_id) REQUIRED str in form_data
@@ -1217,6 +1244,7 @@ async def request_token_by_one_time_link_code_response_v3_async(
     request = RequestTokenByOneTimeLinkCodeResponseV3.create(
         client_id=client_id,
         one_time_link_code=one_time_link_code,
+        additional_data=additional_data,
         is_transient=is_transient,
     )
     return await run_request_async(

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (6.0.1)
+# AGS Iam Service (6.0.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 
 @click.command()
 @click.argument("platform_id", type=str)
+@click.option("--additional_data", "additional_data", type=str)
 @click.option("--client_id", "client_id", type=str)
 @click.option("--create_headless", "create_headless", type=bool)
 @click.option("--device_id", "device_id", type=str)
@@ -50,6 +51,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 @click.option("--doc", type=bool)
 def platform_token_grant_v3(
     platform_id: str,
+    additional_data: Optional[str] = None,
     client_id: Optional[str] = None,
     create_headless: Optional[bool] = None,
     device_id: Optional[str] = None,
@@ -70,6 +72,7 @@ def platform_token_grant_v3(
         login_as_internal(login_as)
     result, error = platform_token_grant_v3_internal(
         platform_id=platform_id,
+        additional_data=additional_data,
         client_id=client_id,
         create_headless=create_headless,
         device_id=device_id,

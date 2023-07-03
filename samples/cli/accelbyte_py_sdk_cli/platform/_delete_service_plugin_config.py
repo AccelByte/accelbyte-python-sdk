@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.30.2)
+# AGS Platform Service (4.30.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,4 +64,4 @@ def delete_service_plugin_config(
 
 
 delete_service_plugin_config.operation_id = "deleteServicePluginConfig"
-delete_service_plugin_config.is_deprecated = False
+delete_service_plugin_config.is_deprecated = True

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.15.4)
+# AccelByte Gaming Services Session Service (2.18.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -44,6 +44,11 @@ class PublicQueryGameSessions(Operation):
     - REQUESTED: DS is being requested to DSMC.
     - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
     - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    query parameter "availability" to filter sessions' availabillity:
+    all: return all sessions regardless it's full
+    full: only return active sessions
+    default behavior (unset or else): return only available sessions (not full)
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions

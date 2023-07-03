@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Command (0.1.0)
+# Fleet Commander (0.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,8 +38,6 @@ class ApiFleetParameters(Model):
     Properties:
         active: (active) REQUIRED bool
 
-        claim_keys: (claimKeys) REQUIRED List[str]
-
         ds_host_configuration: (dsHostConfiguration) REQUIRED ApiDSHostConfiguration
 
         image_deployment_profile: (imageDeploymentProfile) REQUIRED ApiImageDeploymentProfile
@@ -47,16 +45,18 @@ class ApiFleetParameters(Model):
         name: (name) REQUIRED str
 
         regions: (regions) REQUIRED List[ApiRegionConfig]
+
+        claim_keys: (claimKeys) OPTIONAL List[str]
     """
 
     # region fields
 
     active: bool  # REQUIRED
-    claim_keys: List[str]  # REQUIRED
     ds_host_configuration: ApiDSHostConfiguration  # REQUIRED
     image_deployment_profile: ApiImageDeploymentProfile  # REQUIRED
     name: str  # REQUIRED
     regions: List[ApiRegionConfig]  # REQUIRED
+    claim_keys: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -64,10 +64,6 @@ class ApiFleetParameters(Model):
 
     def with_active(self, value: bool) -> ApiFleetParameters:
         self.active = value
-        return self
-
-    def with_claim_keys(self, value: List[str]) -> ApiFleetParameters:
-        self.claim_keys = value
         return self
 
     def with_ds_host_configuration(
@@ -90,6 +86,10 @@ class ApiFleetParameters(Model):
         self.regions = value
         return self
 
+    def with_claim_keys(self, value: List[str]) -> ApiFleetParameters:
+        self.claim_keys = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -100,10 +100,6 @@ class ApiFleetParameters(Model):
             result["active"] = bool(self.active)
         elif include_empty:
             result["active"] = False
-        if hasattr(self, "claim_keys"):
-            result["claimKeys"] = [str(i0) for i0 in self.claim_keys]
-        elif include_empty:
-            result["claimKeys"] = []
         if hasattr(self, "ds_host_configuration"):
             result["dsHostConfiguration"] = self.ds_host_configuration.to_dict(
                 include_empty=include_empty
@@ -126,6 +122,10 @@ class ApiFleetParameters(Model):
             ]
         elif include_empty:
             result["regions"] = []
+        if hasattr(self, "claim_keys"):
+            result["claimKeys"] = [str(i0) for i0 in self.claim_keys]
+        elif include_empty:
+            result["claimKeys"] = []
         return result
 
     # endregion to methods
@@ -136,20 +136,21 @@ class ApiFleetParameters(Model):
     def create(
         cls,
         active: bool,
-        claim_keys: List[str],
         ds_host_configuration: ApiDSHostConfiguration,
         image_deployment_profile: ApiImageDeploymentProfile,
         name: str,
         regions: List[ApiRegionConfig],
+        claim_keys: Optional[List[str]] = None,
         **kwargs,
     ) -> ApiFleetParameters:
         instance = cls()
         instance.active = active
-        instance.claim_keys = claim_keys
         instance.ds_host_configuration = ds_host_configuration
         instance.image_deployment_profile = image_deployment_profile
         instance.name = name
         instance.regions = regions
+        if claim_keys is not None:
+            instance.claim_keys = claim_keys
         return instance
 
     @classmethod
@@ -163,10 +164,6 @@ class ApiFleetParameters(Model):
             instance.active = bool(dict_["active"])
         elif include_empty:
             instance.active = False
-        if "claimKeys" in dict_ and dict_["claimKeys"] is not None:
-            instance.claim_keys = [str(i0) for i0 in dict_["claimKeys"]]
-        elif include_empty:
-            instance.claim_keys = []
         if "dsHostConfiguration" in dict_ and dict_["dsHostConfiguration"] is not None:
             instance.ds_host_configuration = ApiDSHostConfiguration.create_from_dict(
                 dict_["dsHostConfiguration"], include_empty=include_empty
@@ -195,6 +192,10 @@ class ApiFleetParameters(Model):
             ]
         elif include_empty:
             instance.regions = []
+        if "claimKeys" in dict_ and dict_["claimKeys"] is not None:
+            instance.claim_keys = [str(i0) for i0 in dict_["claimKeys"]]
+        elif include_empty:
+            instance.claim_keys = []
         return instance
 
     @classmethod
@@ -237,22 +238,22 @@ class ApiFleetParameters(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "active": "active",
-            "claimKeys": "claim_keys",
             "dsHostConfiguration": "ds_host_configuration",
             "imageDeploymentProfile": "image_deployment_profile",
             "name": "name",
             "regions": "regions",
+            "claimKeys": "claim_keys",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "active": True,
-            "claimKeys": True,
             "dsHostConfiguration": True,
             "imageDeploymentProfile": True,
             "name": True,
             "regions": True,
+            "claimKeys": False,
         }
 
     # endregion static methods

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Command (0.1.0)
+# Fleet Commander (0.2.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,9 +37,6 @@ class FleetServerHistory(Operation):
     """get history records of a specific dedicated server for a fleet (FleetServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers/history
@@ -58,7 +55,7 @@ class FleetServerHistory(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        limit: (limit) OPTIONAL int in query
+        count: (count) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -85,7 +82,7 @@ class FleetServerHistory(Operation):
 
     fleet_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
-    limit: int  # OPTIONAL in [query]
+    count: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
 
     # endregion fields
@@ -140,8 +137,8 @@ class FleetServerHistory(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
+        if hasattr(self, "count"):
+            result["count"] = self.count
         if hasattr(self, "offset"):
             result["offset"] = self.offset
         return result
@@ -162,8 +159,8 @@ class FleetServerHistory(Operation):
         self.namespace = value
         return self
 
-    def with_limit(self, value: int) -> FleetServerHistory:
-        self.limit = value
+    def with_count(self, value: int) -> FleetServerHistory:
+        self.count = value
         return self
 
     def with_offset(self, value: int) -> FleetServerHistory:
@@ -184,10 +181,10 @@ class FleetServerHistory(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
+        if hasattr(self, "count") and self.count:
+            result["count"] = int(self.count)
         elif include_empty:
-            result["limit"] = 0
+            result["count"] = 0
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
@@ -253,15 +250,15 @@ class FleetServerHistory(Operation):
         cls,
         fleet_id: str,
         namespace: str,
-        limit: Optional[int] = None,
+        count: Optional[int] = None,
         offset: Optional[int] = None,
         **kwargs,
     ) -> FleetServerHistory:
         instance = cls()
         instance.fleet_id = fleet_id
         instance.namespace = namespace
-        if limit is not None:
-            instance.limit = limit
+        if count is not None:
+            instance.count = count
         if offset is not None:
             instance.offset = offset
         return instance
@@ -279,10 +276,10 @@ class FleetServerHistory(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
+        if "count" in dict_ and dict_["count"] is not None:
+            instance.count = int(dict_["count"])
         elif include_empty:
-            instance.limit = 0
+            instance.count = 0
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
@@ -294,7 +291,7 @@ class FleetServerHistory(Operation):
         return {
             "fleetID": "fleet_id",
             "namespace": "namespace",
-            "limit": "limit",
+            "count": "count",
             "offset": "offset",
         }
 
@@ -303,7 +300,7 @@ class FleetServerHistory(Operation):
         return {
             "fleetID": True,
             "namespace": True,
-            "limit": False,
+            "count": False,
             "offset": False,
         }
 

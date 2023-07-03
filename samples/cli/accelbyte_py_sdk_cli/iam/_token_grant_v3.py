@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (6.0.1)
+# AGS Iam Service (6.0.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenWithDeviceCookieRespo
 @click.argument("grant_type", type=str)
 @click.option("--auth_trust_id", "auth_trust_id", type=str)
 @click.option("--device_id", "device_id", type=str)
+@click.option("--additional_data", "additional_data", type=str)
 @click.option("--client_id", "client_id", type=str)
 @click.option("--code", "code", type=str)
 @click.option("--code_verifier", "code_verifier", type=str)
@@ -54,6 +55,7 @@ def token_grant_v3(
     grant_type: str,
     auth_trust_id: Optional[str] = None,
     device_id: Optional[str] = None,
+    additional_data: Optional[str] = None,
     client_id: Optional[str] = None,
     code: Optional[str] = None,
     code_verifier: Optional[str] = None,
@@ -78,6 +80,7 @@ def token_grant_v3(
         grant_type=grant_type,
         auth_trust_id=auth_trust_id,
         device_id=device_id,
+        additional_data=additional_data,
         client_id=client_id,
         code=code,
         code_verifier=code_verifier,

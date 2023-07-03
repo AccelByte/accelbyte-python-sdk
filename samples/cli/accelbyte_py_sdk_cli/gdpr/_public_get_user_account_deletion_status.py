@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Gdpr Service (2.0.1)
+# AGS Gdpr Service (2.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Command (0.1.0)
+# Fleet Commander (0.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,7 +39,7 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 @click.command()
 @click.argument("fleet_id", type=str)
-@click.option("--limit", "limit", type=int)
+@click.option("--count", "count", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -47,7 +47,7 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 @click.option("--doc", type=bool)
 def fleet_server_history(
     fleet_id: str,
-    limit: Optional[int] = None,
+    count: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -64,7 +64,7 @@ def fleet_server_history(
         login_as_internal(login_as)
     result, error = fleet_server_history_internal(
         fleet_id=fleet_id,
-        limit=limit,
+        count=count,
         offset=offset,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

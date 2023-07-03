@@ -6,9 +6,9 @@
 
 # template file: ags_py_codegen
 
-"""Auto-generated package that contains models used by the Fleet Command."""
+"""Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -43,6 +43,7 @@ from .api_image_list import ApiImageList
 from .api_image_list_item import ApiImageListItem
 from .api_image_update import ApiImageUpdate
 from .api_instance_type_description_response import ApiInstanceTypeDescriptionResponse
+from .api_paging_info import ApiPagingInfo
 from .api_port_configuration import ApiPortConfiguration
 from .api_referencing_fleet import ApiReferencingFleet
 from .api_region_config import ApiRegionConfig

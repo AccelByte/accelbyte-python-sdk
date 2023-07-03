@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ds Log Manager Service (3.3.0)
+# AccelByte Gaming Services Ds Log Manager Service (3.3.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

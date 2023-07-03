@@ -1,3 +1,9 @@
+<a name="v0.44.0"></a>
+## [v0.44.0]
+### ci
+- **generate:** wrong spec commit hash if no recent changes enough in stage_extend-sdk
+
+
 ## v0.43.0
 - Update spec for AccelByte Cloud v3.51.0.
 - **integration tests:** fix do_get_store to return only draft stores

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.15.4)
+# AccelByte Gaming Services Session Service (2.18.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,6 +67,8 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         native_session_setting: (NativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
 
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
+
+        psn_base_url: (PSNBaseUrl) OPTIONAL str
     """
 
     # region fields
@@ -88,6 +90,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
     max_active_sessions: int  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
+    psn_base_url: str  # OPTIONAL
 
     # endregion fields
 
@@ -189,6 +192,12 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         self.preferred_claim_keys = value
         return self
 
+    def with_psn_base_url(
+        self, value: str
+    ) -> ApimodelsUpdateConfigurationTemplateRequest:
+        self.psn_base_url = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -265,6 +274,10 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
         elif include_empty:
             result["preferredClaimKeys"] = []
+        if hasattr(self, "psn_base_url"):
+            result["PSNBaseUrl"] = str(self.psn_base_url)
+        elif include_empty:
+            result["PSNBaseUrl"] = ""
         return result
 
     # endregion to methods
@@ -291,6 +304,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         max_active_sessions: Optional[int] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         preferred_claim_keys: Optional[List[str]] = None,
+        psn_base_url: Optional[str] = None,
         **kwargs,
     ) -> ApimodelsUpdateConfigurationTemplateRequest:
         instance = cls()
@@ -316,6 +330,8 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             instance.native_session_setting = native_session_setting
         if preferred_claim_keys is not None:
             instance.preferred_claim_keys = preferred_claim_keys
+        if psn_base_url is not None:
+            instance.psn_base_url = psn_base_url
         return instance
 
     @classmethod
@@ -404,6 +420,10 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             ]
         elif include_empty:
             instance.preferred_claim_keys = []
+        if "PSNBaseUrl" in dict_ and dict_["PSNBaseUrl"] is not None:
+            instance.psn_base_url = str(dict_["PSNBaseUrl"])
+        elif include_empty:
+            instance.psn_base_url = ""
         return instance
 
     @classmethod
@@ -464,6 +484,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             "maxActiveSessions": "max_active_sessions",
             "NativeSessionSetting": "native_session_setting",
             "preferredClaimKeys": "preferred_claim_keys",
+            "PSNBaseUrl": "psn_base_url",
         }
 
     @staticmethod
@@ -486,6 +507,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             "maxActiveSessions": False,
             "NativeSessionSetting": False,
             "preferredClaimKeys": False,
+            "PSNBaseUrl": False,
         }
 
     # endregion static methods

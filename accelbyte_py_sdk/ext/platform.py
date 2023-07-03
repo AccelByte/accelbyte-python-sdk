@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.30.2)
+# AccelByte Gaming Services Platform Service (4.30.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,7 @@ from ..api.platform.models import AdditionalData
 from ..api.platform.models import AdminOrderCreate
 from ..api.platform.models import AdyenConfig
 from ..api.platform.models import AliPayConfig
+from ..api.platform.models import AppConfig
 from ..api.platform.models import AppEntitlementInfo
 from ..api.platform.models import AppEntitlementPagingSlicedResult
 from ..api.platform.models import AppInfo
@@ -40,6 +41,8 @@ from ..api.platform.models import AppleIAPConfigRequest
 from ..api.platform.models import AppleIAPReceipt
 from ..api.platform.models import AvailableComparison
 from ..api.platform.models import AvailablePredicate
+from ..api.platform.models import BaseCustomConfig
+from ..api.platform.models import BaseTLSConfig
 from ..api.platform.models import BasicCategoryInfo
 from ..api.platform.models import BasicItem
 from ..api.platform.models import BillingAccount
@@ -153,6 +156,7 @@ from ..api.platform.models import GoogleIAPConfigRequest
 from ..api.platform.models import GoogleIAPReceipt
 from ..api.platform.models import GoogleReceiptResolveResult
 from ..api.platform.models import GrantSubscriptionDaysRequest
+from ..api.platform.models import GrpcServerInfo
 from ..api.platform.models import HierarchicalCategoryInfo
 from ..api.platform.models import IAPConsumeHistoryInfo
 from ..api.platform.models import IAPConsumeHistoryPagingSlicedResult
@@ -198,6 +202,8 @@ from ..api.platform.models import KeyPagingSliceResult
 from ..api.platform.models import ListViewInfo
 from ..api.platform.models import Localization
 from ..api.platform.models import LootBoxConfig
+from ..api.platform.models import LootBoxPluginConfigInfo
+from ..api.platform.models import LootBoxPluginConfigUpdate
 from ..api.platform.models import LootBoxReward
 from ..api.platform.models import MockIAPReceipt
 from ..api.platform.models import NotificationProcessResult
@@ -269,6 +275,7 @@ from ..api.platform.models import PlaystationIAPConfigRequest
 from ..api.platform.models import PopulatedItemInfo
 from ..api.platform.models import Predicate
 from ..api.platform.models import PredicateValidateResult
+from ..api.platform.models import PublicCustomConfigInfo
 from ..api.platform.models import PurchaseCondition
 from ..api.platform.models import PurchaseConditionUpdate
 from ..api.platform.models import PurchasedItemCount
@@ -289,6 +296,8 @@ from ..api.platform.models import RevocationConfigUpdate
 from ..api.platform.models import RevocationError
 from ..api.platform.models import RevocationHistoryInfo
 from ..api.platform.models import RevocationHistoryPagingSlicedResult
+from ..api.platform.models import RevocationPluginConfigInfo
+from ..api.platform.models import RevocationPluginConfigUpdate
 from ..api.platform.models import RevocationRequest
 from ..api.platform.models import RevocationResult
 from ..api.platform.models import RevokeCurrency
@@ -310,6 +319,8 @@ from ..api.platform.models import SectionCreate
 from ..api.platform.models import SectionInfo
 from ..api.platform.models import SectionItem
 from ..api.platform.models import SectionPagingSlicedResult
+from ..api.platform.models import SectionPluginConfigInfo
+from ..api.platform.models import SectionPluginConfigUpdate
 from ..api.platform.models import SectionUpdate
 from ..api.platform.models import ServicePluginConfigInfo
 from ..api.platform.models import ServicePluginConfigUpdate
@@ -333,6 +344,7 @@ from ..api.platform.models import SubscriptionActivityPagingSlicedResult
 from ..api.platform.models import SubscriptionInfo
 from ..api.platform.models import SubscriptionPagingSlicedResult
 from ..api.platform.models import SubscriptionSummary
+from ..api.platform.models import TLSConfig
 from ..api.platform.models import TaxResult
 from ..api.platform.models import TestResult
 from ..api.platform.models import TicketAcquireRequest
@@ -443,6 +455,12 @@ def create_ali_pay_config_example() -> AliPayConfig:
     instance.private_key = randomize()
     instance.public_key = randomize()
     instance.return_url = randomize("url")
+    return instance
+
+
+def create_app_config_example() -> AppConfig:
+    instance = AppConfig()
+    instance.app_name = randomize()
     return instance
 
 
@@ -557,6 +575,19 @@ def create_available_predicate_example() -> AvailablePredicate:
     instance.predicate_type = randomize()
     instance.show_any_of = randomize("bool")
     instance.value_type = randomize()
+    return instance
+
+
+def create_base_custom_config_example() -> BaseCustomConfig:
+    instance = BaseCustomConfig()
+    instance.connection_type = randomize()
+    instance.grpc_server_address = randomize()
+    return instance
+
+
+def create_base_tls_config_example() -> BaseTLSConfig:
+    instance = BaseTLSConfig()
+    instance.root_cert_file_name = randomize()
     return instance
 
 
@@ -1855,6 +1886,15 @@ def create_grant_subscription_days_request_example() -> GrantSubscriptionDaysReq
     return instance
 
 
+def create_grpc_server_info_example() -> GrpcServerInfo:
+    instance = GrpcServerInfo()
+    instance.address = randomize()
+    instance.connection_type_enum = randomize()
+    instance.status = randomize()
+    instance.tls_config = create_tls_config_example()
+    return instance
+
+
 def create_hierarchical_category_info_example() -> HierarchicalCategoryInfo:
     instance = HierarchicalCategoryInfo()
     instance.category_path = randomize()
@@ -2429,6 +2469,23 @@ def create_loot_box_config_example() -> LootBoxConfig:
     instance.reward_count = randomize("int", min_val=1, max_val=1000)
     instance.rewards = [create_loot_box_reward_example()]
     instance.roll_function = randomize()
+    return instance
+
+
+def create_loot_box_plugin_config_info_example() -> LootBoxPluginConfigInfo:
+    instance = LootBoxPluginConfigInfo()
+    instance.namespace = randomize("slug")
+    instance.app_config = create_app_config_example()
+    instance.custom_config = create_public_custom_config_info_example()
+    instance.extend_type = randomize()
+    return instance
+
+
+def create_loot_box_plugin_config_update_example() -> LootBoxPluginConfigUpdate:
+    instance = LootBoxPluginConfigUpdate()
+    instance.extend_type = randomize()
+    instance.app_config = create_app_config_example()
+    instance.custom_config = create_base_custom_config_example()
     return instance
 
 
@@ -3298,6 +3355,14 @@ def create_predicate_validate_result_example() -> PredicateValidateResult:
     return instance
 
 
+def create_public_custom_config_info_example() -> PublicCustomConfigInfo:
+    instance = PublicCustomConfigInfo()
+    instance.connection_type = randomize()
+    instance.grpc_server_address = randomize()
+    instance.tls_config = create_base_tls_config_example()
+    return instance
+
+
 def create_purchase_condition_example() -> PurchaseCondition:
     instance = PurchaseCondition()
     instance.condition_groups = [create_condition_group_example()]
@@ -3491,6 +3556,23 @@ def create_revocation_history_paging_sliced_result_example() -> (
     instance = RevocationHistoryPagingSlicedResult()
     instance.data = [create_revocation_history_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_revocation_plugin_config_info_example() -> RevocationPluginConfigInfo:
+    instance = RevocationPluginConfigInfo()
+    instance.namespace = randomize("slug")
+    instance.app_config = create_app_config_example()
+    instance.custom_config = create_public_custom_config_info_example()
+    instance.extend_type = randomize()
+    return instance
+
+
+def create_revocation_plugin_config_update_example() -> RevocationPluginConfigUpdate:
+    instance = RevocationPluginConfigUpdate()
+    instance.extend_type = randomize()
+    instance.app_config = create_app_config_example()
+    instance.custom_config = create_base_custom_config_example()
     return instance
 
 
@@ -3703,6 +3785,23 @@ def create_section_paging_sliced_result_example() -> SectionPagingSlicedResult:
     instance = SectionPagingSlicedResult()
     instance.data = [create_full_section_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_section_plugin_config_info_example() -> SectionPluginConfigInfo:
+    instance = SectionPluginConfigInfo()
+    instance.namespace = randomize("slug")
+    instance.app_config = create_app_config_example()
+    instance.custom_config = create_public_custom_config_info_example()
+    instance.extend_type = randomize()
+    return instance
+
+
+def create_section_plugin_config_update_example() -> SectionPluginConfigUpdate:
+    instance = SectionPluginConfigUpdate()
+    instance.extend_type = randomize()
+    instance.app_config = create_app_config_example()
+    instance.custom_config = create_base_custom_config_example()
     return instance
 
 
@@ -4080,6 +4179,13 @@ def create_timed_ownership_example() -> TimedOwnership:
     instance = TimedOwnership()
     instance.owned = randomize("bool")
     instance.end_date = randomize("date")
+    return instance
+
+
+def create_tls_config_example() -> TLSConfig:
+    instance = TLSConfig()
+    instance.root_cert_file_bytes = [randomize()]
+    instance.root_cert_file_name = randomize()
     return instance
 
 

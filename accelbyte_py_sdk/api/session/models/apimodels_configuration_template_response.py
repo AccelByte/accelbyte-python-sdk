@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.15.4)
+# AccelByte Gaming Services Session Service (2.18.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -74,6 +74,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
 
+        psn_base_url: (PSNBaseUrl) OPTIONAL str
+
         requested_regions: (requestedRegions) OPTIONAL List[str]
     """
 
@@ -99,6 +101,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     max_active_sessions: int  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
+    psn_base_url: str  # OPTIONAL
     requested_regions: List[str]  # OPTIONAL
 
     # endregion fields
@@ -195,6 +198,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self.preferred_claim_keys = value
         return self
 
+    def with_psn_base_url(self, value: str) -> ApimodelsConfigurationTemplateResponse:
+        self.psn_base_url = value
+        return self
+
     def with_requested_regions(
         self, value: List[str]
     ) -> ApimodelsConfigurationTemplateResponse:
@@ -289,6 +296,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
         elif include_empty:
             result["preferredClaimKeys"] = []
+        if hasattr(self, "psn_base_url"):
+            result["PSNBaseUrl"] = str(self.psn_base_url)
+        elif include_empty:
+            result["PSNBaseUrl"] = ""
         if hasattr(self, "requested_regions"):
             result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
         elif include_empty:
@@ -322,6 +333,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         max_active_sessions: Optional[int] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         preferred_claim_keys: Optional[List[str]] = None,
+        psn_base_url: Optional[str] = None,
         requested_regions: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsConfigurationTemplateResponse:
@@ -351,6 +363,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.native_session_setting = native_session_setting
         if preferred_claim_keys is not None:
             instance.preferred_claim_keys = preferred_claim_keys
+        if psn_base_url is not None:
+            instance.psn_base_url = psn_base_url
         if requested_regions is not None:
             instance.requested_regions = requested_regions
         return instance
@@ -453,6 +467,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             ]
         elif include_empty:
             instance.preferred_claim_keys = []
+        if "PSNBaseUrl" in dict_ and dict_["PSNBaseUrl"] is not None:
+            instance.psn_base_url = str(dict_["PSNBaseUrl"])
+        elif include_empty:
+            instance.psn_base_url = ""
         if "requestedRegions" in dict_ and dict_["requestedRegions"] is not None:
             instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
         elif include_empty:
@@ -520,6 +538,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "maxActiveSessions": "max_active_sessions",
             "nativeSessionSetting": "native_session_setting",
             "preferredClaimKeys": "preferred_claim_keys",
+            "PSNBaseUrl": "psn_base_url",
             "requestedRegions": "requested_regions",
         }
 
@@ -546,6 +565,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "maxActiveSessions": False,
             "nativeSessionSetting": False,
             "preferredClaimKeys": False,
+            "PSNBaseUrl": False,
             "requestedRegions": False,
         }
 

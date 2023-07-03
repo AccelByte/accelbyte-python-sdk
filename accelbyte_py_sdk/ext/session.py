@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.15.4)
+# AccelByte Gaming Services Session Service (2.18.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -49,6 +49,7 @@ from ..api.session.models import ApimodelsPlayersCurrentPlatformRequest
 from ..api.session.models import ApimodelsPlayersCurrentPlatformResponse
 from ..api.session.models import ApimodelsPromoteLeaderRequest
 from ..api.session.models import ApimodelsPublicConfiguration
+from ..api.session.models import ApimodelsPutPlatformCredentialsRequest
 from ..api.session.models import ApimodelsRequestMember
 from ..api.session.models import ApimodelsResponseDeleteBulkGameSessions
 from ..api.session.models import ApimodelsSessionInviteRequest
@@ -62,6 +63,7 @@ from ..api.session.models import ModelsDSMConfigRecord
 from ..api.session.models import ModelsDefaultDSMCConfig
 from ..api.session.models import ModelsGameServer
 from ..api.session.models import ModelsNativeSessionSetting
+from ..api.session.models import ModelsPSNAppServerCredentials
 from ..api.session.models import ModelsPartyMembers
 from ..api.session.models import ModelsTeam
 from ..api.session.models import ModelsUserPlatformInfo
@@ -119,6 +121,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
+    instance.psn_base_url = randomize("url")
     instance.requested_regions = [randomize()]
     return instance
 
@@ -153,6 +156,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
+    instance.psn_base_url = randomize("url")
     return instance
 
 
@@ -377,8 +381,18 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.type_ = randomize()
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
+    instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
+    instance.psn_base_url = randomize("url")
     instance.requested_regions = [randomize()]
+    return instance
+
+
+def create_apimodels_put_platform_credentials_request_example() -> (
+    ApimodelsPutPlatformCredentialsRequest
+):
+    instance = ApimodelsPutPlatformCredentialsRequest()
+    instance.psn = create_models_psn_app_server_credentials_example()
     return instance
 
 
@@ -427,6 +441,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
+    instance.psn_base_url = randomize("url")
     return instance
 
 
@@ -541,6 +556,7 @@ def create_models_native_session_setting_example() -> ModelsNativeSessionSetting
     instance.session_title = randomize()
     instance.xbox_service_config_id = randomize()
     instance.xbox_session_template_name = randomize()
+    instance.localized_session_name = {randomize(): randomize()}
     instance.psn_supported_platforms = [randomize()]
     instance.should_sync = randomize("bool")
     return instance
@@ -550,6 +566,14 @@ def create_models_party_members_example() -> ModelsPartyMembers:
     instance = ModelsPartyMembers()
     instance.party_id = randomize("uid")
     instance.user_i_ds = [randomize()]
+    return instance
+
+
+def create_models_psn_app_server_credentials_example() -> ModelsPSNAppServerCredentials:
+    instance = ModelsPSNAppServerCredentials()
+    instance.client_id = randomize("uid")
+    instance.client_secret = randomize()
+    instance.scope = randomize()
     return instance
 
 

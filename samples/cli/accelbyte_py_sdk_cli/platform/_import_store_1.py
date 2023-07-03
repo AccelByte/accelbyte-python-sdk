@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.30.2)
+# AGS Platform Service (4.30.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.platform.models import ImportStoreResult
 @click.command()
 @click.option("--file", "file", type=str)
 @click.option("--store_id", "store_id", type=str)
+@click.option("--strict_mode", "strict_mode", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -45,6 +46,7 @@ from accelbyte_py_sdk.api.platform.models import ImportStoreResult
 def import_store_1(
     file: Optional[str] = None,
     store_id: Optional[str] = None,
+    strict_mode: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -61,6 +63,7 @@ def import_store_1(
     result, error = import_store_1_internal(
         file=file,
         store_id=store_id,
+        strict_mode=strict_mode,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

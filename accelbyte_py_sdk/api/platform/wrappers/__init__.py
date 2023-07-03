@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.30.2"
+__version__ = "4.30.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -691,12 +691,38 @@ from ._section import query_sections_async
 from ._section import update_section
 from ._section import update_section_async
 
+from ._service_plugin_config import delete_loot_box_plugin_config
+from ._service_plugin_config import delete_loot_box_plugin_config_async
+from ._service_plugin_config import delete_loot_box_plugin_config_1
+from ._service_plugin_config import delete_loot_box_plugin_config_1_async
+from ._service_plugin_config import delete_section_plugin_config
+from ._service_plugin_config import delete_section_plugin_config_async
 from ._service_plugin_config import delete_service_plugin_config
 from ._service_plugin_config import delete_service_plugin_config_async
+from ._service_plugin_config import get_loot_box_grpc_info
+from ._service_plugin_config import get_loot_box_grpc_info_async
+from ._service_plugin_config import get_loot_box_plugin_config
+from ._service_plugin_config import get_loot_box_plugin_config_async
+from ._service_plugin_config import get_loot_box_plugin_config_1
+from ._service_plugin_config import get_loot_box_plugin_config_1_async
+from ._service_plugin_config import get_section_plugin_config
+from ._service_plugin_config import get_section_plugin_config_async
 from ._service_plugin_config import get_service_plugin_config
 from ._service_plugin_config import get_service_plugin_config_async
+from ._service_plugin_config import update_loot_box_plugin_config
+from ._service_plugin_config import update_loot_box_plugin_config_async
+from ._service_plugin_config import update_loot_box_plugin_config_1
+from ._service_plugin_config import update_loot_box_plugin_config_1_async
+from ._service_plugin_config import update_section_plugin_config
+from ._service_plugin_config import update_section_plugin_config_async
 from ._service_plugin_config import update_service_plugin_config
 from ._service_plugin_config import update_service_plugin_config_async
+from ._service_plugin_config import upload_revocation_plugin_config_cert
+from ._service_plugin_config import upload_revocation_plugin_config_cert_async
+from ._service_plugin_config import upload_section_plugin_config_cert
+from ._service_plugin_config import upload_section_plugin_config_cert_async
+from ._service_plugin_config import uplod_loot_box_plugin_config_cert
+from ._service_plugin_config import uplod_loot_box_plugin_config_cert_async
 
 from ._session_platform import register_xbl_sessions
 from ._session_platform import register_xbl_sessions_async

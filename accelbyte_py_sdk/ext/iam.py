@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (6.0.1)
+# AccelByte Gaming Services Iam Service (6.0.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -2221,6 +2221,8 @@ def create_model_token_third_party_link_status_response_example() -> (
 ):
     instance = ModelTokenThirdPartyLinkStatusResponse()
     instance.linked = randomize("bool")
+    instance.platform_token = randomize()
+    instance.sandbox_id = randomize()
     return instance
 
 

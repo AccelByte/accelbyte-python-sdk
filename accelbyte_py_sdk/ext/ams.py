@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Command (0.1.0)
+# Fleet Commander (0.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,6 +53,7 @@ from ..api.ams.models import ApiImageList
 from ..api.ams.models import ApiImageListItem
 from ..api.ams.models import ApiImageUpdate
 from ..api.ams.models import ApiInstanceTypeDescriptionResponse
+from ..api.ams.models import ApiPagingInfo
 from ..api.ams.models import ApiPortConfiguration
 from ..api.ams.models import ApiReferencingFleet
 from ..api.ams.models import ApiRegionConfig
@@ -129,6 +130,7 @@ def create_api_ds_history_event_example() -> ApiDSHistoryEvent:
 def create_api_ds_history_list_example() -> ApiDSHistoryList:
     instance = ApiDSHistoryList()
     instance.events = [create_api_ds_history_event_example()]
+    instance.paging = create_api_paging_info_example()
     return instance
 
 
@@ -201,11 +203,11 @@ def create_api_fleet_list_response_example() -> ApiFleetListResponse:
 def create_api_fleet_parameters_example() -> ApiFleetParameters:
     instance = ApiFleetParameters()
     instance.active = randomize("bool")
-    instance.claim_keys = [randomize()]
     instance.ds_host_configuration = create_api_ds_host_configuration_example()
     instance.image_deployment_profile = create_api_image_deployment_profile_example()
     instance.name = randomize()
     instance.regions = [create_api_region_config_example()]
+    instance.claim_keys = [randomize()]
     return instance
 
 
@@ -325,6 +327,19 @@ def create_api_instance_type_description_response_example() -> (
     instance.min_speed = randomize()
     instance.name = randomize()
     instance.virtual_cpu = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_api_paging_info_example() -> ApiPagingInfo:
+    instance = ApiPagingInfo()
+    instance.current_page = randomize("int", min_val=1, max_val=1000)
+    instance.has_next = randomize("bool")
+    instance.has_pages = randomize("bool")
+    instance.has_prev = randomize("bool")
+    instance.next_ = randomize()
+    instance.page_nums = [randomize("int", min_val=1, max_val=1000)]
+    instance.previous = randomize()
+    instance.total = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

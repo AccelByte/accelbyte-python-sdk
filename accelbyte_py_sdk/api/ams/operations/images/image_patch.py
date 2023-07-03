@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Command (0.1.0)
+# Fleet Commander (0.2.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,9 +38,6 @@ class ImagePatch(Operation):
     """Edit the image name, toggle IsProtected, or add/remove tags (ImagePatch)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}

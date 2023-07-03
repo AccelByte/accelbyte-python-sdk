@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Command (0.1.0)
+# AccelByte Gaming Services Platform Service (4.30.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,35 +29,51 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import GrpcServerInfo
 
-class Func1(Operation):
-    """Version info (func1)
+
+class GetLootBoxGrpcInfo(Operation):
+    """Get lootbox plugin gRPC info (getLootBoxGrpcInfo)
+
+    Get lootbox plugin gRPC info.
+    Other detail info:
+
+      * Required permission : resource= ADMIN:NAMESPACE:{namespace}:PLUGIN:CATALOG , action=2 (READ)
 
     Properties:
-        url: /ams/version
+        url: /platform/admin/namespaces/{namespace}/catalog/plugins/lootbox/grpcInfo
 
         method: GET
 
-        tags: []
+        tags: ["ServicePluginConfig"]
 
         consumes: []
 
-        produces: ["application/json"]
+        produces: []
 
         securities: [BEARER_AUTH]
 
+        namespace: (namespace) REQUIRED str in path
+
+        force: (force) OPTIONAL bool in query
+
     Responses:
-        200: OK - (OK)
+        200: OK - GrpcServerInfo (successful operation)
     """
 
     # region fields
 
-    _url: str = "/ams/version"
+    _url: str = (
+        "/platform/admin/namespaces/{namespace}/catalog/plugins/lootbox/grpcInfo"
+    )
     _method: str = "GET"
     _consumes: List[str] = []
-    _produces: List[str] = ["application/json"]
+    _produces: List[str] = []
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
+
+    namespace: str  # REQUIRED in [path]
+    force: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -96,7 +112,22 @@ class Func1(Operation):
     # region get_x_params methods
 
     def get_all_params(self) -> dict:
-        return {}
+        return {
+            "path": self.get_path_params(),
+            "query": self.get_query_params(),
+        }
+
+    def get_path_params(self) -> dict:
+        result = {}
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "force"):
+            result["force"] = self.force
+        return result
 
     # endregion get_x_params methods
 
@@ -106,12 +137,28 @@ class Func1(Operation):
 
     # region with_x methods
 
+    def with_namespace(self, value: str) -> GetLootBoxGrpcInfo:
+        self.namespace = value
+        return self
+
+    def with_force(self, value: bool) -> GetLootBoxGrpcInfo:
+        self.force = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = ""
+        if hasattr(self, "force") and self.force:
+            result["force"] = bool(self.force)
+        elif include_empty:
+            result["force"] = False
         return result
 
     # endregion to methods
@@ -121,10 +168,10 @@ class Func1(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, GrpcServerInfo], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (OK)
+        200: OK - GrpcServerInfo (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -140,7 +187,7 @@ class Func1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return GrpcServerInfo.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -151,21 +198,42 @@ class Func1(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, **kwargs) -> Func1:
+    def create(
+        cls, namespace: str, force: Optional[bool] = None, **kwargs
+    ) -> GetLootBoxGrpcInfo:
         instance = cls()
+        instance.namespace = namespace
+        if force is not None:
+            instance.force = force
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> Func1:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> GetLootBoxGrpcInfo:
         instance = cls()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = ""
+        if "force" in dict_ and dict_["force"] is not None:
+            instance.force = bool(dict_["force"])
+        elif include_empty:
+            instance.force = False
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {}
+        return {
+            "namespace": "namespace",
+            "force": "force",
+        }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
-        return {}
+        return {
+            "namespace": True,
+            "force": False,
+        }
 
     # endregion static methods

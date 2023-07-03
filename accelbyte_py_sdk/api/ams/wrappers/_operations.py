@@ -31,7 +31,6 @@ from ....core import same_doc_as
 
 
 from ..operations.operations import BasicHealthCheck
-from ..operations.operations import Func1
 
 
 @same_doc_as(BasicHealthCheck)
@@ -81,56 +80,6 @@ async def basic_health_check_async(
         200: OK - (OK)
     """
     request = BasicHealthCheck.create()
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(Func1)
-def func1(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
-    """Version info (func1)
-
-    Properties:
-        url: /ams/version
-
-        method: GET
-
-        tags: []
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-    Responses:
-        200: OK - (OK)
-    """
-    request = Func1.create()
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(Func1)
-async def func1_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
-    """Version info (func1)
-
-    Properties:
-        url: /ams/version
-
-        method: GET
-
-        tags: []
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-    Responses:
-        200: OK - (OK)
-    """
-    request = Func1.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

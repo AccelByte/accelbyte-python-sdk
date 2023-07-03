@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.5.2"
+__version__ = "2.6.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Command (0.1.0)
+# Fleet Commander (0.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

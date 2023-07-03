@@ -6,9 +6,9 @@
 
 # template file: ags_py_codegen
 
-"""Auto-generated package that contains models used by the Fleet Command."""
+"""Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -29,6 +29,10 @@ from .wrappers import info_regions
 from .wrappers import info_regions_async
 from .wrappers import info_supported_instances
 from .wrappers import info_supported_instances_async
+
+# fleet_commander
+from .wrappers import func1
+from .wrappers import func1_async
 
 # fleets
 from .wrappers import fleet_claim_by_id
@@ -59,8 +63,6 @@ from .wrappers import image_patch_async
 # operations
 from .wrappers import basic_health_check
 from .wrappers import basic_health_check_async
-from .wrappers import func1
-from .wrappers import func1_async
 
 # servers
 from .wrappers import fleet_server_history

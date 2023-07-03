@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-gdpr-service (2.0.1)
+# justice-gdpr-service (2.1.0)
 
 from ._admin_get_list_deletion_data_request import admin_get_list_deletion_data_request
 from ._get_admin_email_configuration import get_admin_email_configuration
@@ -48,6 +48,15 @@ from ._public_cancel_user_personal_data_request import (
     public_cancel_user_personal_data_request,
 )
 from ._public_generate_personal_data_url import public_generate_personal_data_url
+from ._public_submit_my_account_deletion_request import (
+    public_submit_my_account_deletion_request,
+)
+from ._public_cancel_my_account_deletion_request import (
+    public_cancel_my_account_deletion_request,
+)
+from ._public_get_my_account_deletion_status import (
+    public_get_my_account_deletion_status,
+)
 
 
 commands = [
@@ -71,4 +80,7 @@ commands = [
     public_request_data_retrieval,
     public_cancel_user_personal_data_request,
     public_generate_personal_data_url,
+    public_submit_my_account_deletion_request,
+    public_cancel_my_account_deletion_request,
+    public_get_my_account_deletion_status,
 ]

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (6.0.1)
+# AccelByte Gaming Services Iam Service (6.0.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,11 +33,17 @@ class ModelTokenThirdPartyLinkStatusResponse(Model):
 
     Properties:
         linked: (linked) REQUIRED bool
+
+        platform_token: (platformToken) OPTIONAL str
+
+        sandbox_id: (sandboxId) OPTIONAL str
     """
 
     # region fields
 
     linked: bool  # REQUIRED
+    platform_token: str  # OPTIONAL
+    sandbox_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +51,14 @@ class ModelTokenThirdPartyLinkStatusResponse(Model):
 
     def with_linked(self, value: bool) -> ModelTokenThirdPartyLinkStatusResponse:
         self.linked = value
+        return self
+
+    def with_platform_token(self, value: str) -> ModelTokenThirdPartyLinkStatusResponse:
+        self.platform_token = value
+        return self
+
+    def with_sandbox_id(self, value: str) -> ModelTokenThirdPartyLinkStatusResponse:
+        self.sandbox_id = value
         return self
 
     # endregion with_x methods
@@ -57,6 +71,14 @@ class ModelTokenThirdPartyLinkStatusResponse(Model):
             result["linked"] = bool(self.linked)
         elif include_empty:
             result["linked"] = False
+        if hasattr(self, "platform_token"):
+            result["platformToken"] = str(self.platform_token)
+        elif include_empty:
+            result["platformToken"] = ""
+        if hasattr(self, "sandbox_id"):
+            result["sandboxId"] = str(self.sandbox_id)
+        elif include_empty:
+            result["sandboxId"] = ""
         return result
 
     # endregion to methods
@@ -64,9 +86,19 @@ class ModelTokenThirdPartyLinkStatusResponse(Model):
     # region static methods
 
     @classmethod
-    def create(cls, linked: bool, **kwargs) -> ModelTokenThirdPartyLinkStatusResponse:
+    def create(
+        cls,
+        linked: bool,
+        platform_token: Optional[str] = None,
+        sandbox_id: Optional[str] = None,
+        **kwargs,
+    ) -> ModelTokenThirdPartyLinkStatusResponse:
         instance = cls()
         instance.linked = linked
+        if platform_token is not None:
+            instance.platform_token = platform_token
+        if sandbox_id is not None:
+            instance.sandbox_id = sandbox_id
         return instance
 
     @classmethod
@@ -80,6 +112,14 @@ class ModelTokenThirdPartyLinkStatusResponse(Model):
             instance.linked = bool(dict_["linked"])
         elif include_empty:
             instance.linked = False
+        if "platformToken" in dict_ and dict_["platformToken"] is not None:
+            instance.platform_token = str(dict_["platformToken"])
+        elif include_empty:
+            instance.platform_token = ""
+        if "sandboxId" in dict_ and dict_["sandboxId"] is not None:
+            instance.sandbox_id = str(dict_["sandboxId"])
+        elif include_empty:
+            instance.sandbox_id = ""
         return instance
 
     @classmethod
@@ -124,12 +164,16 @@ class ModelTokenThirdPartyLinkStatusResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "linked": "linked",
+            "platformToken": "platform_token",
+            "sandboxId": "sandbox_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "linked": True,
+            "platformToken": False,
+            "sandboxId": False,
         }
 
     # endregion static methods

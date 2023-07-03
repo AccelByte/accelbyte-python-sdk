@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.30.2)
+# AccelByte Gaming Services Platform Service (4.30.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,6 +64,8 @@ class ImportStore1(Operation):
 
         store_id: (storeId) OPTIONAL str in query
 
+        strict_mode: (strictMode) OPTIONAL bool in query
+
     Responses:
         200: OK - ImportStoreResult (successful operation)
 
@@ -84,6 +86,7 @@ class ImportStore1(Operation):
     file: Any  # OPTIONAL in [form_data]
     namespace: str  # REQUIRED in [path]
     store_id: str  # OPTIONAL in [query]
+    strict_mode: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -144,6 +147,8 @@ class ImportStore1(Operation):
         result = {}
         if hasattr(self, "store_id"):
             result["storeId"] = self.store_id
+        if hasattr(self, "strict_mode"):
+            result["strictMode"] = self.strict_mode
         return result
 
     # endregion get_x_params methods
@@ -166,6 +171,10 @@ class ImportStore1(Operation):
         self.store_id = value
         return self
 
+    def with_strict_mode(self, value: bool) -> ImportStore1:
+        self.strict_mode = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -184,6 +193,10 @@ class ImportStore1(Operation):
             result["storeId"] = str(self.store_id)
         elif include_empty:
             result["storeId"] = ""
+        if hasattr(self, "strict_mode") and self.strict_mode:
+            result["strictMode"] = bool(self.strict_mode)
+        elif include_empty:
+            result["strictMode"] = False
         return result
 
     # endregion to methods
@@ -236,6 +249,7 @@ class ImportStore1(Operation):
         namespace: str,
         file: Optional[Any] = None,
         store_id: Optional[str] = None,
+        strict_mode: Optional[bool] = None,
         **kwargs,
     ) -> ImportStore1:
         instance = cls()
@@ -244,6 +258,8 @@ class ImportStore1(Operation):
             instance.file = file
         if store_id is not None:
             instance.store_id = store_id
+        if strict_mode is not None:
+            instance.strict_mode = strict_mode
         return instance
 
     @classmethod
@@ -261,6 +277,10 @@ class ImportStore1(Operation):
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
             instance.store_id = ""
+        if "strictMode" in dict_ and dict_["strictMode"] is not None:
+            instance.strict_mode = bool(dict_["strictMode"])
+        elif include_empty:
+            instance.strict_mode = False
         return instance
 
     @staticmethod
@@ -269,6 +289,7 @@ class ImportStore1(Operation):
             "file": "file",
             "namespace": "namespace",
             "storeId": "store_id",
+            "strictMode": "strict_mode",
         }
 
     @staticmethod
@@ -277,6 +298,7 @@ class ImportStore1(Operation):
             "file": False,
             "namespace": True,
             "storeId": False,
+            "strictMode": False,
         }
 
     # endregion static methods
