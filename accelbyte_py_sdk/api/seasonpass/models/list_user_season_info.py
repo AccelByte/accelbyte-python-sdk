@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Seasonpass Service (1.18.5)
+# AccelByte Gaming Services Seasonpass Service (1.19.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,11 +46,11 @@ class ListUserSeasonInfo(Model):
 
         namespace: (namespace) REQUIRED str
 
-        season: (season) REQUIRED SeasonSummary
-
         season_id: (seasonId) REQUIRED str
 
         user_id: (userId) REQUIRED str
+
+        season: (season) OPTIONAL SeasonSummary
     """
 
     # region fields
@@ -61,9 +61,9 @@ class ListUserSeasonInfo(Model):
     id_: str  # REQUIRED
     last_tier_index: int  # REQUIRED
     namespace: str  # REQUIRED
-    season: SeasonSummary  # REQUIRED
     season_id: str  # REQUIRED
     user_id: str  # REQUIRED
+    season: SeasonSummary  # OPTIONAL
 
     # endregion fields
 
@@ -93,16 +93,16 @@ class ListUserSeasonInfo(Model):
         self.namespace = value
         return self
 
-    def with_season(self, value: SeasonSummary) -> ListUserSeasonInfo:
-        self.season = value
-        return self
-
     def with_season_id(self, value: str) -> ListUserSeasonInfo:
         self.season_id = value
         return self
 
     def with_user_id(self, value: str) -> ListUserSeasonInfo:
         self.user_id = value
+        return self
+
+    def with_season(self, value: SeasonSummary) -> ListUserSeasonInfo:
+        self.season = value
         return self
 
     # endregion with_x methods
@@ -135,10 +135,6 @@ class ListUserSeasonInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "season"):
-            result["season"] = self.season.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["season"] = SeasonSummary()
         if hasattr(self, "season_id"):
             result["seasonId"] = str(self.season_id)
         elif include_empty:
@@ -147,6 +143,10 @@ class ListUserSeasonInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "season"):
+            result["season"] = self.season.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["season"] = SeasonSummary()
         return result
 
     # endregion to methods
@@ -162,9 +162,9 @@ class ListUserSeasonInfo(Model):
         id_: str,
         last_tier_index: int,
         namespace: str,
-        season: SeasonSummary,
         season_id: str,
         user_id: str,
+        season: Optional[SeasonSummary] = None,
         **kwargs,
     ) -> ListUserSeasonInfo:
         instance = cls()
@@ -174,9 +174,10 @@ class ListUserSeasonInfo(Model):
         instance.id_ = id_
         instance.last_tier_index = last_tier_index
         instance.namespace = namespace
-        instance.season = season
         instance.season_id = season_id
         instance.user_id = user_id
+        if season is not None:
+            instance.season = season
         return instance
 
     @classmethod
@@ -210,12 +211,6 @@ class ListUserSeasonInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "season" in dict_ and dict_["season"] is not None:
-            instance.season = SeasonSummary.create_from_dict(
-                dict_["season"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.season = SeasonSummary()
         if "seasonId" in dict_ and dict_["seasonId"] is not None:
             instance.season_id = str(dict_["seasonId"])
         elif include_empty:
@@ -224,6 +219,12 @@ class ListUserSeasonInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "season" in dict_ and dict_["season"] is not None:
+            instance.season = SeasonSummary.create_from_dict(
+                dict_["season"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.season = SeasonSummary()
         return instance
 
     @classmethod
@@ -271,9 +272,9 @@ class ListUserSeasonInfo(Model):
             "id": "id_",
             "lastTierIndex": "last_tier_index",
             "namespace": "namespace",
-            "season": "season",
             "seasonId": "season_id",
             "userId": "user_id",
+            "season": "season",
         }
 
     @staticmethod
@@ -285,9 +286,9 @@ class ListUserSeasonInfo(Model):
             "id": True,
             "lastTierIndex": True,
             "namespace": True,
-            "season": True,
             "seasonId": True,
             "userId": True,
+            "season": False,
         }
 
     # endregion static methods

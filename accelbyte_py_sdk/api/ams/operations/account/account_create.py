@@ -39,6 +39,9 @@ class AccountCreate(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/account
 

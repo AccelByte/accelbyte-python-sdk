@@ -38,6 +38,9 @@ class ImageList(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images
 

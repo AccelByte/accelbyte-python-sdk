@@ -111,6 +111,7 @@ from ..models import ModelUserInformation
 from ..models import ModelUserInvitationV3
 from ..models import ModelUserPasswordUpdateRequest
 from ..models import ModelUserPasswordUpdateV3Request
+from ..models import ModelUserPlatformMetadata
 from ..models import ModelUserResponse
 from ..models import ModelUserResponseV3
 from ..models import ModelUserUpdateRequest
@@ -155,6 +156,7 @@ from ..operations.users import AdminGetUserDeletionStatusV3
 from ..operations.users import AdminGetUserLoginHistoriesV3
 from ..operations.users import AdminGetUserMapping
 from ..operations.users import AdminGetUserPlatformAccountsV3
+from ..operations.users import AdminGetUserSinglePlatformAccount
 from ..operations.users import AdminInviteUserV3
 from ..operations.users import AdminLinkPlatformAccount
 from ..operations.users import AdminListUserIDByUserIDsV3
@@ -3419,6 +3421,11 @@ def admin_get_list_justice_platform_accounts(
 
     This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
 
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice
 
@@ -3470,6 +3477,11 @@ async def admin_get_list_justice_platform_accounts_async(
     """Get User Justice Platform Accounts (AdminGetListJusticePlatformAccounts)
 
     This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice
@@ -5255,6 +5267,134 @@ async def admin_get_user_platform_accounts_v3_async(
         after=after,
         before=before,
         limit=limit,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetUserSinglePlatformAccount)
+def admin_get_user_single_platform_account(
+    platform_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin get user single platform account metadata (AdminGetUserSinglePlatformAccount)
+
+    This endpoint gets user single platform account metadata.
+
+    Supported platforms are same with the supported login platforms.
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/metadata
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserPlatformMetadata (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserSinglePlatformAccount.create(
+        platform_id=platform_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetUserSinglePlatformAccount)
+async def admin_get_user_single_platform_account_async(
+    platform_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin get user single platform account metadata (AdminGetUserSinglePlatformAccount)
+
+    This endpoint gets user single platform account metadata.
+
+    Supported platforms are same with the supported login platforms.
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/metadata
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserPlatformMetadata (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserSinglePlatformAccount.create(
+        platform_id=platform_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

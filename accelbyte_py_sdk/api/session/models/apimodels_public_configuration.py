@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.18.3)
+# AccelByte Gaming Services Session Service (2.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,8 @@ class ApimodelsPublicConfiguration(Model):
     """Apimodels public configuration (apimodels.PublicConfiguration)
 
     Properties:
+        auto_join: (autoJoin) REQUIRED bool
+
         client_version: (clientVersion) REQUIRED str
 
         deployment: (deployment) REQUIRED str
@@ -64,13 +66,16 @@ class ApimodelsPublicConfiguration(Model):
 
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
 
-        psn_base_url: (PSNBaseUrl) OPTIONAL str
+        psn_base_url: (PSNBaseURL) OPTIONAL str
 
         requested_regions: (requestedRegions) OPTIONAL List[str]
+
+        tie_teams_session_lifetime: (tieTeamsSessionLifetime) OPTIONAL bool
     """
 
     # region fields
 
+    auto_join: bool  # REQUIRED
     client_version: str  # REQUIRED
     deployment: str  # REQUIRED
     inactive_timeout: int  # REQUIRED
@@ -88,10 +93,15 @@ class ApimodelsPublicConfiguration(Model):
     preferred_claim_keys: List[str]  # OPTIONAL
     psn_base_url: str  # OPTIONAL
     requested_regions: List[str]  # OPTIONAL
+    tie_teams_session_lifetime: bool  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_auto_join(self, value: bool) -> ApimodelsPublicConfiguration:
+        self.auto_join = value
+        return self
 
     def with_client_version(self, value: str) -> ApimodelsPublicConfiguration:
         self.client_version = value
@@ -167,12 +177,22 @@ class ApimodelsPublicConfiguration(Model):
         self.requested_regions = value
         return self
 
+    def with_tie_teams_session_lifetime(
+        self, value: bool
+    ) -> ApimodelsPublicConfiguration:
+        self.tie_teams_session_lifetime = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "auto_join"):
+            result["autoJoin"] = bool(self.auto_join)
+        elif include_empty:
+            result["autoJoin"] = False
         if hasattr(self, "client_version"):
             result["clientVersion"] = str(self.client_version)
         elif include_empty:
@@ -236,13 +256,17 @@ class ApimodelsPublicConfiguration(Model):
         elif include_empty:
             result["preferredClaimKeys"] = []
         if hasattr(self, "psn_base_url"):
-            result["PSNBaseUrl"] = str(self.psn_base_url)
+            result["PSNBaseURL"] = str(self.psn_base_url)
         elif include_empty:
-            result["PSNBaseUrl"] = ""
+            result["PSNBaseURL"] = ""
         if hasattr(self, "requested_regions"):
             result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
         elif include_empty:
             result["requestedRegions"] = []
+        if hasattr(self, "tie_teams_session_lifetime"):
+            result["tieTeamsSessionLifetime"] = bool(self.tie_teams_session_lifetime)
+        elif include_empty:
+            result["tieTeamsSessionLifetime"] = False
         return result
 
     # endregion to methods
@@ -252,6 +276,7 @@ class ApimodelsPublicConfiguration(Model):
     @classmethod
     def create(
         cls,
+        auto_join: bool,
         client_version: str,
         deployment: str,
         inactive_timeout: int,
@@ -269,9 +294,11 @@ class ApimodelsPublicConfiguration(Model):
         preferred_claim_keys: Optional[List[str]] = None,
         psn_base_url: Optional[str] = None,
         requested_regions: Optional[List[str]] = None,
+        tie_teams_session_lifetime: Optional[bool] = None,
         **kwargs,
     ) -> ApimodelsPublicConfiguration:
         instance = cls()
+        instance.auto_join = auto_join
         instance.client_version = client_version
         instance.deployment = deployment
         instance.inactive_timeout = inactive_timeout
@@ -295,6 +322,8 @@ class ApimodelsPublicConfiguration(Model):
             instance.psn_base_url = psn_base_url
         if requested_regions is not None:
             instance.requested_regions = requested_regions
+        if tie_teams_session_lifetime is not None:
+            instance.tie_teams_session_lifetime = tie_teams_session_lifetime
         return instance
 
     @classmethod
@@ -304,6 +333,10 @@ class ApimodelsPublicConfiguration(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "autoJoin" in dict_ and dict_["autoJoin"] is not None:
+            instance.auto_join = bool(dict_["autoJoin"])
+        elif include_empty:
+            instance.auto_join = False
         if "clientVersion" in dict_ and dict_["clientVersion"] is not None:
             instance.client_version = str(dict_["clientVersion"])
         elif include_empty:
@@ -375,14 +408,21 @@ class ApimodelsPublicConfiguration(Model):
             ]
         elif include_empty:
             instance.preferred_claim_keys = []
-        if "PSNBaseUrl" in dict_ and dict_["PSNBaseUrl"] is not None:
-            instance.psn_base_url = str(dict_["PSNBaseUrl"])
+        if "PSNBaseURL" in dict_ and dict_["PSNBaseURL"] is not None:
+            instance.psn_base_url = str(dict_["PSNBaseURL"])
         elif include_empty:
             instance.psn_base_url = ""
         if "requestedRegions" in dict_ and dict_["requestedRegions"] is not None:
             instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
         elif include_empty:
             instance.requested_regions = []
+        if (
+            "tieTeamsSessionLifetime" in dict_
+            and dict_["tieTeamsSessionLifetime"] is not None
+        ):
+            instance.tie_teams_session_lifetime = bool(dict_["tieTeamsSessionLifetime"])
+        elif include_empty:
+            instance.tie_teams_session_lifetime = False
         return instance
 
     @classmethod
@@ -426,6 +466,7 @@ class ApimodelsPublicConfiguration(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "autoJoin": "auto_join",
             "clientVersion": "client_version",
             "deployment": "deployment",
             "inactiveTimeout": "inactive_timeout",
@@ -441,13 +482,15 @@ class ApimodelsPublicConfiguration(Model):
             "fallbackClaimKeys": "fallback_claim_keys",
             "native_session_setting": "native_session_setting",
             "preferredClaimKeys": "preferred_claim_keys",
-            "PSNBaseUrl": "psn_base_url",
+            "PSNBaseURL": "psn_base_url",
             "requestedRegions": "requested_regions",
+            "tieTeamsSessionLifetime": "tie_teams_session_lifetime",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "autoJoin": True,
             "clientVersion": True,
             "deployment": True,
             "inactiveTimeout": True,
@@ -463,8 +506,9 @@ class ApimodelsPublicConfiguration(Model):
             "fallbackClaimKeys": False,
             "native_session_setting": False,
             "preferredClaimKeys": False,
-            "PSNBaseUrl": False,
+            "PSNBaseURL": False,
             "requestedRegions": False,
+            "tieTeamsSessionLifetime": False,
         }
 
     # endregion static methods

@@ -1,3 +1,9 @@
+<a name="v0.45.0"></a>
+## [v0.45.0]
+### feat
+- **mock-server:** change jenkinfiles for new mock-server path
+
+
 <a name="v0.44.0"></a>
 ## [v0.44.0]
 ### ci

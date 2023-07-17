@@ -37,6 +37,9 @@ class FleetDelete(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
 

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.18.3"
+__version__ = "2.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -119,6 +119,10 @@ from ._party import public_revoke_party_code_async
 from ._party import public_update_party
 from ._party import public_update_party_async
 
+from ._platform_credential import admin_delete_platform_credentials
+from ._platform_credential import admin_delete_platform_credentials_async
+from ._platform_credential import admin_get_platform_credentials
+from ._platform_credential import admin_get_platform_credentials_async
 from ._platform_credential import admin_update_platform_credentials
 from ._platform_credential import admin_update_platform_credentials_async
 

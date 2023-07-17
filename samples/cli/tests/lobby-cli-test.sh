@@ -44,85 +44,85 @@ lobby-user-unfriend-request '{"friendId": "odwpzS6DaDpv8N7Z"}' --login_with_auth
 lobby-add-friends-without-confirmation '{"friendIds": ["QVqGj6oDLjWjkY1a", "XlFcDtgOjchIua5t", "WEIC32ogW7olvbTg"]}' 'rhRTcPiSuL0Sly6X' --login_with_auth "Bearer foo"
 lobby-admin-get-all-config-v1 --login_with_auth "Bearer foo"
 lobby-admin-get-config-v1 --login_with_auth "Bearer foo"
-lobby-admin-update-config-v1 '{"allowInviteNonConnectedUser": true, "allowJoinPartyDuringMatchmaking": true, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 71, "cancelTicketOnDisconnect": false, "chatRateLimitBurst": 45, "chatRateLimitDuration": 25, "concurrentUsersLimit": 50, "disableInvitationOnJoinParty": true, "enableChat": true, "entitlementCheck": false, "entitlementItemID": "nzjMf8GZ2WBZqxYG", "generalRateLimitBurst": 83, "generalRateLimitDuration": 0, "keepPresenceActivityOnDisconnect": true, "maxDSWaitTime": 84, "maxPartyMember": 55, "profanityFilter": true, "readyConsentTimeout": 41, "unregisterDelay": 86}' --login_with_auth "Bearer foo"
+lobby-admin-update-config-v1 '{"allowInviteNonConnectedUser": true, "allowJoinPartyDuringMatchmaking": true, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 71, "cancelTicketOnDisconnect": false, "chatRateLimitBurst": 45, "chatRateLimitDuration": 25, "concurrentUsersLimit": 50, "disableInvitationOnJoinParty": true, "enableChat": true, "entitlementCheck": false, "entitlementItemID": "nzjMf8GZ2WBZqxYG", "generalRateLimitBurst": 83, "generalRateLimitDuration": 0, "keepPresenceActivityOnDisconnect": true, "maxDSWaitTime": 84, "maxFriendsLimit": 55, "maxPartyMember": 38, "profanityFilter": true, "readyConsentTimeout": 86, "unregisterDelay": 61}' --login_with_auth "Bearer foo"
 lobby-admin-export-config-v1 --login_with_auth "Bearer foo"
 lobby-admin-import-config-v1 --login_with_auth "Bearer foo"
-lobby-get-list-of-friends 'D6QVKNCWP75TB0i7' --login_with_auth "Bearer foo"
-lobby-get-incoming-friend-requests 'pKxR8dl0zRVW4EZG' --login_with_auth "Bearer foo"
-lobby-get-outgoing-friend-requests '9m0XcgGVbMqSszE8' --login_with_auth "Bearer foo"
-lobby-send-multiple-users-freeform-notification-v1-admin '{"message": "GHavj7AorKsxwkos", "topicName": "AVerXpc1C8XfwHuK", "userIds": ["eb9l3rGN9A3sNm84", "hddSpHt0P7MIIR7C", "kyF6C7duuyZ0GhDo"]}' --login_with_auth "Bearer foo"
-lobby-send-users-freeform-notification-v1-admin '{"message": "gqrhBRd8lDR6qVNP", "topicName": "RZYdFLIAjGGJddVC"}' --login_with_auth "Bearer foo"
-lobby-send-party-freeform-notification-v1-admin '{"message": "vu9vx5KQ7KYnIuMB", "topicName": "vaO35llzQRaT5kPx"}' 'UfofvnnSuB0y5WUl' --login_with_auth "Bearer foo"
-lobby-send-party-templated-notification-v1-admin '{"templateContext": {"rMdI4sNveabntBSx": "TeIv53HGCiljvjKo", "yD6SCwGrncqmLtjQ": "HAf8TgoNm03VLisV", "6zwPuo3td6TC6I3l": "MjGSWN2laRlxfcjH"}, "templateLanguage": "fYakUCTqGkE7wcWf", "templateSlug": "DslpJSqGAXQ0yYoN", "topicName": "RKd3IL5TAQ6iiPlS"}' 'C2uE4o5Vwdo3fePq' --login_with_auth "Bearer foo"
+lobby-get-list-of-friends 'XhT5FvdiRilZ7oFg' --login_with_auth "Bearer foo"
+lobby-get-incoming-friend-requests 'x4c8OumKtPDKJDXn' --login_with_auth "Bearer foo"
+lobby-get-outgoing-friend-requests '7Z4U68su8XfqlqNi' --login_with_auth "Bearer foo"
+lobby-send-multiple-users-freeform-notification-v1-admin '{"message": "TvB6SdAdIhUDrwoZ", "topicName": "5MecdKi5r6QEa1ys", "userIds": ["LEzth6mXhzkzWkFe", "ZSoEAcBdW19m4eu6", "d5tA5jUmiTqpyhPF"]}' --login_with_auth "Bearer foo"
+lobby-send-users-freeform-notification-v1-admin '{"message": "dxLzFQN05MYzYiKW", "topicName": "e5dNRljv7IPrDQQR"}' --login_with_auth "Bearer foo"
+lobby-send-party-freeform-notification-v1-admin '{"message": "gat0SevkLGMS0lyu", "topicName": "I9a2I9u6Vpbsx5w8"}' 'hqUI06UpOXGSLmCV' --login_with_auth "Bearer foo"
+lobby-send-party-templated-notification-v1-admin '{"templateContext": {"uHOPlLlkvR8sKgnu": "RkgghGoYupD391C2", "qtPYokahFjkQsfCa": "Tmt1d67FXGk2s9Q0", "mPVo3twu0MesTCf9": "x4rt69lna7qxNeIx"}, "templateLanguage": "Pz6MbwL6IY69z1Ua", "templateSlug": "LqYSYWytLPziZMdj", "topicName": "xcBZufQxGiHPllG4"}' 'cYEzfTD1ZBm3MqHc' --login_with_auth "Bearer foo"
 lobby-get-all-notification-templates-v1-admin --login_with_auth "Bearer foo"
-lobby-create-notification-template-v1-admin '{"templateContent": "IJA8IHtrkmu0hpDD", "templateLanguage": "WVAla2l5BYNtIuS5", "templateSlug": "S5XUdjsoqwGyzzWi"}' --login_with_auth "Bearer foo"
-lobby-send-users-templated-notification-v1-admin '{"templateContext": {"9gwQYv7t1o7TTr1D": "mrhZv15T7quIOvBM", "caYmvCkGZ5dAgqxp": "BFmaLoxozr6wfNPX", "2bOItRMvqtlB2jJC": "SQT279ZZPYGu0rdl"}, "templateLanguage": "gdWyOtXi3choQrpO", "templateSlug": "sDBU5SepjChB3V0v", "topicName": "52Dlym6puQ23xoJ8"}' --login_with_auth "Bearer foo"
-lobby-get-template-slug-localizations-template-v1-admin 'aeCnaLpUKp44YUDj' --login_with_auth "Bearer foo"
-lobby-delete-notification-template-slug-v1-admin 'asWIPUvmEejtGeoy' --login_with_auth "Bearer foo"
-lobby-get-single-template-localization-v1-admin 'IPa8ZRrvjj7il35M' 'XbN9oCMNqq98SjTv' --login_with_auth "Bearer foo"
-lobby-update-template-localization-v1-admin '{"templateContent": "hZNkSQ70D0H6BXks"}' 'UC9b6i5lZC9xv32e' '8c5csSovoqsZNBdt' --login_with_auth "Bearer foo"
-lobby-delete-template-localization-v1-admin 'e9NDUPVJf6c2Z0QZ' 'xfgPubTDIHrvqATh' --login_with_auth "Bearer foo"
-lobby-publish-template-localization-v1-admin 'uwjRHpKKTlmVr9Xu' 'oJbRFQSKVPHbn4Xx' --login_with_auth "Bearer foo"
+lobby-create-notification-template-v1-admin '{"templateContent": "UmLZZbSqb8RwNmn9", "templateLanguage": "HrNQy4uZAAiE0mit", "templateSlug": "9RGCCHYzUOcEdscK"}' --login_with_auth "Bearer foo"
+lobby-send-users-templated-notification-v1-admin '{"templateContext": {"HPEqgA8yu7Vk6Jt4": "Ymos9Jcdos4fYcTV", "U6RBt0zYoMcHyCUE": "XlAvxJMdalwSyliW", "MNW5NyLu0M3VHh2E": "I8JlDbPWbQ6Q9lNm"}, "templateLanguage": "qRBaAkLnvxkT1X68", "templateSlug": "cmDc3fxU8MyKrQpM", "topicName": "4hkkK6KKXNB3Gv0I"}' --login_with_auth "Bearer foo"
+lobby-get-template-slug-localizations-template-v1-admin 'qmF51TkhjYnaq6fo' --login_with_auth "Bearer foo"
+lobby-delete-notification-template-slug-v1-admin 'WvXa3bMrXsDr6kIL' --login_with_auth "Bearer foo"
+lobby-get-single-template-localization-v1-admin 'sSSyDdmykmoPYgc2' 'L4jk4Lo0LSP0pf4I' --login_with_auth "Bearer foo"
+lobby-update-template-localization-v1-admin '{"templateContent": "xjUkl535X3ateEKD"}' 'pADz1x3poD3Qgb3b' 'oLQQ1MzH7Qm8bwbm' --login_with_auth "Bearer foo"
+lobby-delete-template-localization-v1-admin 'XgdAPh1EThG96gAF' 'KK2WDgCcxvONZm3E' --login_with_auth "Bearer foo"
+lobby-publish-template-localization-v1-admin 'eERmDnyeFoF7VSZ6' 'pf3vneSD2Tb3g7mS' --login_with_auth "Bearer foo"
 lobby-get-all-notification-topics-v1-admin --login_with_auth "Bearer foo"
-lobby-create-notification-topic-v1-admin '{"description": "tu7LQRENjEEztx1W", "topicName": "sYSiZqan0nSBJroa"}' --login_with_auth "Bearer foo"
-lobby-get-notification-topic-v1-admin 'v91GXlvPG6bFYReV' --login_with_auth "Bearer foo"
-lobby-update-notification-topic-v1-admin '{"description": "HQipcCx9Zw5D2L7v"}' 'IYhGGSyEW4ZJJ42d' --login_with_auth "Bearer foo"
-lobby-delete-notification-topic-v1-admin '3PBddN8S48l9lyNA' --login_with_auth "Bearer foo"
-lobby-send-specific-user-freeform-notification-v1-admin '{"message": "pflxqMrj3oZk03QX", "topicName": "cKMDYDDxHSZjtqXy"}' 'J58f7Gc26SaiGVky' --login_with_auth "Bearer foo"
-lobby-send-specific-user-templated-notification-v1-admin '{"templateContext": {"dwYWQG26yUZNmTBc": "vrbYCwZtxFHyPLtI", "8ilbyDPUIj88cekd": "qCt81P1ktfIovmv9", "gsR5cJcHm3SZLxoR": "DFuuuySj29a9LJE8"}, "templateLanguage": "HoRS1X2PFAAMwzHP", "templateSlug": "xB1UskYs4Yw20DOq", "topicName": "OBSC2DKHRuPMMWH8"}' 'Yb33T5UBJCjfcnLR' --login_with_auth "Bearer foo"
-lobby-admin-get-party-data-v1 'fxeCSz9WEi8Klloe' --login_with_auth "Bearer foo"
-lobby-admin-update-party-attributes-v1 '{"custom_attribute": {"H0JT1yduat2vQR3b": {}, "iBfsu4jmsRE2w1yE": {}, "kLgh3tIYt4SqYUTL": {}}, "updatedAt": 61}' 'bGL8QOxtjzm8y2wN' --login_with_auth "Bearer foo"
-lobby-admin-join-party-v1 'hmwoYZyI4EFZKBcY' 'rCEAE7WIsfmx40NL' --login_with_auth "Bearer foo"
-lobby-admin-get-user-party-v1 'Rc6m8heKnWhzfe2N' --login_with_auth "Bearer foo"
+lobby-create-notification-topic-v1-admin '{"description": "QUhAEtrmjqU6YE3p", "topicName": "4lSck0ZHn5GI39YB"}' --login_with_auth "Bearer foo"
+lobby-get-notification-topic-v1-admin 'HqaTHeKtW18iGeUl' --login_with_auth "Bearer foo"
+lobby-update-notification-topic-v1-admin '{"description": "c9d9sogWa24CKNS0"}' 'GqVvUfHQvsHXNUNe' --login_with_auth "Bearer foo"
+lobby-delete-notification-topic-v1-admin '4mhgo5QB65lSAiYn' --login_with_auth "Bearer foo"
+lobby-send-specific-user-freeform-notification-v1-admin '{"message": "NjkfZrQvGgbLdLsF", "topicName": "zHkBMr1yrOMlNFSr"}' 'UEirnjX9fDmIbeZx' --login_with_auth "Bearer foo"
+lobby-send-specific-user-templated-notification-v1-admin '{"templateContext": {"zfTcyiuATus9hsfp": "FDcSDG8aMVGLiBNr", "DjqoxcwgGLXpUL4p": "p2ncYAHdNzDmeIP6", "rOvDz9KOsb392k6Y": "mJFfRByjlBiuFM3F"}, "templateLanguage": "IoVk8T3GpAnkCmBU", "templateSlug": "qg2SCnqntX9y1aZS", "topicName": "WMiVi10sG6vxkfUc"}' 'mqRRbceJ5i0EeDxO' --login_with_auth "Bearer foo"
+lobby-admin-get-party-data-v1 'gBnhhqElIaDml48w' --login_with_auth "Bearer foo"
+lobby-admin-update-party-attributes-v1 '{"custom_attribute": {"dNFLTm5T50x9WT0G": {}, "fH2rtOa4EXsXzOXQ": {}, "Ak4mqrxzTtuLl4Xl": {}}, "updatedAt": 2}' 'x9gIiDandpGT2t24' --login_with_auth "Bearer foo"
+lobby-admin-join-party-v1 'aOMh5eC3IHeHSKLC' 'a3xreNDUWehwH3q3' --login_with_auth "Bearer foo"
+lobby-admin-get-user-party-v1 '1A806DJgas4b6z3L' --login_with_auth "Bearer foo"
 lobby-admin-get-lobby-ccu --login_with_auth "Bearer foo"
-lobby-admin-get-bulk-player-blocked-players-v1 '{"listBlockedUserId": ["ubeoKFeIaFQCYoDP", "ICpnduEEQlULdJz4", "mnRBkMNxvvKgAT8m"]}' --login_with_auth "Bearer foo"
-lobby-admin-get-all-player-session-attribute 'JrYq6hRkloqxM3gp' --login_with_auth "Bearer foo"
-lobby-admin-set-player-session-attribute '{"attributes": {"wxcfMy9XzjjI5Ybs": "KoADkzJEN2VHzih3", "bit0VWn3CO39PXDN": "xtXgeO3FgkXhjDza", "QY3snn2ZkP7cFdP4": "3e5dC9XIBudfZgrb"}}' 'HDIDm4hMzF4Txode' --login_with_auth "Bearer foo"
-lobby-admin-get-player-session-attribute 'nSrUTvfqU0bfoMm5' 'cTtFWbotQyXJRcQW' --login_with_auth "Bearer foo"
-lobby-admin-get-player-blocked-players-v1 'smqPNs92epxk0i8V' --login_with_auth "Bearer foo"
-lobby-admin-get-player-blocked-by-players-v1 'xsZNereSvf9699mC' --login_with_auth "Bearer foo"
-lobby-admin-bulk-block-players-v1 '{"listBlockedUserId": ["EHThUJkETAsSp7gh", "4TeUTkOkAYfJB8AT", "9t4Tv207Y2QD3oD5"]}' 'fLCr3OOlXVv8ZGF7' --login_with_auth "Bearer foo"
-lobby-admin-debug-profanity-filters '{"text": "uYnGzpipNDigNJma"}' --login_with_auth "Bearer foo"
-lobby-admin-get-profanity-list-filters-v1 '1MbqqZtfNWql4nmw' --login_with_auth "Bearer foo"
-lobby-admin-add-profanity-filter-into-list '{"filter": "Aft4gqkNNlWkD9eO", "note": "ziYRFOn0jJLHC9Lx"}' 'hvNXTwGBCtohLtl9' --login_with_auth "Bearer foo"
-lobby-admin-add-profanity-filters '{"filters": [{"filter": "Zuhytm5UDrT6QXCs", "note": "5SPBbRPZTF6oQAXV"}, {"filter": "G7tnsZg5QgXjvyGJ", "note": "PN4eXbJE5Vs2Gcyo"}, {"filter": "mQoIXimBJehyxlNs", "note": "jUgxBkF6wFPoJeQe"}]}' 'diogEhhM2rIizGdK' --login_with_auth "Bearer foo"
-lobby-admin-import-profanity-filters-from-file '[43, 96, 83]' 'TrDzZSKscfOcYu3d' --login_with_auth "Bearer foo"
-lobby-admin-delete-profanity-filter '{"filter": "pCROYqUiGKXVFCmp"}' 'o6sPwVOEDSJsEK5Q' --login_with_auth "Bearer foo"
+lobby-admin-get-bulk-player-blocked-players-v1 '{"listBlockedUserId": ["NUj7fdgLA84Z8YYk", "6QEgJjBbEDoNf3n0", "hEoRCAcf80zfFyab"]}' --login_with_auth "Bearer foo"
+lobby-admin-get-all-player-session-attribute 'WAgIUXiI07A68eaq' --login_with_auth "Bearer foo"
+lobby-admin-set-player-session-attribute '{"attributes": {"C2J9jyEW6GLbc0Na": "KDUL3sa13lk1dQBH", "O86IlBhnetU4RwTq": "UXlTDBzOuYsaZA2y", "yd4mbqoOfADMMAXF": "aY9eKa699bRVhyaK"}}' 'wwrAP2aMlu7WtjCt' --login_with_auth "Bearer foo"
+lobby-admin-get-player-session-attribute 'oYetOO847g8OudOf' 'jnCuHZ3c46IjGa23' --login_with_auth "Bearer foo"
+lobby-admin-get-player-blocked-players-v1 'YvYmmDg7VYPXIuvU' --login_with_auth "Bearer foo"
+lobby-admin-get-player-blocked-by-players-v1 'YTZBRujIUE1Tq5jy' --login_with_auth "Bearer foo"
+lobby-admin-bulk-block-players-v1 '{"listBlockedUserId": ["AZvkRCMNFIurjh2i", "mdb4rbkXj0ZwsVC0", "gL97ZVJSPqJiwv1q"]}' 'lYB1RSKs6gQxC3Gb' --login_with_auth "Bearer foo"
+lobby-admin-debug-profanity-filters '{"text": "7S0o4zGYY7KQI1Ae"}' --login_with_auth "Bearer foo"
+lobby-admin-get-profanity-list-filters-v1 'FgPqaOkvo1aolB4l' --login_with_auth "Bearer foo"
+lobby-admin-add-profanity-filter-into-list '{"filter": "kKB4EYOkQ1jMD3cy", "note": "m8xIfkOVW2grREOL"}' 'x0KOww3HICQLfl7M' --login_with_auth "Bearer foo"
+lobby-admin-add-profanity-filters '{"filters": [{"filter": "UBG7qtPu64yAtURK", "note": "LRkb738HGS6rDgMd"}, {"filter": "IIlhS1fSiM9331m7", "note": "Ta1PsKc50Kv6ecnE"}, {"filter": "evcAx2K2zkRenmPZ", "note": "nGBt4P7WnbdSJtjX"}]}' '7ZshZyZl5x4bRXBH' --login_with_auth "Bearer foo"
+lobby-admin-import-profanity-filters-from-file '[96, 83, 94]' 'Pdq5xrgxSmy1DN9L' --login_with_auth "Bearer foo"
+lobby-admin-delete-profanity-filter '{"filter": "FkYW5DQyj4bj5Ro2"}' 'ogaKt2ujQSa3Zdb6' --login_with_auth "Bearer foo"
 lobby-admin-get-profanity-lists --login_with_auth "Bearer foo"
-lobby-admin-create-profanity-list '{"isEnabled": true, "isMandatory": false, "name": "Xmy0Zp6iIaTIKUkm"}' --login_with_auth "Bearer foo"
-lobby-admin-update-profanity-list '{"isEnabled": false, "isMandatory": false, "newName": "upMzUYnb76tFkEOR"}' 'V3bu1bNCtX7W40V6' --login_with_auth "Bearer foo"
-lobby-admin-delete-profanity-list 'Do5sYadCCFrHHC3D' --login_with_auth "Bearer foo"
+lobby-admin-create-profanity-list '{"isEnabled": false, "isMandatory": false, "name": "my0Zp6iIaTIKUkmk"}' --login_with_auth "Bearer foo"
+lobby-admin-update-profanity-list '{"isEnabled": false, "isMandatory": true, "newName": "9QM0NBMA9ORxpzwL"}' 'R2AK6eXUGPJsw1fi' --login_with_auth "Bearer foo"
+lobby-admin-delete-profanity-list 'P80G9Pclxcft2ulI' --login_with_auth "Bearer foo"
 lobby-admin-get-profanity-rule --login_with_auth "Bearer foo"
-lobby-admin-set-profanity-rule-for-namespace '{"rule": "pZxkrQDXuNFviMar"}' --login_with_auth "Bearer foo"
-lobby-admin-verify-message-profanity-response '{"message": "v8mnfHK8CCmE2lPn", "profanityLevel": "sbD3SGEdlwuUccE5"}' --login_with_auth "Bearer foo"
+lobby-admin-set-profanity-rule-for-namespace '{"rule": "JzPyrVEiOG4Ucqsu"}' --login_with_auth "Bearer foo"
+lobby-admin-verify-message-profanity-response '{"message": "GKHhMRWLVd3DlhLu", "profanityLevel": "IpomM8sm1MiaI1mX"}' --login_with_auth "Bearer foo"
 lobby-admin-get-third-party-config --login_with_auth "Bearer foo"
-lobby-admin-update-third-party-config '{"apiKey": "36ugBp3HBvepnDCj"}' --login_with_auth "Bearer foo"
-lobby-admin-create-third-party-config '{"apiKey": "gyJlXe36mgWjLfFm"}' --login_with_auth "Bearer foo"
+lobby-admin-update-third-party-config '{"apiKey": "2tJoARtdbBe7udsM"}' --login_with_auth "Bearer foo"
+lobby-admin-create-third-party-config '{"apiKey": "rok0WvGYYnx4V709"}' --login_with_auth "Bearer foo"
 lobby-admin-delete-third-party-config --login_with_auth "Bearer foo"
 lobby-public-get-messages --login_with_auth "Bearer foo"
-lobby-public-get-party-data-v1 'teue9nzJ6fH24T80' --login_with_auth "Bearer foo"
-lobby-public-update-party-attributes-v1 '{"custom_attribute": {"5tVg8JqU0jZpjvsu": {}, "gAOS7u8RiWyerCSa": {}, "8SRgwsAj1ik1jgla": {}}, "updatedAt": 60}' 'B1fPqqRRulpqpymD' --login_with_auth "Bearer foo"
-lobby-public-set-party-limit-v1 '{"limit": 22}' '0uPdjhdinpng5BLy' --login_with_auth "Bearer foo"
+lobby-public-get-party-data-v1 'xbnGezKsDwG2omOR' --login_with_auth "Bearer foo"
+lobby-public-update-party-attributes-v1 '{"custom_attribute": {"2nvYI9TVqJdvzcWb": {}, "fUpaXp5JMl5LL4bT": {}, "xBmZjdrrIxsB0NRs": {}}, "updatedAt": 56}' 'XTvKCWwNTAhd2wrS' --login_with_auth "Bearer foo"
+lobby-public-set-party-limit-v1 '{"limit": 88}' 'uPdjhdinpng5BLy8' --login_with_auth "Bearer foo"
 lobby-public-get-player-blocked-players-v1 --login_with_auth "Bearer foo"
 lobby-public-get-player-blocked-by-players-v1 --login_with_auth "Bearer foo"
-lobby-users-presence-handler-v1 '8wbhMssAHjapIkY9' --login_with_auth "Bearer foo"
-lobby-free-form-notification '{"message": "Rf4wP57dBZNR88Yb", "topic": "CtmKy8M9zVrjfGXZ"}' --login_with_auth "Bearer foo"
-lobby-notification-with-template '{"templateContext": {"nqAQUoY1GjlIIk0i": "KoTTS1j02o7JjTXA", "QN0qdskdQV0TqI8E": "FnmDbxIxi4YKlONk", "2Q5Y4Jvaizwiilat": "uUjjt9lIMGql5ElE"}, "templateLanguage": "a9EIIlGcHB3CfR3n", "templateSlug": "cDlwi3v3MFFJ1Kes", "topic": "KoELCpobBEG8X645"}' --login_with_auth "Bearer foo"
+lobby-users-presence-handler-v1 'wbhMssAHjapIkY9R' --login_with_auth "Bearer foo"
+lobby-free-form-notification '{"message": "f4wP57dBZNR88YbC", "topic": "tmKy8M9zVrjfGXZn"}' --login_with_auth "Bearer foo"
+lobby-notification-with-template '{"templateContext": {"qAQUoY1GjlIIk0iK": "oTTS1j02o7JjTXAQ", "N0qdskdQV0TqI8EF": "nmDbxIxi4YKlONk2", "Q5Y4Jvaizwiilatu": "Ujjt9lIMGql5ElEa"}, "templateLanguage": "9EIIlGcHB3CfR3nc", "templateSlug": "Dlwi3v3MFFJ1KesK", "topic": "oELCpobBEG8X645x"}' --login_with_auth "Bearer foo"
 lobby-get-game-template --login_with_auth "Bearer foo"
-lobby-create-template '{"templateContent": "xpdXpai0rYaT5hOP", "templateLanguage": "jaf3H0tYighU0VUf", "templateSlug": "cYHJbBfAKSiPW3Vg"}' --login_with_auth "Bearer foo"
-lobby-get-slug-template 'sZXiR1DJ7HVWqMkN' --login_with_auth "Bearer foo"
-lobby-delete-template-slug 'SawQUWDFJvJBWic7' --login_with_auth "Bearer foo"
-lobby-get-localization-template 'UkBeIXuqDuAXI66b' 'Q71w0deoV9Lx5RDA' --login_with_auth "Bearer foo"
-lobby-update-localization-template '{"templateContent": "1l2XcrciYNEzvSZI"}' 'PkhSgORcz5S5Bvmg' 'BLxh4ijFnE3Tam69' --login_with_auth "Bearer foo"
-lobby-delete-template-localization 'qSZ7PC6f6QkmZXEl' 'W9YfRSse6AAz3S4c' --login_with_auth "Bearer foo"
-lobby-publish-template 'zz0QKFlAVmVLu4AO' 'ec0z8eBeeoip68J1' --login_with_auth "Bearer foo"
+lobby-create-template '{"templateContent": "pdXpai0rYaT5hOPj", "templateLanguage": "af3H0tYighU0VUfc", "templateSlug": "YHJbBfAKSiPW3Vgs"}' --login_with_auth "Bearer foo"
+lobby-get-slug-template 'ZXiR1DJ7HVWqMkNS' --login_with_auth "Bearer foo"
+lobby-delete-template-slug 'awQUWDFJvJBWic7U' --login_with_auth "Bearer foo"
+lobby-get-localization-template 'kBeIXuqDuAXI66bQ' '71w0deoV9Lx5RDA1' --login_with_auth "Bearer foo"
+lobby-update-localization-template '{"templateContent": "l2XcrciYNEzvSZIP"}' 'khSgORcz5S5BvmgB' 'Lxh4ijFnE3Tam69q' --login_with_auth "Bearer foo"
+lobby-delete-template-localization 'SZ7PC6f6QkmZXElW' '9YfRSse6AAz3S4cz' --login_with_auth "Bearer foo"
+lobby-publish-template 'z0QKFlAVmVLu4AOe' 'c0z8eBeeoip68J1n' --login_with_auth "Bearer foo"
 lobby-get-topic-by-namespace --login_with_auth "Bearer foo"
-lobby-create-topic '{"description": "nsv4W2OJhtafxMSJ", "topic": "lHeb34sZKHcl5LLL"}' --login_with_auth "Bearer foo"
-lobby-get-topic-by-topic-name 'OexL4fZvWtND2tcB' --login_with_auth "Bearer foo"
-lobby-update-topic-by-topic-name '{"description": "FpX8lNtFEJ7tnkY6"}' 'Mca5afj12K2IzrBv' --login_with_auth "Bearer foo"
-lobby-delete-topic-by-topic-name 'vWm4udE0OXudXgNn' --login_with_auth "Bearer foo"
-lobby-free-form-notification-by-user-id '{"message": "e8kJATwlc6esUp6S", "topic": "w1I98jeZQ7hfxnhL"}' 'd3Knaknoed9DHhLO' --login_with_auth "Bearer foo"
-lobby-notification-with-template-by-user-id '{"templateContext": {"qQGhCUr6iTrjyEga": "rAdNJOIG36I6tRbR", "crEveMdAdiPKDUVS": "C00PYeDcagginxnF", "Ina3yddcbsPheTH2": "6IUJNvYuGRUvpZaH"}, "templateLanguage": "CuESOiIZsMfB4ZH3", "templateSlug": "mtgWgU4pCAKxeE70", "topic": "CaunQNxot371W9G4"}' 'AvQkqsGnmyo5JJTU' --login_with_auth "Bearer foo"
+lobby-create-topic '{"description": "sv4W2OJhtafxMSJl", "topic": "Heb34sZKHcl5LLLO"}' --login_with_auth "Bearer foo"
+lobby-get-topic-by-topic-name 'exL4fZvWtND2tcBF' --login_with_auth "Bearer foo"
+lobby-update-topic-by-topic-name '{"description": "pX8lNtFEJ7tnkY6M"}' 'ca5afj12K2IzrBvv' --login_with_auth "Bearer foo"
+lobby-delete-topic-by-topic-name 'Wm4udE0OXudXgNne' --login_with_auth "Bearer foo"
+lobby-free-form-notification-by-user-id '{"message": "8kJATwlc6esUp6Sw", "topic": "1I98jeZQ7hfxnhLd"}' '3Knaknoed9DHhLOq' --login_with_auth "Bearer foo"
+lobby-notification-with-template-by-user-id '{"templateContext": {"QGhCUr6iTrjyEgar": "AdNJOIG36I6tRbRc", "rEveMdAdiPKDUVSC": "00PYeDcagginxnFI", "na3yddcbsPheTH26": "IUJNvYuGRUvpZaHC"}, "templateLanguage": "uESOiIZsMfB4ZH3m", "templateSlug": "tgWgU4pCAKxeE70C", "topic": "aunQNxot371W9G4A"}' 'vQkqsGnmyo5JJTUV' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -189,50 +189,50 @@ eval_tap $? 7 'GetUserFriendsWithPlatform' test.out
 
 #- 8 UserRequestFriend
 $PYTHON -m $MODULE 'lobby-user-request-friend' \
-    '{"friendId": "Vmb8GEXFTlEMEsFz", "friendPublicId": "YqwgK1Np5nodqpLm"}' \
+    '{"friendId": "mb8GEXFTlEMEsFzY", "friendPublicId": "qwgK1Np5nodqpLm7"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'UserRequestFriend' test.out
 
 #- 9 UserAcceptFriendRequest
 $PYTHON -m $MODULE 'lobby-user-accept-friend-request' \
-    '{"friendId": "7FhJBNXzAFdO0Khq"}' \
+    '{"friendId": "FhJBNXzAFdO0Khqf"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'UserAcceptFriendRequest' test.out
 
 #- 10 UserCancelFriendRequest
 $PYTHON -m $MODULE 'lobby-user-cancel-friend-request' \
-    '{"friendId": "f6kiTdSGv2LFjAKY"}' \
+    '{"friendId": "6kiTdSGv2LFjAKY7"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'UserCancelFriendRequest' test.out
 
 #- 11 UserRejectFriendRequest
 $PYTHON -m $MODULE 'lobby-user-reject-friend-request' \
-    '{"friendId": "7CbgsWqFWZX7kPBo"}' \
+    '{"friendId": "CbgsWqFWZX7kPBom"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'UserRejectFriendRequest' test.out
 
 #- 12 UserGetFriendshipStatus
 $PYTHON -m $MODULE 'lobby-user-get-friendship-status' \
-    'm8F9GLLTG8phc3n4' \
+    '8F9GLLTG8phc3n4i' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'UserGetFriendshipStatus' test.out
 
 #- 13 UserUnfriendRequest
 $PYTHON -m $MODULE 'lobby-user-unfriend-request' \
-    '{"friendId": "iLoIllKlpO2pqiXJ"}' \
+    '{"friendId": "LoIllKlpO2pqiXJF"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'UserUnfriendRequest' test.out
 
 #- 14 AddFriendsWithoutConfirmation
 $PYTHON -m $MODULE 'lobby-add-friends-without-confirmation' \
-    '{"friendIds": ["F3WGRaoQomSJC4Dd", "rKF7SUQPLG59e0k5", "ZtX6wK7PpUlcIW32"]}' \
-    'iK7MGt1ixY5rA1Wo' \
+    '{"friendIds": ["3WGRaoQomSJC4Ddr", "KF7SUQPLG59e0k5Z", "tX6wK7PpUlcIW32i"]}' \
+    'K7MGt1ixY5rA1WoV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 14 'AddFriendsWithoutConfirmation' test.out
@@ -251,7 +251,7 @@ eval_tap $? 16 'AdminGetConfigV1' test.out
 
 #- 17 AdminUpdateConfigV1
 $PYTHON -m $MODULE 'lobby-admin-update-config-v1' \
-    '{"allowInviteNonConnectedUser": false, "allowJoinPartyDuringMatchmaking": false, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 86, "cancelTicketOnDisconnect": false, "chatRateLimitBurst": 65, "chatRateLimitDuration": 13, "concurrentUsersLimit": 21, "disableInvitationOnJoinParty": false, "enableChat": true, "entitlementCheck": false, "entitlementItemID": "QzP4zvtdxdbZUpd6", "generalRateLimitBurst": 65, "generalRateLimitDuration": 73, "keepPresenceActivityOnDisconnect": true, "maxDSWaitTime": 40, "maxPartyMember": 29, "profanityFilter": true, "readyConsentTimeout": 83, "unregisterDelay": 31}' \
+    '{"allowInviteNonConnectedUser": false, "allowJoinPartyDuringMatchmaking": false, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 86, "cancelTicketOnDisconnect": false, "chatRateLimitBurst": 65, "chatRateLimitDuration": 13, "concurrentUsersLimit": 21, "disableInvitationOnJoinParty": false, "enableChat": true, "entitlementCheck": false, "entitlementItemID": "QzP4zvtdxdbZUpd6", "generalRateLimitBurst": 65, "generalRateLimitDuration": 73, "keepPresenceActivityOnDisconnect": true, "maxDSWaitTime": 40, "maxFriendsLimit": 29, "maxPartyMember": 69, "profanityFilter": true, "readyConsentTimeout": 83, "unregisterDelay": 31}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'AdminUpdateConfigV1' test.out

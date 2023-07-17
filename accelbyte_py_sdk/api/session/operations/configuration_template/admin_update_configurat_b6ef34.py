@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.18.3)
+# AccelByte Gaming Services Session Service (2.20.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,15 +37,16 @@ from ...models import ResponseError
 class AdminUpdateConfigurationTemplateV1(Operation):
     """Update configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationTemplateV1)
 
-    Update template configuration
+    Modify template configuration
     Session configuration mandatory :
     - name
     - joinability (example value : OPEN, CLOSED, INVITE_ONLY)
+    - autoJoin: when enabled, players will automatically join the initial game session creation. Game session will not send any invite and players dont need to act upon it. default: false (disabled)
     - Type (example value : P2P, DS, NONE) if type empty, type will be assign to NONE
-    - MinPlayers (must greather or equal 0)
-    - MaxPlayers (must greather than 0)
-    - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
-    - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - MinPlayers (must greater or equal 0)
+    - MaxPlayers (must greater than 0)
+    - InviteTimeout (must greater or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - InactiveTimeout (must greater or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
     - Persistent Flag only can use with type DS (example value true or false)
     - If Persistent True the session always active even DS removing or terminate and Session will be request DS again until DS Ready or Busy.
     - To Stop Session Not request again to DS or want Delete Session can Delete Session using endpoint DELETE /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
@@ -69,6 +70,7 @@ class AdminUpdateConfigurationTemplateV1(Operation):
     "en-US" : "title"
     }
     }
+    - TieTeamsSessionLifetime: If it is set to true, the lifetime of any partyId session inside teams attribute will be tied to the game session. Only applies when the teams partyId is game session.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}

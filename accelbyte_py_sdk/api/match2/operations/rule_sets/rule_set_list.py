@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Match Service V2 (2.6.0)
+# AccelByte Gaming Services Match Service V2 (2.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,6 +65,8 @@ class RuleSetList(Operation):
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -88,6 +90,7 @@ class RuleSetList(Operation):
 
     namespace: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
+    name: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
 
     # endregion fields
@@ -142,6 +145,8 @@ class RuleSetList(Operation):
         result = {}
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "name"):
+            result["name"] = self.name
         if hasattr(self, "offset"):
             result["offset"] = self.offset
         return result
@@ -162,6 +167,10 @@ class RuleSetList(Operation):
         self.limit = value
         return self
 
+    def with_name(self, value: str) -> RuleSetList:
+        self.name = value
+        return self
+
     def with_offset(self, value: int) -> RuleSetList:
         self.offset = value
         return self
@@ -180,6 +189,10 @@ class RuleSetList(Operation):
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = 0
+        if hasattr(self, "name") and self.name:
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = ""
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
@@ -241,6 +254,7 @@ class RuleSetList(Operation):
         cls,
         namespace: str,
         limit: Optional[int] = None,
+        name: Optional[str] = None,
         offset: Optional[int] = None,
         **kwargs,
     ) -> RuleSetList:
@@ -248,6 +262,8 @@ class RuleSetList(Operation):
         instance.namespace = namespace
         if limit is not None:
             instance.limit = limit
+        if name is not None:
+            instance.name = name
         if offset is not None:
             instance.offset = offset
         return instance
@@ -263,6 +279,10 @@ class RuleSetList(Operation):
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = 0
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = ""
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
@@ -274,6 +294,7 @@ class RuleSetList(Operation):
         return {
             "namespace": "namespace",
             "limit": "limit",
+            "name": "name",
             "offset": "offset",
         }
 
@@ -282,6 +303,7 @@ class RuleSetList(Operation):
         return {
             "namespace": True,
             "limit": False,
+            "name": False,
             "offset": False,
         }
 

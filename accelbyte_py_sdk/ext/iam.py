@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (6.0.2)
+# AccelByte Gaming Services Iam Service (6.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -250,6 +250,7 @@ from ..api.iam.models import ModelUserLoginHistoryResponse
 from ..api.iam.models import ModelUserPasswordUpdateRequest
 from ..api.iam.models import ModelUserPasswordUpdateV3Request
 from ..api.iam.models import ModelUserPermissionsResponseV3
+from ..api.iam.models import ModelUserPlatformMetadata
 from ..api.iam.models import ModelUserResponse
 from ..api.iam.models import ModelUserResponseV3
 from ..api.iam.models import ModelUserRolesV4Response
@@ -2528,6 +2529,15 @@ def create_model_user_permissions_response_v3_example() -> (
     instance.sched_action = randomize("int", min_val=1, max_val=1000)
     instance.sched_cron = randomize()
     instance.sched_range = [randomize()]
+    return instance
+
+
+def create_model_user_platform_metadata_example() -> ModelUserPlatformMetadata:
+    instance = ModelUserPlatformMetadata()
+    instance.metadata = {randomize(): randomize()}
+    instance.namespace = randomize("slug")
+    instance.platform_user_id = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 

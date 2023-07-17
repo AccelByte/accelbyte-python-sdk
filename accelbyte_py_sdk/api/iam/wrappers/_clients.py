@@ -412,6 +412,9 @@ def admin_create_client_v3(
         * Nintendo
 
 
+        * Oculus
+
+
 
 
 
@@ -556,6 +559,9 @@ async def admin_create_client_v3_async(
 
 
         * Nintendo
+
+
+        * Oculus
 
 
 
@@ -1424,6 +1430,9 @@ def admin_update_client_v3(
         * Nintendo
 
 
+        * Oculus
+
+
 
 
 
@@ -1551,6 +1560,9 @@ async def admin_update_client_v3_async(
 
 
         * Nintendo
+
+
+        * Oculus
 
 
 

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (2.18.3)
+# AccelByte Gaming Services Session Service Index (2.20.0)
 
 
 ## Operations
@@ -80,6 +80,8 @@
 ### Platform Credential
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /session/v1/admin/namespaces/{namespace}/platform-credentials | DELETE | adminDeletePlatformCredentials | `false` | [AdminDeletePlatformCredentials](../../accelbyte_py_sdk/api/session/operations/platform_credential/admin_delete_platform_c_b8f2c5.py) | [admin_delete_platform_credentials](../../accelbyte_py_sdk/api/session/wrappers/_platform_credential.py) | [accelbyte_py_sdk_cli session-admin-delete-platform-credentials](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_delete_platform_credentials.py) |
+| /session/v1/admin/namespaces/{namespace}/platform-credentials | GET | adminGetPlatformCredentials | `false` | [AdminGetPlatformCredentials](../../accelbyte_py_sdk/api/session/operations/platform_credential/admin_get_platform_credentials.py) | [admin_get_platform_credentials](../../accelbyte_py_sdk/api/session/wrappers/_platform_credential.py) | [accelbyte_py_sdk_cli session-admin-get-platform-credentials](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_platform_credentials.py) |
 | /session/v1/admin/namespaces/{namespace}/platform-credentials | PUT | adminUpdatePlatformCredentials | `false` | [AdminUpdatePlatformCredentials](../../accelbyte_py_sdk/api/session/operations/platform_credential/admin_update_platform_c_5be87f.py) | [admin_update_platform_credentials](../../accelbyte_py_sdk/api/session/wrappers/_platform_credential.py) | [accelbyte_py_sdk_cli session-admin-update-platform-credentials](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_update_platform_credentials.py) |
 
 ### Player
@@ -136,6 +138,7 @@
 | models.GameServer | [ModelsGameServer](../../accelbyte_py_sdk/api/session/models/models_game_server.py) |
 | models.NativeSessionSetting | [ModelsNativeSessionSetting](../../accelbyte_py_sdk/api/session/models/models_native_session_setting.py) |
 | models.PartyMembers | [ModelsPartyMembers](../../accelbyte_py_sdk/api/session/models/models_party_members.py) |
+| models.PlatformCredentials | [ModelsPlatformCredentials](../../accelbyte_py_sdk/api/session/models/models_platform_credentials.py) |
 | models.PSNAppServerCredentials | [ModelsPSNAppServerCredentials](../../accelbyte_py_sdk/api/session/models/models_psn_app_server_credentials.py) |
 | models.Team | [ModelsTeam](../../accelbyte_py_sdk/api/session/models/models_team.py) |
 | models.UserPlatformInfo | [ModelsUserPlatformInfo](../../accelbyte_py_sdk/api/session/models/models_user_platform_info.py) |

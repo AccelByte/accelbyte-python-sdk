@@ -8,10 +8,12 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.18.3"
+__version__ = "2.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .admin_delete_platform_c_b8f2c5 import AdminDeletePlatformCredentials
+from .admin_get_platform_credentials import AdminGetPlatformCredentials
 from .admin_update_platform_c_5be87f import AdminUpdatePlatformCredentials

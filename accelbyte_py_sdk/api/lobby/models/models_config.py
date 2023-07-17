@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Lobby Server (3.22.0)
+# AccelByte Gaming Services Lobby Server (3.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,6 +66,8 @@ class ModelsConfig(Model):
 
         keep_presence_activity_on_disconnect: (keepPresenceActivityOnDisconnect) OPTIONAL bool
 
+        max_friends_limit: (maxFriendsLimit) OPTIONAL int
+
         max_party_member: (maxPartyMember) OPTIONAL int
 
         namespace: (namespace) OPTIONAL str
@@ -94,6 +96,7 @@ class ModelsConfig(Model):
     general_rate_limit_burst: int  # OPTIONAL
     general_rate_limit_duration: int  # OPTIONAL
     keep_presence_activity_on_disconnect: bool  # OPTIONAL
+    max_friends_limit: int  # OPTIONAL
     max_party_member: int  # OPTIONAL
     namespace: str  # OPTIONAL
     profanity_filter: bool  # OPTIONAL
@@ -169,6 +172,10 @@ class ModelsConfig(Model):
 
     def with_keep_presence_activity_on_disconnect(self, value: bool) -> ModelsConfig:
         self.keep_presence_activity_on_disconnect = value
+        return self
+
+    def with_max_friends_limit(self, value: int) -> ModelsConfig:
+        self.max_friends_limit = value
         return self
 
     def with_max_party_member(self, value: int) -> ModelsConfig:
@@ -271,6 +278,10 @@ class ModelsConfig(Model):
             )
         elif include_empty:
             result["keepPresenceActivityOnDisconnect"] = False
+        if hasattr(self, "max_friends_limit"):
+            result["maxFriendsLimit"] = int(self.max_friends_limit)
+        elif include_empty:
+            result["maxFriendsLimit"] = 0
         if hasattr(self, "max_party_member"):
             result["maxPartyMember"] = int(self.max_party_member)
         elif include_empty:
@@ -313,6 +324,7 @@ class ModelsConfig(Model):
         general_rate_limit_burst: Optional[int] = None,
         general_rate_limit_duration: Optional[int] = None,
         keep_presence_activity_on_disconnect: Optional[bool] = None,
+        max_friends_limit: Optional[int] = None,
         max_party_member: Optional[int] = None,
         namespace: Optional[str] = None,
         profanity_filter: Optional[bool] = None,
@@ -356,6 +368,8 @@ class ModelsConfig(Model):
             instance.keep_presence_activity_on_disconnect = (
                 keep_presence_activity_on_disconnect
             )
+        if max_friends_limit is not None:
+            instance.max_friends_limit = max_friends_limit
         if max_party_member is not None:
             instance.max_party_member = max_party_member
         if namespace is not None:
@@ -486,6 +500,10 @@ class ModelsConfig(Model):
             )
         elif include_empty:
             instance.keep_presence_activity_on_disconnect = False
+        if "maxFriendsLimit" in dict_ and dict_["maxFriendsLimit"] is not None:
+            instance.max_friends_limit = int(dict_["maxFriendsLimit"])
+        elif include_empty:
+            instance.max_friends_limit = 0
         if "maxPartyMember" in dict_ and dict_["maxPartyMember"] is not None:
             instance.max_party_member = int(dict_["maxPartyMember"])
         elif include_empty:
@@ -558,6 +576,7 @@ class ModelsConfig(Model):
             "generalRateLimitBurst": "general_rate_limit_burst",
             "generalRateLimitDuration": "general_rate_limit_duration",
             "keepPresenceActivityOnDisconnect": "keep_presence_activity_on_disconnect",
+            "maxFriendsLimit": "max_friends_limit",
             "maxPartyMember": "max_party_member",
             "namespace": "namespace",
             "profanityFilter": "profanity_filter",
@@ -584,6 +603,7 @@ class ModelsConfig(Model):
             "generalRateLimitBurst": False,
             "generalRateLimitDuration": False,
             "keepPresenceActivityOnDisconnect": False,
+            "maxFriendsLimit": False,
             "maxPartyMember": False,
             "namespace": False,
             "profanityFilter": False,

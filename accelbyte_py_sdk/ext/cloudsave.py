@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.8.2)
+# AccelByte Gaming Services Cloudsave Service (3.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -25,6 +25,17 @@
 from .utils import randomize
 
 from ..api.cloudsave.models import ModelsAdminConcurrentRecordRequest
+from ..api.cloudsave.models import ModelsAdminGameConcurrentRecordRequest
+from ..api.cloudsave.models import ModelsAdminGameRecordRequest
+from ..api.cloudsave.models import ModelsAdminGameRecordResponse
+from ..api.cloudsave.models import ModelsAdminPlayerConcurrentRecordRequest
+from ..api.cloudsave.models import ModelsAdminPlayerRecordKeyInfo
+from ..api.cloudsave.models import ModelsAdminPlayerRecordRequest
+from ..api.cloudsave.models import ModelsAdminPlayerRecordResponse
+from ..api.cloudsave.models import ModelsBulkGetAdminGameRecordRequest
+from ..api.cloudsave.models import ModelsBulkGetAdminGameRecordResponse
+from ..api.cloudsave.models import ModelsBulkGetAdminPlayerRecordRequest
+from ..api.cloudsave.models import ModelsBulkGetAdminPlayerRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetGameRecordRequest
 from ..api.cloudsave.models import ModelsBulkGetGameRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordResponse
@@ -35,6 +46,8 @@ from ..api.cloudsave.models import ModelsBulkUserKeyRequest
 from ..api.cloudsave.models import ModelsConcurrentRecordRequest
 from ..api.cloudsave.models import ModelsGameRecordRequest
 from ..api.cloudsave.models import ModelsGameRecordResponse
+from ..api.cloudsave.models import ModelsListAdminGameRecordKeysResponse
+from ..api.cloudsave.models import ModelsListAdminPlayerRecordKeysResponse
 from ..api.cloudsave.models import ModelsListGameRecordKeysResponse
 from ..api.cloudsave.models import ModelsListPlayerRecordKeysResponse
 from ..api.cloudsave.models import ModelsPagination
@@ -53,6 +66,100 @@ def create_models_admin_concurrent_record_request_example() -> (
     instance.set_by = randomize()
     instance.updated_at = randomize()
     instance.value = {randomize(): randomize()}
+    return instance
+
+
+def create_models_admin_game_concurrent_record_request_example() -> (
+    ModelsAdminGameConcurrentRecordRequest
+):
+    instance = ModelsAdminGameConcurrentRecordRequest()
+    instance.updated_at = randomize()
+    instance.value = {randomize(): randomize()}
+    return instance
+
+
+def create_models_admin_game_record_request_example() -> ModelsAdminGameRecordRequest:
+    instance = ModelsAdminGameRecordRequest()
+    return instance
+
+
+def create_models_admin_game_record_response_example() -> ModelsAdminGameRecordResponse:
+    instance = ModelsAdminGameRecordResponse()
+    instance.created_at = randomize("date")
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.value = {randomize(): randomize()}
+    return instance
+
+
+def create_models_admin_player_concurrent_record_request_example() -> (
+    ModelsAdminPlayerConcurrentRecordRequest
+):
+    instance = ModelsAdminPlayerConcurrentRecordRequest()
+    instance.updated_at = randomize()
+    instance.value = {randomize(): randomize()}
+    return instance
+
+
+def create_models_admin_player_record_key_info_example() -> (
+    ModelsAdminPlayerRecordKeyInfo
+):
+    instance = ModelsAdminPlayerRecordKeyInfo()
+    instance.key = randomize()
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_admin_player_record_request_example() -> (
+    ModelsAdminPlayerRecordRequest
+):
+    instance = ModelsAdminPlayerRecordRequest()
+    return instance
+
+
+def create_models_admin_player_record_response_example() -> (
+    ModelsAdminPlayerRecordResponse
+):
+    instance = ModelsAdminPlayerRecordResponse()
+    instance.created_at = randomize("date")
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.value = {randomize(): randomize()}
+    return instance
+
+
+def create_models_bulk_get_admin_game_record_request_example() -> (
+    ModelsBulkGetAdminGameRecordRequest
+):
+    instance = ModelsBulkGetAdminGameRecordRequest()
+    instance.keys = [randomize()]
+    return instance
+
+
+def create_models_bulk_get_admin_game_record_response_example() -> (
+    ModelsBulkGetAdminGameRecordResponse
+):
+    instance = ModelsBulkGetAdminGameRecordResponse()
+    instance.data = [create_models_admin_game_record_response_example()]
+    return instance
+
+
+def create_models_bulk_get_admin_player_record_request_example() -> (
+    ModelsBulkGetAdminPlayerRecordRequest
+):
+    instance = ModelsBulkGetAdminPlayerRecordRequest()
+    instance.keys = [randomize()]
+    return instance
+
+
+def create_models_bulk_get_admin_player_record_response_example() -> (
+    ModelsBulkGetAdminPlayerRecordResponse
+):
+    instance = ModelsBulkGetAdminPlayerRecordResponse()
+    instance.data = [create_models_admin_player_record_response_example()]
     return instance
 
 
@@ -128,6 +235,24 @@ def create_models_game_record_response_example() -> ModelsGameRecordResponse:
     instance.updated_at = randomize("date")
     instance.value = {randomize(): randomize()}
     instance.set_by = randomize()
+    return instance
+
+
+def create_models_list_admin_game_record_keys_response_example() -> (
+    ModelsListAdminGameRecordKeysResponse
+):
+    instance = ModelsListAdminGameRecordKeysResponse()
+    instance.data = [randomize()]
+    instance.paging = create_models_pagination_example()
+    return instance
+
+
+def create_models_list_admin_player_record_keys_response_example() -> (
+    ModelsListAdminPlayerRecordKeysResponse
+):
+    instance = ModelsListAdminPlayerRecordKeysResponse()
+    instance.data = [create_models_admin_player_record_key_info_example()]
+    instance.paging = create_models_pagination_example()
     return instance
 
 

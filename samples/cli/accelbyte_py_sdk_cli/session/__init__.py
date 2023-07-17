@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (2.18.3)
+# justice-session-service (2.20.0)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
@@ -34,7 +34,9 @@ from ._admin_query_game_sessions import admin_query_game_sessions
 from ._admin_delete_bulk_game_sessions import admin_delete_bulk_game_sessions
 from ._admin_update_game_session_member import admin_update_game_session_member
 from ._admin_query_parties import admin_query_parties
+from ._admin_get_platform_credentials import admin_get_platform_credentials
 from ._admin_update_platform_credentials import admin_update_platform_credentials
+from ._admin_delete_platform_credentials import admin_delete_platform_credentials
 from ._admin_query_player_attributes import admin_query_player_attributes
 from ._admin_get_player_attributes import admin_get_player_attributes
 from ._create_game_session import create_game_session
@@ -98,7 +100,9 @@ commands = [
     admin_delete_bulk_game_sessions,
     admin_update_game_session_member,
     admin_query_parties,
+    admin_get_platform_credentials,
     admin_update_platform_credentials,
+    admin_delete_platform_credentials,
     admin_query_player_attributes,
     admin_get_player_attributes,
     create_game_session,

@@ -61,6 +61,9 @@ def fleet_claim_by_id(
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
+
     Properties:
         url: /ams/v1/namespaces/{namespace}/fleets/{fleetID}/claim
 
@@ -116,6 +119,9 @@ async def fleet_claim_by_id_async(
     """claim a Dedicated Server from a specific fleet (FleetClaimByID)
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/fleets/{fleetID}/claim
@@ -174,6 +180,9 @@ def fleet_claim_by_keys(
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
+
     Properties:
         url: /ams/v1/namespaces/{namespace}/servers/claim
 
@@ -225,6 +234,9 @@ async def fleet_claim_by_keys_async(
     """claim a Dedicated Server from fleets with matching claim keys (FleetClaimByKeys)
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/servers/claim
@@ -280,6 +292,9 @@ def fleet_create(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets
 
@@ -329,6 +344,9 @@ async def fleet_create_async(
     """create fleet (FleetCreate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets
@@ -382,6 +400,9 @@ def fleet_delete(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
 
@@ -431,6 +452,9 @@ async def fleet_delete_async(
     """delete a fleet (FleetDelete)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
@@ -484,6 +508,9 @@ def fleet_get(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
 
@@ -533,6 +560,9 @@ async def fleet_get_async(
     """get a fleet (FleetGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
@@ -585,6 +615,9 @@ def fleet_list(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets
 
@@ -624,6 +657,9 @@ async def fleet_list_async(
     """get a list of all fleets in the namespace (FleetList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets
@@ -667,6 +703,9 @@ def fleet_servers(
     """get server details and counts for a fleet (FleetServers)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers
@@ -717,6 +756,9 @@ async def fleet_servers_async(
     """get server details and counts for a fleet (FleetServers)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers
@@ -770,6 +812,9 @@ def fleet_update(
     """Update a fleet – overrides current data (FleetUpdate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
@@ -826,6 +871,9 @@ async def fleet_update_async(
     """Update a fleet – overrides current data (FleetUpdate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}

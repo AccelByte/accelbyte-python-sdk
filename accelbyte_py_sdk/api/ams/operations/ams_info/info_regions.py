@@ -38,6 +38,9 @@ class InfoRegions(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/regions
 

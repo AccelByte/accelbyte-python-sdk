@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (6.0.2)
+# justice-iam-service (6.1.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -223,6 +223,9 @@ from ._admin_platform_unlink_v3 import admin_platform_unlink_v3
 from ._admin_platform_link_v3 import admin_platform_link_v3
 from ._admin_get_third_party_platform_token_link_status_v3 import (
     admin_get_third_party_platform_token_link_status_v3,
+)
+from ._admin_get_user_single_platform_account import (
+    admin_get_user_single_platform_account,
 )
 from ._admin_delete_user_roles_v3 import admin_delete_user_roles_v3
 from ._admin_save_user_role_v3 import admin_save_user_role_v3
@@ -614,6 +617,7 @@ commands = [
     admin_platform_unlink_v3,
     admin_platform_link_v3,
     admin_get_third_party_platform_token_link_status_v3,
+    admin_get_user_single_platform_account,
     admin_delete_user_roles_v3,
     admin_save_user_role_v3,
     admin_add_user_role_v3,

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.30.3)
+# AccelByte Gaming Services Platform Service (4.31.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -54,8 +54,6 @@ class BillingHistoryInfo(Model):
 
         namespace: (namespace) REQUIRED str
 
-        payment_order_no: (paymentOrderNo) REQUIRED str
-
         recurring_order_no: (recurringOrderNo) REQUIRED str
 
         sandbox: (sandbox) REQUIRED bool
@@ -77,6 +75,8 @@ class BillingHistoryInfo(Model):
         description: (description) OPTIONAL str
 
         ext_tx_id: (extTxId) OPTIONAL str
+
+        payment_order_no: (paymentOrderNo) OPTIONAL str
 
         retry_attempted: (retryAttempted) OPTIONAL int
 
@@ -100,7 +100,6 @@ class BillingHistoryInfo(Model):
     currency: CurrencySummary  # REQUIRED
     item_id: str  # REQUIRED
     namespace: str  # REQUIRED
-    payment_order_no: str  # REQUIRED
     recurring_order_no: str  # REQUIRED
     sandbox: bool  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
@@ -112,6 +111,7 @@ class BillingHistoryInfo(Model):
     change_billing_account: bool  # OPTIONAL
     description: str  # OPTIONAL
     ext_tx_id: str  # OPTIONAL
+    payment_order_no: str  # OPTIONAL
     retry_attempted: int  # OPTIONAL
     sku: str  # OPTIONAL
     status_reason: str  # OPTIONAL
@@ -142,10 +142,6 @@ class BillingHistoryInfo(Model):
 
     def with_namespace(self, value: str) -> BillingHistoryInfo:
         self.namespace = value
-        return self
-
-    def with_payment_order_no(self, value: str) -> BillingHistoryInfo:
-        self.payment_order_no = value
         return self
 
     def with_recurring_order_no(self, value: str) -> BillingHistoryInfo:
@@ -190,6 +186,10 @@ class BillingHistoryInfo(Model):
 
     def with_ext_tx_id(self, value: str) -> BillingHistoryInfo:
         self.ext_tx_id = value
+        return self
+
+    def with_payment_order_no(self, value: str) -> BillingHistoryInfo:
+        self.payment_order_no = value
         return self
 
     def with_retry_attempted(self, value: int) -> BillingHistoryInfo:
@@ -246,10 +246,6 @@ class BillingHistoryInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "payment_order_no"):
-            result["paymentOrderNo"] = str(self.payment_order_no)
-        elif include_empty:
-            result["paymentOrderNo"] = ""
         if hasattr(self, "recurring_order_no"):
             result["recurringOrderNo"] = str(self.recurring_order_no)
         elif include_empty:
@@ -296,6 +292,10 @@ class BillingHistoryInfo(Model):
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
             result["extTxId"] = ""
+        if hasattr(self, "payment_order_no"):
+            result["paymentOrderNo"] = str(self.payment_order_no)
+        elif include_empty:
+            result["paymentOrderNo"] = ""
         if hasattr(self, "retry_attempted"):
             result["retryAttempted"] = int(self.retry_attempted)
         elif include_empty:
@@ -338,7 +338,6 @@ class BillingHistoryInfo(Model):
         currency: CurrencySummary,
         item_id: str,
         namespace: str,
-        payment_order_no: str,
         recurring_order_no: str,
         sandbox: bool,
         status: Union[str, StatusEnum],
@@ -350,6 +349,7 @@ class BillingHistoryInfo(Model):
         change_billing_account: Optional[bool] = None,
         description: Optional[str] = None,
         ext_tx_id: Optional[str] = None,
+        payment_order_no: Optional[str] = None,
         retry_attempted: Optional[int] = None,
         sku: Optional[str] = None,
         status_reason: Optional[str] = None,
@@ -365,7 +365,6 @@ class BillingHistoryInfo(Model):
         instance.currency = currency
         instance.item_id = item_id
         instance.namespace = namespace
-        instance.payment_order_no = payment_order_no
         instance.recurring_order_no = recurring_order_no
         instance.sandbox = sandbox
         instance.status = status
@@ -381,6 +380,8 @@ class BillingHistoryInfo(Model):
             instance.description = description
         if ext_tx_id is not None:
             instance.ext_tx_id = ext_tx_id
+        if payment_order_no is not None:
+            instance.payment_order_no = payment_order_no
         if retry_attempted is not None:
             instance.retry_attempted = retry_attempted
         if sku is not None:
@@ -426,10 +427,6 @@ class BillingHistoryInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
-            instance.payment_order_no = str(dict_["paymentOrderNo"])
-        elif include_empty:
-            instance.payment_order_no = ""
         if "recurringOrderNo" in dict_ and dict_["recurringOrderNo"] is not None:
             instance.recurring_order_no = str(dict_["recurringOrderNo"])
         elif include_empty:
@@ -479,6 +476,10 @@ class BillingHistoryInfo(Model):
             instance.ext_tx_id = str(dict_["extTxId"])
         elif include_empty:
             instance.ext_tx_id = ""
+        if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
+            instance.payment_order_no = str(dict_["paymentOrderNo"])
+        elif include_empty:
+            instance.payment_order_no = ""
         if "retryAttempted" in dict_ and dict_["retryAttempted"] is not None:
             instance.retry_attempted = int(dict_["retryAttempted"])
         elif include_empty:
@@ -553,7 +554,6 @@ class BillingHistoryInfo(Model):
             "currency": "currency",
             "itemId": "item_id",
             "namespace": "namespace",
-            "paymentOrderNo": "payment_order_no",
             "recurringOrderNo": "recurring_order_no",
             "sandbox": "sandbox",
             "status": "status",
@@ -565,6 +565,7 @@ class BillingHistoryInfo(Model):
             "changeBillingAccount": "change_billing_account",
             "description": "description",
             "extTxId": "ext_tx_id",
+            "paymentOrderNo": "payment_order_no",
             "retryAttempted": "retry_attempted",
             "sku": "sku",
             "statusReason": "status_reason",
@@ -582,7 +583,6 @@ class BillingHistoryInfo(Model):
             "currency": True,
             "itemId": True,
             "namespace": True,
-            "paymentOrderNo": True,
             "recurringOrderNo": True,
             "sandbox": True,
             "status": True,
@@ -594,6 +594,7 @@ class BillingHistoryInfo(Model):
             "changeBillingAccount": False,
             "description": False,
             "extTxId": False,
+            "paymentOrderNo": False,
             "retryAttempted": False,
             "sku": False,
             "statusReason": False,

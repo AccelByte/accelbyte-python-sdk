@@ -39,6 +39,9 @@ class ImagePatch(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
 

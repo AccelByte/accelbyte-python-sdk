@@ -6,8 +6,17 @@
 
 # template_file: python-cli-init.j2
 
-# justice-cloudsave-service (3.8.2)
+# justice-cloudsave-service (3.9.0)
 
+from ._admin_list_admin_game_record_v1 import admin_list_admin_game_record_v1
+from ._admin_bulk_get_admin_game_record_v1 import admin_bulk_get_admin_game_record_v1
+from ._admin_get_admin_game_record_v1 import admin_get_admin_game_record_v1
+from ._admin_put_admin_game_record_v1 import admin_put_admin_game_record_v1
+from ._admin_post_admin_game_record_v1 import admin_post_admin_game_record_v1
+from ._admin_delete_admin_game_record_v1 import admin_delete_admin_game_record_v1
+from ._admin_put_admin_game_record_concurrent_handler_v1 import (
+    admin_put_admin_game_record_concurrent_handler_v1,
+)
 from ._admin_put_game_record_concurrent_handler_v1 import (
     admin_put_game_record_concurrent_handler_v1,
 )
@@ -16,10 +25,24 @@ from ._admin_get_game_record_handler_v1 import admin_get_game_record_handler_v1
 from ._admin_put_game_record_handler_v1 import admin_put_game_record_handler_v1
 from ._admin_post_game_record_handler_v1 import admin_post_game_record_handler_v1
 from ._admin_delete_game_record_handler_v1 import admin_delete_game_record_handler_v1
+from ._bulk_get_admin_player_record_by_user_ids_v1 import (
+    bulk_get_admin_player_record_by_user_ids_v1,
+)
 from ._bulk_get_player_record_size_handler_v1 import (
     bulk_get_player_record_size_handler_v1,
 )
 from ._list_player_record_handler_v1 import list_player_record_handler_v1
+from ._admin_list_admin_user_records_v1 import admin_list_admin_user_records_v1
+from ._admin_bulk_get_admin_player_record_v1 import (
+    admin_bulk_get_admin_player_record_v1,
+)
+from ._admin_get_admin_player_record_v1 import admin_get_admin_player_record_v1
+from ._admin_put_admin_player_record_v1 import admin_put_admin_player_record_v1
+from ._admin_post_player_admin_record_v1 import admin_post_player_admin_record_v1
+from ._admin_delete_admin_player_record_v1 import admin_delete_admin_player_record_v1
+from ._admin_put_admin_player_record_concurrent_handler_v1 import (
+    admin_put_admin_player_record_concurrent_handler_v1,
+)
 from ._admin_put_player_record_concurrent_handler_v1 import (
     admin_put_player_record_concurrent_handler_v1,
 )
@@ -86,14 +109,29 @@ from ._post_player_public_record_handler_v1 import post_player_public_record_han
 
 
 commands = [
+    admin_list_admin_game_record_v1,
+    admin_bulk_get_admin_game_record_v1,
+    admin_get_admin_game_record_v1,
+    admin_put_admin_game_record_v1,
+    admin_post_admin_game_record_v1,
+    admin_delete_admin_game_record_v1,
+    admin_put_admin_game_record_concurrent_handler_v1,
     admin_put_game_record_concurrent_handler_v1,
     list_game_records_handler_v1,
     admin_get_game_record_handler_v1,
     admin_put_game_record_handler_v1,
     admin_post_game_record_handler_v1,
     admin_delete_game_record_handler_v1,
+    bulk_get_admin_player_record_by_user_ids_v1,
     bulk_get_player_record_size_handler_v1,
     list_player_record_handler_v1,
+    admin_list_admin_user_records_v1,
+    admin_bulk_get_admin_player_record_v1,
+    admin_get_admin_player_record_v1,
+    admin_put_admin_player_record_v1,
+    admin_post_player_admin_record_v1,
+    admin_delete_admin_player_record_v1,
+    admin_put_admin_player_record_concurrent_handler_v1,
     admin_put_player_record_concurrent_handler_v1,
     admin_put_player_public_record_concurrent_handler_v1,
     admin_retrieve_player_records,

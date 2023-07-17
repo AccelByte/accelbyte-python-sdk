@@ -180,12 +180,13 @@ def admin_create_configuration_template_v1(
     Session configuration mandatory :
     - name
     - joinability (example value : OPEN, CLOSED, INVITE_ONLY)
+    - autoJoin: when enabled, players will automatically join the initial game session creation. Game session will not send any invite and players dont need to act upon it. default: false (disabled)
     - Type (example value : P2P, DS, NONE) if type empty, type will be assign to NONE
-    - MinPlayers (must greather or equal 0)
-    - MaxPlayers (must greather than 0)
-    - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
-    - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
-    - Persistent Flag only can use with type DS (example value true or false)
+    - MinPlayers (must greater or equal 0)
+    - MaxPlayers (must greater than 0)
+    - InviteTimeout (must greater or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - InactiveTimeout (must greater or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - Persistent will only applies to session with type DS (example value true or false, default: false)
     - If Persistent True the session always active even DS removing or terminate and Session will be request DS again until DS Ready or Busy.
     - To Stop Session Not request again to DS or want Delete Session can Delete Session using endpoint DELETE /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
     - If Persistent False the session will be inactive if all member left and DS terminate or removing
@@ -208,6 +209,7 @@ def admin_create_configuration_template_v1(
     "en-US" : "title"
     }
     }
+    - TieTeamsSessionLifetime (optional, default: false): If it is set to true, the lifetime of any partyId session inside teams attribute will be tied to the game session. Only applies when the teams partyId is game session.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -263,12 +265,13 @@ async def admin_create_configuration_template_v1_async(
     Session configuration mandatory :
     - name
     - joinability (example value : OPEN, CLOSED, INVITE_ONLY)
+    - autoJoin: when enabled, players will automatically join the initial game session creation. Game session will not send any invite and players dont need to act upon it. default: false (disabled)
     - Type (example value : P2P, DS, NONE) if type empty, type will be assign to NONE
-    - MinPlayers (must greather or equal 0)
-    - MaxPlayers (must greather than 0)
-    - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
-    - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
-    - Persistent Flag only can use with type DS (example value true or false)
+    - MinPlayers (must greater or equal 0)
+    - MaxPlayers (must greater than 0)
+    - InviteTimeout (must greater or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - InactiveTimeout (must greater or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - Persistent will only applies to session with type DS (example value true or false, default: false)
     - If Persistent True the session always active even DS removing or terminate and Session will be request DS again until DS Ready or Busy.
     - To Stop Session Not request again to DS or want Delete Session can Delete Session using endpoint DELETE /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
     - If Persistent False the session will be inactive if all member left and DS terminate or removing
@@ -291,6 +294,7 @@ async def admin_create_configuration_template_v1_async(
     "en-US" : "title"
     }
     }
+    - TieTeamsSessionLifetime (optional, default: false): If it is set to true, the lifetime of any partyId session inside teams attribute will be tied to the game session. Only applies when the teams partyId is game session.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -534,6 +538,7 @@ async def admin_delete_configuration_template_v1_async(
 @same_doc_as(AdminGetAllConfigurationTemplatesV1)
 def admin_get_all_configuration_templates_v1(
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -560,6 +565,8 @@ def admin_get_all_configuration_templates_v1(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -579,6 +586,7 @@ def admin_get_all_configuration_templates_v1(
             return None, error
     request = AdminGetAllConfigurationTemplatesV1.create(
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
     )
@@ -588,6 +596,7 @@ def admin_get_all_configuration_templates_v1(
 @same_doc_as(AdminGetAllConfigurationTemplatesV1)
 async def admin_get_all_configuration_templates_v1_async(
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -614,6 +623,8 @@ async def admin_get_all_configuration_templates_v1_async(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -633,6 +644,7 @@ async def admin_get_all_configuration_templates_v1_async(
             return None, error
     request = AdminGetAllConfigurationTemplatesV1.create(
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
     )
@@ -1163,15 +1175,16 @@ def admin_update_configuration_template_v1(
 ):
     """Update configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationTemplateV1)
 
-    Update template configuration
+    Modify template configuration
     Session configuration mandatory :
     - name
     - joinability (example value : OPEN, CLOSED, INVITE_ONLY)
+    - autoJoin: when enabled, players will automatically join the initial game session creation. Game session will not send any invite and players dont need to act upon it. default: false (disabled)
     - Type (example value : P2P, DS, NONE) if type empty, type will be assign to NONE
-    - MinPlayers (must greather or equal 0)
-    - MaxPlayers (must greather than 0)
-    - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
-    - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - MinPlayers (must greater or equal 0)
+    - MaxPlayers (must greater than 0)
+    - InviteTimeout (must greater or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - InactiveTimeout (must greater or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
     - Persistent Flag only can use with type DS (example value true or false)
     - If Persistent True the session always active even DS removing or terminate and Session will be request DS again until DS Ready or Busy.
     - To Stop Session Not request again to DS or want Delete Session can Delete Session using endpoint DELETE /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
@@ -1195,6 +1208,7 @@ def admin_update_configuration_template_v1(
     "en-US" : "title"
     }
     }
+    - TieTeamsSessionLifetime: If it is set to true, the lifetime of any partyId session inside teams attribute will be tied to the game session. Only applies when the teams partyId is game session.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}
@@ -1250,15 +1264,16 @@ async def admin_update_configuration_template_v1_async(
 ):
     """Update configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationTemplateV1)
 
-    Update template configuration
+    Modify template configuration
     Session configuration mandatory :
     - name
     - joinability (example value : OPEN, CLOSED, INVITE_ONLY)
+    - autoJoin: when enabled, players will automatically join the initial game session creation. Game session will not send any invite and players dont need to act upon it. default: false (disabled)
     - Type (example value : P2P, DS, NONE) if type empty, type will be assign to NONE
-    - MinPlayers (must greather or equal 0)
-    - MaxPlayers (must greather than 0)
-    - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
-    - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - MinPlayers (must greater or equal 0)
+    - MaxPlayers (must greater than 0)
+    - InviteTimeout (must greater or equal 0) if InviteTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
+    - InactiveTimeout (must greater or equal 0) if InactiveTimeout equal 0 will be use default DefaultTimeoutSecond (60s)
     - Persistent Flag only can use with type DS (example value true or false)
     - If Persistent True the session always active even DS removing or terminate and Session will be request DS again until DS Ready or Busy.
     - To Stop Session Not request again to DS or want Delete Session can Delete Session using endpoint DELETE /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
@@ -1282,6 +1297,7 @@ async def admin_update_configuration_template_v1_async(
     "en-US" : "title"
     }
     }
+    - TieTeamsSessionLifetime: If it is set to true, the lifetime of any partyId session inside teams attribute will be tied to the game session. Only applies when the teams partyId is game session.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}

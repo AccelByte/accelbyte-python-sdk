@@ -649,11 +649,16 @@ def create_game_session(
     Session configuration name is mandatory, this API will refer following values from the session template if they're not provided in the request:
     - type
     - joinability
+    - autoJoin. If enabled (set to true), players provided in the request will automatically joined the initial game session creation. Game session will not send any invite and players dont need to act upon it.
     - minPlayers
     - maxPlayers
     - inviteTimeout
     - inactiveTimeout
     - dsSource
+    - tieTeamsSessionLifetime
+
+    When the tieTeamsSessionLifetime is true, the lifetime of any partyId inside teams attribute will be tied to the game session.
+    Only applies when the teams partyId is a game session.
 
     When the session type is a DS, a DS creation request will be sent if number of active players reaches session's minPlayers.
 
@@ -723,11 +728,16 @@ async def create_game_session_async(
     Session configuration name is mandatory, this API will refer following values from the session template if they're not provided in the request:
     - type
     - joinability
+    - autoJoin. If enabled (set to true), players provided in the request will automatically joined the initial game session creation. Game session will not send any invite and players dont need to act upon it.
     - minPlayers
     - maxPlayers
     - inviteTimeout
     - inactiveTimeout
     - dsSource
+    - tieTeamsSessionLifetime
+
+    When the tieTeamsSessionLifetime is true, the lifetime of any partyId inside teams attribute will be tied to the game session.
+    Only applies when the teams partyId is a game session.
 
     When the session type is a DS, a DS creation request will be sent if number of active players reaches session's minPlayers.
 
@@ -1940,7 +1950,7 @@ def public_query_game_sessions(
     - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
     - FAILED_TO_REQUEST: DSMC fails to create the DS.
 
-    query parameter "availability" to filter sessions' availabillity:
+    query parameter "availability" to filter sessions' availability:
     all: return all sessions regardless it's full
     full: only return active sessions
     default behavior (unset or else): return only available sessions (not full)
@@ -2002,7 +2012,7 @@ async def public_query_game_sessions_async(
     - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
     - FAILED_TO_REQUEST: DSMC fails to create the DS.
 
-    query parameter "availability" to filter sessions' availabillity:
+    query parameter "availability" to filter sessions' availability:
     all: return all sessions regardless it's full
     full: only return active sessions
     default behavior (unset or else): return only available sessions (not full)

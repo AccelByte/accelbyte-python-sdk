@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.18.3)
+# AccelByte Gaming Services Session Service (2.20.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,11 +41,16 @@ class CreateGameSession(Operation):
     Session configuration name is mandatory, this API will refer following values from the session template if they're not provided in the request:
     - type
     - joinability
+    - autoJoin. If enabled (set to true), players provided in the request will automatically joined the initial game session creation. Game session will not send any invite and players dont need to act upon it.
     - minPlayers
     - maxPlayers
     - inviteTimeout
     - inactiveTimeout
     - dsSource
+    - tieTeamsSessionLifetime
+
+    When the tieTeamsSessionLifetime is true, the lifetime of any partyId inside teams attribute will be tied to the game session.
+    Only applies when the teams partyId is a game session.
 
     When the session type is a DS, a DS creation request will be sent if number of active players reaches session's minPlayers.
 

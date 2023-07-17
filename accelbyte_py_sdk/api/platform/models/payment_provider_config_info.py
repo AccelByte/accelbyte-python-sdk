@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.30.3)
+# AccelByte Gaming Services Platform Service (4.31.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,8 @@ from ....core import StrEnum
 
 class AggregateEnum(StrEnum):
     ADYEN = "ADYEN"
+    CHECKOUT = "CHECKOUT"
+    STRIPE = "STRIPE"
     XSOLLA = "XSOLLA"
 
 
@@ -351,7 +353,7 @@ class PaymentProviderConfigInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "aggregate": ["ADYEN", "XSOLLA"],
+            "aggregate": ["ADYEN", "CHECKOUT", "STRIPE", "XSOLLA"],
             "specials": [
                 "ADYEN",
                 "ALIPAY",

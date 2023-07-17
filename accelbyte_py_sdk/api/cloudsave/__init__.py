@@ -8,13 +8,17 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.8.2"
+__version__ = "3.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 # admin_concurrent_record
+from .wrappers import admin_put_admin_game_record_concurrent_handler_v1
+from .wrappers import admin_put_admin_game_record_concurrent_handler_v1_async
+from .wrappers import admin_put_admin_player_record_concurrent_handler_v1
+from .wrappers import admin_put_admin_player_record_concurrent_handler_v1_async
 from .wrappers import admin_put_game_record_concurrent_handler_v1
 from .wrappers import admin_put_game_record_concurrent_handler_v1_async
 from .wrappers import admin_put_player_public_record_concurrent_handler_v1
@@ -59,6 +63,34 @@ from .wrappers import bulk_get_player_record_size_handler_v1
 from .wrappers import bulk_get_player_record_size_handler_v1_async
 from .wrappers import list_player_record_handler_v1
 from .wrappers import list_player_record_handler_v1_async
+
+# admin_record
+from .wrappers import admin_bulk_get_admin_game_record_v1
+from .wrappers import admin_bulk_get_admin_game_record_v1_async
+from .wrappers import admin_bulk_get_admin_player_record_v1
+from .wrappers import admin_bulk_get_admin_player_record_v1_async
+from .wrappers import admin_delete_admin_game_record_v1
+from .wrappers import admin_delete_admin_game_record_v1_async
+from .wrappers import admin_delete_admin_player_record_v1
+from .wrappers import admin_delete_admin_player_record_v1_async
+from .wrappers import admin_get_admin_game_record_v1
+from .wrappers import admin_get_admin_game_record_v1_async
+from .wrappers import admin_get_admin_player_record_v1
+from .wrappers import admin_get_admin_player_record_v1_async
+from .wrappers import admin_list_admin_game_record_v1
+from .wrappers import admin_list_admin_game_record_v1_async
+from .wrappers import admin_list_admin_user_records_v1
+from .wrappers import admin_list_admin_user_records_v1_async
+from .wrappers import admin_post_admin_game_record_v1
+from .wrappers import admin_post_admin_game_record_v1_async
+from .wrappers import admin_post_player_admin_record_v1
+from .wrappers import admin_post_player_admin_record_v1_async
+from .wrappers import admin_put_admin_game_record_v1
+from .wrappers import admin_put_admin_game_record_v1_async
+from .wrappers import admin_put_admin_player_record_v1
+from .wrappers import admin_put_admin_player_record_v1_async
+from .wrappers import bulk_get_admin_player_record_by_user_ids_v1
+from .wrappers import bulk_get_admin_player_record_by_user_ids_v1_async
 
 # concurrent_record
 from .wrappers import put_game_record_concurrent_handler_v1

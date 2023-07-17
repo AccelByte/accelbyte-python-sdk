@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Lobby Server (3.22.0)
+# AccelByte Gaming Services Lobby Server (3.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,8 +32,6 @@ class ModelsConfigReq(Model):
     """Models config req (models.ConfigReq)
 
     Properties:
-        unregister_delay: (unregisterDelay) REQUIRED int
-
         allow_invite_non_connected_user: (allowInviteNonConnectedUser) OPTIONAL bool
 
         allow_join_party_during_matchmaking: (allowJoinPartyDuringMatchmaking) OPTIONAL bool
@@ -66,16 +64,19 @@ class ModelsConfigReq(Model):
 
         max_ds_wait_time: (maxDSWaitTime) OPTIONAL int
 
+        max_friends_limit: (maxFriendsLimit) OPTIONAL int
+
         max_party_member: (maxPartyMember) OPTIONAL int
 
         profanity_filter: (profanityFilter) OPTIONAL bool
 
         ready_consent_timeout: (readyConsentTimeout) OPTIONAL int
+
+        unregister_delay: (unregisterDelay) OPTIONAL int
     """
 
     # region fields
 
-    unregister_delay: int  # REQUIRED
     allow_invite_non_connected_user: bool  # OPTIONAL
     allow_join_party_during_matchmaking: bool  # OPTIONAL
     auto_kick_on_disconnect: bool  # OPTIONAL
@@ -92,17 +93,15 @@ class ModelsConfigReq(Model):
     general_rate_limit_duration: int  # OPTIONAL
     keep_presence_activity_on_disconnect: bool  # OPTIONAL
     max_ds_wait_time: int  # OPTIONAL
+    max_friends_limit: int  # OPTIONAL
     max_party_member: int  # OPTIONAL
     profanity_filter: bool  # OPTIONAL
     ready_consent_timeout: int  # OPTIONAL
+    unregister_delay: int  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_unregister_delay(self, value: int) -> ModelsConfigReq:
-        self.unregister_delay = value
-        return self
 
     def with_allow_invite_non_connected_user(self, value: bool) -> ModelsConfigReq:
         self.allow_invite_non_connected_user = value
@@ -168,6 +167,10 @@ class ModelsConfigReq(Model):
         self.max_ds_wait_time = value
         return self
 
+    def with_max_friends_limit(self, value: int) -> ModelsConfigReq:
+        self.max_friends_limit = value
+        return self
+
     def with_max_party_member(self, value: int) -> ModelsConfigReq:
         self.max_party_member = value
         return self
@@ -180,16 +183,16 @@ class ModelsConfigReq(Model):
         self.ready_consent_timeout = value
         return self
 
+    def with_unregister_delay(self, value: int) -> ModelsConfigReq:
+        self.unregister_delay = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "unregister_delay"):
-            result["unregisterDelay"] = int(self.unregister_delay)
-        elif include_empty:
-            result["unregisterDelay"] = 0
         if hasattr(self, "allow_invite_non_connected_user"):
             result["allowInviteNonConnectedUser"] = bool(
                 self.allow_invite_non_connected_user
@@ -264,6 +267,10 @@ class ModelsConfigReq(Model):
             result["maxDSWaitTime"] = int(self.max_ds_wait_time)
         elif include_empty:
             result["maxDSWaitTime"] = 0
+        if hasattr(self, "max_friends_limit"):
+            result["maxFriendsLimit"] = int(self.max_friends_limit)
+        elif include_empty:
+            result["maxFriendsLimit"] = 0
         if hasattr(self, "max_party_member"):
             result["maxPartyMember"] = int(self.max_party_member)
         elif include_empty:
@@ -276,6 +283,10 @@ class ModelsConfigReq(Model):
             result["readyConsentTimeout"] = int(self.ready_consent_timeout)
         elif include_empty:
             result["readyConsentTimeout"] = 0
+        if hasattr(self, "unregister_delay"):
+            result["unregisterDelay"] = int(self.unregister_delay)
+        elif include_empty:
+            result["unregisterDelay"] = 0
         return result
 
     # endregion to methods
@@ -285,7 +296,6 @@ class ModelsConfigReq(Model):
     @classmethod
     def create(
         cls,
-        unregister_delay: int,
         allow_invite_non_connected_user: Optional[bool] = None,
         allow_join_party_during_matchmaking: Optional[bool] = None,
         auto_kick_on_disconnect: Optional[bool] = None,
@@ -302,13 +312,14 @@ class ModelsConfigReq(Model):
         general_rate_limit_duration: Optional[int] = None,
         keep_presence_activity_on_disconnect: Optional[bool] = None,
         max_ds_wait_time: Optional[int] = None,
+        max_friends_limit: Optional[int] = None,
         max_party_member: Optional[int] = None,
         profanity_filter: Optional[bool] = None,
         ready_consent_timeout: Optional[int] = None,
+        unregister_delay: Optional[int] = None,
         **kwargs,
     ) -> ModelsConfigReq:
         instance = cls()
-        instance.unregister_delay = unregister_delay
         if allow_invite_non_connected_user is not None:
             instance.allow_invite_non_connected_user = allow_invite_non_connected_user
         if allow_join_party_during_matchmaking is not None:
@@ -345,12 +356,16 @@ class ModelsConfigReq(Model):
             )
         if max_ds_wait_time is not None:
             instance.max_ds_wait_time = max_ds_wait_time
+        if max_friends_limit is not None:
+            instance.max_friends_limit = max_friends_limit
         if max_party_member is not None:
             instance.max_party_member = max_party_member
         if profanity_filter is not None:
             instance.profanity_filter = profanity_filter
         if ready_consent_timeout is not None:
             instance.ready_consent_timeout = ready_consent_timeout
+        if unregister_delay is not None:
+            instance.unregister_delay = unregister_delay
         return instance
 
     @classmethod
@@ -360,10 +375,6 @@ class ModelsConfigReq(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "unregisterDelay" in dict_ and dict_["unregisterDelay"] is not None:
-            instance.unregister_delay = int(dict_["unregisterDelay"])
-        elif include_empty:
-            instance.unregister_delay = 0
         if (
             "allowInviteNonConnectedUser" in dict_
             and dict_["allowInviteNonConnectedUser"] is not None
@@ -475,6 +486,10 @@ class ModelsConfigReq(Model):
             instance.max_ds_wait_time = int(dict_["maxDSWaitTime"])
         elif include_empty:
             instance.max_ds_wait_time = 0
+        if "maxFriendsLimit" in dict_ and dict_["maxFriendsLimit"] is not None:
+            instance.max_friends_limit = int(dict_["maxFriendsLimit"])
+        elif include_empty:
+            instance.max_friends_limit = 0
         if "maxPartyMember" in dict_ and dict_["maxPartyMember"] is not None:
             instance.max_party_member = int(dict_["maxPartyMember"])
         elif include_empty:
@@ -487,6 +502,10 @@ class ModelsConfigReq(Model):
             instance.ready_consent_timeout = int(dict_["readyConsentTimeout"])
         elif include_empty:
             instance.ready_consent_timeout = 0
+        if "unregisterDelay" in dict_ and dict_["unregisterDelay"] is not None:
+            instance.unregister_delay = int(dict_["unregisterDelay"])
+        elif include_empty:
+            instance.unregister_delay = 0
         return instance
 
     @classmethod
@@ -526,7 +545,6 @@ class ModelsConfigReq(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "unregisterDelay": "unregister_delay",
             "allowInviteNonConnectedUser": "allow_invite_non_connected_user",
             "allowJoinPartyDuringMatchmaking": "allow_join_party_during_matchmaking",
             "autoKickOnDisconnect": "auto_kick_on_disconnect",
@@ -543,15 +561,16 @@ class ModelsConfigReq(Model):
             "generalRateLimitDuration": "general_rate_limit_duration",
             "keepPresenceActivityOnDisconnect": "keep_presence_activity_on_disconnect",
             "maxDSWaitTime": "max_ds_wait_time",
+            "maxFriendsLimit": "max_friends_limit",
             "maxPartyMember": "max_party_member",
             "profanityFilter": "profanity_filter",
             "readyConsentTimeout": "ready_consent_timeout",
+            "unregisterDelay": "unregister_delay",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "unregisterDelay": True,
             "allowInviteNonConnectedUser": False,
             "allowJoinPartyDuringMatchmaking": False,
             "autoKickOnDisconnect": False,
@@ -568,9 +587,11 @@ class ModelsConfigReq(Model):
             "generalRateLimitDuration": False,
             "keepPresenceActivityOnDisconnect": False,
             "maxDSWaitTime": False,
+            "maxFriendsLimit": False,
             "maxPartyMember": False,
             "profanityFilter": False,
             "readyConsentTimeout": False,
+            "unregisterDelay": False,
         }
 
     # endregion static methods

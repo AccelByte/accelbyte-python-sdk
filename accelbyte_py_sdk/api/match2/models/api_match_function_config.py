@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Match Service V2 (2.6.0)
+# AccelByte Gaming Services Match Service V2 (2.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,16 +34,16 @@ class ApiMatchFunctionConfig(Model):
     Properties:
         match_function: (match_function) REQUIRED str
 
-        service_app_name: (serviceAppName) REQUIRED str
-
         url: (url) REQUIRED str
+
+        service_app_name: (serviceAppName) OPTIONAL str
     """
 
     # region fields
 
     match_function: str  # REQUIRED
-    service_app_name: str  # REQUIRED
     url: str  # REQUIRED
+    service_app_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -53,12 +53,12 @@ class ApiMatchFunctionConfig(Model):
         self.match_function = value
         return self
 
-    def with_service_app_name(self, value: str) -> ApiMatchFunctionConfig:
-        self.service_app_name = value
-        return self
-
     def with_url(self, value: str) -> ApiMatchFunctionConfig:
         self.url = value
+        return self
+
+    def with_service_app_name(self, value: str) -> ApiMatchFunctionConfig:
+        self.service_app_name = value
         return self
 
     # endregion with_x methods
@@ -71,14 +71,14 @@ class ApiMatchFunctionConfig(Model):
             result["match_function"] = str(self.match_function)
         elif include_empty:
             result["match_function"] = ""
-        if hasattr(self, "service_app_name"):
-            result["serviceAppName"] = str(self.service_app_name)
-        elif include_empty:
-            result["serviceAppName"] = ""
         if hasattr(self, "url"):
             result["url"] = str(self.url)
         elif include_empty:
             result["url"] = ""
+        if hasattr(self, "service_app_name"):
+            result["serviceAppName"] = str(self.service_app_name)
+        elif include_empty:
+            result["serviceAppName"] = ""
         return result
 
     # endregion to methods
@@ -87,12 +87,17 @@ class ApiMatchFunctionConfig(Model):
 
     @classmethod
     def create(
-        cls, match_function: str, service_app_name: str, url: str, **kwargs
+        cls,
+        match_function: str,
+        url: str,
+        service_app_name: Optional[str] = None,
+        **kwargs,
     ) -> ApiMatchFunctionConfig:
         instance = cls()
         instance.match_function = match_function
-        instance.service_app_name = service_app_name
         instance.url = url
+        if service_app_name is not None:
+            instance.service_app_name = service_app_name
         return instance
 
     @classmethod
@@ -106,14 +111,14 @@ class ApiMatchFunctionConfig(Model):
             instance.match_function = str(dict_["match_function"])
         elif include_empty:
             instance.match_function = ""
-        if "serviceAppName" in dict_ and dict_["serviceAppName"] is not None:
-            instance.service_app_name = str(dict_["serviceAppName"])
-        elif include_empty:
-            instance.service_app_name = ""
         if "url" in dict_ and dict_["url"] is not None:
             instance.url = str(dict_["url"])
         elif include_empty:
             instance.url = ""
+        if "serviceAppName" in dict_ and dict_["serviceAppName"] is not None:
+            instance.service_app_name = str(dict_["serviceAppName"])
+        elif include_empty:
+            instance.service_app_name = ""
         return instance
 
     @classmethod
@@ -158,16 +163,16 @@ class ApiMatchFunctionConfig(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "match_function": "match_function",
-            "serviceAppName": "service_app_name",
             "url": "url",
+            "serviceAppName": "service_app_name",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "match_function": True,
-            "serviceAppName": True,
             "url": True,
+            "serviceAppName": False,
         }
 
     # endregion static methods

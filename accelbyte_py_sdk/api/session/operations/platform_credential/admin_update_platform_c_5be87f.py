@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.18.3)
+# AccelByte Gaming Services Session Service (2.20.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,13 +30,22 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ApimodelsPutPlatformCredentialsRequest
+from ...models import ModelsPlatformCredentials
 from ...models import ResponseError
 
 
 class AdminUpdatePlatformCredentials(Operation):
-    """Update platform credentials. Currently only used to sync PSN sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdatePlatformCredentials)
+    """Update platform credentials. Currently only used to sync PSN sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE] (adminUpdatePlatformCredentials)
 
-    Update platform credentials.
+    Update platform credentials for Native Session sync. Currently supports PSN platform.
+    Send an empty body to clear data.
+    PSN:
+    - clientID: Auth Server (Client Credential) ClientID
+    - clientSecret: Auth Server (Client Credential) Secret
+    - scope: psn:s2s.service (For Sync non PSN member to PSN Session)
+
+    Required Scope(s):
+        - psn
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials
@@ -56,7 +65,7 @@ class AdminUpdatePlatformCredentials(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - str (OK)
+        200: OK - ModelsPlatformCredentials (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -175,10 +184,12 @@ class AdminUpdatePlatformCredentials(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, str], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, ModelsPlatformCredentials], Union[None, HttpResponse, ResponseError]
+    ]:
         """Parse the given response.
 
-        200: OK - str (OK)
+        200: OK - ModelsPlatformCredentials (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -204,7 +215,7 @@ class AdminUpdatePlatformCredentials(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return str(content), None
+            return ModelsPlatformCredentials.create_from_dict(content), None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:

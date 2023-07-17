@@ -50,6 +50,9 @@ def image_get(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
 
@@ -99,6 +102,9 @@ async def image_get_async(
     """Get details about an image. (ImageGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
@@ -151,6 +157,9 @@ def image_list(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images
 
@@ -196,6 +205,9 @@ async def image_list_async(
     """Get a list of images which exist (uploaded, uploading, or building) in the linked account.  Fails if no account is linked (ImageList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images
@@ -246,6 +258,9 @@ def image_patch(
     """Edit the image name, toggle IsProtected, or add/remove tags (ImagePatch)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
@@ -300,6 +315,9 @@ async def image_patch_async(
     """Edit the image name, toggle IsProtected, or add/remove tags (ImagePatch)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}

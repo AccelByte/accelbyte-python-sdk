@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.30.3)
+# AccelByte Gaming Services Platform Service (4.31.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -638,7 +638,6 @@ def create_billing_history_info_example() -> BillingHistoryInfo:
     instance.currency = create_currency_summary_example()
     instance.item_id = randomize()
     instance.namespace = randomize("slug")
-    instance.payment_order_no = randomize()
     instance.recurring_order_no = randomize()
     instance.sandbox = randomize("bool")
     instance.status = randomize()
@@ -650,6 +649,7 @@ def create_billing_history_info_example() -> BillingHistoryInfo:
     instance.change_billing_account = randomize("bool")
     instance.description = randomize()
     instance.ext_tx_id = randomize()
+    instance.payment_order_no = randomize()
     instance.retry_attempted = randomize("int", min_val=1, max_val=1000)
     instance.sku = randomize("slug")
     instance.status_reason = randomize()
@@ -1755,7 +1755,6 @@ def create_full_category_info_example() -> FullCategoryInfo:
 
 def create_full_item_info_example() -> FullItemInfo:
     instance = FullItemInfo()
-    instance.category_path = randomize()
     instance.created_at = randomize("date")
     instance.entitlement_type = randomize()
     instance.item_id = randomize()
@@ -1771,6 +1770,7 @@ def create_full_item_info_example() -> FullItemInfo:
     instance.base_app_id = randomize()
     instance.booth_name = randomize()
     instance.bound_item_ids = [randomize()]
+    instance.category_path = randomize()
     instance.clazz = randomize()
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}

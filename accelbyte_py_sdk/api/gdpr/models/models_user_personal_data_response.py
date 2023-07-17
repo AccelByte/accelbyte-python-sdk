@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Gdpr Service (2.1.0)
+# AccelByte Gaming Services Gdpr Service (2.1.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

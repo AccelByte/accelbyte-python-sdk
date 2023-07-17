@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Justice Match Service V2 (2.6.0)
+# Justice Match Service V2 (2.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,6 +37,7 @@ from accelbyte_py_sdk.api.match2.models import ResponseError
 
 @click.command()
 @click.option("--limit", "limit", type=int)
+@click.option("--name", "name", type=str)
 @click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -44,6 +45,7 @@ from accelbyte_py_sdk.api.match2.models import ResponseError
 @click.option("--doc", type=bool)
 def rule_set_list(
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -60,6 +62,7 @@ def rule_set_list(
         login_as_internal(login_as)
     result, error = rule_set_list_internal(
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

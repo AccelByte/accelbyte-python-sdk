@@ -38,6 +38,9 @@ class FleetUpdate(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
 
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
 

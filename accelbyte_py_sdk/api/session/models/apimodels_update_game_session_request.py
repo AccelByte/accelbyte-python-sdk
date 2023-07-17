@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.18.3)
+# AccelByte Gaming Services Session Service (2.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,6 +67,8 @@ class ApimodelsUpdateGameSessionRequest(Model):
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
+
+        tie_teams_session_lifetime: (tieTeamsSessionLifetime) OPTIONAL bool
     """
 
     # region fields
@@ -88,6 +90,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
     version: int  # REQUIRED
     fallback_claim_keys: List[str]  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
+    tie_teams_session_lifetime: bool  # OPTIONAL
 
     # endregion fields
 
@@ -169,6 +172,12 @@ class ApimodelsUpdateGameSessionRequest(Model):
         self.preferred_claim_keys = value
         return self
 
+    def with_tie_teams_session_lifetime(
+        self, value: bool
+    ) -> ApimodelsUpdateGameSessionRequest:
+        self.tie_teams_session_lifetime = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -245,6 +254,10 @@ class ApimodelsUpdateGameSessionRequest(Model):
             result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
         elif include_empty:
             result["preferredClaimKeys"] = []
+        if hasattr(self, "tie_teams_session_lifetime"):
+            result["tieTeamsSessionLifetime"] = bool(self.tie_teams_session_lifetime)
+        elif include_empty:
+            result["tieTeamsSessionLifetime"] = False
         return result
 
     # endregion to methods
@@ -271,6 +284,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
         version: int,
         fallback_claim_keys: Optional[List[str]] = None,
         preferred_claim_keys: Optional[List[str]] = None,
+        tie_teams_session_lifetime: Optional[bool] = None,
         **kwargs,
     ) -> ApimodelsUpdateGameSessionRequest:
         instance = cls()
@@ -293,6 +307,8 @@ class ApimodelsUpdateGameSessionRequest(Model):
             instance.fallback_claim_keys = fallback_claim_keys
         if preferred_claim_keys is not None:
             instance.preferred_claim_keys = preferred_claim_keys
+        if tie_teams_session_lifetime is not None:
+            instance.tie_teams_session_lifetime = tie_teams_session_lifetime
         return instance
 
     @classmethod
@@ -379,6 +395,13 @@ class ApimodelsUpdateGameSessionRequest(Model):
             ]
         elif include_empty:
             instance.preferred_claim_keys = []
+        if (
+            "tieTeamsSessionLifetime" in dict_
+            and dict_["tieTeamsSessionLifetime"] is not None
+        ):
+            instance.tie_teams_session_lifetime = bool(dict_["tieTeamsSessionLifetime"])
+        elif include_empty:
+            instance.tie_teams_session_lifetime = False
         return instance
 
     @classmethod
@@ -439,6 +462,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
             "version": "version",
             "fallbackClaimKeys": "fallback_claim_keys",
             "preferredClaimKeys": "preferred_claim_keys",
+            "tieTeamsSessionLifetime": "tie_teams_session_lifetime",
         }
 
     @staticmethod
@@ -461,6 +485,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
             "version": True,
             "fallbackClaimKeys": False,
             "preferredClaimKeys": False,
+            "tieTeamsSessionLifetime": False,
         }
 
     # endregion static methods

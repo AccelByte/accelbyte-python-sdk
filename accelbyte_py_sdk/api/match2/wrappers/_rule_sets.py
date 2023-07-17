@@ -419,6 +419,7 @@ async def rule_set_details_async(
 @same_doc_as(RuleSetList)
 def rule_set_list(
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -455,6 +456,8 @@ def rule_set_list(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -472,6 +475,7 @@ def rule_set_list(
             return None, error
     request = RuleSetList.create(
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
     )
@@ -481,6 +485,7 @@ def rule_set_list(
 @same_doc_as(RuleSetList)
 async def rule_set_list_async(
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -517,6 +522,8 @@ async def rule_set_list_async(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -534,6 +541,7 @@ async def rule_set_list_async(
             return None, error
     request = RuleSetList.create(
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
     )

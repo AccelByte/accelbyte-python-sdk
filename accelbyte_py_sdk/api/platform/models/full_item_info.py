@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.30.3)
+# AccelByte Gaming Services Platform Service (4.31.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,8 +78,6 @@ class FullItemInfo(Model):
     """Full item info (FullItemInfo)
 
     Properties:
-        category_path: (categoryPath) REQUIRED str
-
         created_at: (createdAt) REQUIRED str
 
         entitlement_type: (entitlementType) REQUIRED Union[str, EntitlementTypeEnum]
@@ -109,6 +107,8 @@ class FullItemInfo(Model):
         booth_name: (boothName) OPTIONAL str
 
         bound_item_ids: (boundItemIds) OPTIONAL List[str]
+
+        category_path: (categoryPath) OPTIONAL str
 
         clazz: (clazz) OPTIONAL str
 
@@ -167,7 +167,6 @@ class FullItemInfo(Model):
 
     # region fields
 
-    category_path: str  # REQUIRED
     created_at: str  # REQUIRED
     entitlement_type: Union[str, EntitlementTypeEnum]  # REQUIRED
     item_id: str  # REQUIRED
@@ -183,6 +182,7 @@ class FullItemInfo(Model):
     base_app_id: str  # OPTIONAL
     booth_name: str  # OPTIONAL
     bound_item_ids: List[str]  # OPTIONAL
+    category_path: str  # OPTIONAL
     clazz: str  # OPTIONAL
     display_order: int  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
@@ -214,10 +214,6 @@ class FullItemInfo(Model):
     # endregion fields
 
     # region with_x methods
-
-    def with_category_path(self, value: str) -> FullItemInfo:
-        self.category_path = value
-        return self
 
     def with_created_at(self, value: str) -> FullItemInfo:
         self.created_at = value
@@ -279,6 +275,10 @@ class FullItemInfo(Model):
 
     def with_bound_item_ids(self, value: List[str]) -> FullItemInfo:
         self.bound_item_ids = value
+        return self
+
+    def with_category_path(self, value: str) -> FullItemInfo:
+        self.category_path = value
         return self
 
     def with_clazz(self, value: str) -> FullItemInfo:
@@ -395,10 +395,6 @@ class FullItemInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "category_path"):
-            result["categoryPath"] = str(self.category_path)
-        elif include_empty:
-            result["categoryPath"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -465,6 +461,10 @@ class FullItemInfo(Model):
             result["boundItemIds"] = [str(i0) for i0 in self.bound_item_ids]
         elif include_empty:
             result["boundItemIds"] = []
+        if hasattr(self, "category_path"):
+            result["categoryPath"] = str(self.category_path)
+        elif include_empty:
+            result["categoryPath"] = ""
         if hasattr(self, "clazz"):
             result["clazz"] = str(self.clazz)
         elif include_empty:
@@ -590,7 +590,6 @@ class FullItemInfo(Model):
     @classmethod
     def create(
         cls,
-        category_path: str,
         created_at: str,
         entitlement_type: Union[str, EntitlementTypeEnum],
         item_id: str,
@@ -606,6 +605,7 @@ class FullItemInfo(Model):
         base_app_id: Optional[str] = None,
         booth_name: Optional[str] = None,
         bound_item_ids: Optional[List[str]] = None,
+        category_path: Optional[str] = None,
         clazz: Optional[str] = None,
         display_order: Optional[int] = None,
         ext: Optional[Dict[str, Any]] = None,
@@ -636,7 +636,6 @@ class FullItemInfo(Model):
         **kwargs,
     ) -> FullItemInfo:
         instance = cls()
-        instance.category_path = category_path
         instance.created_at = created_at
         instance.entitlement_type = entitlement_type
         instance.item_id = item_id
@@ -657,6 +656,8 @@ class FullItemInfo(Model):
             instance.booth_name = booth_name
         if bound_item_ids is not None:
             instance.bound_item_ids = bound_item_ids
+        if category_path is not None:
+            instance.category_path = category_path
         if clazz is not None:
             instance.clazz = clazz
         if display_order is not None:
@@ -718,10 +719,6 @@ class FullItemInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
-            instance.category_path = str(dict_["categoryPath"])
-        elif include_empty:
-            instance.category_path = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -791,6 +788,10 @@ class FullItemInfo(Model):
             instance.bound_item_ids = [str(i0) for i0 in dict_["boundItemIds"]]
         elif include_empty:
             instance.bound_item_ids = []
+        if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
+            instance.category_path = str(dict_["categoryPath"])
+        elif include_empty:
+            instance.category_path = ""
         if "clazz" in dict_ and dict_["clazz"] is not None:
             instance.clazz = str(dict_["clazz"])
         elif include_empty:
@@ -953,7 +954,6 @@ class FullItemInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "categoryPath": "category_path",
             "createdAt": "created_at",
             "entitlementType": "entitlement_type",
             "itemId": "item_id",
@@ -969,6 +969,7 @@ class FullItemInfo(Model):
             "baseAppId": "base_app_id",
             "boothName": "booth_name",
             "boundItemIds": "bound_item_ids",
+            "categoryPath": "category_path",
             "clazz": "clazz",
             "displayOrder": "display_order",
             "ext": "ext",
@@ -1001,7 +1002,6 @@ class FullItemInfo(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "categoryPath": True,
             "createdAt": True,
             "entitlementType": True,
             "itemId": True,
@@ -1017,6 +1017,7 @@ class FullItemInfo(Model):
             "baseAppId": False,
             "boothName": False,
             "boundItemIds": False,
+            "categoryPath": False,
             "clazz": False,
             "displayOrder": False,
             "ext": False,

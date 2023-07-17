@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (6.0.2)
+# AccelByte Gaming Services Iam Service Index (6.1.0)
 
 
 ## Operations
@@ -238,6 +238,7 @@
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories | GET | AdminGetUserLoginHistoriesV3 | `false` | [AdminGetUserLoginHistoriesV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_login_hi_f4b37e.py) | [admin_get_user_login_histories_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-login-histories-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_login_histories_v3.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} | GET | AdminGetUserMapping | `false` | [AdminGetUserMapping](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_mapping.py) | [admin_get_user_mapping](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-mapping](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_mapping.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms | GET | AdminGetUserPlatformAccountsV3 | `false` | [AdminGetUserPlatformAccountsV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_platform_6f9923.py) | [admin_get_user_platform_accounts_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-platform-accounts-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_platform_accounts_v3.py) |
+| /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/metadata | GET | AdminGetUserSinglePlatformAccount | `false` | [AdminGetUserSinglePlatformAccount](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_single_p_15c89c.py) | [admin_get_user_single_platform_account](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-single-platform-account](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_single_platform_account.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/invite | POST | AdminInviteUserV3 | `false` | [AdminInviteUserV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_invite_user_v3.py) | [admin_invite_user_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-invite-user-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_invite_user_v3.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/link | POST | AdminLinkPlatformAccount | `false` | [AdminLinkPlatformAccount](../../accelbyte_py_sdk/api/iam/operations/users/admin_link_platform_account.py) | [admin_link_platform_account](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-link-platform-account](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_link_platform_account.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/bulk | POST | AdminListUserIDByUserIDsV3 | `false` | [AdminListUserIDByUserIDsV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_list_user_id_by_u_d47f71.py) | [admin_list_user_id_by_user_i_ds_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-list-user-id-by-user-i-ds-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_list_user_id_by_user_i_ds_v3.py) |
@@ -642,6 +643,7 @@
 | model.UserPasswordUpdateRequest | [ModelUserPasswordUpdateRequest](../../accelbyte_py_sdk/api/iam/models/model_user_password_update_request.py) |
 | model.UserPasswordUpdateV3Request | [ModelUserPasswordUpdateV3Request](../../accelbyte_py_sdk/api/iam/models/model_user_password_update_v3_request.py) |
 | model.UserPermissionsResponseV3 | [ModelUserPermissionsResponseV3](../../accelbyte_py_sdk/api/iam/models/model_user_permissions_response_v3.py) |
+| model.UserPlatformMetadata | [ModelUserPlatformMetadata](../../accelbyte_py_sdk/api/iam/models/model_user_platform_metadata.py) |
 | model.UserResponse | [ModelUserResponse](../../accelbyte_py_sdk/api/iam/models/model_user_response.py) |
 | model.UserResponseV3 | [ModelUserResponseV3](../../accelbyte_py_sdk/api/iam/models/model_user_response_v3.py) |
 | model.UserRolesV4Response | [ModelUserRolesV4Response](../../accelbyte_py_sdk/api/iam/models/model_user_roles_v4_response.py) |

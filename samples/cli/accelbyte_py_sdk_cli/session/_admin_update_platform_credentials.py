@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Service (2.18.3)
+# AGS Session Service (2.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.session import (
     admin_update_platform_credentials as admin_update_platform_credentials_internal,
 )
 from accelbyte_py_sdk.api.session.models import ApimodelsPutPlatformCredentialsRequest
+from accelbyte_py_sdk.api.session.models import ModelsPlatformCredentials
 from accelbyte_py_sdk.api.session.models import ResponseError
 
 

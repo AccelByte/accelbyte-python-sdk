@@ -39,6 +39,9 @@ class FleetClaimByKeys(Operation):
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
+    Required Permission(s):
+        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
+
     Properties:
         url: /ams/v1/namespaces/{namespace}/servers/claim
 

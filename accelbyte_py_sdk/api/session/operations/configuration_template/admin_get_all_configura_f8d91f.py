@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.18.3)
+# AccelByte Gaming Services Session Service (2.20.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -55,6 +55,8 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -80,6 +82,7 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
 
     namespace: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
+    name: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
 
     # endregion fields
@@ -134,6 +137,8 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
         result = {}
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "name"):
+            result["name"] = self.name
         if hasattr(self, "offset"):
             result["offset"] = self.offset
         return result
@@ -154,6 +159,10 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
         self.limit = value
         return self
 
+    def with_name(self, value: str) -> AdminGetAllConfigurationTemplatesV1:
+        self.name = value
+        return self
+
     def with_offset(self, value: int) -> AdminGetAllConfigurationTemplatesV1:
         self.offset = value
         return self
@@ -172,6 +181,10 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = 0
+        if hasattr(self, "name") and self.name:
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = ""
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
@@ -241,6 +254,7 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
         cls,
         namespace: str,
         limit: Optional[int] = None,
+        name: Optional[str] = None,
         offset: Optional[int] = None,
         **kwargs,
     ) -> AdminGetAllConfigurationTemplatesV1:
@@ -248,6 +262,8 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
         instance.namespace = namespace
         if limit is not None:
             instance.limit = limit
+        if name is not None:
+            instance.name = name
         if offset is not None:
             instance.offset = offset
         return instance
@@ -265,6 +281,10 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = 0
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = ""
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
@@ -276,6 +296,7 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
         return {
             "namespace": "namespace",
             "limit": "limit",
+            "name": "name",
             "offset": "offset",
         }
 
@@ -284,6 +305,7 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
         return {
             "namespace": True,
             "limit": False,
+            "name": False,
             "offset": False,
         }
 

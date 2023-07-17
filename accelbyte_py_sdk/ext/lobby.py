@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Lobby Server (3.22.0)
+# AccelByte Gaming Services Lobby Server (3.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -617,6 +617,7 @@ def create_models_config_example() -> ModelsConfig:
     instance.general_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
     instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
     instance.keep_presence_activity_on_disconnect = randomize("bool")
+    instance.max_friends_limit = randomize("int", min_val=1, max_val=1000)
     instance.max_party_member = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.profanity_filter = randomize("bool")
@@ -632,7 +633,6 @@ def create_models_config_list_example() -> ModelsConfigList:
 
 def create_models_config_req_example() -> ModelsConfigReq:
     instance = ModelsConfigReq()
-    instance.unregister_delay = randomize("int", min_val=1, max_val=1000)
     instance.allow_invite_non_connected_user = randomize("bool")
     instance.allow_join_party_during_matchmaking = randomize("bool")
     instance.auto_kick_on_disconnect = randomize("bool")
@@ -649,9 +649,11 @@ def create_models_config_req_example() -> ModelsConfigReq:
     instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
     instance.keep_presence_activity_on_disconnect = randomize("bool")
     instance.max_ds_wait_time = randomize("int", min_val=1, max_val=1000)
+    instance.max_friends_limit = randomize("int", min_val=1, max_val=1000)
     instance.max_party_member = randomize("int", min_val=1, max_val=1000)
     instance.profanity_filter = randomize("bool")
     instance.ready_consent_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unregister_delay = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

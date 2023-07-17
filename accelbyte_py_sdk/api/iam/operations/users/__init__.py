@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "6.0.2"
+__version__ = "6.1.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -47,6 +47,7 @@ from .admin_get_user_deletion_d1510f import AdminGetUserDeletionStatusV3
 from .admin_get_user_login_hi_f4b37e import AdminGetUserLoginHistoriesV3
 from .admin_get_user_mapping import AdminGetUserMapping
 from .admin_get_user_platform_6f9923 import AdminGetUserPlatformAccountsV3
+from .admin_get_user_single_p_15c89c import AdminGetUserSinglePlatformAccount
 from .admin_invite_user_v3 import AdminInviteUserV3
 from .admin_link_platform_account import AdminLinkPlatformAccount
 from .admin_list_user_id_by_u_d47f71 import AdminListUserIDByUserIDsV3

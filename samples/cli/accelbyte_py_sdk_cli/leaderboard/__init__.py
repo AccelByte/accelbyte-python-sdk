@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-leaderboard-service (2.24.0)
+# justice-leaderboard-service (2.25.0)
 
 from ._get_leaderboard_configurations_admin_v1 import (
     get_leaderboard_configurations_admin_v1,

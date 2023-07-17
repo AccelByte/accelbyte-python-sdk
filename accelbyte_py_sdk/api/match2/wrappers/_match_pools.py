@@ -572,6 +572,7 @@ async def match_pool_details_async(
 @same_doc_as(MatchPoolList)
 def match_pool_list(
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -608,6 +609,8 @@ def match_pool_list(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -625,6 +628,7 @@ def match_pool_list(
             return None, error
     request = MatchPoolList.create(
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
     )
@@ -634,6 +638,7 @@ def match_pool_list(
 @same_doc_as(MatchPoolList)
 async def match_pool_list_async(
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -670,6 +675,8 @@ async def match_pool_list_async(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -687,6 +694,7 @@ async def match_pool_list_async(
             return None, error
     request = MatchPoolList.create(
         limit=limit,
+        name=name,
         offset=offset,
         namespace=namespace,
     )

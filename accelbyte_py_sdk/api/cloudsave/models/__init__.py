@@ -8,13 +8,36 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.8.2"
+__version__ = "3.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .models_admin_concurrent_record_request import ModelsAdminConcurrentRecordRequest
+from .models_admin_game_concurrent_record_request import (
+    ModelsAdminGameConcurrentRecordRequest,
+)
+from .models_admin_game_record_request import ModelsAdminGameRecordRequest
+from .models_admin_game_record_response import ModelsAdminGameRecordResponse
+from .models_admin_player_concurrent_record_request import (
+    ModelsAdminPlayerConcurrentRecordRequest,
+)
+from .models_admin_player_record_key_info import ModelsAdminPlayerRecordKeyInfo
+from .models_admin_player_record_request import ModelsAdminPlayerRecordRequest
+from .models_admin_player_record_response import ModelsAdminPlayerRecordResponse
+from .models_bulk_get_admin_game_record_request import (
+    ModelsBulkGetAdminGameRecordRequest,
+)
+from .models_bulk_get_admin_game_record_response import (
+    ModelsBulkGetAdminGameRecordResponse,
+)
+from .models_bulk_get_admin_player_record_request import (
+    ModelsBulkGetAdminPlayerRecordRequest,
+)
+from .models_bulk_get_admin_player_record_response import (
+    ModelsBulkGetAdminPlayerRecordResponse,
+)
 from .models_bulk_get_game_record_request import ModelsBulkGetGameRecordRequest
 from .models_bulk_get_game_record_response import ModelsBulkGetGameRecordResponse
 from .models_bulk_get_player_record_response import ModelsBulkGetPlayerRecordResponse
@@ -27,6 +50,12 @@ from .models_bulk_user_key_request import ModelsBulkUserKeyRequest
 from .models_concurrent_record_request import ModelsConcurrentRecordRequest
 from .models_game_record_request import ModelsGameRecordRequest
 from .models_game_record_response import ModelsGameRecordResponse
+from .models_list_admin_game_record_keys_response import (
+    ModelsListAdminGameRecordKeysResponse,
+)
+from .models_list_admin_player_record_keys_response import (
+    ModelsListAdminPlayerRecordKeysResponse,
+)
 from .models_list_game_record_keys_response import ModelsListGameRecordKeysResponse
 from .models_list_player_record_keys_response import ModelsListPlayerRecordKeysResponse
 from .models_pagination import ModelsPagination
