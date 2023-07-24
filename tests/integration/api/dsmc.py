@@ -183,7 +183,7 @@ class DSMCSessionTestCase(IntegrationTestCase):
             ),
             game_version="0.1.0",
             namespace=namespace,
-            session_type="p2p",
+            session_type="dedicated",
             username="username",
         )
 
@@ -229,7 +229,7 @@ class DSMCSessionTestCase(IntegrationTestCase):
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.dsmc import delete_session as dsmc_delete_session
         from accelbyte_py_sdk.api.sessionbrowser import (
-            delete_session as sb_delete_session,
+            admin_delete_session as sb_admin_delete_session,
         )
 
         if self.session_id is not None:
@@ -238,7 +238,7 @@ class DSMCSessionTestCase(IntegrationTestCase):
                 msg=f"Failed to tear down DSMC session. {str(error)}",
                 condition=error is not None,
             )
-            _, error = sb_delete_session(session_id=self.session_id)
+            _, error = sb_admin_delete_session(session_id=self.session_id)
             self.log_warning(
                 msg=f"Failed to tear down SessionBrowser session. {str(error)}",
                 condition=error is not None,
