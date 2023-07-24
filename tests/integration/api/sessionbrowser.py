@@ -18,7 +18,7 @@ class SessionBrowserTestCase(IntegrationTestCase):
     mode: str = "mode"
     num_bot: int = 0
     password: str = "password"
-    session_type: str = "p2p"
+    session_type: str = "dedicated"
     username: str = "username"
     models_create_session_request: ModelsCreateSessionRequest = (
         ModelsCreateSessionRequest.create(
@@ -59,10 +59,10 @@ class SessionBrowserTestCase(IntegrationTestCase):
         return result, error, session_id
 
     def tearDown(self) -> None:
-        from accelbyte_py_sdk.api.sessionbrowser import delete_session
+        from accelbyte_py_sdk.api.sessionbrowser import admin_delete_session
 
         if self.session_id is not None:
-            _, error = delete_session(session_id=self.session_id)
+            _, error = admin_delete_session(session_id=self.session_id)
             self.log_warning(
                 msg=f"Failed to tear down session. {str(error)}",
                 condition=error is not None,
@@ -90,7 +90,7 @@ class SessionBrowserTestCase(IntegrationTestCase):
     # region test:delete_session
 
     def test_delete_session(self):
-        from accelbyte_py_sdk.api.sessionbrowser import delete_session
+        from accelbyte_py_sdk.api.sessionbrowser import admin_delete_session
 
         # arrange
         _, error, session_id = self.do_create_session(
@@ -102,7 +102,7 @@ class SessionBrowserTestCase(IntegrationTestCase):
         self.session_id = session_id
 
         # act
-        _, error = delete_session(session_id=self.session_id)
+        _, error = admin_delete_session(session_id=self.session_id)
 
         # assert
         self.assertIsNone(error, error)
