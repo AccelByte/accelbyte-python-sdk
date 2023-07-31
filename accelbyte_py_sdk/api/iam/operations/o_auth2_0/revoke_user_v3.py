@@ -77,8 +77,10 @@ class RevokeUserV3(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        include_game_namespace: (includeGameNamespace) OPTIONAL bool in query
+
     Responses:
-        200: OK - (user revoked)
+        204: No Content - (user revoked)
 
         400: Bad Request - OauthmodelErrorResponse (invalid input)
 
@@ -98,6 +100,7 @@ class RevokeUserV3(Operation):
 
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    include_game_namespace: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -138,6 +141,7 @@ class RevokeUserV3(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -146,6 +150,12 @@ class RevokeUserV3(Operation):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "include_game_namespace"):
+            result["includeGameNamespace"] = self.include_game_namespace
         return result
 
     # endregion get_x_params methods
@@ -164,6 +174,10 @@ class RevokeUserV3(Operation):
         self.user_id = value
         return self
 
+    def with_include_game_namespace(self, value: bool) -> RevokeUserV3:
+        self.include_game_namespace = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -178,6 +192,10 @@ class RevokeUserV3(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "include_game_namespace") and self.include_game_namespace:
+            result["includeGameNamespace"] = bool(self.include_game_namespace)
+        elif include_empty:
+            result["includeGameNamespace"] = False
         return result
 
     # endregion to methods
@@ -187,12 +205,10 @@ class RevokeUserV3(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, HttpResponse], Union[None, HttpResponse, OauthmodelErrorResponse]
-    ]:
+    ) -> Tuple[None, Union[None, HttpResponse, OauthmodelErrorResponse]]:
         """Parse the given response.
 
-        200: OK - (user revoked)
+        204: No Content - (user revoked)
 
         400: Bad Request - OauthmodelErrorResponse (invalid input)
 
@@ -213,8 +229,8 @@ class RevokeUserV3(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return HttpResponse.create(code, "OK"), None
+        if code == 204:
+            return None, None
         if code == 400:
             return None, OauthmodelErrorResponse.create_from_dict(content)
         if code == 401:
@@ -231,10 +247,18 @@ class RevokeUserV3(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, user_id: str, **kwargs) -> RevokeUserV3:
+    def create(
+        cls,
+        namespace: str,
+        user_id: str,
+        include_game_namespace: Optional[bool] = None,
+        **kwargs,
+    ) -> RevokeUserV3:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
+        if include_game_namespace is not None:
+            instance.include_game_namespace = include_game_namespace
         return instance
 
     @classmethod
@@ -248,6 +272,13 @@ class RevokeUserV3(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if (
+            "includeGameNamespace" in dict_
+            and dict_["includeGameNamespace"] is not None
+        ):
+            instance.include_game_namespace = bool(dict_["includeGameNamespace"])
+        elif include_empty:
+            instance.include_game_namespace = False
         return instance
 
     @staticmethod
@@ -255,6 +286,7 @@ class RevokeUserV3(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+            "includeGameNamespace": "include_game_namespace",
         }
 
     @staticmethod
@@ -262,6 +294,7 @@ class RevokeUserV3(Operation):
         return {
             "namespace": True,
             "userId": True,
+            "includeGameNamespace": False,
         }
 
     # endregion static methods

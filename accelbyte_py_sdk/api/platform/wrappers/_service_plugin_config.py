@@ -51,7 +51,7 @@ from ..operations.service_plugin_config import GetLootBoxPluginConfig1
 from ..operations.service_plugin_config import GetSectionPluginConfig
 from ..operations.service_plugin_config import GetServicePluginConfig
 from ..operations.service_plugin_config import UpdateLootBoxPluginConfig
-from ..operations.service_plugin_config import UpdateLootBoxPluginConfig1
+from ..operations.service_plugin_config import UpdateRevocationPluginConfig
 from ..operations.service_plugin_config import UpdateSectionPluginConfig
 from ..operations.service_plugin_config import UpdateServicePluginConfig
 from ..operations.service_plugin_config import UploadRevocationPluginConfigCert
@@ -930,14 +930,14 @@ async def update_loot_box_plugin_config_async(
     )
 
 
-@same_doc_as(UpdateLootBoxPluginConfig1)
-def update_loot_box_plugin_config_1(
+@same_doc_as(UpdateRevocationPluginConfig)
+def update_revocation_plugin_config(
     body: Optional[RevocationPluginConfigUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update revocation plugin config (updateLootBoxPluginConfig_1)
+    """Update revocation plugin config (updateRevocationPluginConfig)
 
     Update revocation plugin config. Other detail info:
 
@@ -970,21 +970,21 @@ def update_loot_box_plugin_config_1(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = UpdateLootBoxPluginConfig1.create(
+    request = UpdateRevocationPluginConfig.create(
         body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(UpdateLootBoxPluginConfig1)
-async def update_loot_box_plugin_config_1_async(
+@same_doc_as(UpdateRevocationPluginConfig)
+async def update_revocation_plugin_config_async(
     body: Optional[RevocationPluginConfigUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update revocation plugin config (updateLootBoxPluginConfig_1)
+    """Update revocation plugin config (updateRevocationPluginConfig)
 
     Update revocation plugin config. Other detail info:
 
@@ -1017,7 +1017,7 @@ async def update_loot_box_plugin_config_1_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = UpdateLootBoxPluginConfig1.create(
+    request = UpdateRevocationPluginConfig.create(
         body=body,
         namespace=namespace,
     )

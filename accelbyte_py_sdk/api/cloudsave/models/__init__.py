@@ -26,6 +26,7 @@ from .models_admin_player_concurrent_record_request import (
 from .models_admin_player_record_key_info import ModelsAdminPlayerRecordKeyInfo
 from .models_admin_player_record_request import ModelsAdminPlayerRecordRequest
 from .models_admin_player_record_response import ModelsAdminPlayerRecordResponse
+from .models_app_config import ModelsAppConfig
 from .models_bulk_get_admin_game_record_request import (
     ModelsBulkGetAdminGameRecordRequest,
 )
@@ -48,6 +49,8 @@ from .models_bulk_get_player_records_request import ModelsBulkGetPlayerRecordsRe
 from .models_bulk_user_i_ds_request import ModelsBulkUserIDsRequest
 from .models_bulk_user_key_request import ModelsBulkUserKeyRequest
 from .models_concurrent_record_request import ModelsConcurrentRecordRequest
+from .models_custom_config import ModelsCustomConfig
+from .models_custom_function import ModelsCustomFunction
 from .models_game_record_request import ModelsGameRecordRequest
 from .models_game_record_response import ModelsGameRecordResponse
 from .models_list_admin_game_record_keys_response import (
@@ -63,5 +66,8 @@ from .models_player_record_key_info import ModelsPlayerRecordKeyInfo
 from .models_player_record_request import ModelsPlayerRecordRequest
 from .models_player_record_response import ModelsPlayerRecordResponse
 from .models_player_record_size_response import ModelsPlayerRecordSizeResponse
+from .models_plugin_request import ModelsPluginRequest
+from .models_plugin_request import ExtendTypeEnum as ModelsPluginRequestExtendTypeEnum
+from .models_plugin_response import ModelsPluginResponse
 from .models_response_error import ModelsResponseError
 from .models_user_key_request import ModelsUserKeyRequest

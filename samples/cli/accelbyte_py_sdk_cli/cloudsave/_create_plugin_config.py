@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.31.1)
+# AGS Cloudsave Service (3.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,29 +30,29 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    update_loot_box_plugin_config_1 as update_loot_box_plugin_config_1_internal,
+from accelbyte_py_sdk.api.cloudsave import (
+    create_plugin_config as create_plugin_config_internal,
 )
-from accelbyte_py_sdk.api.platform.models import RevocationPluginConfigInfo
-from accelbyte_py_sdk.api.platform.models import RevocationPluginConfigUpdate
-from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
+from accelbyte_py_sdk.api.cloudsave.models import ModelsPluginRequest
+from accelbyte_py_sdk.api.cloudsave.models import ModelsPluginResponse
+from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
 
 @click.command()
-@click.option("--body", "body", type=str)
+@click.argument("body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def update_loot_box_plugin_config_1(
-    body: Optional[str] = None,
+def create_plugin_config(
+    body: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(update_loot_box_plugin_config_1_internal.__doc__)
+        click.echo(create_plugin_config_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
@@ -62,18 +62,18 @@ def update_loot_box_plugin_config_1(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = RevocationPluginConfigUpdate.create_from_dict(body_json)
+            body = ModelsPluginRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = update_loot_box_plugin_config_1_internal(
+    result, error = create_plugin_config_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"updateLootBoxPluginConfig_1 failed: {str(error)}")
+        raise Exception(f"createPluginConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-update_loot_box_plugin_config_1.operation_id = "updateLootBoxPluginConfig_1"
-update_loot_box_plugin_config_1.is_deprecated = False
+create_plugin_config.operation_id = "createPluginConfig"
+create_plugin_config.is_deprecated = False

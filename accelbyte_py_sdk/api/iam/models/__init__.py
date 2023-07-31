@@ -166,6 +166,7 @@ from .model_enabled_factors_response_v4 import ModelEnabledFactorsResponseV4
 from .model_failed_ban_unban_user_v3 import ModelFailedBanUnbanUserV3
 from .model_forgot_password_request_v3 import ModelForgotPasswordRequestV3
 from .model_get_admin_users_response import ModelGetAdminUsersResponse
+from .model_get_bulk_user_bans_request import ModelGetBulkUserBansRequest
 from .model_get_link_headless_account_conflict_response import (
     ModelGetLinkHeadlessAccountConflictResponse,
 )

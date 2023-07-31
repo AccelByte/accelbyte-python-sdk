@@ -64,4 +64,4 @@ def delete_namespace_slot_config(
 
 
 delete_namespace_slot_config.operation_id = "deleteNamespaceSlotConfig"
-delete_namespace_slot_config.is_deprecated = False
+delete_namespace_slot_config.is_deprecated = True

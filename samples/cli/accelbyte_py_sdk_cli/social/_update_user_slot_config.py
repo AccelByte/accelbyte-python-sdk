@@ -78,4 +78,4 @@ def update_user_slot_config(
 
 
 update_user_slot_config.operation_id = "updateUserSlotConfig"
-update_user_slot_config.is_deprecated = False
+update_user_slot_config.is_deprecated = True

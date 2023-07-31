@@ -84,4 +84,4 @@ def public_update_user_namespace_slot_metadata(
 public_update_user_namespace_slot_metadata.operation_id = (
     "publicUpdateUserNamespaceSlotMetadata"
 )
-public_update_user_namespace_slot_metadata.is_deprecated = False
+public_update_user_namespace_slot_metadata.is_deprecated = True

@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
@@ -43,6 +44,7 @@ from ..operations.slot import PublicUpdateUserNamespaceSlot
 from ..operations.slot import PublicUpdateUserNamespaceSlotMetadata
 
 
+@deprecated
 @same_doc_as(GetSlotData)
 def get_slot_data(
     slot_id: str,
@@ -53,6 +55,9 @@ def get_slot_data(
 ):
     """Returns slot data (getSlotData)
 
+    ## The endpoint is going to be deprecated
+
+
     Get slot data.
     Other detail info:
 
@@ -98,6 +103,7 @@ def get_slot_data(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetSlotData)
 async def get_slot_data_async(
     slot_id: str,
@@ -108,6 +114,9 @@ async def get_slot_data_async(
 ):
     """Returns slot data (getSlotData)
 
+    ## The endpoint is going to be deprecated
+
+
     Get slot data.
     Other detail info:
 
@@ -155,6 +164,7 @@ async def get_slot_data_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserNamespaceSlots)
 def get_user_namespace_slots(
     user_id: str,
@@ -164,7 +174,10 @@ def get_user_namespace_slots(
 ):
     """Returns list of slots for given user (getUserNamespaceSlots)
 
-    GetÂ slots for a given user.
+    ## The endpoint is going to be deprecated
+
+
+    Get slots for a given user.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
@@ -204,6 +217,7 @@ def get_user_namespace_slots(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserNamespaceSlots)
 async def get_user_namespace_slots_async(
     user_id: str,
@@ -213,7 +227,10 @@ async def get_user_namespace_slots_async(
 ):
     """Returns list of slots for given user (getUserNamespaceSlots)
 
-    GetÂ slots for a given user.
+    ## The endpoint is going to be deprecated
+
+
+    Get slots for a given user.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
@@ -255,6 +272,7 @@ async def get_user_namespace_slots_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicCreateUserNamespaceSlot)
 def public_create_user_namespace_slot(
     user_id: str,
@@ -269,6 +287,9 @@ def public_create_user_namespace_slot(
 ):
     """Creates a slot (publicCreateUserNamespaceSlot)
 
+    ## The endpoint is going to be deprecated
+
+
     Creates a slot.
     Other detail info:
 
@@ -328,6 +349,7 @@ def public_create_user_namespace_slot(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicCreateUserNamespaceSlot)
 async def public_create_user_namespace_slot_async(
     user_id: str,
@@ -342,6 +364,9 @@ async def public_create_user_namespace_slot_async(
 ):
     """Creates a slot (publicCreateUserNamespaceSlot)
 
+    ## The endpoint is going to be deprecated
+
+
     Creates a slot.
     Other detail info:
 
@@ -403,6 +428,7 @@ async def public_create_user_namespace_slot_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicDeleteUserNamespaceSlot)
 def public_delete_user_namespace_slot(
     slot_id: str,
@@ -413,6 +439,9 @@ def public_delete_user_namespace_slot(
 ):
     """Deletes the slot (publicDeleteUserNamespaceSlot)
 
+    ## The endpoint is going to be deprecated
+
+
     Deletes the slot.
     Other detail info:
 
@@ -457,6 +486,7 @@ def public_delete_user_namespace_slot(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicDeleteUserNamespaceSlot)
 async def public_delete_user_namespace_slot_async(
     slot_id: str,
@@ -467,6 +497,9 @@ async def public_delete_user_namespace_slot_async(
 ):
     """Deletes the slot (publicDeleteUserNamespaceSlot)
 
+    ## The endpoint is going to be deprecated
+
+
     Deletes the slot.
     Other detail info:
 
@@ -513,6 +546,7 @@ async def public_delete_user_namespace_slot_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetSlotData)
 def public_get_slot_data(
     slot_id: str,
@@ -523,6 +557,9 @@ def public_get_slot_data(
 ):
     """Returns slot data (publicGetSlotData)
 
+    ## The endpoint is going to be deprecated
+
+
     Get slot data.
     Other detail info:
 
@@ -568,6 +605,7 @@ def public_get_slot_data(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetSlotData)
 async def public_get_slot_data_async(
     slot_id: str,
@@ -578,6 +616,9 @@ async def public_get_slot_data_async(
 ):
     """Returns slot data (publicGetSlotData)
 
+    ## The endpoint is going to be deprecated
+
+
     Get slot data.
     Other detail info:
 
@@ -625,6 +666,7 @@ async def public_get_slot_data_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetUserNamespaceSlots)
 def public_get_user_namespace_slots(
     user_id: str,
@@ -634,7 +676,10 @@ def public_get_user_namespace_slots(
 ):
     """Returns slots for given user (publicGetUserNamespaceSlots)
 
-    GetÂ list of slots for a given user in namespace.
+    ## The endpoint is going to be deprecated
+
+
+    Get list of slots for a given user in namespace.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
@@ -674,6 +719,7 @@ def public_get_user_namespace_slots(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetUserNamespaceSlots)
 async def public_get_user_namespace_slots_async(
     user_id: str,
@@ -683,7 +729,10 @@ async def public_get_user_namespace_slots_async(
 ):
     """Returns slots for given user (publicGetUserNamespaceSlots)
 
-    GetÂ list of slots for a given user in namespace.
+    ## The endpoint is going to be deprecated
+
+
+    Get list of slots for a given user in namespace.
     Other detail info:
 
       *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
@@ -725,6 +774,7 @@ async def public_get_user_namespace_slots_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicUpdateUserNamespaceSlot)
 def public_update_user_namespace_slot(
     slot_id: str,
@@ -740,6 +790,9 @@ def public_update_user_namespace_slot(
 ):
     """Updates a slot (publicUpdateUserNamespaceSlot)
 
+    ## The endpoint is going to be deprecated
+
+
     Updates a slot.
     Other detail info:
 
@@ -802,6 +855,7 @@ def public_update_user_namespace_slot(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicUpdateUserNamespaceSlot)
 async def public_update_user_namespace_slot_async(
     slot_id: str,
@@ -816,6 +870,9 @@ async def public_update_user_namespace_slot_async(
     **kwargs
 ):
     """Updates a slot (publicUpdateUserNamespaceSlot)
+
+    ## The endpoint is going to be deprecated
+
 
     Updates a slot.
     Other detail info:
@@ -881,6 +938,7 @@ async def public_update_user_namespace_slot_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicUpdateUserNamespaceSlotMetadata)
 def public_update_user_namespace_slot_metadata(
     slot_id: str,
@@ -891,6 +949,9 @@ def public_update_user_namespace_slot_metadata(
     **kwargs
 ):
     """Updates the slot metadata (publicUpdateUserNamespaceSlotMetadata)
+
+    ## The endpoint is going to be deprecated
+
 
     Updates the slot metadata.
     Other detail info:
@@ -940,6 +1001,7 @@ def public_update_user_namespace_slot_metadata(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicUpdateUserNamespaceSlotMetadata)
 async def public_update_user_namespace_slot_metadata_async(
     slot_id: str,
@@ -950,6 +1012,9 @@ async def public_update_user_namespace_slot_metadata_async(
     **kwargs
 ):
     """Updates the slot metadata (publicUpdateUserNamespaceSlotMetadata)
+
+    ## The endpoint is going to be deprecated
+
 
     Updates the slot metadata.
     Other detail info:

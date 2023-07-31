@@ -148,6 +148,8 @@ from ._dlc import public_sync_psn_dlc_inventory_with_multiple_service_labels
 from ._dlc import public_sync_psn_dlc_inventory_with_multiple_service_labels_async
 from ._dlc import sync_epic_game_dlc
 from ._dlc import sync_epic_game_dlc_async
+from ._dlc import sync_oculus_dlc
+from ._dlc import sync_oculus_dlc_async
 from ._dlc import sync_steam_dlc
 from ._dlc import sync_steam_dlc_async
 from ._dlc import sync_xbox_dlc
@@ -284,6 +286,8 @@ from ._iap import delete_google_iap_config
 from ._iap import delete_google_iap_config_async
 from ._iap import delete_iap_item_config
 from ._iap import delete_iap_item_config_async
+from ._iap import delete_oculus_iap_config
+from ._iap import delete_oculus_iap_config_async
 from ._iap import delete_playstation_iap_config
 from ._iap import delete_playstation_iap_config_async
 from ._iap import delete_steam_iap_config
@@ -302,6 +306,8 @@ from ._iap import get_iap_item_config
 from ._iap import get_iap_item_config_async
 from ._iap import get_iap_item_mapping
 from ._iap import get_iap_item_mapping_async
+from ._iap import get_oculus_iap_config
+from ._iap import get_oculus_iap_config_async
 from ._iap import get_play_station_iap_config
 from ._iap import get_play_station_iap_config_async
 from ._iap import get_steam_iap_config
@@ -328,6 +334,8 @@ from ._iap import query_user_iap_orders
 from ._iap import query_user_iap_orders_async
 from ._iap import sync_epic_games_inventory
 from ._iap import sync_epic_games_inventory_async
+from ._iap import sync_oculus_consumable_entitlements
+from ._iap import sync_oculus_consumable_entitlements_async
 from ._iap import sync_steam_inventory
 from ._iap import sync_steam_inventory_async
 from ._iap import sync_twitch_drops_entitlement
@@ -346,6 +354,8 @@ from ._iap import update_google_p12_file
 from ._iap import update_google_p12_file_async
 from ._iap import update_iap_item_config
 from ._iap import update_iap_item_config_async
+from ._iap import update_oculus_iap_config
+from ._iap import update_oculus_iap_config_async
 from ._iap import update_playstation_iap_config
 from ._iap import update_playstation_iap_config_async
 from ._iap import update_steam_iap_config
@@ -711,8 +721,8 @@ from ._service_plugin_config import get_service_plugin_config
 from ._service_plugin_config import get_service_plugin_config_async
 from ._service_plugin_config import update_loot_box_plugin_config
 from ._service_plugin_config import update_loot_box_plugin_config_async
-from ._service_plugin_config import update_loot_box_plugin_config_1
-from ._service_plugin_config import update_loot_box_plugin_config_1_async
+from ._service_plugin_config import update_revocation_plugin_config
+from ._service_plugin_config import update_revocation_plugin_config_async
 from ._service_plugin_config import update_section_plugin_config
 from ._service_plugin_config import update_section_plugin_config_async
 from ._service_plugin_config import update_service_plugin_config

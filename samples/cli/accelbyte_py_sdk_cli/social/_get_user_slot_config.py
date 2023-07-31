@@ -68,4 +68,4 @@ def get_user_slot_config(
 
 
 get_user_slot_config.operation_id = "getUserSlotConfig"
-get_user_slot_config.is_deprecated = False
+get_user_slot_config.is_deprecated = True

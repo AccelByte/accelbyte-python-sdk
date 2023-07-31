@@ -27,14 +27,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.achievement import Achievement
+from ..models.xbox_achievement import XboxAchievement
 
 
 class XblAchievementUpdateRequest(Model):
     """A DTO object for update xbox achievement complete percentage API (XblAchievementUpdateRequest)
 
     Properties:
-        achievements: (achievements) OPTIONAL List[Achievement]
+        achievements: (achievements) OPTIONAL List[XboxAchievement]
 
         service_config_id: (serviceConfigId) OPTIONAL str
 
@@ -45,7 +45,7 @@ class XblAchievementUpdateRequest(Model):
 
     # region fields
 
-    achievements: List[Achievement]  # OPTIONAL
+    achievements: List[XboxAchievement]  # OPTIONAL
     service_config_id: str  # OPTIONAL
     title_id: str  # OPTIONAL
     xbox_user_id: str  # OPTIONAL
@@ -55,7 +55,7 @@ class XblAchievementUpdateRequest(Model):
     # region with_x methods
 
     def with_achievements(
-        self, value: List[Achievement]
+        self, value: List[XboxAchievement]
     ) -> XblAchievementUpdateRequest:
         self.achievements = value
         return self
@@ -105,7 +105,7 @@ class XblAchievementUpdateRequest(Model):
     @classmethod
     def create(
         cls,
-        achievements: Optional[List[Achievement]] = None,
+        achievements: Optional[List[XboxAchievement]] = None,
         service_config_id: Optional[str] = None,
         title_id: Optional[str] = None,
         xbox_user_id: Optional[str] = None,
@@ -131,7 +131,7 @@ class XblAchievementUpdateRequest(Model):
             return instance
         if "achievements" in dict_ and dict_["achievements"] is not None:
             instance.achievements = [
-                Achievement.create_from_dict(i0, include_empty=include_empty)
+                XboxAchievement.create_from_dict(i0, include_empty=include_empty)
                 for i0 in dict_["achievements"]
             ]
         elif include_empty:

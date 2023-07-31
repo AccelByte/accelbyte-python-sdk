@@ -75,4 +75,4 @@ def update_namespace_slot_config(
 
 
 update_namespace_slot_config.operation_id = "updateNamespaceSlotConfig"
-update_namespace_slot_config.is_deprecated = False
+update_namespace_slot_config.is_deprecated = True

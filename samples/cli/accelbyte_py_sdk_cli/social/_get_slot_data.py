@@ -69,4 +69,4 @@ def get_slot_data(
 
 
 get_slot_data.operation_id = "getSlotData"
-get_slot_data.is_deprecated = False
+get_slot_data.is_deprecated = True

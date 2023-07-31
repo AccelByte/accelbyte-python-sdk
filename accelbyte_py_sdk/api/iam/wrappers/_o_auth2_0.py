@@ -1984,6 +1984,7 @@ async def retrieve_user_third_party_platform_token_v3_async(
 @same_doc_as(RevokeUserV3)
 def revoke_user_v3(
     user_id: str,
+    include_game_namespace: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2032,8 +2033,10 @@ def revoke_user_v3(
 
         user_id: (userId) REQUIRED str in path
 
+        include_game_namespace: (includeGameNamespace) OPTIONAL bool in query
+
     Responses:
-        200: OK - (user revoked)
+        204: No Content - (user revoked)
 
         400: Bad Request - OauthmodelErrorResponse (invalid input)
 
@@ -2047,6 +2050,7 @@ def revoke_user_v3(
             return None, error
     request = RevokeUserV3.create(
         user_id=user_id,
+        include_game_namespace=include_game_namespace,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -2055,6 +2059,7 @@ def revoke_user_v3(
 @same_doc_as(RevokeUserV3)
 async def revoke_user_v3_async(
     user_id: str,
+    include_game_namespace: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2103,8 +2108,10 @@ async def revoke_user_v3_async(
 
         user_id: (userId) REQUIRED str in path
 
+        include_game_namespace: (includeGameNamespace) OPTIONAL bool in query
+
     Responses:
-        200: OK - (user revoked)
+        204: No Content - (user revoked)
 
         400: Bad Request - OauthmodelErrorResponse (invalid input)
 
@@ -2118,6 +2125,7 @@ async def revoke_user_v3_async(
             return None, error
     request = RevokeUserV3.create(
         user_id=user_id,
+        include_game_namespace=include_game_namespace,
         namespace=namespace,
     )
     return await run_request_async(

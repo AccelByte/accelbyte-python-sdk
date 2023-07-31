@@ -34,6 +34,7 @@ class BalanceOriginEnum(StrEnum):
     GOOGLEPLAY = "GooglePlay"
     IOS = "IOS"
     NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
     OTHER = "Other"
     PLAYSTATION = "Playstation"
     STEAM = "Steam"
@@ -197,6 +198,7 @@ class RevokeCurrency(Model):
                 "GooglePlay",
                 "IOS",
                 "Nintendo",
+                "Oculus",
                 "Other",
                 "Playstation",
                 "Steam",

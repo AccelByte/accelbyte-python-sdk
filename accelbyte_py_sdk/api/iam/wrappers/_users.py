@@ -53,6 +53,7 @@ from ..models import ModelCreateJusticeUserResponse
 from ..models import ModelDisableUserRequest
 from ..models import ModelForgotPasswordRequestV3
 from ..models import ModelGetAdminUsersResponse
+from ..models import ModelGetBulkUserBansRequest
 from ..models import ModelGetLinkHeadlessAccountConflictResponse
 from ..models import ModelGetPublisherUserResponse
 from ..models import ModelGetPublisherUserV3Response
@@ -141,6 +142,7 @@ from ..operations.users import AdminDisableUserV2
 from ..operations.users import AdminEnableUserV2
 from ..operations.users import AdminGetAgeRestrictionStatusV2
 from ..operations.users import AdminGetAgeRestrictionStatusV3
+from ..operations.users import AdminGetBulkUserBanV3
 from ..operations.users import AdminGetBulkUserByEmailAddressV3
 from ..operations.users import AdminGetListCountryAgeRestrictionV3
 from ..operations.users import AdminGetListJusticePlatformAccounts
@@ -3171,6 +3173,154 @@ async def admin_get_age_restriction_status_v3_async(
         if error:
             return None, error
     request = AdminGetAgeRestrictionStatusV3.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetBulkUserBanV3)
+def admin_get_bulk_user_ban_v3(
+    body: ModelGetBulkUserBansRequest,
+    active_only: Optional[bool] = None,
+    ban_type: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get bulk user bans (AdminGetBulkUserBanV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER [READ]'
+
+
+
+
+    This endpoint returns user bans of userIDs specified in the payload
+
+
+
+
+    action code : 10127
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/bans
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelGetBulkUserBansRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        ban_type: (banType) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelGetUserBanV3Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetBulkUserBanV3.create(
+        body=body,
+        active_only=active_only,
+        ban_type=ban_type,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetBulkUserBanV3)
+async def admin_get_bulk_user_ban_v3_async(
+    body: ModelGetBulkUserBansRequest,
+    active_only: Optional[bool] = None,
+    ban_type: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get bulk user bans (AdminGetBulkUserBanV3)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER [READ]'
+
+
+
+
+    This endpoint returns user bans of userIDs specified in the payload
+
+
+
+
+    action code : 10127
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:BAN:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/bans
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelGetBulkUserBansRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        ban_type: (banType) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelGetUserBanV3Response (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetBulkUserBanV3.create(
+        body=body,
+        active_only=active_only,
+        ban_type=ban_type,
         namespace=namespace,
     )
     return await run_request_async(

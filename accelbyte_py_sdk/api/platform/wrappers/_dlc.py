@@ -54,6 +54,7 @@ from ..operations.dlc import GetUserDLCByPlatformTypeEnum
 from ..operations.dlc import PublicSyncPsnDlcInventory
 from ..operations.dlc import PublicSyncPsnDlcInventoryWithMultipleServiceLabels
 from ..operations.dlc import SyncEpicGameDLC
+from ..operations.dlc import SyncOculusDLC
 from ..operations.dlc import SyncSteamDLC
 from ..operations.dlc import SyncXboxDLC
 from ..operations.dlc import UpdateDLCItemConfig
@@ -963,6 +964,106 @@ async def sync_epic_game_dlc_async(
     request = SyncEpicGameDLC.create(
         user_id=user_id,
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(SyncOculusDLC)
+def sync_oculus_dlc(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync oculus dlc. (syncOculusDLC)
+
+    Sync oculus dlc.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/oculus/sync
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SyncOculusDLC.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(SyncOculusDLC)
+async def sync_oculus_dlc_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync oculus dlc. (syncOculusDLC)
+
+    Sync oculus dlc.
+
+    Other detail info:
+
+      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
+      *  Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/oculus/sync
+
+        method: PUT
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SyncOculusDLC.create(
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

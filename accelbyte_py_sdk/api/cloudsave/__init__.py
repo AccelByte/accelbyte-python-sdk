@@ -100,6 +100,16 @@ from .wrappers import put_player_public_record_concurrent_handler_v1_async
 from .wrappers import put_player_record_concurrent_handler_v1
 from .wrappers import put_player_record_concurrent_handler_v1_async
 
+# plugin_config
+from .wrappers import create_plugin_config
+from .wrappers import create_plugin_config_async
+from .wrappers import delete_plugin_config
+from .wrappers import delete_plugin_config_async
+from .wrappers import get_plugin_config
+from .wrappers import get_plugin_config_async
+from .wrappers import update_plugin_config
+from .wrappers import update_plugin_config_async
+
 # public_game_record
 from .wrappers import delete_game_record_handler_v1
 from .wrappers import delete_game_record_handler_v1_async

@@ -37,6 +37,7 @@ class IapTypeEnum(StrEnum):
     APPLE = "APPLE"
     EPICGAMES = "EPICGAMES"
     GOOGLE = "GOOGLE"
+    OCULUS = "OCULUS"
     PLAYSTATION = "PLAYSTATION"
     STADIA = "STADIA"
     STEAM = "STEAM"
@@ -371,6 +372,7 @@ class IAPConsumeHistoryInfo(Model):
                 "APPLE",
                 "EPICGAMES",
                 "GOOGLE",
+                "OCULUS",
                 "PLAYSTATION",
                 "STADIA",
                 "STEAM",

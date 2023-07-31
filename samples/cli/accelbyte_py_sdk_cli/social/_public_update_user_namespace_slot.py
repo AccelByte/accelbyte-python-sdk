@@ -93,4 +93,4 @@ def public_update_user_namespace_slot(
 
 
 public_update_user_namespace_slot.operation_id = "publicUpdateUserNamespaceSlot"
-public_update_user_namespace_slot.is_deprecated = False
+public_update_user_namespace_slot.is_deprecated = True

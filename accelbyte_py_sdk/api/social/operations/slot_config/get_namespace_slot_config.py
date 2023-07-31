@@ -28,12 +28,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import NamespaceSlotConfigInfo
 
 
 class GetNamespaceSlotConfig(Operation):
     """Returns a namespace slot configuration (getNamespaceSlotConfig)
+
+    ## The endpoint is going to be deprecated
+
 
     Get slot configuration for a given namespace. In case slot configuration is not set, the default will be returned.
     Other detail info:

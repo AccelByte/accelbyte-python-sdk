@@ -14,7 +14,6 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-from .achievement import Achievement
 from .achievement_info import AchievementInfo
 from .additional_data import AdditionalData
 from .admin_order_create import AdminOrderCreate
@@ -437,6 +436,13 @@ from .notification_process_result import NotificationProcessResult
 from .notification_process_result import (
     StatusEnum as NotificationProcessResultStatusEnum,
 )
+from .oculus_iap_config_info import OculusIAPConfigInfo
+from .oculus_iap_config_request import OculusIAPConfigRequest
+from .oculus_reconcile_result import OculusReconcileResult
+from .oculus_reconcile_result import (
+    IapOrderStatusEnum as OculusReconcileResultIapOrderStatusEnum,
+    ItemIdentityTypeEnum as OculusReconcileResultItemIdentityTypeEnum,
+)
 from .option_box_config import OptionBoxConfig
 from .order import Order
 from .order import (
@@ -695,6 +701,7 @@ from .stackable_entitlement_info import (
     StatusEnum as StackableEntitlementInfoStatusEnum,
     TypeEnum as StackableEntitlementInfoTypeEnum,
 )
+from .steam_achievement import SteamAchievement
 from .steam_achievement_update_request import SteamAchievementUpdateRequest
 from .steam_dlc_sync_request import SteamDLCSyncRequest
 from .steam_iap_config import SteamIAPConfig
@@ -792,6 +799,7 @@ from .xbl_reconcile_result import (
 )
 from .xbl_user_achievements import XblUserAchievements
 from .xbl_user_session_request import XblUserSessionRequest
+from .xbox_achievement import XboxAchievement
 from .xsolla_config import XsollaConfig
 from .xsolla_paywall_config import XsollaPaywallConfig
 from .xsolla_paywall_config import (

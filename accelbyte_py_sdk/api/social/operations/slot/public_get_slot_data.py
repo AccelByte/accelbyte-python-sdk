@@ -28,12 +28,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ErrorEntity
 
 
 class PublicGetSlotData(Operation):
     """Returns slot data (publicGetSlotData)
+
+    ## The endpoint is going to be deprecated
+
 
     Get slot data.
     Other detail info:

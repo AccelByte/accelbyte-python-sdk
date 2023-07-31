@@ -32,6 +32,7 @@ from .admin_disable_user_v2 import AdminDisableUserV2
 from .admin_enable_user_v2 import AdminEnableUserV2
 from .admin_get_age_restricti_48366c import AdminGetAgeRestrictionStatusV2
 from .admin_get_age_restricti_5a6b02 import AdminGetAgeRestrictionStatusV3
+from .admin_get_bulk_user_ban_v3 import AdminGetBulkUserBanV3
 from .admin_get_bulk_user_by__b42a39 import AdminGetBulkUserByEmailAddressV3
 from .admin_get_list_country__a160f3 import AdminGetListCountryAgeRestrictionV3
 from .admin_get_list_justice__0399f2 import AdminGetListJusticePlatformAccounts

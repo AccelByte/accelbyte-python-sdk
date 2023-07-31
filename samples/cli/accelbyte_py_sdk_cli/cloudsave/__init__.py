@@ -20,6 +20,10 @@ from ._admin_put_admin_game_record_concurrent_handler_v1 import (
 from ._admin_put_game_record_concurrent_handler_v1 import (
     admin_put_game_record_concurrent_handler_v1,
 )
+from ._get_plugin_config import get_plugin_config
+from ._create_plugin_config import create_plugin_config
+from ._delete_plugin_config import delete_plugin_config
+from ._update_plugin_config import update_plugin_config
 from ._list_game_records_handler_v1 import list_game_records_handler_v1
 from ._admin_get_game_record_handler_v1 import admin_get_game_record_handler_v1
 from ._admin_put_game_record_handler_v1 import admin_put_game_record_handler_v1
@@ -117,6 +121,10 @@ commands = [
     admin_delete_admin_game_record_v1,
     admin_put_admin_game_record_concurrent_handler_v1,
     admin_put_game_record_concurrent_handler_v1,
+    get_plugin_config,
+    create_plugin_config,
+    delete_plugin_config,
+    update_plugin_config,
     list_game_records_handler_v1,
     admin_get_game_record_handler_v1,
     admin_put_game_record_handler_v1,

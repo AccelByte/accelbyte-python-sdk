@@ -35,6 +35,7 @@ from ..models.revoke_result import RevokeResult
 
 class PlatformEnum(StrEnum):
     EPICGAMES = "EPICGAMES"
+    OCULUS = "OCULUS"
     PSN = "PSN"
     STEAM = "STEAM"
     XBOX = "XBOX"
@@ -408,7 +409,7 @@ class UserDLCRecord(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "platform": ["EPICGAMES", "PSN", "STEAM", "XBOX"],
+            "platform": ["EPICGAMES", "OCULUS", "PSN", "STEAM", "XBOX"],
             "status": ["FULFILLED", "REVOKED", "REVOKE_FAILED"],
         }
 

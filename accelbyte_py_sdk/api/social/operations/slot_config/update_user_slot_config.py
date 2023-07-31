@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import SlotConfigUpdate
 from ...models import UserSlotConfigInfo
@@ -35,6 +36,9 @@ from ...models import UserSlotConfigInfo
 
 class UpdateUserSlotConfig(Operation):
     """Update a user slot configuration (updateUserSlotConfig)
+
+    ## The endpoint is going to be deprecated
+
 
     Update a user slot configuration in given namespace.
     Other detail info:

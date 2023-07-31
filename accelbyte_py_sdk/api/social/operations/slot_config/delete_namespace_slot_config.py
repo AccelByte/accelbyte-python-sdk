@@ -28,10 +28,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 
 class DeleteNamespaceSlotConfig(Operation):
     """Deletes a namespace slot configuration (deleteNamespaceSlotConfig)
+
+    ## The endpoint is going to be deprecated
+
 
     Deletes a namespace slot configuration, the configuration will be default after delete.
     Other detail info:

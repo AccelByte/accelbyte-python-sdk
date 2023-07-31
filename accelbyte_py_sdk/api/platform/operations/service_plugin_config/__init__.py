@@ -24,7 +24,7 @@ from .get_loot_box_plugin_config_1 import GetLootBoxPluginConfig1
 from .get_section_plugin_config import GetSectionPluginConfig
 from .get_service_plugin_config import GetServicePluginConfig
 from .update_loot_box_plugin_config import UpdateLootBoxPluginConfig
-from .update_loot_box_plugin__3b22e2 import UpdateLootBoxPluginConfig1
+from .update_revocation_plugi_c19001 import UpdateRevocationPluginConfig
 from .update_section_plugin_config import UpdateSectionPluginConfig
 from .update_service_plugin_config import UpdateServicePluginConfig
 from .upload_revocation_plugi_6c586a import UploadRevocationPluginConfigCert

@@ -24,7 +24,6 @@
 
 from .utils import randomize
 
-from ..api.platform.models import Achievement
 from ..api.platform.models import AchievementInfo
 from ..api.platform.models import AdditionalData
 from ..api.platform.models import AdminOrderCreate
@@ -207,6 +206,9 @@ from ..api.platform.models import LootBoxPluginConfigUpdate
 from ..api.platform.models import LootBoxReward
 from ..api.platform.models import MockIAPReceipt
 from ..api.platform.models import NotificationProcessResult
+from ..api.platform.models import OculusIAPConfigInfo
+from ..api.platform.models import OculusIAPConfigRequest
+from ..api.platform.models import OculusReconcileResult
 from ..api.platform.models import OptionBoxConfig
 from ..api.platform.models import Order
 from ..api.platform.models import OrderCreate
@@ -326,6 +328,7 @@ from ..api.platform.models import ServicePluginConfigInfo
 from ..api.platform.models import ServicePluginConfigUpdate
 from ..api.platform.models import Slide
 from ..api.platform.models import StackableEntitlementInfo
+from ..api.platform.models import SteamAchievement
 from ..api.platform.models import SteamAchievementUpdateRequest
 from ..api.platform.models import SteamDLCSyncRequest
 from ..api.platform.models import SteamIAPConfig
@@ -384,16 +387,10 @@ from ..api.platform.models import XblReconcileRequest
 from ..api.platform.models import XblReconcileResult
 from ..api.platform.models import XblUserAchievements
 from ..api.platform.models import XblUserSessionRequest
+from ..api.platform.models import XboxAchievement
 from ..api.platform.models import XsollaConfig
 from ..api.platform.models import XsollaPaywallConfig
 from ..api.platform.models import XsollaPaywallConfigRequest
-
-
-def create_achievement_example() -> Achievement:
-    instance = Achievement()
-    instance.id_ = randomize()
-    instance.value = randomize("int", min_val=1, max_val=1000)
-    return instance
 
 
 def create_achievement_info_example() -> AchievementInfo:
@@ -2518,6 +2515,31 @@ def create_notification_process_result_example() -> NotificationProcessResult:
     return instance
 
 
+def create_oculus_iap_config_info_example() -> OculusIAPConfigInfo:
+    instance = OculusIAPConfigInfo()
+    instance.namespace = randomize("slug")
+    instance.app_id = randomize("uid")
+    instance.app_secret = randomize()
+    return instance
+
+
+def create_oculus_iap_config_request_example() -> OculusIAPConfigRequest:
+    instance = OculusIAPConfigRequest()
+    instance.app_id = randomize("uid")
+    instance.app_secret = randomize()
+    return instance
+
+
+def create_oculus_reconcile_result_example() -> OculusReconcileResult:
+    instance = OculusReconcileResult()
+    instance.iap_order_status = randomize()
+    instance.item_identity = randomize()
+    instance.item_identity_type = randomize()
+    instance.oculus_item_sku = randomize()
+    instance.transaction_id = randomize("uid")
+    return instance
+
+
 def create_option_box_config_example() -> OptionBoxConfig:
     instance = OptionBoxConfig()
     instance.box_items = [create_box_item_example()]
@@ -3877,9 +3899,16 @@ def create_stackable_entitlement_info_example() -> StackableEntitlementInfo:
     return instance
 
 
+def create_steam_achievement_example() -> SteamAchievement:
+    instance = SteamAchievement()
+    instance.id_ = randomize()
+    instance.value = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_steam_achievement_update_request_example() -> SteamAchievementUpdateRequest:
     instance = SteamAchievementUpdateRequest()
-    instance.achievements = [create_achievement_example()]
+    instance.achievements = [create_steam_achievement_example()]
     instance.steam_user_id = randomize()
     return instance
 
@@ -4447,7 +4476,7 @@ def create_wx_pay_config_request_example() -> WxPayConfigRequest:
 
 def create_xbl_achievement_update_request_example() -> XblAchievementUpdateRequest:
     instance = XblAchievementUpdateRequest()
-    instance.achievements = [create_achievement_example()]
+    instance.achievements = [create_xbox_achievement_example()]
     instance.service_config_id = randomize()
     instance.title_id = randomize()
     instance.xbox_user_id = randomize()
@@ -4506,6 +4535,13 @@ def create_xbl_user_session_request_example() -> XblUserSessionRequest:
     instance.payload = {randomize(): randomize()}
     instance.scid = randomize()
     instance.session_template_name = randomize()
+    return instance
+
+
+def create_xbox_achievement_example() -> XboxAchievement:
+    instance = XboxAchievement()
+    instance.id_ = randomize()
+    instance.percent_complete = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

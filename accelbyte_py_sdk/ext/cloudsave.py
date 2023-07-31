@@ -32,6 +32,7 @@ from ..api.cloudsave.models import ModelsAdminPlayerConcurrentRecordRequest
 from ..api.cloudsave.models import ModelsAdminPlayerRecordKeyInfo
 from ..api.cloudsave.models import ModelsAdminPlayerRecordRequest
 from ..api.cloudsave.models import ModelsAdminPlayerRecordResponse
+from ..api.cloudsave.models import ModelsAppConfig
 from ..api.cloudsave.models import ModelsBulkGetAdminGameRecordRequest
 from ..api.cloudsave.models import ModelsBulkGetAdminGameRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetAdminPlayerRecordRequest
@@ -44,6 +45,8 @@ from ..api.cloudsave.models import ModelsBulkGetPlayerRecordsRequest
 from ..api.cloudsave.models import ModelsBulkUserIDsRequest
 from ..api.cloudsave.models import ModelsBulkUserKeyRequest
 from ..api.cloudsave.models import ModelsConcurrentRecordRequest
+from ..api.cloudsave.models import ModelsCustomConfig
+from ..api.cloudsave.models import ModelsCustomFunction
 from ..api.cloudsave.models import ModelsGameRecordRequest
 from ..api.cloudsave.models import ModelsGameRecordResponse
 from ..api.cloudsave.models import ModelsListAdminGameRecordKeysResponse
@@ -55,6 +58,8 @@ from ..api.cloudsave.models import ModelsPlayerRecordKeyInfo
 from ..api.cloudsave.models import ModelsPlayerRecordRequest
 from ..api.cloudsave.models import ModelsPlayerRecordResponse
 from ..api.cloudsave.models import ModelsPlayerRecordSizeResponse
+from ..api.cloudsave.models import ModelsPluginRequest
+from ..api.cloudsave.models import ModelsPluginResponse
 from ..api.cloudsave.models import ModelsResponseError
 from ..api.cloudsave.models import ModelsUserKeyRequest
 
@@ -128,6 +133,12 @@ def create_models_admin_player_record_response_example() -> (
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
     instance.value = {randomize(): randomize()}
+    return instance
+
+
+def create_models_app_config_example() -> ModelsAppConfig:
+    instance = ModelsAppConfig()
+    instance.app_name = randomize()
     return instance
 
 
@@ -219,6 +230,29 @@ def create_models_concurrent_record_request_example() -> ModelsConcurrentRecordR
     instance = ModelsConcurrentRecordRequest()
     instance.updated_at = randomize()
     instance.value = {randomize(): randomize()}
+    return instance
+
+
+def create_models_custom_config_example() -> ModelsCustomConfig:
+    instance = ModelsCustomConfig()
+    instance.grpc_address = randomize()
+    return instance
+
+
+def create_models_custom_function_example() -> ModelsCustomFunction:
+    instance = ModelsCustomFunction()
+    instance.after_bulk_read_admin_game_record = randomize("bool")
+    instance.after_bulk_read_admin_player_record = randomize("bool")
+    instance.after_bulk_read_game_record = randomize("bool")
+    instance.after_bulk_read_player_record = randomize("bool")
+    instance.after_read_admin_game_record = randomize("bool")
+    instance.after_read_admin_player_record = randomize("bool")
+    instance.after_read_game_record = randomize("bool")
+    instance.after_read_player_record = randomize("bool")
+    instance.before_write_admin_game_record = randomize("bool")
+    instance.before_write_admin_player_record = randomize("bool")
+    instance.before_write_game_record = randomize("bool")
+    instance.before_write_player_record = randomize("bool")
     return instance
 
 
@@ -317,6 +351,25 @@ def create_models_player_record_size_response_example() -> (
     instance.namespace = randomize("slug")
     instance.remaining_size = randomize("int", min_val=1, max_val=1000)
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_plugin_request_example() -> ModelsPluginRequest:
+    instance = ModelsPluginRequest()
+    instance.custom_function = create_models_custom_function_example()
+    instance.extend_type = randomize()
+    instance.app_config = create_models_app_config_example()
+    instance.custom_config = create_models_custom_config_example()
+    return instance
+
+
+def create_models_plugin_response_example() -> ModelsPluginResponse:
+    instance = ModelsPluginResponse()
+    instance.custom_function = create_models_custom_function_example()
+    instance.extend_type = randomize()
+    instance.namespace = randomize("slug")
+    instance.app_config = create_models_app_config_example()
+    instance.custom_config = create_models_custom_config_example()
     return instance
 
 

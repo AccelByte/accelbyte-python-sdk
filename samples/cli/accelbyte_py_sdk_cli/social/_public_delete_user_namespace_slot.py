@@ -71,4 +71,4 @@ def public_delete_user_namespace_slot(
 
 
 public_delete_user_namespace_slot.operation_id = "publicDeleteUserNamespaceSlot"
-public_delete_user_namespace_slot.is_deprecated = False
+public_delete_user_namespace_slot.is_deprecated = True

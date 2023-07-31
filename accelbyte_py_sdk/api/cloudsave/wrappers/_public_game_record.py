@@ -212,6 +212,8 @@ def get_game_record_handler_v1(
     Responses:
         200: OK - ModelsGameRecordResponse (Record retrieved)
 
+        400: Bad Request - ModelsResponseError (Bad Request)
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
         404: Not Found - ModelsResponseError (Not Found)
@@ -272,6 +274,8 @@ async def get_game_record_handler_v1_async(
 
     Responses:
         200: OK - ModelsGameRecordResponse (Record retrieved)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 

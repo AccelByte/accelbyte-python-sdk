@@ -31,6 +31,7 @@ from ....core import StrEnum
 
 class PlatformEnum(StrEnum):
     EPICGAMES = "EPICGAMES"
+    OCULUS = "OCULUS"
     PSN = "PSN"
     STEAM = "STEAM"
     XBOX = "XBOX"
@@ -168,7 +169,7 @@ class PlatformDlcEntry(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "platform": ["EPICGAMES", "PSN", "STEAM", "XBOX"],
+            "platform": ["EPICGAMES", "OCULUS", "PSN", "STEAM", "XBOX"],
         }
 
     # endregion static methods

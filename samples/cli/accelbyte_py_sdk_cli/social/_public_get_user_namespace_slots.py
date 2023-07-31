@@ -68,4 +68,4 @@ def public_get_user_namespace_slots(
 
 
 public_get_user_namespace_slots.operation_id = "publicGetUserNamespaceSlots"
-public_get_user_namespace_slots.is_deprecated = False
+public_get_user_namespace_slots.is_deprecated = True

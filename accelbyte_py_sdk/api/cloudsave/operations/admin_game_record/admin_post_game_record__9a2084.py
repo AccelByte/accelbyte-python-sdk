@@ -185,6 +185,8 @@ class AdminPostGameRecordHandlerV1(Operation):
     Responses:
         201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
 
+        400: Bad Request - ModelsResponseError (Bad Request)
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
@@ -313,6 +315,8 @@ class AdminPostGameRecordHandlerV1(Operation):
 
         201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
 
+        400: Bad Request - ModelsResponseError (Bad Request)
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
@@ -332,6 +336,8 @@ class AdminPostGameRecordHandlerV1(Operation):
 
         if code == 201:
             return ModelsGameRecordResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:

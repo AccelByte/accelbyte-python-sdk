@@ -431,6 +431,8 @@ def admin_post_game_record_handler_v1(
     Responses:
         201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
 
+        400: Bad Request - ModelsResponseError (Bad Request)
+
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
         500: Internal Server Error - ModelsResponseError (Internal Server Error)
@@ -604,6 +606,8 @@ async def admin_post_game_record_handler_v1_async(
 
     Responses:
         201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
+
+        400: Bad Request - ModelsResponseError (Bad Request)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 

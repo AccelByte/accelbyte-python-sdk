@@ -107,6 +107,15 @@ from ._concurrent_record import put_player_public_record_concurrent_handler_v1_a
 from ._concurrent_record import put_player_record_concurrent_handler_v1
 from ._concurrent_record import put_player_record_concurrent_handler_v1_async
 
+from ._plugin_config import create_plugin_config
+from ._plugin_config import create_plugin_config_async
+from ._plugin_config import delete_plugin_config
+from ._plugin_config import delete_plugin_config_async
+from ._plugin_config import get_plugin_config
+from ._plugin_config import get_plugin_config_async
+from ._plugin_config import update_plugin_config
+from ._plugin_config import update_plugin_config_async
+
 from ._public_game_record import delete_game_record_handler_v1
 from ._public_game_record import delete_game_record_handler_v1_async
 from ._public_game_record import get_game_record_handler_v1

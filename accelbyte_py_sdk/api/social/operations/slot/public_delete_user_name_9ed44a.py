@@ -28,12 +28,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ErrorEntity
 
 
 class PublicDeleteUserNamespaceSlot(Operation):
     """Deletes the slot (publicDeleteUserNamespaceSlot)
+
+    ## The endpoint is going to be deprecated
+
 
     Deletes the slot.
     Other detail info:

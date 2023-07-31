@@ -374,6 +374,8 @@ from ._users import admin_get_age_restriction_status_v2
 from ._users import admin_get_age_restriction_status_v2_async
 from ._users import admin_get_age_restriction_status_v3
 from ._users import admin_get_age_restriction_status_v3_async
+from ._users import admin_get_bulk_user_ban_v3
+from ._users import admin_get_bulk_user_ban_v3_async
 from ._users import admin_get_bulk_user_by_email_address_v3
 from ._users import admin_get_bulk_user_by_email_address_v3_async
 from ._users import admin_get_list_country_age_restriction_v3

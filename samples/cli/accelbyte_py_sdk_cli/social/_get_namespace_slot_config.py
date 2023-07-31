@@ -65,4 +65,4 @@ def get_namespace_slot_config(
 
 
 get_namespace_slot_config.operation_id = "getNamespaceSlotConfig"
-get_namespace_slot_config.is_deprecated = False
+get_namespace_slot_config.is_deprecated = True

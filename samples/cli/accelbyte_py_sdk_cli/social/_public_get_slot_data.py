@@ -71,4 +71,4 @@ def public_get_slot_data(
 
 
 public_get_slot_data.operation_id = "publicGetSlotData"
-public_get_slot_data.is_deprecated = False
+public_get_slot_data.is_deprecated = True

@@ -373,6 +373,8 @@ from .wrappers import admin_get_age_restriction_status_v2
 from .wrappers import admin_get_age_restriction_status_v2_async
 from .wrappers import admin_get_age_restriction_status_v3
 from .wrappers import admin_get_age_restriction_status_v3_async
+from .wrappers import admin_get_bulk_user_ban_v3
+from .wrappers import admin_get_bulk_user_ban_v3_async
 from .wrappers import admin_get_bulk_user_by_email_address_v3
 from .wrappers import admin_get_bulk_user_by_email_address_v3_async
 from .wrappers import admin_get_list_country_age_restriction_v3

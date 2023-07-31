@@ -89,4 +89,4 @@ def public_create_user_namespace_slot(
 
 
 public_create_user_namespace_slot.operation_id = "publicCreateUserNamespaceSlot"
-public_create_user_namespace_slot.is_deprecated = False
+public_create_user_namespace_slot.is_deprecated = True

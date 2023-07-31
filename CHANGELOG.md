@@ -1,3 +1,10 @@
+<a name="v0.46.0"></a>
+## [v0.46.0]
+### test
+- **integration:** fix dsmc test
+- **integration:** fix session browser test
+
+
 <a name="v0.45.0"></a>
 ## [v0.45.0]
 ### feat

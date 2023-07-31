@@ -138,6 +138,7 @@ from ..api.iam.models import ModelEnabledFactorsResponseV4
 from ..api.iam.models import ModelFailedBanUnbanUserV3
 from ..api.iam.models import ModelForgotPasswordRequestV3
 from ..api.iam.models import ModelGetAdminUsersResponse
+from ..api.iam.models import ModelGetBulkUserBansRequest
 from ..api.iam.models import ModelGetLinkHeadlessAccountConflictResponse
 from ..api.iam.models import ModelGetPublisherUserResponse
 from ..api.iam.models import ModelGetPublisherUserV3Response
@@ -1398,6 +1399,12 @@ def create_model_get_admin_users_response_example() -> ModelGetAdminUsersRespons
     instance = ModelGetAdminUsersResponse()
     instance.data = [create_model_user_response_example()]
     instance.paging = create_accountcommon_pagination_example()
+    return instance
+
+
+def create_model_get_bulk_user_bans_request_example() -> ModelGetBulkUserBansRequest:
+    instance = ModelGetBulkUserBansRequest()
+    instance.bulk_user_id = [randomize()]
     return instance
 
 

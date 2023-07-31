@@ -27,21 +27,21 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.achievement import Achievement
+from ..models.steam_achievement import SteamAchievement
 
 
 class SteamAchievementUpdateRequest(Model):
     """A DTO object for unlock steam achievement API (SteamAchievementUpdateRequest)
 
     Properties:
-        achievements: (achievements) OPTIONAL List[Achievement]
+        achievements: (achievements) OPTIONAL List[SteamAchievement]
 
         steam_user_id: (steamUserId) OPTIONAL str
     """
 
     # region fields
 
-    achievements: List[Achievement]  # OPTIONAL
+    achievements: List[SteamAchievement]  # OPTIONAL
     steam_user_id: str  # OPTIONAL
 
     # endregion fields
@@ -49,7 +49,7 @@ class SteamAchievementUpdateRequest(Model):
     # region with_x methods
 
     def with_achievements(
-        self, value: List[Achievement]
+        self, value: List[SteamAchievement]
     ) -> SteamAchievementUpdateRequest:
         self.achievements = value
         return self
@@ -83,7 +83,7 @@ class SteamAchievementUpdateRequest(Model):
     @classmethod
     def create(
         cls,
-        achievements: Optional[List[Achievement]] = None,
+        achievements: Optional[List[SteamAchievement]] = None,
         steam_user_id: Optional[str] = None,
         **kwargs,
     ) -> SteamAchievementUpdateRequest:
@@ -103,7 +103,7 @@ class SteamAchievementUpdateRequest(Model):
             return instance
         if "achievements" in dict_ and dict_["achievements"] is not None:
             instance.achievements = [
-                Achievement.create_from_dict(i0, include_empty=include_empty)
+                SteamAchievement.create_from_dict(i0, include_empty=include_empty)
                 for i0 in dict_["achievements"]
             ]
         elif include_empty:

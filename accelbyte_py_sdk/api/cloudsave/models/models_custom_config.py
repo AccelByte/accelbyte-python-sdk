@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Cloudsave Service (3.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,30 +28,23 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class Achievement(Model):
-    """steam achievement request (Achievement)
+class ModelsCustomConfig(Model):
+    """Models custom config (models.CustomConfig)
 
     Properties:
-        id_: (id) OPTIONAL str
-
-        value: (value) OPTIONAL int
+        grpc_address: (GRPCAddress) REQUIRED str
     """
 
     # region fields
 
-    id_: str  # OPTIONAL
-    value: int  # OPTIONAL
+    grpc_address: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_id(self, value: str) -> Achievement:
-        self.id_ = value
-        return self
-
-    def with_value(self, value: int) -> Achievement:
-        self.value = value
+    def with_grpc_address(self, value: str) -> ModelsCustomConfig:
+        self.grpc_address = value
         return self
 
     # endregion with_x methods
@@ -60,14 +53,10 @@ class Achievement(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_"):
-            result["id"] = str(self.id_)
+        if hasattr(self, "grpc_address"):
+            result["GRPCAddress"] = str(self.grpc_address)
         elif include_empty:
-            result["id"] = ""
-        if hasattr(self, "value"):
-            result["value"] = int(self.value)
-        elif include_empty:
-            result["value"] = 0
+            result["GRPCAddress"] = ""
         return result
 
     # endregion to methods
@@ -75,35 +64,28 @@ class Achievement(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls, id_: Optional[str] = None, value: Optional[int] = None, **kwargs
-    ) -> Achievement:
+    def create(cls, grpc_address: str, **kwargs) -> ModelsCustomConfig:
         instance = cls()
-        if id_ is not None:
-            instance.id_ = id_
-        if value is not None:
-            instance.value = value
+        instance.grpc_address = grpc_address
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> Achievement:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsCustomConfig:
         instance = cls()
         if not dict_:
             return instance
-        if "id" in dict_ and dict_["id"] is not None:
-            instance.id_ = str(dict_["id"])
+        if "GRPCAddress" in dict_ and dict_["GRPCAddress"] is not None:
+            instance.grpc_address = str(dict_["GRPCAddress"])
         elif include_empty:
-            instance.id_ = ""
-        if "value" in dict_ and dict_["value"] is not None:
-            instance.value = int(dict_["value"])
-        elif include_empty:
-            instance.value = 0
+            instance.grpc_address = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, Achievement]:
+    ) -> Dict[str, ModelsCustomConfig]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -113,7 +95,7 @@ class Achievement(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[Achievement]:
+    ) -> List[ModelsCustomConfig]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -123,7 +105,9 @@ class Achievement(Model):
     @classmethod
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[Achievement, List[Achievement], Dict[Any, Achievement]]:
+    ) -> Union[
+        ModelsCustomConfig, List[ModelsCustomConfig], Dict[Any, ModelsCustomConfig]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -137,15 +121,13 @@ class Achievement(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
-            "value": "value",
+            "GRPCAddress": "grpc_address",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "id": False,
-            "value": False,
+            "GRPCAddress": True,
         }
 
     # endregion static methods

@@ -65,6 +65,14 @@
 | /cloudsave/v1/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public | PUT | putPlayerPublicRecordConcurrentHandlerV1 | `false` | [PutPlayerPublicRecordConcurrentHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/concurrent_record/put_player_public_recor_3f1a7f.py) | [put_player_public_record_concurrent_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_concurrent_record.py) | [accelbyte_py_sdk_cli cloudsave-put-player-public-record-concurrent-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_put_player_public_record_concurrent_handler_v1.py) |
 | /cloudsave/v1/namespaces/{namespace}/users/{userId}/concurrent/records/{key} | PUT | putPlayerRecordConcurrentHandlerV1 | `false` | [PutPlayerRecordConcurrentHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/concurrent_record/put_player_record_concu_385e05.py) | [put_player_record_concurrent_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_concurrent_record.py) | [accelbyte_py_sdk_cli cloudsave-put-player-record-concurrent-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_put_player_record_concurrent_handler_v1.py) |
 
+### PluginConfig
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /cloudsave/v1/admin/namespaces/{namespace}/plugins | POST | createPluginConfig | `false` | [CreatePluginConfig](../../accelbyte_py_sdk/api/cloudsave/operations/plugin_config/create_plugin_config.py) | [create_plugin_config](../../accelbyte_py_sdk/api/cloudsave/wrappers/_plugin_config.py) | [accelbyte_py_sdk_cli cloudsave-create-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_create_plugin_config.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/plugins | DELETE | deletePluginConfig | `false` | [DeletePluginConfig](../../accelbyte_py_sdk/api/cloudsave/operations/plugin_config/delete_plugin_config.py) | [delete_plugin_config](../../accelbyte_py_sdk/api/cloudsave/wrappers/_plugin_config.py) | [accelbyte_py_sdk_cli cloudsave-delete-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_delete_plugin_config.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/plugins | GET | getPluginConfig | `false` | [GetPluginConfig](../../accelbyte_py_sdk/api/cloudsave/operations/plugin_config/get_plugin_config.py) | [get_plugin_config](../../accelbyte_py_sdk/api/cloudsave/wrappers/_plugin_config.py) | [accelbyte_py_sdk_cli cloudsave-get-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_get_plugin_config.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/plugins | PATCH | updatePluginConfig | `false` | [UpdatePluginConfig](../../accelbyte_py_sdk/api/cloudsave/operations/plugin_config/update_plugin_config.py) | [update_plugin_config](../../accelbyte_py_sdk/api/cloudsave/wrappers/_plugin_config.py) | [accelbyte_py_sdk_cli cloudsave-update-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_update_plugin_config.py) |
+
 ### PublicGameRecord
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -103,6 +111,7 @@
 | models.AdminPlayerRecordKeyInfo | [ModelsAdminPlayerRecordKeyInfo](../../accelbyte_py_sdk/api/cloudsave/models/models_admin_player_record_key_info.py) |
 | models.AdminPlayerRecordRequest | [ModelsAdminPlayerRecordRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_admin_player_record_request.py) |
 | models.AdminPlayerRecordResponse | [ModelsAdminPlayerRecordResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_admin_player_record_response.py) |
+| models.AppConfig | [ModelsAppConfig](../../accelbyte_py_sdk/api/cloudsave/models/models_app_config.py) |
 | models.BulkGetAdminGameRecordRequest | [ModelsBulkGetAdminGameRecordRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_get_admin_game_record_request.py) |
 | models.BulkGetAdminGameRecordResponse | [ModelsBulkGetAdminGameRecordResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_get_admin_game_record_response.py) |
 | models.BulkGetAdminPlayerRecordRequest | [ModelsBulkGetAdminPlayerRecordRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_get_admin_player_record_request.py) |
@@ -115,6 +124,8 @@
 | models.BulkUserIDsRequest | [ModelsBulkUserIDsRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_user_i_ds_request.py) |
 | models.BulkUserKeyRequest | [ModelsBulkUserKeyRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_user_key_request.py) |
 | models.ConcurrentRecordRequest | [ModelsConcurrentRecordRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_concurrent_record_request.py) |
+| models.CustomConfig | [ModelsCustomConfig](../../accelbyte_py_sdk/api/cloudsave/models/models_custom_config.py) |
+| models.CustomFunction | [ModelsCustomFunction](../../accelbyte_py_sdk/api/cloudsave/models/models_custom_function.py) |
 | models.GameRecordRequest | [ModelsGameRecordRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_game_record_request.py) |
 | models.GameRecordResponse | [ModelsGameRecordResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_game_record_response.py) |
 | models.ListAdminGameRecordKeysResponse | [ModelsListAdminGameRecordKeysResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_list_admin_game_record_keys_response.py) |
@@ -126,5 +137,7 @@
 | models.PlayerRecordRequest | [ModelsPlayerRecordRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_player_record_request.py) |
 | models.PlayerRecordResponse | [ModelsPlayerRecordResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_player_record_response.py) |
 | models.PlayerRecordSizeResponse | [ModelsPlayerRecordSizeResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_player_record_size_response.py) |
+| models.PluginRequest | [ModelsPluginRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_plugin_request.py) |
+| models.PluginResponse | [ModelsPluginResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_plugin_response.py) |
 | models.ResponseError | [ModelsResponseError](../../accelbyte_py_sdk/api/cloudsave/models/models_response_error.py) |
 | models.UserKeyRequest | [ModelsUserKeyRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_user_key_request.py) |

@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import SlotInfo
 
@@ -35,7 +36,10 @@ from ...models import SlotInfo
 class GetUserNamespaceSlots(Operation):
     """Returns list of slots for given user (getUserNamespaceSlots)
 
-    GetÂ slots for a given user.
+    ## The endpoint is going to be deprecated
+
+
+    Get slots for a given user.
     Other detail info:
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)

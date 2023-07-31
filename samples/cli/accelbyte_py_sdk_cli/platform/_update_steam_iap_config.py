@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     update_steam_iap_config as update_steam_iap_config_internal,
 )
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import SteamIAPConfigInfo
 from accelbyte_py_sdk.api.platform.models import SteamIAPConfigRequest
 

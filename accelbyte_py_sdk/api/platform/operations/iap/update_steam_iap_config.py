@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import SteamIAPConfigInfo
 from ...models import SteamIAPConfigRequest
 
@@ -63,6 +64,8 @@ class UpdateSteamIAPConfig(Operation):
 
     Responses:
         200: OK - SteamIAPConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39128: Steam publisher key is invalid | 39129: Steam app id is invalid)
     """
 
     # region fields
@@ -169,10 +172,12 @@ class UpdateSteamIAPConfig(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, SteamIAPConfigInfo], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, SteamIAPConfigInfo], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
         200: OK - SteamIAPConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39128: Steam publisher key is invalid | 39129: Steam app id is invalid)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -189,6 +194,8 @@ class UpdateSteamIAPConfig(Operation):
 
         if code == 200:
             return SteamIAPConfigInfo.create_from_dict(content), None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

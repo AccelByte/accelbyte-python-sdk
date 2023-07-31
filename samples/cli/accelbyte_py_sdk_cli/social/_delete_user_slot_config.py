@@ -67,4 +67,4 @@ def delete_user_slot_config(
 
 
 delete_user_slot_config.operation_id = "deleteUserSlotConfig"
-delete_user_slot_config.is_deprecated = False
+delete_user_slot_config.is_deprecated = True

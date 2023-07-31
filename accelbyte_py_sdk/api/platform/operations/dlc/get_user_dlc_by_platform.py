@@ -35,6 +35,7 @@ from ...models import UserDLC
 
 class TypeEnum(StrEnum):
     EPICGAMES = "EPICGAMES"
+    OCULUS = "OCULUS"
     PSN = "PSN"
     STEAM = "STEAM"
     XBOX = "XBOX"
@@ -268,7 +269,7 @@ class GetUserDLCByPlatform(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "type": ["EPICGAMES", "PSN", "STEAM", "XBOX"],  # in query
+            "type": ["EPICGAMES", "OCULUS", "PSN", "STEAM", "XBOX"],  # in query
         }
 
     # endregion static methods
