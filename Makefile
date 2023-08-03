@@ -102,7 +102,7 @@ test_broken_link:
 	(for FILE in $$(find docs -type f); do \
 			(set -o pipefail; DOCKER_SKIP_BUILD=1 bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i $$FILE) || touch test_broken_link.err; \
 	done)
-	DOCKER_SKIP_BUILD=1 bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i "https://docs.accelbyte.io/guides/customization/python-sdk-guide.html"
+	DOCKER_SKIP_BUILD=1 bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i "https://docs-old.accelbyte.io/guides/customization/python-sdk-guide.html"
 	[ ! -f test_broken_link.err ]
 
 version:
