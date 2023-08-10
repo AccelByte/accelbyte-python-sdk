@@ -319,6 +319,9 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,python,venv,pycharm+all
 
+# Visual Studio Code
+.vscode
+
 # TAP test results
 *.tap
 
