@@ -1,14 +1,14 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -28,8 +28,8 @@ from ._ams_info import info_regions_async
 from ._ams_info import info_supported_instances
 from ._ams_info import info_supported_instances_async
 
-from ._fleet_commander import func1
-from ._fleet_commander import func1_async
+from ._fleet_commander import func3
+from ._fleet_commander import func3_async
 
 from ._fleets import fleet_claim_by_id
 from ._fleets import fleet_claim_by_id_async
@@ -55,8 +55,10 @@ from ._images import image_list_async
 from ._images import image_patch
 from ._images import image_patch_async
 
-from ._operations import basic_health_check
-from ._operations import basic_health_check_async
+from ._operations import func2
+from ._operations import func2_async
+from ._operations import portal_health_check
+from ._operations import portal_health_check_async
 
 from ._servers import fleet_server_history
 from ._servers import fleet_server_history_async

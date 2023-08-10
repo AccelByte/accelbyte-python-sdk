@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (0.2.0)
+# Fleet Commander (0.2.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -62,6 +62,16 @@ class FleetServerHistory(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        reason: (reason) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
+        server_id: (serverId) OPTIONAL str in query
+
+        sort_direction: (sortDirection) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
     Responses:
         200: OK - ApiDSHistoryList (success)
 
@@ -83,10 +93,15 @@ class FleetServerHistory(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    fleet_id: str  # REQUIRED in [path]
-    namespace: str  # REQUIRED in [path]
-    count: int  # OPTIONAL in [query]
-    offset: int  # OPTIONAL in [query]
+    fleet_id: str                                                                                  # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
+    count: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    reason: str                                                                                    # OPTIONAL in [query]
+    region: str                                                                                    # OPTIONAL in [query]
+    server_id: str                                                                                 # OPTIONAL in [query]
+    sort_direction: str                                                                            # OPTIONAL in [query]
+    status: str                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -144,6 +159,16 @@ class FleetServerHistory(Operation):
             result["count"] = self.count
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "reason"):
+            result["reason"] = self.reason
+        if hasattr(self, "region"):
+            result["region"] = self.region
+        if hasattr(self, "server_id"):
+            result["serverId"] = self.server_id
+        if hasattr(self, "sort_direction"):
+            result["sortDirection"] = self.sort_direction
+        if hasattr(self, "status"):
+            result["status"] = self.status
         return result
 
     # endregion get_x_params methods
@@ -170,6 +195,26 @@ class FleetServerHistory(Operation):
         self.offset = value
         return self
 
+    def with_reason(self, value: str) -> FleetServerHistory:
+        self.reason = value
+        return self
+
+    def with_region(self, value: str) -> FleetServerHistory:
+        self.region = value
+        return self
+
+    def with_server_id(self, value: str) -> FleetServerHistory:
+        self.server_id = value
+        return self
+
+    def with_sort_direction(self, value: str) -> FleetServerHistory:
+        self.sort_direction = value
+        return self
+
+    def with_status(self, value: str) -> FleetServerHistory:
+        self.status = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -192,6 +237,26 @@ class FleetServerHistory(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "reason") and self.reason:
+            result["reason"] = str(self.reason)
+        elif include_empty:
+            result["reason"] = ""
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = ""
+        if hasattr(self, "server_id") and self.server_id:
+            result["serverId"] = str(self.server_id)
+        elif include_empty:
+            result["serverId"] = ""
+        if hasattr(self, "sort_direction") and self.sort_direction:
+            result["sortDirection"] = str(self.sort_direction)
+        elif include_empty:
+            result["sortDirection"] = ""
+        if hasattr(self, "status") and self.status:
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = ""
         return result
 
     # endregion to methods
@@ -199,11 +264,7 @@ class FleetServerHistory(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ApiDSHistoryList], Union[None, HttpResponse, ResponseErrorResponse]
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ApiDSHistoryList], Union[None, HttpResponse, ResponseErrorResponse]]:
         """Parse the given response.
 
         200: OK - ApiDSHistoryList (success)
@@ -222,9 +283,7 @@ class FleetServerHistory(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -240,9 +299,7 @@ class FleetServerHistory(Operation):
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)
 
-        return self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -255,7 +312,12 @@ class FleetServerHistory(Operation):
         namespace: str,
         count: Optional[int] = None,
         offset: Optional[int] = None,
-        **kwargs,
+        reason: Optional[str] = None,
+        region: Optional[str] = None,
+        server_id: Optional[str] = None,
+        sort_direction: Optional[str] = None,
+        status: Optional[str] = None,
+    **kwargs
     ) -> FleetServerHistory:
         instance = cls()
         instance.fleet_id = fleet_id
@@ -264,12 +326,20 @@ class FleetServerHistory(Operation):
             instance.count = count
         if offset is not None:
             instance.offset = offset
+        if reason is not None:
+            instance.reason = reason
+        if region is not None:
+            instance.region = region
+        if server_id is not None:
+            instance.server_id = server_id
+        if sort_direction is not None:
+            instance.sort_direction = sort_direction
+        if status is not None:
+            instance.status = status
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> FleetServerHistory:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> FleetServerHistory:
         instance = cls()
         if "fleetID" in dict_ and dict_["fleetID"] is not None:
             instance.fleet_id = str(dict_["fleetID"])
@@ -287,6 +357,26 @@ class FleetServerHistory(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "reason" in dict_ and dict_["reason"] is not None:
+            instance.reason = str(dict_["reason"])
+        elif include_empty:
+            instance.reason = ""
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = ""
+        if "serverId" in dict_ and dict_["serverId"] is not None:
+            instance.server_id = str(dict_["serverId"])
+        elif include_empty:
+            instance.server_id = ""
+        if "sortDirection" in dict_ and dict_["sortDirection"] is not None:
+            instance.sort_direction = str(dict_["sortDirection"])
+        elif include_empty:
+            instance.sort_direction = ""
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = ""
         return instance
 
     @staticmethod
@@ -296,6 +386,11 @@ class FleetServerHistory(Operation):
             "namespace": "namespace",
             "count": "count",
             "offset": "offset",
+            "reason": "reason",
+            "region": "region",
+            "serverId": "server_id",
+            "sortDirection": "sort_direction",
+            "status": "status",
         }
 
     @staticmethod
@@ -305,6 +400,11 @@ class FleetServerHistory(Operation):
             "namespace": True,
             "count": False,
             "offset": False,
+            "reason": False,
+            "region": False,
+            "serverId": False,
+            "sortDirection": False,
+            "status": False,
         }
 
     # endregion static methods

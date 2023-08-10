@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (0.2.0)
+# Fleet Commander (0.2.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,8 +30,8 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 
-class BasicHealthCheck(Operation):
-    """health check (BasicHealthCheck)
+class PortalHealthCheck(Operation):
+    """health check (PortalHealthCheck)
 
     Properties:
         url: /healthz
@@ -96,7 +96,8 @@ class BasicHealthCheck(Operation):
     # region get_x_params methods
 
     def get_all_params(self) -> dict:
-        return {}
+        return {
+        }
 
     # endregion get_x_params methods
 
@@ -119,9 +120,7 @@ class BasicHealthCheck(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - (OK)
@@ -132,9 +131,7 @@ class BasicHealthCheck(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -142,32 +139,33 @@ class BasicHealthCheck(Operation):
         if code == 200:
             return HttpResponse.create(code, "OK"), None
 
-        return self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
     # region static methods
 
     @classmethod
-    def create(cls, **kwargs) -> BasicHealthCheck:
+    def create(
+        cls,
+    **kwargs
+    ) -> PortalHealthCheck:
         instance = cls()
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> BasicHealthCheck:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PortalHealthCheck:
         instance = cls()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {}
+        return {
+        }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
-        return {}
+        return {
+        }
 
     # endregion static methods

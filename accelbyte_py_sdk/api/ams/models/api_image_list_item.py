@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
 
-# Fleet Commander (0.2.0)
+# Fleet Commander (0.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,6 +32,8 @@ class ApiImageListItem(Model):
     """Api image list item (api.ImageListItem)
 
     Properties:
+        created_at: (createdAt) REQUIRED str
+
         id_: (id) REQUIRED str
 
         is_protected: (isProtected) REQUIRED bool
@@ -53,19 +55,24 @@ class ApiImageListItem(Model):
 
     # region fields
 
-    id_: str  # REQUIRED
-    is_protected: bool  # REQUIRED
-    name: str  # REQUIRED
-    referencing_fleets: int  # REQUIRED
-    size_in_byte: int  # REQUIRED
-    status: str  # REQUIRED
-    tags: List[str]  # REQUIRED
-    uploaded_at: str  # REQUIRED
-    uploaded_by: str  # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    id_: str                                                                                       # REQUIRED
+    is_protected: bool                                                                             # REQUIRED
+    name: str                                                                                      # REQUIRED
+    referencing_fleets: int                                                                        # REQUIRED
+    size_in_byte: int                                                                              # REQUIRED
+    status: str                                                                                    # REQUIRED
+    tags: List[str]                                                                                # REQUIRED
+    uploaded_at: str                                                                               # REQUIRED
+    uploaded_by: str                                                                               # REQUIRED
 
     # endregion fields
 
     # region with_x methods
+
+    def with_created_at(self, value: str) -> ApiImageListItem:
+        self.created_at = value
+        return self
 
     def with_id(self, value: str) -> ApiImageListItem:
         self.id_ = value
@@ -109,6 +116,10 @@ class ApiImageListItem(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -154,6 +165,7 @@ class ApiImageListItem(Model):
     @classmethod
     def create(
         cls,
+        created_at: str,
         id_: str,
         is_protected: bool,
         name: str,
@@ -163,9 +175,10 @@ class ApiImageListItem(Model):
         tags: List[str],
         uploaded_at: str,
         uploaded_by: str,
-        **kwargs,
+    **kwargs
     ) -> ApiImageListItem:
         instance = cls()
+        instance.created_at = created_at
         instance.id_ = id_
         instance.is_protected = is_protected
         instance.name = name
@@ -178,12 +191,14 @@ class ApiImageListItem(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ApiImageListItem:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ApiImageListItem:
         instance = cls()
         if not dict_:
             return instance
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -223,29 +238,15 @@ class ApiImageListItem(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApiImageListItem]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ApiImageListItem]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ApiImageListItem]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ApiImageListItem]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[ApiImageListItem, List[ApiImageListItem], Dict[Any, ApiImageListItem]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ApiImageListItem, List[ApiImageListItem], Dict[Any, ApiImageListItem]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -259,6 +260,7 @@ class ApiImageListItem(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "createdAt": "created_at",
             "id": "id_",
             "isProtected": "is_protected",
             "name": "name",
@@ -273,6 +275,7 @@ class ApiImageListItem(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "createdAt": True,
             "id": True,
             "isProtected": True,
             "name": True,

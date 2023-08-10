@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -38,11 +38,7 @@ from ..operations.ams_info import InfoSupportedInstances
 
 
 @same_doc_as(InfoRegions)
-def info_regions(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def info_regions(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Get the list of available AMS regions. (InfoRegions)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
@@ -85,11 +81,7 @@ def info_regions(
 
 
 @same_doc_as(InfoRegions)
-async def info_regions_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def info_regions_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Get the list of available AMS regions. (InfoRegions)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
@@ -128,17 +120,11 @@ async def info_regions_async(
     request = InfoRegions.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(InfoSupportedInstances)
-def info_supported_instances(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def info_supported_instances(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Get a list of available VM configurations (InfoSupportedInstances)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
@@ -181,11 +167,7 @@ def info_supported_instances(
 
 
 @same_doc_as(InfoSupportedInstances)
-async def info_supported_instances_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def info_supported_instances_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Get a list of available VM configurations (InfoSupportedInstances)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
@@ -224,6 +206,4 @@ async def info_supported_instances_async(
     request = InfoSupportedInstances.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

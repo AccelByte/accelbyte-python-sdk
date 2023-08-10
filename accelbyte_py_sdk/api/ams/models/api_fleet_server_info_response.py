@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
 
-# Fleet Commander (0.2.0)
+# Fleet Commander (0.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -59,17 +59,17 @@ class ApiFleetServerInfoResponse(Model):
 
     # region fields
 
-    created_at: str  # REQUIRED
-    fleet_id: str  # REQUIRED
-    fleet_name: str  # REQUIRED
-    image_cmd: str  # REQUIRED
-    image_id: str  # REQUIRED
-    instance_type: str  # REQUIRED
-    ip_address: str  # REQUIRED
-    port_configuration: List[ApiPortConfiguration]  # REQUIRED
-    region: str  # REQUIRED
-    server_id: str  # REQUIRED
-    status: str  # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    fleet_id: str                                                                                  # REQUIRED
+    fleet_name: str                                                                                # REQUIRED
+    image_cmd: str                                                                                 # REQUIRED
+    image_id: str                                                                                  # REQUIRED
+    instance_type: str                                                                             # REQUIRED
+    ip_address: str                                                                                # REQUIRED
+    port_configuration: List[ApiPortConfiguration]                                                 # REQUIRED
+    region: str                                                                                    # REQUIRED
+    server_id: str                                                                                 # REQUIRED
+    status: str                                                                                    # REQUIRED
 
     # endregion fields
 
@@ -103,9 +103,7 @@ class ApiFleetServerInfoResponse(Model):
         self.ip_address = value
         return self
 
-    def with_port_configuration(
-        self, value: List[ApiPortConfiguration]
-    ) -> ApiFleetServerInfoResponse:
+    def with_port_configuration(self, value: List[ApiPortConfiguration]) -> ApiFleetServerInfoResponse:
         self.port_configuration = value
         return self
 
@@ -156,10 +154,7 @@ class ApiFleetServerInfoResponse(Model):
         elif include_empty:
             result["ipAddress"] = ""
         if hasattr(self, "port_configuration"):
-            result["portConfiguration"] = [
-                i0.to_dict(include_empty=include_empty)
-                for i0 in self.port_configuration
-            ]
+            result["portConfiguration"] = [i0.to_dict(include_empty=include_empty) for i0 in self.port_configuration]
         elif include_empty:
             result["portConfiguration"] = []
         if hasattr(self, "region"):
@@ -194,7 +189,7 @@ class ApiFleetServerInfoResponse(Model):
         region: str,
         server_id: str,
         status: str,
-        **kwargs,
+    **kwargs
     ) -> ApiFleetServerInfoResponse:
         instance = cls()
         instance.created_at = created_at
@@ -211,9 +206,7 @@ class ApiFleetServerInfoResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ApiFleetServerInfoResponse:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ApiFleetServerInfoResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -246,10 +239,7 @@ class ApiFleetServerInfoResponse(Model):
         elif include_empty:
             instance.ip_address = ""
         if "portConfiguration" in dict_ and dict_["portConfiguration"] is not None:
-            instance.port_configuration = [
-                ApiPortConfiguration.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["portConfiguration"]
-            ]
+            instance.port_configuration = [ApiPortConfiguration.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["portConfiguration"]]
         elif include_empty:
             instance.port_configuration = []
         if "region" in dict_ and dict_["region"] is not None:
@@ -267,33 +257,15 @@ class ApiFleetServerInfoResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApiFleetServerInfoResponse]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ApiFleetServerInfoResponse]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ApiFleetServerInfoResponse]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ApiFleetServerInfoResponse]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ApiFleetServerInfoResponse,
-        List[ApiFleetServerInfoResponse],
-        Dict[Any, ApiFleetServerInfoResponse],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ApiFleetServerInfoResponse, List[ApiFleetServerInfoResponse], Dict[Any, ApiFleetServerInfoResponse]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
 
-# Fleet Commander (0.2.0)
+# Fleet Commander (0.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,9 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.api_instance_type_description_response import (
-    ApiInstanceTypeDescriptionResponse,
-)
+from ..models.api_instance_type_description_response import ApiInstanceTypeDescriptionResponse
 
 
 class ApiAvailableInstanceTypesResponse(Model):
@@ -41,15 +39,13 @@ class ApiAvailableInstanceTypesResponse(Model):
 
     # region fields
 
-    available_instance_types: List[ApiInstanceTypeDescriptionResponse]  # REQUIRED
+    available_instance_types: List[ApiInstanceTypeDescriptionResponse]                             # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_available_instance_types(
-        self, value: List[ApiInstanceTypeDescriptionResponse]
-    ) -> ApiAvailableInstanceTypesResponse:
+    def with_available_instance_types(self, value: List[ApiInstanceTypeDescriptionResponse]) -> ApiAvailableInstanceTypesResponse:
         self.available_instance_types = value
         return self
 
@@ -60,10 +56,7 @@ class ApiAvailableInstanceTypesResponse(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "available_instance_types"):
-            result["availableInstanceTypes"] = [
-                i0.to_dict(include_empty=include_empty)
-                for i0 in self.available_instance_types
-            ]
+            result["availableInstanceTypes"] = [i0.to_dict(include_empty=include_empty) for i0 in self.available_instance_types]
         elif include_empty:
             result["availableInstanceTypes"] = []
         return result
@@ -76,61 +69,33 @@ class ApiAvailableInstanceTypesResponse(Model):
     def create(
         cls,
         available_instance_types: List[ApiInstanceTypeDescriptionResponse],
-        **kwargs,
+    **kwargs
     ) -> ApiAvailableInstanceTypesResponse:
         instance = cls()
         instance.available_instance_types = available_instance_types
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ApiAvailableInstanceTypesResponse:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ApiAvailableInstanceTypesResponse:
         instance = cls()
         if not dict_:
             return instance
-        if (
-            "availableInstanceTypes" in dict_
-            and dict_["availableInstanceTypes"] is not None
-        ):
-            instance.available_instance_types = [
-                ApiInstanceTypeDescriptionResponse.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["availableInstanceTypes"]
-            ]
+        if "availableInstanceTypes" in dict_ and dict_["availableInstanceTypes"] is not None:
+            instance.available_instance_types = [ApiInstanceTypeDescriptionResponse.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["availableInstanceTypes"]]
         elif include_empty:
             instance.available_instance_types = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApiAvailableInstanceTypesResponse]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ApiAvailableInstanceTypesResponse]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ApiAvailableInstanceTypesResponse]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ApiAvailableInstanceTypesResponse]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ApiAvailableInstanceTypesResponse,
-        List[ApiAvailableInstanceTypesResponse],
-        Dict[Any, ApiAvailableInstanceTypesResponse],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ApiAvailableInstanceTypesResponse, List[ApiAvailableInstanceTypesResponse], Dict[Any, ApiAvailableInstanceTypesResponse]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -5,12 +5,12 @@ class AMSTestCase(IntegrationTestCase):
     # region test:health_check
 
     def test_health_check(self):
-        from accelbyte_py_sdk.api.ams import basic_health_check
+        from accelbyte_py_sdk.api.ams import portal_health_check
 
         # arrange
 
         # act
-        _, error = basic_health_check()
+        _, error = portal_health_check()
 
         # assert
         self.assertIsNone(error, error)

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (0.2.0)
+# Fleet Commander (0.2.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -75,7 +75,7 @@ class InfoRegions(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str  # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -153,12 +153,7 @@ class InfoRegions(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ApiRegionsResponse],
-        Union[None, HttpResponse, ResponseErrorResponse],
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ApiRegionsResponse], Union[None, HttpResponse, ResponseErrorResponse]]:
         """Parse the given response.
 
         200: OK - ApiRegionsResponse (success)
@@ -175,9 +170,7 @@ class InfoRegions(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -191,16 +184,18 @@ class InfoRegions(Operation):
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)
 
-        return self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> InfoRegions:
+    def create(
+        cls,
+        namespace: str,
+    **kwargs
+    ) -> InfoRegions:
         instance = cls()
         instance.namespace = namespace
         return instance

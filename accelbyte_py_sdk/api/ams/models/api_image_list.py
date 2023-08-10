@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
 
-# Fleet Commander (0.2.0)
+# Fleet Commander (0.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,7 +39,7 @@ class ApiImageList(Model):
 
     # region fields
 
-    images: List[ApiImageListItem]  # REQUIRED
+    images: List[ApiImageListItem]                                                                 # REQUIRED
 
     # endregion fields
 
@@ -56,9 +56,7 @@ class ApiImageList(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "images"):
-            result["images"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.images
-            ]
+            result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
             result["images"] = []
         return result
@@ -68,7 +66,11 @@ class ApiImageList(Model):
     # region static methods
 
     @classmethod
-    def create(cls, images: List[ApiImageListItem], **kwargs) -> ApiImageList:
+    def create(
+        cls,
+        images: List[ApiImageListItem],
+    **kwargs
+    ) -> ApiImageList:
         instance = cls()
         instance.images = images
         return instance
@@ -79,38 +81,21 @@ class ApiImageList(Model):
         if not dict_:
             return instance
         if "images" in dict_ and dict_["images"] is not None:
-            instance.images = [
-                ApiImageListItem.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["images"]
-            ]
+            instance.images = [ApiImageListItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
         elif include_empty:
             instance.images = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApiImageList]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ApiImageList]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ApiImageList]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ApiImageList]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[ApiImageList, List[ApiImageList], Dict[Any, ApiImageList]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ApiImageList, List[ApiImageList], Dict[Any, ApiImageList]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

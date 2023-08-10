@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (0.2.0)
+# Fleet Commander Index (0.2.1)
 
 
 ## Operations
@@ -24,7 +24,7 @@
 ### Fleet Commander
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /ams/version | GET | func1 | `false` | [Func1](../../accelbyte_py_sdk/api/ams/operations/fleet_commander/func1.py) | [func1](../../accelbyte_py_sdk/api/ams/wrappers/_fleet_commander.py) | [accelbyte_py_sdk_cli ams-func1](../../samples/cli/accelbyte_py_sdk_cli/ams/_func1.py) |
+| /ams/version | GET | func3 | `false` | [Func3](../../accelbyte_py_sdk/api/ams/operations/fleet_commander/func3.py) | [func3](../../accelbyte_py_sdk/api/ams/wrappers/_fleet_commander.py) | [accelbyte_py_sdk_cli ams-func3](../../samples/cli/accelbyte_py_sdk_cli/ams/_func3.py) |
 
 ### Fleets
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -48,7 +48,8 @@
 ### Operations
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /healthz | GET | BasicHealthCheck | `false` | [BasicHealthCheck](../../accelbyte_py_sdk/api/ams/operations/operations/basic_health_check.py) | [basic_health_check](../../accelbyte_py_sdk/api/ams/wrappers/_operations.py) | [accelbyte_py_sdk_cli ams-basic-health-check](../../samples/cli/accelbyte_py_sdk_cli/ams/_basic_health_check.py) |
+| /ams/healthz | GET | func2 | `false` | [Func2](../../accelbyte_py_sdk/api/ams/operations/operations/func2.py) | [func2](../../accelbyte_py_sdk/api/ams/wrappers/_operations.py) | [accelbyte_py_sdk_cli ams-func2](../../samples/cli/accelbyte_py_sdk_cli/ams/_func2.py) |
+| /healthz | GET | PortalHealthCheck | `false` | [PortalHealthCheck](../../accelbyte_py_sdk/api/ams/operations/operations/portal_health_check.py) | [portal_health_check](../../accelbyte_py_sdk/api/ams/wrappers/_operations.py) | [accelbyte_py_sdk_cli ams-portal-health-check](../../samples/cli/accelbyte_py_sdk_cli/ams/_portal_health_check.py) |
 
 ### Servers
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |

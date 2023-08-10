@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -40,12 +40,7 @@ from ..operations.images import ImagePatch
 
 
 @same_doc_as(ImageGet)
-def image_get(
-    image_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def image_get(image_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Get details about an image. (ImageGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
@@ -93,12 +88,7 @@ def image_get(
 
 
 @same_doc_as(ImageGet)
-async def image_get_async(
-    image_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def image_get_async(image_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Get details about an image. (ImageGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
@@ -142,17 +132,11 @@ async def image_get_async(
         image_id=image_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ImageList)
-def image_list(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def image_list(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Get a list of images which exist (uploaded, uploading, or building) in the linked account.  Fails if no account is linked (ImageList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
@@ -197,11 +181,7 @@ def image_list(
 
 
 @same_doc_as(ImageList)
-async def image_list_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def image_list_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Get a list of images which exist (uploaded, uploading, or building) in the linked account.  Fails if no account is linked (ImageList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
@@ -242,19 +222,11 @@ async def image_list_async(
     request = ImageList.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ImagePatch)
-def image_patch(
-    body: ApiImageUpdate,
-    image_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def image_patch(body: ApiImageUpdate, image_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Edit the image name, toggle IsProtected, or add/remove tags (ImagePatch)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
@@ -305,13 +277,7 @@ def image_patch(
 
 
 @same_doc_as(ImagePatch)
-async def image_patch_async(
-    body: ApiImageUpdate,
-    image_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def image_patch_async(body: ApiImageUpdate, image_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Edit the image name, toggle IsProtected, or add/remove tags (ImagePatch)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
@@ -358,6 +324,4 @@ async def image_patch_async(
         image_id=image_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

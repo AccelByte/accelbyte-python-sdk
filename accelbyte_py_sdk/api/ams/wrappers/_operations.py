@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -30,15 +30,16 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 
-from ..operations.operations import BasicHealthCheck
+from ..operations.operations import Func2
+from ..operations.operations import PortalHealthCheck
 
 
-@same_doc_as(BasicHealthCheck)
-def basic_health_check(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
-    """health check (BasicHealthCheck)
+@same_doc_as(Func2)
+def func2(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """health check (func2)
 
     Properties:
-        url: /healthz
+        url: /ams/healthz
 
         method: GET
 
@@ -53,15 +54,37 @@ def basic_health_check(x_additional_headers: Optional[Dict[str, str]] = None, **
     Responses:
         200: OK - (OK)
     """
-    request = BasicHealthCheck.create()
+    request = Func2.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(BasicHealthCheck)
-async def basic_health_check_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
-    """health check (BasicHealthCheck)
+@same_doc_as(Func2)
+async def func2_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """health check (func2)
+
+    Properties:
+        url: /ams/healthz
+
+        method: GET
+
+        tags: []
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (OK)
+    """
+    request = Func2.create()
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PortalHealthCheck)
+def portal_health_check(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """health check (PortalHealthCheck)
 
     Properties:
         url: /healthz
@@ -79,7 +102,29 @@ async def basic_health_check_async(
     Responses:
         200: OK - (OK)
     """
-    request = BasicHealthCheck.create()
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    request = PortalHealthCheck.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PortalHealthCheck)
+async def portal_health_check_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """health check (PortalHealthCheck)
+
+    Properties:
+        url: /healthz
+
+        method: GET
+
+        tags: []
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (OK)
+    """
+    request = PortalHealthCheck.create()
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

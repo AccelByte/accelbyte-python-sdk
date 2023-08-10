@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
 
-# Fleet Commander (0.2.0)
+# Fleet Commander (0.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,8 +39,8 @@ class ApiPortConfiguration(Model):
 
     # region fields
 
-    name: str  # REQUIRED
-    protocol: str  # REQUIRED
+    name: str                                                                                      # REQUIRED
+    protocol: str                                                                                  # REQUIRED
 
     # endregion fields
 
@@ -75,16 +75,19 @@ class ApiPortConfiguration(Model):
     # region static methods
 
     @classmethod
-    def create(cls, name: str, protocol: str, **kwargs) -> ApiPortConfiguration:
+    def create(
+        cls,
+        name: str,
+        protocol: str,
+    **kwargs
+    ) -> ApiPortConfiguration:
         instance = cls()
         instance.name = name
         instance.protocol = protocol
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ApiPortConfiguration:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ApiPortConfiguration:
         instance = cls()
         if not dict_:
             return instance
@@ -99,33 +102,15 @@ class ApiPortConfiguration(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApiPortConfiguration]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ApiPortConfiguration]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ApiPortConfiguration]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ApiPortConfiguration]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ApiPortConfiguration,
-        List[ApiPortConfiguration],
-        Dict[Any, ApiPortConfiguration],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ApiPortConfiguration, List[ApiPortConfiguration], Dict[Any, ApiPortConfiguration]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -29,49 +29,35 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApiFleetListResponse
-from ...models import ResponseErrorResponse
 
-
-class FleetList(Operation):
-    """get a list of all fleets in the namespace (FleetList)
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+class Func2(Operation):
+    """health check (func2)
 
     Properties:
-        url: /ams/v1/admin/namespaces/{namespace}/fleets
+        url: /ams/healthz
 
         method: GET
 
-        tags: ["Fleets"]
+        tags: []
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
-        namespace: (namespace) REQUIRED str in path
-
     Responses:
-        200: OK - ApiFleetListResponse (success)
-
-        500: Internal Server Error - ResponseErrorResponse (internal server error)
+        200: OK - (OK)
     """
 
     # region fields
 
-    _url: str = "/ams/v1/admin/namespaces/{namespace}/fleets"
+    _url: str = "/ams/healthz"
     _method: str = "GET"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
-
-    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -111,14 +97,7 @@ class FleetList(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "path": self.get_path_params(),
         }
-
-    def get_path_params(self) -> dict:
-        result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        return result
 
     # endregion get_x_params methods
 
@@ -128,20 +107,12 @@ class FleetList(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> FleetList:
-        self.namespace = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -149,12 +120,10 @@ class FleetList(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ApiFleetListResponse], Union[None, HttpResponse, ResponseErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - ApiFleetListResponse (success)
-
-        500: Internal Server Error - ResponseErrorResponse (internal server error)
+        200: OK - (OK)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -168,9 +137,7 @@ class FleetList(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ApiFleetListResponse.create_from_dict(content), None
-        if code == 500:
-            return None, ResponseErrorResponse.create_from_dict(content)
+            return HttpResponse.create(code, "OK"), None
 
         return self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -181,32 +148,24 @@ class FleetList(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
     **kwargs
-    ) -> FleetList:
+    ) -> Func2:
         instance = cls()
-        instance.namespace = namespace
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> FleetList:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> Func2:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "namespace": True,
         }
 
     # endregion static methods
