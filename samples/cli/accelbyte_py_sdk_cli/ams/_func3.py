@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Commander (0.2.0)
+# Fleet Commander (0.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,33 +30,35 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.ams import func1 as func1_internal
+from accelbyte_py_sdk.api.ams import func3 as func3_internal
 
 
 @click.command()
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def func1(
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+def func3(
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(func1_internal.__doc__)
+        click.echo(func3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
-    result, error = func1_internal(
+    result, error = func3_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"func1 failed: {str(error)}")
+        raise Exception(f"func3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-func1.operation_id = "func1"
-func1.is_deprecated = False
+func3.operation_id = "func3"
+func3.is_deprecated = False

@@ -30,27 +30,20 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.ams import fleet_claim_by_keys as fleet_claim_by_keys_internal
-from accelbyte_py_sdk.api.ams.models import ApiFleetClaimByKeysReq
-from accelbyte_py_sdk.api.ams.models import ApiFleetClaimResponse
-from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
+from accelbyte_py_sdk.api.ams import func2 as func2_internal
 
 
 @click.command()
-@click.argument("body", type=str)
-@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def fleet_claim_by_keys(
-        body: str,
-        namespace: Optional[str] = None,
+def func2(
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(fleet_claim_by_keys_internal.__doc__)
+        click.echo(func2_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
@@ -59,21 +52,13 @@ def fleet_claim_by_keys(
         }
     else:
         login_as_internal(login_as)
-    if body is not None:
-        try:
-            body_json = json.loads(body)
-            body = ApiFleetClaimByKeysReq.create_from_dict(body_json)
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = fleet_claim_by_keys_internal(
-        body=body,
-        namespace=namespace,
+    result, error = func2_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"FleetClaimByKeys failed: {str(error)}")
+        raise Exception(f"func2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-fleet_claim_by_keys.operation_id = "FleetClaimByKeys"
-fleet_claim_by_keys.is_deprecated = False
+func2.operation_id = "func2"
+func2.is_deprecated = False

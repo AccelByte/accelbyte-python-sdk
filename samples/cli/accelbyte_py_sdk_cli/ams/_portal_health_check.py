@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Commander (0.2.0)
+# Fleet Commander (0.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,33 +30,35 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.ams import basic_health_check as basic_health_check_internal
+from accelbyte_py_sdk.api.ams import portal_health_check as portal_health_check_internal
 
 
 @click.command()
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def basic_health_check(
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+def portal_health_check(
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(basic_health_check_internal.__doc__)
+        click.echo(portal_health_check_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
-    result, error = basic_health_check_internal(
+    result, error = portal_health_check_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"BasicHealthCheck failed: {str(error)}")
+        raise Exception(f"PortalHealthCheck failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-basic_health_check.operation_id = "BasicHealthCheck"
-basic_health_check.is_deprecated = False
+portal_health_check.operation_id = "PortalHealthCheck"
+portal_health_check.is_deprecated = False

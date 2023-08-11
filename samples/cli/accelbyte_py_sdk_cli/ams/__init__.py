@@ -6,8 +6,9 @@
 
 # template_file: python-cli-init.j2
 
-# fleet-commander (0.2.0)
+# fleet-commander (0.2.1)
 
+from ._func2 import func2
 from ._account_get import account_get
 from ._account_create import account_create
 from ._account_link_token_get import account_link_token_get
@@ -29,11 +30,12 @@ from ._info_supported_instances import info_supported_instances
 from ._fleet_claim_by_id import fleet_claim_by_id
 from ._fleet_claim_by_keys import fleet_claim_by_keys
 from ._watchdog_connect import watchdog_connect
-from ._func1 import func1
-from ._basic_health_check import basic_health_check
+from ._func3 import func3
+from ._portal_health_check import portal_health_check
 
 
 commands = [
+    func2,
     account_get,
     account_create,
     account_link_token_get,
@@ -55,6 +57,6 @@ commands = [
     fleet_claim_by_id,
     fleet_claim_by_keys,
     watchdog_connect,
-    func1,
-    basic_health_check,
+    func3,
+    portal_health_check,
 ]
