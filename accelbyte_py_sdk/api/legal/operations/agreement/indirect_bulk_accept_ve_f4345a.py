@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.30.1)
+# AccelByte Gaming Services Legal Service (1.31.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,13 +38,8 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy_1)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-
-    Available Extra Information to return:
-
-
-      * userIds : List of userId mapping ( IMPORTANT: GOING TO DEPRECATE )
-
     Other detail info:
+
       * Required permission : login user
 
     Properties:

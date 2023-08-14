@@ -38,18 +38,16 @@ from accelbyte_py_sdk.api.ams import portal_health_check as portal_health_check_
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def portal_health_check(
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(portal_health_check_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = portal_health_check_internal(

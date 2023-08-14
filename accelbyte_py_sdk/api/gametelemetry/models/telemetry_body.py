@@ -38,6 +38,8 @@ class TelemetryBody(Model):
 
         payload: (Payload) REQUIRED Dict[str, Any]
 
+        client_timestamp: (ClientTimestamp) OPTIONAL str
+
         event_id: (EventId) OPTIONAL str
 
         event_timestamp: (EventTimestamp) OPTIONAL str
@@ -48,6 +50,7 @@ class TelemetryBody(Model):
     event_name: str  # REQUIRED
     event_namespace: str  # REQUIRED
     payload: Dict[str, Any]  # REQUIRED
+    client_timestamp: str  # OPTIONAL
     event_id: str  # OPTIONAL
     event_timestamp: str  # OPTIONAL
 
@@ -65,6 +68,10 @@ class TelemetryBody(Model):
 
     def with_payload(self, value: Dict[str, Any]) -> TelemetryBody:
         self.payload = value
+        return self
+
+    def with_client_timestamp(self, value: str) -> TelemetryBody:
+        self.client_timestamp = value
         return self
 
     def with_event_id(self, value: str) -> TelemetryBody:
@@ -93,6 +100,10 @@ class TelemetryBody(Model):
             result["Payload"] = {str(k0): v0 for k0, v0 in self.payload.items()}
         elif include_empty:
             result["Payload"] = {}
+        if hasattr(self, "client_timestamp"):
+            result["ClientTimestamp"] = str(self.client_timestamp)
+        elif include_empty:
+            result["ClientTimestamp"] = ""
         if hasattr(self, "event_id"):
             result["EventId"] = str(self.event_id)
         elif include_empty:
@@ -113,6 +124,7 @@ class TelemetryBody(Model):
         event_name: str,
         event_namespace: str,
         payload: Dict[str, Any],
+        client_timestamp: Optional[str] = None,
         event_id: Optional[str] = None,
         event_timestamp: Optional[str] = None,
         **kwargs,
@@ -121,6 +133,8 @@ class TelemetryBody(Model):
         instance.event_name = event_name
         instance.event_namespace = event_namespace
         instance.payload = payload
+        if client_timestamp is not None:
+            instance.client_timestamp = client_timestamp
         if event_id is not None:
             instance.event_id = event_id
         if event_timestamp is not None:
@@ -146,6 +160,10 @@ class TelemetryBody(Model):
             instance.payload = {str(k0): v0 for k0, v0 in dict_["Payload"].items()}
         elif include_empty:
             instance.payload = {}
+        if "ClientTimestamp" in dict_ and dict_["ClientTimestamp"] is not None:
+            instance.client_timestamp = str(dict_["ClientTimestamp"])
+        elif include_empty:
+            instance.client_timestamp = ""
         if "EventId" in dict_ and dict_["EventId"] is not None:
             instance.event_id = str(dict_["EventId"])
         elif include_empty:
@@ -196,6 +214,7 @@ class TelemetryBody(Model):
             "EventName": "event_name",
             "EventNamespace": "event_namespace",
             "Payload": "payload",
+            "ClientTimestamp": "client_timestamp",
             "EventId": "event_id",
             "EventTimestamp": "event_timestamp",
         }
@@ -206,6 +225,7 @@ class TelemetryBody(Model):
             "EventName": True,
             "EventNamespace": True,
             "Payload": True,
+            "ClientTimestamp": False,
             "EventId": False,
             "EventTimestamp": False,
         }

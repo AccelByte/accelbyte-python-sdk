@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -51,14 +51,14 @@ class ApiPagingInfo(Model):
 
     # region fields
 
-    current_page: int                                                                              # REQUIRED
-    has_next: bool                                                                                 # REQUIRED
-    has_pages: bool                                                                                # REQUIRED
-    has_prev: bool                                                                                 # REQUIRED
-    next_: str                                                                                     # REQUIRED
-    page_nums: List[int]                                                                           # REQUIRED
-    previous: str                                                                                  # REQUIRED
-    total: int                                                                                     # REQUIRED
+    current_page: int  # REQUIRED
+    has_next: bool  # REQUIRED
+    has_pages: bool  # REQUIRED
+    has_prev: bool  # REQUIRED
+    next_: str  # REQUIRED
+    page_nums: List[int]  # REQUIRED
+    previous: str  # REQUIRED
+    total: int  # REQUIRED
 
     # endregion fields
 
@@ -151,7 +151,7 @@ class ApiPagingInfo(Model):
         page_nums: List[int],
         previous: str,
         total: int,
-    **kwargs
+        **kwargs,
     ) -> ApiPagingInfo:
         instance = cls()
         instance.current_page = current_page
@@ -165,7 +165,9 @@ class ApiPagingInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ApiPagingInfo:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ApiPagingInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -204,15 +206,29 @@ class ApiPagingInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ApiPagingInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ApiPagingInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ApiPagingInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ApiPagingInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ApiPagingInfo, List[ApiPagingInfo], Dict[Any, ApiPagingInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[ApiPagingInfo, List[ApiPagingInfo], Dict[Any, ApiPagingInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -79,11 +79,15 @@ async def func2_async(x_additional_headers: Optional[Dict[str, str]] = None, **k
         200: OK - (OK)
     """
     request = Func2.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PortalHealthCheck)
-def portal_health_check(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def portal_health_check(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     """health check (PortalHealthCheck)
 
     Properties:
@@ -107,7 +111,9 @@ def portal_health_check(x_additional_headers: Optional[Dict[str, str]] = None, *
 
 
 @same_doc_as(PortalHealthCheck)
-async def portal_health_check_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def portal_health_check_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     """health check (PortalHealthCheck)
 
     Properties:
@@ -127,4 +133,6 @@ async def portal_health_check_async(x_additional_headers: Optional[Dict[str, str
         200: OK - (OK)
     """
     request = PortalHealthCheck.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

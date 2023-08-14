@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.31.1"
+__version__ = "4.32.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -731,8 +731,8 @@ from .wrappers import update_section_async
 # service_plugin_config
 from .wrappers import delete_loot_box_plugin_config
 from .wrappers import delete_loot_box_plugin_config_async
-from .wrappers import delete_loot_box_plugin_config_1
-from .wrappers import delete_loot_box_plugin_config_1_async
+from .wrappers import delete_revocation_plugin_config
+from .wrappers import delete_revocation_plugin_config_async
 from .wrappers import delete_section_plugin_config
 from .wrappers import delete_section_plugin_config_async
 from .wrappers import delete_service_plugin_config
@@ -741,8 +741,8 @@ from .wrappers import get_loot_box_grpc_info
 from .wrappers import get_loot_box_grpc_info_async
 from .wrappers import get_loot_box_plugin_config
 from .wrappers import get_loot_box_plugin_config_async
-from .wrappers import get_loot_box_plugin_config_1
-from .wrappers import get_loot_box_plugin_config_1_async
+from .wrappers import get_revocation_plugin_config
+from .wrappers import get_revocation_plugin_config_async
 from .wrappers import get_section_plugin_config
 from .wrappers import get_section_plugin_config_async
 from .wrappers import get_service_plugin_config

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.9.0)
+# AccelByte Gaming Services Cloudsave Service (3.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,17 +32,9 @@ class ModelsCustomFunction(Model):
     """Models custom function (models.CustomFunction)
 
     Properties:
-        after_bulk_read_admin_game_record: (afterBulkReadAdminGameRecord) REQUIRED bool
-
-        after_bulk_read_admin_player_record: (afterBulkReadAdminPlayerRecord) REQUIRED bool
-
         after_bulk_read_game_record: (afterBulkReadGameRecord) REQUIRED bool
 
         after_bulk_read_player_record: (afterBulkReadPlayerRecord) REQUIRED bool
-
-        after_read_admin_game_record: (afterReadAdminGameRecord) REQUIRED bool
-
-        after_read_admin_player_record: (afterReadAdminPlayerRecord) REQUIRED bool
 
         after_read_game_record: (afterReadGameRecord) REQUIRED bool
 
@@ -59,12 +51,8 @@ class ModelsCustomFunction(Model):
 
     # region fields
 
-    after_bulk_read_admin_game_record: bool  # REQUIRED
-    after_bulk_read_admin_player_record: bool  # REQUIRED
     after_bulk_read_game_record: bool  # REQUIRED
     after_bulk_read_player_record: bool  # REQUIRED
-    after_read_admin_game_record: bool  # REQUIRED
-    after_read_admin_player_record: bool  # REQUIRED
     after_read_game_record: bool  # REQUIRED
     after_read_player_record: bool  # REQUIRED
     before_write_admin_game_record: bool  # REQUIRED
@@ -76,32 +64,12 @@ class ModelsCustomFunction(Model):
 
     # region with_x methods
 
-    def with_after_bulk_read_admin_game_record(
-        self, value: bool
-    ) -> ModelsCustomFunction:
-        self.after_bulk_read_admin_game_record = value
-        return self
-
-    def with_after_bulk_read_admin_player_record(
-        self, value: bool
-    ) -> ModelsCustomFunction:
-        self.after_bulk_read_admin_player_record = value
-        return self
-
     def with_after_bulk_read_game_record(self, value: bool) -> ModelsCustomFunction:
         self.after_bulk_read_game_record = value
         return self
 
     def with_after_bulk_read_player_record(self, value: bool) -> ModelsCustomFunction:
         self.after_bulk_read_player_record = value
-        return self
-
-    def with_after_read_admin_game_record(self, value: bool) -> ModelsCustomFunction:
-        self.after_read_admin_game_record = value
-        return self
-
-    def with_after_read_admin_player_record(self, value: bool) -> ModelsCustomFunction:
-        self.after_read_admin_player_record = value
         return self
 
     def with_after_read_game_record(self, value: bool) -> ModelsCustomFunction:
@@ -136,18 +104,6 @@ class ModelsCustomFunction(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "after_bulk_read_admin_game_record"):
-            result["afterBulkReadAdminGameRecord"] = bool(
-                self.after_bulk_read_admin_game_record
-            )
-        elif include_empty:
-            result["afterBulkReadAdminGameRecord"] = False
-        if hasattr(self, "after_bulk_read_admin_player_record"):
-            result["afterBulkReadAdminPlayerRecord"] = bool(
-                self.after_bulk_read_admin_player_record
-            )
-        elif include_empty:
-            result["afterBulkReadAdminPlayerRecord"] = False
         if hasattr(self, "after_bulk_read_game_record"):
             result["afterBulkReadGameRecord"] = bool(self.after_bulk_read_game_record)
         elif include_empty:
@@ -158,16 +114,6 @@ class ModelsCustomFunction(Model):
             )
         elif include_empty:
             result["afterBulkReadPlayerRecord"] = False
-        if hasattr(self, "after_read_admin_game_record"):
-            result["afterReadAdminGameRecord"] = bool(self.after_read_admin_game_record)
-        elif include_empty:
-            result["afterReadAdminGameRecord"] = False
-        if hasattr(self, "after_read_admin_player_record"):
-            result["afterReadAdminPlayerRecord"] = bool(
-                self.after_read_admin_player_record
-            )
-        elif include_empty:
-            result["afterReadAdminPlayerRecord"] = False
         if hasattr(self, "after_read_game_record"):
             result["afterReadGameRecord"] = bool(self.after_read_game_record)
         elif include_empty:
@@ -205,12 +151,8 @@ class ModelsCustomFunction(Model):
     @classmethod
     def create(
         cls,
-        after_bulk_read_admin_game_record: bool,
-        after_bulk_read_admin_player_record: bool,
         after_bulk_read_game_record: bool,
         after_bulk_read_player_record: bool,
-        after_read_admin_game_record: bool,
-        after_read_admin_player_record: bool,
         after_read_game_record: bool,
         after_read_player_record: bool,
         before_write_admin_game_record: bool,
@@ -220,14 +162,8 @@ class ModelsCustomFunction(Model):
         **kwargs,
     ) -> ModelsCustomFunction:
         instance = cls()
-        instance.after_bulk_read_admin_game_record = after_bulk_read_admin_game_record
-        instance.after_bulk_read_admin_player_record = (
-            after_bulk_read_admin_player_record
-        )
         instance.after_bulk_read_game_record = after_bulk_read_game_record
         instance.after_bulk_read_player_record = after_bulk_read_player_record
-        instance.after_read_admin_game_record = after_read_admin_game_record
-        instance.after_read_admin_player_record = after_read_admin_player_record
         instance.after_read_game_record = after_read_game_record
         instance.after_read_player_record = after_read_player_record
         instance.before_write_admin_game_record = before_write_admin_game_record
@@ -243,24 +179,6 @@ class ModelsCustomFunction(Model):
         instance = cls()
         if not dict_:
             return instance
-        if (
-            "afterBulkReadAdminGameRecord" in dict_
-            and dict_["afterBulkReadAdminGameRecord"] is not None
-        ):
-            instance.after_bulk_read_admin_game_record = bool(
-                dict_["afterBulkReadAdminGameRecord"]
-            )
-        elif include_empty:
-            instance.after_bulk_read_admin_game_record = False
-        if (
-            "afterBulkReadAdminPlayerRecord" in dict_
-            and dict_["afterBulkReadAdminPlayerRecord"] is not None
-        ):
-            instance.after_bulk_read_admin_player_record = bool(
-                dict_["afterBulkReadAdminPlayerRecord"]
-            )
-        elif include_empty:
-            instance.after_bulk_read_admin_player_record = False
         if (
             "afterBulkReadGameRecord" in dict_
             and dict_["afterBulkReadGameRecord"] is not None
@@ -279,24 +197,6 @@ class ModelsCustomFunction(Model):
             )
         elif include_empty:
             instance.after_bulk_read_player_record = False
-        if (
-            "afterReadAdminGameRecord" in dict_
-            and dict_["afterReadAdminGameRecord"] is not None
-        ):
-            instance.after_read_admin_game_record = bool(
-                dict_["afterReadAdminGameRecord"]
-            )
-        elif include_empty:
-            instance.after_read_admin_game_record = False
-        if (
-            "afterReadAdminPlayerRecord" in dict_
-            and dict_["afterReadAdminPlayerRecord"] is not None
-        ):
-            instance.after_read_admin_player_record = bool(
-                dict_["afterReadAdminPlayerRecord"]
-            )
-        elif include_empty:
-            instance.after_read_admin_player_record = False
         if "afterReadGameRecord" in dict_ and dict_["afterReadGameRecord"] is not None:
             instance.after_read_game_record = bool(dict_["afterReadGameRecord"])
         elif include_empty:
@@ -383,12 +283,8 @@ class ModelsCustomFunction(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "afterBulkReadAdminGameRecord": "after_bulk_read_admin_game_record",
-            "afterBulkReadAdminPlayerRecord": "after_bulk_read_admin_player_record",
             "afterBulkReadGameRecord": "after_bulk_read_game_record",
             "afterBulkReadPlayerRecord": "after_bulk_read_player_record",
-            "afterReadAdminGameRecord": "after_read_admin_game_record",
-            "afterReadAdminPlayerRecord": "after_read_admin_player_record",
             "afterReadGameRecord": "after_read_game_record",
             "afterReadPlayerRecord": "after_read_player_record",
             "beforeWriteAdminGameRecord": "before_write_admin_game_record",
@@ -400,12 +296,8 @@ class ModelsCustomFunction(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "afterBulkReadAdminGameRecord": True,
-            "afterBulkReadAdminPlayerRecord": True,
             "afterBulkReadGameRecord": True,
             "afterBulkReadPlayerRecord": True,
-            "afterReadAdminGameRecord": True,
-            "afterReadAdminPlayerRecord": True,
             "afterReadGameRecord": True,
             "afterReadPlayerRecord": True,
             "beforeWriteAdminGameRecord": True,

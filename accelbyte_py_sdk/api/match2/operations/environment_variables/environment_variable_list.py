@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Match Service V2 (2.8.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,44 +29,54 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ApiListEnvironmentVariablesResponse
+from ...models import ResponseError
 
-class DeleteLootBoxPluginConfig1(Operation):
-    """Delete revocation plugin config (deleteLootBoxPluginConfig_1)
 
-    Delete service plugin config.
-    Other detail info:
+class EnvironmentVariableList(Operation):
+    """List environment variables (EnvironmentVariableList)
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION, action=8 (DELETE)
+    Required Permission: ADMIN:MATCHMAKING:CONFIGURATION:ENVIRONMENTVARIABLE [READ]
+
+    Required Scope: social
+
+    List environment variables.
+
+    Required Permission(s):
+        - ADMIN:MATCHMAKING:CONFIGURATION:ENVIRONMENTVARIABLE [READ]
+
+    Required Scope(s):
+        - social
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/revocation/plugins/revocation
+        url: /match2/v1/environment-variables
 
-        method: DELETE
+        method: GET
 
-        tags: ["ServicePluginConfig"]
+        tags: ["Environment-Variables", "admin"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
-        namespace: (namespace) REQUIRED str in path
-
     Responses:
-        204: No Content - (Delete successfully)
+        200: OK - ApiListEnvironmentVariablesResponse (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/revocation/plugins/revocation"
-    _method: str = "DELETE"
-    _consumes: List[str] = []
+    _url: str = "/match2/v1/environment-variables"
+    _method: str = "GET"
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
-
-    namespace: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -105,15 +115,7 @@ class DeleteLootBoxPluginConfig1(Operation):
     # region get_x_params methods
 
     def get_all_params(self) -> dict:
-        return {
-            "path": self.get_path_params(),
-        }
-
-    def get_path_params(self) -> dict:
-        result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        return result
+        return {}
 
     # endregion get_x_params methods
 
@@ -123,20 +125,12 @@ class DeleteLootBoxPluginConfig1(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> DeleteLootBoxPluginConfig1:
-        self.namespace = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -146,10 +140,17 @@ class DeleteLootBoxPluginConfig1(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ApiListEnvironmentVariablesResponse],
+        Union[None, HttpResponse, ResponseError],
+    ]:
         """Parse the given response.
 
-        204: No Content - (Delete successfully)
+        200: OK - ApiListEnvironmentVariablesResponse (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -164,8 +165,12 @@ class DeleteLootBoxPluginConfig1(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
+        if code == 200:
+            return ApiListEnvironmentVariablesResponse.create_from_dict(content), None
+        if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 403:
+            return None, ResponseError.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -176,32 +181,23 @@ class DeleteLootBoxPluginConfig1(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> DeleteLootBoxPluginConfig1:
+    def create(cls, **kwargs) -> EnvironmentVariableList:
         instance = cls()
-        instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> DeleteLootBoxPluginConfig1:
+    ) -> EnvironmentVariableList:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {
-            "namespace": "namespace",
-        }
+        return {}
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
-        return {
-            "namespace": True,
-        }
+        return {}
 
     # endregion static methods

@@ -8,19 +8,19 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.31.1"
+__version__ = "4.32.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .delete_loot_box_plugin_config import DeleteLootBoxPluginConfig
-from .delete_loot_box_plugin__7eaf23 import DeleteLootBoxPluginConfig1
+from .delete_revocation_plugi_c2651d import DeleteRevocationPluginConfig
 from .delete_section_plugin_config import DeleteSectionPluginConfig
 from .delete_service_plugin_config import DeleteServicePluginConfig
 from .get_loot_box_grpc_info import GetLootBoxGrpcInfo
 from .get_loot_box_plugin_config import GetLootBoxPluginConfig
-from .get_loot_box_plugin_config_1 import GetLootBoxPluginConfig1
+from .get_revocation_plugin_config import GetRevocationPluginConfig
 from .get_section_plugin_config import GetSectionPluginConfig
 from .get_service_plugin_config import GetServicePluginConfig
 from .update_loot_box_plugin_config import UpdateLootBoxPluginConfig

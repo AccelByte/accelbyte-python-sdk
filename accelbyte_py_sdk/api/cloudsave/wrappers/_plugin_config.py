@@ -38,6 +38,7 @@ from ..operations.plugin_config import DeletePluginConfig
 from ..operations.plugin_config import GetPluginConfig
 from ..operations.plugin_config import UpdatePluginConfig
 from ..models import ModelsPluginRequestExtendTypeEnum
+from ..models import ModelsPluginResponseExtendTypeEnum
 
 
 @same_doc_as(CreatePluginConfig)

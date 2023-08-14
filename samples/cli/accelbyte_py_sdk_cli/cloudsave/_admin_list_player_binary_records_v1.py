@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.31.1)
+# AGS Cloudsave Service (3.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,38 +30,52 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    delete_loot_box_plugin_config_1 as delete_loot_box_plugin_config_1_internal,
+from accelbyte_py_sdk.api.cloudsave import (
+    admin_list_player_binary_records_v1 as admin_list_player_binary_records_v1_internal,
 )
+from accelbyte_py_sdk.api.cloudsave.models import ModelsListPlayerBinaryRecordsResponse
+from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
 
 @click.command()
+@click.argument("user_id", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--query", "query", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def delete_loot_box_plugin_config_1(
+def admin_list_player_binary_records_v1(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    query: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(delete_loot_box_plugin_config_1_internal.__doc__)
+        click.echo(admin_list_player_binary_records_v1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = delete_loot_box_plugin_config_1_internal(
+    result, error = admin_list_player_binary_records_v1_internal(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        query=query,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"deleteLootBoxPluginConfig_1 failed: {str(error)}")
+        raise Exception(f"adminListPlayerBinaryRecordsV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-delete_loot_box_plugin_config_1.operation_id = "deleteLootBoxPluginConfig_1"
-delete_loot_box_plugin_config_1.is_deprecated = False
+admin_list_player_binary_records_v1.operation_id = "adminListPlayerBinaryRecordsV1"
+admin_list_player_binary_records_v1.is_deprecated = False

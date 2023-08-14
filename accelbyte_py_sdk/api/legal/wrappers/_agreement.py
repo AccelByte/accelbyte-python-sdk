@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import AcceptAgreementRequest
@@ -404,13 +405,8 @@ def indirect_bulk_accept_versioned_policy_1(
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy_1)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-
-    Available Extra Information to return:
-
-
-      * userIds : List of userId mapping ( IMPORTANT: GOING TO DEPRECATE )
-
     Other detail info:
+
       * Required permission : login user
 
     Properties:
@@ -452,13 +448,8 @@ async def indirect_bulk_accept_versioned_policy_1_async(
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy_1)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-
-    Available Extra Information to return:
-
-
-      * userIds : List of userId mapping ( IMPORTANT: GOING TO DEPRECATE )
-
     Other detail info:
+
       * Required permission : login user
 
     Properties:
@@ -492,6 +483,7 @@ async def indirect_bulk_accept_versioned_policy_1_async(
     )
 
 
+@deprecated
 @same_doc_as(IndirectBulkAcceptVersionedPolicyV2)
 def indirect_bulk_accept_versioned_policy_v2(
     client_id: str,
@@ -503,8 +495,6 @@ def indirect_bulk_accept_versioned_policy_v2(
     **kwargs
 ):
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicyV2)
-
-    IMPORTANT: GOING TO DEPRECATE
 
     Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
     Other detail info:
@@ -554,6 +544,7 @@ def indirect_bulk_accept_versioned_policy_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(IndirectBulkAcceptVersionedPolicyV2)
 async def indirect_bulk_accept_versioned_policy_v2_async(
     client_id: str,
@@ -565,8 +556,6 @@ async def indirect_bulk_accept_versioned_policy_v2_async(
     **kwargs
 ):
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicyV2)
-
-    IMPORTANT: GOING TO DEPRECATE
 
     Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
     Other detail info:

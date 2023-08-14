@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.9.0)
+# AccelByte Gaming Services Cloudsave Service (3.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,12 +33,16 @@ from ..api.cloudsave.models import ModelsAdminPlayerRecordKeyInfo
 from ..api.cloudsave.models import ModelsAdminPlayerRecordRequest
 from ..api.cloudsave.models import ModelsAdminPlayerRecordResponse
 from ..api.cloudsave.models import ModelsAppConfig
+from ..api.cloudsave.models import ModelsBinaryInfoResponse
+from ..api.cloudsave.models import ModelsBinaryRecordRequest
 from ..api.cloudsave.models import ModelsBulkGetAdminGameRecordRequest
 from ..api.cloudsave.models import ModelsBulkGetAdminGameRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetAdminPlayerRecordRequest
 from ..api.cloudsave.models import ModelsBulkGetAdminPlayerRecordResponse
+from ..api.cloudsave.models import ModelsBulkGetGameBinaryRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetGameRecordRequest
 from ..api.cloudsave.models import ModelsBulkGetGameRecordResponse
+from ..api.cloudsave.models import ModelsBulkGetPlayerBinaryRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordSizeResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordsRequest
@@ -47,20 +51,33 @@ from ..api.cloudsave.models import ModelsBulkUserKeyRequest
 from ..api.cloudsave.models import ModelsConcurrentRecordRequest
 from ..api.cloudsave.models import ModelsCustomConfig
 from ..api.cloudsave.models import ModelsCustomFunction
+from ..api.cloudsave.models import ModelsGameBinaryRecordCreate
+from ..api.cloudsave.models import ModelsGameBinaryRecordMetadataRequest
+from ..api.cloudsave.models import ModelsGameBinaryRecordResponse
 from ..api.cloudsave.models import ModelsGameRecordRequest
 from ..api.cloudsave.models import ModelsGameRecordResponse
 from ..api.cloudsave.models import ModelsListAdminGameRecordKeysResponse
 from ..api.cloudsave.models import ModelsListAdminPlayerRecordKeysResponse
+from ..api.cloudsave.models import ModelsListGameBinaryRecordsResponse
 from ..api.cloudsave.models import ModelsListGameRecordKeysResponse
+from ..api.cloudsave.models import ModelsListPlayerBinaryRecordsResponse
 from ..api.cloudsave.models import ModelsListPlayerRecordKeysResponse
 from ..api.cloudsave.models import ModelsPagination
+from ..api.cloudsave.models import ModelsPlayerBinaryRecordCreate
+from ..api.cloudsave.models import ModelsPlayerBinaryRecordMetadataPublicRequest
+from ..api.cloudsave.models import ModelsPlayerBinaryRecordMetadataRequest
+from ..api.cloudsave.models import ModelsPlayerBinaryRecordResponse
 from ..api.cloudsave.models import ModelsPlayerRecordKeyInfo
 from ..api.cloudsave.models import ModelsPlayerRecordRequest
 from ..api.cloudsave.models import ModelsPlayerRecordResponse
 from ..api.cloudsave.models import ModelsPlayerRecordSizeResponse
 from ..api.cloudsave.models import ModelsPluginRequest
 from ..api.cloudsave.models import ModelsPluginResponse
+from ..api.cloudsave.models import ModelsPublicGameBinaryRecordCreate
+from ..api.cloudsave.models import ModelsPublicPlayerBinaryRecordCreate
 from ..api.cloudsave.models import ModelsResponseError
+from ..api.cloudsave.models import ModelsUploadBinaryRecordRequest
+from ..api.cloudsave.models import ModelsUploadBinaryRecordResponse
 from ..api.cloudsave.models import ModelsUserKeyRequest
 
 
@@ -142,6 +159,24 @@ def create_models_app_config_example() -> ModelsAppConfig:
     return instance
 
 
+def create_models_binary_info_response_example() -> ModelsBinaryInfoResponse:
+    instance = ModelsBinaryInfoResponse()
+    instance.content_type = randomize()
+    instance.created_at = randomize("date")
+    instance.file_location = randomize()
+    instance.updated_at = randomize("date")
+    instance.version = randomize("int", min_val=1, max_val=1000)
+    instance.url = randomize("url")
+    return instance
+
+
+def create_models_binary_record_request_example() -> ModelsBinaryRecordRequest:
+    instance = ModelsBinaryRecordRequest()
+    instance.content_type = randomize()
+    instance.file_location = randomize()
+    return instance
+
+
 def create_models_bulk_get_admin_game_record_request_example() -> (
     ModelsBulkGetAdminGameRecordRequest
 ):
@@ -174,6 +209,14 @@ def create_models_bulk_get_admin_player_record_response_example() -> (
     return instance
 
 
+def create_models_bulk_get_game_binary_record_response_example() -> (
+    ModelsBulkGetGameBinaryRecordResponse
+):
+    instance = ModelsBulkGetGameBinaryRecordResponse()
+    instance.data = [create_models_game_binary_record_response_example()]
+    return instance
+
+
 def create_models_bulk_get_game_record_request_example() -> (
     ModelsBulkGetGameRecordRequest
 ):
@@ -187,6 +230,14 @@ def create_models_bulk_get_game_record_response_example() -> (
 ):
     instance = ModelsBulkGetGameRecordResponse()
     instance.data = [create_models_game_record_response_example()]
+    return instance
+
+
+def create_models_bulk_get_player_binary_record_response_example() -> (
+    ModelsBulkGetPlayerBinaryRecordResponse
+):
+    instance = ModelsBulkGetPlayerBinaryRecordResponse()
+    instance.data = [create_models_player_binary_record_response_example()]
     return instance
 
 
@@ -241,18 +292,43 @@ def create_models_custom_config_example() -> ModelsCustomConfig:
 
 def create_models_custom_function_example() -> ModelsCustomFunction:
     instance = ModelsCustomFunction()
-    instance.after_bulk_read_admin_game_record = randomize("bool")
-    instance.after_bulk_read_admin_player_record = randomize("bool")
     instance.after_bulk_read_game_record = randomize("bool")
     instance.after_bulk_read_player_record = randomize("bool")
-    instance.after_read_admin_game_record = randomize("bool")
-    instance.after_read_admin_player_record = randomize("bool")
     instance.after_read_game_record = randomize("bool")
     instance.after_read_player_record = randomize("bool")
     instance.before_write_admin_game_record = randomize("bool")
     instance.before_write_admin_player_record = randomize("bool")
     instance.before_write_game_record = randomize("bool")
     instance.before_write_player_record = randomize("bool")
+    return instance
+
+
+def create_models_game_binary_record_create_example() -> ModelsGameBinaryRecordCreate:
+    instance = ModelsGameBinaryRecordCreate()
+    instance.file_type = randomize()
+    instance.key = randomize()
+    instance.set_by = randomize()
+    return instance
+
+
+def create_models_game_binary_record_metadata_request_example() -> (
+    ModelsGameBinaryRecordMetadataRequest
+):
+    instance = ModelsGameBinaryRecordMetadataRequest()
+    instance.set_by = randomize()
+    return instance
+
+
+def create_models_game_binary_record_response_example() -> (
+    ModelsGameBinaryRecordResponse
+):
+    instance = ModelsGameBinaryRecordResponse()
+    instance.created_at = randomize("date")
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.binary_info = create_models_binary_info_response_example()
+    instance.set_by = randomize()
     return instance
 
 
@@ -290,11 +366,29 @@ def create_models_list_admin_player_record_keys_response_example() -> (
     return instance
 
 
+def create_models_list_game_binary_records_response_example() -> (
+    ModelsListGameBinaryRecordsResponse
+):
+    instance = ModelsListGameBinaryRecordsResponse()
+    instance.data = [create_models_game_binary_record_response_example()]
+    instance.paging = create_models_pagination_example()
+    return instance
+
+
 def create_models_list_game_record_keys_response_example() -> (
     ModelsListGameRecordKeysResponse
 ):
     instance = ModelsListGameRecordKeysResponse()
     instance.data = [randomize()]
+    instance.paging = create_models_pagination_example()
+    return instance
+
+
+def create_models_list_player_binary_records_response_example() -> (
+    ModelsListPlayerBinaryRecordsResponse
+):
+    instance = ModelsListPlayerBinaryRecordsResponse()
+    instance.data = [create_models_player_binary_record_response_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
@@ -314,6 +408,49 @@ def create_models_pagination_example() -> ModelsPagination:
     instance.last = randomize()
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_models_player_binary_record_create_example() -> (
+    ModelsPlayerBinaryRecordCreate
+):
+    instance = ModelsPlayerBinaryRecordCreate()
+    instance.file_type = randomize()
+    instance.key = randomize()
+    instance.set_by = randomize()
+    instance.is_public = randomize("bool")
+    return instance
+
+
+def create_models_player_binary_record_metadata_public_request_example() -> (
+    ModelsPlayerBinaryRecordMetadataPublicRequest
+):
+    instance = ModelsPlayerBinaryRecordMetadataPublicRequest()
+    instance.is_public = randomize("bool")
+    return instance
+
+
+def create_models_player_binary_record_metadata_request_example() -> (
+    ModelsPlayerBinaryRecordMetadataRequest
+):
+    instance = ModelsPlayerBinaryRecordMetadataRequest()
+    instance.is_public = randomize("bool")
+    instance.set_by = randomize()
+    return instance
+
+
+def create_models_player_binary_record_response_example() -> (
+    ModelsPlayerBinaryRecordResponse
+):
+    instance = ModelsPlayerBinaryRecordResponse()
+    instance.created_at = randomize("date")
+    instance.is_public = randomize("bool")
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.binary_info = create_models_binary_info_response_example()
+    instance.set_by = randomize()
     return instance
 
 
@@ -373,10 +510,48 @@ def create_models_plugin_response_example() -> ModelsPluginResponse:
     return instance
 
 
+def create_models_public_game_binary_record_create_example() -> (
+    ModelsPublicGameBinaryRecordCreate
+):
+    instance = ModelsPublicGameBinaryRecordCreate()
+    instance.file_type = randomize()
+    instance.key = randomize()
+    return instance
+
+
+def create_models_public_player_binary_record_create_example() -> (
+    ModelsPublicPlayerBinaryRecordCreate
+):
+    instance = ModelsPublicPlayerBinaryRecordCreate()
+    instance.file_type = randomize()
+    instance.key = randomize()
+    instance.is_public = randomize("bool")
+    return instance
+
+
 def create_models_response_error_example() -> ModelsResponseError:
     instance = ModelsResponseError()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
+    return instance
+
+
+def create_models_upload_binary_record_request_example() -> (
+    ModelsUploadBinaryRecordRequest
+):
+    instance = ModelsUploadBinaryRecordRequest()
+    instance.file_type = randomize()
+    return instance
+
+
+def create_models_upload_binary_record_response_example() -> (
+    ModelsUploadBinaryRecordResponse
+):
+    instance = ModelsUploadBinaryRecordResponse()
+    instance.content_type = randomize()
+    instance.file_location = randomize()
+    instance.url = randomize("url")
+    instance.version = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

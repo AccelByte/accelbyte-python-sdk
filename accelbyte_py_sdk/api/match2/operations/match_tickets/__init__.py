@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.7.1"
+__version__ = "2.8.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,4 +16,5 @@ __email__ = "dev@accelbyte.net"
 
 from .create_match_ticket import CreateMatchTicket
 from .delete_match_ticket import DeleteMatchTicket
+from .get_my_match_tickets import GetMyMatchTickets
 from .match_ticket_details import MatchTicketDetails

@@ -1511,7 +1511,7 @@ def public_query_my_parties(
         status: (status) OPTIONAL str in query
 
     Responses:
-        200: OK - List[ApimodelsPartySessionResponse] (OK)
+        200: OK - ApimodelsPartyQueryResponse (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -1567,7 +1567,7 @@ async def public_query_my_parties_async(
         status: (status) OPTIONAL str in query
 
     Responses:
-        200: OK - List[ApimodelsPartySessionResponse] (OK)
+        200: OK - ApimodelsPartyQueryResponse (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 

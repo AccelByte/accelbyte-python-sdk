@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -34,7 +34,12 @@ from ..operations.watchdogs import WatchdogConnect
 
 
 @same_doc_as(WatchdogConnect)
-def watchdog_connect(watchdog_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def watchdog_connect(
+    watchdog_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """connect a watchdog (WatchdogConnect)
 
     Required Permission: NAMESPACE:{namespace}:ARMADA:WATCHDOG [CREATE]
@@ -74,7 +79,12 @@ def watchdog_connect(watchdog_id: str, namespace: Optional[str] = None, x_additi
 
 
 @same_doc_as(WatchdogConnect)
-async def watchdog_connect_async(watchdog_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def watchdog_connect_async(
+    watchdog_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """connect a watchdog (WatchdogConnect)
 
     Required Permission: NAMESPACE:{namespace}:ARMADA:WATCHDOG [CREATE]
@@ -110,4 +120,6 @@ async def watchdog_connect_async(watchdog_id: str, namespace: Optional[str] = No
         watchdog_id=watchdog_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

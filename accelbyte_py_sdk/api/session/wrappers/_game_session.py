@@ -1010,6 +1010,7 @@ def get_game_session(
     """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSession)
 
     Get game session detail.
+    Session will only be accessible from active players in the session, and client with the permission, except the joinability is set to OPEN.
     Session service has several DSInformation status to track DS request to DSMC:
     - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
     - REQUESTED: DS is being requested to DSMC.
@@ -1067,6 +1068,7 @@ async def get_game_session_async(
     """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSession)
 
     Get game session detail.
+    Session will only be accessible from active players in the session, and client with the permission, except the joinability is set to OPEN.
     Session service has several DSInformation status to track DS request to DSMC:
     - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
     - REQUESTED: DS is being requested to DSMC.
@@ -2100,7 +2102,7 @@ def public_query_my_game_sessions(
         status: (status) OPTIONAL str in query
 
     Responses:
-        200: OK - List[ApimodelsGameSessionResponse] (OK)
+        200: OK - ApimodelsGameSessionQueryResponse (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -2163,7 +2165,7 @@ async def public_query_my_game_sessions_async(
         status: (status) OPTIONAL str in query
 
     Responses:
-        200: OK - List[ApimodelsGameSessionResponse] (OK)
+        200: OK - ApimodelsGameSessionQueryResponse (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 

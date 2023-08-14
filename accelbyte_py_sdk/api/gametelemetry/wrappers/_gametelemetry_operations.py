@@ -195,6 +195,10 @@ def protected_save_events_game_telemetry_v1_protected_events_post(
 
     Default maximum payload size is 1MB
 
+
+
+    - **ClientTimestamp (optional)**: Timestamp of the event captured by the client SDK.
+
     Properties:
         url: /game-telemetry/v1/protected/events
 
@@ -279,6 +283,10 @@ async def protected_save_events_game_telemetry_v1_protected_events_post_async(
 
 
     Default maximum payload size is 1MB
+
+
+
+    - **ClientTimestamp (optional)**: Timestamp of the event captured by the client SDK.
 
     Properties:
         url: /game-telemetry/v1/protected/events

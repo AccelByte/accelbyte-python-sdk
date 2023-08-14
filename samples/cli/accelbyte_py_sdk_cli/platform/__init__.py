@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.31.1)
+# justice-platform-service (4.32.1)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -162,9 +162,9 @@ from ._get_revocation_config import get_revocation_config
 from ._update_revocation_config import update_revocation_config
 from ._delete_revocation_config import delete_revocation_config
 from ._query_revocation_histories import query_revocation_histories
-from ._get_loot_box_plugin_config_1 import get_loot_box_plugin_config_1
+from ._get_revocation_plugin_config import get_revocation_plugin_config
 from ._update_revocation_plugin_config import update_revocation_plugin_config
-from ._delete_loot_box_plugin_config_1 import delete_loot_box_plugin_config_1
+from ._delete_revocation_plugin_config import delete_revocation_plugin_config
 from ._upload_revocation_plugin_config_cert import upload_revocation_plugin_config_cert
 from ._create_reward import create_reward
 from ._query_rewards import query_rewards
@@ -641,9 +641,9 @@ commands = [
     update_revocation_config,
     delete_revocation_config,
     query_revocation_histories,
-    get_loot_box_plugin_config_1,
+    get_revocation_plugin_config,
     update_revocation_plugin_config,
-    delete_loot_box_plugin_config_1,
+    delete_revocation_plugin_config,
     upload_revocation_plugin_config_cert,
     create_reward,
     query_rewards,

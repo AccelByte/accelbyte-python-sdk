@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.31.1"
+__version__ = "4.32.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -172,8 +172,10 @@ from .customization import Customization
 from .debit_by_currency_code_request import DebitByCurrencyCodeRequest
 from .debit_by_currency_code_request import (
     BalanceOriginEnum as DebitByCurrencyCodeRequestBalanceOriginEnum,
+    BalanceSourceEnum as DebitByCurrencyCodeRequestBalanceSourceEnum,
 )
 from .debit_request import DebitRequest
+from .debit_request import BalanceSourceEnum as DebitRequestBalanceSourceEnum
 from .debit_result import DebitResult
 from .delete_reward_condition_request import DeleteRewardConditionRequest
 from .detailed_wallet_transaction_info import DetailedWalletTransactionInfo

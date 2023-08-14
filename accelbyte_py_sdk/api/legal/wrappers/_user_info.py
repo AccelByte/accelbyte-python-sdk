@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import RetrieveUserInfoCacheStatusResponse
@@ -122,6 +123,7 @@ async def get_user_info_status_async(
     )
 
 
+@deprecated
 @same_doc_as(InvalidateUserInfoCache)
 def invalidate_user_info_cache(
     namespace: Optional[str] = None,
@@ -129,8 +131,6 @@ def invalidate_user_info_cache(
     **kwargs
 ):
     """Invalidate user info cache (invalidateUserInfoCache)
-
-    Important: GOING TO DEPRECATE
 
     Invalidate user info cache in agreement service.
     Other detail info:
@@ -164,6 +164,7 @@ def invalidate_user_info_cache(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(InvalidateUserInfoCache)
 async def invalidate_user_info_cache_async(
     namespace: Optional[str] = None,
@@ -171,8 +172,6 @@ async def invalidate_user_info_cache_async(
     **kwargs
 ):
     """Invalidate user info cache (invalidateUserInfoCache)
-
-    Important: GOING TO DEPRECATE
 
     Invalidate user info cache in agreement service.
     Other detail info:
@@ -208,6 +207,7 @@ async def invalidate_user_info_cache_async(
     )
 
 
+@deprecated
 @same_doc_as(SyncUserInfo)
 def sync_user_info(
     namespace: Optional[str] = None,
@@ -215,8 +215,6 @@ def sync_user_info(
     **kwargs
 ):
     """Sync user info with iam service  (syncUserInfo)
-
-    Important: GOING TO DEPRECATE
 
     Sync user info cache in agreement service with iam service.
     Other detail info:
@@ -254,6 +252,7 @@ def sync_user_info(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(SyncUserInfo)
 async def sync_user_info_async(
     namespace: Optional[str] = None,
@@ -261,8 +260,6 @@ async def sync_user_info_async(
     **kwargs
 ):
     """Sync user info with iam service  (syncUserInfo)
-
-    Important: GOING TO DEPRECATE
 
     Sync user info cache in agreement service with iam service.
     Other detail info:

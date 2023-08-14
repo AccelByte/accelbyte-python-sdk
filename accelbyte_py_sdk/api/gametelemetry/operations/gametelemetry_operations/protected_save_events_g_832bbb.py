@@ -83,6 +83,10 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
     Default maximum payload size is 1MB
 
+
+
+    - **ClientTimestamp (optional)**: Timestamp of the event captured by the client SDK.
+
     Properties:
         url: /game-telemetry/v1/protected/events
 

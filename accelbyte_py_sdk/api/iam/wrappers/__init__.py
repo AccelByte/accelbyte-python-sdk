@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "6.1.0"
+__version__ = "6.2.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -170,6 +170,8 @@ from ._o_auth2_0_extension import logout
 from ._o_auth2_0_extension import logout_async
 from ._o_auth2_0_extension import platform_authentication_v3
 from ._o_auth2_0_extension import platform_authentication_v3_async
+from ._o_auth2_0_extension import platform_token_refresh_v3
+from ._o_auth2_0_extension import platform_token_refresh_v3_async
 from ._o_auth2_0_extension import request_game_token_code_response_v3
 from ._o_auth2_0_extension import request_game_token_code_response_v3_async
 from ._o_auth2_0_extension import request_game_token_response_v3

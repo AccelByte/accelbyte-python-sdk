@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Match Service V2 (2.7.1)
+# AccelByte Gaming Services Match Service V2 (2.8.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,10 @@ class ApiMatchTicketStatus(Model):
 
         session_id: (sessionID) REQUIRED str
 
+        match_pool: (matchPool) OPTIONAL str
+
+        match_ticket_id: (matchTicketID) OPTIONAL str
+
         proposed_proposal: (proposedProposal) OPTIONAL ApiProposedProposal
     """
 
@@ -45,6 +49,8 @@ class ApiMatchTicketStatus(Model):
 
     match_found: bool  # REQUIRED
     session_id: str  # REQUIRED
+    match_pool: str  # OPTIONAL
+    match_ticket_id: str  # OPTIONAL
     proposed_proposal: ApiProposedProposal  # OPTIONAL
 
     # endregion fields
@@ -57,6 +63,14 @@ class ApiMatchTicketStatus(Model):
 
     def with_session_id(self, value: str) -> ApiMatchTicketStatus:
         self.session_id = value
+        return self
+
+    def with_match_pool(self, value: str) -> ApiMatchTicketStatus:
+        self.match_pool = value
+        return self
+
+    def with_match_ticket_id(self, value: str) -> ApiMatchTicketStatus:
+        self.match_ticket_id = value
         return self
 
     def with_proposed_proposal(
@@ -79,6 +93,14 @@ class ApiMatchTicketStatus(Model):
             result["sessionID"] = str(self.session_id)
         elif include_empty:
             result["sessionID"] = ""
+        if hasattr(self, "match_pool"):
+            result["matchPool"] = str(self.match_pool)
+        elif include_empty:
+            result["matchPool"] = ""
+        if hasattr(self, "match_ticket_id"):
+            result["matchTicketID"] = str(self.match_ticket_id)
+        elif include_empty:
+            result["matchTicketID"] = ""
         if hasattr(self, "proposed_proposal"):
             result["proposedProposal"] = self.proposed_proposal.to_dict(
                 include_empty=include_empty
@@ -96,12 +118,18 @@ class ApiMatchTicketStatus(Model):
         cls,
         match_found: bool,
         session_id: str,
+        match_pool: Optional[str] = None,
+        match_ticket_id: Optional[str] = None,
         proposed_proposal: Optional[ApiProposedProposal] = None,
         **kwargs,
     ) -> ApiMatchTicketStatus:
         instance = cls()
         instance.match_found = match_found
         instance.session_id = session_id
+        if match_pool is not None:
+            instance.match_pool = match_pool
+        if match_ticket_id is not None:
+            instance.match_ticket_id = match_ticket_id
         if proposed_proposal is not None:
             instance.proposed_proposal = proposed_proposal
         return instance
@@ -121,6 +149,14 @@ class ApiMatchTicketStatus(Model):
             instance.session_id = str(dict_["sessionID"])
         elif include_empty:
             instance.session_id = ""
+        if "matchPool" in dict_ and dict_["matchPool"] is not None:
+            instance.match_pool = str(dict_["matchPool"])
+        elif include_empty:
+            instance.match_pool = ""
+        if "matchTicketID" in dict_ and dict_["matchTicketID"] is not None:
+            instance.match_ticket_id = str(dict_["matchTicketID"])
+        elif include_empty:
+            instance.match_ticket_id = ""
         if "proposedProposal" in dict_ and dict_["proposedProposal"] is not None:
             instance.proposed_proposal = ApiProposedProposal.create_from_dict(
                 dict_["proposedProposal"], include_empty=include_empty
@@ -172,6 +208,8 @@ class ApiMatchTicketStatus(Model):
         return {
             "matchFound": "match_found",
             "sessionID": "session_id",
+            "matchPool": "match_pool",
+            "matchTicketID": "match_ticket_id",
             "proposedProposal": "proposed_proposal",
         }
 
@@ -180,6 +218,8 @@ class ApiMatchTicketStatus(Model):
         return {
             "matchFound": True,
             "sessionID": True,
+            "matchPool": False,
+            "matchTicketID": False,
             "proposedProposal": False,
         }
 

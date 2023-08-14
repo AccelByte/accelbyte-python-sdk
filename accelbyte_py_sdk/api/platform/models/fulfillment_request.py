@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Platform Service (4.32.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -47,15 +47,21 @@ class OriginEnum(StrEnum):
 
 class SourceEnum(StrEnum):
     ACHIEVEMENT = "ACHIEVEMENT"
+    CONSUME_ENTITLEMENT = "CONSUME_ENTITLEMENT"
     DLC = "DLC"
+    DLC_REVOCATION = "DLC_REVOCATION"
+    EXPIRATION = "EXPIRATION"
     GIFT = "GIFT"
     IAP = "IAP"
+    ORDER_REVOCATION = "ORDER_REVOCATION"
     OTHER = "OTHER"
+    PAYMENT = "PAYMENT"
     PROMOTION = "PROMOTION"
     PURCHASE = "PURCHASE"
     REDEEM_CODE = "REDEEM_CODE"
     REFERRAL_BONUS = "REFERRAL_BONUS"
     REWARD = "REWARD"
+    SELL_BACK = "SELL_BACK"
 
 
 class FulfillmentRequest(Model):
@@ -73,6 +79,8 @@ class FulfillmentRequest(Model):
         item_sku: (itemSku) OPTIONAL str
 
         language: (language) OPTIONAL str
+
+        metadata: (metadata) OPTIONAL Dict[str, Any]
 
         order: (order) OPTIONAL OrderSummary
 
@@ -97,6 +105,7 @@ class FulfillmentRequest(Model):
     item_id: str  # OPTIONAL
     item_sku: str  # OPTIONAL
     language: str  # OPTIONAL
+    metadata: Dict[str, Any]  # OPTIONAL
     order: OrderSummary  # OPTIONAL
     order_no: str  # OPTIONAL
     origin: Union[str, OriginEnum]  # OPTIONAL
@@ -131,6 +140,10 @@ class FulfillmentRequest(Model):
 
     def with_language(self, value: str) -> FulfillmentRequest:
         self.language = value
+        return self
+
+    def with_metadata(self, value: Dict[str, Any]) -> FulfillmentRequest:
+        self.metadata = value
         return self
 
     def with_order(self, value: OrderSummary) -> FulfillmentRequest:
@@ -191,6 +204,10 @@ class FulfillmentRequest(Model):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = ""
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): v0 for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
         if hasattr(self, "order"):
             result["order"] = self.order.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -234,6 +251,7 @@ class FulfillmentRequest(Model):
         item_id: Optional[str] = None,
         item_sku: Optional[str] = None,
         language: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
         order: Optional[OrderSummary] = None,
         order_no: Optional[str] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
@@ -255,6 +273,8 @@ class FulfillmentRequest(Model):
             instance.item_sku = item_sku
         if language is not None:
             instance.language = language
+        if metadata is not None:
+            instance.metadata = metadata
         if order is not None:
             instance.order = order
         if order_no is not None:
@@ -302,6 +322,10 @@ class FulfillmentRequest(Model):
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = ""
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {str(k0): v0 for k0, v0 in dict_["metadata"].items()}
+        elif include_empty:
+            instance.metadata = {}
         if "order" in dict_ and dict_["order"] is not None:
             instance.order = OrderSummary.create_from_dict(
                 dict_["order"], include_empty=include_empty
@@ -379,6 +403,7 @@ class FulfillmentRequest(Model):
             "itemId": "item_id",
             "itemSku": "item_sku",
             "language": "language",
+            "metadata": "metadata",
             "order": "order",
             "orderNo": "order_no",
             "origin": "origin",
@@ -397,6 +422,7 @@ class FulfillmentRequest(Model):
             "itemId": False,
             "itemSku": False,
             "language": False,
+            "metadata": False,
             "order": False,
             "orderNo": False,
             "origin": False,
@@ -424,15 +450,21 @@ class FulfillmentRequest(Model):
             ],
             "source": [
                 "ACHIEVEMENT",
+                "CONSUME_ENTITLEMENT",
                 "DLC",
+                "DLC_REVOCATION",
+                "EXPIRATION",
                 "GIFT",
                 "IAP",
+                "ORDER_REVOCATION",
                 "OTHER",
+                "PAYMENT",
                 "PROMOTION",
                 "PURCHASE",
                 "REDEEM_CODE",
                 "REFERRAL_BONUS",
                 "REWARD",
+                "SELL_BACK",
             ],
         }
 

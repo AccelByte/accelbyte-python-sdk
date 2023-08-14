@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (6.1.0)
+# justice-iam-service (6.2.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -365,6 +365,7 @@ from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
 from ._request_game_token_response_v3 import request_game_token_response_v3
+from ._platform_token_refresh_v3 import platform_token_refresh_v3
 from ._admin_get_devices_by_user_v4 import admin_get_devices_by_user_v4
 from ._admin_get_banned_devices_v4 import admin_get_banned_devices_v4
 from ._admin_get_user_device_bans_v4 import admin_get_user_device_bans_v4
@@ -725,6 +726,7 @@ commands = [
     login_sso_client,
     logout_sso_client,
     request_game_token_response_v3,
+    platform_token_refresh_v3,
     admin_get_devices_by_user_v4,
     admin_get_banned_devices_v4,
     admin_get_user_device_bans_v4,

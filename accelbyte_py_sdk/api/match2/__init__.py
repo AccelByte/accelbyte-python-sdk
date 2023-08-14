@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.7.1"
+__version__ = "2.8.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -27,6 +27,10 @@ from .wrappers import get_backfill_proposal
 from .wrappers import get_backfill_proposal_async
 from .wrappers import reject_backfill
 from .wrappers import reject_backfill_async
+
+# environment_variables
+from .wrappers import environment_variable_list
+from .wrappers import environment_variable_list_async
 
 # match_functions
 from .wrappers import create_match_function
@@ -59,6 +63,8 @@ from .wrappers import create_match_ticket
 from .wrappers import create_match_ticket_async
 from .wrappers import delete_match_ticket
 from .wrappers import delete_match_ticket_async
+from .wrappers import get_my_match_tickets
+from .wrappers import get_my_match_tickets_async
 from .wrappers import match_ticket_details
 from .wrappers import match_ticket_details_async
 

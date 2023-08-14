@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Platform Service (4.32.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -57,6 +57,8 @@ class WalletTransactionInfo(Model):
 
         balance_source: (balanceSource) OPTIONAL str
 
+        metadata: (metadata) OPTIONAL Dict[str, Any]
+
         reason: (reason) OPTIONAL str
 
         transaction_amount_details: (transactionAmountDetails) OPTIONAL List[TransactionAmountDetails]
@@ -74,6 +76,7 @@ class WalletTransactionInfo(Model):
     updated_at: str  # REQUIRED
     user_id: str  # REQUIRED
     balance_source: str  # OPTIONAL
+    metadata: Dict[str, Any]  # OPTIONAL
     reason: str  # OPTIONAL
     transaction_amount_details: List[TransactionAmountDetails]  # OPTIONAL
     wallet_action: Union[str, WalletActionEnum]  # OPTIONAL
@@ -112,6 +115,10 @@ class WalletTransactionInfo(Model):
 
     def with_balance_source(self, value: str) -> WalletTransactionInfo:
         self.balance_source = value
+        return self
+
+    def with_metadata(self, value: Dict[str, Any]) -> WalletTransactionInfo:
+        self.metadata = value
         return self
 
     def with_reason(self, value: str) -> WalletTransactionInfo:
@@ -168,6 +175,10 @@ class WalletTransactionInfo(Model):
             result["balanceSource"] = str(self.balance_source)
         elif include_empty:
             result["balanceSource"] = ""
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): v0 for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
@@ -200,6 +211,7 @@ class WalletTransactionInfo(Model):
         updated_at: str,
         user_id: str,
         balance_source: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
         reason: Optional[str] = None,
         transaction_amount_details: Optional[List[TransactionAmountDetails]] = None,
         wallet_action: Optional[Union[str, WalletActionEnum]] = None,
@@ -215,6 +227,8 @@ class WalletTransactionInfo(Model):
         instance.user_id = user_id
         if balance_source is not None:
             instance.balance_source = balance_source
+        if metadata is not None:
+            instance.metadata = metadata
         if reason is not None:
             instance.reason = reason
         if transaction_amount_details is not None:
@@ -262,6 +276,10 @@ class WalletTransactionInfo(Model):
             instance.balance_source = str(dict_["balanceSource"])
         elif include_empty:
             instance.balance_source = ""
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {str(k0): v0 for k0, v0 in dict_["metadata"].items()}
+        elif include_empty:
+            instance.metadata = {}
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
@@ -333,6 +351,7 @@ class WalletTransactionInfo(Model):
             "updatedAt": "updated_at",
             "userId": "user_id",
             "balanceSource": "balance_source",
+            "metadata": "metadata",
             "reason": "reason",
             "transactionAmountDetails": "transaction_amount_details",
             "walletAction": "wallet_action",
@@ -349,6 +368,7 @@ class WalletTransactionInfo(Model):
             "updatedAt": True,
             "userId": True,
             "balanceSource": False,
+            "metadata": False,
             "reason": False,
             "transactionAmountDetails": False,
             "walletAction": False,

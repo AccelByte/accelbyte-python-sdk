@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Service (2.20.0)
+# AGS Session Service (2.22.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,6 +41,8 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 @click.option("--limit", "limit", type=int)
 @click.option("--name", "name", type=str)
 @click.option("--offset", "offset", type=int)
+@click.option("--order", "order", type=str)
+@click.option("--order_by", "order_by", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -49,6 +51,8 @@ def admin_get_all_configuration_templates_v1(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
+    order: Optional[str] = None,
+    order_by: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -66,6 +70,8 @@ def admin_get_all_configuration_templates_v1(
         limit=limit,
         name=name,
         offset=offset,
+        order=order,
+        order_by=order_by,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

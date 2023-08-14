@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (6.1.0)
+# AccelByte Gaming Services Iam Service Index (6.2.0)
 
 
 ## Operations
@@ -109,6 +109,7 @@
 | /iam/v3/location/country | GET | GetCountryLocationV3 | `false` | [GetCountryLocationV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/get_country_location_v3.py) | [get_country_location_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-get-country-location-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_get_country_location_v3.py) |
 | /iam/v3/logout | POST | Logout | `false` | [Logout](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/logout.py) | [logout](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-logout](../../samples/cli/accelbyte_py_sdk_cli/iam/_logout.py) |
 | /iam/v3/platforms/{platformId}/authenticate | GET | PlatformAuthenticationV3 | `false` | [PlatformAuthenticationV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/platform_authentication_v3.py) | [platform_authentication_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-platform-authentication-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_platform_authentication_v3.py) |
+| /iam/v3/v3/platforms/{platformId}/token/verify | POST | PlatformTokenRefreshV3 | `false` | [PlatformTokenRefreshV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/platform_token_refresh_v3.py) | [platform_token_refresh_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-platform-token-refresh-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_platform_token_refresh_v3.py) |
 | /iam/v3/namespace/{namespace}/token/request | POST | RequestGameTokenCodeResponseV3 | `false` | [RequestGameTokenCodeResponseV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/request_game_token_code_07a103.py) | [request_game_token_code_response_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-request-game-token-code-response-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_request_game_token_code_response_v3.py) |
 | /iam/v3/token/exchange | POST | RequestGameTokenResponseV3 | `false` | [RequestGameTokenResponseV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/request_game_token_response_v3.py) | [request_game_token_response_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-request-game-token-response-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_request_game_token_response_v3.py) |
 | /iam/v3/link/code/request | POST | RequestOneTimeLinkingCodeV3 | `false` | [RequestOneTimeLinkingCodeV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/request_one_time_linkin_a9550a.py) | [request_one_time_linking_code_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-request-one-time-linking-code-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_request_one_time_linking_code_v3.py) |
@@ -669,6 +670,7 @@
 | oauthmodel.GameTokenCodeResponse | [OauthmodelGameTokenCodeResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_game_token_code_response.py) |
 | oauthmodel.OneTimeLinkingCodeResponse | [OauthmodelOneTimeLinkingCodeResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_one_time_linking_code_response.py) |
 | oauthmodel.OneTimeLinkingCodeValidationResponse | [OauthmodelOneTimeLinkingCodeValidationResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_one_time_linking_code_validation_response.py) |
+| oauthmodel.PlatformTokenRefreshResponseV3 | [OauthmodelPlatformTokenRefreshResponseV3](../../accelbyte_py_sdk/api/iam/models/oauthmodel_platform_token_refresh_response_v3.py) |
 | oauthmodel.TokenIntrospectResponse | [OauthmodelTokenIntrospectResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_introspect_response.py) |
 | oauthmodel.TokenResponse | [OauthmodelTokenResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_response.py) |
 | oauthmodel.TokenResponseV3 | [OauthmodelTokenResponseV3](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_response_v3.py) |

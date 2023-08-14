@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.31.1"
+__version__ = "4.32.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -703,8 +703,8 @@ from ._section import update_section_async
 
 from ._service_plugin_config import delete_loot_box_plugin_config
 from ._service_plugin_config import delete_loot_box_plugin_config_async
-from ._service_plugin_config import delete_loot_box_plugin_config_1
-from ._service_plugin_config import delete_loot_box_plugin_config_1_async
+from ._service_plugin_config import delete_revocation_plugin_config
+from ._service_plugin_config import delete_revocation_plugin_config_async
 from ._service_plugin_config import delete_section_plugin_config
 from ._service_plugin_config import delete_section_plugin_config_async
 from ._service_plugin_config import delete_service_plugin_config
@@ -713,8 +713,8 @@ from ._service_plugin_config import get_loot_box_grpc_info
 from ._service_plugin_config import get_loot_box_grpc_info_async
 from ._service_plugin_config import get_loot_box_plugin_config
 from ._service_plugin_config import get_loot_box_plugin_config_async
-from ._service_plugin_config import get_loot_box_plugin_config_1
-from ._service_plugin_config import get_loot_box_plugin_config_1_async
+from ._service_plugin_config import get_revocation_plugin_config
+from ._service_plugin_config import get_revocation_plugin_config_async
 from ._service_plugin_config import get_section_plugin_config
 from ._service_plugin_config import get_section_plugin_config_async
 from ._service_plugin_config import get_service_plugin_config

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.20.0)
+# AccelByte Gaming Services Session Service (2.22.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,7 +62,9 @@ class ApimodelsPublicConfiguration(Model):
 
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
-        native_session_setting: (native_session_setting) OPTIONAL ModelsNativeSessionSetting
+        max_active_session: (maxActiveSession) OPTIONAL int
+
+        native_session_setting: (nativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
 
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
 
@@ -89,6 +91,7 @@ class ApimodelsPublicConfiguration(Model):
     type_: str  # REQUIRED
     ds_source: str  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
+    max_active_session: int  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
     psn_base_url: str  # OPTIONAL
@@ -155,6 +158,10 @@ class ApimodelsPublicConfiguration(Model):
         self, value: List[str]
     ) -> ApimodelsPublicConfiguration:
         self.fallback_claim_keys = value
+        return self
+
+    def with_max_active_session(self, value: int) -> ApimodelsPublicConfiguration:
+        self.max_active_session = value
         return self
 
     def with_native_session_setting(
@@ -245,12 +252,16 @@ class ApimodelsPublicConfiguration(Model):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
             result["fallbackClaimKeys"] = []
+        if hasattr(self, "max_active_session"):
+            result["maxActiveSession"] = int(self.max_active_session)
+        elif include_empty:
+            result["maxActiveSession"] = 0
         if hasattr(self, "native_session_setting"):
-            result["native_session_setting"] = self.native_session_setting.to_dict(
+            result["nativeSessionSetting"] = self.native_session_setting.to_dict(
                 include_empty=include_empty
             )
         elif include_empty:
-            result["native_session_setting"] = ModelsNativeSessionSetting()
+            result["nativeSessionSetting"] = ModelsNativeSessionSetting()
         if hasattr(self, "preferred_claim_keys"):
             result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
         elif include_empty:
@@ -290,6 +301,7 @@ class ApimodelsPublicConfiguration(Model):
         type_: str,
         ds_source: Optional[str] = None,
         fallback_claim_keys: Optional[List[str]] = None,
+        max_active_session: Optional[int] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         preferred_claim_keys: Optional[List[str]] = None,
         psn_base_url: Optional[str] = None,
@@ -314,6 +326,8 @@ class ApimodelsPublicConfiguration(Model):
             instance.ds_source = ds_source
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
+        if max_active_session is not None:
+            instance.max_active_session = max_active_session
         if native_session_setting is not None:
             instance.native_session_setting = native_session_setting
         if preferred_claim_keys is not None:
@@ -391,13 +405,17 @@ class ApimodelsPublicConfiguration(Model):
             ]
         elif include_empty:
             instance.fallback_claim_keys = []
+        if "maxActiveSession" in dict_ and dict_["maxActiveSession"] is not None:
+            instance.max_active_session = int(dict_["maxActiveSession"])
+        elif include_empty:
+            instance.max_active_session = 0
         if (
-            "native_session_setting" in dict_
-            and dict_["native_session_setting"] is not None
+            "nativeSessionSetting" in dict_
+            and dict_["nativeSessionSetting"] is not None
         ):
             instance.native_session_setting = (
                 ModelsNativeSessionSetting.create_from_dict(
-                    dict_["native_session_setting"], include_empty=include_empty
+                    dict_["nativeSessionSetting"], include_empty=include_empty
                 )
             )
         elif include_empty:
@@ -480,7 +498,8 @@ class ApimodelsPublicConfiguration(Model):
             "type": "type_",
             "dsSource": "ds_source",
             "fallbackClaimKeys": "fallback_claim_keys",
-            "native_session_setting": "native_session_setting",
+            "maxActiveSession": "max_active_session",
+            "nativeSessionSetting": "native_session_setting",
             "preferredClaimKeys": "preferred_claim_keys",
             "PSNBaseURL": "psn_base_url",
             "requestedRegions": "requested_regions",
@@ -504,7 +523,8 @@ class ApimodelsPublicConfiguration(Model):
             "type": True,
             "dsSource": False,
             "fallbackClaimKeys": False,
-            "native_session_setting": False,
+            "maxActiveSession": False,
+            "nativeSessionSetting": False,
             "preferredClaimKeys": False,
             "PSNBaseURL": False,
             "requestedRegions": False,

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.30.1)
+# AccelByte Gaming Services Legal Service (1.31.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -83,7 +83,6 @@ def create_accept_agreement_response_example() -> AcceptAgreementResponse:
     instance = AcceptAgreementResponse()
     instance.comply = randomize("bool")
     instance.proceed = randomize("bool")
-    instance.ext = {randomize(): randomize()}
     return instance
 
 

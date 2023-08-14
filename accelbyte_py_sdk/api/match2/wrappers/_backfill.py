@@ -35,6 +35,7 @@ from ..models import ApiBackFillRejectRequest
 from ..models import ApiBackfillCreateResponse
 from ..models import ApiBackfillGetResponse
 from ..models import ApiBackfillProposalResponse
+from ..models import ModelsGameSession
 from ..models import ResponseError
 
 from ..operations.backfill import AcceptBackfill
@@ -87,7 +88,7 @@ def accept_backfill(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - (OK)
+        200: OK - ModelsGameSession (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -153,7 +154,7 @@ async def accept_backfill_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - (OK)
+        200: OK - ModelsGameSession (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Legal Service (1.30.1)
+# AGS Legal Service (1.31.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,4 +64,4 @@ def invalidate_user_info_cache(
 
 
 invalidate_user_info_cache.operation_id = "invalidateUserInfoCache"
-invalidate_user_info_cache.is_deprecated = False
+invalidate_user_info_cache.is_deprecated = True

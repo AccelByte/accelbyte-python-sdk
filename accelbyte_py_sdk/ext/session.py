@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.20.0)
+# AccelByte Gaming Services Session Service (2.22.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,8 @@ from ..api.session.models import ApimodelsCreatePartyRequest
 from ..api.session.models import ApimodelsDSInformationResponse
 from ..api.session.models import ApimodelsDeleteBulkGameSessionRequest
 from ..api.session.models import ApimodelsDeleteBulkGameSessionsAPIResponse
+from ..api.session.models import ApimodelsEnvironmentVariableListResponse
+from ..api.session.models import ApimodelsEnvironmentVariableResponse
 from ..api.session.models import ApimodelsGameSessionQueryResponse
 from ..api.session.models import ApimodelsGameSessionResponse
 from ..api.session.models import ApimodelsJoinByCodeRequest
@@ -237,6 +239,25 @@ def create_apimodels_ds_information_response_example() -> (
     return instance
 
 
+def create_apimodels_environment_variable_list_response_example() -> (
+    ApimodelsEnvironmentVariableListResponse
+):
+    instance = ApimodelsEnvironmentVariableListResponse()
+    instance.data = [create_apimodels_environment_variable_response_example()]
+    return instance
+
+
+def create_apimodels_environment_variable_response_example() -> (
+    ApimodelsEnvironmentVariableResponse
+):
+    instance = ApimodelsEnvironmentVariableResponse()
+    instance.name = randomize()
+    instance.actual_value = randomize()
+    instance.default_value = randomize()
+    instance.description = randomize()
+    return instance
+
+
 def create_apimodels_game_session_query_response_example() -> (
     ApimodelsGameSessionQueryResponse
 ):
@@ -389,6 +410,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.type_ = randomize()
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
+    instance.max_active_session = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
     instance.psn_base_url = randomize("url")

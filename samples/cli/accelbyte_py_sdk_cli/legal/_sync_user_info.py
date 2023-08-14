@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Legal Service (1.30.1)
+# AGS Legal Service (1.31.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,4 +62,4 @@ def sync_user_info(
 
 
 sync_user_info.operation_id = "syncUserInfo"
-sync_user_info.is_deprecated = False
+sync_user_info.is_deprecated = True

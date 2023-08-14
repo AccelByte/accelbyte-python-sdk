@@ -540,6 +540,8 @@ def admin_get_all_configuration_templates_v1(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
+    order: Optional[str] = None,
+    order_by: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -569,6 +571,10 @@ def admin_get_all_configuration_templates_v1(
 
         offset: (offset) OPTIONAL int in query
 
+        order: (order) OPTIONAL str in query
+
+        order_by: (orderBy) OPTIONAL str in query
+
     Responses:
         200: OK - ApimodelsConfigurationTemplatesResponse (OK)
 
@@ -588,6 +594,8 @@ def admin_get_all_configuration_templates_v1(
         limit=limit,
         name=name,
         offset=offset,
+        order=order,
+        order_by=order_by,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -598,6 +606,8 @@ async def admin_get_all_configuration_templates_v1_async(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
+    order: Optional[str] = None,
+    order_by: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -627,6 +637,10 @@ async def admin_get_all_configuration_templates_v1_async(
 
         offset: (offset) OPTIONAL int in query
 
+        order: (order) OPTIONAL str in query
+
+        order_by: (orderBy) OPTIONAL str in query
+
     Responses:
         200: OK - ApimodelsConfigurationTemplatesResponse (OK)
 
@@ -646,6 +660,8 @@ async def admin_get_all_configuration_templates_v1_async(
         limit=limit,
         name=name,
         offset=offset,
+        order=order,
+        order_by=order_by,
         namespace=namespace,
     )
     return await run_request_async(

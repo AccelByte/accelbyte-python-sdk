@@ -5690,6 +5690,7 @@ async def admin_invite_user_v3_async(
 def admin_link_platform_account(
     body: ModelLinkPlatformAccountRequest,
     user_id: str,
+    skip_conflict: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5700,6 +5701,15 @@ def admin_link_platform_account(
 
 
     Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user.
+    By default, these cases are not allowed
+
+
+
+
+      * The platform account current is linked by another account
+
+
+      * The target account ever linked this platform's another account
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
@@ -5723,6 +5733,8 @@ def admin_link_platform_account(
 
         user_id: (userId) REQUIRED str in path
 
+        skip_conflict: (skipConflict) OPTIONAL bool in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -5731,6 +5743,8 @@ def admin_link_platform_account(
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict - RestErrorResponse
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -5741,6 +5755,7 @@ def admin_link_platform_account(
     request = AdminLinkPlatformAccount.create(
         body=body,
         user_id=user_id,
+        skip_conflict=skip_conflict,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -5750,6 +5765,7 @@ def admin_link_platform_account(
 async def admin_link_platform_account_async(
     body: ModelLinkPlatformAccountRequest,
     user_id: str,
+    skip_conflict: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5760,6 +5776,15 @@ async def admin_link_platform_account_async(
 
 
     Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user.
+    By default, these cases are not allowed
+
+
+
+
+      * The platform account current is linked by another account
+
+
+      * The target account ever linked this platform's another account
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
@@ -5783,6 +5808,8 @@ async def admin_link_platform_account_async(
 
         user_id: (userId) REQUIRED str in path
 
+        skip_conflict: (skipConflict) OPTIONAL bool in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -5791,6 +5818,8 @@ async def admin_link_platform_account_async(
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        409: Conflict - RestErrorResponse
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -5801,6 +5830,7 @@ async def admin_link_platform_account_async(
     request = AdminLinkPlatformAccount.create(
         body=body,
         user_id=user_id,
+        skip_conflict=skip_conflict,
         namespace=namespace,
     )
     return await run_request_async(

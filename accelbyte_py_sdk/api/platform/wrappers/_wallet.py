@@ -78,7 +78,11 @@ from ..operations.wallet import UpdatePlatformWalletConfigPlatformEnum
 from ..models import BulkCreditResultStatusEnum
 from ..models import BulkDebitResultStatusEnum
 from ..models import CreditRequestOriginEnum, CreditRequestSourceEnum
-from ..models import DebitByCurrencyCodeRequestBalanceOriginEnum
+from ..models import (
+    DebitByCurrencyCodeRequestBalanceOriginEnum,
+    DebitByCurrencyCodeRequestBalanceSourceEnum,
+)
+from ..models import DebitRequestBalanceSourceEnum
 from ..models import PaymentRequestWalletPlatformEnum
 from ..models import PlatformWalletStatusEnum, PlatformWalletWalletStatusEnum
 from ..models import PlatformWalletConfigUpdateAllowedBalanceOriginsEnum

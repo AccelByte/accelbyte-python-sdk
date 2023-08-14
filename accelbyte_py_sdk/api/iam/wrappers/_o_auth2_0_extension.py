@@ -34,6 +34,7 @@ from ..models import OauthmodelErrorResponse
 from ..models import OauthmodelGameTokenCodeResponse
 from ..models import OauthmodelOneTimeLinkingCodeResponse
 from ..models import OauthmodelOneTimeLinkingCodeValidationResponse
+from ..models import OauthmodelPlatformTokenRefreshResponseV3
 from ..models import OauthmodelTokenResponseV3
 from ..models import RestErrorResponse
 
@@ -42,6 +43,7 @@ from ..operations.o_auth2_0_extension import GenerateTokenByNewHeadlessAccountV3
 from ..operations.o_auth2_0_extension import GetCountryLocationV3
 from ..operations.o_auth2_0_extension import Logout
 from ..operations.o_auth2_0_extension import PlatformAuthenticationV3
+from ..operations.o_auth2_0_extension import PlatformTokenRefreshV3
 from ..operations.o_auth2_0_extension import RequestGameTokenCodeResponseV3
 from ..operations.o_auth2_0_extension import RequestGameTokenResponseV3
 from ..operations.o_auth2_0_extension import RequestOneTimeLinkingCodeV3
@@ -716,6 +718,186 @@ async def platform_authentication_v3_async(
         openid_return_to=openid_return_to,
         openid_sig=openid_sig,
         openid_signed=openid_signed,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PlatformTokenRefreshV3)
+def platform_token_refresh_v3(
+    platform_id: str,
+    platform_token: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Platform Token Validation (PlatformTokenRefreshV3)
+
+    This endpoint will validate the third party platform token, for some platforms will also refresh the token stored in IAM, it will not generate any event or AB access/refresh token.
+
+
+
+
+    This endpoint can be used by game client to refresh third party token if game client got platform token not found error, for example got 404
+    platform token not found from IAP/DLC.
+
+
+
+
+    ## Platforms will refresh stored token:
+
+
+
+
+
+
+      * twitch : The platform_tokenâs value is the authorization code returned by Twitch OAuth.
+
+
+      * epicgames : The platform_tokenâs value is an access-token or authorization code obtained from Epicgames EOS Account Service.
+
+
+      * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * ps5 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * amazon : The platform_tokenâs value is authorization code.
+
+
+      * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
+
+
+      * live : The platform_tokenâs value is xbox XSTS token
+
+
+      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
+
+
+
+      * for specific generic oauth (OIDC) : The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
+
+    Properties:
+        url: /iam/v3/v3/platforms/{platformId}/token/verify
+
+        method: POST
+
+        tags: ["OAuth2.0 - Extension"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_token: (platform_token) REQUIRED str in form_data
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - OauthmodelPlatformTokenRefreshResponseV3 (Token returned)
+
+        400: Bad Request - OauthmodelErrorResponse (General request error)
+
+        401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
+
+        403: Forbidden - OauthmodelErrorResponse (Forbidden)
+
+        503: Service Unavailable - OauthmodelErrorResponse (Third Party Server timeout or unavailable)
+    """
+    request = PlatformTokenRefreshV3.create(
+        platform_id=platform_id,
+        platform_token=platform_token,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PlatformTokenRefreshV3)
+async def platform_token_refresh_v3_async(
+    platform_id: str,
+    platform_token: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Platform Token Validation (PlatformTokenRefreshV3)
+
+    This endpoint will validate the third party platform token, for some platforms will also refresh the token stored in IAM, it will not generate any event or AB access/refresh token.
+
+
+
+
+    This endpoint can be used by game client to refresh third party token if game client got platform token not found error, for example got 404
+    platform token not found from IAP/DLC.
+
+
+
+
+    ## Platforms will refresh stored token:
+
+
+
+
+
+
+      * twitch : The platform_tokenâs value is the authorization code returned by Twitch OAuth.
+
+
+      * epicgames : The platform_tokenâs value is an access-token or authorization code obtained from Epicgames EOS Account Service.
+
+
+      * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * ps5 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
+
+
+      * amazon : The platform_tokenâs value is authorization code.
+
+
+      * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
+
+
+      * live : The platform_tokenâs value is xbox XSTS token
+
+
+      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
+
+
+
+      * for specific generic oauth (OIDC) : The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
+
+    Properties:
+        url: /iam/v3/v3/platforms/{platformId}/token/verify
+
+        method: POST
+
+        tags: ["OAuth2.0 - Extension"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_token: (platform_token) REQUIRED str in form_data
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - OauthmodelPlatformTokenRefreshResponseV3 (Token returned)
+
+        400: Bad Request - OauthmodelErrorResponse (General request error)
+
+        401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
+
+        403: Forbidden - OauthmodelErrorResponse (Forbidden)
+
+        503: Service Unavailable - OauthmodelErrorResponse (Third Party Server timeout or unavailable)
+    """
+    request = PlatformTokenRefreshV3.create(
+        platform_id=platform_id,
+        platform_token=platform_token,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

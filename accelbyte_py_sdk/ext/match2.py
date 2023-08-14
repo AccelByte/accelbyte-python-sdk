@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Match Service V2 (2.7.1)
+# AccelByte Gaming Services Match Service V2 (2.8.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,7 @@ from ..api.match2.models import ApiBackFillRejectRequest
 from ..api.match2.models import ApiBackfillCreateResponse
 from ..api.match2.models import ApiBackfillGetResponse
 from ..api.match2.models import ApiBackfillProposalResponse
+from ..api.match2.models import ApiListEnvironmentVariablesResponse
 from ..api.match2.models import ApiListMatchFunctionsResponse
 from ..api.match2.models import ApiListMatchPoolsResponse
 from ..api.match2.models import ApiListRuleSetsResponse
@@ -43,6 +44,7 @@ from ..api.match2.models import ApiMatchRuleSetNameData
 from ..api.match2.models import ApiMatchTicketRequest
 from ..api.match2.models import ApiMatchTicketResponse
 from ..api.match2.models import ApiMatchTicketStatus
+from ..api.match2.models import ApiMatchTicketStatuses
 from ..api.match2.models import ApiParty
 from ..api.match2.models import ApiPlayerData
 from ..api.match2.models import ApiPlayerMetricRecord
@@ -51,7 +53,15 @@ from ..api.match2.models import ApiRuleSetPayload
 from ..api.match2.models import ApiTeam
 from ..api.match2.models import ApiTicket
 from ..api.match2.models import ApiTicketMetricResultRecord
+from ..api.match2.models import ConfigEnvironmentVariable
+from ..api.match2.models import MatchmakerParty
+from ..api.match2.models import MatchmakerTeam
+from ..api.match2.models import ModelsConfiguration
+from ..api.match2.models import ModelsDSInformation
+from ..api.match2.models import ModelsGameSession
 from ..api.match2.models import ModelsPagination
+from ..api.match2.models import ModelsServer
+from ..api.match2.models import ModelsUser
 from ..api.match2.models import ResponseError
 
 
@@ -101,6 +111,14 @@ def create_api_backfill_proposal_response_example() -> ApiBackfillProposalRespon
     instance.proposal_id = randomize()
     instance.proposed_teams = [create_api_team_example()]
     instance.tickets = [create_api_ticket_example()]
+    return instance
+
+
+def create_api_list_environment_variables_response_example() -> (
+    ApiListEnvironmentVariablesResponse
+):
+    instance = ApiListEnvironmentVariablesResponse()
+    instance.data = [create_config_environment_variable_example()]
     return instance
 
 
@@ -225,7 +243,16 @@ def create_api_match_ticket_status_example() -> ApiMatchTicketStatus:
     instance = ApiMatchTicketStatus()
     instance.match_found = randomize("bool")
     instance.session_id = randomize("uid")
+    instance.match_pool = randomize()
+    instance.match_ticket_id = randomize()
     instance.proposed_proposal = create_api_proposed_proposal_example()
+    return instance
+
+
+def create_api_match_ticket_statuses_example() -> ApiMatchTicketStatuses:
+    instance = ApiMatchTicketStatuses()
+    instance.data = [create_api_match_ticket_status_example()]
+    instance.pagination = create_models_pagination_example()
     return instance
 
 
@@ -292,12 +319,112 @@ def create_api_ticket_metric_result_record_example() -> ApiTicketMetricResultRec
     return instance
 
 
+def create_config_environment_variable_example() -> ConfigEnvironmentVariable:
+    instance = ConfigEnvironmentVariable()
+    instance.name = randomize()
+    instance.actual_value = randomize()
+    instance.default_value = randomize()
+    instance.description = randomize()
+    return instance
+
+
+def create_matchmaker_party_example() -> MatchmakerParty:
+    instance = MatchmakerParty()
+    instance.party_id = randomize("uid")
+    instance.user_i_ds = [randomize()]
+    return instance
+
+
+def create_matchmaker_team_example() -> MatchmakerTeam:
+    instance = MatchmakerTeam()
+    instance.parties = [create_matchmaker_party_example()]
+    instance.user_i_ds = [randomize()]
+    return instance
+
+
+def create_models_configuration_example() -> ModelsConfiguration:
+    instance = ModelsConfiguration()
+    instance.client_version = randomize()
+    instance.deployment = randomize()
+    instance.inactive_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.invite_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.joinability = randomize()
+    instance.max_players = randomize("int", min_val=1, max_val=1000)
+    instance.min_players = randomize("int", min_val=1, max_val=1000)
+    instance.name = randomize()
+    instance.requested_regions = [randomize()]
+    instance.type_ = randomize()
+    return instance
+
+
+def create_models_ds_information_example() -> ModelsDSInformation:
+    instance = ModelsDSInformation()
+    instance.min_players = randomize("int", min_val=1, max_val=1000)
+    instance.requested_at = randomize()
+    instance.requested_regions = [randomize()]
+    instance.server = create_models_server_example()
+    instance.status = randomize()
+    return instance
+
+
+def create_models_game_session_example() -> ModelsGameSession:
+    instance = ModelsGameSession()
+    instance.attributes = {randomize(): randomize()}
+    instance.backfill_ticket_id = randomize()
+    instance.configuration = create_models_configuration_example()
+    instance.created_at = randomize("date")
+    instance.ds_information = create_models_ds_information_example()
+    instance.game_mode = randomize()
+    instance.id_ = randomize()
+    instance.join_type = randomize()
+    instance.leader_id = randomize()
+    instance.match_pool = randomize()
+    instance.members = [create_models_user_example()]
+    instance.namespace = randomize("slug")
+    instance.teams = [create_matchmaker_team_example()]
+    instance.updated_at = randomize("date")
+    instance.version = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_models_pagination_example() -> ModelsPagination:
     instance = ModelsPagination()
     instance.first = randomize()
     instance.last = randomize()
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_models_server_example() -> ModelsServer:
+    instance = ModelsServer()
+    instance.alternate_ips = [randomize()]
+    instance.custom_attribute = randomize()
+    instance.deployment = randomize()
+    instance.game_version = randomize("version")
+    instance.image_version = randomize()
+    instance.ip = randomize()
+    instance.is_override_game_version = randomize("bool")
+    instance.last_update = randomize("date")
+    instance.namespace = randomize("slug")
+    instance.pod_name = randomize()
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    instance.ports = {}
+    instance.protocol = randomize()
+    instance.provider = randomize()
+    instance.region = randomize()
+    instance.session_id = randomize("uid")
+    instance.status = randomize()
+    return instance
+
+
+def create_models_user_example() -> ModelsUser:
+    instance = ModelsUser()
+    instance.id_ = randomize()
+    instance.platform_id = randomize()
+    instance.platform_user_id = randomize()
+    instance.status = randomize()
+    instance.updated_at = randomize("date")
     return instance
 
 

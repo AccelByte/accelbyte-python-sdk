@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.20.0)
+# AccelByte Gaming Services Session Service (2.22.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,6 +37,7 @@ class GetGameSession(Operation):
     """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSession)
 
     Get game session detail.
+    Session will only be accessible from active players in the session, and client with the permission, except the joinability is set to OPEN.
     Session service has several DSInformation status to track DS request to DSMC:
     - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
     - REQUESTED: DS is being requested to DSMC.

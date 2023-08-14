@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Platform Service (4.32.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,6 +45,8 @@ class DLCRecord(Model):
     Properties:
         id_: (id) OPTIONAL str
 
+        metadata: (metadata) OPTIONAL Dict[str, Any]
+
         obtained_at: (obtainedAt) OPTIONAL str
 
         revocation_result: (revocationResult) OPTIONAL RevocationResult
@@ -67,6 +69,7 @@ class DLCRecord(Model):
     # region fields
 
     id_: str  # OPTIONAL
+    metadata: Dict[str, Any]  # OPTIONAL
     obtained_at: str  # OPTIONAL
     revocation_result: RevocationResult  # OPTIONAL
     revoke_results: List[RevokeResult]  # OPTIONAL
@@ -83,6 +86,10 @@ class DLCRecord(Model):
 
     def with_id(self, value: str) -> DLCRecord:
         self.id_ = value
+        return self
+
+    def with_metadata(self, value: Dict[str, Any]) -> DLCRecord:
+        self.metadata = value
         return self
 
     def with_obtained_at(self, value: str) -> DLCRecord:
@@ -131,6 +138,10 @@ class DLCRecord(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): v0 for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
         if hasattr(self, "obtained_at"):
             result["obtainedAt"] = str(self.obtained_at)
         elif include_empty:
@@ -183,6 +194,7 @@ class DLCRecord(Model):
     def create(
         cls,
         id_: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
         obtained_at: Optional[str] = None,
         revocation_result: Optional[RevocationResult] = None,
         revoke_results: Optional[List[RevokeResult]] = None,
@@ -197,6 +209,8 @@ class DLCRecord(Model):
         instance = cls()
         if id_ is not None:
             instance.id_ = id_
+        if metadata is not None:
+            instance.metadata = metadata
         if obtained_at is not None:
             instance.obtained_at = obtained_at
         if revocation_result is not None:
@@ -226,6 +240,10 @@ class DLCRecord(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {str(k0): v0 for k0, v0 in dict_["metadata"].items()}
+        elif include_empty:
+            instance.metadata = {}
         if "obtainedAt" in dict_ and dict_["obtainedAt"] is not None:
             instance.obtained_at = str(dict_["obtainedAt"])
         elif include_empty:
@@ -310,6 +328,7 @@ class DLCRecord(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "id": "id_",
+            "metadata": "metadata",
             "obtainedAt": "obtained_at",
             "revocationResult": "revocation_result",
             "revokeResults": "revoke_results",
@@ -325,6 +344,7 @@ class DLCRecord(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "id": False,
+            "metadata": False,
             "obtainedAt": False,
             "revocationResult": False,
             "revokeResults": False,

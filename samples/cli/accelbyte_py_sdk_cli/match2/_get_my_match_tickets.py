@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.31.1)
+# Justice Match Service V2 (2.8.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,39 +30,49 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    get_loot_box_plugin_config_1 as get_loot_box_plugin_config_1_internal,
+from accelbyte_py_sdk.api.match2 import (
+    get_my_match_tickets as get_my_match_tickets_internal,
 )
-from accelbyte_py_sdk.api.platform.models import RevocationPluginConfigInfo
+from accelbyte_py_sdk.api.match2.models import ApiMatchTicketStatuses
+from accelbyte_py_sdk.api.match2.models import ResponseError
 
 
 @click.command()
+@click.option("--limit", "limit", type=int)
+@click.option("--match_pool", "match_pool", type=str)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def get_loot_box_plugin_config_1(
+def get_my_match_tickets(
+    limit: Optional[int] = None,
+    match_pool: Optional[str] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_loot_box_plugin_config_1_internal.__doc__)
+        click.echo(get_my_match_tickets_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = get_loot_box_plugin_config_1_internal(
+    result, error = get_my_match_tickets_internal(
+        limit=limit,
+        match_pool=match_pool,
+        offset=offset,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"getLootBoxPluginConfig_1 failed: {str(error)}")
+        raise Exception(f"GetMyMatchTickets failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-get_loot_box_plugin_config_1.operation_id = "getLootBoxPluginConfig_1"
-get_loot_box_plugin_config_1.is_deprecated = False
+get_my_match_tickets.operation_id = "GetMyMatchTickets"
+get_my_match_tickets.is_deprecated = False

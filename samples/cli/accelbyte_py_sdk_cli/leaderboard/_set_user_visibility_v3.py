@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Leaderboard Service (2.25.0)
+# AGS Leaderboard Service (2.26.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Cloudsave Service (3.10.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,45 +29,70 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import RevocationPluginConfigInfo
+from ...models import ModelsResponseError
+from ...models import ModelsUploadBinaryRecordRequest
+from ...models import ModelsUploadBinaryRecordResponse
 
 
-class GetLootBoxPluginConfig1(Operation):
-    """Get revocation plugin config (getLootBoxPluginConfig_1)
+class AdminPostGameBinaryPresignedURLV1(Operation):
+    """Request presigned URL for upload game binary records (adminPostGameBinaryPresignedURLV1)
 
-    Get revocation plugin config.
+    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
+    Required scope: `social`
+
+    Request presigned URL to upload the binary record to s3.
+
+
     Other detail info:
 
-      * Required permission : resource= ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION , action=2 (READ)
+
+
+    Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
+
+    Required Scope(s):
+        - social
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/revocation/plugins/revocation
+        url: /cloudsave/v1/admin/namespaces/{namespace}/binaries/{key}/presigned
 
-        method: GET
+        method: POST
 
-        tags: ["ServicePluginConfig"]
+        tags: ["AdminGameBinaryRecord"]
 
-        consumes: []
+        consumes: ["application/json"]
 
-        produces: []
+        produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUploadBinaryRecordRequest in body
+
+        key: (key) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - RevocationPluginConfigInfo (successful operation)
+        201: Created - ModelsUploadBinaryRecordResponse (Successful Operation)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/revocation/plugins/revocation"
-    _method: str = "GET"
-    _consumes: List[str] = []
-    _produces: List[str] = []
+    _url: str = "/cloudsave/v1/admin/namespaces/{namespace}/binaries/{key}/presigned"
+    _method: str = "POST"
+    _consumes: List[str] = ["application/json"]
+    _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    body: ModelsUploadBinaryRecordRequest  # REQUIRED in [body]
+    key: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -108,11 +133,19 @@ class GetLootBoxPluginConfig1(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
 
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
+
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "key"):
+            result["key"] = self.key
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         return result
@@ -125,7 +158,17 @@ class GetLootBoxPluginConfig1(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetLootBoxPluginConfig1:
+    def with_body(
+        self, value: ModelsUploadBinaryRecordRequest
+    ) -> AdminPostGameBinaryPresignedURLV1:
+        self.body = value
+        return self
+
+    def with_key(self, value: str) -> AdminPostGameBinaryPresignedURLV1:
+        self.key = value
+        return self
+
+    def with_namespace(self, value: str) -> AdminPostGameBinaryPresignedURLV1:
         self.namespace = value
         return self
 
@@ -135,6 +178,14 @@ class GetLootBoxPluginConfig1(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["body"] = ModelsUploadBinaryRecordRequest()
+        if hasattr(self, "key") and self.key:
+            result["key"] = str(self.key)
+        elif include_empty:
+            result["key"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -148,10 +199,17 @@ class GetLootBoxPluginConfig1(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, RevocationPluginConfigInfo], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelsUploadBinaryRecordResponse],
+        Union[None, HttpResponse, ModelsResponseError],
+    ]:
         """Parse the given response.
 
-        200: OK - RevocationPluginConfigInfo (successful operation)
+        201: Created - ModelsUploadBinaryRecordResponse (Successful Operation)
+
+        401: Unauthorized - ModelsResponseError (Unauthorized)
+
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -166,8 +224,12 @@ class GetLootBoxPluginConfig1(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return RevocationPluginConfigInfo.create_from_dict(content), None
+        if code == 201:
+            return ModelsUploadBinaryRecordResponse.create_from_dict(content), None
+        if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 500:
+            return None, ModelsResponseError.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -178,16 +240,30 @@ class GetLootBoxPluginConfig1(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> GetLootBoxPluginConfig1:
+    def create(
+        cls, body: ModelsUploadBinaryRecordRequest, key: str, namespace: str, **kwargs
+    ) -> AdminPostGameBinaryPresignedURLV1:
         instance = cls()
+        instance.body = body
+        instance.key = key
         instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> GetLootBoxPluginConfig1:
+    ) -> AdminPostGameBinaryPresignedURLV1:
         instance = cls()
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = ModelsUploadBinaryRecordRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.body = ModelsUploadBinaryRecordRequest()
+        if "key" in dict_ and dict_["key"] is not None:
+            instance.key = str(dict_["key"])
+        elif include_empty:
+            instance.key = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -197,12 +273,16 @@ class GetLootBoxPluginConfig1(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "body": "body",
+            "key": "key",
             "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "body": True,
+            "key": True,
             "namespace": True,
         }
 

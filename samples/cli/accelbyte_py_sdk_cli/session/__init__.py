@@ -6,11 +6,12 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (2.20.0)
+# justice-session-service (2.22.2)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
 from ._admin_get_dsmc_configuration_default import admin_get_dsmc_configuration_default
+from ._admin_list_environment_variables import admin_list_environment_variables
 from ._admin_get_configuration_alert_v1 import admin_get_configuration_alert_v1
 from ._admin_update_configuration_alert_v1 import admin_update_configuration_alert_v1
 from ._admin_create_configuration_alert_v1 import admin_create_configuration_alert_v1
@@ -85,6 +86,7 @@ commands = [
     get_healthcheck_info,
     get_healthcheck_info_v1,
     admin_get_dsmc_configuration_default,
+    admin_list_environment_variables,
     admin_get_configuration_alert_v1,
     admin_update_configuration_alert_v1,
     admin_create_configuration_alert_v1,

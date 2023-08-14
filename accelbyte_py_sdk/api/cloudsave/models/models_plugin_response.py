@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.9.0)
+# AccelByte Gaming Services Cloudsave Service (3.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,10 +26,16 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_app_config import ModelsAppConfig
 from ..models.models_custom_config import ModelsCustomConfig
 from ..models.models_custom_function import ModelsCustomFunction
+
+
+class ExtendTypeEnum(StrEnum):
+    APP = "APP"
+    CUSTOM = "CUSTOM"
 
 
 class ModelsPluginResponse(Model):
@@ -38,7 +44,7 @@ class ModelsPluginResponse(Model):
     Properties:
         custom_function: (customFunction) REQUIRED ModelsCustomFunction
 
-        extend_type: (extendType) REQUIRED str
+        extend_type: (extendType) REQUIRED Union[str, ExtendTypeEnum]
 
         namespace: (namespace) REQUIRED str
 
@@ -50,7 +56,7 @@ class ModelsPluginResponse(Model):
     # region fields
 
     custom_function: ModelsCustomFunction  # REQUIRED
-    extend_type: str  # REQUIRED
+    extend_type: Union[str, ExtendTypeEnum]  # REQUIRED
     namespace: str  # REQUIRED
     app_config: ModelsAppConfig  # OPTIONAL
     custom_config: ModelsCustomConfig  # OPTIONAL
@@ -63,7 +69,9 @@ class ModelsPluginResponse(Model):
         self.custom_function = value
         return self
 
-    def with_extend_type(self, value: str) -> ModelsPluginResponse:
+    def with_extend_type(
+        self, value: Union[str, ExtendTypeEnum]
+    ) -> ModelsPluginResponse:
         self.extend_type = value
         return self
 
@@ -94,7 +102,7 @@ class ModelsPluginResponse(Model):
         if hasattr(self, "extend_type"):
             result["extendType"] = str(self.extend_type)
         elif include_empty:
-            result["extendType"] = ""
+            result["extendType"] = Union[str, ExtendTypeEnum]()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -119,7 +127,7 @@ class ModelsPluginResponse(Model):
     def create(
         cls,
         custom_function: ModelsCustomFunction,
-        extend_type: str,
+        extend_type: Union[str, ExtendTypeEnum],
         namespace: str,
         app_config: Optional[ModelsAppConfig] = None,
         custom_config: Optional[ModelsCustomConfig] = None,
@@ -151,7 +159,7 @@ class ModelsPluginResponse(Model):
         if "extendType" in dict_ and dict_["extendType"] is not None:
             instance.extend_type = str(dict_["extendType"])
         elif include_empty:
-            instance.extend_type = ""
+            instance.extend_type = Union[str, ExtendTypeEnum]()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -226,6 +234,12 @@ class ModelsPluginResponse(Model):
             "namespace": True,
             "appConfig": False,
             "customConfig": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "extendType": ["APP", "CUSTOM"],
         }
 
     # endregion static methods

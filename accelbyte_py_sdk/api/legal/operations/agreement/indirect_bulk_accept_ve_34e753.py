@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.30.1)
+# AccelByte Gaming Services Legal Service (1.31.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import AcceptAgreementRequest
 from ...models import AcceptAgreementResponse
@@ -35,8 +36,6 @@ from ...models import AcceptAgreementResponse
 
 class IndirectBulkAcceptVersionedPolicyV2(Operation):
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicyV2)
-
-    IMPORTANT: GOING TO DEPRECATE
 
     Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
     Other detail info:

@@ -42,12 +42,12 @@ from ..models import ServicePluginConfigUpdate
 from ..models import ValidationErrorEntity
 
 from ..operations.service_plugin_config import DeleteLootBoxPluginConfig
-from ..operations.service_plugin_config import DeleteLootBoxPluginConfig1
+from ..operations.service_plugin_config import DeleteRevocationPluginConfig
 from ..operations.service_plugin_config import DeleteSectionPluginConfig
 from ..operations.service_plugin_config import DeleteServicePluginConfig
 from ..operations.service_plugin_config import GetLootBoxGrpcInfo
 from ..operations.service_plugin_config import GetLootBoxPluginConfig
-from ..operations.service_plugin_config import GetLootBoxPluginConfig1
+from ..operations.service_plugin_config import GetRevocationPluginConfig
 from ..operations.service_plugin_config import GetSectionPluginConfig
 from ..operations.service_plugin_config import GetServicePluginConfig
 from ..operations.service_plugin_config import UpdateLootBoxPluginConfig
@@ -150,13 +150,13 @@ async def delete_loot_box_plugin_config_async(
     )
 
 
-@same_doc_as(DeleteLootBoxPluginConfig1)
-def delete_loot_box_plugin_config_1(
+@same_doc_as(DeleteRevocationPluginConfig)
+def delete_revocation_plugin_config(
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete revocation plugin config (deleteLootBoxPluginConfig_1)
+    """Delete revocation plugin config (deleteRevocationPluginConfig)
 
     Delete service plugin config.
     Other detail info:
@@ -185,19 +185,19 @@ def delete_loot_box_plugin_config_1(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = DeleteLootBoxPluginConfig1.create(
+    request = DeleteRevocationPluginConfig.create(
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(DeleteLootBoxPluginConfig1)
-async def delete_loot_box_plugin_config_1_async(
+@same_doc_as(DeleteRevocationPluginConfig)
+async def delete_revocation_plugin_config_async(
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete revocation plugin config (deleteLootBoxPluginConfig_1)
+    """Delete revocation plugin config (deleteRevocationPluginConfig)
 
     Delete service plugin config.
     Other detail info:
@@ -226,7 +226,7 @@ async def delete_loot_box_plugin_config_1_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = DeleteLootBoxPluginConfig1.create(
+    request = DeleteRevocationPluginConfig.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -580,13 +580,13 @@ async def get_loot_box_plugin_config_async(
     )
 
 
-@same_doc_as(GetLootBoxPluginConfig1)
-def get_loot_box_plugin_config_1(
+@same_doc_as(GetRevocationPluginConfig)
+def get_revocation_plugin_config(
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get revocation plugin config (getLootBoxPluginConfig_1)
+    """Get revocation plugin config (getRevocationPluginConfig)
 
     Get revocation plugin config.
     Other detail info:
@@ -615,19 +615,19 @@ def get_loot_box_plugin_config_1(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetLootBoxPluginConfig1.create(
+    request = GetRevocationPluginConfig.create(
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(GetLootBoxPluginConfig1)
-async def get_loot_box_plugin_config_1_async(
+@same_doc_as(GetRevocationPluginConfig)
+async def get_revocation_plugin_config_async(
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get revocation plugin config (getLootBoxPluginConfig_1)
+    """Get revocation plugin config (getRevocationPluginConfig)
 
     Get revocation plugin config.
     Other detail info:
@@ -656,7 +656,7 @@ async def get_loot_box_plugin_config_1_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetLootBoxPluginConfig1.create(
+    request = GetRevocationPluginConfig.create(
         namespace=namespace,
     )
     return await run_request_async(

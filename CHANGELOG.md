@@ -1,3 +1,13 @@
+<a name="v0.47.0"></a>
+## [v0.47.0]
+### docs
+- **:** use docs-old for now for some docs
+### chore
+- **:** gitignore vscode
+- **:** ams portal health check
+- **:** ams portal health check (cli & test)
+
+
 <a name="v0.46.0"></a>
 ## [v0.46.0]
 ### test

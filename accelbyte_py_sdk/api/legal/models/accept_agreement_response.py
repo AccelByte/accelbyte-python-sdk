@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Legal Service (1.30.1)
+# AccelByte Gaming Services Legal Service (1.31.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,15 +35,12 @@ class AcceptAgreementResponse(Model):
         comply: (comply) REQUIRED bool
 
         proceed: (proceed) REQUIRED bool
-
-        ext: (ext) OPTIONAL Dict[str, Any]
     """
 
     # region fields
 
     comply: bool  # REQUIRED
     proceed: bool  # REQUIRED
-    ext: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
 
@@ -55,10 +52,6 @@ class AcceptAgreementResponse(Model):
 
     def with_proceed(self, value: bool) -> AcceptAgreementResponse:
         self.proceed = value
-        return self
-
-    def with_ext(self, value: Dict[str, Any]) -> AcceptAgreementResponse:
-        self.ext = value
         return self
 
     # endregion with_x methods
@@ -75,10 +68,6 @@ class AcceptAgreementResponse(Model):
             result["proceed"] = bool(self.proceed)
         elif include_empty:
             result["proceed"] = False
-        if hasattr(self, "ext"):
-            result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
-        elif include_empty:
-            result["ext"] = {}
         return result
 
     # endregion to methods
@@ -86,14 +75,10 @@ class AcceptAgreementResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls, comply: bool, proceed: bool, ext: Optional[Dict[str, Any]] = None, **kwargs
-    ) -> AcceptAgreementResponse:
+    def create(cls, comply: bool, proceed: bool, **kwargs) -> AcceptAgreementResponse:
         instance = cls()
         instance.comply = comply
         instance.proceed = proceed
-        if ext is not None:
-            instance.ext = ext
         return instance
 
     @classmethod
@@ -111,10 +96,6 @@ class AcceptAgreementResponse(Model):
             instance.proceed = bool(dict_["proceed"])
         elif include_empty:
             instance.proceed = False
-        if "ext" in dict_ and dict_["ext"] is not None:
-            instance.ext = {str(k0): v0 for k0, v0 in dict_["ext"].items()}
-        elif include_empty:
-            instance.ext = {}
         return instance
 
     @classmethod
@@ -160,7 +141,6 @@ class AcceptAgreementResponse(Model):
         return {
             "comply": "comply",
             "proceed": "proceed",
-            "ext": "ext",
         }
 
     @staticmethod
@@ -168,7 +148,6 @@ class AcceptAgreementResponse(Model):
         return {
             "comply": True,
             "proceed": True,
-            "ext": False,
         }
 
     # endregion static methods

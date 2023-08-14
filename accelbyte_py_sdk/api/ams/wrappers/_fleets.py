@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -50,7 +50,13 @@ from ..operations.fleets import FleetUpdate
 
 
 @same_doc_as(FleetClaimByID)
-def fleet_claim_by_id(body: ApiFleetClaimReq, fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def fleet_claim_by_id(
+    body: ApiFleetClaimReq,
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """claim a Dedicated Server from a specific fleet (FleetClaimByID)
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
@@ -103,7 +109,13 @@ def fleet_claim_by_id(body: ApiFleetClaimReq, fleet_id: str, namespace: Optional
 
 
 @same_doc_as(FleetClaimByID)
-async def fleet_claim_by_id_async(body: ApiFleetClaimReq, fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def fleet_claim_by_id_async(
+    body: ApiFleetClaimReq,
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """claim a Dedicated Server from a specific fleet (FleetClaimByID)
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
@@ -152,11 +164,18 @@ async def fleet_claim_by_id_async(body: ApiFleetClaimReq, fleet_id: str, namespa
         fleet_id=fleet_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FleetClaimByKeys)
-def fleet_claim_by_keys(body: ApiFleetClaimByKeysReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def fleet_claim_by_keys(
+    body: ApiFleetClaimByKeysReq,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """claim a Dedicated Server from fleets with matching claim keys (FleetClaimByKeys)
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
@@ -206,7 +225,12 @@ def fleet_claim_by_keys(body: ApiFleetClaimByKeysReq, namespace: Optional[str] =
 
 
 @same_doc_as(FleetClaimByKeys)
-async def fleet_claim_by_keys_async(body: ApiFleetClaimByKeysReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def fleet_claim_by_keys_async(
+    body: ApiFleetClaimByKeysReq,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """claim a Dedicated Server from fleets with matching claim keys (FleetClaimByKeys)
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
@@ -252,11 +276,18 @@ async def fleet_claim_by_keys_async(body: ApiFleetClaimByKeysReq, namespace: Opt
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FleetCreate)
-def fleet_create(body: ApiFleetParameters, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def fleet_create(
+    body: ApiFleetParameters,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """create fleet (FleetCreate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
@@ -304,7 +335,12 @@ def fleet_create(body: ApiFleetParameters, namespace: Optional[str] = None, x_ad
 
 
 @same_doc_as(FleetCreate)
-async def fleet_create_async(body: ApiFleetParameters, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def fleet_create_async(
+    body: ApiFleetParameters,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """create fleet (FleetCreate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
@@ -348,11 +384,18 @@ async def fleet_create_async(body: ApiFleetParameters, namespace: Optional[str] 
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FleetDelete)
-def fleet_delete(fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def fleet_delete(
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """delete a fleet (FleetDelete)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
@@ -400,7 +443,12 @@ def fleet_delete(fleet_id: str, namespace: Optional[str] = None, x_additional_he
 
 
 @same_doc_as(FleetDelete)
-async def fleet_delete_async(fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def fleet_delete_async(
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """delete a fleet (FleetDelete)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
@@ -444,11 +492,18 @@ async def fleet_delete_async(fleet_id: str, namespace: Optional[str] = None, x_a
         fleet_id=fleet_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FleetGet)
-def fleet_get(fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def fleet_get(
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get a fleet (FleetGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -496,7 +551,12 @@ def fleet_get(fleet_id: str, namespace: Optional[str] = None, x_additional_heade
 
 
 @same_doc_as(FleetGet)
-async def fleet_get_async(fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def fleet_get_async(
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get a fleet (FleetGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -540,11 +600,17 @@ async def fleet_get_async(fleet_id: str, namespace: Optional[str] = None, x_addi
         fleet_id=fleet_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FleetList)
-def fleet_list(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def fleet_list(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get a list of all fleets in the namespace (FleetList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -583,7 +649,11 @@ def fleet_list(namespace: Optional[str] = None, x_additional_headers: Optional[D
 
 
 @same_doc_as(FleetList)
-async def fleet_list_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def fleet_list_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get a list of all fleets in the namespace (FleetList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -618,11 +688,18 @@ async def fleet_list_async(namespace: Optional[str] = None, x_additional_headers
     request = FleetList.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FleetServers)
-def fleet_servers(fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def fleet_servers(
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get server details and counts for a fleet (FleetServers)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -670,7 +747,12 @@ def fleet_servers(fleet_id: str, namespace: Optional[str] = None, x_additional_h
 
 
 @same_doc_as(FleetServers)
-async def fleet_servers_async(fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def fleet_servers_async(
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """get server details and counts for a fleet (FleetServers)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
@@ -714,11 +796,19 @@ async def fleet_servers_async(fleet_id: str, namespace: Optional[str] = None, x_
         fleet_id=fleet_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FleetUpdate)
-def fleet_update(body: ApiFleetParameters, fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def fleet_update(
+    body: ApiFleetParameters,
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Update a fleet – overrides current data (FleetUpdate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
@@ -771,7 +861,13 @@ def fleet_update(body: ApiFleetParameters, fleet_id: str, namespace: Optional[st
 
 
 @same_doc_as(FleetUpdate)
-async def fleet_update_async(body: ApiFleetParameters, fleet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def fleet_update_async(
+    body: ApiFleetParameters,
+    fleet_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Update a fleet – overrides current data (FleetUpdate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
@@ -820,4 +916,6 @@ async def fleet_update_async(body: ApiFleetParameters, fleet_id: str, namespace:
         fleet_id=fleet_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

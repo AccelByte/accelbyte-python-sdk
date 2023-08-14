@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -104,9 +104,13 @@ def create_api_account_response_example() -> ApiAccountResponse:
     return instance
 
 
-def create_api_available_instance_types_response_example() -> ApiAvailableInstanceTypesResponse:
+def create_api_available_instance_types_response_example() -> (
+    ApiAvailableInstanceTypesResponse
+):
     instance = ApiAvailableInstanceTypesResponse()
-    instance.available_instance_types = [create_api_instance_type_description_response_example()]
+    instance.available_instance_types = [
+        create_api_instance_type_description_response_example()
+    ]
     return instance
 
 
@@ -218,7 +222,9 @@ def create_api_fleet_regional_server_counts_example() -> ApiFleetRegionalServerC
     return instance
 
 
-def create_api_fleet_server_history_event_response_example() -> ApiFleetServerHistoryEventResponse:
+def create_api_fleet_server_history_event_response_example() -> (
+    ApiFleetServerHistoryEventResponse
+):
     instance = ApiFleetServerHistoryEventResponse()
     instance.created_at = randomize("date")
     instance.exit_code = randomize("int", min_val=1, max_val=1000)
@@ -313,7 +319,9 @@ def create_api_image_update_example() -> ApiImageUpdate:
     return instance
 
 
-def create_api_instance_type_description_response_example() -> ApiInstanceTypeDescriptionResponse:
+def create_api_instance_type_description_response_example() -> (
+    ApiInstanceTypeDescriptionResponse
+):
     instance = ApiInstanceTypeDescriptionResponse()
     instance.description = randomize()
     instance.id_ = randomize()

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (2.20.0)
+# AccelByte Gaming Services Session Service (2.22.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -59,6 +59,10 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        order: (order) OPTIONAL str in query
+
+        order_by: (orderBy) OPTIONAL str in query
+
     Responses:
         200: OK - ApimodelsConfigurationTemplatesResponse (OK)
 
@@ -84,6 +88,8 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
     limit: int  # OPTIONAL in [query]
     name: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    order: str  # OPTIONAL in [query]
+    order_by: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -141,6 +147,10 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             result["name"] = self.name
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "order"):
+            result["order"] = self.order
+        if hasattr(self, "order_by"):
+            result["orderBy"] = self.order_by
         return result
 
     # endregion get_x_params methods
@@ -167,6 +177,14 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
         self.offset = value
         return self
 
+    def with_order(self, value: str) -> AdminGetAllConfigurationTemplatesV1:
+        self.order = value
+        return self
+
+    def with_order_by(self, value: str) -> AdminGetAllConfigurationTemplatesV1:
+        self.order_by = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -189,6 +207,14 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "order") and self.order:
+            result["order"] = str(self.order)
+        elif include_empty:
+            result["order"] = ""
+        if hasattr(self, "order_by") and self.order_by:
+            result["orderBy"] = str(self.order_by)
+        elif include_empty:
+            result["orderBy"] = ""
         return result
 
     # endregion to methods
@@ -256,6 +282,8 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
         limit: Optional[int] = None,
         name: Optional[str] = None,
         offset: Optional[int] = None,
+        order: Optional[str] = None,
+        order_by: Optional[str] = None,
         **kwargs,
     ) -> AdminGetAllConfigurationTemplatesV1:
         instance = cls()
@@ -266,6 +294,10 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             instance.name = name
         if offset is not None:
             instance.offset = offset
+        if order is not None:
+            instance.order = order
+        if order_by is not None:
+            instance.order_by = order_by
         return instance
 
     @classmethod
@@ -289,6 +321,14 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "order" in dict_ and dict_["order"] is not None:
+            instance.order = str(dict_["order"])
+        elif include_empty:
+            instance.order = ""
+        if "orderBy" in dict_ and dict_["orderBy"] is not None:
+            instance.order_by = str(dict_["orderBy"])
+        elif include_empty:
+            instance.order_by = ""
         return instance
 
     @staticmethod
@@ -298,6 +338,8 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             "limit": "limit",
             "name": "name",
             "offset": "offset",
+            "order": "order",
+            "orderBy": "order_by",
         }
 
     @staticmethod
@@ -307,6 +349,8 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             "limit": False,
             "name": False,
             "offset": False,
+            "order": False,
+            "orderBy": False,
         }
 
     # endregion static methods

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (6.1.0)
+# AccelByte Gaming Services Iam Service (6.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,12 +34,15 @@ class OauthmodelTokenThirdPartyResponse(Model):
     Properties:
         platform_token: (platform_token) REQUIRED str
 
+        platform_token_expires_at: (platform_token_expires_at) OPTIONAL int
+
         sand_box_id: (sand_box_id) OPTIONAL str
     """
 
     # region fields
 
     platform_token: str  # REQUIRED
+    platform_token_expires_at: int  # OPTIONAL
     sand_box_id: str  # OPTIONAL
 
     # endregion fields
@@ -48,6 +51,12 @@ class OauthmodelTokenThirdPartyResponse(Model):
 
     def with_platform_token(self, value: str) -> OauthmodelTokenThirdPartyResponse:
         self.platform_token = value
+        return self
+
+    def with_platform_token_expires_at(
+        self, value: int
+    ) -> OauthmodelTokenThirdPartyResponse:
+        self.platform_token_expires_at = value
         return self
 
     def with_sand_box_id(self, value: str) -> OauthmodelTokenThirdPartyResponse:
@@ -64,6 +73,10 @@ class OauthmodelTokenThirdPartyResponse(Model):
             result["platform_token"] = str(self.platform_token)
         elif include_empty:
             result["platform_token"] = ""
+        if hasattr(self, "platform_token_expires_at"):
+            result["platform_token_expires_at"] = int(self.platform_token_expires_at)
+        elif include_empty:
+            result["platform_token_expires_at"] = 0
         if hasattr(self, "sand_box_id"):
             result["sand_box_id"] = str(self.sand_box_id)
         elif include_empty:
@@ -76,10 +89,16 @@ class OauthmodelTokenThirdPartyResponse(Model):
 
     @classmethod
     def create(
-        cls, platform_token: str, sand_box_id: Optional[str] = None, **kwargs
+        cls,
+        platform_token: str,
+        platform_token_expires_at: Optional[int] = None,
+        sand_box_id: Optional[str] = None,
+        **kwargs,
     ) -> OauthmodelTokenThirdPartyResponse:
         instance = cls()
         instance.platform_token = platform_token
+        if platform_token_expires_at is not None:
+            instance.platform_token_expires_at = platform_token_expires_at
         if sand_box_id is not None:
             instance.sand_box_id = sand_box_id
         return instance
@@ -95,6 +114,13 @@ class OauthmodelTokenThirdPartyResponse(Model):
             instance.platform_token = str(dict_["platform_token"])
         elif include_empty:
             instance.platform_token = ""
+        if (
+            "platform_token_expires_at" in dict_
+            and dict_["platform_token_expires_at"] is not None
+        ):
+            instance.platform_token_expires_at = int(dict_["platform_token_expires_at"])
+        elif include_empty:
+            instance.platform_token_expires_at = 0
         if "sand_box_id" in dict_ and dict_["sand_box_id"] is not None:
             instance.sand_box_id = str(dict_["sand_box_id"])
         elif include_empty:
@@ -143,6 +169,7 @@ class OauthmodelTokenThirdPartyResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "platform_token": "platform_token",
+            "platform_token_expires_at": "platform_token_expires_at",
             "sand_box_id": "sand_box_id",
         }
 
@@ -150,6 +177,7 @@ class OauthmodelTokenThirdPartyResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "platform_token": True,
+            "platform_token_expires_at": False,
             "sand_box_id": False,
         }
 

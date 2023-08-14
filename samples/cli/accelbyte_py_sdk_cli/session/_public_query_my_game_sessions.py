@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Service (2.20.0)
+# AGS Session Service (2.22.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.session import (
     public_query_my_game_sessions as public_query_my_game_sessions_internal,
 )
-from accelbyte_py_sdk.api.session.models import ApimodelsGameSessionResponse
+from accelbyte_py_sdk.api.session.models import ApimodelsGameSessionQueryResponse
 from accelbyte_py_sdk.api.session.models import ResponseError
 
 

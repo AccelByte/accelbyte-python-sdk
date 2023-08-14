@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Platform Service (4.32.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,15 +34,21 @@ from ..models.order_summary import OrderSummary
 
 class SourceEnum(StrEnum):
     ACHIEVEMENT = "ACHIEVEMENT"
+    CONSUME_ENTITLEMENT = "CONSUME_ENTITLEMENT"
     DLC = "DLC"
+    DLC_REVOCATION = "DLC_REVOCATION"
+    EXPIRATION = "EXPIRATION"
     GIFT = "GIFT"
     IAP = "IAP"
+    ORDER_REVOCATION = "ORDER_REVOCATION"
     OTHER = "OTHER"
+    PAYMENT = "PAYMENT"
     PROMOTION = "PROMOTION"
     PURCHASE = "PURCHASE"
     REDEEM_CODE = "REDEEM_CODE"
     REFERRAL_BONUS = "REFERRAL_BONUS"
     REWARD = "REWARD"
+    SELL_BACK = "SELL_BACK"
 
 
 class FulfillmentScriptContext(Model):
@@ -220,15 +226,21 @@ class FulfillmentScriptContext(Model):
         return {
             "source": [
                 "ACHIEVEMENT",
+                "CONSUME_ENTITLEMENT",
                 "DLC",
+                "DLC_REVOCATION",
+                "EXPIRATION",
                 "GIFT",
                 "IAP",
+                "ORDER_REVOCATION",
                 "OTHER",
+                "PAYMENT",
                 "PROMOTION",
                 "PURCHASE",
                 "REDEEM_CODE",
                 "REFERRAL_BONUS",
                 "REWARD",
+                "SELL_BACK",
             ],
         }
 

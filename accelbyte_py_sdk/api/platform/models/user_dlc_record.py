@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Platform Service (4.32.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,6 +53,8 @@ class UserDLCRecord(Model):
     Properties:
         id_: (id) OPTIONAL str
 
+        metadata: (metadata) OPTIONAL Dict[str, Any]
+
         namespace: (namespace) OPTIONAL str
 
         obtained_at: (obtainedAt) OPTIONAL str
@@ -81,6 +83,7 @@ class UserDLCRecord(Model):
     # region fields
 
     id_: str  # OPTIONAL
+    metadata: Dict[str, Any]  # OPTIONAL
     namespace: str  # OPTIONAL
     obtained_at: str  # OPTIONAL
     platform: Union[str, PlatformEnum]  # OPTIONAL
@@ -100,6 +103,10 @@ class UserDLCRecord(Model):
 
     def with_id(self, value: str) -> UserDLCRecord:
         self.id_ = value
+        return self
+
+    def with_metadata(self, value: Dict[str, Any]) -> UserDLCRecord:
+        self.metadata = value
         return self
 
     def with_namespace(self, value: str) -> UserDLCRecord:
@@ -160,6 +167,10 @@ class UserDLCRecord(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): v0 for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -224,6 +235,7 @@ class UserDLCRecord(Model):
     def create(
         cls,
         id_: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
         namespace: Optional[str] = None,
         obtained_at: Optional[str] = None,
         platform: Optional[Union[str, PlatformEnum]] = None,
@@ -241,6 +253,8 @@ class UserDLCRecord(Model):
         instance = cls()
         if id_ is not None:
             instance.id_ = id_
+        if metadata is not None:
+            instance.metadata = metadata
         if namespace is not None:
             instance.namespace = namespace
         if obtained_at is not None:
@@ -278,6 +292,10 @@ class UserDLCRecord(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {str(k0): v0 for k0, v0 in dict_["metadata"].items()}
+        elif include_empty:
+            instance.metadata = {}
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -374,6 +392,7 @@ class UserDLCRecord(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "id": "id_",
+            "metadata": "metadata",
             "namespace": "namespace",
             "obtainedAt": "obtained_at",
             "platform": "platform",
@@ -392,6 +411,7 @@ class UserDLCRecord(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "id": False,
+            "metadata": False,
             "namespace": False,
             "obtainedAt": False,
             "platform": False,

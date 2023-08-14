@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Platform Service (4.32.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,15 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class BalanceSourceEnum(StrEnum):
+    DLC_REVOCATION = "DLC_REVOCATION"
+    EXPIRATION = "EXPIRATION"
+    ORDER_REVOCATION = "ORDER_REVOCATION"
+    OTHER = "OTHER"
+    PAYMENT = "PAYMENT"
 
 
 class DebitRequest(Model):
@@ -34,12 +43,18 @@ class DebitRequest(Model):
     Properties:
         amount: (amount) REQUIRED int
 
+        balance_source: (balanceSource) OPTIONAL Union[str, BalanceSourceEnum]
+
+        metadata: (metadata) OPTIONAL Dict[str, Any]
+
         reason: (reason) OPTIONAL str
     """
 
     # region fields
 
     amount: int  # REQUIRED
+    balance_source: Union[str, BalanceSourceEnum]  # OPTIONAL
+    metadata: Dict[str, Any]  # OPTIONAL
     reason: str  # OPTIONAL
 
     # endregion fields
@@ -48,6 +63,14 @@ class DebitRequest(Model):
 
     def with_amount(self, value: int) -> DebitRequest:
         self.amount = value
+        return self
+
+    def with_balance_source(self, value: Union[str, BalanceSourceEnum]) -> DebitRequest:
+        self.balance_source = value
+        return self
+
+    def with_metadata(self, value: Dict[str, Any]) -> DebitRequest:
+        self.metadata = value
         return self
 
     def with_reason(self, value: str) -> DebitRequest:
@@ -64,6 +87,14 @@ class DebitRequest(Model):
             result["amount"] = int(self.amount)
         elif include_empty:
             result["amount"] = 0
+        if hasattr(self, "balance_source"):
+            result["balanceSource"] = str(self.balance_source)
+        elif include_empty:
+            result["balanceSource"] = Union[str, BalanceSourceEnum]()
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): v0 for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
@@ -76,10 +107,19 @@ class DebitRequest(Model):
 
     @classmethod
     def create(
-        cls, amount: int, reason: Optional[str] = None, **kwargs
+        cls,
+        amount: int,
+        balance_source: Optional[Union[str, BalanceSourceEnum]] = None,
+        metadata: Optional[Dict[str, Any]] = None,
+        reason: Optional[str] = None,
+        **kwargs,
     ) -> DebitRequest:
         instance = cls()
         instance.amount = amount
+        if balance_source is not None:
+            instance.balance_source = balance_source
+        if metadata is not None:
+            instance.metadata = metadata
         if reason is not None:
             instance.reason = reason
         return instance
@@ -93,6 +133,14 @@ class DebitRequest(Model):
             instance.amount = int(dict_["amount"])
         elif include_empty:
             instance.amount = 0
+        if "balanceSource" in dict_ and dict_["balanceSource"] is not None:
+            instance.balance_source = str(dict_["balanceSource"])
+        elif include_empty:
+            instance.balance_source = Union[str, BalanceSourceEnum]()
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {str(k0): v0 for k0, v0 in dict_["metadata"].items()}
+        elif include_empty:
+            instance.metadata = {}
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
@@ -137,6 +185,8 @@ class DebitRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "amount": "amount",
+            "balanceSource": "balance_source",
+            "metadata": "metadata",
             "reason": "reason",
         }
 
@@ -144,7 +194,21 @@ class DebitRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "amount": True,
+            "balanceSource": False,
+            "metadata": False,
             "reason": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "balanceSource": [
+                "DLC_REVOCATION",
+                "EXPIRATION",
+                "ORDER_REVOCATION",
+                "OTHER",
+                "PAYMENT",
+            ],
         }
 
     # endregion static methods

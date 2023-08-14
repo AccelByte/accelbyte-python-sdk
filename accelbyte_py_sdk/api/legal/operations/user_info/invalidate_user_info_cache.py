@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.30.1)
+# AccelByte Gaming Services Legal Service (1.31.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,12 +28,11 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 
 class InvalidateUserInfoCache(Operation):
     """Invalidate user info cache (invalidateUserInfoCache)
-
-    Important: GOING TO DEPRECATE
 
     Invalidate user info cache in agreement service.
     Other detail info:

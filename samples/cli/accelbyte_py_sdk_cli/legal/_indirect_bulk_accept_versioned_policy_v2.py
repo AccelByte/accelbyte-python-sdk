@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Legal Service (1.30.1)
+# AGS Legal Service (1.31.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -86,4 +86,4 @@ def indirect_bulk_accept_versioned_policy_v2(
 indirect_bulk_accept_versioned_policy_v2.operation_id = (
     "indirectBulkAcceptVersionedPolicyV2"
 )
-indirect_bulk_accept_versioned_policy_v2.is_deprecated = False
+indirect_bulk_accept_versioned_policy_v2.is_deprecated = True

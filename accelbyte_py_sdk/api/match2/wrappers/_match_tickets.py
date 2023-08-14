@@ -32,10 +32,12 @@ from ....core import same_doc_as
 from ..models import ApiMatchTicketRequest
 from ..models import ApiMatchTicketResponse
 from ..models import ApiMatchTicketStatus
+from ..models import ApiMatchTicketStatuses
 from ..models import ResponseError
 
 from ..operations.match_tickets import CreateMatchTicket
 from ..operations.match_tickets import DeleteMatchTicket
+from ..operations.match_tickets import GetMyMatchTickets
 from ..operations.match_tickets import MatchTicketDetails
 
 
@@ -336,6 +338,140 @@ async def delete_match_ticket_async(
             return None, error
     request = DeleteMatchTicket.create(
         ticketid=ticketid,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetMyMatchTickets)
+def get_my_match_tickets(
+    limit: Optional[int] = None,
+    match_pool: Optional[str] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get my match tickets (GetMyMatchTickets)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
+
+    Required Scope: social
+
+    Get my match tickets.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-tickets/me
+
+        method: GET
+
+        tags: ["Match-Tickets", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        match_pool: (matchPool) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ApiMatchTicketStatuses (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMyMatchTickets.create(
+        limit=limit,
+        match_pool=match_pool,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetMyMatchTickets)
+async def get_my_match_tickets_async(
+    limit: Optional[int] = None,
+    match_pool: Optional[str] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get my match tickets (GetMyMatchTickets)
+
+    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
+
+    Required Scope: social
+
+    Get my match tickets.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-tickets/me
+
+        method: GET
+
+        tags: ["Match-Tickets", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        match_pool: (matchPool) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ApiMatchTicketStatuses (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMyMatchTickets.create(
+        limit=limit,
+        match_pool=match_pool,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(

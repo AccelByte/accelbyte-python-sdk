@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Platform Service (4.32.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -47,15 +47,21 @@ class OriginEnum(StrEnum):
 
 class SourceEnum(StrEnum):
     ACHIEVEMENT = "ACHIEVEMENT"
+    CONSUME_ENTITLEMENT = "CONSUME_ENTITLEMENT"
     DLC = "DLC"
+    DLC_REVOCATION = "DLC_REVOCATION"
+    EXPIRATION = "EXPIRATION"
     GIFT = "GIFT"
     IAP = "IAP"
+    ORDER_REVOCATION = "ORDER_REVOCATION"
     OTHER = "OTHER"
+    PAYMENT = "PAYMENT"
     PROMOTION = "PROMOTION"
     PURCHASE = "PURCHASE"
     REDEEM_CODE = "REDEEM_CODE"
     REFERRAL_BONUS = "REFERRAL_BONUS"
     REWARD = "REWARD"
+    SELL_BACK = "SELL_BACK"
 
 
 class RewardsRequest(Model):
@@ -63,6 +69,8 @@ class RewardsRequest(Model):
 
     Properties:
         rewards: (rewards) REQUIRED List[PlatformReward]
+
+        metadata: (metadata) OPTIONAL Dict[str, Any]
 
         origin: (origin) OPTIONAL Union[str, OriginEnum]
 
@@ -72,6 +80,7 @@ class RewardsRequest(Model):
     # region fields
 
     rewards: List[PlatformReward]  # REQUIRED
+    metadata: Dict[str, Any]  # OPTIONAL
     origin: Union[str, OriginEnum]  # OPTIONAL
     source: Union[str, SourceEnum]  # OPTIONAL
 
@@ -81,6 +90,10 @@ class RewardsRequest(Model):
 
     def with_rewards(self, value: List[PlatformReward]) -> RewardsRequest:
         self.rewards = value
+        return self
+
+    def with_metadata(self, value: Dict[str, Any]) -> RewardsRequest:
+        self.metadata = value
         return self
 
     def with_origin(self, value: Union[str, OriginEnum]) -> RewardsRequest:
@@ -103,6 +116,10 @@ class RewardsRequest(Model):
             ]
         elif include_empty:
             result["rewards"] = []
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): v0 for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
         if hasattr(self, "origin"):
             result["origin"] = str(self.origin)
         elif include_empty:
@@ -121,12 +138,15 @@ class RewardsRequest(Model):
     def create(
         cls,
         rewards: List[PlatformReward],
+        metadata: Optional[Dict[str, Any]] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
         source: Optional[Union[str, SourceEnum]] = None,
         **kwargs,
     ) -> RewardsRequest:
         instance = cls()
         instance.rewards = rewards
+        if metadata is not None:
+            instance.metadata = metadata
         if origin is not None:
             instance.origin = origin
         if source is not None:
@@ -147,6 +167,10 @@ class RewardsRequest(Model):
             ]
         elif include_empty:
             instance.rewards = []
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {str(k0): v0 for k0, v0 in dict_["metadata"].items()}
+        elif include_empty:
+            instance.metadata = {}
         if "origin" in dict_ and dict_["origin"] is not None:
             instance.origin = str(dict_["origin"])
         elif include_empty:
@@ -195,6 +219,7 @@ class RewardsRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "rewards": "rewards",
+            "metadata": "metadata",
             "origin": "origin",
             "source": "source",
         }
@@ -203,6 +228,7 @@ class RewardsRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "rewards": True,
+            "metadata": False,
             "origin": False,
             "source": False,
         }
@@ -225,15 +251,21 @@ class RewardsRequest(Model):
             ],
             "source": [
                 "ACHIEVEMENT",
+                "CONSUME_ENTITLEMENT",
                 "DLC",
+                "DLC_REVOCATION",
+                "EXPIRATION",
                 "GIFT",
                 "IAP",
+                "ORDER_REVOCATION",
                 "OTHER",
+                "PAYMENT",
                 "PROMOTION",
                 "PURCHASE",
                 "REDEEM_CODE",
                 "REFERRAL_BONUS",
                 "REWARD",
+                "SELL_BACK",
             ],
         }
 

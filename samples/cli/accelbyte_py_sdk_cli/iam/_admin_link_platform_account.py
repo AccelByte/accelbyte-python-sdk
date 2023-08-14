@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (6.1.0)
+# AGS Iam Service (6.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.command()
 @click.argument("body", type=str)
 @click.argument("user_id", type=str)
+@click.option("--skip_conflict", "skip_conflict", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 def admin_link_platform_account(
     body: str,
     user_id: str,
+    skip_conflict: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -69,6 +71,7 @@ def admin_link_platform_account(
     result, error = admin_link_platform_account_internal(
         body=body,
         user_id=user_id,
+        skip_conflict=skip_conflict,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

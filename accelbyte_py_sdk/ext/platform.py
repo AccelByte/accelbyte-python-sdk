@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.31.1)
+# AccelByte Gaming Services Platform Service (4.32.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -1053,6 +1053,7 @@ def create_consumable_entitlement_revocation_config_example() -> (
 
 def create_consume_item_example() -> ConsumeItem:
     instance = ConsumeItem()
+    instance.ext_item_def_id = randomize()
     instance.ext_item_id = randomize()
     instance.item_identity = randomize()
     instance.item_identity_type = randomize()
@@ -1063,6 +1064,7 @@ def create_credit_request_example() -> CreditRequest:
     instance = CreditRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
     instance.expire_at = randomize("date")
+    instance.metadata = {randomize(): randomize()}
     instance.origin = randomize()
     instance.reason = randomize()
     instance.source = randomize()
@@ -1171,6 +1173,8 @@ def create_debit_by_currency_code_request_example() -> DebitByCurrencyCodeReques
     instance.amount = randomize("int", min_val=1, max_val=1000)
     instance.allow_overdraft = randomize("bool")
     instance.balance_origin = randomize()
+    instance.balance_source = randomize()
+    instance.metadata = {randomize(): randomize()}
     instance.reason = randomize()
     return instance
 
@@ -1178,6 +1182,8 @@ def create_debit_by_currency_code_request_example() -> DebitByCurrencyCodeReques
 def create_debit_request_example() -> DebitRequest:
     instance = DebitRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.balance_source = randomize()
+    instance.metadata = {randomize(): randomize()}
     instance.reason = randomize()
     return instance
 
@@ -1245,6 +1251,7 @@ def create_dlc_item_config_update_example() -> DLCItemConfigUpdate:
 def create_dlc_record_example() -> DLCRecord:
     instance = DLCRecord()
     instance.id_ = randomize()
+    instance.metadata = {randomize(): randomize()}
     instance.obtained_at = randomize("date")
     instance.revocation_result = create_revocation_result_example()
     instance.revoke_results = [create_revoke_result_example()]
@@ -1652,6 +1659,7 @@ def create_fulfillment_request_example() -> FulfillmentRequest:
     instance.item_id = randomize()
     instance.item_sku = randomize()
     instance.language = randomize()
+    instance.metadata = {randomize(): randomize()}
     instance.order = create_order_summary_example()
     instance.order_no = randomize()
     instance.origin = randomize()
@@ -3111,6 +3119,7 @@ def create_payment_provider_config_paging_sliced_result_example() -> (
 def create_payment_request_example() -> PaymentRequest:
     instance = PaymentRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.metadata = {randomize(): randomize()}
     instance.wallet_platform = randomize()
     return instance
 
@@ -3744,6 +3753,7 @@ def create_reward_update_example() -> RewardUpdate:
 def create_rewards_request_example() -> RewardsRequest:
     instance = RewardsRequest()
     instance.rewards = [create_platform_reward_example()]
+    instance.metadata = {randomize(): randomize()}
     instance.origin = randomize()
     instance.source = randomize()
     return instance
@@ -4344,6 +4354,7 @@ def create_user_dlc_example() -> UserDLC:
 def create_user_dlc_record_example() -> UserDLCRecord:
     instance = UserDLCRecord()
     instance.id_ = randomize()
+    instance.metadata = {randomize(): randomize()}
     instance.namespace = randomize("slug")
     instance.obtained_at = randomize("date")
     instance.platform = randomize()
@@ -4440,6 +4451,7 @@ def create_wallet_transaction_info_example() -> WalletTransactionInfo:
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
     instance.balance_source = randomize()
+    instance.metadata = {randomize(): randomize()}
     instance.reason = randomize()
     instance.transaction_amount_details = [create_transaction_amount_details_example()]
     instance.wallet_action = randomize()
