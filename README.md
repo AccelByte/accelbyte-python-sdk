@@ -555,6 +555,54 @@ if error:
 
 ---
 
+## Parsing Tokens
+
+You can use `parse_access_token` from `accelbyte_py_sdk.services.auth`.
+
+```python
+from accelbyte_py_sdk.services.auth import parse_access_token
+
+# access_token = ...
+claims, error = parse_access_token(access_token)
+if error:
+    exit(1)
+```
+
+You can also do validation in the same call. By default, it uses `CachingTokenValidator`.
+
+```python
+from accelbyte_py_sdk.services.auth import parse_access_token
+
+# access_token = ...
+claims, error = parse_access_token(access_token, validate=True)
+if error:
+    exit(1)
+```
+
+You can specify what kind (or which) of validator you want to use.
+
+```python
+from accelbyte_py_sdk.services.auth import parse_access_token
+
+# access_token = ...
+claims, error = parse_access_token(access_token, validator="iam")  # or validator="caching"
+if error:
+    exit(1)
+```
+
+```python
+from accelbyte_py_sdk.services.auth import parse_access_token
+
+token_validator = CachingTokenValidator(sdk)  # or IAMTokenValidator(sdk)
+
+# access_token = ...
+claims, error = parse_access_token(access_token, validator=token_validator)
+if error:
+    exit(1)
+```
+
+---
+
 See [tests](tests/sdk/core/_request.py) for more usage.
 
 ## Samples
