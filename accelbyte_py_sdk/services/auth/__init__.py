@@ -28,4 +28,6 @@ from ._login import DEFAULT_REFRESH_RATE
 from ._login import set_on_demand_token_refresher
 from ._login import OnDemandTokenRefresher
 
+from ._jwt import parse_access_token
+
 from ._utils import convert_bearer_auth_token_to_oauth_token_dict

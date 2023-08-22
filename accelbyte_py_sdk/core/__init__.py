@@ -2,8 +2,6 @@
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
-from typing import Optional
-
 from ._config_repository import ConfigRepository
 from ._config_repository import DictConfigRepository
 from ._config_repository import DotEnvFileConfigRepository
