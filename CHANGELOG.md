@@ -1,3 +1,13 @@
+<a name="v0.48.0"></a>
+## [v0.48.0]
+### feat
+- **jwt:** add parse_access_token
+### test
+- **jwt:** add tests for parse_access_token
+### docs
+- **jwt:** add docs for parse_access_token
+
+
 <a name="v0.47.0"></a>
 ## [v0.47.0]
 ### docs

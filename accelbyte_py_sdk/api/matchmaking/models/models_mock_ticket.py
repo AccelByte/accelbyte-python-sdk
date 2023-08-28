@@ -68,6 +68,8 @@ class ModelsMockTicket(Model):
         status: (status) REQUIRED str
 
         ticket_id: (ticket_id) REQUIRED str
+
+        ticket_ids: (ticket_ids) REQUIRED List[str]
     """
 
     # region fields
@@ -89,6 +91,7 @@ class ModelsMockTicket(Model):
     sorted_latency: List[ModelsRegion]  # REQUIRED
     status: str  # REQUIRED
     ticket_id: str  # REQUIRED
+    ticket_ids: List[str]  # REQUIRED
 
     # endregion fields
 
@@ -160,6 +163,10 @@ class ModelsMockTicket(Model):
 
     def with_ticket_id(self, value: str) -> ModelsMockTicket:
         self.ticket_id = value
+        return self
+
+    def with_ticket_ids(self, value: List[str]) -> ModelsMockTicket:
+        self.ticket_ids = value
         return self
 
     # endregion with_x methods
@@ -248,6 +255,10 @@ class ModelsMockTicket(Model):
             result["ticket_id"] = str(self.ticket_id)
         elif include_empty:
             result["ticket_id"] = ""
+        if hasattr(self, "ticket_ids"):
+            result["ticket_ids"] = [str(i0) for i0 in self.ticket_ids]
+        elif include_empty:
+            result["ticket_ids"] = []
         return result
 
     # endregion to methods
@@ -274,6 +285,7 @@ class ModelsMockTicket(Model):
         sorted_latency: List[ModelsRegion],
         status: str,
         ticket_id: str,
+        ticket_ids: List[str],
         **kwargs,
     ) -> ModelsMockTicket:
         instance = cls()
@@ -294,6 +306,7 @@ class ModelsMockTicket(Model):
         instance.sorted_latency = sorted_latency
         instance.status = status
         instance.ticket_id = ticket_id
+        instance.ticket_ids = ticket_ids
         return instance
 
     @classmethod
@@ -388,6 +401,10 @@ class ModelsMockTicket(Model):
             instance.ticket_id = str(dict_["ticket_id"])
         elif include_empty:
             instance.ticket_id = ""
+        if "ticket_ids" in dict_ and dict_["ticket_ids"] is not None:
+            instance.ticket_ids = [str(i0) for i0 in dict_["ticket_ids"]]
+        elif include_empty:
+            instance.ticket_ids = []
         return instance
 
     @classmethod
@@ -444,6 +461,7 @@ class ModelsMockTicket(Model):
             "sorted_latency": "sorted_latency",
             "status": "status",
             "ticket_id": "ticket_id",
+            "ticket_ids": "ticket_ids",
         }
 
     @staticmethod
@@ -466,6 +484,7 @@ class ModelsMockTicket(Model):
             "sorted_latency": True,
             "status": True,
             "ticket_id": True,
+            "ticket_ids": True,
         }
 
     # endregion static methods

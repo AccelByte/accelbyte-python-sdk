@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "2.22.2"
+__version__ = "3.1.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -141,3 +141,14 @@ from ._player import public_get_player_attributes
 from ._player import public_get_player_attributes_async
 from ._player import public_store_player_attributes
 from ._player import public_store_player_attributes_async
+
+from ._session_storage import admin_delete_user_session_storage
+from ._session_storage import admin_delete_user_session_storage_async
+from ._session_storage import admin_read_session_storage
+from ._session_storage import admin_read_session_storage_async
+from ._session_storage import admin_read_user_session_storage
+from ._session_storage import admin_read_user_session_storage_async
+from ._session_storage import public_update_insert_session_storage
+from ._session_storage import public_update_insert_session_storage_async
+from ._session_storage import public_update_insert_session_storage_leader
+from ._session_storage import public_update_insert_session_storage_leader_async

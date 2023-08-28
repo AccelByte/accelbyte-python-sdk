@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.24.1)
+# AccelByte Gaming Services Lobby Server (3.25.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelBulkAddFriendsRequest
+from ...models import ModelBulkFriendsRequest
 from ...models import RestapiErrorResponseV1
 
 
@@ -59,7 +59,7 @@ class AddFriendsWithoutConfirmation(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelBulkAddFriendsRequest in body
+        body: (body) REQUIRED ModelBulkFriendsRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -86,7 +86,7 @@ class AddFriendsWithoutConfirmation(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelBulkAddFriendsRequest  # REQUIRED in [body]
+    body: ModelBulkFriendsRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -154,7 +154,7 @@ class AddFriendsWithoutConfirmation(Operation):
     # region with_x methods
 
     def with_body(
-        self, value: ModelBulkAddFriendsRequest
+        self, value: ModelBulkFriendsRequest
     ) -> AddFriendsWithoutConfirmation:
         self.body = value
         return self
@@ -176,7 +176,7 @@ class AddFriendsWithoutConfirmation(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelBulkAddFriendsRequest()
+            result["body"] = ModelBulkFriendsRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -241,7 +241,7 @@ class AddFriendsWithoutConfirmation(Operation):
 
     @classmethod
     def create(
-        cls, body: ModelBulkAddFriendsRequest, namespace: str, user_id: str, **kwargs
+        cls, body: ModelBulkFriendsRequest, namespace: str, user_id: str, **kwargs
     ) -> AddFriendsWithoutConfirmation:
         instance = cls()
         instance.body = body
@@ -255,11 +255,11 @@ class AddFriendsWithoutConfirmation(Operation):
     ) -> AddFriendsWithoutConfirmation:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelBulkAddFriendsRequest.create_from_dict(
+            instance.body = ModelBulkFriendsRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelBulkAddFriendsRequest()
+            instance.body = ModelBulkFriendsRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.22.2)
+# AccelByte Gaming Services Session Service (3.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,6 +62,8 @@ class ApimodelsPublicConfiguration(Model):
 
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
+        immutable_storage: (immutableStorage) OPTIONAL bool
+
         max_active_session: (maxActiveSession) OPTIONAL int
 
         native_session_setting: (nativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
@@ -91,6 +93,7 @@ class ApimodelsPublicConfiguration(Model):
     type_: str  # REQUIRED
     ds_source: str  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
+    immutable_storage: bool  # OPTIONAL
     max_active_session: int  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
@@ -158,6 +161,10 @@ class ApimodelsPublicConfiguration(Model):
         self, value: List[str]
     ) -> ApimodelsPublicConfiguration:
         self.fallback_claim_keys = value
+        return self
+
+    def with_immutable_storage(self, value: bool) -> ApimodelsPublicConfiguration:
+        self.immutable_storage = value
         return self
 
     def with_max_active_session(self, value: int) -> ApimodelsPublicConfiguration:
@@ -252,6 +259,10 @@ class ApimodelsPublicConfiguration(Model):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
             result["fallbackClaimKeys"] = []
+        if hasattr(self, "immutable_storage"):
+            result["immutableStorage"] = bool(self.immutable_storage)
+        elif include_empty:
+            result["immutableStorage"] = False
         if hasattr(self, "max_active_session"):
             result["maxActiveSession"] = int(self.max_active_session)
         elif include_empty:
@@ -301,6 +312,7 @@ class ApimodelsPublicConfiguration(Model):
         type_: str,
         ds_source: Optional[str] = None,
         fallback_claim_keys: Optional[List[str]] = None,
+        immutable_storage: Optional[bool] = None,
         max_active_session: Optional[int] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         preferred_claim_keys: Optional[List[str]] = None,
@@ -326,6 +338,8 @@ class ApimodelsPublicConfiguration(Model):
             instance.ds_source = ds_source
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
+        if immutable_storage is not None:
+            instance.immutable_storage = immutable_storage
         if max_active_session is not None:
             instance.max_active_session = max_active_session
         if native_session_setting is not None:
@@ -405,6 +419,10 @@ class ApimodelsPublicConfiguration(Model):
             ]
         elif include_empty:
             instance.fallback_claim_keys = []
+        if "immutableStorage" in dict_ and dict_["immutableStorage"] is not None:
+            instance.immutable_storage = bool(dict_["immutableStorage"])
+        elif include_empty:
+            instance.immutable_storage = False
         if "maxActiveSession" in dict_ and dict_["maxActiveSession"] is not None:
             instance.max_active_session = int(dict_["maxActiveSession"])
         elif include_empty:
@@ -498,6 +516,7 @@ class ApimodelsPublicConfiguration(Model):
             "type": "type_",
             "dsSource": "ds_source",
             "fallbackClaimKeys": "fallback_claim_keys",
+            "immutableStorage": "immutable_storage",
             "maxActiveSession": "max_active_session",
             "nativeSessionSetting": "native_session_setting",
             "preferredClaimKeys": "preferred_claim_keys",
@@ -523,6 +542,7 @@ class ApimodelsPublicConfiguration(Model):
             "type": True,
             "dsSource": False,
             "fallbackClaimKeys": False,
+            "immutableStorage": False,
             "maxActiveSession": False,
             "nativeSessionSetting": False,
             "preferredClaimKeys": False,

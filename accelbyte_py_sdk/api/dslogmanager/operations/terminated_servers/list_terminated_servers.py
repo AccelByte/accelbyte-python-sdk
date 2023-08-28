@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ds Log Manager Service (3.3.1)
+# AccelByte Gaming Services Ds Log Manager Service (3.3.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,6 +40,8 @@ class ListTerminatedServers(Operation):
     Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
 
     This endpoint used to retrieve terminated servers in a namespace
+
+    The namespace filter is will give result exact namespace response
     ```
 
     Required Permission(s):

@@ -51,6 +51,7 @@ from ..models import ModelListValidUserIDResponseV4
 from ..models import ModelPublicInviteUserRequestV4
 from ..models import ModelRemoveUserRoleV4Request
 from ..models import ModelUserCreateFromInvitationRequestV4
+from ..models import ModelUserPublicInfoResponseV4
 from ..models import ModelUserResponseV3
 from ..models import ModelUserUpdateRequestV3
 from ..models import RestErrorResponse
@@ -94,6 +95,7 @@ from ..operations.users_v4 import PublicGenerateMyAuthenticatorKeyV4
 from ..operations.users_v4 import PublicGenerateMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyEnabledFactorsV4
+from ..operations.users_v4 import PublicGetUserPublicInfoByUserIdV4
 from ..operations.users_v4 import PublicInviteUserV4
 from ..operations.users_v4 import PublicMakeFactorMyDefaultV4
 from ..operations.users_v4 import PublicRemoveTrustedDeviceV4
@@ -4518,6 +4520,108 @@ async def public_get_my_enabled_factors_v4_async(
         if error:
             return None, error
     request = PublicGetMyEnabledFactorsV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetUserPublicInfoByUserIdV4)
+def public_get_user_public_info_by_user_id_v4(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get User Public Info By User ID (PublicGetUserPublicInfoByUserIdV4)
+
+    This endpoint requires a valid user token and only returns user's public information.
+
+    action code: 10129
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserPublicInfoResponseV4 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserPublicInfoByUserIdV4.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetUserPublicInfoByUserIdV4)
+async def public_get_user_public_info_by_user_id_v4_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get User Public Info By User ID (PublicGetUserPublicInfoByUserIdV4)
+
+    This endpoint requires a valid user token and only returns user's public information.
+
+    action code: 10129
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/{userId}
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserPublicInfoResponseV4 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserPublicInfoByUserIdV4.create(
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

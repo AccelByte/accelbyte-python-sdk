@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.32.1)
+# AccelByte Gaming Services Platform Service (4.34.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,6 +33,7 @@ from ..models.revoke_entry import RevokeEntry
 
 class SourceEnum(StrEnum):
     DLC = "DLC"
+    IAP = "IAP"
     ORDER = "ORDER"
     OTHER = "OTHER"
 
@@ -212,7 +213,7 @@ class RevocationRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "source": ["DLC", "ORDER", "OTHER"],
+            "source": ["DLC", "IAP", "ORDER", "OTHER"],
         }
 
     # endregion static methods

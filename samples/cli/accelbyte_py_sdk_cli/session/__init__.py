@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (2.22.2)
+# justice-session-service (3.1.0)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
@@ -38,6 +38,9 @@ from ._admin_query_parties import admin_query_parties
 from ._admin_get_platform_credentials import admin_get_platform_credentials
 from ._admin_update_platform_credentials import admin_update_platform_credentials
 from ._admin_delete_platform_credentials import admin_delete_platform_credentials
+from ._admin_read_session_storage import admin_read_session_storage
+from ._admin_delete_user_session_storage import admin_delete_user_session_storage
+from ._admin_read_user_session_storage import admin_read_user_session_storage
 from ._admin_query_player_attributes import admin_query_player_attributes
 from ._admin_get_player_attributes import admin_get_player_attributes
 from ._create_game_session import create_game_session
@@ -72,6 +75,10 @@ from ._public_party_leave import public_party_leave
 from ._public_party_reject import public_party_reject
 from ._public_party_kick import public_party_kick
 from ._public_create_party import public_create_party
+from ._public_update_insert_session_storage_leader import (
+    public_update_insert_session_storage_leader,
+)
+from ._public_update_insert_session_storage import public_update_insert_session_storage
 from ._public_get_bulk_player_current_platform import (
     public_get_bulk_player_current_platform,
 )
@@ -105,6 +112,9 @@ commands = [
     admin_get_platform_credentials,
     admin_update_platform_credentials,
     admin_delete_platform_credentials,
+    admin_read_session_storage,
+    admin_delete_user_session_storage,
+    admin_read_user_session_storage,
     admin_query_player_attributes,
     admin_get_player_attributes,
     create_game_session,
@@ -137,6 +147,8 @@ commands = [
     public_party_reject,
     public_party_kick,
     public_create_party,
+    public_update_insert_session_storage_leader,
+    public_update_insert_session_storage,
     public_get_bulk_player_current_platform,
     public_get_player_attributes,
     public_store_player_attributes,

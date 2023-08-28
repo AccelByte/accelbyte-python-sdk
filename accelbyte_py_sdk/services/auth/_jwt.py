@@ -59,9 +59,8 @@ def patch_claims_accelbyte_keys(jwt_claims: Dict[str, Any], **kwargs) -> None:
 
     # expires_in
     if (exp := jwt_claims.get("exp")) and (iat := jwt_claims.get("iat")):
-        if (
-                (expires_at := safecast_datetime(exp))
-                and (issued_at := safecast_datetime(iat))
+        if (expires_at := safecast_datetime(exp)) and (
+            issued_at := safecast_datetime(iat)
         ):
             expires_in = int((expires_at - issued_at).total_seconds())
             jwt_claims["expires_at"] = expires_at.isoformat()
@@ -97,13 +96,14 @@ assert isinstance(patch_claims_permission_keys, JwtPayloadModifier)
 
 # noinspection PyUnresolvedReferences
 def parse_access_token(
-    jwt: str,
-    **kwargs
+    jwt: str, **kwargs
 ) -> Tuple[Optional[Dict[str, Any]], Optional[HttpResponse]]:
     try:
         jwt_claims = jwt_lib.decode(jwt=jwt, options=get_decode_options(**kwargs))
 
-        modifiers = kwargs.get("modifiers", [patch_claims_permission_keys, patch_claims_accelbyte_keys])
+        modifiers = kwargs.get(
+            "modifiers", [patch_claims_permission_keys, patch_claims_accelbyte_keys]
+        )
         for modifier in modifiers:
             modifier(jwt_claims, access_token=jwt, **kwargs)
 
@@ -115,14 +115,18 @@ def parse_access_token(
                 try:
                     if validator is None or validator in ("caching", "local"):
                         import accelbyte_py_sdk.token_validation.caching as tv
+
                         validator = tv.CachingTokenValidator(sdk=sdk)
                     elif validator == "iam":
                         import accelbyte_py_sdk.token_validation.iam as tv
+
                         validator = tv.IAMTokenValidator(sdk=sdk)
                 except ImportError as error:
                     return jwt_claims, HttpResponse.create_error(400, str(error))
 
-            error = validator.validate_token(**get_validate_token_kwargs(jwt_claims=jwt_claims))
+            error = validator.validate_token(
+                **get_validate_token_kwargs(jwt_claims=jwt_claims)
+            )
             if error:
                 return jwt_claims, HttpResponse.create_error(400, str(error))
 

@@ -326,6 +326,9 @@ def auth_code_request_v3(
     This endpoint redirects to amazon login page, then redirect back to platform
     authenticate endpoint after successfully authenticating amazon user.
 
+      * oculusweb
+    This endpoint redirects to oculus login page, then redirect back to Login Website page after successfully authenticating oculus user.
+
     action code : 10702'
 
     Properties:
@@ -425,6 +428,9 @@ async def auth_code_request_v3_async(
       * amazon
     This endpoint redirects to amazon login page, then redirect back to platform
     authenticate endpoint after successfully authenticating amazon user.
+
+      * oculusweb
+    This endpoint redirects to oculus login page, then redirect back to Login Website page after successfully authenticating oculus user.
 
     action code : 10702'
 

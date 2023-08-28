@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Social Service."""
 
-__version__ = "2.9.2"
+__version__ = "2.9.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,6 +20,7 @@ from .a_dto_object_for_resetting_user_stat_items import (
 from .a_dto_object_for_user_stat_item_value import ADTOObjectForUserStatItemValue
 from .attribute import Attribute
 from .bulk_cycle_stats_add import BulkCycleStatsAdd
+from .bulk_stat_cycle_operation_result import BulkStatCycleOperationResult
 from .bulk_stat_cycle_request import BulkStatCycleRequest
 from .bulk_stat_cycle_result import BulkStatCycleResult
 from .bulk_stat_item_create import BulkStatItemCreate

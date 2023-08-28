@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.22.2)
+# AccelByte Gaming Services Session Service (3.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,6 +62,8 @@ class ApimodelsPartySessionResponse(Model):
         code: (code) OPTIONAL str
 
         expired_at: (expiredAt) OPTIONAL str
+
+        storage: (storage) OPTIONAL Dict[str, Any]
     """
 
     # region fields
@@ -80,6 +82,7 @@ class ApimodelsPartySessionResponse(Model):
     attributes: Dict[str, Any]  # OPTIONAL
     code: str  # OPTIONAL
     expired_at: str  # OPTIONAL
+    storage: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
 
@@ -143,6 +146,10 @@ class ApimodelsPartySessionResponse(Model):
 
     def with_expired_at(self, value: str) -> ApimodelsPartySessionResponse:
         self.expired_at = value
+        return self
+
+    def with_storage(self, value: Dict[str, Any]) -> ApimodelsPartySessionResponse:
+        self.storage = value
         return self
 
     # endregion with_x methods
@@ -211,6 +218,10 @@ class ApimodelsPartySessionResponse(Model):
             result["expiredAt"] = str(self.expired_at)
         elif include_empty:
             result["expiredAt"] = ""
+        if hasattr(self, "storage"):
+            result["storage"] = {str(k0): v0 for k0, v0 in self.storage.items()}
+        elif include_empty:
+            result["storage"] = {}
         return result
 
     # endregion to methods
@@ -234,6 +245,7 @@ class ApimodelsPartySessionResponse(Model):
         attributes: Optional[Dict[str, Any]] = None,
         code: Optional[str] = None,
         expired_at: Optional[str] = None,
+        storage: Optional[Dict[str, Any]] = None,
         **kwargs,
     ) -> ApimodelsPartySessionResponse:
         instance = cls()
@@ -254,6 +266,8 @@ class ApimodelsPartySessionResponse(Model):
             instance.code = code
         if expired_at is not None:
             instance.expired_at = expired_at
+        if storage is not None:
+            instance.storage = storage
         return instance
 
     @classmethod
@@ -326,6 +340,10 @@ class ApimodelsPartySessionResponse(Model):
             instance.expired_at = str(dict_["expiredAt"])
         elif include_empty:
             instance.expired_at = ""
+        if "storage" in dict_ and dict_["storage"] is not None:
+            instance.storage = {str(k0): v0 for k0, v0 in dict_["storage"].items()}
+        elif include_empty:
+            instance.storage = {}
         return instance
 
     @classmethod
@@ -383,6 +401,7 @@ class ApimodelsPartySessionResponse(Model):
             "attributes": "attributes",
             "code": "code",
             "expiredAt": "expired_at",
+            "storage": "storage",
         }
 
     @staticmethod
@@ -402,6 +421,7 @@ class ApimodelsPartySessionResponse(Model):
             "attributes": False,
             "code": False,
             "expiredAt": False,
+            "storage": False,
         }
 
     # endregion static methods

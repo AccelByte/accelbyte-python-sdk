@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (6.2.0)
+# AccelByte Gaming Services Iam Service (7.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -252,6 +252,7 @@ from ..api.iam.models import ModelUserPasswordUpdateRequest
 from ..api.iam.models import ModelUserPasswordUpdateV3Request
 from ..api.iam.models import ModelUserPermissionsResponseV3
 from ..api.iam.models import ModelUserPlatformMetadata
+from ..api.iam.models import ModelUserPublicInfoResponseV4
 from ..api.iam.models import ModelUserResponse
 from ..api.iam.models import ModelUserResponseV3
 from ..api.iam.models import ModelUserRolesV4Response
@@ -2549,6 +2550,15 @@ def create_model_user_platform_metadata_example() -> ModelUserPlatformMetadata:
     return instance
 
 
+def create_model_user_public_info_response_v4_example() -> (
+    ModelUserPublicInfoResponseV4
+):
+    instance = ModelUserPublicInfoResponseV4()
+    instance.display_name = randomize("slug")
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_model_user_response_example() -> ModelUserResponse:
     instance = ModelUserResponse()
     instance.auth_type = randomize()
@@ -2742,6 +2752,7 @@ def create_model_verify_registration_code_example() -> ModelVerifyRegistrationCo
 
 def create_model_web_linking_response_example() -> ModelWebLinkingResponse:
     instance = ModelWebLinkingResponse()
+    instance.state = randomize()
     instance.third_party_url = randomize("url")
     return instance
 

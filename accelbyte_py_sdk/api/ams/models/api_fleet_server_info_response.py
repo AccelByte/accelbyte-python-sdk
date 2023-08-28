@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (0.2.1)
+# Fleet Commander (1.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -50,6 +50,8 @@ class ApiFleetServerInfoResponse(Model):
 
         port_configuration: (portConfiguration) REQUIRED List[ApiPortConfiguration]
 
+        ports: (ports) REQUIRED Dict[str, int]
+
         region: (region) REQUIRED str
 
         server_id: (serverId) REQUIRED str
@@ -67,6 +69,7 @@ class ApiFleetServerInfoResponse(Model):
     instance_type: str  # REQUIRED
     ip_address: str  # REQUIRED
     port_configuration: List[ApiPortConfiguration]  # REQUIRED
+    ports: Dict[str, int]  # REQUIRED
     region: str  # REQUIRED
     server_id: str  # REQUIRED
     status: str  # REQUIRED
@@ -107,6 +110,10 @@ class ApiFleetServerInfoResponse(Model):
         self, value: List[ApiPortConfiguration]
     ) -> ApiFleetServerInfoResponse:
         self.port_configuration = value
+        return self
+
+    def with_ports(self, value: Dict[str, int]) -> ApiFleetServerInfoResponse:
+        self.ports = value
         return self
 
     def with_region(self, value: str) -> ApiFleetServerInfoResponse:
@@ -162,6 +169,10 @@ class ApiFleetServerInfoResponse(Model):
             ]
         elif include_empty:
             result["portConfiguration"] = []
+        if hasattr(self, "ports"):
+            result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
+        elif include_empty:
+            result["ports"] = {}
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
@@ -191,6 +202,7 @@ class ApiFleetServerInfoResponse(Model):
         instance_type: str,
         ip_address: str,
         port_configuration: List[ApiPortConfiguration],
+        ports: Dict[str, int],
         region: str,
         server_id: str,
         status: str,
@@ -205,6 +217,7 @@ class ApiFleetServerInfoResponse(Model):
         instance.instance_type = instance_type
         instance.ip_address = ip_address
         instance.port_configuration = port_configuration
+        instance.ports = ports
         instance.region = region
         instance.server_id = server_id
         instance.status = status
@@ -252,6 +265,10 @@ class ApiFleetServerInfoResponse(Model):
             ]
         elif include_empty:
             instance.port_configuration = []
+        if "ports" in dict_ and dict_["ports"] is not None:
+            instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
+        elif include_empty:
+            instance.ports = {}
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -315,6 +332,7 @@ class ApiFleetServerInfoResponse(Model):
             "instanceType": "instance_type",
             "ipAddress": "ip_address",
             "portConfiguration": "port_configuration",
+            "ports": "ports",
             "region": "region",
             "serverId": "server_id",
             "status": "status",
@@ -331,6 +349,7 @@ class ApiFleetServerInfoResponse(Model):
             "instanceType": True,
             "ipAddress": True,
             "portConfiguration": True,
+            "ports": True,
             "region": True,
             "serverId": True,
             "status": True,

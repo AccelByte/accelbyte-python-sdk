@@ -29,7 +29,8 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import ModelBulkAddFriendsRequest
+from ..models import ModelBulkFriendsRequest
+from ..models import ModelBulkFriendsResponse
 from ..models import ModelGetFriendsResponse
 from ..models import ModelGetUserFriendsResponse
 from ..models import ModelGetUserIncomingFriendsResponse
@@ -47,6 +48,7 @@ from ..models import RestapiErrorResponseBody
 from ..models import RestapiErrorResponseV1
 
 from ..operations.friends import AddFriendsWithoutConfirmation
+from ..operations.friends import BulkDeleteFriends
 from ..operations.friends import GetIncomingFriendRequests
 from ..operations.friends import GetListOfFriends
 from ..operations.friends import GetOutgoingFriendRequests
@@ -66,7 +68,7 @@ from ..operations.friends import UserUnfriendRequest
 
 @same_doc_as(AddFriendsWithoutConfirmation)
 def add_friends_without_confirmation(
-    body: ModelBulkAddFriendsRequest,
+    body: ModelBulkFriendsRequest,
     user_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -97,7 +99,7 @@ def add_friends_without_confirmation(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelBulkAddFriendsRequest in body
+        body: (body) REQUIRED ModelBulkFriendsRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -128,7 +130,7 @@ def add_friends_without_confirmation(
 
 @same_doc_as(AddFriendsWithoutConfirmation)
 async def add_friends_without_confirmation_async(
-    body: ModelBulkAddFriendsRequest,
+    body: ModelBulkFriendsRequest,
     user_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -159,7 +161,7 @@ async def add_friends_without_confirmation_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelBulkAddFriendsRequest in body
+        body: (body) REQUIRED ModelBulkFriendsRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -190,9 +192,136 @@ async def add_friends_without_confirmation_async(
     )
 
 
+@same_doc_as(BulkDeleteFriends)
+def bulk_delete_friends(
+    body: ModelBulkFriendsRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete friends, and incoming/outgoing friend requests (bulkDeleteFriends)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [DELETE]` with scope `social`
+
+    friends request in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /friends/namespaces/{namespace}/users/{userId}/delete/bulk
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBulkFriendsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelBulkFriendsResponse (number of deleted items (one friendship consists of 2 items))
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - ModelBulkFriendsResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkDeleteFriends.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkDeleteFriends)
+async def bulk_delete_friends_async(
+    body: ModelBulkFriendsRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete friends, and incoming/outgoing friend requests (bulkDeleteFriends)
+
+    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [DELETE]` with scope `social`
+
+    friends request in a namespace.
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [DELETE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /friends/namespaces/{namespace}/users/{userId}/delete/bulk
+
+        method: POST
+
+        tags: ["friends", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelBulkFriendsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelBulkFriendsResponse (number of deleted items (one friendship consists of 2 items))
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        500: Internal Server Error - ModelBulkFriendsResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkDeleteFriends.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetIncomingFriendRequests)
 def get_incoming_friend_requests(
     user_id: str,
+    friend_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -228,6 +357,8 @@ def get_incoming_friend_requests(
 
         user_id: (userId) REQUIRED str in path
 
+        friend_id: (friendId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -249,6 +380,7 @@ def get_incoming_friend_requests(
             return None, error
     request = GetIncomingFriendRequests.create(
         user_id=user_id,
+        friend_id=friend_id,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -259,6 +391,7 @@ def get_incoming_friend_requests(
 @same_doc_as(GetIncomingFriendRequests)
 async def get_incoming_friend_requests_async(
     user_id: str,
+    friend_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -294,6 +427,8 @@ async def get_incoming_friend_requests_async(
 
         user_id: (userId) REQUIRED str in path
 
+        friend_id: (friendId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -315,6 +450,7 @@ async def get_incoming_friend_requests_async(
             return None, error
     request = GetIncomingFriendRequests.create(
         user_id=user_id,
+        friend_id=friend_id,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -327,6 +463,7 @@ async def get_incoming_friend_requests_async(
 @same_doc_as(GetListOfFriends)
 def get_list_of_friends(
     user_id: str,
+    friend_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -362,6 +499,8 @@ def get_list_of_friends(
 
         user_id: (userId) REQUIRED str in path
 
+        friend_id: (friendId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -383,6 +522,7 @@ def get_list_of_friends(
             return None, error
     request = GetListOfFriends.create(
         user_id=user_id,
+        friend_id=friend_id,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -393,6 +533,7 @@ def get_list_of_friends(
 @same_doc_as(GetListOfFriends)
 async def get_list_of_friends_async(
     user_id: str,
+    friend_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -428,6 +569,8 @@ async def get_list_of_friends_async(
 
         user_id: (userId) REQUIRED str in path
 
+        friend_id: (friendId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -449,6 +592,7 @@ async def get_list_of_friends_async(
             return None, error
     request = GetListOfFriends.create(
         user_id=user_id,
+        friend_id=friend_id,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -704,6 +848,8 @@ async def get_user_friends_updated_async(
 
 @same_doc_as(GetUserFriendsWithPlatform)
 def get_user_friends_with_platform(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -725,6 +871,10 @@ def get_user_friends_with_platform(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - ModelListBulkUserPlatformsResponse (OK)
 
@@ -743,6 +893,8 @@ def get_user_friends_with_platform(
         if error:
             return None, error
     request = GetUserFriendsWithPlatform.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -750,6 +902,8 @@ def get_user_friends_with_platform(
 
 @same_doc_as(GetUserFriendsWithPlatform)
 async def get_user_friends_with_platform_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -771,6 +925,10 @@ async def get_user_friends_with_platform_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - ModelListBulkUserPlatformsResponse (OK)
 
@@ -789,6 +947,8 @@ async def get_user_friends_with_platform_async(
         if error:
             return None, error
     request = GetUserFriendsWithPlatform.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(
@@ -798,6 +958,8 @@ async def get_user_friends_with_platform_async(
 
 @same_doc_as(GetUserIncomingFriends)
 def get_user_incoming_friends(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -819,6 +981,10 @@ def get_user_incoming_friends(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - List[ModelGetUserIncomingFriendsResponse] (OK)
 
@@ -837,6 +1003,8 @@ def get_user_incoming_friends(
         if error:
             return None, error
     request = GetUserIncomingFriends.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -844,6 +1012,8 @@ def get_user_incoming_friends(
 
 @same_doc_as(GetUserIncomingFriends)
 async def get_user_incoming_friends_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -865,6 +1035,10 @@ async def get_user_incoming_friends_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - List[ModelGetUserIncomingFriendsResponse] (OK)
 
@@ -883,6 +1057,8 @@ async def get_user_incoming_friends_async(
         if error:
             return None, error
     request = GetUserIncomingFriends.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(
@@ -892,6 +1068,8 @@ async def get_user_incoming_friends_async(
 
 @same_doc_as(GetUserIncomingFriendsWithTime)
 def get_user_incoming_friends_with_time(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -913,6 +1091,10 @@ def get_user_incoming_friends_with_time(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - List[ModelLoadIncomingFriendsWithTimeResponse] (OK)
 
@@ -931,6 +1113,8 @@ def get_user_incoming_friends_with_time(
         if error:
             return None, error
     request = GetUserIncomingFriendsWithTime.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -938,6 +1122,8 @@ def get_user_incoming_friends_with_time(
 
 @same_doc_as(GetUserIncomingFriendsWithTime)
 async def get_user_incoming_friends_with_time_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -959,6 +1145,10 @@ async def get_user_incoming_friends_with_time_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - List[ModelLoadIncomingFriendsWithTimeResponse] (OK)
 
@@ -977,6 +1167,8 @@ async def get_user_incoming_friends_with_time_async(
         if error:
             return None, error
     request = GetUserIncomingFriendsWithTime.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(
@@ -986,6 +1178,8 @@ async def get_user_incoming_friends_with_time_async(
 
 @same_doc_as(GetUserOutgoingFriends)
 def get_user_outgoing_friends(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1007,6 +1201,10 @@ def get_user_outgoing_friends(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - List[ModelGetUserOutgoingFriendsResponse] (OK)
 
@@ -1025,6 +1223,8 @@ def get_user_outgoing_friends(
         if error:
             return None, error
     request = GetUserOutgoingFriends.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1032,6 +1232,8 @@ def get_user_outgoing_friends(
 
 @same_doc_as(GetUserOutgoingFriends)
 async def get_user_outgoing_friends_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1053,6 +1255,10 @@ async def get_user_outgoing_friends_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - List[ModelGetUserOutgoingFriendsResponse] (OK)
 
@@ -1071,6 +1277,8 @@ async def get_user_outgoing_friends_async(
         if error:
             return None, error
     request = GetUserOutgoingFriends.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1080,6 +1288,8 @@ async def get_user_outgoing_friends_async(
 
 @same_doc_as(GetUserOutgoingFriendsWithTime)
 def get_user_outgoing_friends_with_time(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1101,6 +1311,10 @@ def get_user_outgoing_friends_with_time(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - List[ModelLoadOutgoingFriendsWithTimeResponse] (OK)
 
@@ -1119,6 +1333,8 @@ def get_user_outgoing_friends_with_time(
         if error:
             return None, error
     request = GetUserOutgoingFriendsWithTime.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1126,6 +1342,8 @@ def get_user_outgoing_friends_with_time(
 
 @same_doc_as(GetUserOutgoingFriendsWithTime)
 async def get_user_outgoing_friends_with_time_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1147,6 +1365,10 @@ async def get_user_outgoing_friends_with_time_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
         200: OK - List[ModelLoadOutgoingFriendsWithTimeResponse] (OK)
 
@@ -1165,6 +1387,8 @@ async def get_user_outgoing_friends_with_time_async(
         if error:
             return None, error
     request = GetUserOutgoingFriendsWithTime.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(

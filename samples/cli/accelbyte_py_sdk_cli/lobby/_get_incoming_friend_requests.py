@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Lobby Server (3.24.1)
+# AGS Lobby Server (3.25.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
 @click.command()
 @click.argument("user_id", type=str)
+@click.option("--friend_id", "friend_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 @click.option("--doc", type=bool)
 def get_incoming_friend_requests(
     user_id: str,
+    friend_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -64,6 +66,7 @@ def get_incoming_friend_requests(
         login_as_internal(login_as)
     result, error = get_incoming_friend_requests_internal(
         user_id=user_id,
+        friend_id=friend_id,
         limit=limit,
         offset=offset,
         namespace=namespace,

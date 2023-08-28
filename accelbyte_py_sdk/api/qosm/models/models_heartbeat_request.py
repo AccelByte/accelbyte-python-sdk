@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Qo S Manager Service (1.18.2)
+# AccelByte Gaming Services Qo S Manager Service (1.18.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

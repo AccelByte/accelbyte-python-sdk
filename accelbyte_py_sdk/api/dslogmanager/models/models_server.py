@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ds Log Manager Service (3.3.1)
+# AccelByte Gaming Services Ds Log Manager Service (3.3.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,11 +35,7 @@ class ModelsServer(Model):
     """Models server (models.Server)
 
     Properties:
-        allocation_events: (allocation_events) REQUIRED List[ModelsAllocationEvent]
-
         allocation_id: (allocation_id) REQUIRED str
-
-        alternate_ips: (alternate_ips) REQUIRED List[str]
 
         cpu_limit: (cpu_limit) REQUIRED int
 
@@ -71,8 +67,6 @@ class ModelsServer(Model):
 
         port: (port) REQUIRED int
 
-        ports: (ports) REQUIRED Dict[str, int]
-
         protocol: (protocol) REQUIRED str
 
         provider: (provider) REQUIRED str
@@ -83,16 +77,20 @@ class ModelsServer(Model):
 
         status: (status) REQUIRED str
 
-        status_history: (status_history) REQUIRED List[ModelsStatusHistory]
-
         termination_reason: (termination_reason) REQUIRED str
+
+        allocation_events: (allocation_events) OPTIONAL List[ModelsAllocationEvent]
+
+        alternate_ips: (alternate_ips) OPTIONAL List[str]
+
+        ports: (ports) OPTIONAL Dict[str, int]
+
+        status_history: (status_history) OPTIONAL List[ModelsStatusHistory]
     """
 
     # region fields
 
-    allocation_events: List[ModelsAllocationEvent]  # REQUIRED
     allocation_id: str  # REQUIRED
-    alternate_ips: List[str]  # REQUIRED
     cpu_limit: int  # REQUIRED
     deployment: str  # REQUIRED
     deployment_override: str  # REQUIRED
@@ -108,31 +106,23 @@ class ModelsServer(Model):
     params: str  # REQUIRED
     pod_name: str  # REQUIRED
     port: int  # REQUIRED
-    ports: Dict[str, int]  # REQUIRED
     protocol: str  # REQUIRED
     provider: str  # REQUIRED
     region: str  # REQUIRED
     session_id: str  # REQUIRED
     status: str  # REQUIRED
-    status_history: List[ModelsStatusHistory]  # REQUIRED
     termination_reason: str  # REQUIRED
+    allocation_events: List[ModelsAllocationEvent]  # OPTIONAL
+    alternate_ips: List[str]  # OPTIONAL
+    ports: Dict[str, int]  # OPTIONAL
+    status_history: List[ModelsStatusHistory]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_allocation_events(
-        self, value: List[ModelsAllocationEvent]
-    ) -> ModelsServer:
-        self.allocation_events = value
-        return self
-
     def with_allocation_id(self, value: str) -> ModelsServer:
         self.allocation_id = value
-        return self
-
-    def with_alternate_ips(self, value: List[str]) -> ModelsServer:
-        self.alternate_ips = value
         return self
 
     def with_cpu_limit(self, value: int) -> ModelsServer:
@@ -195,10 +185,6 @@ class ModelsServer(Model):
         self.port = value
         return self
 
-    def with_ports(self, value: Dict[str, int]) -> ModelsServer:
-        self.ports = value
-        return self
-
     def with_protocol(self, value: str) -> ModelsServer:
         self.protocol = value
         return self
@@ -219,12 +205,26 @@ class ModelsServer(Model):
         self.status = value
         return self
 
-    def with_status_history(self, value: List[ModelsStatusHistory]) -> ModelsServer:
-        self.status_history = value
-        return self
-
     def with_termination_reason(self, value: str) -> ModelsServer:
         self.termination_reason = value
+        return self
+
+    def with_allocation_events(
+        self, value: List[ModelsAllocationEvent]
+    ) -> ModelsServer:
+        self.allocation_events = value
+        return self
+
+    def with_alternate_ips(self, value: List[str]) -> ModelsServer:
+        self.alternate_ips = value
+        return self
+
+    def with_ports(self, value: Dict[str, int]) -> ModelsServer:
+        self.ports = value
+        return self
+
+    def with_status_history(self, value: List[ModelsStatusHistory]) -> ModelsServer:
+        self.status_history = value
         return self
 
     # endregion with_x methods
@@ -233,20 +233,10 @@ class ModelsServer(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "allocation_events"):
-            result["allocation_events"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.allocation_events
-            ]
-        elif include_empty:
-            result["allocation_events"] = []
         if hasattr(self, "allocation_id"):
             result["allocation_id"] = str(self.allocation_id)
         elif include_empty:
             result["allocation_id"] = ""
-        if hasattr(self, "alternate_ips"):
-            result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
-        elif include_empty:
-            result["alternate_ips"] = []
         if hasattr(self, "cpu_limit"):
             result["cpu_limit"] = int(self.cpu_limit)
         elif include_empty:
@@ -307,10 +297,6 @@ class ModelsServer(Model):
             result["port"] = int(self.port)
         elif include_empty:
             result["port"] = 0
-        if hasattr(self, "ports"):
-            result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
-        elif include_empty:
-            result["ports"] = {}
         if hasattr(self, "protocol"):
             result["protocol"] = str(self.protocol)
         elif include_empty:
@@ -331,16 +317,30 @@ class ModelsServer(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "termination_reason"):
+            result["termination_reason"] = str(self.termination_reason)
+        elif include_empty:
+            result["termination_reason"] = ""
+        if hasattr(self, "allocation_events"):
+            result["allocation_events"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.allocation_events
+            ]
+        elif include_empty:
+            result["allocation_events"] = []
+        if hasattr(self, "alternate_ips"):
+            result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
+        elif include_empty:
+            result["alternate_ips"] = []
+        if hasattr(self, "ports"):
+            result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
+        elif include_empty:
+            result["ports"] = {}
         if hasattr(self, "status_history"):
             result["status_history"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.status_history
             ]
         elif include_empty:
             result["status_history"] = []
-        if hasattr(self, "termination_reason"):
-            result["termination_reason"] = str(self.termination_reason)
-        elif include_empty:
-            result["termination_reason"] = ""
         return result
 
     # endregion to methods
@@ -350,9 +350,7 @@ class ModelsServer(Model):
     @classmethod
     def create(
         cls,
-        allocation_events: List[ModelsAllocationEvent],
         allocation_id: str,
-        alternate_ips: List[str],
         cpu_limit: int,
         deployment: str,
         deployment_override: str,
@@ -368,20 +366,20 @@ class ModelsServer(Model):
         params: str,
         pod_name: str,
         port: int,
-        ports: Dict[str, int],
         protocol: str,
         provider: str,
         region: str,
         session_id: str,
         status: str,
-        status_history: List[ModelsStatusHistory],
         termination_reason: str,
+        allocation_events: Optional[List[ModelsAllocationEvent]] = None,
+        alternate_ips: Optional[List[str]] = None,
+        ports: Optional[Dict[str, int]] = None,
+        status_history: Optional[List[ModelsStatusHistory]] = None,
         **kwargs,
     ) -> ModelsServer:
         instance = cls()
-        instance.allocation_events = allocation_events
         instance.allocation_id = allocation_id
-        instance.alternate_ips = alternate_ips
         instance.cpu_limit = cpu_limit
         instance.deployment = deployment
         instance.deployment_override = deployment_override
@@ -397,14 +395,20 @@ class ModelsServer(Model):
         instance.params = params
         instance.pod_name = pod_name
         instance.port = port
-        instance.ports = ports
         instance.protocol = protocol
         instance.provider = provider
         instance.region = region
         instance.session_id = session_id
         instance.status = status
-        instance.status_history = status_history
         instance.termination_reason = termination_reason
+        if allocation_events is not None:
+            instance.allocation_events = allocation_events
+        if alternate_ips is not None:
+            instance.alternate_ips = alternate_ips
+        if ports is not None:
+            instance.ports = ports
+        if status_history is not None:
+            instance.status_history = status_history
         return instance
 
     @classmethod
@@ -412,21 +416,10 @@ class ModelsServer(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "allocation_events" in dict_ and dict_["allocation_events"] is not None:
-            instance.allocation_events = [
-                ModelsAllocationEvent.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["allocation_events"]
-            ]
-        elif include_empty:
-            instance.allocation_events = []
         if "allocation_id" in dict_ and dict_["allocation_id"] is not None:
             instance.allocation_id = str(dict_["allocation_id"])
         elif include_empty:
             instance.allocation_id = ""
-        if "alternate_ips" in dict_ and dict_["alternate_ips"] is not None:
-            instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
-        elif include_empty:
-            instance.alternate_ips = []
         if "cpu_limit" in dict_ and dict_["cpu_limit"] is not None:
             instance.cpu_limit = int(dict_["cpu_limit"])
         elif include_empty:
@@ -490,10 +483,6 @@ class ModelsServer(Model):
             instance.port = int(dict_["port"])
         elif include_empty:
             instance.port = 0
-        if "ports" in dict_ and dict_["ports"] is not None:
-            instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
-        elif include_empty:
-            instance.ports = {}
         if "protocol" in dict_ and dict_["protocol"] is not None:
             instance.protocol = str(dict_["protocol"])
         elif include_empty:
@@ -514,6 +503,25 @@ class ModelsServer(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "termination_reason" in dict_ and dict_["termination_reason"] is not None:
+            instance.termination_reason = str(dict_["termination_reason"])
+        elif include_empty:
+            instance.termination_reason = ""
+        if "allocation_events" in dict_ and dict_["allocation_events"] is not None:
+            instance.allocation_events = [
+                ModelsAllocationEvent.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["allocation_events"]
+            ]
+        elif include_empty:
+            instance.allocation_events = []
+        if "alternate_ips" in dict_ and dict_["alternate_ips"] is not None:
+            instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
+        elif include_empty:
+            instance.alternate_ips = []
+        if "ports" in dict_ and dict_["ports"] is not None:
+            instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
+        elif include_empty:
+            instance.ports = {}
         if "status_history" in dict_ and dict_["status_history"] is not None:
             instance.status_history = [
                 ModelsStatusHistory.create_from_dict(i0, include_empty=include_empty)
@@ -521,10 +529,6 @@ class ModelsServer(Model):
             ]
         elif include_empty:
             instance.status_history = []
-        if "termination_reason" in dict_ and dict_["termination_reason"] is not None:
-            instance.termination_reason = str(dict_["termination_reason"])
-        elif include_empty:
-            instance.termination_reason = ""
         return instance
 
     @classmethod
@@ -564,9 +568,7 @@ class ModelsServer(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "allocation_events": "allocation_events",
             "allocation_id": "allocation_id",
-            "alternate_ips": "alternate_ips",
             "cpu_limit": "cpu_limit",
             "deployment": "deployment",
             "deployment_override": "deployment_override",
@@ -582,22 +584,22 @@ class ModelsServer(Model):
             "params": "params",
             "pod_name": "pod_name",
             "port": "port",
-            "ports": "ports",
             "protocol": "protocol",
             "provider": "provider",
             "region": "region",
             "session_id": "session_id",
             "status": "status",
-            "status_history": "status_history",
             "termination_reason": "termination_reason",
+            "allocation_events": "allocation_events",
+            "alternate_ips": "alternate_ips",
+            "ports": "ports",
+            "status_history": "status_history",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "allocation_events": True,
             "allocation_id": True,
-            "alternate_ips": True,
             "cpu_limit": True,
             "deployment": True,
             "deployment_override": True,
@@ -613,14 +615,16 @@ class ModelsServer(Model):
             "params": True,
             "pod_name": True,
             "port": True,
-            "ports": True,
             "protocol": True,
             "provider": True,
             "region": True,
             "session_id": True,
             "status": True,
-            "status_history": True,
             "termination_reason": True,
+            "allocation_events": False,
+            "alternate_ips": False,
+            "ports": False,
+            "status_history": False,
         }
 
     # endregion static methods

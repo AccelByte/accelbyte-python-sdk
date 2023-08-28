@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.22.2)
+# AccelByte Gaming Services Session Service (3.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,6 +71,8 @@ class ApimodelsGameSessionResponse(Model):
 
         expired_at: (expiredAt) OPTIONAL str
 
+        storage: (storage) OPTIONAL Dict[str, Any]
+
         teams: (teams) OPTIONAL List[ModelsTeam]
 
         ticket_i_ds: (ticketIDs) OPTIONAL List[str]
@@ -95,6 +97,7 @@ class ApimodelsGameSessionResponse(Model):
     attributes: Dict[str, Any]  # OPTIONAL
     code: str  # OPTIONAL
     expired_at: str  # OPTIONAL
+    storage: Dict[str, Any]  # OPTIONAL
     teams: List[ModelsTeam]  # OPTIONAL
     ticket_i_ds: List[str]  # OPTIONAL
 
@@ -174,6 +177,10 @@ class ApimodelsGameSessionResponse(Model):
 
     def with_expired_at(self, value: str) -> ApimodelsGameSessionResponse:
         self.expired_at = value
+        return self
+
+    def with_storage(self, value: Dict[str, Any]) -> ApimodelsGameSessionResponse:
+        self.storage = value
         return self
 
     def with_teams(self, value: List[ModelsTeam]) -> ApimodelsGameSessionResponse:
@@ -264,6 +271,10 @@ class ApimodelsGameSessionResponse(Model):
             result["expiredAt"] = str(self.expired_at)
         elif include_empty:
             result["expiredAt"] = ""
+        if hasattr(self, "storage"):
+            result["storage"] = {str(k0): v0 for k0, v0 in self.storage.items()}
+        elif include_empty:
+            result["storage"] = {}
         if hasattr(self, "teams"):
             result["teams"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.teams
@@ -300,6 +311,7 @@ class ApimodelsGameSessionResponse(Model):
         attributes: Optional[Dict[str, Any]] = None,
         code: Optional[str] = None,
         expired_at: Optional[str] = None,
+        storage: Optional[Dict[str, Any]] = None,
         teams: Optional[List[ModelsTeam]] = None,
         ticket_i_ds: Optional[List[str]] = None,
         **kwargs,
@@ -325,6 +337,8 @@ class ApimodelsGameSessionResponse(Model):
             instance.code = code
         if expired_at is not None:
             instance.expired_at = expired_at
+        if storage is not None:
+            instance.storage = storage
         if teams is not None:
             instance.teams = teams
         if ticket_i_ds is not None:
@@ -415,6 +429,10 @@ class ApimodelsGameSessionResponse(Model):
             instance.expired_at = str(dict_["expiredAt"])
         elif include_empty:
             instance.expired_at = ""
+        if "storage" in dict_ and dict_["storage"] is not None:
+            instance.storage = {str(k0): v0 for k0, v0 in dict_["storage"].items()}
+        elif include_empty:
+            instance.storage = {}
         if "teams" in dict_ and dict_["teams"] is not None:
             instance.teams = [
                 ModelsTeam.create_from_dict(i0, include_empty=include_empty)
@@ -486,6 +504,7 @@ class ApimodelsGameSessionResponse(Model):
             "attributes": "attributes",
             "code": "code",
             "expiredAt": "expired_at",
+            "storage": "storage",
             "teams": "teams",
             "ticketIDs": "ticket_i_ds",
         }
@@ -510,6 +529,7 @@ class ApimodelsGameSessionResponse(Model):
             "attributes": False,
             "code": False,
             "expiredAt": False,
+            "storage": False,
             "teams": False,
             "ticketIDs": False,
         }

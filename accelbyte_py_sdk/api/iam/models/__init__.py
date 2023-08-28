@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "6.2.0"
+__version__ = "7.1.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -326,6 +326,7 @@ from .model_user_password_update_request import ModelUserPasswordUpdateRequest
 from .model_user_password_update_v3_request import ModelUserPasswordUpdateV3Request
 from .model_user_permissions_response_v3 import ModelUserPermissionsResponseV3
 from .model_user_platform_metadata import ModelUserPlatformMetadata
+from .model_user_public_info_response_v4 import ModelUserPublicInfoResponseV4
 from .model_user_response import ModelUserResponse
 from .model_user_response_v3 import ModelUserResponseV3
 from .model_user_roles_v4_response import ModelUserRolesV4Response

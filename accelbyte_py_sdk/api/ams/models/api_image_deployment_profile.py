@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (0.2.1)
+# Fleet Commander (1.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

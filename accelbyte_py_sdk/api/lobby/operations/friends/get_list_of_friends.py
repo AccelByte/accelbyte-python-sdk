@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.24.1)
+# AccelByte Gaming Services Lobby Server (3.25.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,6 +63,8 @@ class GetListOfFriends(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        friend_id: (friendId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -90,6 +92,7 @@ class GetListOfFriends(Operation):
 
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    friend_id: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
 
@@ -145,6 +148,8 @@ class GetListOfFriends(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "friend_id"):
+            result["friendId"] = self.friend_id
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -165,6 +170,10 @@ class GetListOfFriends(Operation):
 
     def with_user_id(self, value: str) -> GetListOfFriends:
         self.user_id = value
+        return self
+
+    def with_friend_id(self, value: str) -> GetListOfFriends:
+        self.friend_id = value
         return self
 
     def with_limit(self, value: int) -> GetListOfFriends:
@@ -189,6 +198,10 @@ class GetListOfFriends(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "friend_id") and self.friend_id:
+            result["friendId"] = str(self.friend_id)
+        elif include_empty:
+            result["friendId"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -259,6 +272,7 @@ class GetListOfFriends(Operation):
         cls,
         namespace: str,
         user_id: str,
+        friend_id: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         **kwargs,
@@ -266,6 +280,8 @@ class GetListOfFriends(Operation):
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
+        if friend_id is not None:
+            instance.friend_id = friend_id
         if limit is not None:
             instance.limit = limit
         if offset is not None:
@@ -285,6 +301,10 @@ class GetListOfFriends(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "friendId" in dict_ and dict_["friendId"] is not None:
+            instance.friend_id = str(dict_["friendId"])
+        elif include_empty:
+            instance.friend_id = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -300,6 +320,7 @@ class GetListOfFriends(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+            "friendId": "friend_id",
             "limit": "limit",
             "offset": "offset",
         }
@@ -309,6 +330,7 @@ class GetListOfFriends(Operation):
         return {
             "namespace": True,
             "userId": True,
+            "friendId": False,
             "limit": False,
             "offset": False,
         }

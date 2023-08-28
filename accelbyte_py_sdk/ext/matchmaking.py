@@ -394,6 +394,7 @@ def create_models_matchmaking_result_example() -> ModelsMatchmakingResult:
     instance.updated_at = randomize("date")
     instance.joinable = randomize("bool")
     instance.party_id = randomize("uid")
+    instance.ticket_ids = [randomize()]
     return instance
 
 
@@ -420,6 +421,7 @@ def create_models_mock_match_example() -> ModelsMockMatch:
     instance.updated_at = randomize("date")
     instance.joinable = randomize("bool")
     instance.party_id = randomize("uid")
+    instance.ticket_ids = [randomize()]
     return instance
 
 
@@ -442,6 +444,7 @@ def create_models_mock_ticket_example() -> ModelsMockTicket:
     instance.sorted_latency = [create_models_region_example()]
     instance.status = randomize()
     instance.ticket_id = randomize()
+    instance.ticket_ids = [randomize()]
     return instance
 
 

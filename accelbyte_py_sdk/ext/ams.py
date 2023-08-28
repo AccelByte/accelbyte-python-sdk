@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (0.2.1)
+# Fleet Commander (1.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -252,6 +252,7 @@ def create_api_fleet_server_info_response_example() -> ApiFleetServerInfoRespons
     instance.instance_type = randomize()
     instance.ip_address = randomize()
     instance.port_configuration = [create_api_port_configuration_example()]
+    instance.ports = {}
     instance.region = randomize()
     instance.server_id = randomize()
     instance.status = randomize()

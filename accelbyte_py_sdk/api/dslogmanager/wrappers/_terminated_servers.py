@@ -292,6 +292,8 @@ def list_terminated_servers(
     Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
 
     This endpoint used to retrieve terminated servers in a namespace
+
+    The namespace filter is will give result exact namespace response
     ```
 
     Required Permission(s):
@@ -399,6 +401,8 @@ async def list_terminated_servers_async(
     Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
 
     This endpoint used to retrieve terminated servers in a namespace
+
+    The namespace filter is will give result exact namespace response
     ```
 
     Required Permission(s):

@@ -71,6 +71,8 @@ class ModelsMatchmakingResult(Model):
         joinable: (joinable) OPTIONAL bool
 
         party_id: (party_id) OPTIONAL str
+
+        ticket_ids: (ticket_ids) OPTIONAL List[str]
     """
 
     # region fields
@@ -94,6 +96,7 @@ class ModelsMatchmakingResult(Model):
     updated_at: str  # REQUIRED
     joinable: bool  # OPTIONAL
     party_id: str  # OPTIONAL
+    ticket_ids: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -175,6 +178,10 @@ class ModelsMatchmakingResult(Model):
 
     def with_party_id(self, value: str) -> ModelsMatchmakingResult:
         self.party_id = value
+        return self
+
+    def with_ticket_ids(self, value: List[str]) -> ModelsMatchmakingResult:
+        self.ticket_ids = value
         return self
 
     # endregion with_x methods
@@ -263,6 +270,10 @@ class ModelsMatchmakingResult(Model):
             result["party_id"] = str(self.party_id)
         elif include_empty:
             result["party_id"] = ""
+        if hasattr(self, "ticket_ids"):
+            result["ticket_ids"] = [str(i0) for i0 in self.ticket_ids]
+        elif include_empty:
+            result["ticket_ids"] = []
         return result
 
     # endregion to methods
@@ -291,6 +302,7 @@ class ModelsMatchmakingResult(Model):
         updated_at: str,
         joinable: Optional[bool] = None,
         party_id: Optional[str] = None,
+        ticket_ids: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelsMatchmakingResult:
         instance = cls()
@@ -315,6 +327,8 @@ class ModelsMatchmakingResult(Model):
             instance.joinable = joinable
         if party_id is not None:
             instance.party_id = party_id
+        if ticket_ids is not None:
+            instance.ticket_ids = ticket_ids
         return instance
 
     @classmethod
@@ -405,6 +419,10 @@ class ModelsMatchmakingResult(Model):
             instance.party_id = str(dict_["party_id"])
         elif include_empty:
             instance.party_id = ""
+        if "ticket_ids" in dict_ and dict_["ticket_ids"] is not None:
+            instance.ticket_ids = [str(i0) for i0 in dict_["ticket_ids"]]
+        elif include_empty:
+            instance.ticket_ids = []
         return instance
 
     @classmethod
@@ -467,6 +485,7 @@ class ModelsMatchmakingResult(Model):
             "updated_at": "updated_at",
             "joinable": "joinable",
             "party_id": "party_id",
+            "ticket_ids": "ticket_ids",
         }
 
     @staticmethod
@@ -491,6 +510,7 @@ class ModelsMatchmakingResult(Model):
             "updated_at": True,
             "joinable": False,
             "party_id": False,
+            "ticket_ids": False,
         }
 
     # endregion static methods

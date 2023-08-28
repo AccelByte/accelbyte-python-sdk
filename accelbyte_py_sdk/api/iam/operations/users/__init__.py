@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "6.2.0"
+__version__ = "7.1.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -144,6 +144,7 @@ from .public_platform_link_v2 import PublicPlatformLinkV2
 from .public_platform_link_v3 import PublicPlatformLinkV3
 from .public_platform_unlink_all_v3 import PublicPlatformUnlinkAllV3
 from .public_platform_unlink_v3 import PublicPlatformUnlinkV3
+from .public_process_web_link_2f9ff9 import PublicProcessWebLinkPlatformV3
 from .public_reset_password_v2 import PublicResetPasswordV2
 from .public_search_user_v3 import PublicSearchUserV3
 from .public_send_registration_code import PublicSendRegistrationCode

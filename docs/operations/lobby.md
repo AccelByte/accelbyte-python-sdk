@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Lobby Server Index (3.24.1)
+# AccelByte Gaming Services Lobby Server Index (3.25.0)
 
 
 ## Operations
@@ -34,6 +34,7 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /friends/namespaces/{namespace}/users/{userId}/add/bulk | POST | addFriendsWithoutConfirmation | `false` | [AddFriendsWithoutConfirmation](../../accelbyte_py_sdk/api/lobby/operations/friends/add_friends_without_con_a5cd59.py) | [add_friends_without_confirmation](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-add-friends-without-confirmation](../../samples/cli/accelbyte_py_sdk_cli/lobby/_add_friends_without_confirmation.py) |
+| /friends/namespaces/{namespace}/users/{userId}/delete/bulk | POST | bulkDeleteFriends | `false` | [BulkDeleteFriends](../../accelbyte_py_sdk/api/lobby/operations/friends/bulk_delete_friends.py) | [bulk_delete_friends](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-bulk-delete-friends](../../samples/cli/accelbyte_py_sdk_cli/lobby/_bulk_delete_friends.py) |
 | /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}/incoming | GET | get incoming friend requests | `false` | [GetIncomingFriendRequests](../../accelbyte_py_sdk/api/lobby/operations/friends/get_incoming_friend_requests.py) | [get_incoming_friend_requests](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-incoming-friend-requests](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_incoming_friend_requests.py) |
 | /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId} | GET | get list of friends | `false` | [GetListOfFriends](../../accelbyte_py_sdk/api/lobby/operations/friends/get_list_of_friends.py) | [get_list_of_friends](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-list-of-friends](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_list_of_friends.py) |
 | /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}/outgoing | GET | get outgoing friend requests | `false` | [GetOutgoingFriendRequests](../../accelbyte_py_sdk/api/lobby/operations/friends/get_outgoing_friend_requests.py) | [get_outgoing_friend_requests](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-outgoing-friend-requests](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_outgoing_friend_requests.py) |
@@ -148,7 +149,8 @@
 | handlers.GetUsersPresenceResponse | [HandlersGetUsersPresenceResponse](../../accelbyte_py_sdk/api/lobby/models/handlers_get_users_presence_response.py) |
 | handlers.UserPresence | [HandlersUserPresence](../../accelbyte_py_sdk/api/lobby/models/handlers_user_presence.py) |
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../../accelbyte_py_sdk/api/lobby/models/log_app_message_declaration.py) |
-| model.BulkAddFriendsRequest | [ModelBulkAddFriendsRequest](../../accelbyte_py_sdk/api/lobby/models/model_bulk_add_friends_request.py) |
+| model.BulkFriendsRequest | [ModelBulkFriendsRequest](../../accelbyte_py_sdk/api/lobby/models/model_bulk_friends_request.py) |
+| model.BulkFriendsResponse | [ModelBulkFriendsResponse](../../accelbyte_py_sdk/api/lobby/models/model_bulk_friends_response.py) |
 | model.BulkUsersFreeFormNotificationRequestV1 | [ModelBulkUsersFreeFormNotificationRequestV1](../../accelbyte_py_sdk/api/lobby/models/model_bulk_users_free_form_notification_request_v1.py) |
 | model.CreateTemplateRequest | [ModelCreateTemplateRequest](../../accelbyte_py_sdk/api/lobby/models/model_create_template_request.py) |
 | model.CreateTopicRequest | [ModelCreateTopicRequest](../../accelbyte_py_sdk/api/lobby/models/model_create_topic_request.py) |

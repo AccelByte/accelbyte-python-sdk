@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.24.1"
+__version__ = "3.25.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .add_friends_without_con_a5cd59 import AddFriendsWithoutConfirmation
+from .bulk_delete_friends import BulkDeleteFriends
 from .get_incoming_friend_requests import GetIncomingFriendRequests
 from .get_list_of_friends import GetListOfFriends
 from .get_outgoing_friend_requests import GetOutgoingFriendRequests

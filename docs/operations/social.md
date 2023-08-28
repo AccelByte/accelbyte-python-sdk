@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Social Service Index (2.9.2)
+# AccelByte Gaming Services Social Service Index (2.9.4)
 
 
 ## Operations
@@ -141,6 +141,7 @@
 | A DTO object for user stat item value | [ADTOObjectForUserStatItemValue](../../accelbyte_py_sdk/api/social/models/a_dto_object_for_user_stat_item_value.py) |
 | Attribute | [Attribute](../../accelbyte_py_sdk/api/social/models/attribute.py) |
 | BulkCycleStatsAdd | [BulkCycleStatsAdd](../../accelbyte_py_sdk/api/social/models/bulk_cycle_stats_add.py) |
+| BulkStatCycleOperationResult | [BulkStatCycleOperationResult](../../accelbyte_py_sdk/api/social/models/bulk_stat_cycle_operation_result.py) |
 | BulkStatCycleRequest | [BulkStatCycleRequest](../../accelbyte_py_sdk/api/social/models/bulk_stat_cycle_request.py) |
 | BulkStatCycleResult | [BulkStatCycleResult](../../accelbyte_py_sdk/api/social/models/bulk_stat_cycle_result.py) |
 | BulkStatItemCreate | [BulkStatItemCreate](../../accelbyte_py_sdk/api/social/models/bulk_stat_item_create.py) |

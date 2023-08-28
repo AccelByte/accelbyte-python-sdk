@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Lobby Server (3.24.1)
+# AGS Lobby Server (3.25.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import (
     add_friends_without_confirmation as add_friends_without_confirmation_internal,
 )
-from accelbyte_py_sdk.api.lobby.models import ModelBulkAddFriendsRequest
+from accelbyte_py_sdk.api.lobby.models import ModelBulkFriendsRequest
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 
 
@@ -63,7 +63,7 @@ def add_friends_without_confirmation(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelBulkAddFriendsRequest.create_from_dict(body_json)
+            body = ModelBulkFriendsRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = add_friends_without_confirmation_internal(

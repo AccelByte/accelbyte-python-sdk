@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ds Log Manager Service (3.3.1)
+# AccelByte Gaming Services Ds Log Manager Service (3.3.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,19 +36,19 @@ class ModelsMatchResult(Model):
     Properties:
         game_mode: (game_mode) REQUIRED str
 
-        matching_allies: (matching_allies) REQUIRED List[ModelsRequestMatchingAlly]
-
         namespace: (namespace) REQUIRED str
 
         session_id: (session_id) REQUIRED str
+
+        matching_allies: (matching_allies) OPTIONAL List[ModelsRequestMatchingAlly]
     """
 
     # region fields
 
     game_mode: str  # REQUIRED
-    matching_allies: List[ModelsRequestMatchingAlly]  # REQUIRED
     namespace: str  # REQUIRED
     session_id: str  # REQUIRED
+    matching_allies: List[ModelsRequestMatchingAlly]  # OPTIONAL
 
     # endregion fields
 
@@ -58,18 +58,18 @@ class ModelsMatchResult(Model):
         self.game_mode = value
         return self
 
-    def with_matching_allies(
-        self, value: List[ModelsRequestMatchingAlly]
-    ) -> ModelsMatchResult:
-        self.matching_allies = value
-        return self
-
     def with_namespace(self, value: str) -> ModelsMatchResult:
         self.namespace = value
         return self
 
     def with_session_id(self, value: str) -> ModelsMatchResult:
         self.session_id = value
+        return self
+
+    def with_matching_allies(
+        self, value: List[ModelsRequestMatchingAlly]
+    ) -> ModelsMatchResult:
+        self.matching_allies = value
         return self
 
     # endregion with_x methods
@@ -82,12 +82,6 @@ class ModelsMatchResult(Model):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
             result["game_mode"] = ""
-        if hasattr(self, "matching_allies"):
-            result["matching_allies"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
-            ]
-        elif include_empty:
-            result["matching_allies"] = []
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -96,6 +90,12 @@ class ModelsMatchResult(Model):
             result["session_id"] = str(self.session_id)
         elif include_empty:
             result["session_id"] = ""
+        if hasattr(self, "matching_allies"):
+            result["matching_allies"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
+            ]
+        elif include_empty:
+            result["matching_allies"] = []
         return result
 
     # endregion to methods
@@ -106,16 +106,17 @@ class ModelsMatchResult(Model):
     def create(
         cls,
         game_mode: str,
-        matching_allies: List[ModelsRequestMatchingAlly],
         namespace: str,
         session_id: str,
+        matching_allies: Optional[List[ModelsRequestMatchingAlly]] = None,
         **kwargs,
     ) -> ModelsMatchResult:
         instance = cls()
         instance.game_mode = game_mode
-        instance.matching_allies = matching_allies
         instance.namespace = namespace
         instance.session_id = session_id
+        if matching_allies is not None:
+            instance.matching_allies = matching_allies
         return instance
 
     @classmethod
@@ -129,6 +130,14 @@ class ModelsMatchResult(Model):
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
             instance.game_mode = ""
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = ""
+        if "session_id" in dict_ and dict_["session_id"] is not None:
+            instance.session_id = str(dict_["session_id"])
+        elif include_empty:
+            instance.session_id = ""
         if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
             instance.matching_allies = [
                 ModelsRequestMatchingAlly.create_from_dict(
@@ -138,14 +147,6 @@ class ModelsMatchResult(Model):
             ]
         elif include_empty:
             instance.matching_allies = []
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = ""
-        if "session_id" in dict_ and dict_["session_id"] is not None:
-            instance.session_id = str(dict_["session_id"])
-        elif include_empty:
-            instance.session_id = ""
         return instance
 
     @classmethod
@@ -188,18 +189,18 @@ class ModelsMatchResult(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "game_mode": "game_mode",
-            "matching_allies": "matching_allies",
             "namespace": "namespace",
             "session_id": "session_id",
+            "matching_allies": "matching_allies",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "game_mode": True,
-            "matching_allies": True,
             "namespace": True,
             "session_id": True,
+            "matching_allies": False,
         }
 
     # endregion static methods

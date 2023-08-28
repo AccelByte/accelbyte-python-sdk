@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (0.2.1)
+# Fleet Commander Index (1.0.1)
 
 
 ## Operations
@@ -21,10 +21,17 @@
 | /ams/v1/admin/namespaces/{namespace}/regions | GET | InfoRegions | `false` | [InfoRegions](../../accelbyte_py_sdk/api/ams/operations/ams_info/info_regions.py) | [info_regions](../../accelbyte_py_sdk/api/ams/wrappers/_ams_info.py) | [accelbyte_py_sdk_cli ams-info-regions](../../samples/cli/accelbyte_py_sdk_cli/ams/_info_regions.py) |
 | /ams/v1/admin/namespaces/{namespace}/supported-instances | GET | InfoSupportedInstances | `false` | [InfoSupportedInstances](../../accelbyte_py_sdk/api/ams/operations/ams_info/info_supported_instances.py) | [info_supported_instances](../../accelbyte_py_sdk/api/ams/wrappers/_ams_info.py) | [accelbyte_py_sdk_cli ams-info-supported-instances](../../samples/cli/accelbyte_py_sdk_cli/ams/_info_supported_instances.py) |
 
+### Auth
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /ams/auth | GET | AuthCheck | `false` | [AuthCheck](../../accelbyte_py_sdk/api/ams/operations/auth/auth_check.py) | [auth_check](../../accelbyte_py_sdk/api/ams/wrappers/_auth.py) | [accelbyte_py_sdk_cli ams-auth-check](../../samples/cli/accelbyte_py_sdk_cli/ams/_auth_check.py) |
+
 ### Fleet Commander
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /ams/version | GET | func3 | `false` | [Func3](../../accelbyte_py_sdk/api/ams/operations/fleet_commander/func3.py) | [func3](../../accelbyte_py_sdk/api/ams/wrappers/_fleet_commander.py) | [accelbyte_py_sdk_cli ams-func3](../../samples/cli/accelbyte_py_sdk_cli/ams/_func3.py) |
+| /healthz | GET | BasicHealthCheck | `false` | [BasicHealthCheck](../../accelbyte_py_sdk/api/ams/operations/fleet_commander/basic_health_check.py) | [basic_health_check](../../accelbyte_py_sdk/api/ams/wrappers/_fleet_commander.py) | [accelbyte_py_sdk_cli ams-basic-health-check](../../samples/cli/accelbyte_py_sdk_cli/ams/_basic_health_check.py) |
+| /ams/version | GET | func1 | `false` | [Func1](../../accelbyte_py_sdk/api/ams/operations/fleet_commander/func1.py) | [func1](../../accelbyte_py_sdk/api/ams/wrappers/_fleet_commander.py) | [accelbyte_py_sdk_cli ams-func1](../../samples/cli/accelbyte_py_sdk_cli/ams/_func1.py) |
+| /ams/healthz | GET | PortalHealthCheck | `false` | [PortalHealthCheck](../../accelbyte_py_sdk/api/ams/operations/fleet_commander/portal_health_check.py) | [portal_health_check](../../accelbyte_py_sdk/api/ams/wrappers/_fleet_commander.py) | [accelbyte_py_sdk_cli ams-portal-health-check](../../samples/cli/accelbyte_py_sdk_cli/ams/_portal_health_check.py) |
 
 ### Fleets
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -44,12 +51,6 @@
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID} | GET | ImageGet | `false` | [ImageGet](../../accelbyte_py_sdk/api/ams/operations/images/image_get.py) | [image_get](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_get.py) |
 | /ams/v1/admin/namespaces/{namespace}/images | GET | ImageList | `false` | [ImageList](../../accelbyte_py_sdk/api/ams/operations/images/image_list.py) | [image_list](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-list](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_list.py) |
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID} | PATCH | ImagePatch | `false` | [ImagePatch](../../accelbyte_py_sdk/api/ams/operations/images/image_patch.py) | [image_patch](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-patch](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_patch.py) |
-
-### Operations
-| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
-|---|---|---|---|---|---|---|
-| /ams/healthz | GET | func2 | `false` | [Func2](../../accelbyte_py_sdk/api/ams/operations/operations/func2.py) | [func2](../../accelbyte_py_sdk/api/ams/wrappers/_operations.py) | [accelbyte_py_sdk_cli ams-func2](../../samples/cli/accelbyte_py_sdk_cli/ams/_func2.py) |
-| /healthz | GET | PortalHealthCheck | `false` | [PortalHealthCheck](../../accelbyte_py_sdk/api/ams/operations/operations/portal_health_check.py) | [portal_health_check](../../accelbyte_py_sdk/api/ams/wrappers/_operations.py) | [accelbyte_py_sdk_cli ams-portal-health-check](../../samples/cli/accelbyte_py_sdk_cli/ams/_portal_health_check.py) |
 
 ### Servers
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |

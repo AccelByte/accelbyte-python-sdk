@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "0.2.1"
+__version__ = "1.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -30,9 +30,17 @@ from .wrappers import info_regions_async
 from .wrappers import info_supported_instances
 from .wrappers import info_supported_instances_async
 
+# auth
+from .wrappers import auth_check
+from .wrappers import auth_check_async
+
 # fleet_commander
-from .wrappers import func3
-from .wrappers import func3_async
+from .wrappers import basic_health_check
+from .wrappers import basic_health_check_async
+from .wrappers import func1
+from .wrappers import func1_async
+from .wrappers import portal_health_check
+from .wrappers import portal_health_check_async
 
 # fleets
 from .wrappers import fleet_claim_by_id
@@ -59,12 +67,6 @@ from .wrappers import image_list
 from .wrappers import image_list_async
 from .wrappers import image_patch
 from .wrappers import image_patch_async
-
-# operations
-from .wrappers import func2
-from .wrappers import func2_async
-from .wrappers import portal_health_check
-from .wrappers import portal_health_check_async
 
 # servers
 from .wrappers import fleet_server_history

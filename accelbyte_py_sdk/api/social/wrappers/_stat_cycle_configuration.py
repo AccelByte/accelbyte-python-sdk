@@ -30,9 +30,9 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import BulkCycleStatsAdd
+from ..models import BulkStatCycleOperationResult
 from ..models import BulkStatCycleRequest
 from ..models import BulkStatCycleResult
-from ..models import BulkStatOperationResult
 from ..models import ErrorEntity
 from ..models import StatCycleCreate
 from ..models import StatCycleInfo
@@ -101,7 +101,7 @@ def bulk_add_stats(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[BulkStatOperationResult] (successful operation)
+        200: OK - List[BulkStatCycleOperationResult] (successful operation)
 
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
     """
@@ -155,7 +155,7 @@ async def bulk_add_stats_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[BulkStatOperationResult] (successful operation)
+        200: OK - List[BulkStatCycleOperationResult] (successful operation)
 
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
     """

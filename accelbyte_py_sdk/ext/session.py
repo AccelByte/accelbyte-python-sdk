@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.22.2)
+# AccelByte Gaming Services Session Service (3.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -122,6 +122,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.auto_join = randomize("bool")
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
+    instance.immutable_storage = randomize("bool")
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
@@ -159,6 +160,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.auto_join = randomize("bool")
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
+    instance.immutable_storage = randomize("bool")
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
@@ -286,6 +288,7 @@ def create_apimodels_game_session_response_example() -> ApimodelsGameSessionResp
     instance.attributes = {randomize(): randomize()}
     instance.code = randomize()
     instance.expired_at = randomize()
+    instance.storage = {randomize(): randomize()}
     instance.teams = [create_models_team_example()]
     instance.ticket_i_ds = [randomize()]
     return instance
@@ -337,6 +340,7 @@ def create_apimodels_party_session_response_example() -> ApimodelsPartySessionRe
     instance.attributes = {randomize(): randomize()}
     instance.code = randomize()
     instance.expired_at = randomize()
+    instance.storage = {randomize(): randomize()}
     return instance
 
 
@@ -410,6 +414,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.type_ = randomize()
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
+    instance.immutable_storage = randomize("bool")
     instance.max_active_session = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
@@ -470,6 +475,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.auto_join = randomize("bool")
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
+    instance.immutable_storage = randomize("bool")
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]

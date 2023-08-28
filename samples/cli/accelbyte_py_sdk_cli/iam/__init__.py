@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (6.2.0)
+# justice-iam-service (7.1.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -330,6 +330,7 @@ from ._public_platform_unlink_all_v3 import public_platform_unlink_all_v3
 from ._public_force_platform_link_v3 import public_force_platform_link_v3
 from ._public_web_link_platform import public_web_link_platform
 from ._public_web_link_platform_establish import public_web_link_platform_establish
+from ._public_process_web_link_platform_v3 import public_process_web_link_platform_v3
 from ._reset_password_v3 import reset_password_v3
 from ._public_get_user_by_user_id_v3 import public_get_user_by_user_id_v3
 from ._public_get_user_ban_history_v3 import public_get_user_ban_history_v3
@@ -441,6 +442,9 @@ from ._public_disable_my_email_v4 import public_disable_my_email_v4
 from ._public_enable_my_email_v4 import public_enable_my_email_v4
 from ._public_get_my_enabled_factors_v4 import public_get_my_enabled_factors_v4
 from ._public_make_factor_my_default_v4 import public_make_factor_my_default_v4
+from ._public_get_user_public_info_by_user_id_v4 import (
+    public_get_user_public_info_by_user_id_v4,
+)
 from ._public_invite_user_v4 import public_invite_user_v4
 
 
@@ -703,6 +707,7 @@ commands = [
     public_force_platform_link_v3,
     public_web_link_platform,
     public_web_link_platform_establish,
+    public_process_web_link_platform_v3,
     reset_password_v3,
     public_get_user_by_user_id_v3,
     public_get_user_ban_history_v3,
@@ -796,5 +801,6 @@ commands = [
     public_enable_my_email_v4,
     public_get_my_enabled_factors_v4,
     public_make_factor_my_default_v4,
+    public_get_user_public_info_by_user_id_v4,
     public_invite_user_v4,
 ]

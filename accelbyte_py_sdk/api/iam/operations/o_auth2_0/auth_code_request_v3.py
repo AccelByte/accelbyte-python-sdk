@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (6.2.0)
+# AccelByte Gaming Services Iam Service (7.1.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -84,6 +84,9 @@ class AuthCodeRequestV3(Operation):
       * amazon
     This endpoint redirects to amazon login page, then redirect back to platform
     authenticate endpoint after successfully authenticating amazon user.
+
+      * oculusweb
+    This endpoint redirects to oculus login page, then redirect back to Login Website page after successfully authenticating oculus user.
 
     action code : 10702'
 

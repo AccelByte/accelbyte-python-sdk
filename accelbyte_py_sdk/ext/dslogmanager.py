@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ds Log Manager Service (3.3.1)
+# AccelByte Gaming Services Ds Log Manager Service (3.3.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -95,9 +95,9 @@ def create_models_log_file_status_example() -> ModelsLogFileStatus:
 def create_models_match_result_example() -> ModelsMatchResult:
     instance = ModelsMatchResult()
     instance.game_mode = randomize()
-    instance.matching_allies = [create_models_request_matching_ally_example()]
     instance.namespace = randomize("slug")
     instance.session_id = randomize("uid")
+    instance.matching_allies = [create_models_request_matching_ally_example()]
     return instance
 
 
@@ -141,9 +141,7 @@ def create_models_request_matching_ally_example() -> ModelsRequestMatchingAlly:
 
 def create_models_server_example() -> ModelsServer:
     instance = ModelsServer()
-    instance.allocation_events = [create_models_allocation_event_example()]
     instance.allocation_id = randomize()
-    instance.alternate_ips = [randomize()]
     instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
     instance.deployment = randomize()
     instance.deployment_override = randomize()
@@ -159,14 +157,16 @@ def create_models_server_example() -> ModelsServer:
     instance.params = randomize()
     instance.pod_name = randomize()
     instance.port = randomize("int", min_val=1, max_val=1000)
-    instance.ports = {}
     instance.protocol = randomize()
     instance.provider = randomize()
     instance.region = randomize()
     instance.session_id = randomize("uid")
     instance.status = randomize()
-    instance.status_history = [create_models_status_history_example()]
     instance.termination_reason = randomize()
+    instance.allocation_events = [create_models_allocation_event_example()]
+    instance.alternate_ips = [randomize()]
+    instance.ports = {}
+    instance.status_history = [create_models_status_history_example()]
     return instance
 
 

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.9.2)
+# AccelByte Gaming Services Social Service (2.9.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,6 +28,7 @@ from ..api.social.models import ADTOObjectForResettingUserStatItems
 from ..api.social.models import ADTOObjectForUserStatItemValue
 from ..api.social.models import Attribute
 from ..api.social.models import BulkCycleStatsAdd
+from ..api.social.models import BulkStatCycleOperationResult
 from ..api.social.models import BulkStatCycleRequest
 from ..api.social.models import BulkStatCycleResult
 from ..api.social.models import BulkStatItemCreate
@@ -105,6 +106,15 @@ def create_bulk_cycle_stats_add_example() -> BulkCycleStatsAdd:
     return instance
 
 
+def create_bulk_stat_cycle_operation_result_example() -> BulkStatCycleOperationResult:
+    instance = BulkStatCycleOperationResult()
+    instance.cycle_id = randomize()
+    instance.details = {randomize(): randomize()}
+    instance.stat_code = randomize()
+    instance.success = randomize("bool")
+    return instance
+
+
 def create_bulk_stat_cycle_request_example() -> BulkStatCycleRequest:
     instance = BulkStatCycleRequest()
     instance.cycle_ids = [randomize()]
@@ -150,6 +160,7 @@ def create_bulk_stat_operation_result_example() -> BulkStatOperationResult:
     instance.details = {randomize(): randomize()}
     instance.stat_code = randomize()
     instance.success = randomize("bool")
+    instance.user_id = randomize("uid")
     return instance
 
 

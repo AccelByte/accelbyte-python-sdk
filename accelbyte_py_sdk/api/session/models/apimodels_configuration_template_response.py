@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (2.22.2)
+# AccelByte Gaming Services Session Service (3.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -70,6 +70,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
+        immutable_storage: (immutableStorage) OPTIONAL bool
+
         max_active_sessions: (maxActiveSessions) OPTIONAL int
 
         native_session_setting: (nativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
@@ -103,6 +105,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     auto_join: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
+    immutable_storage: bool  # OPTIONAL
     max_active_sessions: int  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
@@ -188,6 +191,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self, value: List[str]
     ) -> ApimodelsConfigurationTemplateResponse:
         self.fallback_claim_keys = value
+        return self
+
+    def with_immutable_storage(
+        self, value: bool
+    ) -> ApimodelsConfigurationTemplateResponse:
+        self.immutable_storage = value
         return self
 
     def with_max_active_sessions(
@@ -302,6 +311,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
             result["fallbackClaimKeys"] = []
+        if hasattr(self, "immutable_storage"):
+            result["immutableStorage"] = bool(self.immutable_storage)
+        elif include_empty:
+            result["immutableStorage"] = False
         if hasattr(self, "max_active_sessions"):
             result["maxActiveSessions"] = int(self.max_active_sessions)
         elif include_empty:
@@ -355,6 +368,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         auto_join: Optional[bool] = None,
         ds_source: Optional[str] = None,
         fallback_claim_keys: Optional[List[str]] = None,
+        immutable_storage: Optional[bool] = None,
         max_active_sessions: Optional[int] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         preferred_claim_keys: Optional[List[str]] = None,
@@ -385,6 +399,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.ds_source = ds_source
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
+        if immutable_storage is not None:
+            instance.immutable_storage = immutable_storage
         if max_active_sessions is not None:
             instance.max_active_sessions = max_active_sessions
         if native_session_setting is not None:
@@ -480,6 +496,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             ]
         elif include_empty:
             instance.fallback_claim_keys = []
+        if "immutableStorage" in dict_ and dict_["immutableStorage"] is not None:
+            instance.immutable_storage = bool(dict_["immutableStorage"])
+        elif include_empty:
+            instance.immutable_storage = False
         if "maxActiveSessions" in dict_ and dict_["maxActiveSessions"] is not None:
             instance.max_active_sessions = int(dict_["maxActiveSessions"])
         elif include_empty:
@@ -577,6 +597,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "autoJoin": "auto_join",
             "dsSource": "ds_source",
             "fallbackClaimKeys": "fallback_claim_keys",
+            "immutableStorage": "immutable_storage",
             "maxActiveSessions": "max_active_sessions",
             "nativeSessionSetting": "native_session_setting",
             "preferredClaimKeys": "preferred_claim_keys",
@@ -606,6 +627,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "autoJoin": False,
             "dsSource": False,
             "fallbackClaimKeys": False,
+            "immutableStorage": False,
             "maxActiveSessions": False,
             "nativeSessionSetting": False,
             "preferredClaimKeys": False,
