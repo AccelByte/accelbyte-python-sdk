@@ -63,7 +63,7 @@ class AdminSaveItemToInventory(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsSaveItemToInventoryReq in body
 
@@ -87,7 +87,7 @@ class AdminSaveItemToInventory(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ApimodelsSaveItemToInventoryReq  # REQUIRED in [body]

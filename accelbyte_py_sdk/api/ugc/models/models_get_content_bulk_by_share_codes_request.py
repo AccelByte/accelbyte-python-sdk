@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Ugc Service (2.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,37 +28,25 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class ModelsUploaderFlag(Model):
-    """Models uploader flag (models.UploaderFlag)
+class ModelsGetContentBulkByShareCodesRequest(Model):
+    """Models get content bulk by share codes request (models.GetContentBulkByShareCodesRequest)
 
     Properties:
-        name: (name) REQUIRED str
-
-        shorthand: (shorthand) REQUIRED str
-
-        value: (value) REQUIRED str
+        share_codes: (shareCodes) REQUIRED List[str]
     """
 
     # region fields
 
-    name: str  # REQUIRED
-    shorthand: str  # REQUIRED
-    value: str  # REQUIRED
+    share_codes: List[str]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_name(self, value: str) -> ModelsUploaderFlag:
-        self.name = value
-        return self
-
-    def with_shorthand(self, value: str) -> ModelsUploaderFlag:
-        self.shorthand = value
-        return self
-
-    def with_value(self, value: str) -> ModelsUploaderFlag:
-        self.value = value
+    def with_share_codes(
+        self, value: List[str]
+    ) -> ModelsGetContentBulkByShareCodesRequest:
+        self.share_codes = value
         return self
 
     # endregion with_x methods
@@ -67,18 +55,10 @@ class ModelsUploaderFlag(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "name"):
-            result["name"] = str(self.name)
+        if hasattr(self, "share_codes"):
+            result["shareCodes"] = [str(i0) for i0 in self.share_codes]
         elif include_empty:
-            result["name"] = ""
-        if hasattr(self, "shorthand"):
-            result["shorthand"] = str(self.shorthand)
-        elif include_empty:
-            result["shorthand"] = ""
-        if hasattr(self, "value"):
-            result["value"] = str(self.value)
-        elif include_empty:
-            result["value"] = ""
+            result["shareCodes"] = []
         return result
 
     # endregion to methods
@@ -87,39 +67,29 @@ class ModelsUploaderFlag(Model):
 
     @classmethod
     def create(
-        cls, name: str, shorthand: str, value: str, **kwargs
-    ) -> ModelsUploaderFlag:
+        cls, share_codes: List[str], **kwargs
+    ) -> ModelsGetContentBulkByShareCodesRequest:
         instance = cls()
-        instance.name = name
-        instance.shorthand = shorthand
-        instance.value = value
+        instance.share_codes = share_codes
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsUploaderFlag:
+    ) -> ModelsGetContentBulkByShareCodesRequest:
         instance = cls()
         if not dict_:
             return instance
-        if "name" in dict_ and dict_["name"] is not None:
-            instance.name = str(dict_["name"])
+        if "shareCodes" in dict_ and dict_["shareCodes"] is not None:
+            instance.share_codes = [str(i0) for i0 in dict_["shareCodes"]]
         elif include_empty:
-            instance.name = ""
-        if "shorthand" in dict_ and dict_["shorthand"] is not None:
-            instance.shorthand = str(dict_["shorthand"])
-        elif include_empty:
-            instance.shorthand = ""
-        if "value" in dict_ and dict_["value"] is not None:
-            instance.value = str(dict_["value"])
-        elif include_empty:
-            instance.value = ""
+            instance.share_codes = []
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsUploaderFlag]:
+    ) -> Dict[str, ModelsGetContentBulkByShareCodesRequest]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -129,7 +99,7 @@ class ModelsUploaderFlag(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsUploaderFlag]:
+    ) -> List[ModelsGetContentBulkByShareCodesRequest]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -140,7 +110,9 @@ class ModelsUploaderFlag(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ModelsUploaderFlag, List[ModelsUploaderFlag], Dict[Any, ModelsUploaderFlag]
+        ModelsGetContentBulkByShareCodesRequest,
+        List[ModelsGetContentBulkByShareCodesRequest],
+        Dict[Any, ModelsGetContentBulkByShareCodesRequest],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -155,17 +127,13 @@ class ModelsUploaderFlag(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "name": "name",
-            "shorthand": "shorthand",
-            "value": "value",
+            "shareCodes": "share_codes",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "name": True,
-            "shorthand": True,
-            "value": True,
+            "shareCodes": True,
         }
 
     # endregion static methods

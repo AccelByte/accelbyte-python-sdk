@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Platform Service (4.34.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,7 +26,6 @@ from .utils import randomize
 
 from ..api.platform.models import AchievementInfo
 from ..api.platform.models import AdditionalData
-from ..api.platform.models import AdditionalDataEntitlement
 from ..api.platform.models import AdminOrderCreate
 from ..api.platform.models import AdyenConfig
 from ..api.platform.models import AliPayConfig
@@ -72,9 +71,7 @@ from ..api.platform.models import CategoryCreate
 from ..api.platform.models import CategoryInfo
 from ..api.platform.models import CategoryUpdate
 from ..api.platform.models import CheckoutConfig
-from ..api.platform.models import ClawbackInfo
 from ..api.platform.models import ClientRequestParameter
-from ..api.platform.models import ClientTransaction
 from ..api.platform.models import CodeCreate
 from ..api.platform.models import CodeCreateResult
 from ..api.platform.models import CodeInfo
@@ -128,7 +125,6 @@ from ..api.platform.models import EpicGamesIAPConfigRequest
 from ..api.platform.models import EpicGamesReconcileRequest
 from ..api.platform.models import EpicGamesReconcileResult
 from ..api.platform.models import ErrorEntity
-from ..api.platform.models import EventAdditionalData
 from ..api.platform.models import EventPayload
 from ..api.platform.models import ExportStoreRequest
 from ..api.platform.models import ExtensionFulfillmentSummary
@@ -161,7 +157,6 @@ from ..api.platform.models import GoogleReceiptResolveResult
 from ..api.platform.models import GrantSubscriptionDaysRequest
 from ..api.platform.models import GrpcServerInfo
 from ..api.platform.models import HierarchicalCategoryInfo
-from ..api.platform.models import IAPClawbackPagingSlicedResult
 from ..api.platform.models import IAPConsumeHistoryInfo
 from ..api.platform.models import IAPConsumeHistoryPagingSlicedResult
 from ..api.platform.models import IAPItemConfigInfo
@@ -344,8 +339,6 @@ from ..api.platform.models import StoreBackupInfo
 from ..api.platform.models import StoreCreate
 from ..api.platform.models import StoreInfo
 from ..api.platform.models import StoreUpdate
-from ..api.platform.models import StreamEvent
-from ..api.platform.models import StreamEventBody
 from ..api.platform.models import StripeConfig
 from ..api.platform.models import Subscribable
 from ..api.platform.models import SubscribeRequest
@@ -413,14 +406,6 @@ def create_achievement_info_example() -> AchievementInfo:
 def create_additional_data_example() -> AdditionalData:
     instance = AdditionalData()
     instance.card_summary = randomize()
-    return instance
-
-
-def create_additional_data_entitlement_example() -> AdditionalDataEntitlement:
-    instance = AdditionalDataEntitlement()
-    instance.client_transaction = [create_client_transaction_example()]
-    instance.entitlement_id = randomize()
-    instance.usage_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -979,41 +964,12 @@ def create_checkout_config_example() -> CheckoutConfig:
     return instance
 
 
-def create_clawback_info_example() -> ClawbackInfo:
-    instance = ClawbackInfo()
-    instance.id_ = randomize()
-    instance.namespace = randomize("slug")
-    instance.created_at = randomize("date")
-    instance.dry_run = randomize("bool")
-    instance.event_content = {randomize(): randomize()}
-    instance.event_id = randomize()
-    instance.event_type = randomize()
-    instance.external_order_id = randomize()
-    instance.feedback_content = {randomize(): randomize()}
-    instance.feedback_status = randomize()
-    instance.feedback_status_reason = randomize()
-    instance.platform = randomize()
-    instance.process_id = randomize()
-    instance.status = randomize()
-    instance.status_reason = randomize()
-    instance.updated_at = randomize("date")
-    instance.user_id = randomize("uid")
-    return instance
-
-
 def create_client_request_parameter_example() -> ClientRequestParameter:
     instance = ClientRequestParameter()
     instance.currency_code = randomize()
     instance.language = randomize()
     instance.price = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
-    return instance
-
-
-def create_client_transaction_example() -> ClientTransaction:
-    instance = ClientTransaction()
-    instance.amount_consumed = randomize("int", min_val=1, max_val=1000)
-    instance.client_transaction_id = randomize()
     return instance
 
 
@@ -1565,13 +1521,6 @@ def create_error_entity_example() -> ErrorEntity:
     return instance
 
 
-def create_event_additional_data_example() -> EventAdditionalData:
-    instance = EventAdditionalData()
-    instance.entitlement = [create_additional_data_entitlement_example()]
-    instance.purpose = randomize()
-    return instance
-
-
 def create_event_payload_example() -> EventPayload:
     instance = EventPayload()
     instance.payload = {randomize(): randomize()}
@@ -1727,7 +1676,6 @@ def create_fulfillment_result_example() -> FulfillmentResult:
     instance.user_id = randomize("uid")
     instance.credit_summaries = [create_credit_summary_example()]
     instance.entitlement_summaries = [create_entitlement_summary_example()]
-    instance.id_ = randomize()
     instance.subscription_summaries = [create_subscription_summary_example()]
     return instance
 
@@ -1962,13 +1910,6 @@ def create_hierarchical_category_info_example() -> HierarchicalCategoryInfo:
     instance.parent_category_path = randomize()
     instance.updated_at = randomize("date")
     instance.root = randomize("bool")
-    return instance
-
-
-def create_iap_clawback_paging_sliced_result_example() -> IAPClawbackPagingSlicedResult:
-    instance = IAPClawbackPagingSlicedResult()
-    instance.data = [create_clawback_info_example()]
-    instance.paging = create_paging_example()
     return instance
 
 
@@ -2570,7 +2511,6 @@ def create_mock_iap_receipt_example() -> MockIAPReceipt:
     instance.item_identity_type = randomize()
     instance.language = randomize()
     instance.region = randomize()
-    instance.transaction_id = randomize("uid")
     return instance
 
 
@@ -3331,12 +3271,7 @@ def create_play_station_dlc_sync_request_example() -> PlayStationDLCSyncRequest:
 def create_play_station_iap_config_info_example() -> PlayStationIAPConfigInfo:
     instance = PlayStationIAPConfigInfo()
     instance.namespace = randomize("slug")
-    instance.back_office_server_client_id = randomize()
-    instance.back_office_server_client_secret = randomize()
-    instance.enable_stream_job = randomize("bool")
     instance.environment = randomize()
-    instance.stream_name = randomize()
-    instance.stream_partner_name = randomize()
     return instance
 
 
@@ -3373,11 +3308,6 @@ def create_play_station_reconcile_result_example() -> PlayStationReconcileResult
 def create_playstation_iap_config_request_example() -> PlaystationIAPConfigRequest:
     instance = PlaystationIAPConfigRequest()
     instance.environment = randomize()
-    instance.back_office_server_client_id = randomize()
-    instance.back_office_server_client_secret = randomize()
-    instance.enable_stream_job = randomize("bool")
-    instance.stream_name = randomize()
-    instance.stream_partner_name = randomize()
     return instance
 
 
@@ -3826,7 +3756,6 @@ def create_rewards_request_example() -> RewardsRequest:
     instance.metadata = {randomize(): randomize()}
     instance.origin = randomize()
     instance.source = randomize()
-    instance.transaction_id = randomize("uid")
     return instance
 
 
@@ -4086,30 +4015,6 @@ def create_store_update_example() -> StoreUpdate:
     instance.description = randomize()
     instance.supported_languages = [randomize()]
     instance.supported_regions = [randomize()]
-    return instance
-
-
-def create_stream_event_example() -> StreamEvent:
-    instance = StreamEvent()
-    instance.body = create_stream_event_body_example()
-    instance.event_domain = randomize()
-    instance.event_source = randomize()
-    instance.event_type = randomize()
-    instance.event_version = randomize("int", min_val=1, max_val=1000)
-    instance.id_ = randomize()
-    instance.timestamp = randomize()
-    return instance
-
-
-def create_stream_event_body_example() -> StreamEventBody:
-    instance = StreamEventBody()
-    instance.account = randomize()
-    instance.additional_data = create_event_additional_data_example()
-    instance.original_title_name = randomize()
-    instance.payment_product_sku = randomize()
-    instance.purchase_date = randomize()
-    instance.source_order_item_id = randomize()
-    instance.title_name = randomize()
     return instance
 
 

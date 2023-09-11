@@ -70,7 +70,7 @@ def admin_create_item_type(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsCreateItemTypeReq in body
 
@@ -126,7 +126,7 @@ async def admin_create_item_type_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsCreateItemTypeReq in body
 
@@ -183,7 +183,7 @@ def admin_delete_item_type(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         item_type_name: (itemTypeName) REQUIRED str in path
 
@@ -236,7 +236,7 @@ async def admin_delete_item_type_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         item_type_name: (itemTypeName) REQUIRED str in path
 
@@ -293,7 +293,7 @@ def admin_list_item_types(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -354,7 +354,7 @@ async def admin_list_item_types_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Platform Service (4.34.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -49,10 +49,10 @@ class SourceEnum(StrEnum):
     ACHIEVEMENT = "ACHIEVEMENT"
     CONSUME_ENTITLEMENT = "CONSUME_ENTITLEMENT"
     DLC = "DLC"
+    DLC_REVOCATION = "DLC_REVOCATION"
     EXPIRATION = "EXPIRATION"
     GIFT = "GIFT"
     IAP = "IAP"
-    IAP_CHARGEBACK_REVERSED = "IAP_CHARGEBACK_REVERSED"
     ORDER_REVOCATION = "ORDER_REVOCATION"
     OTHER = "OTHER"
     PAYMENT = "PAYMENT"
@@ -452,10 +452,10 @@ class FulfillmentRequest(Model):
                 "ACHIEVEMENT",
                 "CONSUME_ENTITLEMENT",
                 "DLC",
+                "DLC_REVOCATION",
                 "EXPIRATION",
                 "GIFT",
                 "IAP",
-                "IAP_CHARGEBACK_REVERSED",
                 "ORDER_REVOCATION",
                 "OTHER",
                 "PAYMENT",

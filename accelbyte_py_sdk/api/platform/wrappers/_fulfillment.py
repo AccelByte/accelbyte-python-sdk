@@ -38,7 +38,6 @@ from ..models import RewardsRequest
 
 from ..operations.fulfillment import FulfillItem
 from ..operations.fulfillment import FulfillRewards
-from ..operations.fulfillment import FulfillRewardsV2
 from ..operations.fulfillment import PublicRedeemCode
 from ..operations.fulfillment import QueryFulfillmentHistories
 from ..operations.fulfillment import QueryFulfillmentHistoriesStatusEnum
@@ -278,126 +277,6 @@ async def fulfill_rewards_async(
         if error:
             return None, error
     request = FulfillRewards.create(
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(FulfillRewardsV2)
-def fulfill_rewards_v2(
-    user_id: str,
-    body: Optional[RewardsRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Fulfill rewards (fulfillRewardsV2)
-
-    [SERVICE COMMUNICATION ONLY] Fulfill rewards.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
-      *  Returns : fulfillment result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
-
-    Properties:
-        url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillment/rewards
-
-        method: POST
-
-        tags: ["Fulfillment"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
-
-        body: (body) OPTIONAL RewardsRequest in body
-
-        namespace: (namespace) REQUIRED str in path
-
-        user_id: (userId) REQUIRED str in path
-
-    Responses:
-        200: OK - FulfillmentResult (successful operation)
-
-        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists)
-
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
-
-        409: Conflict - ErrorEntity (20006: optimistic lock)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = FulfillRewardsV2.create(
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(FulfillRewardsV2)
-async def fulfill_rewards_v2_async(
-    user_id: str,
-    body: Optional[RewardsRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Fulfill rewards (fulfillRewardsV2)
-
-    [SERVICE COMMUNICATION ONLY] Fulfill rewards.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
-      *  Returns : fulfillment result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
-
-    Properties:
-        url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillment/rewards
-
-        method: POST
-
-        tags: ["Fulfillment"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
-
-        body: (body) OPTIONAL RewardsRequest in body
-
-        namespace: (namespace) REQUIRED str in path
-
-        user_id: (userId) REQUIRED str in path
-
-    Responses:
-        200: OK - FulfillmentResult (successful operation)
-
-        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists)
-
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
-
-        409: Conflict - ErrorEntity (20006: optimistic lock)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = FulfillRewardsV2.create(
         user_id=user_id,
         body=body,
         namespace=namespace,

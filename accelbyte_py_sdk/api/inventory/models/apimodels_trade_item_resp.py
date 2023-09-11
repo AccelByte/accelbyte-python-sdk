@@ -32,29 +32,29 @@ class ApimodelsTradeItemResp(Model):
     """Apimodels trade item resp (apimodels.TradeItemResp)
 
     Properties:
-        item_id: (itemId) REQUIRED str
-
         qty: (qty) REQUIRED int
+
+        slot_id: (slotId) REQUIRED str
 
         source_item_id: (sourceItemId) REQUIRED str
     """
 
     # region fields
 
-    item_id: str  # REQUIRED
     qty: int  # REQUIRED
+    slot_id: str  # REQUIRED
     source_item_id: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_item_id(self, value: str) -> ApimodelsTradeItemResp:
-        self.item_id = value
-        return self
-
     def with_qty(self, value: int) -> ApimodelsTradeItemResp:
         self.qty = value
+        return self
+
+    def with_slot_id(self, value: str) -> ApimodelsTradeItemResp:
+        self.slot_id = value
         return self
 
     def with_source_item_id(self, value: str) -> ApimodelsTradeItemResp:
@@ -67,14 +67,14 @@ class ApimodelsTradeItemResp(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "item_id"):
-            result["itemId"] = str(self.item_id)
-        elif include_empty:
-            result["itemId"] = ""
         if hasattr(self, "qty"):
             result["qty"] = int(self.qty)
         elif include_empty:
             result["qty"] = 0
+        if hasattr(self, "slot_id"):
+            result["slotId"] = str(self.slot_id)
+        elif include_empty:
+            result["slotId"] = ""
         if hasattr(self, "source_item_id"):
             result["sourceItemId"] = str(self.source_item_id)
         elif include_empty:
@@ -87,11 +87,11 @@ class ApimodelsTradeItemResp(Model):
 
     @classmethod
     def create(
-        cls, item_id: str, qty: int, source_item_id: str, **kwargs
+        cls, qty: int, slot_id: str, source_item_id: str, **kwargs
     ) -> ApimodelsTradeItemResp:
         instance = cls()
-        instance.item_id = item_id
         instance.qty = qty
+        instance.slot_id = slot_id
         instance.source_item_id = source_item_id
         return instance
 
@@ -102,14 +102,14 @@ class ApimodelsTradeItemResp(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "itemId" in dict_ and dict_["itemId"] is not None:
-            instance.item_id = str(dict_["itemId"])
-        elif include_empty:
-            instance.item_id = ""
         if "qty" in dict_ and dict_["qty"] is not None:
             instance.qty = int(dict_["qty"])
         elif include_empty:
             instance.qty = 0
+        if "slotId" in dict_ and dict_["slotId"] is not None:
+            instance.slot_id = str(dict_["slotId"])
+        elif include_empty:
+            instance.slot_id = ""
         if "sourceItemId" in dict_ and dict_["sourceItemId"] is not None:
             instance.source_item_id = str(dict_["sourceItemId"])
         elif include_empty:
@@ -157,16 +157,16 @@ class ApimodelsTradeItemResp(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "itemId": "item_id",
             "qty": "qty",
+            "slotId": "slot_id",
             "sourceItemId": "source_item_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "itemId": True,
             "qty": True,
+            "slotId": True,
             "sourceItemId": True,
         }
 

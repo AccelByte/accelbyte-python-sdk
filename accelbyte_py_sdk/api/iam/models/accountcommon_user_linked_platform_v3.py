@@ -49,6 +49,8 @@ class AccountcommonUserLinkedPlatformV3(Model):
         platform_id: (platformId) OPTIONAL str
 
         platform_user_id: (platformUserId) OPTIONAL str
+
+        xuid: (xuid) OPTIONAL str
     """
 
     # region fields
@@ -62,6 +64,7 @@ class AccountcommonUserLinkedPlatformV3(Model):
     email_address: str  # OPTIONAL
     platform_id: str  # OPTIONAL
     platform_user_id: str  # OPTIONAL
+    xuid: str  # OPTIONAL
 
     # endregion fields
 
@@ -101,6 +104,10 @@ class AccountcommonUserLinkedPlatformV3(Model):
 
     def with_platform_user_id(self, value: str) -> AccountcommonUserLinkedPlatformV3:
         self.platform_user_id = value
+        return self
+
+    def with_xuid(self, value: str) -> AccountcommonUserLinkedPlatformV3:
+        self.xuid = value
         return self
 
     # endregion with_x methods
@@ -145,6 +152,10 @@ class AccountcommonUserLinkedPlatformV3(Model):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["platformUserId"] = ""
+        if hasattr(self, "xuid"):
+            result["xuid"] = str(self.xuid)
+        elif include_empty:
+            result["xuid"] = ""
         return result
 
     # endregion to methods
@@ -163,6 +174,7 @@ class AccountcommonUserLinkedPlatformV3(Model):
         email_address: Optional[str] = None,
         platform_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
+        xuid: Optional[str] = None,
         **kwargs,
     ) -> AccountcommonUserLinkedPlatformV3:
         instance = cls()
@@ -179,6 +191,8 @@ class AccountcommonUserLinkedPlatformV3(Model):
             instance.platform_id = platform_id
         if platform_user_id is not None:
             instance.platform_user_id = platform_user_id
+        if xuid is not None:
+            instance.xuid = xuid
         return instance
 
     @classmethod
@@ -224,6 +238,10 @@ class AccountcommonUserLinkedPlatformV3(Model):
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
             instance.platform_user_id = ""
+        if "xuid" in dict_ and dict_["xuid"] is not None:
+            instance.xuid = str(dict_["xuid"])
+        elif include_empty:
+            instance.xuid = ""
         return instance
 
     @classmethod
@@ -276,6 +294,7 @@ class AccountcommonUserLinkedPlatformV3(Model):
             "emailAddress": "email_address",
             "platformId": "platform_id",
             "platformUserId": "platform_user_id",
+            "xuid": "xuid",
         }
 
     @staticmethod
@@ -290,6 +309,7 @@ class AccountcommonUserLinkedPlatformV3(Model):
             "emailAddress": False,
             "platformId": False,
             "platformUserId": False,
+            "xuid": False,
         }
 
     # endregion static methods

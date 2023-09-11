@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-dsm-controller-service (6.3.7)
+# justice-dsm-controller-service (6.4.1)
 
 from ._list_config import list_config
 from ._save_config import save_config
@@ -70,6 +70,7 @@ from ._delete_deployment_client import delete_deployment_client
 from ._get_all_pod_config_client import get_all_pod_config_client
 from ._create_pod_config_client import create_pod_config_client
 from ._delete_pod_config_client import delete_pod_config_client
+from ._list_images_client import list_images_client
 from ._image_limit_client import image_limit_client
 from ._image_detail_client import image_detail_client
 from ._list_server_client import list_server_client
@@ -153,6 +154,7 @@ commands = [
     get_all_pod_config_client,
     create_pod_config_client,
     delete_pod_config_client,
+    list_images_client,
     image_limit_client,
     image_detail_client,
     list_server_client,

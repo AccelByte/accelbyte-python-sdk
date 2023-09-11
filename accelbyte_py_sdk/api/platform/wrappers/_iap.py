@@ -59,7 +59,6 @@ from ..models import SteamIAPConfig
 from ..models import SteamIAPConfigInfo
 from ..models import SteamIAPConfigRequest
 from ..models import SteamSyncRequest
-from ..models import TestResult
 from ..models import TwitchIAPConfigInfo
 from ..models import TwitchIAPConfigRequest
 from ..models import TwitchSyncRequest
@@ -120,8 +119,6 @@ from ..operations.iap import UpdateSteamIAPConfig
 from ..operations.iap import UpdateTwitchIAPConfig
 from ..operations.iap import UpdateXblBPCertFile
 from ..operations.iap import UpdateXblIAPConfig
-from ..operations.iap import ValidateExistedPlaystationIAPConfig
-from ..operations.iap import ValidatePlaystationIAPConfig
 from ..models import EpicGamesReconcileResultStatusEnum
 from ..models import MockIAPReceiptItemIdentityTypeEnum, MockIAPReceiptTypeEnum
 from ..models import (
@@ -4159,8 +4156,6 @@ def update_playstation_iap_config(
 
     Responses:
         200: OK - PlayStationIAPConfigInfo (successful operation)
-
-        400: Bad Request - ErrorEntity (39130: Invalid playstation config: [{message}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -4209,8 +4204,6 @@ async def update_playstation_iap_config_async(
 
     Responses:
         200: OK - PlayStationIAPConfigInfo (successful operation)
-
-        400: Bad Request - ErrorEntity (39130: Invalid playstation config: [{message}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -4623,194 +4616,6 @@ async def update_xbl_iap_config_async(
         if error:
             return None, error
     request = UpdateXblIAPConfig.create(
-        body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(ValidateExistedPlaystationIAPConfig)
-def validate_existed_playstation_iap_config(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Validate existed playstation iap config (validateExistedPlaystationIAPConfig)
-
-    Validate playstation iap config. Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : Test Results
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
-
-    Properties:
-        url: /platform/admin/namespaces/{namespace}/iap/config/playstation/validate
-
-        method: GET
-
-        tags: ["IAP"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - TestResult (successful operation)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = ValidateExistedPlaystationIAPConfig.create(
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(ValidateExistedPlaystationIAPConfig)
-async def validate_existed_playstation_iap_config_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Validate existed playstation iap config (validateExistedPlaystationIAPConfig)
-
-    Validate playstation iap config. Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : Test Results
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
-
-    Properties:
-        url: /platform/admin/namespaces/{namespace}/iap/config/playstation/validate
-
-        method: GET
-
-        tags: ["IAP"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - TestResult (successful operation)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = ValidateExistedPlaystationIAPConfig.create(
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(ValidatePlaystationIAPConfig)
-def validate_playstation_iap_config(
-    body: Optional[PlaystationIAPConfigRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Validate playstation iap config (validatePlaystationIAPConfig)
-
-    Validate playstation iap config. Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : Test Results
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
-
-    Properties:
-        url: /platform/admin/namespaces/{namespace}/iap/config/playstation/validate
-
-        method: PUT
-
-        tags: ["IAP"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
-
-        body: (body) OPTIONAL PlaystationIAPConfigRequest in body
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - TestResult (successful operation)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = ValidatePlaystationIAPConfig.create(
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(ValidatePlaystationIAPConfig)
-async def validate_playstation_iap_config_async(
-    body: Optional[PlaystationIAPConfigRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Validate playstation iap config (validatePlaystationIAPConfig)
-
-    Validate playstation iap config. Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : Test Results
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
-
-    Properties:
-        url: /platform/admin/namespaces/{namespace}/iap/config/playstation/validate
-
-        method: PUT
-
-        tags: ["IAP"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
-
-        body: (body) OPTIONAL PlaystationIAPConfigRequest in body
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - TestResult (successful operation)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = ValidatePlaystationIAPConfig.create(
         body=body,
         namespace=namespace,
     )

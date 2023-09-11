@@ -33,11 +33,17 @@ class ApimodelsConsumeItemReq(Model):
 
     Properties:
         qty: (qty) REQUIRED int
+
+        slot_id: (slotId) REQUIRED str
+
+        source_item_id: (sourceItemId) REQUIRED str
     """
 
     # region fields
 
     qty: int  # REQUIRED
+    slot_id: str  # REQUIRED
+    source_item_id: str  # REQUIRED
 
     # endregion fields
 
@@ -45,6 +51,14 @@ class ApimodelsConsumeItemReq(Model):
 
     def with_qty(self, value: int) -> ApimodelsConsumeItemReq:
         self.qty = value
+        return self
+
+    def with_slot_id(self, value: str) -> ApimodelsConsumeItemReq:
+        self.slot_id = value
+        return self
+
+    def with_source_item_id(self, value: str) -> ApimodelsConsumeItemReq:
+        self.source_item_id = value
         return self
 
     # endregion with_x methods
@@ -57,6 +71,14 @@ class ApimodelsConsumeItemReq(Model):
             result["qty"] = int(self.qty)
         elif include_empty:
             result["qty"] = 0
+        if hasattr(self, "slot_id"):
+            result["slotId"] = str(self.slot_id)
+        elif include_empty:
+            result["slotId"] = ""
+        if hasattr(self, "source_item_id"):
+            result["sourceItemId"] = str(self.source_item_id)
+        elif include_empty:
+            result["sourceItemId"] = ""
         return result
 
     # endregion to methods
@@ -64,9 +86,13 @@ class ApimodelsConsumeItemReq(Model):
     # region static methods
 
     @classmethod
-    def create(cls, qty: int, **kwargs) -> ApimodelsConsumeItemReq:
+    def create(
+        cls, qty: int, slot_id: str, source_item_id: str, **kwargs
+    ) -> ApimodelsConsumeItemReq:
         instance = cls()
         instance.qty = qty
+        instance.slot_id = slot_id
+        instance.source_item_id = source_item_id
         return instance
 
     @classmethod
@@ -80,6 +106,14 @@ class ApimodelsConsumeItemReq(Model):
             instance.qty = int(dict_["qty"])
         elif include_empty:
             instance.qty = 0
+        if "slotId" in dict_ and dict_["slotId"] is not None:
+            instance.slot_id = str(dict_["slotId"])
+        elif include_empty:
+            instance.slot_id = ""
+        if "sourceItemId" in dict_ and dict_["sourceItemId"] is not None:
+            instance.source_item_id = str(dict_["sourceItemId"])
+        elif include_empty:
+            instance.source_item_id = ""
         return instance
 
     @classmethod
@@ -124,12 +158,16 @@ class ApimodelsConsumeItemReq(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "qty": "qty",
+            "slotId": "slot_id",
+            "sourceItemId": "source_item_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "qty": True,
+            "slotId": True,
+            "sourceItemId": True,
         }
 
     # endregion static methods

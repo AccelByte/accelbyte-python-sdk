@@ -34,7 +34,9 @@ class ApimodelsUpdateItemReq(Model):
     Properties:
         custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
 
-        id_: (id) REQUIRED str
+        slot_id: (slotId) REQUIRED str
+
+        source_item_id: (sourceItemId) REQUIRED str
 
         tags: (tags) REQUIRED List[str]
     """
@@ -42,7 +44,8 @@ class ApimodelsUpdateItemReq(Model):
     # region fields
 
     custom_attributes: Dict[str, Any]  # REQUIRED
-    id_: str  # REQUIRED
+    slot_id: str  # REQUIRED
+    source_item_id: str  # REQUIRED
     tags: List[str]  # REQUIRED
 
     # endregion fields
@@ -53,8 +56,12 @@ class ApimodelsUpdateItemReq(Model):
         self.custom_attributes = value
         return self
 
-    def with_id(self, value: str) -> ApimodelsUpdateItemReq:
-        self.id_ = value
+    def with_slot_id(self, value: str) -> ApimodelsUpdateItemReq:
+        self.slot_id = value
+        return self
+
+    def with_source_item_id(self, value: str) -> ApimodelsUpdateItemReq:
+        self.source_item_id = value
         return self
 
     def with_tags(self, value: List[str]) -> ApimodelsUpdateItemReq:
@@ -73,10 +80,14 @@ class ApimodelsUpdateItemReq(Model):
             }
         elif include_empty:
             result["customAttributes"] = {}
-        if hasattr(self, "id_"):
-            result["id"] = str(self.id_)
+        if hasattr(self, "slot_id"):
+            result["slotId"] = str(self.slot_id)
         elif include_empty:
-            result["id"] = ""
+            result["slotId"] = ""
+        if hasattr(self, "source_item_id"):
+            result["sourceItemId"] = str(self.source_item_id)
+        elif include_empty:
+            result["sourceItemId"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -89,11 +100,17 @@ class ApimodelsUpdateItemReq(Model):
 
     @classmethod
     def create(
-        cls, custom_attributes: Dict[str, Any], id_: str, tags: List[str], **kwargs
+        cls,
+        custom_attributes: Dict[str, Any],
+        slot_id: str,
+        source_item_id: str,
+        tags: List[str],
+        **kwargs,
     ) -> ApimodelsUpdateItemReq:
         instance = cls()
         instance.custom_attributes = custom_attributes
-        instance.id_ = id_
+        instance.slot_id = slot_id
+        instance.source_item_id = source_item_id
         instance.tags = tags
         return instance
 
@@ -110,10 +127,14 @@ class ApimodelsUpdateItemReq(Model):
             }
         elif include_empty:
             instance.custom_attributes = {}
-        if "id" in dict_ and dict_["id"] is not None:
-            instance.id_ = str(dict_["id"])
+        if "slotId" in dict_ and dict_["slotId"] is not None:
+            instance.slot_id = str(dict_["slotId"])
         elif include_empty:
-            instance.id_ = ""
+            instance.slot_id = ""
+        if "sourceItemId" in dict_ and dict_["sourceItemId"] is not None:
+            instance.source_item_id = str(dict_["sourceItemId"])
+        elif include_empty:
+            instance.source_item_id = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -162,7 +183,8 @@ class ApimodelsUpdateItemReq(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "customAttributes": "custom_attributes",
-            "id": "id_",
+            "slotId": "slot_id",
+            "sourceItemId": "source_item_id",
             "tags": "tags",
         }
 
@@ -170,7 +192,8 @@ class ApimodelsUpdateItemReq(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "customAttributes": True,
-            "id": True,
+            "slotId": True,
+            "sourceItemId": True,
             "tags": True,
         }
 

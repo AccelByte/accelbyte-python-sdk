@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -88,7 +88,7 @@ class ListImages(Operation):
         offset: (offset) REQUIRED int in query
 
     Responses:
-        200: OK - ModelsListImageResponse (configs listed)
+        200: OK - ModelsListImageResponse (images listed)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -251,7 +251,7 @@ class ListImages(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsListImageResponse (configs listed)
+        200: OK - ModelsListImageResponse (images listed)
 
         400: Bad Request - ResponseError (Bad Request)
 

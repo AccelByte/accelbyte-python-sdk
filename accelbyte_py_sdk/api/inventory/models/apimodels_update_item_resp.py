@@ -34,7 +34,9 @@ class ApimodelsUpdateItemResp(Model):
     """Apimodels update item resp (apimodels.UpdateItemResp)
 
     Properties:
-        id_: (id) REQUIRED str
+        slot_id: (slotId) REQUIRED str
+
+        source_item_id: (sourceItemId) REQUIRED str
 
         success: (success) REQUIRED bool
 
@@ -43,7 +45,8 @@ class ApimodelsUpdateItemResp(Model):
 
     # region fields
 
-    id_: str  # REQUIRED
+    slot_id: str  # REQUIRED
+    source_item_id: str  # REQUIRED
     success: bool  # REQUIRED
     error_details: ApimodelsErrorResponse  # OPTIONAL
 
@@ -51,8 +54,12 @@ class ApimodelsUpdateItemResp(Model):
 
     # region with_x methods
 
-    def with_id(self, value: str) -> ApimodelsUpdateItemResp:
-        self.id_ = value
+    def with_slot_id(self, value: str) -> ApimodelsUpdateItemResp:
+        self.slot_id = value
+        return self
+
+    def with_source_item_id(self, value: str) -> ApimodelsUpdateItemResp:
+        self.source_item_id = value
         return self
 
     def with_success(self, value: bool) -> ApimodelsUpdateItemResp:
@@ -71,10 +78,14 @@ class ApimodelsUpdateItemResp(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_"):
-            result["id"] = str(self.id_)
+        if hasattr(self, "slot_id"):
+            result["slotId"] = str(self.slot_id)
         elif include_empty:
-            result["id"] = ""
+            result["slotId"] = ""
+        if hasattr(self, "source_item_id"):
+            result["sourceItemId"] = str(self.source_item_id)
+        elif include_empty:
+            result["sourceItemId"] = ""
         if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
@@ -94,13 +105,15 @@ class ApimodelsUpdateItemResp(Model):
     @classmethod
     def create(
         cls,
-        id_: str,
+        slot_id: str,
+        source_item_id: str,
         success: bool,
         error_details: Optional[ApimodelsErrorResponse] = None,
         **kwargs,
     ) -> ApimodelsUpdateItemResp:
         instance = cls()
-        instance.id_ = id_
+        instance.slot_id = slot_id
+        instance.source_item_id = source_item_id
         instance.success = success
         if error_details is not None:
             instance.error_details = error_details
@@ -113,10 +126,14 @@ class ApimodelsUpdateItemResp(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "id" in dict_ and dict_["id"] is not None:
-            instance.id_ = str(dict_["id"])
+        if "slotId" in dict_ and dict_["slotId"] is not None:
+            instance.slot_id = str(dict_["slotId"])
         elif include_empty:
-            instance.id_ = ""
+            instance.slot_id = ""
+        if "sourceItemId" in dict_ and dict_["sourceItemId"] is not None:
+            instance.source_item_id = str(dict_["sourceItemId"])
+        elif include_empty:
+            instance.source_item_id = ""
         if "success" in dict_ and dict_["success"] is not None:
             instance.success = bool(dict_["success"])
         elif include_empty:
@@ -170,7 +187,8 @@ class ApimodelsUpdateItemResp(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
+            "slotId": "slot_id",
+            "sourceItemId": "source_item_id",
             "success": "success",
             "errorDetails": "error_details",
         }
@@ -178,7 +196,8 @@ class ApimodelsUpdateItemResp(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "id": True,
+            "slotId": True,
+            "sourceItemId": True,
             "success": True,
             "errorDetails": False,
         }

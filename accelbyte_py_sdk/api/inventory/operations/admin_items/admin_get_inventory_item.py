@@ -45,7 +45,7 @@ class AdminGetInventoryItem(Operation):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
 
     Properties:
-        url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/items/{itemId}
+        url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}
 
         method: GET
 
@@ -55,13 +55,15 @@ class AdminGetInventoryItem(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_id: (inventoryId) REQUIRED str in path
 
-        item_id: (itemId) REQUIRED str in path
-
         namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        source_item_id: (sourceItemId) REQUIRED str in path
 
     Responses:
         200: OK - ApimodelsItemResp (OK)
@@ -75,16 +77,17 @@ class AdminGetInventoryItem(Operation):
 
     # region fields
 
-    _url: str = "/inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/items/{itemId}"
+    _url: str = "/inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     inventory_id: str  # REQUIRED in [path]
-    item_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
+    slot_id: str  # REQUIRED in [path]
+    source_item_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -131,10 +134,12 @@ class AdminGetInventoryItem(Operation):
         result = {}
         if hasattr(self, "inventory_id"):
             result["inventoryId"] = self.inventory_id
-        if hasattr(self, "item_id"):
-            result["itemId"] = self.item_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        if hasattr(self, "slot_id"):
+            result["slotId"] = self.slot_id
+        if hasattr(self, "source_item_id"):
+            result["sourceItemId"] = self.source_item_id
         return result
 
     # endregion get_x_params methods
@@ -149,12 +154,16 @@ class AdminGetInventoryItem(Operation):
         self.inventory_id = value
         return self
 
-    def with_item_id(self, value: str) -> AdminGetInventoryItem:
-        self.item_id = value
-        return self
-
     def with_namespace(self, value: str) -> AdminGetInventoryItem:
         self.namespace = value
+        return self
+
+    def with_slot_id(self, value: str) -> AdminGetInventoryItem:
+        self.slot_id = value
+        return self
+
+    def with_source_item_id(self, value: str) -> AdminGetInventoryItem:
+        self.source_item_id = value
         return self
 
     # endregion with_x methods
@@ -167,14 +176,18 @@ class AdminGetInventoryItem(Operation):
             result["inventoryId"] = str(self.inventory_id)
         elif include_empty:
             result["inventoryId"] = ""
-        if hasattr(self, "item_id") and self.item_id:
-            result["itemId"] = str(self.item_id)
-        elif include_empty:
-            result["itemId"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "slot_id") and self.slot_id:
+            result["slotId"] = str(self.slot_id)
+        elif include_empty:
+            result["slotId"] = ""
+        if hasattr(self, "source_item_id") and self.source_item_id:
+            result["sourceItemId"] = str(self.source_item_id)
+        elif include_empty:
+            result["sourceItemId"] = ""
         return result
 
     # endregion to methods
@@ -230,12 +243,18 @@ class AdminGetInventoryItem(Operation):
 
     @classmethod
     def create(
-        cls, inventory_id: str, item_id: str, namespace: str, **kwargs
+        cls,
+        inventory_id: str,
+        namespace: str,
+        slot_id: str,
+        source_item_id: str,
+        **kwargs,
     ) -> AdminGetInventoryItem:
         instance = cls()
         instance.inventory_id = inventory_id
-        instance.item_id = item_id
         instance.namespace = namespace
+        instance.slot_id = slot_id
+        instance.source_item_id = source_item_id
         return instance
 
     @classmethod
@@ -247,30 +266,36 @@ class AdminGetInventoryItem(Operation):
             instance.inventory_id = str(dict_["inventoryId"])
         elif include_empty:
             instance.inventory_id = ""
-        if "itemId" in dict_ and dict_["itemId"] is not None:
-            instance.item_id = str(dict_["itemId"])
-        elif include_empty:
-            instance.item_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "slotId" in dict_ and dict_["slotId"] is not None:
+            instance.slot_id = str(dict_["slotId"])
+        elif include_empty:
+            instance.slot_id = ""
+        if "sourceItemId" in dict_ and dict_["sourceItemId"] is not None:
+            instance.source_item_id = str(dict_["sourceItemId"])
+        elif include_empty:
+            instance.source_item_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "inventoryId": "inventory_id",
-            "itemId": "item_id",
             "namespace": "namespace",
+            "slotId": "slot_id",
+            "sourceItemId": "source_item_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "inventoryId": True,
-            "itemId": True,
             "namespace": True,
+            "slotId": True,
+            "sourceItemId": True,
         }
 
     # endregion static methods

@@ -63,6 +63,8 @@ class PublicGetUserPlatformAccountsV3(Operation):
 
         limit: (limit) OPTIONAL int in query
 
+        platform_id: (platformId) OPTIONAL str in query
+
     Responses:
         200: OK - AccountcommonUserLinkedPlatformsResponseV3 (OK)
 
@@ -91,6 +93,7 @@ class PublicGetUserPlatformAccountsV3(Operation):
     after: str  # OPTIONAL in [query]
     before: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
+    platform_id: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -150,6 +153,8 @@ class PublicGetUserPlatformAccountsV3(Operation):
             result["before"] = self.before
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "platform_id"):
+            result["platformId"] = self.platform_id
         return result
 
     # endregion get_x_params methods
@@ -180,6 +185,10 @@ class PublicGetUserPlatformAccountsV3(Operation):
         self.limit = value
         return self
 
+    def with_platform_id(self, value: str) -> PublicGetUserPlatformAccountsV3:
+        self.platform_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -206,6 +215,10 @@ class PublicGetUserPlatformAccountsV3(Operation):
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = 0
+        if hasattr(self, "platform_id") and self.platform_id:
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = ""
         return result
 
     # endregion to methods
@@ -278,6 +291,7 @@ class PublicGetUserPlatformAccountsV3(Operation):
         after: Optional[str] = None,
         before: Optional[str] = None,
         limit: Optional[int] = None,
+        platform_id: Optional[str] = None,
         **kwargs,
     ) -> PublicGetUserPlatformAccountsV3:
         instance = cls()
@@ -289,6 +303,8 @@ class PublicGetUserPlatformAccountsV3(Operation):
             instance.before = before
         if limit is not None:
             instance.limit = limit
+        if platform_id is not None:
+            instance.platform_id = platform_id
         return instance
 
     @classmethod
@@ -316,6 +332,10 @@ class PublicGetUserPlatformAccountsV3(Operation):
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = 0
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = ""
         return instance
 
     @staticmethod
@@ -326,6 +346,7 @@ class PublicGetUserPlatformAccountsV3(Operation):
             "after": "after",
             "before": "before",
             "limit": "limit",
+            "platformId": "platform_id",
         }
 
     @staticmethod
@@ -336,6 +357,7 @@ class PublicGetUserPlatformAccountsV3(Operation):
             "after": False,
             "before": False,
             "limit": False,
+            "platformId": False,
         }
 
     # endregion static methods

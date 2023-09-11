@@ -46,6 +46,10 @@ class ApimodelsItemResp(Model):
 
         server_custom_attributes: (serverCustomAttributes) REQUIRED Dict[str, Any]
 
+        slot_id: (slotId) REQUIRED str
+
+        slot_used: (slotUsed) REQUIRED int
+
         source: (source) REQUIRED str
 
         source_item_id: (sourceItemId) REQUIRED str
@@ -68,6 +72,8 @@ class ApimodelsItemResp(Model):
     namespace: str  # REQUIRED
     qty: int  # REQUIRED
     server_custom_attributes: Dict[str, Any]  # REQUIRED
+    slot_id: str  # REQUIRED
+    slot_used: int  # REQUIRED
     source: str  # REQUIRED
     source_item_id: str  # REQUIRED
     tags: List[str]  # REQUIRED
@@ -105,6 +111,14 @@ class ApimodelsItemResp(Model):
 
     def with_server_custom_attributes(self, value: Dict[str, Any]) -> ApimodelsItemResp:
         self.server_custom_attributes = value
+        return self
+
+    def with_slot_id(self, value: str) -> ApimodelsItemResp:
+        self.slot_id = value
+        return self
+
+    def with_slot_used(self, value: int) -> ApimodelsItemResp:
+        self.slot_used = value
         return self
 
     def with_source(self, value: str) -> ApimodelsItemResp:
@@ -169,6 +183,14 @@ class ApimodelsItemResp(Model):
             }
         elif include_empty:
             result["serverCustomAttributes"] = {}
+        if hasattr(self, "slot_id"):
+            result["slotId"] = str(self.slot_id)
+        elif include_empty:
+            result["slotId"] = ""
+        if hasattr(self, "slot_used"):
+            result["slotUsed"] = int(self.slot_used)
+        elif include_empty:
+            result["slotUsed"] = 0
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
@@ -209,6 +231,8 @@ class ApimodelsItemResp(Model):
         namespace: str,
         qty: int,
         server_custom_attributes: Dict[str, Any],
+        slot_id: str,
+        slot_used: int,
         source: str,
         source_item_id: str,
         tags: List[str],
@@ -225,6 +249,8 @@ class ApimodelsItemResp(Model):
         instance.namespace = namespace
         instance.qty = qty
         instance.server_custom_attributes = server_custom_attributes
+        instance.slot_id = slot_id
+        instance.slot_used = slot_used
         instance.source = source
         instance.source_item_id = source_item_id
         instance.tags = tags
@@ -275,6 +301,14 @@ class ApimodelsItemResp(Model):
             }
         elif include_empty:
             instance.server_custom_attributes = {}
+        if "slotId" in dict_ and dict_["slotId"] is not None:
+            instance.slot_id = str(dict_["slotId"])
+        elif include_empty:
+            instance.slot_id = ""
+        if "slotUsed" in dict_ and dict_["slotUsed"] is not None:
+            instance.slot_used = int(dict_["slotUsed"])
+        elif include_empty:
+            instance.slot_used = 0
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
@@ -347,6 +381,8 @@ class ApimodelsItemResp(Model):
             "namespace": "namespace",
             "qty": "qty",
             "serverCustomAttributes": "server_custom_attributes",
+            "slotId": "slot_id",
+            "slotUsed": "slot_used",
             "source": "source",
             "sourceItemId": "source_item_id",
             "tags": "tags",
@@ -365,6 +401,8 @@ class ApimodelsItemResp(Model):
             "namespace": True,
             "qty": True,
             "serverCustomAttributes": True,
+            "slotId": True,
+            "slotUsed": True,
             "source": True,
             "sourceItemId": True,
             "tags": True,

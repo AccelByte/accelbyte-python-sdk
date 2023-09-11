@@ -42,6 +42,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--after", "after", type=str)
 @click.option("--before", "before", type=str)
 @click.option("--limit", "limit", type=int)
+@click.option("--platform_id", "platform_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -51,6 +52,7 @@ def admin_get_user_platform_accounts_v3(
     after: Optional[str] = None,
     before: Optional[str] = None,
     limit: Optional[int] = None,
+    platform_id: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -69,6 +71,7 @@ def admin_get_user_platform_accounts_v3(
         after=after,
         before=before,
         limit=limit,
+        platform_id=platform_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

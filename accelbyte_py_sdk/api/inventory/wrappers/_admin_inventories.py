@@ -75,7 +75,7 @@ def admin_create_inventory(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsCreateInventoryReq in body
 
@@ -130,7 +130,7 @@ async def admin_create_inventory_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsCreateInventoryReq in body
 
@@ -184,7 +184,7 @@ def admin_get_inventory(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_id: (inventoryId) REQUIRED str in path
 
@@ -238,7 +238,7 @@ async def admin_get_inventory_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_id: (inventoryId) REQUIRED str in path
 
@@ -299,7 +299,7 @@ def admin_list_inventories(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -368,7 +368,7 @@ async def admin_list_inventories_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -418,7 +418,9 @@ def admin_update_inventory(
 
 
     Updating an inventory.
-    MaxSlots will be increased from existing value
+    Positive value will increase MaxSlots from existing value
+    Negative value will decrease MaxSlots from existing value
+    Limited slots can not be changed to unlimited, vice versa
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
 
@@ -436,7 +438,7 @@ def admin_update_inventory(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsUpdateInventoryReq in body
 
@@ -477,7 +479,9 @@ async def admin_update_inventory_async(
 
 
     Updating an inventory.
-    MaxSlots will be increased from existing value
+    Positive value will increase MaxSlots from existing value
+    Negative value will decrease MaxSlots from existing value
+    Limited slots can not be changed to unlimited, vice versa
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
 
@@ -495,7 +499,7 @@ async def admin_update_inventory_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsUpdateInventoryReq in body
 
@@ -556,7 +560,7 @@ def delete_inventory(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsDeleteInventoryReq in body
 
@@ -615,7 +619,7 @@ async def delete_inventory_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsDeleteInventoryReq in body
 

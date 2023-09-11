@@ -181,11 +181,15 @@ from ._delete_sso_login_platform_credential_v3 import (
     delete_sso_login_platform_credential_v3,
 )
 from ._update_sso_platform_credential import update_sso_platform_credential
+from ._admin_list_user_id_by_platform_user_i_ds_v3 import (
+    admin_list_user_id_by_platform_user_i_ds_v3,
+)
 from ._admin_get_user_by_platform_user_idv3 import admin_get_user_by_platform_user_idv3
 from ._get_admin_users_by_role_id_v3 import get_admin_users_by_role_id_v3
 from ._admin_get_user_by_email_address_v3 import admin_get_user_by_email_address_v3
 from ._admin_get_bulk_user_ban_v3 import admin_get_bulk_user_ban_v3
 from ._admin_list_user_id_by_user_i_ds_v3 import admin_list_user_id_by_user_i_ds_v3
+from ._admin_bulk_get_users_platform import admin_bulk_get_users_platform
 from ._admin_invite_user_v3 import admin_invite_user_v3
 from ._admin_query_third_platform_link_history_v3 import (
     admin_query_third_platform_link_history_v3,
@@ -588,11 +592,13 @@ commands = [
     add_sso_login_platform_credential,
     delete_sso_login_platform_credential_v3,
     update_sso_platform_credential,
+    admin_list_user_id_by_platform_user_i_ds_v3,
     admin_get_user_by_platform_user_idv3,
     get_admin_users_by_role_id_v3,
     admin_get_user_by_email_address_v3,
     admin_get_bulk_user_ban_v3,
     admin_list_user_id_by_user_i_ds_v3,
+    admin_bulk_get_users_platform,
     admin_invite_user_v3,
     admin_query_third_platform_link_history_v3,
     admin_list_users_v3,

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_image_replication import ModelsImageReplication
+
 
 class ModelsImageRecordUpdate(Model):
     """Models image record update (models.ImageRecordUpdate)
@@ -36,7 +38,11 @@ class ModelsImageRecordUpdate(Model):
 
         image: (image) REQUIRED str
 
+        image_replications_map: (imageReplicationsMap) REQUIRED Dict[str, ModelsImageReplication]
+
         namespace: (namespace) REQUIRED str
+
+        patch_version: (patchVersion) REQUIRED str
 
         persistent: (persistent) REQUIRED bool
 
@@ -47,7 +53,9 @@ class ModelsImageRecordUpdate(Model):
 
     artifact_path: str  # REQUIRED
     image: str  # REQUIRED
+    image_replications_map: Dict[str, ModelsImageReplication]  # REQUIRED
     namespace: str  # REQUIRED
+    patch_version: str  # REQUIRED
     persistent: bool  # REQUIRED
     version: str  # REQUIRED
 
@@ -63,8 +71,18 @@ class ModelsImageRecordUpdate(Model):
         self.image = value
         return self
 
+    def with_image_replications_map(
+        self, value: Dict[str, ModelsImageReplication]
+    ) -> ModelsImageRecordUpdate:
+        self.image_replications_map = value
+        return self
+
     def with_namespace(self, value: str) -> ModelsImageRecordUpdate:
         self.namespace = value
+        return self
+
+    def with_patch_version(self, value: str) -> ModelsImageRecordUpdate:
+        self.patch_version = value
         return self
 
     def with_persistent(self, value: bool) -> ModelsImageRecordUpdate:
@@ -89,10 +107,21 @@ class ModelsImageRecordUpdate(Model):
             result["image"] = str(self.image)
         elif include_empty:
             result["image"] = ""
+        if hasattr(self, "image_replications_map"):
+            result["imageReplicationsMap"] = {
+                str(k0): v0.to_dict(include_empty=include_empty)
+                for k0, v0 in self.image_replications_map.items()
+            }
+        elif include_empty:
+            result["imageReplicationsMap"] = {}
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "patch_version"):
+            result["patchVersion"] = str(self.patch_version)
+        elif include_empty:
+            result["patchVersion"] = ""
         if hasattr(self, "persistent"):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
@@ -112,7 +141,9 @@ class ModelsImageRecordUpdate(Model):
         cls,
         artifact_path: str,
         image: str,
+        image_replications_map: Dict[str, ModelsImageReplication],
         namespace: str,
+        patch_version: str,
         persistent: bool,
         version: str,
         **kwargs,
@@ -120,7 +151,9 @@ class ModelsImageRecordUpdate(Model):
         instance = cls()
         instance.artifact_path = artifact_path
         instance.image = image
+        instance.image_replications_map = image_replications_map
         instance.namespace = namespace
+        instance.patch_version = patch_version
         instance.persistent = persistent
         instance.version = version
         return instance
@@ -140,10 +173,26 @@ class ModelsImageRecordUpdate(Model):
             instance.image = str(dict_["image"])
         elif include_empty:
             instance.image = ""
+        if (
+            "imageReplicationsMap" in dict_
+            and dict_["imageReplicationsMap"] is not None
+        ):
+            instance.image_replications_map = {
+                str(k0): ModelsImageReplication.create_from_dict(
+                    v0, include_empty=include_empty
+                )
+                for k0, v0 in dict_["imageReplicationsMap"].items()
+            }
+        elif include_empty:
+            instance.image_replications_map = {}
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "patchVersion" in dict_ and dict_["patchVersion"] is not None:
+            instance.patch_version = str(dict_["patchVersion"])
+        elif include_empty:
+            instance.patch_version = ""
         if "persistent" in dict_ and dict_["persistent"] is not None:
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
@@ -197,7 +246,9 @@ class ModelsImageRecordUpdate(Model):
         return {
             "artifactPath": "artifact_path",
             "image": "image",
+            "imageReplicationsMap": "image_replications_map",
             "namespace": "namespace",
+            "patchVersion": "patch_version",
             "persistent": "persistent",
             "version": "version",
         }
@@ -207,7 +258,9 @@ class ModelsImageRecordUpdate(Model):
         return {
             "artifactPath": True,
             "image": True,
+            "imageReplicationsMap": True,
             "namespace": True,
+            "patchVersion": True,
             "persistent": True,
             "version": True,
         }

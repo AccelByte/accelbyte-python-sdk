@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Platform Service (4.34.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -60,8 +60,6 @@ class MockIAPReceipt(Model):
         language: (language) OPTIONAL str
 
         region: (region) OPTIONAL str
-
-        transaction_id: (transactionId) OPTIONAL str
     """
 
     # region fields
@@ -71,7 +69,6 @@ class MockIAPReceipt(Model):
     item_identity_type: Union[str, ItemIdentityTypeEnum]  # OPTIONAL
     language: str  # OPTIONAL
     region: str  # OPTIONAL
-    transaction_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -97,10 +94,6 @@ class MockIAPReceipt(Model):
 
     def with_region(self, value: str) -> MockIAPReceipt:
         self.region = value
-        return self
-
-    def with_transaction_id(self, value: str) -> MockIAPReceipt:
-        self.transaction_id = value
         return self
 
     # endregion with_x methods
@@ -129,10 +122,6 @@ class MockIAPReceipt(Model):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = ""
-        if hasattr(self, "transaction_id"):
-            result["transactionId"] = str(self.transaction_id)
-        elif include_empty:
-            result["transactionId"] = ""
         return result
 
     # endregion to methods
@@ -147,7 +136,6 @@ class MockIAPReceipt(Model):
         item_identity_type: Optional[Union[str, ItemIdentityTypeEnum]] = None,
         language: Optional[str] = None,
         region: Optional[str] = None,
-        transaction_id: Optional[str] = None,
         **kwargs,
     ) -> MockIAPReceipt:
         instance = cls()
@@ -159,8 +147,6 @@ class MockIAPReceipt(Model):
             instance.language = language
         if region is not None:
             instance.region = region
-        if transaction_id is not None:
-            instance.transaction_id = transaction_id
         return instance
 
     @classmethod
@@ -190,10 +176,6 @@ class MockIAPReceipt(Model):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = ""
-        if "transactionId" in dict_ and dict_["transactionId"] is not None:
-            instance.transaction_id = str(dict_["transactionId"])
-        elif include_empty:
-            instance.transaction_id = ""
         return instance
 
     @classmethod
@@ -238,7 +220,6 @@ class MockIAPReceipt(Model):
             "itemIdentityType": "item_identity_type",
             "language": "language",
             "region": "region",
-            "transactionId": "transaction_id",
         }
 
     @staticmethod
@@ -249,7 +230,6 @@ class MockIAPReceipt(Model):
             "itemIdentityType": False,
             "language": False,
             "region": False,
-            "transactionId": False,
         }
 
     @staticmethod

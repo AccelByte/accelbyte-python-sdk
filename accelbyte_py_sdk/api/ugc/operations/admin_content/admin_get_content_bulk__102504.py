@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Ugc Service (2.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,66 +29,58 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ErrorEntity
-from ...models import FulfillmentResult
-from ...models import RewardsRequest
+from ...models import ModelsContentDownloadResponse
+from ...models import ModelsGetContentBulkByShareCodesRequest
+from ...models import ResponseError
 
 
-class FulfillRewardsV2(Operation):
-    """Fulfill rewards (fulfillRewardsV2)
+class AdminGetContentBulkByShareCodes(Operation):
+    """Bulk get content by content sharecodes (AdminGetContentBulkByShareCodes)
 
-    [SERVICE COMMUNICATION ONLY] Fulfill rewards.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
-      *  Returns : fulfillment result
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
+    Maximum sharecodes per request 100
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
-        url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillment/rewards
+        url: /ugc/v1/admin/namespaces/{namespace}/contents/sharecodes/bulk
 
         method: POST
 
-        tags: ["Fulfillment"]
+        tags: ["Admin Content"]
 
         consumes: ["application/json"]
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardsRequest in body
+        body: (body) REQUIRED ModelsGetContentBulkByShareCodesRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
     Responses:
-        200: OK - FulfillmentResult (successful operation)
+        200: OK - List[ModelsContentDownloadResponse] (OK)
 
-        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists)
+        401: Unauthorized - ResponseError (Unauthorized)
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+        403: Forbidden - ResponseError (Forbidden)
 
-        409: Conflict - ErrorEntity (20006: optimistic lock)
+        500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = (
-        "/platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillment/rewards"
-    )
+    _url: str = "/ugc/v1/admin/namespaces/{namespace}/contents/sharecodes/bulk"
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: RewardsRequest  # OPTIONAL in [body]
+    body: ModelsGetContentBulkByShareCodesRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -141,8 +133,6 @@ class FulfillRewardsV2(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -153,16 +143,14 @@ class FulfillRewardsV2(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: RewardsRequest) -> FulfillRewardsV2:
+    def with_body(
+        self, value: ModelsGetContentBulkByShareCodesRequest
+    ) -> AdminGetContentBulkByShareCodes:
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> FulfillRewardsV2:
+    def with_namespace(self, value: str) -> AdminGetContentBulkByShareCodes:
         self.namespace = value
-        return self
-
-    def with_user_id(self, value: str) -> FulfillRewardsV2:
-        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -174,15 +162,11 @@ class FulfillRewardsV2(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = RewardsRequest()
+            result["body"] = ModelsGetContentBulkByShareCodesRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -192,16 +176,19 @@ class FulfillRewardsV2(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, FulfillmentResult], Union[None, ErrorEntity, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, List[ModelsContentDownloadResponse]],
+        Union[None, HttpResponse, ResponseError],
+    ]:
         """Parse the given response.
 
-        200: OK - FulfillmentResult (successful operation)
+        200: OK - List[ModelsContentDownloadResponse] (OK)
 
-        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists)
+        401: Unauthorized - ResponseError (Unauthorized)
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+        403: Forbidden - ResponseError (Forbidden)
 
-        409: Conflict - ErrorEntity (20006: optimistic lock)
+        500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -217,13 +204,15 @@ class FulfillRewardsV2(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return FulfillmentResult.create_from_dict(content), None
-        if code == 400:
-            return None, ErrorEntity.create_from_dict(content)
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
-        if code == 409:
-            return None, ErrorEntity.create_from_dict(content)
+            return [
+                ModelsContentDownloadResponse.create_from_dict(i) for i in content
+            ], None
+        if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 403:
+            return None, ResponseError.create_from_dict(content)
+        if code == 500:
+            return None, ResponseError.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -235,38 +224,28 @@ class FulfillRewardsV2(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        body: Optional[RewardsRequest] = None,
-        **kwargs,
-    ) -> FulfillRewardsV2:
+        cls, body: ModelsGetContentBulkByShareCodesRequest, namespace: str, **kwargs
+    ) -> AdminGetContentBulkByShareCodes:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> FulfillRewardsV2:
+    ) -> AdminGetContentBulkByShareCodes:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = RewardsRequest.create_from_dict(
+            instance.body = ModelsGetContentBulkByShareCodesRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = RewardsRequest()
+            instance.body = ModelsGetContentBulkByShareCodesRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
         return instance
 
     @staticmethod
@@ -274,15 +253,13 @@ class FulfillRewardsV2(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
-            "userId": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
-            "userId": True,
         }
 
     # endregion static methods

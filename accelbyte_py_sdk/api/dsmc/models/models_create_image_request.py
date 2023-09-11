@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,8 @@ class ModelsCreateImageRequest(Model):
     Properties:
         artifact_path: (artifactPath) REQUIRED str
 
+        core_dump_enabled: (coreDumpEnabled) REQUIRED bool
+
         docker_path: (dockerPath) REQUIRED str
 
         image: (image) REQUIRED str
@@ -50,6 +52,7 @@ class ModelsCreateImageRequest(Model):
     # region fields
 
     artifact_path: str  # REQUIRED
+    core_dump_enabled: bool  # REQUIRED
     docker_path: str  # REQUIRED
     image: str  # REQUIRED
     image_size: int  # REQUIRED
@@ -63,6 +66,10 @@ class ModelsCreateImageRequest(Model):
 
     def with_artifact_path(self, value: str) -> ModelsCreateImageRequest:
         self.artifact_path = value
+        return self
+
+    def with_core_dump_enabled(self, value: bool) -> ModelsCreateImageRequest:
+        self.core_dump_enabled = value
         return self
 
     def with_docker_path(self, value: str) -> ModelsCreateImageRequest:
@@ -99,6 +106,10 @@ class ModelsCreateImageRequest(Model):
             result["artifactPath"] = str(self.artifact_path)
         elif include_empty:
             result["artifactPath"] = ""
+        if hasattr(self, "core_dump_enabled"):
+            result["coreDumpEnabled"] = bool(self.core_dump_enabled)
+        elif include_empty:
+            result["coreDumpEnabled"] = False
         if hasattr(self, "docker_path"):
             result["dockerPath"] = str(self.docker_path)
         elif include_empty:
@@ -133,6 +144,7 @@ class ModelsCreateImageRequest(Model):
     def create(
         cls,
         artifact_path: str,
+        core_dump_enabled: bool,
         docker_path: str,
         image: str,
         image_size: int,
@@ -143,6 +155,7 @@ class ModelsCreateImageRequest(Model):
     ) -> ModelsCreateImageRequest:
         instance = cls()
         instance.artifact_path = artifact_path
+        instance.core_dump_enabled = core_dump_enabled
         instance.docker_path = docker_path
         instance.image = image
         instance.image_size = image_size
@@ -162,6 +175,10 @@ class ModelsCreateImageRequest(Model):
             instance.artifact_path = str(dict_["artifactPath"])
         elif include_empty:
             instance.artifact_path = ""
+        if "coreDumpEnabled" in dict_ and dict_["coreDumpEnabled"] is not None:
+            instance.core_dump_enabled = bool(dict_["coreDumpEnabled"])
+        elif include_empty:
+            instance.core_dump_enabled = False
         if "dockerPath" in dict_ and dict_["dockerPath"] is not None:
             instance.docker_path = str(dict_["dockerPath"])
         elif include_empty:
@@ -230,6 +247,7 @@ class ModelsCreateImageRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "artifactPath": "artifact_path",
+            "coreDumpEnabled": "core_dump_enabled",
             "dockerPath": "docker_path",
             "image": "image",
             "imageSize": "image_size",
@@ -242,6 +260,7 @@ class ModelsCreateImageRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "artifactPath": True,
+            "coreDumpEnabled": True,
             "dockerPath": True,
             "image": True,
             "imageSize": True,

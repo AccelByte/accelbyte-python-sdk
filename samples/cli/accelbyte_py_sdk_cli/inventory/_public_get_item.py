@@ -37,14 +37,16 @@ from accelbyte_py_sdk.api.inventory.models import ApimodelsItemResp
 
 @click.command()
 @click.argument("inventory_id", type=str)
-@click.argument("item_id", type=str)
+@click.argument("slot_id", type=str)
+@click.argument("source_item_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_get_item(
     inventory_id: str,
-    item_id: str,
+    slot_id: str,
+    source_item_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -60,7 +62,8 @@ def public_get_item(
         login_as_internal(login_as)
     result, error = public_get_item_internal(
         inventory_id=inventory_id,
-        item_id=item_id,
+        slot_id=slot_id,
+        source_item_id=source_item_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

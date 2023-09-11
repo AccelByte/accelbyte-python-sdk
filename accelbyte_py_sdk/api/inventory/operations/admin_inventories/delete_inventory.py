@@ -56,7 +56,7 @@ class DeleteInventory(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsDeleteInventoryReq in body
 
@@ -80,7 +80,7 @@ class DeleteInventory(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ApimodelsDeleteInventoryReq  # REQUIRED in [body]

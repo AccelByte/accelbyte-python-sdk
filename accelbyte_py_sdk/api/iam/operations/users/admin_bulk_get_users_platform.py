@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Iam Service (7.1.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,48 +29,67 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import TestResult
+from ...models import ModelListBulkUserPlatformsResponse
+from ...models import ModelUserIDsRequest
+from ...models import RestErrorResponse
 
 
-class ValidateExistedPlaystationIAPConfig(Operation):
-    """Validate existed playstation iap config (validateExistedPlaystationIAPConfig)
+class AdminBulkGetUsersPlatform(Operation):
+    """Admin bulk get users' platform info by user Ids (AdminBulkGetUsersPlatform)
 
-    Validate playstation iap config. Other detail info:
+    Notes:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : Test Results
+
+
+
+
+
+      * Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+
+
+      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/iap/config/playstation/validate
+        url: /iam/v3/admin/namespaces/{namespace}/users/bulk/platforms
 
-        method: GET
+        method: POST
 
-        tags: ["IAP"]
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserIDsRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - TestResult (successful operation)
+        200: OK - ModelListBulkUserPlatformsResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10185: publisher namespace not allowed)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/iap/config/playstation/validate"
-    _method: str = "GET"
+    _url: str = "/iam/v3/admin/namespaces/{namespace}/users/bulk/platforms"
+    _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    body: ModelUserIDsRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -111,8 +130,14 @@ class ValidateExistedPlaystationIAPConfig(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
+
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
@@ -128,7 +153,11 @@ class ValidateExistedPlaystationIAPConfig(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> ValidateExistedPlaystationIAPConfig:
+    def with_body(self, value: ModelUserIDsRequest) -> AdminBulkGetUsersPlatform:
+        self.body = value
+        return self
+
+    def with_namespace(self, value: str) -> AdminBulkGetUsersPlatform:
         self.namespace = value
         return self
 
@@ -138,6 +167,10 @@ class ValidateExistedPlaystationIAPConfig(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["body"] = ModelUserIDsRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -151,10 +184,17 @@ class ValidateExistedPlaystationIAPConfig(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, TestResult], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelListBulkUserPlatformsResponse],
+        Union[None, HttpResponse, RestErrorResponse],
+    ]:
         """Parse the given response.
 
-        200: OK - TestResult (successful operation)
+        200: OK - ModelListBulkUserPlatformsResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10185: publisher namespace not allowed)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -170,7 +210,11 @@ class ValidateExistedPlaystationIAPConfig(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return TestResult.create_from_dict(content), None
+            return ModelListBulkUserPlatformsResponse.create_from_dict(content), None
+        if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -181,16 +225,25 @@ class ValidateExistedPlaystationIAPConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> ValidateExistedPlaystationIAPConfig:
+    def create(
+        cls, body: ModelUserIDsRequest, namespace: str, **kwargs
+    ) -> AdminBulkGetUsersPlatform:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ValidateExistedPlaystationIAPConfig:
+    ) -> AdminBulkGetUsersPlatform:
         instance = cls()
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = ModelUserIDsRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.body = ModelUserIDsRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -200,12 +253,14 @@ class ValidateExistedPlaystationIAPConfig(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "body": "body",
             "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "body": True,
             "namespace": True,
         }
 

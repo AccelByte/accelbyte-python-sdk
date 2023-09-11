@@ -59,6 +59,11 @@ from ..operations.image_config import ImageLimitClient
 from ..operations.image_config import ImportImages
 from ..operations.image_config import ListImages
 from ..operations.image_config import ListImagesSortByEnum, ListImagesSortDirectionEnum
+from ..operations.image_config import ListImagesClient
+from ..operations.image_config import (
+    ListImagesClientSortByEnum,
+    ListImagesClientSortDirectionEnum,
+)
 from ..operations.image_config import UpdateImage
 
 
@@ -1811,7 +1816,7 @@ def list_images(
         offset: (offset) REQUIRED int in query
 
     Responses:
-        200: OK - ModelsListImageResponse (configs listed)
+        200: OK - ModelsListImageResponse (images listed)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -1887,7 +1892,7 @@ async def list_images_async(
         offset: (offset) REQUIRED int in query
 
     Responses:
-        200: OK - ModelsListImageResponse (configs listed)
+        200: OK - ModelsListImageResponse (images listed)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -1900,6 +1905,160 @@ async def list_images_async(
         if error:
             return None, error
     request = ListImages.create(
+        count=count,
+        offset=offset,
+        q=q,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ListImagesClient)
+def list_images_client(
+    count: Optional[int] = None,
+    offset: Optional[int] = None,
+    q: Optional[str] = None,
+    sort_by: Optional[Union[str, ListImagesClientSortByEnum]] = None,
+    sort_direction: Optional[Union[str, ListImagesClientSortDirectionEnum]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List all DS images for Client Credential authorization type (ListImagesClient)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint lists all of dedicated servers images.
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/images
+
+        method: GET
+
+        tags: ["Image Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        count: (count) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        q: (q) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
+
+    Responses:
+        200: OK - ModelsListImageResponse (images listed)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListImagesClient.create(
+        count=count,
+        offset=offset,
+        q=q,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ListImagesClient)
+async def list_images_client_async(
+    count: Optional[int] = None,
+    offset: Optional[int] = None,
+    q: Optional[str] = None,
+    sort_by: Optional[Union[str, ListImagesClientSortByEnum]] = None,
+    sort_direction: Optional[Union[str, ListImagesClientSortDirectionEnum]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List all DS images for Client Credential authorization type (ListImagesClient)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required scope: social
+
+    This endpoint lists all of dedicated servers images.
+
+    Parameter Offset and Count is Required
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/images
+
+        method: GET
+
+        tags: ["Image Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        count: (count) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        q: (q) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
+
+    Responses:
+        200: OK - ModelsListImageResponse (images listed)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListImagesClient.create(
         count=count,
         offset=offset,
         q=q,

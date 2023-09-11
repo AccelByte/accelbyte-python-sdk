@@ -69,6 +69,7 @@ from ..models import ModelLinkPlatformAccountRequest
 from ..models import ModelLinkPlatformAccountWithProgressionRequest
 from ..models import ModelLinkRequest
 from ..models import ModelLinkingHistoryResponseWithPaginationV3
+from ..models import ModelListBulkUserPlatformsResponse
 from ..models import ModelListBulkUserResponse
 from ..models import ModelListEmailAddressRequest
 from ..models import ModelListUserInformationResult
@@ -130,6 +131,7 @@ from ..operations.users import AdminAddUserPermissionsV3
 from ..operations.users import AdminAddUserRoleV3
 from ..operations.users import AdminBanUserV2
 from ..operations.users import AdminBanUserV3
+from ..operations.users import AdminBulkGetUsersPlatform
 from ..operations.users import AdminCreateJusticeUser
 from ..operations.users import AdminCreateUserRolesV2
 from ..operations.users import AdminDeletePlatformLinkV2
@@ -161,6 +163,7 @@ from ..operations.users import AdminGetUserPlatformAccountsV3
 from ..operations.users import AdminGetUserSinglePlatformAccount
 from ..operations.users import AdminInviteUserV3
 from ..operations.users import AdminLinkPlatformAccount
+from ..operations.users import AdminListUserIDByPlatformUserIDsV3
 from ..operations.users import AdminListUserIDByUserIDsV3
 from ..operations.users import AdminListUsersV3
 from ..operations.users import AdminPlatformLinkV3
@@ -1496,6 +1499,132 @@ async def admin_ban_user_v3_async(
     request = AdminBanUserV3.create(
         body=body,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminBulkGetUsersPlatform)
+def admin_bulk_get_users_platform(
+    body: ModelUserIDsRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin bulk get users' platform info by user Ids (AdminBulkGetUsersPlatform)
+
+    Notes:
+
+
+
+
+
+
+      * Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+
+
+      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/bulk/platforms
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserIDsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelListBulkUserPlatformsResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10185: publisher namespace not allowed)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkGetUsersPlatform.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBulkGetUsersPlatform)
+async def admin_bulk_get_users_platform_async(
+    body: ModelUserIDsRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin bulk get users' platform info by user Ids (AdminBulkGetUsersPlatform)
+
+    Notes:
+
+
+
+
+
+
+      * Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+
+
+      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+
+
+      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/bulk/platforms
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserIDsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelListBulkUserPlatformsResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10185: publisher namespace not allowed)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkGetUsersPlatform.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -5257,6 +5386,7 @@ def admin_get_user_platform_accounts_v3(
     after: Optional[str] = None,
     before: Optional[str] = None,
     limit: Optional[int] = None,
+    platform_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5310,6 +5440,8 @@ def admin_get_user_platform_accounts_v3(
 
         limit: (limit) OPTIONAL int in query
 
+        platform_id: (platformId) OPTIONAL str in query
+
     Responses:
         200: OK - AccountcommonUserLinkedPlatformsResponseV3 (OK)
 
@@ -5332,6 +5464,7 @@ def admin_get_user_platform_accounts_v3(
         after=after,
         before=before,
         limit=limit,
+        platform_id=platform_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -5343,6 +5476,7 @@ async def admin_get_user_platform_accounts_v3_async(
     after: Optional[str] = None,
     before: Optional[str] = None,
     limit: Optional[int] = None,
+    platform_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5396,6 +5530,8 @@ async def admin_get_user_platform_accounts_v3_async(
 
         limit: (limit) OPTIONAL int in query
 
+        platform_id: (platformId) OPTIONAL str in query
+
     Responses:
         200: OK - AccountcommonUserLinkedPlatformsResponseV3 (OK)
 
@@ -5418,6 +5554,7 @@ async def admin_get_user_platform_accounts_v3_async(
         after=after,
         before=before,
         limit=limit,
+        platform_id=platform_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -5832,6 +5969,140 @@ async def admin_link_platform_account_async(
         body=body,
         user_id=user_id,
         skip_conflict=skip_conflict,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminListUserIDByPlatformUserIDsV3)
+def admin_list_user_id_by_platform_user_i_ds_v3(
+    body: ModelPlatformUserIDRequest,
+    platform_id: str,
+    raw_pid: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin List User ID By Platform User ID (AdminListUserIDByPlatformUserIDsV3)
+
+    Admin List User ID By Platform User ID
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+    This endpoint intended to list game user ID from the given namespace
+    This endpoint return list of user ID by given platform ID and list of platform user ID
+
+    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformUserIDRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        raw_pid: (rawPID) OPTIONAL bool in query
+
+    Responses:
+        200: OK - AccountcommonUserPlatforms (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminListUserIDByPlatformUserIDsV3.create(
+        body=body,
+        platform_id=platform_id,
+        raw_pid=raw_pid,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminListUserIDByPlatformUserIDsV3)
+async def admin_list_user_id_by_platform_user_i_ds_v3_async(
+    body: ModelPlatformUserIDRequest,
+    platform_id: str,
+    raw_pid: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin List User ID By Platform User ID (AdminListUserIDByPlatformUserIDsV3)
+
+    Admin List User ID By Platform User ID
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+    This endpoint intended to list game user ID from the given namespace
+    This endpoint return list of user ID by given platform ID and list of platform user ID
+
+    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformUserIDRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        raw_pid: (rawPID) OPTIONAL bool in query
+
+    Responses:
+        200: OK - AccountcommonUserPlatforms (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminListUserIDByPlatformUserIDsV3.create(
+        body=body,
+        platform_id=platform_id,
+        raw_pid=raw_pid,
         namespace=namespace,
     )
     return await run_request_async(
@@ -18327,6 +18598,7 @@ def public_get_user_platform_accounts_v3(
     after: Optional[str] = None,
     before: Optional[str] = None,
     limit: Optional[int] = None,
+    platform_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -18360,6 +18632,8 @@ def public_get_user_platform_accounts_v3(
 
         limit: (limit) OPTIONAL int in query
 
+        platform_id: (platformId) OPTIONAL str in query
+
     Responses:
         200: OK - AccountcommonUserLinkedPlatformsResponseV3 (OK)
 
@@ -18382,6 +18656,7 @@ def public_get_user_platform_accounts_v3(
         after=after,
         before=before,
         limit=limit,
+        platform_id=platform_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -18393,6 +18668,7 @@ async def public_get_user_platform_accounts_v3_async(
     after: Optional[str] = None,
     before: Optional[str] = None,
     limit: Optional[int] = None,
+    platform_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -18426,6 +18702,8 @@ async def public_get_user_platform_accounts_v3_async(
 
         limit: (limit) OPTIONAL int in query
 
+        platform_id: (platformId) OPTIONAL str in query
+
     Responses:
         200: OK - AccountcommonUserLinkedPlatformsResponseV3 (OK)
 
@@ -18448,6 +18726,7 @@ async def public_get_user_platform_accounts_v3_async(
         after=after,
         before=before,
         limit=limit,
+        platform_id=platform_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -18801,7 +19080,7 @@ async def public_list_user_all_platform_accounts_distinct_v3_async(
 def public_list_user_id_by_platform_user_i_ds_v3(
     body: ModelPlatformUserIDRequest,
     platform_id: str,
-    raw_puid: Optional[bool] = None,
+    raw_pid: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -18833,7 +19112,7 @@ def public_list_user_id_by_platform_user_i_ds_v3(
 
         platform_id: (platformId) REQUIRED str in path
 
-        raw_puid: (rawPUID) OPTIONAL bool in query
+        raw_pid: (rawPID) OPTIONAL bool in query
 
     Responses:
         200: OK - AccountcommonUserPlatforms (OK)
@@ -18853,7 +19132,7 @@ def public_list_user_id_by_platform_user_i_ds_v3(
     request = PublicListUserIDByPlatformUserIDsV3.create(
         body=body,
         platform_id=platform_id,
-        raw_puid=raw_puid,
+        raw_pid=raw_pid,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -18863,7 +19142,7 @@ def public_list_user_id_by_platform_user_i_ds_v3(
 async def public_list_user_id_by_platform_user_i_ds_v3_async(
     body: ModelPlatformUserIDRequest,
     platform_id: str,
-    raw_puid: Optional[bool] = None,
+    raw_pid: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -18895,7 +19174,7 @@ async def public_list_user_id_by_platform_user_i_ds_v3_async(
 
         platform_id: (platformId) REQUIRED str in path
 
-        raw_puid: (rawPUID) OPTIONAL bool in query
+        raw_pid: (rawPID) OPTIONAL bool in query
 
     Responses:
         200: OK - AccountcommonUserPlatforms (OK)
@@ -18915,7 +19194,7 @@ async def public_list_user_id_by_platform_user_i_ds_v3_async(
     request = PublicListUserIDByPlatformUserIDsV3.create(
         body=body,
         platform_id=platform_id,
-        raw_puid=raw_puid,
+        raw_pid=raw_pid,
         namespace=namespace,
     )
     return await run_request_async(

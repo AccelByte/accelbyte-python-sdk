@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.1.0)
+# AccelByte Gaming Services Session Service (3.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,6 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApimodelsGameSessionResponse
 from ...models import ResponseError
 
 
@@ -56,7 +55,7 @@ class PublicRevokeGameSessionCode(Operation):
         session_id: (sessionId) REQUIRED str in path
 
     Responses:
-        200: OK - ApimodelsGameSessionResponse (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -171,13 +170,10 @@ class PublicRevokeGameSessionCode(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ApimodelsGameSessionResponse],
-        Union[None, HttpResponse, ResponseError],
-    ]:
+    ) -> Tuple[None, Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        200: OK - ApimodelsGameSessionResponse (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -202,8 +198,8 @@ class PublicRevokeGameSessionCode(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return ApimodelsGameSessionResponse.create_from_dict(content), None
+        if code == 204:
+            return None, None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:

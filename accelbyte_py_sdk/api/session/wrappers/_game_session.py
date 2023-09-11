@@ -2217,7 +2217,7 @@ def public_revoke_game_session_code(
         session_id: (sessionId) REQUIRED str in path
 
     Responses:
-        200: OK - ApimodelsGameSessionResponse (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -2269,7 +2269,7 @@ async def public_revoke_game_session_code_async(
         session_id: (sessionId) REQUIRED str in path
 
     Responses:
-        200: OK - ApimodelsGameSessionResponse (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 

@@ -46,7 +46,7 @@ class AdminConsumeUserItem(Operation):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
     Properties:
-        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items/{itemId}/consume
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/consume
 
         method: POST
 
@@ -56,13 +56,11 @@ class AdminConsumeUserItem(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsConsumeItemReq in body
 
         inventory_id: (inventoryId) REQUIRED str in path
-
-        item_id: (itemId) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
@@ -80,16 +78,15 @@ class AdminConsumeUserItem(Operation):
 
     # region fields
 
-    _url: str = "/inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items/{itemId}/consume"
+    _url: str = "/inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/consume"
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ApimodelsConsumeItemReq  # REQUIRED in [body]
     inventory_id: str  # REQUIRED in [path]
-    item_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -144,8 +141,6 @@ class AdminConsumeUserItem(Operation):
         result = {}
         if hasattr(self, "inventory_id"):
             result["inventoryId"] = self.inventory_id
-        if hasattr(self, "item_id"):
-            result["itemId"] = self.item_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
@@ -166,10 +161,6 @@ class AdminConsumeUserItem(Operation):
 
     def with_inventory_id(self, value: str) -> AdminConsumeUserItem:
         self.inventory_id = value
-        return self
-
-    def with_item_id(self, value: str) -> AdminConsumeUserItem:
-        self.item_id = value
         return self
 
     def with_namespace(self, value: str) -> AdminConsumeUserItem:
@@ -194,10 +185,6 @@ class AdminConsumeUserItem(Operation):
             result["inventoryId"] = str(self.inventory_id)
         elif include_empty:
             result["inventoryId"] = ""
-        if hasattr(self, "item_id") and self.item_id:
-            result["itemId"] = str(self.item_id)
-        elif include_empty:
-            result["itemId"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -264,7 +251,6 @@ class AdminConsumeUserItem(Operation):
         cls,
         body: ApimodelsConsumeItemReq,
         inventory_id: str,
-        item_id: str,
         namespace: str,
         user_id: str,
         **kwargs,
@@ -272,7 +258,6 @@ class AdminConsumeUserItem(Operation):
         instance = cls()
         instance.body = body
         instance.inventory_id = inventory_id
-        instance.item_id = item_id
         instance.namespace = namespace
         instance.user_id = user_id
         return instance
@@ -292,10 +277,6 @@ class AdminConsumeUserItem(Operation):
             instance.inventory_id = str(dict_["inventoryId"])
         elif include_empty:
             instance.inventory_id = ""
-        if "itemId" in dict_ and dict_["itemId"] is not None:
-            instance.item_id = str(dict_["itemId"])
-        elif include_empty:
-            instance.item_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -311,7 +292,6 @@ class AdminConsumeUserItem(Operation):
         return {
             "body": "body",
             "inventoryId": "inventory_id",
-            "itemId": "item_id",
             "namespace": "namespace",
             "userId": "user_id",
         }
@@ -321,7 +301,6 @@ class AdminConsumeUserItem(Operation):
         return {
             "body": True,
             "inventoryId": True,
-            "itemId": True,
             "namespace": True,
             "userId": True,
         }

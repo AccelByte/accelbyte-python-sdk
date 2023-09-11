@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApimodelsBulkRemoveItemsReq
 from ...models import ApimodelsErrorResponse
+from ...models import ApimodelsRemoveInventoryItemReq
 from ...models import ApimodelsUpdateItemResp
 
 
@@ -56,9 +56,9 @@ class AdminBulkRemoveItems(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsBulkRemoveItemsReq in body
+        body: (body) REQUIRED List[ApimodelsRemoveInventoryItemReq] in body
 
         inventory_id: (inventoryId) REQUIRED str in path
 
@@ -82,10 +82,10 @@ class AdminBulkRemoveItems(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ApimodelsBulkRemoveItemsReq  # REQUIRED in [body]
+    body: List[ApimodelsRemoveInventoryItemReq]  # REQUIRED in [body]
     inventory_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -135,7 +135,7 @@ class AdminBulkRemoveItems(Operation):
     def get_body_params(self) -> Any:
         if not hasattr(self, "body") or self.body is None:
             return None
-        return self.body.to_dict()
+        return [i.to_dict() for i in self.body]
 
     def get_path_params(self) -> dict:
         result = {}
@@ -155,7 +155,9 @@ class AdminBulkRemoveItems(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ApimodelsBulkRemoveItemsReq) -> AdminBulkRemoveItems:
+    def with_body(
+        self, value: List[ApimodelsRemoveInventoryItemReq]
+    ) -> AdminBulkRemoveItems:
         self.body = value
         return self
 
@@ -178,9 +180,11 @@ class AdminBulkRemoveItems(Operation):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "body") and self.body:
-            result["body"] = self.body.to_dict(include_empty=include_empty)
+            result["body"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.body
+            ]
         elif include_empty:
-            result["body"] = ApimodelsBulkRemoveItemsReq()
+            result["body"] = []
         if hasattr(self, "inventory_id") and self.inventory_id:
             result["inventoryId"] = str(self.inventory_id)
         elif include_empty:
@@ -249,7 +253,7 @@ class AdminBulkRemoveItems(Operation):
     @classmethod
     def create(
         cls,
-        body: ApimodelsBulkRemoveItemsReq,
+        body: List[ApimodelsRemoveInventoryItemReq],
         inventory_id: str,
         namespace: str,
         user_id: str,
@@ -268,11 +272,14 @@ class AdminBulkRemoveItems(Operation):
     ) -> AdminBulkRemoveItems:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ApimodelsBulkRemoveItemsReq.create_from_dict(
-                dict_["body"], include_empty=include_empty
-            )
+            instance.body = [
+                ApimodelsRemoveInventoryItemReq.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["body"]
+            ]
         elif include_empty:
-            instance.body = ApimodelsBulkRemoveItemsReq()
+            instance.body = []
         if "inventoryId" in dict_ and dict_["inventoryId"] is not None:
             instance.inventory_id = str(dict_["inventoryId"])
         elif include_empty:

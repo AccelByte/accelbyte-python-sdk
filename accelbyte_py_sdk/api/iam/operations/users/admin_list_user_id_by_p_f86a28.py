@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Iam Service (7.1.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,53 +29,70 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import PlaystationIAPConfigRequest
-from ...models import TestResult
+from ...models import AccountcommonUserPlatforms
+from ...models import ModelPlatformUserIDRequest
+from ...models import RestErrorResponse
 
 
-class ValidatePlaystationIAPConfig(Operation):
-    """Validate playstation iap config (validatePlaystationIAPConfig)
+class AdminListUserIDByPlatformUserIDsV3(Operation):
+    """Admin List User ID By Platform User ID (AdminListUserIDByPlatformUserIDsV3)
 
-    Validate playstation iap config. Other detail info:
+    Admin List User ID By Platform User ID
+    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
+    This endpoint intended to list game user ID from the given namespace
+    This endpoint return list of user ID by given platform ID and list of platform user ID
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : Test Results
+    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/iap/config/playstation/validate
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users
 
-        method: PUT
+        method: POST
 
-        tags: ["IAP"]
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PlaystationIAPConfigRequest in body
+        body: (body) REQUIRED ModelPlatformUserIDRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
+        platform_id: (platformId) REQUIRED str in path
+
+        raw_pid: (rawPID) OPTIONAL bool in query
+
     Responses:
-        200: OK - TestResult (successful operation)
+        200: OK - AccountcommonUserPlatforms (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/iap/config/playstation/validate"
-    _method: str = "PUT"
+    _url: str = "/iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users"
+    _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PlaystationIAPConfigRequest  # OPTIONAL in [body]
+    body: ModelPlatformUserIDRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
+    platform_id: str  # REQUIRED in [path]
+    raw_pid: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -117,6 +134,7 @@ class ValidatePlaystationIAPConfig(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -128,6 +146,14 @@ class ValidatePlaystationIAPConfig(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        if hasattr(self, "platform_id"):
+            result["platformId"] = self.platform_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "raw_pid"):
+            result["rawPID"] = self.raw_pid
         return result
 
     # endregion get_x_params methods
@@ -139,13 +165,21 @@ class ValidatePlaystationIAPConfig(Operation):
     # region with_x methods
 
     def with_body(
-        self, value: PlaystationIAPConfigRequest
-    ) -> ValidatePlaystationIAPConfig:
+        self, value: ModelPlatformUserIDRequest
+    ) -> AdminListUserIDByPlatformUserIDsV3:
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> ValidatePlaystationIAPConfig:
+    def with_namespace(self, value: str) -> AdminListUserIDByPlatformUserIDsV3:
         self.namespace = value
+        return self
+
+    def with_platform_id(self, value: str) -> AdminListUserIDByPlatformUserIDsV3:
+        self.platform_id = value
+        return self
+
+    def with_raw_pid(self, value: bool) -> AdminListUserIDByPlatformUserIDsV3:
+        self.raw_pid = value
         return self
 
     # endregion with_x methods
@@ -157,11 +191,19 @@ class ValidatePlaystationIAPConfig(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = PlaystationIAPConfigRequest()
+            result["body"] = ModelPlatformUserIDRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "platform_id") and self.platform_id:
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = ""
+        if hasattr(self, "raw_pid") and self.raw_pid:
+            result["rawPID"] = bool(self.raw_pid)
+        elif include_empty:
+            result["rawPID"] = False
         return result
 
     # endregion to methods
@@ -171,10 +213,21 @@ class ValidatePlaystationIAPConfig(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, TestResult], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, AccountcommonUserPlatforms],
+        Union[None, HttpResponse, RestErrorResponse],
+    ]:
         """Parse the given response.
 
-        200: OK - TestResult (successful operation)
+        200: OK - AccountcommonUserPlatforms (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -190,7 +243,15 @@ class ValidatePlaystationIAPConfig(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return TestResult.create_from_dict(content), None
+            return AccountcommonUserPlatforms.create_from_dict(content), None
+        if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 401:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 403:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -203,31 +264,43 @@ class ValidatePlaystationIAPConfig(Operation):
     @classmethod
     def create(
         cls,
+        body: ModelPlatformUserIDRequest,
         namespace: str,
-        body: Optional[PlaystationIAPConfigRequest] = None,
+        platform_id: str,
+        raw_pid: Optional[bool] = None,
         **kwargs,
-    ) -> ValidatePlaystationIAPConfig:
+    ) -> AdminListUserIDByPlatformUserIDsV3:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
+        instance.platform_id = platform_id
+        if raw_pid is not None:
+            instance.raw_pid = raw_pid
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ValidatePlaystationIAPConfig:
+    ) -> AdminListUserIDByPlatformUserIDsV3:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = PlaystationIAPConfigRequest.create_from_dict(
+            instance.body = ModelPlatformUserIDRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = PlaystationIAPConfigRequest()
+            instance.body = ModelPlatformUserIDRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = ""
+        if "rawPID" in dict_ and dict_["rawPID"] is not None:
+            instance.raw_pid = bool(dict_["rawPID"])
+        elif include_empty:
+            instance.raw_pid = False
         return instance
 
     @staticmethod
@@ -235,13 +308,17 @@ class ValidatePlaystationIAPConfig(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
+            "platformId": "platform_id",
+            "rawPID": "raw_pid",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
+            "platformId": True,
+            "rawPID": False,
         }
 
     # endregion static methods

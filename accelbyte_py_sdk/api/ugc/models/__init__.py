@@ -40,6 +40,9 @@ from .models_create_type_response import ModelsCreateTypeResponse
 from .models_creator_follow_state import ModelsCreatorFollowState
 from .models_creator_overview_response import ModelsCreatorOverviewResponse
 from .models_creator_response import ModelsCreatorResponse
+from .models_get_content_bulk_by_share_codes_request import (
+    ModelsGetContentBulkByShareCodesRequest,
+)
 from .models_get_content_preview_response import ModelsGetContentPreviewResponse
 from .models_hide_content_request import ModelsHideContentRequest
 from .models_like_state import ModelsLikeState

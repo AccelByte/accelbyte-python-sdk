@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Platform Service (4.34.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,26 +33,11 @@ class PlaystationIAPConfigRequest(Model):
 
     Properties:
         environment: (environment) REQUIRED str
-
-        back_office_server_client_id: (backOfficeServerClientId) OPTIONAL str
-
-        back_office_server_client_secret: (backOfficeServerClientSecret) OPTIONAL str
-
-        enable_stream_job: (enableStreamJob) OPTIONAL bool
-
-        stream_name: (streamName) OPTIONAL str
-
-        stream_partner_name: (streamPartnerName) OPTIONAL str
     """
 
     # region fields
 
     environment: str  # REQUIRED
-    back_office_server_client_id: str  # OPTIONAL
-    back_office_server_client_secret: str  # OPTIONAL
-    enable_stream_job: bool  # OPTIONAL
-    stream_name: str  # OPTIONAL
-    stream_partner_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -60,30 +45,6 @@ class PlaystationIAPConfigRequest(Model):
 
     def with_environment(self, value: str) -> PlaystationIAPConfigRequest:
         self.environment = value
-        return self
-
-    def with_back_office_server_client_id(
-        self, value: str
-    ) -> PlaystationIAPConfigRequest:
-        self.back_office_server_client_id = value
-        return self
-
-    def with_back_office_server_client_secret(
-        self, value: str
-    ) -> PlaystationIAPConfigRequest:
-        self.back_office_server_client_secret = value
-        return self
-
-    def with_enable_stream_job(self, value: bool) -> PlaystationIAPConfigRequest:
-        self.enable_stream_job = value
-        return self
-
-    def with_stream_name(self, value: str) -> PlaystationIAPConfigRequest:
-        self.stream_name = value
-        return self
-
-    def with_stream_partner_name(self, value: str) -> PlaystationIAPConfigRequest:
-        self.stream_partner_name = value
         return self
 
     # endregion with_x methods
@@ -96,28 +57,6 @@ class PlaystationIAPConfigRequest(Model):
             result["environment"] = str(self.environment)
         elif include_empty:
             result["environment"] = ""
-        if hasattr(self, "back_office_server_client_id"):
-            result["backOfficeServerClientId"] = str(self.back_office_server_client_id)
-        elif include_empty:
-            result["backOfficeServerClientId"] = ""
-        if hasattr(self, "back_office_server_client_secret"):
-            result["backOfficeServerClientSecret"] = str(
-                self.back_office_server_client_secret
-            )
-        elif include_empty:
-            result["backOfficeServerClientSecret"] = ""
-        if hasattr(self, "enable_stream_job"):
-            result["enableStreamJob"] = bool(self.enable_stream_job)
-        elif include_empty:
-            result["enableStreamJob"] = False
-        if hasattr(self, "stream_name"):
-            result["streamName"] = str(self.stream_name)
-        elif include_empty:
-            result["streamName"] = ""
-        if hasattr(self, "stream_partner_name"):
-            result["streamPartnerName"] = str(self.stream_partner_name)
-        elif include_empty:
-            result["streamPartnerName"] = ""
         return result
 
     # endregion to methods
@@ -125,28 +64,9 @@ class PlaystationIAPConfigRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        environment: str,
-        back_office_server_client_id: Optional[str] = None,
-        back_office_server_client_secret: Optional[str] = None,
-        enable_stream_job: Optional[bool] = None,
-        stream_name: Optional[str] = None,
-        stream_partner_name: Optional[str] = None,
-        **kwargs,
-    ) -> PlaystationIAPConfigRequest:
+    def create(cls, environment: str, **kwargs) -> PlaystationIAPConfigRequest:
         instance = cls()
         instance.environment = environment
-        if back_office_server_client_id is not None:
-            instance.back_office_server_client_id = back_office_server_client_id
-        if back_office_server_client_secret is not None:
-            instance.back_office_server_client_secret = back_office_server_client_secret
-        if enable_stream_job is not None:
-            instance.enable_stream_job = enable_stream_job
-        if stream_name is not None:
-            instance.stream_name = stream_name
-        if stream_partner_name is not None:
-            instance.stream_partner_name = stream_partner_name
         return instance
 
     @classmethod
@@ -160,36 +80,6 @@ class PlaystationIAPConfigRequest(Model):
             instance.environment = str(dict_["environment"])
         elif include_empty:
             instance.environment = ""
-        if (
-            "backOfficeServerClientId" in dict_
-            and dict_["backOfficeServerClientId"] is not None
-        ):
-            instance.back_office_server_client_id = str(
-                dict_["backOfficeServerClientId"]
-            )
-        elif include_empty:
-            instance.back_office_server_client_id = ""
-        if (
-            "backOfficeServerClientSecret" in dict_
-            and dict_["backOfficeServerClientSecret"] is not None
-        ):
-            instance.back_office_server_client_secret = str(
-                dict_["backOfficeServerClientSecret"]
-            )
-        elif include_empty:
-            instance.back_office_server_client_secret = ""
-        if "enableStreamJob" in dict_ and dict_["enableStreamJob"] is not None:
-            instance.enable_stream_job = bool(dict_["enableStreamJob"])
-        elif include_empty:
-            instance.enable_stream_job = False
-        if "streamName" in dict_ and dict_["streamName"] is not None:
-            instance.stream_name = str(dict_["streamName"])
-        elif include_empty:
-            instance.stream_name = ""
-        if "streamPartnerName" in dict_ and dict_["streamPartnerName"] is not None:
-            instance.stream_partner_name = str(dict_["streamPartnerName"])
-        elif include_empty:
-            instance.stream_partner_name = ""
         return instance
 
     @classmethod
@@ -234,22 +124,12 @@ class PlaystationIAPConfigRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "environment": "environment",
-            "backOfficeServerClientId": "back_office_server_client_id",
-            "backOfficeServerClientSecret": "back_office_server_client_secret",
-            "enableStreamJob": "enable_stream_job",
-            "streamName": "stream_name",
-            "streamPartnerName": "stream_partner_name",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "environment": True,
-            "backOfficeServerClientId": False,
-            "backOfficeServerClientSecret": False,
-            "enableStreamJob": False,
-            "streamName": False,
-            "streamPartnerName": False,
         }
 
     # endregion static methods

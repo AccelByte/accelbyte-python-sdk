@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.3.7"
+__version__ = "6.4.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -44,6 +44,7 @@ from .models_get_image_limit_response_data import ModelsGetImageLimitResponseDat
 from .models_get_image_patch_detail_response import ModelsGetImagePatchDetailResponse
 from .models_image_record import ModelsImageRecord
 from .models_image_record_update import ModelsImageRecordUpdate
+from .models_image_replication import ModelsImageReplication
 from .models_import_response import ModelsImportResponse
 from .models_instance_spec import ModelsInstanceSpec
 from .models_list_config_response import ModelsListConfigResponse
@@ -83,5 +84,4 @@ from .models_update_dsm_config_request import ModelsUpdateDSMConfigRequest
 from .models_update_pod_config_request import ModelsUpdatePodConfigRequest
 from .models_update_port_request import ModelsUpdatePortRequest
 from .models_update_region_override_request import ModelsUpdateRegionOverrideRequest
-from .models_uploader_flag import ModelsUploaderFlag
 from .response_error import ResponseError

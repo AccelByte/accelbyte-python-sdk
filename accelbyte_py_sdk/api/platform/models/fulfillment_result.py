@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Platform Service (4.34.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,8 +44,6 @@ class FulfillmentResult(Model):
 
         entitlement_summaries: (entitlementSummaries) OPTIONAL List[EntitlementSummary]
 
-        id_: (id) OPTIONAL str
-
         subscription_summaries: (subscriptionSummaries) OPTIONAL List[SubscriptionSummary]
     """
 
@@ -55,7 +53,6 @@ class FulfillmentResult(Model):
     user_id: str  # REQUIRED
     credit_summaries: List[CreditSummary]  # OPTIONAL
     entitlement_summaries: List[EntitlementSummary]  # OPTIONAL
-    id_: str  # OPTIONAL
     subscription_summaries: List[SubscriptionSummary]  # OPTIONAL
 
     # endregion fields
@@ -78,10 +75,6 @@ class FulfillmentResult(Model):
         self, value: List[EntitlementSummary]
     ) -> FulfillmentResult:
         self.entitlement_summaries = value
-        return self
-
-    def with_id(self, value: str) -> FulfillmentResult:
-        self.id_ = value
         return self
 
     def with_subscription_summaries(
@@ -117,10 +110,6 @@ class FulfillmentResult(Model):
             ]
         elif include_empty:
             result["entitlementSummaries"] = []
-        if hasattr(self, "id_"):
-            result["id"] = str(self.id_)
-        elif include_empty:
-            result["id"] = ""
         if hasattr(self, "subscription_summaries"):
             result["subscriptionSummaries"] = [
                 i0.to_dict(include_empty=include_empty)
@@ -141,7 +130,6 @@ class FulfillmentResult(Model):
         user_id: str,
         credit_summaries: Optional[List[CreditSummary]] = None,
         entitlement_summaries: Optional[List[EntitlementSummary]] = None,
-        id_: Optional[str] = None,
         subscription_summaries: Optional[List[SubscriptionSummary]] = None,
         **kwargs,
     ) -> FulfillmentResult:
@@ -152,8 +140,6 @@ class FulfillmentResult(Model):
             instance.credit_summaries = credit_summaries
         if entitlement_summaries is not None:
             instance.entitlement_summaries = entitlement_summaries
-        if id_ is not None:
-            instance.id_ = id_
         if subscription_summaries is not None:
             instance.subscription_summaries = subscription_summaries
         return instance
@@ -190,10 +176,6 @@ class FulfillmentResult(Model):
             ]
         elif include_empty:
             instance.entitlement_summaries = []
-        if "id" in dict_ and dict_["id"] is not None:
-            instance.id_ = str(dict_["id"])
-        elif include_empty:
-            instance.id_ = ""
         if (
             "subscriptionSummaries" in dict_
             and dict_["subscriptionSummaries"] is not None
@@ -249,7 +231,6 @@ class FulfillmentResult(Model):
             "userId": "user_id",
             "creditSummaries": "credit_summaries",
             "entitlementSummaries": "entitlement_summaries",
-            "id": "id_",
             "subscriptionSummaries": "subscription_summaries",
         }
 
@@ -260,7 +241,6 @@ class FulfillmentResult(Model):
             "userId": True,
             "creditSummaries": False,
             "entitlementSummaries": False,
-            "id": False,
             "subscriptionSummaries": False,
         }
 

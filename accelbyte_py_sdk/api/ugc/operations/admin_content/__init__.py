@@ -19,6 +19,7 @@ from .admin_delete_content_sc_eeb785 import AdminDeleteContentScreenshot
 from .admin_download_content_preview import AdminDownloadContentPreview
 from .admin_get_content import AdminGetContent
 from .admin_get_content_bulk import AdminGetContentBulk
+from .admin_get_content_bulk__102504 import AdminGetContentBulkByShareCodes
 from .admin_get_specific_content import AdminGetSpecificContent
 from .admin_get_user_content__d4dc92 import AdminGetUserContentByShareCode
 from .admin_hide_user_content import AdminHideUserContent

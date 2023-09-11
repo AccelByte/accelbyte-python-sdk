@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -51,17 +51,17 @@ class ModelsCreateDeploymentRequest(Model):
 
         min_count: (min_count) REQUIRED int
 
-        overrides: (overrides) REQUIRED Dict[str, ModelsDeploymentConfigOverride]
-
-        region_overrides: (region_overrides) REQUIRED Dict[str, ModelsPodCountConfigOverride]
-
-        regions: (regions) REQUIRED List[str]
-
         unlimited: (unlimited) REQUIRED bool
 
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
 
         extendable_session: (extendable_session) OPTIONAL bool
+
+        overrides: (overrides) OPTIONAL Dict[str, ModelsDeploymentConfigOverride]
+
+        region_overrides: (region_overrides) OPTIONAL Dict[str, ModelsPodCountConfigOverride]
+
+        regions: (regions) OPTIONAL List[str]
 
         session_timeout: (session_timeout) OPTIONAL int
     """
@@ -76,12 +76,12 @@ class ModelsCreateDeploymentRequest(Model):
     game_version: str  # REQUIRED
     max_count: int  # REQUIRED
     min_count: int  # REQUIRED
-    overrides: Dict[str, ModelsDeploymentConfigOverride]  # REQUIRED
-    region_overrides: Dict[str, ModelsPodCountConfigOverride]  # REQUIRED
-    regions: List[str]  # REQUIRED
     unlimited: bool  # REQUIRED
     use_buffer_percent: bool  # REQUIRED
     extendable_session: bool  # OPTIONAL
+    overrides: Dict[str, ModelsDeploymentConfigOverride]  # OPTIONAL
+    region_overrides: Dict[str, ModelsPodCountConfigOverride]  # OPTIONAL
+    regions: List[str]  # OPTIONAL
     session_timeout: int  # OPTIONAL
 
     # endregion fields
@@ -122,6 +122,18 @@ class ModelsCreateDeploymentRequest(Model):
         self.min_count = value
         return self
 
+    def with_unlimited(self, value: bool) -> ModelsCreateDeploymentRequest:
+        self.unlimited = value
+        return self
+
+    def with_use_buffer_percent(self, value: bool) -> ModelsCreateDeploymentRequest:
+        self.use_buffer_percent = value
+        return self
+
+    def with_extendable_session(self, value: bool) -> ModelsCreateDeploymentRequest:
+        self.extendable_session = value
+        return self
+
     def with_overrides(
         self, value: Dict[str, ModelsDeploymentConfigOverride]
     ) -> ModelsCreateDeploymentRequest:
@@ -136,18 +148,6 @@ class ModelsCreateDeploymentRequest(Model):
 
     def with_regions(self, value: List[str]) -> ModelsCreateDeploymentRequest:
         self.regions = value
-        return self
-
-    def with_unlimited(self, value: bool) -> ModelsCreateDeploymentRequest:
-        self.unlimited = value
-        return self
-
-    def with_use_buffer_percent(self, value: bool) -> ModelsCreateDeploymentRequest:
-        self.use_buffer_percent = value
-        return self
-
-    def with_extendable_session(self, value: bool) -> ModelsCreateDeploymentRequest:
-        self.extendable_session = value
         return self
 
     def with_session_timeout(self, value: int) -> ModelsCreateDeploymentRequest:
@@ -192,6 +192,18 @@ class ModelsCreateDeploymentRequest(Model):
             result["min_count"] = int(self.min_count)
         elif include_empty:
             result["min_count"] = 0
+        if hasattr(self, "unlimited"):
+            result["unlimited"] = bool(self.unlimited)
+        elif include_empty:
+            result["unlimited"] = False
+        if hasattr(self, "use_buffer_percent"):
+            result["use_buffer_percent"] = bool(self.use_buffer_percent)
+        elif include_empty:
+            result["use_buffer_percent"] = False
+        if hasattr(self, "extendable_session"):
+            result["extendable_session"] = bool(self.extendable_session)
+        elif include_empty:
+            result["extendable_session"] = False
         if hasattr(self, "overrides"):
             result["overrides"] = {
                 str(k0): v0.to_dict(include_empty=include_empty)
@@ -210,18 +222,6 @@ class ModelsCreateDeploymentRequest(Model):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
             result["regions"] = []
-        if hasattr(self, "unlimited"):
-            result["unlimited"] = bool(self.unlimited)
-        elif include_empty:
-            result["unlimited"] = False
-        if hasattr(self, "use_buffer_percent"):
-            result["use_buffer_percent"] = bool(self.use_buffer_percent)
-        elif include_empty:
-            result["use_buffer_percent"] = False
-        if hasattr(self, "extendable_session"):
-            result["extendable_session"] = bool(self.extendable_session)
-        elif include_empty:
-            result["extendable_session"] = False
         if hasattr(self, "session_timeout"):
             result["session_timeout"] = int(self.session_timeout)
         elif include_empty:
@@ -243,12 +243,12 @@ class ModelsCreateDeploymentRequest(Model):
         game_version: str,
         max_count: int,
         min_count: int,
-        overrides: Dict[str, ModelsDeploymentConfigOverride],
-        region_overrides: Dict[str, ModelsPodCountConfigOverride],
-        regions: List[str],
         unlimited: bool,
         use_buffer_percent: bool,
         extendable_session: Optional[bool] = None,
+        overrides: Optional[Dict[str, ModelsDeploymentConfigOverride]] = None,
+        region_overrides: Optional[Dict[str, ModelsPodCountConfigOverride]] = None,
+        regions: Optional[List[str]] = None,
         session_timeout: Optional[int] = None,
         **kwargs,
     ) -> ModelsCreateDeploymentRequest:
@@ -261,13 +261,16 @@ class ModelsCreateDeploymentRequest(Model):
         instance.game_version = game_version
         instance.max_count = max_count
         instance.min_count = min_count
-        instance.overrides = overrides
-        instance.region_overrides = region_overrides
-        instance.regions = regions
         instance.unlimited = unlimited
         instance.use_buffer_percent = use_buffer_percent
         if extendable_session is not None:
             instance.extendable_session = extendable_session
+        if overrides is not None:
+            instance.overrides = overrides
+        if region_overrides is not None:
+            instance.region_overrides = region_overrides
+        if regions is not None:
+            instance.regions = regions
         if session_timeout is not None:
             instance.session_timeout = session_timeout
         return instance
@@ -317,6 +320,18 @@ class ModelsCreateDeploymentRequest(Model):
             instance.min_count = int(dict_["min_count"])
         elif include_empty:
             instance.min_count = 0
+        if "unlimited" in dict_ and dict_["unlimited"] is not None:
+            instance.unlimited = bool(dict_["unlimited"])
+        elif include_empty:
+            instance.unlimited = False
+        if "use_buffer_percent" in dict_ and dict_["use_buffer_percent"] is not None:
+            instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
+        elif include_empty:
+            instance.use_buffer_percent = False
+        if "extendable_session" in dict_ and dict_["extendable_session"] is not None:
+            instance.extendable_session = bool(dict_["extendable_session"])
+        elif include_empty:
+            instance.extendable_session = False
         if "overrides" in dict_ and dict_["overrides"] is not None:
             instance.overrides = {
                 str(k0): ModelsDeploymentConfigOverride.create_from_dict(
@@ -339,18 +354,6 @@ class ModelsCreateDeploymentRequest(Model):
             instance.regions = [str(i0) for i0 in dict_["regions"]]
         elif include_empty:
             instance.regions = []
-        if "unlimited" in dict_ and dict_["unlimited"] is not None:
-            instance.unlimited = bool(dict_["unlimited"])
-        elif include_empty:
-            instance.unlimited = False
-        if "use_buffer_percent" in dict_ and dict_["use_buffer_percent"] is not None:
-            instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
-        elif include_empty:
-            instance.use_buffer_percent = False
-        if "extendable_session" in dict_ and dict_["extendable_session"] is not None:
-            instance.extendable_session = bool(dict_["extendable_session"])
-        elif include_empty:
-            instance.extendable_session = False
         if "session_timeout" in dict_ and dict_["session_timeout"] is not None:
             instance.session_timeout = int(dict_["session_timeout"])
         elif include_empty:
@@ -406,12 +409,12 @@ class ModelsCreateDeploymentRequest(Model):
             "game_version": "game_version",
             "max_count": "max_count",
             "min_count": "min_count",
-            "overrides": "overrides",
-            "region_overrides": "region_overrides",
-            "regions": "regions",
             "unlimited": "unlimited",
             "use_buffer_percent": "use_buffer_percent",
             "extendable_session": "extendable_session",
+            "overrides": "overrides",
+            "region_overrides": "region_overrides",
+            "regions": "regions",
             "session_timeout": "session_timeout",
         }
 
@@ -426,12 +429,12 @@ class ModelsCreateDeploymentRequest(Model):
             "game_version": True,
             "max_count": True,
             "min_count": True,
-            "overrides": True,
-            "region_overrides": True,
-            "regions": True,
             "unlimited": True,
             "use_buffer_percent": True,
             "extendable_session": False,
+            "overrides": False,
+            "region_overrides": False,
+            "regions": False,
             "session_timeout": False,
         }
 

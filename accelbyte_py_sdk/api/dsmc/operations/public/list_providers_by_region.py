@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,8 +28,6 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
-
-from ...models import ModelsDefaultProvider
 
 
 class ListProvidersByRegion(Operation):
@@ -53,7 +51,7 @@ class ListProvidersByRegion(Operation):
         region: (region) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsDefaultProvider (Default providers got)
+        200: OK - List[str] (Default providers got)
     """
 
     # region fields
@@ -145,10 +143,10 @@ class ListProvidersByRegion(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelsDefaultProvider], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, List[str]], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - ModelsDefaultProvider (Default providers got)
+        200: OK - List[str] (Default providers got)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -164,7 +162,7 @@ class ListProvidersByRegion(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsDefaultProvider.create_from_dict(content), None
+            return [str(i) for i in content], None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

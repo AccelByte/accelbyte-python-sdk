@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,27 +35,21 @@ class ModelsServer(Model):
     """Models server (models.Server)
 
     Properties:
-        allocation_events: (allocation_events) REQUIRED List[ModelsAllocationEvent]
-
         allocation_id: (allocation_id) REQUIRED str
-
-        alternate_ips: (alternate_ips) REQUIRED List[str]
 
         cpu_limit: (cpu_limit) REQUIRED int
 
         created_at: (created_at) REQUIRED str
 
-        custom_attribute: (custom_attribute) REQUIRED str
-
         deployment: (deployment) REQUIRED str
-
-        deployment_override: (deployment_override) REQUIRED str
 
         game_version: (game_version) REQUIRED str
 
         image_version: (image_version) REQUIRED str
 
         ip: (ip) REQUIRED str
+
+        is_core_dump_enabled: (is_core_dump_enabled) REQUIRED bool
 
         is_override_game_version: (is_override_game_version) REQUIRED bool
 
@@ -73,8 +67,6 @@ class ModelsServer(Model):
 
         port: (port) REQUIRED int
 
-        ports: (ports) REQUIRED Dict[str, int]
-
         protocol: (protocol) REQUIRED str
 
         provider: (provider) REQUIRED str
@@ -85,24 +77,33 @@ class ModelsServer(Model):
 
         status: (status) REQUIRED str
 
-        status_history: (status_history) REQUIRED List[ModelsStatusHistory]
-
         termination_reason: (termination_reason) REQUIRED str
+
+        allocation_events: (allocation_events) OPTIONAL List[ModelsAllocationEvent]
+
+        alternate_ips: (alternate_ips) OPTIONAL List[str]
+
+        artifact_path: (artifact_path) OPTIONAL str
+
+        custom_attribute: (custom_attribute) OPTIONAL str
+
+        deployment_override: (deployment_override) OPTIONAL str
+
+        ports: (ports) OPTIONAL Dict[str, int]
+
+        status_history: (status_history) OPTIONAL List[ModelsStatusHistory]
     """
 
     # region fields
 
-    allocation_events: List[ModelsAllocationEvent]  # REQUIRED
     allocation_id: str  # REQUIRED
-    alternate_ips: List[str]  # REQUIRED
     cpu_limit: int  # REQUIRED
     created_at: str  # REQUIRED
-    custom_attribute: str  # REQUIRED
     deployment: str  # REQUIRED
-    deployment_override: str  # REQUIRED
     game_version: str  # REQUIRED
     image_version: str  # REQUIRED
     ip: str  # REQUIRED
+    is_core_dump_enabled: bool  # REQUIRED
     is_override_game_version: bool  # REQUIRED
     job_id: str  # REQUIRED
     last_update: str  # REQUIRED
@@ -111,31 +112,26 @@ class ModelsServer(Model):
     params: str  # REQUIRED
     pod_name: str  # REQUIRED
     port: int  # REQUIRED
-    ports: Dict[str, int]  # REQUIRED
     protocol: str  # REQUIRED
     provider: str  # REQUIRED
     region: str  # REQUIRED
     session_id: str  # REQUIRED
     status: str  # REQUIRED
-    status_history: List[ModelsStatusHistory]  # REQUIRED
     termination_reason: str  # REQUIRED
+    allocation_events: List[ModelsAllocationEvent]  # OPTIONAL
+    alternate_ips: List[str]  # OPTIONAL
+    artifact_path: str  # OPTIONAL
+    custom_attribute: str  # OPTIONAL
+    deployment_override: str  # OPTIONAL
+    ports: Dict[str, int]  # OPTIONAL
+    status_history: List[ModelsStatusHistory]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_allocation_events(
-        self, value: List[ModelsAllocationEvent]
-    ) -> ModelsServer:
-        self.allocation_events = value
-        return self
-
     def with_allocation_id(self, value: str) -> ModelsServer:
         self.allocation_id = value
-        return self
-
-    def with_alternate_ips(self, value: List[str]) -> ModelsServer:
-        self.alternate_ips = value
         return self
 
     def with_cpu_limit(self, value: int) -> ModelsServer:
@@ -146,16 +142,8 @@ class ModelsServer(Model):
         self.created_at = value
         return self
 
-    def with_custom_attribute(self, value: str) -> ModelsServer:
-        self.custom_attribute = value
-        return self
-
     def with_deployment(self, value: str) -> ModelsServer:
         self.deployment = value
-        return self
-
-    def with_deployment_override(self, value: str) -> ModelsServer:
-        self.deployment_override = value
         return self
 
     def with_game_version(self, value: str) -> ModelsServer:
@@ -168,6 +156,10 @@ class ModelsServer(Model):
 
     def with_ip(self, value: str) -> ModelsServer:
         self.ip = value
+        return self
+
+    def with_is_core_dump_enabled(self, value: bool) -> ModelsServer:
+        self.is_core_dump_enabled = value
         return self
 
     def with_is_override_game_version(self, value: bool) -> ModelsServer:
@@ -202,10 +194,6 @@ class ModelsServer(Model):
         self.port = value
         return self
 
-    def with_ports(self, value: Dict[str, int]) -> ModelsServer:
-        self.ports = value
-        return self
-
     def with_protocol(self, value: str) -> ModelsServer:
         self.protocol = value
         return self
@@ -226,12 +214,38 @@ class ModelsServer(Model):
         self.status = value
         return self
 
-    def with_status_history(self, value: List[ModelsStatusHistory]) -> ModelsServer:
-        self.status_history = value
-        return self
-
     def with_termination_reason(self, value: str) -> ModelsServer:
         self.termination_reason = value
+        return self
+
+    def with_allocation_events(
+        self, value: List[ModelsAllocationEvent]
+    ) -> ModelsServer:
+        self.allocation_events = value
+        return self
+
+    def with_alternate_ips(self, value: List[str]) -> ModelsServer:
+        self.alternate_ips = value
+        return self
+
+    def with_artifact_path(self, value: str) -> ModelsServer:
+        self.artifact_path = value
+        return self
+
+    def with_custom_attribute(self, value: str) -> ModelsServer:
+        self.custom_attribute = value
+        return self
+
+    def with_deployment_override(self, value: str) -> ModelsServer:
+        self.deployment_override = value
+        return self
+
+    def with_ports(self, value: Dict[str, int]) -> ModelsServer:
+        self.ports = value
+        return self
+
+    def with_status_history(self, value: List[ModelsStatusHistory]) -> ModelsServer:
+        self.status_history = value
         return self
 
     # endregion with_x methods
@@ -240,20 +254,10 @@ class ModelsServer(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "allocation_events"):
-            result["allocation_events"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.allocation_events
-            ]
-        elif include_empty:
-            result["allocation_events"] = []
         if hasattr(self, "allocation_id"):
             result["allocation_id"] = str(self.allocation_id)
         elif include_empty:
             result["allocation_id"] = ""
-        if hasattr(self, "alternate_ips"):
-            result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
-        elif include_empty:
-            result["alternate_ips"] = []
         if hasattr(self, "cpu_limit"):
             result["cpu_limit"] = int(self.cpu_limit)
         elif include_empty:
@@ -262,18 +266,10 @@ class ModelsServer(Model):
             result["created_at"] = str(self.created_at)
         elif include_empty:
             result["created_at"] = ""
-        if hasattr(self, "custom_attribute"):
-            result["custom_attribute"] = str(self.custom_attribute)
-        elif include_empty:
-            result["custom_attribute"] = ""
         if hasattr(self, "deployment"):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = ""
-        if hasattr(self, "deployment_override"):
-            result["deployment_override"] = str(self.deployment_override)
-        elif include_empty:
-            result["deployment_override"] = ""
         if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
@@ -286,6 +282,10 @@ class ModelsServer(Model):
             result["ip"] = str(self.ip)
         elif include_empty:
             result["ip"] = ""
+        if hasattr(self, "is_core_dump_enabled"):
+            result["is_core_dump_enabled"] = bool(self.is_core_dump_enabled)
+        elif include_empty:
+            result["is_core_dump_enabled"] = False
         if hasattr(self, "is_override_game_version"):
             result["is_override_game_version"] = bool(self.is_override_game_version)
         elif include_empty:
@@ -318,10 +318,6 @@ class ModelsServer(Model):
             result["port"] = int(self.port)
         elif include_empty:
             result["port"] = 0
-        if hasattr(self, "ports"):
-            result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
-        elif include_empty:
-            result["ports"] = {}
         if hasattr(self, "protocol"):
             result["protocol"] = str(self.protocol)
         elif include_empty:
@@ -342,16 +338,42 @@ class ModelsServer(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "termination_reason"):
+            result["termination_reason"] = str(self.termination_reason)
+        elif include_empty:
+            result["termination_reason"] = ""
+        if hasattr(self, "allocation_events"):
+            result["allocation_events"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.allocation_events
+            ]
+        elif include_empty:
+            result["allocation_events"] = []
+        if hasattr(self, "alternate_ips"):
+            result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
+        elif include_empty:
+            result["alternate_ips"] = []
+        if hasattr(self, "artifact_path"):
+            result["artifact_path"] = str(self.artifact_path)
+        elif include_empty:
+            result["artifact_path"] = ""
+        if hasattr(self, "custom_attribute"):
+            result["custom_attribute"] = str(self.custom_attribute)
+        elif include_empty:
+            result["custom_attribute"] = ""
+        if hasattr(self, "deployment_override"):
+            result["deployment_override"] = str(self.deployment_override)
+        elif include_empty:
+            result["deployment_override"] = ""
+        if hasattr(self, "ports"):
+            result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
+        elif include_empty:
+            result["ports"] = {}
         if hasattr(self, "status_history"):
             result["status_history"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.status_history
             ]
         elif include_empty:
             result["status_history"] = []
-        if hasattr(self, "termination_reason"):
-            result["termination_reason"] = str(self.termination_reason)
-        elif include_empty:
-            result["termination_reason"] = ""
         return result
 
     # endregion to methods
@@ -361,17 +383,14 @@ class ModelsServer(Model):
     @classmethod
     def create(
         cls,
-        allocation_events: List[ModelsAllocationEvent],
         allocation_id: str,
-        alternate_ips: List[str],
         cpu_limit: int,
         created_at: str,
-        custom_attribute: str,
         deployment: str,
-        deployment_override: str,
         game_version: str,
         image_version: str,
         ip: str,
+        is_core_dump_enabled: bool,
         is_override_game_version: bool,
         job_id: str,
         last_update: str,
@@ -380,28 +399,30 @@ class ModelsServer(Model):
         params: str,
         pod_name: str,
         port: int,
-        ports: Dict[str, int],
         protocol: str,
         provider: str,
         region: str,
         session_id: str,
         status: str,
-        status_history: List[ModelsStatusHistory],
         termination_reason: str,
+        allocation_events: Optional[List[ModelsAllocationEvent]] = None,
+        alternate_ips: Optional[List[str]] = None,
+        artifact_path: Optional[str] = None,
+        custom_attribute: Optional[str] = None,
+        deployment_override: Optional[str] = None,
+        ports: Optional[Dict[str, int]] = None,
+        status_history: Optional[List[ModelsStatusHistory]] = None,
         **kwargs,
     ) -> ModelsServer:
         instance = cls()
-        instance.allocation_events = allocation_events
         instance.allocation_id = allocation_id
-        instance.alternate_ips = alternate_ips
         instance.cpu_limit = cpu_limit
         instance.created_at = created_at
-        instance.custom_attribute = custom_attribute
         instance.deployment = deployment
-        instance.deployment_override = deployment_override
         instance.game_version = game_version
         instance.image_version = image_version
         instance.ip = ip
+        instance.is_core_dump_enabled = is_core_dump_enabled
         instance.is_override_game_version = is_override_game_version
         instance.job_id = job_id
         instance.last_update = last_update
@@ -410,14 +431,26 @@ class ModelsServer(Model):
         instance.params = params
         instance.pod_name = pod_name
         instance.port = port
-        instance.ports = ports
         instance.protocol = protocol
         instance.provider = provider
         instance.region = region
         instance.session_id = session_id
         instance.status = status
-        instance.status_history = status_history
         instance.termination_reason = termination_reason
+        if allocation_events is not None:
+            instance.allocation_events = allocation_events
+        if alternate_ips is not None:
+            instance.alternate_ips = alternate_ips
+        if artifact_path is not None:
+            instance.artifact_path = artifact_path
+        if custom_attribute is not None:
+            instance.custom_attribute = custom_attribute
+        if deployment_override is not None:
+            instance.deployment_override = deployment_override
+        if ports is not None:
+            instance.ports = ports
+        if status_history is not None:
+            instance.status_history = status_history
         return instance
 
     @classmethod
@@ -425,21 +458,10 @@ class ModelsServer(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "allocation_events" in dict_ and dict_["allocation_events"] is not None:
-            instance.allocation_events = [
-                ModelsAllocationEvent.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["allocation_events"]
-            ]
-        elif include_empty:
-            instance.allocation_events = []
         if "allocation_id" in dict_ and dict_["allocation_id"] is not None:
             instance.allocation_id = str(dict_["allocation_id"])
         elif include_empty:
             instance.allocation_id = ""
-        if "alternate_ips" in dict_ and dict_["alternate_ips"] is not None:
-            instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
-        elif include_empty:
-            instance.alternate_ips = []
         if "cpu_limit" in dict_ and dict_["cpu_limit"] is not None:
             instance.cpu_limit = int(dict_["cpu_limit"])
         elif include_empty:
@@ -448,18 +470,10 @@ class ModelsServer(Model):
             instance.created_at = str(dict_["created_at"])
         elif include_empty:
             instance.created_at = ""
-        if "custom_attribute" in dict_ and dict_["custom_attribute"] is not None:
-            instance.custom_attribute = str(dict_["custom_attribute"])
-        elif include_empty:
-            instance.custom_attribute = ""
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = ""
-        if "deployment_override" in dict_ and dict_["deployment_override"] is not None:
-            instance.deployment_override = str(dict_["deployment_override"])
-        elif include_empty:
-            instance.deployment_override = ""
         if "game_version" in dict_ and dict_["game_version"] is not None:
             instance.game_version = str(dict_["game_version"])
         elif include_empty:
@@ -472,6 +486,13 @@ class ModelsServer(Model):
             instance.ip = str(dict_["ip"])
         elif include_empty:
             instance.ip = ""
+        if (
+            "is_core_dump_enabled" in dict_
+            and dict_["is_core_dump_enabled"] is not None
+        ):
+            instance.is_core_dump_enabled = bool(dict_["is_core_dump_enabled"])
+        elif include_empty:
+            instance.is_core_dump_enabled = False
         if (
             "is_override_game_version" in dict_
             and dict_["is_override_game_version"] is not None
@@ -507,10 +528,6 @@ class ModelsServer(Model):
             instance.port = int(dict_["port"])
         elif include_empty:
             instance.port = 0
-        if "ports" in dict_ and dict_["ports"] is not None:
-            instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
-        elif include_empty:
-            instance.ports = {}
         if "protocol" in dict_ and dict_["protocol"] is not None:
             instance.protocol = str(dict_["protocol"])
         elif include_empty:
@@ -531,6 +548,37 @@ class ModelsServer(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "termination_reason" in dict_ and dict_["termination_reason"] is not None:
+            instance.termination_reason = str(dict_["termination_reason"])
+        elif include_empty:
+            instance.termination_reason = ""
+        if "allocation_events" in dict_ and dict_["allocation_events"] is not None:
+            instance.allocation_events = [
+                ModelsAllocationEvent.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["allocation_events"]
+            ]
+        elif include_empty:
+            instance.allocation_events = []
+        if "alternate_ips" in dict_ and dict_["alternate_ips"] is not None:
+            instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
+        elif include_empty:
+            instance.alternate_ips = []
+        if "artifact_path" in dict_ and dict_["artifact_path"] is not None:
+            instance.artifact_path = str(dict_["artifact_path"])
+        elif include_empty:
+            instance.artifact_path = ""
+        if "custom_attribute" in dict_ and dict_["custom_attribute"] is not None:
+            instance.custom_attribute = str(dict_["custom_attribute"])
+        elif include_empty:
+            instance.custom_attribute = ""
+        if "deployment_override" in dict_ and dict_["deployment_override"] is not None:
+            instance.deployment_override = str(dict_["deployment_override"])
+        elif include_empty:
+            instance.deployment_override = ""
+        if "ports" in dict_ and dict_["ports"] is not None:
+            instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
+        elif include_empty:
+            instance.ports = {}
         if "status_history" in dict_ and dict_["status_history"] is not None:
             instance.status_history = [
                 ModelsStatusHistory.create_from_dict(i0, include_empty=include_empty)
@@ -538,10 +586,6 @@ class ModelsServer(Model):
             ]
         elif include_empty:
             instance.status_history = []
-        if "termination_reason" in dict_ and dict_["termination_reason"] is not None:
-            instance.termination_reason = str(dict_["termination_reason"])
-        elif include_empty:
-            instance.termination_reason = ""
         return instance
 
     @classmethod
@@ -581,17 +625,14 @@ class ModelsServer(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "allocation_events": "allocation_events",
             "allocation_id": "allocation_id",
-            "alternate_ips": "alternate_ips",
             "cpu_limit": "cpu_limit",
             "created_at": "created_at",
-            "custom_attribute": "custom_attribute",
             "deployment": "deployment",
-            "deployment_override": "deployment_override",
             "game_version": "game_version",
             "image_version": "image_version",
             "ip": "ip",
+            "is_core_dump_enabled": "is_core_dump_enabled",
             "is_override_game_version": "is_override_game_version",
             "job_id": "job_id",
             "last_update": "last_update",
@@ -600,30 +641,32 @@ class ModelsServer(Model):
             "params": "params",
             "pod_name": "pod_name",
             "port": "port",
-            "ports": "ports",
             "protocol": "protocol",
             "provider": "provider",
             "region": "region",
             "session_id": "session_id",
             "status": "status",
-            "status_history": "status_history",
             "termination_reason": "termination_reason",
+            "allocation_events": "allocation_events",
+            "alternate_ips": "alternate_ips",
+            "artifact_path": "artifact_path",
+            "custom_attribute": "custom_attribute",
+            "deployment_override": "deployment_override",
+            "ports": "ports",
+            "status_history": "status_history",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "allocation_events": True,
             "allocation_id": True,
-            "alternate_ips": True,
             "cpu_limit": True,
             "created_at": True,
-            "custom_attribute": True,
             "deployment": True,
-            "deployment_override": True,
             "game_version": True,
             "image_version": True,
             "ip": True,
+            "is_core_dump_enabled": True,
             "is_override_game_version": True,
             "job_id": True,
             "last_update": True,
@@ -632,14 +675,19 @@ class ModelsServer(Model):
             "params": True,
             "pod_name": True,
             "port": True,
-            "ports": True,
             "protocol": True,
             "provider": True,
             "region": True,
             "session_id": True,
             "status": True,
-            "status_history": True,
             "termination_reason": True,
+            "allocation_events": False,
+            "alternate_ips": False,
+            "artifact_path": False,
+            "custom_attribute": False,
+            "deployment_override": False,
+            "ports": False,
+            "status_history": False,
         }
 
     # endregion static methods

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.3.7"
+__version__ = "6.4.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -32,5 +32,10 @@ from .list_images import ListImages
 from .list_images import (
     SortByEnum as ListImagesSortByEnum,
     SortDirectionEnum as ListImagesSortDirectionEnum,
+)
+from .list_images_client import ListImagesClient
+from .list_images_client import (
+    SortByEnum as ListImagesClientSortByEnum,
+    SortDirectionEnum as ListImagesClientSortDirectionEnum,
 )
 from .update_image import UpdateImage

@@ -40,6 +40,10 @@ class ApimodelsSaveItemReq(Model):
 
         server_custom_attributes: (serverCustomAttributes) REQUIRED Dict[str, Any]
 
+        slot_id: (slotId) REQUIRED str
+
+        slot_used: (slotUsed) REQUIRED int
+
         source_item_id: (sourceItemId) REQUIRED str
 
         tags: (tags) REQUIRED List[str]
@@ -53,6 +57,8 @@ class ApimodelsSaveItemReq(Model):
     inventory_configuration_code: str  # REQUIRED
     qty: int  # REQUIRED
     server_custom_attributes: Dict[str, Any]  # REQUIRED
+    slot_id: str  # REQUIRED
+    slot_used: int  # REQUIRED
     source_item_id: str  # REQUIRED
     tags: List[str]  # REQUIRED
     type_: str  # REQUIRED
@@ -77,6 +83,14 @@ class ApimodelsSaveItemReq(Model):
         self, value: Dict[str, Any]
     ) -> ApimodelsSaveItemReq:
         self.server_custom_attributes = value
+        return self
+
+    def with_slot_id(self, value: str) -> ApimodelsSaveItemReq:
+        self.slot_id = value
+        return self
+
+    def with_slot_used(self, value: int) -> ApimodelsSaveItemReq:
+        self.slot_used = value
         return self
 
     def with_source_item_id(self, value: str) -> ApimodelsSaveItemReq:
@@ -119,6 +133,14 @@ class ApimodelsSaveItemReq(Model):
             }
         elif include_empty:
             result["serverCustomAttributes"] = {}
+        if hasattr(self, "slot_id"):
+            result["slotId"] = str(self.slot_id)
+        elif include_empty:
+            result["slotId"] = ""
+        if hasattr(self, "slot_used"):
+            result["slotUsed"] = int(self.slot_used)
+        elif include_empty:
+            result["slotUsed"] = 0
         if hasattr(self, "source_item_id"):
             result["sourceItemId"] = str(self.source_item_id)
         elif include_empty:
@@ -144,6 +166,8 @@ class ApimodelsSaveItemReq(Model):
         inventory_configuration_code: str,
         qty: int,
         server_custom_attributes: Dict[str, Any],
+        slot_id: str,
+        slot_used: int,
         source_item_id: str,
         tags: List[str],
         type_: str,
@@ -154,6 +178,8 @@ class ApimodelsSaveItemReq(Model):
         instance.inventory_configuration_code = inventory_configuration_code
         instance.qty = qty
         instance.server_custom_attributes = server_custom_attributes
+        instance.slot_id = slot_id
+        instance.slot_used = slot_used
         instance.source_item_id = source_item_id
         instance.tags = tags
         instance.type_ = type_
@@ -194,6 +220,14 @@ class ApimodelsSaveItemReq(Model):
             }
         elif include_empty:
             instance.server_custom_attributes = {}
+        if "slotId" in dict_ and dict_["slotId"] is not None:
+            instance.slot_id = str(dict_["slotId"])
+        elif include_empty:
+            instance.slot_id = ""
+        if "slotUsed" in dict_ and dict_["slotUsed"] is not None:
+            instance.slot_used = int(dict_["slotUsed"])
+        elif include_empty:
+            instance.slot_used = 0
         if "sourceItemId" in dict_ and dict_["sourceItemId"] is not None:
             instance.source_item_id = str(dict_["sourceItemId"])
         elif include_empty:
@@ -253,6 +287,8 @@ class ApimodelsSaveItemReq(Model):
             "inventoryConfigurationCode": "inventory_configuration_code",
             "qty": "qty",
             "serverCustomAttributes": "server_custom_attributes",
+            "slotId": "slot_id",
+            "slotUsed": "slot_used",
             "sourceItemId": "source_item_id",
             "tags": "tags",
             "type": "type_",
@@ -265,6 +301,8 @@ class ApimodelsSaveItemReq(Model):
             "inventoryConfigurationCode": True,
             "qty": True,
             "serverCustomAttributes": True,
+            "slotId": True,
+            "slotUsed": True,
             "sourceItemId": True,
             "tags": True,
             "type": True,

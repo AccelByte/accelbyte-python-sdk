@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Platform Service (4.34.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -49,7 +49,6 @@ class SourceEnum(StrEnum):
     DLC = "DLC"
     GIFT = "GIFT"
     IAP = "IAP"
-    IAP_CHARGEBACK_REVERSED = "IAP_CHARGEBACK_REVERSED"
     OTHER = "OTHER"
     PROMOTION = "PROMOTION"
     PURCHASE = "PURCHASE"
@@ -286,7 +285,6 @@ class CreditRequest(Model):
                 "DLC",
                 "GIFT",
                 "IAP",
-                "IAP_CHARGEBACK_REVERSED",
                 "OTHER",
                 "PROMOTION",
                 "PURCHASE",

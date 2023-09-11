@@ -33,8 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.inventory import (
     public_bulk_remove_my_items as public_bulk_remove_my_items_internal,
 )
-from accelbyte_py_sdk.api.inventory.models import ApimodelsBulkRemoveItemsReq
 from accelbyte_py_sdk.api.inventory.models import ApimodelsErrorResponse
+from accelbyte_py_sdk.api.inventory.models import ApimodelsRemoveInventoryItemReq
 from accelbyte_py_sdk.api.inventory.models import ApimodelsUpdateItemResp
 
 
@@ -64,7 +64,9 @@ def public_bulk_remove_my_items(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ApimodelsBulkRemoveItemsReq.create_from_dict(body_json)
+            body = [
+                ApimodelsRemoveInventoryItemReq.create_from_dict(i0) for i0 in body_json
+            ]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = public_bulk_remove_my_items_internal(

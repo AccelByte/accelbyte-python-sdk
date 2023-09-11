@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Iam Service (7.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,34 +27,38 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.clawback_info import ClawbackInfo
-from ..models.paging import Paging
 
-
-class IAPClawbackPagingSlicedResult(Model):
-    """IAP clawback paging sliced result (IAPClawbackPagingSlicedResult)
+class ModelUserPlatformInfo(Model):
+    """Model user platform info (model.UserPlatformInfo)
 
     Properties:
-        data: (data) REQUIRED List[ClawbackInfo]
+        platform_display_name: (platformDisplayName) REQUIRED str
 
-        paging: (paging) OPTIONAL Paging
+        platform_id: (platformId) REQUIRED str
+
+        platform_user_id: (platformUserId) REQUIRED str
     """
 
     # region fields
 
-    data: List[ClawbackInfo]  # REQUIRED
-    paging: Paging  # OPTIONAL
+    platform_display_name: str  # REQUIRED
+    platform_id: str  # REQUIRED
+    platform_user_id: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(self, value: List[ClawbackInfo]) -> IAPClawbackPagingSlicedResult:
-        self.data = value
+    def with_platform_display_name(self, value: str) -> ModelUserPlatformInfo:
+        self.platform_display_name = value
         return self
 
-    def with_paging(self, value: Paging) -> IAPClawbackPagingSlicedResult:
-        self.paging = value
+    def with_platform_id(self, value: str) -> ModelUserPlatformInfo:
+        self.platform_id = value
+        return self
+
+    def with_platform_user_id(self, value: str) -> ModelUserPlatformInfo:
+        self.platform_user_id = value
         return self
 
     # endregion with_x methods
@@ -63,16 +67,18 @@ class IAPClawbackPagingSlicedResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "data"):
-            result["data"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.data
-            ]
+        if hasattr(self, "platform_display_name"):
+            result["platformDisplayName"] = str(self.platform_display_name)
         elif include_empty:
-            result["data"] = []
-        if hasattr(self, "paging"):
-            result["paging"] = self.paging.to_dict(include_empty=include_empty)
+            result["platformDisplayName"] = ""
+        if hasattr(self, "platform_id"):
+            result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["paging"] = Paging()
+            result["platformId"] = ""
+        if hasattr(self, "platform_user_id"):
+            result["platformUserId"] = str(self.platform_user_id)
+        elif include_empty:
+            result["platformUserId"] = ""
         return result
 
     # endregion to methods
@@ -81,40 +87,43 @@ class IAPClawbackPagingSlicedResult(Model):
 
     @classmethod
     def create(
-        cls, data: List[ClawbackInfo], paging: Optional[Paging] = None, **kwargs
-    ) -> IAPClawbackPagingSlicedResult:
+        cls,
+        platform_display_name: str,
+        platform_id: str,
+        platform_user_id: str,
+        **kwargs,
+    ) -> ModelUserPlatformInfo:
         instance = cls()
-        instance.data = data
-        if paging is not None:
-            instance.paging = paging
+        instance.platform_display_name = platform_display_name
+        instance.platform_id = platform_id
+        instance.platform_user_id = platform_user_id
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> IAPClawbackPagingSlicedResult:
+    ) -> ModelUserPlatformInfo:
         instance = cls()
         if not dict_:
             return instance
-        if "data" in dict_ and dict_["data"] is not None:
-            instance.data = [
-                ClawbackInfo.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["data"]
-            ]
+        if "platformDisplayName" in dict_ and dict_["platformDisplayName"] is not None:
+            instance.platform_display_name = str(dict_["platformDisplayName"])
         elif include_empty:
-            instance.data = []
-        if "paging" in dict_ and dict_["paging"] is not None:
-            instance.paging = Paging.create_from_dict(
-                dict_["paging"], include_empty=include_empty
-            )
+            instance.platform_display_name = ""
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.paging = Paging()
+            instance.platform_id = ""
+        if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
+            instance.platform_user_id = str(dict_["platformUserId"])
+        elif include_empty:
+            instance.platform_user_id = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, IAPClawbackPagingSlicedResult]:
+    ) -> Dict[str, ModelUserPlatformInfo]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -124,7 +133,7 @@ class IAPClawbackPagingSlicedResult(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[IAPClawbackPagingSlicedResult]:
+    ) -> List[ModelUserPlatformInfo]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -135,9 +144,9 @@ class IAPClawbackPagingSlicedResult(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        IAPClawbackPagingSlicedResult,
-        List[IAPClawbackPagingSlicedResult],
-        Dict[Any, IAPClawbackPagingSlicedResult],
+        ModelUserPlatformInfo,
+        List[ModelUserPlatformInfo],
+        Dict[Any, ModelUserPlatformInfo],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -152,15 +161,17 @@ class IAPClawbackPagingSlicedResult(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "data": "data",
-            "paging": "paging",
+            "platformDisplayName": "platform_display_name",
+            "platformId": "platform_id",
+            "platformUserId": "platform_user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "data": True,
-            "paging": False,
+            "platformDisplayName": True,
+            "platformId": True,
+            "platformUserId": True,
         }
 
     # endregion static methods

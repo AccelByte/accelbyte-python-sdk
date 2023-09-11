@@ -23,6 +23,9 @@ from ._single_admin_delete_content import single_admin_delete_content
 from ._single_admin_get_content import single_admin_get_content
 from ._admin_get_content_bulk import admin_get_content_bulk
 from ._admin_search_content import admin_search_content
+from ._admin_get_content_bulk_by_share_codes import (
+    admin_get_content_bulk_by_share_codes,
+)
 from ._admin_get_user_content_by_share_code import admin_get_user_content_by_share_code
 from ._admin_get_specific_content import admin_get_specific_content
 from ._admin_download_content_preview import admin_download_content_preview
@@ -121,6 +124,7 @@ commands = [
     single_admin_get_content,
     admin_get_content_bulk,
     admin_search_content,
+    admin_get_content_bulk_by_share_codes,
     admin_get_user_content_by_share_code,
     admin_get_specific_content,
     admin_download_content_preview,

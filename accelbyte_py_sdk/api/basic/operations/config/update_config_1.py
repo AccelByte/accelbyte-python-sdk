@@ -67,7 +67,7 @@ class UpdateConfig1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ConfigInfo (Successful operation)
+        200: OK - ConfigInfo (Successful operation)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
@@ -199,7 +199,7 @@ class UpdateConfig1(Operation):
     ]:
         """Parse the given response.
 
-        201: Created - ConfigInfo (Successful operation)
+        200: OK - ConfigInfo (Successful operation)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
@@ -222,7 +222,7 @@ class UpdateConfig1(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 201:
+        if code == 200:
             return ConfigInfo.create_from_dict(content), None
         if code == 400:
             return None, ValidationErrorEntity.create_from_dict(content)

@@ -201,6 +201,7 @@ from .model_linking_history_response_with_pagination_v3 import (
 )
 from .model_list_assigned_users_v4_response import ModelListAssignedUsersV4Response
 from .model_list_bulk_user_ban_response_v3 import ModelListBulkUserBanResponseV3
+from .model_list_bulk_user_platforms_response import ModelListBulkUserPlatformsResponse
 from .model_list_bulk_user_response import ModelListBulkUserResponse
 from .model_list_email_address_request import ModelListEmailAddressRequest
 from .model_list_role_v4_response import ModelListRoleV4Response
@@ -325,6 +326,7 @@ from .model_user_login_history_response import ModelUserLoginHistoryResponse
 from .model_user_password_update_request import ModelUserPasswordUpdateRequest
 from .model_user_password_update_v3_request import ModelUserPasswordUpdateV3Request
 from .model_user_permissions_response_v3 import ModelUserPermissionsResponseV3
+from .model_user_platform_info import ModelUserPlatformInfo
 from .model_user_platform_metadata import ModelUserPlatformMetadata
 from .model_user_public_info_response_v4 import ModelUserPublicInfoResponseV4
 from .model_user_response import ModelUserResponse
@@ -335,6 +337,7 @@ from .model_user_update_request import ModelUserUpdateRequest
 from .model_user_update_request_v3 import ModelUserUpdateRequestV3
 from .model_user_verification_request import ModelUserVerificationRequest
 from .model_user_verification_request_v3 import ModelUserVerificationRequestV3
+from .model_user_with_platform_info import ModelUserWithPlatformInfo
 from .model_valid_user_id_response_v4 import ModelValidUserIDResponseV4
 from .model_validation_detail import ModelValidationDetail
 from .model_validation_detail_public import ModelValidationDetailPublic

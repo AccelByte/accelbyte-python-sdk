@@ -1619,7 +1619,7 @@ def public_revoke_party_code(
         party_id: (partyId) REQUIRED str in path
 
     Responses:
-        200: OK - ApimodelsPartySessionResponse (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -1671,7 +1671,7 @@ async def public_revoke_party_code_async(
         party_id: (partyId) REQUIRED str in path
 
     Responses:
-        200: OK - ApimodelsPartySessionResponse (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 

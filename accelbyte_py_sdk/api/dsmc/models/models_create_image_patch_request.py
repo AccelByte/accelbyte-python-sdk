@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,14 +27,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_uploader_flag import ModelsUploaderFlag
-
 
 class ModelsCreateImagePatchRequest(Model):
     """Models create image patch request (models.CreateImagePatchRequest)
 
     Properties:
         artifact_path: (artifactPath) REQUIRED str
+
+        core_dump_enabled: (coreDumpEnabled) REQUIRED bool
 
         docker_path: (dockerPath) REQUIRED str
 
@@ -48,7 +48,7 @@ class ModelsCreateImagePatchRequest(Model):
 
         persistent: (persistent) REQUIRED bool
 
-        uploader_flags: (uploaderFlags) REQUIRED List[ModelsUploaderFlag]
+        uploader_flag: (uploaderFlag) REQUIRED str
 
         version: (version) REQUIRED str
     """
@@ -56,13 +56,14 @@ class ModelsCreateImagePatchRequest(Model):
     # region fields
 
     artifact_path: str  # REQUIRED
+    core_dump_enabled: bool  # REQUIRED
     docker_path: str  # REQUIRED
     image: str  # REQUIRED
     image_size: int  # REQUIRED
     namespace: str  # REQUIRED
     patch_version: str  # REQUIRED
     persistent: bool  # REQUIRED
-    uploader_flags: List[ModelsUploaderFlag]  # REQUIRED
+    uploader_flag: str  # REQUIRED
     version: str  # REQUIRED
 
     # endregion fields
@@ -71,6 +72,10 @@ class ModelsCreateImagePatchRequest(Model):
 
     def with_artifact_path(self, value: str) -> ModelsCreateImagePatchRequest:
         self.artifact_path = value
+        return self
+
+    def with_core_dump_enabled(self, value: bool) -> ModelsCreateImagePatchRequest:
+        self.core_dump_enabled = value
         return self
 
     def with_docker_path(self, value: str) -> ModelsCreateImagePatchRequest:
@@ -97,10 +102,8 @@ class ModelsCreateImagePatchRequest(Model):
         self.persistent = value
         return self
 
-    def with_uploader_flags(
-        self, value: List[ModelsUploaderFlag]
-    ) -> ModelsCreateImagePatchRequest:
-        self.uploader_flags = value
+    def with_uploader_flag(self, value: str) -> ModelsCreateImagePatchRequest:
+        self.uploader_flag = value
         return self
 
     def with_version(self, value: str) -> ModelsCreateImagePatchRequest:
@@ -117,6 +120,10 @@ class ModelsCreateImagePatchRequest(Model):
             result["artifactPath"] = str(self.artifact_path)
         elif include_empty:
             result["artifactPath"] = ""
+        if hasattr(self, "core_dump_enabled"):
+            result["coreDumpEnabled"] = bool(self.core_dump_enabled)
+        elif include_empty:
+            result["coreDumpEnabled"] = False
         if hasattr(self, "docker_path"):
             result["dockerPath"] = str(self.docker_path)
         elif include_empty:
@@ -141,12 +148,10 @@ class ModelsCreateImagePatchRequest(Model):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
             result["persistent"] = False
-        if hasattr(self, "uploader_flags"):
-            result["uploaderFlags"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.uploader_flags
-            ]
+        if hasattr(self, "uploader_flag"):
+            result["uploaderFlag"] = str(self.uploader_flag)
         elif include_empty:
-            result["uploaderFlags"] = []
+            result["uploaderFlag"] = ""
         if hasattr(self, "version"):
             result["version"] = str(self.version)
         elif include_empty:
@@ -161,25 +166,27 @@ class ModelsCreateImagePatchRequest(Model):
     def create(
         cls,
         artifact_path: str,
+        core_dump_enabled: bool,
         docker_path: str,
         image: str,
         image_size: int,
         namespace: str,
         patch_version: str,
         persistent: bool,
-        uploader_flags: List[ModelsUploaderFlag],
+        uploader_flag: str,
         version: str,
         **kwargs,
     ) -> ModelsCreateImagePatchRequest:
         instance = cls()
         instance.artifact_path = artifact_path
+        instance.core_dump_enabled = core_dump_enabled
         instance.docker_path = docker_path
         instance.image = image
         instance.image_size = image_size
         instance.namespace = namespace
         instance.patch_version = patch_version
         instance.persistent = persistent
-        instance.uploader_flags = uploader_flags
+        instance.uploader_flag = uploader_flag
         instance.version = version
         return instance
 
@@ -194,6 +201,10 @@ class ModelsCreateImagePatchRequest(Model):
             instance.artifact_path = str(dict_["artifactPath"])
         elif include_empty:
             instance.artifact_path = ""
+        if "coreDumpEnabled" in dict_ and dict_["coreDumpEnabled"] is not None:
+            instance.core_dump_enabled = bool(dict_["coreDumpEnabled"])
+        elif include_empty:
+            instance.core_dump_enabled = False
         if "dockerPath" in dict_ and dict_["dockerPath"] is not None:
             instance.docker_path = str(dict_["dockerPath"])
         elif include_empty:
@@ -218,13 +229,10 @@ class ModelsCreateImagePatchRequest(Model):
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
             instance.persistent = False
-        if "uploaderFlags" in dict_ and dict_["uploaderFlags"] is not None:
-            instance.uploader_flags = [
-                ModelsUploaderFlag.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["uploaderFlags"]
-            ]
+        if "uploaderFlag" in dict_ and dict_["uploaderFlag"] is not None:
+            instance.uploader_flag = str(dict_["uploaderFlag"])
         elif include_empty:
-            instance.uploader_flags = []
+            instance.uploader_flag = ""
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = str(dict_["version"])
         elif include_empty:
@@ -273,13 +281,14 @@ class ModelsCreateImagePatchRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "artifactPath": "artifact_path",
+            "coreDumpEnabled": "core_dump_enabled",
             "dockerPath": "docker_path",
             "image": "image",
             "imageSize": "image_size",
             "namespace": "namespace",
             "patchVersion": "patch_version",
             "persistent": "persistent",
-            "uploaderFlags": "uploader_flags",
+            "uploaderFlag": "uploader_flag",
             "version": "version",
         }
 
@@ -287,13 +296,14 @@ class ModelsCreateImagePatchRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "artifactPath": True,
+            "coreDumpEnabled": True,
             "dockerPath": True,
             "image": True,
             "imageSize": True,
             "namespace": True,
             "patchVersion": True,
             "persistent": True,
-            "uploaderFlags": True,
+            "uploaderFlag": True,
             "version": True,
         }
 

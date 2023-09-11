@@ -41,7 +41,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.command()
 @click.argument("body", type=str)
 @click.argument("platform_id", type=str)
-@click.option("--raw_puid", "raw_puid", type=bool)
+@click.option("--raw_pid", "raw_pid", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -49,7 +49,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 def public_list_user_id_by_platform_user_i_ds_v3(
     body: str,
     platform_id: str,
-    raw_puid: Optional[bool] = None,
+    raw_pid: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -72,7 +72,7 @@ def public_list_user_id_by_platform_user_i_ds_v3(
     result, error = public_list_user_id_by_platform_user_i_ds_v3_internal(
         body=body,
         platform_id=platform_id,
-        raw_puid=raw_puid,
+        raw_pid=raw_pid,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

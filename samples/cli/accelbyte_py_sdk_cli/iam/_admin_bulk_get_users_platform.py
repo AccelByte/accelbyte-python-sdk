@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.34.0)
+# AGS Iam Service (7.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,63 +30,50 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    query_iap_clawback_history as query_iap_clawback_history_internal,
+from accelbyte_py_sdk.api.iam import (
+    admin_bulk_get_users_platform as admin_bulk_get_users_platform_internal,
 )
-from accelbyte_py_sdk.api.platform.models import IAPClawbackPagingSlicedResult
+from accelbyte_py_sdk.api.iam.models import ModelListBulkUserPlatformsResponse
+from accelbyte_py_sdk.api.iam.models import ModelUserIDsRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--end_time", "end_time", type=str)
-@click.option("--event_type", "event_type", type=str)
-@click.option("--external_order_id", "external_order_id", type=str)
-@click.option("--limit", "limit", type=int)
-@click.option("--offset", "offset", type=int)
-@click.option("--start_time", "start_time", type=str)
-@click.option("--status", "status", type=str)
-@click.option("--user_id", "user_id", type=str)
+@click.argument("body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def query_iap_clawback_history(
-    end_time: Optional[str] = None,
-    event_type: Optional[str] = None,
-    external_order_id: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    start_time: Optional[str] = None,
-    status: Optional[str] = None,
-    user_id: Optional[str] = None,
+def admin_bulk_get_users_platform(
+    body: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(query_iap_clawback_history_internal.__doc__)
+        click.echo(admin_bulk_get_users_platform_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = query_iap_clawback_history_internal(
-        end_time=end_time,
-        event_type=event_type,
-        external_order_id=external_order_id,
-        limit=limit,
-        offset=offset,
-        start_time=start_time,
-        status=status,
-        user_id=user_id,
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelUserIDsRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    result, error = admin_bulk_get_users_platform_internal(
+        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"queryIAPClawbackHistory failed: {str(error)}")
+        raise Exception(f"AdminBulkGetUsersPlatform failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-query_iap_clawback_history.operation_id = "queryIAPClawbackHistory"
-query_iap_clawback_history.is_deprecated = False
+admin_bulk_get_users_platform.operation_id = "AdminBulkGetUsersPlatform"
+admin_bulk_get_users_platform.is_deprecated = False

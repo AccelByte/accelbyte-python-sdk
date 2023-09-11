@@ -174,7 +174,7 @@ def list_providers_by_region(
         region: (region) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsDefaultProvider (Default providers got)
+        200: OK - List[str] (Default providers got)
     """
     request = ListProvidersByRegion.create(
         region=region,
@@ -206,7 +206,7 @@ async def list_providers_by_region_async(
         region: (region) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsDefaultProvider (Default providers got)
+        200: OK - List[str] (Default providers got)
     """
     request = ListProvidersByRegion.create(
         region=region,

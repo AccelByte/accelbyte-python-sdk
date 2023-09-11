@@ -15,7 +15,6 @@ __email__ = "dev@accelbyte.net"
 # pylint: disable=line-too-long
 
 from .apimodels_admin_update_item_req import ApimodelsAdminUpdateItemReq
-from .apimodels_bulk_remove_items_req import ApimodelsBulkRemoveItemsReq
 from .apimodels_consume_item_req import ApimodelsConsumeItemReq
 from .apimodels_create_inventory_configuration_req import (
     ApimodelsCreateInventoryConfigurationReq,
@@ -46,6 +45,7 @@ from .apimodels_list_tags_resp import ApimodelsListTagsResp
 from .apimodels_move_items_req import ApimodelsMoveItemsReq
 from .apimodels_move_items_resp import ApimodelsMoveItemsResp
 from .apimodels_paging import ApimodelsPaging
+from .apimodels_remove_inventory_item_req import ApimodelsRemoveInventoryItemReq
 from .apimodels_save_item_req import ApimodelsSaveItemReq
 from .apimodels_save_item_to_inventory_req import ApimodelsSaveItemToInventoryReq
 from .apimodels_trade_item import ApimodelsTradeItem

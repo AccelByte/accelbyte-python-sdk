@@ -39,7 +39,9 @@ class AdminUpdateInventory(Operation):
 
 
     Updating an inventory.
-    MaxSlots will be increased from existing value
+    Positive value will increase MaxSlots from existing value
+    Negative value will decrease MaxSlots from existing value
+    Limited slots can not be changed to unlimited, vice versa
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
 
@@ -57,7 +59,7 @@ class AdminUpdateInventory(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsUpdateInventoryReq in body
 
@@ -81,7 +83,7 @@ class AdminUpdateInventory(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ApimodelsUpdateInventoryReq  # REQUIRED in [body]

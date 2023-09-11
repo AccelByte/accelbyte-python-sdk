@@ -28,23 +28,30 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class ApimodelsBulkRemoveItemsReq(Model):
-    """Apimodels bulk remove items req (apimodels.BulkRemoveItemsReq)
+class ApimodelsRemoveInventoryItemReq(Model):
+    """Apimodels remove inventory item req (apimodels.RemoveInventoryItemReq)
 
     Properties:
-        ids: (ids) REQUIRED List[str]
+        slot_id: (slotId) REQUIRED str
+
+        source_item_id: (sourceItemId) REQUIRED str
     """
 
     # region fields
 
-    ids: List[str]  # REQUIRED
+    slot_id: str  # REQUIRED
+    source_item_id: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_ids(self, value: List[str]) -> ApimodelsBulkRemoveItemsReq:
-        self.ids = value
+    def with_slot_id(self, value: str) -> ApimodelsRemoveInventoryItemReq:
+        self.slot_id = value
+        return self
+
+    def with_source_item_id(self, value: str) -> ApimodelsRemoveInventoryItemReq:
+        self.source_item_id = value
         return self
 
     # endregion with_x methods
@@ -53,10 +60,14 @@ class ApimodelsBulkRemoveItemsReq(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "ids"):
-            result["ids"] = [str(i0) for i0 in self.ids]
+        if hasattr(self, "slot_id"):
+            result["slotId"] = str(self.slot_id)
         elif include_empty:
-            result["ids"] = []
+            result["slotId"] = ""
+        if hasattr(self, "source_item_id"):
+            result["sourceItemId"] = str(self.source_item_id)
+        elif include_empty:
+            result["sourceItemId"] = ""
         return result
 
     # endregion to methods
@@ -64,28 +75,35 @@ class ApimodelsBulkRemoveItemsReq(Model):
     # region static methods
 
     @classmethod
-    def create(cls, ids: List[str], **kwargs) -> ApimodelsBulkRemoveItemsReq:
+    def create(
+        cls, slot_id: str, source_item_id: str, **kwargs
+    ) -> ApimodelsRemoveInventoryItemReq:
         instance = cls()
-        instance.ids = ids
+        instance.slot_id = slot_id
+        instance.source_item_id = source_item_id
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ApimodelsBulkRemoveItemsReq:
+    ) -> ApimodelsRemoveInventoryItemReq:
         instance = cls()
         if not dict_:
             return instance
-        if "ids" in dict_ and dict_["ids"] is not None:
-            instance.ids = [str(i0) for i0 in dict_["ids"]]
+        if "slotId" in dict_ and dict_["slotId"] is not None:
+            instance.slot_id = str(dict_["slotId"])
         elif include_empty:
-            instance.ids = []
+            instance.slot_id = ""
+        if "sourceItemId" in dict_ and dict_["sourceItemId"] is not None:
+            instance.source_item_id = str(dict_["sourceItemId"])
+        elif include_empty:
+            instance.source_item_id = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApimodelsBulkRemoveItemsReq]:
+    ) -> Dict[str, ApimodelsRemoveInventoryItemReq]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -95,7 +113,7 @@ class ApimodelsBulkRemoveItemsReq(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ApimodelsBulkRemoveItemsReq]:
+    ) -> List[ApimodelsRemoveInventoryItemReq]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -106,9 +124,9 @@ class ApimodelsBulkRemoveItemsReq(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ApimodelsBulkRemoveItemsReq,
-        List[ApimodelsBulkRemoveItemsReq],
-        Dict[Any, ApimodelsBulkRemoveItemsReq],
+        ApimodelsRemoveInventoryItemReq,
+        List[ApimodelsRemoveInventoryItemReq],
+        Dict[Any, ApimodelsRemoveInventoryItemReq],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -123,13 +141,15 @@ class ApimodelsBulkRemoveItemsReq(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "ids": "ids",
+            "slotId": "slot_id",
+            "sourceItemId": "source_item_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "ids": True,
+            "slotId": True,
+            "sourceItemId": True,
         }
 
     # endregion static methods

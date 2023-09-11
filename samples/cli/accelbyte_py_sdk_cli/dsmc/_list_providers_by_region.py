@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Dsm Controller Service (6.3.7)
+# AGS Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,7 +33,6 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import (
     list_providers_by_region as list_providers_by_region_internal,
 )
-from accelbyte_py_sdk.api.dsmc.models import ModelsDefaultProvider
 
 
 @click.command()

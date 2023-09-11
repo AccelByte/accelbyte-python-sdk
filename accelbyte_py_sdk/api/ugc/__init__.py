@@ -41,6 +41,8 @@ from .wrappers import admin_get_content
 from .wrappers import admin_get_content_async
 from .wrappers import admin_get_content_bulk
 from .wrappers import admin_get_content_bulk_async
+from .wrappers import admin_get_content_bulk_by_share_codes
+from .wrappers import admin_get_content_bulk_by_share_codes_async
 from .wrappers import admin_get_specific_content
 from .wrappers import admin_get_specific_content_async
 from .wrappers import admin_get_user_content_by_share_code

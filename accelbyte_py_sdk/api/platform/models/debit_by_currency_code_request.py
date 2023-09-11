@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Platform Service (4.34.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,7 +46,6 @@ class BalanceOriginEnum(StrEnum):
 class BalanceSourceEnum(StrEnum):
     DLC_REVOCATION = "DLC_REVOCATION"
     EXPIRATION = "EXPIRATION"
-    IAP_REVOCATION = "IAP_REVOCATION"
     ORDER_REVOCATION = "ORDER_REVOCATION"
     OTHER = "OTHER"
     PAYMENT = "PAYMENT"
@@ -283,7 +282,6 @@ class DebitByCurrencyCodeRequest(Model):
             "balanceSource": [
                 "DLC_REVOCATION",
                 "EXPIRATION",
-                "IAP_REVOCATION",
                 "ORDER_REVOCATION",
                 "OTHER",
                 "PAYMENT",

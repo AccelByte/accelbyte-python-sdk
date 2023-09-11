@@ -25,7 +25,6 @@
 from .utils import randomize
 
 from ..api.inventory.models import ApimodelsAdminUpdateItemReq
-from ..api.inventory.models import ApimodelsBulkRemoveItemsReq
 from ..api.inventory.models import ApimodelsConsumeItemReq
 from ..api.inventory.models import ApimodelsCreateInventoryConfigurationReq
 from ..api.inventory.models import ApimodelsCreateInventoryReq
@@ -47,6 +46,7 @@ from ..api.inventory.models import ApimodelsListTagsResp
 from ..api.inventory.models import ApimodelsMoveItemsReq
 from ..api.inventory.models import ApimodelsMoveItemsResp
 from ..api.inventory.models import ApimodelsPaging
+from ..api.inventory.models import ApimodelsRemoveInventoryItemReq
 from ..api.inventory.models import ApimodelsSaveItemReq
 from ..api.inventory.models import ApimodelsSaveItemToInventoryReq
 from ..api.inventory.models import ApimodelsTradeItem
@@ -59,22 +59,19 @@ from ..api.inventory.models import ApimodelsUpdateItemResp
 def create_apimodels_admin_update_item_req_example() -> ApimodelsAdminUpdateItemReq:
     instance = ApimodelsAdminUpdateItemReq()
     instance.custom_attributes = {randomize(): randomize()}
-    instance.id_ = randomize()
     instance.server_custom_attributes = {randomize(): randomize()}
+    instance.slot_id = randomize()
+    instance.source_item_id = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
-    return instance
-
-
-def create_apimodels_bulk_remove_items_req_example() -> ApimodelsBulkRemoveItemsReq:
-    instance = ApimodelsBulkRemoveItemsReq()
-    instance.ids = [randomize()]
     return instance
 
 
 def create_apimodels_consume_item_req_example() -> ApimodelsConsumeItemReq:
     instance = ApimodelsConsumeItemReq()
     instance.qty = randomize("int", min_val=1, max_val=1000)
+    instance.slot_id = randomize()
+    instance.source_item_id = randomize()
     return instance
 
 
@@ -196,6 +193,8 @@ def create_apimodels_item_resp_example() -> ApimodelsItemResp:
     instance.namespace = randomize("slug")
     instance.qty = randomize("int", min_val=1, max_val=1000)
     instance.server_custom_attributes = {randomize(): randomize()}
+    instance.slot_id = randomize()
+    instance.slot_used = randomize("int", min_val=1, max_val=1000)
     instance.source = randomize()
     instance.source_item_id = randomize()
     instance.tags = [randomize()]
@@ -268,12 +267,23 @@ def create_apimodels_paging_example() -> ApimodelsPaging:
     return instance
 
 
+def create_apimodels_remove_inventory_item_req_example() -> (
+    ApimodelsRemoveInventoryItemReq
+):
+    instance = ApimodelsRemoveInventoryItemReq()
+    instance.slot_id = randomize()
+    instance.source_item_id = randomize()
+    return instance
+
+
 def create_apimodels_save_item_req_example() -> ApimodelsSaveItemReq:
     instance = ApimodelsSaveItemReq()
     instance.custom_attributes = {randomize(): randomize()}
     instance.inventory_configuration_code = randomize()
     instance.qty = randomize("int", min_val=1, max_val=1000)
     instance.server_custom_attributes = {randomize(): randomize()}
+    instance.slot_id = randomize()
+    instance.slot_used = randomize("int", min_val=1, max_val=1000)
     instance.source_item_id = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
@@ -287,6 +297,8 @@ def create_apimodels_save_item_to_inventory_req_example() -> (
     instance.custom_attributes = {randomize(): randomize()}
     instance.qty = randomize("int", min_val=1, max_val=1000)
     instance.server_custom_attributes = {randomize(): randomize()}
+    instance.slot_id = randomize()
+    instance.slot_used = randomize("int", min_val=1, max_val=1000)
     instance.source_item_id = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
@@ -295,15 +307,16 @@ def create_apimodels_save_item_to_inventory_req_example() -> (
 
 def create_apimodels_trade_item_example() -> ApimodelsTradeItem:
     instance = ApimodelsTradeItem()
-    instance.id_ = randomize()
     instance.qty = randomize("int", min_val=1, max_val=1000)
+    instance.slot_id = randomize()
+    instance.source_item_id = randomize()
     return instance
 
 
 def create_apimodels_trade_item_resp_example() -> ApimodelsTradeItemResp:
     instance = ApimodelsTradeItemResp()
-    instance.item_id = randomize()
     instance.qty = randomize("int", min_val=1, max_val=1000)
+    instance.slot_id = randomize()
     instance.source_item_id = randomize()
     return instance
 
@@ -317,14 +330,16 @@ def create_apimodels_update_inventory_req_example() -> ApimodelsUpdateInventoryR
 def create_apimodels_update_item_req_example() -> ApimodelsUpdateItemReq:
     instance = ApimodelsUpdateItemReq()
     instance.custom_attributes = {randomize(): randomize()}
-    instance.id_ = randomize()
+    instance.slot_id = randomize()
+    instance.source_item_id = randomize()
     instance.tags = [randomize()]
     return instance
 
 
 def create_apimodels_update_item_resp_example() -> ApimodelsUpdateItemResp:
     instance = ApimodelsUpdateItemResp()
-    instance.id_ = randomize()
+    instance.slot_id = randomize()
+    instance.source_item_id = randomize()
     instance.success = randomize("bool")
     instance.error_details = create_apimodels_error_response_example()
     return instance

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.0)
+# AccelByte Gaming Services Iam Service (7.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,31 +27,28 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.model_user_with_platform_info import ModelUserWithPlatformInfo
 
-class ClientTransaction(Model):
-    """Client transaction (ClientTransaction)
+
+class ModelListBulkUserPlatformsResponse(Model):
+    """Model list bulk user platforms response (model.ListBulkUserPlatformsResponse)
 
     Properties:
-        amount_consumed: (amountConsumed) OPTIONAL int
-
-        client_transaction_id: (clientTransactionId) OPTIONAL str
+        data: (data) REQUIRED List[ModelUserWithPlatformInfo]
     """
 
     # region fields
 
-    amount_consumed: int  # OPTIONAL
-    client_transaction_id: str  # OPTIONAL
+    data: List[ModelUserWithPlatformInfo]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_amount_consumed(self, value: int) -> ClientTransaction:
-        self.amount_consumed = value
-        return self
-
-    def with_client_transaction_id(self, value: str) -> ClientTransaction:
-        self.client_transaction_id = value
+    def with_data(
+        self, value: List[ModelUserWithPlatformInfo]
+    ) -> ModelListBulkUserPlatformsResponse:
+        self.data = value
         return self
 
     # endregion with_x methods
@@ -60,14 +57,12 @@ class ClientTransaction(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "amount_consumed"):
-            result["amountConsumed"] = int(self.amount_consumed)
+        if hasattr(self, "data"):
+            result["data"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.data
+            ]
         elif include_empty:
-            result["amountConsumed"] = 0
-        if hasattr(self, "client_transaction_id"):
-            result["clientTransactionId"] = str(self.client_transaction_id)
-        elif include_empty:
-            result["clientTransactionId"] = ""
+            result["data"] = []
         return result
 
     # endregion to methods
@@ -76,39 +71,34 @@ class ClientTransaction(Model):
 
     @classmethod
     def create(
-        cls,
-        amount_consumed: Optional[int] = None,
-        client_transaction_id: Optional[str] = None,
-        **kwargs,
-    ) -> ClientTransaction:
+        cls, data: List[ModelUserWithPlatformInfo], **kwargs
+    ) -> ModelListBulkUserPlatformsResponse:
         instance = cls()
-        if amount_consumed is not None:
-            instance.amount_consumed = amount_consumed
-        if client_transaction_id is not None:
-            instance.client_transaction_id = client_transaction_id
+        instance.data = data
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ClientTransaction:
+    ) -> ModelListBulkUserPlatformsResponse:
         instance = cls()
         if not dict_:
             return instance
-        if "amountConsumed" in dict_ and dict_["amountConsumed"] is not None:
-            instance.amount_consumed = int(dict_["amountConsumed"])
+        if "data" in dict_ and dict_["data"] is not None:
+            instance.data = [
+                ModelUserWithPlatformInfo.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["data"]
+            ]
         elif include_empty:
-            instance.amount_consumed = 0
-        if "clientTransactionId" in dict_ and dict_["clientTransactionId"] is not None:
-            instance.client_transaction_id = str(dict_["clientTransactionId"])
-        elif include_empty:
-            instance.client_transaction_id = ""
+            instance.data = []
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ClientTransaction]:
+    ) -> Dict[str, ModelListBulkUserPlatformsResponse]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -118,7 +108,7 @@ class ClientTransaction(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ClientTransaction]:
+    ) -> List[ModelListBulkUserPlatformsResponse]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -129,7 +119,9 @@ class ClientTransaction(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ClientTransaction, List[ClientTransaction], Dict[Any, ClientTransaction]
+        ModelListBulkUserPlatformsResponse,
+        List[ModelListBulkUserPlatformsResponse],
+        Dict[Any, ModelListBulkUserPlatformsResponse],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -144,15 +136,13 @@ class ClientTransaction(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "amountConsumed": "amount_consumed",
-            "clientTransactionId": "client_transaction_id",
+            "data": "data",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "amountConsumed": False,
-            "clientTransactionId": False,
+            "data": True,
         }
 
     # endregion static methods

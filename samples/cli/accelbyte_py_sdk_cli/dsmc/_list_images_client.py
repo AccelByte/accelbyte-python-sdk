@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.34.0)
+# AGS Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,49 +30,53 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    validate_playstation_iap_config as validate_playstation_iap_config_internal,
-)
-from accelbyte_py_sdk.api.platform.models import PlaystationIAPConfigRequest
-from accelbyte_py_sdk.api.platform.models import TestResult
+from accelbyte_py_sdk.api.dsmc import list_images_client as list_images_client_internal
+from accelbyte_py_sdk.api.dsmc.models import ModelsListImageResponse
+from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()
-@click.option("--body", "body", type=str)
+@click.option("--count", "count", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--q", "q", type=str)
+@click.option("--sort_by", "sort_by", type=str)
+@click.option("--sort_direction", "sort_direction", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def validate_playstation_iap_config(
-    body: Optional[str] = None,
+def list_images_client(
+    count: Optional[int] = None,
+    offset: Optional[int] = None,
+    q: Optional[str] = None,
+    sort_by: Optional[str] = None,
+    sort_direction: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(validate_playstation_iap_config_internal.__doc__)
+        click.echo(list_images_client_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if body is not None:
-        try:
-            body_json = json.loads(body)
-            body = PlaystationIAPConfigRequest.create_from_dict(body_json)
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = validate_playstation_iap_config_internal(
-        body=body,
+    result, error = list_images_client_internal(
+        count=count,
+        offset=offset,
+        q=q,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"validatePlaystationIAPConfig failed: {str(error)}")
+        raise Exception(f"ListImagesClient failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-validate_playstation_iap_config.operation_id = "validatePlaystationIAPConfig"
-validate_playstation_iap_config.is_deprecated = False
+list_images_client.operation_id = "ListImagesClient"
+list_images_client.is_deprecated = False

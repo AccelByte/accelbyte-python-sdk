@@ -352,6 +352,8 @@ from ._users import admin_ban_user_v2
 from ._users import admin_ban_user_v2_async
 from ._users import admin_ban_user_v3
 from ._users import admin_ban_user_v3_async
+from ._users import admin_bulk_get_users_platform
+from ._users import admin_bulk_get_users_platform_async
 from ._users import admin_create_justice_user
 from ._users import admin_create_justice_user_async
 from ._users import admin_create_user_roles_v2
@@ -414,6 +416,8 @@ from ._users import admin_invite_user_v3
 from ._users import admin_invite_user_v3_async
 from ._users import admin_link_platform_account
 from ._users import admin_link_platform_account_async
+from ._users import admin_list_user_id_by_platform_user_i_ds_v3
+from ._users import admin_list_user_id_by_platform_user_i_ds_v3_async
 from ._users import admin_list_user_id_by_user_i_ds_v3
 from ._users import admin_list_user_id_by_user_i_ds_v3_async
 from ._users import admin_list_users_v3

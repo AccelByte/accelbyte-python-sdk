@@ -547,7 +547,7 @@ def update_config_1(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ConfigInfo (Successful operation)
+        200: OK - ConfigInfo (Successful operation)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 
@@ -608,7 +608,7 @@ async def update_config_1_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ConfigInfo (Successful operation)
+        200: OK - ConfigInfo (Successful operation)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body)
 

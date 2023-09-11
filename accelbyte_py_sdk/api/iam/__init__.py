@@ -351,6 +351,8 @@ from .wrappers import admin_ban_user_v2
 from .wrappers import admin_ban_user_v2_async
 from .wrappers import admin_ban_user_v3
 from .wrappers import admin_ban_user_v3_async
+from .wrappers import admin_bulk_get_users_platform
+from .wrappers import admin_bulk_get_users_platform_async
 from .wrappers import admin_create_justice_user
 from .wrappers import admin_create_justice_user_async
 from .wrappers import admin_create_user_roles_v2
@@ -413,6 +415,8 @@ from .wrappers import admin_invite_user_v3
 from .wrappers import admin_invite_user_v3_async
 from .wrappers import admin_link_platform_account
 from .wrappers import admin_link_platform_account_async
+from .wrappers import admin_list_user_id_by_platform_user_i_ds_v3
+from .wrappers import admin_list_user_id_by_platform_user_i_ds_v3_async
 from .wrappers import admin_list_user_id_by_user_i_ds_v3
 from .wrappers import admin_list_user_id_by_user_i_ds_v3_async
 from .wrappers import admin_list_users_v3

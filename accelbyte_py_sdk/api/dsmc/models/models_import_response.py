@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,13 +34,13 @@ class ModelsImportResponse(Model):
     Properties:
         affected: (affected) REQUIRED List[str]
 
-        failed: (failed) REQUIRED List[str]
+        failed: (failed) OPTIONAL List[str]
     """
 
     # region fields
 
     affected: List[str]  # REQUIRED
-    failed: List[str]  # REQUIRED
+    failed: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -76,11 +76,12 @@ class ModelsImportResponse(Model):
 
     @classmethod
     def create(
-        cls, affected: List[str], failed: List[str], **kwargs
+        cls, affected: List[str], failed: Optional[List[str]] = None, **kwargs
     ) -> ModelsImportResponse:
         instance = cls()
         instance.affected = affected
-        instance.failed = failed
+        if failed is not None:
+            instance.failed = failed
         return instance
 
     @classmethod
@@ -149,7 +150,7 @@ class ModelsImportResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "affected": True,
-            "failed": True,
+            "failed": False,
         }
 
     # endregion static methods

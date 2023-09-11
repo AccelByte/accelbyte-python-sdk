@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Browser Service (1.15.3)
+# AGS Session Browser Service (1.15.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Dsm Controller Service Index (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service Index (6.4.1)
 
 
 ## Operations
@@ -81,6 +81,7 @@
 | /dsmcontroller/namespaces/{namespace}/images/limit | GET | ImageLimitClient | `false` | [ImageLimitClient](../../accelbyte_py_sdk/api/dsmc/operations/image_config/image_limit_client.py) | [image_limit_client](../../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-image-limit-client](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_image_limit_client.py) |
 | /dsmcontroller/admin/images/import | POST | ImportImages | `false` | [ImportImages](../../accelbyte_py_sdk/api/dsmc/operations/image_config/import_images.py) | [import_images](../../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-import-images](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_import_images.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images | GET | ListImages | `false` | [ListImages](../../accelbyte_py_sdk/api/dsmc/operations/image_config/list_images.py) | [list_images](../../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-list-images](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_list_images.py) |
+| /dsmcontroller/namespaces/{namespace}/images | GET | ListImagesClient | `false` | [ListImagesClient](../../accelbyte_py_sdk/api/dsmc/operations/image_config/list_images_client.py) | [list_images_client](../../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-list-images-client](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_list_images_client.py) |
 | /dsmcontroller/admin/images | PUT | UpdateImage | `false` | [UpdateImage](../../accelbyte_py_sdk/api/dsmc/operations/image_config/update_image.py) | [update_image](../../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-update-image](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_update_image.py) |
 
 ### Pod Config
@@ -155,6 +156,7 @@
 | models.GetImagePatchDetailResponse | [ModelsGetImagePatchDetailResponse](../../accelbyte_py_sdk/api/dsmc/models/models_get_image_patch_detail_response.py) |
 | models.ImageRecord | [ModelsImageRecord](../../accelbyte_py_sdk/api/dsmc/models/models_image_record.py) |
 | models.ImageRecordUpdate | [ModelsImageRecordUpdate](../../accelbyte_py_sdk/api/dsmc/models/models_image_record_update.py) |
+| models.ImageReplication | [ModelsImageReplication](../../accelbyte_py_sdk/api/dsmc/models/models_image_replication.py) |
 | models.ImportResponse | [ModelsImportResponse](../../accelbyte_py_sdk/api/dsmc/models/models_import_response.py) |
 | models.InstanceSpec | [ModelsInstanceSpec](../../accelbyte_py_sdk/api/dsmc/models/models_instance_spec.py) |
 | models.ListConfigResponse | [ModelsListConfigResponse](../../accelbyte_py_sdk/api/dsmc/models/models_list_config_response.py) |
@@ -188,5 +190,4 @@
 | models.UpdatePodConfigRequest | [ModelsUpdatePodConfigRequest](../../accelbyte_py_sdk/api/dsmc/models/models_update_pod_config_request.py) |
 | models.UpdatePortRequest | [ModelsUpdatePortRequest](../../accelbyte_py_sdk/api/dsmc/models/models_update_port_request.py) |
 | models.UpdateRegionOverrideRequest | [ModelsUpdateRegionOverrideRequest](../../accelbyte_py_sdk/api/dsmc/models/models_update_region_override_request.py) |
-| models.UploaderFlag | [ModelsUploaderFlag](../../accelbyte_py_sdk/api/dsmc/models/models_uploader_flag.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/dsmc/models/response_error.py) |

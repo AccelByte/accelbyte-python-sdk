@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,13 +37,13 @@ class ModelsListServerResponse(Model):
     Properties:
         paging: (paging) REQUIRED ModelsPagingCursor
 
-        servers: (servers) REQUIRED List[ModelsServer]
+        servers: (servers) OPTIONAL List[ModelsServer]
     """
 
     # region fields
 
     paging: ModelsPagingCursor  # REQUIRED
-    servers: List[ModelsServer]  # REQUIRED
+    servers: List[ModelsServer]  # OPTIONAL
 
     # endregion fields
 
@@ -81,11 +81,15 @@ class ModelsListServerResponse(Model):
 
     @classmethod
     def create(
-        cls, paging: ModelsPagingCursor, servers: List[ModelsServer], **kwargs
+        cls,
+        paging: ModelsPagingCursor,
+        servers: Optional[List[ModelsServer]] = None,
+        **kwargs,
     ) -> ModelsListServerResponse:
         instance = cls()
         instance.paging = paging
-        instance.servers = servers
+        if servers is not None:
+            instance.servers = servers
         return instance
 
     @classmethod
@@ -159,7 +163,7 @@ class ModelsListServerResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "paging": True,
-            "servers": True,
+            "servers": False,
         }
 
     # endregion static methods

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_image_replication import ModelsImageReplication
+
 
 class ModelsImageRecord(Model):
     """Models image record (models.ImageRecord)
@@ -34,11 +36,17 @@ class ModelsImageRecord(Model):
     Properties:
         artifact_path: (artifactPath) REQUIRED str
 
+        core_dump_enabled: (coreDumpEnabled) REQUIRED bool
+
         created_at: (createdAt) REQUIRED str
 
         docker_path: (dockerPath) REQUIRED str
 
         image: (image) REQUIRED str
+
+        image_replications: (imageReplications) REQUIRED List[ModelsImageReplication]
+
+        image_replications_map: (imageReplicationsMap) REQUIRED Dict[str, ModelsImageReplication]
 
         image_size: (imageSize) REQUIRED int
 
@@ -56,9 +64,12 @@ class ModelsImageRecord(Model):
     # region fields
 
     artifact_path: str  # REQUIRED
+    core_dump_enabled: bool  # REQUIRED
     created_at: str  # REQUIRED
     docker_path: str  # REQUIRED
     image: str  # REQUIRED
+    image_replications: List[ModelsImageReplication]  # REQUIRED
+    image_replications_map: Dict[str, ModelsImageReplication]  # REQUIRED
     image_size: int  # REQUIRED
     modified_by: str  # REQUIRED
     namespace: str  # REQUIRED
@@ -74,6 +85,10 @@ class ModelsImageRecord(Model):
         self.artifact_path = value
         return self
 
+    def with_core_dump_enabled(self, value: bool) -> ModelsImageRecord:
+        self.core_dump_enabled = value
+        return self
+
     def with_created_at(self, value: str) -> ModelsImageRecord:
         self.created_at = value
         return self
@@ -84,6 +99,18 @@ class ModelsImageRecord(Model):
 
     def with_image(self, value: str) -> ModelsImageRecord:
         self.image = value
+        return self
+
+    def with_image_replications(
+        self, value: List[ModelsImageReplication]
+    ) -> ModelsImageRecord:
+        self.image_replications = value
+        return self
+
+    def with_image_replications_map(
+        self, value: Dict[str, ModelsImageReplication]
+    ) -> ModelsImageRecord:
+        self.image_replications_map = value
         return self
 
     def with_image_size(self, value: int) -> ModelsImageRecord:
@@ -120,6 +147,10 @@ class ModelsImageRecord(Model):
             result["artifactPath"] = str(self.artifact_path)
         elif include_empty:
             result["artifactPath"] = ""
+        if hasattr(self, "core_dump_enabled"):
+            result["coreDumpEnabled"] = bool(self.core_dump_enabled)
+        elif include_empty:
+            result["coreDumpEnabled"] = False
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -132,6 +163,20 @@ class ModelsImageRecord(Model):
             result["image"] = str(self.image)
         elif include_empty:
             result["image"] = ""
+        if hasattr(self, "image_replications"):
+            result["imageReplications"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.image_replications
+            ]
+        elif include_empty:
+            result["imageReplications"] = []
+        if hasattr(self, "image_replications_map"):
+            result["imageReplicationsMap"] = {
+                str(k0): v0.to_dict(include_empty=include_empty)
+                for k0, v0 in self.image_replications_map.items()
+            }
+        elif include_empty:
+            result["imageReplicationsMap"] = {}
         if hasattr(self, "image_size"):
             result["imageSize"] = int(self.image_size)
         elif include_empty:
@@ -166,9 +211,12 @@ class ModelsImageRecord(Model):
     def create(
         cls,
         artifact_path: str,
+        core_dump_enabled: bool,
         created_at: str,
         docker_path: str,
         image: str,
+        image_replications: List[ModelsImageReplication],
+        image_replications_map: Dict[str, ModelsImageReplication],
         image_size: int,
         modified_by: str,
         namespace: str,
@@ -179,9 +227,12 @@ class ModelsImageRecord(Model):
     ) -> ModelsImageRecord:
         instance = cls()
         instance.artifact_path = artifact_path
+        instance.core_dump_enabled = core_dump_enabled
         instance.created_at = created_at
         instance.docker_path = docker_path
         instance.image = image
+        instance.image_replications = image_replications
+        instance.image_replications_map = image_replications_map
         instance.image_size = image_size
         instance.modified_by = modified_by
         instance.namespace = namespace
@@ -201,6 +252,10 @@ class ModelsImageRecord(Model):
             instance.artifact_path = str(dict_["artifactPath"])
         elif include_empty:
             instance.artifact_path = ""
+        if "coreDumpEnabled" in dict_ and dict_["coreDumpEnabled"] is not None:
+            instance.core_dump_enabled = bool(dict_["coreDumpEnabled"])
+        elif include_empty:
+            instance.core_dump_enabled = False
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -213,6 +268,25 @@ class ModelsImageRecord(Model):
             instance.image = str(dict_["image"])
         elif include_empty:
             instance.image = ""
+        if "imageReplications" in dict_ and dict_["imageReplications"] is not None:
+            instance.image_replications = [
+                ModelsImageReplication.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["imageReplications"]
+            ]
+        elif include_empty:
+            instance.image_replications = []
+        if (
+            "imageReplicationsMap" in dict_
+            and dict_["imageReplicationsMap"] is not None
+        ):
+            instance.image_replications_map = {
+                str(k0): ModelsImageReplication.create_from_dict(
+                    v0, include_empty=include_empty
+                )
+                for k0, v0 in dict_["imageReplicationsMap"].items()
+            }
+        elif include_empty:
+            instance.image_replications_map = {}
         if "imageSize" in dict_ and dict_["imageSize"] is not None:
             instance.image_size = int(dict_["imageSize"])
         elif include_empty:
@@ -279,9 +353,12 @@ class ModelsImageRecord(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "artifactPath": "artifact_path",
+            "coreDumpEnabled": "core_dump_enabled",
             "createdAt": "created_at",
             "dockerPath": "docker_path",
             "image": "image",
+            "imageReplications": "image_replications",
+            "imageReplicationsMap": "image_replications_map",
             "imageSize": "image_size",
             "modifiedBy": "modified_by",
             "namespace": "namespace",
@@ -294,9 +371,12 @@ class ModelsImageRecord(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "artifactPath": True,
+            "coreDumpEnabled": True,
             "createdAt": True,
             "dockerPath": True,
             "image": True,
+            "imageReplications": True,
+            "imageReplicationsMap": True,
             "imageSize": True,
             "modifiedBy": True,
             "namespace": True,

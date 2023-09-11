@@ -34,9 +34,11 @@ class ApimodelsAdminUpdateItemReq(Model):
     Properties:
         custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
 
-        id_: (id) REQUIRED str
-
         server_custom_attributes: (serverCustomAttributes) REQUIRED Dict[str, Any]
+
+        slot_id: (slotId) REQUIRED str
+
+        source_item_id: (sourceItemId) REQUIRED str
 
         tags: (tags) REQUIRED List[str]
 
@@ -46,8 +48,9 @@ class ApimodelsAdminUpdateItemReq(Model):
     # region fields
 
     custom_attributes: Dict[str, Any]  # REQUIRED
-    id_: str  # REQUIRED
     server_custom_attributes: Dict[str, Any]  # REQUIRED
+    slot_id: str  # REQUIRED
+    source_item_id: str  # REQUIRED
     tags: List[str]  # REQUIRED
     type_: str  # REQUIRED
 
@@ -61,14 +64,18 @@ class ApimodelsAdminUpdateItemReq(Model):
         self.custom_attributes = value
         return self
 
-    def with_id(self, value: str) -> ApimodelsAdminUpdateItemReq:
-        self.id_ = value
-        return self
-
     def with_server_custom_attributes(
         self, value: Dict[str, Any]
     ) -> ApimodelsAdminUpdateItemReq:
         self.server_custom_attributes = value
+        return self
+
+    def with_slot_id(self, value: str) -> ApimodelsAdminUpdateItemReq:
+        self.slot_id = value
+        return self
+
+    def with_source_item_id(self, value: str) -> ApimodelsAdminUpdateItemReq:
+        self.source_item_id = value
         return self
 
     def with_tags(self, value: List[str]) -> ApimodelsAdminUpdateItemReq:
@@ -91,16 +98,20 @@ class ApimodelsAdminUpdateItemReq(Model):
             }
         elif include_empty:
             result["customAttributes"] = {}
-        if hasattr(self, "id_"):
-            result["id"] = str(self.id_)
-        elif include_empty:
-            result["id"] = ""
         if hasattr(self, "server_custom_attributes"):
             result["serverCustomAttributes"] = {
                 str(k0): v0 for k0, v0 in self.server_custom_attributes.items()
             }
         elif include_empty:
             result["serverCustomAttributes"] = {}
+        if hasattr(self, "slot_id"):
+            result["slotId"] = str(self.slot_id)
+        elif include_empty:
+            result["slotId"] = ""
+        if hasattr(self, "source_item_id"):
+            result["sourceItemId"] = str(self.source_item_id)
+        elif include_empty:
+            result["sourceItemId"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -119,16 +130,18 @@ class ApimodelsAdminUpdateItemReq(Model):
     def create(
         cls,
         custom_attributes: Dict[str, Any],
-        id_: str,
         server_custom_attributes: Dict[str, Any],
+        slot_id: str,
+        source_item_id: str,
         tags: List[str],
         type_: str,
         **kwargs,
     ) -> ApimodelsAdminUpdateItemReq:
         instance = cls()
         instance.custom_attributes = custom_attributes
-        instance.id_ = id_
         instance.server_custom_attributes = server_custom_attributes
+        instance.slot_id = slot_id
+        instance.source_item_id = source_item_id
         instance.tags = tags
         instance.type_ = type_
         return instance
@@ -146,10 +159,6 @@ class ApimodelsAdminUpdateItemReq(Model):
             }
         elif include_empty:
             instance.custom_attributes = {}
-        if "id" in dict_ and dict_["id"] is not None:
-            instance.id_ = str(dict_["id"])
-        elif include_empty:
-            instance.id_ = ""
         if (
             "serverCustomAttributes" in dict_
             and dict_["serverCustomAttributes"] is not None
@@ -159,6 +168,14 @@ class ApimodelsAdminUpdateItemReq(Model):
             }
         elif include_empty:
             instance.server_custom_attributes = {}
+        if "slotId" in dict_ and dict_["slotId"] is not None:
+            instance.slot_id = str(dict_["slotId"])
+        elif include_empty:
+            instance.slot_id = ""
+        if "sourceItemId" in dict_ and dict_["sourceItemId"] is not None:
+            instance.source_item_id = str(dict_["sourceItemId"])
+        elif include_empty:
+            instance.source_item_id = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -211,8 +228,9 @@ class ApimodelsAdminUpdateItemReq(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "customAttributes": "custom_attributes",
-            "id": "id_",
             "serverCustomAttributes": "server_custom_attributes",
+            "slotId": "slot_id",
+            "sourceItemId": "source_item_id",
             "tags": "tags",
             "type": "type_",
         }
@@ -221,8 +239,9 @@ class ApimodelsAdminUpdateItemReq(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "customAttributes": True,
-            "id": True,
             "serverCustomAttributes": True,
+            "slotId": True,
+            "sourceItemId": True,
             "tags": True,
             "type": True,
         }

@@ -47,6 +47,7 @@ from ..api.ugc.models import ModelsCreateTypeResponse
 from ..api.ugc.models import ModelsCreatorFollowState
 from ..api.ugc.models import ModelsCreatorOverviewResponse
 from ..api.ugc.models import ModelsCreatorResponse
+from ..api.ugc.models import ModelsGetContentBulkByShareCodesRequest
 from ..api.ugc.models import ModelsGetContentPreviewResponse
 from ..api.ugc.models import ModelsHideContentRequest
 from ..api.ugc.models import ModelsLikeState
@@ -324,6 +325,14 @@ def create_models_creator_response_example() -> ModelsCreatorResponse:
     instance.namespace = randomize("slug")
     instance.parent_namespace = randomize("slug")
     instance.total_liked_content = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_get_content_bulk_by_share_codes_request_example() -> (
+    ModelsGetContentBulkByShareCodesRequest
+):
+    instance = ModelsGetContentBulkByShareCodesRequest()
+    instance.share_codes = [randomize()]
     return instance
 
 

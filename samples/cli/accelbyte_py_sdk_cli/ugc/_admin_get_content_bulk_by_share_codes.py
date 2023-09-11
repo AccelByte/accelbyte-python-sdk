@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.34.0)
+# AGS Ugc Service (2.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,27 +30,29 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    mock_play_station_stream_event as mock_play_station_stream_event_internal,
+from accelbyte_py_sdk.api.ugc import (
+    admin_get_content_bulk_by_share_codes as admin_get_content_bulk_by_share_codes_internal,
 )
-from accelbyte_py_sdk.api.platform.models import StreamEvent
+from accelbyte_py_sdk.api.ugc.models import ModelsContentDownloadResponse
+from accelbyte_py_sdk.api.ugc.models import ModelsGetContentBulkByShareCodesRequest
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()
-@click.option("--body", "body", type=str)
+@click.argument("body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def mock_play_station_stream_event(
-    body: Optional[str] = None,
+def admin_get_content_bulk_by_share_codes(
+    body: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(mock_play_station_stream_event_internal.__doc__)
+        click.echo(admin_get_content_bulk_by_share_codes_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
@@ -60,18 +62,18 @@ def mock_play_station_stream_event(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = StreamEvent.create_from_dict(body_json)
+            body = ModelsGetContentBulkByShareCodesRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = mock_play_station_stream_event_internal(
+    result, error = admin_get_content_bulk_by_share_codes_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"mockPlayStationStreamEvent failed: {str(error)}")
+        raise Exception(f"AdminGetContentBulkByShareCodes failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-mock_play_station_stream_event.operation_id = "mockPlayStationStreamEvent"
-mock_play_station_stream_event.is_deprecated = False
+admin_get_content_bulk_by_share_codes.operation_id = "AdminGetContentBulkByShareCodes"
+admin_get_content_bulk_by_share_codes.is_deprecated = False

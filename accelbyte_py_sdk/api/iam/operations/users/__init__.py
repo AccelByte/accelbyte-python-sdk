@@ -20,6 +20,7 @@ from .admin_add_user_permissions_v3 import AdminAddUserPermissionsV3
 from .admin_add_user_role_v3 import AdminAddUserRoleV3
 from .admin_ban_user_v2 import AdminBanUserV2
 from .admin_ban_user_v3 import AdminBanUserV3
+from .admin_bulk_get_users_platform import AdminBulkGetUsersPlatform
 from .admin_create_justice_user import AdminCreateJusticeUser
 from .admin_create_user_roles_v2 import AdminCreateUserRolesV2
 from .admin_delete_platform_link_v2 import AdminDeletePlatformLinkV2
@@ -51,6 +52,7 @@ from .admin_get_user_platform_6f9923 import AdminGetUserPlatformAccountsV3
 from .admin_get_user_single_p_15c89c import AdminGetUserSinglePlatformAccount
 from .admin_invite_user_v3 import AdminInviteUserV3
 from .admin_link_platform_account import AdminLinkPlatformAccount
+from .admin_list_user_id_by_p_f86a28 import AdminListUserIDByPlatformUserIDsV3
 from .admin_list_user_id_by_u_d47f71 import AdminListUserIDByUserIDsV3
 from .admin_list_users_v3 import AdminListUsersV3
 from .admin_platform_link_v3 import AdminPlatformLinkV3

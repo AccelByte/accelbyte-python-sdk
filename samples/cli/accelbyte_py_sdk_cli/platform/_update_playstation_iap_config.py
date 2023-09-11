@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.34.0)
+# AGS Platform Service (4.34.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,7 +33,6 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     update_playstation_iap_config as update_playstation_iap_config_internal,
 )
-from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import PlayStationIAPConfigInfo
 from accelbyte_py_sdk.api.platform.models import PlaystationIAPConfigRequest
 

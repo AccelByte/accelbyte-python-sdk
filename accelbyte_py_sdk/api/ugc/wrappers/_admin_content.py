@@ -38,6 +38,7 @@ from ..models import ModelsCreateContentRequestS3
 from ..models import ModelsCreateContentResponse
 from ..models import ModelsCreateScreenshotRequest
 from ..models import ModelsCreateScreenshotResponse
+from ..models import ModelsGetContentBulkByShareCodesRequest
 from ..models import ModelsGetContentPreviewResponse
 from ..models import ModelsHideContentRequest
 from ..models import ModelsPaginatedContentDownloadResponse
@@ -50,6 +51,7 @@ from ..operations.admin_content import AdminDeleteContentScreenshot
 from ..operations.admin_content import AdminDownloadContentPreview
 from ..operations.admin_content import AdminGetContent
 from ..operations.admin_content import AdminGetContentBulk
+from ..operations.admin_content import AdminGetContentBulkByShareCodes
 from ..operations.admin_content import AdminGetSpecificContent
 from ..operations.admin_content import AdminGetUserContentByShareCode
 from ..operations.admin_content import AdminHideUserContent
@@ -629,6 +631,112 @@ async def admin_get_content_bulk_async(
         if error:
             return None, error
     request = AdminGetContentBulk.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetContentBulkByShareCodes)
+def admin_get_content_bulk_by_share_codes(
+    body: ModelsGetContentBulkByShareCodesRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get content by content sharecodes (AdminGetContentBulkByShareCodes)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
+    Maximum sharecodes per request 100
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/contents/sharecodes/bulk
+
+        method: POST
+
+        tags: ["Admin Content"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGetContentBulkByShareCodesRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsContentDownloadResponse] (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetContentBulkByShareCodes.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetContentBulkByShareCodes)
+async def admin_get_content_bulk_by_share_codes_async(
+    body: ModelsGetContentBulkByShareCodesRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get content by content sharecodes (AdminGetContentBulkByShareCodes)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
+    Maximum sharecodes per request 100
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/contents/sharecodes/bulk
+
+        method: POST
+
+        tags: ["Admin Content"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGetContentBulkByShareCodesRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsContentDownloadResponse] (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetContentBulkByShareCodes.create(
         body=body,
         namespace=namespace,
     )

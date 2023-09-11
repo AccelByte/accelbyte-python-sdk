@@ -30,11 +30,11 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ApimodelsAdminUpdateItemReq
-from ..models import ApimodelsBulkRemoveItemsReq
 from ..models import ApimodelsConsumeItemReq
 from ..models import ApimodelsErrorResponse
 from ..models import ApimodelsItemResp
 from ..models import ApimodelsListItemResp
+from ..models import ApimodelsRemoveInventoryItemReq
 from ..models import ApimodelsSaveItemReq
 from ..models import ApimodelsSaveItemToInventoryReq
 from ..models import ApimodelsUpdateItemResp
@@ -51,7 +51,7 @@ from ..operations.admin_items import AdminSaveItemToInventory
 
 @same_doc_as(AdminBulkRemoveItems)
 def admin_bulk_remove_items(
-    body: ApimodelsBulkRemoveItemsReq,
+    body: List[ApimodelsRemoveInventoryItemReq],
     inventory_id: str,
     user_id: str,
     namespace: Optional[str] = None,
@@ -79,9 +79,9 @@ def admin_bulk_remove_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsBulkRemoveItemsReq in body
+        body: (body) REQUIRED List[ApimodelsRemoveInventoryItemReq] in body
 
         inventory_id: (inventoryId) REQUIRED str in path
 
@@ -113,7 +113,7 @@ def admin_bulk_remove_items(
 
 @same_doc_as(AdminBulkRemoveItems)
 async def admin_bulk_remove_items_async(
-    body: ApimodelsBulkRemoveItemsReq,
+    body: List[ApimodelsRemoveInventoryItemReq],
     inventory_id: str,
     user_id: str,
     namespace: Optional[str] = None,
@@ -141,9 +141,9 @@ async def admin_bulk_remove_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsBulkRemoveItemsReq in body
+        body: (body) REQUIRED List[ApimodelsRemoveInventoryItemReq] in body
 
         inventory_id: (inventoryId) REQUIRED str in path
 
@@ -206,7 +206,7 @@ def admin_bulk_update_my_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED List[ApimodelsAdminUpdateItemReq] in body
 
@@ -269,7 +269,7 @@ async def admin_bulk_update_my_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED List[ApimodelsAdminUpdateItemReq] in body
 
@@ -307,7 +307,6 @@ async def admin_bulk_update_my_items_async(
 def admin_consume_user_item(
     body: ApimodelsConsumeItemReq,
     inventory_id: str,
-    item_id: str,
     user_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -324,7 +323,7 @@ def admin_consume_user_item(
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
     Properties:
-        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items/{itemId}/consume
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/consume
 
         method: POST
 
@@ -334,13 +333,11 @@ def admin_consume_user_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsConsumeItemReq in body
 
         inventory_id: (inventoryId) REQUIRED str in path
-
-        item_id: (itemId) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
@@ -362,7 +359,6 @@ def admin_consume_user_item(
     request = AdminConsumeUserItem.create(
         body=body,
         inventory_id=inventory_id,
-        item_id=item_id,
         user_id=user_id,
         namespace=namespace,
     )
@@ -373,7 +369,6 @@ def admin_consume_user_item(
 async def admin_consume_user_item_async(
     body: ApimodelsConsumeItemReq,
     inventory_id: str,
-    item_id: str,
     user_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -390,7 +385,7 @@ async def admin_consume_user_item_async(
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
     Properties:
-        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items/{itemId}/consume
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/consume
 
         method: POST
 
@@ -400,13 +395,11 @@ async def admin_consume_user_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsConsumeItemReq in body
 
         inventory_id: (inventoryId) REQUIRED str in path
-
-        item_id: (itemId) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
@@ -428,7 +421,6 @@ async def admin_consume_user_item_async(
     request = AdminConsumeUserItem.create(
         body=body,
         inventory_id=inventory_id,
-        item_id=item_id,
         user_id=user_id,
         namespace=namespace,
     )
@@ -440,7 +432,8 @@ async def admin_consume_user_item_async(
 @same_doc_as(AdminGetInventoryItem)
 def admin_get_inventory_item(
     inventory_id: str,
-    item_id: str,
+    slot_id: str,
+    source_item_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -456,7 +449,7 @@ def admin_get_inventory_item(
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
 
     Properties:
-        url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/items/{itemId}
+        url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}
 
         method: GET
 
@@ -466,13 +459,15 @@ def admin_get_inventory_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_id: (inventoryId) REQUIRED str in path
 
-        item_id: (itemId) REQUIRED str in path
-
         namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        source_item_id: (sourceItemId) REQUIRED str in path
 
     Responses:
         200: OK - ApimodelsItemResp (OK)
@@ -489,7 +484,8 @@ def admin_get_inventory_item(
             return None, error
     request = AdminGetInventoryItem.create(
         inventory_id=inventory_id,
-        item_id=item_id,
+        slot_id=slot_id,
+        source_item_id=source_item_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -498,7 +494,8 @@ def admin_get_inventory_item(
 @same_doc_as(AdminGetInventoryItem)
 async def admin_get_inventory_item_async(
     inventory_id: str,
-    item_id: str,
+    slot_id: str,
+    source_item_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -514,7 +511,7 @@ async def admin_get_inventory_item_async(
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
 
     Properties:
-        url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/items/{itemId}
+        url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}
 
         method: GET
 
@@ -524,13 +521,15 @@ async def admin_get_inventory_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_id: (inventoryId) REQUIRED str in path
 
-        item_id: (itemId) REQUIRED str in path
-
         namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        source_item_id: (sourceItemId) REQUIRED str in path
 
     Responses:
         200: OK - ApimodelsItemResp (OK)
@@ -547,7 +546,8 @@ async def admin_get_inventory_item_async(
             return None, error
     request = AdminGetInventoryItem.create(
         inventory_id=inventory_id,
-        item_id=item_id,
+        slot_id=slot_id,
+        source_item_id=source_item_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -590,7 +590,7 @@ def admin_list_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_id: (inventoryId) REQUIRED str in path
 
@@ -667,7 +667,7 @@ async def admin_list_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_id: (inventoryId) REQUIRED str in path
 
@@ -748,7 +748,7 @@ def admin_save_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsSaveItemReq in body
 
@@ -812,7 +812,7 @@ async def admin_save_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsSaveItemReq in body
 
@@ -878,7 +878,7 @@ def admin_save_item_to_inventory(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsSaveItemToInventoryReq in body
 
@@ -945,7 +945,7 @@ async def admin_save_item_to_inventory_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsSaveItemToInventoryReq in body
 

@@ -41,7 +41,6 @@ from accelbyte_py_sdk.api.inventory.models import ApimodelsItemResp
 @click.command()
 @click.argument("body", type=str)
 @click.argument("inventory_id", type=str)
-@click.argument("item_id", type=str)
 @click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -50,7 +49,6 @@ from accelbyte_py_sdk.api.inventory.models import ApimodelsItemResp
 def admin_consume_user_item(
     body: str,
     inventory_id: str,
-    item_id: str,
     user_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -74,7 +72,6 @@ def admin_consume_user_item(
     result, error = admin_consume_user_item_internal(
         body=body,
         inventory_id=inventory_id,
-        item_id=item_id,
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

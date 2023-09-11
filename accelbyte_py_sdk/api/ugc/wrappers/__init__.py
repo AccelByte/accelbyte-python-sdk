@@ -39,6 +39,8 @@ from ._admin_content import admin_get_content
 from ._admin_content import admin_get_content_async
 from ._admin_content import admin_get_content_bulk
 from ._admin_content import admin_get_content_bulk_async
+from ._admin_content import admin_get_content_bulk_by_share_codes
+from ._admin_content import admin_get_content_bulk_by_share_codes_async
 from ._admin_content import admin_get_specific_content
 from ._admin_content import admin_get_specific_content_async
 from ._admin_content import admin_get_user_content_by_share_code

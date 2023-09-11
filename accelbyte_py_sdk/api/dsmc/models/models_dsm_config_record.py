@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.3.7)
+# AccelByte Gaming Services Dsm Controller Service (6.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,8 +46,6 @@ class ModelsDSMConfigRecord(Model):
 
         port: (port) REQUIRED int
 
-        ports: (ports) REQUIRED Dict[str, int]
-
         protocol: (protocol) REQUIRED str
 
         providers: (providers) REQUIRED List[str]
@@ -57,6 +55,8 @@ class ModelsDSMConfigRecord(Model):
         unreachable_timeout: (unreachable_timeout) REQUIRED int
 
         updated_at: (updatedAt) REQUIRED str
+
+        ports: (ports) OPTIONAL Dict[str, int]
     """
 
     # region fields
@@ -68,12 +68,12 @@ class ModelsDSMConfigRecord(Model):
     modified_by: str  # REQUIRED
     namespace: str  # REQUIRED
     port: int  # REQUIRED
-    ports: Dict[str, int]  # REQUIRED
     protocol: str  # REQUIRED
     providers: List[str]  # REQUIRED
     session_timeout: int  # REQUIRED
     unreachable_timeout: int  # REQUIRED
     updated_at: str  # REQUIRED
+    ports: Dict[str, int]  # OPTIONAL
 
     # endregion fields
 
@@ -107,10 +107,6 @@ class ModelsDSMConfigRecord(Model):
         self.port = value
         return self
 
-    def with_ports(self, value: Dict[str, int]) -> ModelsDSMConfigRecord:
-        self.ports = value
-        return self
-
     def with_protocol(self, value: str) -> ModelsDSMConfigRecord:
         self.protocol = value
         return self
@@ -129,6 +125,10 @@ class ModelsDSMConfigRecord(Model):
 
     def with_updated_at(self, value: str) -> ModelsDSMConfigRecord:
         self.updated_at = value
+        return self
+
+    def with_ports(self, value: Dict[str, int]) -> ModelsDSMConfigRecord:
+        self.ports = value
         return self
 
     # endregion with_x methods
@@ -165,10 +165,6 @@ class ModelsDSMConfigRecord(Model):
             result["port"] = int(self.port)
         elif include_empty:
             result["port"] = 0
-        if hasattr(self, "ports"):
-            result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
-        elif include_empty:
-            result["ports"] = {}
         if hasattr(self, "protocol"):
             result["protocol"] = str(self.protocol)
         elif include_empty:
@@ -189,6 +185,10 @@ class ModelsDSMConfigRecord(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "ports"):
+            result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
+        elif include_empty:
+            result["ports"] = {}
         return result
 
     # endregion to methods
@@ -205,12 +205,12 @@ class ModelsDSMConfigRecord(Model):
         modified_by: str,
         namespace: str,
         port: int,
-        ports: Dict[str, int],
         protocol: str,
         providers: List[str],
         session_timeout: int,
         unreachable_timeout: int,
         updated_at: str,
+        ports: Optional[Dict[str, int]] = None,
         **kwargs,
     ) -> ModelsDSMConfigRecord:
         instance = cls()
@@ -221,12 +221,13 @@ class ModelsDSMConfigRecord(Model):
         instance.modified_by = modified_by
         instance.namespace = namespace
         instance.port = port
-        instance.ports = ports
         instance.protocol = protocol
         instance.providers = providers
         instance.session_timeout = session_timeout
         instance.unreachable_timeout = unreachable_timeout
         instance.updated_at = updated_at
+        if ports is not None:
+            instance.ports = ports
         return instance
 
     @classmethod
@@ -264,10 +265,6 @@ class ModelsDSMConfigRecord(Model):
             instance.port = int(dict_["port"])
         elif include_empty:
             instance.port = 0
-        if "ports" in dict_ and dict_["ports"] is not None:
-            instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
-        elif include_empty:
-            instance.ports = {}
         if "protocol" in dict_ and dict_["protocol"] is not None:
             instance.protocol = str(dict_["protocol"])
         elif include_empty:
@@ -288,6 +285,10 @@ class ModelsDSMConfigRecord(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "ports" in dict_ and dict_["ports"] is not None:
+            instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
+        elif include_empty:
+            instance.ports = {}
         return instance
 
     @classmethod
@@ -338,12 +339,12 @@ class ModelsDSMConfigRecord(Model):
             "modifiedBy": "modified_by",
             "namespace": "namespace",
             "port": "port",
-            "ports": "ports",
             "protocol": "protocol",
             "providers": "providers",
             "session_timeout": "session_timeout",
             "unreachable_timeout": "unreachable_timeout",
             "updatedAt": "updated_at",
+            "ports": "ports",
         }
 
     @staticmethod
@@ -356,12 +357,12 @@ class ModelsDSMConfigRecord(Model):
             "modifiedBy": True,
             "namespace": True,
             "port": True,
-            "ports": True,
             "protocol": True,
             "providers": True,
             "session_timeout": True,
             "unreachable_timeout": True,
             "updatedAt": True,
+            "ports": False,
         }
 
     # endregion static methods

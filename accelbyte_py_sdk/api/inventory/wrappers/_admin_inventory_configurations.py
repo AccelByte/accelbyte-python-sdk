@@ -81,7 +81,7 @@ def admin_create_inventory_configuration(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsCreateInventoryConfigurationReq in body
 
@@ -136,7 +136,7 @@ async def admin_create_inventory_configuration_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsCreateInventoryConfigurationReq in body
 
@@ -193,7 +193,7 @@ def admin_delete_inventory_configuration(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_configuration_id: (inventoryConfigurationId) REQUIRED str in path
 
@@ -248,7 +248,7 @@ async def admin_delete_inventory_configuration_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_configuration_id: (inventoryConfigurationId) REQUIRED str in path
 
@@ -304,7 +304,7 @@ def admin_get_inventory_configuration(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_configuration_id: (inventoryConfigurationId) REQUIRED str in path
 
@@ -358,7 +358,7 @@ async def admin_get_inventory_configuration_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         inventory_configuration_id: (inventoryConfigurationId) REQUIRED str in path
 
@@ -418,7 +418,7 @@ def admin_list_inventory_configurations(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -483,7 +483,7 @@ async def admin_list_inventory_configurations_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -548,7 +548,7 @@ def admin_update_inventory_configuration(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsInventoryConfigurationReq in body
 
@@ -609,7 +609,7 @@ async def admin_update_inventory_configuration_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ApimodelsInventoryConfigurationReq in body
 

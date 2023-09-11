@@ -163,6 +163,7 @@ from ..api.iam.models import ModelLinkRequest
 from ..api.iam.models import ModelLinkingHistoryResponseWithPaginationV3
 from ..api.iam.models import ModelListAssignedUsersV4Response
 from ..api.iam.models import ModelListBulkUserBanResponseV3
+from ..api.iam.models import ModelListBulkUserPlatformsResponse
 from ..api.iam.models import ModelListBulkUserResponse
 from ..api.iam.models import ModelListEmailAddressRequest
 from ..api.iam.models import ModelListRoleV4Response
@@ -251,6 +252,7 @@ from ..api.iam.models import ModelUserLoginHistoryResponse
 from ..api.iam.models import ModelUserPasswordUpdateRequest
 from ..api.iam.models import ModelUserPasswordUpdateV3Request
 from ..api.iam.models import ModelUserPermissionsResponseV3
+from ..api.iam.models import ModelUserPlatformInfo
 from ..api.iam.models import ModelUserPlatformMetadata
 from ..api.iam.models import ModelUserPublicInfoResponseV4
 from ..api.iam.models import ModelUserResponse
@@ -261,6 +263,7 @@ from ..api.iam.models import ModelUserUpdateRequest
 from ..api.iam.models import ModelUserUpdateRequestV3
 from ..api.iam.models import ModelUserVerificationRequest
 from ..api.iam.models import ModelUserVerificationRequestV3
+from ..api.iam.models import ModelUserWithPlatformInfo
 from ..api.iam.models import ModelValidUserIDResponseV4
 from ..api.iam.models import ModelValidationDetail
 from ..api.iam.models import ModelValidationDetailPublic
@@ -855,6 +858,7 @@ def create_accountcommon_user_linked_platform_v3_example() -> (
     instance.email_address = randomize("email")
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
+    instance.xuid = randomize()
     return instance
 
 
@@ -1644,6 +1648,14 @@ def create_model_list_bulk_user_ban_response_v3_example() -> (
     instance = ModelListBulkUserBanResponseV3()
     instance.failed_bans = [create_model_failed_ban_unban_user_v3_example()]
     instance.success_bans = [create_model_user_ban_response_v3_example()]
+    return instance
+
+
+def create_model_list_bulk_user_platforms_response_example() -> (
+    ModelListBulkUserPlatformsResponse
+):
+    instance = ModelListBulkUserPlatformsResponse()
+    instance.data = [create_model_user_with_platform_info_example()]
     return instance
 
 
@@ -2541,6 +2553,14 @@ def create_model_user_permissions_response_v3_example() -> (
     return instance
 
 
+def create_model_user_platform_info_example() -> ModelUserPlatformInfo:
+    instance = ModelUserPlatformInfo()
+    instance.platform_display_name = randomize()
+    instance.platform_id = randomize()
+    instance.platform_user_id = randomize()
+    return instance
+
+
 def create_model_user_platform_metadata_example() -> ModelUserPlatformMetadata:
     instance = ModelUserPlatformMetadata()
     instance.metadata = {randomize(): randomize()}
@@ -2678,6 +2698,17 @@ def create_model_user_verification_request_v3_example() -> (
     instance.contact_type = randomize()
     instance.language_tag = randomize()
     instance.validate_only = randomize("bool")
+    return instance
+
+
+def create_model_user_with_platform_info_example() -> ModelUserWithPlatformInfo:
+    instance = ModelUserWithPlatformInfo()
+    instance.platform_infos = [create_model_user_platform_info_example()]
+    instance.user_id = randomize("uid")
+    instance.avatar_url = randomize("url")
+    instance.display_name = randomize("slug")
+    instance.username = randomize("slug")
+    instance.xuid = randomize()
     return instance
 
 

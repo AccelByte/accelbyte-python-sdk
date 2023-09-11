@@ -32,26 +32,33 @@ class ApimodelsTradeItem(Model):
     """Apimodels trade item (apimodels.TradeItem)
 
     Properties:
-        id_: (id) REQUIRED str
-
         qty: (qty) REQUIRED int
+
+        slot_id: (slotId) REQUIRED str
+
+        source_item_id: (sourceItemId) REQUIRED str
     """
 
     # region fields
 
-    id_: str  # REQUIRED
     qty: int  # REQUIRED
+    slot_id: str  # REQUIRED
+    source_item_id: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_id(self, value: str) -> ApimodelsTradeItem:
-        self.id_ = value
-        return self
-
     def with_qty(self, value: int) -> ApimodelsTradeItem:
         self.qty = value
+        return self
+
+    def with_slot_id(self, value: str) -> ApimodelsTradeItem:
+        self.slot_id = value
+        return self
+
+    def with_source_item_id(self, value: str) -> ApimodelsTradeItem:
+        self.source_item_id = value
         return self
 
     # endregion with_x methods
@@ -60,14 +67,18 @@ class ApimodelsTradeItem(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_"):
-            result["id"] = str(self.id_)
-        elif include_empty:
-            result["id"] = ""
         if hasattr(self, "qty"):
             result["qty"] = int(self.qty)
         elif include_empty:
             result["qty"] = 0
+        if hasattr(self, "slot_id"):
+            result["slotId"] = str(self.slot_id)
+        elif include_empty:
+            result["slotId"] = ""
+        if hasattr(self, "source_item_id"):
+            result["sourceItemId"] = str(self.source_item_id)
+        elif include_empty:
+            result["sourceItemId"] = ""
         return result
 
     # endregion to methods
@@ -75,10 +86,13 @@ class ApimodelsTradeItem(Model):
     # region static methods
 
     @classmethod
-    def create(cls, id_: str, qty: int, **kwargs) -> ApimodelsTradeItem:
+    def create(
+        cls, qty: int, slot_id: str, source_item_id: str, **kwargs
+    ) -> ApimodelsTradeItem:
         instance = cls()
-        instance.id_ = id_
         instance.qty = qty
+        instance.slot_id = slot_id
+        instance.source_item_id = source_item_id
         return instance
 
     @classmethod
@@ -88,14 +102,18 @@ class ApimodelsTradeItem(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "id" in dict_ and dict_["id"] is not None:
-            instance.id_ = str(dict_["id"])
-        elif include_empty:
-            instance.id_ = ""
         if "qty" in dict_ and dict_["qty"] is not None:
             instance.qty = int(dict_["qty"])
         elif include_empty:
             instance.qty = 0
+        if "slotId" in dict_ and dict_["slotId"] is not None:
+            instance.slot_id = str(dict_["slotId"])
+        elif include_empty:
+            instance.slot_id = ""
+        if "sourceItemId" in dict_ and dict_["sourceItemId"] is not None:
+            instance.source_item_id = str(dict_["sourceItemId"])
+        elif include_empty:
+            instance.source_item_id = ""
         return instance
 
     @classmethod
@@ -137,15 +155,17 @@ class ApimodelsTradeItem(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
             "qty": "qty",
+            "slotId": "slot_id",
+            "sourceItemId": "source_item_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "id": True,
             "qty": True,
+            "slotId": True,
+            "sourceItemId": True,
         }
 
     # endregion static methods

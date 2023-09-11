@@ -29,13 +29,13 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import ApimodelsBulkRemoveItemsReq
 from ..models import ApimodelsConsumeItemReq
 from ..models import ApimodelsErrorResponse
 from ..models import ApimodelsItemResp
 from ..models import ApimodelsListItemResp
 from ..models import ApimodelsMoveItemsReq
 from ..models import ApimodelsMoveItemsResp
+from ..models import ApimodelsRemoveInventoryItemReq
 from ..models import ApimodelsUpdateItemReq
 from ..models import ApimodelsUpdateItemResp
 
@@ -50,7 +50,7 @@ from ..operations.public_items import PublicMoveMyItems
 
 @same_doc_as(PublicBulkRemoveMyItems)
 def public_bulk_remove_my_items(
-    body: ApimodelsBulkRemoveItemsReq,
+    body: List[ApimodelsRemoveInventoryItemReq],
     inventory_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -74,7 +74,7 @@ def public_bulk_remove_my_items(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsBulkRemoveItemsReq in body
+        body: (body) REQUIRED List[ApimodelsRemoveInventoryItemReq] in body
 
         inventory_id: (inventoryId) REQUIRED str in path
 
@@ -103,7 +103,7 @@ def public_bulk_remove_my_items(
 
 @same_doc_as(PublicBulkRemoveMyItems)
 async def public_bulk_remove_my_items_async(
-    body: ApimodelsBulkRemoveItemsReq,
+    body: List[ApimodelsRemoveInventoryItemReq],
     inventory_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -127,7 +127,7 @@ async def public_bulk_remove_my_items_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsBulkRemoveItemsReq in body
+        body: (body) REQUIRED List[ApimodelsRemoveInventoryItemReq] in body
 
         inventory_id: (inventoryId) REQUIRED str in path
 
@@ -268,7 +268,6 @@ async def public_bulk_update_my_items_async(
 def public_consume_my_item(
     body: ApimodelsConsumeItemReq,
     inventory_id: str,
-    item_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -279,7 +278,7 @@ def public_consume_my_item(
     Consume user's own item.
 
     Properties:
-        url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items/{itemId}/consume
+        url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/consume
 
         method: POST
 
@@ -294,8 +293,6 @@ def public_consume_my_item(
         body: (body) REQUIRED ApimodelsConsumeItemReq in body
 
         inventory_id: (inventoryId) REQUIRED str in path
-
-        item_id: (itemId) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
@@ -315,7 +312,6 @@ def public_consume_my_item(
     request = PublicConsumeMyItem.create(
         body=body,
         inventory_id=inventory_id,
-        item_id=item_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -325,7 +321,6 @@ def public_consume_my_item(
 async def public_consume_my_item_async(
     body: ApimodelsConsumeItemReq,
     inventory_id: str,
-    item_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -336,7 +331,7 @@ async def public_consume_my_item_async(
     Consume user's own item.
 
     Properties:
-        url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items/{itemId}/consume
+        url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/consume
 
         method: POST
 
@@ -351,8 +346,6 @@ async def public_consume_my_item_async(
         body: (body) REQUIRED ApimodelsConsumeItemReq in body
 
         inventory_id: (inventoryId) REQUIRED str in path
-
-        item_id: (itemId) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
@@ -372,7 +365,6 @@ async def public_consume_my_item_async(
     request = PublicConsumeMyItem.create(
         body=body,
         inventory_id=inventory_id,
-        item_id=item_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -383,7 +375,8 @@ async def public_consume_my_item_async(
 @same_doc_as(PublicGetItem)
 def public_get_item(
     inventory_id: str,
-    item_id: str,
+    slot_id: str,
+    source_item_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -394,7 +387,7 @@ def public_get_item(
     Getting an user's owned item info.
 
     Properties:
-        url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items/{itemId}
+        url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}
 
         method: GET
 
@@ -408,9 +401,11 @@ def public_get_item(
 
         inventory_id: (inventoryId) REQUIRED str in path
 
-        item_id: (itemId) REQUIRED str in path
-
         namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        source_item_id: (sourceItemId) REQUIRED str in path
 
     Responses:
         200: OK - ApimodelsItemResp (OK)
@@ -427,7 +422,8 @@ def public_get_item(
             return None, error
     request = PublicGetItem.create(
         inventory_id=inventory_id,
-        item_id=item_id,
+        slot_id=slot_id,
+        source_item_id=source_item_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -436,7 +432,8 @@ def public_get_item(
 @same_doc_as(PublicGetItem)
 async def public_get_item_async(
     inventory_id: str,
-    item_id: str,
+    slot_id: str,
+    source_item_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -447,7 +444,7 @@ async def public_get_item_async(
     Getting an user's owned item info.
 
     Properties:
-        url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items/{itemId}
+        url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}
 
         method: GET
 
@@ -461,9 +458,11 @@ async def public_get_item_async(
 
         inventory_id: (inventoryId) REQUIRED str in path
 
-        item_id: (itemId) REQUIRED str in path
-
         namespace: (namespace) REQUIRED str in path
+
+        slot_id: (slotId) REQUIRED str in path
+
+        source_item_id: (sourceItemId) REQUIRED str in path
 
     Responses:
         200: OK - ApimodelsItemResp (OK)
@@ -480,7 +479,8 @@ async def public_get_item_async(
             return None, error
     request = PublicGetItem.create(
         inventory_id=inventory_id,
-        item_id=item_id,
+        slot_id=slot_id,
+        source_item_id=source_item_id,
         namespace=namespace,
     )
     return await run_request_async(

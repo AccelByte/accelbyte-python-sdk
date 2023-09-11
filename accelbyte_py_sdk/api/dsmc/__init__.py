@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.3.7"
+__version__ = "6.4.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -133,6 +133,8 @@ from .wrappers import import_images
 from .wrappers import import_images_async
 from .wrappers import list_images
 from .wrappers import list_images_async
+from .wrappers import list_images_client
+from .wrappers import list_images_client_async
 from .wrappers import update_image
 from .wrappers import update_image_async
 

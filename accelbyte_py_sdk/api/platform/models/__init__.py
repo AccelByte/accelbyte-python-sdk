@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.34.0"
+__version__ = "4.34.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,7 +16,6 @@ __email__ = "dev@accelbyte.net"
 
 from .achievement_info import AchievementInfo
 from .additional_data import AdditionalData
-from .additional_data_entitlement import AdditionalDataEntitlement
 from .admin_order_create import AdminOrderCreate
 from .admin_order_create import PlatformEnum as AdminOrderCreatePlatformEnum
 from .adyen_config import AdyenConfig
@@ -129,13 +128,7 @@ from .category_create import CategoryCreate
 from .category_info import CategoryInfo
 from .category_update import CategoryUpdate
 from .checkout_config import CheckoutConfig
-from .clawback_info import ClawbackInfo
-from .clawback_info import (
-    FeedbackStatusEnum as ClawbackInfoFeedbackStatusEnum,
-    StatusEnum as ClawbackInfoStatusEnum,
-)
 from .client_request_parameter import ClientRequestParameter
-from .client_transaction import ClientTransaction
 from .code_create import CodeCreate
 from .code_create_result import CodeCreateResult
 from .code_info import CodeInfo
@@ -248,7 +241,6 @@ from .epic_games_reconcile_result import (
     StatusEnum as EpicGamesReconcileResultStatusEnum,
 )
 from .error_entity import ErrorEntity
-from .event_additional_data import EventAdditionalData
 from .event_payload import EventPayload
 from .export_store_request import ExportStoreRequest
 from .extension_fulfillment_summary import ExtensionFulfillmentSummary
@@ -320,7 +312,6 @@ from .grpc_server_info import (
     ConnectionTypeEnumEnum as GrpcServerInfoConnectionTypeEnumEnum,
 )
 from .hierarchical_category_info import HierarchicalCategoryInfo
-from .iap_clawback_paging_sliced_result import IAPClawbackPagingSlicedResult
 from .iap_consume_history_info import IAPConsumeHistoryInfo
 from .iap_consume_history_info import (
     IapTypeEnum as IAPConsumeHistoryInfoIapTypeEnum,
@@ -723,8 +714,6 @@ from .store_backup_info import StoreBackupInfo
 from .store_create import StoreCreate
 from .store_info import StoreInfo
 from .store_update import StoreUpdate
-from .stream_event import StreamEvent
-from .stream_event_body import StreamEventBody
 from .stripe_config import StripeConfig
 from .subscribable import Subscribable
 from .subscribe_request import SubscribeRequest

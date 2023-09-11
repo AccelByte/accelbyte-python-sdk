@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.34.0)
+# AGS Iam Service (7.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,41 +30,58 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    validate_existed_playstation_iap_config as validate_existed_playstation_iap_config_internal,
+from accelbyte_py_sdk.api.iam import (
+    admin_list_user_id_by_platform_user_i_ds_v3 as admin_list_user_id_by_platform_user_i_ds_v3_internal,
 )
-from accelbyte_py_sdk.api.platform.models import TestResult
+from accelbyte_py_sdk.api.iam.models import AccountcommonUserPlatforms
+from accelbyte_py_sdk.api.iam.models import ModelPlatformUserIDRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
+@click.argument("body", type=str)
+@click.argument("platform_id", type=str)
+@click.option("--raw_pid", "raw_pid", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def validate_existed_playstation_iap_config(
+def admin_list_user_id_by_platform_user_i_ds_v3(
+    body: str,
+    platform_id: str,
+    raw_pid: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(validate_existed_playstation_iap_config_internal.__doc__)
+        click.echo(admin_list_user_id_by_platform_user_i_ds_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = validate_existed_playstation_iap_config_internal(
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelPlatformUserIDRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    result, error = admin_list_user_id_by_platform_user_i_ds_v3_internal(
+        body=body,
+        platform_id=platform_id,
+        raw_pid=raw_pid,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"validateExistedPlaystationIAPConfig failed: {str(error)}")
+        raise Exception(f"AdminListUserIDByPlatformUserIDsV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-validate_existed_playstation_iap_config.operation_id = (
-    "validateExistedPlaystationIAPConfig"
+admin_list_user_id_by_platform_user_i_ds_v3.operation_id = (
+    "AdminListUserIDByPlatformUserIDsV3"
 )
-validate_existed_playstation_iap_config.is_deprecated = False
+admin_list_user_id_by_platform_user_i_ds_v3.is_deprecated = False
