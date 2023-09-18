@@ -81,7 +81,7 @@ class Operation:
         if len(self.produces) > 0 and content and content_type not in ["location"]:
             actual_content_type = clean_content_type(content_type)
             if actual_content_type not in self.produces:
-                was_converted, converted_content = try_convert_content_type(
+                was_converted, converted_content, errors = try_convert_content_type(
                     actual_content_type=actual_content_type,
                     expected_content_types=self.produces,
                     content=content,
@@ -94,7 +94,7 @@ class Operation:
                         content_type,
                         content,
                     ), HttpResponse.create_unexpected_content_type_error(
-                        actual=actual_content_type, expected=self.produces
+                        actual=actual_content_type, expected=self.produces, error=errors
                     )
         return (code, content_type, content), None
 

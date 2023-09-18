@@ -95,6 +95,7 @@ class HttpResponse(Model):
         cls,
         actual: Optional[str] = None,
         expected: Optional[Union[str, List[str]]] = None,
+        error: Optional[str] = None
     ):
         content = "Unexpected Content-Type Error"
         if actual is not None and expected is not None:
@@ -103,6 +104,8 @@ class HttpResponse(Model):
             content += f" (actual: {actual})"
         elif expected is not None:
             content += f" (expected: {expected})"
+        if error:
+            content += f"\n{error}"
         instance = cls()
         instance.code = -1
         instance.content_type = "error"
