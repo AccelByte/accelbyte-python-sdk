@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.0.1"
+__version__ = "1.2.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -69,5 +69,7 @@ from ._servers import fleet_server_info_async
 from ._servers import server_history
 from ._servers import server_history_async
 
+from ._watchdogs import local_watchdog_connect
+from ._watchdogs import local_watchdog_connect_async
 from ._watchdogs import watchdog_connect
 from ._watchdogs import watchdog_connect_async

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.34.1)
+# AccelByte Gaming Services Platform Service (4.36.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,7 +37,7 @@ from ...models import FulfillmentScriptInfo
 class CreateFulfillmentScript(Operation):
     """Create fulfillment script (createFulfillmentScript)
 
-    Create fulfillment script.
+    [AGS Premium Feature] Create fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)

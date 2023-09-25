@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Ds Log Manager Service (3.4.0)
+# AGS Ds Log Manager Service (3.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -49,6 +49,7 @@ from accelbyte_py_sdk.api.dslogmanager.models import ResponseError
 @click.option("--provider", "provider", type=str)
 @click.option("--region", "region", type=str)
 @click.option("--session_id", "session_id", type=str)
+@click.option("--source", "source", type=str)
 @click.option("--start_date", "start_date", type=str)
 @click.option("--status", "status", type=str)
 @click.option("--user_id", "user_id", type=str)
@@ -68,6 +69,7 @@ def list_terminated_servers(
     provider: Optional[str] = None,
     region: Optional[str] = None,
     session_id: Optional[str] = None,
+    source: Optional[str] = None,
     start_date: Optional[str] = None,
     status: Optional[str] = None,
     user_id: Optional[str] = None,
@@ -96,6 +98,7 @@ def list_terminated_servers(
         provider=provider,
         region=region,
         session_id=session_id,
+        source=source,
         start_date=start_date,
         status=status,
         user_id=user_id,

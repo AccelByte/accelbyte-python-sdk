@@ -41,6 +41,7 @@ from ..models import ModelsCreateScreenshotResponse
 from ..models import ModelsGetContentBulkByShareCodesRequest
 from ..models import ModelsGetContentPreviewResponse
 from ..models import ModelsHideContentRequest
+from ..models import ModelsListContentVersionsResponse
 from ..models import ModelsPaginatedContentDownloadResponse
 from ..models import ModelsUpdateScreenshotRequest
 from ..models import ModelsUpdateScreenshotResponse
@@ -63,6 +64,8 @@ from ..operations.admin_content import AdminUpdateScreenshots
 from ..operations.admin_content import AdminUploadContentDirect
 from ..operations.admin_content import AdminUploadContentS3
 from ..operations.admin_content import AdminUploadContentScreenshot
+from ..operations.admin_content import ListContentVersions
+from ..operations.admin_content import RollbackContentVersion
 from ..operations.admin_content import SingleAdminDeleteContent
 from ..operations.admin_content import SingleAdminGetContent
 from ..operations.admin_content import SingleAdminUpdateContentDirect
@@ -2348,6 +2351,226 @@ async def admin_upload_content_screenshot_async(
     request = AdminUploadContentScreenshot.create(
         body=body,
         content_id=content_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ListContentVersions)
+def list_content_versions(
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List content's payload versions (ListContentVersions)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Content's payload versions created when UGC is created or updated with `updateContentFile` set to true. Only list up to 10 latest versions.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/versions
+
+        method: GET
+
+        tags: ["Admin Content"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsListContentVersionsResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListContentVersions.create(
+        content_id=content_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ListContentVersions)
+async def list_content_versions_async(
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List content's payload versions (ListContentVersions)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Content's payload versions created when UGC is created or updated with `updateContentFile` set to true. Only list up to 10 latest versions.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/versions
+
+        method: GET
+
+        tags: ["Admin Content"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsListContentVersionsResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListContentVersions.create(
+        content_id=content_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RollbackContentVersion)
+def rollback_content_version(
+    content_id: str,
+    version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Rollback content's payload version (RollbackContentVersion)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Rollback content's payload to specified version.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}
+
+        method: PUT
+
+        tags: ["Admin Content"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        version_id: (versionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RollbackContentVersion.create(
+        content_id=content_id,
+        version_id=version_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RollbackContentVersion)
+async def rollback_content_version_async(
+    content_id: str,
+    version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Rollback content's payload version (RollbackContentVersion)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Rollback content's payload to specified version.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}
+
+        method: PUT
+
+        tags: ["Admin Content"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        version_id: (versionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RollbackContentVersion.create(
+        content_id=content_id,
+        version_id=version_id,
         namespace=namespace,
     )
     return await run_request_async(

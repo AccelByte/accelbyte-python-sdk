@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.1.0)
+# AccelByte Gaming Services Iam Service (7.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,6 +39,10 @@ class AdminUpdateClientV3(Operation):
 
     Updates an OAuth 2.0 client. Protected by the permission: ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE].
     Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
+    Note for Multi Tenant Mode:
+
+    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+
 
     action code: 10302
 

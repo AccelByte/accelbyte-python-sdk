@@ -441,7 +441,7 @@ def admin_submit_user_account_deletion_request(
 
         tags: ["Data Deletion"]
 
-        consumes: ["application/x-www-form-urlencoded"]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 
@@ -499,7 +499,7 @@ async def admin_submit_user_account_deletion_request_async(
 
         tags: ["Data Deletion"]
 
-        consumes: ["application/x-www-form-urlencoded"]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 

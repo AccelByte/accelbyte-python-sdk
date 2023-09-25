@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.4.1)
+# AccelByte Gaming Services Dsm Controller Service (6.4.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -48,6 +48,8 @@ class ModelsCreateImagePatchRequest(Model):
 
         persistent: (persistent) REQUIRED bool
 
+        ulimit_file_size: (ulimitFileSize) REQUIRED int
+
         uploader_flag: (uploaderFlag) REQUIRED str
 
         version: (version) REQUIRED str
@@ -63,6 +65,7 @@ class ModelsCreateImagePatchRequest(Model):
     namespace: str  # REQUIRED
     patch_version: str  # REQUIRED
     persistent: bool  # REQUIRED
+    ulimit_file_size: int  # REQUIRED
     uploader_flag: str  # REQUIRED
     version: str  # REQUIRED
 
@@ -100,6 +103,10 @@ class ModelsCreateImagePatchRequest(Model):
 
     def with_persistent(self, value: bool) -> ModelsCreateImagePatchRequest:
         self.persistent = value
+        return self
+
+    def with_ulimit_file_size(self, value: int) -> ModelsCreateImagePatchRequest:
+        self.ulimit_file_size = value
         return self
 
     def with_uploader_flag(self, value: str) -> ModelsCreateImagePatchRequest:
@@ -148,6 +155,10 @@ class ModelsCreateImagePatchRequest(Model):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
             result["persistent"] = False
+        if hasattr(self, "ulimit_file_size"):
+            result["ulimitFileSize"] = int(self.ulimit_file_size)
+        elif include_empty:
+            result["ulimitFileSize"] = 0
         if hasattr(self, "uploader_flag"):
             result["uploaderFlag"] = str(self.uploader_flag)
         elif include_empty:
@@ -173,6 +184,7 @@ class ModelsCreateImagePatchRequest(Model):
         namespace: str,
         patch_version: str,
         persistent: bool,
+        ulimit_file_size: int,
         uploader_flag: str,
         version: str,
         **kwargs,
@@ -186,6 +198,7 @@ class ModelsCreateImagePatchRequest(Model):
         instance.namespace = namespace
         instance.patch_version = patch_version
         instance.persistent = persistent
+        instance.ulimit_file_size = ulimit_file_size
         instance.uploader_flag = uploader_flag
         instance.version = version
         return instance
@@ -229,6 +242,10 @@ class ModelsCreateImagePatchRequest(Model):
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
             instance.persistent = False
+        if "ulimitFileSize" in dict_ and dict_["ulimitFileSize"] is not None:
+            instance.ulimit_file_size = int(dict_["ulimitFileSize"])
+        elif include_empty:
+            instance.ulimit_file_size = 0
         if "uploaderFlag" in dict_ and dict_["uploaderFlag"] is not None:
             instance.uploader_flag = str(dict_["uploaderFlag"])
         elif include_empty:
@@ -288,6 +305,7 @@ class ModelsCreateImagePatchRequest(Model):
             "namespace": "namespace",
             "patchVersion": "patch_version",
             "persistent": "persistent",
+            "ulimitFileSize": "ulimit_file_size",
             "uploaderFlag": "uploader_flag",
             "version": "version",
         }
@@ -303,6 +321,7 @@ class ModelsCreateImagePatchRequest(Model):
             "namespace": True,
             "patchVersion": True,
             "persistent": True,
+            "ulimitFileSize": True,
             "uploaderFlag": True,
             "version": True,
         }

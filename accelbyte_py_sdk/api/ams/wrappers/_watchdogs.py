@@ -30,7 +30,100 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 
+from ..operations.watchdogs import LocalWatchdogConnect
 from ..operations.watchdogs import WatchdogConnect
+
+
+@same_doc_as(LocalWatchdogConnect)
+def local_watchdog_connect(
+    watchdog_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """connect a (local) watchdog to support local ds development scenarios (LocalWatchdogConnect)
+
+    Required Permission: NAMESPACE:{namespace}:AMS:LOCALDS [CREATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:AMS:LOCALDS [CREATE]
+
+    Properties:
+        url: /ams/v1/namespaces/{namespace}/local/{watchdogID}/connect
+
+        method: GET
+
+        tags: ["Watchdogs"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        watchdog_id: (watchdogID) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = LocalWatchdogConnect.create(
+        watchdog_id=watchdog_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(LocalWatchdogConnect)
+async def local_watchdog_connect_async(
+    watchdog_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """connect a (local) watchdog to support local ds development scenarios (LocalWatchdogConnect)
+
+    Required Permission: NAMESPACE:{namespace}:AMS:LOCALDS [CREATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:AMS:LOCALDS [CREATE]
+
+    Properties:
+        url: /ams/v1/namespaces/{namespace}/local/{watchdogID}/connect
+
+        method: GET
+
+        tags: ["Watchdogs"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        watchdog_id: (watchdogID) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = LocalWatchdogConnect.create(
+        watchdog_id=watchdog_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(WatchdogConnect)

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.1.0)
+# AccelByte Gaming Services Iam Service (7.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,6 +38,10 @@ class AdminUpdateClientPermissionV3(Operation):
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'
 
+
+     Note for Multi Tenant Mode:
+
+    1. The assigned permission(s) should be restricted in the Default Client permission collection.
 
 
 

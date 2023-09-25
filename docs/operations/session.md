@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.3.0)
+# AccelByte Gaming Services Session Service Index (3.7.3)
 
 
 ## Operations
@@ -155,6 +155,7 @@
 | models.NativeSessionSetting | [ModelsNativeSessionSetting](../../accelbyte_py_sdk/api/session/models/models_native_session_setting.py) |
 | models.PartyMembers | [ModelsPartyMembers](../../accelbyte_py_sdk/api/session/models/models_party_members.py) |
 | models.PlatformCredentials | [ModelsPlatformCredentials](../../accelbyte_py_sdk/api/session/models/models_platform_credentials.py) |
+| models.PortConfigurationAMS | [ModelsPortConfigurationAMS](../../accelbyte_py_sdk/api/session/models/models_port_configuration_ams.py) |
 | models.PSNAppServerCredentials | [ModelsPSNAppServerCredentials](../../accelbyte_py_sdk/api/session/models/models_psn_app_server_credentials.py) |
 | models.Team | [ModelsTeam](../../accelbyte_py_sdk/api/session/models/models_team.py) |
 | models.UserPlatformInfo | [ModelsUserPlatformInfo](../../accelbyte_py_sdk/api/session/models/models_user_platform_info.py) |

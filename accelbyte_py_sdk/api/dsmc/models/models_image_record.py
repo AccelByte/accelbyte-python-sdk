@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.4.1)
+# AccelByte Gaming Services Dsm Controller Service (6.4.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -56,6 +56,8 @@ class ModelsImageRecord(Model):
 
         persistent: (persistent) REQUIRED bool
 
+        ulimit_file_size: (ulimitFileSize) REQUIRED int
+
         updated_at: (updatedAt) REQUIRED str
 
         version: (version) REQUIRED str
@@ -74,6 +76,7 @@ class ModelsImageRecord(Model):
     modified_by: str  # REQUIRED
     namespace: str  # REQUIRED
     persistent: bool  # REQUIRED
+    ulimit_file_size: int  # REQUIRED
     updated_at: str  # REQUIRED
     version: str  # REQUIRED
 
@@ -127,6 +130,10 @@ class ModelsImageRecord(Model):
 
     def with_persistent(self, value: bool) -> ModelsImageRecord:
         self.persistent = value
+        return self
+
+    def with_ulimit_file_size(self, value: int) -> ModelsImageRecord:
+        self.ulimit_file_size = value
         return self
 
     def with_updated_at(self, value: str) -> ModelsImageRecord:
@@ -193,6 +200,10 @@ class ModelsImageRecord(Model):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
             result["persistent"] = False
+        if hasattr(self, "ulimit_file_size"):
+            result["ulimitFileSize"] = int(self.ulimit_file_size)
+        elif include_empty:
+            result["ulimitFileSize"] = 0
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -221,6 +232,7 @@ class ModelsImageRecord(Model):
         modified_by: str,
         namespace: str,
         persistent: bool,
+        ulimit_file_size: int,
         updated_at: str,
         version: str,
         **kwargs,
@@ -237,6 +249,7 @@ class ModelsImageRecord(Model):
         instance.modified_by = modified_by
         instance.namespace = namespace
         instance.persistent = persistent
+        instance.ulimit_file_size = ulimit_file_size
         instance.updated_at = updated_at
         instance.version = version
         return instance
@@ -303,6 +316,10 @@ class ModelsImageRecord(Model):
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
             instance.persistent = False
+        if "ulimitFileSize" in dict_ and dict_["ulimitFileSize"] is not None:
+            instance.ulimit_file_size = int(dict_["ulimitFileSize"])
+        elif include_empty:
+            instance.ulimit_file_size = 0
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -363,6 +380,7 @@ class ModelsImageRecord(Model):
             "modifiedBy": "modified_by",
             "namespace": "namespace",
             "persistent": "persistent",
+            "ulimitFileSize": "ulimit_file_size",
             "updatedAt": "updated_at",
             "version": "version",
         }
@@ -381,6 +399,7 @@ class ModelsImageRecord(Model):
             "modifiedBy": True,
             "namespace": True,
             "persistent": True,
+            "ulimitFileSize": True,
             "updatedAt": True,
             "version": True,
         }

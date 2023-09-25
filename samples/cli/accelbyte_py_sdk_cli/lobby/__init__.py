@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-lobby-server (3.27.1)
+# justice-lobby-server (3.29.1)
 
 from ._get_user_friends_updated import get_user_friends_updated
 from ._get_user_incoming_friends import get_user_incoming_friends
@@ -22,6 +22,7 @@ from ._user_get_friendship_status import user_get_friendship_status
 from ._user_unfriend_request import user_unfriend_request
 from ._add_friends_without_confirmation import add_friends_without_confirmation
 from ._bulk_delete_friends import bulk_delete_friends
+from ._sync_native_friends import sync_native_friends
 from ._admin_get_all_config_v1 import admin_get_all_config_v1
 from ._admin_get_config_v1 import admin_get_config_v1
 from ._admin_update_config_v1 import admin_update_config_v1
@@ -166,6 +167,7 @@ commands = [
     user_unfriend_request,
     add_friends_without_confirmation,
     bulk_delete_friends,
+    sync_native_friends,
     admin_get_all_config_v1,
     admin_get_config_v1,
     admin_update_config_v1,

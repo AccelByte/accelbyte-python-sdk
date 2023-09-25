@@ -279,6 +279,7 @@ def list_terminated_servers(
     provider: Optional[str] = None,
     region: Optional[str] = None,
     session_id: Optional[str] = None,
+    source: Optional[str] = None,
     start_date: Optional[str] = None,
     status: Optional[str] = None,
     user_id: Optional[str] = None,
@@ -336,6 +337,8 @@ def list_terminated_servers(
 
         session_id: (session_id) OPTIONAL str in query
 
+        source: (source) OPTIONAL str in query
+
         start_date: (start_date) OPTIONAL str in query
 
         status: (status) OPTIONAL str in query
@@ -367,6 +370,7 @@ def list_terminated_servers(
         provider=provider,
         region=region,
         session_id=session_id,
+        source=source,
         start_date=start_date,
         status=status,
         user_id=user_id,
@@ -388,6 +392,7 @@ async def list_terminated_servers_async(
     provider: Optional[str] = None,
     region: Optional[str] = None,
     session_id: Optional[str] = None,
+    source: Optional[str] = None,
     start_date: Optional[str] = None,
     status: Optional[str] = None,
     user_id: Optional[str] = None,
@@ -445,6 +450,8 @@ async def list_terminated_servers_async(
 
         session_id: (session_id) OPTIONAL str in query
 
+        source: (source) OPTIONAL str in query
+
         start_date: (start_date) OPTIONAL str in query
 
         status: (status) OPTIONAL str in query
@@ -476,6 +483,7 @@ async def list_terminated_servers_async(
         provider=provider,
         region=region,
         session_id=session_id,
+        source=source,
         start_date=start_date,
         status=status,
         user_id=user_id,

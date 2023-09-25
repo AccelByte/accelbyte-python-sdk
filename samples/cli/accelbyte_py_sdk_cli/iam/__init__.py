@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (7.1.0)
+# justice-iam-service (7.3.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -146,6 +146,9 @@ from ._admin_update_client_v3 import admin_update_client_v3
 from ._admin_update_client_permission_v3 import admin_update_client_permission_v3
 from ._admin_add_client_permissions_v3 import admin_add_client_permissions_v3
 from ._admin_delete_client_permission_v3 import admin_delete_client_permission_v3
+from ._admin_get_country_list_v3 import admin_get_country_list_v3
+from ._admin_get_country_blacklist_v3 import admin_get_country_blacklist_v3
+from ._admin_add_country_blacklist_v3 import admin_add_country_blacklist_v3
 from ._retrieve_all_third_party_login_platform_credential_v3 import (
     retrieve_all_third_party_login_platform_credential_v3,
 )
@@ -237,6 +240,7 @@ from ._admin_save_user_role_v3 import admin_save_user_role_v3
 from ._admin_add_user_role_v3 import admin_add_user_role_v3
 from ._admin_delete_user_role_v3 import admin_delete_user_role_v3
 from ._admin_update_user_status_v3 import admin_update_user_status_v3
+from ._admin_trustly_update_user_identity import admin_trustly_update_user_identity
 from ._admin_verify_user_without_verification_code_v3 import (
     admin_verify_user_without_verification_code_v3,
 )
@@ -293,11 +297,13 @@ from ._token_revocation_v3 import token_revocation_v3
 from ._token_grant_v3 import token_grant_v3
 from ._verify_token_v3 import verify_token_v3
 from ._platform_authentication_v3 import platform_authentication_v3
+from ._platform_token_refresh_v3 import platform_token_refresh_v3
 from ._public_get_input_validations import public_get_input_validations
 from ._public_get_input_validation_by_field import public_get_input_validation_by_field
 from ._public_get_country_age_restriction_v3 import (
     public_get_country_age_restriction_v3,
 )
+from ._public_get_country_list_v3 import public_get_country_list_v3
 from ._retrieve_all_active_third_party_login_platform_credential_public_v3 import (
     retrieve_all_active_third_party_login_platform_credential_public_v3,
 )
@@ -370,7 +376,7 @@ from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
 from ._request_game_token_response_v3 import request_game_token_response_v3
-from ._platform_token_refresh_v3 import platform_token_refresh_v3
+from ._platform_token_refresh_v3_deprecate import platform_token_refresh_v3_deprecate
 from ._admin_get_devices_by_user_v4 import admin_get_devices_by_user_v4
 from ._admin_get_banned_devices_v4 import admin_get_banned_devices_v4
 from ._admin_get_user_device_bans_v4 import admin_get_user_device_bans_v4
@@ -579,6 +585,9 @@ commands = [
     admin_update_client_permission_v3,
     admin_add_client_permissions_v3,
     admin_delete_client_permission_v3,
+    admin_get_country_list_v3,
+    admin_get_country_blacklist_v3,
+    admin_add_country_blacklist_v3,
     retrieve_all_third_party_login_platform_credential_v3,
     retrieve_all_active_third_party_login_platform_credential_v3,
     retrieve_all_sso_login_platform_credential_v3,
@@ -636,6 +645,7 @@ commands = [
     admin_add_user_role_v3,
     admin_delete_user_role_v3,
     admin_update_user_status_v3,
+    admin_trustly_update_user_identity,
     admin_verify_user_without_verification_code_v3,
     admin_update_client_secret_v3,
     admin_get_roles_v3,
@@ -682,9 +692,11 @@ commands = [
     token_grant_v3,
     verify_token_v3,
     platform_authentication_v3,
+    platform_token_refresh_v3,
     public_get_input_validations,
     public_get_input_validation_by_field,
     public_get_country_age_restriction_v3,
+    public_get_country_list_v3,
     retrieve_all_active_third_party_login_platform_credential_public_v3,
     retrieve_active_oidc_clients_public_v3,
     public_list_user_id_by_platform_user_i_ds_v3,
@@ -737,7 +749,7 @@ commands = [
     login_sso_client,
     logout_sso_client,
     request_game_token_response_v3,
-    platform_token_refresh_v3,
+    platform_token_refresh_v3_deprecate,
     admin_get_devices_by_user_v4,
     admin_get_banned_devices_v4,
     admin_get_user_device_bans_v4,

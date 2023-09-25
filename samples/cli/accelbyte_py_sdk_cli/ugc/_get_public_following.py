@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Ugc Service (2.12.0)
+# AGS Ugc Service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

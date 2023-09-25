@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.1)
+# AccelByte Gaming Services Platform Service (4.36.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -49,10 +49,10 @@ class SourceEnum(StrEnum):
     ACHIEVEMENT = "ACHIEVEMENT"
     CONSUME_ENTITLEMENT = "CONSUME_ENTITLEMENT"
     DLC = "DLC"
-    DLC_REVOCATION = "DLC_REVOCATION"
     EXPIRATION = "EXPIRATION"
     GIFT = "GIFT"
     IAP = "IAP"
+    IAP_CHARGEBACK_REVERSED = "IAP_CHARGEBACK_REVERSED"
     ORDER_REVOCATION = "ORDER_REVOCATION"
     OTHER = "OTHER"
     PAYMENT = "PAYMENT"
@@ -75,6 +75,8 @@ class RewardsRequest(Model):
         origin: (origin) OPTIONAL Union[str, OriginEnum]
 
         source: (source) OPTIONAL Union[str, SourceEnum]
+
+        transaction_id: (transactionId) OPTIONAL str
     """
 
     # region fields
@@ -83,6 +85,7 @@ class RewardsRequest(Model):
     metadata: Dict[str, Any]  # OPTIONAL
     origin: Union[str, OriginEnum]  # OPTIONAL
     source: Union[str, SourceEnum]  # OPTIONAL
+    transaction_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -102,6 +105,10 @@ class RewardsRequest(Model):
 
     def with_source(self, value: Union[str, SourceEnum]) -> RewardsRequest:
         self.source = value
+        return self
+
+    def with_transaction_id(self, value: str) -> RewardsRequest:
+        self.transaction_id = value
         return self
 
     # endregion with_x methods
@@ -128,6 +135,10 @@ class RewardsRequest(Model):
             result["source"] = str(self.source)
         elif include_empty:
             result["source"] = Union[str, SourceEnum]()
+        if hasattr(self, "transaction_id"):
+            result["transactionId"] = str(self.transaction_id)
+        elif include_empty:
+            result["transactionId"] = ""
         return result
 
     # endregion to methods
@@ -141,6 +152,7 @@ class RewardsRequest(Model):
         metadata: Optional[Dict[str, Any]] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
         source: Optional[Union[str, SourceEnum]] = None,
+        transaction_id: Optional[str] = None,
         **kwargs,
     ) -> RewardsRequest:
         instance = cls()
@@ -151,6 +163,8 @@ class RewardsRequest(Model):
             instance.origin = origin
         if source is not None:
             instance.source = source
+        if transaction_id is not None:
+            instance.transaction_id = transaction_id
         return instance
 
     @classmethod
@@ -179,6 +193,10 @@ class RewardsRequest(Model):
             instance.source = str(dict_["source"])
         elif include_empty:
             instance.source = Union[str, SourceEnum]()
+        if "transactionId" in dict_ and dict_["transactionId"] is not None:
+            instance.transaction_id = str(dict_["transactionId"])
+        elif include_empty:
+            instance.transaction_id = ""
         return instance
 
     @classmethod
@@ -222,6 +240,7 @@ class RewardsRequest(Model):
             "metadata": "metadata",
             "origin": "origin",
             "source": "source",
+            "transactionId": "transaction_id",
         }
 
     @staticmethod
@@ -231,6 +250,7 @@ class RewardsRequest(Model):
             "metadata": False,
             "origin": False,
             "source": False,
+            "transactionId": False,
         }
 
     @staticmethod
@@ -253,10 +273,10 @@ class RewardsRequest(Model):
                 "ACHIEVEMENT",
                 "CONSUME_ENTITLEMENT",
                 "DLC",
-                "DLC_REVOCATION",
                 "EXPIRATION",
                 "GIFT",
                 "IAP",
+                "IAP_CHARGEBACK_REVERSED",
                 "ORDER_REVOCATION",
                 "OTHER",
                 "PAYMENT",

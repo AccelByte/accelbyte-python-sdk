@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.12.0)
+# AccelByte Gaming Services Ugc Service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,6 +32,8 @@ from ..api.ugc.models import ModelsChannelResponse
 from ..api.ugc.models import ModelsContentDownloadResponse
 from ..api.ugc.models import ModelsContentLikeRequest
 from ..api.ugc.models import ModelsContentLikeResponse
+from ..api.ugc.models import ModelsContentSnapshot
+from ..api.ugc.models import ModelsContentVersionResponse
 from ..api.ugc.models import ModelsCreateContentRequest
 from ..api.ugc.models import ModelsCreateContentRequestS3
 from ..api.ugc.models import ModelsCreateContentResponse
@@ -51,6 +53,7 @@ from ..api.ugc.models import ModelsGetContentBulkByShareCodesRequest
 from ..api.ugc.models import ModelsGetContentPreviewResponse
 from ..api.ugc.models import ModelsHideContentRequest
 from ..api.ugc.models import ModelsLikeState
+from ..api.ugc.models import ModelsListContentVersionsResponse
 from ..api.ugc.models import ModelsPaginatedContentDownloadResponse
 from ..api.ugc.models import ModelsPaginatedCreatorOverviewResponse
 from ..api.ugc.models import ModelsPaginatedGetChannelResponse
@@ -167,6 +170,23 @@ def create_models_content_like_response_example() -> ModelsContentLikeResponse:
     instance = ModelsContentLikeResponse()
     instance.content_id = randomize()
     instance.like_status = randomize("bool")
+    return instance
+
+
+def create_models_content_snapshot_example() -> ModelsContentSnapshot:
+    instance = ModelsContentSnapshot()
+    instance.file_extension = randomize()
+    instance.name = randomize()
+    instance.url = randomize("url")
+    return instance
+
+
+def create_models_content_version_response_example() -> ModelsContentVersionResponse:
+    instance = ModelsContentVersionResponse()
+    instance.content = create_models_content_snapshot_example()
+    instance.id_ = randomize()
+    instance.updated_at = randomize()
+    instance.version = randomize("version")
     return instance
 
 
@@ -355,6 +375,14 @@ def create_models_like_state_example() -> ModelsLikeState:
     instance = ModelsLikeState()
     instance.state = randomize("bool")
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_list_content_versions_response_example() -> (
+    ModelsListContentVersionsResponse
+):
+    instance = ModelsListContentVersionsResponse()
+    instance.data = [create_models_content_version_response_example()]
     return instance
 
 

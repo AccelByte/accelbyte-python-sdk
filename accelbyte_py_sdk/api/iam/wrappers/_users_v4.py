@@ -2933,6 +2933,8 @@ def create_user_from_invitation_v4(
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
@@ -3000,6 +3002,8 @@ async def create_user_from_invitation_v4_async(
         201: Created - AccountCreateUserResponseV4 (Created)
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
@@ -3216,6 +3220,8 @@ def public_create_user_v4(
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
 
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
         404: Not Found - RestErrorResponse (10154: country not found)
 
         409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used)
@@ -3285,6 +3291,8 @@ async def public_create_user_v4_async(
         201: Created - AccountCreateUserResponseV4 (Created)
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
@@ -5276,6 +5284,8 @@ def public_update_user_v4(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
         409: Conflict - RestErrorResponse (10133: email already used)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
@@ -5353,6 +5363,8 @@ async def public_update_user_v4_async(
         400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
         409: Conflict - RestErrorResponse (10133: email already used)
 

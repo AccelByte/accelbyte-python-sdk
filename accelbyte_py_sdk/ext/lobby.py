@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Lobby Server (3.27.1)
+# AccelByte Gaming Services Lobby Server (3.29.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,7 @@ from ..api.lobby.models import ModelCreateTopicRequest
 from ..api.lobby.models import ModelCreateTopicRequestV1
 from ..api.lobby.models import ModelFreeFormNotificationRequest
 from ..api.lobby.models import ModelFreeFormNotificationRequestV1
+from ..api.lobby.models import ModelFriendWithPlatform
 from ..api.lobby.models import ModelGetAllNotificationTemplateSlugResp
 from ..api.lobby.models import ModelGetAllNotificationTopicsResponse
 from ..api.lobby.models import ModelGetFriendsResponse
@@ -46,6 +47,8 @@ from ..api.lobby.models import ModelListBulkUserPlatformsResponse
 from ..api.lobby.models import ModelLoadIncomingFriendsWithTimeResponse
 from ..api.lobby.models import ModelLoadOutgoingFriendsWithTimeResponse
 from ..api.lobby.models import ModelLocalization
+from ..api.lobby.models import ModelNativeFriendRequest
+from ..api.lobby.models import ModelNativeFriendSyncResponse
 from ..api.lobby.models import ModelNotificationTemplateResponse
 from ..api.lobby.models import ModelNotificationTopicResponse
 from ..api.lobby.models import ModelNotificationTopicResponseV1
@@ -207,6 +210,13 @@ def create_model_free_form_notification_request_v1_example() -> (
     return instance
 
 
+def create_model_friend_with_platform_example() -> ModelFriendWithPlatform:
+    instance = ModelFriendWithPlatform()
+    instance.platform_id = randomize()
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_model_get_all_notification_template_slug_resp_example() -> (
     ModelGetAllNotificationTemplateSlugResp
 ):
@@ -230,6 +240,7 @@ def create_model_get_friends_response_example() -> ModelGetFriendsResponse:
     instance.friend_i_ds = [randomize()]
     instance.friends_since_times = [randomize()]
     instance.paging = create_model_pagination_example()
+    instance.friends = [create_model_friend_with_platform_example()]
     return instance
 
 
@@ -237,6 +248,7 @@ def create_model_get_user_friends_response_example() -> ModelGetUserFriendsRespo
     instance = ModelGetUserFriendsResponse()
     instance.friend_i_ds = [randomize()]
     instance.paging = create_model_pagination_example()
+    instance.friends = [create_model_friend_with_platform_example()]
     return instance
 
 
@@ -299,6 +311,23 @@ def create_model_localization_example() -> ModelLocalization:
     instance.last_published_at = randomize()
     instance.template_content = create_model_template_content_example()
     instance.template_language = randomize()
+    return instance
+
+
+def create_model_native_friend_request_example() -> ModelNativeFriendRequest:
+    instance = ModelNativeFriendRequest()
+    instance.is_login = randomize("bool")
+    instance.platform_id = randomize()
+    instance.platform_token = randomize()
+    instance.psn_env = randomize()
+    return instance
+
+
+def create_model_native_friend_sync_response_example() -> ModelNativeFriendSyncResponse:
+    instance = ModelNativeFriendSyncResponse()
+    instance.platform_id = randomize()
+    instance.status = randomize()
+    instance.detail = randomize()
     return instance
 
 

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.1)
+# AccelByte Gaming Services Lobby Server (3.29.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,30 +28,30 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class FulfillmentScriptEvalTestResult(Model):
-    """Fulfillment script eval test result (FulfillmentScriptEvalTestResult)
+class ModelFriendWithPlatform(Model):
+    """Model friend with platform (model.FriendWithPlatform)
 
     Properties:
-        error_stack_trace: (errorStackTrace) OPTIONAL str
+        platform_id: (platformId) REQUIRED str
 
-        result: (result) OPTIONAL Dict[str, Any]
+        user_id: (userId) REQUIRED str
     """
 
     # region fields
 
-    error_stack_trace: str  # OPTIONAL
-    result: Dict[str, Any]  # OPTIONAL
+    platform_id: str  # REQUIRED
+    user_id: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_error_stack_trace(self, value: str) -> FulfillmentScriptEvalTestResult:
-        self.error_stack_trace = value
+    def with_platform_id(self, value: str) -> ModelFriendWithPlatform:
+        self.platform_id = value
         return self
 
-    def with_result(self, value: Dict[str, Any]) -> FulfillmentScriptEvalTestResult:
-        self.result = value
+    def with_user_id(self, value: str) -> ModelFriendWithPlatform:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -60,14 +60,14 @@ class FulfillmentScriptEvalTestResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "error_stack_trace"):
-            result["errorStackTrace"] = str(self.error_stack_trace)
+        if hasattr(self, "platform_id"):
+            result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["errorStackTrace"] = ""
-        if hasattr(self, "result"):
-            result["result"] = {str(k0): v0 for k0, v0 in self.result.items()}
+            result["platformId"] = ""
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
         elif include_empty:
-            result["result"] = {}
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -76,39 +76,34 @@ class FulfillmentScriptEvalTestResult(Model):
 
     @classmethod
     def create(
-        cls,
-        error_stack_trace: Optional[str] = None,
-        result: Optional[Dict[str, Any]] = None,
-        **kwargs,
-    ) -> FulfillmentScriptEvalTestResult:
+        cls, platform_id: str, user_id: str, **kwargs
+    ) -> ModelFriendWithPlatform:
         instance = cls()
-        if error_stack_trace is not None:
-            instance.error_stack_trace = error_stack_trace
-        if result is not None:
-            instance.result = result
+        instance.platform_id = platform_id
+        instance.user_id = user_id
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> FulfillmentScriptEvalTestResult:
+    ) -> ModelFriendWithPlatform:
         instance = cls()
         if not dict_:
             return instance
-        if "errorStackTrace" in dict_ and dict_["errorStackTrace"] is not None:
-            instance.error_stack_trace = str(dict_["errorStackTrace"])
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.error_stack_trace = ""
-        if "result" in dict_ and dict_["result"] is not None:
-            instance.result = {str(k0): v0 for k0, v0 in dict_["result"].items()}
+            instance.platform_id = ""
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.result = {}
+            instance.user_id = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, FulfillmentScriptEvalTestResult]:
+    ) -> Dict[str, ModelFriendWithPlatform]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -118,7 +113,7 @@ class FulfillmentScriptEvalTestResult(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[FulfillmentScriptEvalTestResult]:
+    ) -> List[ModelFriendWithPlatform]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -129,9 +124,9 @@ class FulfillmentScriptEvalTestResult(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        FulfillmentScriptEvalTestResult,
-        List[FulfillmentScriptEvalTestResult],
-        Dict[Any, FulfillmentScriptEvalTestResult],
+        ModelFriendWithPlatform,
+        List[ModelFriendWithPlatform],
+        Dict[Any, ModelFriendWithPlatform],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -146,15 +141,15 @@ class FulfillmentScriptEvalTestResult(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "errorStackTrace": "error_stack_trace",
-            "result": "result",
+            "platformId": "platform_id",
+            "userId": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "errorStackTrace": False,
-            "result": False,
+            "platformId": True,
+            "userId": True,
         }
 
     # endregion static methods

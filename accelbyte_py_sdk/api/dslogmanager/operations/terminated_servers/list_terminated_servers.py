@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ds Log Manager Service (3.4.0)
+# AccelByte Gaming Services Ds Log Manager Service (3.4.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -84,6 +84,8 @@ class ListTerminatedServers(Operation):
 
         session_id: (session_id) OPTIONAL str in query
 
+        source: (source) OPTIONAL str in query
+
         start_date: (start_date) OPTIONAL str in query
 
         status: (status) OPTIONAL str in query
@@ -121,6 +123,7 @@ class ListTerminatedServers(Operation):
     provider: str  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
     session_id: str  # OPTIONAL in [query]
+    source: str  # OPTIONAL in [query]
     start_date: str  # OPTIONAL in [query]
     status: str  # OPTIONAL in [query]
     user_id: str  # OPTIONAL in [query]
@@ -197,6 +200,8 @@ class ListTerminatedServers(Operation):
             result["region"] = self.region
         if hasattr(self, "session_id"):
             result["session_id"] = self.session_id
+        if hasattr(self, "source"):
+            result["source"] = self.source
         if hasattr(self, "start_date"):
             result["start_date"] = self.start_date
         if hasattr(self, "status"):
@@ -259,6 +264,10 @@ class ListTerminatedServers(Operation):
 
     def with_session_id(self, value: str) -> ListTerminatedServers:
         self.session_id = value
+        return self
+
+    def with_source(self, value: str) -> ListTerminatedServers:
+        self.source = value
         return self
 
     def with_start_date(self, value: str) -> ListTerminatedServers:
@@ -327,6 +336,10 @@ class ListTerminatedServers(Operation):
             result["session_id"] = str(self.session_id)
         elif include_empty:
             result["session_id"] = ""
+        if hasattr(self, "source") and self.source:
+            result["source"] = str(self.source)
+        elif include_empty:
+            result["source"] = ""
         if hasattr(self, "start_date") and self.start_date:
             result["start_date"] = str(self.start_date)
         elif include_empty:
@@ -407,6 +420,7 @@ class ListTerminatedServers(Operation):
         provider: Optional[str] = None,
         region: Optional[str] = None,
         session_id: Optional[str] = None,
+        source: Optional[str] = None,
         start_date: Optional[str] = None,
         status: Optional[str] = None,
         user_id: Optional[str] = None,
@@ -436,6 +450,8 @@ class ListTerminatedServers(Operation):
             instance.region = region
         if session_id is not None:
             instance.session_id = session_id
+        if source is not None:
+            instance.source = source
         if start_date is not None:
             instance.start_date = start_date
         if status is not None:
@@ -497,6 +513,10 @@ class ListTerminatedServers(Operation):
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
             instance.session_id = ""
+        if "source" in dict_ and dict_["source"] is not None:
+            instance.source = str(dict_["source"])
+        elif include_empty:
+            instance.source = ""
         if "start_date" in dict_ and dict_["start_date"] is not None:
             instance.start_date = str(dict_["start_date"])
         elif include_empty:
@@ -526,6 +546,7 @@ class ListTerminatedServers(Operation):
             "provider": "provider",
             "region": "region",
             "session_id": "session_id",
+            "source": "source",
             "start_date": "start_date",
             "status": "status",
             "user_id": "user_id",
@@ -546,6 +567,7 @@ class ListTerminatedServers(Operation):
             "provider": False,
             "region": False,
             "session_id": False,
+            "source": False,
             "start_date": False,
             "status": False,
             "user_id": False,

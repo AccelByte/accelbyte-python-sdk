@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.0.1)
+# Fleet Commander (1.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,12 +27,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.api_account_limits import ApiAccountLimits
+
 
 class ApiAccountLinkResponse(Model):
     """Api account link response (api.AccountLinkResponse)
 
     Properties:
         id_: (id) REQUIRED str
+
+        limits: (Limits) REQUIRED ApiAccountLimits
 
         name: (name) REQUIRED str
 
@@ -42,6 +46,7 @@ class ApiAccountLinkResponse(Model):
     # region fields
 
     id_: str  # REQUIRED
+    limits: ApiAccountLimits  # REQUIRED
     name: str  # REQUIRED
     namespaces: List[str]  # REQUIRED
 
@@ -51,6 +56,10 @@ class ApiAccountLinkResponse(Model):
 
     def with_id(self, value: str) -> ApiAccountLinkResponse:
         self.id_ = value
+        return self
+
+    def with_limits(self, value: ApiAccountLimits) -> ApiAccountLinkResponse:
+        self.limits = value
         return self
 
     def with_name(self, value: str) -> ApiAccountLinkResponse:
@@ -71,6 +80,10 @@ class ApiAccountLinkResponse(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "limits"):
+            result["Limits"] = self.limits.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["Limits"] = ApiAccountLimits()
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -87,10 +100,16 @@ class ApiAccountLinkResponse(Model):
 
     @classmethod
     def create(
-        cls, id_: str, name: str, namespaces: List[str], **kwargs
+        cls,
+        id_: str,
+        limits: ApiAccountLimits,
+        name: str,
+        namespaces: List[str],
+        **kwargs,
     ) -> ApiAccountLinkResponse:
         instance = cls()
         instance.id_ = id_
+        instance.limits = limits
         instance.name = name
         instance.namespaces = namespaces
         return instance
@@ -106,6 +125,12 @@ class ApiAccountLinkResponse(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "Limits" in dict_ and dict_["Limits"] is not None:
+            instance.limits = ApiAccountLimits.create_from_dict(
+                dict_["Limits"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.limits = ApiAccountLimits()
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -158,6 +183,7 @@ class ApiAccountLinkResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "id": "id_",
+            "Limits": "limits",
             "name": "name",
             "namespaces": "namespaces",
         }
@@ -166,6 +192,7 @@ class ApiAccountLinkResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "id": True,
+            "Limits": True,
             "name": True,
             "namespaces": True,
         }

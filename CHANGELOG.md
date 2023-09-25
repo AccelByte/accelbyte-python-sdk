@@ -1,3 +1,11 @@
+<a name="v0.50.0"></a>
+## [v0.50.0]
+### fix
+- **core:** improve error messages when dealing with text/plain responses
+### ci
+- **generate:** use demo_extend-sdk
+
+
 <a name="v0.49.0"></a>
 ## [v0.49.0]
 

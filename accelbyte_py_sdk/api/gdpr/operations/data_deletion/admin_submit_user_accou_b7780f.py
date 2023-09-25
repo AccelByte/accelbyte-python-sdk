@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Gdpr Service (2.2.2)
+# AccelByte Gaming Services Gdpr Service (2.2.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -51,7 +51,7 @@ class AdminSubmitUserAccountDeletionRequest(Operation):
 
         tags: ["Data Deletion"]
 
-        consumes: ["application/x-www-form-urlencoded"]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 
@@ -79,7 +79,7 @@ class AdminSubmitUserAccountDeletionRequest(Operation):
 
     _url: str = "/gdpr/admin/namespaces/{namespace}/users/{userId}/deletions"
     _method: str = "POST"
-    _consumes: List[str] = ["application/x-www-form-urlencoded"]
+    _consumes: List[str] = ["*/*"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None

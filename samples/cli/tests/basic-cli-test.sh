@@ -49,7 +49,6 @@ basic-delete-config --login_with_auth "Bearer foo"
 basic-update-config --body '{"apiKey": "VuHOPlLlkvR8sKgn"}' --login_with_auth "Bearer foo"
 basic-generated-upload-url 'uRkgghGoYupD391C' '2qtPYokahFjkQsfC' --login_with_auth "Bearer foo"
 basic-get-game-namespaces --login_with_auth "Bearer foo"
-basic-get-countries --login_with_auth "Bearer foo"
 basic-get-country-groups --login_with_auth "Bearer foo"
 basic-add-country-group --body '{"countries": [{"code": "aTmt1d67FXGk2s9Q", "name": "0mPVo3twu0MesTCf"}, {"code": "9x4rt69lna7qxNeI", "name": "xPz6MbwL6IY69z1U"}, {"code": "aLqYSYWytLPziZMd", "name": "jxcBZufQxGiHPllG"}], "countryGroupCode": "4cYEzfTD1ZBm3MqH", "countryGroupName": "cUmLZZbSqb8RwNmn"}' --login_with_auth "Bearer foo"
 basic-update-country-group '9HrNQy4uZAAiE0mi' --body '{"countries": [{"code": "t9RGCCHYzUOcEdsc", "name": "KHPEqgA8yu7Vk6Jt"}, {"code": "4Ymos9Jcdos4fYcT", "name": "VU6RBt0zYoMcHyCU"}, {"code": "EXlAvxJMdalwSyli", "name": "WMNW5NyLu0M3VHh2"}], "countryGroupName": "EI8JlDbPWbQ6Q9lN"}' --login_with_auth "Bearer foo"
@@ -74,7 +73,6 @@ basic-update-user-profile-status '1yEkLgh3tIYt4SqY' --body '{"status": "ACTIVE"}
 basic-public-get-time --login_with_auth "Bearer foo"
 basic-public-get-namespaces --login_with_auth "Bearer foo"
 basic-public-generated-upload-url 'Dx9gIiDandpGT2t2' '4aOMh5eC3IHeHSKL' --login_with_auth "Bearer foo"
-basic-public-get-countries --login_with_auth "Bearer foo"
 basic-public-get-languages --login_with_auth "Bearer foo"
 basic-public-get-time-zones --login_with_auth "Bearer foo"
 basic-public-get-user-profile-public-info-by-ids 'Ca3xreNDUWehwH3q' --login_with_auth "Bearer foo"
@@ -260,10 +258,7 @@ $PYTHON -m $MODULE 'basic-get-game-namespaces' \
 eval_tap $? 21 'GetGameNamespaces' test.out
 
 #- 22 GetCountries
-$PYTHON -m $MODULE 'basic-get-countries' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 22 'GetCountries' test.out
+eval_tap 0 22 'GetCountries # SKIP deprecated' test.out
 
 #- 23 GetCountryGroups
 $PYTHON -m $MODULE 'basic-get-country-groups' \
@@ -435,10 +430,7 @@ $PYTHON -m $MODULE 'basic-public-generated-upload-url' \
 eval_tap $? 46 'PublicGeneratedUploadUrl' test.out
 
 #- 47 PublicGetCountries
-$PYTHON -m $MODULE 'basic-public-get-countries' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 47 'PublicGetCountries' test.out
+eval_tap 0 47 'PublicGetCountries # SKIP deprecated' test.out
 
 #- 48 PublicGetLanguages
 $PYTHON -m $MODULE 'basic-public-get-languages' \

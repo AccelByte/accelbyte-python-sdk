@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.4.1)
+# AccelByte Gaming Services Dsm Controller Service (6.4.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,6 +46,8 @@ class ModelsCreateImageRequest(Model):
 
         persistent: (persistent) REQUIRED bool
 
+        ulimit_file_size: (ulimitFileSize) REQUIRED int
+
         version: (version) REQUIRED str
     """
 
@@ -58,6 +60,7 @@ class ModelsCreateImageRequest(Model):
     image_size: int  # REQUIRED
     namespace: str  # REQUIRED
     persistent: bool  # REQUIRED
+    ulimit_file_size: int  # REQUIRED
     version: str  # REQUIRED
 
     # endregion fields
@@ -90,6 +93,10 @@ class ModelsCreateImageRequest(Model):
 
     def with_persistent(self, value: bool) -> ModelsCreateImageRequest:
         self.persistent = value
+        return self
+
+    def with_ulimit_file_size(self, value: int) -> ModelsCreateImageRequest:
+        self.ulimit_file_size = value
         return self
 
     def with_version(self, value: str) -> ModelsCreateImageRequest:
@@ -130,6 +137,10 @@ class ModelsCreateImageRequest(Model):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
             result["persistent"] = False
+        if hasattr(self, "ulimit_file_size"):
+            result["ulimitFileSize"] = int(self.ulimit_file_size)
+        elif include_empty:
+            result["ulimitFileSize"] = 0
         if hasattr(self, "version"):
             result["version"] = str(self.version)
         elif include_empty:
@@ -150,6 +161,7 @@ class ModelsCreateImageRequest(Model):
         image_size: int,
         namespace: str,
         persistent: bool,
+        ulimit_file_size: int,
         version: str,
         **kwargs,
     ) -> ModelsCreateImageRequest:
@@ -161,6 +173,7 @@ class ModelsCreateImageRequest(Model):
         instance.image_size = image_size
         instance.namespace = namespace
         instance.persistent = persistent
+        instance.ulimit_file_size = ulimit_file_size
         instance.version = version
         return instance
 
@@ -199,6 +212,10 @@ class ModelsCreateImageRequest(Model):
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
             instance.persistent = False
+        if "ulimitFileSize" in dict_ and dict_["ulimitFileSize"] is not None:
+            instance.ulimit_file_size = int(dict_["ulimitFileSize"])
+        elif include_empty:
+            instance.ulimit_file_size = 0
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = str(dict_["version"])
         elif include_empty:
@@ -253,6 +270,7 @@ class ModelsCreateImageRequest(Model):
             "imageSize": "image_size",
             "namespace": "namespace",
             "persistent": "persistent",
+            "ulimitFileSize": "ulimit_file_size",
             "version": "version",
         }
 
@@ -266,6 +284,7 @@ class ModelsCreateImageRequest(Model):
             "imageSize": True,
             "namespace": True,
             "persistent": True,
+            "ulimitFileSize": True,
             "version": True,
         }
 

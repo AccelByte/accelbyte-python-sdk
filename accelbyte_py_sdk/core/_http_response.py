@@ -95,7 +95,7 @@ class HttpResponse(Model):
         cls,
         actual: Optional[str] = None,
         expected: Optional[Union[str, List[str]]] = None,
-        error: Optional[str] = None
+        error: Optional[str] = None,
     ):
         content = "Unexpected Content-Type Error"
         if actual is not None and expected is not None:

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.1.0)
+# AccelByte Gaming Services Iam Service (7.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,8 +37,15 @@ class PublicPlatformUnlinkAllV3(Operation):
 
     Required valid user authorization.
 
+    Unlink user's account from third platform in all namespaces.
 
-    Unlink user's account from for all third platforms.
+    This API support to handling platform group use case:
+    i.e.
+    1. Steam group: steam, steamopenid
+    2. PSN group: ps4, ps5, psnweb
+    3. XBOX group: live, xblweb
+
+    Example: if user unlink from ps4, the API logic will unlink ps5 and psnweb as well.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all

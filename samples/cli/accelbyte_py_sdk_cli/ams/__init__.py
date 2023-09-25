@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# fleet-commander (1.0.1)
+# fleet-commander (1.2.1)
 
 from ._auth_check import auth_check
 from ._portal_health_check import portal_health_check
@@ -29,6 +29,7 @@ from ._fleet_server_info import fleet_server_info
 from ._server_history import server_history
 from ._info_supported_instances import info_supported_instances
 from ._fleet_claim_by_id import fleet_claim_by_id
+from ._local_watchdog_connect import local_watchdog_connect
 from ._fleet_claim_by_keys import fleet_claim_by_keys
 from ._watchdog_connect import watchdog_connect
 from ._func1 import func1
@@ -57,6 +58,7 @@ commands = [
     server_history,
     info_supported_instances,
     fleet_claim_by_id,
+    local_watchdog_connect,
     fleet_claim_by_keys,
     watchdog_connect,
     func1,

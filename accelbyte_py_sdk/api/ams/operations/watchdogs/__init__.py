@@ -8,10 +8,11 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.0.1"
+__version__ = "1.2.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .local_watchdog_connect import LocalWatchdogConnect
 from .watchdog_connect import WatchdogConnect

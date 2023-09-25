@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.0.1"
+__version__ = "1.2.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -77,5 +77,7 @@ from .wrappers import server_history
 from .wrappers import server_history_async
 
 # watchdogs
+from .wrappers import local_watchdog_connect
+from .wrappers import local_watchdog_connect_async
 from .wrappers import watchdog_connect
 from .wrappers import watchdog_connect_async

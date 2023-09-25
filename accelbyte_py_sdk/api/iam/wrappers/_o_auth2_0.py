@@ -1050,7 +1050,7 @@ def get_revocation_list_v3(
 
 
 
-    This endpoint requires authorized requests header with valid access token.
+    This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
 
 
 
@@ -1095,7 +1095,7 @@ async def get_revocation_list_v3_async(
 
 
 
-    This endpoint requires authorized requests header with valid access token.
+    This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
 
 
 

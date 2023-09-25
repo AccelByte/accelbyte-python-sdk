@@ -109,6 +109,7 @@ from ..models import ModelUserCreateResponse
 from ..models import ModelUserCreateResponseV3
 from ..models import ModelUserDeletionStatusResponse
 from ..models import ModelUserIDsRequest
+from ..models import ModelUserIdentityUpdateRequestV3
 from ..models import ModelUserInformation
 from ..models import ModelUserInvitationV3
 from ..models import ModelUserPasswordUpdateRequest
@@ -176,6 +177,7 @@ from ..operations.users import AdminSaveUserRoleV3
 from ..operations.users import AdminSearchUserV3
 from ..operations.users import AdminSearchUsersV2
 from ..operations.users import AdminSendVerificationCodeV3
+from ..operations.users import AdminTrustlyUpdateUserIdentity
 from ..operations.users import AdminUpdateAgeRestrictionConfigV2
 from ..operations.users import AdminUpdateAgeRestrictionConfigV3
 from ..operations.users import AdminUpdateCountryAgeRestrictionV3
@@ -6234,6 +6236,7 @@ def admin_list_users_v3(
 
     This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
 
+     This endpoint requires publisher namespace.
     Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
     doesn't have Justice platform account, the linkedPlatforms will be empty array.'
 
@@ -6294,6 +6297,7 @@ async def admin_list_users_v3_async(
 
     This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
 
+     This endpoint requires publisher namespace.
     Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
     doesn't have Justice platform account, the linkedPlatforms will be empty array.'
 
@@ -8243,6 +8247,172 @@ async def admin_send_verification_code_v3_async(
         if error:
             return None, error
     request = AdminSendVerificationCodeV3.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminTrustlyUpdateUserIdentity)
+def admin_trustly_update_user_identity(
+    body: ModelUserIdentityUpdateRequestV3,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update User Identity (AdminTrustlyUpdateUserIdentity)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:IDENTITY [UPDATE]'
+
+
+
+
+
+    This endpoint ONLY accept Client Token
+
+
+
+
+    This endpoint is utilized for specific scenarios where email notifications are disabled
+
+
+
+
+    The user's email will be marked as verified
+
+
+
+
+    action code : 10103
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:IDENTITY [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/trustly/identity
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserIdentityUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminTrustlyUpdateUserIdentity.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminTrustlyUpdateUserIdentity)
+async def admin_trustly_update_user_identity_async(
+    body: ModelUserIdentityUpdateRequestV3,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update User Identity (AdminTrustlyUpdateUserIdentity)
+
+    Required permission 'ADMIN:NAMESPACE:{namespace}:IDENTITY [UPDATE]'
+
+
+
+
+
+    This endpoint ONLY accept Client Token
+
+
+
+
+    This endpoint is utilized for specific scenarios where email notifications are disabled
+
+
+
+
+    The user's email will be marked as verified
+
+
+
+
+    action code : 10103
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:IDENTITY [UPDATE]
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/trustly/identity
+
+        method: PATCH
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUserIdentityUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminTrustlyUpdateUserIdentity.create(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -10748,6 +10918,8 @@ def create_user_from_invitation_v3(
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
@@ -10807,6 +10979,8 @@ async def create_user_from_invitation_v3_async(
         201: Created - ModelUserCreateResponseV3 (Created)
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
@@ -16123,6 +16297,8 @@ def public_create_user_v3(
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
 
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
         404: Not Found - RestErrorResponse (10154: country not found)
 
         409: Conflict - RestErrorResponse (10133: email already used)
@@ -16198,6 +16374,8 @@ async def public_create_user_v3_async(
         201: Created - ModelUserCreateResponseV3 (Created)
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
@@ -19275,6 +19453,8 @@ def public_partial_update_user_v3(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
         409: Conflict - RestErrorResponse (10133: email already used)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
@@ -19362,6 +19542,8 @@ async def public_partial_update_user_v3_async(
         400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
         409: Conflict - RestErrorResponse (10133: email already used)
 
@@ -19915,8 +20097,15 @@ def public_platform_unlink_all_v3(
 
     Required valid user authorization.
 
+    Unlink user's account from third platform in all namespaces.
 
-    Unlink user's account from for all third platforms.
+    This API support to handling platform group use case:
+    i.e.
+    1. Steam group: steam, steamopenid
+    2. PSN group: ps4, ps5, psnweb
+    3. XBOX group: live, xblweb
+
+    Example: if user unlink from ps4, the API logic will unlink ps5 and psnweb as well.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all
@@ -19968,8 +20157,15 @@ async def public_platform_unlink_all_v3_async(
 
     Required valid user authorization.
 
+    Unlink user's account from third platform in all namespaces.
 
-    Unlink user's account from for all third platforms.
+    This API support to handling platform group use case:
+    i.e.
+    1. Steam group: steam, steamopenid
+    2. PSN group: ps4, ps5, psnweb
+    3. XBOX group: live, xblweb
+
+    Example: if user unlink from ps4, the API logic will unlink ps5 and psnweb as well.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all

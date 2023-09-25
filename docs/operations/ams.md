@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.0.1)
+# Fleet Commander Index (1.2.1)
 
 
 ## Operations
@@ -62,6 +62,7 @@
 ### Watchdogs
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /ams/v1/namespaces/{namespace}/local/{watchdogID}/connect | GET | LocalWatchdogConnect | `false` | [LocalWatchdogConnect](../../accelbyte_py_sdk/api/ams/operations/watchdogs/local_watchdog_connect.py) | [local_watchdog_connect](../../accelbyte_py_sdk/api/ams/wrappers/_watchdogs.py) | [accelbyte_py_sdk_cli ams-local-watchdog-connect](../../samples/cli/accelbyte_py_sdk_cli/ams/_local_watchdog_connect.py) |
 | /ams/v1/namespaces/{namespace}/watchdogs/{watchdogID}/connect | GET | WatchdogConnect | `false` | [WatchdogConnect](../../accelbyte_py_sdk/api/ams/operations/watchdogs/watchdog_connect.py) | [watchdog_connect](../../accelbyte_py_sdk/api/ams/wrappers/_watchdogs.py) | [accelbyte_py_sdk_cli ams-watchdog-connect](../../samples/cli/accelbyte_py_sdk_cli/ams/_watchdog_connect.py) |
 
 
@@ -70,6 +71,7 @@
 |---|---|
 | api.AccountCreateRequest | [ApiAccountCreateRequest](../../accelbyte_py_sdk/api/ams/models/api_account_create_request.py) |
 | api.AccountCreateResponse | [ApiAccountCreateResponse](../../accelbyte_py_sdk/api/ams/models/api_account_create_response.py) |
+| api.AccountLimits | [ApiAccountLimits](../../accelbyte_py_sdk/api/ams/models/api_account_limits.py) |
 | api.AccountLinkRequest | [ApiAccountLinkRequest](../../accelbyte_py_sdk/api/ams/models/api_account_link_request.py) |
 | api.AccountLinkResponse | [ApiAccountLinkResponse](../../accelbyte_py_sdk/api/ams/models/api_account_link_response.py) |
 | api.AccountLinkTokenResponse | [ApiAccountLinkTokenResponse](../../accelbyte_py_sdk/api/ams/models/api_account_link_token_response.py) |
@@ -99,6 +101,7 @@
 | api.InstanceTypeDescriptionResponse | [ApiInstanceTypeDescriptionResponse](../../accelbyte_py_sdk/api/ams/models/api_instance_type_description_response.py) |
 | api.PagingInfo | [ApiPagingInfo](../../accelbyte_py_sdk/api/ams/models/api_paging_info.py) |
 | api.PortConfiguration | [ApiPortConfiguration](../../accelbyte_py_sdk/api/ams/models/api_port_configuration.py) |
+| api.QOSServer | [ApiQOSServer](../../accelbyte_py_sdk/api/ams/models/api_qos_server.py) |
 | api.ReferencingFleet | [ApiReferencingFleet](../../accelbyte_py_sdk/api/ams/models/api_referencing_fleet.py) |
 | api.RegionConfig | [ApiRegionConfig](../../accelbyte_py_sdk/api/ams/models/api_region_config.py) |
 | api.RegionsResponse | [ApiRegionsResponse](../../accelbyte_py_sdk/api/ams/models/api_regions_response.py) |

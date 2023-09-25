@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.4.1)
+# AccelByte Gaming Services Dsm Controller Service (6.4.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,8 @@ class ModelsImageRecordUpdate(Model):
     Properties:
         artifact_path: (artifactPath) REQUIRED str
 
+        core_dump_enabled: (coreDumpEnabled) REQUIRED bool
+
         image: (image) REQUIRED str
 
         image_replications_map: (imageReplicationsMap) REQUIRED Dict[str, ModelsImageReplication]
@@ -52,6 +54,7 @@ class ModelsImageRecordUpdate(Model):
     # region fields
 
     artifact_path: str  # REQUIRED
+    core_dump_enabled: bool  # REQUIRED
     image: str  # REQUIRED
     image_replications_map: Dict[str, ModelsImageReplication]  # REQUIRED
     namespace: str  # REQUIRED
@@ -65,6 +68,10 @@ class ModelsImageRecordUpdate(Model):
 
     def with_artifact_path(self, value: str) -> ModelsImageRecordUpdate:
         self.artifact_path = value
+        return self
+
+    def with_core_dump_enabled(self, value: bool) -> ModelsImageRecordUpdate:
+        self.core_dump_enabled = value
         return self
 
     def with_image(self, value: str) -> ModelsImageRecordUpdate:
@@ -103,6 +110,10 @@ class ModelsImageRecordUpdate(Model):
             result["artifactPath"] = str(self.artifact_path)
         elif include_empty:
             result["artifactPath"] = ""
+        if hasattr(self, "core_dump_enabled"):
+            result["coreDumpEnabled"] = bool(self.core_dump_enabled)
+        elif include_empty:
+            result["coreDumpEnabled"] = False
         if hasattr(self, "image"):
             result["image"] = str(self.image)
         elif include_empty:
@@ -140,6 +151,7 @@ class ModelsImageRecordUpdate(Model):
     def create(
         cls,
         artifact_path: str,
+        core_dump_enabled: bool,
         image: str,
         image_replications_map: Dict[str, ModelsImageReplication],
         namespace: str,
@@ -150,6 +162,7 @@ class ModelsImageRecordUpdate(Model):
     ) -> ModelsImageRecordUpdate:
         instance = cls()
         instance.artifact_path = artifact_path
+        instance.core_dump_enabled = core_dump_enabled
         instance.image = image
         instance.image_replications_map = image_replications_map
         instance.namespace = namespace
@@ -169,6 +182,10 @@ class ModelsImageRecordUpdate(Model):
             instance.artifact_path = str(dict_["artifactPath"])
         elif include_empty:
             instance.artifact_path = ""
+        if "coreDumpEnabled" in dict_ and dict_["coreDumpEnabled"] is not None:
+            instance.core_dump_enabled = bool(dict_["coreDumpEnabled"])
+        elif include_empty:
+            instance.core_dump_enabled = False
         if "image" in dict_ and dict_["image"] is not None:
             instance.image = str(dict_["image"])
         elif include_empty:
@@ -245,6 +262,7 @@ class ModelsImageRecordUpdate(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "artifactPath": "artifact_path",
+            "coreDumpEnabled": "core_dump_enabled",
             "image": "image",
             "imageReplicationsMap": "image_replications_map",
             "namespace": "namespace",
@@ -257,6 +275,7 @@ class ModelsImageRecordUpdate(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "artifactPath": True,
+            "coreDumpEnabled": True,
             "image": True,
             "imageReplicationsMap": True,
             "namespace": True,

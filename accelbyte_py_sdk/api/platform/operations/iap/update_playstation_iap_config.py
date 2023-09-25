@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.34.1)
+# AccelByte Gaming Services Platform Service (4.36.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import PlayStationIAPConfigInfo
 from ...models import PlaystationIAPConfigRequest
 
@@ -63,6 +64,8 @@ class UpdatePlaystationIAPConfig(Operation):
 
     Responses:
         200: OK - PlayStationIAPConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39130: Invalid playstation config: [{message}])
     """
 
     # region fields
@@ -171,10 +174,14 @@ class UpdatePlaystationIAPConfig(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, PlayStationIAPConfigInfo], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, PlayStationIAPConfigInfo], Union[None, ErrorEntity, HttpResponse]
+    ]:
         """Parse the given response.
 
         200: OK - PlayStationIAPConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39130: Invalid playstation config: [{message}])
 
         ---: HttpResponse (Undocumented Response)
 
@@ -191,6 +198,8 @@ class UpdatePlaystationIAPConfig(Operation):
 
         if code == 200:
             return PlayStationIAPConfigInfo.create_from_dict(content), None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

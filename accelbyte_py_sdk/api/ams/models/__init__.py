@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.0.1"
+__version__ = "1.2.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,6 +16,7 @@ __email__ = "dev@accelbyte.net"
 
 from .api_account_create_request import ApiAccountCreateRequest
 from .api_account_create_response import ApiAccountCreateResponse
+from .api_account_limits import ApiAccountLimits
 from .api_account_link_request import ApiAccountLinkRequest
 from .api_account_link_response import ApiAccountLinkResponse
 from .api_account_link_token_response import ApiAccountLinkTokenResponse
@@ -45,6 +46,7 @@ from .api_image_update import ApiImageUpdate
 from .api_instance_type_description_response import ApiInstanceTypeDescriptionResponse
 from .api_paging_info import ApiPagingInfo
 from .api_port_configuration import ApiPortConfiguration
+from .api_qos_server import ApiQOSServer
 from .api_referencing_fleet import ApiReferencingFleet
 from .api_region_config import ApiRegionConfig
 from .api_regions_response import ApiRegionsResponse

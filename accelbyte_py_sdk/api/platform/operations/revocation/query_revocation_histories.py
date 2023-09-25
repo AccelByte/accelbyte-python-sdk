@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.34.1)
+# AccelByte Gaming Services Platform Service (4.36.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,6 +35,7 @@ from ...models import RevocationHistoryPagingSlicedResult
 
 class SourceEnum(StrEnum):
     DLC = "DLC"
+    IAP = "IAP"
     ORDER = "ORDER"
     OTHER = "OTHER"
 
@@ -409,7 +410,7 @@ class QueryRevocationHistories(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "source": ["DLC", "ORDER", "OTHER"],  # in query
+            "source": ["DLC", "IAP", "ORDER", "OTHER"],  # in query
             "status": ["FAIL", "SUCCESS"],  # in query
         }
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.1.0)
+# AccelByte Gaming Services Iam Service (7.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -82,7 +82,7 @@ class PlatformTokenRefreshV3(Operation):
       * for specific generic oauth (OIDC) : The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
 
     Properties:
-        url: /iam/v3/v3/platforms/{platformId}/token/verify
+        url: /iam/v3/platforms/{platformId}/token/verify
 
         method: POST
 
@@ -112,7 +112,7 @@ class PlatformTokenRefreshV3(Operation):
 
     # region fields
 
-    _url: str = "/iam/v3/v3/platforms/{platformId}/token/verify"
+    _url: str = "/iam/v3/platforms/{platformId}/token/verify"
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]

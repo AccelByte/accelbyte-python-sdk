@@ -31,8 +31,6 @@ from ....core import same_doc_as
 
 from ..models import ErrorEntity
 from ..models import FulfillmentScriptCreate
-from ..models import FulfillmentScriptEvalTestRequest
-from ..models import FulfillmentScriptEvalTestResult
 from ..models import FulfillmentScriptInfo
 from ..models import FulfillmentScriptUpdate
 
@@ -40,9 +38,7 @@ from ..operations.fulfillment_script import CreateFulfillmentScript
 from ..operations.fulfillment_script import DeleteFulfillmentScript
 from ..operations.fulfillment_script import GetFulfillmentScript
 from ..operations.fulfillment_script import ListFulfillmentScripts
-from ..operations.fulfillment_script import TestFulfillmentScriptEval
 from ..operations.fulfillment_script import UpdateFulfillmentScript
-from ..models import FulfillmentScriptEvalTestRequestTypeEnum
 
 
 @same_doc_as(CreateFulfillmentScript)
@@ -54,7 +50,7 @@ def create_fulfillment_script(
 ):
     """Create fulfillment script (createFulfillmentScript)
 
-    Create fulfillment script.
+    [AGS Premium Feature] Create fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
@@ -104,7 +100,7 @@ async def create_fulfillment_script_async(
 ):
     """Create fulfillment script (createFulfillmentScript)
 
-    Create fulfillment script.
+    [AGS Premium Feature] Create fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
@@ -379,88 +375,6 @@ async def list_fulfillment_scripts_async(
     )
 
 
-@same_doc_as(TestFulfillmentScriptEval)
-def test_fulfillment_script_eval(
-    body: Optional[FulfillmentScriptEvalTestRequest] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Test eval fulfillment script (testFulfillmentScriptEval)
-
-    [TEST FACILITY ONLY] Test eval fulfillment script.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [READ]
-
-    Properties:
-        url: /platform/admin/fulfillment/scripts/tests/eval
-
-        method: POST
-
-        tags: ["FulfillmentScript"]
-
-        consumes: ["application/json"]
-
-        produces: []
-
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
-
-        body: (body) OPTIONAL FulfillmentScriptEvalTestRequest in body
-
-    Responses:
-        200: OK - FulfillmentScriptEvalTestResult (successful operation)
-    """
-    request = TestFulfillmentScriptEval.create(
-        body=body,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(TestFulfillmentScriptEval)
-async def test_fulfillment_script_eval_async(
-    body: Optional[FulfillmentScriptEvalTestRequest] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Test eval fulfillment script (testFulfillmentScriptEval)
-
-    [TEST FACILITY ONLY] Test eval fulfillment script.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [READ]
-
-    Properties:
-        url: /platform/admin/fulfillment/scripts/tests/eval
-
-        method: POST
-
-        tags: ["FulfillmentScript"]
-
-        consumes: ["application/json"]
-
-        produces: []
-
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
-
-        body: (body) OPTIONAL FulfillmentScriptEvalTestRequest in body
-
-    Responses:
-        200: OK - FulfillmentScriptEvalTestResult (successful operation)
-    """
-    request = TestFulfillmentScriptEval.create(
-        body=body,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
 @same_doc_as(UpdateFulfillmentScript)
 def update_fulfillment_script(
     id_: str,
@@ -470,7 +384,7 @@ def update_fulfillment_script(
 ):
     """Update fulfillment script (updateFulfillmentScript)
 
-    Update fulfillment script.
+    [AGS Premium Feature] Update fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=4 (UPDATE)
@@ -516,7 +430,7 @@ async def update_fulfillment_script_async(
 ):
     """Update fulfillment script (updateFulfillmentScript)
 
-    Update fulfillment script.
+    [AGS Premium Feature] Update fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=4 (UPDATE)

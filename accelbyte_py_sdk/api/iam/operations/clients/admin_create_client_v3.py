@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.1.0)
+# AccelByte Gaming Services Iam Service (7.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,8 +41,15 @@ class AdminCreateClientV3(Operation):
 
     A new client automatically granted with these scopes: commerce, account, analytics, publishing, social.
 
-    In multi tenant mode, new confidential client will have default client role assigned to it. The role will have all
+    Note for Multi Tenant Mode:
+
+    New Confidential Client will have Default Client Role assigned to it. The role will have all
     permissions to access all APIs that's supported by game server SDK and DS uploader.
+
+    However if Game Admin create Confidential Client and the permission(s) are specified in request body,
+    then the Default Client Role will not be assigned.
+
+    But in this case, the assigned permissions will be restricted in the Default Client Permission collection only.
 
     action code: 10301
 

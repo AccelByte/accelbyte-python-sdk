@@ -56,7 +56,7 @@ def create_match_ticket(
 
     Creates a new request for matchmaking.
 
-    Cross Platform: Allow player to play game with "any" registered plaftforms.
+    Cross Platform: Allow player to play game with "any" registered platforms.
     1. Cross Platform can be enabled through session service or create match ticket.
     a. via ticket: specify several cross_platform on create match ticket attributes.
     This value will override player attributes in session service. e.g. cross_platform:[xbox,psn,steam]
@@ -146,7 +146,7 @@ async def create_match_ticket_async(
 
     Creates a new request for matchmaking.
 
-    Cross Platform: Allow player to play game with "any" registered plaftforms.
+    Cross Platform: Allow player to play game with "any" registered platforms.
     1. Cross Platform can be enabled through session service or create match ticket.
     a. via ticket: specify several cross_platform on create match ticket attributes.
     This value will override player attributes in session service. e.g. cross_platform:[xbox,psn,steam]

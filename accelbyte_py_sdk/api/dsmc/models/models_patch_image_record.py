@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Dsm Controller Service (6.4.1)
+# AccelByte Gaming Services Dsm Controller Service (6.4.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -58,6 +58,8 @@ class ModelsPatchImageRecord(Model):
 
         persistent: (persistent) REQUIRED bool
 
+        ulimit_file_size: (ulimitFileSize) REQUIRED int
+
         updated_at: (updatedAt) REQUIRED str
 
         uploader_flag: (uploaderFlag) REQUIRED str
@@ -79,6 +81,7 @@ class ModelsPatchImageRecord(Model):
     namespace: str  # REQUIRED
     patch_version: str  # REQUIRED
     persistent: bool  # REQUIRED
+    ulimit_file_size: int  # REQUIRED
     updated_at: str  # REQUIRED
     uploader_flag: str  # REQUIRED
     version: str  # REQUIRED
@@ -137,6 +140,10 @@ class ModelsPatchImageRecord(Model):
 
     def with_persistent(self, value: bool) -> ModelsPatchImageRecord:
         self.persistent = value
+        return self
+
+    def with_ulimit_file_size(self, value: int) -> ModelsPatchImageRecord:
+        self.ulimit_file_size = value
         return self
 
     def with_updated_at(self, value: str) -> ModelsPatchImageRecord:
@@ -211,6 +218,10 @@ class ModelsPatchImageRecord(Model):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
             result["persistent"] = False
+        if hasattr(self, "ulimit_file_size"):
+            result["ulimitFileSize"] = int(self.ulimit_file_size)
+        elif include_empty:
+            result["ulimitFileSize"] = 0
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -244,6 +255,7 @@ class ModelsPatchImageRecord(Model):
         namespace: str,
         patch_version: str,
         persistent: bool,
+        ulimit_file_size: int,
         updated_at: str,
         uploader_flag: str,
         version: str,
@@ -262,6 +274,7 @@ class ModelsPatchImageRecord(Model):
         instance.namespace = namespace
         instance.patch_version = patch_version
         instance.persistent = persistent
+        instance.ulimit_file_size = ulimit_file_size
         instance.updated_at = updated_at
         instance.uploader_flag = uploader_flag
         instance.version = version
@@ -333,6 +346,10 @@ class ModelsPatchImageRecord(Model):
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
             instance.persistent = False
+        if "ulimitFileSize" in dict_ and dict_["ulimitFileSize"] is not None:
+            instance.ulimit_file_size = int(dict_["ulimitFileSize"])
+        elif include_empty:
+            instance.ulimit_file_size = 0
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -400,6 +417,7 @@ class ModelsPatchImageRecord(Model):
             "namespace": "namespace",
             "patchVersion": "patch_version",
             "persistent": "persistent",
+            "ulimitFileSize": "ulimit_file_size",
             "updatedAt": "updated_at",
             "uploaderFlag": "uploader_flag",
             "version": "version",
@@ -420,6 +438,7 @@ class ModelsPatchImageRecord(Model):
             "namespace": True,
             "patchVersion": True,
             "persistent": True,
+            "ulimitFileSize": True,
             "updatedAt": True,
             "uploaderFlag": True,
             "version": True,

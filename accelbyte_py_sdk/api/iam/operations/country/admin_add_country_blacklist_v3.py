@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.34.1)
+# AccelByte Gaming Services Iam Service (7.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,50 +29,60 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import FulfillmentScriptEvalTestRequest
-from ...models import FulfillmentScriptEvalTestResult
+from ...models import ModelCountryBlacklistRequest
+from ...models import RestErrorResponse
 
 
-class TestFulfillmentScriptEval(Operation):
-    """Test eval fulfillment script (testFulfillmentScriptEval)
+class AdminAddCountryBlacklistV3(Operation):
+    """Update Country Blacklist (AdminAddCountryBlacklistV3)
 
-    [TEST FACILITY ONLY] Test eval fulfillment script.
-    Other detail info:
+    Admin update country blacklist:
 
-      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
 
     Required Permission(s):
-        - ADMIN:FULFILLMENT [READ]
+        - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
 
     Properties:
-        url: /platform/admin/fulfillment/scripts/tests/eval
+        url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist
 
         method: POST
 
-        tags: ["FulfillmentScript"]
+        tags: ["Country"]
 
         consumes: ["application/json"]
 
-        produces: []
+        produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillmentScriptEvalTestRequest in body
+        body: (body) REQUIRED ModelCountryBlacklistRequest in body
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - FulfillmentScriptEvalTestResult (successful operation)
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/fulfillment/scripts/tests/eval"
+    _url: str = "/iam/v3/admin/namespaces/{namespace}/countries/blacklist"
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
-    _produces: List[str] = []
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _produces: List[str] = ["application/json"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: FulfillmentScriptEvalTestRequest  # OPTIONAL in [body]
+    body: ModelCountryBlacklistRequest  # REQUIRED in [body]
+    namespace: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -113,12 +123,19 @@ class TestFulfillmentScriptEval(Operation):
     def get_all_params(self) -> dict:
         return {
             "body": self.get_body_params(),
+            "path": self.get_path_params(),
         }
 
     def get_body_params(self) -> Any:
         if not hasattr(self, "body") or self.body is None:
             return None
         return self.body.to_dict()
+
+    def get_path_params(self) -> dict:
+        result = {}
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        return result
 
     # endregion get_x_params methods
 
@@ -129,9 +146,13 @@ class TestFulfillmentScriptEval(Operation):
     # region with_x methods
 
     def with_body(
-        self, value: FulfillmentScriptEvalTestRequest
-    ) -> TestFulfillmentScriptEval:
+        self, value: ModelCountryBlacklistRequest
+    ) -> AdminAddCountryBlacklistV3:
         self.body = value
+        return self
+
+    def with_namespace(self, value: str) -> AdminAddCountryBlacklistV3:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -143,7 +164,11 @@ class TestFulfillmentScriptEval(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = FulfillmentScriptEvalTestRequest()
+            result["body"] = ModelCountryBlacklistRequest()
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -153,10 +178,18 @@ class TestFulfillmentScriptEval(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, FulfillmentScriptEvalTestResult], Union[None, HttpResponse]]:
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
-        200: OK - FulfillmentScriptEvalTestResult (successful operation)
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -171,8 +204,16 @@ class TestFulfillmentScriptEval(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return FulfillmentScriptEvalTestResult.create_from_dict(content), None
+        if code == 204:
+            return None, None
+        if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 401:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 403:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -184,36 +225,42 @@ class TestFulfillmentScriptEval(Operation):
 
     @classmethod
     def create(
-        cls, body: Optional[FulfillmentScriptEvalTestRequest] = None, **kwargs
-    ) -> TestFulfillmentScriptEval:
+        cls, body: ModelCountryBlacklistRequest, namespace: str, **kwargs
+    ) -> AdminAddCountryBlacklistV3:
         instance = cls()
-        if body is not None:
-            instance.body = body
+        instance.body = body
+        instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> TestFulfillmentScriptEval:
+    ) -> AdminAddCountryBlacklistV3:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = FulfillmentScriptEvalTestRequest.create_from_dict(
+            instance.body = ModelCountryBlacklistRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = FulfillmentScriptEvalTestRequest()
+            instance.body = ModelCountryBlacklistRequest()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
+            "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
+            "namespace": True,
         }
 
     # endregion static methods

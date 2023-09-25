@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.34.1"
+__version__ = "4.36.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,5 +18,4 @@ from .create_fulfillment_script import CreateFulfillmentScript
 from .delete_fulfillment_script import DeleteFulfillmentScript
 from .get_fulfillment_script import GetFulfillmentScript
 from .list_fulfillment_scripts import ListFulfillmentScripts
-from .test_fulfillment_script_eval import TestFulfillmentScriptEval
 from .update_fulfillment_script import UpdateFulfillmentScript

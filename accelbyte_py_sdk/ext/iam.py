@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.1.0)
+# AccelByte Gaming Services Iam Service (7.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -118,6 +118,9 @@ from ..api.iam.models import ModelCheckValidUserIDRequestV4
 from ..api.iam.models import ModelCountry
 from ..api.iam.models import ModelCountryAgeRestrictionRequest
 from ..api.iam.models import ModelCountryAgeRestrictionV3Request
+from ..api.iam.models import ModelCountryBlacklistRequest
+from ..api.iam.models import ModelCountryBlacklistResponse
+from ..api.iam.models import ModelCountryResponse
 from ..api.iam.models import ModelCountryV3Response
 from ..api.iam.models import ModelCreateJusticeUserResponse
 from ..api.iam.models import ModelDeviceBanRequestV4
@@ -245,6 +248,7 @@ from ..api.iam.models import ModelUserCreateResponse
 from ..api.iam.models import ModelUserCreateResponseV3
 from ..api.iam.models import ModelUserDeletionStatusResponse
 from ..api.iam.models import ModelUserIDsRequest
+from ..api.iam.models import ModelUserIdentityUpdateRequestV3
 from ..api.iam.models import ModelUserInfoResponse
 from ..api.iam.models import ModelUserInformation
 from ..api.iam.models import ModelUserInvitationV3
@@ -1243,6 +1247,25 @@ def create_model_country_age_restriction_v3_request_example() -> (
 ):
     instance = ModelCountryAgeRestrictionV3Request()
     instance.age_restriction = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_model_country_blacklist_request_example() -> ModelCountryBlacklistRequest:
+    instance = ModelCountryBlacklistRequest()
+    instance.blacklist = [randomize()]
+    return instance
+
+
+def create_model_country_blacklist_response_example() -> ModelCountryBlacklistResponse:
+    instance = ModelCountryBlacklistResponse()
+    instance.blacklist = [randomize()]
+    return instance
+
+
+def create_model_country_response_example() -> ModelCountryResponse:
+    instance = ModelCountryResponse()
+    instance.code = randomize()
+    instance.name = randomize()
     return instance
 
 
@@ -2472,6 +2495,15 @@ def create_model_user_deletion_status_response_example() -> (
 def create_model_user_i_ds_request_example() -> ModelUserIDsRequest:
     instance = ModelUserIDsRequest()
     instance.user_ids = [randomize()]
+    return instance
+
+
+def create_model_user_identity_update_request_v3_example() -> (
+    ModelUserIdentityUpdateRequestV3
+):
+    instance = ModelUserIdentityUpdateRequestV3()
+    instance.email_address = randomize("email")
+    instance.password = randomize("password")
     return instance
 
 

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Basic Service (2.11.0)
+# AGS Basic Service (2.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -69,4 +69,4 @@ def public_get_countries(
 
 
 public_get_countries.operation_id = "publicGetCountries"
-public_get_countries.is_deprecated = False
+public_get_countries.is_deprecated = True

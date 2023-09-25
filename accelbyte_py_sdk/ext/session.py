@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.3.0)
+# AccelByte Gaming Services Session Service (3.7.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -68,6 +68,7 @@ from ..api.session.models import ModelsNativeSessionSetting
 from ..api.session.models import ModelsPSNAppServerCredentials
 from ..api.session.models import ModelsPartyMembers
 from ..api.session.models import ModelsPlatformCredentials
+from ..api.session.models import ModelsPortConfigurationAMS
 from ..api.session.models import ModelsTeam
 from ..api.session.models import ModelsUserPlatformInfo
 from ..api.session.models import ResponseError
@@ -235,9 +236,9 @@ def create_apimodels_ds_information_response_example() -> (
 ):
     instance = ApimodelsDSInformationResponse()
     instance.requested_at = randomize()
+    instance.server = create_models_game_server_example()
     instance.status = randomize()
     instance.status_v2 = randomize()
-    instance.server = create_models_game_server_example()
     return instance
 
 
@@ -570,23 +571,24 @@ def create_models_dsm_config_record_example() -> ModelsDSMConfigRecord:
 def create_models_game_server_example() -> ModelsGameServer:
     instance = ModelsGameServer()
     instance.custom_attribute = randomize()
-    instance.deployment = randomize()
-    instance.game_version = randomize("version")
     instance.image_version = randomize()
     instance.ip = randomize()
     instance.is_override_game_version = randomize("bool")
     instance.last_update = randomize("date")
     instance.namespace = randomize("slug")
     instance.pod_name = randomize()
-    instance.port = randomize("int", min_val=1, max_val=1000)
-    instance.ports = {}
-    instance.protocol = randomize()
-    instance.provider = randomize()
     instance.region = randomize()
     instance.session_id = randomize("uid")
     instance.source = randomize()
     instance.status = randomize()
     instance.alternate_ips = [randomize()]
+    instance.ams_protocol = [create_models_port_configuration_ams_example()]
+    instance.deployment = randomize()
+    instance.game_version = randomize("version")
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    instance.ports = {}
+    instance.protocol = randomize()
+    instance.provider = randomize()
     return instance
 
 
@@ -613,6 +615,13 @@ def create_models_platform_credentials_example() -> ModelsPlatformCredentials:
     instance = ModelsPlatformCredentials()
     instance.psn = create_models_psn_app_server_credentials_example()
     instance.updated_at = randomize()
+    return instance
+
+
+def create_models_port_configuration_ams_example() -> ModelsPortConfigurationAMS:
+    instance = ModelsPortConfigurationAMS()
+    instance.name = randomize()
+    instance.protocol = randomize()
     return instance
 
 

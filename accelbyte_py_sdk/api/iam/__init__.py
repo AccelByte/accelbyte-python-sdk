@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.1.0"
+__version__ = "7.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -75,6 +75,16 @@ from .wrappers import update_client_permission
 from .wrappers import update_client_permission_async
 from .wrappers import update_client_secret
 from .wrappers import update_client_secret_async
+
+# country
+from .wrappers import admin_add_country_blacklist_v3
+from .wrappers import admin_add_country_blacklist_v3_async
+from .wrappers import admin_get_country_blacklist_v3
+from .wrappers import admin_get_country_blacklist_v3_async
+from .wrappers import admin_get_country_list_v3
+from .wrappers import admin_get_country_list_v3_async
+from .wrappers import public_get_country_list_v3
+from .wrappers import public_get_country_list_v3_async
 
 # devices_v4
 from .wrappers import admin_ban_device_v4
@@ -179,6 +189,8 @@ from .wrappers import platform_authentication_v3
 from .wrappers import platform_authentication_v3_async
 from .wrappers import platform_token_refresh_v3
 from .wrappers import platform_token_refresh_v3_async
+from .wrappers import platform_token_refresh_v3_deprecate
+from .wrappers import platform_token_refresh_v3_deprecate_async
 from .wrappers import request_game_token_code_response_v3
 from .wrappers import request_game_token_code_response_v3_async
 from .wrappers import request_game_token_response_v3
@@ -441,6 +453,8 @@ from .wrappers import admin_search_users_v2
 from .wrappers import admin_search_users_v2_async
 from .wrappers import admin_send_verification_code_v3
 from .wrappers import admin_send_verification_code_v3_async
+from .wrappers import admin_trustly_update_user_identity
+from .wrappers import admin_trustly_update_user_identity_async
 from .wrappers import admin_update_age_restriction_config_v2
 from .wrappers import admin_update_age_restriction_config_v2_async
 from .wrappers import admin_update_age_restriction_config_v3

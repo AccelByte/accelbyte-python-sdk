@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.34.1"
+__version__ = "4.36.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -119,6 +119,12 @@ from .wrappers import public_get_root_categories
 from .wrappers import public_get_root_categories_async
 from .wrappers import update_category
 from .wrappers import update_category_async
+
+# clawback
+from .wrappers import mock_play_station_stream_event
+from .wrappers import mock_play_station_stream_event_async
+from .wrappers import query_iap_clawback_history
+from .wrappers import query_iap_clawback_history_async
 
 # currency
 from .wrappers import create_currency
@@ -267,6 +273,8 @@ from .wrappers import fulfill_item
 from .wrappers import fulfill_item_async
 from .wrappers import fulfill_rewards
 from .wrappers import fulfill_rewards_async
+from .wrappers import fulfill_rewards_v2
+from .wrappers import fulfill_rewards_v2_async
 from .wrappers import public_redeem_code
 from .wrappers import public_redeem_code_async
 from .wrappers import query_fulfillment_histories
@@ -283,8 +291,6 @@ from .wrappers import get_fulfillment_script
 from .wrappers import get_fulfillment_script_async
 from .wrappers import list_fulfillment_scripts
 from .wrappers import list_fulfillment_scripts_async
-from .wrappers import test_fulfillment_script_eval
-from .wrappers import test_fulfillment_script_eval_async
 from .wrappers import update_fulfillment_script
 from .wrappers import update_fulfillment_script_async
 
@@ -379,6 +385,10 @@ from .wrappers import update_xbl_bp_cert_file
 from .wrappers import update_xbl_bp_cert_file_async
 from .wrappers import update_xbl_iap_config
 from .wrappers import update_xbl_iap_config_async
+from .wrappers import validate_existed_playstation_iap_config
+from .wrappers import validate_existed_playstation_iap_config_async
+from .wrappers import validate_playstation_iap_config
+from .wrappers import validate_playstation_iap_config_async
 
 # invoice
 from .wrappers import download_invoice_details

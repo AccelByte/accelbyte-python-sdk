@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.0.1)
+# Fleet Commander (1.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,7 @@ from .utils import randomize
 
 from ..api.ams.models import ApiAccountCreateRequest
 from ..api.ams.models import ApiAccountCreateResponse
+from ..api.ams.models import ApiAccountLimits
 from ..api.ams.models import ApiAccountLinkRequest
 from ..api.ams.models import ApiAccountLinkResponse
 from ..api.ams.models import ApiAccountLinkTokenResponse
@@ -55,6 +56,7 @@ from ..api.ams.models import ApiImageUpdate
 from ..api.ams.models import ApiInstanceTypeDescriptionResponse
 from ..api.ams.models import ApiPagingInfo
 from ..api.ams.models import ApiPortConfiguration
+from ..api.ams.models import ApiQOSServer
 from ..api.ams.models import ApiReferencingFleet
 from ..api.ams.models import ApiRegionConfig
 from ..api.ams.models import ApiRegionsResponse
@@ -71,8 +73,16 @@ def create_api_account_create_request_example() -> ApiAccountCreateRequest:
 def create_api_account_create_response_example() -> ApiAccountCreateResponse:
     instance = ApiAccountCreateResponse()
     instance.id_ = randomize()
+    instance.limits = create_api_account_limits_example()
     instance.name = randomize()
     instance.namespaces = [randomize()]
+    return instance
+
+
+def create_api_account_limits_example() -> ApiAccountLimits:
+    instance = ApiAccountLimits()
+    instance.fleet_count = randomize("int", min_val=1, max_val=1000)
+    instance.fleet_vm_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -85,6 +95,7 @@ def create_api_account_link_request_example() -> ApiAccountLinkRequest:
 def create_api_account_link_response_example() -> ApiAccountLinkResponse:
     instance = ApiAccountLinkResponse()
     instance.id_ = randomize()
+    instance.limits = create_api_account_limits_example()
     instance.name = randomize()
     instance.namespaces = [randomize()]
     return instance
@@ -99,6 +110,7 @@ def create_api_account_link_token_response_example() -> ApiAccountLinkTokenRespo
 def create_api_account_response_example() -> ApiAccountResponse:
     instance = ApiAccountResponse()
     instance.id_ = randomize()
+    instance.limits = create_api_account_limits_example()
     instance.name = randomize()
     instance.namespaces = [randomize()]
     return instance
@@ -177,6 +189,7 @@ def create_api_fleet_get_response_example() -> ApiFleetGetResponse:
     instance.ds_host_configuration = create_api_ds_host_configuration_example()
     instance.id_ = randomize()
     instance.image_deployment_profile = create_api_image_deployment_profile_example()
+    instance.is_local = randomize("bool")
     instance.name = randomize()
     instance.regions = [create_api_region_config_example()]
     return instance
@@ -353,6 +366,14 @@ def create_api_port_configuration_example() -> ApiPortConfiguration:
     return instance
 
 
+def create_api_qos_server_example() -> ApiQOSServer:
+    instance = ApiQOSServer()
+    instance.host = randomize()
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    instance.region = randomize()
+    return instance
+
+
 def create_api_referencing_fleet_example() -> ApiReferencingFleet:
     instance = ApiReferencingFleet()
     instance.environment = randomize()
@@ -372,6 +393,7 @@ def create_api_region_config_example() -> ApiRegionConfig:
 
 def create_api_regions_response_example() -> ApiRegionsResponse:
     instance = ApiRegionsResponse()
+    instance.qos_servers = [create_api_qos_server_example()]
     instance.regions = [randomize()]
     return instance
 

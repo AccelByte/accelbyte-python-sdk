@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Lobby Server Index (3.27.1)
+# AccelByte Gaming Services Lobby Server Index (3.29.1)
 
 
 ## Operations
@@ -44,6 +44,7 @@
 | /friends/namespaces/{namespace}/me/incoming-time | GET | getUserIncomingFriendsWithTime | `false` | [GetUserIncomingFriendsWithTime](../../accelbyte_py_sdk/api/lobby/operations/friends/get_user_incoming_frien_a30279.py) | [get_user_incoming_friends_with_time](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-user-incoming-friends-with-time](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_user_incoming_friends_with_time.py) |
 | /friends/namespaces/{namespace}/me/outgoing | GET | getUserOutgoingFriends | `false` | [GetUserOutgoingFriends](../../accelbyte_py_sdk/api/lobby/operations/friends/get_user_outgoing_friends.py) | [get_user_outgoing_friends](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-user-outgoing-friends](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_user_outgoing_friends.py) |
 | /friends/namespaces/{namespace}/me/outgoing-time | GET | getUserOutgoingFriendsWithTime | `false` | [GetUserOutgoingFriendsWithTime](../../accelbyte_py_sdk/api/lobby/operations/friends/get_user_outgoing_frien_132c7c.py) | [get_user_outgoing_friends_with_time](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-get-user-outgoing-friends-with-time](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_user_outgoing_friends_with_time.py) |
+| /friends/sync/namespaces/{namespace}/me | PATCH | syncNativeFriends | `false` | [SyncNativeFriends](../../accelbyte_py_sdk/api/lobby/operations/friends/sync_native_friends.py) | [sync_native_friends](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-sync-native-friends](../../samples/cli/accelbyte_py_sdk_cli/lobby/_sync_native_friends.py) |
 | /friends/namespaces/{namespace}/me/request/accept | POST | userAcceptFriendRequest | `false` | [UserAcceptFriendRequest](../../accelbyte_py_sdk/api/lobby/operations/friends/user_accept_friend_request.py) | [user_accept_friend_request](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-user-accept-friend-request](../../samples/cli/accelbyte_py_sdk_cli/lobby/_user_accept_friend_request.py) |
 | /friends/namespaces/{namespace}/me/request/cancel | POST | userCancelFriendRequest | `false` | [UserCancelFriendRequest](../../accelbyte_py_sdk/api/lobby/operations/friends/user_cancel_friend_request.py) | [user_cancel_friend_request](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-user-cancel-friend-request](../../samples/cli/accelbyte_py_sdk_cli/lobby/_user_cancel_friend_request.py) |
 | /friends/namespaces/{namespace}/me/status/{friendId} | GET | userGetFriendshipStatus | `false` | [UserGetFriendshipStatus](../../accelbyte_py_sdk/api/lobby/operations/friends/user_get_friendship_status.py) | [user_get_friendship_status](../../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) | [accelbyte_py_sdk_cli lobby-user-get-friendship-status](../../samples/cli/accelbyte_py_sdk_cli/lobby/_user_get_friendship_status.py) |
@@ -157,6 +158,7 @@
 | model.CreateTopicRequestV1 | [ModelCreateTopicRequestV1](../../accelbyte_py_sdk/api/lobby/models/model_create_topic_request_v1.py) |
 | model.FreeFormNotificationRequest | [ModelFreeFormNotificationRequest](../../accelbyte_py_sdk/api/lobby/models/model_free_form_notification_request.py) |
 | model.FreeFormNotificationRequestV1 | [ModelFreeFormNotificationRequestV1](../../accelbyte_py_sdk/api/lobby/models/model_free_form_notification_request_v1.py) |
+| model.FriendWithPlatform | [ModelFriendWithPlatform](../../accelbyte_py_sdk/api/lobby/models/model_friend_with_platform.py) |
 | model.GetAllNotificationTemplateSlugResp | [ModelGetAllNotificationTemplateSlugResp](../../accelbyte_py_sdk/api/lobby/models/model_get_all_notification_template_slug_resp.py) |
 | model.GetAllNotificationTopicsResponse | [ModelGetAllNotificationTopicsResponse](../../accelbyte_py_sdk/api/lobby/models/model_get_all_notification_topics_response.py) |
 | model.GetFriendsResponse | [ModelGetFriendsResponse](../../accelbyte_py_sdk/api/lobby/models/model_get_friends_response.py) |
@@ -168,6 +170,8 @@
 | model.LoadIncomingFriendsWithTimeResponse | [ModelLoadIncomingFriendsWithTimeResponse](../../accelbyte_py_sdk/api/lobby/models/model_load_incoming_friends_with_time_response.py) |
 | model.LoadOutgoingFriendsWithTimeResponse | [ModelLoadOutgoingFriendsWithTimeResponse](../../accelbyte_py_sdk/api/lobby/models/model_load_outgoing_friends_with_time_response.py) |
 | model.Localization | [ModelLocalization](../../accelbyte_py_sdk/api/lobby/models/model_localization.py) |
+| model.NativeFriendRequest | [ModelNativeFriendRequest](../../accelbyte_py_sdk/api/lobby/models/model_native_friend_request.py) |
+| model.NativeFriendSyncResponse | [ModelNativeFriendSyncResponse](../../accelbyte_py_sdk/api/lobby/models/model_native_friend_sync_response.py) |
 | model.NotificationTemplateResponse | [ModelNotificationTemplateResponse](../../accelbyte_py_sdk/api/lobby/models/model_notification_template_response.py) |
 | model.NotificationTopicResponse | [ModelNotificationTopicResponse](../../accelbyte_py_sdk/api/lobby/models/model_notification_topic_response.py) |
 | model.NotificationTopicResponseV1 | [ModelNotificationTopicResponseV1](../../accelbyte_py_sdk/api/lobby/models/model_notification_topic_response_v1.py) |

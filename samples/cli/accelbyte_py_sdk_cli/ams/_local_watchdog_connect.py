@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.34.1)
+# Fleet Commander (1.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,46 +30,41 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    test_fulfillment_script_eval as test_fulfillment_script_eval_internal,
+from accelbyte_py_sdk.api.ams import (
+    local_watchdog_connect as local_watchdog_connect_internal,
 )
-from accelbyte_py_sdk.api.platform.models import FulfillmentScriptEvalTestRequest
-from accelbyte_py_sdk.api.platform.models import FulfillmentScriptEvalTestResult
 
 
 @click.command()
-@click.option("--body", "body", type=str)
+@click.argument("watchdog_id", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def test_fulfillment_script_eval(
-    body: Optional[str] = None,
+def local_watchdog_connect(
+    watchdog_id: str,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(test_fulfillment_script_eval_internal.__doc__)
+        click.echo(local_watchdog_connect_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if body is not None:
-        try:
-            body_json = json.loads(body)
-            body = FulfillmentScriptEvalTestRequest.create_from_dict(body_json)
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = test_fulfillment_script_eval_internal(
-        body=body,
+    result, error = local_watchdog_connect_internal(
+        watchdog_id=watchdog_id,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"testFulfillmentScriptEval failed: {str(error)}")
+        raise Exception(f"LocalWatchdogConnect failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-test_fulfillment_script_eval.operation_id = "testFulfillmentScriptEval"
-test_fulfillment_script_eval.is_deprecated = False
+local_watchdog_connect.operation_id = "LocalWatchdogConnect"
+local_watchdog_connect.is_deprecated = False

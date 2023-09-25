@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Ugc Service Index (2.12.0)
+# AccelByte Gaming Services Ugc Service Index (2.14.0)
 
 
 ## Operations
@@ -38,6 +38,8 @@
 | /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents | POST | AdminUploadContentDirect | `true` | [AdminUploadContentDirect](../../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_upload_content_direct.py) | [admin_upload_content_direct](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-admin-upload-content-direct](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_upload_content_direct.py) |
 | /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/s3 | POST | AdminUploadContentS3 | `false` | [AdminUploadContentS3](../../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_upload_content_s3.py) | [admin_upload_content_s3](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-admin-upload-content-s3](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_upload_content_s3.py) |
 | /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots | POST | AdminUploadContentScreenshot | `false` | [AdminUploadContentScreenshot](../../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_upload_content_sc_b38ae0.py) | [admin_upload_content_screenshot](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-admin-upload-content-screenshot](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_upload_content_screenshot.py) |
+| /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/versions | GET | ListContentVersions | `false` | [ListContentVersions](../../accelbyte_py_sdk/api/ugc/operations/admin_content/list_content_versions.py) | [list_content_versions](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-list-content-versions](../../samples/cli/accelbyte_py_sdk_cli/ugc/_list_content_versions.py) |
+| /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId} | PUT | RollbackContentVersion | `false` | [RollbackContentVersion](../../accelbyte_py_sdk/api/ugc/operations/admin_content/rollback_content_version.py) | [rollback_content_version](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-rollback-content-version](../../samples/cli/accelbyte_py_sdk_cli/ugc/_rollback_content_version.py) |
 | /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId} | DELETE | SingleAdminDeleteContent | `false` | [SingleAdminDeleteContent](../../accelbyte_py_sdk/api/ugc/operations/admin_content/single_admin_delete_content.py) | [single_admin_delete_content](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-single-admin-delete-content](../../samples/cli/accelbyte_py_sdk_cli/ugc/_single_admin_delete_content.py) |
 | /ugc/v1/admin/namespaces/{namespace}/contents | GET | SingleAdminGetContent | `false` | [SingleAdminGetContent](../../accelbyte_py_sdk/api/ugc/operations/admin_content/single_admin_get_content.py) | [single_admin_get_content](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-single-admin-get-content](../../samples/cli/accelbyte_py_sdk_cli/ugc/_single_admin_get_content.py) |
 | /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId} | PUT | SingleAdminUpdateContentDirect | `true` | [SingleAdminUpdateContentDirect](../../accelbyte_py_sdk/api/ugc/operations/admin_content/single_admin_update_con_1f2ab1.py) | [single_admin_update_content_direct](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-single-admin-update-content-direct](../../samples/cli/accelbyte_py_sdk_cli/ugc/_single_admin_update_content_direct.py) |
@@ -171,6 +173,8 @@
 | models.ContentDownloadResponse | [ModelsContentDownloadResponse](../../accelbyte_py_sdk/api/ugc/models/models_content_download_response.py) |
 | models.ContentLikeRequest | [ModelsContentLikeRequest](../../accelbyte_py_sdk/api/ugc/models/models_content_like_request.py) |
 | models.ContentLikeResponse | [ModelsContentLikeResponse](../../accelbyte_py_sdk/api/ugc/models/models_content_like_response.py) |
+| models.ContentSnapshot | [ModelsContentSnapshot](../../accelbyte_py_sdk/api/ugc/models/models_content_snapshot.py) |
+| models.ContentVersionResponse | [ModelsContentVersionResponse](../../accelbyte_py_sdk/api/ugc/models/models_content_version_response.py) |
 | models.CreateContentRequest | [ModelsCreateContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_create_content_request.py) |
 | models.CreateContentRequestS3 | [ModelsCreateContentRequestS3](../../accelbyte_py_sdk/api/ugc/models/models_create_content_request_s3.py) |
 | models.CreateContentResponse | [ModelsCreateContentResponse](../../accelbyte_py_sdk/api/ugc/models/models_create_content_response.py) |
@@ -190,6 +194,7 @@
 | models.GetContentPreviewResponse | [ModelsGetContentPreviewResponse](../../accelbyte_py_sdk/api/ugc/models/models_get_content_preview_response.py) |
 | models.HideContentRequest | [ModelsHideContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_hide_content_request.py) |
 | models.LikeState | [ModelsLikeState](../../accelbyte_py_sdk/api/ugc/models/models_like_state.py) |
+| models.ListContentVersionsResponse | [ModelsListContentVersionsResponse](../../accelbyte_py_sdk/api/ugc/models/models_list_content_versions_response.py) |
 | models.PaginatedContentDownloadResponse | [ModelsPaginatedContentDownloadResponse](../../accelbyte_py_sdk/api/ugc/models/models_paginated_content_download_response.py) |
 | models.PaginatedCreatorOverviewResponse | [ModelsPaginatedCreatorOverviewResponse](../../accelbyte_py_sdk/api/ugc/models/models_paginated_creator_overview_response.py) |
 | models.PaginatedGetChannelResponse | [ModelsPaginatedGetChannelResponse](../../accelbyte_py_sdk/api/ugc/models/models_paginated_get_channel_response.py) |

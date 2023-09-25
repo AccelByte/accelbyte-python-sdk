@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.34.1)
+# AccelByte Gaming Services Platform Service (4.36.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,50 +26,36 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
-from ....core import StrEnum
 
-from ..models.fulfillment_script_context import FulfillmentScriptContext
-
-
-class TypeEnum(StrEnum):
-    GRANTDAYS = "grantDays"
+from ..models.additional_data_entitlement import AdditionalDataEntitlement
 
 
-class FulfillmentScriptEvalTestRequest(Model):
-    """Fulfillment script eval test request (FulfillmentScriptEvalTestRequest)
+class EventAdditionalData(Model):
+    """Event additional data (EventAdditionalData)
 
     Properties:
-        context: (context) REQUIRED FulfillmentScriptContext
+        entitlement: (entitlement) OPTIONAL List[AdditionalDataEntitlement]
 
-        script: (script) REQUIRED str
-
-        type_: (type) REQUIRED Union[str, TypeEnum]
+        purpose: (purpose) OPTIONAL str
     """
 
     # region fields
 
-    context: FulfillmentScriptContext  # REQUIRED
-    script: str  # REQUIRED
-    type_: Union[str, TypeEnum]  # REQUIRED
+    entitlement: List[AdditionalDataEntitlement]  # OPTIONAL
+    purpose: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_context(
-        self, value: FulfillmentScriptContext
-    ) -> FulfillmentScriptEvalTestRequest:
-        self.context = value
+    def with_entitlement(
+        self, value: List[AdditionalDataEntitlement]
+    ) -> EventAdditionalData:
+        self.entitlement = value
         return self
 
-    def with_script(self, value: str) -> FulfillmentScriptEvalTestRequest:
-        self.script = value
-        return self
-
-    def with_type(
-        self, value: Union[str, TypeEnum]
-    ) -> FulfillmentScriptEvalTestRequest:
-        self.type_ = value
+    def with_purpose(self, value: str) -> EventAdditionalData:
+        self.purpose = value
         return self
 
     # endregion with_x methods
@@ -78,18 +64,16 @@ class FulfillmentScriptEvalTestRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "context"):
-            result["context"] = self.context.to_dict(include_empty=include_empty)
+        if hasattr(self, "entitlement"):
+            result["entitlement"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.entitlement
+            ]
         elif include_empty:
-            result["context"] = FulfillmentScriptContext()
-        if hasattr(self, "script"):
-            result["script"] = str(self.script)
+            result["entitlement"] = []
+        if hasattr(self, "purpose"):
+            result["purpose"] = str(self.purpose)
         elif include_empty:
-            result["script"] = ""
-        if hasattr(self, "type_"):
-            result["type"] = str(self.type_)
-        elif include_empty:
-            result["type"] = Union[str, TypeEnum]()
+            result["purpose"] = ""
         return result
 
     # endregion to methods
@@ -99,44 +83,43 @@ class FulfillmentScriptEvalTestRequest(Model):
     @classmethod
     def create(
         cls,
-        context: FulfillmentScriptContext,
-        script: str,
-        type_: Union[str, TypeEnum],
+        entitlement: Optional[List[AdditionalDataEntitlement]] = None,
+        purpose: Optional[str] = None,
         **kwargs,
-    ) -> FulfillmentScriptEvalTestRequest:
+    ) -> EventAdditionalData:
         instance = cls()
-        instance.context = context
-        instance.script = script
-        instance.type_ = type_
+        if entitlement is not None:
+            instance.entitlement = entitlement
+        if purpose is not None:
+            instance.purpose = purpose
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> FulfillmentScriptEvalTestRequest:
+    ) -> EventAdditionalData:
         instance = cls()
         if not dict_:
             return instance
-        if "context" in dict_ and dict_["context"] is not None:
-            instance.context = FulfillmentScriptContext.create_from_dict(
-                dict_["context"], include_empty=include_empty
-            )
+        if "entitlement" in dict_ and dict_["entitlement"] is not None:
+            instance.entitlement = [
+                AdditionalDataEntitlement.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["entitlement"]
+            ]
         elif include_empty:
-            instance.context = FulfillmentScriptContext()
-        if "script" in dict_ and dict_["script"] is not None:
-            instance.script = str(dict_["script"])
+            instance.entitlement = []
+        if "purpose" in dict_ and dict_["purpose"] is not None:
+            instance.purpose = str(dict_["purpose"])
         elif include_empty:
-            instance.script = ""
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
-        elif include_empty:
-            instance.type_ = Union[str, TypeEnum]()
+            instance.purpose = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, FulfillmentScriptEvalTestRequest]:
+    ) -> Dict[str, EventAdditionalData]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -146,7 +129,7 @@ class FulfillmentScriptEvalTestRequest(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[FulfillmentScriptEvalTestRequest]:
+    ) -> List[EventAdditionalData]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -157,9 +140,7 @@ class FulfillmentScriptEvalTestRequest(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        FulfillmentScriptEvalTestRequest,
-        List[FulfillmentScriptEvalTestRequest],
-        Dict[Any, FulfillmentScriptEvalTestRequest],
+        EventAdditionalData, List[EventAdditionalData], Dict[Any, EventAdditionalData]
     ]:
         if many:
             if isinstance(any_, dict):
@@ -174,23 +155,15 @@ class FulfillmentScriptEvalTestRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "context": "context",
-            "script": "script",
-            "type": "type_",
+            "entitlement": "entitlement",
+            "purpose": "purpose",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "context": True,
-            "script": True,
-            "type": True,
-        }
-
-    @staticmethod
-    def get_enum_map() -> Dict[str, List[Any]]:
-        return {
-            "type": ["grantDays"],
+            "entitlement": False,
+            "purpose": False,
         }
 
     # endregion static methods

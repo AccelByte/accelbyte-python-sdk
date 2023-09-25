@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Ds Log Manager Service (3.4.0)
+# AGS Ds Log Manager Service (3.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

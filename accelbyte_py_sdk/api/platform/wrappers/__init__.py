@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.34.1"
+__version__ = "4.36.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -114,6 +114,11 @@ from ._category import public_get_root_categories
 from ._category import public_get_root_categories_async
 from ._category import update_category
 from ._category import update_category_async
+
+from ._clawback import mock_play_station_stream_event
+from ._clawback import mock_play_station_stream_event_async
+from ._clawback import query_iap_clawback_history
+from ._clawback import query_iap_clawback_history_async
 
 from ._currency import create_currency
 from ._currency import create_currency_async
@@ -258,6 +263,8 @@ from ._fulfillment import fulfill_item
 from ._fulfillment import fulfill_item_async
 from ._fulfillment import fulfill_rewards
 from ._fulfillment import fulfill_rewards_async
+from ._fulfillment import fulfill_rewards_v2
+from ._fulfillment import fulfill_rewards_v2_async
 from ._fulfillment import public_redeem_code
 from ._fulfillment import public_redeem_code_async
 from ._fulfillment import query_fulfillment_histories
@@ -273,8 +280,6 @@ from ._fulfillment_script import get_fulfillment_script
 from ._fulfillment_script import get_fulfillment_script_async
 from ._fulfillment_script import list_fulfillment_scripts
 from ._fulfillment_script import list_fulfillment_scripts_async
-from ._fulfillment_script import test_fulfillment_script_eval
-from ._fulfillment_script import test_fulfillment_script_eval_async
 from ._fulfillment_script import update_fulfillment_script
 from ._fulfillment_script import update_fulfillment_script_async
 
@@ -366,6 +371,10 @@ from ._iap import update_xbl_bp_cert_file
 from ._iap import update_xbl_bp_cert_file_async
 from ._iap import update_xbl_iap_config
 from ._iap import update_xbl_iap_config_async
+from ._iap import validate_existed_playstation_iap_config
+from ._iap import validate_existed_playstation_iap_config_async
+from ._iap import validate_playstation_iap_config
+from ._iap import validate_playstation_iap_config_async
 
 from ._invoice import download_invoice_details
 from ._invoice import download_invoice_details_async

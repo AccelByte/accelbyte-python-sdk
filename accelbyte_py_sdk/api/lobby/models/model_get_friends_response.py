@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Lobby Server (3.27.1)
+# AccelByte Gaming Services Lobby Server (3.29.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.model_friend_with_platform import ModelFriendWithPlatform
 from ..models.model_pagination import ModelPagination
 
 
@@ -39,6 +40,8 @@ class ModelGetFriendsResponse(Model):
         friends_since_times: (friendsSinceTimes) REQUIRED List[str]
 
         paging: (paging) REQUIRED ModelPagination
+
+        friends: (friends) OPTIONAL List[ModelFriendWithPlatform]
     """
 
     # region fields
@@ -46,6 +49,7 @@ class ModelGetFriendsResponse(Model):
     friend_i_ds: List[str]  # REQUIRED
     friends_since_times: List[str]  # REQUIRED
     paging: ModelPagination  # REQUIRED
+    friends: List[ModelFriendWithPlatform]  # OPTIONAL
 
     # endregion fields
 
@@ -61,6 +65,12 @@ class ModelGetFriendsResponse(Model):
 
     def with_paging(self, value: ModelPagination) -> ModelGetFriendsResponse:
         self.paging = value
+        return self
+
+    def with_friends(
+        self, value: List[ModelFriendWithPlatform]
+    ) -> ModelGetFriendsResponse:
+        self.friends = value
         return self
 
     # endregion with_x methods
@@ -81,6 +91,12 @@ class ModelGetFriendsResponse(Model):
             result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
             result["paging"] = ModelPagination()
+        if hasattr(self, "friends"):
+            result["friends"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.friends
+            ]
+        elif include_empty:
+            result["friends"] = []
         return result
 
     # endregion to methods
@@ -93,12 +109,15 @@ class ModelGetFriendsResponse(Model):
         friend_i_ds: List[str],
         friends_since_times: List[str],
         paging: ModelPagination,
+        friends: Optional[List[ModelFriendWithPlatform]] = None,
         **kwargs,
     ) -> ModelGetFriendsResponse:
         instance = cls()
         instance.friend_i_ds = friend_i_ds
         instance.friends_since_times = friends_since_times
         instance.paging = paging
+        if friends is not None:
+            instance.friends = friends
         return instance
 
     @classmethod
@@ -124,6 +143,15 @@ class ModelGetFriendsResponse(Model):
             )
         elif include_empty:
             instance.paging = ModelPagination()
+        if "friends" in dict_ and dict_["friends"] is not None:
+            instance.friends = [
+                ModelFriendWithPlatform.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["friends"]
+            ]
+        elif include_empty:
+            instance.friends = []
         return instance
 
     @classmethod
@@ -170,6 +198,7 @@ class ModelGetFriendsResponse(Model):
             "friendIDs": "friend_i_ds",
             "friendsSinceTimes": "friends_since_times",
             "paging": "paging",
+            "friends": "friends",
         }
 
     @staticmethod
@@ -178,6 +207,7 @@ class ModelGetFriendsResponse(Model):
             "friendIDs": True,
             "friendsSinceTimes": True,
             "paging": True,
+            "friends": False,
         }
 
     # endregion static methods

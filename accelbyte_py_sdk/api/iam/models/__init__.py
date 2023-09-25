@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.1.0"
+__version__ = "7.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -146,6 +146,9 @@ from .model_country_age_restriction_request import ModelCountryAgeRestrictionReq
 from .model_country_age_restriction_v3_request import (
     ModelCountryAgeRestrictionV3Request,
 )
+from .model_country_blacklist_request import ModelCountryBlacklistRequest
+from .model_country_blacklist_response import ModelCountryBlacklistResponse
+from .model_country_response import ModelCountryResponse
 from .model_country_v3_response import ModelCountryV3Response
 from .model_create_justice_user_response import ModelCreateJusticeUserResponse
 from .model_device_ban_request_v4 import ModelDeviceBanRequestV4
@@ -319,6 +322,7 @@ from .model_user_create_response import ModelUserCreateResponse
 from .model_user_create_response_v3 import ModelUserCreateResponseV3
 from .model_user_deletion_status_response import ModelUserDeletionStatusResponse
 from .model_user_i_ds_request import ModelUserIDsRequest
+from .model_user_identity_update_request_v3 import ModelUserIdentityUpdateRequestV3
 from .model_user_info_response import ModelUserInfoResponse
 from .model_user_information import ModelUserInformation
 from .model_user_invitation_v3 import ModelUserInvitationV3

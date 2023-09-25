@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.1.0)
+# AccelByte Gaming Services Iam Service (7.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,7 +41,7 @@ class GetRevocationListV3(Operation):
 
 
 
-    This endpoint requires authorized requests header with valid access token.
+    This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
 
 
 

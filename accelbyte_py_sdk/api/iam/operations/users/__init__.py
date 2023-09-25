@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.1.0"
+__version__ = "7.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -65,6 +65,7 @@ from .admin_save_user_role_v3 import AdminSaveUserRoleV3
 from .admin_search_user_v3 import AdminSearchUserV3
 from .admin_search_users_v2 import AdminSearchUsersV2
 from .admin_send_verification_c07f19 import AdminSendVerificationCodeV3
+from .admin_trustly_update_us_d03509 import AdminTrustlyUpdateUserIdentity
 from .admin_update_age_restri_71a4c3 import AdminUpdateAgeRestrictionConfigV2
 from .admin_update_age_restri_63e13a import AdminUpdateAgeRestrictionConfigV3
 from .admin_update_country_ag_e486e0 import AdminUpdateCountryAgeRestrictionV3

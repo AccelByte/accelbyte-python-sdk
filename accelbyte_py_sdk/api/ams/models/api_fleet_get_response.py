@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.0.1)
+# Fleet Commander (1.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,6 +46,8 @@ class ApiFleetGetResponse(Model):
 
         image_deployment_profile: (imageDeploymentProfile) REQUIRED ApiImageDeploymentProfile
 
+        is_local: (isLocal) REQUIRED bool
+
         name: (name) REQUIRED str
 
         regions: (regions) REQUIRED List[ApiRegionConfig]
@@ -58,6 +60,7 @@ class ApiFleetGetResponse(Model):
     ds_host_configuration: ApiDSHostConfiguration  # REQUIRED
     id_: str  # REQUIRED
     image_deployment_profile: ApiImageDeploymentProfile  # REQUIRED
+    is_local: bool  # REQUIRED
     name: str  # REQUIRED
     regions: List[ApiRegionConfig]  # REQUIRED
 
@@ -87,6 +90,10 @@ class ApiFleetGetResponse(Model):
         self, value: ApiImageDeploymentProfile
     ) -> ApiFleetGetResponse:
         self.image_deployment_profile = value
+        return self
+
+    def with_is_local(self, value: bool) -> ApiFleetGetResponse:
+        self.is_local = value
         return self
 
     def with_name(self, value: str) -> ApiFleetGetResponse:
@@ -127,6 +134,10 @@ class ApiFleetGetResponse(Model):
             )
         elif include_empty:
             result["imageDeploymentProfile"] = ApiImageDeploymentProfile()
+        if hasattr(self, "is_local"):
+            result["isLocal"] = bool(self.is_local)
+        elif include_empty:
+            result["isLocal"] = False
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -151,6 +162,7 @@ class ApiFleetGetResponse(Model):
         ds_host_configuration: ApiDSHostConfiguration,
         id_: str,
         image_deployment_profile: ApiImageDeploymentProfile,
+        is_local: bool,
         name: str,
         regions: List[ApiRegionConfig],
         **kwargs,
@@ -161,6 +173,7 @@ class ApiFleetGetResponse(Model):
         instance.ds_host_configuration = ds_host_configuration
         instance.id_ = id_
         instance.image_deployment_profile = image_deployment_profile
+        instance.is_local = is_local
         instance.name = name
         instance.regions = regions
         return instance
@@ -201,6 +214,10 @@ class ApiFleetGetResponse(Model):
             )
         elif include_empty:
             instance.image_deployment_profile = ApiImageDeploymentProfile()
+        if "isLocal" in dict_ and dict_["isLocal"] is not None:
+            instance.is_local = bool(dict_["isLocal"])
+        elif include_empty:
+            instance.is_local = False
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -258,6 +275,7 @@ class ApiFleetGetResponse(Model):
             "dsHostConfiguration": "ds_host_configuration",
             "id": "id_",
             "imageDeploymentProfile": "image_deployment_profile",
+            "isLocal": "is_local",
             "name": "name",
             "regions": "regions",
         }
@@ -270,6 +288,7 @@ class ApiFleetGetResponse(Model):
             "dsHostConfiguration": True,
             "id": True,
             "imageDeploymentProfile": True,
+            "isLocal": True,
             "name": True,
             "regions": True,
         }

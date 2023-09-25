@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Match Service V2 (2.10.1)
+# AccelByte Gaming Services Match Service V2 (2.11.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,7 +38,7 @@ class ApiMatchTicketRequest(Model):
 
         match_pool: (matchPool) REQUIRED str
 
-        session_id: (sessionID) REQUIRED str
+        session_id: (sessionID) OPTIONAL str
     """
 
     # region fields
@@ -46,7 +46,7 @@ class ApiMatchTicketRequest(Model):
     attributes: Dict[str, Any]  # REQUIRED
     latencies: Dict[str, int]  # REQUIRED
     match_pool: str  # REQUIRED
-    session_id: str  # REQUIRED
+    session_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -104,14 +104,15 @@ class ApiMatchTicketRequest(Model):
         attributes: Dict[str, Any],
         latencies: Dict[str, int],
         match_pool: str,
-        session_id: str,
+        session_id: Optional[str] = None,
         **kwargs,
     ) -> ApiMatchTicketRequest:
         instance = cls()
         instance.attributes = attributes
         instance.latencies = latencies
         instance.match_pool = match_pool
-        instance.session_id = session_id
+        if session_id is not None:
+            instance.session_id = session_id
         return instance
 
     @classmethod
@@ -196,7 +197,7 @@ class ApiMatchTicketRequest(Model):
             "attributes": True,
             "latencies": True,
             "matchPool": True,
-            "sessionID": True,
+            "sessionID": False,
         }
 
     # endregion static methods

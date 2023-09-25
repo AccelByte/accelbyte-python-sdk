@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.12.0"
+__version__ = "2.14.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -63,6 +63,10 @@ from ._admin_content import admin_upload_content_s3
 from ._admin_content import admin_upload_content_s3_async
 from ._admin_content import admin_upload_content_screenshot
 from ._admin_content import admin_upload_content_screenshot_async
+from ._admin_content import list_content_versions
+from ._admin_content import list_content_versions_async
+from ._admin_content import rollback_content_version
+from ._admin_content import rollback_content_version_async
 from ._admin_content import single_admin_delete_content
 from ._admin_content import single_admin_delete_content_async
 from ._admin_content import single_admin_get_content

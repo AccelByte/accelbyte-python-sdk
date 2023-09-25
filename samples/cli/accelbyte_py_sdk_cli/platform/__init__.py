@@ -6,10 +6,9 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.34.1)
+# justice-platform-service (4.36.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
-from ._test_fulfillment_script_eval import test_fulfillment_script_eval
 from ._get_fulfillment_script import get_fulfillment_script
 from ._create_fulfillment_script import create_fulfillment_script
 from ._delete_fulfillment_script import delete_fulfillment_script
@@ -72,6 +71,8 @@ from ._grant_entitlements import grant_entitlements
 from ._revoke_entitlements import revoke_entitlements
 from ._get_entitlement import get_entitlement
 from ._query_fulfillment_histories import query_fulfillment_histories
+from ._query_iap_clawback_history import query_iap_clawback_history
+from ._mock_play_station_stream_event import mock_play_station_stream_event
 from ._get_apple_iap_config import get_apple_iap_config
 from ._update_apple_iap_config import update_apple_iap_config
 from ._delete_apple_iap_config import delete_apple_iap_config
@@ -91,6 +92,10 @@ from ._delete_oculus_iap_config import delete_oculus_iap_config
 from ._get_play_station_iap_config import get_play_station_iap_config
 from ._update_playstation_iap_config import update_playstation_iap_config
 from ._delete_playstation_iap_config import delete_playstation_iap_config
+from ._validate_existed_playstation_iap_config import (
+    validate_existed_playstation_iap_config,
+)
+from ._validate_playstation_iap_config import validate_playstation_iap_config
 from ._get_steam_iap_config import get_steam_iap_config
 from ._update_steam_iap_config import update_steam_iap_config
 from ._delete_steam_iap_config import delete_steam_iap_config
@@ -484,11 +489,11 @@ from ._public_list_user_wallet_transactions import public_list_user_wallet_trans
 from ._query_items_1 import query_items_1
 from ._import_store_1 import import_store_1
 from ._export_store_1 import export_store_1
+from ._fulfill_rewards_v2 import fulfill_rewards_v2
 
 
 commands = [
     list_fulfillment_scripts,
-    test_fulfillment_script_eval,
     get_fulfillment_script,
     create_fulfillment_script,
     delete_fulfillment_script,
@@ -551,6 +556,8 @@ commands = [
     revoke_entitlements,
     get_entitlement,
     query_fulfillment_histories,
+    query_iap_clawback_history,
+    mock_play_station_stream_event,
     get_apple_iap_config,
     update_apple_iap_config,
     delete_apple_iap_config,
@@ -570,6 +577,8 @@ commands = [
     get_play_station_iap_config,
     update_playstation_iap_config,
     delete_playstation_iap_config,
+    validate_existed_playstation_iap_config,
+    validate_playstation_iap_config,
     get_steam_iap_config,
     update_steam_iap_config,
     delete_steam_iap_config,
@@ -901,4 +910,5 @@ commands = [
     query_items_1,
     import_store_1,
     export_store_1,
+    fulfill_rewards_v2,
 ]

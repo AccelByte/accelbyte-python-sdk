@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.1.0)
+# AccelByte Gaming Services Iam Service (7.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -78,6 +78,8 @@ class CreateUserFromInvitationV4(Operation):
         201: Created - AccountCreateUserResponseV4 (Created)
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
@@ -211,6 +213,8 @@ class CreateUserFromInvitationV4(Operation):
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
@@ -231,6 +235,8 @@ class CreateUserFromInvitationV4(Operation):
         if code == 201:
             return AccountCreateUserResponseV4.create_from_dict(content), None
         if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 403:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, RestErrorResponse.create_from_dict(content)

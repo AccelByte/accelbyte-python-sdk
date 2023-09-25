@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.34.1"
+__version__ = "4.36.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -69,3 +69,5 @@ from .update_steam_iap_config import UpdateSteamIAPConfig
 from .update_twitch_iap_config import UpdateTwitchIAPConfig
 from .update_xbl_bp_cert_file import UpdateXblBPCertFile
 from .update_xbl_iap_config import UpdateXblIAPConfig
+from .validate_existed_playst_881975 import ValidateExistedPlaystationIAPConfig
+from .validate_playstation_ia_7dc74e import ValidatePlaystationIAPConfig

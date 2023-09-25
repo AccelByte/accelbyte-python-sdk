@@ -212,6 +212,10 @@ def admin_add_client_permissions_v3(
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT' [UPDATE]'
 
 
+     Note for Multi Tenant Mode:
+
+    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+
 
 
     action code: 10303
@@ -273,6 +277,10 @@ async def admin_add_client_permissions_v3_async(
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT' [UPDATE]'
 
+
+     Note for Multi Tenant Mode:
+
+    1. The assigned permission(s) should be restricted in the Default Client permission collection.
 
 
 
@@ -338,8 +346,15 @@ def admin_create_client_v3(
 
     A new client automatically granted with these scopes: commerce, account, analytics, publishing, social.
 
-    In multi tenant mode, new confidential client will have default client role assigned to it. The role will have all
+    Note for Multi Tenant Mode:
+
+    New Confidential Client will have Default Client Role assigned to it. The role will have all
     permissions to access all APIs that's supported by game server SDK and DS uploader.
+
+    However if Game Admin create Confidential Client and the permission(s) are specified in request body,
+    then the Default Client Role will not be assigned.
+
+    But in this case, the assigned permissions will be restricted in the Default Client Permission collection only.
 
     action code: 10301
 
@@ -487,8 +502,15 @@ async def admin_create_client_v3_async(
 
     A new client automatically granted with these scopes: commerce, account, analytics, publishing, social.
 
-    In multi tenant mode, new confidential client will have default client role assigned to it. The role will have all
+    Note for Multi Tenant Mode:
+
+    New Confidential Client will have Default Client Role assigned to it. The role will have all
     permissions to access all APIs that's supported by game server SDK and DS uploader.
+
+    However if Game Admin create Confidential Client and the permission(s) are specified in request body,
+    then the Default Client Role will not be assigned.
+
+    But in this case, the assigned permissions will be restricted in the Default Client Permission collection only.
 
     action code: 10301
 
@@ -1134,6 +1156,10 @@ def admin_update_client_permission_v3(
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'
 
 
+     Note for Multi Tenant Mode:
+
+    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+
 
 
     action code: 10307
@@ -1195,6 +1221,10 @@ async def admin_update_client_permission_v3_async(
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]'
 
+
+     Note for Multi Tenant Mode:
+
+    1. The assigned permission(s) should be restricted in the Default Client permission collection.
 
 
 
@@ -1375,6 +1405,10 @@ def admin_update_client_v3(
 
     Updates an OAuth 2.0 client. Protected by the permission: ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE].
     Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
+    Note for Multi Tenant Mode:
+
+    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+
 
     action code: 10302
 
@@ -1507,6 +1541,10 @@ async def admin_update_client_v3_async(
 
     Updates an OAuth 2.0 client. Protected by the permission: ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE].
     Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
+    Note for Multi Tenant Mode:
+
+    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+
 
     action code: 10302
 

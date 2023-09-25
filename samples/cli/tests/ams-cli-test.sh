@@ -50,8 +50,9 @@ ams-fleet-server-info 'SP0pf4IxjUkl535X' --login_with_auth "Bearer foo"
 ams-server-history '3ateEKDpADz1x3po' --login_with_auth "Bearer foo"
 ams-info-supported-instances --login_with_auth "Bearer foo"
 ams-fleet-claim-by-id '{"region": "D3Qgb3boLQQ1MzH7"}' 'Qm8bwbmXgdAPh1ET' --login_with_auth "Bearer foo"
-ams-fleet-claim-by-keys '{"claimKeys": ["hG96gAFKK2WDgCcx", "vONZm3EeERmDnyeF", "oF7VSZ6pf3vneSD2"], "regions": ["Tb3g7mSQUhAEtrmj", "qU6YE3p4lSck0ZHn", "5GI39YBHqaTHeKtW"]}' --login_with_auth "Bearer foo"
-ams-watchdog-connect '18iGeUlc9d9sogWa' --login_with_auth "Bearer foo"
+ams-local-watchdog-connect 'hG96gAFKK2WDgCcx' --login_with_auth "Bearer foo"
+ams-fleet-claim-by-keys '{"claimKeys": ["vONZm3EeERmDnyeF", "oF7VSZ6pf3vneSD2", "Tb3g7mSQUhAEtrmj"], "regions": ["qU6YE3p4lSck0ZHn", "5GI39YBHqaTHeKtW", "18iGeUlc9d9sogWa"]}' --login_with_auth "Bearer foo"
+ams-watchdog-connect '24CKNS0GqVvUfHQv' --login_with_auth "Bearer foo"
 ams-func1 --login_with_auth "Bearer foo"
 ams-basic-health-check --login_with_auth "Bearer foo"
 exit()
@@ -73,7 +74,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..26"
+echo "1..27"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -102,7 +103,7 @@ eval_tap $? 4 'AccountGet' test.out
 
 #- 5 AccountCreate
 $PYTHON -m $MODULE 'ams-account-create' \
-    '{"name": "24CKNS0GqVvUfHQv"}' \
+    '{"name": "sHXNUNe4mhgo5QB6"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'AccountCreate' test.out
@@ -115,7 +116,7 @@ eval_tap $? 6 'AccountLinkTokenGet' test.out
 
 #- 7 AccountLink
 $PYTHON -m $MODULE 'ams-account-link' \
-    '{"token": "sHXNUNe4mhgo5QB6"}' \
+    '{"token": "5lSAiYnNjkfZrQvG"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'AccountLink' test.out
@@ -128,43 +129,43 @@ eval_tap $? 8 'FleetList' test.out
 
 #- 9 FleetCreate
 $PYTHON -m $MODULE 'ams-fleet-create' \
-    '{"active": false, "claimKeys": ["lSAiYnNjkfZrQvGg", "bLdLsFzHkBMr1yrO", "MlNFSrUEirnjX9fD"], "dsHostConfiguration": {"instanceId": "mIbeZxzfTcyiuATu", "instanceType": "s9hsfpFDcSDG8aMV", "serversPerVm": 67}, "imageDeploymentProfile": {"commandLine": "yPLtI8ilbyDPUIj8", "imageId": "8cekdqCt81P1ktfI", "portConfigurations": [{"name": "ovmv9gsR5cJcHm3S", "protocol": "ZLxoRDFuuuySj29a"}, {"name": "9LJE8HoRS1X2PFAA", "protocol": "MwzHPxB1UskYs4Yw"}, {"name": "20DOqOBSC2DKHRuP", "protocol": "MMWH8Yb33T5UBJCj"}], "timeout": {"creation": 12, "drain": 63, "session": 5, "unresponsive": 9}}, "name": "nLRfxeCSz9WEi8Kl", "regions": [{"bufferSize": 23, "maxServerCount": 29, "minServerCount": 9, "region": "wdNFLTm5T50x9WT0"}, {"bufferSize": 66, "maxServerCount": 16, "minServerCount": 11, "region": "Bfsu4jmsRE2w1yEk"}, {"bufferSize": 78, "maxServerCount": 22, "minServerCount": 13, "region": "4mqrxzTtuLl4XlbG"}]}' \
+    '{"active": false, "claimKeys": ["Zk03QXcKMDYDDxHS", "ZjtqXyJ58f7Gc26S", "aiGVkydwYWQG26yU"], "dsHostConfiguration": {"instanceId": "ZNmTBcvrbYCwZtxF", "instanceType": "HyPLtI8ilbyDPUIj", "serversPerVm": 32}, "imageDeploymentProfile": {"commandLine": "cekdqCt81P1ktfIo", "imageId": "vmv9gsR5cJcHm3SZ", "portConfigurations": [{"name": "LxoRDFuuuySj29a9", "protocol": "LJE8HoRS1X2PFAAM"}, {"name": "wzHPxB1UskYs4Yw2", "protocol": "0DOqOBSC2DKHRuPM"}, {"name": "MWH8Yb33T5UBJCjf", "protocol": "cnLRfxeCSz9WEi8K"}], "timeout": {"creation": 24, "drain": 23, "session": 23, "unresponsive": 29}}, "name": "8wdNFLTm5T50x9WT", "regions": [{"bufferSize": 3, "maxServerCount": 66, "minServerCount": 16, "region": "fH2rtOa4EXsXzOXQ"}, {"bufferSize": 55, "maxServerCount": 78, "minServerCount": 22, "region": "gh3tIYt4SqYUTLDx"}, {"bufferSize": 78, "maxServerCount": 13, "minServerCount": 70, "region": "QOxtjzm8y2wNhmwo"}]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'FleetCreate' test.out
 
 #- 10 FleetGet
 $PYTHON -m $MODULE 'ams-fleet-get' \
-    'L8QOxtjzm8y2wNhm' \
+    'YZyI4EFZKBcYrCEA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'FleetGet' test.out
 
 #- 11 FleetUpdate
 $PYTHON -m $MODULE 'ams-fleet-update' \
-    '{"active": true, "claimKeys": ["Mh5eC3IHeHSKLCa3", "xreNDUWehwH3q31A", "806DJgas4b6z3LNU"], "dsHostConfiguration": {"instanceId": "j7fdgLA84Z8YYk6Q", "instanceType": "EgJjBbEDoNf3n0hE", "serversPerVm": 30}, "imageDeploymentProfile": {"commandLine": "BkMNxvvKgAT8mJrY", "imageId": "q6hRkloqxM3gpwxc", "portConfigurations": [{"name": "fMy9XzjjI5YbsKoA", "protocol": "DkzJEN2VHzih3bit"}, {"name": "0VWn3CO39PXDNxtX", "protocol": "geO3FgkXhjDzaQY3"}, {"name": "snn2ZkP7cFdP43e5", "protocol": "dC9XIBudfZgrbHDI"}], "timeout": {"creation": 61, "drain": 54, "session": 24, "unresponsive": 85}}, "name": "4hMzF4TxodenSrUT", "regions": [{"bufferSize": 44, "maxServerCount": 84, "minServerCount": 10, "region": "847g8OudOfjnCuHZ"}, {"bufferSize": 39, "maxServerCount": 4, "minServerCount": 87, "region": "46IjGa23YvYmmDg7"}, {"bufferSize": 98, "maxServerCount": 31, "minServerCount": 47, "region": "PXIuvUYTZBRujIUE"}]}' \
-    '1Tq5jyAZvkRCMNFI' \
+    '{"active": true, "claimKeys": ["eNDUWehwH3q31A80", "6DJgas4b6z3LNUj7", "fdgLA84Z8YYk6QEg"], "dsHostConfiguration": {"instanceId": "JjBbEDoNf3n0hEoR", "instanceType": "CAcf80zfFyabWAgI", "serversPerVm": 95}, "imageDeploymentProfile": {"commandLine": "hRkloqxM3gpwxcfM", "imageId": "y9XzjjI5YbsKoADk", "portConfigurations": [{"name": "zJEN2VHzih3bit0V", "protocol": "Wn3CO39PXDNxtXge"}, {"name": "O3FgkXhjDzaQY3sn", "protocol": "n2ZkP7cFdP43e5dC"}, {"name": "9XIBudfZgrbHDIDm", "protocol": "4hMzF4TxodenSrUT"}], "timeout": {"creation": 44, "drain": 84, "session": 10, "unresponsive": 33}}, "name": "47g8OudOfjnCuHZ3", "regions": [{"bufferSize": 4, "maxServerCount": 87, "minServerCount": 50, "region": "6IjGa23YvYmmDg7V"}, {"bufferSize": 47, "maxServerCount": 85, "minServerCount": 21, "region": "XIuvUYTZBRujIUE1"}, {"bufferSize": 94, "maxServerCount": 34, "minServerCount": 25, "region": "jyAZvkRCMNFIurjh"}]}' \
+    '2imdb4rbkXj0ZwsV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'FleetUpdate' test.out
 
 #- 12 FleetDelete
 $PYTHON -m $MODULE 'ams-fleet-delete' \
-    'urjh2imdb4rbkXj0' \
+    'C0gL97ZVJSPqJiwv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'FleetDelete' test.out
 
 #- 13 FleetServers
 $PYTHON -m $MODULE 'ams-fleet-servers' \
-    'ZwsVC0gL97ZVJSPq' \
+    '1qlYB1RSKs6gQxC3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'FleetServers' test.out
 
 #- 14 FleetServerHistory
 $PYTHON -m $MODULE 'ams-fleet-server-history' \
-    'Jiwv1qlYB1RSKs6g' \
+    'Gb7S0o4zGYY7KQI1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 14 'FleetServerHistory' test.out
@@ -177,15 +178,15 @@ eval_tap $? 15 'ImageList' test.out
 
 #- 16 ImageGet
 $PYTHON -m $MODULE 'ams-image-get' \
-    'QxC3Gb7S0o4zGYY7' \
+    'AeFgPqaOkvo1aolB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 16 'ImageGet' test.out
 
 #- 17 ImagePatch
 $PYTHON -m $MODULE 'ams-image-patch' \
-    '{"addedTags": ["KQI1AeFgPqaOkvo1", "aolB4lkKB4EYOkQ1", "jMD3cym8xIfkOVW2"], "isProtected": false, "name": "HC9LxhvNXTwGBCto", "removedTags": ["hLtl9Zuhytm5UDrT", "6QXCs5SPBbRPZTF6", "oQAXVG7tnsZg5QgX"]}' \
-    'jvyGJPN4eXbJE5Vs' \
+    '{"addedTags": ["4lkKB4EYOkQ1jMD3", "cym8xIfkOVW2grRE", "OLx0KOww3HICQLfl"], "isProtected": true, "name": "BG7qtPu64yAtURKL", "removedTags": ["Rkb738HGS6rDgMdI", "IlhS1fSiM9331m7T", "a1PsKc50Kv6ecnEe"]}' \
+    'vcAx2K2zkRenmPZn' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'ImagePatch' test.out
@@ -198,14 +199,14 @@ eval_tap $? 18 'InfoRegions' test.out
 
 #- 19 FleetServerInfo
 $PYTHON -m $MODULE 'ams-fleet-server-info' \
-    '2GcyomQoIXimBJeh' \
+    'GBt4P7WnbdSJtjX7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'FleetServerInfo' test.out
 
 #- 20 ServerHistory
 $PYTHON -m $MODULE 'ams-server-history' \
-    'yxlNsjUgxBkF6wFP' \
+    'ZshZyZl5x4bRXBHU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 20 'ServerHistory' test.out
@@ -218,37 +219,44 @@ eval_tap $? 21 'InfoSupportedInstances' test.out
 
 #- 22 FleetClaimByID
 $PYTHON -m $MODULE 'ams-fleet-claim-by-id' \
-    '{"region": "oJeQediogEhhM2rI"}' \
-    'izGdKvOPdq5xrgxS' \
+    '{"region": "TrDzZSKscfOcYu3d"}' \
+    'pCROYqUiGKXVFCmp' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 22 'FleetClaimByID' test.out
 
-#- 23 FleetClaimByKeys
+#- 23 LocalWatchdogConnect
+$PYTHON -m $MODULE 'ams-local-watchdog-connect' \
+    'o6sPwVOEDSJsEK5Q' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 23 'LocalWatchdogConnect' test.out
+
+#- 24 FleetClaimByKeys
 $PYTHON -m $MODULE 'ams-fleet-claim-by-keys' \
-    '{"claimKeys": ["my1DN9LFkYW5DQyj", "4bj5Ro2ogaKt2ujQ", "Sa3Zdb65UXmy0Zp6"], "regions": ["iIaTIKUkmkk9QM0N", "BMA9ORxpzwLR2AK6", "eXUGPJsw1fiP80G9"]}' \
+    '{"claimKeys": ["pNhlI2iS5EpGhhvX", "Yck0upMzUYnb76tF", "kEORV3bu1bNCtX7W"], "regions": ["40V6Do5sYadCCFrH", "HC3DpZxkrQDXuNFv", "iMarv8mnfHK8CCmE"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 23 'FleetClaimByKeys' test.out
+eval_tap $? 24 'FleetClaimByKeys' test.out
 
-#- 24 WatchdogConnect
+#- 25 WatchdogConnect
 $PYTHON -m $MODULE 'ams-watchdog-connect' \
-    'Pclxcft2ulIJzPyr' \
+    '2lPnsbD3SGEdlwuU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 24 'WatchdogConnect' test.out
+eval_tap $? 25 'WatchdogConnect' test.out
 
-#- 25 Func1
+#- 26 Func1
 $PYTHON -m $MODULE 'ams-func1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 25 'Func1' test.out
+eval_tap $? 26 'Func1' test.out
 
-#- 26 BasicHealthCheck
+#- 27 BasicHealthCheck
 $PYTHON -m $MODULE 'ams-basic-health-check' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 26 'BasicHealthCheck' test.out
+eval_tap $? 27 'BasicHealthCheck' test.out
 
 
 fi
