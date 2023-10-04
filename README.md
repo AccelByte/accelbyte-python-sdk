@@ -163,6 +163,8 @@ if __name__ == "__main__":
 
 ```
 
+#### Refreshing Tokens
+
 :bulb: Using `login_x(..., auto_refresh=True)` automatically refreshes the token once the expiration draws near.
 
 ```python
@@ -207,6 +209,15 @@ refresh_token = token_repo.get_refresh_token()
 
 token, error = refresh_login(refresh_token)
 assert error is None
+```
+
+To use on-demand token refresh, enable the `refresh_if_possible` option by setting it to True.
+This configuration involves checking for the presence of an existing token, verifying its expiration status.
+If the token has expired, the SDK will then examine whether a refresh token exists.
+If a refresh token is available, it will be utilized to obtain a new token.
+
+```python
+res, error = login_user(username, password, refresh_if_possible=True)
 ```
 
 ## Using multiple SDK instances
