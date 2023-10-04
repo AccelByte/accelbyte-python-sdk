@@ -18,6 +18,7 @@ from ...core import get_client_auth
 from ...core import get_client_id
 from ...core import remove_token
 from ...core import set_token
+from ...core import get_token_repository
 
 from ...core import AccelByteSDK
 from ...core import HttpResponse
@@ -56,6 +57,7 @@ DEFAULT_REFRESH_RATE: float = 0.8
 def login_client(
     client_id: Optional[str] = None,
     client_secret: Optional[str] = None,
+    refresh_if_possible: bool = False,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
 ):
@@ -68,17 +70,25 @@ def login_client(
             client_id, client_secret
         )
 
-    token, error = token_grant_v3(
-        grant_type=TokenGrantV3GrantTypeEnum.CLIENT_CREDENTIALS,
-        x_additional_headers=x_additional_headers,
-        **kwargs,
-    )
-    if error:
-        return None, error
+    token: Optional[str] = None
+    if refresh_if_possible:
+        token = try_refresh_login(
+            x_additional_headers=x_additional_headers,
+            **kwargs
+        )
 
-    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
-    if error:
-        return None, error
+    if not token:
+        token, error = token_grant_v3(
+            grant_type=TokenGrantV3GrantTypeEnum.CLIENT_CREDENTIALS,
+            x_additional_headers=x_additional_headers,
+            **kwargs,
+        )
+        if error:
+            return None, error
+
+        _, error = set_token(token=token, sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
 
     if auto_refresh:
         set_on_demand_token_refresher(
@@ -94,30 +104,40 @@ def login_client(
             **kwargs,
         )
 
+    assert token, "Token value missing!"
     return token, None
 
 
 def login_platform(
     platform_id: str,
     platform_token: str,
+    refresh_if_possible: bool = False,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
 
-    token, error = platform_token_grant_v3(
-        platform_id=platform_id,
-        platform_token=platform_token,
-        x_additional_headers=x_additional_headers,
-        **kwargs,
-    )
-    if error is None:
-        return None, error
+    token: Optional[str] = None
+    if refresh_if_possible:
+        token = try_refresh_login(
+            x_additional_headers=x_additional_headers,
+            **kwargs
+        )
 
-    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
-    if error:
-        return None, error
+    if not token:
+        token, error = platform_token_grant_v3(
+            platform_id=platform_id,
+            platform_token=platform_token,
+            x_additional_headers=x_additional_headers,
+            **kwargs,
+        )
+        if error is None:
+            return None, error
+
+        _, error = set_token(token=token, sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
 
     if auto_refresh:
         set_on_demand_token_refresher(
@@ -133,6 +153,7 @@ def login_platform(
             **kwargs,
         )
 
+    assert token, "Token value missing!"
     return token, None
 
 
@@ -140,69 +161,78 @@ def login_user(
     username: str,
     password: str,
     scope: Optional[Union[str, List[str]]] = None,
+    refresh_if_possible: bool = False,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
 
-    (
-        code_verifier,
-        code_challenge,
-        code_challenge_method,
-    ) = create_pkce_verifier_and_challenge_s256()
+    token: Optional[str] = None
+    if refresh_if_possible:
+        token = try_refresh_login(
+            x_additional_headers=x_additional_headers,
+            **kwargs
+        )
 
-    if scope is None:
-        scope = [
-            "commerce",
-            "account",
-            "social",
-            "publishing",
-            "analytics",
-        ]
-    if isinstance(scope, list):
-        scope = " ".join(scope)
+    if not token:
+        (
+            code_verifier,
+            code_challenge,
+            code_challenge_method,
+        ) = create_pkce_verifier_and_challenge_s256()
 
-    client_id, error = get_client_id(sdk=kwargs.get("sdk"))
-    if error:
-        return None, error
+        if scope is None:
+            scope = [
+                "commerce",
+                "account",
+                "social",
+                "publishing",
+                "analytics",
+            ]
+        if isinstance(scope, list):
+            scope = " ".join(scope)
 
-    request_id, error = authorize_v3(
-        client_id=client_id,
-        response_type=AuthorizeV3ResponseTypeEnum.CODE,
-        code_challenge=code_challenge,
-        code_challenge_method=code_challenge_method,
-        scope=scope,
-        x_additional_headers=x_additional_headers,
-        **kwargs,
-    )
-    if error:
-        return None, error
+        client_id, error = get_client_id(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
 
-    code, error = user_authentication_v3(
-        password=password,
-        request_id=request_id,
-        user_name=username,
-        client_id=client_id,
-        x_additional_headers=x_additional_headers,
-        **kwargs,
-    )
-    if error:
-        return None, error
+        request_id, error = authorize_v3(
+            client_id=client_id,
+            response_type=AuthorizeV3ResponseTypeEnum.CODE,
+            code_challenge=code_challenge,
+            code_challenge_method=code_challenge_method,
+            scope=scope,
+            x_additional_headers=x_additional_headers,
+            **kwargs,
+        )
+        if error:
+            return None, error
 
-    token, error = token_grant_v3(
-        grant_type=TokenGrantV3GrantTypeEnum.AUTHORIZATION_CODE,
-        code=code,
-        code_verifier=code_verifier,
-        x_additional_headers=x_additional_headers,
-        **kwargs,
-    )
-    if error:
-        return None, error
+        code, error = user_authentication_v3(
+            password=password,
+            request_id=request_id,
+            user_name=username,
+            client_id=client_id,
+            x_additional_headers=x_additional_headers,
+            **kwargs,
+        )
+        if error:
+            return None, error
 
-    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
-    if error:
-        return None, error
+        token, error = token_grant_v3(
+            grant_type=TokenGrantV3GrantTypeEnum.AUTHORIZATION_CODE,
+            code=code,
+            code_verifier=code_verifier,
+            x_additional_headers=x_additional_headers,
+            **kwargs,
+        )
+        if error:
+            return None, error
+
+        _, error = set_token(token=token, sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
 
     if auto_refresh:
         set_on_demand_token_refresher(
@@ -219,6 +249,7 @@ def login_user(
             **kwargs,
         )
 
+    assert token, "Token value missing!"
     return token, None
 
 
@@ -274,6 +305,32 @@ def refresh_login(
     return token, None
 
 
+def try_refresh_login(
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+) -> Optional[str]:
+    token_repo = get_token_repository(raise_when_none=False, sdk=kwargs.get("sdk"))
+    if token_repo is None:
+        return None
+
+    if token_repo.has_token_expired():
+        refresh_token = token_repo.get_refresh_token()
+        if not refresh_token:
+            return None
+
+        token, error = refresh_login(
+            refresh_token=refresh_token,
+            x_additional_headers=x_additional_headers,
+            **kwargs
+        )
+        if error or not token:
+            return None
+    else:
+        token = token_repo.get_token()
+
+    return token
+
+
 login = login_user
 
 
@@ -286,6 +343,7 @@ login = login_user
 async def login_client_async(
     client_id: Optional[str] = None,
     client_secret: Optional[str] = None,
+    refresh_if_possible: bool = False,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
 ):
@@ -298,17 +356,25 @@ async def login_client_async(
             client_id, client_secret
         )
 
-    token, error = await token_grant_v3_async(
-        grant_type=TokenGrantV3GrantTypeEnum.CLIENT_CREDENTIALS,
-        x_additional_headers=x_additional_headers,
-        **kwargs,
-    )
-    if error:
-        return None, error
+    token: Optional[str] = None
+    if refresh_if_possible:
+        token = await try_refresh_login_async(
+            x_additional_headers=x_additional_headers,
+            **kwargs
+        )
 
-    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
-    if error:
-        return None, error
+    if not token:
+        token, error = await token_grant_v3_async(
+            grant_type=TokenGrantV3GrantTypeEnum.CLIENT_CREDENTIALS,
+            x_additional_headers=x_additional_headers,
+            **kwargs,
+        )
+        if error:
+            return None, error
+
+        _, error = set_token(token=token, sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
 
     if auto_refresh:
         set_on_demand_token_refresher(
@@ -324,30 +390,40 @@ async def login_client_async(
             **kwargs,
         )
 
+    assert token, "Token value missing!"
     return token, None
 
 
 async def login_platform_async(
     platform_id: str,
     platform_token: str,
+    refresh_if_possible: bool = False,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
 
-    token, error = await platform_token_grant_v3_async(
-        platform_id=platform_id,
-        platform_token=platform_token,
-        x_additional_headers=x_additional_headers,
-        **kwargs,
-    )
-    if error is None:
-        return None, error
+    token: Optional[str] = None
+    if refresh_if_possible:
+        token = await try_refresh_login_async(
+            x_additional_headers=x_additional_headers,
+            **kwargs
+        )
 
-    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
-    if error:
-        return None, error
+    if not token:
+        token, error = await platform_token_grant_v3_async(
+            platform_id=platform_id,
+            platform_token=platform_token,
+            x_additional_headers=x_additional_headers,
+            **kwargs,
+        )
+        if error is None:
+            return None, error
+
+        _, error = set_token(token=token, sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
 
     if auto_refresh:
         set_on_demand_token_refresher(
@@ -363,6 +439,7 @@ async def login_platform_async(
             **kwargs,
         )
 
+    assert token, "Token value missing!"
     return token, None
 
 
@@ -370,69 +447,78 @@ async def login_user_async(
     username: str,
     password: str,
     scope: Optional[Union[str, List[str]]] = None,
+    refresh_if_possible: bool = False,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
 
-    (
-        code_verifier,
-        code_challenge,
-        code_challenge_method,
-    ) = create_pkce_verifier_and_challenge_s256()
+    token: Optional[str] = None
+    if refresh_if_possible:
+        token = try_refresh_login(
+            x_additional_headers=x_additional_headers,
+            **kwargs
+        )
 
-    if scope is None:
-        scope = [
-            "commerce",
-            "account",
-            "social",
-            "publishing",
-            "analytics",
-        ]
-    if isinstance(scope, list):
-        scope = " ".join(scope)
+    if not token:
+        (
+            code_verifier,
+            code_challenge,
+            code_challenge_method,
+        ) = create_pkce_verifier_and_challenge_s256()
 
-    client_id, error = get_client_id(sdk=kwargs.get("sdk"))
-    if error:
-        return None, error
+        if scope is None:
+            scope = [
+                "commerce",
+                "account",
+                "social",
+                "publishing",
+                "analytics",
+            ]
+        if isinstance(scope, list):
+            scope = " ".join(scope)
 
-    request_id, error = await authorize_v3_async(
-        client_id=client_id,
-        response_type=AuthorizeV3ResponseTypeEnum.CODE,
-        code_challenge=code_challenge,
-        code_challenge_method=code_challenge_method,
-        scope=scope,
-        x_additional_headers=x_additional_headers,
-        **kwargs,
-    )
-    if error:
-        return None, error
+        client_id, error = get_client_id(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
 
-    code, error = await user_authentication_v3_async(
-        password=password,
-        request_id=request_id,
-        user_name=username,
-        client_id=client_id,
-        x_additional_headers=x_additional_headers,
-        **kwargs,
-    )
-    if error:
-        return None, error
+        request_id, error = await authorize_v3_async(
+            client_id=client_id,
+            response_type=AuthorizeV3ResponseTypeEnum.CODE,
+            code_challenge=code_challenge,
+            code_challenge_method=code_challenge_method,
+            scope=scope,
+            x_additional_headers=x_additional_headers,
+            **kwargs,
+        )
+        if error:
+            return None, error
 
-    token, error = await token_grant_v3_async(
-        grant_type=TokenGrantV3GrantTypeEnum.AUTHORIZATION_CODE,
-        code=code,
-        code_verifier=code_verifier,
-        x_additional_headers=x_additional_headers,
-        **kwargs,
-    )
-    if error:
-        return None, error
+        code, error = await user_authentication_v3_async(
+            password=password,
+            request_id=request_id,
+            user_name=username,
+            client_id=client_id,
+            x_additional_headers=x_additional_headers,
+            **kwargs,
+        )
+        if error:
+            return None, error
 
-    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
-    if error:
-        return None, error
+        token, error = await token_grant_v3_async(
+            grant_type=TokenGrantV3GrantTypeEnum.AUTHORIZATION_CODE,
+            code=code,
+            code_verifier=code_verifier,
+            x_additional_headers=x_additional_headers,
+            **kwargs,
+        )
+        if error:
+            return None, error
+
+        _, error = set_token(token=token, sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
 
     if auto_refresh:
         set_on_demand_token_refresher(
@@ -449,6 +535,7 @@ async def login_user_async(
             **kwargs,
         )
 
+    assert token, "Token value missing!"
     return token, None
 
 
@@ -502,6 +589,29 @@ async def refresh_login_async(
         return None, error
 
     return token, None
+
+
+async def try_refresh_login_async(
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+) -> Optional[str]:
+    token_repo = get_token_repository(raise_when_none=False, sdk=kwargs.get("sdk"))
+    if token_repo is None:
+        return None
+
+    refresh_token = token_repo.get_refresh_token()
+    if not refresh_token:
+        return None
+
+    token, error = await refresh_login_async(
+        refresh_token=refresh_token,
+        x_additional_headers=x_additional_headers,
+        **kwargs
+    )
+    if error or not token:
+        return None
+
+    return token
 
 
 login_async = login_user_async
