@@ -157,4 +157,37 @@ class AuthServicesTestCase(IntegrationTestCase):
 
     # endregion test:refresh_login
 
+    # region test:login_user_refresh_if_possible
+
+    def test_login_user_refresh_if_possible(self):
+        import accelbyte_py_sdk.services.auth
+        from accelbyte_py_sdk.core import get_env_user_credentials
+        from accelbyte_py_sdk.services.auth import login_user, refresh_login
+
+        # arrange
+        counter: int = 0
+
+        def refresh_login_(*args, **kwargs):
+            nonlocal counter
+            counter += 1
+            return refresh_login(*args, **kwargs)
+
+        accelbyte_py_sdk.services.auth._login.refresh_login = refresh_login_  # monkey-patch
+
+        username, password = get_env_user_credentials()
+
+        token, error = login_user(username=username, password=password, refresh_if_possible=False)
+        self.assertIsNone(error, error)
+
+        token.expires_in = 0  # monkey-patch
+
+        # act
+        token, error = login_user(username=username, password=password, refresh_if_possible=True)
+
+        # assert
+        self.assertEqual(counter, 1)
+        self.assertIsNone(error, error)
+
+    # endregion test:login_user_refresh_if_possible
+
     # end of file
