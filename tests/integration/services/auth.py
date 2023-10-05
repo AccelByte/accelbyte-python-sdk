@@ -172,17 +172,23 @@ class AuthServicesTestCase(IntegrationTestCase):
             counter += 1
             return refresh_login(*args, **kwargs)
 
-        accelbyte_py_sdk.services.auth._login.refresh_login = refresh_login_  # monkey-patch
+        accelbyte_py_sdk.services.auth._login.refresh_login = (
+            refresh_login_  # monkey-patch
+        )
 
         username, password = get_env_user_credentials()
 
-        token, error = login_user(username=username, password=password, refresh_if_possible=False)
+        token, error = login_user(
+            username=username, password=password, refresh_if_possible=False
+        )
         self.assertIsNone(error, error)
 
         token.expires_in = 0  # monkey-patch
 
         # act
-        token, error = login_user(username=username, password=password, refresh_if_possible=True)
+        token, error = login_user(
+            username=username, password=password, refresh_if_possible=True
+        )
 
         # assert
         self.assertEqual(counter, 1)

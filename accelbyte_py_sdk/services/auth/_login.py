@@ -72,10 +72,7 @@ def login_client(
 
     token: Optional[str] = None
     if refresh_if_possible:
-        token = try_refresh_login(
-            x_additional_headers=x_additional_headers,
-            **kwargs
-        )
+        token = try_refresh_login(x_additional_headers=x_additional_headers, **kwargs)
 
     if not token:
         token, error = token_grant_v3(
@@ -120,10 +117,7 @@ def login_platform(
 
     token: Optional[str] = None
     if refresh_if_possible:
-        token = try_refresh_login(
-            x_additional_headers=x_additional_headers,
-            **kwargs
-        )
+        token = try_refresh_login(x_additional_headers=x_additional_headers, **kwargs)
 
     if not token:
         token, error = platform_token_grant_v3(
@@ -170,10 +164,7 @@ def login_user(
 
     token: Optional[str] = None
     if refresh_if_possible:
-        token = try_refresh_login(
-            x_additional_headers=x_additional_headers,
-            **kwargs
-        )
+        token = try_refresh_login(x_additional_headers=x_additional_headers, **kwargs)
 
     if not token:
         (
@@ -306,8 +297,7 @@ def refresh_login(
 
 
 def try_refresh_login(
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ) -> Optional[str]:
     token_repo = get_token_repository(raise_when_none=False, sdk=kwargs.get("sdk"))
     if token_repo is None:
@@ -321,7 +311,7 @@ def try_refresh_login(
         token, error = refresh_login(
             refresh_token=refresh_token,
             x_additional_headers=x_additional_headers,
-            **kwargs
+            **kwargs,
         )
         if error or not token:
             return None
@@ -359,8 +349,7 @@ async def login_client_async(
     token: Optional[str] = None
     if refresh_if_possible:
         token = await try_refresh_login_async(
-            x_additional_headers=x_additional_headers,
-            **kwargs
+            x_additional_headers=x_additional_headers, **kwargs
         )
 
     if not token:
@@ -407,8 +396,7 @@ async def login_platform_async(
     token: Optional[str] = None
     if refresh_if_possible:
         token = await try_refresh_login_async(
-            x_additional_headers=x_additional_headers,
-            **kwargs
+            x_additional_headers=x_additional_headers, **kwargs
         )
 
     if not token:
@@ -456,10 +444,7 @@ async def login_user_async(
 
     token: Optional[str] = None
     if refresh_if_possible:
-        token = try_refresh_login(
-            x_additional_headers=x_additional_headers,
-            **kwargs
-        )
+        token = try_refresh_login(x_additional_headers=x_additional_headers, **kwargs)
 
     if not token:
         (
@@ -592,8 +577,7 @@ async def refresh_login_async(
 
 
 async def try_refresh_login_async(
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ) -> Optional[str]:
     token_repo = get_token_repository(raise_when_none=False, sdk=kwargs.get("sdk"))
     if token_repo is None:
@@ -604,9 +588,7 @@ async def try_refresh_login_async(
         return None
 
     token, error = await refresh_login_async(
-        refresh_token=refresh_token,
-        x_additional_headers=x_additional_headers,
-        **kwargs
+        refresh_token=refresh_token, x_additional_headers=x_additional_headers, **kwargs
     )
     if error or not token:
         return None

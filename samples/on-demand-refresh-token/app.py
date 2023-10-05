@@ -43,7 +43,9 @@ def main():
 
     while loop < max_loop:
         # Login using user credentials
-        token, error = auth_service.login_user(username, password, refresh_if_possible=True)
+        token, error = auth_service.login_user(
+            username, password, refresh_if_possible=True
+        )
         if error:
             print("Login failed", file=sys.stderr)
             exit(1)  # Login failed
@@ -52,7 +54,9 @@ def main():
         response, error = iam_service.get_country_location_v3()
         if error:
             exit(2)  # Response error
-        print(f"iteration no: {loop}, number of refreshes: {refreshes}, country name: {response.country_name}")
+        print(
+            f"iteration no: {loop}, number of refreshes: {refreshes}, country name: {response.country_name}"
+        )
 
         # XXX: Force token expiry for testing purposes.
         token.expires_in = 0  # monkey_patch
