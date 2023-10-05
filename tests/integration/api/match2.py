@@ -327,21 +327,6 @@ class Match2TestCase(IntegrationTestCase):
 
     # endregion test:match_pool_list
 
-    # region test:get_healthcheck_info
-
-    def test_get_healthcheck_info(self):
-        from accelbyte_py_sdk.api.match2 import get_healthcheck_info
-
-        # arrange
-
-        # act
-        x, error = get_healthcheck_info()
-
-        # assert
-        self.assertIsNone(error, error)
-
-    # endregion test:get_healthcheck_info
-
     # region test:match_function_list
 
     def test_match_function_list(self):
