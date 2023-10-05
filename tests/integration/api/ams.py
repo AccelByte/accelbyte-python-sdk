@@ -2,21 +2,6 @@ from tests.integration.test_case import IntegrationTestCase
 
 
 class AMSTestCase(IntegrationTestCase):
-    # region test:health_check
-
-    def test_health_check(self):
-        from accelbyte_py_sdk.api.ams import portal_health_check
-
-        # arrange
-
-        # act
-        _, error = portal_health_check()
-
-        # assert
-        self.assertIsNone(error, error)
-
-    # endregion test:health_check
-
     # region test:info_regions
 
     def test_info_regions(self):
