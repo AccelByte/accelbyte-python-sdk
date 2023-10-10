@@ -1,7 +1,16 @@
+import logging
+
 from tests.integration.test_case import IntegrationTestCase
 
 
 class AuthServicesTestCase(IntegrationTestCase):
+    def setUp(self) -> None:
+        self.logger = logging.getLogger("accelbyte_py_sdk")
+        self.logger_level = self.logger.level
+
+    def tearDown(self) -> None:
+        self.logger.setLevel(self.logger_level)
+
     # region test:login_client
 
     def test_login_client(self):
@@ -21,6 +30,29 @@ class AuthServicesTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
     # endregion test:login_client
+
+    # region test:login_client_public
+
+    def test_login_client_public(self):
+        import os
+        from accelbyte_py_sdk.services.auth import login_client
+
+        # arrange
+        self.logger.setLevel(logging.WARNING)
+
+        client_id = os.environ.get("PUBLIC_AB_CLIENT_ID", None)
+        if client_id is None:
+            self.skipTest(reason="Failed to get PUBLIC_AB_CLIENT_ID")
+
+        # act
+        with self.assertLogs(logger=self.logger, level=logging.WARNING) as cm:
+            _, error = login_client(client_id=client_id, client_secret=None)
+            self.assertIn("The use of a Public OAuth Client is highly discouraged!", [r.msg for r in cm.records])
+
+        # assert
+        self.assertIsNone(error, error)
+
+    # endregion test:login_client_public
 
     # region test:login_user
 
