@@ -78,7 +78,7 @@ def login_client(
             client_secret = config_client_secret
 
     if not client_secret:
-        sdk.logger.warning("The use of a Public OAuth Client is highly discouraged!")
+        sdk.logger.warning("The use of a Public OAuth Client is highly discouraged for this use case.")
 
     x_additional_headers = x_additional_headers or {}
     x_additional_headers["Authorization"] = create_basic_authentication(
@@ -362,7 +362,7 @@ async def login_client_async(
             client_secret = config_client_secret
 
     if not client_secret:
-        sdk.logger.warning("The use of a Public OAuth Client is highly discouraged!")
+        sdk.logger.warning("The use of a Public OAuth Client is highly discouraged for this use case.")
 
     x_additional_headers = x_additional_headers or {}
     x_additional_headers["Authorization"] = create_basic_authentication(
