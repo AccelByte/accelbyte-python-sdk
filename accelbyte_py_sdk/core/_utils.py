@@ -76,8 +76,9 @@ def clean_content_type(content_type: Optional[str]) -> Optional[str]:
 
 
 def create_basic_authentication(
-    username: str, password: str, prefix: str = "Basic "
+    username: str, password: Optional[str], prefix: str = "Basic "
 ) -> str:
+    password = password or ""
     return (
         f'{prefix}{b64encode(f"{username}:{password}".encode("utf-8")).decode("utf-8")}'
     )

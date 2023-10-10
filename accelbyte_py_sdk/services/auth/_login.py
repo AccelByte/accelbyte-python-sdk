@@ -62,14 +62,28 @@ def login_client(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
 ):
+    sdk = kwargs.get("sdk") or SDK
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
 
-    if client_id is not None and client_secret is not None:
-        x_additional_headers = x_additional_headers or {}
-        x_additional_headers["Authorization"] = create_basic_authentication(
-            client_id, client_secret
-        )
+    if not client_id and client_secret:
+        return None, HttpResponse.create_error(400, "Invalid client ID.")
+
+    if not client_id:
+        client_auth, error = get_client_auth(sdk=sdk)
+        if error:
+            return None, error
+        client_id, config_client_secret = client_auth
+        if not client_secret:
+            client_secret = config_client_secret
+
+    if not client_secret:
+        sdk.logger.warning("The use of a Public OAuth Client is highly discouraged!")
+
+    x_additional_headers = x_additional_headers or {}
+    x_additional_headers["Authorization"] = create_basic_authentication(
+        client_id, client_secret
+    )
 
     token: Optional[str] = None
     if refresh_if_possible:
@@ -84,7 +98,7 @@ def login_client(
         if error:
             return None, error
 
-        _, error = set_token(token=token, sdk=kwargs.get("sdk"))
+        _, error = set_token(token=token, sdk=sdk)
         if error:
             return None, error
 
@@ -332,14 +346,28 @@ async def login_client_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
 ):
+    sdk = kwargs.get("sdk") or SDK
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
 
-    if client_id is not None and client_secret is not None:
-        x_additional_headers = x_additional_headers or {}
-        x_additional_headers["Authorization"] = create_basic_authentication(
-            client_id, client_secret
-        )
+    if not client_id and client_secret:
+        return None, HttpResponse.create_error(400, "Invalid client ID.")
+
+    if not client_id:
+        client_auth, error = get_client_auth(sdk=sdk)
+        if error:
+            return None, error
+        client_id, config_client_secret = client_auth
+        if not client_secret:
+            client_secret = config_client_secret
+
+    if not client_secret:
+        sdk.logger.warning("The use of a Public OAuth Client is highly discouraged!")
+
+    x_additional_headers = x_additional_headers or {}
+    x_additional_headers["Authorization"] = create_basic_authentication(
+        client_id, client_secret
+    )
 
     token: Optional[str] = None
     if refresh_if_possible:
@@ -356,7 +384,7 @@ async def login_client_async(
         if error:
             return None, error
 
-        _, error = set_token(token=token, sdk=kwargs.get("sdk"))
+        _, error = set_token(token=token, sdk=sdk)
         if error:
             return None, error
 
