@@ -39,6 +39,23 @@ class AuthServicesTestCase(IntegrationTestCase):
 
     # endregion test:login_user
 
+    # region test:login_user_with_scope
+
+    def test_login_user_with_scope(self):
+        from accelbyte_py_sdk.core import get_env_user_credentials
+        from accelbyte_py_sdk.services.auth import login_user
+
+        # arrange
+        username, password = get_env_user_credentials()
+
+        # act
+        _, error = login_user(username=username, password=password, scope="account")
+
+        # assert
+        self.assertIsNone(error, error)
+
+    # endregion test:login_user_with_scope
+
     # region test:login_platform
 
     def test_login_platform(self):
