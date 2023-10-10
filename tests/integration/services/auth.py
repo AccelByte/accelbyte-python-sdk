@@ -47,7 +47,10 @@ class AuthServicesTestCase(IntegrationTestCase):
         # act
         with self.assertLogs(logger=self.logger, level=logging.WARNING) as cm:
             _, error = login_client(client_id=client_id, client_secret=None)
-            self.assertIn("The use of a Public OAuth Client is highly discouraged for this use case.", [r.msg for r in cm.records])
+            self.assertIn(
+                "The use of a Public OAuth Client is highly discouraged for this use case.",
+                [r.msg for r in cm.records],
+            )
 
         # assert
         self.assertIsNone(error, error)

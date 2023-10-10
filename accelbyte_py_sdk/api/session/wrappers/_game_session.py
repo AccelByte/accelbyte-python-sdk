@@ -45,6 +45,7 @@ from ..models import ResponseError
 
 from ..operations.game_session import AdminDeleteBulkGameSessions
 from ..operations.game_session import AdminQueryGameSessions
+from ..operations.game_session import AdminQueryGameSessionsByAttributes
 from ..operations.game_session import AdminUpdateGameSessionMember
 from ..operations.game_session import AppendTeamGameSession
 from ..operations.game_session import CreateGameSession
@@ -397,6 +398,132 @@ async def admin_query_game_sessions_async(
         status=status,
         status_v2=status_v2,
         to_time=to_time,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminQueryGameSessionsByAttributes)
+def admin_query_game_sessions_by_attributes(
+    body: Dict[str, Any],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query game sessions by admin (adminQueryGameSessionsByAttributes)
+
+    Query game sessions by admin.
+
+    By default, API will return a list of available game sessions (joinability: open).
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    query parameter "availability" to filter sessions' availability:
+    all: return all sessions regardless it's full
+    full: only return active sessions
+    default behavior (unset or else): return only available sessions (not full)
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminQueryGameSessionsByAttributes.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminQueryGameSessionsByAttributes)
+async def admin_query_game_sessions_by_attributes_async(
+    body: Dict[str, Any],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query game sessions by admin (adminQueryGameSessionsByAttributes)
+
+    Query game sessions by admin.
+
+    By default, API will return a list of available game sessions (joinability: open).
+    Session service has several DSInformation status to track DS request to DSMC:
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
+
+    query parameter "availability" to filter sessions' availability:
+    all: return all sessions regardless it's full
+    full: only return active sessions
+    default behavior (unset or else): return only available sessions (not full)
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions
+
+        method: POST
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGameSessionQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminQueryGameSessionsByAttributes.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

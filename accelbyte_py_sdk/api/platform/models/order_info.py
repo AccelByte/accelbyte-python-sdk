@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.36.0)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,7 @@ from ....core import StrEnum
 
 from ..models.currency_summary import CurrencySummary
 from ..models.item_snapshot import ItemSnapshot
+from ..models.order_bundle_item_info import OrderBundleItemInfo
 from ..models.order_creation_options import OrderCreationOptions
 
 
@@ -108,6 +109,8 @@ class OrderInfo(Model):
 
         language: (language) OPTIONAL str
 
+        order_bundle_item_infos: (orderBundleItemInfos) OPTIONAL List[OrderBundleItemInfo]
+
         payment_method: (paymentMethod) OPTIONAL str
 
         payment_method_fee: (paymentMethodFee) OPTIONAL int
@@ -164,6 +167,7 @@ class OrderInfo(Model):
     fulfilled_time: str  # OPTIONAL
     item_snapshot: ItemSnapshot  # OPTIONAL
     language: str  # OPTIONAL
+    order_bundle_item_infos: List[OrderBundleItemInfo]  # OPTIONAL
     payment_method: str  # OPTIONAL
     payment_method_fee: int  # OPTIONAL
     payment_order_no: str  # OPTIONAL
@@ -274,6 +278,12 @@ class OrderInfo(Model):
 
     def with_language(self, value: str) -> OrderInfo:
         self.language = value
+        return self
+
+    def with_order_bundle_item_infos(
+        self, value: List[OrderBundleItemInfo]
+    ) -> OrderInfo:
+        self.order_bundle_item_infos = value
         return self
 
     def with_payment_method(self, value: str) -> OrderInfo:
@@ -440,6 +450,13 @@ class OrderInfo(Model):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = ""
+        if hasattr(self, "order_bundle_item_infos"):
+            result["orderBundleItemInfos"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.order_bundle_item_infos
+            ]
+        elif include_empty:
+            result["orderBundleItemInfos"] = []
         if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
@@ -532,6 +549,7 @@ class OrderInfo(Model):
         fulfilled_time: Optional[str] = None,
         item_snapshot: Optional[ItemSnapshot] = None,
         language: Optional[str] = None,
+        order_bundle_item_infos: Optional[List[OrderBundleItemInfo]] = None,
         payment_method: Optional[str] = None,
         payment_method_fee: Optional[int] = None,
         payment_order_no: Optional[str] = None,
@@ -583,6 +601,8 @@ class OrderInfo(Model):
             instance.item_snapshot = item_snapshot
         if language is not None:
             instance.language = language
+        if order_bundle_item_infos is not None:
+            instance.order_bundle_item_infos = order_bundle_item_infos
         if payment_method is not None:
             instance.payment_method = payment_method
         if payment_method_fee is not None:
@@ -724,6 +744,16 @@ class OrderInfo(Model):
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = ""
+        if (
+            "orderBundleItemInfos" in dict_
+            and dict_["orderBundleItemInfos"] is not None
+        ):
+            instance.order_bundle_item_infos = [
+                OrderBundleItemInfo.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["orderBundleItemInfos"]
+            ]
+        elif include_empty:
+            instance.order_bundle_item_infos = []
         if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
             instance.payment_method = str(dict_["paymentMethod"])
         elif include_empty:
@@ -846,6 +876,7 @@ class OrderInfo(Model):
             "fulfilledTime": "fulfilled_time",
             "itemSnapshot": "item_snapshot",
             "language": "language",
+            "orderBundleItemInfos": "order_bundle_item_infos",
             "paymentMethod": "payment_method",
             "paymentMethodFee": "payment_method_fee",
             "paymentOrderNo": "payment_order_no",
@@ -889,6 +920,7 @@ class OrderInfo(Model):
             "fulfilledTime": False,
             "itemSnapshot": False,
             "language": False,
+            "orderBundleItemInfos": False,
             "paymentMethod": False,
             "paymentMethodFee": False,
             "paymentOrderNo": False,

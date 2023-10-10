@@ -8,11 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Seasonpass Service."""
 
-__version__ = "1.19.1"
+__version__ = "1.19.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
+
+# export
+from .wrappers import export_season
+from .wrappers import export_season_async
 
 # pass_
 from .wrappers import create_pass

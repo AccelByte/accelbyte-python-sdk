@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.36.0)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,8 +53,6 @@ class AdminOrderCreate(Model):
 
         item_id: (itemId) REQUIRED str
 
-        price: (price) REQUIRED int
-
         quantity: (quantity) REQUIRED int
 
         region: (region) REQUIRED str
@@ -69,6 +67,8 @@ class AdminOrderCreate(Model):
 
         platform: (platform) OPTIONAL Union[str, PlatformEnum]
 
+        price: (price) OPTIONAL int
+
         return_url: (returnUrl) OPTIONAL str
 
         sandbox: (sandbox) OPTIONAL bool
@@ -81,7 +81,6 @@ class AdminOrderCreate(Model):
     currency_code: str  # REQUIRED
     discounted_price: int  # REQUIRED
     item_id: str  # REQUIRED
-    price: int  # REQUIRED
     quantity: int  # REQUIRED
     region: str  # REQUIRED
     currency_namespace: str  # OPTIONAL
@@ -89,6 +88,7 @@ class AdminOrderCreate(Model):
     language: str  # OPTIONAL
     options: OrderCreationOptions  # OPTIONAL
     platform: Union[str, PlatformEnum]  # OPTIONAL
+    price: int  # OPTIONAL
     return_url: str  # OPTIONAL
     sandbox: bool  # OPTIONAL
     section_id: str  # OPTIONAL
@@ -107,10 +107,6 @@ class AdminOrderCreate(Model):
 
     def with_item_id(self, value: str) -> AdminOrderCreate:
         self.item_id = value
-        return self
-
-    def with_price(self, value: int) -> AdminOrderCreate:
-        self.price = value
         return self
 
     def with_quantity(self, value: int) -> AdminOrderCreate:
@@ -139,6 +135,10 @@ class AdminOrderCreate(Model):
 
     def with_platform(self, value: Union[str, PlatformEnum]) -> AdminOrderCreate:
         self.platform = value
+        return self
+
+    def with_price(self, value: int) -> AdminOrderCreate:
+        self.price = value
         return self
 
     def with_return_url(self, value: str) -> AdminOrderCreate:
@@ -171,10 +171,6 @@ class AdminOrderCreate(Model):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = ""
-        if hasattr(self, "price"):
-            result["price"] = int(self.price)
-        elif include_empty:
-            result["price"] = 0
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
@@ -203,6 +199,10 @@ class AdminOrderCreate(Model):
             result["platform"] = str(self.platform)
         elif include_empty:
             result["platform"] = Union[str, PlatformEnum]()
+        if hasattr(self, "price"):
+            result["price"] = int(self.price)
+        elif include_empty:
+            result["price"] = 0
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
@@ -227,7 +227,6 @@ class AdminOrderCreate(Model):
         currency_code: str,
         discounted_price: int,
         item_id: str,
-        price: int,
         quantity: int,
         region: str,
         currency_namespace: Optional[str] = None,
@@ -235,6 +234,7 @@ class AdminOrderCreate(Model):
         language: Optional[str] = None,
         options: Optional[OrderCreationOptions] = None,
         platform: Optional[Union[str, PlatformEnum]] = None,
+        price: Optional[int] = None,
         return_url: Optional[str] = None,
         sandbox: Optional[bool] = None,
         section_id: Optional[str] = None,
@@ -244,7 +244,6 @@ class AdminOrderCreate(Model):
         instance.currency_code = currency_code
         instance.discounted_price = discounted_price
         instance.item_id = item_id
-        instance.price = price
         instance.quantity = quantity
         instance.region = region
         if currency_namespace is not None:
@@ -257,6 +256,8 @@ class AdminOrderCreate(Model):
             instance.options = options
         if platform is not None:
             instance.platform = platform
+        if price is not None:
+            instance.price = price
         if return_url is not None:
             instance.return_url = return_url
         if sandbox is not None:
@@ -284,10 +285,6 @@ class AdminOrderCreate(Model):
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = ""
-        if "price" in dict_ and dict_["price"] is not None:
-            instance.price = int(dict_["price"])
-        elif include_empty:
-            instance.price = 0
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
@@ -318,6 +315,10 @@ class AdminOrderCreate(Model):
             instance.platform = str(dict_["platform"])
         elif include_empty:
             instance.platform = Union[str, PlatformEnum]()
+        if "price" in dict_ and dict_["price"] is not None:
+            instance.price = int(dict_["price"])
+        elif include_empty:
+            instance.price = 0
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
@@ -372,7 +373,6 @@ class AdminOrderCreate(Model):
             "currencyCode": "currency_code",
             "discountedPrice": "discounted_price",
             "itemId": "item_id",
-            "price": "price",
             "quantity": "quantity",
             "region": "region",
             "currencyNamespace": "currency_namespace",
@@ -380,6 +380,7 @@ class AdminOrderCreate(Model):
             "language": "language",
             "options": "options",
             "platform": "platform",
+            "price": "price",
             "returnUrl": "return_url",
             "sandbox": "sandbox",
             "sectionId": "section_id",
@@ -391,7 +392,6 @@ class AdminOrderCreate(Model):
             "currencyCode": True,
             "discountedPrice": True,
             "itemId": True,
-            "price": True,
             "quantity": True,
             "region": True,
             "currencyNamespace": False,
@@ -399,6 +399,7 @@ class AdminOrderCreate(Model):
             "language": False,
             "options": False,
             "platform": False,
+            "price": False,
             "returnUrl": False,
             "sandbox": False,
             "sectionId": False,

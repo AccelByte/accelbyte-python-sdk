@@ -1,3 +1,25 @@
+<a name="v0.51.0"></a>
+## [v0.51.0]
+### feat
+- **core:** add on demand refresh
+- **auth:** add default scope constant
+- **auth:** add warning when using a public oauth client
+### test
+- **core:** add on demand refresh test
+- **auth:** add login user with scope test
+- **auth:** add test for public oauth client
+### docs
+- **readme:** add on demand refresh section
+- **samples:** add on demand refresh token sample
+- **auth:** add warning about using public oauth client
+- **auth:** update warning wording
+### style
+- **:** run styler
+### fix
+- **match2:** remove match2 health check test
+- **ams:** remove ams health check test
+
+
 <a name="v0.50.0"></a>
 ## [v0.50.0]
 ### fix

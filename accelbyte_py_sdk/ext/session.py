@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.7.3)
+# AccelByte Gaming Services Session Service (3.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -235,6 +235,7 @@ def create_apimodels_ds_information_response_example() -> (
     ApimodelsDSInformationResponse
 ):
     instance = ApimodelsDSInformationResponse()
+    instance.created_at = randomize()
     instance.requested_at = randomize()
     instance.server = create_models_game_server_example()
     instance.status = randomize()

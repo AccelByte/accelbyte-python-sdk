@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.36.0)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -100,6 +100,8 @@ class ItemSnapshot(Model):
 
         features: (features) OPTIONAL List[str]
 
+        flexible: (flexible) OPTIONAL bool
+
         item_ids: (itemIds) OPTIONAL List[str]
 
         item_qty: (itemQty) OPTIONAL Dict[str, int]
@@ -162,6 +164,7 @@ class ItemSnapshot(Model):
     created_at: str  # OPTIONAL
     description: str  # OPTIONAL
     features: List[str]  # OPTIONAL
+    flexible: bool  # OPTIONAL
     item_ids: List[str]  # OPTIONAL
     item_qty: Dict[str, int]  # OPTIONAL
     listable: bool  # OPTIONAL
@@ -249,6 +252,10 @@ class ItemSnapshot(Model):
 
     def with_features(self, value: List[str]) -> ItemSnapshot:
         self.features = value
+        return self
+
+    def with_flexible(self, value: bool) -> ItemSnapshot:
+        self.flexible = value
         return self
 
     def with_item_ids(self, value: List[str]) -> ItemSnapshot:
@@ -405,6 +412,10 @@ class ItemSnapshot(Model):
             result["features"] = [str(i0) for i0 in self.features]
         elif include_empty:
             result["features"] = []
+        if hasattr(self, "flexible"):
+            result["flexible"] = bool(self.flexible)
+        elif include_empty:
+            result["flexible"] = False
         if hasattr(self, "item_ids"):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
@@ -523,6 +534,7 @@ class ItemSnapshot(Model):
         created_at: Optional[str] = None,
         description: Optional[str] = None,
         features: Optional[List[str]] = None,
+        flexible: Optional[bool] = None,
         item_ids: Optional[List[str]] = None,
         item_qty: Optional[Dict[str, int]] = None,
         listable: Optional[bool] = None,
@@ -570,6 +582,8 @@ class ItemSnapshot(Model):
             instance.description = description
         if features is not None:
             instance.features = features
+        if flexible is not None:
+            instance.flexible = flexible
         if item_ids is not None:
             instance.item_ids = item_ids
         if item_qty is not None:
@@ -681,6 +695,10 @@ class ItemSnapshot(Model):
             instance.features = [str(i0) for i0 in dict_["features"]]
         elif include_empty:
             instance.features = []
+        if "flexible" in dict_ and dict_["flexible"] is not None:
+            instance.flexible = bool(dict_["flexible"])
+        elif include_empty:
+            instance.flexible = False
         if "itemIds" in dict_ and dict_["itemIds"] is not None:
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
@@ -835,6 +853,7 @@ class ItemSnapshot(Model):
             "createdAt": "created_at",
             "description": "description",
             "features": "features",
+            "flexible": "flexible",
             "itemIds": "item_ids",
             "itemQty": "item_qty",
             "listable": "listable",
@@ -877,6 +896,7 @@ class ItemSnapshot(Model):
             "createdAt": False,
             "description": False,
             "features": False,
+            "flexible": False,
             "itemIds": False,
             "itemQty": False,
             "listable": False,

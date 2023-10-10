@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.36.0"
+__version__ = "4.37.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -409,6 +409,8 @@ from ._item import get_available_predicate_types
 from ._item import get_available_predicate_types_async
 from ._item import get_bulk_item_id_by_skus
 from ._item import get_bulk_item_id_by_skus_async
+from ._item import get_estimated_price
+from ._item import get_estimated_price_async
 from ._item import get_item
 from ._item import get_item_async
 from ._item import get_item_by_app_id
@@ -421,6 +423,8 @@ from ._item import get_item_id_by_sku
 from ._item import get_item_id_by_sku_async
 from ._item import get_item_type_config
 from ._item import get_item_type_config_async
+from ._item import get_items
+from ._item import get_items_async
 from ._item import get_locale_item
 from ._item import get_locale_item_async
 from ._item import get_locale_item_by_sku
@@ -433,6 +437,8 @@ from ._item import public_bulk_get_items
 from ._item import public_bulk_get_items_async
 from ._item import public_get_app
 from ._item import public_get_app_async
+from ._item import public_get_estimated_price
+from ._item import public_get_estimated_price_async
 from ._item import public_get_item
 from ._item import public_get_item_async
 from ._item import public_get_item_by_app_id

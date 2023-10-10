@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.36.0)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,6 +41,7 @@ from ..api.platform.models import AppleIAPConfigRequest
 from ..api.platform.models import AppleIAPReceipt
 from ..api.platform.models import AvailableComparison
 from ..api.platform.models import AvailablePredicate
+from ..api.platform.models import AvailablePrice
 from ..api.platform.models import BaseCustomConfig
 from ..api.platform.models import BaseTLSConfig
 from ..api.platform.models import BasicCategoryInfo
@@ -128,6 +129,7 @@ from ..api.platform.models import EpicGamesIAPConfigRequest
 from ..api.platform.models import EpicGamesReconcileRequest
 from ..api.platform.models import EpicGamesReconcileResult
 from ..api.platform.models import ErrorEntity
+from ..api.platform.models import EstimatedPriceInfo
 from ..api.platform.models import EventAdditionalData
 from ..api.platform.models import EventPayload
 from ..api.platform.models import ExportStoreRequest
@@ -170,9 +172,13 @@ from ..api.platform.models import IAPOrderInfo
 from ..api.platform.models import IAPOrderPagingSlicedResult
 from ..api.platform.models import Image
 from ..api.platform.models import ImportErrorDetails
+from ..api.platform.models import ImportStoreAppInfo
+from ..api.platform.models import ImportStoreCategoryInfo
 from ..api.platform.models import ImportStoreError
 from ..api.platform.models import ImportStoreItemInfo
 from ..api.platform.models import ImportStoreResult
+from ..api.platform.models import ImportStoreSectionInfo
+from ..api.platform.models import ImportStoreViewInfo
 from ..api.platform.models import InGameItemSync
 from ..api.platform.models import InvoiceCurrencySummary
 from ..api.platform.models import InvoiceSummary
@@ -213,6 +219,7 @@ from ..api.platform.models import OculusIAPConfigRequest
 from ..api.platform.models import OculusReconcileResult
 from ..api.platform.models import OptionBoxConfig
 from ..api.platform.models import Order
+from ..api.platform.models import OrderBundleItemInfo
 from ..api.platform.models import OrderCreate
 from ..api.platform.models import OrderCreationOptions
 from ..api.platform.models import OrderGrantInfo
@@ -344,6 +351,7 @@ from ..api.platform.models import StoreUpdate
 from ..api.platform.models import StreamEvent
 from ..api.platform.models import StreamEventBody
 from ..api.platform.models import StripeConfig
+from ..api.platform.models import SubItemAvailablePrice
 from ..api.platform.models import Subscribable
 from ..api.platform.models import SubscribeRequest
 from ..api.platform.models import SubscriptionActivityInfo
@@ -426,7 +434,6 @@ def create_admin_order_create_example() -> AdminOrderCreate:
     instance.currency_code = randomize()
     instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.item_id = randomize()
-    instance.price = randomize("int", min_val=1, max_val=1000)
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
     instance.currency_namespace = randomize("slug")
@@ -434,6 +441,7 @@ def create_admin_order_create_example() -> AdminOrderCreate:
     instance.language = randomize()
     instance.options = create_order_creation_options_example()
     instance.platform = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
     instance.return_url = randomize("url")
     instance.sandbox = randomize("bool")
     instance.section_id = randomize()
@@ -584,6 +592,16 @@ def create_available_predicate_example() -> AvailablePredicate:
     instance.predicate_type = randomize()
     instance.show_any_of = randomize("bool")
     instance.value_type = randomize()
+    return instance
+
+
+def create_available_price_example() -> AvailablePrice:
+    instance = AvailablePrice()
+    instance.currency_code = randomize()
+    instance.currency_namespace = randomize("slug")
+    instance.discounted_price = randomize("int", min_val=1, max_val=1000)
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.price_details = [create_sub_item_available_price_example()]
     return instance
 
 
@@ -781,6 +799,7 @@ def create_bundled_item_info_example() -> BundledItemInfo:
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.features = [randomize()]
+    instance.flexible = randomize("bool")
     instance.fresh = randomize("bool")
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
@@ -1562,6 +1581,14 @@ def create_error_entity_example() -> ErrorEntity:
     return instance
 
 
+def create_estimated_price_info_example() -> EstimatedPriceInfo:
+    instance = EstimatedPriceInfo()
+    instance.item_id = randomize()
+    instance.estimated_prices = [create_available_price_example()]
+    instance.region = randomize()
+    return instance
+
+
 def create_event_additional_data_example() -> EventAdditionalData:
     instance = EventAdditionalData()
     instance.entitlement = [create_additional_data_entitlement_example()]
@@ -1711,6 +1738,7 @@ def create_fulfillment_request_example() -> FulfillmentRequest:
     instance.order = create_order_summary_example()
     instance.order_no = randomize()
     instance.origin = randomize()
+    instance.override_bundle_item_qty = {}
     instance.region = randomize()
     instance.source = randomize()
     instance.start_date = randomize("date")
@@ -1801,6 +1829,7 @@ def create_full_item_info_example() -> FullItemInfo:
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.features = [randomize()]
+    instance.flexible = randomize("bool")
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
     instance.item_qty = {}
@@ -2047,16 +2076,36 @@ def create_image_example() -> Image:
 def create_import_error_details_example() -> ImportErrorDetails:
     instance = ImportErrorDetails()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
+    instance.error_field = randomize()
     instance.error_message = randomize()
+    instance.error_value = randomize()
     instance.message_variables = {randomize(): randomize()}
+    return instance
+
+
+def create_import_store_app_info_example() -> ImportStoreAppInfo:
+    instance = ImportStoreAppInfo()
+    instance.item_id = randomize()
+    return instance
+
+
+def create_import_store_category_info_example() -> ImportStoreCategoryInfo:
+    instance = ImportStoreCategoryInfo()
+    instance.category_id = randomize()
+    instance.category_path = randomize()
+    instance.namespace = randomize("slug")
     return instance
 
 
 def create_import_store_error_example() -> ImportStoreError:
     instance = ImportStoreError()
+    instance.app = create_import_store_app_info_example()
+    instance.category = create_import_store_category_info_example()
     instance.errors = [create_import_error_details_example()]
     instance.item = create_import_store_item_info_example()
+    instance.section = create_import_store_section_info_example()
     instance.type_ = randomize()
+    instance.view = create_import_store_view_info_example()
     return instance
 
 
@@ -2076,6 +2125,20 @@ def create_import_store_result_example() -> ImportStoreResult:
     instance.errors = [create_import_store_error_example()]
     instance.store_info = create_store_info_example()
     instance.success = randomize("bool")
+    return instance
+
+
+def create_import_store_section_info_example() -> ImportStoreSectionInfo:
+    instance = ImportStoreSectionInfo()
+    instance.name = randomize()
+    instance.section_id = randomize()
+    return instance
+
+
+def create_import_store_view_info_example() -> ImportStoreViewInfo:
+    instance = ImportStoreViewInfo()
+    instance.name = randomize()
+    instance.view_id = randomize()
     return instance
 
 
@@ -2135,6 +2198,7 @@ def create_item_create_example() -> ItemCreate:
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.features = [randomize()]
+    instance.flexible = randomize("bool")
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
     instance.item_qty = {}
@@ -2201,6 +2265,7 @@ def create_item_info_example() -> ItemInfo:
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.features = [randomize()]
+    instance.flexible = randomize("bool")
     instance.fresh = randomize("bool")
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
@@ -2310,6 +2375,7 @@ def create_item_snapshot_example() -> ItemSnapshot:
     instance.created_at = randomize("date")
     instance.description = randomize()
     instance.features = [randomize()]
+    instance.flexible = randomize("bool")
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
@@ -2380,6 +2446,7 @@ def create_item_update_example() -> ItemUpdate:
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.features = [randomize()]
+    instance.flexible = randomize("bool")
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
     instance.item_qty = {}
@@ -2605,6 +2672,7 @@ def create_order_example() -> Order:
     instance.item_snapshot = create_item_snapshot_example()
     instance.language = randomize()
     instance.namespace = randomize("slug")
+    instance.order_bundle_item_infos = [create_order_bundle_item_info_example()]
     instance.order_no = randomize()
     instance.payment_method = randomize()
     instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
@@ -2633,15 +2701,27 @@ def create_order_example() -> Order:
     return instance
 
 
+def create_order_bundle_item_info_example() -> OrderBundleItemInfo:
+    instance = OrderBundleItemInfo()
+    instance.discounted_price = randomize("int", min_val=1, max_val=1000)
+    instance.item_id = randomize()
+    instance.item_name = randomize()
+    instance.item_sku = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.purchased = randomize("bool")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_order_create_example() -> OrderCreate:
     instance = OrderCreate()
     instance.currency_code = randomize()
     instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.item_id = randomize()
-    instance.price = randomize("int", min_val=1, max_val=1000)
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.language = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
     instance.return_url = randomize("url")
     instance.section_id = randomize()
@@ -2699,6 +2779,7 @@ def create_order_info_example() -> OrderInfo:
     instance.fulfilled_time = randomize("date")
     instance.item_snapshot = create_item_snapshot_example()
     instance.language = randomize()
+    instance.order_bundle_item_infos = [create_order_bundle_item_info_example()]
     instance.payment_method = randomize()
     instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.payment_order_no = randomize()
@@ -3374,6 +3455,7 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.features = [randomize()]
+    instance.flexible = randomize("bool")
     instance.fresh = randomize("bool")
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
@@ -4088,6 +4170,18 @@ def create_stripe_config_example() -> StripeConfig:
     instance.publishable_key = randomize()
     instance.secret_key = randomize()
     instance.webhook_secret = randomize()
+    return instance
+
+
+def create_sub_item_available_price_example() -> SubItemAvailablePrice:
+    instance = SubItemAvailablePrice()
+    instance.discounted_price = randomize("int", min_val=1, max_val=1000)
+    instance.item_id = randomize()
+    instance.item_name = randomize()
+    instance.item_sku = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.owned = randomize("bool")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

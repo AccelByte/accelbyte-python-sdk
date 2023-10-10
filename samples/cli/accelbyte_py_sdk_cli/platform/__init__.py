@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.36.0)
+# justice-platform-service (4.37.1)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._get_fulfillment_script import get_fulfillment_script
@@ -113,8 +113,10 @@ from ._create_item import create_item
 from ._get_item_by_app_id import get_item_by_app_id
 from ._query_items import query_items
 from ._list_basic_items_by_features import list_basic_items_by_features
+from ._get_items import get_items
 from ._get_item_by_sku import get_item_by_sku
 from ._get_locale_item_by_sku import get_locale_item_by_sku
+from ._get_estimated_price import get_estimated_price
 from ._get_item_id_by_sku import get_item_id_by_sku
 from ._get_bulk_item_id_by_skus import get_bulk_item_id_by_skus
 from ._bulk_get_locale_items import bulk_get_locale_items
@@ -371,6 +373,7 @@ from ._get_iap_item_mapping import get_iap_item_mapping
 from ._public_get_item_by_app_id import public_get_item_by_app_id
 from ._public_query_items import public_query_items
 from ._public_get_item_by_sku import public_get_item_by_sku
+from ._public_get_estimated_price import public_get_estimated_price
 from ._public_bulk_get_items import public_bulk_get_items
 from ._public_validate_item_purchase_condition import (
     public_validate_item_purchase_condition,
@@ -596,8 +599,10 @@ commands = [
     get_item_by_app_id,
     query_items,
     list_basic_items_by_features,
+    get_items,
     get_item_by_sku,
     get_locale_item_by_sku,
+    get_estimated_price,
     get_item_id_by_sku,
     get_bulk_item_id_by_skus,
     bulk_get_locale_items,
@@ -832,6 +837,7 @@ commands = [
     public_get_item_by_app_id,
     public_query_items,
     public_get_item_by_sku,
+    public_get_estimated_price,
     public_bulk_get_items,
     public_validate_item_purchase_condition,
     public_search_items,

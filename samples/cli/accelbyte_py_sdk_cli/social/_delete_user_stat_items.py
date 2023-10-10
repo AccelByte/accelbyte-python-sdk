@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Social Service (2.9.5)
+# AGS Social Service (2.9.6)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

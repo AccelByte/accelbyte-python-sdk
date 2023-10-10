@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.7.3)
+# AccelByte Gaming Services Session Service Index (3.8.1)
 
 
 ## Operations
@@ -37,6 +37,7 @@
 |---|---|---|---|---|---|---|
 | /session/v1/admin/namespaces/{namespace}/gamesessions/bulk | DELETE | adminDeleteBulkGameSessions | `false` | [AdminDeleteBulkGameSessions](../../accelbyte_py_sdk/api/session/operations/game_session/admin_delete_bulk_game__144132.py) | [admin_delete_bulk_game_sessions](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-admin-delete-bulk-game-sessions](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_delete_bulk_game_sessions.py) |
 | /session/v1/admin/namespaces/{namespace}/gamesessions | GET | adminQueryGameSessions | `false` | [AdminQueryGameSessions](../../accelbyte_py_sdk/api/session/operations/game_session/admin_query_game_sessions.py) | [admin_query_game_sessions](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-admin-query-game-sessions](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_query_game_sessions.py) |
+| /session/v1/admin/namespaces/{namespace}/gamesessions | POST | adminQueryGameSessionsByAttributes | `false` | [AdminQueryGameSessionsByAttributes](../../accelbyte_py_sdk/api/session/operations/game_session/admin_query_game_sessio_9fd853.py) | [admin_query_game_sessions_by_attributes](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-admin-query-game-sessions-by-attributes](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_query_game_sessions_by_attributes.py) |
 | /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/status/{statusType} | PUT | adminUpdateGameSessionMember | `false` | [AdminUpdateGameSessionMember](../../accelbyte_py_sdk/api/session/operations/game_session/admin_update_game_sessi_718745.py) | [admin_update_game_session_member](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-admin-update-game-session-member](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_update_game_session_member.py) |
 | /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/teams | POST | appendTeamGameSession | `false` | [AppendTeamGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/append_team_game_session.py) | [append_team_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-append-team-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_append_team_game_session.py) |
 | /session/v1/public/namespaces/{namespace}/gamesession | POST | createGameSession | `false` | [CreateGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/create_game_session.py) | [create_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-create-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_create_game_session.py) |

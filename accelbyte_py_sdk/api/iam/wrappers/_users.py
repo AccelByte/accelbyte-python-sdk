@@ -9767,7 +9767,7 @@ def admin_update_user_v3(
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
 
 
       * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
@@ -9777,6 +9777,8 @@ def admin_update_user_v3(
 
 
       * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
+
+
 
 
 
@@ -9866,7 +9868,7 @@ async def admin_update_user_v3_async(
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
 
 
       * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
@@ -9876,6 +9878,8 @@ async def admin_update_user_v3_async(
 
 
       * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
+
+
 
 
 
@@ -19414,7 +19418,7 @@ def public_partial_update_user_v3(
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
 
 
       * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
@@ -19424,6 +19428,8 @@ def public_partial_update_user_v3(
 
 
       * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
 
 
 
@@ -19504,7 +19510,7 @@ async def public_partial_update_user_v3_async(
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
 
 
       * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
@@ -19514,6 +19520,8 @@ async def public_partial_update_user_v3_async(
 
 
       * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
 
 
 
@@ -24270,7 +24278,7 @@ def update_user_v3(
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
 
 
       * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
@@ -24280,6 +24288,8 @@ def update_user_v3(
 
 
       * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
 
 
     Important notes:
@@ -24369,7 +24379,7 @@ async def update_user_v3_async(
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
 
 
       * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
@@ -24379,6 +24389,8 @@ async def update_user_v3_async(
 
 
       * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
 
 
     Important notes:

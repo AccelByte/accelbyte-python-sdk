@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.36.0)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,13 +39,13 @@ class OrderCreate(Model):
 
         item_id: (itemId) REQUIRED str
 
-        price: (price) REQUIRED int
-
         quantity: (quantity) REQUIRED int
 
         ext: (ext) OPTIONAL Dict[str, Any]
 
         language: (language) OPTIONAL str
+
+        price: (price) OPTIONAL int
 
         region: (region) OPTIONAL str
 
@@ -59,10 +59,10 @@ class OrderCreate(Model):
     currency_code: str  # REQUIRED
     discounted_price: int  # REQUIRED
     item_id: str  # REQUIRED
-    price: int  # REQUIRED
     quantity: int  # REQUIRED
     ext: Dict[str, Any]  # OPTIONAL
     language: str  # OPTIONAL
+    price: int  # OPTIONAL
     region: str  # OPTIONAL
     return_url: str  # OPTIONAL
     section_id: str  # OPTIONAL
@@ -83,10 +83,6 @@ class OrderCreate(Model):
         self.item_id = value
         return self
 
-    def with_price(self, value: int) -> OrderCreate:
-        self.price = value
-        return self
-
     def with_quantity(self, value: int) -> OrderCreate:
         self.quantity = value
         return self
@@ -97,6 +93,10 @@ class OrderCreate(Model):
 
     def with_language(self, value: str) -> OrderCreate:
         self.language = value
+        return self
+
+    def with_price(self, value: int) -> OrderCreate:
+        self.price = value
         return self
 
     def with_region(self, value: str) -> OrderCreate:
@@ -129,10 +129,6 @@ class OrderCreate(Model):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = ""
-        if hasattr(self, "price"):
-            result["price"] = int(self.price)
-        elif include_empty:
-            result["price"] = 0
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
@@ -145,6 +141,10 @@ class OrderCreate(Model):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = ""
+        if hasattr(self, "price"):
+            result["price"] = int(self.price)
+        elif include_empty:
+            result["price"] = 0
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
@@ -169,10 +169,10 @@ class OrderCreate(Model):
         currency_code: str,
         discounted_price: int,
         item_id: str,
-        price: int,
         quantity: int,
         ext: Optional[Dict[str, Any]] = None,
         language: Optional[str] = None,
+        price: Optional[int] = None,
         region: Optional[str] = None,
         return_url: Optional[str] = None,
         section_id: Optional[str] = None,
@@ -182,12 +182,13 @@ class OrderCreate(Model):
         instance.currency_code = currency_code
         instance.discounted_price = discounted_price
         instance.item_id = item_id
-        instance.price = price
         instance.quantity = quantity
         if ext is not None:
             instance.ext = ext
         if language is not None:
             instance.language = language
+        if price is not None:
+            instance.price = price
         if region is not None:
             instance.region = region
         if return_url is not None:
@@ -213,10 +214,6 @@ class OrderCreate(Model):
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = ""
-        if "price" in dict_ and dict_["price"] is not None:
-            instance.price = int(dict_["price"])
-        elif include_empty:
-            instance.price = 0
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
@@ -229,6 +226,10 @@ class OrderCreate(Model):
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = ""
+        if "price" in dict_ and dict_["price"] is not None:
+            instance.price = int(dict_["price"])
+        elif include_empty:
+            instance.price = 0
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -283,10 +284,10 @@ class OrderCreate(Model):
             "currencyCode": "currency_code",
             "discountedPrice": "discounted_price",
             "itemId": "item_id",
-            "price": "price",
             "quantity": "quantity",
             "ext": "ext",
             "language": "language",
+            "price": "price",
             "region": "region",
             "returnUrl": "return_url",
             "sectionId": "section_id",
@@ -298,10 +299,10 @@ class OrderCreate(Model):
             "currencyCode": True,
             "discountedPrice": True,
             "itemId": True,
-            "price": True,
             "quantity": True,
             "ext": False,
             "language": False,
+            "price": False,
             "region": False,
             "returnUrl": False,
             "sectionId": False,

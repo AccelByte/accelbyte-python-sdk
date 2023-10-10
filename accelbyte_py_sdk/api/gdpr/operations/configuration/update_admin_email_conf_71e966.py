@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Gdpr Service (2.2.3)
+# AccelByte Gaming Services Gdpr Service (2.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -47,7 +47,7 @@ class UpdateAdminEmailConfiguration(Operation):
 
         method: PUT
 
-        tags: ["Data Retrieval"]
+        tags: ["Configuration"]
 
         consumes: ["application/json"]
 

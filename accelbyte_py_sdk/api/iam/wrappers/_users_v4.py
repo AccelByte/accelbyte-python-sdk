@@ -2736,7 +2736,19 @@ def admin_update_user_v4(
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
+
+
+      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+
+
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+
+
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
+
 
 
     action code : 10103
@@ -2825,7 +2837,19 @@ async def admin_update_user_v4_async(
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
+
+
+      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+
+
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+
+
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
+
 
 
     action code : 10103
@@ -5109,12 +5133,7 @@ def public_update_user_email_address_v4(
 
 
 
-    It requires a verification code from
-
-
-        /users/me/code/request
-
-    with UpdateEmailAddress context.
+    It requires a verification code from /users/me/code/request with UpdateEmailAddress context.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/email
@@ -5171,12 +5190,7 @@ async def public_update_user_email_address_v4_async(
 
 
 
-    It requires a verification code from
-
-
-        /users/me/code/request
-
-    with UpdateEmailAddress context.
+    It requires a verification code from /users/me/code/request with UpdateEmailAddress context.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/email
@@ -5255,7 +5269,19 @@ def public_update_user_v4(
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
+
+
+      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+
+
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+
+
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
+
 
 
     action code : 10103
@@ -5335,7 +5361,19 @@ async def public_update_user_v4_async(
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
+
+
+      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+
+
+      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+
+
+      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
+
+
+
 
 
     action code : 10103

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.3.0)
+# AccelByte Gaming Services Iam Service (7.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -62,7 +62,7 @@ class AdminUpdateUserV3(Operation):
 
 
 
-     Several case of updating email address
+     Response body logic when user updating email address:
 
 
       * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
@@ -72,6 +72,8 @@ class AdminUpdateUserV3(Operation):
 
 
       * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
+
+
 
 
 

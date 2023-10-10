@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Gdpr Service (2.2.3)
+# AccelByte Gaming Services Gdpr Service (2.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,29 +29,30 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import DtoServicesConfigurationResponse
 from ...models import ResponseError
 
 
-class GetAdminEmailConfiguration(Operation):
-    """Get admin email addresses configuration (GetAdminEmailConfiguration)
+class AdminGetServicesConfiguration(Operation):
+    """Get Registered Services Configuration (AdminGetServicesConfiguration)
 
-    Get list of admin email address configuration.
+    Get Registered Services Configuration.
 
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]` and scope `account`
+    Required permission `ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [READ]` and scope `account`
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]
+        - ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [READ]
 
     Required Scope(s):
         - account
 
     Properties:
-        url: /gdpr/admin/namespaces/{namespace}/emails/configurations
+        url: /gdpr/admin/namespaces/{namespace}/services/configurations
 
         method: GET
 
-        tags: ["Data Retrieval"]
+        tags: ["Configuration"]
 
         consumes: ["application/json"]
 
@@ -62,16 +63,18 @@ class GetAdminEmailConfiguration(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[str] (OK)
+        200: OK - DtoServicesConfigurationResponse (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/gdpr/admin/namespaces/{namespace}/emails/configurations"
+    _url: str = "/gdpr/admin/namespaces/{namespace}/services/configurations"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
@@ -135,7 +138,7 @@ class GetAdminEmailConfiguration(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetAdminEmailConfiguration:
+    def with_namespace(self, value: str) -> AdminGetServicesConfiguration:
         self.namespace = value
         return self
 
@@ -158,12 +161,17 @@ class GetAdminEmailConfiguration(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, List[str]], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, DtoServicesConfigurationResponse],
+        Union[None, HttpResponse, ResponseError],
+    ]:
         """Parse the given response.
 
-        200: OK - List[str] (OK)
+        200: OK - DtoServicesConfigurationResponse (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
 
@@ -181,8 +189,10 @@ class GetAdminEmailConfiguration(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [str(i) for i in content], None
+            return DtoServicesConfigurationResponse.create_from_dict(content), None
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 404:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)
@@ -196,7 +206,7 @@ class GetAdminEmailConfiguration(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> GetAdminEmailConfiguration:
+    def create(cls, namespace: str, **kwargs) -> AdminGetServicesConfiguration:
         instance = cls()
         instance.namespace = namespace
         return instance
@@ -204,7 +214,7 @@ class GetAdminEmailConfiguration(Operation):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> GetAdminEmailConfiguration:
+    ) -> AdminGetServicesConfiguration:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])

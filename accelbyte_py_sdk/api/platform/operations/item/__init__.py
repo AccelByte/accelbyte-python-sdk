@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.36.0"
+__version__ = "4.37.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -28,18 +28,21 @@ from .feature_item import FeatureItem
 from .get_app import GetApp
 from .get_available_predicate_types import GetAvailablePredicateTypes
 from .get_bulk_item_id_by_skus import GetBulkItemIdBySkus
+from .get_estimated_price import GetEstimatedPrice
 from .get_item import GetItem
 from .get_item_by_app_id import GetItemByAppId
 from .get_item_by_sku import GetItemBySku
 from .get_item_dynamic_data import GetItemDynamicData
 from .get_item_id_by_sku import GetItemIdBySku
 from .get_item_type_config import GetItemTypeConfig
+from .get_items import GetItems
 from .get_locale_item import GetLocaleItem
 from .get_locale_item_by_sku import GetLocaleItemBySku
 from .list_basic_items_by_features import ListBasicItemsByFeatures
 from .list_item_type_configs import ListItemTypeConfigs
 from .public_bulk_get_items import PublicBulkGetItems
 from .public_get_app import PublicGetApp
+from .public_get_estimated_price import PublicGetEstimatedPrice
 from .public_get_item import PublicGetItem
 from .public_get_item_by_app_id import PublicGetItemByAppId
 from .public_get_item_by_sku import PublicGetItemBySku

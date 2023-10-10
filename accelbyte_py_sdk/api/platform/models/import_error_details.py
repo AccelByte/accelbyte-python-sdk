@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.36.0)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,7 +34,11 @@ class ImportErrorDetails(Model):
     Properties:
         error_code: (errorCode) OPTIONAL int
 
+        error_field: (errorField) OPTIONAL str
+
         error_message: (errorMessage) OPTIONAL str
+
+        error_value: (errorValue) OPTIONAL str
 
         message_variables: (messageVariables) OPTIONAL Dict[str, str]
     """
@@ -42,7 +46,9 @@ class ImportErrorDetails(Model):
     # region fields
 
     error_code: int  # OPTIONAL
+    error_field: str  # OPTIONAL
     error_message: str  # OPTIONAL
+    error_value: str  # OPTIONAL
     message_variables: Dict[str, str]  # OPTIONAL
 
     # endregion fields
@@ -53,8 +59,16 @@ class ImportErrorDetails(Model):
         self.error_code = value
         return self
 
+    def with_error_field(self, value: str) -> ImportErrorDetails:
+        self.error_field = value
+        return self
+
     def with_error_message(self, value: str) -> ImportErrorDetails:
         self.error_message = value
+        return self
+
+    def with_error_value(self, value: str) -> ImportErrorDetails:
+        self.error_value = value
         return self
 
     def with_message_variables(self, value: Dict[str, str]) -> ImportErrorDetails:
@@ -71,10 +85,18 @@ class ImportErrorDetails(Model):
             result["errorCode"] = int(self.error_code)
         elif include_empty:
             result["errorCode"] = 0
+        if hasattr(self, "error_field"):
+            result["errorField"] = str(self.error_field)
+        elif include_empty:
+            result["errorField"] = ""
         if hasattr(self, "error_message"):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
             result["errorMessage"] = ""
+        if hasattr(self, "error_value"):
+            result["errorValue"] = str(self.error_value)
+        elif include_empty:
+            result["errorValue"] = ""
         if hasattr(self, "message_variables"):
             result["messageVariables"] = {
                 str(k0): str(v0) for k0, v0 in self.message_variables.items()
@@ -91,15 +113,21 @@ class ImportErrorDetails(Model):
     def create(
         cls,
         error_code: Optional[int] = None,
+        error_field: Optional[str] = None,
         error_message: Optional[str] = None,
+        error_value: Optional[str] = None,
         message_variables: Optional[Dict[str, str]] = None,
         **kwargs,
     ) -> ImportErrorDetails:
         instance = cls()
         if error_code is not None:
             instance.error_code = error_code
+        if error_field is not None:
+            instance.error_field = error_field
         if error_message is not None:
             instance.error_message = error_message
+        if error_value is not None:
+            instance.error_value = error_value
         if message_variables is not None:
             instance.message_variables = message_variables
         return instance
@@ -115,10 +143,18 @@ class ImportErrorDetails(Model):
             instance.error_code = int(dict_["errorCode"])
         elif include_empty:
             instance.error_code = 0
+        if "errorField" in dict_ and dict_["errorField"] is not None:
+            instance.error_field = str(dict_["errorField"])
+        elif include_empty:
+            instance.error_field = ""
         if "errorMessage" in dict_ and dict_["errorMessage"] is not None:
             instance.error_message = str(dict_["errorMessage"])
         elif include_empty:
             instance.error_message = ""
+        if "errorValue" in dict_ and dict_["errorValue"] is not None:
+            instance.error_value = str(dict_["errorValue"])
+        elif include_empty:
+            instance.error_value = ""
         if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
             instance.message_variables = {
                 str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()
@@ -167,7 +203,9 @@ class ImportErrorDetails(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "errorCode": "error_code",
+            "errorField": "error_field",
             "errorMessage": "error_message",
+            "errorValue": "error_value",
             "messageVariables": "message_variables",
         }
 
@@ -175,7 +213,9 @@ class ImportErrorDetails(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "errorCode": False,
+            "errorField": False,
             "errorMessage": False,
+            "errorValue": False,
             "messageVariables": False,
         }
 

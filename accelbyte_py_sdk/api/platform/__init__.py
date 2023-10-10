@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.36.0"
+__version__ = "4.37.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -425,6 +425,8 @@ from .wrappers import get_available_predicate_types
 from .wrappers import get_available_predicate_types_async
 from .wrappers import get_bulk_item_id_by_skus
 from .wrappers import get_bulk_item_id_by_skus_async
+from .wrappers import get_estimated_price
+from .wrappers import get_estimated_price_async
 from .wrappers import get_item
 from .wrappers import get_item_async
 from .wrappers import get_item_by_app_id
@@ -437,6 +439,8 @@ from .wrappers import get_item_id_by_sku
 from .wrappers import get_item_id_by_sku_async
 from .wrappers import get_item_type_config
 from .wrappers import get_item_type_config_async
+from .wrappers import get_items
+from .wrappers import get_items_async
 from .wrappers import get_locale_item
 from .wrappers import get_locale_item_async
 from .wrappers import get_locale_item_by_sku
@@ -449,6 +453,8 @@ from .wrappers import public_bulk_get_items
 from .wrappers import public_bulk_get_items_async
 from .wrappers import public_get_app
 from .wrappers import public_get_app_async
+from .wrappers import public_get_estimated_price
+from .wrappers import public_get_estimated_price_async
 from .wrappers import public_get_item
 from .wrappers import public_get_item_async
 from .wrappers import public_get_item_by_app_id

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.36.0)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,7 @@ from ....core import StrEnum
 
 from ..models.currency_summary import CurrencySummary
 from ..models.item_snapshot import ItemSnapshot
+from ..models.order_bundle_item_info import OrderBundleItemInfo
 from ..models.order_creation_options import OrderCreationOptions
 
 
@@ -101,6 +102,8 @@ class Order(Model):
         language: (language) OPTIONAL str
 
         namespace: (namespace) OPTIONAL str
+
+        order_bundle_item_infos: (orderBundleItemInfos) OPTIONAL List[OrderBundleItemInfo]
 
         order_no: (orderNo) OPTIONAL str
 
@@ -175,6 +178,7 @@ class Order(Model):
     item_snapshot: ItemSnapshot  # OPTIONAL
     language: str  # OPTIONAL
     namespace: str  # OPTIONAL
+    order_bundle_item_infos: List[OrderBundleItemInfo]  # OPTIONAL
     order_no: str  # OPTIONAL
     payment_method: str  # OPTIONAL
     payment_method_fee: int  # OPTIONAL
@@ -283,6 +287,10 @@ class Order(Model):
 
     def with_namespace(self, value: str) -> Order:
         self.namespace = value
+        return self
+
+    def with_order_bundle_item_infos(self, value: List[OrderBundleItemInfo]) -> Order:
+        self.order_bundle_item_infos = value
         return self
 
     def with_order_no(self, value: str) -> Order:
@@ -475,6 +483,13 @@ class Order(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "order_bundle_item_infos"):
+            result["orderBundleItemInfos"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.order_bundle_item_infos
+            ]
+        elif include_empty:
+            result["orderBundleItemInfos"] = []
         if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
@@ -604,6 +619,7 @@ class Order(Model):
         item_snapshot: Optional[ItemSnapshot] = None,
         language: Optional[str] = None,
         namespace: Optional[str] = None,
+        order_bundle_item_infos: Optional[List[OrderBundleItemInfo]] = None,
         order_no: Optional[str] = None,
         payment_method: Optional[str] = None,
         payment_method_fee: Optional[int] = None,
@@ -672,6 +688,8 @@ class Order(Model):
             instance.language = language
         if namespace is not None:
             instance.namespace = namespace
+        if order_bundle_item_infos is not None:
+            instance.order_bundle_item_infos = order_bundle_item_infos
         if order_no is not None:
             instance.order_no = order_no
         if payment_method is not None:
@@ -818,6 +836,16 @@ class Order(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if (
+            "orderBundleItemInfos" in dict_
+            and dict_["orderBundleItemInfos"] is not None
+        ):
+            instance.order_bundle_item_infos = [
+                OrderBundleItemInfo.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["orderBundleItemInfos"]
+            ]
+        elif include_empty:
+            instance.order_bundle_item_infos = []
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
@@ -980,6 +1008,7 @@ class Order(Model):
             "itemSnapshot": "item_snapshot",
             "language": "language",
             "namespace": "namespace",
+            "orderBundleItemInfos": "order_bundle_item_infos",
             "orderNo": "order_no",
             "paymentMethod": "payment_method",
             "paymentMethodFee": "payment_method_fee",
@@ -1030,6 +1059,7 @@ class Order(Model):
             "itemSnapshot": False,
             "language": False,
             "namespace": False,
+            "orderBundleItemInfos": False,
             "orderNo": False,
             "paymentMethod": False,
             "paymentMethodFee": False,

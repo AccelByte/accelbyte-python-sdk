@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.7.3)
+# AccelByte Gaming Services Session Service (3.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,8 @@ class ApimodelsDSInformationResponse(Model):
     """Apimodels DS information response (apimodels.DSInformationResponse)
 
     Properties:
+        created_at: (CreatedAt) REQUIRED str
+
         requested_at: (RequestedAt) REQUIRED str
 
         server: (Server) OPTIONAL ModelsGameServer
@@ -45,6 +47,7 @@ class ApimodelsDSInformationResponse(Model):
 
     # region fields
 
+    created_at: str  # REQUIRED
     requested_at: str  # REQUIRED
     server: ModelsGameServer  # OPTIONAL
     status: str  # OPTIONAL
@@ -53,6 +56,10 @@ class ApimodelsDSInformationResponse(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_created_at(self, value: str) -> ApimodelsDSInformationResponse:
+        self.created_at = value
+        return self
 
     def with_requested_at(self, value: str) -> ApimodelsDSInformationResponse:
         self.requested_at = value
@@ -76,6 +83,10 @@ class ApimodelsDSInformationResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "created_at"):
+            result["CreatedAt"] = str(self.created_at)
+        elif include_empty:
+            result["CreatedAt"] = ""
         if hasattr(self, "requested_at"):
             result["RequestedAt"] = str(self.requested_at)
         elif include_empty:
@@ -101,6 +112,7 @@ class ApimodelsDSInformationResponse(Model):
     @classmethod
     def create(
         cls,
+        created_at: str,
         requested_at: str,
         server: Optional[ModelsGameServer] = None,
         status: Optional[str] = None,
@@ -108,6 +120,7 @@ class ApimodelsDSInformationResponse(Model):
         **kwargs,
     ) -> ApimodelsDSInformationResponse:
         instance = cls()
+        instance.created_at = created_at
         instance.requested_at = requested_at
         if server is not None:
             instance.server = server
@@ -124,6 +137,10 @@ class ApimodelsDSInformationResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "CreatedAt" in dict_ and dict_["CreatedAt"] is not None:
+            instance.created_at = str(dict_["CreatedAt"])
+        elif include_empty:
+            instance.created_at = ""
         if "RequestedAt" in dict_ and dict_["RequestedAt"] is not None:
             instance.requested_at = str(dict_["RequestedAt"])
         elif include_empty:
@@ -185,6 +202,7 @@ class ApimodelsDSInformationResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "CreatedAt": "created_at",
             "RequestedAt": "requested_at",
             "Server": "server",
             "Status": "status",
@@ -194,6 +212,7 @@ class ApimodelsDSInformationResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "CreatedAt": True,
             "RequestedAt": True,
             "Server": False,
             "Status": False,

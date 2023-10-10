@@ -35,6 +35,7 @@ from ..models import AvailablePredicate
 from ..models import BasicItem
 from ..models import BulkRegionDataChangeRequest
 from ..models import ErrorEntity
+from ..models import EstimatedPriceInfo
 from ..models import FullAppInfo
 from ..models import FullItemInfo
 from ..models import FullItemPagingSlicedResult
@@ -71,18 +72,21 @@ from ..operations.item import FeatureItem
 from ..operations.item import GetApp
 from ..operations.item import GetAvailablePredicateTypes
 from ..operations.item import GetBulkItemIdBySkus
+from ..operations.item import GetEstimatedPrice
 from ..operations.item import GetItem
 from ..operations.item import GetItemByAppId
 from ..operations.item import GetItemBySku
 from ..operations.item import GetItemDynamicData
 from ..operations.item import GetItemIdBySku
 from ..operations.item import GetItemTypeConfig
+from ..operations.item import GetItems
 from ..operations.item import GetLocaleItem
 from ..operations.item import GetLocaleItemBySku
 from ..operations.item import ListBasicItemsByFeatures
 from ..operations.item import ListItemTypeConfigs
 from ..operations.item import PublicBulkGetItems
 from ..operations.item import PublicGetApp
+from ..operations.item import PublicGetEstimatedPrice
 from ..operations.item import PublicGetItem
 from ..operations.item import PublicGetItemByAppId
 from ..operations.item import PublicGetItemBySku
@@ -840,7 +844,7 @@ def create_item(
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}] | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}] | 30380: Box item [{itemId}] duration and end date can’t be set at the same time)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30175: Duplicated currencyCode [{currencyCode}] in Region [{region}] | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}] | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}] | 30380: Box item [{itemId}] duration and end date can’t be set at the same time | 30381: Currency [{currency}] is not set for bundle Item [{itemId}] in region [{region}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -1133,7 +1137,7 @@ async def create_item_async(
 
         404: Not Found - ErrorEntity (30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}] | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}] | 30380: Box item [{itemId}] duration and end date can’t be set at the same time)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30175: Duplicated currencyCode [{currencyCode}] in Region [{region}] | 30373: ItemType [{itemType}] is not allowed in namespace [{namespace}] | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}] | 30380: Box item [{itemId}] duration and end date can’t be set at the same time | 30381: Currency [{currency}] is not set for bundle Item [{itemId}] in region [{region}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -2249,6 +2253,120 @@ async def get_bulk_item_id_by_skus_async(
     )
 
 
+@same_doc_as(GetEstimatedPrice)
+def get_estimated_price(
+    item_ids: str,
+    user_id: str,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get estimated price (getEstimatedPrice)
+
+    This API is used to get estimated prices of a flexible pricing bundle
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/estimatedPrice
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
+        user_id: (userId) REQUIRED str in query
+
+    Responses:
+        200: OK - EstimatedPriceInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetEstimatedPrice.create(
+        item_ids=item_ids,
+        user_id=user_id,
+        region=region,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetEstimatedPrice)
+async def get_estimated_price_async(
+    item_ids: str,
+    user_id: str,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get estimated price (getEstimatedPrice)
+
+    This API is used to get estimated prices of a flexible pricing bundle
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/estimatedPrice
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
+        user_id: (userId) REQUIRED str in query
+
+    Responses:
+        200: OK - EstimatedPriceInfo (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetEstimatedPrice.create(
+        item_ids=item_ids,
+        user_id=user_id,
+        region=region,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetItem)
 def get_item(
     item_id: str,
@@ -2921,6 +3039,128 @@ async def get_item_type_config_async(
     """
     request = GetItemTypeConfig.create(
         id_=id_,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetItems)
+def get_items(
+    item_ids: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get items (getItems)
+
+    This API is used to get items.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/byIds
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[FullItemInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetItems.create(
+        item_ids=item_ids,
+        active_only=active_only,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetItems)
+async def get_items_async(
+    item_ids: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get items (getItems)
+
+    This API is used to get items.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
+      *  Returns : the list of items info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/byIds
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[FullItemInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetItems.create(
+        item_ids=item_ids,
+        active_only=active_only,
+        store_id=store_id,
+        namespace=namespace,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -3646,6 +3886,112 @@ async def public_get_app_async(
     request = PublicGetApp.create(
         item_id=item_id,
         language=language,
+        region=region,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetEstimatedPrice)
+def public_get_estimated_price(
+    item_ids: str,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get estimated price (publicGetEstimatedPrice)
+
+    This API is used to get estimated prices of item
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/estimatedPrice
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[EstimatedPriceInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetEstimatedPrice.create(
+        item_ids=item_ids,
+        region=region,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetEstimatedPrice)
+async def public_get_estimated_price_async(
+    item_ids: str,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get estimated price (publicGetEstimatedPrice)
+
+    This API is used to get estimated prices of item
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/items/estimatedPrice
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
+    Responses:
+        200: OK - List[EstimatedPriceInfo] (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetEstimatedPrice.create(
+        item_ids=item_ids,
         region=region,
         store_id=store_id,
         namespace=namespace,
@@ -6279,7 +6625,7 @@ def update_item(
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30371: Item maxCount not allow reduce | 30372: ItemType is not updatable | 30173: Published store can't modify content | 30374: Item sku [{sku}] already exists in namespace [{namespace}] | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}] | 30379: Item sku is not updatable | 30380: Box item [{itemId}] duration and end date can’t be set at the same time)
+        409: Conflict - ErrorEntity (30371: Item maxCount not allow reduce | 30372: ItemType is not updatable | 30173: Published store can't modify content | 30175: Duplicated currencyCode [{currencyCode}] in Region [{region}] | 30374: Item sku [{sku}] already exists in namespace [{namespace}] | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}] | 30379: Item sku is not updatable | 30380: Box item [{itemId}] duration and end date can’t be set at the same time | 30381: Currency [{currency}] is not set for bundle Item [{itemId}] in region [{region}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -6578,7 +6924,7 @@ async def update_item_async(
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30241: Category [{categoryPath}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30371: Item maxCount not allow reduce | 30372: ItemType is not updatable | 30173: Published store can't modify content | 30374: Item sku [{sku}] already exists in namespace [{namespace}] | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}] | 30379: Item sku is not updatable | 30380: Box item [{itemId}] duration and end date can’t be set at the same time)
+        409: Conflict - ErrorEntity (30371: Item maxCount not allow reduce | 30372: ItemType is not updatable | 30173: Published store can't modify content | 30175: Duplicated currencyCode [{currencyCode}] in Region [{region}] | 30374: Item sku [{sku}] already exists in namespace [{namespace}] | 30376: Publisher namespace don’t allow sellback item | 30377: This item type [{itemType}] don’t allow sellback | 30378: Sale price don’t allow real currency [{currencyCode}] | 30379: Item sku is not updatable | 30380: Box item [{itemId}] duration and end date can’t be set at the same time | 30381: Currency [{currency}] is not set for bundle Item [{itemId}] in region [{region}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """

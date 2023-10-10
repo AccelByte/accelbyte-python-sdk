@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.2.1)
+# Fleet Commander (1.2.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,26 +34,26 @@ class ApiRegionsResponse(Model):
     """Api regions response (api.RegionsResponse)
 
     Properties:
-        qos_servers: (qosServers) REQUIRED List[ApiQOSServer]
-
         regions: (regions) REQUIRED List[str]
+
+        qos_servers: (qosServers) OPTIONAL List[ApiQOSServer]
     """
 
     # region fields
 
-    qos_servers: List[ApiQOSServer]  # REQUIRED
     regions: List[str]  # REQUIRED
+    qos_servers: List[ApiQOSServer]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_qos_servers(self, value: List[ApiQOSServer]) -> ApiRegionsResponse:
-        self.qos_servers = value
-        return self
-
     def with_regions(self, value: List[str]) -> ApiRegionsResponse:
         self.regions = value
+        return self
+
+    def with_qos_servers(self, value: List[ApiQOSServer]) -> ApiRegionsResponse:
+        self.qos_servers = value
         return self
 
     # endregion with_x methods
@@ -62,16 +62,16 @@ class ApiRegionsResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "regions"):
+            result["regions"] = [str(i0) for i0 in self.regions]
+        elif include_empty:
+            result["regions"] = []
         if hasattr(self, "qos_servers"):
             result["qosServers"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.qos_servers
             ]
         elif include_empty:
             result["qosServers"] = []
-        if hasattr(self, "regions"):
-            result["regions"] = [str(i0) for i0 in self.regions]
-        elif include_empty:
-            result["regions"] = []
         return result
 
     # endregion to methods
@@ -80,11 +80,15 @@ class ApiRegionsResponse(Model):
 
     @classmethod
     def create(
-        cls, qos_servers: List[ApiQOSServer], regions: List[str], **kwargs
+        cls,
+        regions: List[str],
+        qos_servers: Optional[List[ApiQOSServer]] = None,
+        **kwargs,
     ) -> ApiRegionsResponse:
         instance = cls()
-        instance.qos_servers = qos_servers
         instance.regions = regions
+        if qos_servers is not None:
+            instance.qos_servers = qos_servers
         return instance
 
     @classmethod
@@ -94,6 +98,10 @@ class ApiRegionsResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "regions" in dict_ and dict_["regions"] is not None:
+            instance.regions = [str(i0) for i0 in dict_["regions"]]
+        elif include_empty:
+            instance.regions = []
         if "qosServers" in dict_ and dict_["qosServers"] is not None:
             instance.qos_servers = [
                 ApiQOSServer.create_from_dict(i0, include_empty=include_empty)
@@ -101,10 +109,6 @@ class ApiRegionsResponse(Model):
             ]
         elif include_empty:
             instance.qos_servers = []
-        if "regions" in dict_ and dict_["regions"] is not None:
-            instance.regions = [str(i0) for i0 in dict_["regions"]]
-        elif include_empty:
-            instance.regions = []
         return instance
 
     @classmethod
@@ -146,15 +150,15 @@ class ApiRegionsResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "qosServers": "qos_servers",
             "regions": "regions",
+            "qosServers": "qos_servers",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "qosServers": True,
             "regions": True,
+            "qosServers": False,
         }
 
     # endregion static methods

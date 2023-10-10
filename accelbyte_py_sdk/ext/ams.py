@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.2.1)
+# Fleet Commander (1.2.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -202,6 +202,7 @@ def create_api_fleet_list_item_response_example() -> ApiFleetListItemResponse:
     instance.counts = [create_api_fleet_regional_server_counts_example()]
     instance.id_ = randomize()
     instance.image = randomize()
+    instance.is_local = randomize("bool")
     instance.name = randomize()
     instance.regions = [randomize()]
     return instance
@@ -393,8 +394,8 @@ def create_api_region_config_example() -> ApiRegionConfig:
 
 def create_api_regions_response_example() -> ApiRegionsResponse:
     instance = ApiRegionsResponse()
-    instance.qos_servers = [create_api_qos_server_example()]
     instance.regions = [randomize()]
+    instance.qos_servers = [create_api_qos_server_example()]
     return instance
 
 

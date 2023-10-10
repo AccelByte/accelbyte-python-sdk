@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Gdpr Service (2.2.3)
+# AccelByte Gaming Services Gdpr Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -24,6 +24,11 @@
 
 from .utils import randomize
 
+from ..api.gdpr.models import DtoExtendConfigDTO
+from ..api.gdpr.models import DtoServiceConfigDTO
+from ..api.gdpr.models import DtoServiceConfigurationDTO
+from ..api.gdpr.models import DtoServiceConfigurationUpdateRequest
+from ..api.gdpr.models import DtoServicesConfigurationResponse
 from ..api.gdpr.models import ModelsDataRetrievalResponse
 from ..api.gdpr.models import ModelsDeletionData
 from ..api.gdpr.models import ModelsDeletionStatus
@@ -36,6 +41,45 @@ from ..api.gdpr.models import ModelsUserDataURL
 from ..api.gdpr.models import ModelsUserPersonalData
 from ..api.gdpr.models import ModelsUserPersonalDataResponse
 from ..api.gdpr.models import ResponseError
+
+
+def create_dto_extend_config_dto_example() -> DtoExtendConfigDTO:
+    instance = DtoExtendConfigDTO()
+    instance.app_name = randomize()
+    instance.namespace = randomize("slug")
+    return instance
+
+
+def create_dto_service_config_dto_example() -> DtoServiceConfigDTO:
+    instance = DtoServiceConfigDTO()
+    instance.protocol = randomize()
+    instance.url = randomize("url")
+    return instance
+
+
+def create_dto_service_configuration_dto_example() -> DtoServiceConfigurationDTO:
+    instance = DtoServiceConfigurationDTO()
+    instance.id_ = randomize()
+    instance.type_ = randomize()
+    instance.extend_config = create_dto_extend_config_dto_example()
+    instance.service_config = create_dto_service_config_dto_example()
+    return instance
+
+
+def create_dto_service_configuration_update_request_example() -> (
+    DtoServiceConfigurationUpdateRequest
+):
+    instance = DtoServiceConfigurationUpdateRequest()
+    instance.services = [create_dto_service_configuration_dto_example()]
+    return instance
+
+
+def create_dto_services_configuration_response_example() -> (
+    DtoServicesConfigurationResponse
+):
+    instance = DtoServicesConfigurationResponse()
+    instance.services = [create_dto_service_configuration_dto_example()]
+    return instance
 
 
 def create_models_data_retrieval_response_example() -> ModelsDataRetrievalResponse:

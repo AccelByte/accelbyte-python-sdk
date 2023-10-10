@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.36.0)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -88,6 +88,8 @@ class FulfillmentRequest(Model):
 
         origin: (origin) OPTIONAL Union[str, OriginEnum]
 
+        override_bundle_item_qty: (overrideBundleItemQty) OPTIONAL Dict[str, int]
+
         region: (region) OPTIONAL str
 
         source: (source) OPTIONAL Union[str, SourceEnum]
@@ -109,6 +111,7 @@ class FulfillmentRequest(Model):
     order: OrderSummary  # OPTIONAL
     order_no: str  # OPTIONAL
     origin: Union[str, OriginEnum]  # OPTIONAL
+    override_bundle_item_qty: Dict[str, int]  # OPTIONAL
     region: str  # OPTIONAL
     source: Union[str, SourceEnum]  # OPTIONAL
     start_date: str  # OPTIONAL
@@ -156,6 +159,12 @@ class FulfillmentRequest(Model):
 
     def with_origin(self, value: Union[str, OriginEnum]) -> FulfillmentRequest:
         self.origin = value
+        return self
+
+    def with_override_bundle_item_qty(
+        self, value: Dict[str, int]
+    ) -> FulfillmentRequest:
+        self.override_bundle_item_qty = value
         return self
 
     def with_region(self, value: str) -> FulfillmentRequest:
@@ -220,6 +229,12 @@ class FulfillmentRequest(Model):
             result["origin"] = str(self.origin)
         elif include_empty:
             result["origin"] = Union[str, OriginEnum]()
+        if hasattr(self, "override_bundle_item_qty"):
+            result["overrideBundleItemQty"] = {
+                str(k0): int(v0) for k0, v0 in self.override_bundle_item_qty.items()
+            }
+        elif include_empty:
+            result["overrideBundleItemQty"] = {}
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
@@ -255,6 +270,7 @@ class FulfillmentRequest(Model):
         order: Optional[OrderSummary] = None,
         order_no: Optional[str] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
+        override_bundle_item_qty: Optional[Dict[str, int]] = None,
         region: Optional[str] = None,
         source: Optional[Union[str, SourceEnum]] = None,
         start_date: Optional[str] = None,
@@ -281,6 +297,8 @@ class FulfillmentRequest(Model):
             instance.order_no = order_no
         if origin is not None:
             instance.origin = origin
+        if override_bundle_item_qty is not None:
+            instance.override_bundle_item_qty = override_bundle_item_qty
         if region is not None:
             instance.region = region
         if source is not None:
@@ -340,6 +358,15 @@ class FulfillmentRequest(Model):
             instance.origin = str(dict_["origin"])
         elif include_empty:
             instance.origin = Union[str, OriginEnum]()
+        if (
+            "overrideBundleItemQty" in dict_
+            and dict_["overrideBundleItemQty"] is not None
+        ):
+            instance.override_bundle_item_qty = {
+                str(k0): int(v0) for k0, v0 in dict_["overrideBundleItemQty"].items()
+            }
+        elif include_empty:
+            instance.override_bundle_item_qty = {}
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -407,6 +434,7 @@ class FulfillmentRequest(Model):
             "order": "order",
             "orderNo": "order_no",
             "origin": "origin",
+            "overrideBundleItemQty": "override_bundle_item_qty",
             "region": "region",
             "source": "source",
             "startDate": "start_date",
@@ -426,6 +454,7 @@ class FulfillmentRequest(Model):
             "order": False,
             "orderNo": False,
             "origin": False,
+            "overrideBundleItemQty": False,
             "region": False,
             "source": False,
             "startDate": False,

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Gdpr Service (2.2.3)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,29 +29,21 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ResponseError
+from ...models import ErrorEntity
+from ...models import EstimatedPriceInfo
 
 
-class SaveAdminEmailConfiguration(Operation):
-    """Add admin email address configuration (SaveAdminEmailConfiguration)
+class PublicGetEstimatedPrice(Operation):
+    """Get estimated price (publicGetEstimatedPrice)
 
-    Add admin email address for receiving personal data request notification.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]
-
-    Required Scope(s):
-        - account
+    This API is used to get estimated prices of item
 
     Properties:
-        url: /gdpr/admin/namespaces/{namespace}/emails/configurations
+        url: /platform/public/namespaces/{namespace}/items/estimatedPrice
 
-        method: POST
+        method: GET
 
-        tags: ["Data Retrieval"]
+        tags: ["Item"]
 
         consumes: ["application/json"]
 
@@ -59,31 +51,33 @@ class SaveAdminEmailConfiguration(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED List[str] in body
-
         namespace: (namespace) REQUIRED str in path
 
+        region: (region) OPTIONAL str in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+        item_ids: (itemIds) REQUIRED str in query
+
     Responses:
-        204: No Content - (No Content)
+        200: OK - List[EstimatedPriceInfo] (successful operation)
 
-        400: Bad Request - ResponseError (Bad Request)
-
-        401: Unauthorized - ResponseError (Unauthorized)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
 
     # region fields
 
-    _url: str = "/gdpr/admin/namespaces/{namespace}/emails/configurations"
-    _method: str = "POST"
+    _url: str = "/platform/public/namespaces/{namespace}/items/estimatedPrice"
+    _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: List[str]  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
+    region: str  # OPTIONAL in [query]
+    store_id: str  # OPTIONAL in [query]
+    item_ids: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -123,19 +117,24 @@ class SaveAdminEmailConfiguration(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "body": self.get_body_params(),
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
-
-    def get_body_params(self) -> Any:
-        if not hasattr(self, "body") or self.body is None:
-            return None
-        return self.body
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "region"):
+            result["region"] = self.region
+        if hasattr(self, "store_id"):
+            result["storeId"] = self.store_id
+        if hasattr(self, "item_ids"):
+            result["itemIds"] = self.item_ids
         return result
 
     # endregion get_x_params methods
@@ -146,12 +145,20 @@ class SaveAdminEmailConfiguration(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: List[str]) -> SaveAdminEmailConfiguration:
-        self.body = value
+    def with_namespace(self, value: str) -> PublicGetEstimatedPrice:
+        self.namespace = value
         return self
 
-    def with_namespace(self, value: str) -> SaveAdminEmailConfiguration:
-        self.namespace = value
+    def with_region(self, value: str) -> PublicGetEstimatedPrice:
+        self.region = value
+        return self
+
+    def with_store_id(self, value: str) -> PublicGetEstimatedPrice:
+        self.store_id = value
+        return self
+
+    def with_item_ids(self, value: str) -> PublicGetEstimatedPrice:
+        self.item_ids = value
         return self
 
     # endregion with_x methods
@@ -160,14 +167,22 @@ class SaveAdminEmailConfiguration(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "body") and self.body:
-            result["body"] = [str(i0) for i0 in self.body]
-        elif include_empty:
-            result["body"] = []
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = ""
+        if hasattr(self, "store_id") and self.store_id:
+            result["storeId"] = str(self.store_id)
+        elif include_empty:
+            result["storeId"] = ""
+        if hasattr(self, "item_ids") and self.item_ids:
+            result["itemIds"] = str(self.item_ids)
+        elif include_empty:
+            result["itemIds"] = ""
         return result
 
     # endregion to methods
@@ -177,16 +192,14 @@ class SaveAdminEmailConfiguration(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, List[EstimatedPriceInfo]], Union[None, ErrorEntity, HttpResponse]
+    ]:
         """Parse the given response.
 
-        204: No Content - (No Content)
+        200: OK - List[EstimatedPriceInfo] (successful operation)
 
-        400: Bad Request - ResponseError (Bad Request)
-
-        401: Unauthorized - ResponseError (Unauthorized)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
         ---: HttpResponse (Undocumented Response)
 
@@ -201,14 +214,10 @@ class SaveAdminEmailConfiguration(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
-        if code == 400:
-            return None, ResponseError.create_from_dict(content)
-        if code == 401:
-            return None, ResponseError.create_from_dict(content)
-        if code == 500:
-            return None, ResponseError.create_from_dict(content)
+        if code == 200:
+            return [EstimatedPriceInfo.create_from_dict(i) for i in content], None
+        if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -220,40 +229,61 @@ class SaveAdminEmailConfiguration(Operation):
 
     @classmethod
     def create(
-        cls, body: List[str], namespace: str, **kwargs
-    ) -> SaveAdminEmailConfiguration:
+        cls,
+        namespace: str,
+        item_ids: str,
+        region: Optional[str] = None,
+        store_id: Optional[str] = None,
+        **kwargs,
+    ) -> PublicGetEstimatedPrice:
         instance = cls()
-        instance.body = body
         instance.namespace = namespace
+        instance.item_ids = item_ids
+        if region is not None:
+            instance.region = region
+        if store_id is not None:
+            instance.store_id = store_id
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> SaveAdminEmailConfiguration:
+    ) -> PublicGetEstimatedPrice:
         instance = cls()
-        if "body" in dict_ and dict_["body"] is not None:
-            instance.body = [str(i0) for i0 in dict_["body"]]
-        elif include_empty:
-            instance.body = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = ""
+        if "storeId" in dict_ and dict_["storeId"] is not None:
+            instance.store_id = str(dict_["storeId"])
+        elif include_empty:
+            instance.store_id = ""
+        if "itemIds" in dict_ and dict_["itemIds"] is not None:
+            instance.item_ids = str(dict_["itemIds"])
+        elif include_empty:
+            instance.item_ids = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "body": "body",
             "namespace": "namespace",
+            "region": "region",
+            "storeId": "store_id",
+            "itemIds": "item_ids",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": True,
             "namespace": True,
+            "region": False,
+            "storeId": False,
+            "itemIds": True,
         }
 
     # endregion static methods

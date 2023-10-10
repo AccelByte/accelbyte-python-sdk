@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.36.0)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -107,6 +107,8 @@ class ItemCreate(Model):
 
         features: (features) OPTIONAL List[str]
 
+        flexible: (flexible) OPTIONAL bool
+
         images: (images) OPTIONAL List[Image]
 
         item_ids: (itemIds) OPTIONAL List[str]
@@ -167,6 +169,7 @@ class ItemCreate(Model):
     display_order: int  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     features: List[str]  # OPTIONAL
+    flexible: bool  # OPTIONAL
     images: List[Image]  # OPTIONAL
     item_ids: List[str]  # OPTIONAL
     item_qty: Dict[str, int]  # OPTIONAL
@@ -253,6 +256,10 @@ class ItemCreate(Model):
 
     def with_features(self, value: List[str]) -> ItemCreate:
         self.features = value
+        return self
+
+    def with_flexible(self, value: bool) -> ItemCreate:
+        self.flexible = value
         return self
 
     def with_images(self, value: List[Image]) -> ItemCreate:
@@ -411,6 +418,10 @@ class ItemCreate(Model):
             result["features"] = [str(i0) for i0 in self.features]
         elif include_empty:
             result["features"] = []
+        if hasattr(self, "flexible"):
+            result["flexible"] = bool(self.flexible)
+        elif include_empty:
+            result["flexible"] = False
         if hasattr(self, "images"):
             result["images"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.images
@@ -525,6 +536,7 @@ class ItemCreate(Model):
         display_order: Optional[int] = None,
         ext: Optional[Dict[str, Any]] = None,
         features: Optional[List[str]] = None,
+        flexible: Optional[bool] = None,
         images: Optional[List[Image]] = None,
         item_ids: Optional[List[str]] = None,
         item_qty: Optional[Dict[str, int]] = None,
@@ -572,6 +584,8 @@ class ItemCreate(Model):
             instance.ext = ext
         if features is not None:
             instance.features = features
+        if flexible is not None:
+            instance.flexible = flexible
         if images is not None:
             instance.images = images
         if item_ids is not None:
@@ -690,6 +704,10 @@ class ItemCreate(Model):
             instance.features = [str(i0) for i0 in dict_["features"]]
         elif include_empty:
             instance.features = []
+        if "flexible" in dict_ and dict_["flexible"] is not None:
+            instance.flexible = bool(dict_["flexible"])
+        elif include_empty:
+            instance.flexible = False
         if "images" in dict_ and dict_["images"] is not None:
             instance.images = [
                 Image.create_from_dict(i0, include_empty=include_empty)
@@ -841,6 +859,7 @@ class ItemCreate(Model):
             "displayOrder": "display_order",
             "ext": "ext",
             "features": "features",
+            "flexible": "flexible",
             "images": "images",
             "itemIds": "item_ids",
             "itemQty": "item_qty",
@@ -882,6 +901,7 @@ class ItemCreate(Model):
             "displayOrder": False,
             "ext": False,
             "features": False,
+            "flexible": False,
             "images": False,
             "itemIds": False,
             "itemQty": False,

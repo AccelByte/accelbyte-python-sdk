@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.36.0)
+# AccelByte Gaming Services Platform Service (4.37.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -121,6 +121,8 @@ class ItemInfo(Model):
 
         features: (features) OPTIONAL List[str]
 
+        flexible: (flexible) OPTIONAL bool
+
         fresh: (fresh) OPTIONAL bool
 
         images: (images) OPTIONAL List[Image]
@@ -200,6 +202,7 @@ class ItemInfo(Model):
     display_order: int  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     features: List[str]  # OPTIONAL
+    flexible: bool  # OPTIONAL
     fresh: bool  # OPTIONAL
     images: List[Image]  # OPTIONAL
     item_ids: List[str]  # OPTIONAL
@@ -318,6 +321,10 @@ class ItemInfo(Model):
 
     def with_features(self, value: List[str]) -> ItemInfo:
         self.features = value
+        return self
+
+    def with_flexible(self, value: bool) -> ItemInfo:
+        self.flexible = value
         return self
 
     def with_fresh(self, value: bool) -> ItemInfo:
@@ -522,6 +529,10 @@ class ItemInfo(Model):
             result["features"] = [str(i0) for i0 in self.features]
         elif include_empty:
             result["features"] = []
+        if hasattr(self, "flexible"):
+            result["flexible"] = bool(self.flexible)
+        elif include_empty:
+            result["flexible"] = False
         if hasattr(self, "fresh"):
             result["fresh"] = bool(self.fresh)
         elif include_empty:
@@ -671,6 +682,7 @@ class ItemInfo(Model):
         display_order: Optional[int] = None,
         ext: Optional[Dict[str, Any]] = None,
         features: Optional[List[str]] = None,
+        flexible: Optional[bool] = None,
         fresh: Optional[bool] = None,
         images: Optional[List[Image]] = None,
         item_ids: Optional[List[str]] = None,
@@ -733,6 +745,8 @@ class ItemInfo(Model):
             instance.ext = ext
         if features is not None:
             instance.features = features
+        if flexible is not None:
+            instance.flexible = flexible
         if fresh is not None:
             instance.fresh = fresh
         if images is not None:
@@ -882,6 +896,10 @@ class ItemInfo(Model):
             instance.features = [str(i0) for i0 in dict_["features"]]
         elif include_empty:
             instance.features = []
+        if "flexible" in dict_ and dict_["flexible"] is not None:
+            instance.flexible = bool(dict_["flexible"])
+        elif include_empty:
+            instance.flexible = False
         if "fresh" in dict_ and dict_["fresh"] is not None:
             instance.fresh = bool(dict_["fresh"])
         elif include_empty:
@@ -1069,6 +1087,7 @@ class ItemInfo(Model):
             "displayOrder": "display_order",
             "ext": "ext",
             "features": "features",
+            "flexible": "flexible",
             "fresh": "fresh",
             "images": "images",
             "itemIds": "item_ids",
@@ -1123,6 +1142,7 @@ class ItemInfo(Model):
             "displayOrder": False,
             "ext": False,
             "features": False,
+            "flexible": False,
             "fresh": False,
             "images": False,
             "itemIds": False,

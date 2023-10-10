@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.36.0)
+# AccelByte Gaming Services Platform Service Index (4.37.1)
 
 
 ## Operations
@@ -253,18 +253,21 @@
 | /platform/admin/namespaces/{namespace}/items/{itemId}/app | GET | getApp | `false` | [GetApp](../../accelbyte_py_sdk/api/platform/operations/item/get_app.py) | [get_app](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-app](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_app.py) |
 | /platform/admin/namespaces/{namespace}/items/predicate/types | GET | getAvailablePredicateTypes | `false` | [GetAvailablePredicateTypes](../../accelbyte_py_sdk/api/platform/operations/item/get_available_predicate_types.py) | [get_available_predicate_types](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-available-predicate-types](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_available_predicate_types.py) |
 | /platform/admin/namespaces/{namespace}/items/itemId/bySkus | GET | getBulkItemIdBySkus | `false` | [GetBulkItemIdBySkus](../../accelbyte_py_sdk/api/platform/operations/item/get_bulk_item_id_by_skus.py) | [get_bulk_item_id_by_skus](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-bulk-item-id-by-skus](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_bulk_item_id_by_skus.py) |
+| /platform/admin/namespaces/{namespace}/items/estimatedPrice | GET | getEstimatedPrice | `false` | [GetEstimatedPrice](../../accelbyte_py_sdk/api/platform/operations/item/get_estimated_price.py) | [get_estimated_price](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-estimated-price](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_estimated_price.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId} | GET | getItem | `false` | [GetItem](../../accelbyte_py_sdk/api/platform/operations/item/get_item.py) | [get_item](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_item.py) |
 | /platform/admin/namespaces/{namespace}/items/byAppId | GET | getItemByAppId | `false` | [GetItemByAppId](../../accelbyte_py_sdk/api/platform/operations/item/get_item_by_app_id.py) | [get_item_by_app_id](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-item-by-app-id](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_item_by_app_id.py) |
 | /platform/admin/namespaces/{namespace}/items/bySku | GET | getItemBySku | `false` | [GetItemBySku](../../accelbyte_py_sdk/api/platform/operations/item/get_item_by_sku.py) | [get_item_by_sku](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-item-by-sku](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_item_by_sku.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId}/dynamic | GET | getItemDynamicData | `false` | [GetItemDynamicData](../../accelbyte_py_sdk/api/platform/operations/item/get_item_dynamic_data.py) | [get_item_dynamic_data](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-item-dynamic-data](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_item_dynamic_data.py) |
 | /platform/admin/namespaces/{namespace}/items/itemId/bySku | GET | getItemIdBySku | `false` | [GetItemIdBySku](../../accelbyte_py_sdk/api/platform/operations/item/get_item_id_by_sku.py) | [get_item_id_by_sku](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-item-id-by-sku](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_item_id_by_sku.py) |
 | /platform/admin/items/configs/{id} | GET | getItemTypeConfig | `false` | [GetItemTypeConfig](../../accelbyte_py_sdk/api/platform/operations/item/get_item_type_config.py) | [get_item_type_config](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-item-type-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_item_type_config.py) |
+| /platform/admin/namespaces/{namespace}/items/byIds | GET | getItems | `false` | [GetItems](../../accelbyte_py_sdk/api/platform/operations/item/get_items.py) | [get_items](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-items](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_items.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId}/locale | GET | getLocaleItem | `false` | [GetLocaleItem](../../accelbyte_py_sdk/api/platform/operations/item/get_locale_item.py) | [get_locale_item](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-locale-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_locale_item.py) |
 | /platform/admin/namespaces/{namespace}/items/bySku/locale | GET | getLocaleItemBySku | `false` | [GetLocaleItemBySku](../../accelbyte_py_sdk/api/platform/operations/item/get_locale_item_by_sku.py) | [get_locale_item_by_sku](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-locale-item-by-sku](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_locale_item_by_sku.py) |
 | /platform/admin/namespaces/{namespace}/items/byFeatures/basic | GET | listBasicItemsByFeatures | `false` | [ListBasicItemsByFeatures](../../accelbyte_py_sdk/api/platform/operations/item/list_basic_items_by_features.py) | [list_basic_items_by_features](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-list-basic-items-by-features](../../samples/cli/accelbyte_py_sdk_cli/platform/_list_basic_items_by_features.py) |
 | /platform/admin/items/configs | GET | listItemTypeConfigs | `false` | [ListItemTypeConfigs](../../accelbyte_py_sdk/api/platform/operations/item/list_item_type_configs.py) | [list_item_type_configs](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-list-item-type-configs](../../samples/cli/accelbyte_py_sdk_cli/platform/_list_item_type_configs.py) |
 | /platform/public/namespaces/{namespace}/items/locale/byIds | GET | publicBulkGetItems | `false` | [PublicBulkGetItems](../../accelbyte_py_sdk/api/platform/operations/item/public_bulk_get_items.py) | [public_bulk_get_items](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-public-bulk-get-items](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_bulk_get_items.py) |
 | /platform/public/namespaces/{namespace}/items/{itemId}/app/locale | GET | publicGetApp | `false` | [PublicGetApp](../../accelbyte_py_sdk/api/platform/operations/item/public_get_app.py) | [public_get_app](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-public-get-app](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_app.py) |
+| /platform/public/namespaces/{namespace}/items/estimatedPrice | GET | publicGetEstimatedPrice | `false` | [PublicGetEstimatedPrice](../../accelbyte_py_sdk/api/platform/operations/item/public_get_estimated_price.py) | [public_get_estimated_price](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-public-get-estimated-price](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_estimated_price.py) |
 | /platform/public/namespaces/{namespace}/items/{itemId}/locale | GET | publicGetItem | `false` | [PublicGetItem](../../accelbyte_py_sdk/api/platform/operations/item/public_get_item.py) | [public_get_item](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-public-get-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_item.py) |
 | /platform/public/namespaces/{namespace}/items/byAppId | GET | publicGetItemByAppId | `false` | [PublicGetItemByAppId](../../accelbyte_py_sdk/api/platform/operations/item/public_get_item_by_app_id.py) | [public_get_item_by_app_id](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-public-get-item-by-app-id](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_item_by_app_id.py) |
 | /platform/public/namespaces/{namespace}/items/bySku | GET | publicGetItemBySku | `false` | [PublicGetItemBySku](../../accelbyte_py_sdk/api/platform/operations/item/public_get_item_by_sku.py) | [public_get_item_by_sku](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-public-get-item-by-sku](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_item_by_sku.py) |
@@ -578,6 +581,7 @@
 | AppleIAPReceipt | [AppleIAPReceipt](../../accelbyte_py_sdk/api/platform/models/apple_iap_receipt.py) |
 | AvailableComparison | [AvailableComparison](../../accelbyte_py_sdk/api/platform/models/available_comparison.py) |
 | AvailablePredicate | [AvailablePredicate](../../accelbyte_py_sdk/api/platform/models/available_predicate.py) |
+| AvailablePrice | [AvailablePrice](../../accelbyte_py_sdk/api/platform/models/available_price.py) |
 | BaseCustomConfig | [BaseCustomConfig](../../accelbyte_py_sdk/api/platform/models/base_custom_config.py) |
 | BaseTLSConfig | [BaseTLSConfig](../../accelbyte_py_sdk/api/platform/models/base_tls_config.py) |
 | BasicCategoryInfo | [BasicCategoryInfo](../../accelbyte_py_sdk/api/platform/models/basic_category_info.py) |
@@ -665,6 +669,7 @@
 | EpicGamesReconcileRequest | [EpicGamesReconcileRequest](../../accelbyte_py_sdk/api/platform/models/epic_games_reconcile_request.py) |
 | EpicGamesReconcileResult | [EpicGamesReconcileResult](../../accelbyte_py_sdk/api/platform/models/epic_games_reconcile_result.py) |
 | ErrorEntity | [ErrorEntity](../../accelbyte_py_sdk/api/platform/models/error_entity.py) |
+| EstimatedPriceInfo | [EstimatedPriceInfo](../../accelbyte_py_sdk/api/platform/models/estimated_price_info.py) |
 | EventAdditionalData | [EventAdditionalData](../../accelbyte_py_sdk/api/platform/models/event_additional_data.py) |
 | EventPayload | [EventPayload](../../accelbyte_py_sdk/api/platform/models/event_payload.py) |
 | ExportStoreRequest | [ExportStoreRequest](../../accelbyte_py_sdk/api/platform/models/export_store_request.py) |
@@ -707,9 +712,13 @@
 | IAPOrderPagingSlicedResult | [IAPOrderPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/iap_order_paging_sliced_result.py) |
 | Image | [Image](../../accelbyte_py_sdk/api/platform/models/image.py) |
 | ImportErrorDetails | [ImportErrorDetails](../../accelbyte_py_sdk/api/platform/models/import_error_details.py) |
+| ImportStoreAppInfo | [ImportStoreAppInfo](../../accelbyte_py_sdk/api/platform/models/import_store_app_info.py) |
+| ImportStoreCategoryInfo | [ImportStoreCategoryInfo](../../accelbyte_py_sdk/api/platform/models/import_store_category_info.py) |
 | ImportStoreError | [ImportStoreError](../../accelbyte_py_sdk/api/platform/models/import_store_error.py) |
 | ImportStoreItemInfo | [ImportStoreItemInfo](../../accelbyte_py_sdk/api/platform/models/import_store_item_info.py) |
 | ImportStoreResult | [ImportStoreResult](../../accelbyte_py_sdk/api/platform/models/import_store_result.py) |
+| ImportStoreSectionInfo | [ImportStoreSectionInfo](../../accelbyte_py_sdk/api/platform/models/import_store_section_info.py) |
+| ImportStoreViewInfo | [ImportStoreViewInfo](../../accelbyte_py_sdk/api/platform/models/import_store_view_info.py) |
 | InGameItemSync | [InGameItemSync](../../accelbyte_py_sdk/api/platform/models/in_game_item_sync.py) |
 | InvoiceCurrencySummary | [InvoiceCurrencySummary](../../accelbyte_py_sdk/api/platform/models/invoice_currency_summary.py) |
 | InvoiceSummary | [InvoiceSummary](../../accelbyte_py_sdk/api/platform/models/invoice_summary.py) |
@@ -750,6 +759,7 @@
 | OculusReconcileResult | [OculusReconcileResult](../../accelbyte_py_sdk/api/platform/models/oculus_reconcile_result.py) |
 | OptionBoxConfig | [OptionBoxConfig](../../accelbyte_py_sdk/api/platform/models/option_box_config.py) |
 | Order | [Order](../../accelbyte_py_sdk/api/platform/models/order.py) |
+| OrderBundleItemInfo | [OrderBundleItemInfo](../../accelbyte_py_sdk/api/platform/models/order_bundle_item_info.py) |
 | OrderCreate | [OrderCreate](../../accelbyte_py_sdk/api/platform/models/order_create.py) |
 | OrderCreationOptions | [OrderCreationOptions](../../accelbyte_py_sdk/api/platform/models/order_creation_options.py) |
 | OrderGrantInfo | [OrderGrantInfo](../../accelbyte_py_sdk/api/platform/models/order_grant_info.py) |
@@ -881,6 +891,7 @@
 | StreamEvent | [StreamEvent](../../accelbyte_py_sdk/api/platform/models/stream_event.py) |
 | StreamEventBody | [StreamEventBody](../../accelbyte_py_sdk/api/platform/models/stream_event_body.py) |
 | StripeConfig | [StripeConfig](../../accelbyte_py_sdk/api/platform/models/stripe_config.py) |
+| SubItemAvailablePrice | [SubItemAvailablePrice](../../accelbyte_py_sdk/api/platform/models/sub_item_available_price.py) |
 | Subscribable | [Subscribable](../../accelbyte_py_sdk/api/platform/models/subscribable.py) |
 | SubscribeRequest | [SubscribeRequest](../../accelbyte_py_sdk/api/platform/models/subscribe_request.py) |
 | SubscriptionActivityInfo | [SubscriptionActivityInfo](../../accelbyte_py_sdk/api/platform/models/subscription_activity_info.py) |

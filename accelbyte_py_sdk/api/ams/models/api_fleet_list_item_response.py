@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.2.1)
+# Fleet Commander (1.2.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,6 +44,8 @@ class ApiFleetListItemResponse(Model):
 
         image: (image) REQUIRED str
 
+        is_local: (isLocal) REQUIRED bool
+
         name: (name) REQUIRED str
 
         regions: (regions) REQUIRED List[str]
@@ -56,6 +58,7 @@ class ApiFleetListItemResponse(Model):
     counts: List[ApiFleetRegionalServerCounts]  # REQUIRED
     id_: str  # REQUIRED
     image: str  # REQUIRED
+    is_local: bool  # REQUIRED
     name: str  # REQUIRED
     regions: List[str]  # REQUIRED
 
@@ -83,6 +86,10 @@ class ApiFleetListItemResponse(Model):
 
     def with_image(self, value: str) -> ApiFleetListItemResponse:
         self.image = value
+        return self
+
+    def with_is_local(self, value: bool) -> ApiFleetListItemResponse:
+        self.is_local = value
         return self
 
     def with_name(self, value: str) -> ApiFleetListItemResponse:
@@ -121,6 +128,10 @@ class ApiFleetListItemResponse(Model):
             result["image"] = str(self.image)
         elif include_empty:
             result["image"] = ""
+        if hasattr(self, "is_local"):
+            result["isLocal"] = bool(self.is_local)
+        elif include_empty:
+            result["isLocal"] = False
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -143,6 +154,7 @@ class ApiFleetListItemResponse(Model):
         counts: List[ApiFleetRegionalServerCounts],
         id_: str,
         image: str,
+        is_local: bool,
         name: str,
         regions: List[str],
         **kwargs,
@@ -153,6 +165,7 @@ class ApiFleetListItemResponse(Model):
         instance.counts = counts
         instance.id_ = id_
         instance.image = image
+        instance.is_local = is_local
         instance.name = name
         instance.regions = regions
         return instance
@@ -189,6 +202,10 @@ class ApiFleetListItemResponse(Model):
             instance.image = str(dict_["image"])
         elif include_empty:
             instance.image = ""
+        if "isLocal" in dict_ and dict_["isLocal"] is not None:
+            instance.is_local = bool(dict_["isLocal"])
+        elif include_empty:
+            instance.is_local = False
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -245,6 +262,7 @@ class ApiFleetListItemResponse(Model):
             "counts": "counts",
             "id": "id_",
             "image": "image",
+            "isLocal": "is_local",
             "name": "name",
             "regions": "regions",
         }
@@ -257,6 +275,7 @@ class ApiFleetListItemResponse(Model):
             "counts": True,
             "id": True,
             "image": True,
+            "isLocal": True,
             "name": True,
             "regions": True,
         }

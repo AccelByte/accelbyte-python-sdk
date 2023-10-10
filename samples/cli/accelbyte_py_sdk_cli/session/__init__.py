@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (3.7.3)
+# justice-session-service (3.8.1)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
@@ -32,6 +32,9 @@ from ._admin_delete_configuration_template_v1 import (
 from ._admin_get_dsmc_configuration import admin_get_dsmc_configuration
 from ._admin_sync_dsmc_configuration import admin_sync_dsmc_configuration
 from ._admin_query_game_sessions import admin_query_game_sessions
+from ._admin_query_game_sessions_by_attributes import (
+    admin_query_game_sessions_by_attributes,
+)
 from ._admin_delete_bulk_game_sessions import admin_delete_bulk_game_sessions
 from ._admin_update_game_session_member import admin_update_game_session_member
 from ._admin_query_parties import admin_query_parties
@@ -106,6 +109,7 @@ commands = [
     admin_get_dsmc_configuration,
     admin_sync_dsmc_configuration,
     admin_query_game_sessions,
+    admin_query_game_sessions_by_attributes,
     admin_delete_bulk_game_sessions,
     admin_update_game_session_member,
     admin_query_parties,

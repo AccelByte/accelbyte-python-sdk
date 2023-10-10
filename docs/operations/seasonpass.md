@@ -2,10 +2,15 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Seasonpass Service Index (1.19.1)
+# AccelByte Gaming Services Seasonpass Service Index (1.19.2)
 
 
 ## Operations
+
+### Export
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /seasonpass/admin/namespace/{namespace}/export | GET | exportSeason | `false` | [ExportSeason](../../accelbyte_py_sdk/api/seasonpass/operations/export/export_season.py) | [export_season](../../accelbyte_py_sdk/api/seasonpass/wrappers/_export.py) | [accelbyte_py_sdk_cli seasonpass-export-season](../../samples/cli/accelbyte_py_sdk_cli/seasonpass/_export_season.py) |
 
 ### Pass
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
