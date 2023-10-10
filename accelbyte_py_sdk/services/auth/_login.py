@@ -47,6 +47,7 @@ from ...api.iam.operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
 
 DEFAULT_AUTO_REFRESH: bool = False
 DEFAULT_REFRESH_RATE: float = 0.8
+DEFAULT_SCOPE: str = "commerce account social publishing analytics"
 
 # endregion constants
 
@@ -174,13 +175,7 @@ def login_user(
         ) = create_pkce_verifier_and_challenge_s256()
 
         if scope is None:
-            scope = [
-                "commerce",
-                "account",
-                "social",
-                "publishing",
-                "analytics",
-            ]
+            scope = DEFAULT_SCOPE
         if isinstance(scope, list):
             scope = " ".join(scope)
 
@@ -454,13 +449,7 @@ async def login_user_async(
         ) = create_pkce_verifier_and_challenge_s256()
 
         if scope is None:
-            scope = [
-                "commerce",
-                "account",
-                "social",
-                "publishing",
-                "analytics",
-            ]
+            scope = DEFAULT_SCOPE
         if isinstance(scope, list):
             scope = " ".join(scope)
 
