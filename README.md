@@ -142,6 +142,15 @@ if __name__ == "__main__":
 
 Here `login_user(username, password)` and `logout()` are wrapper functions.
 
+You can also specify the scope you want for `login_user(...)`. With the `scope` parameter typed as `Optional[Union[str, List[str]]]`. By default the scope used is `commerce account social publishing analytics` (a space seprated value string).
+
+
+```python
+login_user(username, password, scope="scopeA")
+# login_user(username, password, scope="scopeA scopeB")  # space separated values
+# login_user(username, password, scope=["scopeA", "scopeB"])
+```
+
 #### Login using OAuth Client (Public or Confidential)
 
 ```python
@@ -163,13 +172,7 @@ if __name__ == "__main__":
 
 ```
 
-You can also specify the scope you want for `login_user(...)`. With the `scope` parameter typed as `Optional[Union[str, List[str]]]`. By default the scope used is `commerce account social publishing analytics` (a space seprated value string).
-
-```python
-login_user(username, password, scope="scopeA")
-# login_user(username, password, scope="scopeA scopeB")  # space separated values
-# login_user(username, password, scope=["scopeA", "scopeB"])
-```
+:bulb: The use of a Public OAuth Client is highly discouraged! Please ensure that you both set the Client ID and Client Secret.
 
 #### Refreshing Tokens
 

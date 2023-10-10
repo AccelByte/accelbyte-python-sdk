@@ -106,6 +106,8 @@ if __name__ == "__main__":
 
 ```
 
+:bulb: The use of a Public OAuth Client is highly discouraged! Please ensure that you both set the Client ID and Client Secret.
+
 ### 4. Run the Code
 
 Set the required environment variables and run the code using the python interpreter.
