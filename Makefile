@@ -74,25 +74,38 @@ clean_dist:
 	rm -rf dist
 
 build_dist: clean_dist
-	@test -n "$(ENV_FILE_PATH)" || (echo "ENV_FILE_PATH is not set" ; exit 1)
-	docker run --rm --tty --user $$(id -u):$$(id -g) --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
+	@docker run --rm --tty --user $$(id -u):$$(id -g) \
+		--volume $$(pwd):/data \
+		--workdir /data \
+		--entrypoint /bin/sh \
+		python:3.9-slim \
 			-c 'python -m venv /tmp && \
-					/tmp/bin/pip install --upgrade pip build setuptools setuptools_scm wheel && \
-					/tmp/bin/python setup.py sdist bdist_wheel --universal'
+				/tmp/bin/pip install --upgrade pip build setuptools setuptools_scm wheel && \
+				/tmp/bin/python setup.py sdist bdist_wheel --universal'
 
 test_upload_dist: clean_dist build_dist
-	@test -n "$(ENV_FILE_PATH)" || (echo "ENV_FILE_PATH is not set" ; exit 1)
-	docker run --rm --tty --user $$(id -u):$$(id -g) --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
+	@test -n "$(PYPIRC_PATH)" || (echo "PYPIRC_PATH is not set" ; exit 1)
+	@docker run --rm --tty --user $$(id -u):$$(id -g) \
+		--volume $$(pwd):/data \
+		--volume $(PYPIRC_PATH):/.pypirc \
+		--workdir /data \
+		--entrypoint /bin/sh \
+		python:3.9-slim \
 			-c 'python -m venv /tmp && \
-					/tmp/bin/pip install --upgrade twine && \
-					/tmp/bin/python -m twine upload --repository testpypi --verbose dist/*'
+				/tmp/bin/pip install --upgrade twine && \
+				/tmp/bin/python -m twine upload --repository testpypi --config-file /.pypirc --verbose dist/*'
 
 upload_dist: clean_dist build_dist
-	@test -n "$(ENV_FILE_PATH)" || (echo "ENV_FILE_PATH is not set" ; exit 1)
-	docker run --rm --tty --user $$(id -u):$$(id -g) --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
+	@test -n "$(PYPIRC_PATH)" || (echo "PYPIRC_PATH is not set" ; exit 1)
+	@docker run --rm --tty --user $$(id -u):$$(id -g) \
+		--volume $$(pwd):/data \
+		--volume $(PYPIRC_PATH):/.pypirc \
+		--workdir /data \
+		--entrypoint /bin/sh \
+		python:3.9-slim \
 			-c 'python -m venv /tmp && \
-					/tmp/bin/pip install --upgrade twine && \
-					/tmp/bin/python -m twine upload --verbose dist/*'
+				/tmp/bin/pip install --upgrade twine && \
+				/tmp/bin/python -m twine upload --config-file /.pypirc --verbose dist/*'
 
 test_broken_link:
 	@test -n "$(SDK_MD_CRAWLER_PATH)" || (echo "SDK_MD_CRAWLER_PATH is not set" ; exit 1)
