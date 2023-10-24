@@ -1,6 +1,7 @@
 <a name="v0.52.0"></a>
 ## [v0.52.0]
-
+### fix
+- **integration:** fix test due to operation id rename
 
 <a name="v0.51.0"></a>
 ## [v0.51.0]
