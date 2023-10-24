@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.37.1"
+__version__ = "4.38.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -139,6 +139,8 @@ from ._dlc import delete_dlc_item_config
 from ._dlc import delete_dlc_item_config_async
 from ._dlc import delete_platform_dlc_config
 from ._dlc import delete_platform_dlc_config_async
+from ._dlc import ge_dlc_durable_reward_short_map
+from ._dlc import ge_dlc_durable_reward_short_map_async
 from ._dlc import get_dlc_item_config
 from ._dlc import get_dlc_item_config_async
 from ._dlc import get_platform_dlc_config

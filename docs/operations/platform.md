@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.37.1)
+# AccelByte Gaming Services Platform Service Index (4.38.0)
 
 
 ## Operations
@@ -97,6 +97,7 @@
 |---|---|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/dlc/config/item | DELETE | deleteDLCItemConfig | `false` | [DeleteDLCItemConfig](../../accelbyte_py_sdk/api/platform/operations/dlc/delete_dlc_item_config.py) | [delete_dlc_item_config](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-delete-dlc-item-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_dlc_item_config.py) |
 | /platform/admin/namespaces/{namespace}/dlc/config/platformMap | DELETE | deletePlatformDLCConfig | `false` | [DeletePlatformDLCConfig](../../accelbyte_py_sdk/api/platform/operations/dlc/delete_platform_dlc_config.py) | [delete_platform_dlc_config](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-delete-platform-dlc-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_platform_dlc_config.py) |
+| /platform/public/namespaces/{namespace}/dlc/rewards/durable/map | GET | geDLCDurableRewardShortMap | `false` | [GeDLCDurableRewardShortMap](../../accelbyte_py_sdk/api/platform/operations/dlc/ge_dlc_durable_reward_s_f83f8a.py) | [ge_dlc_durable_reward_short_map](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-ge-dlc-durable-reward-short-map](../../samples/cli/accelbyte_py_sdk_cli/platform/_ge_dlc_durable_reward_short_map.py) |
 | /platform/admin/namespaces/{namespace}/dlc/config/item | GET | getDLCItemConfig | `false` | [GetDLCItemConfig](../../accelbyte_py_sdk/api/platform/operations/dlc/get_dlc_item_config.py) | [get_dlc_item_config](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-get-dlc-item-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_dlc_item_config.py) |
 | /platform/admin/namespaces/{namespace}/dlc/config/platformMap | GET | getPlatformDLCConfig | `false` | [GetPlatformDLCConfig](../../accelbyte_py_sdk/api/platform/operations/dlc/get_platform_dlc_config.py) | [get_platform_dlc_config](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-get-platform-dlc-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_platform_dlc_config.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/dlc/records | GET | getUserDLC | `false` | [GetUserDLC](../../accelbyte_py_sdk/api/platform/operations/dlc/get_user_dlc.py) | [get_user_dlc](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-get-user-dlc](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_user_dlc.py) |
@@ -642,6 +643,7 @@
 | DeleteRewardConditionRequest | [DeleteRewardConditionRequest](../../accelbyte_py_sdk/api/platform/models/delete_reward_condition_request.py) |
 | DetailedWalletTransactionInfo | [DetailedWalletTransactionInfo](../../accelbyte_py_sdk/api/platform/models/detailed_wallet_transaction_info.py) |
 | DetailedWalletTransactionPagingSlicedResult | [DetailedWalletTransactionPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/detailed_wallet_transaction_paging_sliced_result.py) |
+| DLCConfigRewardShortInfo | [DLCConfigRewardShortInfo](../../accelbyte_py_sdk/api/platform/models/dlc_config_reward_short_info.py) |
 | DLCItem | [DLCItem](../../accelbyte_py_sdk/api/platform/models/dlc_item.py) |
 | DLCItemConfigInfo | [DLCItemConfigInfo](../../accelbyte_py_sdk/api/platform/models/dlc_item_config_info.py) |
 | DLCItemConfigUpdate | [DLCItemConfigUpdate](../../accelbyte_py_sdk/api/platform/models/dlc_item_config_update.py) |

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Ugc Service (2.14.0)
+# AGS Ugc Service (2.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 @click.command()
 @click.argument("channel_id", type=str)
 @click.option("--creator", "creator", type=str)
+@click.option("--ishidden", "ishidden", type=str)
 @click.option("--isofficial", "isofficial", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--name", "name", type=str)
@@ -57,6 +58,7 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 def admin_search_channel_specific_content(
     channel_id: str,
     creator: Optional[str] = None,
+    ishidden: Optional[str] = None,
     isofficial: Optional[str] = None,
     limit: Optional[int] = None,
     name: Optional[str] = None,
@@ -89,6 +91,7 @@ def admin_search_channel_specific_content(
     result, error = admin_search_channel_specific_content_internal(
         channel_id=channel_id,
         creator=creator,
+        ishidden=ishidden,
         isofficial=isofficial,
         limit=limit,
         name=name,

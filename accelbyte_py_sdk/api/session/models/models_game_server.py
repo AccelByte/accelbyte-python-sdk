@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.8.1)
+# AccelByte Gaming Services Session Service (3.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,17 +36,11 @@ class ModelsGameServer(Model):
     Properties:
         custom_attribute: (custom_attribute) REQUIRED str
 
-        image_version: (image_version) REQUIRED str
-
-        ip: (ip) REQUIRED str
-
         is_override_game_version: (is_override_game_version) REQUIRED bool
 
         last_update: (last_update) REQUIRED str
 
         namespace: (namespace) REQUIRED str
-
-        pod_name: (pod_name) REQUIRED str
 
         region: (region) REQUIRED str
 
@@ -64,6 +58,12 @@ class ModelsGameServer(Model):
 
         game_version: (game_version) OPTIONAL str
 
+        image_version: (image_version) OPTIONAL str
+
+        ip: (ip) OPTIONAL str
+
+        pod_name: (pod_name) OPTIONAL str
+
         port: (port) OPTIONAL int
 
         ports: (ports) OPTIONAL Dict[str, int]
@@ -76,12 +76,9 @@ class ModelsGameServer(Model):
     # region fields
 
     custom_attribute: str  # REQUIRED
-    image_version: str  # REQUIRED
-    ip: str  # REQUIRED
     is_override_game_version: bool  # REQUIRED
     last_update: str  # REQUIRED
     namespace: str  # REQUIRED
-    pod_name: str  # REQUIRED
     region: str  # REQUIRED
     session_id: str  # REQUIRED
     source: str  # REQUIRED
@@ -90,6 +87,9 @@ class ModelsGameServer(Model):
     ams_protocol: List[ModelsPortConfigurationAMS]  # OPTIONAL
     deployment: str  # OPTIONAL
     game_version: str  # OPTIONAL
+    image_version: str  # OPTIONAL
+    ip: str  # OPTIONAL
+    pod_name: str  # OPTIONAL
     port: int  # OPTIONAL
     ports: Dict[str, int]  # OPTIONAL
     protocol: str  # OPTIONAL
@@ -103,14 +103,6 @@ class ModelsGameServer(Model):
         self.custom_attribute = value
         return self
 
-    def with_image_version(self, value: str) -> ModelsGameServer:
-        self.image_version = value
-        return self
-
-    def with_ip(self, value: str) -> ModelsGameServer:
-        self.ip = value
-        return self
-
     def with_is_override_game_version(self, value: bool) -> ModelsGameServer:
         self.is_override_game_version = value
         return self
@@ -121,10 +113,6 @@ class ModelsGameServer(Model):
 
     def with_namespace(self, value: str) -> ModelsGameServer:
         self.namespace = value
-        return self
-
-    def with_pod_name(self, value: str) -> ModelsGameServer:
-        self.pod_name = value
         return self
 
     def with_region(self, value: str) -> ModelsGameServer:
@@ -161,6 +149,18 @@ class ModelsGameServer(Model):
         self.game_version = value
         return self
 
+    def with_image_version(self, value: str) -> ModelsGameServer:
+        self.image_version = value
+        return self
+
+    def with_ip(self, value: str) -> ModelsGameServer:
+        self.ip = value
+        return self
+
+    def with_pod_name(self, value: str) -> ModelsGameServer:
+        self.pod_name = value
+        return self
+
     def with_port(self, value: int) -> ModelsGameServer:
         self.port = value
         return self
@@ -187,14 +187,6 @@ class ModelsGameServer(Model):
             result["custom_attribute"] = str(self.custom_attribute)
         elif include_empty:
             result["custom_attribute"] = ""
-        if hasattr(self, "image_version"):
-            result["image_version"] = str(self.image_version)
-        elif include_empty:
-            result["image_version"] = ""
-        if hasattr(self, "ip"):
-            result["ip"] = str(self.ip)
-        elif include_empty:
-            result["ip"] = ""
         if hasattr(self, "is_override_game_version"):
             result["is_override_game_version"] = bool(self.is_override_game_version)
         elif include_empty:
@@ -207,10 +199,6 @@ class ModelsGameServer(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "pod_name"):
-            result["pod_name"] = str(self.pod_name)
-        elif include_empty:
-            result["pod_name"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
@@ -245,6 +233,18 @@ class ModelsGameServer(Model):
             result["game_version"] = str(self.game_version)
         elif include_empty:
             result["game_version"] = ""
+        if hasattr(self, "image_version"):
+            result["image_version"] = str(self.image_version)
+        elif include_empty:
+            result["image_version"] = ""
+        if hasattr(self, "ip"):
+            result["ip"] = str(self.ip)
+        elif include_empty:
+            result["ip"] = ""
+        if hasattr(self, "pod_name"):
+            result["pod_name"] = str(self.pod_name)
+        elif include_empty:
+            result["pod_name"] = ""
         if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
@@ -271,12 +271,9 @@ class ModelsGameServer(Model):
     def create(
         cls,
         custom_attribute: str,
-        image_version: str,
-        ip: str,
         is_override_game_version: bool,
         last_update: str,
         namespace: str,
-        pod_name: str,
         region: str,
         session_id: str,
         source: str,
@@ -285,6 +282,9 @@ class ModelsGameServer(Model):
         ams_protocol: Optional[List[ModelsPortConfigurationAMS]] = None,
         deployment: Optional[str] = None,
         game_version: Optional[str] = None,
+        image_version: Optional[str] = None,
+        ip: Optional[str] = None,
+        pod_name: Optional[str] = None,
         port: Optional[int] = None,
         ports: Optional[Dict[str, int]] = None,
         protocol: Optional[str] = None,
@@ -293,12 +293,9 @@ class ModelsGameServer(Model):
     ) -> ModelsGameServer:
         instance = cls()
         instance.custom_attribute = custom_attribute
-        instance.image_version = image_version
-        instance.ip = ip
         instance.is_override_game_version = is_override_game_version
         instance.last_update = last_update
         instance.namespace = namespace
-        instance.pod_name = pod_name
         instance.region = region
         instance.session_id = session_id
         instance.source = source
@@ -311,6 +308,12 @@ class ModelsGameServer(Model):
             instance.deployment = deployment
         if game_version is not None:
             instance.game_version = game_version
+        if image_version is not None:
+            instance.image_version = image_version
+        if ip is not None:
+            instance.ip = ip
+        if pod_name is not None:
+            instance.pod_name = pod_name
         if port is not None:
             instance.port = port
         if ports is not None:
@@ -332,14 +335,6 @@ class ModelsGameServer(Model):
             instance.custom_attribute = str(dict_["custom_attribute"])
         elif include_empty:
             instance.custom_attribute = ""
-        if "image_version" in dict_ and dict_["image_version"] is not None:
-            instance.image_version = str(dict_["image_version"])
-        elif include_empty:
-            instance.image_version = ""
-        if "ip" in dict_ and dict_["ip"] is not None:
-            instance.ip = str(dict_["ip"])
-        elif include_empty:
-            instance.ip = ""
         if (
             "is_override_game_version" in dict_
             and dict_["is_override_game_version"] is not None
@@ -355,10 +350,6 @@ class ModelsGameServer(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "pod_name" in dict_ and dict_["pod_name"] is not None:
-            instance.pod_name = str(dict_["pod_name"])
-        elif include_empty:
-            instance.pod_name = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -396,6 +387,18 @@ class ModelsGameServer(Model):
             instance.game_version = str(dict_["game_version"])
         elif include_empty:
             instance.game_version = ""
+        if "image_version" in dict_ and dict_["image_version"] is not None:
+            instance.image_version = str(dict_["image_version"])
+        elif include_empty:
+            instance.image_version = ""
+        if "ip" in dict_ and dict_["ip"] is not None:
+            instance.ip = str(dict_["ip"])
+        elif include_empty:
+            instance.ip = ""
+        if "pod_name" in dict_ and dict_["pod_name"] is not None:
+            instance.pod_name = str(dict_["pod_name"])
+        elif include_empty:
+            instance.pod_name = ""
         if "port" in dict_ and dict_["port"] is not None:
             instance.port = int(dict_["port"])
         elif include_empty:
@@ -452,12 +455,9 @@ class ModelsGameServer(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "custom_attribute": "custom_attribute",
-            "image_version": "image_version",
-            "ip": "ip",
             "is_override_game_version": "is_override_game_version",
             "last_update": "last_update",
             "namespace": "namespace",
-            "pod_name": "pod_name",
             "region": "region",
             "session_id": "session_id",
             "source": "source",
@@ -466,6 +466,9 @@ class ModelsGameServer(Model):
             "ams_protocol": "ams_protocol",
             "deployment": "deployment",
             "game_version": "game_version",
+            "image_version": "image_version",
+            "ip": "ip",
+            "pod_name": "pod_name",
             "port": "port",
             "ports": "ports",
             "protocol": "protocol",
@@ -476,12 +479,9 @@ class ModelsGameServer(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "custom_attribute": True,
-            "image_version": True,
-            "ip": True,
             "is_override_game_version": True,
             "last_update": True,
             "namespace": True,
-            "pod_name": True,
             "region": True,
             "session_id": True,
             "source": True,
@@ -490,6 +490,9 @@ class ModelsGameServer(Model):
             "ams_protocol": False,
             "deployment": False,
             "game_version": False,
+            "image_version": False,
+            "ip": False,
+            "pod_name": False,
             "port": False,
             "ports": False,
             "protocol": False,

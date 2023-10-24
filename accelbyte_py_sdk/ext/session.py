@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.8.1)
+# AccelByte Gaming Services Session Service (3.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,7 @@ from ..api.session.models import ApimodelsEnvironmentVariableListResponse
 from ..api.session.models import ApimodelsEnvironmentVariableResponse
 from ..api.session.models import ApimodelsGameSessionQueryResponse
 from ..api.session.models import ApimodelsGameSessionResponse
+from ..api.session.models import ApimodelsGlobalConfigurationResponse
 from ..api.session.models import ApimodelsJoinByCodeRequest
 from ..api.session.models import ApimodelsKickResponse
 from ..api.session.models import ApimodelsPagination
@@ -51,6 +52,7 @@ from ..api.session.models import ApimodelsPlayersCurrentPlatformRequest
 from ..api.session.models import ApimodelsPlayersCurrentPlatformResponse
 from ..api.session.models import ApimodelsPromoteLeaderRequest
 from ..api.session.models import ApimodelsPublicConfiguration
+from ..api.session.models import ApimodelsPutGlobalConfigurationRequest
 from ..api.session.models import ApimodelsPutPlatformCredentialsRequest
 from ..api.session.models import ApimodelsRequestMember
 from ..api.session.models import ApimodelsResponseDeleteBulkGameSessions
@@ -296,6 +298,19 @@ def create_apimodels_game_session_response_example() -> ApimodelsGameSessionResp
     return instance
 
 
+def create_apimodels_global_configuration_response_example() -> (
+    ApimodelsGlobalConfigurationResponse
+):
+    instance = ApimodelsGlobalConfigurationResponse()
+    instance.region_retry_mapping = {}
+    instance.region_url_mapping = [randomize()]
+    instance.test_game_mode = randomize()
+    instance.test_region_url_mapping = [randomize()]
+    instance.test_target_user_i_ds = [randomize()]
+    instance.updated_at = randomize()
+    return instance
+
+
 def create_apimodels_join_by_code_request_example() -> ApimodelsJoinByCodeRequest:
     instance = ApimodelsJoinByCodeRequest()
     instance.code = randomize()
@@ -423,6 +438,18 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.psn_base_url = randomize("url")
     instance.requested_regions = [randomize()]
     instance.tie_teams_session_lifetime = randomize("bool")
+    return instance
+
+
+def create_apimodels_put_global_configuration_request_example() -> (
+    ApimodelsPutGlobalConfigurationRequest
+):
+    instance = ApimodelsPutGlobalConfigurationRequest()
+    instance.region_retry_mapping = {}
+    instance.region_url_mapping = [randomize()]
+    instance.test_game_mode = randomize()
+    instance.test_region_url_mapping = [randomize()]
+    instance.test_target_user_i_ds = [randomize()]
     return instance
 
 
@@ -572,12 +599,9 @@ def create_models_dsm_config_record_example() -> ModelsDSMConfigRecord:
 def create_models_game_server_example() -> ModelsGameServer:
     instance = ModelsGameServer()
     instance.custom_attribute = randomize()
-    instance.image_version = randomize()
-    instance.ip = randomize()
     instance.is_override_game_version = randomize("bool")
     instance.last_update = randomize("date")
     instance.namespace = randomize("slug")
-    instance.pod_name = randomize()
     instance.region = randomize()
     instance.session_id = randomize("uid")
     instance.source = randomize()
@@ -586,6 +610,9 @@ def create_models_game_server_example() -> ModelsGameServer:
     instance.ams_protocol = [create_models_port_configuration_ams_example()]
     instance.deployment = randomize()
     instance.game_version = randomize("version")
+    instance.image_version = randomize()
+    instance.ip = randomize()
+    instance.pod_name = randomize()
     instance.port = randomize("int", min_val=1, max_val=1000)
     instance.ports = {}
     instance.protocol = randomize()

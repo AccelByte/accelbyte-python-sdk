@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.37.1"
+__version__ = "4.38.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -192,6 +192,10 @@ from .detailed_wallet_transaction_info import (
 )
 from .detailed_wallet_transaction_paging_sliced_result import (
     DetailedWalletTransactionPagingSlicedResult,
+)
+from .dlc_config_reward_short_info import DLCConfigRewardShortInfo
+from .dlc_config_reward_short_info import (
+    DlcTypeEnum as DLCConfigRewardShortInfoDlcTypeEnum,
 )
 from .dlc_item import DLCItem
 from .dlc_item_config_info import DLCItemConfigInfo

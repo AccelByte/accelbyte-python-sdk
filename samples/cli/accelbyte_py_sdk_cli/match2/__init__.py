@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# Justice Match Service v2 (2.11.2)
+# Justice Match Service v2 (2.11.4)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# fleet-commander (1.2.2)
+# fleet-commander (1.3.0)
 
 from ._auth_check import auth_check
 from ._portal_health_check import portal_health_check

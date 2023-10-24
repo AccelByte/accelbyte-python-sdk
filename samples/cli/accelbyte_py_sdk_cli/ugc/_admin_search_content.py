@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Ugc Service (2.14.0)
+# AGS Ugc Service (2.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 @click.command()
 @click.option("--creator", "creator", type=str)
+@click.option("--ishidden", "ishidden", type=str)
 @click.option("--isofficial", "isofficial", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--name", "name", type=str)
@@ -55,6 +56,7 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 @click.option("--doc", type=bool)
 def admin_search_content(
     creator: Optional[str] = None,
+    ishidden: Optional[str] = None,
     isofficial: Optional[str] = None,
     limit: Optional[int] = None,
     name: Optional[str] = None,
@@ -86,6 +88,7 @@ def admin_search_content(
             raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = admin_search_content_internal(
         creator=creator,
+        ishidden=ishidden,
         isofficial=isofficial,
         limit=limit,
         name=name,

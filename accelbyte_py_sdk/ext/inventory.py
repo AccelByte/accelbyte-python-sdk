@@ -25,9 +25,13 @@
 from .utils import randomize
 
 from ..api.inventory.models import ApimodelsAdminUpdateItemReq
+from ..api.inventory.models import ApimodelsChainingOperationReq
+from ..api.inventory.models import ApimodelsChainingOperationResp
+from ..api.inventory.models import ApimodelsConsumeItem
 from ..api.inventory.models import ApimodelsConsumeItemReq
 from ..api.inventory.models import ApimodelsCreateInventoryConfigurationReq
 from ..api.inventory.models import ApimodelsCreateInventoryReq
+from ..api.inventory.models import ApimodelsCreateItem
 from ..api.inventory.models import ApimodelsCreateItemTypeReq
 from ..api.inventory.models import ApimodelsCreateItemTypeResp
 from ..api.inventory.models import ApimodelsCreateTagReq
@@ -45,13 +49,16 @@ from ..api.inventory.models import ApimodelsListItemTypesResp
 from ..api.inventory.models import ApimodelsListTagsResp
 from ..api.inventory.models import ApimodelsMoveItemsReq
 from ..api.inventory.models import ApimodelsMoveItemsResp
+from ..api.inventory.models import ApimodelsOperation
 from ..api.inventory.models import ApimodelsPaging
 from ..api.inventory.models import ApimodelsRemoveInventoryItemReq
+from ..api.inventory.models import ApimodelsRemoveItem
 from ..api.inventory.models import ApimodelsSaveItemReq
 from ..api.inventory.models import ApimodelsSaveItemToInventoryReq
 from ..api.inventory.models import ApimodelsTradeItem
 from ..api.inventory.models import ApimodelsTradeItemResp
 from ..api.inventory.models import ApimodelsUpdateInventoryReq
+from ..api.inventory.models import ApimodelsUpdateItem
 from ..api.inventory.models import ApimodelsUpdateItemReq
 from ..api.inventory.models import ApimodelsUpdateItemResp
 
@@ -64,6 +71,34 @@ def create_apimodels_admin_update_item_req_example() -> ApimodelsAdminUpdateItem
     instance.source_item_id = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
+    return instance
+
+
+def create_apimodels_chaining_operation_req_example() -> ApimodelsChainingOperationReq:
+    instance = ApimodelsChainingOperationReq()
+    instance.message = randomize()
+    instance.operations = [create_apimodels_operation_example()]
+    instance.request_id = randomize()
+    return instance
+
+
+def create_apimodels_chaining_operation_resp_example() -> (
+    ApimodelsChainingOperationResp
+):
+    instance = ApimodelsChainingOperationResp()
+    instance.message = randomize()
+    instance.error_details = create_apimodels_error_response_example()
+    instance.replayed = randomize("bool")
+    instance.request_id = randomize()
+    return instance
+
+
+def create_apimodels_consume_item_example() -> ApimodelsConsumeItem:
+    instance = ApimodelsConsumeItem()
+    instance.inventory_id = randomize()
+    instance.qty = randomize("int", min_val=1, max_val=1000)
+    instance.slot_id = randomize()
+    instance.source_item_id = randomize()
     return instance
 
 
@@ -92,6 +127,22 @@ def create_apimodels_create_inventory_req_example() -> ApimodelsCreateInventoryR
     instance = ApimodelsCreateInventoryReq()
     instance.inventory_configuration_code = randomize()
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_apimodels_create_item_example() -> ApimodelsCreateItem:
+    instance = ApimodelsCreateItem()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.qty = randomize("int", min_val=1, max_val=1000)
+    instance.server_custom_attributes = {randomize(): randomize()}
+    instance.slot_id = randomize()
+    instance.slot_used = randomize("int", min_val=1, max_val=1000)
+    instance.source_item_id = randomize()
+    instance.tags = [randomize()]
+    instance.to_specific_inventory = randomize("bool")
+    instance.type_ = randomize()
+    instance.inventory_configuration_code = randomize()
+    instance.inventory_id = randomize()
     return instance
 
 
@@ -258,6 +309,16 @@ def create_apimodels_move_items_resp_example() -> ApimodelsMoveItemsResp:
     return instance
 
 
+def create_apimodels_operation_example() -> ApimodelsOperation:
+    instance = ApimodelsOperation()
+    instance.consume_items = [create_apimodels_consume_item_example()]
+    instance.create_items = [create_apimodels_create_item_example()]
+    instance.remove_items = [create_apimodels_remove_item_example()]
+    instance.target_user_id = randomize()
+    instance.update_items = [create_apimodels_update_item_example()]
+    return instance
+
+
 def create_apimodels_paging_example() -> ApimodelsPaging:
     instance = ApimodelsPaging()
     instance.first = randomize()
@@ -271,6 +332,14 @@ def create_apimodels_remove_inventory_item_req_example() -> (
     ApimodelsRemoveInventoryItemReq
 ):
     instance = ApimodelsRemoveInventoryItemReq()
+    instance.slot_id = randomize()
+    instance.source_item_id = randomize()
+    return instance
+
+
+def create_apimodels_remove_item_example() -> ApimodelsRemoveItem:
+    instance = ApimodelsRemoveItem()
+    instance.inventory_id = randomize()
     instance.slot_id = randomize()
     instance.source_item_id = randomize()
     return instance
@@ -324,6 +393,18 @@ def create_apimodels_trade_item_resp_example() -> ApimodelsTradeItemResp:
 def create_apimodels_update_inventory_req_example() -> ApimodelsUpdateInventoryReq:
     instance = ApimodelsUpdateInventoryReq()
     instance.inc_max_slots = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_apimodels_update_item_example() -> ApimodelsUpdateItem:
+    instance = ApimodelsUpdateItem()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.inventory_id = randomize()
+    instance.server_custom_attributes = {randomize(): randomize()}
+    instance.slot_id = randomize()
+    instance.source_item_id = randomize()
+    instance.tags = [randomize()]
+    instance.type_ = randomize()
     return instance
 
 

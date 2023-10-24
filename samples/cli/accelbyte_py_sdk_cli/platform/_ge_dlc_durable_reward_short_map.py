@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Service (3.8.1)
+# AGS Platform Service (4.38.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,49 +30,43 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.session import (
-    public_query_game_sessions as public_query_game_sessions_internal,
+from accelbyte_py_sdk.api.platform import (
+    ge_dlc_durable_reward_short_map as ge_dlc_durable_reward_short_map_internal,
 )
-from accelbyte_py_sdk.api.session.models import ApimodelsGameSessionQueryResponse
-from accelbyte_py_sdk.api.session.models import ResponseError
+from accelbyte_py_sdk.api.platform.models import DLCConfigRewardShortInfo
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()
-@click.argument("body", type=str)
+@click.argument("dlc_type", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def public_query_game_sessions(
-    body: str,
+def ge_dlc_durable_reward_short_map(
+    dlc_type: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(public_query_game_sessions_internal.__doc__)
+        click.echo(ge_dlc_durable_reward_short_map_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if body is not None:
-        try:
-            body_json = json.loads(body)
-            body = {k: v for k, v in body_json.items()}
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = public_query_game_sessions_internal(
-        body=body,
+    result, error = ge_dlc_durable_reward_short_map_internal(
+        dlc_type=dlc_type,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"publicQueryGameSessions failed: {str(error)}")
+        raise Exception(f"geDLCDurableRewardShortMap failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-public_query_game_sessions.operation_id = "publicQueryGameSessions"
-public_query_game_sessions.is_deprecated = False
+ge_dlc_durable_reward_short_map.operation_id = "geDLCDurableRewardShortMap"
+ge_dlc_durable_reward_short_map.is_deprecated = False

@@ -61,6 +61,7 @@ def admin_get_player_attributes(
     - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - PSN_PUSH_CONTEXT_ID: if provided, session will refer to this when performing session sync with PSN, otherwise will populate from session attributes
     - currentPlatform : latest user game platform.
     - roles : user role for matchmaking role base support.
 
@@ -121,6 +122,7 @@ async def admin_get_player_attributes_async(
     - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - PSN_PUSH_CONTEXT_ID: if provided, session will refer to this when performing session sync with PSN, otherwise will populate from session attributes
     - currentPlatform : latest user game platform.
     - roles : user role for matchmaking role base support.
 
@@ -183,6 +185,7 @@ def admin_query_player_attributes(
     - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - PSN_PUSH_CONTEXT_ID: if provided, session will refer to this when performing session sync with PSN, otherwise will populate from session attributes, otherwise will populate from session attributes
     - currentPlatform : latest user game platform.
     - roles : user role for matchmaking role base support.
 
@@ -243,6 +246,7 @@ async def admin_query_player_attributes_async(
     - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - PSN_PUSH_CONTEXT_ID: if provided, session will refer to this when performing session sync with PSN, otherwise will populate from session attributes, otherwise will populate from session attributes
     - currentPlatform : latest user game platform.
     - roles : user role for matchmaking role base support.
 
@@ -500,6 +504,7 @@ def public_get_player_attributes(
     - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - PSN_PUSH_CONTEXT_ID: if provided, session will refer to this when performing session sync with PSN, otherwise will populate from session attributes
     - currentPlatform : latest user game platform.
     - roles : user role for matchmaking role base support.
 
@@ -556,6 +561,7 @@ async def public_get_player_attributes_async(
     - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - PSN_PUSH_CONTEXT_ID: if provided, session will refer to this when performing session sync with PSN, otherwise will populate from session attributes
     - currentPlatform : latest user game platform.
     - roles : user role for matchmaking role base support.
 
@@ -615,6 +621,7 @@ def public_store_player_attributes(
     - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - PSN_PUSH_CONTEXT_ID: if provided, session will refer to this when performing session sync with PSN, otherwise will populate from session attributes
     - currentPlatform : latest user game platform.
     - roles : user role for matchmaking role base support.
 
@@ -673,6 +680,7 @@ async def public_store_player_attributes_async(
     - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - PSN_PUSH_CONTEXT_ID: if provided, session will refer to this when performing session sync with PSN, otherwise will populate from session attributes
     - currentPlatform : latest user game platform.
     - roles : user role for matchmaking role base support.
 

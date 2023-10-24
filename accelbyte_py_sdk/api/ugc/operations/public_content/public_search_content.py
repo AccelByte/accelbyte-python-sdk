@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.14.0)
+# AccelByte Gaming Services Ugc Service (2.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -75,6 +75,8 @@ class PublicSearchContent(Operation):
 
         creator: (creator) OPTIONAL str in query
 
+        ishidden: (ishidden) OPTIONAL str in query
+
         isofficial: (isofficial) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -116,6 +118,7 @@ class PublicSearchContent(Operation):
 
     namespace: str  # REQUIRED in [path]
     creator: str  # OPTIONAL in [query]
+    ishidden: str  # OPTIONAL in [query]
     isofficial: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     name: str  # OPTIONAL in [query]
@@ -179,6 +182,8 @@ class PublicSearchContent(Operation):
         result = {}
         if hasattr(self, "creator"):
             result["creator"] = self.creator
+        if hasattr(self, "ishidden"):
+            result["ishidden"] = self.ishidden
         if hasattr(self, "isofficial"):
             result["isofficial"] = self.isofficial
         if hasattr(self, "limit"):
@@ -215,6 +220,10 @@ class PublicSearchContent(Operation):
 
     def with_creator(self, value: str) -> PublicSearchContent:
         self.creator = value
+        return self
+
+    def with_ishidden(self, value: str) -> PublicSearchContent:
+        self.ishidden = value
         return self
 
     def with_isofficial(self, value: str) -> PublicSearchContent:
@@ -271,6 +280,10 @@ class PublicSearchContent(Operation):
             result["creator"] = str(self.creator)
         elif include_empty:
             result["creator"] = ""
+        if hasattr(self, "ishidden") and self.ishidden:
+            result["ishidden"] = str(self.ishidden)
+        elif include_empty:
+            result["ishidden"] = ""
         if hasattr(self, "isofficial") and self.isofficial:
             result["isofficial"] = str(self.isofficial)
         elif include_empty:
@@ -372,6 +385,7 @@ class PublicSearchContent(Operation):
         cls,
         namespace: str,
         creator: Optional[str] = None,
+        ishidden: Optional[str] = None,
         isofficial: Optional[str] = None,
         limit: Optional[int] = None,
         name: Optional[str] = None,
@@ -388,6 +402,8 @@ class PublicSearchContent(Operation):
         instance.namespace = namespace
         if creator is not None:
             instance.creator = creator
+        if ishidden is not None:
+            instance.ishidden = ishidden
         if isofficial is not None:
             instance.isofficial = isofficial
         if limit is not None:
@@ -423,6 +439,10 @@ class PublicSearchContent(Operation):
             instance.creator = str(dict_["creator"])
         elif include_empty:
             instance.creator = ""
+        if "ishidden" in dict_ and dict_["ishidden"] is not None:
+            instance.ishidden = str(dict_["ishidden"])
+        elif include_empty:
+            instance.ishidden = ""
         if "isofficial" in dict_ and dict_["isofficial"] is not None:
             instance.isofficial = str(dict_["isofficial"])
         elif include_empty:
@@ -470,6 +490,7 @@ class PublicSearchContent(Operation):
         return {
             "namespace": "namespace",
             "creator": "creator",
+            "ishidden": "ishidden",
             "isofficial": "isofficial",
             "limit": "limit",
             "name": "name",
@@ -487,6 +508,7 @@ class PublicSearchContent(Operation):
         return {
             "namespace": True,
             "creator": False,
+            "ishidden": False,
             "isofficial": False,
             "limit": False,
             "name": False,

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.8.1"
+__version__ = "3.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -45,6 +45,9 @@ from .apimodels_environment_variable_response import (
 )
 from .apimodels_game_session_query_response import ApimodelsGameSessionQueryResponse
 from .apimodels_game_session_response import ApimodelsGameSessionResponse
+from .apimodels_global_configuration_response import (
+    ApimodelsGlobalConfigurationResponse,
+)
 from .apimodels_join_by_code_request import ApimodelsJoinByCodeRequest
 from .apimodels_kick_response import ApimodelsKickResponse
 from .apimodels_pagination import ApimodelsPagination
@@ -65,6 +68,9 @@ from .apimodels_players_current_platform_response import (
 )
 from .apimodels_promote_leader_request import ApimodelsPromoteLeaderRequest
 from .apimodels_public_configuration import ApimodelsPublicConfiguration
+from .apimodels_put_global_configuration_request import (
+    ApimodelsPutGlobalConfigurationRequest,
+)
 from .apimodels_put_platform_credentials_request import (
     ApimodelsPutPlatformCredentialsRequest,
 )

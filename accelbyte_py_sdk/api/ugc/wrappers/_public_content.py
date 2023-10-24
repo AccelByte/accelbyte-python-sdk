@@ -1088,6 +1088,7 @@ async def public_get_user_content_async(
 @same_doc_as(PublicSearchContent)
 def public_search_content(
     creator: Optional[str] = None,
+    ishidden: Optional[str] = None,
     isofficial: Optional[str] = None,
     limit: Optional[int] = None,
     name: Optional[str] = None,
@@ -1143,6 +1144,8 @@ def public_search_content(
 
         creator: (creator) OPTIONAL str in query
 
+        ishidden: (ishidden) OPTIONAL str in query
+
         isofficial: (isofficial) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -1178,6 +1181,7 @@ def public_search_content(
             return None, error
     request = PublicSearchContent.create(
         creator=creator,
+        ishidden=ishidden,
         isofficial=isofficial,
         limit=limit,
         name=name,
@@ -1196,6 +1200,7 @@ def public_search_content(
 @same_doc_as(PublicSearchContent)
 async def public_search_content_async(
     creator: Optional[str] = None,
+    ishidden: Optional[str] = None,
     isofficial: Optional[str] = None,
     limit: Optional[int] = None,
     name: Optional[str] = None,
@@ -1251,6 +1256,8 @@ async def public_search_content_async(
 
         creator: (creator) OPTIONAL str in query
 
+        ishidden: (ishidden) OPTIONAL str in query
+
         isofficial: (isofficial) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -1286,6 +1293,7 @@ async def public_search_content_async(
             return None, error
     request = PublicSearchContent.create(
         creator=creator,
+        ishidden=ishidden,
         isofficial=isofficial,
         limit=limit,
         name=name,
@@ -1307,6 +1315,7 @@ async def public_search_content_async(
 def search_channel_specific_content(
     channel_id: str,
     creator: Optional[str] = None,
+    ishidden: Optional[str] = None,
     isofficial: Optional[str] = None,
     limit: Optional[int] = None,
     name: Optional[str] = None,
@@ -1364,6 +1373,8 @@ def search_channel_specific_content(
 
         creator: (creator) OPTIONAL str in query
 
+        ishidden: (ishidden) OPTIONAL str in query
+
         isofficial: (isofficial) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -1400,6 +1411,7 @@ def search_channel_specific_content(
     request = SearchChannelSpecificContent.create(
         channel_id=channel_id,
         creator=creator,
+        ishidden=ishidden,
         isofficial=isofficial,
         limit=limit,
         name=name,
@@ -1419,6 +1431,7 @@ def search_channel_specific_content(
 async def search_channel_specific_content_async(
     channel_id: str,
     creator: Optional[str] = None,
+    ishidden: Optional[str] = None,
     isofficial: Optional[str] = None,
     limit: Optional[int] = None,
     name: Optional[str] = None,
@@ -1476,6 +1489,8 @@ async def search_channel_specific_content_async(
 
         creator: (creator) OPTIONAL str in query
 
+        ishidden: (ishidden) OPTIONAL str in query
+
         isofficial: (isofficial) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -1512,6 +1527,7 @@ async def search_channel_specific_content_async(
     request = SearchChannelSpecificContent.create(
         channel_id=channel_id,
         creator=creator,
+        ishidden=ishidden,
         isofficial=isofficial,
         limit=limit,
         name=name,

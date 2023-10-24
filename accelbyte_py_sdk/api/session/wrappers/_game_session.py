@@ -59,7 +59,7 @@ from ..operations.game_session import PatchUpdateGameSession
 from ..operations.game_session import PublicGameSessionInvite
 from ..operations.game_session import PublicGameSessionReject
 from ..operations.game_session import PublicPromoteGameSessionLeader
-from ..operations.game_session import PublicQueryGameSessions
+from ..operations.game_session import PublicQueryGameSessionsByAttributes
 from ..operations.game_session import PublicQueryMyGameSessions
 from ..operations.game_session import PublicRevokeGameSessionCode
 from ..operations.game_session import PublicSessionJoinCode
@@ -2061,14 +2061,14 @@ async def public_promote_game_session_leader_async(
     )
 
 
-@same_doc_as(PublicQueryGameSessions)
-def public_query_game_sessions(
+@same_doc_as(PublicQueryGameSessionsByAttributes)
+def public_query_game_sessions_by_attributes(
     body: Dict[str, Any],
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query game sessions (publicQueryGameSessions)
+    """Query game sessions (publicQueryGameSessionsByAttributes)
 
     Query game sessions.
 
@@ -2116,21 +2116,21 @@ def public_query_game_sessions(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = PublicQueryGameSessions.create(
+    request = PublicQueryGameSessionsByAttributes.create(
         body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(PublicQueryGameSessions)
-async def public_query_game_sessions_async(
+@same_doc_as(PublicQueryGameSessionsByAttributes)
+async def public_query_game_sessions_by_attributes_async(
     body: Dict[str, Any],
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query game sessions (publicQueryGameSessions)
+    """Query game sessions (publicQueryGameSessionsByAttributes)
 
     Query game sessions.
 
@@ -2178,7 +2178,7 @@ async def public_query_game_sessions_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = PublicQueryGameSessions.create(
+    request = PublicQueryGameSessionsByAttributes.create(
         body=body,
         namespace=namespace,
     )

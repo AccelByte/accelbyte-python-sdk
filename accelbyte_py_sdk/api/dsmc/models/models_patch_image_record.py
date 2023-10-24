@@ -36,8 +36,6 @@ class ModelsPatchImageRecord(Model):
     Properties:
         artifact_path: (artifactPath) REQUIRED str
 
-        core_dump_enabled: (coreDumpEnabled) REQUIRED bool
-
         created_at: (createdAt) REQUIRED str
 
         docker_path: (dockerPath) REQUIRED str
@@ -58,19 +56,20 @@ class ModelsPatchImageRecord(Model):
 
         persistent: (persistent) REQUIRED bool
 
-        ulimit_file_size: (ulimitFileSize) REQUIRED int
-
         updated_at: (updatedAt) REQUIRED str
 
         uploader_flag: (uploaderFlag) REQUIRED str
 
         version: (version) REQUIRED str
+
+        core_dump_enabled: (coreDumpEnabled) OPTIONAL bool
+
+        ulimit_file_size: (ulimitFileSize) OPTIONAL int
     """
 
     # region fields
 
     artifact_path: str  # REQUIRED
-    core_dump_enabled: bool  # REQUIRED
     created_at: str  # REQUIRED
     docker_path: str  # REQUIRED
     image: str  # REQUIRED
@@ -81,10 +80,11 @@ class ModelsPatchImageRecord(Model):
     namespace: str  # REQUIRED
     patch_version: str  # REQUIRED
     persistent: bool  # REQUIRED
-    ulimit_file_size: int  # REQUIRED
     updated_at: str  # REQUIRED
     uploader_flag: str  # REQUIRED
     version: str  # REQUIRED
+    core_dump_enabled: bool  # OPTIONAL
+    ulimit_file_size: int  # OPTIONAL
 
     # endregion fields
 
@@ -92,10 +92,6 @@ class ModelsPatchImageRecord(Model):
 
     def with_artifact_path(self, value: str) -> ModelsPatchImageRecord:
         self.artifact_path = value
-        return self
-
-    def with_core_dump_enabled(self, value: bool) -> ModelsPatchImageRecord:
-        self.core_dump_enabled = value
         return self
 
     def with_created_at(self, value: str) -> ModelsPatchImageRecord:
@@ -142,10 +138,6 @@ class ModelsPatchImageRecord(Model):
         self.persistent = value
         return self
 
-    def with_ulimit_file_size(self, value: int) -> ModelsPatchImageRecord:
-        self.ulimit_file_size = value
-        return self
-
     def with_updated_at(self, value: str) -> ModelsPatchImageRecord:
         self.updated_at = value
         return self
@@ -158,6 +150,14 @@ class ModelsPatchImageRecord(Model):
         self.version = value
         return self
 
+    def with_core_dump_enabled(self, value: bool) -> ModelsPatchImageRecord:
+        self.core_dump_enabled = value
+        return self
+
+    def with_ulimit_file_size(self, value: int) -> ModelsPatchImageRecord:
+        self.ulimit_file_size = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -168,10 +168,6 @@ class ModelsPatchImageRecord(Model):
             result["artifactPath"] = str(self.artifact_path)
         elif include_empty:
             result["artifactPath"] = ""
-        if hasattr(self, "core_dump_enabled"):
-            result["coreDumpEnabled"] = bool(self.core_dump_enabled)
-        elif include_empty:
-            result["coreDumpEnabled"] = False
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -218,10 +214,6 @@ class ModelsPatchImageRecord(Model):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
             result["persistent"] = False
-        if hasattr(self, "ulimit_file_size"):
-            result["ulimitFileSize"] = int(self.ulimit_file_size)
-        elif include_empty:
-            result["ulimitFileSize"] = 0
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -234,6 +226,14 @@ class ModelsPatchImageRecord(Model):
             result["version"] = str(self.version)
         elif include_empty:
             result["version"] = ""
+        if hasattr(self, "core_dump_enabled"):
+            result["coreDumpEnabled"] = bool(self.core_dump_enabled)
+        elif include_empty:
+            result["coreDumpEnabled"] = False
+        if hasattr(self, "ulimit_file_size"):
+            result["ulimitFileSize"] = int(self.ulimit_file_size)
+        elif include_empty:
+            result["ulimitFileSize"] = 0
         return result
 
     # endregion to methods
@@ -244,7 +244,6 @@ class ModelsPatchImageRecord(Model):
     def create(
         cls,
         artifact_path: str,
-        core_dump_enabled: bool,
         created_at: str,
         docker_path: str,
         image: str,
@@ -255,15 +254,15 @@ class ModelsPatchImageRecord(Model):
         namespace: str,
         patch_version: str,
         persistent: bool,
-        ulimit_file_size: int,
         updated_at: str,
         uploader_flag: str,
         version: str,
+        core_dump_enabled: Optional[bool] = None,
+        ulimit_file_size: Optional[int] = None,
         **kwargs,
     ) -> ModelsPatchImageRecord:
         instance = cls()
         instance.artifact_path = artifact_path
-        instance.core_dump_enabled = core_dump_enabled
         instance.created_at = created_at
         instance.docker_path = docker_path
         instance.image = image
@@ -274,10 +273,13 @@ class ModelsPatchImageRecord(Model):
         instance.namespace = namespace
         instance.patch_version = patch_version
         instance.persistent = persistent
-        instance.ulimit_file_size = ulimit_file_size
         instance.updated_at = updated_at
         instance.uploader_flag = uploader_flag
         instance.version = version
+        if core_dump_enabled is not None:
+            instance.core_dump_enabled = core_dump_enabled
+        if ulimit_file_size is not None:
+            instance.ulimit_file_size = ulimit_file_size
         return instance
 
     @classmethod
@@ -291,10 +293,6 @@ class ModelsPatchImageRecord(Model):
             instance.artifact_path = str(dict_["artifactPath"])
         elif include_empty:
             instance.artifact_path = ""
-        if "coreDumpEnabled" in dict_ and dict_["coreDumpEnabled"] is not None:
-            instance.core_dump_enabled = bool(dict_["coreDumpEnabled"])
-        elif include_empty:
-            instance.core_dump_enabled = False
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -346,10 +344,6 @@ class ModelsPatchImageRecord(Model):
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
             instance.persistent = False
-        if "ulimitFileSize" in dict_ and dict_["ulimitFileSize"] is not None:
-            instance.ulimit_file_size = int(dict_["ulimitFileSize"])
-        elif include_empty:
-            instance.ulimit_file_size = 0
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -362,6 +356,14 @@ class ModelsPatchImageRecord(Model):
             instance.version = str(dict_["version"])
         elif include_empty:
             instance.version = ""
+        if "coreDumpEnabled" in dict_ and dict_["coreDumpEnabled"] is not None:
+            instance.core_dump_enabled = bool(dict_["coreDumpEnabled"])
+        elif include_empty:
+            instance.core_dump_enabled = False
+        if "ulimitFileSize" in dict_ and dict_["ulimitFileSize"] is not None:
+            instance.ulimit_file_size = int(dict_["ulimitFileSize"])
+        elif include_empty:
+            instance.ulimit_file_size = 0
         return instance
 
     @classmethod
@@ -406,7 +408,6 @@ class ModelsPatchImageRecord(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "artifactPath": "artifact_path",
-            "coreDumpEnabled": "core_dump_enabled",
             "createdAt": "created_at",
             "dockerPath": "docker_path",
             "image": "image",
@@ -417,17 +418,17 @@ class ModelsPatchImageRecord(Model):
             "namespace": "namespace",
             "patchVersion": "patch_version",
             "persistent": "persistent",
-            "ulimitFileSize": "ulimit_file_size",
             "updatedAt": "updated_at",
             "uploaderFlag": "uploader_flag",
             "version": "version",
+            "coreDumpEnabled": "core_dump_enabled",
+            "ulimitFileSize": "ulimit_file_size",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "artifactPath": True,
-            "coreDumpEnabled": True,
             "createdAt": True,
             "dockerPath": True,
             "image": True,
@@ -438,10 +439,11 @@ class ModelsPatchImageRecord(Model):
             "namespace": True,
             "patchVersion": True,
             "persistent": True,
-            "ulimitFileSize": True,
             "updatedAt": True,
             "uploaderFlag": True,
             "version": True,
+            "coreDumpEnabled": False,
+            "ulimitFileSize": False,
         }
 
     # endregion static methods

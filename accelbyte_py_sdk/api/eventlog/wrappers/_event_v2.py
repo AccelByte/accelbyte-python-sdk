@@ -215,34 +215,14 @@ def get_public_edit_history(
     """Get a user edit history based on the provided type (GetPublicEditHistory)
 
     Available Type:
+    * email
+    * password
+    * displayname
+    * dateofbirth
+    * country
+    * language
 
-
-
-
-
-
-      * email
-
-
-      * password
-
-
-      * displayname
-
-
-      * dateofbirth
-
-
-      * country
-
-
-      * language
-
-
-
-
-
-    Requires a valid user access token
+    Requires valid user access token
 
     Properties:
         url: /event/v2/public/namespaces/{namespace}/users/{userId}/edithistory
@@ -317,34 +297,14 @@ async def get_public_edit_history_async(
     """Get a user edit history based on the provided type (GetPublicEditHistory)
 
     Available Type:
+    * email
+    * password
+    * displayname
+    * dateofbirth
+    * country
+    * language
 
-
-
-
-
-
-      * email
-
-
-      * password
-
-
-      * displayname
-
-
-      * dateofbirth
-
-
-      * country
-
-
-      * language
-
-
-
-
-
-    Requires a valid user access token
+    Requires valid user access token
 
     Properties:
         url: /event/v2/public/namespaces/{namespace}/users/{userId}/edithistory

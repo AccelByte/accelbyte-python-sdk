@@ -183,30 +183,30 @@ def create_models_create_dsm_config_request_example() -> ModelsCreateDSMConfigRe
 def create_models_create_image_patch_request_example() -> ModelsCreateImagePatchRequest:
     instance = ModelsCreateImagePatchRequest()
     instance.artifact_path = randomize()
-    instance.core_dump_enabled = randomize("bool")
     instance.docker_path = randomize()
     instance.image = randomize()
     instance.image_size = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.patch_version = randomize()
     instance.persistent = randomize("bool")
-    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     instance.uploader_flag = randomize()
     instance.version = randomize("version")
+    instance.core_dump_enabled = randomize("bool")
+    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_models_create_image_request_example() -> ModelsCreateImageRequest:
     instance = ModelsCreateImageRequest()
     instance.artifact_path = randomize()
-    instance.core_dump_enabled = randomize("bool")
     instance.docker_path = randomize()
     instance.image = randomize()
     instance.image_size = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.persistent = randomize("bool")
-    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     instance.version = randomize("version")
+    instance.core_dump_enabled = randomize("bool")
+    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -392,7 +392,6 @@ def create_models_get_image_patch_detail_response_example() -> (
 def create_models_image_record_example() -> ModelsImageRecord:
     instance = ModelsImageRecord()
     instance.artifact_path = randomize()
-    instance.core_dump_enabled = randomize("bool")
     instance.created_at = randomize("date")
     instance.docker_path = randomize()
     instance.image = randomize()
@@ -402,22 +401,23 @@ def create_models_image_record_example() -> ModelsImageRecord:
     instance.modified_by = randomize()
     instance.namespace = randomize("slug")
     instance.persistent = randomize("bool")
-    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     instance.updated_at = randomize("date")
     instance.version = randomize("version")
+    instance.core_dump_enabled = randomize("bool")
+    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
 def create_models_image_record_update_example() -> ModelsImageRecordUpdate:
     instance = ModelsImageRecordUpdate()
     instance.artifact_path = randomize()
-    instance.core_dump_enabled = randomize("bool")
     instance.image = randomize()
     instance.image_replications_map = {}
     instance.namespace = randomize("slug")
     instance.patch_version = randomize()
     instance.persistent = randomize("bool")
     instance.version = randomize("version")
+    instance.core_dump_enabled = randomize("bool")
     return instance
 
 
@@ -510,7 +510,6 @@ def create_models_paging_cursor_example() -> ModelsPagingCursor:
 def create_models_patch_image_record_example() -> ModelsPatchImageRecord:
     instance = ModelsPatchImageRecord()
     instance.artifact_path = randomize()
-    instance.core_dump_enabled = randomize("bool")
     instance.created_at = randomize("date")
     instance.docker_path = randomize()
     instance.image = randomize()
@@ -521,10 +520,11 @@ def create_models_patch_image_record_example() -> ModelsPatchImageRecord:
     instance.namespace = randomize("slug")
     instance.patch_version = randomize()
     instance.persistent = randomize("bool")
-    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     instance.updated_at = randomize("date")
     instance.uploader_flag = randomize()
     instance.version = randomize("version")
+    instance.core_dump_enabled = randomize("bool")
+    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

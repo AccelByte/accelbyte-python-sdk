@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.8.1)
+# AccelByte Gaming Services Session Service (3.9.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -46,6 +46,7 @@ class PublicStorePlayerAttributes(Operation):
     - name : platform name. supported platforms: STEAM, XBOX, PSN
     - userID : platform userID
     - data : other data that the player wants to store.
+    - PSN_PUSH_CONTEXT_ID: if provided, session will refer to this when performing session sync with PSN, otherwise will populate from session attributes
     - currentPlatform : latest user game platform.
     - roles : user role for matchmaking role base support.
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Event Log Service (2.1.0)
+# AccelByte Gaming Services Event Log Service (2.1.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,34 +36,14 @@ class GetPublicEditHistory(Operation):
     """Get a user edit history based on the provided type (GetPublicEditHistory)
 
     Available Type:
+    * email
+    * password
+    * displayname
+    * dateofbirth
+    * country
+    * language
 
-
-
-
-
-
-      * email
-
-
-      * password
-
-
-      * displayname
-
-
-      * dateofbirth
-
-
-      * country
-
-
-      * language
-
-
-
-
-
-    Requires a valid user access token
+    Requires valid user access token
 
     Properties:
         url: /event/v2/public/namespaces/{namespace}/users/{userId}/edithistory

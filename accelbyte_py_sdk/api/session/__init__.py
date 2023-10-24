@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.8.1"
+__version__ = "3.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -79,8 +79,8 @@ from .wrappers import public_game_session_reject
 from .wrappers import public_game_session_reject_async
 from .wrappers import public_promote_game_session_leader
 from .wrappers import public_promote_game_session_leader_async
-from .wrappers import public_query_game_sessions
-from .wrappers import public_query_game_sessions_async
+from .wrappers import public_query_game_sessions_by_attributes
+from .wrappers import public_query_game_sessions_by_attributes_async
 from .wrappers import public_query_my_game_sessions
 from .wrappers import public_query_my_game_sessions_async
 from .wrappers import public_revoke_game_session_code
@@ -91,6 +91,14 @@ from .wrappers import update_game_session
 from .wrappers import update_game_session_async
 from .wrappers import update_game_session_backfill_ticket_id
 from .wrappers import update_game_session_backfill_ticket_id_async
+
+# global_configuration
+from .wrappers import admin_delete_global_configuration
+from .wrappers import admin_delete_global_configuration_async
+from .wrappers import admin_list_global_configuration
+from .wrappers import admin_list_global_configuration_async
+from .wrappers import admin_update_global_configuration
+from .wrappers import admin_update_global_configuration_async
 
 # operations
 from .wrappers import get_healthcheck_info

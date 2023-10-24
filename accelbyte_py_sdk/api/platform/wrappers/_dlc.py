@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import DLCConfigRewardShortInfo
 from ..models import DLCItemConfigInfo
 from ..models import DLCItemConfigUpdate
 from ..models import EpicGamesDLCSyncRequest
@@ -45,6 +46,8 @@ from ..models import XblDLCSyncRequest
 
 from ..operations.dlc import DeleteDLCItemConfig
 from ..operations.dlc import DeletePlatformDLCConfig
+from ..operations.dlc import GeDLCDurableRewardShortMap
+from ..operations.dlc import GeDLCDurableRewardShortMapDlcTypeEnum
 from ..operations.dlc import GetDLCItemConfig
 from ..operations.dlc import GetPlatformDLCConfig
 from ..operations.dlc import GetUserDLC
@@ -59,6 +62,7 @@ from ..operations.dlc import SyncSteamDLC
 from ..operations.dlc import SyncXboxDLC
 from ..operations.dlc import UpdateDLCItemConfig
 from ..operations.dlc import UpdatePlatformDLCConfig
+from ..models import DLCConfigRewardShortInfoDlcTypeEnum
 from ..models import UserDLCPlatformEnum
 from ..models import UserDLCRecordPlatformEnum, UserDLCRecordStatusEnum
 
@@ -243,6 +247,102 @@ async def delete_platform_dlc_config_async(
     )
 
 
+@same_doc_as(GeDLCDurableRewardShortMap)
+def ge_dlc_durable_reward_short_map(
+    dlc_type: Union[str, GeDLCDurableRewardShortMapDlcTypeEnum],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get dlc durable reward simple map (geDLCDurableRewardShortMap)
+
+    Get dlc reward simple map, only return the sku of durable item reward
+    Other detail info:
+
+      * Required permission : Authorized user
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/dlc/rewards/durable/map
+
+        method: GET
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        dlc_type: (dlcType) REQUIRED Union[str, DlcTypeEnum] in query
+
+    Responses:
+        200: OK - DLCConfigRewardShortInfo (successful operation)
+
+        404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}] | 39441: Platform dlc config cannot be found in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GeDLCDurableRewardShortMap.create(
+        dlc_type=dlc_type,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GeDLCDurableRewardShortMap)
+async def ge_dlc_durable_reward_short_map_async(
+    dlc_type: Union[str, GeDLCDurableRewardShortMapDlcTypeEnum],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get dlc durable reward simple map (geDLCDurableRewardShortMap)
+
+    Get dlc reward simple map, only return the sku of durable item reward
+    Other detail info:
+
+      * Required permission : Authorized user
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/dlc/rewards/durable/map
+
+        method: GET
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        dlc_type: (dlcType) REQUIRED Union[str, DlcTypeEnum] in query
+
+    Responses:
+        200: OK - DLCConfigRewardShortInfo (successful operation)
+
+        404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}] | 39441: Platform dlc config cannot be found in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GeDLCDurableRewardShortMap.create(
+        dlc_type=dlc_type,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetDLCItemConfig)
 def get_dlc_item_config(
     namespace: Optional[str] = None,
@@ -277,7 +377,7 @@ def get_dlc_item_config(
     Responses:
         200: OK - DLCItemConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (39341: DLC item config cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -323,7 +423,7 @@ async def get_dlc_item_config_async(
     Responses:
         200: OK - DLCItemConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (39341: DLC item config cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()

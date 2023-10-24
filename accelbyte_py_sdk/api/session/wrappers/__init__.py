@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.8.1"
+__version__ = "3.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -75,8 +75,8 @@ from ._game_session import public_game_session_reject
 from ._game_session import public_game_session_reject_async
 from ._game_session import public_promote_game_session_leader
 from ._game_session import public_promote_game_session_leader_async
-from ._game_session import public_query_game_sessions
-from ._game_session import public_query_game_sessions_async
+from ._game_session import public_query_game_sessions_by_attributes
+from ._game_session import public_query_game_sessions_by_attributes_async
 from ._game_session import public_query_my_game_sessions
 from ._game_session import public_query_my_game_sessions_async
 from ._game_session import public_revoke_game_session_code
@@ -87,6 +87,13 @@ from ._game_session import update_game_session
 from ._game_session import update_game_session_async
 from ._game_session import update_game_session_backfill_ticket_id
 from ._game_session import update_game_session_backfill_ticket_id_async
+
+from ._global_configuration import admin_delete_global_configuration
+from ._global_configuration import admin_delete_global_configuration_async
+from ._global_configuration import admin_list_global_configuration
+from ._global_configuration import admin_list_global_configuration_async
+from ._global_configuration import admin_update_global_configuration
+from ._global_configuration import admin_update_global_configuration_async
 
 from ._operations import get_healthcheck_info
 from ._operations import get_healthcheck_info_async

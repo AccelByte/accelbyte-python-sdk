@@ -8,6 +8,7 @@
 
 # justice-inventory-service (0.1.0)
 
+from ._admin_create_chaining_operations import admin_create_chaining_operations
 from ._admin_list_inventories import admin_list_inventories
 from ._admin_create_inventory import admin_create_inventory
 from ._admin_get_inventory import admin_get_inventory
@@ -44,6 +45,7 @@ from ._public_get_item import public_get_item
 
 
 commands = [
+    admin_create_chaining_operations,
     admin_list_inventories,
     admin_create_inventory,
     admin_get_inventory,

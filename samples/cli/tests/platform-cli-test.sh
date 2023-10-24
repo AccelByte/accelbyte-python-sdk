@@ -85,7 +85,7 @@ platform-update-platform-dlc-config --body '{"data": [{"platform": "PSN", "platf
 platform-delete-platform-dlc-config --login_with_auth "Bearer foo"
 platform-query-entitlements --login_with_auth "Bearer foo"
 platform-query-entitlements-1 --login_with_auth "Bearer foo"
-platform-grant-entitlements --body '{"entitlementGrantList": [{"endDate": "1973-04-22T00:00:00Z", "grantedCode": "8J1nsv4W2OJhtafx", "itemId": "MSJlHeb34sZKHcl5", "itemNamespace": "LLLOexL4fZvWtND2", "language": "eCh_ozqf", "quantity": 45, "region": "NtFEJ7tnkY6Mca5a", "source": "GIFT", "startDate": "1978-03-17T00:00:00Z", "storeId": "zhLVA3kE8jKvgatO"}, {"endDate": "1986-08-14T00:00:00Z", "grantedCode": "OXudXgNne8kJATwl", "itemId": "c6esUp6Sw1I98jeZ", "itemNamespace": "Q7hfxnhLd3Knakno", "language": "GD_nT", "quantity": 84, "region": "wVJnNnN7kAa7j0ri", "source": "REWARD", "startDate": "1979-01-18T00:00:00Z", "storeId": "AdNJOIG36I6tRbRc"}, {"endDate": "1979-08-29T00:00:00Z", "grantedCode": "EveMdAdiPKDUVSC0", "itemId": "0PYeDcagginxnFIn", "itemNamespace": "a3yddcbsPheTH26I", "language": "Jkio-VahH-867", "quantity": 42, "region": "PrIfapq5AAeMe4L3", "source": "OTHER", "startDate": "1974-09-05T00:00:00Z", "storeId": "WgU4pCAKxeE70Cau"}], "userIds": ["8GEXFTlEMEsFzYqw", "kqsGnmyo5JJTUVmb", "nQNxot371W9G4AvQ"]}' --login_with_auth "Bearer foo"
+platform-grant-entitlements --body '{"entitlementGrantList": [{"endDate": "1973-04-22T00:00:00Z", "grantedCode": "8J1nsv4W2OJhtafx", "itemId": "MSJlHeb34sZKHcl5", "itemNamespace": "LLLOexL4fZvWtND2", "language": "eCh_ozqf", "quantity": 45, "region": "NtFEJ7tnkY6Mca5a", "source": "GIFT", "startDate": "1978-03-17T00:00:00Z", "storeId": "zhLVA3kE8jKvgatO"}, {"endDate": "1986-08-14T00:00:00Z", "grantedCode": "OXudXgNne8kJATwl", "itemId": "c6esUp6Sw1I98jeZ", "itemNamespace": "Q7hfxnhLd3Knakno", "language": "GD_nT", "quantity": 84, "region": "wVJnNnN7kAa7j0ri", "source": "REWARD", "startDate": "1979-01-18T00:00:00Z", "storeId": "AdNJOIG36I6tRbRc"}, {"endDate": "1979-08-29T00:00:00Z", "grantedCode": "EveMdAdiPKDUVSC0", "itemId": "0PYeDcagginxnFIn", "itemNamespace": "a3yddcbsPheTH26I", "language": "Jkio-VahH-867", "quantity": 42, "region": "PrIfapq5AAeMe4L3", "source": "OTHER", "startDate": "1974-09-05T00:00:00Z", "storeId": "WgU4pCAKxeE70Cau"}], "userIds": ["8GEXFTlEMEsFzYqw", "nQNxot371W9G4AvQ", "kqsGnmyo5JJTUVmb"]}' --login_with_auth "Bearer foo"
 platform-revoke-entitlements --body '["gK1Np5nodqpLm7Fh", "JBNXzAFdO0Khqf6k", "iTdSGv2LFjAKY7Cb"]' --login_with_auth "Bearer foo"
 platform-get-entitlement 'gsWqFWZX7kPBom8F' --login_with_auth "Bearer foo"
 platform-query-fulfillment-histories --login_with_auth "Bearer foo"
@@ -125,7 +125,7 @@ platform-update-xbl-bp-cert-file --login_with_auth "Bearer foo"
 platform-download-invoice-details 'oWBZVGLlkUetzCAW' 'c9x1aMjgGim51T10' --login_with_auth "Bearer foo"
 platform-generate-invoice-summary '7XIZRZ7tZdIs0xf4' 'czdt7zqmSKxOEQlV' --login_with_auth "Bearer foo"
 platform-sync-in-game-item 'cx6GqsBq8vdhWVnu' --body '{"categoryPath": "YLgpZehK0G2nmyuV", "targetItemId": "iB9kRTcSQdTnNYGe", "targetNamespace": "AfYFG3wSkHKufBdS"}' --login_with_auth "Bearer foo"
-platform-create-item '3ZOokZB4cXnAXyuG' --body '{"appId": "z6LlxHv8SwyagYvD", "appType": "DLC", "baseAppId": "w3UNgIGj2jZtEYT8", "boothName": "sIPSE1XXPzySa0sZ", "categoryPath": "oFS6xCOWMpyh9pMs", "clazz": "Qgb64ELbzDMwyo4n", "displayOrder": 72, "entitlementType": "DURABLE", "ext": {"RysQdbufXjYnSoIF": {}, "eouC2m38kXrDZWlG": {}, "VE9sJ4NpUtKp6M9I": {}}, "features": ["3xe5rruJVfLGea0Z", "SDMZz95OYKiqaZD6", "6nEwnZhsjwJeGwaP"], "flexible": true, "images": [{"as": "s7ACC1RgBfoNrHlF", "caption": "i2qJLgmBLE35Yhyi", "height": 61, "imageUrl": "0TQNEI3kfabxJWWS", "smallImageUrl": "I1ECUo1NPpeFhUzt", "width": 14}, {"as": "DgB7n4C97uAPP8PA", "caption": "TLpUpxeJlsBJT6Hh", "height": 83, "imageUrl": "W9nBhvhf8Q0DtJMc", "smallImageUrl": "YQdN66bswAgt65X4", "width": 80}, {"as": "HKWW4fI1IQcoBQEL", "caption": "cNlZkqTZrKgXNwvm", "height": 9, "imageUrl": "aWsQJtRYoagRJK5P", "smallImageUrl": "X9UcOvhPyE11TRT2", "width": 91}], "itemIds": ["B28MpusuhhDJ5slz", "giWZEtyd56LfxnbY", "97jjYgXchCbkXX26"], "itemQty": {"uEdCfQaMAQuTKfC0": 71, "d9yOfIMLds2DbPca": 30, "3DhqciwIeShF9RKb": 9}, "itemType": "INGAMEITEM", "listable": true, "localizations": {"vxuJlhXbWhbwPwTo": {"description": "C6knjVwVnzaqSfJi", "localExt": {"QFC2gXoda0kg16yU": {}, "SpSOAjHJWwfCjYwW": {}, "kLob9gKLqs2nEZhp": {}}, "longDescription": "ByfHZinxNfgPAwkM", "title": "BsznlBUqnLT4AbGp"}, "tKaWNvPbpg7yrRvX": {"description": "fZ6rvgvEY3Hht1Sw", "localExt": {"qTsKKKo37NHDOQe9": {}, "1Ps3ztUIV0dS6hIH": {}, "9c4VfkyrwpuXxbaE": {}}, "longDescription": "RbfgPmi0eHkt1mr9", "title": "EOIFg0dnWIYN2NVL"}, "70Iw157g00jr9b8M": {"description": "uYmmeKTmBNvGYxEQ", "localExt": {"df3ewoGGoY7xmFNA": {}, "mjDDCvs78mcMdiS7": {}, "6YApGJ9ufwLYkqIg": {}}, "longDescription": "LuZS6hsQryiEtOAb", "title": "peUNf26UqkCfgCUY"}}, "lootBoxConfig": {"rewardCount": 56, "rewards": [{"lootBoxItems": [{"count": 0, "duration": 28, "endDate": "1980-06-25T00:00:00Z", "itemId": "xaOBdPF0JmX8qwU1", "itemSku": "cTuHHPB5S3DvPRCz", "itemType": "BrVUxmDOj3cvRFaT"}, {"count": 59, "duration": 15, "endDate": "1998-04-01T00:00:00Z", "itemId": "1W0TGTCm4fZWuk6p", "itemSku": "QxDQpKqxLGeMvr9T", "itemType": "svcMQ7dBsaIecRxI"}, {"count": 38, "duration": 28, "endDate": "1997-06-22T00:00:00Z", "itemId": "SHiWxF0YbuU5ar5q", "itemSku": "TLWUCy0Afgc050XI", "itemType": "ZRW491e94mQjVOOB"}], "name": "nIWhunElqZUodp3I", "odds": 0.12173679964673378, "type": "REWARD", "weight": 31}, {"lootBoxItems": [{"count": 58, "duration": 92, "endDate": "1988-12-03T00:00:00Z", "itemId": "y1ei1fIrPvfHnRN0", "itemSku": "6EjRwEQlNapJRfk4", "itemType": "f9Zcw1pEHAyNFxcV"}, {"count": 93, "duration": 74, "endDate": "1978-06-22T00:00:00Z", "itemId": "uMybYGxD9IPmmsLm", "itemSku": "u3kaPj0O4zd8Tb7c", "itemType": "UNGPTBxiFFCrn7dj"}, {"count": 18, "duration": 19, "endDate": "1980-04-03T00:00:00Z", "itemId": "69FTFVGUVhvKhJCm", "itemSku": "eisql14mUHVbMPim", "itemType": "NhcZsU3VAdMDcb4q"}], "name": "lkiFAamqvZI2Kwjq", "odds": 0.6656977665959348, "type": "REWARD", "weight": 92}, {"lootBoxItems": [{"count": 18, "duration": 27, "endDate": "1995-11-05T00:00:00Z", "itemId": "Xade41s3rH34mB2y", "itemSku": "PlRpWjmHZAAvKTH8", "itemType": "MuqIg0CzkguwuJCW"}, {"count": 54, "duration": 62, "endDate": "1982-09-03T00:00:00Z", "itemId": "xSvNDlmM5nQFMGzs", "itemSku": "7fzjgyc44mEh9tRk", "itemType": "8knYSV30lnroQehM"}, {"count": 61, "duration": 1, "endDate": "1977-02-03T00:00:00Z", "itemId": "i6t9unQLYXxm09wp", "itemSku": "GAbpEmDY9vLh3u6E", "itemType": "DsUmrV6kH4OotKwG"}], "name": "3UC6XCnnZxF8CmQr", "odds": 0.8659005870062143, "type": "REWARD_GROUP", "weight": 100}], "rollFunction": "CUSTOM"}, "maxCount": 11, "maxCountPerUser": 21, "name": "br34rBBN9tU6TDm5", "optionBoxConfig": {"boxItems": [{"count": 67, "duration": 61, "endDate": "1976-05-01T00:00:00Z", "itemId": "MDu87t0ldWf7iSGI", "itemSku": "iKFtWtn4Yr2svKM6", "itemType": "pqLGZ0TBujELAUK6"}, {"count": 25, "duration": 62, "endDate": "1992-04-01T00:00:00Z", "itemId": "iZgbwwm5iGzXtckn", "itemSku": "rgidKupvXO6aj4hC", "itemType": "mTC34jxW4pIDwdqX"}, {"count": 31, "duration": 26, "endDate": "1985-12-20T00:00:00Z", "itemId": "poBCbyJsF5IjF1c0", "itemSku": "W338HS6CBgVRyihY", "itemType": "NZ84CVhziXV8HwSm"}]}, "purchasable": true, "recurring": {"cycle": "YEARLY", "fixedFreeDays": 4, "fixedTrialCycles": 4, "graceDays": 44}, "regionData": {"cA8wvLsWUNd6lPKv": [{"currencyCode": "qDejvqklTSvDwuOr", "currencyNamespace": "P9lzpiX0VuFpZum7", "currencyType": "REAL", "discountAmount": 11, "discountExpireAt": "1984-09-29T00:00:00Z", "discountPercentage": 48, "discountPurchaseAt": "1974-02-08T00:00:00Z", "expireAt": "1989-03-17T00:00:00Z", "price": 81, "purchaseAt": "1988-12-06T00:00:00Z", "trialPrice": 52}, {"currencyCode": "mwJSrN8jkIykR2zb", "currencyNamespace": "aI6PD7fEscShnGUG", "currencyType": "VIRTUAL", "discountAmount": 40, "discountExpireAt": "1995-07-05T00:00:00Z", "discountPercentage": 67, "discountPurchaseAt": "1996-10-11T00:00:00Z", "expireAt": "1990-10-28T00:00:00Z", "price": 54, "purchaseAt": "1977-09-22T00:00:00Z", "trialPrice": 22}, {"currencyCode": "DbLNwjm3FK0nnX2p", "currencyNamespace": "oMfZ1hDHtbh4HtMl", "currencyType": "VIRTUAL", "discountAmount": 14, "discountExpireAt": "1982-06-28T00:00:00Z", "discountPercentage": 15, "discountPurchaseAt": "1991-08-05T00:00:00Z", "expireAt": "1986-05-09T00:00:00Z", "price": 32, "purchaseAt": "1999-03-13T00:00:00Z", "trialPrice": 90}], "inFpnQ5xF9wwbvMZ": [{"currencyCode": "yeDeRnVfPUa6xVVB", "currencyNamespace": "cq3wZpFIYeAg79Hc", "currencyType": "REAL", "discountAmount": 21, "discountExpireAt": "1977-07-08T00:00:00Z", "discountPercentage": 31, "discountPurchaseAt": "1995-10-09T00:00:00Z", "expireAt": "1998-01-27T00:00:00Z", "price": 10, "purchaseAt": "1981-09-16T00:00:00Z", "trialPrice": 55}, {"currencyCode": "7aUyrdt4XSpWBAet", "currencyNamespace": "sanzqP8oxfrtbECD", "currencyType": "VIRTUAL", "discountAmount": 86, "discountExpireAt": "1992-06-30T00:00:00Z", "discountPercentage": 96, "discountPurchaseAt": "1971-08-10T00:00:00Z", "expireAt": "1975-07-16T00:00:00Z", "price": 57, "purchaseAt": "1989-08-02T00:00:00Z", "trialPrice": 36}, {"currencyCode": "xfYL8Avt70ZUT2fS", "currencyNamespace": "k3LL0calqxEewuGS", "currencyType": "VIRTUAL", "discountAmount": 21, "discountExpireAt": "1999-01-24T00:00:00Z", "discountPercentage": 14, "discountPurchaseAt": "1992-09-18T00:00:00Z", "expireAt": "1998-05-27T00:00:00Z", "price": 100, "purchaseAt": "1984-10-30T00:00:00Z", "trialPrice": 67}], "t4sUmanYxM0UHZVN": [{"currencyCode": "YzGMNIpWoSLkUrfu", "currencyNamespace": "f4U3WeYeA9t2ENKK", "currencyType": "VIRTUAL", "discountAmount": 83, "discountExpireAt": "1987-04-04T00:00:00Z", "discountPercentage": 40, "discountPurchaseAt": "1984-09-27T00:00:00Z", "expireAt": "1982-10-08T00:00:00Z", "price": 24, "purchaseAt": "1975-08-27T00:00:00Z", "trialPrice": 42}, {"currencyCode": "MgKAOG5iDcCR5PbC", "currencyNamespace": "vDLil8wj9cKM3Ar6", "currencyType": "REAL", "discountAmount": 82, "discountExpireAt": "1974-10-25T00:00:00Z", "discountPercentage": 58, "discountPurchaseAt": "1974-09-09T00:00:00Z", "expireAt": "1973-12-25T00:00:00Z", "price": 15, "purchaseAt": "1986-04-19T00:00:00Z", "trialPrice": 72}, {"currencyCode": "GmWGgTJfHlJl4tHG", "currencyNamespace": "a4XfZcd9CVnGqMX9", "currencyType": "REAL", "discountAmount": 71, "discountExpireAt": "1973-03-17T00:00:00Z", "discountPercentage": 9, "discountPurchaseAt": "1973-09-13T00:00:00Z", "expireAt": "1989-05-28T00:00:00Z", "price": 74, "purchaseAt": "1980-07-24T00:00:00Z", "trialPrice": 65}]}, "saleConfig": {"currencyCode": "EUl07bhwntCVqiYO", "price": 72}, "seasonType": "PASS", "sectionExclusive": false, "sellable": false, "sku": "wMZQjzvjSozv6CTR", "stackable": true, "status": "ACTIVE", "tags": ["E8SohhhuiTnJarYY", "5IQYBQuxLvPuWYvE", "kHBDdSzBXdxapwhd"], "targetCurrencyCode": "3fsNy9Z9OhxXvCp9", "targetNamespace": "y7fLD2qfCXnlUnqx", "thumbnailUrl": "T1WsRNMZcA92hzC7", "useCount": 80}' --login_with_auth "Bearer foo"
+platform-create-item '3ZOokZB4cXnAXyuG' --body '{"appId": "z6LlxHv8SwyagYvD", "appType": "DLC", "baseAppId": "w3UNgIGj2jZtEYT8", "boothName": "sIPSE1XXPzySa0sZ", "categoryPath": "oFS6xCOWMpyh9pMs", "clazz": "Qgb64ELbzDMwyo4n", "displayOrder": 72, "entitlementType": "DURABLE", "ext": {"RysQdbufXjYnSoIF": {}, "eouC2m38kXrDZWlG": {}, "VE9sJ4NpUtKp6M9I": {}}, "features": ["3xe5rruJVfLGea0Z", "6nEwnZhsjwJeGwaP", "SDMZz95OYKiqaZD6"], "flexible": true, "images": [{"as": "s7ACC1RgBfoNrHlF", "caption": "i2qJLgmBLE35Yhyi", "height": 61, "imageUrl": "0TQNEI3kfabxJWWS", "smallImageUrl": "I1ECUo1NPpeFhUzt", "width": 14}, {"as": "DgB7n4C97uAPP8PA", "caption": "TLpUpxeJlsBJT6Hh", "height": 83, "imageUrl": "W9nBhvhf8Q0DtJMc", "smallImageUrl": "YQdN66bswAgt65X4", "width": 80}, {"as": "HKWW4fI1IQcoBQEL", "caption": "cNlZkqTZrKgXNwvm", "height": 9, "imageUrl": "aWsQJtRYoagRJK5P", "smallImageUrl": "X9UcOvhPyE11TRT2", "width": 91}], "itemIds": ["B28MpusuhhDJ5slz", "giWZEtyd56LfxnbY", "97jjYgXchCbkXX26"], "itemQty": {"uEdCfQaMAQuTKfC0": 71, "d9yOfIMLds2DbPca": 30, "3DhqciwIeShF9RKb": 9}, "itemType": "INGAMEITEM", "listable": true, "localizations": {"vxuJlhXbWhbwPwTo": {"description": "C6knjVwVnzaqSfJi", "localExt": {"QFC2gXoda0kg16yU": {}, "SpSOAjHJWwfCjYwW": {}, "kLob9gKLqs2nEZhp": {}}, "longDescription": "ByfHZinxNfgPAwkM", "title": "BsznlBUqnLT4AbGp"}, "tKaWNvPbpg7yrRvX": {"description": "fZ6rvgvEY3Hht1Sw", "localExt": {"qTsKKKo37NHDOQe9": {}, "1Ps3ztUIV0dS6hIH": {}, "9c4VfkyrwpuXxbaE": {}}, "longDescription": "RbfgPmi0eHkt1mr9", "title": "EOIFg0dnWIYN2NVL"}, "70Iw157g00jr9b8M": {"description": "uYmmeKTmBNvGYxEQ", "localExt": {"df3ewoGGoY7xmFNA": {}, "mjDDCvs78mcMdiS7": {}, "6YApGJ9ufwLYkqIg": {}}, "longDescription": "LuZS6hsQryiEtOAb", "title": "peUNf26UqkCfgCUY"}}, "lootBoxConfig": {"rewardCount": 56, "rewards": [{"lootBoxItems": [{"count": 0, "duration": 28, "endDate": "1980-06-25T00:00:00Z", "itemId": "xaOBdPF0JmX8qwU1", "itemSku": "cTuHHPB5S3DvPRCz", "itemType": "BrVUxmDOj3cvRFaT"}, {"count": 59, "duration": 15, "endDate": "1998-04-01T00:00:00Z", "itemId": "1W0TGTCm4fZWuk6p", "itemSku": "QxDQpKqxLGeMvr9T", "itemType": "svcMQ7dBsaIecRxI"}, {"count": 38, "duration": 28, "endDate": "1997-06-22T00:00:00Z", "itemId": "SHiWxF0YbuU5ar5q", "itemSku": "TLWUCy0Afgc050XI", "itemType": "ZRW491e94mQjVOOB"}], "name": "nIWhunElqZUodp3I", "odds": 0.12173679964673378, "type": "REWARD", "weight": 31}, {"lootBoxItems": [{"count": 58, "duration": 92, "endDate": "1988-12-03T00:00:00Z", "itemId": "y1ei1fIrPvfHnRN0", "itemSku": "6EjRwEQlNapJRfk4", "itemType": "f9Zcw1pEHAyNFxcV"}, {"count": 93, "duration": 74, "endDate": "1978-06-22T00:00:00Z", "itemId": "uMybYGxD9IPmmsLm", "itemSku": "u3kaPj0O4zd8Tb7c", "itemType": "UNGPTBxiFFCrn7dj"}, {"count": 18, "duration": 19, "endDate": "1980-04-03T00:00:00Z", "itemId": "69FTFVGUVhvKhJCm", "itemSku": "eisql14mUHVbMPim", "itemType": "NhcZsU3VAdMDcb4q"}], "name": "lkiFAamqvZI2Kwjq", "odds": 0.6656977665959348, "type": "REWARD", "weight": 92}, {"lootBoxItems": [{"count": 18, "duration": 27, "endDate": "1995-11-05T00:00:00Z", "itemId": "Xade41s3rH34mB2y", "itemSku": "PlRpWjmHZAAvKTH8", "itemType": "MuqIg0CzkguwuJCW"}, {"count": 54, "duration": 62, "endDate": "1982-09-03T00:00:00Z", "itemId": "xSvNDlmM5nQFMGzs", "itemSku": "7fzjgyc44mEh9tRk", "itemType": "8knYSV30lnroQehM"}, {"count": 61, "duration": 1, "endDate": "1977-02-03T00:00:00Z", "itemId": "i6t9unQLYXxm09wp", "itemSku": "GAbpEmDY9vLh3u6E", "itemType": "DsUmrV6kH4OotKwG"}], "name": "3UC6XCnnZxF8CmQr", "odds": 0.8659005870062143, "type": "REWARD_GROUP", "weight": 100}], "rollFunction": "CUSTOM"}, "maxCount": 11, "maxCountPerUser": 21, "name": "br34rBBN9tU6TDm5", "optionBoxConfig": {"boxItems": [{"count": 67, "duration": 61, "endDate": "1976-05-01T00:00:00Z", "itemId": "MDu87t0ldWf7iSGI", "itemSku": "iKFtWtn4Yr2svKM6", "itemType": "pqLGZ0TBujELAUK6"}, {"count": 25, "duration": 62, "endDate": "1992-04-01T00:00:00Z", "itemId": "iZgbwwm5iGzXtckn", "itemSku": "rgidKupvXO6aj4hC", "itemType": "mTC34jxW4pIDwdqX"}, {"count": 31, "duration": 26, "endDate": "1985-12-20T00:00:00Z", "itemId": "poBCbyJsF5IjF1c0", "itemSku": "W338HS6CBgVRyihY", "itemType": "NZ84CVhziXV8HwSm"}]}, "purchasable": true, "recurring": {"cycle": "YEARLY", "fixedFreeDays": 4, "fixedTrialCycles": 4, "graceDays": 44}, "regionData": {"cA8wvLsWUNd6lPKv": [{"currencyCode": "qDejvqklTSvDwuOr", "currencyNamespace": "P9lzpiX0VuFpZum7", "currencyType": "REAL", "discountAmount": 11, "discountExpireAt": "1984-09-29T00:00:00Z", "discountPercentage": 48, "discountPurchaseAt": "1974-02-08T00:00:00Z", "expireAt": "1989-03-17T00:00:00Z", "price": 81, "purchaseAt": "1988-12-06T00:00:00Z", "trialPrice": 52}, {"currencyCode": "mwJSrN8jkIykR2zb", "currencyNamespace": "aI6PD7fEscShnGUG", "currencyType": "VIRTUAL", "discountAmount": 40, "discountExpireAt": "1995-07-05T00:00:00Z", "discountPercentage": 67, "discountPurchaseAt": "1996-10-11T00:00:00Z", "expireAt": "1990-10-28T00:00:00Z", "price": 54, "purchaseAt": "1977-09-22T00:00:00Z", "trialPrice": 22}, {"currencyCode": "DbLNwjm3FK0nnX2p", "currencyNamespace": "oMfZ1hDHtbh4HtMl", "currencyType": "VIRTUAL", "discountAmount": 14, "discountExpireAt": "1982-06-28T00:00:00Z", "discountPercentage": 15, "discountPurchaseAt": "1991-08-05T00:00:00Z", "expireAt": "1986-05-09T00:00:00Z", "price": 32, "purchaseAt": "1999-03-13T00:00:00Z", "trialPrice": 90}], "inFpnQ5xF9wwbvMZ": [{"currencyCode": "yeDeRnVfPUa6xVVB", "currencyNamespace": "cq3wZpFIYeAg79Hc", "currencyType": "REAL", "discountAmount": 21, "discountExpireAt": "1977-07-08T00:00:00Z", "discountPercentage": 31, "discountPurchaseAt": "1995-10-09T00:00:00Z", "expireAt": "1998-01-27T00:00:00Z", "price": 10, "purchaseAt": "1981-09-16T00:00:00Z", "trialPrice": 55}, {"currencyCode": "7aUyrdt4XSpWBAet", "currencyNamespace": "sanzqP8oxfrtbECD", "currencyType": "VIRTUAL", "discountAmount": 86, "discountExpireAt": "1992-06-30T00:00:00Z", "discountPercentage": 96, "discountPurchaseAt": "1971-08-10T00:00:00Z", "expireAt": "1975-07-16T00:00:00Z", "price": 57, "purchaseAt": "1989-08-02T00:00:00Z", "trialPrice": 36}, {"currencyCode": "xfYL8Avt70ZUT2fS", "currencyNamespace": "k3LL0calqxEewuGS", "currencyType": "VIRTUAL", "discountAmount": 21, "discountExpireAt": "1999-01-24T00:00:00Z", "discountPercentage": 14, "discountPurchaseAt": "1992-09-18T00:00:00Z", "expireAt": "1998-05-27T00:00:00Z", "price": 100, "purchaseAt": "1984-10-30T00:00:00Z", "trialPrice": 67}], "t4sUmanYxM0UHZVN": [{"currencyCode": "YzGMNIpWoSLkUrfu", "currencyNamespace": "f4U3WeYeA9t2ENKK", "currencyType": "VIRTUAL", "discountAmount": 83, "discountExpireAt": "1987-04-04T00:00:00Z", "discountPercentage": 40, "discountPurchaseAt": "1984-09-27T00:00:00Z", "expireAt": "1982-10-08T00:00:00Z", "price": 24, "purchaseAt": "1975-08-27T00:00:00Z", "trialPrice": 42}, {"currencyCode": "MgKAOG5iDcCR5PbC", "currencyNamespace": "vDLil8wj9cKM3Ar6", "currencyType": "REAL", "discountAmount": 82, "discountExpireAt": "1974-10-25T00:00:00Z", "discountPercentage": 58, "discountPurchaseAt": "1974-09-09T00:00:00Z", "expireAt": "1973-12-25T00:00:00Z", "price": 15, "purchaseAt": "1986-04-19T00:00:00Z", "trialPrice": 72}, {"currencyCode": "GmWGgTJfHlJl4tHG", "currencyNamespace": "a4XfZcd9CVnGqMX9", "currencyType": "REAL", "discountAmount": 71, "discountExpireAt": "1973-03-17T00:00:00Z", "discountPercentage": 9, "discountPurchaseAt": "1973-09-13T00:00:00Z", "expireAt": "1989-05-28T00:00:00Z", "price": 74, "purchaseAt": "1980-07-24T00:00:00Z", "trialPrice": 65}]}, "saleConfig": {"currencyCode": "EUl07bhwntCVqiYO", "price": 72}, "seasonType": "PASS", "sectionExclusive": false, "sellable": false, "sku": "wMZQjzvjSozv6CTR", "stackable": true, "status": "ACTIVE", "tags": ["5IQYBQuxLvPuWYvE", "kHBDdSzBXdxapwhd", "E8SohhhuiTnJarYY"], "targetCurrencyCode": "3fsNy9Z9OhxXvCp9", "targetNamespace": "y7fLD2qfCXnlUnqx", "thumbnailUrl": "T1WsRNMZcA92hzC7", "useCount": 80}' --login_with_auth "Bearer foo"
 platform-get-item-by-app-id 'HZ3sIhzOx2CXKlvI' --login_with_auth "Bearer foo"
 platform-query-items --login_with_auth "Bearer foo"
 platform-list-basic-items-by-features --login_with_auth "Bearer foo"
@@ -142,7 +142,7 @@ platform-bulk-update-region-data 'NqX9LM2IwEsdOGBX' --body '{"changes": [{"itemI
 platform-search-items 'YJ8BzP6EUmUXGM5a' 'nIloyj9lhbvuQdW2' --login_with_auth "Bearer foo"
 platform-query-uncategorized-items --login_with_auth "Bearer foo"
 platform-get-item 'jwKUckc794ryY91l' --login_with_auth "Bearer foo"
-platform-update-item 'X8DD4MYXlrJ81lHv' 'v9rqvEoM8YmVjAkO' --body '{"appId": "3HKsEp6KlqwW4djr", "appType": "DEMO", "baseAppId": "M7tuL81lsR7xxSVp", "boothName": "3Gd2TK0HzYviTgYm", "categoryPath": "x82JVBRLPZ6Iz8tn", "clazz": "e5dbguBF6Gsvvdl8", "displayOrder": 20, "entitlementType": "DURABLE", "ext": {"z9x7XZIjU4IK9lOL": {}, "aZaMphKCqTq3EVhe": {}, "JjoEEXBLIxGnNuho": {}}, "features": ["cPAGv6c1ESC6hZYT", "EdqQpoGkUWNizk5U", "JM3WWPvvCiCf33Vi"], "flexible": true, "images": [{"as": "bzf5aANNNs5kgSZZ", "caption": "NUHbIT9szApmWJO5", "height": 45, "imageUrl": "Zn1YXj5zFZeOCOR9", "smallImageUrl": "NvBQZSJPOIKrRBrY", "width": 98}, {"as": "fa2LrnpZxNnLRH36", "caption": "bqS2oFY76PU1AziB", "height": 82, "imageUrl": "sys6GdkDcos5uVJ0", "smallImageUrl": "BJfZ0jvA54CSqZFD", "width": 39}, {"as": "3by2kYSCdnFKLc0x", "caption": "cTjqjdcEfU61OJYM", "height": 26, "imageUrl": "PKVSZCg3XTc9vQe0", "smallImageUrl": "dHJfF6KIuvnRCa9J", "width": 22}], "itemIds": ["lhe98oaFKlQicdrx", "VhrtwSd9QWVMYz7T", "U1TsxsChSclSkb5a"], "itemQty": {"Bi9K9zyv6gFZXI5n": 72, "JgjC56pda3YhtQxp": 58, "dIn7QqXBDXJcrqKm": 60}, "itemType": "EXTENSION", "listable": true, "localizations": {"xoLnWGP1PafIjLX8": {"description": "ce0KbNN7Ycl2JfmQ", "localExt": {"plvGjVQ4aebjfgGu": {}, "472oWJlfglLM4xjf": {}, "kNL4lU6jaGfsD1cf": {}}, "longDescription": "swmeFpvtDtetoQVF", "title": "L8LNW11vtpaTxi7k"}, "489jRCn48bvkCPfK": {"description": "ofwXOIZZQAJza84l", "localExt": {"KKmVOaTS6xBbNrSU": {}, "AW2ak7ISDrBVg6Nu": {}, "DZvPb1kuUfNfUDe4": {}}, "longDescription": "g7q6PHEaqbzHvDDl", "title": "1jiLw3XMGBA6JXDp"}, "A1tIC45C0oaGouFu": {"description": "4hXONgUwJnUpryDe", "localExt": {"RcpUvlrw2MwC1uuo": {}, "kpaIjL0Vxe5n9Lx3": {}, "QcFo9gxOgvDc7xMr": {}}, "longDescription": "RKvw8ISP2WKmCRRX", "title": "BxlalCHtWlKxLpS8"}}, "lootBoxConfig": {"rewardCount": 10, "rewards": [{"lootBoxItems": [{"count": 39, "duration": 76, "endDate": "1982-04-30T00:00:00Z", "itemId": "guycGiq9j2EyIknf", "itemSku": "LDpgHnMOn8nc3gUZ", "itemType": "8ZFyyEr0KBXuJBqK"}, {"count": 87, "duration": 79, "endDate": "1981-09-07T00:00:00Z", "itemId": "8uux9xBomQFPFWy5", "itemSku": "cwNPI6aFo0MVwDZC", "itemType": "IXFNEL3uWVRz3V7Y"}, {"count": 2, "duration": 80, "endDate": "1989-04-03T00:00:00Z", "itemId": "M3bNLWHAbCZixe2c", "itemSku": "Q6O30lpzcBQMAEcN", "itemType": "cJqrKxnMzSYoc4Zj"}], "name": "iMY4H34B6wVd8ipc", "odds": 0.5899514335296582, "type": "REWARD", "weight": 46}, {"lootBoxItems": [{"count": 70, "duration": 88, "endDate": "1971-02-10T00:00:00Z", "itemId": "rryHB6GO9zP3Faep", "itemSku": "A3b3YJ9nJM6vtT27", "itemType": "xv85K5MU2qmbeqaV"}, {"count": 8, "duration": 48, "endDate": "1977-12-12T00:00:00Z", "itemId": "INdClpF7OvlBIEgj", "itemSku": "se5kd6GEDo08yq5E", "itemType": "5HleLoog4me2NBFp"}, {"count": 39, "duration": 47, "endDate": "1987-04-05T00:00:00Z", "itemId": "3j9LYdG7xVPqBqe9", "itemSku": "RDQMBSYAFLqp8PF5", "itemType": "hCcoukWpnbz4ys7j"}], "name": "6lxuU3u2HEG0qfKe", "odds": 0.10766913434660086, "type": "REWARD", "weight": 26}, {"lootBoxItems": [{"count": 65, "duration": 93, "endDate": "1986-07-21T00:00:00Z", "itemId": "sPykS8YLmwtYgWGc", "itemSku": "A0h4G1LZ1HaX5UBM", "itemType": "bsF44VTsLDRzdq22"}, {"count": 5, "duration": 2, "endDate": "1985-04-21T00:00:00Z", "itemId": "F2g7TVtzYEHUodh3", "itemSku": "iUfBthbepUCTWiZ1", "itemType": "uqh7GAi4FEIu44u8"}, {"count": 45, "duration": 77, "endDate": "1999-12-23T00:00:00Z", "itemId": "4ouSgkpK70uJmUL0", "itemSku": "uzElixc023dIvDiA", "itemType": "0tQWlHwBcTtztx3V"}], "name": "Al6tXFbnATCzUOIz", "odds": 0.7622020736079372, "type": "PROBABILITY_GROUP", "weight": 12}], "rollFunction": "DEFAULT"}, "maxCount": 63, "maxCountPerUser": 22, "name": "CZ4AELr5lraa5v5P", "optionBoxConfig": {"boxItems": [{"count": 23, "duration": 58, "endDate": "1981-03-18T00:00:00Z", "itemId": "Je32AiwKadEoIVmp", "itemSku": "rwPsa9YD92CX0rIT", "itemType": "ajpwHITGeHTnqRbz"}, {"count": 56, "duration": 91, "endDate": "1985-07-11T00:00:00Z", "itemId": "9ZFgJbQ3Fj1umx4I", "itemSku": "tzkMJ7cudf4r916G", "itemType": "Prhn2etVIQvRkQJA"}, {"count": 39, "duration": 61, "endDate": "1998-09-30T00:00:00Z", "itemId": "4ooQ980ywmg1pWpW", "itemSku": "it1QC7FKe0fnHUlm", "itemType": "U1unGKM0tgfeWy47"}]}, "purchasable": false, "recurring": {"cycle": "MONTHLY", "fixedFreeDays": 57, "fixedTrialCycles": 46, "graceDays": 44}, "regionData": {"MI4gGmvK9gW596Fw": [{"currencyCode": "BNrFXt3TAuKBwBcD", "currencyNamespace": "12ae6r3hHwya4Npd", "currencyType": "VIRTUAL", "discountAmount": 98, "discountExpireAt": "1974-10-30T00:00:00Z", "discountPercentage": 68, "discountPurchaseAt": "1975-08-05T00:00:00Z", "expireAt": "1979-08-30T00:00:00Z", "price": 41, "purchaseAt": "1976-01-19T00:00:00Z", "trialPrice": 1}, {"currencyCode": "Hf7dbh2iKNUl0qJq", "currencyNamespace": "zoKMRMG541PAiNjU", "currencyType": "REAL", "discountAmount": 37, "discountExpireAt": "1983-10-29T00:00:00Z", "discountPercentage": 91, "discountPurchaseAt": "1995-04-14T00:00:00Z", "expireAt": "1994-10-28T00:00:00Z", "price": 22, "purchaseAt": "1991-01-21T00:00:00Z", "trialPrice": 41}, {"currencyCode": "LMUaDSwwQlnNRZJH", "currencyNamespace": "BSB4fZWEFIZs28Ff", "currencyType": "REAL", "discountAmount": 21, "discountExpireAt": "1997-05-03T00:00:00Z", "discountPercentage": 89, "discountPurchaseAt": "1998-06-22T00:00:00Z", "expireAt": "1996-12-28T00:00:00Z", "price": 21, "purchaseAt": "1973-06-09T00:00:00Z", "trialPrice": 49}], "f4lhBPbarbWEm8bV": [{"currencyCode": "tZcfVCPdQhim9QKU", "currencyNamespace": "AFTVYelIlGJg9wdc", "currencyType": "REAL", "discountAmount": 94, "discountExpireAt": "1975-01-18T00:00:00Z", "discountPercentage": 16, "discountPurchaseAt": "1979-03-03T00:00:00Z", "expireAt": "1978-03-23T00:00:00Z", "price": 36, "purchaseAt": "1973-10-11T00:00:00Z", "trialPrice": 32}, {"currencyCode": "pfcFBUsnnDJlmD1i", "currencyNamespace": "EokbUiYzCQh2iNTw", "currencyType": "VIRTUAL", "discountAmount": 40, "discountExpireAt": "1977-11-07T00:00:00Z", "discountPercentage": 29, "discountPurchaseAt": "1973-03-02T00:00:00Z", "expireAt": "1972-10-13T00:00:00Z", "price": 6, "purchaseAt": "1980-11-16T00:00:00Z", "trialPrice": 43}, {"currencyCode": "zMTQ9P7sYLDWAJOA", "currencyNamespace": "75K4BYJ2fkqYJoF2", "currencyType": "VIRTUAL", "discountAmount": 43, "discountExpireAt": "1977-07-21T00:00:00Z", "discountPercentage": 41, "discountPurchaseAt": "1983-12-14T00:00:00Z", "expireAt": "1979-12-25T00:00:00Z", "price": 45, "purchaseAt": "1984-05-20T00:00:00Z", "trialPrice": 5}], "o8TWwXWsz9TVmdMK": [{"currencyCode": "EohKzuMYDUTLBeCi", "currencyNamespace": "dXjuGgx8ncXejmeZ", "currencyType": "VIRTUAL", "discountAmount": 14, "discountExpireAt": "1984-06-04T00:00:00Z", "discountPercentage": 55, "discountPurchaseAt": "1979-03-23T00:00:00Z", "expireAt": "1983-08-23T00:00:00Z", "price": 24, "purchaseAt": "1972-06-12T00:00:00Z", "trialPrice": 38}, {"currencyCode": "meTrT7cF9oVCh89w", "currencyNamespace": "NOkKYssVejcL3kR3", "currencyType": "REAL", "discountAmount": 51, "discountExpireAt": "1985-05-24T00:00:00Z", "discountPercentage": 67, "discountPurchaseAt": "1981-11-22T00:00:00Z", "expireAt": "1998-02-13T00:00:00Z", "price": 60, "purchaseAt": "1971-03-08T00:00:00Z", "trialPrice": 73}, {"currencyCode": "GAYOHR5BWa9VzIka", "currencyNamespace": "QEl1iUProNB6hI6I", "currencyType": "VIRTUAL", "discountAmount": 28, "discountExpireAt": "1987-08-25T00:00:00Z", "discountPercentage": 4, "discountPurchaseAt": "1992-04-22T00:00:00Z", "expireAt": "1996-03-26T00:00:00Z", "price": 14, "purchaseAt": "1989-09-10T00:00:00Z", "trialPrice": 96}]}, "saleConfig": {"currencyCode": "vdRhG9NwV3zDuqVl", "price": 98}, "seasonType": "TIER", "sectionExclusive": true, "sellable": true, "sku": "pcYPK8IxrSZuxWl0", "stackable": false, "status": "ACTIVE", "tags": ["4fJIyFAm3DQht4Jw", "nPS2urJqerobWMZG", "VL5KLTxahWlS6XdB"], "targetCurrencyCode": "aKSLCgOOPXM6XTUh", "targetNamespace": "2dJ90yqHDNacl4F9", "thumbnailUrl": "G6Dl5TFwBY6HKXAb", "useCount": 23}' --login_with_auth "Bearer foo"
+platform-update-item 'X8DD4MYXlrJ81lHv' 'v9rqvEoM8YmVjAkO' --body '{"appId": "3HKsEp6KlqwW4djr", "appType": "DEMO", "baseAppId": "M7tuL81lsR7xxSVp", "boothName": "3Gd2TK0HzYviTgYm", "categoryPath": "x82JVBRLPZ6Iz8tn", "clazz": "e5dbguBF6Gsvvdl8", "displayOrder": 20, "entitlementType": "DURABLE", "ext": {"z9x7XZIjU4IK9lOL": {}, "aZaMphKCqTq3EVhe": {}, "JjoEEXBLIxGnNuho": {}}, "features": ["EdqQpoGkUWNizk5U", "JM3WWPvvCiCf33Vi", "cPAGv6c1ESC6hZYT"], "flexible": true, "images": [{"as": "bzf5aANNNs5kgSZZ", "caption": "NUHbIT9szApmWJO5", "height": 45, "imageUrl": "Zn1YXj5zFZeOCOR9", "smallImageUrl": "NvBQZSJPOIKrRBrY", "width": 98}, {"as": "fa2LrnpZxNnLRH36", "caption": "bqS2oFY76PU1AziB", "height": 82, "imageUrl": "sys6GdkDcos5uVJ0", "smallImageUrl": "BJfZ0jvA54CSqZFD", "width": 39}, {"as": "3by2kYSCdnFKLc0x", "caption": "cTjqjdcEfU61OJYM", "height": 26, "imageUrl": "PKVSZCg3XTc9vQe0", "smallImageUrl": "dHJfF6KIuvnRCa9J", "width": 22}], "itemIds": ["lhe98oaFKlQicdrx", "VhrtwSd9QWVMYz7T", "U1TsxsChSclSkb5a"], "itemQty": {"Bi9K9zyv6gFZXI5n": 72, "JgjC56pda3YhtQxp": 58, "dIn7QqXBDXJcrqKm": 60}, "itemType": "EXTENSION", "listable": true, "localizations": {"xoLnWGP1PafIjLX8": {"description": "ce0KbNN7Ycl2JfmQ", "localExt": {"plvGjVQ4aebjfgGu": {}, "472oWJlfglLM4xjf": {}, "kNL4lU6jaGfsD1cf": {}}, "longDescription": "swmeFpvtDtetoQVF", "title": "L8LNW11vtpaTxi7k"}, "489jRCn48bvkCPfK": {"description": "ofwXOIZZQAJza84l", "localExt": {"KKmVOaTS6xBbNrSU": {}, "AW2ak7ISDrBVg6Nu": {}, "DZvPb1kuUfNfUDe4": {}}, "longDescription": "g7q6PHEaqbzHvDDl", "title": "1jiLw3XMGBA6JXDp"}, "A1tIC45C0oaGouFu": {"description": "4hXONgUwJnUpryDe", "localExt": {"RcpUvlrw2MwC1uuo": {}, "kpaIjL0Vxe5n9Lx3": {}, "QcFo9gxOgvDc7xMr": {}}, "longDescription": "RKvw8ISP2WKmCRRX", "title": "BxlalCHtWlKxLpS8"}}, "lootBoxConfig": {"rewardCount": 10, "rewards": [{"lootBoxItems": [{"count": 39, "duration": 76, "endDate": "1982-04-30T00:00:00Z", "itemId": "guycGiq9j2EyIknf", "itemSku": "LDpgHnMOn8nc3gUZ", "itemType": "8ZFyyEr0KBXuJBqK"}, {"count": 87, "duration": 79, "endDate": "1981-09-07T00:00:00Z", "itemId": "8uux9xBomQFPFWy5", "itemSku": "cwNPI6aFo0MVwDZC", "itemType": "IXFNEL3uWVRz3V7Y"}, {"count": 2, "duration": 80, "endDate": "1989-04-03T00:00:00Z", "itemId": "M3bNLWHAbCZixe2c", "itemSku": "Q6O30lpzcBQMAEcN", "itemType": "cJqrKxnMzSYoc4Zj"}], "name": "iMY4H34B6wVd8ipc", "odds": 0.5899514335296582, "type": "REWARD", "weight": 46}, {"lootBoxItems": [{"count": 70, "duration": 88, "endDate": "1971-02-10T00:00:00Z", "itemId": "rryHB6GO9zP3Faep", "itemSku": "A3b3YJ9nJM6vtT27", "itemType": "xv85K5MU2qmbeqaV"}, {"count": 8, "duration": 48, "endDate": "1977-12-12T00:00:00Z", "itemId": "INdClpF7OvlBIEgj", "itemSku": "se5kd6GEDo08yq5E", "itemType": "5HleLoog4me2NBFp"}, {"count": 39, "duration": 47, "endDate": "1987-04-05T00:00:00Z", "itemId": "3j9LYdG7xVPqBqe9", "itemSku": "RDQMBSYAFLqp8PF5", "itemType": "hCcoukWpnbz4ys7j"}], "name": "6lxuU3u2HEG0qfKe", "odds": 0.10766913434660086, "type": "REWARD", "weight": 26}, {"lootBoxItems": [{"count": 65, "duration": 93, "endDate": "1986-07-21T00:00:00Z", "itemId": "sPykS8YLmwtYgWGc", "itemSku": "A0h4G1LZ1HaX5UBM", "itemType": "bsF44VTsLDRzdq22"}, {"count": 5, "duration": 2, "endDate": "1985-04-21T00:00:00Z", "itemId": "F2g7TVtzYEHUodh3", "itemSku": "iUfBthbepUCTWiZ1", "itemType": "uqh7GAi4FEIu44u8"}, {"count": 45, "duration": 77, "endDate": "1999-12-23T00:00:00Z", "itemId": "4ouSgkpK70uJmUL0", "itemSku": "uzElixc023dIvDiA", "itemType": "0tQWlHwBcTtztx3V"}], "name": "Al6tXFbnATCzUOIz", "odds": 0.7622020736079372, "type": "PROBABILITY_GROUP", "weight": 12}], "rollFunction": "DEFAULT"}, "maxCount": 63, "maxCountPerUser": 22, "name": "CZ4AELr5lraa5v5P", "optionBoxConfig": {"boxItems": [{"count": 23, "duration": 58, "endDate": "1981-03-18T00:00:00Z", "itemId": "Je32AiwKadEoIVmp", "itemSku": "rwPsa9YD92CX0rIT", "itemType": "ajpwHITGeHTnqRbz"}, {"count": 56, "duration": 91, "endDate": "1985-07-11T00:00:00Z", "itemId": "9ZFgJbQ3Fj1umx4I", "itemSku": "tzkMJ7cudf4r916G", "itemType": "Prhn2etVIQvRkQJA"}, {"count": 39, "duration": 61, "endDate": "1998-09-30T00:00:00Z", "itemId": "4ooQ980ywmg1pWpW", "itemSku": "it1QC7FKe0fnHUlm", "itemType": "U1unGKM0tgfeWy47"}]}, "purchasable": false, "recurring": {"cycle": "MONTHLY", "fixedFreeDays": 57, "fixedTrialCycles": 46, "graceDays": 44}, "regionData": {"MI4gGmvK9gW596Fw": [{"currencyCode": "BNrFXt3TAuKBwBcD", "currencyNamespace": "12ae6r3hHwya4Npd", "currencyType": "VIRTUAL", "discountAmount": 98, "discountExpireAt": "1974-10-30T00:00:00Z", "discountPercentage": 68, "discountPurchaseAt": "1975-08-05T00:00:00Z", "expireAt": "1979-08-30T00:00:00Z", "price": 41, "purchaseAt": "1976-01-19T00:00:00Z", "trialPrice": 1}, {"currencyCode": "Hf7dbh2iKNUl0qJq", "currencyNamespace": "zoKMRMG541PAiNjU", "currencyType": "REAL", "discountAmount": 37, "discountExpireAt": "1983-10-29T00:00:00Z", "discountPercentage": 91, "discountPurchaseAt": "1995-04-14T00:00:00Z", "expireAt": "1994-10-28T00:00:00Z", "price": 22, "purchaseAt": "1991-01-21T00:00:00Z", "trialPrice": 41}, {"currencyCode": "LMUaDSwwQlnNRZJH", "currencyNamespace": "BSB4fZWEFIZs28Ff", "currencyType": "REAL", "discountAmount": 21, "discountExpireAt": "1997-05-03T00:00:00Z", "discountPercentage": 89, "discountPurchaseAt": "1998-06-22T00:00:00Z", "expireAt": "1996-12-28T00:00:00Z", "price": 21, "purchaseAt": "1973-06-09T00:00:00Z", "trialPrice": 49}], "f4lhBPbarbWEm8bV": [{"currencyCode": "tZcfVCPdQhim9QKU", "currencyNamespace": "AFTVYelIlGJg9wdc", "currencyType": "REAL", "discountAmount": 94, "discountExpireAt": "1975-01-18T00:00:00Z", "discountPercentage": 16, "discountPurchaseAt": "1979-03-03T00:00:00Z", "expireAt": "1978-03-23T00:00:00Z", "price": 36, "purchaseAt": "1973-10-11T00:00:00Z", "trialPrice": 32}, {"currencyCode": "pfcFBUsnnDJlmD1i", "currencyNamespace": "EokbUiYzCQh2iNTw", "currencyType": "VIRTUAL", "discountAmount": 40, "discountExpireAt": "1977-11-07T00:00:00Z", "discountPercentage": 29, "discountPurchaseAt": "1973-03-02T00:00:00Z", "expireAt": "1972-10-13T00:00:00Z", "price": 6, "purchaseAt": "1980-11-16T00:00:00Z", "trialPrice": 43}, {"currencyCode": "zMTQ9P7sYLDWAJOA", "currencyNamespace": "75K4BYJ2fkqYJoF2", "currencyType": "VIRTUAL", "discountAmount": 43, "discountExpireAt": "1977-07-21T00:00:00Z", "discountPercentage": 41, "discountPurchaseAt": "1983-12-14T00:00:00Z", "expireAt": "1979-12-25T00:00:00Z", "price": 45, "purchaseAt": "1984-05-20T00:00:00Z", "trialPrice": 5}], "o8TWwXWsz9TVmdMK": [{"currencyCode": "EohKzuMYDUTLBeCi", "currencyNamespace": "dXjuGgx8ncXejmeZ", "currencyType": "VIRTUAL", "discountAmount": 14, "discountExpireAt": "1984-06-04T00:00:00Z", "discountPercentage": 55, "discountPurchaseAt": "1979-03-23T00:00:00Z", "expireAt": "1983-08-23T00:00:00Z", "price": 24, "purchaseAt": "1972-06-12T00:00:00Z", "trialPrice": 38}, {"currencyCode": "meTrT7cF9oVCh89w", "currencyNamespace": "NOkKYssVejcL3kR3", "currencyType": "REAL", "discountAmount": 51, "discountExpireAt": "1985-05-24T00:00:00Z", "discountPercentage": 67, "discountPurchaseAt": "1981-11-22T00:00:00Z", "expireAt": "1998-02-13T00:00:00Z", "price": 60, "purchaseAt": "1971-03-08T00:00:00Z", "trialPrice": 73}, {"currencyCode": "GAYOHR5BWa9VzIka", "currencyNamespace": "QEl1iUProNB6hI6I", "currencyType": "VIRTUAL", "discountAmount": 28, "discountExpireAt": "1987-08-25T00:00:00Z", "discountPercentage": 4, "discountPurchaseAt": "1992-04-22T00:00:00Z", "expireAt": "1996-03-26T00:00:00Z", "price": 14, "purchaseAt": "1989-09-10T00:00:00Z", "trialPrice": 96}]}, "saleConfig": {"currencyCode": "vdRhG9NwV3zDuqVl", "price": 98}, "seasonType": "TIER", "sectionExclusive": true, "sellable": true, "sku": "pcYPK8IxrSZuxWl0", "stackable": false, "status": "ACTIVE", "tags": ["nPS2urJqerobWMZG", "VL5KLTxahWlS6XdB", "4fJIyFAm3DQht4Jw"], "targetCurrencyCode": "aKSLCgOOPXM6XTUh", "targetNamespace": "2dJ90yqHDNacl4F9", "thumbnailUrl": "G6Dl5TFwBY6HKXAb", "useCount": 23}' --login_with_auth "Bearer foo"
 platform-delete-item '7TOpyiuvvQUm29Ia' --login_with_auth "Bearer foo"
 platform-acquire-item 'cq4XRLaA643nTMtX' --body '{"count": 90, "orderNo": "yPEOuPhGspRi3bhP"}' --login_with_auth "Bearer foo"
 platform-get-app 'QvBBJI5JxytpcubN' --login_with_auth "Bearer foo"
@@ -153,7 +153,7 @@ platform-enable-item 'k078IghoQBp2mWAO' 'YksczxBS0OBCa2vW' --login_with_auth "Be
 platform-feature-item 'adLmQtYKmEMzicbu' 'L2S3RiW8dLTCBfGU' 'dVEdvdQL7sVwcZ2P' --login_with_auth "Bearer foo"
 platform-defeature-item 'ofaJoSqtrEOqxH46' 'fRTSZoDdT0fefo74' 'eg3Nt2c0r4GqF0NH' --login_with_auth "Bearer foo"
 platform-get-locale-item 'glOVuNZ9LzNeJnBu' --login_with_auth "Bearer foo"
-platform-update-item-purchase-condition 'rh54CWbYb0Pebyt8' 'b4DGscjwrizsFUgY' --body '{"purchaseCondition": {"conditionGroups": [{"operator": "or", "predicates": [{"anyOf": 66, "comparison": "excludes", "name": "xHnmSxvkG9UR5q9n", "predicateType": "EntitlementPredicate", "value": "TBjn3d2sFzMS3QaV", "values": ["jZF7Ax6115Kg9U8v", "rQJXQxoIbVi2CLEk", "277Ivjj1A647XQ3k"]}, {"anyOf": 29, "comparison": "excludes", "name": "KMavu4Ul2IaieEbP", "predicateType": "SeasonTierPredicate", "value": "bojDVaZLpx4kEWYk", "values": ["O6KrKUMhJrASBh61", "hmWKSSrF35anDGvu", "r19V18oIrUKXttgA"]}, {"anyOf": 71, "comparison": "includes", "name": "2QdWJFLmoPEgd8EM", "predicateType": "SeasonPassPredicate", "value": "f2HEHvVevhISjbtB", "values": ["TIedV3HyoX4VnO2L", "JUK5fE3OufPSX3Pd", "OU2V9yw94oa8UJ34"]}]}, {"operator": "or", "predicates": [{"anyOf": 52, "comparison": "isNot", "name": "DNp1SZ58aDllwzTR", "predicateType": "SeasonTierPredicate", "value": "gUSMM5au8GJT0mkV", "values": ["cXXTUIggoH89QNmI", "17UDb19R6H7r1ta3", "PI6zUtf3QaJPGrTN"]}, {"anyOf": 25, "comparison": "excludes", "name": "7jK5pxe82pgFiAS6", "predicateType": "EntitlementPredicate", "value": "KxbS7Q2OgRucL1jw", "values": ["Xl5XCbkOfHaGr5kd", "RXzfjDZZBmOau6sy", "me06c6SKLc2mEC3I"]}, {"anyOf": 0, "comparison": "isLessThanOrEqual", "name": "tvmMB6jzrpRGESmo", "predicateType": "EntitlementPredicate", "value": "XPMqxj4hBgVY3YAx", "values": ["ufc5ZyODR2NVyn4P", "woJcaRMEb15LBlTV", "ZLKbcOdyjqf6Q4oi"]}]}, {"operator": "or", "predicates": [{"anyOf": 67, "comparison": "includes", "name": "TTD81xhNP4t6kYBU", "predicateType": "EntitlementPredicate", "value": "iSNV4qBrt1kcLmRv", "values": ["4RImNWVIJnhhwFDV", "1VitaomvWTzdsW4N", "6EJtl5xWnsb8oWq9"]}, {"anyOf": 47, "comparison": "isLessThan", "name": "cY1HgAnZV4IOglVL", "predicateType": "SeasonPassPredicate", "value": "Yc481dYdvGxJAMDR", "values": ["jX0geYCpGJM4sqsP", "VBCV9qJhWva2FPBu", "A1LF7jdWlekFwO94"]}, {"anyOf": 80, "comparison": "isGreaterThanOrEqual", "name": "MiZXXOFwmGWAvNF0", "predicateType": "EntitlementPredicate", "value": "GkwxUNYyNwGiKrkn", "values": ["OadpgegCUjTdi1Eh", "H0Y5mrQgLC6D2qsF", "iQHglUQMZi5WjMZf"]}]}]}}' --login_with_auth "Bearer foo"
+platform-update-item-purchase-condition 'rh54CWbYb0Pebyt8' 'b4DGscjwrizsFUgY' --body '{"purchaseCondition": {"conditionGroups": [{"operator": "or", "predicates": [{"anyOf": 66, "comparison": "excludes", "name": "xHnmSxvkG9UR5q9n", "predicateType": "EntitlementPredicate", "value": "TBjn3d2sFzMS3QaV", "values": ["277Ivjj1A647XQ3k", "jZF7Ax6115Kg9U8v", "rQJXQxoIbVi2CLEk"]}, {"anyOf": 29, "comparison": "excludes", "name": "KMavu4Ul2IaieEbP", "predicateType": "SeasonTierPredicate", "value": "bojDVaZLpx4kEWYk", "values": ["hmWKSSrF35anDGvu", "r19V18oIrUKXttgA", "O6KrKUMhJrASBh61"]}, {"anyOf": 71, "comparison": "includes", "name": "2QdWJFLmoPEgd8EM", "predicateType": "SeasonPassPredicate", "value": "f2HEHvVevhISjbtB", "values": ["TIedV3HyoX4VnO2L", "OU2V9yw94oa8UJ34", "JUK5fE3OufPSX3Pd"]}]}, {"operator": "or", "predicates": [{"anyOf": 52, "comparison": "isNot", "name": "DNp1SZ58aDllwzTR", "predicateType": "SeasonTierPredicate", "value": "gUSMM5au8GJT0mkV", "values": ["17UDb19R6H7r1ta3", "cXXTUIggoH89QNmI", "PI6zUtf3QaJPGrTN"]}, {"anyOf": 25, "comparison": "excludes", "name": "7jK5pxe82pgFiAS6", "predicateType": "EntitlementPredicate", "value": "KxbS7Q2OgRucL1jw", "values": ["me06c6SKLc2mEC3I", "Xl5XCbkOfHaGr5kd", "RXzfjDZZBmOau6sy"]}, {"anyOf": 0, "comparison": "isLessThanOrEqual", "name": "tvmMB6jzrpRGESmo", "predicateType": "EntitlementPredicate", "value": "XPMqxj4hBgVY3YAx", "values": ["woJcaRMEb15LBlTV", "ZLKbcOdyjqf6Q4oi", "ufc5ZyODR2NVyn4P"]}]}, {"operator": "or", "predicates": [{"anyOf": 67, "comparison": "includes", "name": "TTD81xhNP4t6kYBU", "predicateType": "EntitlementPredicate", "value": "iSNV4qBrt1kcLmRv", "values": ["6EJtl5xWnsb8oWq9", "4RImNWVIJnhhwFDV", "1VitaomvWTzdsW4N"]}, {"anyOf": 47, "comparison": "isLessThan", "name": "cY1HgAnZV4IOglVL", "predicateType": "SeasonPassPredicate", "value": "Yc481dYdvGxJAMDR", "values": ["VBCV9qJhWva2FPBu", "jX0geYCpGJM4sqsP", "A1LF7jdWlekFwO94"]}, {"anyOf": 80, "comparison": "isGreaterThanOrEqual", "name": "MiZXXOFwmGWAvNF0", "predicateType": "EntitlementPredicate", "value": "GkwxUNYyNwGiKrkn", "values": ["OadpgegCUjTdi1Eh", "H0Y5mrQgLC6D2qsF", "iQHglUQMZi5WjMZf"]}]}]}}' --login_with_auth "Bearer foo"
 platform-return-item 'r8OtqpNJ9R8TuNy4' --body '{"orderNo": "ejmVA3vMCsGyPd12"}' --login_with_auth "Bearer foo"
 platform-query-key-groups --login_with_auth "Bearer foo"
 platform-create-key-group --body '{"description": "B8QNUz0hFFNbH6j2", "name": "W4roZM2UKAXEEsL5", "status": "INACTIVE", "tags": ["zRxfNEjUMTs8WIOb", "JBTsvsw76uISRX0b", "KVoWtoUW1P7ocuBA"]}' --login_with_auth "Bearer foo"
@@ -308,8 +308,8 @@ platform-create-view 'ugM7a2UZgeesipbP' --body '{"displayOrder": 49, "localizati
 platform-get-view 'edbBOd19DqZJRYV1' --login_with_auth "Bearer foo"
 platform-update-view 'oqNLmPAUIMwa2wYq' '6DsUq38bYvaWLoKz' --body '{"displayOrder": 70, "localizations": {"eP7yh0zsKhR60HZw": {"description": "Uwk48XK7MXHbEwAv", "localExt": {"vpEeHhXiJcJqYSxV": {}, "KUYMimVLzAP6aOzs": {}, "TqEFXUhGAwpYq1Uq": {}}, "longDescription": "ZydOB0MThZW6LwcA", "title": "g57BYBVCbi0ifdPy"}, "Kf3SwHekWIz4rXlH": {"description": "5jw99HxCjXWcaXBc", "localExt": {"fXXeV7BXefsSgZxS": {}, "YnVwXqF6K0WA76Kl": {}, "2mHHoz6qBQnEDgX4": {}}, "longDescription": "9n1xTDFcmOm1sqdI", "title": "WU6ERylESgf5dXMr"}, "PoYSohfrLyXMSrC6": {"description": "2xYtDwflNGfufW5c", "localExt": {"Weg6eSCypsceITTk": {}, "JGGCVF6LrILDLviU": {}, "CzmDAaW5xz1c7ZuZ": {}}, "longDescription": "XUCBYnkY0LEBSYBd", "title": "USiTOrhB8hVs29WO"}}, "name": "KmZRTtgycLzXz6lU"}' --login_with_auth "Bearer foo"
 platform-delete-view 'MKi5mweMEZo2ZnL1' 'Zg2JfH4f73jAevOn' --login_with_auth "Bearer foo"
-platform-bulk-credit --body '[{"creditRequest": {"amount": 64, "expireAt": "1985-10-10T00:00:00Z", "metadata": {"6YJLlb2AfUEEBbqM": {}, "MKvkOsR1fHUyirMV": {}, "MOFES2J2OzNlJE3u": {}}, "origin": "Oculus", "reason": "rOsJmEwjGYN8VNPX", "source": "REFERRAL_BONUS"}, "currencyCode": "IZVSGQyTzhs9Asy4", "userIds": ["xBs056jkPCUuE1pg", "dHvlQKiR7SDQUDav", "d629N4YnolVWA2dW"]}, {"creditRequest": {"amount": 85, "expireAt": "1982-04-03T00:00:00Z", "metadata": {"npPn8N5xMRgU7cPq": {}, "NZrLCRRUysya4J3r": {}, "vTzMTMSwrNov2GW9": {}}, "origin": "IOS", "reason": "twUWGt6tooHP5kAw", "source": "IAP_CHARGEBACK_REVERSED"}, "currencyCode": "JqwKs1mO80L7IOHl", "userIds": ["SAO2n4MZQt753XQB", "f6j8PZOzUiQKZqz5", "NSp0B7LODN3Boi2s"]}, {"creditRequest": {"amount": 15, "expireAt": "1999-03-20T00:00:00Z", "metadata": {"rOW0guPoQbYzc1RD": {}, "Vhs2lhdzxxgibuqU": {}, "uyW3cMz9YyduMomE": {}}, "origin": "System", "reason": "1gzGCbaxw33rNbE4", "source": "ACHIEVEMENT"}, "currencyCode": "Vv0KVpXJTMx3Y8Um", "userIds": ["ngD83roOeqE7fcCA", "tbqMFlgHKQIRtLfP", "1iqehObg3OZ9j0HD"]}]' --login_with_auth "Bearer foo"
-platform-bulk-debit --body '[{"currencyCode": "eExeQX43LpmdMiZe", "request": {"allowOverdraft": true, "amount": 71, "balanceOrigin": "Steam", "balanceSource": "IAP_REVOCATION", "metadata": {"oc3qNcQFFyHv141N": {}, "PqjRUMKSQjFdjqTa": {}, "ZFsWzbqwTZQIN5jC": {}}, "reason": "6a8mEVCXHmFnrSL0"}, "userIds": ["PJcZQaCeNLYxMID9", "pqZ5rryiMMt6fQtL", "hzylaquioT3QBt29"]}, {"currencyCode": "AiRASsuFM4ahGw7X", "request": {"allowOverdraft": false, "amount": 1, "balanceOrigin": "System", "balanceSource": "DLC_REVOCATION", "metadata": {"1Qwzz606UGXPhoNZ": {}, "lXMef7AvS3TfKx6B": {}, "yTygbtOtcQS4Cmgw": {}}, "reason": "1wRUnIVYxY6Ohdkr"}, "userIds": ["lTpEhjTFYdzsUNvQ", "An2LuMjLqwmVz3zK", "YiCinoVOzo4Plv1I"]}, {"currencyCode": "sfjz1mFkyxoUzfMF", "request": {"allowOverdraft": false, "amount": 98, "balanceOrigin": "GooglePlay", "balanceSource": "ORDER_REVOCATION", "metadata": {"W9ddxzLPV8wDjsny": {}, "Ph5yNbYXmlAOi1SC": {}, "3I1SjkH42LtyZKrT": {}}, "reason": "Jo0L5sHil4Q0mqa8"}, "userIds": ["GatrjbJ5YT7uvqar", "XALMresGFfsH4aXC", "TvrG1DXZAWlvz3c3"]}]' --login_with_auth "Bearer foo"
+platform-bulk-credit --body '[{"creditRequest": {"amount": 64, "expireAt": "1985-10-10T00:00:00Z", "metadata": {"6YJLlb2AfUEEBbqM": {}, "MKvkOsR1fHUyirMV": {}, "MOFES2J2OzNlJE3u": {}}, "origin": "Oculus", "reason": "rOsJmEwjGYN8VNPX", "source": "REFERRAL_BONUS"}, "currencyCode": "IZVSGQyTzhs9Asy4", "userIds": ["dHvlQKiR7SDQUDav", "d629N4YnolVWA2dW", "xBs056jkPCUuE1pg"]}, {"creditRequest": {"amount": 85, "expireAt": "1982-04-03T00:00:00Z", "metadata": {"npPn8N5xMRgU7cPq": {}, "NZrLCRRUysya4J3r": {}, "vTzMTMSwrNov2GW9": {}}, "origin": "IOS", "reason": "twUWGt6tooHP5kAw", "source": "IAP_CHARGEBACK_REVERSED"}, "currencyCode": "JqwKs1mO80L7IOHl", "userIds": ["SAO2n4MZQt753XQB", "f6j8PZOzUiQKZqz5", "NSp0B7LODN3Boi2s"]}, {"creditRequest": {"amount": 15, "expireAt": "1999-03-20T00:00:00Z", "metadata": {"rOW0guPoQbYzc1RD": {}, "Vhs2lhdzxxgibuqU": {}, "uyW3cMz9YyduMomE": {}}, "origin": "System", "reason": "1gzGCbaxw33rNbE4", "source": "ACHIEVEMENT"}, "currencyCode": "Vv0KVpXJTMx3Y8Um", "userIds": ["tbqMFlgHKQIRtLfP", "ngD83roOeqE7fcCA", "1iqehObg3OZ9j0HD"]}]' --login_with_auth "Bearer foo"
+platform-bulk-debit --body '[{"currencyCode": "eExeQX43LpmdMiZe", "request": {"allowOverdraft": true, "amount": 71, "balanceOrigin": "Steam", "balanceSource": "IAP_REVOCATION", "metadata": {"oc3qNcQFFyHv141N": {}, "PqjRUMKSQjFdjqTa": {}, "ZFsWzbqwTZQIN5jC": {}}, "reason": "6a8mEVCXHmFnrSL0"}, "userIds": ["PJcZQaCeNLYxMID9", "hzylaquioT3QBt29", "pqZ5rryiMMt6fQtL"]}, {"currencyCode": "AiRASsuFM4ahGw7X", "request": {"allowOverdraft": false, "amount": 1, "balanceOrigin": "System", "balanceSource": "DLC_REVOCATION", "metadata": {"1Qwzz606UGXPhoNZ": {}, "lXMef7AvS3TfKx6B": {}, "yTygbtOtcQS4Cmgw": {}}, "reason": "1wRUnIVYxY6Ohdkr"}, "userIds": ["lTpEhjTFYdzsUNvQ", "An2LuMjLqwmVz3zK", "YiCinoVOzo4Plv1I"]}, {"currencyCode": "sfjz1mFkyxoUzfMF", "request": {"allowOverdraft": false, "amount": 98, "balanceOrigin": "GooglePlay", "balanceSource": "ORDER_REVOCATION", "metadata": {"W9ddxzLPV8wDjsny": {}, "Ph5yNbYXmlAOi1SC": {}, "3I1SjkH42LtyZKrT": {}}, "reason": "Jo0L5sHil4Q0mqa8"}, "userIds": ["TvrG1DXZAWlvz3c3", "GatrjbJ5YT7uvqar", "XALMresGFfsH4aXC"]}]' --login_with_auth "Bearer foo"
 platform-sync-orders 'DhshvEF8rHd250ny' 'ihcUVGHQczI5ZoTR' --login_with_auth "Bearer foo"
 platform-test-adyen-config --body '{"allowedPaymentMethods": ["UkjGoRkPs2SO9Xrg", "XNIaU11cBXLwTfop", "qeZtHJnRgaGfLMFb"], "apiKey": "vyI5PZGzVLcmZKKK", "authoriseAsCapture": false, "blockedPaymentMethods": ["ARape2tsNczam4Cd", "d1QYvww4XDokltgq", "2vXtUnY6UhDJ4pe0"], "clientKey": "s0Cuhl3dU9b4seYC", "dropInSettings": "yiB4tDCWx3cEX8wT", "liveEndpointUrlPrefix": "i1v2abpCWytPEi9Z", "merchantAccount": "e0hL9rPkV5GkSrcl", "notificationHmacKey": "2O47XVzU7qlNVk7q", "notificationPassword": "nmBS3XKDhp1OkMcE", "notificationUsername": "rmeH0lX1hj0LaXgQ", "returnUrl": "94flh775AQfzNjQ7", "settings": "IuMSY2epRDJjDyMD"}' --login_with_auth "Bearer foo"
 platform-test-ali-pay-config --body '{"appId": "KQhuTjtQZyIiAmCL", "privateKey": "8bNTTfqLCv9DYBOP", "publicKey": "roN4UWbQaKFrTv4J", "returnUrl": "WElmOCxqPrq9I3XJ"}' --login_with_auth "Bearer foo"
@@ -352,22 +352,23 @@ platform-public-get-category 'iqrg3lpqN5bOfnqJ' --login_with_auth "Bearer foo"
 platform-public-get-child-categories '5bzDRzbhMxfEDE4T' --login_with_auth "Bearer foo"
 platform-public-get-descendant-categories 'rtIHyyMq79EdB9Mx' --login_with_auth "Bearer foo"
 platform-public-list-currencies --login_with_auth "Bearer foo"
+platform-ge-dlc-durable-reward-short-map 'EPICGAMES' --login_with_auth "Bearer foo"
 platform-get-iap-item-mapping --login_with_auth "Bearer foo"
-platform-public-get-item-by-app-id 'aF8QHGM2IuQYBO8m' --login_with_auth "Bearer foo"
+platform-public-get-item-by-app-id 'zjv1gSj8kcNhoqcR' --login_with_auth "Bearer foo"
 platform-public-query-items --login_with_auth "Bearer foo"
-platform-public-get-item-by-sku '0HgTth479W8rXqwG' --login_with_auth "Bearer foo"
-platform-public-get-estimated-price 'VIRWgTNHCka3Wb5k' --login_with_auth "Bearer foo"
-platform-public-bulk-get-items 'H1BrLWUetP7nmESQ' --login_with_auth "Bearer foo"
-platform-public-validate-item-purchase-condition --body '{"itemIds": ["DV3BD1nnEzoUlUWq", "P4ElzL44KEm3uHBM", "CP5ckjphURs4ksgs"]}' --login_with_auth "Bearer foo"
-platform-public-search-items 'KJ2R6Jacwwu8W1zv' 'rKMRPvwA9k6yJz03' --login_with_auth "Bearer foo"
-platform-public-get-app 'NETdywPqYerrpOm4' --login_with_auth "Bearer foo"
-platform-public-get-item-dynamic-data 'M2pM4fIfcHBWZM50' --login_with_auth "Bearer foo"
-platform-public-get-item 'aHbPXRns3qwYL6Lw' --login_with_auth "Bearer foo"
-platform-public-get-payment-url --body '{"paymentOrderNo": "GlZGF7XQPLAcIL7F", "paymentProvider": "WALLET", "returnUrl": "xRQR0NYdJzf3TMhS", "ui": "aynVs05nZC4Os7hq", "zipCode": "IH2NgARSG3QQNGNH"}' --login_with_auth "Bearer foo"
-platform-public-get-payment-methods '2K0UuJdeGNquQnaX' --login_with_auth "Bearer foo"
-platform-public-get-unpaid-payment-order 'pDQ5rU2taDWh9JV5' --login_with_auth "Bearer foo"
-platform-pay 'oc5IFQsrwHqFqwVA' --body '{"token": "5mozeeOjIFQfXV3Y"}' --login_with_auth "Bearer foo"
-platform-public-check-payment-order-paid-status 'W3ug3nCXhD7FUz1i' --login_with_auth "Bearer foo"
+platform-public-get-item-by-sku 'ZRNATojM7daV0VwR' --login_with_auth "Bearer foo"
+platform-public-get-estimated-price '3yNKDtMqMrAGpdyF' --login_with_auth "Bearer foo"
+platform-public-bulk-get-items '6WDHn3ePBxQNz2IU' --login_with_auth "Bearer foo"
+platform-public-validate-item-purchase-condition --body '{"itemIds": ["EHMzl5jhwVDsuzwJ", "4v50eoaIBrTh0EKk", "JioUpvGnkcHgCfaW"]}' --login_with_auth "Bearer foo"
+platform-public-search-items 'zPUvCnfqsPGgJZyR' 'wigaMu07Zek8WObp' --login_with_auth "Bearer foo"
+platform-public-get-app 'f0FHYfViEj70KYKI' --login_with_auth "Bearer foo"
+platform-public-get-item-dynamic-data 'fFt4GYjUt4F1ZVy2' --login_with_auth "Bearer foo"
+platform-public-get-item 'qFfSr3psWjOyHLyK' --login_with_auth "Bearer foo"
+platform-public-get-payment-url --body '{"paymentOrderNo": "e2foqsVIfgBTr8Rc", "paymentProvider": "WALLET", "returnUrl": "AMWqhyyNZH1CducB", "ui": "5y5iMdeBG7REG4me", "zipCode": "KEabfVXBJPIZqZC5"}' --login_with_auth "Bearer foo"
+platform-public-get-payment-methods 'd6JuFdcfiNf0DOHK' --login_with_auth "Bearer foo"
+platform-public-get-unpaid-payment-order 'wxDF5GJhCjVHiCn2' --login_with_auth "Bearer foo"
+platform-pay 'hTefT8gPFJ4WndMp' --body '{"token": "QhcLK0WTZbtmQkwC"}' --login_with_auth "Bearer foo"
+platform-public-check-payment-order-paid-status '8azx3IRWme3C6p2r' --login_with_auth "Bearer foo"
 platform-get-payment-public-config 'ALIPAY' 'D3NQdjrjkX3AMgK3' --login_with_auth "Bearer foo"
 platform-public-get-qr-code 'JgZufzssA284mG7u' --login_with_auth "Bearer foo"
 platform-public-normalize-payment-return-url 'AojLYBsx8oqMzbE0' 'ljQaBtb47V691j0F' 'STRIPE' 'BGdX66DqPTdurR3M' --login_with_auth "Bearer foo"
@@ -454,7 +455,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..422"
+echo "1..423"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -857,7 +858,7 @@ eval_tap $? 60 'QueryEntitlements1' test.out
 
 #- 61 GrantEntitlements
 $PYTHON -m $MODULE 'platform-grant-entitlements' \
-    --body '{"entitlementGrantList": [{"endDate": "1974-05-25T00:00:00Z", "grantedCode": "jUXvM1GqMkZ44UXg", "itemId": "dBqtJaRyDlP9qIZJ", "itemNamespace": "5Krx6KkHagEugKJx", "language": "vL-dXqg_Ns", "quantity": 81, "region": "dq8BgAI81k4Gr7jV", "source": "REDEEM_CODE", "startDate": "1996-08-15T00:00:00Z", "storeId": "l3yrH9HR4reG0HwU"}, {"endDate": "1996-07-07T00:00:00Z", "grantedCode": "tdBjKmCBXETZwqdz", "itemId": "AX28DikGk8cWiX44", "itemNamespace": "azSHcwicUVq2XPlj", "language": "BJUU-uNtJ", "quantity": 4, "region": "J4qy4PIKleuV271b", "source": "PURCHASE", "startDate": "1987-01-31T00:00:00Z", "storeId": "4niLSzQnv0C00dtN"}, {"endDate": "1987-09-27T00:00:00Z", "grantedCode": "8vAlmfGg9NO1Z2Dv", "itemId": "nAxH3pS3jyCkGKlt", "itemNamespace": "BNE2UbhNtH3yYg4Q", "language": "OW_Wr", "quantity": 59, "region": "4JI4H7uDzkOHTdnU", "source": "PURCHASE", "startDate": "1979-01-31T00:00:00Z", "storeId": "rkyJFOVaewFcv9h3"}], "userIds": ["GaIcZN28gH4Cd9xT", "1YxuZnoSesWpLUHj", "dt2K1CzpQWslNGnL"]}' \
+    --body '{"entitlementGrantList": [{"endDate": "1974-05-25T00:00:00Z", "grantedCode": "jUXvM1GqMkZ44UXg", "itemId": "dBqtJaRyDlP9qIZJ", "itemNamespace": "5Krx6KkHagEugKJx", "language": "vL-dXqg_Ns", "quantity": 81, "region": "dq8BgAI81k4Gr7jV", "source": "REDEEM_CODE", "startDate": "1996-08-15T00:00:00Z", "storeId": "l3yrH9HR4reG0HwU"}, {"endDate": "1996-07-07T00:00:00Z", "grantedCode": "tdBjKmCBXETZwqdz", "itemId": "AX28DikGk8cWiX44", "itemNamespace": "azSHcwicUVq2XPlj", "language": "BJUU-uNtJ", "quantity": 4, "region": "J4qy4PIKleuV271b", "source": "PURCHASE", "startDate": "1987-01-31T00:00:00Z", "storeId": "4niLSzQnv0C00dtN"}, {"endDate": "1987-09-27T00:00:00Z", "grantedCode": "8vAlmfGg9NO1Z2Dv", "itemId": "nAxH3pS3jyCkGKlt", "itemNamespace": "BNE2UbhNtH3yYg4Q", "language": "OW_Wr", "quantity": 59, "region": "4JI4H7uDzkOHTdnU", "source": "PURCHASE", "startDate": "1979-01-31T00:00:00Z", "storeId": "rkyJFOVaewFcv9h3"}], "userIds": ["dt2K1CzpQWslNGnL", "1YxuZnoSesWpLUHj", "GaIcZN28gH4Cd9xT"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 61 'GrantEntitlements' test.out
@@ -1118,7 +1119,7 @@ eval_tap $? 100 'SyncInGameItem' test.out
 #- 101 CreateItem
 $PYTHON -m $MODULE 'platform-create-item' \
     'B65fxQ06GwTmobiB' \
-    --body '{"appId": "nfrnq9kOFBWhUTPi", "appType": "DEMO", "baseAppId": "R3qcbHLGplYsS3js", "boothName": "RZffCd00VrgPuNtO", "categoryPath": "v3jbhGBuW8KcyPMf", "clazz": "DWSEEpKoJlmhMQUC", "displayOrder": 49, "entitlementType": "CONSUMABLE", "ext": {"70QjYbzemOTURzzA": {}, "OIBarB7kcer5SvPL": {}, "eQZIpKFXgnsxx3c2": {}}, "features": ["DgiVsV2OttwJaMxP", "DIJ5hFQHumFvPKqu", "bUsO7FP8RmOstZAG"], "flexible": true, "images": [{"as": "GyieBsRUduW5lxSl", "caption": "orWEGN5bPGSOSiiI", "height": 39, "imageUrl": "CsAMTZC37xPXxnfg", "smallImageUrl": "gnZ3EZp6wSAufwYi", "width": 35}, {"as": "aZozM8xCBoaS2FMw", "caption": "fWNCbN5GelVOU0hH", "height": 26, "imageUrl": "gLZ7gEypQf2Pn9A4", "smallImageUrl": "gcbDJ0LmdnOPkIT1", "width": 58}, {"as": "JmzvM6JFKB8ikHpl", "caption": "3sNRaDEC2OkXA3Wq", "height": 51, "imageUrl": "3vkZt9FgWckjNpHh", "smallImageUrl": "M2ZXp4N0ROmUCTrS", "width": 81}], "itemIds": ["Gi9Iigk9vamO7Q2W", "QwSWqSs05rjISy4B", "0X9AJdkT7UYCV8ag"], "itemQty": {"vwOI2LlOQNRN132R": 6, "SQ8Szi1IrGidRmR5": 57, "3qlART9mPPmYUvlk": 57}, "itemType": "COINS", "listable": true, "localizations": {"PJFaFzkABC8zWMcY": {"description": "W5iRrw32FRg8y4rO", "localExt": {"uj7J6ijJbcycXmBc": {}, "rJLb7labyotifVk9": {}, "KyqceGv0CEDTVSjI": {}}, "longDescription": "NYeKLowG7UQB9pXz", "title": "uCK5qd2m8A5axixm"}, "9X9TXNhN8y1PVriI": {"description": "yv9kjuiAGiXx47et", "localExt": {"MikLFggYDc2FMbzZ": {}, "oeKagnKf2Yifzvr9": {}, "OqTsInGzHFpFXYJt": {}}, "longDescription": "HtqwoIwQBeIALI8J", "title": "NIII4jrzrPsuMziN"}, "M8AB7RRxiZH3ngni": {"description": "tURdMjZLYCaeklQc", "localExt": {"FY1QIk1h5EKvMGd6": {}, "hQ2mHjmLu4oFlReH": {}, "y0JyZv7honqeiGTT": {}}, "longDescription": "qpgVsY1kPNdJiJXB", "title": "3yjNUPIfvoXRO0Ck"}}, "lootBoxConfig": {"rewardCount": 100, "rewards": [{"lootBoxItems": [{"count": 94, "duration": 38, "endDate": "1997-11-01T00:00:00Z", "itemId": "cgUSbbnffBWRaJN1", "itemSku": "SjCFLDNJfAhJGwSY", "itemType": "EZjEb0Pv35fEk9s1"}, {"count": 12, "duration": 2, "endDate": "1987-06-01T00:00:00Z", "itemId": "kf7rQJ4Kj7Qyo9tU", "itemSku": "ptiyZzRX8Y4rxRWZ", "itemType": "Pe4ZLAQWuBJwxObZ"}, {"count": 34, "duration": 30, "endDate": "1990-10-10T00:00:00Z", "itemId": "Gxhffy9cHrLYffta", "itemSku": "d99JDcnn7f2d8SOW", "itemType": "P2dw6Uy88WpQalG3"}], "name": "8VOo82aLD9jUjuDI", "odds": 0.7330203607353477, "type": "PROBABILITY_GROUP", "weight": 48}, {"lootBoxItems": [{"count": 16, "duration": 88, "endDate": "1973-02-16T00:00:00Z", "itemId": "WRbmtK7MTxcCWnMi", "itemSku": "CLsjroKHPApA8GsG", "itemType": "wyocvY9NePjLJQJX"}, {"count": 46, "duration": 96, "endDate": "1978-08-10T00:00:00Z", "itemId": "wRFNYxx2dr6DDuDH", "itemSku": "XcfvXPXJURX3XwhO", "itemType": "lgcpcOIxqCMSpZxb"}, {"count": 50, "duration": 5, "endDate": "1999-12-09T00:00:00Z", "itemId": "J9vGOUeSeGb02vDP", "itemSku": "Upv5VEdIG82dpIbf", "itemType": "xVFfdvKQVgPQw3MV"}], "name": "Xe4xBPDWHRHCCVDB", "odds": 0.6989164438638124, "type": "PROBABILITY_GROUP", "weight": 83}, {"lootBoxItems": [{"count": 85, "duration": 29, "endDate": "1994-12-15T00:00:00Z", "itemId": "fvfXF1VsikD3IphQ", "itemSku": "QiRcOtsthUwgQzNH", "itemType": "UZ0l1FRfOjJUmCbi"}, {"count": 83, "duration": 23, "endDate": "1993-03-30T00:00:00Z", "itemId": "PwdzMSmrSvQdsAdT", "itemSku": "UGpd8KFrXKFA2gdj", "itemType": "QCYoE8b0CZetLfpF"}, {"count": 81, "duration": 86, "endDate": "1983-03-29T00:00:00Z", "itemId": "p7375rhOmR4zFjoJ", "itemSku": "ZVKZjOD2ePKAKYjJ", "itemType": "MVnYj2yKqavWpyde"}], "name": "pM3ap069B9Okr0xJ", "odds": 0.9275724296743241, "type": "PROBABILITY_GROUP", "weight": 88}], "rollFunction": "CUSTOM"}, "maxCount": 92, "maxCountPerUser": 97, "name": "4Y2zkGYTr9yJIveX", "optionBoxConfig": {"boxItems": [{"count": 12, "duration": 35, "endDate": "1979-07-14T00:00:00Z", "itemId": "6Inl9VTJB9Al3mn2", "itemSku": "DsHDHzSVJzhU5Z44", "itemType": "zgZ1fieLdl3Y82DO"}, {"count": 20, "duration": 56, "endDate": "1976-11-01T00:00:00Z", "itemId": "PuNRZZaUccuBYep9", "itemSku": "n7b17fsblalJrwQi", "itemType": "U3DD0xZFH1fHFLSr"}, {"count": 77, "duration": 83, "endDate": "1999-08-25T00:00:00Z", "itemId": "rEZTbFDj2L2McvCr", "itemSku": "rR7h9uKLXDaRf3px", "itemType": "KtJbRY5luCwKrt6w"}]}, "purchasable": false, "recurring": {"cycle": "YEARLY", "fixedFreeDays": 65, "fixedTrialCycles": 98, "graceDays": 35}, "regionData": {"xpVrcoXzSOEGEDYf": [{"currencyCode": "iGPYo2K3dN3YBOJf", "currencyNamespace": "vV6SuHovoQlk5wL2", "currencyType": "REAL", "discountAmount": 12, "discountExpireAt": "1996-07-30T00:00:00Z", "discountPercentage": 61, "discountPurchaseAt": "1987-03-20T00:00:00Z", "expireAt": "1998-06-03T00:00:00Z", "price": 19, "purchaseAt": "1985-08-24T00:00:00Z", "trialPrice": 45}, {"currencyCode": "7suvgIUkB2PAGJqO", "currencyNamespace": "rkdlZB246OY0dPVM", "currencyType": "REAL", "discountAmount": 3, "discountExpireAt": "1998-10-31T00:00:00Z", "discountPercentage": 100, "discountPurchaseAt": "1985-08-28T00:00:00Z", "expireAt": "1975-07-06T00:00:00Z", "price": 98, "purchaseAt": "1983-09-11T00:00:00Z", "trialPrice": 84}, {"currencyCode": "QTpfyAIoF7qsANBb", "currencyNamespace": "EKQrgocpjGNenRlD", "currencyType": "REAL", "discountAmount": 90, "discountExpireAt": "1995-11-05T00:00:00Z", "discountPercentage": 80, "discountPurchaseAt": "1982-02-26T00:00:00Z", "expireAt": "1992-03-06T00:00:00Z", "price": 51, "purchaseAt": "1978-03-20T00:00:00Z", "trialPrice": 94}], "095rDL6lEuB1ZIMI": [{"currencyCode": "s1dFvYokH9t2u8ZZ", "currencyNamespace": "nyHKkk6Gh25tEcX9", "currencyType": "VIRTUAL", "discountAmount": 9, "discountExpireAt": "1987-02-21T00:00:00Z", "discountPercentage": 27, "discountPurchaseAt": "1986-07-30T00:00:00Z", "expireAt": "1977-09-05T00:00:00Z", "price": 35, "purchaseAt": "1997-07-13T00:00:00Z", "trialPrice": 52}, {"currencyCode": "R1wLTgjsnB2LFVrZ", "currencyNamespace": "RrOntm2KjbfCOuW3", "currencyType": "REAL", "discountAmount": 60, "discountExpireAt": "1985-10-10T00:00:00Z", "discountPercentage": 25, "discountPurchaseAt": "1997-09-14T00:00:00Z", "expireAt": "1974-07-06T00:00:00Z", "price": 92, "purchaseAt": "1994-03-21T00:00:00Z", "trialPrice": 83}, {"currencyCode": "6suS90ZbDdmjU11Q", "currencyNamespace": "IZtkSn8QRbA5V4gj", "currencyType": "VIRTUAL", "discountAmount": 45, "discountExpireAt": "1995-08-26T00:00:00Z", "discountPercentage": 100, "discountPurchaseAt": "1984-02-22T00:00:00Z", "expireAt": "1972-05-17T00:00:00Z", "price": 27, "purchaseAt": "1982-08-15T00:00:00Z", "trialPrice": 91}], "vtPd7ibBA3sd51mD": [{"currencyCode": "ooH53vibq3Qcrtt8", "currencyNamespace": "L5dIebsw7EjkMnJS", "currencyType": "VIRTUAL", "discountAmount": 17, "discountExpireAt": "1986-10-08T00:00:00Z", "discountPercentage": 54, "discountPurchaseAt": "1972-02-12T00:00:00Z", "expireAt": "1999-10-18T00:00:00Z", "price": 100, "purchaseAt": "1983-05-11T00:00:00Z", "trialPrice": 66}, {"currencyCode": "IMJdrqHIsJ98WRjq", "currencyNamespace": "YieXRthQZvzRi7pq", "currencyType": "REAL", "discountAmount": 72, "discountExpireAt": "1971-12-27T00:00:00Z", "discountPercentage": 19, "discountPurchaseAt": "1988-07-24T00:00:00Z", "expireAt": "1986-10-09T00:00:00Z", "price": 68, "purchaseAt": "1974-06-06T00:00:00Z", "trialPrice": 72}, {"currencyCode": "9TIkcnrJ64BOKqyw", "currencyNamespace": "S6DKNSeb2UMWOgVe", "currencyType": "REAL", "discountAmount": 21, "discountExpireAt": "1985-08-18T00:00:00Z", "discountPercentage": 44, "discountPurchaseAt": "1978-05-13T00:00:00Z", "expireAt": "1987-05-16T00:00:00Z", "price": 39, "purchaseAt": "1983-12-02T00:00:00Z", "trialPrice": 8}]}, "saleConfig": {"currencyCode": "5pEVG7sNihxpuuL7", "price": 61}, "seasonType": "TIER", "sectionExclusive": false, "sellable": true, "sku": "5LijlQTVq8Bh1p0N", "stackable": true, "status": "ACTIVE", "tags": ["ZhSMLtrwnjTJVDlh", "WNkLU5ty3uQa7Fl3", "112byTYCDBnAvf8J"], "targetCurrencyCode": "pFuJSZistM75544P", "targetNamespace": "DlVK8taScpV0NtCx", "thumbnailUrl": "DDz5rxt6LflBJjok", "useCount": 78}' \
+    --body '{"appId": "nfrnq9kOFBWhUTPi", "appType": "DEMO", "baseAppId": "R3qcbHLGplYsS3js", "boothName": "RZffCd00VrgPuNtO", "categoryPath": "v3jbhGBuW8KcyPMf", "clazz": "DWSEEpKoJlmhMQUC", "displayOrder": 49, "entitlementType": "CONSUMABLE", "ext": {"70QjYbzemOTURzzA": {}, "OIBarB7kcer5SvPL": {}, "eQZIpKFXgnsxx3c2": {}}, "features": ["bUsO7FP8RmOstZAG", "DgiVsV2OttwJaMxP", "DIJ5hFQHumFvPKqu"], "flexible": true, "images": [{"as": "GyieBsRUduW5lxSl", "caption": "orWEGN5bPGSOSiiI", "height": 39, "imageUrl": "CsAMTZC37xPXxnfg", "smallImageUrl": "gnZ3EZp6wSAufwYi", "width": 35}, {"as": "aZozM8xCBoaS2FMw", "caption": "fWNCbN5GelVOU0hH", "height": 26, "imageUrl": "gLZ7gEypQf2Pn9A4", "smallImageUrl": "gcbDJ0LmdnOPkIT1", "width": 58}, {"as": "JmzvM6JFKB8ikHpl", "caption": "3sNRaDEC2OkXA3Wq", "height": 51, "imageUrl": "3vkZt9FgWckjNpHh", "smallImageUrl": "M2ZXp4N0ROmUCTrS", "width": 81}], "itemIds": ["Gi9Iigk9vamO7Q2W", "QwSWqSs05rjISy4B", "0X9AJdkT7UYCV8ag"], "itemQty": {"vwOI2LlOQNRN132R": 6, "SQ8Szi1IrGidRmR5": 57, "3qlART9mPPmYUvlk": 57}, "itemType": "COINS", "listable": true, "localizations": {"PJFaFzkABC8zWMcY": {"description": "W5iRrw32FRg8y4rO", "localExt": {"uj7J6ijJbcycXmBc": {}, "rJLb7labyotifVk9": {}, "KyqceGv0CEDTVSjI": {}}, "longDescription": "NYeKLowG7UQB9pXz", "title": "uCK5qd2m8A5axixm"}, "9X9TXNhN8y1PVriI": {"description": "yv9kjuiAGiXx47et", "localExt": {"MikLFggYDc2FMbzZ": {}, "oeKagnKf2Yifzvr9": {}, "OqTsInGzHFpFXYJt": {}}, "longDescription": "HtqwoIwQBeIALI8J", "title": "NIII4jrzrPsuMziN"}, "M8AB7RRxiZH3ngni": {"description": "tURdMjZLYCaeklQc", "localExt": {"FY1QIk1h5EKvMGd6": {}, "hQ2mHjmLu4oFlReH": {}, "y0JyZv7honqeiGTT": {}}, "longDescription": "qpgVsY1kPNdJiJXB", "title": "3yjNUPIfvoXRO0Ck"}}, "lootBoxConfig": {"rewardCount": 100, "rewards": [{"lootBoxItems": [{"count": 94, "duration": 38, "endDate": "1997-11-01T00:00:00Z", "itemId": "cgUSbbnffBWRaJN1", "itemSku": "SjCFLDNJfAhJGwSY", "itemType": "EZjEb0Pv35fEk9s1"}, {"count": 12, "duration": 2, "endDate": "1987-06-01T00:00:00Z", "itemId": "kf7rQJ4Kj7Qyo9tU", "itemSku": "ptiyZzRX8Y4rxRWZ", "itemType": "Pe4ZLAQWuBJwxObZ"}, {"count": 34, "duration": 30, "endDate": "1990-10-10T00:00:00Z", "itemId": "Gxhffy9cHrLYffta", "itemSku": "d99JDcnn7f2d8SOW", "itemType": "P2dw6Uy88WpQalG3"}], "name": "8VOo82aLD9jUjuDI", "odds": 0.7330203607353477, "type": "PROBABILITY_GROUP", "weight": 48}, {"lootBoxItems": [{"count": 16, "duration": 88, "endDate": "1973-02-16T00:00:00Z", "itemId": "WRbmtK7MTxcCWnMi", "itemSku": "CLsjroKHPApA8GsG", "itemType": "wyocvY9NePjLJQJX"}, {"count": 46, "duration": 96, "endDate": "1978-08-10T00:00:00Z", "itemId": "wRFNYxx2dr6DDuDH", "itemSku": "XcfvXPXJURX3XwhO", "itemType": "lgcpcOIxqCMSpZxb"}, {"count": 50, "duration": 5, "endDate": "1999-12-09T00:00:00Z", "itemId": "J9vGOUeSeGb02vDP", "itemSku": "Upv5VEdIG82dpIbf", "itemType": "xVFfdvKQVgPQw3MV"}], "name": "Xe4xBPDWHRHCCVDB", "odds": 0.6989164438638124, "type": "PROBABILITY_GROUP", "weight": 83}, {"lootBoxItems": [{"count": 85, "duration": 29, "endDate": "1994-12-15T00:00:00Z", "itemId": "fvfXF1VsikD3IphQ", "itemSku": "QiRcOtsthUwgQzNH", "itemType": "UZ0l1FRfOjJUmCbi"}, {"count": 83, "duration": 23, "endDate": "1993-03-30T00:00:00Z", "itemId": "PwdzMSmrSvQdsAdT", "itemSku": "UGpd8KFrXKFA2gdj", "itemType": "QCYoE8b0CZetLfpF"}, {"count": 81, "duration": 86, "endDate": "1983-03-29T00:00:00Z", "itemId": "p7375rhOmR4zFjoJ", "itemSku": "ZVKZjOD2ePKAKYjJ", "itemType": "MVnYj2yKqavWpyde"}], "name": "pM3ap069B9Okr0xJ", "odds": 0.9275724296743241, "type": "PROBABILITY_GROUP", "weight": 88}], "rollFunction": "CUSTOM"}, "maxCount": 92, "maxCountPerUser": 97, "name": "4Y2zkGYTr9yJIveX", "optionBoxConfig": {"boxItems": [{"count": 12, "duration": 35, "endDate": "1979-07-14T00:00:00Z", "itemId": "6Inl9VTJB9Al3mn2", "itemSku": "DsHDHzSVJzhU5Z44", "itemType": "zgZ1fieLdl3Y82DO"}, {"count": 20, "duration": 56, "endDate": "1976-11-01T00:00:00Z", "itemId": "PuNRZZaUccuBYep9", "itemSku": "n7b17fsblalJrwQi", "itemType": "U3DD0xZFH1fHFLSr"}, {"count": 77, "duration": 83, "endDate": "1999-08-25T00:00:00Z", "itemId": "rEZTbFDj2L2McvCr", "itemSku": "rR7h9uKLXDaRf3px", "itemType": "KtJbRY5luCwKrt6w"}]}, "purchasable": false, "recurring": {"cycle": "YEARLY", "fixedFreeDays": 65, "fixedTrialCycles": 98, "graceDays": 35}, "regionData": {"xpVrcoXzSOEGEDYf": [{"currencyCode": "iGPYo2K3dN3YBOJf", "currencyNamespace": "vV6SuHovoQlk5wL2", "currencyType": "REAL", "discountAmount": 12, "discountExpireAt": "1996-07-30T00:00:00Z", "discountPercentage": 61, "discountPurchaseAt": "1987-03-20T00:00:00Z", "expireAt": "1998-06-03T00:00:00Z", "price": 19, "purchaseAt": "1985-08-24T00:00:00Z", "trialPrice": 45}, {"currencyCode": "7suvgIUkB2PAGJqO", "currencyNamespace": "rkdlZB246OY0dPVM", "currencyType": "REAL", "discountAmount": 3, "discountExpireAt": "1998-10-31T00:00:00Z", "discountPercentage": 100, "discountPurchaseAt": "1985-08-28T00:00:00Z", "expireAt": "1975-07-06T00:00:00Z", "price": 98, "purchaseAt": "1983-09-11T00:00:00Z", "trialPrice": 84}, {"currencyCode": "QTpfyAIoF7qsANBb", "currencyNamespace": "EKQrgocpjGNenRlD", "currencyType": "REAL", "discountAmount": 90, "discountExpireAt": "1995-11-05T00:00:00Z", "discountPercentage": 80, "discountPurchaseAt": "1982-02-26T00:00:00Z", "expireAt": "1992-03-06T00:00:00Z", "price": 51, "purchaseAt": "1978-03-20T00:00:00Z", "trialPrice": 94}], "095rDL6lEuB1ZIMI": [{"currencyCode": "s1dFvYokH9t2u8ZZ", "currencyNamespace": "nyHKkk6Gh25tEcX9", "currencyType": "VIRTUAL", "discountAmount": 9, "discountExpireAt": "1987-02-21T00:00:00Z", "discountPercentage": 27, "discountPurchaseAt": "1986-07-30T00:00:00Z", "expireAt": "1977-09-05T00:00:00Z", "price": 35, "purchaseAt": "1997-07-13T00:00:00Z", "trialPrice": 52}, {"currencyCode": "R1wLTgjsnB2LFVrZ", "currencyNamespace": "RrOntm2KjbfCOuW3", "currencyType": "REAL", "discountAmount": 60, "discountExpireAt": "1985-10-10T00:00:00Z", "discountPercentage": 25, "discountPurchaseAt": "1997-09-14T00:00:00Z", "expireAt": "1974-07-06T00:00:00Z", "price": 92, "purchaseAt": "1994-03-21T00:00:00Z", "trialPrice": 83}, {"currencyCode": "6suS90ZbDdmjU11Q", "currencyNamespace": "IZtkSn8QRbA5V4gj", "currencyType": "VIRTUAL", "discountAmount": 45, "discountExpireAt": "1995-08-26T00:00:00Z", "discountPercentage": 100, "discountPurchaseAt": "1984-02-22T00:00:00Z", "expireAt": "1972-05-17T00:00:00Z", "price": 27, "purchaseAt": "1982-08-15T00:00:00Z", "trialPrice": 91}], "vtPd7ibBA3sd51mD": [{"currencyCode": "ooH53vibq3Qcrtt8", "currencyNamespace": "L5dIebsw7EjkMnJS", "currencyType": "VIRTUAL", "discountAmount": 17, "discountExpireAt": "1986-10-08T00:00:00Z", "discountPercentage": 54, "discountPurchaseAt": "1972-02-12T00:00:00Z", "expireAt": "1999-10-18T00:00:00Z", "price": 100, "purchaseAt": "1983-05-11T00:00:00Z", "trialPrice": 66}, {"currencyCode": "IMJdrqHIsJ98WRjq", "currencyNamespace": "YieXRthQZvzRi7pq", "currencyType": "REAL", "discountAmount": 72, "discountExpireAt": "1971-12-27T00:00:00Z", "discountPercentage": 19, "discountPurchaseAt": "1988-07-24T00:00:00Z", "expireAt": "1986-10-09T00:00:00Z", "price": 68, "purchaseAt": "1974-06-06T00:00:00Z", "trialPrice": 72}, {"currencyCode": "9TIkcnrJ64BOKqyw", "currencyNamespace": "S6DKNSeb2UMWOgVe", "currencyType": "REAL", "discountAmount": 21, "discountExpireAt": "1985-08-18T00:00:00Z", "discountPercentage": 44, "discountPurchaseAt": "1978-05-13T00:00:00Z", "expireAt": "1987-05-16T00:00:00Z", "price": 39, "purchaseAt": "1983-12-02T00:00:00Z", "trialPrice": 8}]}, "saleConfig": {"currencyCode": "5pEVG7sNihxpuuL7", "price": 61}, "seasonType": "TIER", "sectionExclusive": false, "sellable": true, "sku": "5LijlQTVq8Bh1p0N", "stackable": true, "status": "ACTIVE", "tags": ["112byTYCDBnAvf8J", "WNkLU5ty3uQa7Fl3", "ZhSMLtrwnjTJVDlh"], "targetCurrencyCode": "pFuJSZistM75544P", "targetNamespace": "DlVK8taScpV0NtCx", "thumbnailUrl": "DDz5rxt6LflBJjok", "useCount": 78}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 101 'CreateItem' test.out
@@ -1238,7 +1239,7 @@ eval_tap $? 117 'GetItem' test.out
 $PYTHON -m $MODULE 'platform-update-item' \
     'ZKqlJZsdnY04DIyo' \
     'sprZPBaERb7U9kK4' \
-    --body '{"appId": "VctUmDhFVNa0JYzT", "appType": "DEMO", "baseAppId": "3Y0EshaG0uDiJNUu", "boothName": "xK22saWaGvrzBdLv", "categoryPath": "FUBZDnVrcwbsD0RD", "clazz": "LxWgEWwoHpV8E1xQ", "displayOrder": 77, "entitlementType": "DURABLE", "ext": {"a7Kw77UpCxNyx1jj": {}, "dxNePPAJ6Z9UzqIh": {}, "ZZiK0QEG6C9w4lVR": {}}, "features": ["NOF1Bg6OHZzvdZHo", "wgnSiZtChE0uof77", "Im4tKNhPjNIQGFxG"], "flexible": true, "images": [{"as": "y9ahS7h7XVlmc5Rs", "caption": "5FVQSIqObR55tV0B", "height": 23, "imageUrl": "MeG3qYJr6PuCVK9W", "smallImageUrl": "mDAdpLVTVsj9pDiy", "width": 50}, {"as": "CUREDdoGatGQ1SeO", "caption": "Xsg4jofp9PvlQ1xd", "height": 24, "imageUrl": "vOSvpmZZdlNXdx2k", "smallImageUrl": "WmSqodNZgfQyDVVk", "width": 21}, {"as": "aWj58Othvd3jzMDA", "caption": "f40gKSizvmxts5HS", "height": 87, "imageUrl": "yIwgQS9kVFUbeTeB", "smallImageUrl": "9KgnFZQ9lVMNyCiy", "width": 40}], "itemIds": ["jV7NTRYld9FJJ10g", "oNq8uq79Du28SRRA", "MaQFEzppeticckSU"], "itemQty": {"on7awfol07696uxp": 57, "ieMjjOfFSx3AJN97": 21, "vbC9NfLTFJGOzAIA": 34}, "itemType": "COINS", "listable": true, "localizations": {"os6QiHyrcGeRv27h": {"description": "j73EtufHuNIp0GXp", "localExt": {"M4nbG7aww2TANW1O": {}, "r7TvLoL0wwHoRMNe": {}, "xBOron8wIdUbp7xV": {}}, "longDescription": "MKfbAJfW4iMIC52N", "title": "UedhhkME18qGpSsy"}, "EPDWHcqfYp2EFxEa": {"description": "EHCGtg812NQb5Glh", "localExt": {"8srTlTj61WdV2XUo": {}, "1BO1rE7E12Fapao5": {}, "jo9nJoKEb8tHmFwL": {}}, "longDescription": "Gan2SrKckNxLWH6r", "title": "jhRL9uxoV5Oe8ktl"}, "ePEo1xBuRSv6Vizg": {"description": "tOXZy9cQ6B074dTJ", "localExt": {"ZqeOllKQNwJUGtC0": {}, "tAhxn1ay6ruu7PYW": {}, "HODRb6skOj0lfYFG": {}}, "longDescription": "nQCAWidWPjYgyebU", "title": "6rHFirnUpZ9UJ4N7"}}, "lootBoxConfig": {"rewardCount": 34, "rewards": [{"lootBoxItems": [{"count": 75, "duration": 68, "endDate": "1975-12-20T00:00:00Z", "itemId": "Gdn7gE4bwLzDEw2P", "itemSku": "Yt8x9SSaOZcEvG6K", "itemType": "Zh954BmtuIFllfSU"}, {"count": 28, "duration": 47, "endDate": "1971-09-18T00:00:00Z", "itemId": "hC4x11AS2jTKoTYe", "itemSku": "HaCuN7zpX9vp4QJd", "itemType": "Crwkz0nw2oxKye8j"}, {"count": 23, "duration": 34, "endDate": "1976-03-19T00:00:00Z", "itemId": "kBxiXf8OBQRqXWXQ", "itemSku": "3JdXdFz8pc0EEziE", "itemType": "5yIvijq9ix16vo60"}], "name": "jgvwV3C9hJ1kSZon", "odds": 0.5879359503798786, "type": "PROBABILITY_GROUP", "weight": 46}, {"lootBoxItems": [{"count": 99, "duration": 66, "endDate": "1988-09-18T00:00:00Z", "itemId": "gccuzuc6QDRMGdBP", "itemSku": "bUyHTYPS8CGKXGon", "itemType": "2ecc65YAFLweD9Z7"}, {"count": 95, "duration": 10, "endDate": "1999-11-28T00:00:00Z", "itemId": "lNkorrw9QH3rNhDe", "itemSku": "pQum4Dj7pR05RTGX", "itemType": "GRkYXifTd5nAOF9V"}, {"count": 97, "duration": 44, "endDate": "1989-02-17T00:00:00Z", "itemId": "PwZjydyzGDZM4zTT", "itemSku": "YI6O8coYDWUfcL1q", "itemType": "segBsrNqeW5BxVe8"}], "name": "iW7sGELnMdXRqdGP", "odds": 0.4182838616805121, "type": "REWARD", "weight": 12}, {"lootBoxItems": [{"count": 81, "duration": 43, "endDate": "1981-06-05T00:00:00Z", "itemId": "PtrhjeVBnTrsYihh", "itemSku": "gbeAZoFncMUdmf8h", "itemType": "D3nL1saQxLYrz08j"}, {"count": 16, "duration": 79, "endDate": "1994-07-14T00:00:00Z", "itemId": "apPMc8ZR3bPCJ5n5", "itemSku": "s6DODBmrqEhGlkEm", "itemType": "GdCbwodVRjZJWuCQ"}, {"count": 31, "duration": 4, "endDate": "1975-06-18T00:00:00Z", "itemId": "hf6nGCnPjiIbJifs", "itemSku": "0arKxCcNv8FQCyQB", "itemType": "qKxayGvw7MqOsypC"}], "name": "JmfRnW0spgvjt7eC", "odds": 0.5990592800885515, "type": "REWARD", "weight": 23}], "rollFunction": "DEFAULT"}, "maxCount": 2, "maxCountPerUser": 35, "name": "PA3PRnQtB410iWT0", "optionBoxConfig": {"boxItems": [{"count": 92, "duration": 18, "endDate": "1988-01-05T00:00:00Z", "itemId": "LVGXCWRucRpP1Tq7", "itemSku": "uYXhB6FPfF5DvveM", "itemType": "dBsPt19V2FkBPk0Q"}, {"count": 76, "duration": 23, "endDate": "1981-08-14T00:00:00Z", "itemId": "fK6eiT38raaRG1Fg", "itemSku": "0hfM5vQmahJlT5OU", "itemType": "DEMwAjgNZgto2EhO"}, {"count": 22, "duration": 46, "endDate": "1977-06-04T00:00:00Z", "itemId": "MCRdxXOBu3TWmHDV", "itemSku": "mCGFoD7aNFj9wORA", "itemType": "VqRuNsXxRu4EQqR3"}]}, "purchasable": false, "recurring": {"cycle": "MONTHLY", "fixedFreeDays": 99, "fixedTrialCycles": 64, "graceDays": 40}, "regionData": {"FLvER3xqCwUgKa4o": [{"currencyCode": "CBoJDxGa1UuSr4eh", "currencyNamespace": "nV8Aw9m6GvDSE2F7", "currencyType": "VIRTUAL", "discountAmount": 7, "discountExpireAt": "1972-06-04T00:00:00Z", "discountPercentage": 56, "discountPurchaseAt": "1986-04-03T00:00:00Z", "expireAt": "1985-04-15T00:00:00Z", "price": 97, "purchaseAt": "1977-10-27T00:00:00Z", "trialPrice": 33}, {"currencyCode": "iWkbdpGqWQIPK6mV", "currencyNamespace": "ytM5mBRT39gKYLk9", "currencyType": "VIRTUAL", "discountAmount": 85, "discountExpireAt": "1977-03-21T00:00:00Z", "discountPercentage": 86, "discountPurchaseAt": "1989-04-18T00:00:00Z", "expireAt": "1974-05-11T00:00:00Z", "price": 14, "purchaseAt": "1992-04-15T00:00:00Z", "trialPrice": 28}, {"currencyCode": "vAWBSOr7zljUKyhK", "currencyNamespace": "kD7wAHMrv8zABDhY", "currencyType": "VIRTUAL", "discountAmount": 24, "discountExpireAt": "1995-08-05T00:00:00Z", "discountPercentage": 48, "discountPurchaseAt": "1981-06-26T00:00:00Z", "expireAt": "1971-06-04T00:00:00Z", "price": 56, "purchaseAt": "1999-08-21T00:00:00Z", "trialPrice": 41}], "dhzXb6cBMPNMmjMi": [{"currencyCode": "2uztFNfXg0UvwaZ0", "currencyNamespace": "py16ShGomFzUappa", "currencyType": "REAL", "discountAmount": 19, "discountExpireAt": "1992-03-13T00:00:00Z", "discountPercentage": 60, "discountPurchaseAt": "1997-04-30T00:00:00Z", "expireAt": "1971-09-20T00:00:00Z", "price": 27, "purchaseAt": "1995-11-05T00:00:00Z", "trialPrice": 53}, {"currencyCode": "b7xerpjVPfktNnl8", "currencyNamespace": "UYH5kesuOtYHLqcd", "currencyType": "VIRTUAL", "discountAmount": 14, "discountExpireAt": "1998-12-17T00:00:00Z", "discountPercentage": 37, "discountPurchaseAt": "1990-05-09T00:00:00Z", "expireAt": "1986-01-28T00:00:00Z", "price": 47, "purchaseAt": "1987-06-21T00:00:00Z", "trialPrice": 28}, {"currencyCode": "lK9RnTEYv5eDhCxw", "currencyNamespace": "y85vlhWw1RCgHr3f", "currencyType": "VIRTUAL", "discountAmount": 96, "discountExpireAt": "1987-05-10T00:00:00Z", "discountPercentage": 52, "discountPurchaseAt": "1987-09-22T00:00:00Z", "expireAt": "1979-08-24T00:00:00Z", "price": 89, "purchaseAt": "1982-04-27T00:00:00Z", "trialPrice": 37}], "Hm6EtyXqQbKWMJ0a": [{"currencyCode": "ODiWn6bPmSa85Riu", "currencyNamespace": "1alaVEhjJZbwMHkF", "currencyType": "VIRTUAL", "discountAmount": 77, "discountExpireAt": "1989-06-20T00:00:00Z", "discountPercentage": 53, "discountPurchaseAt": "1978-04-16T00:00:00Z", "expireAt": "1997-08-01T00:00:00Z", "price": 74, "purchaseAt": "1996-03-05T00:00:00Z", "trialPrice": 55}, {"currencyCode": "o4M51vuaFyqjQsTG", "currencyNamespace": "mzItJIOkEIRsSWOV", "currencyType": "VIRTUAL", "discountAmount": 76, "discountExpireAt": "1979-07-19T00:00:00Z", "discountPercentage": 16, "discountPurchaseAt": "1972-06-30T00:00:00Z", "expireAt": "1988-02-12T00:00:00Z", "price": 3, "purchaseAt": "1996-11-05T00:00:00Z", "trialPrice": 66}, {"currencyCode": "G9LXPbBh2E3wFchP", "currencyNamespace": "3zTymfVfny2M0KsS", "currencyType": "VIRTUAL", "discountAmount": 5, "discountExpireAt": "1987-07-10T00:00:00Z", "discountPercentage": 80, "discountPurchaseAt": "1974-03-23T00:00:00Z", "expireAt": "1987-10-06T00:00:00Z", "price": 36, "purchaseAt": "1998-04-20T00:00:00Z", "trialPrice": 94}]}, "saleConfig": {"currencyCode": "lO10RAyIZs2VfCRh", "price": 52}, "seasonType": "PASS", "sectionExclusive": true, "sellable": true, "sku": "gn62lizsWGrtIgVP", "stackable": false, "status": "ACTIVE", "tags": ["Hkm0Tthcx9W7PkFN", "Va7czD4wybVjqOKr", "UVTfDc3w1tAXRrQt"], "targetCurrencyCode": "qYGxcBxfjLUZHK0O", "targetNamespace": "O1yQsMBQAdOfrtHW", "thumbnailUrl": "yGg5TU3INkMgjsnP", "useCount": 10}' \
+    --body '{"appId": "VctUmDhFVNa0JYzT", "appType": "DEMO", "baseAppId": "3Y0EshaG0uDiJNUu", "boothName": "xK22saWaGvrzBdLv", "categoryPath": "FUBZDnVrcwbsD0RD", "clazz": "LxWgEWwoHpV8E1xQ", "displayOrder": 77, "entitlementType": "DURABLE", "ext": {"a7Kw77UpCxNyx1jj": {}, "dxNePPAJ6Z9UzqIh": {}, "ZZiK0QEG6C9w4lVR": {}}, "features": ["NOF1Bg6OHZzvdZHo", "Im4tKNhPjNIQGFxG", "wgnSiZtChE0uof77"], "flexible": true, "images": [{"as": "y9ahS7h7XVlmc5Rs", "caption": "5FVQSIqObR55tV0B", "height": 23, "imageUrl": "MeG3qYJr6PuCVK9W", "smallImageUrl": "mDAdpLVTVsj9pDiy", "width": 50}, {"as": "CUREDdoGatGQ1SeO", "caption": "Xsg4jofp9PvlQ1xd", "height": 24, "imageUrl": "vOSvpmZZdlNXdx2k", "smallImageUrl": "WmSqodNZgfQyDVVk", "width": 21}, {"as": "aWj58Othvd3jzMDA", "caption": "f40gKSizvmxts5HS", "height": 87, "imageUrl": "yIwgQS9kVFUbeTeB", "smallImageUrl": "9KgnFZQ9lVMNyCiy", "width": 40}], "itemIds": ["jV7NTRYld9FJJ10g", "oNq8uq79Du28SRRA", "MaQFEzppeticckSU"], "itemQty": {"on7awfol07696uxp": 57, "ieMjjOfFSx3AJN97": 21, "vbC9NfLTFJGOzAIA": 34}, "itemType": "COINS", "listable": true, "localizations": {"os6QiHyrcGeRv27h": {"description": "j73EtufHuNIp0GXp", "localExt": {"M4nbG7aww2TANW1O": {}, "r7TvLoL0wwHoRMNe": {}, "xBOron8wIdUbp7xV": {}}, "longDescription": "MKfbAJfW4iMIC52N", "title": "UedhhkME18qGpSsy"}, "EPDWHcqfYp2EFxEa": {"description": "EHCGtg812NQb5Glh", "localExt": {"8srTlTj61WdV2XUo": {}, "1BO1rE7E12Fapao5": {}, "jo9nJoKEb8tHmFwL": {}}, "longDescription": "Gan2SrKckNxLWH6r", "title": "jhRL9uxoV5Oe8ktl"}, "ePEo1xBuRSv6Vizg": {"description": "tOXZy9cQ6B074dTJ", "localExt": {"ZqeOllKQNwJUGtC0": {}, "tAhxn1ay6ruu7PYW": {}, "HODRb6skOj0lfYFG": {}}, "longDescription": "nQCAWidWPjYgyebU", "title": "6rHFirnUpZ9UJ4N7"}}, "lootBoxConfig": {"rewardCount": 34, "rewards": [{"lootBoxItems": [{"count": 75, "duration": 68, "endDate": "1975-12-20T00:00:00Z", "itemId": "Gdn7gE4bwLzDEw2P", "itemSku": "Yt8x9SSaOZcEvG6K", "itemType": "Zh954BmtuIFllfSU"}, {"count": 28, "duration": 47, "endDate": "1971-09-18T00:00:00Z", "itemId": "hC4x11AS2jTKoTYe", "itemSku": "HaCuN7zpX9vp4QJd", "itemType": "Crwkz0nw2oxKye8j"}, {"count": 23, "duration": 34, "endDate": "1976-03-19T00:00:00Z", "itemId": "kBxiXf8OBQRqXWXQ", "itemSku": "3JdXdFz8pc0EEziE", "itemType": "5yIvijq9ix16vo60"}], "name": "jgvwV3C9hJ1kSZon", "odds": 0.5879359503798786, "type": "PROBABILITY_GROUP", "weight": 46}, {"lootBoxItems": [{"count": 99, "duration": 66, "endDate": "1988-09-18T00:00:00Z", "itemId": "gccuzuc6QDRMGdBP", "itemSku": "bUyHTYPS8CGKXGon", "itemType": "2ecc65YAFLweD9Z7"}, {"count": 95, "duration": 10, "endDate": "1999-11-28T00:00:00Z", "itemId": "lNkorrw9QH3rNhDe", "itemSku": "pQum4Dj7pR05RTGX", "itemType": "GRkYXifTd5nAOF9V"}, {"count": 97, "duration": 44, "endDate": "1989-02-17T00:00:00Z", "itemId": "PwZjydyzGDZM4zTT", "itemSku": "YI6O8coYDWUfcL1q", "itemType": "segBsrNqeW5BxVe8"}], "name": "iW7sGELnMdXRqdGP", "odds": 0.4182838616805121, "type": "REWARD", "weight": 12}, {"lootBoxItems": [{"count": 81, "duration": 43, "endDate": "1981-06-05T00:00:00Z", "itemId": "PtrhjeVBnTrsYihh", "itemSku": "gbeAZoFncMUdmf8h", "itemType": "D3nL1saQxLYrz08j"}, {"count": 16, "duration": 79, "endDate": "1994-07-14T00:00:00Z", "itemId": "apPMc8ZR3bPCJ5n5", "itemSku": "s6DODBmrqEhGlkEm", "itemType": "GdCbwodVRjZJWuCQ"}, {"count": 31, "duration": 4, "endDate": "1975-06-18T00:00:00Z", "itemId": "hf6nGCnPjiIbJifs", "itemSku": "0arKxCcNv8FQCyQB", "itemType": "qKxayGvw7MqOsypC"}], "name": "JmfRnW0spgvjt7eC", "odds": 0.5990592800885515, "type": "REWARD", "weight": 23}], "rollFunction": "DEFAULT"}, "maxCount": 2, "maxCountPerUser": 35, "name": "PA3PRnQtB410iWT0", "optionBoxConfig": {"boxItems": [{"count": 92, "duration": 18, "endDate": "1988-01-05T00:00:00Z", "itemId": "LVGXCWRucRpP1Tq7", "itemSku": "uYXhB6FPfF5DvveM", "itemType": "dBsPt19V2FkBPk0Q"}, {"count": 76, "duration": 23, "endDate": "1981-08-14T00:00:00Z", "itemId": "fK6eiT38raaRG1Fg", "itemSku": "0hfM5vQmahJlT5OU", "itemType": "DEMwAjgNZgto2EhO"}, {"count": 22, "duration": 46, "endDate": "1977-06-04T00:00:00Z", "itemId": "MCRdxXOBu3TWmHDV", "itemSku": "mCGFoD7aNFj9wORA", "itemType": "VqRuNsXxRu4EQqR3"}]}, "purchasable": false, "recurring": {"cycle": "MONTHLY", "fixedFreeDays": 99, "fixedTrialCycles": 64, "graceDays": 40}, "regionData": {"FLvER3xqCwUgKa4o": [{"currencyCode": "CBoJDxGa1UuSr4eh", "currencyNamespace": "nV8Aw9m6GvDSE2F7", "currencyType": "VIRTUAL", "discountAmount": 7, "discountExpireAt": "1972-06-04T00:00:00Z", "discountPercentage": 56, "discountPurchaseAt": "1986-04-03T00:00:00Z", "expireAt": "1985-04-15T00:00:00Z", "price": 97, "purchaseAt": "1977-10-27T00:00:00Z", "trialPrice": 33}, {"currencyCode": "iWkbdpGqWQIPK6mV", "currencyNamespace": "ytM5mBRT39gKYLk9", "currencyType": "VIRTUAL", "discountAmount": 85, "discountExpireAt": "1977-03-21T00:00:00Z", "discountPercentage": 86, "discountPurchaseAt": "1989-04-18T00:00:00Z", "expireAt": "1974-05-11T00:00:00Z", "price": 14, "purchaseAt": "1992-04-15T00:00:00Z", "trialPrice": 28}, {"currencyCode": "vAWBSOr7zljUKyhK", "currencyNamespace": "kD7wAHMrv8zABDhY", "currencyType": "VIRTUAL", "discountAmount": 24, "discountExpireAt": "1995-08-05T00:00:00Z", "discountPercentage": 48, "discountPurchaseAt": "1981-06-26T00:00:00Z", "expireAt": "1971-06-04T00:00:00Z", "price": 56, "purchaseAt": "1999-08-21T00:00:00Z", "trialPrice": 41}], "dhzXb6cBMPNMmjMi": [{"currencyCode": "2uztFNfXg0UvwaZ0", "currencyNamespace": "py16ShGomFzUappa", "currencyType": "REAL", "discountAmount": 19, "discountExpireAt": "1992-03-13T00:00:00Z", "discountPercentage": 60, "discountPurchaseAt": "1997-04-30T00:00:00Z", "expireAt": "1971-09-20T00:00:00Z", "price": 27, "purchaseAt": "1995-11-05T00:00:00Z", "trialPrice": 53}, {"currencyCode": "b7xerpjVPfktNnl8", "currencyNamespace": "UYH5kesuOtYHLqcd", "currencyType": "VIRTUAL", "discountAmount": 14, "discountExpireAt": "1998-12-17T00:00:00Z", "discountPercentage": 37, "discountPurchaseAt": "1990-05-09T00:00:00Z", "expireAt": "1986-01-28T00:00:00Z", "price": 47, "purchaseAt": "1987-06-21T00:00:00Z", "trialPrice": 28}, {"currencyCode": "lK9RnTEYv5eDhCxw", "currencyNamespace": "y85vlhWw1RCgHr3f", "currencyType": "VIRTUAL", "discountAmount": 96, "discountExpireAt": "1987-05-10T00:00:00Z", "discountPercentage": 52, "discountPurchaseAt": "1987-09-22T00:00:00Z", "expireAt": "1979-08-24T00:00:00Z", "price": 89, "purchaseAt": "1982-04-27T00:00:00Z", "trialPrice": 37}], "Hm6EtyXqQbKWMJ0a": [{"currencyCode": "ODiWn6bPmSa85Riu", "currencyNamespace": "1alaVEhjJZbwMHkF", "currencyType": "VIRTUAL", "discountAmount": 77, "discountExpireAt": "1989-06-20T00:00:00Z", "discountPercentage": 53, "discountPurchaseAt": "1978-04-16T00:00:00Z", "expireAt": "1997-08-01T00:00:00Z", "price": 74, "purchaseAt": "1996-03-05T00:00:00Z", "trialPrice": 55}, {"currencyCode": "o4M51vuaFyqjQsTG", "currencyNamespace": "mzItJIOkEIRsSWOV", "currencyType": "VIRTUAL", "discountAmount": 76, "discountExpireAt": "1979-07-19T00:00:00Z", "discountPercentage": 16, "discountPurchaseAt": "1972-06-30T00:00:00Z", "expireAt": "1988-02-12T00:00:00Z", "price": 3, "purchaseAt": "1996-11-05T00:00:00Z", "trialPrice": 66}, {"currencyCode": "G9LXPbBh2E3wFchP", "currencyNamespace": "3zTymfVfny2M0KsS", "currencyType": "VIRTUAL", "discountAmount": 5, "discountExpireAt": "1987-07-10T00:00:00Z", "discountPercentage": 80, "discountPurchaseAt": "1974-03-23T00:00:00Z", "expireAt": "1987-10-06T00:00:00Z", "price": 36, "purchaseAt": "1998-04-20T00:00:00Z", "trialPrice": 94}]}, "saleConfig": {"currencyCode": "lO10RAyIZs2VfCRh", "price": 52}, "seasonType": "PASS", "sectionExclusive": true, "sellable": true, "sku": "gn62lizsWGrtIgVP", "stackable": false, "status": "ACTIVE", "tags": ["UVTfDc3w1tAXRrQt", "Hkm0Tthcx9W7PkFN", "Va7czD4wybVjqOKr"], "targetCurrencyCode": "qYGxcBxfjLUZHK0O", "targetNamespace": "O1yQsMBQAdOfrtHW", "thumbnailUrl": "yGg5TU3INkMgjsnP", "useCount": 10}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 118 'UpdateItem' test.out
@@ -1326,7 +1327,7 @@ eval_tap $? 128 'GetLocaleItem' test.out
 $PYTHON -m $MODULE 'platform-update-item-purchase-condition' \
     'HGDNXw2L4mp580sU' \
     'SlEfC6ckbV2y32kG' \
-    --body '{"purchaseCondition": {"conditionGroups": [{"operator": "and", "predicates": [{"anyOf": 86, "comparison": "is", "name": "npxYa2jDp3LzelXa", "predicateType": "SeasonPassPredicate", "value": "z9AKozXBA29DPhYa", "values": ["fBJaU43PzOITmqjr", "KqQ4ToqWjpaECYi7", "8Ksjfnk7HKSWULkE"]}, {"anyOf": 4, "comparison": "isLessThan", "name": "VEbp3z13pDy371QL", "predicateType": "EntitlementPredicate", "value": "tDb6RZXatSimmKud", "values": ["qURkyz4E3EI1bSCY", "iT4U6WQQwsTHCgTv", "aa8JSNQdhrnvuDGF"]}, {"anyOf": 35, "comparison": "isNot", "name": "GllrcttK4WgzdUhB", "predicateType": "EntitlementPredicate", "value": "U1e8C1HnrPGydCRG", "values": ["PXLKNNfCxcAJoMhS", "Zgpx0HtzCgr8ybpA", "O0Pgh6Uenz7FjcRR"]}]}, {"operator": "and", "predicates": [{"anyOf": 6, "comparison": "isLessThan", "name": "VvsormCNHH08vEf2", "predicateType": "EntitlementPredicate", "value": "SsLchLBElch9a9Kn", "values": ["5hchXzG4ffz0lXBD", "bBGrYGleamVgjm0x", "c6glMjwg8OWAT7d6"]}, {"anyOf": 33, "comparison": "is", "name": "jhk7tzIHqZpgJqlw", "predicateType": "SeasonPassPredicate", "value": "41XUfp7AVnf8BzBB", "values": ["w6Fqa6YXBlVXOvZU", "qEvMtJopw2r5pKsX", "nIYkKH6MNrEsOlIF"]}, {"anyOf": 13, "comparison": "excludes", "name": "W2ZMVJhOyVaO1sgn", "predicateType": "SeasonTierPredicate", "value": "T13nFPxMy9YNTBZT", "values": ["R5tZmaZGxrhAPoRE", "kREJXucN3IEt8vZS", "vGmmbGW3SttwZrmK"]}]}, {"operator": "or", "predicates": [{"anyOf": 14, "comparison": "is", "name": "Lws9RV6lY9IGsZjU", "predicateType": "SeasonPassPredicate", "value": "lM52jb80Nlw8icwW", "values": ["jCNZAKjBlI9fsL6H", "EOiPcSKlQDo4ih35", "RvvZB46NCiqdleq2"]}, {"anyOf": 100, "comparison": "isLessThanOrEqual", "name": "f5RXgVFrsR55cpOV", "predicateType": "SeasonTierPredicate", "value": "9PXWtk222GY7L58l", "values": ["cH66JWKmTRqrvfJI", "P7drhfBjZFgaGUfh", "y5TZFoyfZ0XfCxPD"]}, {"anyOf": 36, "comparison": "isLessThan", "name": "FQWIDC6PHVsnUueY", "predicateType": "EntitlementPredicate", "value": "EJ3R0cuQGjCShSTN", "values": ["KKARjqJSWImXvaLX", "zWKQdVExukcKDUzh", "yM9yuMOFavgMWyxi"]}]}]}}' \
+    --body '{"purchaseCondition": {"conditionGroups": [{"operator": "and", "predicates": [{"anyOf": 86, "comparison": "is", "name": "npxYa2jDp3LzelXa", "predicateType": "SeasonPassPredicate", "value": "z9AKozXBA29DPhYa", "values": ["KqQ4ToqWjpaECYi7", "8Ksjfnk7HKSWULkE", "fBJaU43PzOITmqjr"]}, {"anyOf": 4, "comparison": "isLessThan", "name": "VEbp3z13pDy371QL", "predicateType": "EntitlementPredicate", "value": "tDb6RZXatSimmKud", "values": ["qURkyz4E3EI1bSCY", "aa8JSNQdhrnvuDGF", "iT4U6WQQwsTHCgTv"]}, {"anyOf": 35, "comparison": "isNot", "name": "GllrcttK4WgzdUhB", "predicateType": "EntitlementPredicate", "value": "U1e8C1HnrPGydCRG", "values": ["Zgpx0HtzCgr8ybpA", "PXLKNNfCxcAJoMhS", "O0Pgh6Uenz7FjcRR"]}]}, {"operator": "and", "predicates": [{"anyOf": 6, "comparison": "isLessThan", "name": "VvsormCNHH08vEf2", "predicateType": "EntitlementPredicate", "value": "SsLchLBElch9a9Kn", "values": ["5hchXzG4ffz0lXBD", "bBGrYGleamVgjm0x", "c6glMjwg8OWAT7d6"]}, {"anyOf": 33, "comparison": "is", "name": "jhk7tzIHqZpgJqlw", "predicateType": "SeasonPassPredicate", "value": "41XUfp7AVnf8BzBB", "values": ["w6Fqa6YXBlVXOvZU", "qEvMtJopw2r5pKsX", "nIYkKH6MNrEsOlIF"]}, {"anyOf": 13, "comparison": "excludes", "name": "W2ZMVJhOyVaO1sgn", "predicateType": "SeasonTierPredicate", "value": "T13nFPxMy9YNTBZT", "values": ["R5tZmaZGxrhAPoRE", "kREJXucN3IEt8vZS", "vGmmbGW3SttwZrmK"]}]}, {"operator": "or", "predicates": [{"anyOf": 14, "comparison": "is", "name": "Lws9RV6lY9IGsZjU", "predicateType": "SeasonPassPredicate", "value": "lM52jb80Nlw8icwW", "values": ["RvvZB46NCiqdleq2", "jCNZAKjBlI9fsL6H", "EOiPcSKlQDo4ih35"]}, {"anyOf": 100, "comparison": "isLessThanOrEqual", "name": "f5RXgVFrsR55cpOV", "predicateType": "SeasonTierPredicate", "value": "9PXWtk222GY7L58l", "values": ["y5TZFoyfZ0XfCxPD", "cH66JWKmTRqrvfJI", "P7drhfBjZFgaGUfh"]}, {"anyOf": 36, "comparison": "isLessThan", "name": "FQWIDC6PHVsnUueY", "predicateType": "EntitlementPredicate", "value": "EJ3R0cuQGjCShSTN", "values": ["zWKQdVExukcKDUzh", "KKARjqJSWImXvaLX", "yM9yuMOFavgMWyxi"]}]}]}}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 129 'UpdateItemPurchaseCondition' test.out
@@ -2510,14 +2511,14 @@ eval_tap 0 293 'QueryWallets # SKIP deprecated' test.out
 
 #- 294 BulkCredit
 $PYTHON -m $MODULE 'platform-bulk-credit' \
-    --body '[{"creditRequest": {"amount": 26, "expireAt": "1986-07-10T00:00:00Z", "metadata": {"oUNlmQjebaV8c13F": {}, "ZxX6qNntgmml0ts1": {}, "uw7WvaRDN6waXRBR": {}}, "origin": "Xbox", "reason": "8fZc6LpvtY7Bk3j0", "source": "REFUND"}, "currencyCode": "q98jWszWZxmbhMr5", "userIds": ["aDNyd7VDhThmXAsB", "gh3hVKyU97N87zJH", "wC4MOmSF5ZPpYXTb"]}, {"creditRequest": {"amount": 98, "expireAt": "1999-06-30T00:00:00Z", "metadata": {"v5vKHsJ5DezdlRlT": {}, "TSLmDolGdb7yXLAg": {}, "fgESHWCK8LccJJmX": {}}, "origin": "GooglePlay", "reason": "0pmy1KDJtg9FwOew", "source": "IAP"}, "currencyCode": "WutrpjBOnBeqwBnF", "userIds": ["6ePpjPG4iKj1VxNo", "dy01mQjVblM1GnFG", "FLwY2aYPpdsN55f9"]}, {"creditRequest": {"amount": 89, "expireAt": "1986-01-04T00:00:00Z", "metadata": {"5hKdn2Ay5KgtWue3": {}, "XkqcMKE9l0uRkf5R": {}, "xDdVVe0VvPmen8ke": {}}, "origin": "Other", "reason": "vuqwvTTB6lW4R7V4", "source": "REDEEM_CODE"}, "currencyCode": "IneqddStnBNigsnB", "userIds": ["IynEaAcX7fXbKWmr", "pu24ga0d3NvXvIgv", "aqNIKPX6gPHT29wk"]}]' \
+    --body '[{"creditRequest": {"amount": 26, "expireAt": "1986-07-10T00:00:00Z", "metadata": {"oUNlmQjebaV8c13F": {}, "ZxX6qNntgmml0ts1": {}, "uw7WvaRDN6waXRBR": {}}, "origin": "Xbox", "reason": "8fZc6LpvtY7Bk3j0", "source": "REFUND"}, "currencyCode": "q98jWszWZxmbhMr5", "userIds": ["wC4MOmSF5ZPpYXTb", "aDNyd7VDhThmXAsB", "gh3hVKyU97N87zJH"]}, {"creditRequest": {"amount": 98, "expireAt": "1999-06-30T00:00:00Z", "metadata": {"v5vKHsJ5DezdlRlT": {}, "TSLmDolGdb7yXLAg": {}, "fgESHWCK8LccJJmX": {}}, "origin": "GooglePlay", "reason": "0pmy1KDJtg9FwOew", "source": "IAP"}, "currencyCode": "WutrpjBOnBeqwBnF", "userIds": ["6ePpjPG4iKj1VxNo", "dy01mQjVblM1GnFG", "FLwY2aYPpdsN55f9"]}, {"creditRequest": {"amount": 89, "expireAt": "1986-01-04T00:00:00Z", "metadata": {"5hKdn2Ay5KgtWue3": {}, "XkqcMKE9l0uRkf5R": {}, "xDdVVe0VvPmen8ke": {}}, "origin": "Other", "reason": "vuqwvTTB6lW4R7V4", "source": "REDEEM_CODE"}, "currencyCode": "IneqddStnBNigsnB", "userIds": ["IynEaAcX7fXbKWmr", "pu24ga0d3NvXvIgv", "aqNIKPX6gPHT29wk"]}]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 294 'BulkCredit' test.out
 
 #- 295 BulkDebit
 $PYTHON -m $MODULE 'platform-bulk-debit' \
-    --body '[{"currencyCode": "ZwM8cvObRjKxi25l", "request": {"allowOverdraft": false, "amount": 26, "balanceOrigin": "Epic", "balanceSource": "EXPIRATION", "metadata": {"mSJffUaLwOsYRIJe": {}, "arztP7sqwracbiPr": {}, "T7cARnySCNlQCocW": {}}, "reason": "Bq1VspKjs4jxjTNe"}, "userIds": ["jx0xgbEuoPqi79JL", "3vK6XXKdJ9YgLSRy", "KHle3po9nK2MnWIS"]}, {"currencyCode": "Z8LUxYanMQUFaZF7", "request": {"allowOverdraft": false, "amount": 4, "balanceOrigin": "Oculus", "balanceSource": "DLC_REVOCATION", "metadata": {"nYIBTANshJcdLEof": {}, "yiS3dO8j3taWbShX": {}, "MN0MRNkMX09nQEwF": {}}, "reason": "Sce6VsIsSSdkP3Iq"}, "userIds": ["eutO2hlDa0voH7Al", "aPaXJc57cVP8tXCt", "8vuxWTaiUJpIgLrb"]}, {"currencyCode": "lSQiwrmWKb8IhCNJ", "request": {"allowOverdraft": true, "amount": 9, "balanceOrigin": "Other", "balanceSource": "EXPIRATION", "metadata": {"CtGvxKwuL3MuhHXz": {}, "y6WjNeNYuVWrqxrN": {}, "Dhsaw4vbDPKG9aUu": {}}, "reason": "Cw1ys0BxLbujuXwW"}, "userIds": ["olxRGH5sQmA6XL9p", "EJUvl8k6CNRAfp1s", "21wulz8cb64KjGDH"]}]' \
+    --body '[{"currencyCode": "ZwM8cvObRjKxi25l", "request": {"allowOverdraft": false, "amount": 26, "balanceOrigin": "Epic", "balanceSource": "EXPIRATION", "metadata": {"mSJffUaLwOsYRIJe": {}, "arztP7sqwracbiPr": {}, "T7cARnySCNlQCocW": {}}, "reason": "Bq1VspKjs4jxjTNe"}, "userIds": ["3vK6XXKdJ9YgLSRy", "KHle3po9nK2MnWIS", "jx0xgbEuoPqi79JL"]}, {"currencyCode": "Z8LUxYanMQUFaZF7", "request": {"allowOverdraft": false, "amount": 4, "balanceOrigin": "Oculus", "balanceSource": "DLC_REVOCATION", "metadata": {"nYIBTANshJcdLEof": {}, "yiS3dO8j3taWbShX": {}, "MN0MRNkMX09nQEwF": {}}, "reason": "Sce6VsIsSSdkP3Iq"}, "userIds": ["aPaXJc57cVP8tXCt", "eutO2hlDa0voH7Al", "8vuxWTaiUJpIgLrb"]}, {"currencyCode": "lSQiwrmWKb8IhCNJ", "request": {"allowOverdraft": true, "amount": 9, "balanceOrigin": "Other", "balanceSource": "EXPIRATION", "metadata": {"CtGvxKwuL3MuhHXz": {}, "y6WjNeNYuVWrqxrN": {}, "Dhsaw4vbDPKG9aUu": {}}, "reason": "Cw1ys0BxLbujuXwW"}, "userIds": ["olxRGH5sQmA6XL9p", "21wulz8cb64KjGDH", "EJUvl8k6CNRAfp1s"]}]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 295 'BulkDebit' test.out
@@ -2821,632 +2822,639 @@ $PYTHON -m $MODULE 'platform-public-list-currencies' \
     > test.out 2>&1
 eval_tap $? 338 'PublicListCurrencies' test.out
 
-#- 339 GetIAPItemMapping
+#- 339 GeDLCDurableRewardShortMap
+$PYTHON -m $MODULE 'platform-ge-dlc-durable-reward-short-map' \
+    'PSN' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 339 'GeDLCDurableRewardShortMap' test.out
+
+#- 340 GetIAPItemMapping
 $PYTHON -m $MODULE 'platform-get-iap-item-mapping' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 339 'GetIAPItemMapping' test.out
+eval_tap $? 340 'GetIAPItemMapping' test.out
 
-#- 340 PublicGetItemByAppId
+#- 341 PublicGetItemByAppId
 $PYTHON -m $MODULE 'platform-public-get-item-by-app-id' \
-    'O4pajEhkRLMvZnYZ' \
+    'pajEhkRLMvZnYZKC' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 340 'PublicGetItemByAppId' test.out
+eval_tap $? 341 'PublicGetItemByAppId' test.out
 
-#- 341 PublicQueryItems
+#- 342 PublicQueryItems
 $PYTHON -m $MODULE 'platform-public-query-items' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 341 'PublicQueryItems' test.out
+eval_tap $? 342 'PublicQueryItems' test.out
 
-#- 342 PublicGetItemBySku
+#- 343 PublicGetItemBySku
 $PYTHON -m $MODULE 'platform-public-get-item-by-sku' \
-    'KCk0zbREElwdZORo' \
+    'k0zbREElwdZORocH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 342 'PublicGetItemBySku' test.out
+eval_tap $? 343 'PublicGetItemBySku' test.out
 
-#- 343 PublicGetEstimatedPrice
+#- 344 PublicGetEstimatedPrice
 $PYTHON -m $MODULE 'platform-public-get-estimated-price' \
-    'cHSHulJHhAnY7QeD' \
+    'SHulJHhAnY7QeDSR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 343 'PublicGetEstimatedPrice' test.out
+eval_tap $? 344 'PublicGetEstimatedPrice' test.out
 
-#- 344 PublicBulkGetItems
+#- 345 PublicBulkGetItems
 $PYTHON -m $MODULE 'platform-public-bulk-get-items' \
-    'SRroVkXb4xPPUmUi' \
+    'roVkXb4xPPUmUifQ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 344 'PublicBulkGetItems' test.out
+eval_tap $? 345 'PublicBulkGetItems' test.out
 
-#- 345 PublicValidateItemPurchaseCondition
+#- 346 PublicValidateItemPurchaseCondition
 $PYTHON -m $MODULE 'platform-public-validate-item-purchase-condition' \
-    --body '{"itemIds": ["fQvfoZ7n3eRMzJEQ", "YwNGRl2gcWdDmIy4", "Ia2UtS4T1v2y9Je7"]}' \
+    --body '{"itemIds": ["vfoZ7n3eRMzJEQYw", "NGRl2gcWdDmIy4Ia", "2UtS4T1v2y9Je7ap"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 345 'PublicValidateItemPurchaseCondition' test.out
+eval_tap $? 346 'PublicValidateItemPurchaseCondition' test.out
 
-#- 346 PublicSearchItems
+#- 347 PublicSearchItems
 $PYTHON -m $MODULE 'platform-public-search-items' \
-    'apQfNdDyT3a0EGpH' \
-    'gGLUqdG3kBfGvwjw' \
+    'QfNdDyT3a0EGpHgG' \
+    'LUqdG3kBfGvwjwtt' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 346 'PublicSearchItems' test.out
+eval_tap $? 347 'PublicSearchItems' test.out
 
-#- 347 PublicGetApp
+#- 348 PublicGetApp
 $PYTHON -m $MODULE 'platform-public-get-app' \
-    'ttys4GvDvs1H5juf' \
+    'ys4GvDvs1H5juf5C' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 347 'PublicGetApp' test.out
+eval_tap $? 348 'PublicGetApp' test.out
 
-#- 348 PublicGetItemDynamicData
+#- 349 PublicGetItemDynamicData
 $PYTHON -m $MODULE 'platform-public-get-item-dynamic-data' \
-    '5Cq950XtiMxQDIHn' \
+    'q950XtiMxQDIHnPi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 348 'PublicGetItemDynamicData' test.out
+eval_tap $? 349 'PublicGetItemDynamicData' test.out
 
-#- 349 PublicGetItem
+#- 350 PublicGetItem
 $PYTHON -m $MODULE 'platform-public-get-item' \
-    'Pin3vZc9bUYgwdNm' \
+    'n3vZc9bUYgwdNmcp' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 349 'PublicGetItem' test.out
+eval_tap $? 350 'PublicGetItem' test.out
 
-#- 350 GetPaymentCustomization
-eval_tap 0 350 'GetPaymentCustomization # SKIP deprecated' test.out
+#- 351 GetPaymentCustomization
+eval_tap 0 351 'GetPaymentCustomization # SKIP deprecated' test.out
 
-#- 351 PublicGetPaymentUrl
+#- 352 PublicGetPaymentUrl
 $PYTHON -m $MODULE 'platform-public-get-payment-url' \
-    --body '{"paymentOrderNo": "cpdldDn2Y2l1kZWn", "paymentProvider": "STRIPE", "returnUrl": "EzCRLrZmVBFc2P68", "ui": "9TFuh1hFoX56gzos", "zipCode": "v2p6WtLfgPM8t1tg"}' \
+    --body '{"paymentOrderNo": "dldDn2Y2l1kZWnqj", "paymentProvider": "XSOLLA", "returnUrl": "aGGTFaJHecFy9m5s", "ui": "6oIWMnk88GXMrS82", "zipCode": "vN0N2236tI7v0x9S"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 351 'PublicGetPaymentUrl' test.out
+eval_tap $? 352 'PublicGetPaymentUrl' test.out
 
-#- 352 PublicGetPaymentMethods
+#- 353 PublicGetPaymentMethods
 $PYTHON -m $MODULE 'platform-public-get-payment-methods' \
-    'Whx94eFnxfKdptYc' \
+    't2EFfU2FbyIXierP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 352 'PublicGetPaymentMethods' test.out
+eval_tap $? 353 'PublicGetPaymentMethods' test.out
 
-#- 353 PublicGetUnpaidPaymentOrder
+#- 354 PublicGetUnpaidPaymentOrder
 $PYTHON -m $MODULE 'platform-public-get-unpaid-payment-order' \
-    'gxbMBZz4e7YZPuTk' \
+    'r2qLKBXRYt7v7Wfg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 353 'PublicGetUnpaidPaymentOrder' test.out
+eval_tap $? 354 'PublicGetUnpaidPaymentOrder' test.out
 
-#- 354 Pay
+#- 355 Pay
 $PYTHON -m $MODULE 'platform-pay' \
-    'hJH0gQxqxmEFytm0' \
-    --body '{"token": "rZGlRUuJ7HggA1D8"}' \
+    '2omS11YyIWGPc92P' \
+    --body '{"token": "cmK9zTgGQs1FIKxC"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 354 'Pay' test.out
+eval_tap $? 355 'Pay' test.out
 
-#- 355 PublicCheckPaymentOrderPaidStatus
+#- 356 PublicCheckPaymentOrderPaidStatus
 $PYTHON -m $MODULE 'platform-public-check-payment-order-paid-status' \
-    'DBtkE9JX7oDFoXpZ' \
+    'XUhNdJ4cK7rz2VPJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 355 'PublicCheckPaymentOrderPaidStatus' test.out
+eval_tap $? 356 'PublicCheckPaymentOrderPaidStatus' test.out
 
-#- 356 GetPaymentPublicConfig
+#- 357 GetPaymentPublicConfig
 $PYTHON -m $MODULE 'platform-get-payment-public-config' \
-    'STRIPE' \
-    'J8AZ9i1ml0sbgQ5z' \
+    'WXPAY' \
+    'dEuiT7OrRdHjzNhf' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 356 'GetPaymentPublicConfig' test.out
+eval_tap $? 357 'GetPaymentPublicConfig' test.out
 
-#- 357 PublicGetQRCode
+#- 358 PublicGetQRCode
 $PYTHON -m $MODULE 'platform-public-get-qr-code' \
-    'PZbllwvt3TjGezRR' \
+    'c3uokglAmxb5eaYq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 357 'PublicGetQRCode' test.out
+eval_tap $? 358 'PublicGetQRCode' test.out
 
-#- 358 PublicNormalizePaymentReturnUrl
+#- 359 PublicNormalizePaymentReturnUrl
 $PYTHON -m $MODULE 'platform-public-normalize-payment-return-url' \
-    'UjCNiQauO5Cfja0q' \
-    'WoqWrZJAMVQaCd4U' \
-    'ALIPAY' \
-    '0cHb0re0TJwuS3NP' \
+    'dXkBqt2UfrBE1JhO' \
+    'OdYFVxYR0XhaQ30c' \
+    'STRIPE' \
+    'b0re0TJwuS3NPZi6' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 358 'PublicNormalizePaymentReturnUrl' test.out
+eval_tap $? 359 'PublicNormalizePaymentReturnUrl' test.out
 
-#- 359 GetPaymentTaxValue
+#- 360 GetPaymentTaxValue
 $PYTHON -m $MODULE 'platform-get-payment-tax-value' \
-    'Zi6h1nN0txahdhp0' \
-    'WALLET' \
+    'h1nN0txahdhp0tmV' \
+    'CHECKOUT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 359 'GetPaymentTaxValue' test.out
+eval_tap $? 360 'GetPaymentTaxValue' test.out
 
-#- 360 GetRewardByCode
+#- 361 GetRewardByCode
 $PYTHON -m $MODULE 'platform-get-reward-by-code' \
-    '0rekmCKMOHEhe6ap' \
+    'jjIkC8lqpB9cbsDl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 360 'GetRewardByCode' test.out
+eval_tap $? 361 'GetRewardByCode' test.out
 
-#- 361 QueryRewards1
+#- 362 QueryRewards1
 $PYTHON -m $MODULE 'platform-query-rewards-1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 361 'QueryRewards1' test.out
+eval_tap $? 362 'QueryRewards1' test.out
 
-#- 362 GetReward1
+#- 363 GetReward1
 $PYTHON -m $MODULE 'platform-get-reward-1' \
-    'nthJsQpzHxEsiEsZ' \
+    'reKfjfpUz3jtg1bK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 362 'GetReward1' test.out
+eval_tap $? 363 'GetReward1' test.out
 
-#- 363 PublicListStores
+#- 364 PublicListStores
 $PYTHON -m $MODULE 'platform-public-list-stores' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 363 'PublicListStores' test.out
+eval_tap $? 364 'PublicListStores' test.out
 
-#- 364 PublicExistsAnyMyActiveEntitlement
+#- 365 PublicExistsAnyMyActiveEntitlement
 $PYTHON -m $MODULE 'platform-public-exists-any-my-active-entitlement' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 364 'PublicExistsAnyMyActiveEntitlement' test.out
+eval_tap $? 365 'PublicExistsAnyMyActiveEntitlement' test.out
 
-#- 365 PublicGetMyAppEntitlementOwnershipByAppId
+#- 366 PublicGetMyAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-public-get-my-app-entitlement-ownership-by-app-id' \
-    'H3UVmVcOxU0GsP6o' \
+    'aDBROm6TJ2qMul8c' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 365 'PublicGetMyAppEntitlementOwnershipByAppId' test.out
+eval_tap $? 366 'PublicGetMyAppEntitlementOwnershipByAppId' test.out
 
-#- 366 PublicGetMyEntitlementOwnershipByItemId
+#- 367 PublicGetMyEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-public-get-my-entitlement-ownership-by-item-id' \
-    'BsZy1nIeavdWM4Ui' \
+    'l55U4RB2xVHiARcF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 366 'PublicGetMyEntitlementOwnershipByItemId' test.out
+eval_tap $? 367 'PublicGetMyEntitlementOwnershipByItemId' test.out
 
-#- 367 PublicGetMyEntitlementOwnershipBySku
+#- 368 PublicGetMyEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-public-get-my-entitlement-ownership-by-sku' \
-    'M8xE2iHgKDtYUBWq' \
+    'LzOW7Uz8Gz5TN3bJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 367 'PublicGetMyEntitlementOwnershipBySku' test.out
+eval_tap $? 368 'PublicGetMyEntitlementOwnershipBySku' test.out
 
-#- 368 PublicGetEntitlementOwnershipToken
+#- 369 PublicGetEntitlementOwnershipToken
 $PYTHON -m $MODULE 'platform-public-get-entitlement-ownership-token' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 368 'PublicGetEntitlementOwnershipToken' test.out
+eval_tap $? 369 'PublicGetEntitlementOwnershipToken' test.out
 
-#- 369 SyncTwitchDropsEntitlement
+#- 370 SyncTwitchDropsEntitlement
 $PYTHON -m $MODULE 'platform-sync-twitch-drops-entitlement' \
-    --body '{"gameId": "18cbnbAjszS84wsQ", "language": "yrJb", "region": "hGmJKCjbEtFKLGvB"}' \
+    --body '{"gameId": "6UVKAdNp2ReRw5WP", "language": "bO", "region": "JRGwBPZ82ML7i85x"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 369 'SyncTwitchDropsEntitlement' test.out
+eval_tap $? 370 'SyncTwitchDropsEntitlement' test.out
 
-#- 370 PublicGetMyWallet
+#- 371 PublicGetMyWallet
 $PYTHON -m $MODULE 'platform-public-get-my-wallet' \
-    'QOS81LpIh5QqEOKQ' \
+    'AiG2FleXiqNPeymX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 370 'PublicGetMyWallet' test.out
+eval_tap $? 371 'PublicGetMyWallet' test.out
 
-#- 371 SyncEpicGameDLC
+#- 372 SyncEpicGameDLC
 $PYTHON -m $MODULE 'platform-sync-epic-game-dlc' \
-    'XnUYMXvJJrO8K9yV' \
-    --body '{"epicGamesJwtToken": "aSV6MkQpPd0utGYD"}' \
+    'gMK8gaxYcDDZjCrk' \
+    --body '{"epicGamesJwtToken": "lUdoPRrSlMOoEllC"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 371 'SyncEpicGameDLC' test.out
+eval_tap $? 372 'SyncEpicGameDLC' test.out
 
-#- 372 SyncOculusDLC
+#- 373 SyncOculusDLC
 $PYTHON -m $MODULE 'platform-sync-oculus-dlc' \
-    'VGwpKCkOgcVrMw1D' \
+    'itDiZDBLqmmiE0hD' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 372 'SyncOculusDLC' test.out
+eval_tap $? 373 'SyncOculusDLC' test.out
 
-#- 373 PublicSyncPsnDlcInventory
+#- 374 PublicSyncPsnDlcInventory
 $PYTHON -m $MODULE 'platform-public-sync-psn-dlc-inventory' \
-    'AaC3oGYmbE9E87RT' \
-    --body '{"serviceLabel": 56}' \
+    '2A6L9zZJpI7J4njh' \
+    --body '{"serviceLabel": 44}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 373 'PublicSyncPsnDlcInventory' test.out
+eval_tap $? 374 'PublicSyncPsnDlcInventory' test.out
 
-#- 374 PublicSyncPsnDlcInventoryWithMultipleServiceLabels
+#- 375 PublicSyncPsnDlcInventoryWithMultipleServiceLabels
 $PYTHON -m $MODULE 'platform-public-sync-psn-dlc-inventory-with-multiple-service-labels' \
-    '6wMyuNtA5mMerAvf' \
-    --body '{"serviceLabels": [97, 62, 63]}' \
+    'wMyuNtA5mMerAvf2' \
+    --body '{"serviceLabels": [97, 75, 62]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 374 'PublicSyncPsnDlcInventoryWithMultipleServiceLabels' test.out
+eval_tap $? 375 'PublicSyncPsnDlcInventoryWithMultipleServiceLabels' test.out
 
-#- 375 SyncSteamDLC
+#- 376 SyncSteamDLC
 $PYTHON -m $MODULE 'platform-sync-steam-dlc' \
-    'K1rsQWD1svihoAZB' \
-    --body '{"appId": "d4hkykRLwN2LHFkX", "steamId": "jhDf4RPTS1xmIM78"}' \
+    'vQkoqOZIFeJQSrnP' \
+    --body '{"appId": "scIMJRStF3LRa7q4", "steamId": "9EdmhBpI13Mh9tHY"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 375 'SyncSteamDLC' test.out
+eval_tap $? 376 'SyncSteamDLC' test.out
 
-#- 376 SyncXboxDLC
+#- 377 SyncXboxDLC
 $PYTHON -m $MODULE 'platform-sync-xbox-dlc' \
-    'uco5di3sJNayfJak' \
-    --body '{"xstsToken": "aJtAFsemukeOnQqv"}' \
+    'QilnHrNI7XsRCD3Y' \
+    --body '{"xstsToken": "OzMK1ZWOxnVMpyEz"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 376 'SyncXboxDLC' test.out
+eval_tap $? 377 'SyncXboxDLC' test.out
 
-#- 377 PublicQueryUserEntitlements
+#- 378 PublicQueryUserEntitlements
 $PYTHON -m $MODULE 'platform-public-query-user-entitlements' \
-    'XAFVKLeOpEjPJDBP' \
+    'iAPi9dBg5J0me0Bh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 377 'PublicQueryUserEntitlements' test.out
+eval_tap $? 378 'PublicQueryUserEntitlements' test.out
 
-#- 378 PublicGetUserAppEntitlementByAppId
+#- 379 PublicGetUserAppEntitlementByAppId
 $PYTHON -m $MODULE 'platform-public-get-user-app-entitlement-by-app-id' \
-    'U8LPr0bjy4nFkl8n' \
-    '6PSoXYb9tc6rYyOi' \
+    'vZVrOsZSqQjmdJGa' \
+    '6AahLvhIfKDFkuld' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 378 'PublicGetUserAppEntitlementByAppId' test.out
+eval_tap $? 379 'PublicGetUserAppEntitlementByAppId' test.out
 
-#- 379 PublicQueryUserEntitlementsByAppType
+#- 380 PublicQueryUserEntitlementsByAppType
 $PYTHON -m $MODULE 'platform-public-query-user-entitlements-by-app-type' \
-    'aUKC8t4GV0JiE7Zb' \
+    'V3vhNCAUQUVGJTsE' \
     'SOFTWARE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 379 'PublicQueryUserEntitlementsByAppType' test.out
+eval_tap $? 380 'PublicQueryUserEntitlementsByAppType' test.out
 
-#- 380 PublicGetUserEntitlementByItemId
+#- 381 PublicGetUserEntitlementByItemId
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-item-id' \
     'P80ZctunIw8zzjr1' \
     'oeY1p4P0xno1luSq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 380 'PublicGetUserEntitlementByItemId' test.out
+eval_tap $? 381 'PublicGetUserEntitlementByItemId' test.out
 
-#- 381 PublicGetUserEntitlementBySku
+#- 382 PublicGetUserEntitlementBySku
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-sku' \
     'ciM4rfqsoJ7AkLiY' \
     'jJvlKhH1ccnrp3T2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 381 'PublicGetUserEntitlementBySku' test.out
+eval_tap $? 382 'PublicGetUserEntitlementBySku' test.out
 
-#- 382 PublicExistsAnyUserActiveEntitlement
+#- 383 PublicExistsAnyUserActiveEntitlement
 $PYTHON -m $MODULE 'platform-public-exists-any-user-active-entitlement' \
     'fKqq9CzJlj0UGtCq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 382 'PublicExistsAnyUserActiveEntitlement' test.out
+eval_tap $? 383 'PublicExistsAnyUserActiveEntitlement' test.out
 
-#- 383 PublicGetUserAppEntitlementOwnershipByAppId
+#- 384 PublicGetUserAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-public-get-user-app-entitlement-ownership-by-app-id' \
     'Jnqpaur75iSsLSqG' \
     'KfGJDmzFepqpoIzo' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 383 'PublicGetUserAppEntitlementOwnershipByAppId' test.out
+eval_tap $? 384 'PublicGetUserAppEntitlementOwnershipByAppId' test.out
 
-#- 384 PublicGetUserEntitlementOwnershipByItemId
+#- 385 PublicGetUserEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-item-id' \
     'fQ17bQpOtqU8Y63D' \
     'FSnh5IbdftTLRLUG' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 384 'PublicGetUserEntitlementOwnershipByItemId' test.out
+eval_tap $? 385 'PublicGetUserEntitlementOwnershipByItemId' test.out
 
-#- 385 PublicGetUserEntitlementOwnershipByItemIds
+#- 386 PublicGetUserEntitlementOwnershipByItemIds
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-item-ids' \
     'wenKzXRT99U5B5j9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 385 'PublicGetUserEntitlementOwnershipByItemIds' test.out
+eval_tap $? 386 'PublicGetUserEntitlementOwnershipByItemIds' test.out
 
-#- 386 PublicGetUserEntitlementOwnershipBySku
+#- 387 PublicGetUserEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-sku' \
     'CT2YI1qt4AYI54fg' \
     'XlDCLFwNGzR7zvW3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 386 'PublicGetUserEntitlementOwnershipBySku' test.out
+eval_tap $? 387 'PublicGetUserEntitlementOwnershipBySku' test.out
 
-#- 387 PublicGetUserEntitlement
+#- 388 PublicGetUserEntitlement
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement' \
     '3BLQ5NyteBZg7IM9' \
     '3LGdMKko1WdXcuqj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 387 'PublicGetUserEntitlement' test.out
+eval_tap $? 388 'PublicGetUserEntitlement' test.out
 
-#- 388 PublicConsumeUserEntitlement
+#- 389 PublicConsumeUserEntitlement
 $PYTHON -m $MODULE 'platform-public-consume-user-entitlement' \
     'nyBh936FR7fT7f00' \
     'EZw65iq4fnnFA4ie' \
     --body '{"options": ["AeG0JcWHLxYckKH0", "j3mmJ2Y5FsP84rgl", "0AQlBikeTeA9eq8h"], "requestId": "IKrzAUsKqpjQGHI3", "useCount": 100}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 388 'PublicConsumeUserEntitlement' test.out
+eval_tap $? 389 'PublicConsumeUserEntitlement' test.out
 
-#- 389 PublicSellUserEntitlement
+#- 390 PublicSellUserEntitlement
 $PYTHON -m $MODULE 'platform-public-sell-user-entitlement' \
     'ZkYfTO2Gg00JcXGa' \
     'IUaL3FoA27eK2U3I' \
     --body '{"requestId": "HpgmmQaQj7hyQjWq", "useCount": 52}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 389 'PublicSellUserEntitlement' test.out
+eval_tap $? 390 'PublicSellUserEntitlement' test.out
 
-#- 390 PublicRedeemCode
+#- 391 PublicRedeemCode
 $PYTHON -m $MODULE 'platform-public-redeem-code' \
     'KhR4x3pYj5be9x03' \
     --body '{"code": "hTzeUaFK6P6yxOlF", "language": "hD-Rmws_Kf", "region": "cSW6YWXMTlqVrGyQ"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 390 'PublicRedeemCode' test.out
+eval_tap $? 391 'PublicRedeemCode' test.out
 
-#- 391 PublicFulfillAppleIAPItem
+#- 392 PublicFulfillAppleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-apple-iap-item' \
     'YDnbzj7Xg2lcvB7T' \
     --body '{"excludeOldTransactions": false, "language": "ugy", "productId": "uLwU5IJt4pAasYNW", "receiptData": "28u3UZ3q6QdMAL9I", "region": "C4460Wck2oK2mLwk", "transactionId": "xgJXK2OjNzQ95lce"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 391 'PublicFulfillAppleIAPItem' test.out
+eval_tap $? 392 'PublicFulfillAppleIAPItem' test.out
 
-#- 392 SyncEpicGamesInventory
+#- 393 SyncEpicGamesInventory
 $PYTHON -m $MODULE 'platform-sync-epic-games-inventory' \
     'Iy0lnTniV8j7XmR8' \
     --body '{"epicGamesJwtToken": "FUW42wLu5tQBUE3k"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 392 'SyncEpicGamesInventory' test.out
+eval_tap $? 393 'SyncEpicGamesInventory' test.out
 
-#- 393 PublicFulfillGoogleIAPItem
+#- 394 PublicFulfillGoogleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-google-iap-item' \
     '2mUvrQPFxSaRrDsF' \
     --body '{"autoAck": false, "language": "mlh", "orderId": "0zQqYmGkk8Pcq83l", "packageName": "2hWOuqsilAWXNFfx", "productId": "IWM9jL08jtCIr8ST", "purchaseTime": 99, "purchaseToken": "IIeRmFR2TQ2rE5Ug", "region": "f8q6zX7Jc7TK5xO3"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 393 'PublicFulfillGoogleIAPItem' test.out
+eval_tap $? 394 'PublicFulfillGoogleIAPItem' test.out
 
-#- 394 SyncOculusConsumableEntitlements
+#- 395 SyncOculusConsumableEntitlements
 $PYTHON -m $MODULE 'platform-sync-oculus-consumable-entitlements' \
     'LzmzW8Oj3HDRoKRr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 394 'SyncOculusConsumableEntitlements' test.out
+eval_tap $? 395 'SyncOculusConsumableEntitlements' test.out
 
-#- 395 PublicReconcilePlayStationStore
+#- 396 PublicReconcilePlayStationStore
 $PYTHON -m $MODULE 'platform-public-reconcile-play-station-store' \
     '6ZZRLgp1djMaw9o5' \
     --body '{"currencyCode": "TdLhB2mWrW0A29Uf", "price": 0.19090802114939842, "productId": "IqBalvCur3yS6PcP", "serviceLabel": 17}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 395 'PublicReconcilePlayStationStore' test.out
+eval_tap $? 396 'PublicReconcilePlayStationStore' test.out
 
-#- 396 PublicReconcilePlayStationStoreWithMultipleServiceLabels
+#- 397 PublicReconcilePlayStationStoreWithMultipleServiceLabels
 $PYTHON -m $MODULE 'platform-public-reconcile-play-station-store-with-multiple-service-labels' \
     'N8ee3aFSyZkpxzyG' \
     --body '{"currencyCode": "W3kHAKNzH5cJ1x2I", "price": 0.11952484773899352, "productId": "HEQwW44r5yXnevZs", "serviceLabels": [61, 6, 7]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 396 'PublicReconcilePlayStationStoreWithMultipleServiceLabels' test.out
+eval_tap $? 397 'PublicReconcilePlayStationStoreWithMultipleServiceLabels' test.out
 
-#- 397 SyncSteamInventory
+#- 398 SyncSteamInventory
 $PYTHON -m $MODULE 'platform-sync-steam-inventory' \
     'mqgWRmPnXpH8xifq' \
     --body '{"appId": "avEfKK0Dei3ChLwk", "currencyCode": "IGKtgDjDah0UewhS", "language": "vUf", "price": 0.34101728519109453, "productId": "mbqHpLDqY64bsfWM", "region": "A6zIWiASrarIiILe", "steamId": "XO18VYOBdYdQraUw"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 397 'SyncSteamInventory' test.out
+eval_tap $? 398 'SyncSteamInventory' test.out
 
-#- 398 SyncTwitchDropsEntitlement1
+#- 399 SyncTwitchDropsEntitlement1
 $PYTHON -m $MODULE 'platform-sync-twitch-drops-entitlement-1' \
     'eJSX5gGRLc0R4vMM' \
     --body '{"gameId": "PlJqY7ujDDLuoQJs", "language": "Tm-BaOB-UT", "region": "y8KpP0RHI8icuY92"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 398 'SyncTwitchDropsEntitlement1' test.out
+eval_tap $? 399 'SyncTwitchDropsEntitlement1' test.out
 
-#- 399 SyncXboxInventory
+#- 400 SyncXboxInventory
 $PYTHON -m $MODULE 'platform-sync-xbox-inventory' \
     'iMkPiEKRgT1zZPaK' \
     --body '{"currencyCode": "lnIY3vGLET05JQWh", "price": 0.3632316695812685, "productId": "ijC7ydSFRQ4V5Oyy", "xstsToken": "pfQ5iJtNrVbjnyYE"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 399 'SyncXboxInventory' test.out
+eval_tap $? 400 'SyncXboxInventory' test.out
 
-#- 400 PublicQueryUserOrders
+#- 401 PublicQueryUserOrders
 $PYTHON -m $MODULE 'platform-public-query-user-orders' \
     'Rw24T1DBdzzVbhZK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 400 'PublicQueryUserOrders' test.out
+eval_tap $? 401 'PublicQueryUserOrders' test.out
 
-#- 401 PublicCreateUserOrder
+#- 402 PublicCreateUserOrder
 $PYTHON -m $MODULE 'platform-public-create-user-order' \
     'nh9FfHsuwhOtgOWt' \
     --body '{"currencyCode": "ZuhAp0yxLpfWB0in", "discountedPrice": 68, "ext": {"cE5vUWRlOGzgjngh": {}, "EeYuTA3fZ9naIn2E": {}, "hpBnamOqQfF1i9lD": {}}, "itemId": "i17TuzOCkfreVXF3", "language": "HPhA_Xglc-788", "price": 64, "quantity": 20, "region": "DfogFpQ6h4G1Jwgw", "returnUrl": "qyIOpmNMgpfDY1FR", "sectionId": "9rKaxaWsCGgI79Hr"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 401 'PublicCreateUserOrder' test.out
+eval_tap $? 402 'PublicCreateUserOrder' test.out
 
-#- 402 PublicGetUserOrder
+#- 403 PublicGetUserOrder
 $PYTHON -m $MODULE 'platform-public-get-user-order' \
     '331YipwCDOc9FNs0' \
     'rjVHzs9C25B5DYIk' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 402 'PublicGetUserOrder' test.out
+eval_tap $? 403 'PublicGetUserOrder' test.out
 
-#- 403 PublicCancelUserOrder
+#- 404 PublicCancelUserOrder
 $PYTHON -m $MODULE 'platform-public-cancel-user-order' \
     'GcoYjLN4VPTXzknD' \
     'z9YRB0KErE7XXTkV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 403 'PublicCancelUserOrder' test.out
+eval_tap $? 404 'PublicCancelUserOrder' test.out
 
-#- 404 PublicGetUserOrderHistories
+#- 405 PublicGetUserOrderHistories
 $PYTHON -m $MODULE 'platform-public-get-user-order-histories' \
     'svdGlmWWA02nKwO7' \
     'XUNrraxsHn4uKhXV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 404 'PublicGetUserOrderHistories' test.out
+eval_tap $? 405 'PublicGetUserOrderHistories' test.out
 
-#- 405 PublicDownloadUserOrderReceipt
+#- 406 PublicDownloadUserOrderReceipt
 $PYTHON -m $MODULE 'platform-public-download-user-order-receipt' \
     'FTTx0TcboB98Gf5P' \
     'cmWICZpV13Vxw1In' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 405 'PublicDownloadUserOrderReceipt' test.out
+eval_tap $? 406 'PublicDownloadUserOrderReceipt' test.out
 
-#- 406 PublicGetPaymentAccounts
+#- 407 PublicGetPaymentAccounts
 $PYTHON -m $MODULE 'platform-public-get-payment-accounts' \
     'WyY5J5tCY01FkbWf' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 406 'PublicGetPaymentAccounts' test.out
+eval_tap $? 407 'PublicGetPaymentAccounts' test.out
 
-#- 407 PublicDeletePaymentAccount
+#- 408 PublicDeletePaymentAccount
 $PYTHON -m $MODULE 'platform-public-delete-payment-account' \
     'SwD66Xg5Qbc0Ejxx' \
     'paypal' \
     'x6LtOu3SAtYQcZ2M' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 407 'PublicDeletePaymentAccount' test.out
+eval_tap $? 408 'PublicDeletePaymentAccount' test.out
 
-#- 408 PublicListActiveSections
+#- 409 PublicListActiveSections
 $PYTHON -m $MODULE 'platform-public-list-active-sections' \
     '0m2eu4s6Vt77Z7VY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 408 'PublicListActiveSections' test.out
+eval_tap $? 409 'PublicListActiveSections' test.out
 
-#- 409 PublicQueryUserSubscriptions
+#- 410 PublicQueryUserSubscriptions
 $PYTHON -m $MODULE 'platform-public-query-user-subscriptions' \
     'CzMbz1C3ZtjGu9Cx' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 409 'PublicQueryUserSubscriptions' test.out
+eval_tap $? 410 'PublicQueryUserSubscriptions' test.out
 
-#- 410 PublicSubscribeSubscription
+#- 411 PublicSubscribeSubscription
 $PYTHON -m $MODULE 'platform-public-subscribe-subscription' \
     'aM7nweO9MSckJNZe' \
     --body '{"currencyCode": "DhfW7AVHVE6Tamht", "itemId": "DUacOPwPczqMDbsg", "language": "eA", "region": "xIpP9oAICocQql5Y", "returnUrl": "fBZVQcDD4zf1BZvQ", "source": "IrbCQWs1jZYqrf4b"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 410 'PublicSubscribeSubscription' test.out
+eval_tap $? 411 'PublicSubscribeSubscription' test.out
 
-#- 411 PublicCheckUserSubscriptionSubscribableByItemId
+#- 412 PublicCheckUserSubscriptionSubscribableByItemId
 $PYTHON -m $MODULE 'platform-public-check-user-subscription-subscribable-by-item-id' \
     'xOoikruHKYKNEVJS' \
     'zeli2Uey4fuSj1kS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 411 'PublicCheckUserSubscriptionSubscribableByItemId' test.out
+eval_tap $? 412 'PublicCheckUserSubscriptionSubscribableByItemId' test.out
 
-#- 412 PublicGetUserSubscription
+#- 413 PublicGetUserSubscription
 $PYTHON -m $MODULE 'platform-public-get-user-subscription' \
     'eWA3702McnnKWV37' \
     'CLHYvul2IsFExmn4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 412 'PublicGetUserSubscription' test.out
+eval_tap $? 413 'PublicGetUserSubscription' test.out
 
-#- 413 PublicChangeSubscriptionBillingAccount
+#- 414 PublicChangeSubscriptionBillingAccount
 $PYTHON -m $MODULE 'platform-public-change-subscription-billing-account' \
     'GV4MH5mOZyTMMDaz' \
     'z0zG1FmCCywXfHj3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 413 'PublicChangeSubscriptionBillingAccount' test.out
+eval_tap $? 414 'PublicChangeSubscriptionBillingAccount' test.out
 
-#- 414 PublicCancelSubscription
+#- 415 PublicCancelSubscription
 $PYTHON -m $MODULE 'platform-public-cancel-subscription' \
     '29WcNk8k8qK4gJru' \
     'x6tlQDfleFLBKj8h' \
     --body '{"immediate": true, "reason": "i1EP6ekQzrmDqC82"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 414 'PublicCancelSubscription' test.out
+eval_tap $? 415 'PublicCancelSubscription' test.out
 
-#- 415 PublicGetUserSubscriptionBillingHistories
+#- 416 PublicGetUserSubscriptionBillingHistories
 $PYTHON -m $MODULE 'platform-public-get-user-subscription-billing-histories' \
     '7Ayw8HdDdyIIR5cs' \
     '3jEJm9cqIJO6etrg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 415 'PublicGetUserSubscriptionBillingHistories' test.out
+eval_tap $? 416 'PublicGetUserSubscriptionBillingHistories' test.out
 
-#- 416 PublicListViews
+#- 417 PublicListViews
 $PYTHON -m $MODULE 'platform-public-list-views' \
     'PcoqdV16bQzZjJii' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 416 'PublicListViews' test.out
+eval_tap $? 417 'PublicListViews' test.out
 
-#- 417 PublicGetWallet
+#- 418 PublicGetWallet
 $PYTHON -m $MODULE 'platform-public-get-wallet' \
     'JFm6K0MsbekvKte7' \
     'LEbOajs9HWygfQVP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 417 'PublicGetWallet' test.out
+eval_tap $? 418 'PublicGetWallet' test.out
 
-#- 418 PublicListUserWalletTransactions
+#- 419 PublicListUserWalletTransactions
 $PYTHON -m $MODULE 'platform-public-list-user-wallet-transactions' \
     'PqE6XNxmrOFx6Aen' \
     'NJCzeLqjOhHMsieB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 418 'PublicListUserWalletTransactions' test.out
+eval_tap $? 419 'PublicListUserWalletTransactions' test.out
 
-#- 419 QueryItems1
+#- 420 QueryItems1
 $PYTHON -m $MODULE 'platform-query-items-1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 419 'QueryItems1' test.out
+eval_tap $? 420 'QueryItems1' test.out
 
-#- 420 ImportStore1
+#- 421 ImportStore1
 $PYTHON -m $MODULE 'platform-import-store-1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 420 'ImportStore1' test.out
+eval_tap $? 421 'ImportStore1' test.out
 
-#- 421 ExportStore1
+#- 422 ExportStore1
 $PYTHON -m $MODULE 'platform-export-store-1' \
     'zDBhi6oZhjEnbkZp' \
     --body '{"itemIds": ["3ZHkJnKJ2ksygYZV", "yQIUbI6vW6lvytcm", "R4QRN7ybL3lT1Ois"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 421 'ExportStore1' test.out
+eval_tap $? 422 'ExportStore1' test.out
 
-#- 422 FulfillRewardsV2
+#- 423 FulfillRewardsV2
 $PYTHON -m $MODULE 'platform-fulfill-rewards-v2' \
     '7OsTElVV8XJ7Jg2J' \
     --body '{"metadata": {"P8JKQ1Fia4jQzEGs": {}, "QTmKTeq9hsX0E1pS": {}, "QzkJa95maQLAJLoG": {}}, "origin": "Twitch", "rewards": [{"currency": {"currencyCode": "V658ZBVGgxlpGxhD", "namespace": "9kKX2uBUIh1pfP8b"}, "item": {"itemId": "RBVoq807roCNo3Qw", "itemSku": "4Z54sNMs82e3yxhk", "itemType": "TFfQHB8O5ke34NGu"}, "quantity": 79, "type": "ITEM"}, {"currency": {"currencyCode": "iPaGqelc3lbrPkW2", "namespace": "foKqIz9z80ICxp4M"}, "item": {"itemId": "7Opf9oRlvBsYj4Ic", "itemSku": "bdUz2cBWKIUuPLfv", "itemType": "TFl9DbHQLYWCwsAV"}, "quantity": 5, "type": "ITEM"}, {"currency": {"currencyCode": "Q0VGEUxlcNQWOpRL", "namespace": "ETWMAv0uJ30L51Tx"}, "item": {"itemId": "rdknW52x2o1yDO6b", "itemSku": "wcKYeFoxUWdvEBTw", "itemType": "Uyzq5bzdNEHv6Gma"}, "quantity": 29, "type": "CURRENCY"}], "source": "REWARD", "transactionId": "OIadEDAmp524IRpl"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 422 'FulfillRewardsV2' test.out
+eval_tap $? 423 'FulfillRewardsV2' test.out
 
 
 fi

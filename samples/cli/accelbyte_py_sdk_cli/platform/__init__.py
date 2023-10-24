@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.37.1)
+# justice-platform-service (4.38.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._get_fulfillment_script import get_fulfillment_script
@@ -369,6 +369,7 @@ from ._public_get_category import public_get_category
 from ._public_get_child_categories import public_get_child_categories
 from ._public_get_descendant_categories import public_get_descendant_categories
 from ._public_list_currencies import public_list_currencies
+from ._ge_dlc_durable_reward_short_map import ge_dlc_durable_reward_short_map
 from ._get_iap_item_mapping import get_iap_item_mapping
 from ._public_get_item_by_app_id import public_get_item_by_app_id
 from ._public_query_items import public_query_items
@@ -833,6 +834,7 @@ commands = [
     public_get_child_categories,
     public_get_descendant_categories,
     public_list_currencies,
+    ge_dlc_durable_reward_short_map,
     get_iap_item_mapping,
     public_get_item_by_app_id,
     public_query_items,

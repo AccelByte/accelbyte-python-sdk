@@ -14,6 +14,10 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+# admin_chaining_operations
+from .wrappers import admin_create_chaining_operations
+from .wrappers import admin_create_chaining_operations_async
+
 # admin_inventories
 from .wrappers import admin_create_inventory
 from .wrappers import admin_create_inventory_async

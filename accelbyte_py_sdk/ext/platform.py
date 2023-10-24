@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.37.1)
+# AccelByte Gaming Services Platform Service (4.38.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -96,6 +96,7 @@ from ..api.platform.models import CurrencySummary
 from ..api.platform.models import CurrencyUpdate
 from ..api.platform.models import CurrencyWallet
 from ..api.platform.models import Customization
+from ..api.platform.models import DLCConfigRewardShortInfo
 from ..api.platform.models import DLCItem
 from ..api.platform.models import DLCItemConfigInfo
 from ..api.platform.models import DLCItemConfigUpdate
@@ -1286,6 +1287,13 @@ def create_detailed_wallet_transaction_paging_sliced_result_example() -> (
     instance = DetailedWalletTransactionPagingSlicedResult()
     instance.data = [create_detailed_wallet_transaction_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_dlc_config_reward_short_info_example() -> DLCConfigRewardShortInfo:
+    instance = DLCConfigRewardShortInfo()
+    instance.data = {}
+    instance.dlc_type = randomize()
     return instance
 
 

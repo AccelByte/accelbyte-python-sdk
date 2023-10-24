@@ -6,12 +6,15 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (3.8.1)
+# justice-session-service (3.9.0)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
 from ._admin_get_dsmc_configuration_default import admin_get_dsmc_configuration_default
 from ._admin_list_environment_variables import admin_list_environment_variables
+from ._admin_list_global_configuration import admin_list_global_configuration
+from ._admin_update_global_configuration import admin_update_global_configuration
+from ._admin_delete_global_configuration import admin_delete_global_configuration
 from ._admin_get_configuration_alert_v1 import admin_get_configuration_alert_v1
 from ._admin_update_configuration_alert_v1 import admin_update_configuration_alert_v1
 from ._admin_create_configuration_alert_v1 import admin_create_configuration_alert_v1
@@ -47,7 +50,9 @@ from ._admin_read_user_session_storage import admin_read_user_session_storage
 from ._admin_query_player_attributes import admin_query_player_attributes
 from ._admin_get_player_attributes import admin_get_player_attributes
 from ._create_game_session import create_game_session
-from ._public_query_game_sessions import public_query_game_sessions
+from ._public_query_game_sessions_by_attributes import (
+    public_query_game_sessions_by_attributes,
+)
 from ._public_session_join_code import public_session_join_code
 from ._get_game_session_by_pod_name import get_game_session_by_pod_name
 from ._get_game_session import get_game_session
@@ -97,6 +102,9 @@ commands = [
     get_healthcheck_info_v1,
     admin_get_dsmc_configuration_default,
     admin_list_environment_variables,
+    admin_list_global_configuration,
+    admin_update_global_configuration,
+    admin_delete_global_configuration,
     admin_get_configuration_alert_v1,
     admin_update_configuration_alert_v1,
     admin_create_configuration_alert_v1,
@@ -122,7 +130,7 @@ commands = [
     admin_query_player_attributes,
     admin_get_player_attributes,
     create_game_session,
-    public_query_game_sessions,
+    public_query_game_sessions_by_attributes,
     public_session_join_code,
     get_game_session_by_pod_name,
     get_game_session,

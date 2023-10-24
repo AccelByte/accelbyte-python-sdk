@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.37.1)
+# AccelByte Gaming Services Platform Service (4.38.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -62,7 +62,7 @@ class GetDLCItemConfig(Operation):
     Responses:
         200: OK - DLCItemConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (39341: DLC item config cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}])
     """
 
     # region fields
@@ -159,7 +159,7 @@ class GetDLCItemConfig(Operation):
 
         200: OK - DLCItemConfigInfo (successful operation)
 
-        404: Not Found - ErrorEntity (39341: DLC item config cannot be found in namespace [{namespace}])
+        404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}])
 
         ---: HttpResponse (Undocumented Response)
 

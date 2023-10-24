@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.8.1)
+# AccelByte Gaming Services Session Service (3.9.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,33 +29,21 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApimodelsGameSessionQueryResponse
+from ...models import ApimodelsGlobalConfigurationResponse
 from ...models import ResponseError
 
 
-class PublicQueryGameSessions(Operation):
-    """Query game sessions (publicQueryGameSessions)
+class AdminListGlobalConfiguration(Operation):
+    """Record of global configuration data. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminListGlobalConfiguration)
 
-    Query game sessions.
-
-    By default, API will return a list of available game sessions (joinability: open).
-    Session service has several DSInformation status to track DS request to DSMC:
-    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
-    - REQUESTED: DS is being requested to DSMC.
-    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
-    - FAILED_TO_REQUEST: DSMC fails to create the DS.
-
-    query parameter "availability" to filter sessions' availability:
-    all: return all sessions regardless it's full
-    full: only return active sessions
-    default behavior (unset or else): return only available sessions (not full)
+    Record of global configuration data.
 
     Properties:
-        url: /session/v1/public/namespaces/{namespace}/gamesessions
+        url: /session/v1/admin/global-configurations
 
-        method: POST
+        method: GET
 
-        tags: ["Game Session"]
+        tags: ["Global Configuration"]
 
         consumes: ["application/json"]
 
@@ -63,33 +51,22 @@ class PublicQueryGameSessions(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED Dict[str, Any] in body
-
-        namespace: (namespace) REQUIRED str in path
-
     Responses:
-        200: OK - ApimodelsGameSessionQueryResponse (OK)
-
-        400: Bad Request - ResponseError (Bad Request)
+        200: OK - ApimodelsGlobalConfigurationResponse (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
         403: Forbidden - ResponseError (Forbidden)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/session/v1/public/namespaces/{namespace}/gamesessions"
-    _method: str = "POST"
+    _url: str = "/session/v1/admin/global-configurations"
+    _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
-
-    body: Dict[str, Any]  # REQUIRED in [body]
-    namespace: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -128,21 +105,7 @@ class PublicQueryGameSessions(Operation):
     # region get_x_params methods
 
     def get_all_params(self) -> dict:
-        return {
-            "body": self.get_body_params(),
-            "path": self.get_path_params(),
-        }
-
-    def get_body_params(self) -> Any:
-        if not hasattr(self, "body") or self.body is None:
-            return None
-        return self.body
-
-    def get_path_params(self) -> dict:
-        result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        return result
+        return {}
 
     # endregion get_x_params methods
 
@@ -152,28 +115,12 @@ class PublicQueryGameSessions(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: Dict[str, Any]) -> PublicQueryGameSessions:
-        self.body = value
-        return self
-
-    def with_namespace(self, value: str) -> PublicQueryGameSessions:
-        self.namespace = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "body") and self.body:
-            result["body"] = {str(k0): v0 for k0, v0 in self.body.items()}
-        elif include_empty:
-            result["body"] = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -184,20 +131,16 @@ class PublicQueryGameSessions(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ApimodelsGameSessionQueryResponse],
+        Union[None, ApimodelsGlobalConfigurationResponse],
         Union[None, HttpResponse, ResponseError],
     ]:
         """Parse the given response.
 
-        200: OK - ApimodelsGameSessionQueryResponse (OK)
-
-        400: Bad Request - ResponseError (Bad Request)
+        200: OK - ApimodelsGlobalConfigurationResponse (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
         403: Forbidden - ResponseError (Forbidden)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -213,14 +156,10 @@ class PublicQueryGameSessions(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ApimodelsGameSessionQueryResponse.create_from_dict(content), None
-        if code == 400:
-            return None, ResponseError.create_from_dict(content)
+            return ApimodelsGlobalConfigurationResponse.create_from_dict(content), None
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 403:
-            return None, ResponseError.create_from_dict(content)
-        if code == 500:
             return None, ResponseError.create_from_dict(content)
 
         return self.handle_undocumented_response(
@@ -232,41 +171,23 @@ class PublicQueryGameSessions(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls, body: Dict[str, Any], namespace: str, **kwargs
-    ) -> PublicQueryGameSessions:
+    def create(cls, **kwargs) -> AdminListGlobalConfiguration:
         instance = cls()
-        instance.body = body
-        instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> PublicQueryGameSessions:
+    ) -> AdminListGlobalConfiguration:
         instance = cls()
-        if "body" in dict_ and dict_["body"] is not None:
-            instance.body = {str(k0): v0 for k0, v0 in dict_["body"].items()}
-        elif include_empty:
-            instance.body = {}
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {
-            "body": "body",
-            "namespace": "namespace",
-        }
+        return {}
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
-        return {
-            "body": True,
-            "namespace": True,
-        }
+        return {}
 
     # endregion static methods

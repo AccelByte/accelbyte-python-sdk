@@ -7,6 +7,11 @@
 
 ## Operations
 
+### Admin Chaining Operations
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /inventory/v1/admin/namespaces/{namespace}/chainingOperations | POST | AdminCreateChainingOperations | `false` | [AdminCreateChainingOperations](../../accelbyte_py_sdk/api/inventory/operations/admin_chaining_operations/admin_create_chaining_o_8801c9.py) | [admin_create_chaining_operations](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_chaining_operations.py) | [accelbyte_py_sdk_cli inventory-admin-create-chaining-operations](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_create_chaining_operations.py) |
+
 ### Admin Inventories
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -85,9 +90,13 @@
 | Model | Class |
 |---|---|
 | apimodels.AdminUpdateItemReq | [ApimodelsAdminUpdateItemReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_admin_update_item_req.py) |
+| apimodels.ChainingOperationReq | [ApimodelsChainingOperationReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_chaining_operation_req.py) |
+| apimodels.ChainingOperationResp | [ApimodelsChainingOperationResp](../../accelbyte_py_sdk/api/inventory/models/apimodels_chaining_operation_resp.py) |
+| apimodels.ConsumeItem | [ApimodelsConsumeItem](../../accelbyte_py_sdk/api/inventory/models/apimodels_consume_item.py) |
 | apimodels.ConsumeItemReq | [ApimodelsConsumeItemReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_consume_item_req.py) |
 | apimodels.CreateInventoryConfigurationReq | [ApimodelsCreateInventoryConfigurationReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_create_inventory_configuration_req.py) |
 | apimodels.CreateInventoryReq | [ApimodelsCreateInventoryReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_create_inventory_req.py) |
+| apimodels.CreateItem | [ApimodelsCreateItem](../../accelbyte_py_sdk/api/inventory/models/apimodels_create_item.py) |
 | apimodels.CreateItemTypeReq | [ApimodelsCreateItemTypeReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_create_item_type_req.py) |
 | apimodels.CreateItemTypeResp | [ApimodelsCreateItemTypeResp](../../accelbyte_py_sdk/api/inventory/models/apimodels_create_item_type_resp.py) |
 | apimodels.CreateTagReq | [ApimodelsCreateTagReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_create_tag_req.py) |
@@ -105,12 +114,15 @@
 | apimodels.ListTagsResp | [ApimodelsListTagsResp](../../accelbyte_py_sdk/api/inventory/models/apimodels_list_tags_resp.py) |
 | apimodels.MoveItemsReq | [ApimodelsMoveItemsReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_move_items_req.py) |
 | apimodels.MoveItemsResp | [ApimodelsMoveItemsResp](../../accelbyte_py_sdk/api/inventory/models/apimodels_move_items_resp.py) |
+| apimodels.Operation | [ApimodelsOperation](../../accelbyte_py_sdk/api/inventory/models/apimodels_operation.py) |
 | apimodels.Paging | [ApimodelsPaging](../../accelbyte_py_sdk/api/inventory/models/apimodels_paging.py) |
 | apimodels.RemoveInventoryItemReq | [ApimodelsRemoveInventoryItemReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_remove_inventory_item_req.py) |
+| apimodels.RemoveItem | [ApimodelsRemoveItem](../../accelbyte_py_sdk/api/inventory/models/apimodels_remove_item.py) |
 | apimodels.SaveItemReq | [ApimodelsSaveItemReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_save_item_req.py) |
 | apimodels.SaveItemToInventoryReq | [ApimodelsSaveItemToInventoryReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_save_item_to_inventory_req.py) |
 | apimodels.TradeItem | [ApimodelsTradeItem](../../accelbyte_py_sdk/api/inventory/models/apimodels_trade_item.py) |
 | apimodels.TradeItemResp | [ApimodelsTradeItemResp](../../accelbyte_py_sdk/api/inventory/models/apimodels_trade_item_resp.py) |
 | apimodels.UpdateInventoryReq | [ApimodelsUpdateInventoryReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_update_inventory_req.py) |
+| apimodels.UpdateItem | [ApimodelsUpdateItem](../../accelbyte_py_sdk/api/inventory/models/apimodels_update_item.py) |
 | apimodels.UpdateItemReq | [ApimodelsUpdateItemReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_update_item_req.py) |
 | apimodels.UpdateItemResp | [ApimodelsUpdateItemResp](../../accelbyte_py_sdk/api/inventory/models/apimodels_update_item_resp.py) |
