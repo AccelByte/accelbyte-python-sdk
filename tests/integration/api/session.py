@@ -102,20 +102,20 @@ class SessionTestCase(IntegrationTestCase):
 
     # endregion test:admin_delete_configuration_template_v1
 
-    # region test:public_query_game_sessions
+    # region test:public_query_game_sessions_by_attributes
 
-    def test_public_query_game_sessions(self):
-        from accelbyte_py_sdk.api.session import public_query_game_sessions
+    def test_public_query_game_sessions_by_attributes(self):
+        from accelbyte_py_sdk.api.session import public_query_game_sessions_by_attributes
 
         # arrange
 
         # act
-        result, error = public_query_game_sessions(body={})
+        result, error = public_query_game_sessions_by_attributes(body={})
 
         # assert
         self.assertIsNone(error, error)
 
-    # endregion test:public_query_game_sessions
+    # endregion test:public_query_game_sessions_by_attributes
 
     # region test:game_session_flow
 

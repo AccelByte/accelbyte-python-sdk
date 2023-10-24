@@ -2253,13 +2253,13 @@ def test_admin_delete_configuration_template_v1(self):
 ### Public Query Game Sessions
 
 ```python
-def test_public_query_game_sessions(self):
-    from accelbyte_py_sdk.api.session import public_query_game_sessions
+def test_public_query_game_sessions_by_attributes(self):
+    from accelbyte_py_sdk.api.session import public_query_game_sessions_by_attributes
 
     # arrange
 
     # act
-    result, error = public_query_game_sessions(body={})
+    result, error = public_query_game_sessions_by_attributes(body={})
 
     # assert
     self.assertIsNone(error, error)
