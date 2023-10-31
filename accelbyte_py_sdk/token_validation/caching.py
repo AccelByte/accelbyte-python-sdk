@@ -20,21 +20,13 @@ from ._ctypes import (
     UserRevokedError,
 )
 from ._ctypes import PermissionAction, PermissionStruct, create_permission_struct
-from ._utils import replace_resource, validate_permission
+from ._utils import replace_resource, str2datetime, validate_permission
 
 PublicPrivateKey = Any
 JWKSet = Dict[str, PublicPrivateKey]
 JWTClaims = Dict[str, Any]
 Role = iam_models.ModelRoleResponseV3
 NamespaceRole = Dict[str, str]
-
-
-def str2datetime(s: str) -> datetime:
-    # from: 'YYYY-mm-ddTHH:MM:SS.fffffffffZ'
-    # to:   'YYYY-mm-ddTHH:MM:SS.fffZ+0000'
-    tz = "Z+0000" if s.endswith("Z") else ""  # Add explicit UTC timezone.
-    s = s[0:23] + tz
-    return datetime.strptime(s, "%Y-%m-%dT%H:%M:%S.%fZ%z")
 
 
 class JWKSCache(Timer):
@@ -251,9 +243,10 @@ class CachingTokenValidator:
         claims: JWTClaims,
         permission: PermissionStruct,
         namespace: Optional[str] = None,
+        user_id: Optional[str] = None,
     ) -> bool:
         claims_namespace = claims.get("namespace", None)
-        user_id = claims.get("user_id", None)
+        user_id = claims.get("user_id", user_id)
 
         target = create_permission_struct(
             action=permission.action,
@@ -317,6 +310,7 @@ class CachingTokenValidator:
         resource: Optional[str] = None,
         action: Optional[PermissionAction] = None,
         namespace: Optional[str] = None,
+        user_id: Optional[str] = None,
         **kwargs,
     ) -> Optional[Exception]:
         # Check if token was revoked.
@@ -328,7 +322,7 @@ class CachingTokenValidator:
             return error
 
         # Check if user was revoked.
-        if claims_user_id := claims.get("user_id"):
+        if claims_user_id := claims.get("user_id", user_id):
             if self.revocation_list_cache.is_user_revoked(
                 user_id=claims_user_id, issued_at=claims.get("iat")
             ):
@@ -342,6 +336,7 @@ class CachingTokenValidator:
                 claims=claims,
                 permission=create_permission_struct(action, resource),
                 namespace=namespace,
+                user_id=user_id,
             )
         ):
             return InsufficientPermissionsError()

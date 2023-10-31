@@ -22,6 +22,7 @@ class TokenValidatorProtocol(Protocol):
         resource: Optional[str] = None,
         action: Optional[PermissionAction] = None,
         namespace: Optional[str] = None,
+        user_id: Optional[str] = None,
         **kwargs,
     ) -> Optional[Exception]:
         ...

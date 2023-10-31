@@ -31,6 +31,7 @@ class IAMTokenValidator:
         resource: Optional[str] = None,
         action: Optional[PermissionAction] = None,
         namespace: Optional[str] = None,
+        user_id: Optional[str] = None,
         **kwargs,
     ) -> Optional[Exception]:
         result, error = iam_service.verify_token_v3(token=token, sdk=self.sdk)
