@@ -30,46 +30,78 @@ def replace_resource(
     return new_resource
 
 
+def str2datetime(s: str) -> datetime:
+    # from: 'YYYY-mm-ddTHH:MM:SS.fffffffffZ'
+    # to:   'YYYY-mm-ddTHH:MM:SS.fffZ+0000'
+    tz = "Z+0000" if s.endswith("Z") else ""  # Add explicit UTC timezone.
+    s = s[0:23] + tz
+    return datetime.strptime(s, "%Y-%m-%dT%H:%M:%S.%fZ%z")
+
+
+def validate_resource(resource: str, expected_resource: str) -> bool:
+    # Split both the resource and the expected resource into tokens with ':' as delimiter.
+    r_items = resource.split(":")
+    e_items = expected_resource.split(":")
+
+    r_items_len = len(r_items)
+    e_items_len = len(e_items)
+    min_len = min(r_items_len, e_items_len)
+
+    # Compare each token in the resource and the expected resource from left to right.
+    for i in range(min_len):
+        r_token = r_items[i]
+        e_token = e_items[i]
+        # If token string match or other one is '*', then proceed to next token.
+        # Otherwise, we can stop here because the resource does not match.
+        # |                       vvv : DOES NOT MATCH
+        # | resource(1):          BAR
+        # | expected_resource(1): FOO
+        if r_token != e_token and r_token != "*":
+            return False
+
+    # If the number of resource tokens < the number of expected resource tokens.
+    if r_items_len < e_items_len:
+        # If the last resource token is '*',
+        # we can stop here because the resource does not match.
+        # |                           vvv : DOES NOT MATCH!
+        # | resource(2):          FOO:BAR
+        # | expected_resource(3): FOO:BAR:BAZ
+        if r_items[-1] != "*":
+            return False
+
+        # If the second resource token from the right is 'NAMESPACE' or 'USER',
+        # we can stop here because the resource does not match.
+        # |                           vvvv : DOES NOT MATCH
+        # | resource(3):          FOO:USER:*
+        # | expected_resource(4): FOO:BAR:BAZ:QUX
+        elif r_items_len >= 2 and r_items[-2] in ("NAMESPACE", "USER"):
+            return False
+
+    # If the number resource tokens > the number of expected resource tokens.
+    if r_items_len > e_items_len:
+        for i in range(e_items_len, r_items_len):
+            # If the remaining resource tokens are ALL '*', then proceed.
+            # Otherwise, we can stop here and the resource does not match.
+            # |                           vvv : DOES NOT MATCH!
+            # | resource(2):          FOO:BAR
+            # | expected_resource(1): FOO
+            if r_items[i] != "*":
+                return False
+
+    return True
+
+
+def validate_action(action: int, expected_action: int) -> bool:
+    return (action & expected_action) == expected_action
+
+
 def validate_permission(
     target: PermissionStruct, permissions: List[PermissionStruct]
 ) -> bool:
-    t_items = target.resource.split(":")
-    t_items_len = len(t_items)
-
     for permission in permissions:
-        p_items = permission.resource.split(":")
-        p_items_len = len(p_items)
-
-        matched = True
-        min_len = min(p_items_len, t_items_len)
-
-        for i in range(min_len):
-            s1 = p_items[i]
-            s2 = t_items[i]
-            if s1 != s2 and s1 != "*":
-                matched = False
-                break
-
-        if matched:
-            if t_items_len < p_items_len:
-                for i in range(t_items_len, p_items_len):
-                    if p_items[i] != "*":
-                        matched = False
-                        break
-                if not matched:
-                    continue
-            elif t_items_len > p_items_len:
-                if p_items[-1] == "*":
-                    if p_items_len < 2:
-                        matched = True
-                    else:
-                        matched = p_items[-2] not in ("NAMESPACE", "USER")
-                else:
-                    matched = False
-                if not matched:
-                    continue
-
-            if (int(permission.action) & int(target.action)) > 0:
-                return True
+        if validate_action(permission.action, target.action) and validate_resource(
+            permission.resource, target.resource
+        ):
+            return True
 
     return False
