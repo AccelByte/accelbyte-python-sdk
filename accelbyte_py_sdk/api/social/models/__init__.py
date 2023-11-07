@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Social Service."""
 
-__version__ = "2.9.6"
+__version__ = "2.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -69,6 +69,8 @@ from .stat_item_inc import StatItemInc
 from .stat_item_inc_result import StatItemIncResult
 from .stat_item_update import StatItemUpdate
 from .stat_item_update import UpdateStrategyEnum as StatItemUpdateUpdateStrategyEnum
+from .stat_item_value import StatItemValue
+from .stat_item_value_paging_sliced_result import StatItemValuePagingSlicedResult
 from .stat_paging_sliced_result import StatPagingSlicedResult
 from .stat_reset_info import StatResetInfo
 from .stat_update import StatUpdate

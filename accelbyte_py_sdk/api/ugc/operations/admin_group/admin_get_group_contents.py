@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.15.0)
+# AccelByte Gaming Services Ugc Service (2.16.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseError
 
 
 class AdminGetGroupContents(Operation):
-    """Get contents belong to a group (AdminGetGroupContents)
+    """(Legacy) Get contents belong to a group (AdminGetGroupContents)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.3.0)
+# Fleet Commander (1.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -24,6 +24,7 @@
 
 from .utils import randomize
 
+from ..api.ams.models import ApiAMSRegionsResponse
 from ..api.ams.models import ApiAccountCreateRequest
 from ..api.ams.models import ApiAccountCreateResponse
 from ..api.ams.models import ApiAccountLimits
@@ -31,10 +32,13 @@ from ..api.ams.models import ApiAccountLinkRequest
 from ..api.ams.models import ApiAccountLinkResponse
 from ..api.ams.models import ApiAccountLinkTokenResponse
 from ..api.ams.models import ApiAccountResponse
+from ..api.ams.models import ApiArtifactSamplingRuleResponse
+from ..api.ams.models import ApiArtifactTypeSamplingRulesResponse
 from ..api.ams.models import ApiAvailableInstanceTypesResponse
 from ..api.ams.models import ApiDSHistoryEvent
 from ..api.ams.models import ApiDSHistoryList
 from ..api.ams.models import ApiDSHostConfiguration
+from ..api.ams.models import ApiFleetArtifactsSampleRulesResponse
 from ..api.ams.models import ApiFleetClaimByKeysReq
 from ..api.ams.models import ApiFleetClaimReq
 from ..api.ams.models import ApiFleetClaimResponse
@@ -56,12 +60,17 @@ from ..api.ams.models import ApiImageUpdate
 from ..api.ams.models import ApiInstanceTypeDescriptionResponse
 from ..api.ams.models import ApiPagingInfo
 from ..api.ams.models import ApiPortConfiguration
-from ..api.ams.models import ApiQOSServer
+from ..api.ams.models import ApiQoSEndpointResponse
+from ..api.ams.models import ApiQoSServer
 from ..api.ams.models import ApiReferencingFleet
 from ..api.ams.models import ApiRegionConfig
-from ..api.ams.models import ApiRegionsResponse
+from ..api.ams.models import ApiTime
 from ..api.ams.models import ApiTimeout
+from ..api.ams.models import ApiUpdateServerRequest
 from ..api.ams.models import ResponseErrorResponse
+from ..api.ams.models import TimeLocation
+from ..api.ams.models import TimeZone
+from ..api.ams.models import TimeZoneTrans
 
 
 def create_api_account_create_request_example() -> ApiAccountCreateRequest:
@@ -116,6 +125,30 @@ def create_api_account_response_example() -> ApiAccountResponse:
     return instance
 
 
+def create_api_ams_regions_response_example() -> ApiAMSRegionsResponse:
+    instance = ApiAMSRegionsResponse()
+    instance.regions = [randomize()]
+    return instance
+
+
+def create_api_artifact_sampling_rule_response_example() -> (
+    ApiArtifactSamplingRuleResponse
+):
+    instance = ApiArtifactSamplingRuleResponse()
+    instance.collect = randomize("bool")
+    instance.percentage = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_api_artifact_type_sampling_rules_response_example() -> (
+    ApiArtifactTypeSamplingRulesResponse
+):
+    instance = ApiArtifactTypeSamplingRulesResponse()
+    instance.crashed = create_api_artifact_sampling_rule_response_example()
+    instance.success = create_api_artifact_sampling_rule_response_example()
+    return instance
+
+
 def create_api_available_instance_types_response_example() -> (
     ApiAvailableInstanceTypesResponse
 ):
@@ -151,6 +184,15 @@ def create_api_ds_host_configuration_example() -> ApiDSHostConfiguration:
     instance.instance_id = randomize()
     instance.instance_type = randomize()
     instance.servers_per_vm = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_api_fleet_artifacts_sample_rules_response_example() -> (
+    ApiFleetArtifactsSampleRulesResponse
+):
+    instance = ApiFleetArtifactsSampleRulesResponse()
+    instance.coredumps = create_api_artifact_type_sampling_rules_response_example()
+    instance.logs = create_api_artifact_type_sampling_rules_response_example()
     return instance
 
 
@@ -197,8 +239,6 @@ def create_api_fleet_get_response_example() -> ApiFleetGetResponse:
 
 def create_api_fleet_list_item_response_example() -> ApiFleetListItemResponse:
     instance = ApiFleetListItemResponse()
-    instance.active_ds = randomize("int", min_val=1, max_val=1000)
-    instance.claimed_ds = randomize("int", min_val=1, max_val=1000)
     instance.counts = [create_api_fleet_regional_server_counts_example()]
     instance.id_ = randomize()
     instance.image = randomize()
@@ -367,11 +407,20 @@ def create_api_port_configuration_example() -> ApiPortConfiguration:
     return instance
 
 
-def create_api_qos_server_example() -> ApiQOSServer:
-    instance = ApiQOSServer()
-    instance.host = randomize()
+def create_api_qo_s_endpoint_response_example() -> ApiQoSEndpointResponse:
+    instance = ApiQoSEndpointResponse()
+    instance.servers = [create_api_qo_s_server_example()]
+    return instance
+
+
+def create_api_qo_s_server_example() -> ApiQoSServer:
+    instance = ApiQoSServer()
+    instance.alias = randomize()
+    instance.ip = randomize()
+    instance.last_update = create_api_time_example()
     instance.port = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
+    instance.status = randomize()
     return instance
 
 
@@ -392,10 +441,11 @@ def create_api_region_config_example() -> ApiRegionConfig:
     return instance
 
 
-def create_api_regions_response_example() -> ApiRegionsResponse:
-    instance = ApiRegionsResponse()
-    instance.regions = [randomize()]
-    instance.qos_servers = [create_api_qos_server_example()]
+def create_api_time_example() -> ApiTime:
+    instance = ApiTime()
+    instance.ext = randomize("int", min_val=1, max_val=1000)
+    instance.loc = create_time_location_example()
+    instance.wall = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -408,8 +458,43 @@ def create_api_timeout_example() -> ApiTimeout:
     return instance
 
 
+def create_api_update_server_request_example() -> ApiUpdateServerRequest:
+    instance = ApiUpdateServerRequest()
+    instance.status = randomize()
+    return instance
+
+
 def create_response_error_response_example() -> ResponseErrorResponse:
     instance = ResponseErrorResponse()
     instance.error_message = randomize()
     instance.trace_id = randomize()
+    return instance
+
+
+def create_time_location_example() -> TimeLocation:
+    instance = TimeLocation()
+    instance.cache_end = randomize("int", min_val=1, max_val=1000)
+    instance.cache_start = randomize("int", min_val=1, max_val=1000)
+    instance.cache_zone = create_time_zone_example()
+    instance.extend = randomize()
+    instance.name = randomize()
+    instance.tx = [create_time_zone_trans_example()]
+    instance.zone = [create_time_zone_example()]
+    return instance
+
+
+def create_time_zone_example() -> TimeZone:
+    instance = TimeZone()
+    instance.is_dst = randomize("bool")
+    instance.name = randomize()
+    instance.offset = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_time_zone_trans_example() -> TimeZoneTrans:
+    instance = TimeZoneTrans()
+    instance.index = randomize("int", min_val=1, max_val=1000)
+    instance.isstd = randomize("bool")
+    instance.isutc = randomize("bool")
+    instance.when = randomize("int", min_val=1, max_val=1000)
     return instance

@@ -32,8 +32,6 @@ class ModelsCreateImageRequest(Model):
     """Models create image request (models.CreateImageRequest)
 
     Properties:
-        artifact_path: (artifactPath) REQUIRED str
-
         docker_path: (dockerPath) REQUIRED str
 
         image: (image) REQUIRED str
@@ -46,6 +44,8 @@ class ModelsCreateImageRequest(Model):
 
         version: (version) REQUIRED str
 
+        artifact_path: (artifactPath) OPTIONAL str
+
         core_dump_enabled: (coreDumpEnabled) OPTIONAL bool
 
         ulimit_file_size: (ulimitFileSize) OPTIONAL int
@@ -53,23 +53,19 @@ class ModelsCreateImageRequest(Model):
 
     # region fields
 
-    artifact_path: str  # REQUIRED
     docker_path: str  # REQUIRED
     image: str  # REQUIRED
     image_size: int  # REQUIRED
     namespace: str  # REQUIRED
     persistent: bool  # REQUIRED
     version: str  # REQUIRED
+    artifact_path: str  # OPTIONAL
     core_dump_enabled: bool  # OPTIONAL
     ulimit_file_size: int  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_artifact_path(self, value: str) -> ModelsCreateImageRequest:
-        self.artifact_path = value
-        return self
 
     def with_docker_path(self, value: str) -> ModelsCreateImageRequest:
         self.docker_path = value
@@ -95,6 +91,10 @@ class ModelsCreateImageRequest(Model):
         self.version = value
         return self
 
+    def with_artifact_path(self, value: str) -> ModelsCreateImageRequest:
+        self.artifact_path = value
+        return self
+
     def with_core_dump_enabled(self, value: bool) -> ModelsCreateImageRequest:
         self.core_dump_enabled = value
         return self
@@ -109,10 +109,6 @@ class ModelsCreateImageRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "artifact_path"):
-            result["artifactPath"] = str(self.artifact_path)
-        elif include_empty:
-            result["artifactPath"] = ""
         if hasattr(self, "docker_path"):
             result["dockerPath"] = str(self.docker_path)
         elif include_empty:
@@ -137,6 +133,10 @@ class ModelsCreateImageRequest(Model):
             result["version"] = str(self.version)
         elif include_empty:
             result["version"] = ""
+        if hasattr(self, "artifact_path"):
+            result["artifactPath"] = str(self.artifact_path)
+        elif include_empty:
+            result["artifactPath"] = ""
         if hasattr(self, "core_dump_enabled"):
             result["coreDumpEnabled"] = bool(self.core_dump_enabled)
         elif include_empty:
@@ -154,25 +154,26 @@ class ModelsCreateImageRequest(Model):
     @classmethod
     def create(
         cls,
-        artifact_path: str,
         docker_path: str,
         image: str,
         image_size: int,
         namespace: str,
         persistent: bool,
         version: str,
+        artifact_path: Optional[str] = None,
         core_dump_enabled: Optional[bool] = None,
         ulimit_file_size: Optional[int] = None,
         **kwargs,
     ) -> ModelsCreateImageRequest:
         instance = cls()
-        instance.artifact_path = artifact_path
         instance.docker_path = docker_path
         instance.image = image
         instance.image_size = image_size
         instance.namespace = namespace
         instance.persistent = persistent
         instance.version = version
+        if artifact_path is not None:
+            instance.artifact_path = artifact_path
         if core_dump_enabled is not None:
             instance.core_dump_enabled = core_dump_enabled
         if ulimit_file_size is not None:
@@ -186,10 +187,6 @@ class ModelsCreateImageRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "artifactPath" in dict_ and dict_["artifactPath"] is not None:
-            instance.artifact_path = str(dict_["artifactPath"])
-        elif include_empty:
-            instance.artifact_path = ""
         if "dockerPath" in dict_ and dict_["dockerPath"] is not None:
             instance.docker_path = str(dict_["dockerPath"])
         elif include_empty:
@@ -214,6 +211,10 @@ class ModelsCreateImageRequest(Model):
             instance.version = str(dict_["version"])
         elif include_empty:
             instance.version = ""
+        if "artifactPath" in dict_ and dict_["artifactPath"] is not None:
+            instance.artifact_path = str(dict_["artifactPath"])
+        elif include_empty:
+            instance.artifact_path = ""
         if "coreDumpEnabled" in dict_ and dict_["coreDumpEnabled"] is not None:
             instance.core_dump_enabled = bool(dict_["coreDumpEnabled"])
         elif include_empty:
@@ -265,13 +266,13 @@ class ModelsCreateImageRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "artifactPath": "artifact_path",
             "dockerPath": "docker_path",
             "image": "image",
             "imageSize": "image_size",
             "namespace": "namespace",
             "persistent": "persistent",
             "version": "version",
+            "artifactPath": "artifact_path",
             "coreDumpEnabled": "core_dump_enabled",
             "ulimitFileSize": "ulimit_file_size",
         }
@@ -279,13 +280,13 @@ class ModelsCreateImageRequest(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "artifactPath": True,
             "dockerPath": True,
             "image": True,
             "imageSize": True,
             "namespace": True,
             "persistent": True,
             "version": True,
+            "artifactPath": False,
             "coreDumpEnabled": False,
             "ulimitFileSize": False,
         }

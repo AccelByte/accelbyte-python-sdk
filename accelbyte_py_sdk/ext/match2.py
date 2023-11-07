@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Match Service V2 (2.11.4)
+# AccelByte Gaming Services Match Service V2 (2.11.6)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -124,9 +124,9 @@ def create_api_list_environment_variables_response_example() -> (
 
 def create_api_list_match_functions_response_example() -> ApiListMatchFunctionsResponse:
     instance = ApiListMatchFunctionsResponse()
-    instance.configs = [create_api_match_function_config_example()]
     instance.functions = [randomize()]
     instance.pagination = create_models_pagination_example()
+    instance.configs = [create_api_match_function_config_example()]
     return instance
 
 

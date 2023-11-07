@@ -31,13 +31,18 @@ from ....core import same_doc_as
 
 from ..models import ModelCreateTemplateRequest
 from ..models import ModelFreeFormNotificationRequest
+from ..models import ModelGlobalConfiguration
 from ..models import ModelNotificationWithTemplateRequest
+from ..models import ModelPutGlobalConfigurationRequest
 from ..models import ModelTemplateLocalization
 from ..models import ModelTemplateLocalizationResponse
 from ..models import ModelTemplateResponse
 from ..models import ModelUpdateTemplateRequest
 from ..models import RestapiErrorResponseBody
 
+from ..operations.admin import AdminDeleteGlobalConfig
+from ..operations.admin import AdminGetGlobalConfig
+from ..operations.admin import AdminUpdateGlobalConfig
 from ..operations.admin import CreateTemplate
 from ..operations.admin import DeleteTemplateLocalization
 from ..operations.admin import DeleteTemplateSlug
@@ -48,6 +53,242 @@ from ..operations.admin import GetSlugTemplate
 from ..operations.admin import NotificationWithTemplate
 from ..operations.admin import PublishTemplate
 from ..operations.admin import UpdateLocalizationTemplate
+
+
+@same_doc_as(AdminDeleteGlobalConfig)
+def admin_delete_global_config(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Required permission : ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [DELETE] (adminDeleteGlobalConfig)
+
+    Delete of global configuration data.
+
+    Properties:
+        url: /lobby/v1/admin/global-configurations
+
+        method: DELETE
+
+        tags: ["admin", "global-configurations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        204: No Content - str (No Content)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+    """
+    request = AdminDeleteGlobalConfig.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminDeleteGlobalConfig)
+async def admin_delete_global_config_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Required permission : ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [DELETE] (adminDeleteGlobalConfig)
+
+    Delete of global configuration data.
+
+    Properties:
+        url: /lobby/v1/admin/global-configurations
+
+        method: DELETE
+
+        tags: ["admin", "global-configurations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        204: No Content - str (No Content)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+    """
+    request = AdminDeleteGlobalConfig.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetGlobalConfig)
+def admin_get_global_config(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Record of global configuration dsmc. (adminGetGlobalConfig)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with scope `social`
+    get dsmc global configuration.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/global-configurations
+
+        method: GET
+
+        tags: ["admin", "global-configurations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelGlobalConfiguration (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    request = AdminGetGlobalConfig.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetGlobalConfig)
+async def admin_get_global_config_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Record of global configuration dsmc. (adminGetGlobalConfig)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with scope `social`
+    get dsmc global configuration.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /lobby/v1/admin/global-configurations
+
+        method: GET
+
+        tags: ["admin", "global-configurations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelGlobalConfiguration (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    request = AdminGetGlobalConfig.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminUpdateGlobalConfig)
+def admin_update_global_config(
+    body: ModelPutGlobalConfigurationRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Required permission : ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE] (adminUpdateGlobalConfig)
+
+    Upsert global configuration data.
+
+    Properties:
+        url: /lobby/v1/admin/global-configurations
+
+        method: PUT
+
+        tags: ["admin", "global-configurations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPutGlobalConfigurationRequest in body
+
+    Responses:
+        200: OK - ModelGlobalConfiguration (OK)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+    """
+    request = AdminUpdateGlobalConfig.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminUpdateGlobalConfig)
+async def admin_update_global_config_async(
+    body: ModelPutGlobalConfigurationRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Required permission : ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE] (adminUpdateGlobalConfig)
+
+    Upsert global configuration data.
+
+    Properties:
+        url: /lobby/v1/admin/global-configurations
+
+        method: PUT
+
+        tags: ["admin", "global-configurations"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPutGlobalConfigurationRequest in body
+
+    Responses:
+        200: OK - ModelGlobalConfiguration (OK)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+    """
+    request = AdminUpdateGlobalConfig.create(
+        body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateTemplate)

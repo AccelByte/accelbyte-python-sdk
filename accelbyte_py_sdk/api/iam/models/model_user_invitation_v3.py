@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.4.1)
+# AccelByte Gaming Services Iam Service (7.5.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ class ModelUserInvitationV3(Model):
 
         roles: (roles) REQUIRED List[AccountcommonNamespaceRole]
 
+        additional_data: (additionalData) OPTIONAL str
+
         id_: (id) OPTIONAL str
 
         namespace: (namespace) OPTIONAL str
@@ -52,6 +54,7 @@ class ModelUserInvitationV3(Model):
     email: str  # REQUIRED
     expired_at: str  # REQUIRED
     roles: List[AccountcommonNamespaceRole]  # REQUIRED
+    additional_data: str  # OPTIONAL
     id_: str  # OPTIONAL
     namespace: str  # OPTIONAL
     namespace_display_name: str  # OPTIONAL
@@ -72,6 +75,10 @@ class ModelUserInvitationV3(Model):
         self, value: List[AccountcommonNamespaceRole]
     ) -> ModelUserInvitationV3:
         self.roles = value
+        return self
+
+    def with_additional_data(self, value: str) -> ModelUserInvitationV3:
+        self.additional_data = value
         return self
 
     def with_id(self, value: str) -> ModelUserInvitationV3:
@@ -106,6 +113,10 @@ class ModelUserInvitationV3(Model):
             ]
         elif include_empty:
             result["roles"] = []
+        if hasattr(self, "additional_data"):
+            result["additionalData"] = str(self.additional_data)
+        elif include_empty:
+            result["additionalData"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -130,6 +141,7 @@ class ModelUserInvitationV3(Model):
         email: str,
         expired_at: str,
         roles: List[AccountcommonNamespaceRole],
+        additional_data: Optional[str] = None,
         id_: Optional[str] = None,
         namespace: Optional[str] = None,
         namespace_display_name: Optional[str] = None,
@@ -139,6 +151,8 @@ class ModelUserInvitationV3(Model):
         instance.email = email
         instance.expired_at = expired_at
         instance.roles = roles
+        if additional_data is not None:
+            instance.additional_data = additional_data
         if id_ is not None:
             instance.id_ = id_
         if namespace is not None:
@@ -171,6 +185,10 @@ class ModelUserInvitationV3(Model):
             ]
         elif include_empty:
             instance.roles = []
+        if "additionalData" in dict_ and dict_["additionalData"] is not None:
+            instance.additional_data = str(dict_["additionalData"])
+        elif include_empty:
+            instance.additional_data = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -232,6 +250,7 @@ class ModelUserInvitationV3(Model):
             "email": "email",
             "expiredAt": "expired_at",
             "roles": "roles",
+            "additionalData": "additional_data",
             "id": "id_",
             "namespace": "namespace",
             "namespaceDisplayName": "namespace_display_name",
@@ -243,6 +262,7 @@ class ModelUserInvitationV3(Model):
             "email": True,
             "expiredAt": True,
             "roles": True,
+            "additionalData": False,
             "id": False,
             "namespace": False,
             "namespaceDisplayName": False,

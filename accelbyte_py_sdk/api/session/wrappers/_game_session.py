@@ -38,6 +38,7 @@ from ..models import ApimodelsGameSessionResponse
 from ..models import ApimodelsJoinByCodeRequest
 from ..models import ApimodelsPromoteLeaderRequest
 from ..models import ApimodelsSessionInviteRequest
+from ..models import ApimodelsSetDSReadyRequest
 from ..models import ApimodelsUpdateGameSessionBackfillRequest
 from ..models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..models import ApimodelsUpdateGameSessionRequest
@@ -46,6 +47,7 @@ from ..models import ResponseError
 from ..operations.game_session import AdminDeleteBulkGameSessions
 from ..operations.game_session import AdminQueryGameSessions
 from ..operations.game_session import AdminQueryGameSessionsByAttributes
+from ..operations.game_session import AdminSetDSReady
 from ..operations.game_session import AdminUpdateGameSessionMember
 from ..operations.game_session import AppendTeamGameSession
 from ..operations.game_session import CreateGameSession
@@ -524,6 +526,116 @@ async def admin_query_game_sessions_by_attributes_async(
             return None, error
     request = AdminQueryGameSessionsByAttributes.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminSetDSReady)
+def admin_set_ds_ready(
+    body: ApimodelsSetDSReadyRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin set the DS ready to accept connection (adminSetDSReady)
+
+    When the session template has ds_manual_set_ready as true. Then the DS need to calls this end point in order to notify game client if the DS is ready to accept any game client connection.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/ds
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsSetDSReadyRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminSetDSReady.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminSetDSReady)
+async def admin_set_ds_ready_async(
+    body: ApimodelsSetDSReadyRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin set the DS ready to accept connection (adminSetDSReady)
+
+    When the session template has ds_manual_set_ready as true. Then the DS need to calls this end point in order to notify game client if the DS is ready to accept any game client connection.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/ds
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsSetDSReadyRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminSetDSReady.create(
+        body=body,
+        session_id=session_id,
         namespace=namespace,
     )
     return await run_request_async(

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Lobby Server (3.30.0)
+# AccelByte Gaming Services Lobby Server (3.30.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,6 +42,7 @@ from ..api.lobby.models import ModelGetFriendsResponse
 from ..api.lobby.models import ModelGetUserFriendsResponse
 from ..api.lobby.models import ModelGetUserIncomingFriendsResponse
 from ..api.lobby.models import ModelGetUserOutgoingFriendsResponse
+from ..api.lobby.models import ModelGlobalConfiguration
 from ..api.lobby.models import ModelIncomingFriendsWithTimeData
 from ..api.lobby.models import ModelListBulkUserPlatformsResponse
 from ..api.lobby.models import ModelLoadIncomingFriendsWithTimeResponse
@@ -56,6 +57,7 @@ from ..api.lobby.models import ModelNotificationWithTemplateRequest
 from ..api.lobby.models import ModelNotificationWithTemplateRequestV1
 from ..api.lobby.models import ModelOutgoingFriendsWithTimeData
 from ..api.lobby.models import ModelPagination
+from ..api.lobby.models import ModelPutGlobalConfigurationRequest
 from ..api.lobby.models import ModelTemplateContent
 from ..api.lobby.models import ModelTemplateLocalization
 from ..api.lobby.models import ModelTemplateLocalizationResponse
@@ -270,6 +272,17 @@ def create_model_get_user_outgoing_friends_response_example() -> (
     return instance
 
 
+def create_model_global_configuration_example() -> ModelGlobalConfiguration:
+    instance = ModelGlobalConfiguration()
+    instance.region_retry_mapping = {}
+    instance.region_url_mapping = [randomize()]
+    instance.test_game_mode = randomize()
+    instance.test_region_url_mapping = [randomize()]
+    instance.test_target_user_i_ds = [randomize()]
+    instance.updated_at = randomize()
+    return instance
+
+
 def create_model_incoming_friends_with_time_data_example() -> (
     ModelIncomingFriendsWithTimeData
 ):
@@ -399,6 +412,18 @@ def create_model_pagination_example() -> ModelPagination:
     instance.last = randomize()
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_model_put_global_configuration_request_example() -> (
+    ModelPutGlobalConfigurationRequest
+):
+    instance = ModelPutGlobalConfigurationRequest()
+    instance.region_retry_mapping = {}
+    instance.region_url_mapping = [randomize()]
+    instance.test_game_mode = randomize()
+    instance.test_region_url_mapping = [randomize()]
+    instance.test_target_user_i_ds = [randomize()]
     return instance
 
 

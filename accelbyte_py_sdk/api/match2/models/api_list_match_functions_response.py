@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Match Service V2 (2.11.4)
+# AccelByte Gaming Services Match Service V2 (2.11.6)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,28 +35,22 @@ class ApiListMatchFunctionsResponse(Model):
     """Api list match functions response (api.ListMatchFunctionsResponse)
 
     Properties:
-        configs: (configs) REQUIRED List[ApiMatchFunctionConfig]
-
         functions: (functions) REQUIRED List[str]
 
         pagination: (pagination) REQUIRED ModelsPagination
+
+        configs: (configs) OPTIONAL List[ApiMatchFunctionConfig]
     """
 
     # region fields
 
-    configs: List[ApiMatchFunctionConfig]  # REQUIRED
     functions: List[str]  # REQUIRED
     pagination: ModelsPagination  # REQUIRED
+    configs: List[ApiMatchFunctionConfig]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_configs(
-        self, value: List[ApiMatchFunctionConfig]
-    ) -> ApiListMatchFunctionsResponse:
-        self.configs = value
-        return self
 
     def with_functions(self, value: List[str]) -> ApiListMatchFunctionsResponse:
         self.functions = value
@@ -66,18 +60,18 @@ class ApiListMatchFunctionsResponse(Model):
         self.pagination = value
         return self
 
+    def with_configs(
+        self, value: List[ApiMatchFunctionConfig]
+    ) -> ApiListMatchFunctionsResponse:
+        self.configs = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "configs"):
-            result["configs"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.configs
-            ]
-        elif include_empty:
-            result["configs"] = []
         if hasattr(self, "functions"):
             result["functions"] = [str(i0) for i0 in self.functions]
         elif include_empty:
@@ -86,6 +80,12 @@ class ApiListMatchFunctionsResponse(Model):
             result["pagination"] = self.pagination.to_dict(include_empty=include_empty)
         elif include_empty:
             result["pagination"] = ModelsPagination()
+        if hasattr(self, "configs"):
+            result["configs"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.configs
+            ]
+        elif include_empty:
+            result["configs"] = []
         return result
 
     # endregion to methods
@@ -95,15 +95,16 @@ class ApiListMatchFunctionsResponse(Model):
     @classmethod
     def create(
         cls,
-        configs: List[ApiMatchFunctionConfig],
         functions: List[str],
         pagination: ModelsPagination,
+        configs: Optional[List[ApiMatchFunctionConfig]] = None,
         **kwargs,
     ) -> ApiListMatchFunctionsResponse:
         instance = cls()
-        instance.configs = configs
         instance.functions = functions
         instance.pagination = pagination
+        if configs is not None:
+            instance.configs = configs
         return instance
 
     @classmethod
@@ -113,13 +114,6 @@ class ApiListMatchFunctionsResponse(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "configs" in dict_ and dict_["configs"] is not None:
-            instance.configs = [
-                ApiMatchFunctionConfig.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["configs"]
-            ]
-        elif include_empty:
-            instance.configs = []
         if "functions" in dict_ and dict_["functions"] is not None:
             instance.functions = [str(i0) for i0 in dict_["functions"]]
         elif include_empty:
@@ -130,6 +124,13 @@ class ApiListMatchFunctionsResponse(Model):
             )
         elif include_empty:
             instance.pagination = ModelsPagination()
+        if "configs" in dict_ and dict_["configs"] is not None:
+            instance.configs = [
+                ApiMatchFunctionConfig.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["configs"]
+            ]
+        elif include_empty:
+            instance.configs = []
         return instance
 
     @classmethod
@@ -173,17 +174,17 @@ class ApiListMatchFunctionsResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "configs": "configs",
             "functions": "functions",
             "pagination": "pagination",
+            "configs": "configs",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "configs": True,
             "functions": True,
             "pagination": True,
+            "configs": False,
         }
 
     # endregion static methods

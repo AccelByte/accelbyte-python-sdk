@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Event Log Service (2.1.1)
+# AccelByte Gaming Services Event Log Service (2.2.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,13 +35,7 @@ from ...models import ModelsEventResponseV2
 class GetEventSpecificUserV2Handler(Operation):
     """Get events from a specific user (GetEventSpecificUserV2Handler)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
-
-    Required Scope(s):
-        - analytics
+    Get events from a specific user
 
     Properties:
         url: /event/v2/admin/namespaces/{namespace}/users/{userId}/event

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.9.6)
+# AccelByte Gaming Services Social Service (2.10.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -31,6 +31,7 @@ from .....core import HttpResponse
 
 from ...models import ADTOObjectForResettingUserStatItems
 from ...models import BulkStatOperationResult
+from ...models import ErrorEntity
 from ...models import ValidationErrorEntity
 
 
@@ -69,7 +70,15 @@ class BulkResetUserStatItemValues(Operation):
     Responses:
         200: OK - List[BulkStatOperationResult] (successful operation)
 
+        400: Bad Request - ErrorEntity (Bad request)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
 
     # region fields
@@ -209,13 +218,21 @@ class BulkResetUserStatItemValues(Operation):
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
         Union[None, List[BulkStatOperationResult]],
-        Union[None, HttpResponse, ValidationErrorEntity],
+        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
         200: OK - List[BulkStatOperationResult] (successful operation)
 
+        400: Bad Request - ErrorEntity (Bad request)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -232,8 +249,16 @@ class BulkResetUserStatItemValues(Operation):
 
         if code == 200:
             return [BulkStatOperationResult.create_from_dict(i) for i in content], None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 401:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 403:
+            return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
+        if code == 500:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

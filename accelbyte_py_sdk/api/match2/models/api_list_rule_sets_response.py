@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Match Service V2 (2.11.4)
+# AccelByte Gaming Services Match Service V2 (2.11.6)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,14 +35,14 @@ class ApiListRuleSetsResponse(Model):
     """Api list rule sets response (api.ListRuleSetsResponse)
 
     Properties:
-        data: (data) REQUIRED List[ApiMatchRuleSetNameData]
+        data: (data) OPTIONAL List[ApiMatchRuleSetNameData]
 
         pagination: (pagination) OPTIONAL ModelsPagination
     """
 
     # region fields
 
-    data: List[ApiMatchRuleSetNameData]  # REQUIRED
+    data: List[ApiMatchRuleSetNameData]  # OPTIONAL
     pagination: ModelsPagination  # OPTIONAL
 
     # endregion fields
@@ -84,12 +84,13 @@ class ApiListRuleSetsResponse(Model):
     @classmethod
     def create(
         cls,
-        data: List[ApiMatchRuleSetNameData],
+        data: Optional[List[ApiMatchRuleSetNameData]] = None,
         pagination: Optional[ModelsPagination] = None,
         **kwargs,
     ) -> ApiListRuleSetsResponse:
         instance = cls()
-        instance.data = data
+        if data is not None:
+            instance.data = data
         if pagination is not None:
             instance.pagination = pagination
         return instance
@@ -166,7 +167,7 @@ class ApiListRuleSetsResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "data": True,
+            "data": False,
             "pagination": False,
         }
 

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.38.0)
+# AccelByte Gaming Services Platform Service (4.39.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -58,6 +58,7 @@ class SourceEnum(StrEnum):
     REFUND = "REFUND"
     REWARD = "REWARD"
     SELL_BACK = "SELL_BACK"
+    TRADE = "TRADE"
 
 
 class CreditRequest(Model):
@@ -295,6 +296,7 @@ class CreditRequest(Model):
                 "REFUND",
                 "REWARD",
                 "SELL_BACK",
+                "TRADE",
             ],
         }
 

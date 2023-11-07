@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.9.6)
+# AccelByte Gaming Services Social Service (2.10.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -80,6 +80,8 @@ class DeleteUserStatItems2(Operation):
         404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
 
     # region fields
@@ -222,6 +224,8 @@ class DeleteUserStatItems2(Operation):
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -245,6 +249,8 @@ class DeleteUserStatItems2(Operation):
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
+        if code == 500:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

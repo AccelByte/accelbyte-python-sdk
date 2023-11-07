@@ -32,6 +32,7 @@ from ....core import same_doc_as
 from ..models import ModelsCreateGroupRequest
 from ..models import ModelsCreateGroupResponse
 from ..models import ModelsPaginatedContentDownloadResponse
+from ..models import ModelsPaginatedContentDownloadResponseV2
 from ..models import ModelsPaginatedGroupResponse
 from ..models import ResponseError
 
@@ -40,6 +41,8 @@ from ..operations.admin_group import AdminDeleteGroup
 from ..operations.admin_group import AdminGetAllGroups
 from ..operations.admin_group import AdminGetGroup
 from ..operations.admin_group import AdminGetGroupContents
+from ..operations.admin_group import AdminGetOfficialGroupContentsV2
+from ..operations.admin_group import AdminGetUserGroupContentsV2
 from ..operations.admin_group import AdminUpdateGroup
 from ..operations.admin_group import SingleAdminDeleteGroup
 from ..operations.admin_group import SingleAdminGetAllGroups
@@ -506,7 +509,7 @@ def admin_get_group_contents(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get contents belong to a group (AdminGetGroupContents)
+    """(Legacy) Get contents belong to a group (AdminGetGroupContents)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
@@ -569,7 +572,7 @@ async def admin_get_group_contents_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get contents belong to a group (AdminGetGroupContents)
+    """(Legacy) Get contents belong to a group (AdminGetGroupContents)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
@@ -613,6 +616,254 @@ async def admin_get_group_contents_async(
         if error:
             return None, error
     request = AdminGetGroupContents.create(
+        group_id=group_id,
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetOfficialGroupContentsV2)
+def admin_get_official_group_contents_v2(
+    group_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get contents belong to a group (AdminGetOfficialGroupContentsV2)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/groups/{groupId}/contents
+
+        method: GET
+
+        tags: ["Admin Group"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetOfficialGroupContentsV2.create(
+        group_id=group_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetOfficialGroupContentsV2)
+async def admin_get_official_group_contents_v2_async(
+    group_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get contents belong to a group (AdminGetOfficialGroupContentsV2)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/groups/{groupId}/contents
+
+        method: GET
+
+        tags: ["Admin Group"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetOfficialGroupContentsV2.create(
+        group_id=group_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetUserGroupContentsV2)
+def admin_get_user_group_contents_v2(
+    group_id: str,
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get contents belong to a group (AdminGetUserGroupContentsV2)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents
+
+        method: GET
+
+        tags: ["Admin Group"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserGroupContentsV2.create(
+        group_id=group_id,
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetUserGroupContentsV2)
+async def admin_get_user_group_contents_v2_async(
+    group_id: str,
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get contents belong to a group (AdminGetUserGroupContentsV2)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents
+
+        method: GET
+
+        tags: ["Admin Group"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserGroupContentsV2.create(
         group_id=group_id,
         user_id=user_id,
         limit=limit,
@@ -1079,7 +1330,7 @@ def single_admin_get_group_contents(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get contents belong to a group (SingleAdminGetGroupContents)
+    """(Legacy) Get contents belong to a group (SingleAdminGetGroupContents)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
@@ -1138,7 +1389,7 @@ async def single_admin_get_group_contents_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get contents belong to a group (SingleAdminGetGroupContents)
+    """(Legacy) Get contents belong to a group (SingleAdminGetGroupContents)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 

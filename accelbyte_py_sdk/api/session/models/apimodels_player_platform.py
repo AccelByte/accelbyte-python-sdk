@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.9.0)
+# AccelByte Gaming Services Session Service (3.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,12 +35,15 @@ class ApimodelsPlayerPlatform(Model):
         current_platform: (currentPlatform) REQUIRED str
 
         user_id: (userID) REQUIRED str
+
+        crossplay_enabled: (crossplayEnabled) OPTIONAL bool
     """
 
     # region fields
 
     current_platform: str  # REQUIRED
     user_id: str  # REQUIRED
+    crossplay_enabled: bool  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class ApimodelsPlayerPlatform(Model):
 
     def with_user_id(self, value: str) -> ApimodelsPlayerPlatform:
         self.user_id = value
+        return self
+
+    def with_crossplay_enabled(self, value: bool) -> ApimodelsPlayerPlatform:
+        self.crossplay_enabled = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class ApimodelsPlayerPlatform(Model):
             result["userID"] = str(self.user_id)
         elif include_empty:
             result["userID"] = ""
+        if hasattr(self, "crossplay_enabled"):
+            result["crossplayEnabled"] = bool(self.crossplay_enabled)
+        elif include_empty:
+            result["crossplayEnabled"] = False
         return result
 
     # endregion to methods
@@ -76,11 +87,17 @@ class ApimodelsPlayerPlatform(Model):
 
     @classmethod
     def create(
-        cls, current_platform: str, user_id: str, **kwargs
+        cls,
+        current_platform: str,
+        user_id: str,
+        crossplay_enabled: Optional[bool] = None,
+        **kwargs,
     ) -> ApimodelsPlayerPlatform:
         instance = cls()
         instance.current_platform = current_platform
         instance.user_id = user_id
+        if crossplay_enabled is not None:
+            instance.crossplay_enabled = crossplay_enabled
         return instance
 
     @classmethod
@@ -98,6 +115,10 @@ class ApimodelsPlayerPlatform(Model):
             instance.user_id = str(dict_["userID"])
         elif include_empty:
             instance.user_id = ""
+        if "crossplayEnabled" in dict_ and dict_["crossplayEnabled"] is not None:
+            instance.crossplay_enabled = bool(dict_["crossplayEnabled"])
+        elif include_empty:
+            instance.crossplay_enabled = False
         return instance
 
     @classmethod
@@ -143,6 +164,7 @@ class ApimodelsPlayerPlatform(Model):
         return {
             "currentPlatform": "current_platform",
             "userID": "user_id",
+            "crossplayEnabled": "crossplay_enabled",
         }
 
     @staticmethod
@@ -150,6 +172,7 @@ class ApimodelsPlayerPlatform(Model):
         return {
             "currentPlatform": True,
             "userID": True,
+            "crossplayEnabled": False,
         }
 
     # endregion static methods

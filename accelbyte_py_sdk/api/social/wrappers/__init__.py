@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Social Service."""
 
-__version__ = "2.9.6"
+__version__ = "2.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -166,6 +166,8 @@ from ._user_statistic import delete_user_stat_items_1
 from ._user_statistic import delete_user_stat_items_1_async
 from ._user_statistic import delete_user_stat_items_2
 from ._user_statistic import delete_user_stat_items_2_async
+from ._user_statistic import get_stat_items
+from ._user_statistic import get_stat_items_async
 from ._user_statistic import get_user_stat_items
 from ._user_statistic import get_user_stat_items_async
 from ._user_statistic import inc_user_stat_item_value

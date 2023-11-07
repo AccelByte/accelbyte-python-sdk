@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.9.0)
+# AccelByte Gaming Services Session Service (3.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,15 +36,15 @@ class ApimodelsDeleteBulkGameSessionsAPIResponse(Model):
     """Apimodels delete bulk game sessions API response (apimodels.DeleteBulkGameSessionsAPIResponse)
 
     Properties:
-        failed: (failed) REQUIRED List[ApimodelsResponseDeleteBulkGameSessions]
+        failed: (failed) OPTIONAL List[ApimodelsResponseDeleteBulkGameSessions]
 
-        success: (success) REQUIRED List[str]
+        success: (success) OPTIONAL List[str]
     """
 
     # region fields
 
-    failed: List[ApimodelsResponseDeleteBulkGameSessions]  # REQUIRED
-    success: List[str]  # REQUIRED
+    failed: List[ApimodelsResponseDeleteBulkGameSessions]  # OPTIONAL
+    success: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -87,13 +87,15 @@ class ApimodelsDeleteBulkGameSessionsAPIResponse(Model):
     @classmethod
     def create(
         cls,
-        failed: List[ApimodelsResponseDeleteBulkGameSessions],
-        success: List[str],
+        failed: Optional[List[ApimodelsResponseDeleteBulkGameSessions]] = None,
+        success: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsDeleteBulkGameSessionsAPIResponse:
         instance = cls()
-        instance.failed = failed
-        instance.success = success
+        if failed is not None:
+            instance.failed = failed
+        if success is not None:
+            instance.success = success
         return instance
 
     @classmethod
@@ -166,8 +168,8 @@ class ApimodelsDeleteBulkGameSessionsAPIResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "failed": True,
-            "success": True,
+            "failed": False,
+            "success": False,
         }
 
     # endregion static methods

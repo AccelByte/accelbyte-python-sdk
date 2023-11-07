@@ -49,8 +49,6 @@ class ModelsServer(Model):
 
         ip: (ip) REQUIRED str
 
-        is_core_dump_enabled: (is_core_dump_enabled) REQUIRED bool
-
         is_override_game_version: (is_override_game_version) REQUIRED bool
 
         job_id: (job_id) REQUIRED str
@@ -89,6 +87,8 @@ class ModelsServer(Model):
 
         deployment_override: (deployment_override) OPTIONAL str
 
+        is_core_dump_enabled: (is_core_dump_enabled) OPTIONAL bool
+
         ports: (ports) OPTIONAL Dict[str, int]
 
         status_history: (status_history) OPTIONAL List[ModelsStatusHistory]
@@ -103,7 +103,6 @@ class ModelsServer(Model):
     game_version: str  # REQUIRED
     image_version: str  # REQUIRED
     ip: str  # REQUIRED
-    is_core_dump_enabled: bool  # REQUIRED
     is_override_game_version: bool  # REQUIRED
     job_id: str  # REQUIRED
     last_update: str  # REQUIRED
@@ -123,6 +122,7 @@ class ModelsServer(Model):
     artifact_path: str  # OPTIONAL
     custom_attribute: str  # OPTIONAL
     deployment_override: str  # OPTIONAL
+    is_core_dump_enabled: bool  # OPTIONAL
     ports: Dict[str, int]  # OPTIONAL
     status_history: List[ModelsStatusHistory]  # OPTIONAL
 
@@ -156,10 +156,6 @@ class ModelsServer(Model):
 
     def with_ip(self, value: str) -> ModelsServer:
         self.ip = value
-        return self
-
-    def with_is_core_dump_enabled(self, value: bool) -> ModelsServer:
-        self.is_core_dump_enabled = value
         return self
 
     def with_is_override_game_version(self, value: bool) -> ModelsServer:
@@ -240,6 +236,10 @@ class ModelsServer(Model):
         self.deployment_override = value
         return self
 
+    def with_is_core_dump_enabled(self, value: bool) -> ModelsServer:
+        self.is_core_dump_enabled = value
+        return self
+
     def with_ports(self, value: Dict[str, int]) -> ModelsServer:
         self.ports = value
         return self
@@ -282,10 +282,6 @@ class ModelsServer(Model):
             result["ip"] = str(self.ip)
         elif include_empty:
             result["ip"] = ""
-        if hasattr(self, "is_core_dump_enabled"):
-            result["is_core_dump_enabled"] = bool(self.is_core_dump_enabled)
-        elif include_empty:
-            result["is_core_dump_enabled"] = False
         if hasattr(self, "is_override_game_version"):
             result["is_override_game_version"] = bool(self.is_override_game_version)
         elif include_empty:
@@ -364,6 +360,10 @@ class ModelsServer(Model):
             result["deployment_override"] = str(self.deployment_override)
         elif include_empty:
             result["deployment_override"] = ""
+        if hasattr(self, "is_core_dump_enabled"):
+            result["is_core_dump_enabled"] = bool(self.is_core_dump_enabled)
+        elif include_empty:
+            result["is_core_dump_enabled"] = False
         if hasattr(self, "ports"):
             result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
         elif include_empty:
@@ -390,7 +390,6 @@ class ModelsServer(Model):
         game_version: str,
         image_version: str,
         ip: str,
-        is_core_dump_enabled: bool,
         is_override_game_version: bool,
         job_id: str,
         last_update: str,
@@ -410,6 +409,7 @@ class ModelsServer(Model):
         artifact_path: Optional[str] = None,
         custom_attribute: Optional[str] = None,
         deployment_override: Optional[str] = None,
+        is_core_dump_enabled: Optional[bool] = None,
         ports: Optional[Dict[str, int]] = None,
         status_history: Optional[List[ModelsStatusHistory]] = None,
         **kwargs,
@@ -422,7 +422,6 @@ class ModelsServer(Model):
         instance.game_version = game_version
         instance.image_version = image_version
         instance.ip = ip
-        instance.is_core_dump_enabled = is_core_dump_enabled
         instance.is_override_game_version = is_override_game_version
         instance.job_id = job_id
         instance.last_update = last_update
@@ -447,6 +446,8 @@ class ModelsServer(Model):
             instance.custom_attribute = custom_attribute
         if deployment_override is not None:
             instance.deployment_override = deployment_override
+        if is_core_dump_enabled is not None:
+            instance.is_core_dump_enabled = is_core_dump_enabled
         if ports is not None:
             instance.ports = ports
         if status_history is not None:
@@ -486,13 +487,6 @@ class ModelsServer(Model):
             instance.ip = str(dict_["ip"])
         elif include_empty:
             instance.ip = ""
-        if (
-            "is_core_dump_enabled" in dict_
-            and dict_["is_core_dump_enabled"] is not None
-        ):
-            instance.is_core_dump_enabled = bool(dict_["is_core_dump_enabled"])
-        elif include_empty:
-            instance.is_core_dump_enabled = False
         if (
             "is_override_game_version" in dict_
             and dict_["is_override_game_version"] is not None
@@ -575,6 +569,13 @@ class ModelsServer(Model):
             instance.deployment_override = str(dict_["deployment_override"])
         elif include_empty:
             instance.deployment_override = ""
+        if (
+            "is_core_dump_enabled" in dict_
+            and dict_["is_core_dump_enabled"] is not None
+        ):
+            instance.is_core_dump_enabled = bool(dict_["is_core_dump_enabled"])
+        elif include_empty:
+            instance.is_core_dump_enabled = False
         if "ports" in dict_ and dict_["ports"] is not None:
             instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
         elif include_empty:
@@ -632,7 +633,6 @@ class ModelsServer(Model):
             "game_version": "game_version",
             "image_version": "image_version",
             "ip": "ip",
-            "is_core_dump_enabled": "is_core_dump_enabled",
             "is_override_game_version": "is_override_game_version",
             "job_id": "job_id",
             "last_update": "last_update",
@@ -652,6 +652,7 @@ class ModelsServer(Model):
             "artifact_path": "artifact_path",
             "custom_attribute": "custom_attribute",
             "deployment_override": "deployment_override",
+            "is_core_dump_enabled": "is_core_dump_enabled",
             "ports": "ports",
             "status_history": "status_history",
         }
@@ -666,7 +667,6 @@ class ModelsServer(Model):
             "game_version": True,
             "image_version": True,
             "ip": True,
-            "is_core_dump_enabled": True,
             "is_override_game_version": True,
             "job_id": True,
             "last_update": True,
@@ -686,6 +686,7 @@ class ModelsServer(Model):
             "artifact_path": False,
             "custom_attribute": False,
             "deployment_override": False,
+            "is_core_dump_enabled": False,
             "ports": False,
             "status_history": False,
         }

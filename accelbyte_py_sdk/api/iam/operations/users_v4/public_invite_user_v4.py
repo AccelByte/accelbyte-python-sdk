@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.4.1)
+# AccelByte Gaming Services Iam Service (7.5.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -44,6 +44,7 @@ class PublicInviteUserV4(Operation):
     - emailAddress: email address of the user to be invited
     - namespace: new namespace of the user to be created
     - namespaceDisplayName: display name of the new namespace
+    - additionalData(optional): for utm parameter data
 
     The invited users will also be assigned with "User" role by default.
 

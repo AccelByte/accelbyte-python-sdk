@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.9.0)
+# AccelByte Gaming Services Session Service (3.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,26 +34,26 @@ class ModelsTeam(Model):
     """Models team (models.Team)
 
     Properties:
-        user_i_ds: (UserIDs) REQUIRED List[str]
-
         parties: (parties) OPTIONAL List[ModelsPartyMembers]
+
+        user_i_ds: (UserIDs) OPTIONAL List[str]
     """
 
     # region fields
 
-    user_i_ds: List[str]  # REQUIRED
     parties: List[ModelsPartyMembers]  # OPTIONAL
+    user_i_ds: List[str]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_user_i_ds(self, value: List[str]) -> ModelsTeam:
-        self.user_i_ds = value
-        return self
-
     def with_parties(self, value: List[ModelsPartyMembers]) -> ModelsTeam:
         self.parties = value
+        return self
+
+    def with_user_i_ds(self, value: List[str]) -> ModelsTeam:
+        self.user_i_ds = value
         return self
 
     # endregion with_x methods
@@ -62,16 +62,16 @@ class ModelsTeam(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "user_i_ds"):
-            result["UserIDs"] = [str(i0) for i0 in self.user_i_ds]
-        elif include_empty:
-            result["UserIDs"] = []
         if hasattr(self, "parties"):
             result["parties"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.parties
             ]
         elif include_empty:
             result["parties"] = []
+        if hasattr(self, "user_i_ds"):
+            result["UserIDs"] = [str(i0) for i0 in self.user_i_ds]
+        elif include_empty:
+            result["UserIDs"] = []
         return result
 
     # endregion to methods
@@ -81,14 +81,15 @@ class ModelsTeam(Model):
     @classmethod
     def create(
         cls,
-        user_i_ds: List[str],
         parties: Optional[List[ModelsPartyMembers]] = None,
+        user_i_ds: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelsTeam:
         instance = cls()
-        instance.user_i_ds = user_i_ds
         if parties is not None:
             instance.parties = parties
+        if user_i_ds is not None:
+            instance.user_i_ds = user_i_ds
         return instance
 
     @classmethod
@@ -96,10 +97,6 @@ class ModelsTeam(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "UserIDs" in dict_ and dict_["UserIDs"] is not None:
-            instance.user_i_ds = [str(i0) for i0 in dict_["UserIDs"]]
-        elif include_empty:
-            instance.user_i_ds = []
         if "parties" in dict_ and dict_["parties"] is not None:
             instance.parties = [
                 ModelsPartyMembers.create_from_dict(i0, include_empty=include_empty)
@@ -107,6 +104,10 @@ class ModelsTeam(Model):
             ]
         elif include_empty:
             instance.parties = []
+        if "UserIDs" in dict_ and dict_["UserIDs"] is not None:
+            instance.user_i_ds = [str(i0) for i0 in dict_["UserIDs"]]
+        elif include_empty:
+            instance.user_i_ds = []
         return instance
 
     @classmethod
@@ -146,15 +147,15 @@ class ModelsTeam(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "UserIDs": "user_i_ds",
             "parties": "parties",
+            "UserIDs": "user_i_ds",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "UserIDs": True,
             "parties": False,
+            "UserIDs": False,
         }
 
     # endregion static methods

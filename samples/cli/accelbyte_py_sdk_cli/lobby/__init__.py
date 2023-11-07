@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-lobby-server (3.30.0)
+# justice-lobby-server (3.30.2)
 
 from ._get_user_friends_updated import get_user_friends_updated
 from ._get_user_incoming_friends import get_user_incoming_friends
@@ -31,6 +31,9 @@ from ._admin_import_config_v1 import admin_import_config_v1
 from ._get_list_of_friends import get_list_of_friends
 from ._get_incoming_friend_requests import get_incoming_friend_requests
 from ._get_outgoing_friend_requests import get_outgoing_friend_requests
+from ._admin_get_global_config import admin_get_global_config
+from ._admin_update_global_config import admin_update_global_config
+from ._admin_delete_global_config import admin_delete_global_config
 from ._send_multiple_users_freeform_notification_v1_admin import (
     send_multiple_users_freeform_notification_v1_admin,
 )
@@ -176,6 +179,9 @@ commands = [
     get_list_of_friends,
     get_incoming_friend_requests,
     get_outgoing_friend_requests,
+    admin_get_global_config,
+    admin_update_global_config,
+    admin_delete_global_config,
     send_multiple_users_freeform_notification_v1_admin,
     send_users_freeform_notification_v1_admin,
     send_party_freeform_notification_v1_admin,

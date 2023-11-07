@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.4.1)
+# AccelByte Gaming Services Iam Service (7.5.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,12 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetCountryListV3(Operation):
     """Get Country List (AdminGetCountryListV3)
 
-    Admin get country list:
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MISC [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [READ]
+    Admin get country list
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.15.0)
+# AccelByte Gaming Services Ugc Service (2.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -25,18 +25,25 @@
 from .utils import randomize
 
 from ..api.ugc.models import ModelsAddDownloadCountResponse
+from ..api.ugc.models import ModelsAdminContentRequestV2
 from ..api.ugc.models import ModelsAdminGetContentBulkRequest
 from ..api.ugc.models import ModelsAdminUpdateContentRequest
+from ..api.ugc.models import ModelsAdminUpdateContentRequestV2
 from ..api.ugc.models import ModelsChannelRequest
 from ..api.ugc.models import ModelsChannelResponse
 from ..api.ugc.models import ModelsContentDownloadResponse
+from ..api.ugc.models import ModelsContentDownloadResponseV2
+from ..api.ugc.models import ModelsContentDownloaderResponse
 from ..api.ugc.models import ModelsContentLikeRequest
 from ..api.ugc.models import ModelsContentLikeResponse
+from ..api.ugc.models import ModelsContentLikersResponse
+from ..api.ugc.models import ModelsContentRequestV2
 from ..api.ugc.models import ModelsContentSnapshot
 from ..api.ugc.models import ModelsContentVersionResponse
 from ..api.ugc.models import ModelsCreateContentRequest
 from ..api.ugc.models import ModelsCreateContentRequestS3
 from ..api.ugc.models import ModelsCreateContentResponse
+from ..api.ugc.models import ModelsCreateContentResponseV2
 from ..api.ugc.models import ModelsCreateGroupRequest
 from ..api.ugc.models import ModelsCreateGroupResponse
 from ..api.ugc.models import ModelsCreateScreenshotRequest
@@ -49,12 +56,17 @@ from ..api.ugc.models import ModelsCreateTypeResponse
 from ..api.ugc.models import ModelsCreatorFollowState
 from ..api.ugc.models import ModelsCreatorOverviewResponse
 from ..api.ugc.models import ModelsCreatorResponse
+from ..api.ugc.models import ModelsGenerateContentUploadURLRequest
+from ..api.ugc.models import ModelsGenerateContentUploadURLResponse
 from ..api.ugc.models import ModelsGetContentBulkByShareCodesRequest
 from ..api.ugc.models import ModelsGetContentPreviewResponse
 from ..api.ugc.models import ModelsHideContentRequest
 from ..api.ugc.models import ModelsLikeState
 from ..api.ugc.models import ModelsListContentVersionsResponse
 from ..api.ugc.models import ModelsPaginatedContentDownloadResponse
+from ..api.ugc.models import ModelsPaginatedContentDownloadResponseV2
+from ..api.ugc.models import ModelsPaginatedContentDownloaderResponse
+from ..api.ugc.models import ModelsPaginatedContentLikersResponse
 from ..api.ugc.models import ModelsPaginatedCreatorOverviewResponse
 from ..api.ugc.models import ModelsPaginatedGetChannelResponse
 from ..api.ugc.models import ModelsPaginatedGetTagResponse
@@ -70,6 +82,9 @@ from ..api.ugc.models import ModelsPublicGetContentBulkRequest
 from ..api.ugc.models import ModelsScreenshotResponse
 from ..api.ugc.models import ModelsUpdateChannelRequest
 from ..api.ugc.models import ModelsUpdateContentRequest
+from ..api.ugc.models import ModelsUpdateContentRequestV2
+from ..api.ugc.models import ModelsUpdateContentResponseV2
+from ..api.ugc.models import ModelsUpdateFileLocationRequest
 from ..api.ugc.models import ModelsUpdateScreenshot
 from ..api.ugc.models import ModelsUpdateScreenshotRequest
 from ..api.ugc.models import ModelsUpdateScreenshotResponse
@@ -83,6 +98,19 @@ def create_models_add_download_count_response_example() -> (
 ):
     instance = ModelsAddDownloadCountResponse()
     instance.content_id = randomize()
+    return instance
+
+
+def create_models_admin_content_request_v2_example() -> ModelsAdminContentRequestV2:
+    instance = ModelsAdminContentRequestV2()
+    instance.name = randomize()
+    instance.content_type = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.file_extension = randomize()
+    instance.share_code = randomize()
+    instance.sub_type = randomize()
+    instance.tags = [randomize()]
+    instance.type_ = randomize()
     return instance
 
 
@@ -110,6 +138,19 @@ def create_models_admin_update_content_request_example() -> (
     instance.custom_attributes = {randomize(): randomize()}
     instance.preview_metadata = create_models_preview_metadata_example()
     instance.share_code = randomize()
+    return instance
+
+
+def create_models_admin_update_content_request_v2_example() -> (
+    ModelsAdminUpdateContentRequestV2
+):
+    instance = ModelsAdminUpdateContentRequestV2()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.name = randomize()
+    instance.share_code = randomize()
+    instance.sub_type = randomize()
+    instance.tags = [randomize()]
+    instance.type_ = randomize()
     return instance
 
 
@@ -160,6 +201,46 @@ def create_models_content_download_response_example() -> ModelsContentDownloadRe
     return instance
 
 
+def create_models_content_download_response_v2_example() -> (
+    ModelsContentDownloadResponseV2
+):
+    instance = ModelsContentDownloadResponseV2()
+    instance.channel_id = randomize()
+    instance.created_time = randomize()
+    instance.creator_follow_state = create_models_creator_follow_state_example()
+    instance.download_count = randomize("int", min_val=1, max_val=1000)
+    instance.id_ = randomize()
+    instance.is_hidden = randomize("bool")
+    instance.is_official = randomize("bool")
+    instance.like_count = randomize("int", min_val=1, max_val=1000)
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.share_code = randomize()
+    instance.tags = [randomize()]
+    instance.user_id = randomize("uid")
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.file_extension = randomize()
+    instance.groups = [randomize()]
+    instance.like_state = create_models_like_state_example()
+    instance.payload_url = randomize("url")
+    instance.screenshots = [create_models_screenshot_response_example()]
+    instance.sub_type = randomize()
+    instance.type_ = randomize()
+    instance.updated_time = randomize()
+    return instance
+
+
+def create_models_content_downloader_response_example() -> (
+    ModelsContentDownloaderResponse
+):
+    instance = ModelsContentDownloaderResponse()
+    instance.content_id = randomize()
+    instance.created_time = randomize("date")
+    instance.downloaded_by = randomize()
+    instance.namespace = randomize("slug")
+    return instance
+
+
 def create_models_content_like_request_example() -> ModelsContentLikeRequest:
     instance = ModelsContentLikeRequest()
     instance.like_status = randomize("bool")
@@ -170,6 +251,27 @@ def create_models_content_like_response_example() -> ModelsContentLikeResponse:
     instance = ModelsContentLikeResponse()
     instance.content_id = randomize()
     instance.like_status = randomize("bool")
+    return instance
+
+
+def create_models_content_likers_response_example() -> ModelsContentLikersResponse:
+    instance = ModelsContentLikersResponse()
+    instance.content_id = randomize()
+    instance.created_time = randomize("date")
+    instance.liked_by = randomize()
+    instance.namespace = randomize("slug")
+    return instance
+
+
+def create_models_content_request_v2_example() -> ModelsContentRequestV2:
+    instance = ModelsContentRequestV2()
+    instance.name = randomize()
+    instance.content_type = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.file_extension = randomize()
+    instance.sub_type = randomize()
+    instance.tags = [randomize()]
+    instance.type_ = randomize()
     return instance
 
 
@@ -241,6 +343,30 @@ def create_models_create_content_response_example() -> ModelsCreateContentRespon
     instance.custom_attributes = {randomize(): randomize()}
     instance.payload_url = randomize("url")
     instance.preview_url = randomize("url")
+    return instance
+
+
+def create_models_create_content_response_v2_example() -> ModelsCreateContentResponseV2:
+    instance = ModelsCreateContentResponseV2()
+    instance.channel_id = randomize()
+    instance.created_time = randomize()
+    instance.file_location = randomize()
+    instance.id_ = randomize()
+    instance.is_hidden = randomize("bool")
+    instance.is_official = randomize("bool")
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.parent_namespace = randomize("slug")
+    instance.share_code = randomize()
+    instance.tags = [randomize()]
+    instance.user_id = randomize("uid")
+    instance.content_type = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.file_extension = randomize()
+    instance.payload_url = randomize("url")
+    instance.sub_type = randomize()
+    instance.type_ = randomize()
+    instance.updated_time = randomize()
     return instance
 
 
@@ -348,6 +474,26 @@ def create_models_creator_response_example() -> ModelsCreatorResponse:
     return instance
 
 
+def create_models_generate_content_upload_url_request_example() -> (
+    ModelsGenerateContentUploadURLRequest
+):
+    instance = ModelsGenerateContentUploadURLRequest()
+    instance.content_type = randomize()
+    instance.file_extension = randomize()
+    return instance
+
+
+def create_models_generate_content_upload_url_response_example() -> (
+    ModelsGenerateContentUploadURLResponse
+):
+    instance = ModelsGenerateContentUploadURLResponse()
+    instance.file_location = randomize()
+    instance.url = randomize("url")
+    instance.content_type = randomize()
+    instance.file_extension = randomize()
+    return instance
+
+
 def create_models_get_content_bulk_by_share_codes_request_example() -> (
     ModelsGetContentBulkByShareCodesRequest
 ):
@@ -391,6 +537,33 @@ def create_models_paginated_content_download_response_example() -> (
 ):
     instance = ModelsPaginatedContentDownloadResponse()
     instance.data = [create_models_content_download_response_example()]
+    instance.paging = create_models_paging_cursor_example()
+    return instance
+
+
+def create_models_paginated_content_download_response_v2_example() -> (
+    ModelsPaginatedContentDownloadResponseV2
+):
+    instance = ModelsPaginatedContentDownloadResponseV2()
+    instance.data = [create_models_content_download_response_v2_example()]
+    instance.paging = create_models_paging_cursor_example()
+    return instance
+
+
+def create_models_paginated_content_downloader_response_example() -> (
+    ModelsPaginatedContentDownloaderResponse
+):
+    instance = ModelsPaginatedContentDownloaderResponse()
+    instance.data = [create_models_content_downloader_response_example()]
+    instance.paging = create_models_paging_cursor_example()
+    return instance
+
+
+def create_models_paginated_content_likers_response_example() -> (
+    ModelsPaginatedContentLikersResponse
+):
+    instance = ModelsPaginatedContentLikersResponse()
+    instance.data = [create_models_content_likers_response_example()]
     instance.paging = create_models_paging_cursor_example()
     return instance
 
@@ -526,6 +699,49 @@ def create_models_update_content_request_example() -> ModelsUpdateContentRequest
     instance.update_content_file = randomize("bool")
     instance.custom_attributes = {randomize(): randomize()}
     instance.preview_metadata = create_models_preview_metadata_example()
+    return instance
+
+
+def create_models_update_content_request_v2_example() -> ModelsUpdateContentRequestV2:
+    instance = ModelsUpdateContentRequestV2()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.name = randomize()
+    instance.sub_type = randomize()
+    instance.tags = [randomize()]
+    instance.type_ = randomize()
+    return instance
+
+
+def create_models_update_content_response_v2_example() -> ModelsUpdateContentResponseV2:
+    instance = ModelsUpdateContentResponseV2()
+    instance.channel_id = randomize()
+    instance.created_time = randomize()
+    instance.file_location = randomize()
+    instance.id_ = randomize()
+    instance.is_hidden = randomize("bool")
+    instance.is_official = randomize("bool")
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.parent_namespace = randomize("slug")
+    instance.share_code = randomize()
+    instance.tags = [randomize()]
+    instance.user_id = randomize("uid")
+    instance.content_type = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.file_extension = randomize()
+    instance.payload_url = randomize("url")
+    instance.sub_type = randomize()
+    instance.type_ = randomize()
+    instance.updated_time = randomize()
+    return instance
+
+
+def create_models_update_file_location_request_example() -> (
+    ModelsUpdateFileLocationRequest
+):
+    instance = ModelsUpdateFileLocationRequest()
+    instance.file_location = randomize()
+    instance.file_extension = randomize()
     return instance
 
 

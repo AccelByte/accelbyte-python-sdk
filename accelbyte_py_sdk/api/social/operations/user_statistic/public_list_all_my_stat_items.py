@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.9.6)
+# AccelByte Gaming Services Social Service (2.10.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -74,6 +74,8 @@ class PublicListAllMyStatItems(Operation):
         200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
 
         400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
 
@@ -217,6 +219,8 @@ class PublicListAllMyStatItems(Operation):
 
         400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
 
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
@@ -239,6 +243,8 @@ class PublicListAllMyStatItems(Operation):
                 ADTOObjectForUserStatItemValue.create_from_dict(i) for i in content
             ], None
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 403:
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)

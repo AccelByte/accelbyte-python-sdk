@@ -29,8 +29,8 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ApiAMSRegionsResponse
 from ..models import ApiAvailableInstanceTypesResponse
-from ..models import ApiRegionsResponse
 from ..models import ResponseErrorResponse
 
 from ..operations.ams_info import InfoRegions
@@ -66,7 +66,7 @@ def info_regions(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ApiRegionsResponse (success)
+        200: OK - ApiAMSRegionsResponse (success)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -113,7 +113,7 @@ async def info_regions_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ApiRegionsResponse (success)
+        200: OK - ApiAMSRegionsResponse (success)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 

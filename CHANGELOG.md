@@ -1,3 +1,13 @@
+<a name="v0.53.0"></a>
+## [v0.53.0]
+### fix
+- **integration:** fix test due to operation id rename
+### refactor
+- **core:** refactor permission resource validation
+### feat
+- **core:** add user_id override for validate_token(...) for uniformity
+
+
 <a name="v0.52.0"></a>
 ## [v0.52.0]
 ### fix

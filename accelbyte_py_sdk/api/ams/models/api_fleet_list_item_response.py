@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.3.0)
+# Fleet Commander (1.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,10 +34,6 @@ class ApiFleetListItemResponse(Model):
     """Api fleet list item response (api.FleetListItemResponse)
 
     Properties:
-        active_ds: (activeDs) REQUIRED int
-
-        claimed_ds: (claimedDs) REQUIRED int
-
         counts: (counts) REQUIRED List[ApiFleetRegionalServerCounts]
 
         id_: (id) REQUIRED str
@@ -53,8 +49,6 @@ class ApiFleetListItemResponse(Model):
 
     # region fields
 
-    active_ds: int  # REQUIRED
-    claimed_ds: int  # REQUIRED
     counts: List[ApiFleetRegionalServerCounts]  # REQUIRED
     id_: str  # REQUIRED
     image: str  # REQUIRED
@@ -65,14 +59,6 @@ class ApiFleetListItemResponse(Model):
     # endregion fields
 
     # region with_x methods
-
-    def with_active_ds(self, value: int) -> ApiFleetListItemResponse:
-        self.active_ds = value
-        return self
-
-    def with_claimed_ds(self, value: int) -> ApiFleetListItemResponse:
-        self.claimed_ds = value
-        return self
 
     def with_counts(
         self, value: List[ApiFleetRegionalServerCounts]
@@ -106,14 +92,6 @@ class ApiFleetListItemResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "active_ds"):
-            result["activeDs"] = int(self.active_ds)
-        elif include_empty:
-            result["activeDs"] = 0
-        if hasattr(self, "claimed_ds"):
-            result["claimedDs"] = int(self.claimed_ds)
-        elif include_empty:
-            result["claimedDs"] = 0
         if hasattr(self, "counts"):
             result["counts"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.counts
@@ -149,8 +127,6 @@ class ApiFleetListItemResponse(Model):
     @classmethod
     def create(
         cls,
-        active_ds: int,
-        claimed_ds: int,
         counts: List[ApiFleetRegionalServerCounts],
         id_: str,
         image: str,
@@ -160,8 +136,6 @@ class ApiFleetListItemResponse(Model):
         **kwargs,
     ) -> ApiFleetListItemResponse:
         instance = cls()
-        instance.active_ds = active_ds
-        instance.claimed_ds = claimed_ds
         instance.counts = counts
         instance.id_ = id_
         instance.image = image
@@ -177,14 +151,6 @@ class ApiFleetListItemResponse(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "activeDs" in dict_ and dict_["activeDs"] is not None:
-            instance.active_ds = int(dict_["activeDs"])
-        elif include_empty:
-            instance.active_ds = 0
-        if "claimedDs" in dict_ and dict_["claimedDs"] is not None:
-            instance.claimed_ds = int(dict_["claimedDs"])
-        elif include_empty:
-            instance.claimed_ds = 0
         if "counts" in dict_ and dict_["counts"] is not None:
             instance.counts = [
                 ApiFleetRegionalServerCounts.create_from_dict(
@@ -257,8 +223,6 @@ class ApiFleetListItemResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "activeDs": "active_ds",
-            "claimedDs": "claimed_ds",
             "counts": "counts",
             "id": "id_",
             "image": "image",
@@ -270,8 +234,6 @@ class ApiFleetListItemResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "activeDs": True,
-            "claimedDs": True,
             "counts": True,
             "id": True,
             "image": True,

@@ -37,6 +37,7 @@ from ..models import BulkDebitResult
 from ..models import CreditRequest
 from ..models import CurrencyWallet
 from ..models import DebitByCurrencyCodeRequest
+from ..models import DebitByWalletPlatformRequest
 from ..models import DebitRequest
 from ..models import DetailedWalletTransactionPagingSlicedResult
 from ..models import ErrorEntity
@@ -54,6 +55,7 @@ from ..operations.wallet import BulkDebit
 from ..operations.wallet import CheckWallet
 from ..operations.wallet import CheckWalletOriginEnum
 from ..operations.wallet import CreditUserWallet
+from ..operations.wallet import DebitByWalletPlatform
 from ..operations.wallet import DebitUserWallet
 from ..operations.wallet import DebitUserWalletByCurrencyCode
 from ..operations.wallet import DisableUserWallet
@@ -81,6 +83,10 @@ from ..models import CreditRequestOriginEnum, CreditRequestSourceEnum
 from ..models import (
     DebitByCurrencyCodeRequestBalanceOriginEnum,
     DebitByCurrencyCodeRequestBalanceSourceEnum,
+)
+from ..models import (
+    DebitByWalletPlatformRequestDebitBalanceSourceEnum,
+    DebitByWalletPlatformRequestWalletPlatformEnum,
 )
 from ..models import DebitRequestBalanceSourceEnum
 from ..models import PaymentRequestWalletPlatformEnum
@@ -537,6 +543,164 @@ async def credit_user_wallet_async(
         if error:
             return None, error
     request = CreditUserWallet.create(
+        currency_code=currency_code,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DebitByWalletPlatform)
+def debit_by_wallet_platform(
+    currency_code: str,
+    user_id: str,
+    body: Optional[DebitByWalletPlatformRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Pay with user wallet by currency code and client platform (debitByWalletPlatform)
+
+    Pay with user wallet by currency code and client platform.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+
+
+    ## Restrictions for metadata
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/debitByWalletPlatform
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL DebitByWalletPlatformRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformWallet (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DebitByWalletPlatform.create(
+        currency_code=currency_code,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DebitByWalletPlatform)
+async def debit_by_wallet_platform_async(
+    currency_code: str,
+    user_id: str,
+    body: Optional[DebitByWalletPlatformRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Pay with user wallet by currency code and client platform (debitByWalletPlatform)
+
+    Pay with user wallet by currency code and client platform.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
+
+
+
+    ## Restrictions for metadata
+
+
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/debitByWalletPlatform
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL DebitByWalletPlatformRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - PlatformWallet (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DebitByWalletPlatform.create(
         currency_code=currency_code,
         user_id=user_id,
         body=body,

@@ -32,10 +32,10 @@ from ....core import same_doc_as
 
 from ..models import OauthmodelCountryLocationResponse
 from ..models import OauthmodelErrorResponse
-from ..models import OauthmodelGameTokenCodeResponse
 from ..models import OauthmodelOneTimeLinkingCodeResponse
 from ..models import OauthmodelOneTimeLinkingCodeValidationResponse
 from ..models import OauthmodelPlatformTokenRefreshResponseV3
+from ..models import OauthmodelTargetTokenCodeResponse
 from ..models import OauthmodelTokenResponseV3
 from ..models import RestErrorResponse
 
@@ -46,10 +46,10 @@ from ..operations.o_auth2_0_extension import Logout
 from ..operations.o_auth2_0_extension import PlatformAuthenticationV3
 from ..operations.o_auth2_0_extension import PlatformTokenRefreshV3
 from ..operations.o_auth2_0_extension import PlatformTokenRefreshV3Deprecate
-from ..operations.o_auth2_0_extension import RequestGameTokenCodeResponseV3
-from ..operations.o_auth2_0_extension import RequestGameTokenResponseV3
 from ..operations.o_auth2_0_extension import RequestOneTimeLinkingCodeV3
+from ..operations.o_auth2_0_extension import RequestTargetTokenResponseV3
 from ..operations.o_auth2_0_extension import RequestTokenByOneTimeLinkCodeResponseV3
+from ..operations.o_auth2_0_extension import RequestTokenExchangeCodeV3
 from ..operations.o_auth2_0_extension import UserAuthenticationV3
 from ..operations.o_auth2_0_extension import ValidateOneTimeLinkingCodeV3
 
@@ -1088,192 +1088,6 @@ async def platform_token_refresh_v3_deprecate_async(
     )
 
 
-@same_doc_as(RequestGameTokenCodeResponseV3)
-def request_game_token_code_response_v3(
-    client_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Request code to get game token (RequestGameTokenCodeResponseV3)
-
-    This endpoint is being used to request the code to generate publisher user's game token.
-
-    It require a valid user token with publisher namespace.
-
-    Path namespace should be a game namespace.
-
-    Client ID should match the target namespace.
-    It response a code and it can be consumed by /iam/v3/token/exchange
-
-    Properties:
-        url: /iam/v3/namespace/{namespace}/token/request
-
-        method: POST
-
-        tags: ["OAuth2.0 - Extension"]
-
-        consumes: ["application/x-www-form-urlencoded"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        client_id: (client_id) REQUIRED str in form_data
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - OauthmodelGameTokenCodeResponse (Succeed to generate token.)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = RequestGameTokenCodeResponseV3.create(
-        client_id=client_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(RequestGameTokenCodeResponseV3)
-async def request_game_token_code_response_v3_async(
-    client_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Request code to get game token (RequestGameTokenCodeResponseV3)
-
-    This endpoint is being used to request the code to generate publisher user's game token.
-
-    It require a valid user token with publisher namespace.
-
-    Path namespace should be a game namespace.
-
-    Client ID should match the target namespace.
-    It response a code and it can be consumed by /iam/v3/token/exchange
-
-    Properties:
-        url: /iam/v3/namespace/{namespace}/token/request
-
-        method: POST
-
-        tags: ["OAuth2.0 - Extension"]
-
-        consumes: ["application/x-www-form-urlencoded"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        client_id: (client_id) REQUIRED str in form_data
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - OauthmodelGameTokenCodeResponse (Succeed to generate token.)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = RequestGameTokenCodeResponseV3.create(
-        client_id=client_id,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(RequestGameTokenResponseV3)
-def request_game_token_response_v3(
-    code: str,
-    additional_data: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Generate game token by code (RequestGameTokenResponseV3)
-
-    This endpoint is being used to generate publisher user's game token.
-
-    It require basic header with ClientID and Secret, it should match the ClientID when call /iam/v3/namespace/{namespace}/token/request
-
-    It required a code which can be generated from /iam/v3/namespace/{namespace}/token/request.
-
-    Properties:
-        url: /iam/v3/token/exchange
-
-        method: POST
-
-        tags: ["OAuth2.0 - Extension"]
-
-        consumes: ["application/x-www-form-urlencoded"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        additional_data: (additionalData) OPTIONAL str in form_data
-
-        code: (code) REQUIRED str in form_data
-
-    Responses:
-        200: OK - OauthmodelTokenResponseV3 (Succeed to generate token.)
-    """
-    request = RequestGameTokenResponseV3.create(
-        code=code,
-        additional_data=additional_data,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(RequestGameTokenResponseV3)
-async def request_game_token_response_v3_async(
-    code: str,
-    additional_data: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Generate game token by code (RequestGameTokenResponseV3)
-
-    This endpoint is being used to generate publisher user's game token.
-
-    It require basic header with ClientID and Secret, it should match the ClientID when call /iam/v3/namespace/{namespace}/token/request
-
-    It required a code which can be generated from /iam/v3/namespace/{namespace}/token/request.
-
-    Properties:
-        url: /iam/v3/token/exchange
-
-        method: POST
-
-        tags: ["OAuth2.0 - Extension"]
-
-        consumes: ["application/x-www-form-urlencoded"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        additional_data: (additionalData) OPTIONAL str in form_data
-
-        code: (code) REQUIRED str in form_data
-
-    Responses:
-        200: OK - OauthmodelTokenResponseV3 (Succeed to generate token.)
-    """
-    request = RequestGameTokenResponseV3.create(
-        code=code,
-        additional_data=additional_data,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
 @same_doc_as(RequestOneTimeLinkingCodeV3)
 def request_one_time_linking_code_v3(
     platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -1282,7 +1096,7 @@ def request_one_time_linking_code_v3(
 
     This endpoint is being used to request the one time code [8 length] for headless account to link or upgrade to a full account.
 
-    It require a valid user token.
+    It requires a valid user token.
 
     Should specify the target platform id and current user should already linked to this platform.
 
@@ -1391,7 +1205,7 @@ async def request_one_time_linking_code_v3_async(
 
     This endpoint is being used to request the one time code [8 length] for headless account to link or upgrade to a full account.
 
-    It require a valid user token.
+    It requires a valid user token.
 
     Should specify the target platform id and current user should already linked to this platform.
 
@@ -1488,6 +1302,92 @@ async def request_one_time_linking_code_v3_async(
     """
     request = RequestOneTimeLinkingCodeV3.create(
         platform_id=platform_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RequestTargetTokenResponseV3)
+def request_target_token_response_v3(
+    code: str,
+    additional_data: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Generate target token by code (RequestTargetTokenResponseV3)
+
+    This endpoint is being used to generate target token.
+
+    It requires basic header with ClientID and Secret, it should match the ClientID when call /iam/v3/namespace/{namespace}/token/request
+
+    The code should be generated from /iam/v3/namespace/{namespace}/token/request.
+
+    Properties:
+        url: /iam/v3/token/exchange
+
+        method: POST
+
+        tags: ["OAuth2.0 - Extension"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        additional_data: (additionalData) OPTIONAL str in form_data
+
+        code: (code) REQUIRED str in form_data
+
+    Responses:
+        200: OK - OauthmodelTokenResponseV3 (Succeed to exchange token.)
+    """
+    request = RequestTargetTokenResponseV3.create(
+        code=code,
+        additional_data=additional_data,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RequestTargetTokenResponseV3)
+async def request_target_token_response_v3_async(
+    code: str,
+    additional_data: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Generate target token by code (RequestTargetTokenResponseV3)
+
+    This endpoint is being used to generate target token.
+
+    It requires basic header with ClientID and Secret, it should match the ClientID when call /iam/v3/namespace/{namespace}/token/request
+
+    The code should be generated from /iam/v3/namespace/{namespace}/token/request.
+
+    Properties:
+        url: /iam/v3/token/exchange
+
+        method: POST
+
+        tags: ["OAuth2.0 - Extension"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        additional_data: (additionalData) OPTIONAL str in form_data
+
+        code: (code) REQUIRED str in form_data
+
+    Responses:
+        200: OK - OauthmodelTokenResponseV3 (Succeed to exchange token.)
+    """
+    request = RequestTargetTokenResponseV3.create(
+        code=code,
+        additional_data=additional_data,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -1612,6 +1512,114 @@ async def request_token_by_one_time_link_code_response_v3_async(
         one_time_link_code=one_time_link_code,
         additional_data=additional_data,
         is_transient=is_transient,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RequestTokenExchangeCodeV3)
+def request_token_exchange_code_v3(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Request code to get a new token (RequestTokenExchangeCodeV3)
+
+    This endpoint is being used to request the code to exchange a new token.
+    The target new token's clientId should NOT be same with current using one.
+
+    It requires a valid user token.
+
+    Path namespace should be target namespace.
+
+    Client ID should match the target namespace.
+
+
+
+    The code in response can be consumed by /iam/v3/token/exchange
+
+    Properties:
+        url: /iam/v3/namespace/{namespace}/token/request
+
+        method: POST
+
+        tags: ["OAuth2.0 - Extension"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        client_id: (client_id) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - OauthmodelTargetTokenCodeResponse (Succeed to request token exchange code.)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RequestTokenExchangeCodeV3.create(
+        client_id=client_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RequestTokenExchangeCodeV3)
+async def request_token_exchange_code_v3_async(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Request code to get a new token (RequestTokenExchangeCodeV3)
+
+    This endpoint is being used to request the code to exchange a new token.
+    The target new token's clientId should NOT be same with current using one.
+
+    It requires a valid user token.
+
+    Path namespace should be target namespace.
+
+    Client ID should match the target namespace.
+
+
+
+    The code in response can be consumed by /iam/v3/token/exchange
+
+    Properties:
+        url: /iam/v3/namespace/{namespace}/token/request
+
+        method: POST
+
+        tags: ["OAuth2.0 - Extension"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        client_id: (client_id) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - OauthmodelTargetTokenCodeResponse (Succeed to request token exchange code.)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RequestTokenExchangeCodeV3.create(
+        client_id=client_id,
+        namespace=namespace,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

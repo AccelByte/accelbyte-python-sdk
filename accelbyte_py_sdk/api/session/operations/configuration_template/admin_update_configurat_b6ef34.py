@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.9.0)
+# AccelByte Gaming Services Session Service (3.10.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -72,6 +72,8 @@ class AdminUpdateConfigurationTemplateV1(Operation):
     }
     - if the game client wants to enable push context to PSN, game client will need to store PSN_PUSH_CONTEXT_ID on the player attributes, otherwise Session service will try to populate from the session attributes or auto generate with random UUID if empty.
     - TieTeamsSessionLifetime: If it is set to true, the lifetime of any partyId session inside teams attribute will be tied to the game session. Only applies when the teams partyId is game session.
+    - DisableCodeGeneration (optional, default: false): If it is set to true, code will not be generated for party session automatically.
+    - DSManualSetReady (optional, default: false): The DS need to call specific end point to flag the DS for game session is ready to accept client connection.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}

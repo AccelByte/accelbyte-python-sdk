@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.4.1)
+# AccelByte Gaming Services Iam Service (7.5.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,7 +37,7 @@ class RequestOneTimeLinkingCodeV3(Operation):
 
     This endpoint is being used to request the one time code [8 length] for headless account to link or upgrade to a full account.
 
-    It require a valid user token.
+    It requires a valid user token.
 
     Should specify the target platform id and current user should already linked to this platform.
 

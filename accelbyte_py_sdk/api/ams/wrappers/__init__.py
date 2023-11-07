@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -27,6 +27,11 @@ from ._ams_info import info_regions
 from ._ams_info import info_regions_async
 from ._ams_info import info_supported_instances
 from ._ams_info import info_supported_instances_async
+
+from ._ams_qo_s import qo_s_regions_get
+from ._ams_qo_s import qo_s_regions_get_async
+from ._ams_qo_s import qo_s_regions_update
+from ._ams_qo_s import qo_s_regions_update_async
 
 from ._auth import auth_check
 from ._auth import auth_check_async
@@ -55,6 +60,8 @@ from ._fleets import fleet_servers_async
 from ._fleets import fleet_update
 from ._fleets import fleet_update_async
 
+from ._images import fleet_artifact_sampling_rules_get
+from ._images import fleet_artifact_sampling_rules_get_async
 from ._images import image_get
 from ._images import image_get_async
 from ._images import image_list

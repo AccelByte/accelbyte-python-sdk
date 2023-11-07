@@ -261,12 +261,7 @@ def admin_get_country_list_v3(
 ):
     """Get Country List (AdminGetCountryListV3)
 
-    Admin get country list:
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MISC [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [READ]
+    Admin get country list
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries
@@ -314,12 +309,7 @@ async def admin_get_country_list_v3_async(
 ):
     """Get Country List (AdminGetCountryListV3)
 
-    Admin get country list:
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MISC [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [READ]
+    Admin get country list
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries

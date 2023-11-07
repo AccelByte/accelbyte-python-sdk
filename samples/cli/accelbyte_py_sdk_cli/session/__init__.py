@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (3.9.0)
+# justice-session-service (3.10.0)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
@@ -19,6 +19,7 @@ from ._admin_get_configuration_alert_v1 import admin_get_configuration_alert_v1
 from ._admin_update_configuration_alert_v1 import admin_update_configuration_alert_v1
 from ._admin_create_configuration_alert_v1 import admin_create_configuration_alert_v1
 from ._admin_delete_configuration_alert_v1 import admin_delete_configuration_alert_v1
+from ._handle_upload_xbox_pfx_certificate import handle_upload_xbox_pfx_certificate
 from ._admin_create_configuration_template_v1 import (
     admin_create_configuration_template_v1,
 )
@@ -32,6 +33,8 @@ from ._admin_update_configuration_template_v1 import (
 from ._admin_delete_configuration_template_v1 import (
     admin_delete_configuration_template_v1,
 )
+from ._admin_get_member_active_session import admin_get_member_active_session
+from ._admin_reconcile_max_active_session import admin_reconcile_max_active_session
 from ._admin_get_dsmc_configuration import admin_get_dsmc_configuration
 from ._admin_sync_dsmc_configuration import admin_sync_dsmc_configuration
 from ._admin_query_game_sessions import admin_query_game_sessions
@@ -39,6 +42,7 @@ from ._admin_query_game_sessions_by_attributes import (
     admin_query_game_sessions_by_attributes,
 )
 from ._admin_delete_bulk_game_sessions import admin_delete_bulk_game_sessions
+from ._admin_set_ds_ready import admin_set_ds_ready
 from ._admin_update_game_session_member import admin_update_game_session_member
 from ._admin_query_parties import admin_query_parties
 from ._admin_get_platform_credentials import admin_get_platform_credentials
@@ -109,16 +113,20 @@ commands = [
     admin_update_configuration_alert_v1,
     admin_create_configuration_alert_v1,
     admin_delete_configuration_alert_v1,
+    handle_upload_xbox_pfx_certificate,
     admin_create_configuration_template_v1,
     admin_get_all_configuration_templates_v1,
     admin_get_configuration_template_v1,
     admin_update_configuration_template_v1,
     admin_delete_configuration_template_v1,
+    admin_get_member_active_session,
+    admin_reconcile_max_active_session,
     admin_get_dsmc_configuration,
     admin_sync_dsmc_configuration,
     admin_query_game_sessions,
     admin_query_game_sessions_by_attributes,
     admin_delete_bulk_game_sessions,
+    admin_set_ds_ready,
     admin_update_game_session_member,
     admin_query_parties,
     admin_get_platform_credentials,

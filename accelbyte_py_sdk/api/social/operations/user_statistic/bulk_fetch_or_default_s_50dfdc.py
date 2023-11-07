@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.9.6)
+# AccelByte Gaming Services Social Service (2.10.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,9 +64,15 @@ class BulkFetchOrDefaultStatItems(Operation):
     Responses:
         200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
 
     # region fields
@@ -195,9 +201,15 @@ class BulkFetchOrDefaultStatItems(Operation):
 
         200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -216,10 +228,16 @@ class BulkFetchOrDefaultStatItems(Operation):
             return [
                 ADTOObjectForUserStatItemValue.create_from_dict(i) for i in content
             ], None
+        if code == 401:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 403:
+            return None, ErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
+        if code == 500:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

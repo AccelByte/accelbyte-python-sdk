@@ -8,13 +8,16 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.38.0"
+__version__ = "4.39.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .achievement_info import AchievementInfo
+from .action import Action
+from .action import StatusEnum as ActionStatusEnum
+from .action_request import ActionRequest
 from .additional_data import AdditionalData
 from .additional_data_entitlement import AdditionalDataEntitlement
 from .admin_order_create import AdminOrderCreate
@@ -158,6 +161,8 @@ from .consumable_entitlement_revocation_config import (
 )
 from .consume_item import ConsumeItem
 from .consume_item import ItemIdentityTypeEnum as ConsumeItemItemIdentityTypeEnum
+from .credit_payload import CreditPayload
+from .credit_payload import BalanceOriginEnum as CreditPayloadBalanceOriginEnum
 from .credit_request import CreditRequest
 from .credit_request import (
     OriginEnum as CreditRequestOriginEnum,
@@ -182,6 +187,13 @@ from .debit_by_currency_code_request import (
     BalanceOriginEnum as DebitByCurrencyCodeRequestBalanceOriginEnum,
     BalanceSourceEnum as DebitByCurrencyCodeRequestBalanceSourceEnum,
 )
+from .debit_by_wallet_platform_request import DebitByWalletPlatformRequest
+from .debit_by_wallet_platform_request import (
+    DebitBalanceSourceEnum as DebitByWalletPlatformRequestDebitBalanceSourceEnum,
+    WalletPlatformEnum as DebitByWalletPlatformRequestWalletPlatformEnum,
+)
+from .debit_payload import DebitPayload
+from .debit_payload import WalletPlatformEnum as DebitPayloadWalletPlatformEnum
 from .debit_request import DebitRequest
 from .debit_request import BalanceSourceEnum as DebitRequestBalanceSourceEnum
 from .debit_result import DebitResult
@@ -270,6 +282,10 @@ from .fixed_period_rotation_config import FixedPeriodRotationConfig
 from .fixed_period_rotation_config import (
     BackfillTypeEnum as FixedPeriodRotationConfigBackfillTypeEnum,
     RuleEnum as FixedPeriodRotationConfigRuleEnum,
+)
+from .ful_fill_item_payload import FulFillItemPayload
+from .ful_fill_item_payload import (
+    ItemIdentityTypeEnum as FulFillItemPayloadItemIdentityTypeEnum,
 )
 from .fulfill_code_request import FulfillCodeRequest
 from .fulfillment_error import FulfillmentError
@@ -457,6 +473,10 @@ from .oculus_reconcile_result import (
     IapOrderStatusEnum as OculusReconcileResultIapOrderStatusEnum,
     ItemIdentityTypeEnum as OculusReconcileResultItemIdentityTypeEnum,
 )
+from .operation import Operation
+from .operation import StatusEnum as OperationStatusEnum, TypeEnum as OperationTypeEnum
+from .operation_request import OperationRequest
+from .operation_request import TypeEnum as OperationRequestTypeEnum
 from .option_box_config import OptionBoxConfig
 from .order import Order
 from .order import (
@@ -665,6 +685,7 @@ from .revocation_result import StatusEnum as RevocationResultStatusEnum
 from .revoke_currency import RevokeCurrency
 from .revoke_currency import BalanceOriginEnum as RevokeCurrencyBalanceOriginEnum
 from .revoke_entitlement import RevokeEntitlement
+from .revoke_entitlement_payload import RevokeEntitlementPayload
 from .revoke_entry import RevokeEntry
 from .revoke_entry import TypeEnum as RevokeEntryTypeEnum
 from .revoke_item import RevokeItem
@@ -766,6 +787,11 @@ from .ticket_sale_increment_result import TicketSaleIncrementResult
 from .time_limited_balance import TimeLimitedBalance
 from .timed_ownership import TimedOwnership
 from .tls_config import TLSConfig
+from .trade_chain_action_history_info import TradeChainActionHistoryInfo
+from .trade_chain_action_history_info import (
+    StatusEnum as TradeChainActionHistoryInfoStatusEnum,
+)
+from .trade_chained_action_commit_request import TradeChainedActionCommitRequest
 from .trade_notification import TradeNotification
 from .trade_notification import (
     PaymentProviderEnum as TradeNotificationPaymentProviderEnum,

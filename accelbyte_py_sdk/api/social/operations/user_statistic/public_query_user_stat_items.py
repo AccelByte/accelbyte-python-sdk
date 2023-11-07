@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.9.6)
+# AccelByte Gaming Services Social Service (2.10.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import UserStatItemPagingSlicedResult
 from ...models import ValidationErrorEntity
 
@@ -75,7 +76,13 @@ class PublicQueryUserStatItems(Operation):
     Responses:
         200: OK - UserStatItemPagingSlicedResult (successful operation)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
 
     # region fields
@@ -240,13 +247,19 @@ class PublicQueryUserStatItems(Operation):
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
         Union[None, UserStatItemPagingSlicedResult],
-        Union[None, HttpResponse, ValidationErrorEntity],
+        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
         200: OK - UserStatItemPagingSlicedResult (successful operation)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -263,8 +276,14 @@ class PublicQueryUserStatItems(Operation):
 
         if code == 200:
             return UserStatItemPagingSlicedResult.create_from_dict(content), None
+        if code == 401:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 403:
+            return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
+        if code == 500:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

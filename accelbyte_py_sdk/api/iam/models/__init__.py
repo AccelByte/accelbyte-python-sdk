@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.4.1"
+__version__ = "7.5.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -354,7 +354,6 @@ from .oauthcommon_jwk_set import OauthcommonJWKSet
 from .oauthcommon_user_revocation_list_record import OauthcommonUserRevocationListRecord
 from .oauthmodel_country_location_response import OauthmodelCountryLocationResponse
 from .oauthmodel_error_response import OauthmodelErrorResponse
-from .oauthmodel_game_token_code_response import OauthmodelGameTokenCodeResponse
 from .oauthmodel_one_time_linking_code_response import (
     OauthmodelOneTimeLinkingCodeResponse,
 )
@@ -364,6 +363,7 @@ from .oauthmodel_one_time_linking_code_validation_response import (
 from .oauthmodel_platform_token_refresh_response_v3 import (
     OauthmodelPlatformTokenRefreshResponseV3,
 )
+from .oauthmodel_target_token_code_response import OauthmodelTargetTokenCodeResponse
 from .oauthmodel_token_introspect_response import OauthmodelTokenIntrospectResponse
 from .oauthmodel_token_response import OauthmodelTokenResponse
 from .oauthmodel_token_response_v3 import OauthmodelTokenResponseV3

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.4.1"
+__version__ = "7.5.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -183,14 +183,14 @@ from ._o_auth2_0_extension import platform_token_refresh_v3
 from ._o_auth2_0_extension import platform_token_refresh_v3_async
 from ._o_auth2_0_extension import platform_token_refresh_v3_deprecate
 from ._o_auth2_0_extension import platform_token_refresh_v3_deprecate_async
-from ._o_auth2_0_extension import request_game_token_code_response_v3
-from ._o_auth2_0_extension import request_game_token_code_response_v3_async
-from ._o_auth2_0_extension import request_game_token_response_v3
-from ._o_auth2_0_extension import request_game_token_response_v3_async
 from ._o_auth2_0_extension import request_one_time_linking_code_v3
 from ._o_auth2_0_extension import request_one_time_linking_code_v3_async
+from ._o_auth2_0_extension import request_target_token_response_v3
+from ._o_auth2_0_extension import request_target_token_response_v3_async
 from ._o_auth2_0_extension import request_token_by_one_time_link_code_response_v3
 from ._o_auth2_0_extension import request_token_by_one_time_link_code_response_v3_async
+from ._o_auth2_0_extension import request_token_exchange_code_v3
+from ._o_auth2_0_extension import request_token_exchange_code_v3_async
 from ._o_auth2_0_extension import user_authentication_v3
 from ._o_auth2_0_extension import user_authentication_v3_async
 from ._o_auth2_0_extension import validate_one_time_linking_code_v3

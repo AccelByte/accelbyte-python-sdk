@@ -4676,6 +4676,7 @@ def public_invite_user_v4(
     - emailAddress: email address of the user to be invited
     - namespace: new namespace of the user to be created
     - namespaceDisplayName: display name of the new namespace
+    - additionalData(optional): for utm parameter data
 
     The invited users will also be assigned with "User" role by default.
 
@@ -4726,6 +4727,7 @@ async def public_invite_user_v4_async(
     - emailAddress: email address of the user to be invited
     - namespace: new namespace of the user to be created
     - namespaceDisplayName: display name of the new namespace
+    - additionalData(optional): for utm parameter data
 
     The invited users will also be assigned with "User" role by default.
 

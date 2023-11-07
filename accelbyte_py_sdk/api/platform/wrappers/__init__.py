@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.38.0"
+__version__ = "4.39.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -835,6 +835,13 @@ from ._ticket import get_ticket_dynamic_async
 from ._ticket import increase_ticket_sale
 from ._ticket import increase_ticket_sale_async
 
+from ._trade_action import commit
+from ._trade_action import commit_async
+from ._trade_action import get_trade_history_by_criteria
+from ._trade_action import get_trade_history_by_criteria_async
+from ._trade_action import get_trade_history_by_transaction_id
+from ._trade_action import get_trade_history_by_transaction_id_async
+
 from ._view import create_view
 from ._view import create_view_async
 from ._view import delete_view
@@ -856,6 +863,8 @@ from ._wallet import check_wallet
 from ._wallet import check_wallet_async
 from ._wallet import credit_user_wallet
 from ._wallet import credit_user_wallet_async
+from ._wallet import debit_by_wallet_platform
+from ._wallet import debit_by_wallet_platform_async
 from ._wallet import debit_user_wallet
 from ._wallet import debit_user_wallet_async
 from ._wallet import debit_user_wallet_by_currency_code

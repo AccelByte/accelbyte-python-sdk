@@ -8,11 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.9.0"
+__version__ = "3.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
+
+# certificate
+from .wrappers import handle_upload_xbox_pfx_certificate
+from .wrappers import handle_upload_xbox_pfx_certificate_async
 
 # configuration_template
 from .wrappers import admin_create_configuration_alert_v1
@@ -53,6 +57,8 @@ from .wrappers import admin_query_game_sessions
 from .wrappers import admin_query_game_sessions_async
 from .wrappers import admin_query_game_sessions_by_attributes
 from .wrappers import admin_query_game_sessions_by_attributes_async
+from .wrappers import admin_set_ds_ready
+from .wrappers import admin_set_ds_ready_async
 from .wrappers import admin_update_game_session_member
 from .wrappers import admin_update_game_session_member_async
 from .wrappers import append_team_game_session
@@ -99,6 +105,12 @@ from .wrappers import admin_list_global_configuration
 from .wrappers import admin_list_global_configuration_async
 from .wrappers import admin_update_global_configuration
 from .wrappers import admin_update_global_configuration_async
+
+# max_active
+from .wrappers import admin_get_member_active_session
+from .wrappers import admin_get_member_active_session_async
+from .wrappers import admin_reconcile_max_active_session
+from .wrappers import admin_reconcile_max_active_session_async
 
 # operations
 from .wrappers import get_healthcheck_info

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.15.0"
+__version__ = "2.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,8 @@ from .admin_delete_group import AdminDeleteGroup
 from .admin_get_all_groups import AdminGetAllGroups
 from .admin_get_group import AdminGetGroup
 from .admin_get_group_contents import AdminGetGroupContents
+from .admin_get_official_grou_23b467 import AdminGetOfficialGroupContentsV2
+from .admin_get_user_group_co_73e55d import AdminGetUserGroupContentsV2
 from .admin_update_group import AdminUpdateGroup
 from .single_admin_delete_group import SingleAdminDeleteGroup
 from .single_admin_get_all_groups import SingleAdminGetAllGroups

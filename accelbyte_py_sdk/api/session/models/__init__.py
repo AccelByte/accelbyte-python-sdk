@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.9.0"
+__version__ = "3.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -79,6 +79,7 @@ from .apimodels_response_delete_bulk_game_sessions import (
     ApimodelsResponseDeleteBulkGameSessions,
 )
 from .apimodels_session_invite_request import ApimodelsSessionInviteRequest
+from .apimodels_set_ds_ready_request import ApimodelsSetDSReadyRequest
 from .apimodels_update_configuration_template_request import (
     ApimodelsUpdateConfigurationTemplateRequest,
 )
@@ -94,11 +95,15 @@ from .apimodels_user_response import ApimodelsUserResponse
 from .models_default_dsmc_config import ModelsDefaultDSMCConfig
 from .models_dsm_config_record import ModelsDSMConfigRecord
 from .models_game_server import ModelsGameServer
+from .models_member_active_session import ModelsMemberActiveSession
 from .models_native_session_setting import ModelsNativeSessionSetting
 from .models_party_members import ModelsPartyMembers
 from .models_platform_credentials import ModelsPlatformCredentials
 from .models_port_configuration_ams import ModelsPortConfigurationAMS
 from .models_psn_app_server_credentials import ModelsPSNAppServerCredentials
+from .models_request_reconcile_max_active_session import (
+    ModelsRequestReconcileMaxActiveSession,
+)
 from .models_team import ModelsTeam
 from .models_user_platform_info import ModelsUserPlatformInfo
 from .response_error import ResponseError

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.4.1"
+__version__ = "7.5.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -191,14 +191,14 @@ from .wrappers import platform_token_refresh_v3
 from .wrappers import platform_token_refresh_v3_async
 from .wrappers import platform_token_refresh_v3_deprecate
 from .wrappers import platform_token_refresh_v3_deprecate_async
-from .wrappers import request_game_token_code_response_v3
-from .wrappers import request_game_token_code_response_v3_async
-from .wrappers import request_game_token_response_v3
-from .wrappers import request_game_token_response_v3_async
 from .wrappers import request_one_time_linking_code_v3
 from .wrappers import request_one_time_linking_code_v3_async
+from .wrappers import request_target_token_response_v3
+from .wrappers import request_target_token_response_v3_async
 from .wrappers import request_token_by_one_time_link_code_response_v3
 from .wrappers import request_token_by_one_time_link_code_response_v3_async
+from .wrappers import request_token_exchange_code_v3
+from .wrappers import request_token_exchange_code_v3_async
 from .wrappers import user_authentication_v3
 from .wrappers import user_authentication_v3_async
 from .wrappers import validate_one_time_linking_code_v3

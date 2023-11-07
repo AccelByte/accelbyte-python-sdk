@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.38.0)
+# AccelByte Gaming Services Platform Service (4.39.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -25,6 +25,8 @@
 from .utils import randomize
 
 from ..api.platform.models import AchievementInfo
+from ..api.platform.models import Action
+from ..api.platform.models import ActionRequest
 from ..api.platform.models import AdditionalData
 from ..api.platform.models import AdditionalDataEntitlement
 from ..api.platform.models import AdminOrderCreate
@@ -85,6 +87,7 @@ from ..api.platform.models import ConditionGroupValidateResult
 from ..api.platform.models import ConditionMatchResult
 from ..api.platform.models import ConsumableEntitlementRevocationConfig
 from ..api.platform.models import ConsumeItem
+from ..api.platform.models import CreditPayload
 from ..api.platform.models import CreditRequest
 from ..api.platform.models import CreditResult
 from ..api.platform.models import CreditRevocation
@@ -102,6 +105,8 @@ from ..api.platform.models import DLCItemConfigInfo
 from ..api.platform.models import DLCItemConfigUpdate
 from ..api.platform.models import DLCRecord
 from ..api.platform.models import DebitByCurrencyCodeRequest
+from ..api.platform.models import DebitByWalletPlatformRequest
+from ..api.platform.models import DebitPayload
 from ..api.platform.models import DebitRequest
 from ..api.platform.models import DebitResult
 from ..api.platform.models import DeleteRewardConditionRequest
@@ -138,6 +143,7 @@ from ..api.platform.models import ExtensionFulfillmentSummary
 from ..api.platform.models import ExternalPaymentOrderCreate
 from ..api.platform.models import FieldValidationError
 from ..api.platform.models import FixedPeriodRotationConfig
+from ..api.platform.models import FulFillItemPayload
 from ..api.platform.models import FulfillCodeRequest
 from ..api.platform.models import FulfillmentError
 from ..api.platform.models import FulfillmentHistoryInfo
@@ -218,6 +224,8 @@ from ..api.platform.models import NotificationProcessResult
 from ..api.platform.models import OculusIAPConfigInfo
 from ..api.platform.models import OculusIAPConfigRequest
 from ..api.platform.models import OculusReconcileResult
+from ..api.platform.models import Operation
+from ..api.platform.models import OperationRequest
 from ..api.platform.models import OptionBoxConfig
 from ..api.platform.models import Order
 from ..api.platform.models import OrderBundleItemInfo
@@ -314,6 +322,7 @@ from ..api.platform.models import RevocationRequest
 from ..api.platform.models import RevocationResult
 from ..api.platform.models import RevokeCurrency
 from ..api.platform.models import RevokeEntitlement
+from ..api.platform.models import RevokeEntitlementPayload
 from ..api.platform.models import RevokeEntry
 from ..api.platform.models import RevokeItem
 from ..api.platform.models import RevokeItemSummary
@@ -372,6 +381,8 @@ from ..api.platform.models import TicketSaleIncrementRequest
 from ..api.platform.models import TicketSaleIncrementResult
 from ..api.platform.models import TimeLimitedBalance
 from ..api.platform.models import TimedOwnership
+from ..api.platform.models import TradeChainActionHistoryInfo
+from ..api.platform.models import TradeChainedActionCommitRequest
 from ..api.platform.models import TradeNotification
 from ..api.platform.models import Transaction
 from ..api.platform.models import TransactionAmountDetails
@@ -413,6 +424,22 @@ def create_achievement_info_example() -> AchievementInfo:
     instance.progress_state = randomize()
     instance.progression = {randomize(): randomize()}
     instance.service_config_id = randomize()
+    return instance
+
+
+def create_action_example() -> Action:
+    instance = Action()
+    instance.operations = [create_operation_example()]
+    instance.status = randomize()
+    instance.status_reason = randomize()
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_action_request_example() -> ActionRequest:
+    instance = ActionRequest()
+    instance.operations = [create_operation_request_example()]
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -1121,6 +1148,15 @@ def create_consume_item_example() -> ConsumeItem:
     return instance
 
 
+def create_credit_payload_example() -> CreditPayload:
+    instance = CreditPayload()
+    instance.count = randomize("int", min_val=1, max_val=1000)
+    instance.currency_code = randomize()
+    instance.balance_origin = randomize()
+    instance.expire_at = randomize("date")
+    return instance
+
+
 def create_credit_request_example() -> CreditRequest:
     instance = CreditRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
@@ -1237,6 +1273,24 @@ def create_debit_by_currency_code_request_example() -> DebitByCurrencyCodeReques
     instance.balance_source = randomize()
     instance.metadata = {randomize(): randomize()}
     instance.reason = randomize()
+    return instance
+
+
+def create_debit_by_wallet_platform_request_example() -> DebitByWalletPlatformRequest:
+    instance = DebitByWalletPlatformRequest()
+    instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.debit_balance_source = randomize()
+    instance.metadata = {randomize(): randomize()}
+    instance.reason = randomize()
+    instance.wallet_platform = randomize()
+    return instance
+
+
+def create_debit_payload_example() -> DebitPayload:
+    instance = DebitPayload()
+    instance.count = randomize("int", min_val=1, max_val=1000)
+    instance.currency_code = randomize()
+    instance.wallet_platform = randomize()
     return instance
 
 
@@ -1673,6 +1727,14 @@ def create_fixed_period_rotation_config_example() -> FixedPeriodRotationConfig:
     instance.duration = randomize("int", min_val=1, max_val=1000)
     instance.item_count = randomize("int", min_val=1, max_val=1000)
     instance.rule = randomize()
+    return instance
+
+
+def create_ful_fill_item_payload_example() -> FulFillItemPayload:
+    instance = FulFillItemPayload()
+    instance.count = randomize("int", min_val=1, max_val=1000)
+    instance.item_identity = randomize()
+    instance.item_identity_type = randomize()
     return instance
 
 
@@ -2649,6 +2711,29 @@ def create_oculus_reconcile_result_example() -> OculusReconcileResult:
     instance.item_identity_type = randomize()
     instance.oculus_item_sku = randomize()
     instance.transaction_id = randomize("uid")
+    return instance
+
+
+def create_operation_example() -> Operation:
+    instance = Operation()
+    instance.type_ = randomize()
+    instance.credit_payload = create_credit_payload_example()
+    instance.debit_payload = create_debit_payload_example()
+    instance.ful_fill_item_payload = create_ful_fill_item_payload_example()
+    instance.result_id = randomize()
+    instance.revoke_entitlement_payload = create_revoke_entitlement_payload_example()
+    instance.status = randomize()
+    instance.status_reason = randomize()
+    return instance
+
+
+def create_operation_request_example() -> OperationRequest:
+    instance = OperationRequest()
+    instance.credit_payload = create_credit_payload_example()
+    instance.debit_payload = create_debit_payload_example()
+    instance.ful_fill_item_payload = create_ful_fill_item_payload_example()
+    instance.revoke_entitlement_payload = create_revoke_entitlement_payload_example()
+    instance.type_ = randomize()
     return instance
 
 
@@ -3769,6 +3854,13 @@ def create_revoke_entitlement_example() -> RevokeEntitlement:
     return instance
 
 
+def create_revoke_entitlement_payload_example() -> RevokeEntitlementPayload:
+    instance = RevokeEntitlementPayload()
+    instance.entitlement_id = randomize()
+    instance.count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_revoke_entry_example() -> RevokeEntry:
     instance = RevokeEntry()
     instance.currency = create_revoke_currency_example()
@@ -4391,6 +4483,31 @@ def create_tls_config_example() -> TLSConfig:
     instance = TLSConfig()
     instance.root_cert_file_bytes = [randomize()]
     instance.root_cert_file_name = randomize()
+    return instance
+
+
+def create_trade_chain_action_history_info_example() -> TradeChainActionHistoryInfo:
+    instance = TradeChainActionHistoryInfo()
+    instance.actions = [create_action_example()]
+    instance.metadata = {randomize(): randomize()}
+    instance.namespace = randomize("slug")
+    instance.status = randomize()
+    instance.status_reason = randomize()
+    instance.transaction_id = randomize("uid")
+    instance.type_ = randomize()
+    instance.user_ids = [randomize()]
+    return instance
+
+
+def create_trade_chained_action_commit_request_example() -> (
+    TradeChainedActionCommitRequest
+):
+    instance = TradeChainedActionCommitRequest()
+    instance.actions = [create_action_request_example()]
+    instance.metadata = {randomize(): randomize()}
+    instance.need_pre_check = randomize("bool")
+    instance.transaction_id = randomize("uid")
+    instance.type_ = randomize()
     return instance
 
 

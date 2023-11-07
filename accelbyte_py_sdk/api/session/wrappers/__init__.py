@@ -8,11 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.9.0"
+__version__ = "3.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
+
+from ._certificate import handle_upload_xbox_pfx_certificate
+from ._certificate import handle_upload_xbox_pfx_certificate_async
 
 from ._configuration_template import admin_create_configuration_alert_v1
 from ._configuration_template import admin_create_configuration_alert_v1_async
@@ -49,6 +52,8 @@ from ._game_session import admin_query_game_sessions
 from ._game_session import admin_query_game_sessions_async
 from ._game_session import admin_query_game_sessions_by_attributes
 from ._game_session import admin_query_game_sessions_by_attributes_async
+from ._game_session import admin_set_ds_ready
+from ._game_session import admin_set_ds_ready_async
 from ._game_session import admin_update_game_session_member
 from ._game_session import admin_update_game_session_member_async
 from ._game_session import append_team_game_session
@@ -94,6 +99,11 @@ from ._global_configuration import admin_list_global_configuration
 from ._global_configuration import admin_list_global_configuration_async
 from ._global_configuration import admin_update_global_configuration
 from ._global_configuration import admin_update_global_configuration_async
+
+from ._max_active import admin_get_member_active_session
+from ._max_active import admin_get_member_active_session_async
+from ._max_active import admin_reconcile_max_active_session
+from ._max_active import admin_reconcile_max_active_session_async
 
 from ._operations import get_healthcheck_info
 from ._operations import get_healthcheck_info_async

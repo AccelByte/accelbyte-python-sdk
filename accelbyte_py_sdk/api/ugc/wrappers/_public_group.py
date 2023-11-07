@@ -32,6 +32,7 @@ from ....core import same_doc_as
 from ..models import ModelsCreateGroupRequest
 from ..models import ModelsCreateGroupResponse
 from ..models import ModelsPaginatedContentDownloadResponse
+from ..models import ModelsPaginatedContentDownloadResponseV2
 from ..models import ModelsPaginatedGroupResponse
 from ..models import ResponseError
 
@@ -40,6 +41,7 @@ from ..operations.public_group import DeleteGroup
 from ..operations.public_group import GetGroup
 from ..operations.public_group import GetGroupContent
 from ..operations.public_group import GetGroups
+from ..operations.public_group import PublicGetGroupContentsV2
 from ..operations.public_group import UpdateGroup
 
 
@@ -389,7 +391,7 @@ def get_group_content(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get contents belong to a group (GetGroupContent)
+    """(Legacy) Get contents belong to a group (GetGroupContent)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
@@ -452,7 +454,7 @@ async def get_group_content_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get contents belong to a group (GetGroupContent)
+    """(Legacy) Get contents belong to a group (GetGroupContent)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
@@ -617,6 +619,134 @@ async def get_groups_async(
         if error:
             return None, error
     request = GetGroups.create(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetGroupContentsV2)
+def public_get_group_contents_v2(
+    group_id: str,
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get contents belong to a group (PublicGetGroupContentsV2)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents
+
+        method: GET
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetGroupContentsV2.create(
+        group_id=group_id,
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetGroupContentsV2)
+async def public_get_group_contents_v2_async(
+    group_id: str,
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get contents belong to a group (PublicGetGroupContentsV2)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents
+
+        method: GET
+
+        tags: ["Public Group"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        group_id: (groupId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetGroupContentsV2.create(
+        group_id=group_id,
         user_id=user_id,
         limit=limit,
         offset=offset,

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Social Service (2.9.6)
+# AGS Social Service (2.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.social import (
     bulk_fetch_stat_items_1 as bulk_fetch_stat_items_1_internal,
 )
+from accelbyte_py_sdk.api.social.models import ErrorEntity
 from accelbyte_py_sdk.api.social.models import UserStatItemInfo
 from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 

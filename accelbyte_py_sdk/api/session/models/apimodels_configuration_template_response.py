@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.9.0)
+# AccelByte Gaming Services Session Service (3.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,6 +66,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         auto_join: (autoJoin) OPTIONAL bool
 
+        disable_code_generation: (disableCodeGeneration) OPTIONAL bool
+
+        ds_manual_set_ready: (dsManualSetReady) OPTIONAL bool
+
         ds_source: (dsSource) OPTIONAL str
 
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
@@ -103,6 +107,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
     type_: str  # REQUIRED
     updated_at: str  # REQUIRED
     auto_join: bool  # OPTIONAL
+    disable_code_generation: bool  # OPTIONAL
+    ds_manual_set_ready: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
     immutable_storage: bool  # OPTIONAL
@@ -181,6 +187,18 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
     def with_auto_join(self, value: bool) -> ApimodelsConfigurationTemplateResponse:
         self.auto_join = value
+        return self
+
+    def with_disable_code_generation(
+        self, value: bool
+    ) -> ApimodelsConfigurationTemplateResponse:
+        self.disable_code_generation = value
+        return self
+
+    def with_ds_manual_set_ready(
+        self, value: bool
+    ) -> ApimodelsConfigurationTemplateResponse:
+        self.ds_manual_set_ready = value
         return self
 
     def with_ds_source(self, value: str) -> ApimodelsConfigurationTemplateResponse:
@@ -303,6 +321,14 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["autoJoin"] = bool(self.auto_join)
         elif include_empty:
             result["autoJoin"] = False
+        if hasattr(self, "disable_code_generation"):
+            result["disableCodeGeneration"] = bool(self.disable_code_generation)
+        elif include_empty:
+            result["disableCodeGeneration"] = False
+        if hasattr(self, "ds_manual_set_ready"):
+            result["dsManualSetReady"] = bool(self.ds_manual_set_ready)
+        elif include_empty:
+            result["dsManualSetReady"] = False
         if hasattr(self, "ds_source"):
             result["dsSource"] = str(self.ds_source)
         elif include_empty:
@@ -366,6 +392,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
         type_: str,
         updated_at: str,
         auto_join: Optional[bool] = None,
+        disable_code_generation: Optional[bool] = None,
+        ds_manual_set_ready: Optional[bool] = None,
         ds_source: Optional[str] = None,
         fallback_claim_keys: Optional[List[str]] = None,
         immutable_storage: Optional[bool] = None,
@@ -395,6 +423,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
         instance.updated_at = updated_at
         if auto_join is not None:
             instance.auto_join = auto_join
+        if disable_code_generation is not None:
+            instance.disable_code_generation = disable_code_generation
+        if ds_manual_set_ready is not None:
+            instance.ds_manual_set_ready = ds_manual_set_ready
         if ds_source is not None:
             instance.ds_source = ds_source
         if fallback_claim_keys is not None:
@@ -486,6 +518,17 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.auto_join = bool(dict_["autoJoin"])
         elif include_empty:
             instance.auto_join = False
+        if (
+            "disableCodeGeneration" in dict_
+            and dict_["disableCodeGeneration"] is not None
+        ):
+            instance.disable_code_generation = bool(dict_["disableCodeGeneration"])
+        elif include_empty:
+            instance.disable_code_generation = False
+        if "dsManualSetReady" in dict_ and dict_["dsManualSetReady"] is not None:
+            instance.ds_manual_set_ready = bool(dict_["dsManualSetReady"])
+        elif include_empty:
+            instance.ds_manual_set_ready = False
         if "dsSource" in dict_ and dict_["dsSource"] is not None:
             instance.ds_source = str(dict_["dsSource"])
         elif include_empty:
@@ -595,6 +638,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "type": "type_",
             "updatedAt": "updated_at",
             "autoJoin": "auto_join",
+            "disableCodeGeneration": "disable_code_generation",
+            "dsManualSetReady": "ds_manual_set_ready",
             "dsSource": "ds_source",
             "fallbackClaimKeys": "fallback_claim_keys",
             "immutableStorage": "immutable_storage",
@@ -625,6 +670,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "type": True,
             "updatedAt": True,
             "autoJoin": False,
+            "disableCodeGeneration": False,
+            "dsManualSetReady": False,
             "dsSource": False,
             "fallbackClaimKeys": False,
             "immutableStorage": False,

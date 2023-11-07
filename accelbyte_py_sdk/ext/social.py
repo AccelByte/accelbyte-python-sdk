@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Social Service (2.9.6)
+# AccelByte Gaming Services Social Service (2.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,6 +62,8 @@ from ..api.social.models import StatInfo
 from ..api.social.models import StatItemInc
 from ..api.social.models import StatItemIncResult
 from ..api.social.models import StatItemUpdate
+from ..api.social.models import StatItemValue
+from ..api.social.models import StatItemValuePagingSlicedResult
 from ..api.social.models import StatPagingSlicedResult
 from ..api.social.models import StatResetInfo
 from ..api.social.models import StatUpdate
@@ -454,6 +456,24 @@ def create_stat_item_update_example() -> StatItemUpdate:
     instance.update_strategy = randomize()
     instance.value = randomize("int", min_val=1, max_val=1000)
     instance.additional_data = {randomize(): randomize()}
+    return instance
+
+
+def create_stat_item_value_example() -> StatItemValue:
+    instance = StatItemValue()
+    instance.created_at = randomize("date")
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.value = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_stat_item_value_paging_sliced_result_example() -> (
+    StatItemValuePagingSlicedResult
+):
+    instance = StatItemValuePagingSlicedResult()
+    instance.data = [create_stat_item_value_example()]
+    instance.paging = create_paging_example()
     return instance
 
 

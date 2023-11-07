@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.4.1)
+# AccelByte Gaming Services Iam Service (7.5.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -280,10 +280,10 @@ from ..api.iam.models import OauthcommonJWKSet
 from ..api.iam.models import OauthcommonUserRevocationListRecord
 from ..api.iam.models import OauthmodelCountryLocationResponse
 from ..api.iam.models import OauthmodelErrorResponse
-from ..api.iam.models import OauthmodelGameTokenCodeResponse
 from ..api.iam.models import OauthmodelOneTimeLinkingCodeResponse
 from ..api.iam.models import OauthmodelOneTimeLinkingCodeValidationResponse
 from ..api.iam.models import OauthmodelPlatformTokenRefreshResponseV3
+from ..api.iam.models import OauthmodelTargetTokenCodeResponse
 from ..api.iam.models import OauthmodelTokenIntrospectResponse
 from ..api.iam.models import OauthmodelTokenResponse
 from ..api.iam.models import OauthmodelTokenResponseV3
@@ -1801,6 +1801,7 @@ def create_model_public_invite_user_request_v4_example() -> (
     instance.email_address = randomize("email")
     instance.namespace = randomize("slug")
     instance.namespace_display_name = randomize()
+    instance.additional_data = randomize()
     return instance
 
 
@@ -2535,6 +2536,7 @@ def create_model_user_invitation_v3_example() -> ModelUserInvitationV3:
     instance.email = randomize("email")
     instance.expired_at = randomize("date")
     instance.roles = [create_accountcommon_namespace_role_example()]
+    instance.additional_data = randomize()
     instance.id_ = randomize()
     instance.namespace = randomize("slug")
     instance.namespace_display_name = randomize()
@@ -2881,14 +2883,6 @@ def create_oauthmodel_error_response_example() -> OauthmodelErrorResponse:
     return instance
 
 
-def create_oauthmodel_game_token_code_response_example() -> (
-    OauthmodelGameTokenCodeResponse
-):
-    instance = OauthmodelGameTokenCodeResponse()
-    instance.code = randomize()
-    return instance
-
-
 def create_oauthmodel_one_time_linking_code_response_example() -> (
     OauthmodelOneTimeLinkingCodeResponse
 ):
@@ -2917,6 +2911,14 @@ def create_oauthmodel_platform_token_refresh_response_v3_example() -> (
     instance.display_name = randomize("slug")
     instance.platform_token_expires_at = randomize("int", min_val=1, max_val=1000)
     instance.platform_user_id = randomize()
+    return instance
+
+
+def create_oauthmodel_target_token_code_response_example() -> (
+    OauthmodelTargetTokenCodeResponse
+):
+    instance = OauthmodelTargetTokenCodeResponse()
+    instance.code = randomize()
     return instance
 
 

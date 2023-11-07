@@ -8,12 +8,18 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.30.0"
+__version__ = "3.30.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from ._admin import admin_delete_global_config
+from ._admin import admin_delete_global_config_async
+from ._admin import admin_get_global_config
+from ._admin import admin_get_global_config_async
+from ._admin import admin_update_global_config
+from ._admin import admin_update_global_config_async
 from ._admin import create_template
 from ._admin import create_template_async
 from ._admin import delete_template_localization

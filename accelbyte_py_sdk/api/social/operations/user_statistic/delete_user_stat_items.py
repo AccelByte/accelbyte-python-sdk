@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.9.6)
+# AccelByte Gaming Services Social Service (2.10.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -68,13 +68,15 @@ class DeleteUserStatItems(Operation):
     Responses:
         204: No Content - (delete successfully)
 
-        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
 
     # region fields
@@ -193,13 +195,15 @@ class DeleteUserStatItems(Operation):
 
         204: No Content - (delete successfully)
 
-        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (12242: Stat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -224,6 +228,8 @@ class DeleteUserStatItems(Operation):
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
+        if code == 500:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

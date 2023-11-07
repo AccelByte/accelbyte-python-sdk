@@ -94,9 +94,15 @@ def get_user_stat_cycle_items(
     Responses:
         200: OK - UserStatCycleItemPagingSlicedResult (successful operation)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -171,9 +177,15 @@ async def get_user_stat_cycle_items_async(
     Responses:
         200: OK - UserStatCycleItemPagingSlicedResult (successful operation)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -247,9 +259,15 @@ def get_user_stat_cycle_items_1(
     Responses:
         200: OK - UserStatCycleItemPagingSlicedResult (successful operation)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -320,9 +338,15 @@ async def get_user_stat_cycle_items_1_async(
     Responses:
         200: OK - UserStatCycleItemPagingSlicedResult (successful operation)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -392,9 +416,15 @@ def public_list_my_stat_cycle_items(
     Responses:
         200: OK - UserStatCycleItemPagingSlicedResult (successful operation)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -461,9 +491,15 @@ async def public_list_my_stat_cycle_items_async(
     Responses:
         200: OK - UserStatCycleItemPagingSlicedResult (successful operation)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
         404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

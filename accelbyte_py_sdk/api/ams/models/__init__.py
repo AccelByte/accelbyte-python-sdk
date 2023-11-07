@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,10 +21,18 @@ from .api_account_link_request import ApiAccountLinkRequest
 from .api_account_link_response import ApiAccountLinkResponse
 from .api_account_link_token_response import ApiAccountLinkTokenResponse
 from .api_account_response import ApiAccountResponse
+from .api_ams_regions_response import ApiAMSRegionsResponse
+from .api_artifact_sampling_rule_response import ApiArtifactSamplingRuleResponse
+from .api_artifact_type_sampling_rules_response import (
+    ApiArtifactTypeSamplingRulesResponse,
+)
 from .api_available_instance_types_response import ApiAvailableInstanceTypesResponse
 from .api_ds_history_event import ApiDSHistoryEvent
 from .api_ds_history_list import ApiDSHistoryList
 from .api_ds_host_configuration import ApiDSHostConfiguration
+from .api_fleet_artifacts_sample_rules_response import (
+    ApiFleetArtifactsSampleRulesResponse,
+)
 from .api_fleet_claim_by_keys_req import ApiFleetClaimByKeysReq
 from .api_fleet_claim_req import ApiFleetClaimReq
 from .api_fleet_claim_response import ApiFleetClaimResponse
@@ -46,9 +54,14 @@ from .api_image_update import ApiImageUpdate
 from .api_instance_type_description_response import ApiInstanceTypeDescriptionResponse
 from .api_paging_info import ApiPagingInfo
 from .api_port_configuration import ApiPortConfiguration
-from .api_qos_server import ApiQOSServer
+from .api_qo_s_endpoint_response import ApiQoSEndpointResponse
+from .api_qo_s_server import ApiQoSServer
 from .api_referencing_fleet import ApiReferencingFleet
 from .api_region_config import ApiRegionConfig
-from .api_regions_response import ApiRegionsResponse
+from .api_time import ApiTime
 from .api_timeout import ApiTimeout
+from .api_update_server_request import ApiUpdateServerRequest
 from .response_error_response import ResponseErrorResponse
+from .time_location import TimeLocation
+from .time_zone import TimeZone
+from .time_zone_trans import TimeZoneTrans

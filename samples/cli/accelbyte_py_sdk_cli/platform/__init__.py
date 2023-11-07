@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.38.0)
+# justice-platform-service (4.39.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._get_fulfillment_script import get_fulfillment_script
@@ -214,6 +214,9 @@ from ._get_ticket_dynamic import get_ticket_dynamic
 from ._decrease_ticket_sale import decrease_ticket_sale
 from ._get_ticket_booth_id import get_ticket_booth_id
 from ._increase_ticket_sale import increase_ticket_sale
+from ._commit import commit
+from ._get_trade_history_by_criteria import get_trade_history_by_criteria
+from ._get_trade_history_by_transaction_id import get_trade_history_by_transaction_id
 from ._unlock_steam_user_achievement import unlock_steam_user_achievement
 from ._get_xbl_user_achievements import get_xbl_user_achievements
 from ._update_xbl_user_achievement import update_xbl_user_achievement
@@ -308,6 +311,7 @@ from ._debit_user_wallet_by_currency_code import debit_user_wallet_by_currency_c
 from ._list_user_currency_transactions import list_user_currency_transactions
 from ._check_wallet import check_wallet
 from ._credit_user_wallet import credit_user_wallet
+from ._debit_by_wallet_platform import debit_by_wallet_platform
 from ._pay_with_user_wallet import pay_with_user_wallet
 from ._get_user_wallet import get_user_wallet
 from ._debit_user_wallet import debit_user_wallet
@@ -701,6 +705,9 @@ commands = [
     decrease_ticket_sale,
     get_ticket_booth_id,
     increase_ticket_sale,
+    commit,
+    get_trade_history_by_criteria,
+    get_trade_history_by_transaction_id,
     unlock_steam_user_achievement,
     get_xbl_user_achievements,
     update_xbl_user_achievement,
@@ -777,6 +784,7 @@ commands = [
     list_user_currency_transactions,
     check_wallet,
     credit_user_wallet,
+    debit_by_wallet_platform,
     pay_with_user_wallet,
     get_user_wallet,
     debit_user_wallet,

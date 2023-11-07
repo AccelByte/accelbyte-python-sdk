@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Lobby Server Index (3.30.0)
+# AccelByte Gaming Services Lobby Server Index (3.30.2)
 
 
 ## Operations
@@ -10,6 +10,9 @@
 ### admin
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /lobby/v1/admin/global-configurations | DELETE | adminDeleteGlobalConfig | `false` | [AdminDeleteGlobalConfig](../../accelbyte_py_sdk/api/lobby/operations/admin/admin_delete_global_config.py) | [admin_delete_global_config](../../accelbyte_py_sdk/api/lobby/wrappers/_admin.py) | [accelbyte_py_sdk_cli lobby-admin-delete-global-config](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_delete_global_config.py) |
+| /lobby/v1/admin/global-configurations | GET | adminGetGlobalConfig | `false` | [AdminGetGlobalConfig](../../accelbyte_py_sdk/api/lobby/operations/admin/admin_get_global_config.py) | [admin_get_global_config](../../accelbyte_py_sdk/api/lobby/wrappers/_admin.py) | [accelbyte_py_sdk_cli lobby-admin-get-global-config](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_global_config.py) |
+| /lobby/v1/admin/global-configurations | PUT | adminUpdateGlobalConfig | `false` | [AdminUpdateGlobalConfig](../../accelbyte_py_sdk/api/lobby/operations/admin/admin_update_global_config.py) | [admin_update_global_config](../../accelbyte_py_sdk/api/lobby/wrappers/_admin.py) | [accelbyte_py_sdk_cli lobby-admin-update-global-config](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_update_global_config.py) |
 | /notification/namespaces/{namespace}/templates | POST | createTemplate | `false` | [CreateTemplate](../../accelbyte_py_sdk/api/lobby/operations/admin/create_template.py) | [create_template](../../accelbyte_py_sdk/api/lobby/wrappers/_admin.py) | [accelbyte_py_sdk_cli lobby-create-template](../../samples/cli/accelbyte_py_sdk_cli/lobby/_create_template.py) |
 | /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage} | DELETE | deleteTemplateLocalization | `false` | [DeleteTemplateLocalization](../../accelbyte_py_sdk/api/lobby/operations/admin/delete_template_localization.py) | [delete_template_localization](../../accelbyte_py_sdk/api/lobby/wrappers/_admin.py) | [accelbyte_py_sdk_cli lobby-delete-template-localization](../../samples/cli/accelbyte_py_sdk_cli/lobby/_delete_template_localization.py) |
 | /notification/namespaces/{namespace}/templates/{templateSlug} | DELETE | deleteTemplateSlug | `false` | [DeleteTemplateSlug](../../accelbyte_py_sdk/api/lobby/operations/admin/delete_template_slug.py) | [delete_template_slug](../../accelbyte_py_sdk/api/lobby/wrappers/_admin.py) | [accelbyte_py_sdk_cli lobby-delete-template-slug](../../samples/cli/accelbyte_py_sdk_cli/lobby/_delete_template_slug.py) |
@@ -165,6 +168,7 @@
 | model.GetUserFriendsResponse | [ModelGetUserFriendsResponse](../../accelbyte_py_sdk/api/lobby/models/model_get_user_friends_response.py) |
 | model.GetUserIncomingFriendsResponse | [ModelGetUserIncomingFriendsResponse](../../accelbyte_py_sdk/api/lobby/models/model_get_user_incoming_friends_response.py) |
 | model.GetUserOutgoingFriendsResponse | [ModelGetUserOutgoingFriendsResponse](../../accelbyte_py_sdk/api/lobby/models/model_get_user_outgoing_friends_response.py) |
+| model.GlobalConfiguration | [ModelGlobalConfiguration](../../accelbyte_py_sdk/api/lobby/models/model_global_configuration.py) |
 | model.IncomingFriendsWithTimeData | [ModelIncomingFriendsWithTimeData](../../accelbyte_py_sdk/api/lobby/models/model_incoming_friends_with_time_data.py) |
 | model.ListBulkUserPlatformsResponse | [ModelListBulkUserPlatformsResponse](../../accelbyte_py_sdk/api/lobby/models/model_list_bulk_user_platforms_response.py) |
 | model.LoadIncomingFriendsWithTimeResponse | [ModelLoadIncomingFriendsWithTimeResponse](../../accelbyte_py_sdk/api/lobby/models/model_load_incoming_friends_with_time_response.py) |
@@ -179,6 +183,7 @@
 | model.NotificationWithTemplateRequestV1 | [ModelNotificationWithTemplateRequestV1](../../accelbyte_py_sdk/api/lobby/models/model_notification_with_template_request_v1.py) |
 | model.OutgoingFriendsWithTimeData | [ModelOutgoingFriendsWithTimeData](../../accelbyte_py_sdk/api/lobby/models/model_outgoing_friends_with_time_data.py) |
 | model.Pagination | [ModelPagination](../../accelbyte_py_sdk/api/lobby/models/model_pagination.py) |
+| model.PutGlobalConfigurationRequest | [ModelPutGlobalConfigurationRequest](../../accelbyte_py_sdk/api/lobby/models/model_put_global_configuration_request.py) |
 | model.TemplateContent | [ModelTemplateContent](../../accelbyte_py_sdk/api/lobby/models/model_template_content.py) |
 | model.TemplateLocalization | [ModelTemplateLocalization](../../accelbyte_py_sdk/api/lobby/models/model_template_localization.py) |
 | model.TemplateLocalizationResponse | [ModelTemplateLocalizationResponse](../../accelbyte_py_sdk/api/lobby/models/model_template_localization_response.py) |

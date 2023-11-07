@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (7.4.1)
+# justice-iam-service (7.5.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -276,7 +276,7 @@ from ._request_token_by_one_time_link_code_response_v3 import (
 )
 from ._get_country_location_v3 import get_country_location_v3
 from ._logout import logout
-from ._request_game_token_code_response_v3 import request_game_token_code_response_v3
+from ._request_token_exchange_code_v3 import request_token_exchange_code_v3
 from ._admin_retrieve_user_third_party_platform_token_v3 import (
     admin_retrieve_user_third_party_platform_token_v3,
 )
@@ -375,7 +375,7 @@ from ._public_verify_user_by_link_v3 import public_verify_user_by_link_v3
 from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_handler
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
-from ._request_game_token_response_v3 import request_game_token_response_v3
+from ._request_target_token_response_v3 import request_target_token_response_v3
 from ._platform_token_refresh_v3_deprecate import platform_token_refresh_v3_deprecate
 from ._admin_get_devices_by_user_v4 import admin_get_devices_by_user_v4
 from ._admin_get_banned_devices_v4 import admin_get_banned_devices_v4
@@ -675,7 +675,7 @@ commands = [
     request_token_by_one_time_link_code_response_v3,
     get_country_location_v3,
     logout,
-    request_game_token_code_response_v3,
+    request_token_exchange_code_v3,
     admin_retrieve_user_third_party_platform_token_v3,
     revoke_user_v3,
     authorize_v3,
@@ -748,7 +748,7 @@ commands = [
     platform_authenticate_samlv3_handler,
     login_sso_client,
     logout_sso_client,
-    request_game_token_response_v3,
+    request_target_token_response_v3,
     platform_token_refresh_v3_deprecate,
     admin_get_devices_by_user_v4,
     admin_get_banned_devices_v4,

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.9.0)
+# AccelByte Gaming Services Session Service (3.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -57,6 +57,7 @@ from ..api.session.models import ApimodelsPutPlatformCredentialsRequest
 from ..api.session.models import ApimodelsRequestMember
 from ..api.session.models import ApimodelsResponseDeleteBulkGameSessions
 from ..api.session.models import ApimodelsSessionInviteRequest
+from ..api.session.models import ApimodelsSetDSReadyRequest
 from ..api.session.models import ApimodelsUpdateConfigurationTemplateRequest
 from ..api.session.models import ApimodelsUpdateGameSessionBackfillRequest
 from ..api.session.models import ApimodelsUpdateGameSessionMemberStatusResponse
@@ -66,11 +67,13 @@ from ..api.session.models import ApimodelsUserResponse
 from ..api.session.models import ModelsDSMConfigRecord
 from ..api.session.models import ModelsDefaultDSMCConfig
 from ..api.session.models import ModelsGameServer
+from ..api.session.models import ModelsMemberActiveSession
 from ..api.session.models import ModelsNativeSessionSetting
 from ..api.session.models import ModelsPSNAppServerCredentials
 from ..api.session.models import ModelsPartyMembers
 from ..api.session.models import ModelsPlatformCredentials
 from ..api.session.models import ModelsPortConfigurationAMS
+from ..api.session.models import ModelsRequestReconcileMaxActiveSession
 from ..api.session.models import ModelsTeam
 from ..api.session.models import ModelsUserPlatformInfo
 from ..api.session.models import ResponseError
@@ -123,6 +126,8 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.type_ = randomize()
     instance.updated_at = randomize()
     instance.auto_join = randomize("bool")
+    instance.disable_code_generation = randomize("bool")
+    instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
@@ -161,6 +166,8 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.auto_join = randomize("bool")
+    instance.disable_code_generation = randomize("bool")
+    instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
@@ -390,6 +397,7 @@ def create_apimodels_player_platform_example() -> ApimodelsPlayerPlatform:
     instance = ApimodelsPlayerPlatform()
     instance.current_platform = randomize()
     instance.user_id = randomize("uid")
+    instance.crossplay_enabled = randomize("bool")
     return instance
 
 
@@ -429,6 +437,8 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.persistent = randomize("bool")
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.disable_code_generation = randomize("bool")
+    instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
@@ -485,6 +495,12 @@ def create_apimodels_session_invite_request_example() -> ApimodelsSessionInviteR
     return instance
 
 
+def create_apimodels_set_ds_ready_request_example() -> ApimodelsSetDSReadyRequest:
+    instance = ApimodelsSetDSReadyRequest()
+    instance.ready = randomize("bool")
+    return instance
+
+
 def create_apimodels_update_configuration_template_request_example() -> (
     ApimodelsUpdateConfigurationTemplateRequest
 ):
@@ -502,6 +518,8 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.auto_join = randomize("bool")
+    instance.disable_code_generation = randomize("bool")
+    instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
@@ -620,12 +638,28 @@ def create_models_game_server_example() -> ModelsGameServer:
     return instance
 
 
+def create_models_member_active_session_example() -> ModelsMemberActiveSession:
+    instance = ModelsMemberActiveSession()
+    instance.created_at = randomize("date")
+    instance.id_ = randomize()
+    instance.member_id = randomize()
+    instance.namespace = randomize("slug")
+    instance.session_i_ds = [randomize()]
+    instance.session_template = randomize()
+    instance.total = randomize("int", min_val=1, max_val=1000)
+    instance.updated_at = randomize("date")
+    return instance
+
+
 def create_models_native_session_setting_example() -> ModelsNativeSessionSetting:
     instance = ModelsNativeSessionSetting()
     instance.psn_service_label = randomize("int", min_val=1, max_val=1000)
     instance.session_title = randomize()
+    instance.xbox_allow_cross_platform = randomize("bool")
+    instance.xbox_sandbox_id = randomize()
     instance.xbox_service_config_id = randomize()
     instance.xbox_session_template_name = randomize()
+    instance.xbox_title_id = randomize()
     instance.localized_session_name = {randomize(): randomize()}
     instance.psn_supported_platforms = [randomize()]
     instance.should_sync = randomize("bool")
@@ -661,10 +695,18 @@ def create_models_psn_app_server_credentials_example() -> ModelsPSNAppServerCred
     return instance
 
 
+def create_models_request_reconcile_max_active_session_example() -> (
+    ModelsRequestReconcileMaxActiveSession
+):
+    instance = ModelsRequestReconcileMaxActiveSession()
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_models_team_example() -> ModelsTeam:
     instance = ModelsTeam()
-    instance.user_i_ds = [randomize()]
     instance.parties = [create_models_party_members_example()]
+    instance.user_i_ds = [randomize()]
     return instance
 
 

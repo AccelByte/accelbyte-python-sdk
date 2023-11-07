@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.3.0)
+# Fleet Commander (1.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApiRegionsResponse
+from ...models import ApiAMSRegionsResponse
 from ...models import ResponseErrorResponse
 
 
@@ -57,7 +57,7 @@ class InfoRegions(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ApiRegionsResponse (success)
+        200: OK - ApiAMSRegionsResponse (success)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -156,12 +156,12 @@ class InfoRegions(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ApiRegionsResponse],
+        Union[None, ApiAMSRegionsResponse],
         Union[None, HttpResponse, ResponseErrorResponse],
     ]:
         """Parse the given response.
 
-        200: OK - ApiRegionsResponse (success)
+        200: OK - ApiAMSRegionsResponse (success)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -183,7 +183,7 @@ class InfoRegions(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ApiRegionsResponse.create_from_dict(content), None
+            return ApiAMSRegionsResponse.create_from_dict(content), None
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:

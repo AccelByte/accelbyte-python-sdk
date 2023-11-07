@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.9.6)
+# AccelByte Gaming Services Social Service (2.10.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -67,6 +67,12 @@ class PublicGetUserGameProfiles(Operation):
         200: OK - List[UserGameProfiles] (successful operation)
 
         400: Bad Request - ErrorEntity (12021: {totalUser} users is requested. Cannot retrieve more than {limitUser} users at once)
+
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
 
     # region fields
@@ -183,6 +189,12 @@ class PublicGetUserGameProfiles(Operation):
 
         400: Bad Request - ErrorEntity (12021: {totalUser} users is requested. Cannot retrieve more than {limitUser} users at once)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -199,6 +211,12 @@ class PublicGetUserGameProfiles(Operation):
         if code == 200:
             return [UserGameProfiles.create_from_dict(i) for i in content], None
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 401:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 403:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 500:
             return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(

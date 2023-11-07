@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Social Service Index (2.9.6)
+# AccelByte Gaming Services Social Service Index (2.10.0)
 
 
 ## Operations
@@ -107,6 +107,7 @@
 | /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems | DELETE | deleteUserStatItems | `false` | [DeleteUserStatItems](../../accelbyte_py_sdk/api/social/operations/user_statistic/delete_user_stat_items.py) | [delete_user_stat_items](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-delete-user-stat-items](../../samples/cli/accelbyte_py_sdk_cli/social/_delete_user_stat_items.py) |
 | /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems | DELETE | deleteUserStatItems_1 | `false` | [DeleteUserStatItems1](../../accelbyte_py_sdk/api/social/operations/user_statistic/delete_user_stat_items_1.py) | [delete_user_stat_items_1](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-delete-user-stat-items-1](../../samples/cli/accelbyte_py_sdk_cli/social/_delete_user_stat_items_1.py) |
 | /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems | DELETE | deleteUserStatItems_2 | `false` | [DeleteUserStatItems2](../../accelbyte_py_sdk/api/social/operations/user_statistic/delete_user_stat_items_2.py) | [delete_user_stat_items_2](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-delete-user-stat-items-2](../../samples/cli/accelbyte_py_sdk_cli/social/_delete_user_stat_items_2.py) |
+| /social/v1/admin/namespaces/{namespace}/stats/{statCode}/statitems | GET | getStatItems | `false` | [GetStatItems](../../accelbyte_py_sdk/api/social/operations/user_statistic/get_stat_items.py) | [get_stat_items](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-get-stat-items](../../samples/cli/accelbyte_py_sdk_cli/social/_get_stat_items.py) |
 | /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems | GET | getUserStatItems | `false` | [GetUserStatItems](../../accelbyte_py_sdk/api/social/operations/user_statistic/get_user_stat_items.py) | [get_user_stat_items](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-get-user-stat-items](../../samples/cli/accelbyte_py_sdk_cli/social/_get_user_stat_items.py) |
 | /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value | PATCH | incUserStatItemValue | `false` | [IncUserStatItemValue](../../accelbyte_py_sdk/api/social/operations/user_statistic/inc_user_stat_item_value.py) | [inc_user_stat_item_value](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-inc-user-stat-item-value](../../samples/cli/accelbyte_py_sdk_cli/social/_inc_user_stat_item_value.py) |
 | /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/bulk | POST | publicBulkCreateUserStatItems | `false` | [PublicBulkCreateUserStatItems](../../accelbyte_py_sdk/api/social/operations/user_statistic/public_bulk_create_user_ce1688.py) | [public_bulk_create_user_stat_items](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-public-bulk-create-user-stat-items](../../samples/cli/accelbyte_py_sdk_cli/social/_public_bulk_create_user_stat_items.py) |
@@ -175,6 +176,8 @@
 | StatItemInc | [StatItemInc](../../accelbyte_py_sdk/api/social/models/stat_item_inc.py) |
 | StatItemIncResult | [StatItemIncResult](../../accelbyte_py_sdk/api/social/models/stat_item_inc_result.py) |
 | StatItemUpdate | [StatItemUpdate](../../accelbyte_py_sdk/api/social/models/stat_item_update.py) |
+| StatItemValue | [StatItemValue](../../accelbyte_py_sdk/api/social/models/stat_item_value.py) |
+| StatItemValuePagingSlicedResult | [StatItemValuePagingSlicedResult](../../accelbyte_py_sdk/api/social/models/stat_item_value_paging_sliced_result.py) |
 | StatPagingSlicedResult | [StatPagingSlicedResult](../../accelbyte_py_sdk/api/social/models/stat_paging_sliced_result.py) |
 | StatResetInfo | [StatResetInfo](../../accelbyte_py_sdk/api/social/models/stat_reset_info.py) |
 | StatUpdate | [StatUpdate](../../accelbyte_py_sdk/api/social/models/stat_update.py) |

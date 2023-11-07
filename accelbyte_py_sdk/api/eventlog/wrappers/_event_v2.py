@@ -52,13 +52,7 @@ def get_event_specific_user_v2_handler(
 ):
     """Get events from a specific user (GetEventSpecificUserV2Handler)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
-
-    Required Scope(s):
-        - analytics
+    Get events from a specific user
 
     Properties:
         url: /event/v2/admin/namespaces/{namespace}/users/{userId}/event
@@ -132,13 +126,7 @@ async def get_event_specific_user_v2_handler_async(
 ):
     """Get events from a specific user (GetEventSpecificUserV2Handler)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
-
-    Required Scope(s):
-        - analytics
+    Get events from a specific user
 
     Properties:
         url: /event/v2/admin/namespaces/{namespace}/users/{userId}/event
@@ -222,8 +210,6 @@ def get_public_edit_history(
     * country
     * language
 
-    Requires valid user access token
-
     Properties:
         url: /event/v2/public/namespaces/{namespace}/users/{userId}/edithistory
 
@@ -303,8 +289,6 @@ async def get_public_edit_history_async(
     * dateofbirth
     * country
     * language
-
-    Requires valid user access token
 
     Properties:
         url: /event/v2/public/namespaces/{namespace}/users/{userId}/edithistory
@@ -531,19 +515,7 @@ def query_event_stream_handler(
 
     This endpoint is using POST which is somewhat unfamiliar,
     but it's logical that we have to send/post a filter (search term) in order to get the data.
-
-
-
-
     This endpoint will not return anything if you give it an empty filters in the request body.
-
-
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]` and scope `"+scope+"`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
 
     Properties:
         url: /event/v2/admin/namespaces/{namespace}/query
@@ -615,19 +587,7 @@ async def query_event_stream_handler_async(
 
     This endpoint is using POST which is somewhat unfamiliar,
     but it's logical that we have to send/post a filter (search term) in order to get the data.
-
-
-
-
     This endpoint will not return anything if you give it an empty filters in the request body.
-
-
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]` and scope `"+scope+"`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
 
     Properties:
         url: /event/v2/admin/namespaces/{namespace}/query

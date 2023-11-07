@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Commander (1.3.0)
+# Fleet Commander (1.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,7 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.ams import info_regions as info_regions_internal
-from accelbyte_py_sdk.api.ams.models import ApiRegionsResponse
+from accelbyte_py_sdk.api.ams.models import ApiAMSRegionsResponse
 from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 

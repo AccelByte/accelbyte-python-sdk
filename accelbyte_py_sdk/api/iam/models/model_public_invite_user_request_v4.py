@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.4.1)
+# AccelByte Gaming Services Iam Service (7.5.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,6 +37,8 @@ class ModelPublicInviteUserRequestV4(Model):
         namespace: (namespace) REQUIRED str
 
         namespace_display_name: (namespaceDisplayName) REQUIRED str
+
+        additional_data: (additionalData) OPTIONAL str
     """
 
     # region fields
@@ -44,6 +46,7 @@ class ModelPublicInviteUserRequestV4(Model):
     email_address: str  # REQUIRED
     namespace: str  # REQUIRED
     namespace_display_name: str  # REQUIRED
+    additional_data: str  # OPTIONAL
 
     # endregion fields
 
@@ -59,6 +62,10 @@ class ModelPublicInviteUserRequestV4(Model):
 
     def with_namespace_display_name(self, value: str) -> ModelPublicInviteUserRequestV4:
         self.namespace_display_name = value
+        return self
+
+    def with_additional_data(self, value: str) -> ModelPublicInviteUserRequestV4:
+        self.additional_data = value
         return self
 
     # endregion with_x methods
@@ -79,6 +86,10 @@ class ModelPublicInviteUserRequestV4(Model):
             result["namespaceDisplayName"] = str(self.namespace_display_name)
         elif include_empty:
             result["namespaceDisplayName"] = ""
+        if hasattr(self, "additional_data"):
+            result["additionalData"] = str(self.additional_data)
+        elif include_empty:
+            result["additionalData"] = ""
         return result
 
     # endregion to methods
@@ -87,12 +98,19 @@ class ModelPublicInviteUserRequestV4(Model):
 
     @classmethod
     def create(
-        cls, email_address: str, namespace: str, namespace_display_name: str, **kwargs
+        cls,
+        email_address: str,
+        namespace: str,
+        namespace_display_name: str,
+        additional_data: Optional[str] = None,
+        **kwargs,
     ) -> ModelPublicInviteUserRequestV4:
         instance = cls()
         instance.email_address = email_address
         instance.namespace = namespace
         instance.namespace_display_name = namespace_display_name
+        if additional_data is not None:
+            instance.additional_data = additional_data
         return instance
 
     @classmethod
@@ -117,6 +135,10 @@ class ModelPublicInviteUserRequestV4(Model):
             instance.namespace_display_name = str(dict_["namespaceDisplayName"])
         elif include_empty:
             instance.namespace_display_name = ""
+        if "additionalData" in dict_ and dict_["additionalData"] is not None:
+            instance.additional_data = str(dict_["additionalData"])
+        elif include_empty:
+            instance.additional_data = ""
         return instance
 
     @classmethod
@@ -163,6 +185,7 @@ class ModelPublicInviteUserRequestV4(Model):
             "emailAddress": "email_address",
             "namespace": "namespace",
             "namespaceDisplayName": "namespace_display_name",
+            "additionalData": "additional_data",
         }
 
     @staticmethod
@@ -171,6 +194,7 @@ class ModelPublicInviteUserRequestV4(Model):
             "emailAddress": True,
             "namespace": True,
             "namespaceDisplayName": True,
+            "additionalData": False,
         }
 
     # endregion static methods

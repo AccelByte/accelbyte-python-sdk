@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.38.0"
+__version__ = "4.39.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,7 @@ from .bulk_debit import BulkDebit
 from .check_wallet import CheckWallet
 from .check_wallet import OriginEnum as CheckWalletOriginEnum
 from .credit_user_wallet import CreditUserWallet
+from .debit_by_wallet_platform import DebitByWalletPlatform
 from .debit_user_wallet import DebitUserWallet
 from .debit_user_wallet_by_cu_54daab import DebitUserWalletByCurrencyCode
 from .disable_user_wallet import DisableUserWallet

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.3.0)
+# Fleet Commander Index (1.4.0)
 
 
 ## Operations
@@ -20,6 +20,12 @@
 |---|---|---|---|---|---|---|
 | /ams/v1/admin/namespaces/{namespace}/regions | GET | InfoRegions | `false` | [InfoRegions](../../accelbyte_py_sdk/api/ams/operations/ams_info/info_regions.py) | [info_regions](../../accelbyte_py_sdk/api/ams/wrappers/_ams_info.py) | [accelbyte_py_sdk_cli ams-info-regions](../../samples/cli/accelbyte_py_sdk_cli/ams/_info_regions.py) |
 | /ams/v1/admin/namespaces/{namespace}/supported-instances | GET | InfoSupportedInstances | `false` | [InfoSupportedInstances](../../accelbyte_py_sdk/api/ams/operations/ams_info/info_supported_instances.py) | [info_supported_instances](../../accelbyte_py_sdk/api/ams/wrappers/_ams_info.py) | [accelbyte_py_sdk_cli ams-info-supported-instances](../../samples/cli/accelbyte_py_sdk_cli/ams/_info_supported_instances.py) |
+
+### AMS QoS
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /ams/v1/namespaces/{namespace}/qos | GET | QoSRegionsGet | `false` | [QoSRegionsGet](../../accelbyte_py_sdk/api/ams/operations/ams_qo_s/qo_s_regions_get.py) | [qo_s_regions_get](../../accelbyte_py_sdk/api/ams/wrappers/_ams_qo_s.py) | [accelbyte_py_sdk_cli ams-qo-s-regions-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_qo_s_regions_get.py) |
+| /ams/v1/admin/namespaces/{namespace}/qos/{region} | PATCH | QoSRegionsUpdate | `false` | [QoSRegionsUpdate](../../accelbyte_py_sdk/api/ams/operations/ams_qo_s/qo_s_regions_update.py) | [qo_s_regions_update](../../accelbyte_py_sdk/api/ams/wrappers/_ams_qo_s.py) | [accelbyte_py_sdk_cli ams-qo-s-regions-update](../../samples/cli/accelbyte_py_sdk_cli/ams/_qo_s_regions_update.py) |
 
 ### Auth
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -48,6 +54,7 @@
 ### Images
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules | GET | FleetArtifactSamplingRulesGet | `false` | [FleetArtifactSamplingRulesGet](../../accelbyte_py_sdk/api/ams/operations/images/fleet_artifact_sampling_739743.py) | [fleet_artifact_sampling_rules_get](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-fleet-artifact-sampling-rules-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_fleet_artifact_sampling_rules_get.py) |
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID} | GET | ImageGet | `false` | [ImageGet](../../accelbyte_py_sdk/api/ams/operations/images/image_get.py) | [image_get](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_get.py) |
 | /ams/v1/admin/namespaces/{namespace}/images | GET | ImageList | `false` | [ImageList](../../accelbyte_py_sdk/api/ams/operations/images/image_list.py) | [image_list](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-list](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_list.py) |
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID} | PATCH | ImagePatch | `false` | [ImagePatch](../../accelbyte_py_sdk/api/ams/operations/images/image_patch.py) | [image_patch](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-patch](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_patch.py) |
@@ -76,10 +83,14 @@
 | api.AccountLinkResponse | [ApiAccountLinkResponse](../../accelbyte_py_sdk/api/ams/models/api_account_link_response.py) |
 | api.AccountLinkTokenResponse | [ApiAccountLinkTokenResponse](../../accelbyte_py_sdk/api/ams/models/api_account_link_token_response.py) |
 | api.AccountResponse | [ApiAccountResponse](../../accelbyte_py_sdk/api/ams/models/api_account_response.py) |
+| api.AMSRegionsResponse | [ApiAMSRegionsResponse](../../accelbyte_py_sdk/api/ams/models/api_ams_regions_response.py) |
+| api.ArtifactSamplingRuleResponse | [ApiArtifactSamplingRuleResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_sampling_rule_response.py) |
+| api.ArtifactTypeSamplingRulesResponse | [ApiArtifactTypeSamplingRulesResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_type_sampling_rules_response.py) |
 | api.AvailableInstanceTypesResponse | [ApiAvailableInstanceTypesResponse](../../accelbyte_py_sdk/api/ams/models/api_available_instance_types_response.py) |
 | api.DSHistoryEvent | [ApiDSHistoryEvent](../../accelbyte_py_sdk/api/ams/models/api_ds_history_event.py) |
 | api.DSHistoryList | [ApiDSHistoryList](../../accelbyte_py_sdk/api/ams/models/api_ds_history_list.py) |
 | api.DSHostConfiguration | [ApiDSHostConfiguration](../../accelbyte_py_sdk/api/ams/models/api_ds_host_configuration.py) |
+| api.FleetArtifactsSampleRulesResponse | [ApiFleetArtifactsSampleRulesResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_artifacts_sample_rules_response.py) |
 | api.FleetClaimByKeysReq | [ApiFleetClaimByKeysReq](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_by_keys_req.py) |
 | api.FleetClaimReq | [ApiFleetClaimReq](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_req.py) |
 | api.FleetClaimResponse | [ApiFleetClaimResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_response.py) |
@@ -101,9 +112,14 @@
 | api.InstanceTypeDescriptionResponse | [ApiInstanceTypeDescriptionResponse](../../accelbyte_py_sdk/api/ams/models/api_instance_type_description_response.py) |
 | api.PagingInfo | [ApiPagingInfo](../../accelbyte_py_sdk/api/ams/models/api_paging_info.py) |
 | api.PortConfiguration | [ApiPortConfiguration](../../accelbyte_py_sdk/api/ams/models/api_port_configuration.py) |
-| api.QOSServer | [ApiQOSServer](../../accelbyte_py_sdk/api/ams/models/api_qos_server.py) |
+| api.QoSEndpointResponse | [ApiQoSEndpointResponse](../../accelbyte_py_sdk/api/ams/models/api_qo_s_endpoint_response.py) |
+| api.QoSServer | [ApiQoSServer](../../accelbyte_py_sdk/api/ams/models/api_qo_s_server.py) |
 | api.ReferencingFleet | [ApiReferencingFleet](../../accelbyte_py_sdk/api/ams/models/api_referencing_fleet.py) |
 | api.RegionConfig | [ApiRegionConfig](../../accelbyte_py_sdk/api/ams/models/api_region_config.py) |
-| api.RegionsResponse | [ApiRegionsResponse](../../accelbyte_py_sdk/api/ams/models/api_regions_response.py) |
+| api.Time | [ApiTime](../../accelbyte_py_sdk/api/ams/models/api_time.py) |
 | api.Timeout | [ApiTimeout](../../accelbyte_py_sdk/api/ams/models/api_timeout.py) |
+| api.UpdateServerRequest | [ApiUpdateServerRequest](../../accelbyte_py_sdk/api/ams/models/api_update_server_request.py) |
 | response.ErrorResponse | [ResponseErrorResponse](../../accelbyte_py_sdk/api/ams/models/response_error_response.py) |
+| time.Location | [TimeLocation](../../accelbyte_py_sdk/api/ams/models/time_location.py) |
+| time.zone | [TimeZone](../../accelbyte_py_sdk/api/ams/models/time_zone.py) |
+| time.zoneTrans | [TimeZoneTrans](../../accelbyte_py_sdk/api/ams/models/time_zone_trans.py) |

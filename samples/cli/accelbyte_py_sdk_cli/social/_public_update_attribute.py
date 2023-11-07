@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Social Service (2.9.6)
+# AGS Social Service (2.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,7 @@ from accelbyte_py_sdk.api.social import (
 from accelbyte_py_sdk.api.social.models import Attribute
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 from accelbyte_py_sdk.api.social.models import GameProfileInfo
+from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 
 
 @click.command()
