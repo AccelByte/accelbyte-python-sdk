@@ -116,14 +116,14 @@ class DictConfigRepository(ConfigRepository):
         "client-id",
         "ClientId",
         "ClientID",
-        "cliend_id",
+        "client_id",
     ]
     client_secret_keys: List[str] = [
         "AB_CLIENT_SECRET",
         "clientSecret",
         "client-secret",
         "ClientSecret",
-        "cliend_secret",
+        "client_secret",
     ]
     namespace_keys: List[str] = ["AB_NAMESPACE", "namespace", "Namespace"]
     app_name_keys: List[str] = ["AB_APP_NAME", "appName", "AppName"]
