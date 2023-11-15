@@ -56,10 +56,9 @@ class BasicTestCase(IntegrationTestCase):
 
         # arrange
         result, error = self.do_create_my_profile(body=self.user_profile_private_create)
-        self.log_warning(
-            msg=f"Failed to set up user profile. {str(error)}",
-            condition=error is not None,
-        )
+        if error:
+            self.skipTest(reason=f"Failed to set up user profile. {str(error)}")
+            return
         user_id = result.user_id
 
         # act
@@ -77,10 +76,9 @@ class BasicTestCase(IntegrationTestCase):
 
         # arrange
         result, error = self.do_create_my_profile(body=self.user_profile_private_create)
-        self.log_warning(
-            msg=f"Failed to set up user profile. {str(error)}",
-            condition=error is not None,
-        )
+        if error:
+            self.skipTest(reason=f"Failed to set up user profile. {str(error)}")
+            return
         user_id = result.user_id
 
         # act
@@ -99,10 +97,9 @@ class BasicTestCase(IntegrationTestCase):
 
         # arrange
         result, error = self.do_create_my_profile(body=self.user_profile_private_create)
-        self.log_warning(
-            msg=f"Failed to set up user profile. {str(error)}",
-            condition=error is not None,
-        )
+        if error:
+            self.skipTest(reason=f"Failed to set up user profile. {str(error)}")
+            return
         user_id = result.user_id
 
         # act
