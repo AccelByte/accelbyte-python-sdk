@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -68,11 +68,13 @@ class AdminDeletePlayerBinaryRecordV1(Operation):
     Responses:
         204: No Content - (Record deleted)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        404: Not Found - ModelsResponseError (Not Found)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        404: Not Found - ModelsResponseError (18338: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18336: unable to delete record | 18338: record not found)
     """
 
     # region fields
@@ -193,11 +195,13 @@ class AdminDeletePlayerBinaryRecordV1(Operation):
 
         204: No Content - (Record deleted)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        404: Not Found - ModelsResponseError (Not Found)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        404: Not Found - ModelsResponseError (18338: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18336: unable to delete record | 18338: record not found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -215,6 +219,8 @@ class AdminDeletePlayerBinaryRecordV1(Operation):
         if code == 204:
             return None, None
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 404:
             return None, ModelsResponseError.create_from_dict(content)

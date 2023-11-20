@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Match Service V2 Index (2.11.6)
+# AccelByte Gaming Services Match Service V2 Index (2.11.7)
 
 
 ## Operations
@@ -33,6 +33,7 @@
 ### Match-Pools
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /match2/v1/namespaces/{namespace}/match-pools/{pool}/tickets | GET | adminGetMatchPoolTickets | `false` | [AdminGetMatchPoolTickets](../../accelbyte_py_sdk/api/match2/operations/match_pools/admin_get_match_pool_tickets.py) | [admin_get_match_pool_tickets](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-admin-get-match-pool-tickets](../../samples/cli/accelbyte_py_sdk_cli/match2/_admin_get_match_pool_tickets.py) |
 | /match2/v1/namespaces/{namespace}/match-pools | POST | CreateMatchPool | `false` | [CreateMatchPool](../../accelbyte_py_sdk/api/match2/operations/match_pools/create_match_pool.py) | [create_match_pool](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-create-match-pool](../../samples/cli/accelbyte_py_sdk_cli/match2/_create_match_pool.py) |
 | /match2/v1/namespaces/{namespace}/match-pools/{pool} | DELETE | DeleteMatchPool | `false` | [DeleteMatchPool](../../accelbyte_py_sdk/api/match2/operations/match_pools/delete_match_pool.py) | [delete_match_pool](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-delete-match-pool](../../samples/cli/accelbyte_py_sdk_cli/match2/_delete_match_pool.py) |
 | /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/player | GET | GetPlayerMetric | `false` | [GetPlayerMetric](../../accelbyte_py_sdk/api/match2/operations/match_pools/get_player_metric.py) | [get_player_metric](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-get-player-metric](../../samples/cli/accelbyte_py_sdk_cli/match2/_get_player_metric.py) |
@@ -77,6 +78,7 @@
 | api.BackfillProposalResponse | [ApiBackfillProposalResponse](../../accelbyte_py_sdk/api/match2/models/api_backfill_proposal_response.py) |
 | api.ListEnvironmentVariablesResponse | [ApiListEnvironmentVariablesResponse](../../accelbyte_py_sdk/api/match2/models/api_list_environment_variables_response.py) |
 | api.ListMatchFunctionsResponse | [ApiListMatchFunctionsResponse](../../accelbyte_py_sdk/api/match2/models/api_list_match_functions_response.py) |
+| api.ListMatchPoolTicketsResponse | [ApiListMatchPoolTicketsResponse](../../accelbyte_py_sdk/api/match2/models/api_list_match_pool_tickets_response.py) |
 | api.ListMatchPoolsResponse | [ApiListMatchPoolsResponse](../../accelbyte_py_sdk/api/match2/models/api_list_match_pools_response.py) |
 | api.ListRuleSetsResponse | [ApiListRuleSetsResponse](../../accelbyte_py_sdk/api/match2/models/api_list_rule_sets_response.py) |
 | api.Match | [ApiMatch](../../accelbyte_py_sdk/api/match2/models/api_match.py) |
@@ -99,12 +101,16 @@
 | api.Ticket | [ApiTicket](../../accelbyte_py_sdk/api/match2/models/api_ticket.py) |
 | api.TicketMetricResultRecord | [ApiTicketMetricResultRecord](../../accelbyte_py_sdk/api/match2/models/api_ticket_metric_result_record.py) |
 | config.EnvironmentVariable | [ConfigEnvironmentVariable](../../accelbyte_py_sdk/api/match2/models/config_environment_variable.py) |
+| matchmaker.MatchTicketRecord | [MatchmakerMatchTicketRecord](../../accelbyte_py_sdk/api/match2/models/matchmaker_match_ticket_record.py) |
 | matchmaker.Party | [MatchmakerParty](../../accelbyte_py_sdk/api/match2/models/matchmaker_party.py) |
+| matchmaker.ProposedProposal | [MatchmakerProposedProposal](../../accelbyte_py_sdk/api/match2/models/matchmaker_proposed_proposal.py) |
 | matchmaker.Team | [MatchmakerTeam](../../accelbyte_py_sdk/api/match2/models/matchmaker_team.py) |
+| matchmaker.Ticket | [MatchmakerTicket](../../accelbyte_py_sdk/api/match2/models/matchmaker_ticket.py) |
 | models.Configuration | [ModelsConfiguration](../../accelbyte_py_sdk/api/match2/models/models_configuration.py) |
 | models.DSInformation | [ModelsDSInformation](../../accelbyte_py_sdk/api/match2/models/models_ds_information.py) |
 | models.GameSession | [ModelsGameSession](../../accelbyte_py_sdk/api/match2/models/models_game_session.py) |
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/match2/models/models_pagination.py) |
 | models.Server | [ModelsServer](../../accelbyte_py_sdk/api/match2/models/models_server.py) |
 | models.User | [ModelsUser](../../accelbyte_py_sdk/api/match2/models/models_user.py) |
+| player.PlayerData | [PlayerPlayerData](../../accelbyte_py_sdk/api/match2/models/player_player_data.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/match2/models/response_error.py) |

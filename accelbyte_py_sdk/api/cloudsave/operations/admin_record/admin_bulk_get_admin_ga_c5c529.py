@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -73,13 +73,15 @@ class AdminBulkGetAdminGameRecordV1(Operation):
     Responses:
         200: OK - ModelsBulkGetAdminGameRecordResponse (OK)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18168: invalid request body | 18169: request record keys list exceed max size [%d])
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        404: Not Found - ModelsResponseError (Not Found)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        404: Not Found - ModelsResponseError (18171: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18170: unable to get record | 18172: unable to decode record)
     """
 
     # region fields
@@ -196,13 +198,15 @@ class AdminBulkGetAdminGameRecordV1(Operation):
 
         200: OK - ModelsBulkGetAdminGameRecordResponse (OK)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18168: invalid request body | 18169: request record keys list exceed max size [%d])
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        404: Not Found - ModelsResponseError (Not Found)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        404: Not Found - ModelsResponseError (18171: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18170: unable to get record | 18172: unable to decode record)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -219,6 +223,8 @@ class AdminBulkGetAdminGameRecordV1(Operation):
 
         if code == 200:
             return ModelsBulkGetAdminGameRecordResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 403:

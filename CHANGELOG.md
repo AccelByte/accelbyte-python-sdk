@@ -1,3 +1,12 @@
+<a name="v0.54.0"></a>
+## [v0.54.0]
+### fix
+- **core:** fix typo
+- **integration:** fix get, update, delete basic profile tests
+### feat
+- **httpx:** add follow_redirect override
+
+
 <a name="v0.53.0"></a>
 ## [v0.53.0]
 ### fix

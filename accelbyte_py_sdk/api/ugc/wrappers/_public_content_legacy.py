@@ -48,12 +48,14 @@ from ..operations.public_content_legacy import CreateContentDirect
 from ..operations.public_content_legacy import CreateContentS3
 from ..operations.public_content_legacy import DeleteContent
 from ..operations.public_content_legacy import DeleteContentScreenshot
+from ..operations.public_content_legacy import PublicDeleteContentByShareCode
 from ..operations.public_content_legacy import PublicDownloadContentByContentID
 from ..operations.public_content_legacy import PublicDownloadContentByShareCode
 from ..operations.public_content_legacy import PublicDownloadContentPreview
 from ..operations.public_content_legacy import PublicGetContentBulk
 from ..operations.public_content_legacy import PublicGetUserContent
 from ..operations.public_content_legacy import PublicSearchContent
+from ..operations.public_content_legacy import PublicUpdateContentByShareCode
 from ..operations.public_content_legacy import SearchChannelSpecificContent
 from ..operations.public_content_legacy import UpdateContentDirect
 from ..operations.public_content_legacy import UpdateContentS3
@@ -559,6 +561,126 @@ async def delete_content_screenshot_async(
     request = DeleteContentScreenshot.create(
         content_id=content_id,
         screenshot_id=screenshot_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicDeleteContentByShareCode)
+def public_delete_content_by_share_code(
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete content by share code (PublicDeleteContentByShareCode)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
+
+        method: DELETE
+
+        tags: ["Public Content (Legacy)"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDeleteContentByShareCode.create(
+        channel_id=channel_id,
+        share_code=share_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicDeleteContentByShareCode)
+async def public_delete_content_by_share_code_async(
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete content by share code (PublicDeleteContentByShareCode)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
+
+        method: DELETE
+
+        tags: ["Public Content (Legacy)"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDeleteContentByShareCode.create(
+        channel_id=channel_id,
+        share_code=share_code,
         user_id=user_id,
         namespace=namespace,
     )
@@ -1311,6 +1433,168 @@ async def public_search_content_async(
     )
 
 
+@same_doc_as(PublicUpdateContentByShareCode)
+def public_update_content_by_share_code(
+    body: ModelsUpdateContentRequest,
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update content to S3 bucket by share code (PublicUpdateContentByShareCode)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+
+    All request body are required except `payload`, `preview`, `tags`,`contentType`, `updateContentFile`, `customAttributes` and `shareCode`.
+
+    `contentType` values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.
+
+    If not specified, it will use `fileExtension` value.
+
+    To update content file, set `updateContentFile` to `true` and upload the file using URL in `payloadURL.url` in response body.
+
+
+
+
+     NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
+
+        method: PUT
+
+        tags: ["Public Content (Legacy)"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateContentRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUpdateContentByShareCode.create(
+        body=body,
+        channel_id=channel_id,
+        share_code=share_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUpdateContentByShareCode)
+async def public_update_content_by_share_code_async(
+    body: ModelsUpdateContentRequest,
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update content to S3 bucket by share code (PublicUpdateContentByShareCode)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+
+    All request body are required except `payload`, `preview`, `tags`,`contentType`, `updateContentFile`, `customAttributes` and `shareCode`.
+
+    `contentType` values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.
+
+    If not specified, it will use `fileExtension` value.
+
+    To update content file, set `updateContentFile` to `true` and upload the file using URL in `payloadURL.url` in response body.
+
+
+
+
+     NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
+
+        method: PUT
+
+        tags: ["Public Content (Legacy)"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateContentRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUpdateContentByShareCode.create(
+        body=body,
+        channel_id=channel_id,
+        share_code=share_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(SearchChannelSpecificContent)
 def search_channel_specific_content(
     channel_id: str,
@@ -1843,7 +2127,6 @@ def update_screenshots(
     """Update screenshot of content (UpdateScreenshots)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -1906,7 +2189,6 @@ async def update_screenshots_async(
     """Update screenshot of content (UpdateScreenshots)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -1971,12 +2253,10 @@ def upload_content_screenshot(
     """Upload screenshots for content (UploadContentScreenshot)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
     All request body are required except for contentType field.
     contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
     If not specified, it will use fileExtension value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -2037,12 +2317,10 @@ async def upload_content_screenshot_async(
     """Upload screenshots for content (UploadContentScreenshot)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
     All request body are required except for contentType field.
     contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
     If not specified, it will use fileExtension value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-
     Maximum description length: 1024.
 
     Required Permission(s):

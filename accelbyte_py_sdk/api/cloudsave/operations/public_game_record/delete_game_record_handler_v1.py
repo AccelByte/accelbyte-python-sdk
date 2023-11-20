@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -73,9 +73,11 @@ class DeleteGameRecordHandlerV1(Operation):
 
         400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18040: unable to delete record)
     """
 
     # region fields
@@ -185,9 +187,11 @@ class DeleteGameRecordHandlerV1(Operation):
 
         400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18040: unable to delete record)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -207,6 +211,8 @@ class DeleteGameRecordHandlerV1(Operation):
         if code == 400:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)

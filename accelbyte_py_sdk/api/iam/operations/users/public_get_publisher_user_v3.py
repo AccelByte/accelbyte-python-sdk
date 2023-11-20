@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.5.0)
+# AccelByte Gaming Services Iam Service (7.6.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelGetPublisherUserV3Response
+from ...models import ModelGetPublisherUserResponse
 from ...models import RestErrorResponse
 
 
@@ -65,7 +65,7 @@ class PublicGetPublisherUserV3(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelGetPublisherUserV3Response (OK)
+        200: OK - ModelGetPublisherUserResponse (OK)
 
         400: Bad Request - RestErrorResponse (Error Code: 7239 - Error Message: wrong namespace: required game namespace)
 
@@ -177,12 +177,12 @@ class PublicGetPublisherUserV3(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelGetPublisherUserV3Response],
+        Union[None, ModelGetPublisherUserResponse],
         Union[None, HttpResponse, RestErrorResponse],
     ]:
         """Parse the given response.
 
-        200: OK - ModelGetPublisherUserV3Response (OK)
+        200: OK - ModelGetPublisherUserResponse (OK)
 
         400: Bad Request - RestErrorResponse (Error Code: 7239 - Error Message: wrong namespace: required game namespace)
 
@@ -206,7 +206,7 @@ class PublicGetPublisherUserV3(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelGetPublisherUserV3Response.create_from_dict(content), None
+            return ModelGetPublisherUserResponse.create_from_dict(content), None
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:

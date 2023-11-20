@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -182,13 +182,15 @@ class AdminPutAdminGameRecordConcurrentHandlerV1(Operation):
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18144: invalid request body | 20002: validation error | 18146: invalid request body: size of the request body must be less than [%d]MB)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18180: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (18145: unable to marshal request body | 20000: internal server error | 18147: unable to update record)
     """
 
     # region fields
@@ -315,13 +317,15 @@ class AdminPutAdminGameRecordConcurrentHandlerV1(Operation):
 
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18144: invalid request body | 20002: validation error | 18146: invalid request body: size of the request body must be less than [%d]MB)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18180: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (18145: unable to marshal request body | 20000: internal server error | 18147: unable to update record)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -341,6 +345,8 @@ class AdminPutAdminGameRecordConcurrentHandlerV1(Operation):
         if code == 400:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 412:
             return None, ModelsResponseError.create_from_dict(content)

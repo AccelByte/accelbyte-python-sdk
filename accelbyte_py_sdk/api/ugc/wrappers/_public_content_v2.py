@@ -48,6 +48,7 @@ from ..models import ResponseError
 from ..operations.public_content_v2 import DeleteContentScreenshotV2
 from ..operations.public_content_v2 import PublicBulkGetContentByIDV2
 from ..operations.public_content_v2 import PublicCreateContentV2
+from ..operations.public_content_v2 import PublicDeleteContentByShareCodeV2
 from ..operations.public_content_v2 import PublicDeleteContentV2
 from ..operations.public_content_v2 import PublicGenerateContentUploadURLV2
 from ..operations.public_content_v2 import PublicGetContentByChannelIDV2
@@ -55,6 +56,7 @@ from ..operations.public_content_v2 import PublicGetContentByIDV2
 from ..operations.public_content_v2 import PublicGetContentByShareCodeV2
 from ..operations.public_content_v2 import PublicGetContentByUserIDV2
 from ..operations.public_content_v2 import PublicListContentV2
+from ..operations.public_content_v2 import PublicUpdateContentByShareCodeV2
 from ..operations.public_content_v2 import PublicUpdateContentFileLocation
 from ..operations.public_content_v2 import PublicUpdateContentV2
 from ..operations.public_content_v2 import UpdateScreenshotsV2
@@ -397,6 +399,126 @@ async def public_create_content_v2_async(
     request = PublicCreateContentV2.create(
         body=body,
         channel_id=channel_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicDeleteContentByShareCodeV2)
+def public_delete_content_by_share_code_v2(
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete content by share code (PublicDeleteContentByShareCodeV2)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
+
+        method: DELETE
+
+        tags: ["Public Content V2"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDeleteContentByShareCodeV2.create(
+        channel_id=channel_id,
+        share_code=share_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicDeleteContentByShareCodeV2)
+async def public_delete_content_by_share_code_v2_async(
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete content by share code (PublicDeleteContentByShareCodeV2)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
+
+        method: DELETE
+
+        tags: ["Public Content V2"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDeleteContentByShareCodeV2.create(
+        channel_id=channel_id,
+        share_code=share_code,
         user_id=user_id,
         namespace=namespace,
     )
@@ -1254,6 +1376,142 @@ async def public_list_content_v2_async(
         sub_type=sub_type,
         tags=tags,
         type_=type_,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicUpdateContentByShareCodeV2)
+def public_update_content_by_share_code_v2(
+    body: ModelsUpdateContentRequestV2,
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update content to S3 bucket by share code (PublicUpdateContentByShareCodeV2)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
+
+        method: PUT
+
+        tags: ["Public Content V2"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateContentRequestV2 in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponseV2 (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUpdateContentByShareCodeV2.create(
+        body=body,
+        channel_id=channel_id,
+        share_code=share_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUpdateContentByShareCodeV2)
+async def public_update_content_by_share_code_v2_async(
+    body: ModelsUpdateContentRequestV2,
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update content to S3 bucket by share code (PublicUpdateContentByShareCodeV2)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
+
+        method: PUT
+
+        tags: ["Public Content V2"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateContentRequestV2 in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponseV2 (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUpdateContentByShareCodeV2.create(
+        body=body,
+        channel_id=channel_id,
+        share_code=share_code,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

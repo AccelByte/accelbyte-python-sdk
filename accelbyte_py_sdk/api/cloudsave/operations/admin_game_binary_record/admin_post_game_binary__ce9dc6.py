@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -77,9 +77,15 @@ class AdminPostGameBinaryPresignedURLV1(Operation):
     Responses:
         201: Created - ModelsUploadBinaryRecordResponse (Successful Operation)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18311: invalid request body | 18201: invalid record operator, expect [%s] but actual [%s])
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18313: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18312: unable to get record | 18314: unable to get presigned URL)
     """
 
     # region fields
@@ -207,9 +213,15 @@ class AdminPostGameBinaryPresignedURLV1(Operation):
 
         201: Created - ModelsUploadBinaryRecordResponse (Successful Operation)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18311: invalid request body | 18201: invalid record operator, expect [%s] but actual [%s])
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18313: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18312: unable to get record | 18314: unable to get presigned URL)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -226,7 +238,13 @@ class AdminPostGameBinaryPresignedURLV1(Operation):
 
         if code == 201:
             return ModelsUploadBinaryRecordResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 404:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)

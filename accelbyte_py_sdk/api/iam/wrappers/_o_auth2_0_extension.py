@@ -109,6 +109,8 @@ def authentication_with_platform_link_v3(
 
         401: Unauthorized - OauthmodelErrorResponse (Need 2FA.)
 
+        403: Forbidden - RestErrorResponse (10213: country is blocked)
+
         409: Conflict - RestErrorResponse (User already link this platform's another account'.)
     """
     request = AuthenticationWithPlatformLinkV3.create(
@@ -175,6 +177,8 @@ async def authentication_with_platform_link_v3_async(
         400: Bad Request - RestErrorResponse (Invalid username or password.)
 
         401: Unauthorized - OauthmodelErrorResponse (Need 2FA.)
+
+        403: Forbidden - RestErrorResponse (10213: country is blocked)
 
         409: Conflict - RestErrorResponse (User already link this platform's another account'.)
     """

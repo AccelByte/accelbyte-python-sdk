@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -73,13 +73,13 @@ class GetOtherPlayerPublicRecordHandlerV1(Operation):
     Responses:
         200: OK - ModelsBulkGetPlayerRecordResponse (Successful operation)
 
-        400: Bad Request - ModelsResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (18125: invalid request body | 18126: request record keys list exceed max size [%d])
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        500: Internal Server Error - ModelsResponseError (18124: unable to get record | 18006: unable to decode record | 20000: internal server error)
     """
 
     # region fields
@@ -209,13 +209,13 @@ class GetOtherPlayerPublicRecordHandlerV1(Operation):
 
         200: OK - ModelsBulkGetPlayerRecordResponse (Successful operation)
 
-        400: Bad Request - ModelsResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (18125: invalid request body | 18126: request record keys list exceed max size [%d])
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        500: Internal Server Error - ModelsResponseError (18124: unable to get record | 18006: unable to decode record | 20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 

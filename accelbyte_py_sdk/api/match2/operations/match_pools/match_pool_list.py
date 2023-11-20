@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Match Service V2 (2.11.6)
+# AccelByte Gaming Services Match Service V2 (2.11.7)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -70,7 +70,7 @@ class MatchPoolList(Operation):
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ApiListMatchPoolsResponse (Created)
+        200: OK - ApiListMatchPoolsResponse (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -211,7 +211,7 @@ class MatchPoolList(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ApiListMatchPoolsResponse (Created)
+        200: OK - ApiListMatchPoolsResponse (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 

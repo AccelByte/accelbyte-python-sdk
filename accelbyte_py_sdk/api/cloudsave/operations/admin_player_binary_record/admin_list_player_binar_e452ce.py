@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -73,9 +73,13 @@ class AdminListPlayerBinaryRecordsV1(Operation):
     Responses:
         200: OK - ModelsListPlayerBinaryRecordsResponse (Retrieve list of player records by namespace)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18326: invalid request body)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18323: unable to get record)
     """
 
     # region fields
@@ -224,9 +228,13 @@ class AdminListPlayerBinaryRecordsV1(Operation):
 
         200: OK - ModelsListPlayerBinaryRecordsResponse (Retrieve list of player records by namespace)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18326: invalid request body)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18323: unable to get record)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -243,7 +251,11 @@ class AdminListPlayerBinaryRecordsV1(Operation):
 
         if code == 200:
             return ModelsListPlayerBinaryRecordsResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)

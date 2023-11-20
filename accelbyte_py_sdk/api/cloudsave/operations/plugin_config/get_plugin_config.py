@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -71,11 +71,11 @@ class GetPluginConfig(Operation):
     Responses:
         200: OK - ModelsPluginResponse (OK)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        404: Not Found - ModelsResponseError (18304: plugins not found)
+        404: Not Found - ModelsResponseError (18404: plugins not found)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
@@ -177,11 +177,11 @@ class GetPluginConfig(Operation):
 
         200: OK - ModelsPluginResponse (OK)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        404: Not Found - ModelsResponseError (18304: plugins not found)
+        404: Not Found - ModelsResponseError (18404: plugins not found)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
 

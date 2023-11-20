@@ -102,64 +102,73 @@ ugc-delete-all-user-channel '4AvQkqsGnmyo5JJT' --login_with_auth "Bearer foo"
 ugc-update-channel '{"name": "UVmb8GEXFTlEMEsF"}' 'zYqwgK1Np5nodqpL' 'm7FhJBNXzAFdO0Kh' --login_with_auth "Bearer foo"
 ugc-delete-channel 'qf6kiTdSGv2LFjAK' 'Y7CbgsWqFWZX7kPB' --login_with_auth "Bearer foo"
 ugc-create-content-s3 '{"contentType": "om8F9GLLTG8phc3n", "customAttributes": {"4iLoIllKlpO2pqiX": {}, "JF3WGRaoQomSJC4D": {}, "drKF7SUQPLG59e0k": {}}, "fileExtension": "5ZtX6wK7PpUlcIW3", "name": "2iK7MGt1ixY5rA1W", "preview": "oVeJIePF8ZrQzP4z", "previewMetadata": {"previewContentType": "vtdxdbZUpd6FJtHJ", "previewFileExtension": "1pyVwyKQLY6FEO65"}, "subType": "Rb3z7CYLM8IlsHqf", "tags": ["fnrfsGlfPaZKBwa3", "Ddb60ufPpzwj1QGI", "FmlVf4jvapseE9LN"], "type": "9bvhOrHflIOd6X3v"}' 'iLvtEk4mTIpUA9gx' 'o8SV38nEhoXmM2W7' --login_with_auth "Bearer foo"
-ugc-update-content-s3 '{"contentType": "l6jHMA2rG3nakopA", "customAttributes": {"ywelu01nryEJ0Nqo": {}, "Tow0qiOiC4j0iktm": {}, "0ZPLkLOsp0LZ5njN": {}}, "fileExtension": "86Hl8kUXzt6bSc6b", "name": "WvgpVyW9dD1kOmvr", "payload": "Aejcq2LgkQuaS7RB", "preview": "x3vim02jBOxrZDyv", "previewMetadata": {"previewContentType": "pcLYOWA8NjxOnaEo", "previewFileExtension": "k4nOOCzfsflhjbng"}, "subType": "JOUn18G5MlfDTk8a", "tags": ["G40NlncceIZSwgAI", "kgzh4pTU0Am4DZhl", "0bQxFJ3sWCqQpQ2F"], "type": "bKPFMycMSQ4qfAac", "updateContentFile": true}' '0LgB5BUXvjcu2s6w' '3VifnKqmTSoGH1XE' 'fY6QAYn6WQ5UBEU1' --login_with_auth "Bearer foo"
-ugc-delete-content 'QAOHfZiGhxOdcuDX' 'SxSc3aZPV87pna08' 'gxefTYKhuxaEc7M4' --login_with_auth "Bearer foo"
-ugc-public-get-user-content 'P7UckSC6ePeN8i4G' --login_with_auth "Bearer foo"
-ugc-delete-all-user-contents 'rFES9z7xueHpATHc' --login_with_auth "Bearer foo"
-ugc-update-screenshots '{"screenshots": [{"description": "cee9GXhKcjmSEwdr", "screenshotId": "kEnnqKzFsLfYalUl"}, {"description": "fwEQKjU7eHGebSVu", "screenshotId": "0LQ40kepEaC4dfiO"}, {"description": "MZfEhHr39pysFO3Z", "screenshotId": "vc1BZG99LyvfvHEs"}]}' 'JKQQewVLMUoAnaRc' 'Yp7FUjfIGaffoflE' --login_with_auth "Bearer foo"
-ugc-upload-content-screenshot '{"screenshots": [{"contentType": "IByYqeKN0meGelYF", "description": "5wWaDhukU4khGG4v", "fileExtension": "bmp"}, {"contentType": "FTYnPkmSu4PWam1j", "description": "xR7SETWjteoc8fgv", "fileExtension": "jpg"}, {"contentType": "4PbmRDcrg0DjQjBE", "description": "CXvea7H1m2lJFRZ3", "fileExtension": "pjp"}]}' 'prZ60zMjhTHeh94T' 'SenE5hCFkIf5weqZ' --login_with_auth "Bearer foo"
-ugc-delete-content-screenshot '18MH57l2Zsrh90ET' 'tYmGukz3MnlrjcHp' '6B8Vj7rXFgDnDkdZ' --login_with_auth "Bearer foo"
-ugc-update-user-follow-status '{"followStatus": false}' 'EvwSWTaLQjctvrK2' --login_with_auth "Bearer foo"
-ugc-get-public-followers 'jhsYpKPlXn77AtYo' --login_with_auth "Bearer foo"
-ugc-get-public-following 'FzLAATPY8P8P3cfo' --login_with_auth "Bearer foo"
-ugc-get-groups 'ivvQxevecWw7Rry0' --login_with_auth "Bearer foo"
-ugc-create-group '{"contents": ["KK5rgAGO0dW8rX2M", "VUGKSZ4GcLkt4pK3", "2sJxlZcCTpTdRtCH"], "name": "vuk6B6XTmSLyn50s"}' 'igBVZxiKdV57GvRy' --login_with_auth "Bearer foo"
-ugc-delete-all-user-group 'd9UuL02Le8HSCsls' --login_with_auth "Bearer foo"
-ugc-get-group 'Dd4M1F5qRIblS7Nz' '81GRazPAANjfBold' --login_with_auth "Bearer foo"
-ugc-update-group '{"contents": ["FOyqA2clJ5gEOaCg", "M6Yn6RugbNEIpGBF", "UjOn5mM7k8nbLzvt"], "name": "CIW5ynMKquUicAeI"}' 'VXtoWAXhMlW4tLqX' '7OICf5oD1e6oI9Fm' --login_with_auth "Bearer foo"
-ugc-delete-group 'Yel0kOw72o8Zkgk0' 'jS6rDWUwfhKvrf2A' --login_with_auth "Bearer foo"
-ugc-get-group-content 'aH4yCWrHSppnIZkN' 'nTn3rzH5NvAtcvNe' --login_with_auth "Bearer foo"
-ugc-delete-all-user-states 'dgS1fUfKmihDbmu8' --login_with_auth "Bearer foo"
-ugc-admin-get-content-by-channel-idv2 'ePWlQMVDXEHeiGTn' --login_with_auth "Bearer foo"
-ugc-admin-create-content-v2 '{"contentType": "wyEw6hIWDZrpP7rz", "customAttributes": {"3ISW510kHr4isTKW": {}, "jmv67nuHCXWfwnwG": {}, "ioVwVzmmBVVFfpqx": {}}, "fileExtension": "1AeLtzcPJ3jtDYBo", "name": "4FUTH7CGfKSyxgRR", "shareCode": "1DiCqSMzpqIFGLkD", "subType": "s7ACC1RgBfoNrHlF", "tags": ["i2qJLgmBLE35Yhyi", "DV90SeI5yppBHoyt", "VznCgNyx9fbT63Sh"], "type": "Eh8PbGikLjgjcj34"}' 'uulU6FYBZsWFbr3R' --login_with_auth "Bearer foo"
-ugc-admin-delete-official-content-v2 'SP0W9nBhvhf8Q0Dt' 'JMcYQdN66bswAgt6' --login_with_auth "Bearer foo"
-ugc-admin-update-official-content-v2 '{"customAttributes": {"5X4N1LQZmB61JMdt": {}, "wCVUrYQue84dwmbw": {}, "FEnAZaWsQJtRYoag": {}}, "name": "RJK5PX9UcOvhPyE1", "shareCode": "1TRT2SKseoe8VLie", "subType": "0LBa36KNzjf005CX", "tags": ["NGehQ2aTjTDfKFDX", "C7eGL5YhJDWh9YWq", "c0qgV6d9yOfIMLds"], "type": "2DbPcaoMdtRLTmSv"}' 'TkQQgB7exYvmHMxr' '5hPCJJztJBg0tTJg' --login_with_auth "Bearer foo"
-ugc-admin-update-official-content-file-location '{"fileExtension": "46IewOXE2AkCh3QI", "fileLocation": "ZsUf8lGFXcmwTERH"}' 'clOdxIwqejxe18rN' 'db8Otq6j1mqUav7k' --login_with_auth "Bearer foo"
-ugc-admin-generate-official-content-upload-urlv2 '{"contentType": "05HAQltnSojV4jT6", "fileExtension": "5yclX2FtAz0vJjFI"}' 'YWOaNdsimmkW2miH' '3xRHAKy4QxZkaXZ7' --login_with_auth "Bearer foo"
+ugc-public-update-content-by-share-code '{"contentType": "l6jHMA2rG3nakopA", "customAttributes": {"ywelu01nryEJ0Nqo": {}, "Tow0qiOiC4j0iktm": {}, "0ZPLkLOsp0LZ5njN": {}}, "fileExtension": "86Hl8kUXzt6bSc6b", "name": "WvgpVyW9dD1kOmvr", "payload": "Aejcq2LgkQuaS7RB", "preview": "x3vim02jBOxrZDyv", "previewMetadata": {"previewContentType": "pcLYOWA8NjxOnaEo", "previewFileExtension": "k4nOOCzfsflhjbng"}, "subType": "JOUn18G5MlfDTk8a", "tags": ["G40NlncceIZSwgAI", "kgzh4pTU0Am4DZhl", "0bQxFJ3sWCqQpQ2F"], "type": "bKPFMycMSQ4qfAac", "updateContentFile": true}' '0LgB5BUXvjcu2s6w' '3VifnKqmTSoGH1XE' 'fY6QAYn6WQ5UBEU1' --login_with_auth "Bearer foo"
+ugc-update-content-s3 '{"contentType": "QAOHfZiGhxOdcuDX", "customAttributes": {"SxSc3aZPV87pna08": {}, "gxefTYKhuxaEc7M4": {}, "P7UckSC6ePeN8i4G": {}}, "fileExtension": "rFES9z7xueHpATHc", "name": "cee9GXhKcjmSEwdr", "payload": "kEnnqKzFsLfYalUl", "preview": "fwEQKjU7eHGebSVu", "previewMetadata": {"previewContentType": "0LQ40kepEaC4dfiO", "previewFileExtension": "MZfEhHr39pysFO3Z"}, "subType": "vc1BZG99LyvfvHEs", "tags": ["JKQQewVLMUoAnaRc", "Yp7FUjfIGaffoflE", "IByYqeKN0meGelYF"], "type": "5wWaDhukU4khGG4v", "updateContentFile": false}' 'FTYnPkmSu4PWam1j' 'xR7SETWjteoc8fgv' 'ZDDhoO05oKqymxLD' --login_with_auth "Bearer foo"
+ugc-public-delete-content-by-share-code '1Lcvw6T6mZEiwxxE' 'lpMYSWIeVzm7z9no' 'owmlTIKVowi0RY2V' --login_with_auth "Bearer foo"
+ugc-delete-content 'N4ZONJREdUQ3z9F1' 'BxNNgnke4akncw7w' 'u9TmXfJWBPrx9Ns8' --login_with_auth "Bearer foo"
+ugc-public-get-user-content 'eLzYEvwSWTaLQjct' --login_with_auth "Bearer foo"
+ugc-delete-all-user-contents 'vrK2jhsYpKPlXn77' --login_with_auth "Bearer foo"
+ugc-update-screenshots '{"screenshots": [{"description": "AtYoFzLAATPY8P8P", "screenshotId": "3cfoivvQxevecWw7"}, {"description": "Rry0KK5rgAGO0dW8", "screenshotId": "rX2MVUGKSZ4GcLkt"}, {"description": "4pK32sJxlZcCTpTd", "screenshotId": "RtCHvuk6B6XTmSLy"}]}' 'n50sigBVZxiKdV57' 'GvRyd9UuL02Le8HS' --login_with_auth "Bearer foo"
+ugc-upload-content-screenshot '{"screenshots": [{"contentType": "CslsDd4M1F5qRIbl", "description": "S7Nz81GRazPAANjf", "fileExtension": "jpg"}, {"contentType": "c9x1aMjgGim51T10", "description": "7XIZRZ7tZdIs0xf4", "fileExtension": "bmp"}, {"contentType": "GBFUjOn5mM7k8nbL", "description": "zvtCIW5ynMKquUic", "fileExtension": "jpg"}]}' 'LgpZehK0G2nmyuVi' 'B9kRTcSQdTnNYGeA' --login_with_auth "Bearer foo"
+ugc-delete-content-screenshot 'fYFG3wSkHKufBdS3' 'ZOokZB4cXnAXyuGz' '6LlxHv8SwyagYvDJ' --login_with_auth "Bearer foo"
+ugc-update-user-follow-status '{"followStatus": false}' 'w3UNgIGj2jZtEYT8' --login_with_auth "Bearer foo"
+ugc-get-public-followers 'sIPSE1XXPzySa0sZ' --login_with_auth "Bearer foo"
+ugc-get-public-following 'oFS6xCOWMpyh9pMs' --login_with_auth "Bearer foo"
+ugc-get-groups 'Qgb64ELbzDMwyo4n' --login_with_auth "Bearer foo"
+ugc-create-group '{"contents": ["IRysQdbufXjYnSoI", "FeouC2m38kXrDZWl", "GVE9sJ4NpUtKp6M9"], "name": "I6nEwnZhsjwJeGwa"}' 'PSDMZz95OYKiqaZD' --login_with_auth "Bearer foo"
+ugc-delete-all-user-group '63xe5rruJVfLGea0' --login_with_auth "Bearer foo"
+ugc-get-group 'ZtlzUcuHAXz0UV31' 'MfuGaXsAuGsZaSHe' --login_with_auth "Bearer foo"
+ugc-update-group '{"contents": ["vO0TQNEI3kfabxJW", "WSI1ECUo1NPpeFhU", "ztXDgB7n4C97uAPP"], "name": "8PATLpUpxeJlsBJT"}' '6Hh3OMjAjq2mK8lb' 'SEEelxnb5QxWG2HF' --login_with_auth "Bearer foo"
+ugc-delete-group 'nZlA6HKWW4fI1IQc' 'oBQELcNlZkqTZrKg' --login_with_auth "Bearer foo"
+ugc-get-group-content 'XNwvm4e5GX6H742O' 'ixhtAoKiVm6URT95' --login_with_auth "Bearer foo"
+ugc-delete-all-user-states 'XhnUcvWB28Mpusuh' --login_with_auth "Bearer foo"
+ugc-admin-get-content-by-channel-idv2 'hDJ5slzgiWZEtyd5' --login_with_auth "Bearer foo"
+ugc-admin-create-content-v2 '{"contentType": "6LfxnbY97jjYgXch", "customAttributes": {"CbkXX26uEdCfQaMA": {}, "QuTKfC0I2kNjCMDt": {}, "DMrentgn3DhqciwI": {}}, "fileExtension": "eShF9RKb9vvxuJlh", "name": "XbWhbwPwToC6knjV", "shareCode": "wVnzaqSfJiQFC2gX", "subType": "oda0kg16yUSpSOAj", "tags": ["HJWwfCjYwWkLob9g", "KLqs2nEZhpByfHZi", "nxNfgPAwkMBsznlB"], "type": "UqnLT4AbGptKaWNv"}' 'Pbpg7yrRvXfZ6rvg' --login_with_auth "Bearer foo"
+ugc-admin-delete-official-content-v2 'vEY3Hht1SwqTsKKK' 'o37NHDOQe91Ps3zt' --login_with_auth "Bearer foo"
+ugc-admin-update-official-content-v2 '{"customAttributes": {"UIV0dS6hIH9c4Vfk": {}, "yrwpuXxbaERbfgPm": {}, "i0eHkt1mr9EOIFg0": {}}, "name": "dnWIYN2NVL70Iw15", "shareCode": "7g00jr9b8MuYmmeK", "subType": "TmBNvGYxEQdf3ewo", "tags": ["GGoY7xmFNAmjDDCv", "s78mcMdiS76YApGJ", "9ufwLYkqIgLuZS6h"], "type": "sQryiEtOAbpeUNf2"}' '6UqkCfgCUYBn2xaO' 'BdPF0JmX8qwU1cTu' --login_with_auth "Bearer foo"
+ugc-admin-update-official-content-file-location '{"fileExtension": "HHPB5S3DvPRCzBrV", "fileLocation": "UxmDOj3cvRFaTC11"}' 'W0TGTCm4fZWuk6pQ' 'xDQpKqxLGeMvr9Ts' --login_with_auth "Bearer foo"
+ugc-admin-generate-official-content-upload-urlv2 '{"contentType": "vcMQ7dBsaIecRxIs", "fileExtension": "ZvD6rmzVr5XT1Nxw"}' '0v1dMQ9Rrbk6C2cV' 'Wf6ttvbU1PO6ApCD' --login_with_auth "Bearer foo"
 ugc-admin-list-content-v2 --login_with_auth "Bearer foo"
-ugc-admin-bulk-get-content-by-i-ds-v2 '{"contentIds": ["vmiEd0JPxVyQpsha", "DwNqTbbFMXAMfVXe", "0GZeMgsRsmH1EQrY"]}' --login_with_auth "Bearer foo"
-ugc-admin-get-content-by-share-code-v2 'mkPKTPOlhTtSiZNC' --login_with_auth "Bearer foo"
-ugc-admin-get-content-by-content-idv2 'xuogFteTHJe4BhSS' --login_with_auth "Bearer foo"
-ugc-admin-update-screenshots-v2 '{"screenshots": [{"description": "QkQD6WmOt6D7ufFV", "screenshotId": "TOhvQpfbBke8aEdd"}, {"description": "36xj6wySoltDxsbz", "screenshotId": "xrlaKEfkoYjY2o6o"}, {"description": "uRW9UtNquwC3Wgum", "screenshotId": "rIz4NhGztZpr4U4f"}]}' 'wQIiLXgmRasvjO4l' --login_with_auth "Bearer foo"
-ugc-admin-upload-content-screenshot-v2 '{"screenshots": [{"contentType": "j8m3XEwP2b4gd3xO", "description": "eii8Jnmssep2xD2N", "fileExtension": "jfif"}, {"contentType": "0kABeGs9yxahld1p", "description": "O0Gyf5PO3COyMvcz", "fileExtension": "bmp"}, {"contentType": "pKqxLGeMvr9TsvcM", "description": "Q7dBsaIecRxIsZvD", "fileExtension": "jfif"}]}' 'rmzVr5XT1Nxw0v1d' --login_with_auth "Bearer foo"
-ugc-admin-delete-content-screenshot-v2 'MQ9Rrbk6C2cVWf6t' 'tvbU1PO6ApCD2VXi' --login_with_auth "Bearer foo"
-ugc-admin-get-official-group-contents-v2 'dT7w0Oc15N8WXBPp' --login_with_auth "Bearer foo"
-ugc-admin-delete-user-content-v2 '17PAewqSm5x3B4t7' 'WQnp8jXZedgt5cyN' 'e27HLtwtVOaxgP6J' --login_with_auth "Bearer foo"
-ugc-admin-update-user-content-v2 '{"customAttributes": {"bct8puMybYGxD9IP": {}, "mmsLmu3kaPj0O4zd": {}, "8Tb7cUNGPTBxiFFC": {}}, "name": "rn7djjs69FTFVGUV", "shareCode": "hvKhJCmeisql14mU", "subType": "HVbMPimNhcZsU3VA", "tags": ["dMDcb4qlkiFAamqv", "ZI2KwjqPBiWXade4", "1s3rH34mB2yPlRpW"], "type": "jmHZAAvKTH8MuqIg"}' '0CzkguwuJCW7EEFB' '67AODbi9BzupBsFp' 'Yc77GtRUcCFeY5g4' --login_with_auth "Bearer foo"
-ugc-admin-update-user-content-file-location '{"fileExtension": "XgBsbfzqxBPNe8ae", "fileLocation": "1Il4aAtEbu4IjGdq"}' 'thRxTjQ7gkZEY8rG' '0q0Q2Qd2JzRbkF2I' '03dIjvBbA6bfbYaJ' --login_with_auth "Bearer foo"
-ugc-admin-generate-user-content-upload-urlv2 '{"contentType": "CJjfk2TUvn95FhO7", "fileExtension": "VW3mbDVMDu87t0ld"}' 'Wf7iSGIiKFtWtn4Y' 'r2svKM6pqLGZ0TBu' 'jELAUK6mQ5iZgbww' --login_with_auth "Bearer foo"
-ugc-admin-get-content-by-user-idv2 'm5iGzXtcknrgidKu' --login_with_auth "Bearer foo"
-ugc-admin-update-content-hide-status-v2 '{"isHidden": false}' 'wqjYLfTiCO1NDBvQ' 'vRPnAz4VzW0CpoBC' --login_with_auth "Bearer foo"
-ugc-admin-get-user-group-contents-v2 'byJsF5IjF1c0W338' 'HS6CBgVRyihYNZ84' --login_with_auth "Bearer foo"
-ugc-public-get-content-by-channel-idv2 'CVhziXV8HwSmvcvc' --login_with_auth "Bearer foo"
+ugc-admin-bulk-get-content-by-i-ds-v2 '{"contentIds": ["2VXidT7w0Oc15N8W", "XBPp17PAewqSm5x3", "B4t7WQnp8jXZedgt"]}' --login_with_auth "Bearer foo"
+ugc-admin-get-content-bulk-by-share-codes-v2 '{"shareCodes": ["5cyNe27HLtwtVOax", "gP6Jbct8puMybYGx", "D9IPmmsLmu3kaPj0"]}' --login_with_auth "Bearer foo"
+ugc-admin-get-content-by-share-code-v2 'O4zd8Tb7cUNGPTBx' --login_with_auth "Bearer foo"
+ugc-admin-get-content-by-content-idv2 'iFFCrn7djjs69FTF' --login_with_auth "Bearer foo"
+ugc-rollback-content-version-v2 'VGUVhvKhJCmeisql' '14mUHVbMPimNhcZs' --login_with_auth "Bearer foo"
+ugc-admin-update-screenshots-v2 '{"screenshots": [{"description": "U3VAdMDcb4qlkiFA", "screenshotId": "amqvZI2KwjqPBiWX"}, {"description": "ade41s3rH34mB2yP", "screenshotId": "lRpWjmHZAAvKTH8M"}, {"description": "uqIg0CzkguwuJCW7", "screenshotId": "EEFB67AODbi9Bzup"}]}' 'BsFpYc77GtRUcCFe' --login_with_auth "Bearer foo"
+ugc-admin-upload-content-screenshot-v2 '{"screenshots": [{"contentType": "Y5g4XgBsbfzqxBPN", "description": "e8ae1Il4aAtEbu4I", "fileExtension": "jfif"}, {"contentType": "9wpGAbpEmDY9vLh3", "description": "u6EDsUmrV6kH4Oot", "fileExtension": "pjp"}, {"contentType": "F2I03dIjvBbA6bfb", "description": "YaJCJjfk2TUvn95F", "fileExtension": "bmp"}]}' 'tU6TDm5GloFSKWM1' --login_with_auth "Bearer foo"
+ugc-admin-delete-content-screenshot-v2 'eym5ydC6p25xCWTq' 'UOYZENJ1QHZQxPRX' --login_with_auth "Bearer foo"
+ugc-list-content-versions-v2 'H7uxBJEECQE1li3B' --login_with_auth "Bearer foo"
+ugc-admin-get-official-group-contents-v2 'g7Jxc9pUnZmvhidw' --login_with_auth "Bearer foo"
+ugc-admin-update-content-by-share-code-v2 '{"customAttributes": {"CkZwqjYLfTiCO1ND": {}, "BvQvRPnAz4VzW0Cp": {}, "oBCbyJsF5IjF1c0W": {}}, "name": "338HS6CBgVRyihYN", "shareCode": "Z84CVhziXV8HwSmv", "subType": "cvcDKF19yVRafCjO", "tags": ["uSYht83AdvBaagTi", "RJ8daGTVX3Bb7jlz", "5IfHgKjI9mwJSrN8"], "type": "jkIykR2zbaI6PD7f"}' 'EscShnGUGUtV9GJ2' '79GDbLNwjm3FK0nn' 'X2poMfZ1hDHtbh4H' --login_with_auth "Bearer foo"
+ugc-admin-delete-content-by-share-code-v2 'tMlFgvh2Dp2SoiIP' 'p1yvfAHS0VgLu11A' '3HTovFi4tPAGfley' --login_with_auth "Bearer foo"
+ugc-admin-delete-user-content-v2 'CA6jEtcqsnzoVILj' 'kwW61duF87aUyrdt' '4XSpWBAetsanzqP8' --login_with_auth "Bearer foo"
+ugc-admin-update-user-content-v2 '{"customAttributes": {"oxfrtbECD1CYPwai": {}, "BAxfYL8Avt70ZUT2": {}, "fSk3LL0calqxEewu": {}}, "name": "GS469k2hG0WKt4sU", "shareCode": "manYxM0UHZVNYzGM", "subType": "NIpWoSLkUrfuf4U3", "tags": ["WeYeA9t2ENKKWrFt", "HIi1CMgKAOG5iDcC", "R5PbCvDLil8wj9cK"], "type": "M3Ar6MF35hCER4nG"}' 'mWGgTJfHlJl4tHGa' '4XfZcd9CVnGqMX9F' 'ieeEssWEUl07bhwn' --login_with_auth "Bearer foo"
+ugc-admin-update-user-content-file-location '{"fileExtension": "tCVqiYOJf5KwMZQj", "fileLocation": "zvjSozv6CTRDl0zp"}' '9CzHFwinkBNi4gvq' 'gl6TZ9TGVPmv34h6' 'T7EsufmfxKYB4LM6' --login_with_auth "Bearer foo"
+ugc-admin-generate-user-content-upload-urlv2 '{"contentType": "H6QXmpZ9X3fUSR1l", "fileExtension": "9xLPBsmAUrD9L1Ii"}' 'D6MlcEPhMDFzjHZ3' 'sIhzOx2CXKlvIomU' '3pIxM9n8D2eLMe3l' --login_with_auth "Bearer foo"
+ugc-admin-get-content-by-user-idv2 't9qfx2UDcgVE7L9F' --login_with_auth "Bearer foo"
+ugc-admin-update-content-hide-status-v2 '{"isHidden": true}' 'e0MrPc4vtxk9hVKl' 'G56HlzGr7XjdyRJu' --login_with_auth "Bearer foo"
+ugc-admin-get-user-group-contents-v2 'nZPkp6ccIBnWyPw8' 'mj7gyQ7XdIszGRj4' --login_with_auth "Bearer foo"
+ugc-public-get-content-by-channel-idv2 '6COPipH1MWVTHG0q' --login_with_auth "Bearer foo"
 ugc-public-list-content-v2 --login_with_auth "Bearer foo"
-ugc-public-bulk-get-content-by-idv2 '{"contentIds": ["DKF19yVRafCjOuSY", "ht83AdvBaagTiRJ8", "daGTVX3Bb7jlz5If"]}' --login_with_auth "Bearer foo"
-ugc-public-get-content-by-share-code-v2 'HgKjI9mwJSrN8jkI' --login_with_auth "Bearer foo"
-ugc-public-get-content-by-idv2 'ykR2zbaI6PD7fEsc' --login_with_auth "Bearer foo"
-ugc-public-add-download-count-v2 'ShnGUGUtV9GJ279G' --login_with_auth "Bearer foo"
-ugc-public-list-content-downloader-v2 'DbLNwjm3FK0nnX2p' --login_with_auth "Bearer foo"
-ugc-public-list-content-like-v2 'oMfZ1hDHtbh4HtMl' --login_with_auth "Bearer foo"
-ugc-update-content-like-status-v2 '{"likeStatus": true}' 'gvh2Dp2SoiIPp1yv' --login_with_auth "Bearer foo"
-ugc-public-create-content-v2 '{"contentType": "fAHS0VgLu11A3HTo", "customAttributes": {"vFi4tPAGfleyCA6j": {}, "EtcqsnzoVILjkwW6": {}, "1duF87aUyrdt4XSp": {}}, "fileExtension": "WBAetsanzqP8oxfr", "name": "tbECD1CYPwaiBAxf", "subType": "YL8Avt70ZUT2fSk3", "tags": ["LL0calqxEewuGS46", "9k2hG0WKt4sUmanY", "xM0UHZVNYzGMNIpW"], "type": "oSLkUrfuf4U3WeYe"}' 'A9t2ENKKWrFtHIi1' 'CMgKAOG5iDcCR5Pb' --login_with_auth "Bearer foo"
-ugc-public-delete-content-v2 'CvDLil8wj9cKM3Ar' '6MF35hCER4nGmWGg' 'TJfHlJl4tHGa4XfZ' --login_with_auth "Bearer foo"
-ugc-public-update-content-v2 '{"customAttributes": {"cd9CVnGqMX9FieeE": {}, "ssWEUl07bhwntCVq": {}, "iYOJf5KwMZQjzvjS": {}}, "name": "ozv6CTRDl0zp9CzH", "subType": "FwinkBNi4gvqgl6T", "tags": ["Z9TGVPmv34h6T7Es", "ufmfxKYB4LM6H6QX", "mpZ9X3fUSR1l9xLP"], "type": "BsmAUrD9L1IiD6Ml"}' 'cEPhMDFzjHZ3sIhz' 'Ox2CXKlvIomU3pIx' 'M9n8D2eLMe3lt9qf' --login_with_auth "Bearer foo"
-ugc-public-update-content-file-location '{"fileExtension": "x2UDcgVE7L9FK6e0", "fileLocation": "MrPc4vtxk9hVKlG5"}' '6HlzGr7XjdyRJunZ' 'Pkp6ccIBnWyPw8mj' '7gyQ7XdIszGRj46C' --login_with_auth "Bearer foo"
-ugc-public-generate-content-upload-urlv2 '{"contentType": "OPipH1MWVTHG0qHJ", "fileExtension": "CWEfOJpZm9yEYWNG"}' 'My2pgSGSUOK68eqG' 'JtWf1Ybgg8rdwY9b' 'mrvHmO07KNqX9LM2' --login_with_auth "Bearer foo"
-ugc-public-get-content-by-user-idv2 'IwEsdOGBXBwnzDX8' --login_with_auth "Bearer foo"
-ugc-update-screenshots-v2 '{"screenshots": [{"description": "v3xgC1Ge9PdbTTAJ", "screenshotId": "2Gp1r0sVZ6LJAOdd"}, {"description": "IL2l3hPjNDKv2LWf", "screenshotId": "Xqjr8fS79En3wYow"}, {"description": "BdkaZ3y6i38XQjLD", "screenshotId": "RqkpiFK5BtiQ272U"}]}' 'o9UBJWodpdwsX1jo' 'rcyR0x3YiHF8ITGP' --login_with_auth "Bearer foo"
-ugc-upload-content-screenshot-v2 '{"screenshots": [{"contentType": "RQBCgIs1Q2lzxl0y", "description": "F5m77TTh4gUoj8u2", "fileExtension": "png"}, {"contentType": "6zL9SkbLlrNXnGan", "description": "Mazb8jvRWenURH48", "fileExtension": "bmp"}, {"contentType": "lfnBAk0CwiAsR65y", "description": "Q9ssuHdGmxncCEr0", "fileExtension": "pjp"}]}' 'QGbqiqOkNeATj7eG' 'jodd7CcJUrI6MAug' --login_with_auth "Bearer foo"
-ugc-delete-content-screenshot-v2 'K5kypNrp2nFe9FmN' '86sK5LOq4ft5jGcM' 'ICPUYnfG6jl9U4jR' --login_with_auth "Bearer foo"
-ugc-public-get-group-contents-v2 'eteIMgzISomCsodJ' 'rhQW41q2OspCZbt3' --login_with_auth "Bearer foo"
+ugc-public-bulk-get-content-by-idv2 '{"contentIds": ["HJCWEfOJpZm9yEYW", "NGMy2pgSGSUOK68e", "qGJtWf1Ybgg8rdwY"]}' --login_with_auth "Bearer foo"
+ugc-public-get-content-by-share-code-v2 '9bmrvHmO07KNqX9L' --login_with_auth "Bearer foo"
+ugc-public-get-content-by-idv2 'M2IwEsdOGBXBwnzD' --login_with_auth "Bearer foo"
+ugc-public-add-download-count-v2 'X8v3xgC1Ge9PdbTT' --login_with_auth "Bearer foo"
+ugc-public-list-content-downloader-v2 'AJ2Gp1r0sVZ6LJAO' --login_with_auth "Bearer foo"
+ugc-public-list-content-like-v2 'ddIL2l3hPjNDKv2L' --login_with_auth "Bearer foo"
+ugc-update-content-like-status-v2 '{"likeStatus": false}' 'FNxuNOmUSWw18T1I' --login_with_auth "Bearer foo"
+ugc-public-create-content-v2 '{"contentType": "xVWCxdvPL9e4P01v", "customAttributes": {"xP8xj1LyEirURERn": {}, "EMzpImW6sjAHyCK5": {}, "tNanGBrkzUvck3xT": {}}, "fileExtension": "tmOFMebS4AdlNzwo", "name": "g2IhErkNhNcECWwc", "subType": "hW6zL9SkbLlrNXnG", "tags": ["anMazb8jvRWenURH", "48aJuALEcSqcE15u", "6D31DjOsrs3CUYAT"], "type": "dqnQGbqiqOkNeATj"}' '7eGjodd7CcJUrI6M' 'AugK5kypNrp2nFe9' --login_with_auth "Bearer foo"
+ugc-public-update-content-by-share-code-v2 '{"customAttributes": {"FmN86sK5LOq4ft5j": {}, "GcMICPUYnfG6jl9U": {}, "4jReteIMgzISomCs": {}}, "name": "odJrhQW41q2OspCZ", "subType": "bt3Uta5I0uGcL1ko", "tags": ["yHjCH5olYLETRpAB", "AmO2EGvJ4UMS93yO", "xNInDByhnoluO6ti"], "type": "0QP2ssiJ66OzOj84"}' 'O6tgohjtC7bzjPpu' 'cddXJ5zifF8y959a' 'nrNSleywHbHig6IK' --login_with_auth "Bearer foo"
+ugc-public-delete-content-by-share-code-v2 'WVZ77KeRWdECaFGz' 'fZ2hxcJ2Fnemn7M2' '3SzUo4hNBDh9ZFP1' --login_with_auth "Bearer foo"
+ugc-public-delete-content-v2 'OW0nXOErQPS4VsRo' 'YIK69yg9ADCGiXaL' 's2xjHkinOD975nAR' --login_with_auth "Bearer foo"
+ugc-public-update-content-v2 '{"customAttributes": {"HCmhNHSXuqIHsxva": {}, "UoXDmwWsukxncuD3": {}, "QxCXMd00YBWCaVVm": {}}, "name": "M45mfIZsWhkS476d", "subType": "GGJwJ00UH197MJ6z", "tags": ["U7JLMQyMWzYQCAaP", "JgoxGJoJaSzUtY4Z", "D0Xtb0U4pH16NUsV"], "type": "Y21NVIs7NRen2Y3N"}' 's0QJQeaWytPfds1B' 'Yx0EaURydf8ZyyZe' 'HAWGgJUbUJRMbkcT' --login_with_auth "Bearer foo"
+ugc-public-update-content-file-location '{"fileExtension": "glbU86FyOjApNHBV", "fileLocation": "fNOURcjY3YYT9oTy"}' 'nmfIuBWgJTNFfM8M' '0IW4oe8KDgy0xZfA' 'cNg14Ws8TIP1LKiF' --login_with_auth "Bearer foo"
+ugc-public-generate-content-upload-urlv2 '{"contentType": "QoLDvumfqrgSfnx2", "fileExtension": "h61X9dN1MGRXBJ6m"}' 'VV7JS9qjNLwvI8Jd' 'iY3RRiLilmOGF6dL' 'LIeIVIjMcdlbdRXT' --login_with_auth "Bearer foo"
+ugc-public-get-content-by-user-idv2 'GIrdNL5gJPqTAjgq' --login_with_auth "Bearer foo"
+ugc-update-screenshots-v2 '{"screenshots": [{"description": "aTHf1ANTJ9Yk997X", "screenshotId": "kGOdC6ItxDT8p4n4"}, {"description": "XCFkD1AJLCwszbZx", "screenshotId": "uHSgDOK8bjoF7bL2"}, {"description": "635KbtZTGJpqgl2I", "screenshotId": "zNXGTuQPIDpor7t1"}]}' 'aJLNNz6QIVC9Mfuc' '8VOsnmnlVljdWYmE' --login_with_auth "Bearer foo"
+ugc-upload-content-screenshot-v2 '{"screenshots": [{"contentType": "Le74p38vumnxAnYB", "description": "TxaTIz0jcgDI8Pkz", "fileExtension": "jpeg"}, {"contentType": "NIY9nMrBZo0lNUBD", "description": "ShHD32vvL28FPwTi", "fileExtension": "jpeg"}, {"contentType": "fLcxDC9Ynd02mECI", "description": "QhfIhHtADUQ9zimQ", "fileExtension": "png"}]}' 'f7BULnZDhutDM6Bq' 'guqD5xxGxBWtnTKU' --login_with_auth "Bearer foo"
+ugc-delete-content-screenshot-v2 'e2znsqPzPkwCBo2S' 'wCUsTag4MLAo3m61' 'P2xaNfmn8Onb1a9g' --login_with_auth "Bearer foo"
+ugc-public-get-group-contents-v2 'Mz0F2UBRmMhAbUWm' 'FhdYLWzMuv3zkUY0' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -179,7 +188,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..137"
+echo "1..146"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -196,22 +205,22 @@ eval_tap $? 2 'SingleAdminGetChannel' test.out
 
 #- 3 AdminCreateChannel
 $PYTHON -m $MODULE 'ugc-admin-create-channel' \
-    '{"id": "Uta5I0uGcL1koyHj", "name": "CH5olYLETRpABAmO"}' \
+    '{"id": "n0BAZkwbYkBLyO6A", "name": "0FqfhnaB3YxKNdOT"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 3 'AdminCreateChannel' test.out
 
 #- 4 SingleAdminUpdateChannel
 $PYTHON -m $MODULE 'ugc-single-admin-update-channel' \
-    '{"name": "2EGvJ4UMS93yOxNI"}' \
-    'nDByhnoluO6ti0QP' \
+    '{"name": "acCcJfIfXshuLUk5"}' \
+    'WdpxjZx5noXPhPUT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 4 'SingleAdminUpdateChannel' test.out
 
 #- 5 SingleAdminDeleteChannel
 $PYTHON -m $MODULE 'ugc-single-admin-delete-channel' \
-    '2ssiJ66OzOj84O6t' \
+    'KbonoucNmzwOZOK5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'SingleAdminDeleteChannel' test.out
@@ -221,24 +230,24 @@ eval_tap 0 6 'AdminUploadContentDirect # SKIP deprecated' test.out
 
 #- 7 AdminUploadContentS3
 $PYTHON -m $MODULE 'ugc-admin-upload-content-s3' \
-    '{"contentType": "gohjtC7bzjPpucdd", "customAttributes": {"XJ5zifF8y959anrN": {}, "SleywHbHig6IKWVZ": {}, "77KeRWdECaFGzfZ2": {}}, "fileExtension": "hxcJ2Fnemn7M23Sz", "name": "Uo4hNBDh9ZFP1OW0", "preview": "nXOErQPS4VsRoYIK", "previewMetadata": {"previewContentType": "69yg9ADCGiXaLs2x", "previewFileExtension": "jHkinOD975nARHCm"}, "shareCode": "hNHSXuqIHsxvaUoX", "subType": "DmwWsukxncuD3QxC", "tags": ["XMd00YBWCaVVmM45", "mfIZsWhkS476dGGJ", "wJ00UH197MJ6zU7J"], "type": "LMQyMWzYQCAaPJgo"}' \
-    'xGJoJaSzUtY4ZD0X' \
+    '{"contentType": "6sDkci5rZ8iMlOuk", "customAttributes": {"sQJCiRFiZWwJ7NrT": {}, "b1XTB9YQzUJ9XlYJ": {}, "8BzP6EUmUXGM5anI": {}}, "fileExtension": "loyj9lhbvuQdW2jw", "name": "KUckc794ryY91lX8", "preview": "DD4MYXlrJ81lHvv9", "previewMetadata": {"previewContentType": "rqvEoM8YmVjAkO3H", "previewFileExtension": "KsEp6KlqwW4djrex"}, "shareCode": "cbHdEtoQvpV344Rc", "subType": "tmTozCi8HeV6jbal", "tags": ["HmqBBfi7sSF5BoGi", "TCVsXsygWbjE2opX", "tdsJQeJ1too0qvxp"], "type": "hTLEEBGTtZyTjdKN"}' \
+    'KgYazujsmSmylT1Y' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'AdminUploadContentS3' test.out
 
 #- 8 SingleAdminUpdateContentS3
 $PYTHON -m $MODULE 'ugc-single-admin-update-content-s3' \
-    '{"contentType": "tb0U4pH16NUsVY21", "customAttributes": {"NVIs7NRen2Y3Ns0Q": {}, "JQeaWytPfds1BYx0": {}, "EaURydf8ZyyZeHAW": {}}, "fileExtension": "GgJUbUJRMbkcTglb", "name": "U86FyOjApNHBVfNO", "payload": "URcjY3YYT9oTynmf", "preview": "IuBWgJTNFfM8M0IW", "previewMetadata": {"previewContentType": "4oe8KDgy0xZfAcNg", "previewFileExtension": "14Ws8TIP1LKiFQoL"}, "shareCode": "DvumfqrgSfnx2h61", "subType": "X9dN1MGRXBJ6mVV7", "tags": ["JS9qjNLwvI8JdiY3", "RRiLilmOGF6dLLIe", "IVIjMcdlbdRXTGIr"], "type": "dNL5gJPqTAjgqaTH", "updateContentFile": false}' \
-    '0ag7kSWE0Hiqm5Iu' \
-    'LryiEXqvUWDjU1G0' \
+    '{"contentType": "txIq73aMb48jISd9", "customAttributes": {"7KORRhxSWLWLNfHR": {}, "D3V15QaGGL46LuxJ": {}, "F3sbeqWBdQuWfgBA": {}}, "fileExtension": "Kx27MSBqabUXOGkk", "name": "oMUZn1YXj5zFZeOC", "payload": "OR9NvBQZSJPOIKrR", "preview": "BrYVzi9ui3lvozTt", "previewMetadata": {"previewContentType": "9TsH7A0TuU2aL4bP", "previewFileExtension": "kk11sys6GdkDcos5"}, "shareCode": "uVJ0BJfZ0jvA54CS", "subType": "qZFDsO1skRjOU1SM", "tags": ["fQVQa6blj9Rdd85b", "dYUumPKVSZCg3XTc", "9vQe0dHJfF6KIuvn"], "type": "RCa9JktyBdxkZKrE", "updateContentFile": false}' \
+    'Fw9GYxjiiOQAD77c' \
+    'i0vfWVZoRRMPi57H' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'SingleAdminUpdateContentS3' test.out
 
 #- 9 AdminSearchChannelSpecificContent
 $PYTHON -m $MODULE 'ugc-admin-search-channel-specific-content' \
-    'EVjVZw1ToLuPakQN' \
+    'yKKz5nyI6ulKNKoX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'AdminSearchChannelSpecificContent' test.out
@@ -248,8 +257,8 @@ eval_tap 0 10 'SingleAdminUpdateContentDirect # SKIP deprecated' test.out
 
 #- 11 SingleAdminDeleteContent
 $PYTHON -m $MODULE 'ugc-single-admin-delete-content' \
-    '1MpOs1RVFrcg2CXx' \
-    'epx78fvsyhE2BKty' \
+    'a0dgx1JgjC56pda3' \
+    'YhtQxpCYME6x21pd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'SingleAdminDeleteContent' test.out
@@ -262,7 +271,7 @@ eval_tap $? 12 'SingleAdminGetContent' test.out
 
 #- 13 AdminGetContentBulk
 $PYTHON -m $MODULE 'ugc-admin-get-content-bulk' \
-    '{"contentIds": ["TDSIM7mkmvZ7Cmsh", "4US8o4jfMANPpmZD", "dMiCxmuCCVuFjS1G"]}' \
+    '{"contentIds": ["X2QSPAd9sxoLnWGP", "1PafIjLX8ce0KbNN", "7Ycl2JfmQplvGjVQ"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'AdminGetContentBulk' test.out
@@ -275,67 +284,67 @@ eval_tap $? 14 'AdminSearchContent' test.out
 
 #- 15 AdminGetContentBulkByShareCodes
 $PYTHON -m $MODULE 'ugc-admin-get-content-bulk-by-share-codes' \
-    '{"shareCodes": ["C1d2b92B4vEgj3HO", "mhcWm428XejRF94N", "IY9nMrBZo0lNUBDS"]}' \
+    '{"shareCodes": ["4aebjfgGu472oWJl", "fglLM4xjfkNL4lU6", "jaGfsD1cfswmeFpv"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 15 'AdminGetContentBulkByShareCodes' test.out
 
 #- 16 AdminGetUserContentByShareCode
 $PYTHON -m $MODULE 'ugc-admin-get-user-content-by-share-code' \
-    'hHD32vvL28FPwTiX' \
+    'tDtetoQVFL8LNW11' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 16 'AdminGetUserContentByShareCode' test.out
 
 #- 17 AdminGetSpecificContent
 $PYTHON -m $MODULE 'ugc-admin-get-specific-content' \
-    'fLcxDC9Ynd02mECI' \
+    'vtpaTxi7k489jRCn' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'AdminGetSpecificContent' test.out
 
 #- 18 AdminDownloadContentPreview
 $PYTHON -m $MODULE 'ugc-admin-download-content-preview' \
-    'QhfIhHtADUQ9zimQ' \
+    '48bvkCPfKofwXOIZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 18 'AdminDownloadContentPreview' test.out
 
 #- 19 RollbackContentVersion
 $PYTHON -m $MODULE 'ugc-rollback-content-version' \
-    'TQT95pFJUAJsyAfe' \
-    'KOufV4f15NohXu6o' \
+    'ZQAJza84lKKmVOaT' \
+    'S6xBbNrSUAW2ak7I' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'RollbackContentVersion' test.out
 
 #- 20 AdminUpdateScreenshots
 $PYTHON -m $MODULE 'ugc-admin-update-screenshots' \
-    '{"screenshots": [{"description": "pxQGRt6PqlkL0diR", "screenshotId": "hLC10ih2EQfY3XCv"}, {"description": "4hdOa6FdZhNMd1on", "screenshotId": "FjGRbxtABPXDmgNE"}, {"description": "JBhgGq5GIDhNC66s", "screenshotId": "zbCCf73IFbRkPSSI"}]}' \
-    'Tz4TjCrJHXGXku2Y' \
+    '{"screenshots": [{"description": "SDrBVg6NuDZvPb1k", "screenshotId": "uUfNfUDe4g7q6PHE"}, {"description": "aqbzHvDDl1jiLw3X", "screenshotId": "MGBA6JXDpA1tIC45"}, {"description": "C0oaGouFu4hXONgU", "screenshotId": "wJnUpryDeRcpUvlr"}]}' \
+    'w2MwC1uuokpaIjL0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 20 'AdminUpdateScreenshots' test.out
 
 #- 21 AdminUploadContentScreenshot
 $PYTHON -m $MODULE 'ugc-admin-upload-content-screenshot' \
-    '{"screenshots": [{"contentType": "VuOzhxHmnrrV9ZGW", "description": "rZ05sxe6A6RpmKDe", "fileExtension": "bmp"}, {"contentType": "KbonoucNmzwOZOK5", "description": "6sDkci5rZ8iMlOuk", "fileExtension": "jpeg"}, {"contentType": "rjF5RaJwvkWVco2L", "description": "To5ijlvDF8qBWCQ9", "fileExtension": "bmp"}]}' \
-    'BzP6EUmUXGM5anIl' \
+    '{"screenshots": [{"contentType": "Vxe5n9Lx3QcFo9gx", "description": "OgvDc7xMrRKvw8IS", "fileExtension": "png"}, {"contentType": "UqjXVzW1QqxnWR5s", "description": "heLgsAF4ctv5guyc", "fileExtension": "pjp"}, {"contentType": "JhatQPxR7dvBVC5z", "description": "gOKLTDmHe8c1eJ9s", "fileExtension": "bmp"}]}' \
+    'Er0KBXuJBqK4QtEy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 21 'AdminUploadContentScreenshot' test.out
 
 #- 22 AdminDeleteContentScreenshot
 $PYTHON -m $MODULE 'ugc-admin-delete-content-screenshot' \
-    'oyj9lhbvuQdW2jwK' \
-    'Uckc794ryY91lX8D' \
+    'dPWLPBYiR3UbJc1Z' \
+    'Yapx7C477etqgfOJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 22 'AdminDeleteContentScreenshot' test.out
 
 #- 23 ListContentVersions
 $PYTHON -m $MODULE 'ugc-list-content-versions' \
-    'D4MYXlrJ81lHvv9r' \
+    'DUT0uKAPrARya2IM' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 23 'ListContentVersions' test.out
@@ -348,36 +357,36 @@ eval_tap $? 24 'SingleAdminGetAllGroups' test.out
 
 #- 25 AdminCreateGroup
 $PYTHON -m $MODULE 'ugc-admin-create-group' \
-    '{"contents": ["qvEoM8YmVjAkO3HK", "sEp6KlqwW4djrexc", "bHdEtoQvpV344Rct"], "name": "mTozCi8HeV6jbalH"}' \
+    '{"contents": ["lNiXpF4qvsUUpHqi", "33TcBGkc0HjUcnkp", "U9oVzl2kBuLFXIeC"], "name": "EKZUTz3GvCAZ5j24"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 25 'AdminCreateGroup' test.out
 
 #- 26 SingleAdminGetGroup
 $PYTHON -m $MODULE 'ugc-single-admin-get-group' \
-    'mqBBfi7sSF5BoGiT' \
+    'acYHbrryHB6GO9zP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 26 'SingleAdminGetGroup' test.out
 
 #- 27 SingleAdminUpdateGroup
 $PYTHON -m $MODULE 'ugc-single-admin-update-group' \
-    '{"contents": ["CVsXsygWbjE2opXt", "dsJQeJ1too0qvxph", "TLEEBGTtZyTjdKNK"], "name": "gYazujsmSmylT1Yt"}' \
-    'xIq73aMb48jISd97' \
+    '{"contents": ["3FaepA3b3YJ9nJM6", "vtT27xv85K5MU2qm", "beqaVemINdClpF7O"], "name": "vlBIEgjse5kd6GED"}' \
+    'o08yq5E5HleLoog4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 27 'SingleAdminUpdateGroup' test.out
 
 #- 28 SingleAdminDeleteGroup
 $PYTHON -m $MODULE 'ugc-single-admin-delete-group' \
-    'KORRhxSWLWLNfHRD' \
+    'me2NBFp62xlXvVcJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 28 'SingleAdminDeleteGroup' test.out
 
 #- 29 SingleAdminGetGroupContents
 $PYTHON -m $MODULE 'ugc-single-admin-get-group-contents' \
-    '3V15QaGGL46LuxJF' \
+    'erTPW02PWsHiKYAr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 29 'SingleAdminGetGroupContents' test.out
@@ -390,22 +399,22 @@ eval_tap $? 30 'AdminGetTag' test.out
 
 #- 31 AdminCreateTag
 $PYTHON -m $MODULE 'ugc-admin-create-tag' \
-    '{"tag": "3sbeqWBdQuWfgBAK"}' \
+    '{"tag": "AxnKBfBfDlrQQuAc"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 31 'AdminCreateTag' test.out
 
 #- 32 AdminUpdateTag
 $PYTHON -m $MODULE 'ugc-admin-update-tag' \
-    '{"tag": "x27MSBqabUXOGkko"}' \
-    'MUZn1YXj5zFZeOCO' \
+    '{"tag": "10DjjwMv4vrIPRtv"}' \
+    'hQIyLarjaLOKnX51' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 32 'AdminUpdateTag' test.out
 
 #- 33 AdminDeleteTag
 $PYTHON -m $MODULE 'ugc-admin-delete-tag' \
-    'R9NvBQZSJPOIKrRB' \
+    'yAB8Pa3uNGKhaLlJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 33 'AdminDeleteTag' test.out
@@ -418,82 +427,82 @@ eval_tap $? 34 'AdminGetType' test.out
 
 #- 35 AdminCreateType
 $PYTHON -m $MODULE 'ugc-admin-create-type' \
-    '{"subtype": ["rYVzi9ui3lvozTt9", "TsH7A0TuU2aL4bPk", "k11sys6GdkDcos5u"], "type": "VJ0BJfZ0jvA54CSq"}' \
+    '{"subtype": ["zJMSnJIIgsAVmaGY", "xUX1B9oVuzG2CnYX", "2YBF2g7TVtzYEHUo"], "type": "dh3iUfBthbepUCTW"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 35 'AdminCreateType' test.out
 
 #- 36 AdminUpdateType
 $PYTHON -m $MODULE 'ugc-admin-update-type' \
-    '{"subtype": ["ZFDsO1skRjOU1SMf", "QVQa6blj9Rdd85bd", "YUumPKVSZCg3XTc9"], "type": "vQe0dHJfF6KIuvnR"}' \
-    'Ca9JktyBdxkZKrEW' \
+    '{"subtype": ["iZ1uqh7GAi4FEIu4", "4u83ZLRxYlYqlpq0", "3BGdIk4oEogFVGR7"], "type": "1rJOBy6lsj1AKGBj"}' \
+    'nHmaAu4YK87DYAWW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 36 'AdminUpdateType' test.out
 
 #- 37 AdminDeleteType
 $PYTHON -m $MODULE 'ugc-admin-delete-type' \
-    'Fw9GYxjiiOQAD77c' \
+    'cbcbGWmKgE8CZ4AE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 37 'AdminDeleteType' test.out
 
 #- 38 AdminGetChannel
 $PYTHON -m $MODULE 'ugc-admin-get-channel' \
-    'i0vfWVZoRRMPi57H' \
+    'Lr5lraa5v5P5Cj8h' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 38 'AdminGetChannel' test.out
 
 #- 39 AdminDeleteAllUserChannels
 $PYTHON -m $MODULE 'ugc-admin-delete-all-user-channels' \
-    'yKKz5nyI6ulKNKoX' \
+    'gFsqHC9h5JPiMEtg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 39 'AdminDeleteAllUserChannels' test.out
 
 #- 40 AdminUpdateChannel
 $PYTHON -m $MODULE 'ugc-admin-update-channel' \
-    '{"name": "a0dgx1JgjC56pda3"}' \
-    'YhtQxpCYME6x21pd' \
-    'X2QSPAd9sxoLnWGP' \
+    '{"name": "KuiGTYgwWv5XldL6"}' \
+    'rOVGcRAn51rVAQSx' \
+    'p4qTB54mKA3V9DKl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 40 'AdminUpdateChannel' test.out
 
 #- 41 AdminDeleteChannel
 $PYTHON -m $MODULE 'ugc-admin-delete-channel' \
-    '1PafIjLX8ce0KbNN' \
-    '7Ycl2JfmQplvGjVQ' \
+    'CeZ7mLYsHooOIaxI' \
+    'pb1cIOJPS3lJ80YJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 41 'AdminDeleteChannel' test.out
 
 #- 42 AdminUpdateContentS3ByShareCode
 $PYTHON -m $MODULE 'ugc-admin-update-content-s3-by-share-code' \
-    '{"contentType": "4aebjfgGu472oWJl", "customAttributes": {"fglLM4xjfkNL4lU6": {}, "jaGfsD1cfswmeFpv": {}, "tDtetoQVFL8LNW11": {}}, "fileExtension": "vtpaTxi7k489jRCn", "name": "48bvkCPfKofwXOIZ", "payload": "ZQAJza84lKKmVOaT", "preview": "S6xBbNrSUAW2ak7I", "previewMetadata": {"previewContentType": "SDrBVg6NuDZvPb1k", "previewFileExtension": "uUfNfUDe4g7q6PHE"}, "shareCode": "aqbzHvDDl1jiLw3X", "subType": "MGBA6JXDpA1tIC45", "tags": ["C0oaGouFu4hXONgU", "wJnUpryDeRcpUvlr", "w2MwC1uuokpaIjL0"], "type": "Vxe5n9Lx3QcFo9gx", "updateContentFile": false}' \
-    '4bmm7jPdKLddfdsU' \
-    'qjXVzW1QqxnWR5sh' \
-    'eLgsAF4ctv5guycG' \
+    '{"contentType": "41U4ooQ980ywmg1p", "customAttributes": {"WpWit1QC7FKe0fnH": {}, "UlmU1unGKM0tgfeW": {}, "y47bbwMI4gGmvK9g": {}}, "fileExtension": "W596FwBNrFXt3TAu", "name": "KBwBcD12ae6r3hHw", "payload": "ya4NpdOzg3hr6ucH", "preview": "f7dbh2iKNUl0qJqz", "previewMetadata": {"previewContentType": "oKMRMG541PAiNjUL", "previewFileExtension": "sx4SnKNXLMUaDSww"}, "shareCode": "QlnNRZJHBSB4fZWE", "subType": "FIZs28Ff1kZp1Zkt", "tags": ["x3N7WNMYIfcDKbLu", "8pnK34oA1keYXJvt", "ggDdXjbdjMBahFZZ"], "type": "GMTcqnWrIprOv0BJ", "updateContentFile": false}' \
+    'Sgl7H1sdH2RIJz1e' \
+    'I7Q5pu9PutLf6Irv' \
+    'ZoBGQbO4S3rURGWU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 42 'AdminUpdateContentS3ByShareCode' test.out
 
 #- 43 AdminUpdateContentS3
 $PYTHON -m $MODULE 'ugc-admin-update-content-s3' \
-    '{"contentType": "iq9j2EyIknfLDpgH", "customAttributes": {"nMOn8nc3gUZ8ZFyy": {}, "Er0KBXuJBqK4QtEy": {}, "dPWLPBYiR3UbJc1Z": {}}, "fileExtension": "Yapx7C477etqgfOJ", "name": "DUT0uKAPrARya2IM", "payload": "lNiXpF4qvsUUpHqi", "preview": "33TcBGkc0HjUcnkp", "previewMetadata": {"previewContentType": "U9oVzl2kBuLFXIeC", "previewFileExtension": "EKZUTz3GvCAZ5j24"}, "shareCode": "acYHbrryHB6GO9zP", "subType": "3FaepA3b3YJ9nJM6", "tags": ["vtT27xv85K5MU2qm", "beqaVemINdClpF7O", "vlBIEgjse5kd6GED"], "type": "o08yq5E5HleLoog4", "updateContentFile": false}' \
-    'uL5W4tKt6G3j9LYd' \
-    'G7xVPqBqe9RDQMBS' \
-    'YAFLqp8PF5hCcouk' \
+    '{"contentType": "zPAE6SdV4D5jftRl", "customAttributes": {"9rZmtQUvro8TWwXW": {}, "sz9TVmdMKEohKzuM": {}, "YDUTLBeCidXjuGgx": {}}, "fileExtension": "8ncXejmeZtzT0qj0", "name": "ltsqfiZrthVvyX0O", "payload": "CKDJE3RMUddwSSgx", "preview": "Cu8zru1DhGAYOHR5", "previewMetadata": {"previewContentType": "BWa9VzIkaQEl1iUP", "previewFileExtension": "roNB6hI6IpGcToWg"}, "shareCode": "FvdRhG9NwV3zDuqV", "subType": "lVTypcYPK8IxrSZu", "tags": ["xWl0Je4fJIyFAm3D", "Qht4JwnPS2urJqer", "obWMZGVL5KLTxahW"], "type": "lS6XdBaKSLCgOOPX", "updateContentFile": true}' \
+    'TUh2dJ90yqHDNacl' \
+    '4F9G6Dl5TFwBY6HK' \
+    'XAblkT8VGgSH8MGZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 43 'AdminUpdateContentS3' test.out
 
 #- 44 DeleteContentByShareCode
 $PYTHON -m $MODULE 'ugc-delete-content-by-share-code' \
-    'Wpnbz4ys7j6lxuU3' \
-    'u2HEG0qfKegvFTD1' \
-    'sPykS8YLmwtYgWGc' \
+    'GwiVj7eDTaka9ABf' \
+    'X1IByPEOuPhGspRi' \
+    '3bhPQvBBJI5Jxytp' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 44 'DeleteContentByShareCode' test.out
@@ -503,23 +512,23 @@ eval_tap 0 45 'AdminUpdateContentDirect # SKIP deprecated' test.out
 
 #- 46 AdminDeleteContent
 $PYTHON -m $MODULE 'ugc-admin-delete-content' \
-    'A0h4G1LZ1HaX5UBM' \
-    'bsF44VTsLDRzdq22' \
-    'cbnyK3ggFDh2kaZP' \
+    'cubN4AUUPFPscZsX' \
+    'eJOD4DMtqfIGiGJo' \
+    'vgWSRxZ8N4UQ2fg3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 46 'AdminDeleteContent' test.out
 
 #- 47 AdminGetContent
 $PYTHON -m $MODULE 'ugc-admin-get-content' \
-    '7pnnVfxPwc259HF9' \
+    'V1o2x0hL5DuBDqMy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 47 'AdminGetContent' test.out
 
 #- 48 AdminDeleteAllUserContents
 $PYTHON -m $MODULE 'ugc-admin-delete-all-user-contents' \
-    'ejHaILQruAuYyJLY' \
+    'IAzWze94MEdJFAy2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 48 'AdminDeleteAllUserContents' test.out
@@ -527,69 +536,69 @@ eval_tap $? 48 'AdminDeleteAllUserContents' test.out
 #- 49 AdminHideUserContent
 $PYTHON -m $MODULE 'ugc-admin-hide-user-content' \
     '{"isHidden": true}' \
-    'qMv824ouSgkpK70u' \
-    'JmUL0uzElixc023d' \
+    'llJkRGB8jqJEd6eq' \
+    'qsBVyONV0JRtozI0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 49 'AdminHideUserContent' test.out
 
 #- 50 AdminGetAllGroups
 $PYTHON -m $MODULE 'ugc-admin-get-all-groups' \
-    'IvDiA0tQWlHwBcTt' \
+    'jpliCFQ6WgJpGPig' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 50 'AdminGetAllGroups' test.out
 
 #- 51 AdminDeleteAllUserGroup
 $PYTHON -m $MODULE 'ugc-admin-delete-all-user-group' \
-    'ztx3VAl6tXFbnATC' \
+    'dc5VyC4qvWjVac1c' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 51 'AdminDeleteAllUserGroup' test.out
 
 #- 52 AdminGetGroup
 $PYTHON -m $MODULE 'ugc-admin-get-group' \
-    'zUOIzVcy9k3ie64V' \
-    'nwa0ClGQJultJe32' \
+    'QvSxgTNIUzxDgBlI' \
+    'buzm7DzJ20NFRJIh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 52 'AdminGetGroup' test.out
 
 #- 53 AdminUpdateGroup
 $PYTHON -m $MODULE 'ugc-admin-update-group' \
-    '{"contents": ["AiwKadEoIVmprwPs", "a9YD92CX0rITajpw", "HITGeHTnqRbzBB9Z"], "name": "FgJbQ3Fj1umx4Itz"}' \
-    'kMJ7cudf4r916GPr' \
-    'hn2etVIQvRkQJAtD' \
+    '{"contents": ["FXR2dYprPmbpuptE", "CGd5cdXC2Sesc6y6", "8whNBYl9iCqfW6rq"], "name": "GOQny4ij4ysYPonb"}' \
+    '59gQffkNOmubxEJr' \
+    '2qEAuJbpZSrcbc4L' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 53 'AdminUpdateGroup' test.out
 
 #- 54 AdminDeleteGroup
 $PYTHON -m $MODULE 'ugc-admin-delete-group' \
-    'UH9tx60AehGz1erm' \
-    'JYXsYgL7TfyIlAwj' \
+    'WfKaY5c1tP5TDuI5' \
+    'f6m4KC07CnsZe32h' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 54 'AdminDeleteGroup' test.out
 
 #- 55 AdminGetGroupContents
 $PYTHON -m $MODULE 'ugc-admin-get-group-contents' \
-    'TZdRZJJzWZwvTX2b' \
-    'amSCvX1nwvSWdDwD' \
+    'qEcB1ExYMBb3ckvo' \
+    'aJYdMqGegcg3eRvB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 55 'AdminGetGroupContents' test.out
 
 #- 56 AdminDeleteAllUserStates
 $PYTHON -m $MODULE 'ugc-admin-delete-all-user-states' \
-    '7WJHzgNZUKsI5y0m' \
+    'ZXN3cjIXmFWRJnj8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 56 'AdminDeleteAllUserStates' test.out
 
 #- 57 SearchChannelSpecificContent
 $PYTHON -m $MODULE 'ugc-search-channel-specific-content' \
-    'R3zMyTsftKqnsIJc' \
+    'xN7HDPTUEDPN1Kb4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 57 'SearchChannelSpecificContent' test.out
@@ -602,7 +611,7 @@ eval_tap $? 58 'PublicSearchContent' test.out
 
 #- 59 PublicGetContentBulk
 $PYTHON -m $MODULE 'ugc-public-get-content-bulk' \
-    '{"contentIds": ["tAdxyZVKHA9DkaSO", "Wgtg8yw8lHEbVDwB", "AqanOlscRIWw82k5"]}' \
+    '{"contentIds": ["UTPWDXTSb55g8LST", "s7Nf95lGlPrf6obI", "dnI6Ag7eUYcYJ4Qz"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 59 'PublicGetContentBulk' test.out
@@ -621,21 +630,21 @@ eval_tap $? 61 'GetLikedContent' test.out
 
 #- 62 PublicDownloadContentByShareCode
 $PYTHON -m $MODULE 'ugc-public-download-content-by-share-code' \
-    'K5VTkdubkOFldMCQ' \
+    'XCmqr6gmPGaHP5SV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 62 'PublicDownloadContentByShareCode' test.out
 
 #- 63 PublicDownloadContentByContentID
 $PYTHON -m $MODULE 'ugc-public-download-content-by-content-id' \
-    '98JH4n0JtgqzZv5k' \
+    'PvRLiDi0mNHb6Lx8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 63 'PublicDownloadContentByContentID' test.out
 
 #- 64 AddDownloadCount
 $PYTHON -m $MODULE 'ugc-add-download-count' \
-    'Vu4S95mj8YRvae4f' \
+    'eq8SGNwEQO8dYXvB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 64 'AddDownloadCount' test.out
@@ -643,14 +652,14 @@ eval_tap $? 64 'AddDownloadCount' test.out
 #- 65 UpdateContentLikeStatus
 $PYTHON -m $MODULE 'ugc-update-content-like-status' \
     '{"likeStatus": false}' \
-    '7WNMYIfcDKbLu8pn' \
+    'YvJBwb6CjZUMRf2V' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 65 'UpdateContentLikeStatus' test.out
 
 #- 66 PublicDownloadContentPreview
 $PYTHON -m $MODULE 'ugc-public-download-content-preview' \
-    'K34oA1keYXJvtggD' \
+    'JetWsokvx3BHuTEc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 66 'PublicDownloadContentPreview' test.out
@@ -681,46 +690,46 @@ eval_tap $? 70 'GetFollowedUsers' test.out
 
 #- 71 PublicGetCreator
 $PYTHON -m $MODULE 'ugc-public-get-creator' \
-    'dXjbdjMBahFZZGMT' \
+    'zr9KjQ3ttz8MTBt1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 71 'PublicGetCreator' test.out
 
 #- 72 GetChannels
 $PYTHON -m $MODULE 'ugc-get-channels' \
-    'cqnWrIprOv0BJ9Sg' \
+    'xk9IyssSA8nP5PQj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 72 'GetChannels' test.out
 
 #- 73 PublicCreateChannel
 $PYTHON -m $MODULE 'ugc-public-create-channel' \
-    '{"name": "l7H1sdH2RIJz1eI7"}' \
-    'Q5pu9PutLf6IrvZo' \
+    '{"name": "pzk2Tb7iYdmNZWos"}' \
+    'rsVBPZ64j0HUONsc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 73 'PublicCreateChannel' test.out
 
 #- 74 DeleteAllUserChannel
 $PYTHON -m $MODULE 'ugc-delete-all-user-channel' \
-    'BGQbO4S3rURGWUzP' \
+    'ofwYLQcDvkaEIIPo' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 74 'DeleteAllUserChannel' test.out
 
 #- 75 UpdateChannel
 $PYTHON -m $MODULE 'ugc-update-channel' \
-    '{"name": "AE6SdV4D5jftRl9r"}' \
-    'ZmtQUvro8TWwXWsz' \
-    '9TVmdMKEohKzuMYD' \
+    '{"name": "JT83zEGXmVBZLyrH"}' \
+    '9J7BoysmaORLkP5h' \
+    'c2Fh04JTsqDTynCe' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 75 'UpdateChannel' test.out
 
 #- 76 DeleteChannel
 $PYTHON -m $MODULE 'ugc-delete-channel' \
-    'UTLBeCidXjuGgx8n' \
-    'cXejmeZtzT0qj0lt' \
+    'wqJligLlRxOelKyk' \
+    'ICRxF6HtlER2txs4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 76 'DeleteChannel' test.out
@@ -730,483 +739,562 @@ eval_tap 0 77 'CreateContentDirect # SKIP deprecated' test.out
 
 #- 78 CreateContentS3
 $PYTHON -m $MODULE 'ugc-create-content-s3' \
-    '{"contentType": "sqfiZrthVvyX0OCK", "customAttributes": {"DJE3RMUddwSSgxCu": {}, "8zru1DhGAYOHR5BW": {}, "a9VzIkaQEl1iUPro": {}}, "fileExtension": "NB6hI6IpGcToWgFv", "name": "dRhG9NwV3zDuqVlV", "preview": "TypcYPK8IxrSZuxW", "previewMetadata": {"previewContentType": "l0Je4fJIyFAm3DQh", "previewFileExtension": "t4JwnPS2urJqerob"}, "subType": "WMZGVL5KLTxahWlS", "tags": ["6XdBaKSLCgOOPXM6", "XTUh2dJ90yqHDNac", "l4F9G6Dl5TFwBY6H"], "type": "KXAblkT8VGgSH8MG"}' \
-    'ZGwiVj7eDTaka9AB' \
-    'fX1IByPEOuPhGspR' \
+    '{"contentType": "qrNARATn6KXOutlY", "customAttributes": {"BbLhL8KXx25FZfQI": {}, "odVBqQsBpCJBIXLG": {}, "YcwWVRK6UKk5ozrX": {}}, "fileExtension": "A4HZHNyq9odanhR1", "name": "Zrm3thUvV87yfkyc", "preview": "LSVdleSaAylsmLYe", "previewMetadata": {"previewContentType": "2phYOgT5kDTyPl3d", "previewFileExtension": "KF7NXEjrJMki8jvc"}, "subType": "3P8Gwjg3IOH0SDHg", "tags": ["YKqxJiFJdrmj5vhz", "gsJwex7wq8ZPlXNa", "UNgdY2vfJuje5cPn"], "type": "mGjTvYa5Pqx1K7qc"}' \
+    'AoijBPAp6EPb988N' \
+    'zxrDKVpULjjiw3Ne' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 78 'CreateContentS3' test.out
 
-#- 79 UpdateContentS3
+#- 79 PublicUpdateContentByShareCode
+$PYTHON -m $MODULE 'ugc-public-update-content-by-share-code' \
+    '{"contentType": "VG4DJi9DaMrc0WFg", "customAttributes": {"KjE945x2CPVYYG9W": {}, "voGmAmvaVV5YfxnU": {}, "Ncwjr7gSGhnfuF4W": {}}, "fileExtension": "ZiQVICVpWd3UM08g", "name": "MXhdf3juXW4JprIb", "payload": "3CJCAtvSG8Cfa9dz", "preview": "OJDGCTHIOFjeXbsS", "previewMetadata": {"previewContentType": "gR43kIDzxBwqRJTz", "previewFileExtension": "rHNZWUsq5lQo2jy2"}, "subType": "9EJigqYhyVhURx1y", "tags": ["PeczRpdk0HATGylx", "2JG2KNGfhzfCTxxr", "sRRLee3TcJ7DQIi4"], "type": "5aCDHN9mVug2zkVf", "updateContentFile": true}' \
+    'KgpKOcn3tMD9UT67' \
+    'bOwugFDa6wUQvehK' \
+    'qwCh86XmRkCEcfHD' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 79 'PublicUpdateContentByShareCode' test.out
+
+#- 80 UpdateContentS3
 $PYTHON -m $MODULE 'ugc-update-content-s3' \
-    '{"contentType": "i3bhPQvBBJI5Jxyt", "customAttributes": {"pcubN4AUUPFPscZs": {}, "XeJOD4DMtqfIGiGJ": {}, "ovgWSRxZ8N4UQ2fg": {}}, "fileExtension": "3V1o2x0hL5DuBDqM", "name": "yIAzWze94MEdJFAy", "payload": "2JTllJkRGB8jqJEd", "preview": "6eqqsBVyONV0JRto", "previewMetadata": {"previewContentType": "zI0jpliCFQ6WgJpG", "previewFileExtension": "Pigdc5VyC4qvWjVa"}, "subType": "c1cQvSxgTNIUzxDg", "tags": ["BlIbuzm7DzJ20NFR", "JIhFXR2dYprPmbpu", "ptECGd5cdXC2Sesc"], "type": "6y68whNBYl9iCqfW", "updateContentFile": false}' \
-    'rqGOQny4ij4ysYPo' \
-    'nb59gQffkNOmubxE' \
-    'Jr2qEAuJbpZSrcbc' \
+    '{"contentType": "Cdl59Wp9A3tXGve6", "customAttributes": {"DdK6uvg8f2cIoByk": {}, "9fxtvsgeAxo57nKA": {}, "bZpsbJ4Iu5KJ0ynx": {}}, "fileExtension": "GBlacDCdFe8ATUqV", "name": "xcSthrpnMUBsnUfu", "payload": "QIcSbUt5UGkInFGp", "preview": "uUsdtq4dOwNESzCE", "previewMetadata": {"previewContentType": "W9dUVhZjLftC3sCS", "previewFileExtension": "8CpLCqPD9CeDEdCn"}, "subType": "nL6Kt1Bjj3b8QM8R", "tags": ["r45ULqXQgvwD3PsK", "DJiWxQBwaS7rDBf2", "S54phbdyGDt47f9G"], "type": "WRlE9hqz6rjDNo4r", "updateContentFile": false}' \
+    'U8mosluiHZJ7O8sA' \
+    'Q32wj9uaDzsr9xYi' \
+    'WRuuzQJiLc1eI9w3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 79 'UpdateContentS3' test.out
+eval_tap $? 80 'UpdateContentS3' test.out
 
-#- 80 UpdateContentDirect
-eval_tap 0 80 'UpdateContentDirect # SKIP deprecated' test.out
+#- 81 PublicDeleteContentByShareCode
+$PYTHON -m $MODULE 'ugc-public-delete-content-by-share-code' \
+    'JEhxPGbEk7s7gw07' \
+    'FlounC3vJKBC7Swg' \
+    'oViPeIB4Ehy0Y5aS' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 81 'PublicDeleteContentByShareCode' test.out
 
-#- 81 DeleteContent
+#- 82 UpdateContentDirect
+eval_tap 0 82 'UpdateContentDirect # SKIP deprecated' test.out
+
+#- 83 DeleteContent
 $PYTHON -m $MODULE 'ugc-delete-content' \
-    '4LWfKaY5c1tP5TDu' \
-    'I5f6m4KC07CnsZe3' \
-    '2hqEcB1ExYMBb3ck' \
+    'JVDginxAM77eY9C1' \
+    '4FbfiI2NPvl1kCY5' \
+    'bEokxXxkWZbjf7GZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 81 'DeleteContent' test.out
+eval_tap $? 83 'DeleteContent' test.out
 
-#- 82 PublicGetUserContent
+#- 84 PublicGetUserContent
 $PYTHON -m $MODULE 'ugc-public-get-user-content' \
-    'voaJYdMqGegcg3eR' \
+    'xaossQmjo69wohJF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 82 'PublicGetUserContent' test.out
+eval_tap $? 84 'PublicGetUserContent' test.out
 
-#- 83 DeleteAllUserContents
+#- 85 DeleteAllUserContents
 $PYTHON -m $MODULE 'ugc-delete-all-user-contents' \
-    'vBZXN3cjIXmFWRJn' \
+    'yTNk5FGUPhR4LEZv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 83 'DeleteAllUserContents' test.out
+eval_tap $? 85 'DeleteAllUserContents' test.out
 
-#- 84 UpdateScreenshots
+#- 86 UpdateScreenshots
 $PYTHON -m $MODULE 'ugc-update-screenshots' \
-    '{"screenshots": [{"description": "j8xN7HDPTUEDPN1K", "screenshotId": "b4UTPWDXTSb55g8L"}, {"description": "STs7Nf95lGlPrf6o", "screenshotId": "bIdnI6Ag7eUYcYJ4"}, {"description": "QzXCmqr6gmPGaHP5", "screenshotId": "SVPvRLiDi0mNHb6L"}]}' \
-    'x8eq8SGNwEQO8dYX' \
-    'vBSYvJBwb6CjZUMR' \
+    '{"screenshots": [{"description": "z3EjFR7996Ug5m4a", "screenshotId": "xDV5uTcYsoahUrEL"}, {"description": "Q1btjJOqQMgZWAU6", "screenshotId": "E92nHJzvw7tnYtGf"}, {"description": "v0EJyjBu4EzwRjD7", "screenshotId": "jmQJeFPghqamSc5y"}]}' \
+    '0X48eT7Mluexk87b' \
+    '9Z5BTsEA3EdmW8sa' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 84 'UpdateScreenshots' test.out
+eval_tap $? 86 'UpdateScreenshots' test.out
 
-#- 85 UploadContentScreenshot
+#- 87 UploadContentScreenshot
 $PYTHON -m $MODULE 'ugc-upload-content-screenshot' \
-    '{"screenshots": [{"contentType": "f2VJetWsokvx3BHu", "description": "TEczr9KjQ3ttz8MT", "fileExtension": "jpg"}, {"contentType": "nmDk29mcjSuz9vbN", "description": "StqPtQmQN6eKAGiZ", "fileExtension": "pjp"}, {"contentType": "osrsVBPZ64j0HUON", "description": "scofwYLQcDvkaEII", "fileExtension": "png"}]}' \
-    'B4k3JwkdaxR7GJpY' \
-    'muYCPG181q9GA5Dy' \
+    '{"screenshots": [{"contentType": "abP4xRowfNojzPXI", "description": "2v0prR3OEey0MkZw", "fileExtension": "png"}, {"contentType": "9FHuv1M3qfch4SqI", "description": "V6LQPHlaeYl4csFq", "fileExtension": "png"}, {"contentType": "5cU66yJaj4ovoKWE", "description": "4EW0sw8v5peiuxoB", "fileExtension": "pjp"}]}' \
+    'oQBp2mWAOYksczxB' \
+    'S0OBCa2vWadLmQtY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 85 'UploadContentScreenshot' test.out
+eval_tap $? 87 'UploadContentScreenshot' test.out
 
-#- 86 DeleteContentScreenshot
+#- 88 DeleteContentScreenshot
 $PYTHON -m $MODULE 'ugc-delete-content-screenshot' \
-    'dC2D8UT6KOc4VPDU' \
-    'R9ayazqXRqegIUic' \
-    'YXXzxsBFrUs9BYp6' \
+    'KmEMzicbuL2S3RiW' \
+    '8dLTCBfGUdVEdvdQ' \
+    'L7sVwcZ2PofaJoSq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 86 'DeleteContentScreenshot' test.out
+eval_tap $? 88 'DeleteContentScreenshot' test.out
 
-#- 87 UpdateUserFollowStatus
+#- 89 UpdateUserFollowStatus
 $PYTHON -m $MODULE 'ugc-update-user-follow-status' \
-    '{"followStatus": false}' \
-    'qrNARATn6KXOutlY' \
+    '{"followStatus": true}' \
+    'fmjIXFGZ5PKdbabJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 87 'UpdateUserFollowStatus' test.out
+eval_tap $? 89 'UpdateUserFollowStatus' test.out
 
-#- 88 GetPublicFollowers
+#- 90 GetPublicFollowers
 $PYTHON -m $MODULE 'ugc-get-public-followers' \
-    'BbLhL8KXx25FZfQI' \
+    'IkNnt9P1Tkm08luh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 88 'GetPublicFollowers' test.out
+eval_tap $? 90 'GetPublicFollowers' test.out
 
-#- 89 GetPublicFollowing
+#- 91 GetPublicFollowing
 $PYTHON -m $MODULE 'ugc-get-public-following' \
-    'odVBqQsBpCJBIXLG' \
+    '4dpPRMDbUXBWTbpA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 89 'GetPublicFollowing' test.out
+eval_tap $? 91 'GetPublicFollowing' test.out
 
-#- 90 GetGroups
+#- 92 GetGroups
 $PYTHON -m $MODULE 'ugc-get-groups' \
-    'YcwWVRK6UKk5ozrX' \
+    'ogG2wlZkLhuU5FI8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 90 'GetGroups' test.out
+eval_tap $? 92 'GetGroups' test.out
 
-#- 91 CreateGroup
+#- 93 CreateGroup
 $PYTHON -m $MODULE 'ugc-create-group' \
-    '{"contents": ["A4HZHNyq9odanhR1", "Zrm3thUvV87yfkyc", "LSVdleSaAylsmLYe"], "name": "2phYOgT5kDTyPl3d"}' \
-    'KF7NXEjrJMki8jvc' \
+    '{"contents": ["NijFI0GKwJ3vfXls", "AMy2Zp2UAGxHnmSx", "vkG9UR5q9neoW6JB"], "name": "cGp9Rx2RfcRhXpme"}' \
+    'eHdvphas9S7ivHEo' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 91 'CreateGroup' test.out
+eval_tap $? 93 'CreateGroup' test.out
 
-#- 92 DeleteAllUserGroup
+#- 94 DeleteAllUserGroup
 $PYTHON -m $MODULE 'ugc-delete-all-user-group' \
-    '3P8Gwjg3IOH0SDHg' \
+    'LbUMM47f1UreUpxE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 92 'DeleteAllUserGroup' test.out
+eval_tap $? 94 'DeleteAllUserGroup' test.out
 
-#- 93 GetGroup
+#- 95 GetGroup
 $PYTHON -m $MODULE 'ugc-get-group' \
-    'YKqxJiFJdrmj5vhz' \
-    'gsJwex7wq8ZPlXNa' \
+    'kXIbE1ETzRJZKMav' \
+    'u4Ul2IaieEbPSE7T' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 93 'GetGroup' test.out
+eval_tap $? 95 'GetGroup' test.out
 
-#- 94 UpdateGroup
+#- 96 UpdateGroup
 $PYTHON -m $MODULE 'ugc-update-group' \
-    '{"contents": ["UNgdY2vfJuje5cPn", "mGjTvYa5Pqx1K7qc", "AoijBPAp6EPb988N"], "name": "zxrDKVpULjjiw3Ne"}' \
-    'VG4DJi9DaMrc0WFg' \
-    'KjE945x2CPVYYG9W' \
+    '{"contents": ["GkeHsYsW9oGBN1pY", "MBwbPZTlMlUvFEiG", "prcNSQ9kEeXBZ6FV"], "name": "rBzyhyhoS6a9oe0J"}' \
+    'aXFpff28uYbe4Cf2' \
+    'HEHvVevhISjbtBJU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 94 'UpdateGroup' test.out
+eval_tap $? 96 'UpdateGroup' test.out
 
-#- 95 DeleteGroup
+#- 97 DeleteGroup
 $PYTHON -m $MODULE 'ugc-delete-group' \
-    'voGmAmvaVV5YfxnU' \
-    'Ncwjr7gSGhnfuF4W' \
+    'K5fE3OufPSX3PdOU' \
+    '2V9yw94oa8UJ34TI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 95 'DeleteGroup' test.out
+eval_tap $? 97 'DeleteGroup' test.out
 
-#- 96 GetGroupContent
+#- 98 GetGroupContent
 $PYTHON -m $MODULE 'ugc-get-group-content' \
-    'ZiQVICVpWd3UM08g' \
-    'MXhdf3juXW4JprIb' \
+    'edV3HyoX4VnO2LpB' \
+    'U08wfnlHBXFIqFUm' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 96 'GetGroupContent' test.out
+eval_tap $? 98 'GetGroupContent' test.out
 
-#- 97 DeleteAllUserStates
+#- 99 DeleteAllUserStates
 $PYTHON -m $MODULE 'ugc-delete-all-user-states' \
-    '3CJCAtvSG8Cfa9dz' \
+    'gUSMM5au8GJT0mkV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 97 'DeleteAllUserStates' test.out
+eval_tap $? 99 'DeleteAllUserStates' test.out
 
-#- 98 AdminGetContentByChannelIDV2
+#- 100 AdminGetContentByChannelIDV2
 $PYTHON -m $MODULE 'ugc-admin-get-content-by-channel-idv2' \
-    'OJDGCTHIOFjeXbsS' \
+    'PI6zUtf3QaJPGrTN' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 98 'AdminGetContentByChannelIDV2' test.out
+eval_tap $? 100 'AdminGetContentByChannelIDV2' test.out
 
-#- 99 AdminCreateContentV2
+#- 101 AdminCreateContentV2
 $PYTHON -m $MODULE 'ugc-admin-create-content-v2' \
-    '{"contentType": "gR43kIDzxBwqRJTz", "customAttributes": {"rHNZWUsq5lQo2jy2": {}, "9EJigqYhyVhURx1y": {}, "PeczRpdk0HATGylx": {}}, "fileExtension": "2JG2KNGfhzfCTxxr", "name": "sRRLee3TcJ7DQIi4", "shareCode": "5aCDHN9mVug2zkVf", "subType": "6KgpKOcn3tMD9UT6", "tags": ["7bOwugFDa6wUQveh", "KqwCh86XmRkCEcfH", "DCdl59Wp9A3tXGve"], "type": "6DdK6uvg8f2cIoBy"}' \
-    'k9fxtvsgeAxo57nK' \
+    '{"contentType": "cXXTUIggoH89QNmI", "customAttributes": {"17UDb19R6H7r1ta3": {}, "m7jK5pxe82pgFiAS": {}, "6piIzmc8rKrKEPGS": {}}, "fileExtension": "Acong6eNERUf8kjc", "name": "i1Ctccv9Gv4tOcbn", "shareCode": "uCqf0lm6WBkIzjoS", "subType": "V31tvmMB6jzrpRGE", "tags": ["SmooHiCV4GUOnXpa", "pXQGRakUbcG7PcR4", "eiU3Idi55jNrGNT2"], "type": "VHTKuIT5FwwHj0Ur"}' \
+    '5F2PWGTTD81xhNP4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 99 'AdminCreateContentV2' test.out
+eval_tap $? 101 'AdminCreateContentV2' test.out
 
-#- 100 AdminDeleteOfficialContentV2
+#- 102 AdminDeleteOfficialContentV2
 $PYTHON -m $MODULE 'ugc-admin-delete-official-content-v2' \
-    'AbZpsbJ4Iu5KJ0yn' \
-    'xGBlacDCdFe8ATUq' \
+    't6kYBUjyXAn3bWQF' \
+    '6QcAiJpXIrgroixp' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 100 'AdminDeleteOfficialContentV2' test.out
+eval_tap $? 102 'AdminDeleteOfficialContentV2' test.out
 
-#- 101 AdminUpdateOfficialContentV2
+#- 103 AdminUpdateOfficialContentV2
 $PYTHON -m $MODULE 'ugc-admin-update-official-content-v2' \
-    '{"customAttributes": {"VxcSthrpnMUBsnUf": {}, "uQIcSbUt5UGkInFG": {}, "puUsdtq4dOwNESzC": {}}, "name": "EW9dUVhZjLftC3sC", "shareCode": "S8CpLCqPD9CeDEdC", "subType": "nnL6Kt1Bjj3b8QM8", "tags": ["Rr45ULqXQgvwD3Ps", "KDJiWxQBwaS7rDBf", "2S54phbdyGDt47f9"], "type": "GWRlE9hqz6rjDNo4"}' \
-    'rhjxUdMM83WekqfW' \
-    'v04vvn9bk5qr8qs2' \
+    '{"customAttributes": {"tZhckUTGkcBOE4qM": {}, "cH1Kyi8ZFvGcV8DY": {}, "0XOkDstxZcY1HgAn": {}}, "name": "ZV4IOglVLqb9lGAJ", "shareCode": "Ug21Lt7JwgwMUSuC", "subType": "3Bajy3BcEMCtQs2F", "tags": ["cEcvVAyId6Cp85HV", "DsZBQgOnXuXsGThY", "Zrmm0wrFMnPpWgrQ"], "type": "D4hEk0OLjYsnignE"}' \
+    '7KcMF7fuDbzRRYMN' \
+    'XWUsp1tOibJY9aL9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 101 'AdminUpdateOfficialContentV2' test.out
+eval_tap $? 103 'AdminUpdateOfficialContentV2' test.out
 
-#- 102 AdminUpdateOfficialContentFileLocation
+#- 104 AdminUpdateOfficialContentFileLocation
 $PYTHON -m $MODULE 'ugc-admin-update-official-content-file-location' \
-    '{"fileExtension": "mqtnGAqXUjNypF6M", "fileLocation": "MqWpdEJsPoaIbYz8"}' \
-    'cK5jlpJdre5ur6yv' \
-    'WJDdvM7T7PX2vamI' \
+    '{"fileExtension": "ie6vvMbiNURrlm88", "fileLocation": "QlKyuoya4JgakZyU"}' \
+    'V7t73VnSFbuxd4KY' \
+    'Z0jk0UZdhtnKu9oT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 102 'AdminUpdateOfficialContentFileLocation' test.out
+eval_tap $? 104 'AdminUpdateOfficialContentFileLocation' test.out
 
-#- 103 AdminGenerateOfficialContentUploadURLV2
+#- 105 AdminGenerateOfficialContentUploadURLV2
 $PYTHON -m $MODULE 'ugc-admin-generate-official-content-upload-urlv2' \
-    '{"contentType": "RZHzsIYOCUoiCXNj", "fileExtension": "rdQL2jdx1eIba1sB"}' \
-    '0HsJ06DzfbzRYt4O' \
-    'VUyumBeIqdQGZC5k' \
+    '{"contentType": "c8pVkiyGsj5JdXzR", "fileExtension": "xfNEjUMTs8WIObJB"}' \
+    'Tsvsw76uISRX0bKV' \
+    'oWtoUW1P7ocuBAld' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 103 'AdminGenerateOfficialContentUploadURLV2' test.out
+eval_tap $? 105 'AdminGenerateOfficialContentUploadURLV2' test.out
 
-#- 104 AdminListContentV2
+#- 106 AdminListContentV2
 $PYTHON -m $MODULE 'ugc-admin-list-content-v2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 104 'AdminListContentV2' test.out
+eval_tap $? 106 'AdminListContentV2' test.out
 
-#- 105 AdminBulkGetContentByIDsV2
+#- 107 AdminBulkGetContentByIDsV2
 $PYTHON -m $MODULE 'ugc-admin-bulk-get-content-by-i-ds-v2' \
-    '{"contentIds": ["M03HHijsQRj7N8IA", "jmsonjj0ZR50BQ1U", "6aFD3O2kXQSc58zg"]}' \
+    '{"contentIds": ["DSUS7Haa6unq1yQO", "SRvyiLBRVtIDi2pi", "IQFVmzMidw70KSah"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 105 'AdminBulkGetContentByIDsV2' test.out
+eval_tap $? 107 'AdminBulkGetContentByIDsV2' test.out
 
-#- 106 AdminGetContentByShareCodeV2
+#- 108 AdminGetContentBulkByShareCodesV2
+$PYTHON -m $MODULE 'ugc-admin-get-content-bulk-by-share-codes-v2' \
+    '{"shareCodes": ["pYZdKZRyR9AX7Jjx", "vNZhM84DiZk6ySrB", "9SVFctW7YS0OkL78"]}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 108 'AdminGetContentBulkByShareCodesV2' test.out
+
+#- 109 AdminGetContentByShareCodeV2
 $PYTHON -m $MODULE 'ugc-admin-get-content-by-share-code-v2' \
-    'ZVl4gIF7v3qbZu9M' \
+    'XeEAtALFI3v8yha4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 106 'AdminGetContentByShareCodeV2' test.out
+eval_tap $? 109 'AdminGetContentByShareCodeV2' test.out
 
-#- 107 AdminGetContentByContentIDV2
+#- 110 AdminGetContentByContentIDV2
 $PYTHON -m $MODULE 'ugc-admin-get-content-by-content-idv2' \
-    '3OxqVAT4H1lRZ9Z1' \
+    'pd5A7MYcpBD6lKNb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 107 'AdminGetContentByContentIDV2' test.out
+eval_tap $? 110 'AdminGetContentByContentIDV2' test.out
 
-#- 108 AdminUpdateScreenshotsV2
+#- 111 RollbackContentVersionV2
+$PYTHON -m $MODULE 'ugc-rollback-content-version-v2' \
+    '8RxvN2u5J7baOeLH' \
+    '19fqBwNbNe1ffYRt' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 111 'RollbackContentVersionV2' test.out
+
+#- 112 AdminUpdateScreenshotsV2
 $PYTHON -m $MODULE 'ugc-admin-update-screenshots-v2' \
-    '{"screenshots": [{"description": "JBrHRzEOtIxzPqb6", "screenshotId": "n73m0jiaDH86d9rs"}, {"description": "KgzCsMulpB8HZUtV", "screenshotId": "VaJCiLgKOwrSfWhT"}, {"description": "5B4WedopzwSluBtR", "screenshotId": "FPKThyGnbjmPDKFS"}]}' \
-    '6u9FHuv1M3qfch4S' \
+    '{"screenshots": [{"description": "IvQaKyevWYtZjK6J", "screenshotId": "29v8MpBSpo3AKRmn"}, {"description": "JkzJHAckUyBksYQf", "screenshotId": "Dm0RNFwiz70tRVLM"}, {"description": "lHi8i9gOVqajUWrg", "screenshotId": "EsWDtaKzn8dZwnnG"}]}' \
+    'eZsZVgbPzPFbrOMZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 108 'AdminUpdateScreenshotsV2' test.out
+eval_tap $? 112 'AdminUpdateScreenshotsV2' test.out
 
-#- 109 AdminUploadContentScreenshotV2
+#- 113 AdminUploadContentScreenshotV2
 $PYTHON -m $MODULE 'ugc-admin-upload-content-screenshot-v2' \
-    '{"screenshots": [{"contentType": "qIV6LQPHlaeYl4cs", "description": "Fq65cU66yJaj4ovo", "fileExtension": "pjp"}, {"contentType": "G40QyXzsOzgck078", "description": "IghoQBp2mWAOYksc", "fileExtension": "jpg"}, {"contentType": "yEvMf9yilUEujk6o", "description": "qYo1HQYTFzwdOMdu", "fileExtension": "jfif"}]}' \
-    'iW8dLTCBfGUdVEdv' \
+    '{"screenshots": [{"contentType": "MgWkFN7Tpkx6Gcfy", "description": "Og6ZUrrp9ubg9mnd", "fileExtension": "pjp"}, {"contentType": "qdgJRvpZrSpWX3KE", "description": "e2BjV00ReCXFffjJ", "fileExtension": "pjp"}, {"contentType": "oCQykmXHYmkRlg7g", "description": "Ys6unPYQ9jNQN1di", "fileExtension": "jfif"}]}' \
+    'HAPbBbNPStVBUpKg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 109 'AdminUploadContentScreenshotV2' test.out
+eval_tap $? 113 'AdminUploadContentScreenshotV2' test.out
 
-#- 110 AdminDeleteContentScreenshotV2
+#- 114 AdminDeleteContentScreenshotV2
 $PYTHON -m $MODULE 'ugc-admin-delete-content-screenshot-v2' \
-    'dQL7sVwcZ2PofaJo' \
-    'SqtrEOqxH46fRTSZ' \
+    'OssFkz0F36piDYXe' \
+    'HZ7FHls3nyvconqb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 110 'AdminDeleteContentScreenshotV2' test.out
+eval_tap $? 114 'AdminDeleteContentScreenshotV2' test.out
 
-#- 111 AdminGetOfficialGroupContentsV2
+#- 115 ListContentVersionsV2
+$PYTHON -m $MODULE 'ugc-list-content-versions-v2' \
+    'HQqKLQKe3xmj6s0G' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 115 'ListContentVersionsV2' test.out
+
+#- 116 AdminGetOfficialGroupContentsV2
 $PYTHON -m $MODULE 'ugc-admin-get-official-group-contents-v2' \
-    'oDdT0fefo74eg3Nt' \
+    'qsWncp5LrqbiKudv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 111 'AdminGetOfficialGroupContentsV2' test.out
+eval_tap $? 116 'AdminGetOfficialGroupContentsV2' test.out
 
-#- 112 AdminDeleteUserContentV2
+#- 117 AdminUpdateContentByShareCodeV2
+$PYTHON -m $MODULE 'ugc-admin-update-content-by-share-code-v2' \
+    '{"customAttributes": {"9z75SzoCV8ZMi2o1": {}, "nR482D6gNClk9c87": {}, "hosaPFC5zBW3ZgVZ": {}}, "name": "Cj9ObVGT0Scwl4kN", "shareCode": "mCi15XTJTgCNNH7R", "subType": "tG5Xmo9Q0Wb07N17", "tags": ["fkxZSc6VbE0AGcek", "jMNHuPXtz8tXxrmz", "afMUguyDoN91uc28"], "type": "HoSpGt1g0GGbT4Hf"}' \
+    '2PPKOldkbgX9CWJK' \
+    'wXXSbv5eg9q86IaD' \
+    'Fjjx6uZerWbtwTX9' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 117 'AdminUpdateContentByShareCodeV2' test.out
+
+#- 118 AdminDeleteContentByShareCodeV2
+$PYTHON -m $MODULE 'ugc-admin-delete-content-by-share-code-v2' \
+    'gNRByjbE8lOLAfTX' \
+    'KLzbrddqcKLa7Lev' \
+    'xNHOSEhQRZIp693l' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 118 'AdminDeleteContentByShareCodeV2' test.out
+
+#- 119 AdminDeleteUserContentV2
 $PYTHON -m $MODULE 'ugc-admin-delete-user-content-v2' \
-    '2c0r4GqF0NHglOVu' \
-    'NZ9LzNeJnBurh54C' \
-    'WbYb0Pebyt8b4DGs' \
+    'Rwtc43atCuCFxbfb' \
+    'z4aQERziPL4dHhOq' \
+    'G5KDdUvk0LEi26Ls' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 112 'AdminDeleteUserContentV2' test.out
+eval_tap $? 119 'AdminDeleteUserContentV2' test.out
 
-#- 113 AdminUpdateUserContentV2
+#- 120 AdminUpdateUserContentV2
 $PYTHON -m $MODULE 'ugc-admin-update-user-content-v2' \
-    '{"customAttributes": {"cjwrizsFUgYwbaLv": {}, "qvQ2NbmDITuymTBj": {}, "n3d2sFzMS3QaVjZF": {}}, "name": "7Ax6115Kg9U8vrQJ", "shareCode": "XQxoIbVi2CLEk277", "subType": "Ivjj1A647XQ3koaA", "tags": ["fZIim0sFPm1YN27b", "ojDVaZLpx4kEWYkO", "6KrKUMhJrASBh61h"], "type": "mWKSSrF35anDGvur"}' \
-    '19V18oIrUKXttgAI' \
-    '2QdWJFLmoPEgd8EM' \
-    'spOs8nkic9gj5vyU' \
+    '{"customAttributes": {"7mjRxNmvvNtjJNQe": {}, "pUTGhwlY4lPzlsCR": {}, "5rVsyfcH7WjP7HuG": {}}, "name": "z3b5WAEvdRF9bqMj", "shareCode": "4ro5B19VE838c7Oy", "subType": "dVw0zCqoMZvpIOO9", "tags": ["7DmQ5ZOzx6iCJTu6", "0IifzMhkk5Pxsjqb", "CKpMv2Yky9DYkD2s"], "type": "IllFtBtXJKG3rqBm"}' \
+    'ILhtWm8RQvRUbUDS' \
+    'iefGEdLucrtO2gCQ' \
+    'D057DrDlgC2nzS9S' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 113 'AdminUpdateUserContentV2' test.out
+eval_tap $? 120 'AdminUpdateUserContentV2' test.out
 
-#- 114 AdminUpdateUserContentFileLocation
+#- 121 AdminUpdateUserContentFileLocation
 $PYTHON -m $MODULE 'ugc-admin-update-user-content-file-location' \
-    '{"fileExtension": "MAAmIHYbsxG5N066", "fileLocation": "FXb88SbLOa21DiSF"}' \
-    'sm0XXQJWszvTQEuA' \
-    'LzDNp1SZ58aDllwz' \
-    'TRHak1MXxj7Esrg7' \
+    '{"fileExtension": "iGUjVAw4v3q6JRHc", "fileLocation": "n7KaoCEkRdo6qHYI"}' \
+    'ZWnXqQ1oHFJ9Q0vq' \
+    'sL9SomqWsGA76yxi' \
+    '0QzZWfmP2sx0KO5b' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 114 'AdminUpdateUserContentFileLocation' test.out
+eval_tap $? 121 'AdminUpdateUserContentFileLocation' test.out
 
-#- 115 AdminGenerateUserContentUploadURLV2
+#- 122 AdminGenerateUserContentUploadURLV2
 $PYTHON -m $MODULE 'ugc-admin-generate-user-content-upload-urlv2' \
-    '{"contentType": "900nml5BidsK9dCE", "fileExtension": "zhVnOv0PQbVIaKiH"}' \
-    'foeorY7A1otGFyv2' \
-    'SMjbEr50qGdCZIc6' \
-    'EFqBKxbS7Q2OgRuc' \
+    '{"contentType": "EJaPnAFjsodyJQVV", "fileExtension": "BrShGbIIuqK8C403"}' \
+    'HgoXCR6XOMXwKdfq' \
+    'k8T4QHK30EX0Fclp' \
+    'Dl5HsuracO5Mnjnx' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 115 'AdminGenerateUserContentUploadURLV2' test.out
+eval_tap $? 122 'AdminGenerateUserContentUploadURLV2' test.out
 
-#- 116 AdminGetContentByUserIDV2
+#- 123 AdminGetContentByUserIDV2
 $PYTHON -m $MODULE 'ugc-admin-get-content-by-user-idv2' \
-    'L1jwRXzfjDZZBmOa' \
+    'D1OXkxShFVQTRekL' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 116 'AdminGetContentByUserIDV2' test.out
+eval_tap $? 123 'AdminGetContentByUserIDV2' test.out
 
-#- 117 AdminUpdateContentHideStatusV2
+#- 124 AdminUpdateContentHideStatusV2
 $PYTHON -m $MODULE 'ugc-admin-update-content-hide-status-v2' \
-    '{"isHidden": true}' \
-    'jci1Ctccv9Gv4tOc' \
-    'bnuCqf0lm6WBkIzj' \
+    '{"isHidden": false}' \
+    '6bpuJip8JyxJ39vr' \
+    'tuWWrqTZbSqBSKp8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 117 'AdminUpdateContentHideStatusV2' test.out
+eval_tap $? 124 'AdminUpdateContentHideStatusV2' test.out
 
-#- 118 AdminGetUserGroupContentsV2
+#- 125 AdminGetUserGroupContentsV2
 $PYTHON -m $MODULE 'ugc-admin-get-user-group-contents-v2' \
-    'oSV31tvmMB6jzrpR' \
-    'GESmooHiCV4GUOnX' \
+    'AmgwhYzk33J34fiT' \
+    'xK63OHpnUCGBVfpc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 118 'AdminGetUserGroupContentsV2' test.out
+eval_tap $? 125 'AdminGetUserGroupContentsV2' test.out
 
-#- 119 PublicGetContentByChannelIDV2
+#- 126 PublicGetContentByChannelIDV2
 $PYTHON -m $MODULE 'ugc-public-get-content-by-channel-idv2' \
-    'papXQGRakUbcG7Pc' \
+    'tNFUsUQ6ZXQcb2o1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 119 'PublicGetContentByChannelIDV2' test.out
+eval_tap $? 126 'PublicGetContentByChannelIDV2' test.out
 
-#- 120 PublicListContentV2
+#- 127 PublicListContentV2
 $PYTHON -m $MODULE 'ugc-public-list-content-v2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 120 'PublicListContentV2' test.out
+eval_tap $? 127 'PublicListContentV2' test.out
 
-#- 121 PublicBulkGetContentByIDV2
+#- 128 PublicBulkGetContentByIDV2
 $PYTHON -m $MODULE 'ugc-public-bulk-get-content-by-idv2' \
-    '{"contentIds": ["R4eiU3Idi55jNrGN", "T2VHTKuIT5FwwHj0", "Ur5F2PWGTTD81xhN"]}' \
+    '{"contentIds": ["J5euLAbBgejqc0ap", "xqZ209BySn8aUaGl", "AyvIslt7N1qcxKs4"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 121 'PublicBulkGetContentByIDV2' test.out
+eval_tap $? 128 'PublicBulkGetContentByIDV2' test.out
 
-#- 122 PublicGetContentByShareCodeV2
+#- 129 PublicGetContentByShareCodeV2
 $PYTHON -m $MODULE 'ugc-public-get-content-by-share-code-v2' \
-    'P4t6kYBUjyXAn3bW' \
+    'nlf1MfqUZXkjHvcU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 122 'PublicGetContentByShareCodeV2' test.out
+eval_tap $? 129 'PublicGetContentByShareCodeV2' test.out
 
-#- 123 PublicGetContentByIDV2
+#- 130 PublicGetContentByIDV2
 $PYTHON -m $MODULE 'ugc-public-get-content-by-idv2' \
-    'QF6QcAiJpXIrgroi' \
+    'OTlxNf09pefgFIiJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 123 'PublicGetContentByIDV2' test.out
+eval_tap $? 130 'PublicGetContentByIDV2' test.out
 
-#- 124 PublicAddDownloadCountV2
+#- 131 PublicAddDownloadCountV2
 $PYTHON -m $MODULE 'ugc-public-add-download-count-v2' \
-    'xptZhckUTGkcBOE4' \
+    'ssShBKsQjXvfQgQD' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 124 'PublicAddDownloadCountV2' test.out
+eval_tap $? 131 'PublicAddDownloadCountV2' test.out
 
-#- 125 PublicListContentDownloaderV2
+#- 132 PublicListContentDownloaderV2
 $PYTHON -m $MODULE 'ugc-public-list-content-downloader-v2' \
-    'qMcH1Kyi8ZFvGcV8' \
+    't6ce8NDMErA82FrR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 125 'PublicListContentDownloaderV2' test.out
+eval_tap $? 132 'PublicListContentDownloaderV2' test.out
 
-#- 126 PublicListContentLikeV2
+#- 133 PublicListContentLikeV2
 $PYTHON -m $MODULE 'ugc-public-list-content-like-v2' \
-    'DY0XOkDstxZcY1Hg' \
+    '1GSogkewIzTOqKkc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 126 'PublicListContentLikeV2' test.out
+eval_tap $? 133 'PublicListContentLikeV2' test.out
 
-#- 127 UpdateContentLikeStatusV2
+#- 134 UpdateContentLikeStatusV2
 $PYTHON -m $MODULE 'ugc-update-content-like-status-v2' \
-    '{"likeStatus": true}' \
-    '7Yi2VvoQNW8Yc481' \
+    '{"likeStatus": false}' \
+    '6kPmswm5TCAU1cKA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 127 'UpdateContentLikeStatusV2' test.out
+eval_tap $? 134 'UpdateContentLikeStatusV2' test.out
 
-#- 128 PublicCreateContentV2
+#- 135 PublicCreateContentV2
 $PYTHON -m $MODULE 'ugc-public-create-content-v2' \
-    '{"contentType": "dYdvGxJAMDRA1LF7", "customAttributes": {"jdWlekFwO94VBCV9": {}, "qJhWva2FPBujX0ge": {}, "YCpGJM4sqsPNJMiZ": {}}, "fileExtension": "XXOFwmGWAvNF0Z0G", "name": "kwxUNYyNwGiKrknH", "subType": "0Y5mrQgLC6D2qsFi", "tags": ["QHglUQMZi5WjMZfO", "adpgegCUjTdi1Ehr", "8OtqpNJ9R8TuNy4e"], "type": "jmVA3vMCsGyPd12B"}' \
-    '8QNUz0hFFNbH6j2W' \
-    '4roZM2UKAXEEsL5D' \
+    '{"contentType": "pdJDnE73GLmSZns5", "customAttributes": {"owBhoUg4LsGP6KLP": {}, "XkvUv2XiXaBzsmax": {}, "jTZPlLitytGka7Kv": {}}, "fileExtension": "5TacQKF4OlRGdmXx", "name": "ETLEQrr3KCAV9alq", "subType": "3hK1G4kKooSNNUZu", "tags": ["iynZ64IwncZPk82G", "F3eTC0vzZUDj9dzG", "gGVxo9OHgfHumyfu"], "type": "BNisecYbcOpR45VD"}' \
+    'lvSc0Mr7ImwCwGqO' \
+    'f0bNs97KvKyj3MqS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 128 'PublicCreateContentV2' test.out
+eval_tap $? 135 'PublicCreateContentV2' test.out
 
-#- 129 PublicDeleteContentV2
+#- 136 PublicUpdateContentByShareCodeV2
+$PYTHON -m $MODULE 'ugc-public-update-content-by-share-code-v2' \
+    '{"customAttributes": {"7Dcmtfh50eObbrmg": {}, "jhWK0x0ZidAJ1CU1": {}, "eD1La16Bw3JbUnUD": {}}, "name": "h5yGjjv4Mwrv2van", "subType": "cmR6Z7rb21A2E9pX", "tags": ["0BWCMqPsRk5htdM5", "T3fDSrSHrkoqv2mM", "6soMaTvQq2a9YdFN"], "type": "tRVSO0js0hG9xmSn"}' \
+    'zd7zgUxAogcnGkXk' \
+    '17QPkJHRhmLKQuQV' \
+    'FSKiXl8G2uf6E8Ea' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 136 'PublicUpdateContentByShareCodeV2' test.out
+
+#- 137 PublicDeleteContentByShareCodeV2
+$PYTHON -m $MODULE 'ugc-public-delete-content-by-share-code-v2' \
+    'jXLSAS8MKMaxQ1Qy' \
+    'JCpKedhuzI7G9NCK' \
+    'KXu1bqI2M5PmXfKn' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 137 'PublicDeleteContentByShareCodeV2' test.out
+
+#- 138 PublicDeleteContentV2
 $PYTHON -m $MODULE 'ugc-public-delete-content-v2' \
-    '0oiFchQnVeq3g2AB' \
-    '2WIRUQmauIY5HXCZ' \
-    '0W4XmWP0HzSdiylL' \
+    'Q7BYGjCUDMOrbmoR' \
+    'vWnfmGFy0eUoOBd9' \
+    '0h9EDqSTOfoNewWj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 129 'PublicDeleteContentV2' test.out
+eval_tap $? 138 'PublicDeleteContentV2' test.out
 
-#- 130 PublicUpdateContentV2
+#- 139 PublicUpdateContentV2
 $PYTHON -m $MODULE 'ugc-public-update-content-v2' \
-    '{"customAttributes": {"hVYszm8xY33OQbum": {}, "u2QHLyZNuysyM4Of": {}, "CzdQCXMAWnf87YPN": {}}, "name": "Oe9Eevf1fhMg1E2k", "subType": "7QLFrVgtX7y0fPOi", "tags": ["eDCow2zXyFFVpM87", "yqEwEacQMTlqN4LK", "kxJ5v3SBafnKNiMP"], "type": "bFkFGA85W3HJkqgS"}' \
-    '2B37wwoPYOHiIsxm' \
-    'sLBPBJuNLnWRrtW8' \
-    '70qD88ZcduZSe7W2' \
+    '{"customAttributes": {"wMWDKEt6JhbJ0fwT": {}, "Daq6b5RpMwhWPtnd": {}, "riXU9loOxpmEuwDV": {}}, "name": "c12r0DVUGgGHkapT", "subType": "CafFMdvYiCBuzUUw", "tags": ["yI6Vtd4v9k4fv3kM", "iuQ3DhsKLxjt5srP", "FxBgpFtDBmTLH9kP"], "type": "9U53z6joBAhAlJGI"}' \
+    '2YYb6ajBjgq6eY4P' \
+    'BNHKPx62tHxDb06Z' \
+    'Fy3uglSp2UxvF2uL' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 130 'PublicUpdateContentV2' test.out
+eval_tap $? 139 'PublicUpdateContentV2' test.out
 
-#- 131 PublicUpdateContentFileLocation
+#- 140 PublicUpdateContentFileLocation
 $PYTHON -m $MODULE 'ugc-public-update-content-file-location' \
-    '{"fileExtension": "0UZcDaiq0nEZ7Pyh", "fileLocation": "qFJkDClOsKmfsgJd"}' \
-    'mzsDPsWh1k0cQ08N' \
-    'G6dX2TZkil67kRng' \
-    'oUa83ECh1gqPeS19' \
+    '{"fileExtension": "XWilRD7HD6LCgdFx", "fileLocation": "RGj00RT6LvcnGMJb"}' \
+    'JIYLssMvy9gkfTMR' \
+    'rXVRcAVRDX6gmDfN' \
+    'fPGYYSTunMgt3C8h' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 131 'PublicUpdateContentFileLocation' test.out
+eval_tap $? 140 'PublicUpdateContentFileLocation' test.out
 
-#- 132 PublicGenerateContentUploadURLV2
+#- 141 PublicGenerateContentUploadURLV2
 $PYTHON -m $MODULE 'ugc-public-generate-content-upload-urlv2' \
-    '{"contentType": "3TNNzot3sVli3GN2", "fileExtension": "XTrFibRAhzzEWzWl"}' \
-    'TY70qdgJRvpZrSpW' \
-    'X3KEe2BjV00ReCXF' \
-    'ffjJJxlgjzIhpgOo' \
+    '{"contentType": "EguCqlMHiQN3HWJw", "fileExtension": "9zIWsiP2JQ24meDr"}' \
+    'wEuTyM2qohglzO8A' \
+    'El6A9sh2x2ur2ccp' \
+    '7R7OqPqIjS4i0N9y' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 132 'PublicGenerateContentUploadURLV2' test.out
+eval_tap $? 141 'PublicGenerateContentUploadURLV2' test.out
 
-#- 133 PublicGetContentByUserIDV2
+#- 142 PublicGetContentByUserIDV2
 $PYTHON -m $MODULE 'ugc-public-get-content-by-user-idv2' \
-    'IOD74V21HWDAfvXw' \
+    'tb3c8pVZ8GlU8962' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 133 'PublicGetContentByUserIDV2' test.out
+eval_tap $? 142 'PublicGetContentByUserIDV2' test.out
 
-#- 134 UpdateScreenshotsV2
+#- 143 UpdateScreenshotsV2
 $PYTHON -m $MODULE 'ugc-update-screenshots-v2' \
-    '{"screenshots": [{"description": "dxbyp4HAPbBbNPSt", "screenshotId": "VBUpKgOssFkz0F36"}, {"description": "piDYXeHZ7FHls3ny", "screenshotId": "vconqbHQqKLQKe3x"}, {"description": "mj6s0GqsWncp5Lrq", "screenshotId": "biKudv9z75SzoCV8"}]}' \
-    'ZMi2o1nR482D6gNC' \
-    'lk9c87hosaPFC5zB' \
+    '{"screenshots": [{"description": "e6gtn5pUARJM1T8Q", "screenshotId": "wMNOAzXmyHEV4g9P"}, {"description": "6a280S5RNB5dVCsB", "screenshotId": "7xL4axSPgPCiwLxC"}, {"description": "FLDixZwVtt3RVTl0", "screenshotId": "tR00oQgcHdGGK3x7"}]}' \
+    '6U1EIcklttmrpgF5' \
+    'szl0sMY8es36r1Fg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 134 'UpdateScreenshotsV2' test.out
+eval_tap $? 143 'UpdateScreenshotsV2' test.out
 
-#- 135 UploadContentScreenshotV2
+#- 144 UploadContentScreenshotV2
 $PYTHON -m $MODULE 'ugc-upload-content-screenshot-v2' \
-    '{"screenshots": [{"contentType": "W3ZgVZCj9ObVGT0S", "description": "cwl4kNmCi15XTJTg", "fileExtension": "jpg"}, {"contentType": "TVItrH2X78hxJgaV", "description": "fw5Vnyq8OzTE89WD", "fileExtension": "png"}, {"contentType": "AGcekjMNHuPXtz8t", "description": "XxrmzafMUguyDoN9", "fileExtension": "pjp"}]}' \
-    'uc28HoSpGt1g0GGb' \
-    'T4Hf2PPKOldkbgX9' \
+    '{"screenshots": [{"contentType": "R70eNLHkVrEFd8xA", "description": "rWJuCAIfNBSHgpFN", "fileExtension": "jpeg"}, {"contentType": "X9fHr6WvBxmBvNj3", "description": "ktaDf9B22HGgxakP", "fileExtension": "jpeg"}, {"contentType": "Cu1HFaj6Vxs3GuA4", "description": "S1dS7H7yIS7b5TSD", "fileExtension": "png"}]}' \
+    'WpCF1vyamjsEzwtL' \
+    'PxK1os4qR8LaQzEb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 135 'UploadContentScreenshotV2' test.out
+eval_tap $? 144 'UploadContentScreenshotV2' test.out
 
-#- 136 DeleteContentScreenshotV2
+#- 145 DeleteContentScreenshotV2
 $PYTHON -m $MODULE 'ugc-delete-content-screenshot-v2' \
-    'CWJKwXXSbv5eg9q8' \
-    '6IaDFjjx6uZerWbt' \
-    'wTX9gNRByjbE8lOL' \
+    '39sZTdFfC8x5aHLs' \
+    'XHlm1RJTTy9JrNz1' \
+    'K5M1qgFddYvifGHa' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 136 'DeleteContentScreenshotV2' test.out
+eval_tap $? 145 'DeleteContentScreenshotV2' test.out
 
-#- 137 PublicGetGroupContentsV2
+#- 146 PublicGetGroupContentsV2
 $PYTHON -m $MODULE 'ugc-public-get-group-contents-v2' \
-    'AfTXKLzbrddqcKLa' \
-    '7LevxNHOSEhQRZIp' \
+    'wNx6yhniEHLbEQKc' \
+    '0aUvrKXDIjYC4df9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 137 'PublicGetGroupContentsV2' test.out
+eval_tap $? 146 'PublicGetGroupContentsV2' test.out
 
 
 fi

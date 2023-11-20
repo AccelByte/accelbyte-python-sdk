@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -82,9 +82,15 @@ class PostGameBinaryRecordV1(Operation):
     Responses:
         201: Created - ModelsUploadBinaryRecordResponse (Record in namespace-level created)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18305: invalid request body)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        409: Conflict - ModelsResponseError (18309: key already exists)
+
+        500: Internal Server Error - ModelsResponseError (18301: unable to get record | 18307: unable to save record | 18310: unable to get presigned URL)
     """
 
     # region fields
@@ -201,9 +207,15 @@ class PostGameBinaryRecordV1(Operation):
 
         201: Created - ModelsUploadBinaryRecordResponse (Record in namespace-level created)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18305: invalid request body)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        409: Conflict - ModelsResponseError (18309: key already exists)
+
+        500: Internal Server Error - ModelsResponseError (18301: unable to get record | 18307: unable to save record | 18310: unable to get presigned URL)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -220,7 +232,13 @@ class PostGameBinaryRecordV1(Operation):
 
         if code == 201:
             return ModelsUploadBinaryRecordResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 409:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)

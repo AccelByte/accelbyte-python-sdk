@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.30.2)
+# AccelByte Gaming Services Lobby Server (3.31.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,6 +37,7 @@ class UserRequestFriend(Operation):
     """user add friend (userRequestFriend)
 
     Client should provide either friendID or friendPublicID. If both are provided, friendID will be chosen to be used.
+    This endpoint will only send a pending invite that can be either rejected/accepted
 
     Properties:
         url: /friends/namespaces/{namespace}/me/request

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (7.5.0)
+# AGS Iam Service (7.6.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     public_get_publisher_user_v3 as public_get_publisher_user_v3_internal,
 )
-from accelbyte_py_sdk.api.iam.models import ModelGetPublisherUserV3Response
+from accelbyte_py_sdk.api.iam.models import ModelGetPublisherUserResponse
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 

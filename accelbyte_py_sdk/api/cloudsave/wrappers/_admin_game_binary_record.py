@@ -87,11 +87,15 @@ def admin_delete_game_binary_record_v1(
     Responses:
         204: No Content - (Record deleted)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
-        404: Not Found - ModelsResponseError (Not Found)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18322: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18320: unable to delete record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -144,11 +148,15 @@ async def admin_delete_game_binary_record_v1_async(
     Responses:
         204: No Content - (Record deleted)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
-        404: Not Found - ModelsResponseError (Not Found)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18322: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18320: unable to delete record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -203,11 +211,13 @@ def admin_get_game_binary_record_v1(
     Responses:
         200: OK - ModelsGameBinaryRecordResponse (Record in namespace-level retrieved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        404: Not Found - ModelsResponseError (Not Found)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        404: Not Found - ModelsResponseError (18303: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18301: unable to get record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -260,11 +270,13 @@ async def admin_get_game_binary_record_v1_async(
     Responses:
         200: OK - ModelsGameBinaryRecordResponse (Record in namespace-level retrieved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        404: Not Found - ModelsResponseError (Not Found)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        404: Not Found - ModelsResponseError (18303: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18301: unable to get record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -325,9 +337,13 @@ def admin_list_game_binary_records_v1(
     Responses:
         200: OK - ModelsListGameBinaryRecordsResponse (Retrieve list of records by namespace)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18304: invalid request body)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18301: unable to get record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -388,9 +404,13 @@ async def admin_list_game_binary_records_v1_async(
     Responses:
         200: OK - ModelsListGameBinaryRecordsResponse (Retrieve list of records by namespace)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18304: invalid request body)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18301: unable to get record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -457,9 +477,15 @@ def admin_post_game_binary_presigned_urlv1(
     Responses:
         201: Created - ModelsUploadBinaryRecordResponse (Successful Operation)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18311: invalid request body | 18201: invalid record operator, expect [%s] but actual [%s])
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18313: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18312: unable to get record | 18314: unable to get presigned URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -523,9 +549,15 @@ async def admin_post_game_binary_presigned_urlv1_async(
     Responses:
         201: Created - ModelsUploadBinaryRecordResponse (Successful Operation)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18311: invalid request body | 18201: invalid record operator, expect [%s] but actual [%s])
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18313: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18312: unable to get record | 18314: unable to get presigned URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -595,9 +627,15 @@ def admin_post_game_binary_record_v1(
     Responses:
         201: Created - ModelsUploadBinaryRecordResponse (Record in namespace-level created)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18305: invalid request body)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        409: Conflict - ModelsResponseError (18309: key already exists)
+
+        500: Internal Server Error - ModelsResponseError (18301: unable to get record | 18307: unable to save record | 18310: unable to get presigned URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -664,9 +702,15 @@ async def admin_post_game_binary_record_v1_async(
     Responses:
         201: Created - ModelsUploadBinaryRecordResponse (Record in namespace-level created)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18305: invalid request body)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        409: Conflict - ModelsResponseError (18309: key already exists)
+
+        500: Internal Server Error - ModelsResponseError (18301: unable to get record | 18307: unable to save record | 18310: unable to get presigned URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -724,9 +768,15 @@ def admin_put_game_binary_recor_metadata_v1(
     Responses:
         200: OK - ModelsGameBinaryRecordResponse (Record saved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18316: invalid request body)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18317: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18318: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -783,9 +833,15 @@ async def admin_put_game_binary_recor_metadata_v1_async(
     Responses:
         200: OK - ModelsGameBinaryRecordResponse (Record saved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18316: invalid request body)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18317: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18318: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -844,9 +900,15 @@ def admin_put_game_binary_record_v1(
     Responses:
         200: OK - ModelsGameBinaryRecordResponse (Record saved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18316: invalid request body | 18201: invalid record operator, expect [%s] but actual [%s])
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18317: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18318: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -903,9 +965,15 @@ async def admin_put_game_binary_record_v1_async(
     Responses:
         200: OK - ModelsGameBinaryRecordResponse (Record saved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18316: invalid request body | 18201: invalid record operator, expect [%s] but actual [%s])
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18317: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18318: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

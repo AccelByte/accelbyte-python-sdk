@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -151,9 +151,13 @@ class AdminPostAdminGameRecordV1(Operation):
     Responses:
         201: Created - ModelsAdminGameRecordResponse (Record in namespace-level saved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18134: invalid request body | 20002: validation error | 18136: invalid request body: size of the request body must be less than [%d]MB)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18135: unable to marshal request body | 20000: internal server error | 18013: unable to save record | 18165: unable to decode record)
     """
 
     # region fields
@@ -281,9 +285,13 @@ class AdminPostAdminGameRecordV1(Operation):
 
         201: Created - ModelsAdminGameRecordResponse (Record in namespace-level saved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18134: invalid request body | 20002: validation error | 18136: invalid request body: size of the request body must be less than [%d]MB)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18135: unable to marshal request body | 20000: internal server error | 18013: unable to save record | 18165: unable to decode record)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -300,7 +308,11 @@ class AdminPostAdminGameRecordV1(Operation):
 
         if code == 201:
             return ModelsAdminGameRecordResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)

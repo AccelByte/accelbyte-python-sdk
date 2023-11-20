@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -184,13 +184,13 @@ class PostPlayerRecordHandlerV1(Operation):
     Responses:
         201: Created - ModelsPlayerRecordResponse (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18030: invalid request body | 20002: validation error | 18060: invalid request body)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (18035: post action is forbidden on other user's record)
+        403: Forbidden - ModelsResponseError (18035: post action is forbidden on other user's record | 20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18033: unable to save record | 18005: unable to decode record)
     """
 
     # region fields
@@ -327,13 +327,13 @@ class PostPlayerRecordHandlerV1(Operation):
 
         201: Created - ModelsPlayerRecordResponse (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18030: invalid request body | 20002: validation error | 18060: invalid request body)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (18035: post action is forbidden on other user's record)
+        403: Forbidden - ModelsResponseError (18035: post action is forbidden on other user's record | 20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18033: unable to save record | 18005: unable to decode record)
 
         ---: HttpResponse (Undocumented Response)
 

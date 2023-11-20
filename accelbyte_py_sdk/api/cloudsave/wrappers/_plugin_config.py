@@ -87,13 +87,13 @@ def create_plugin_config(
     Responses:
         201: Created - ModelsPluginResponse (Created)
 
-        400: Bad Request - ModelsResponseError (18301: invalid request body | 20002: validation error)
+        400: Bad Request - ModelsResponseError (18401: invalid request body | 20002: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        409: Conflict - ModelsResponseError (18302: plugins already configured)
+        409: Conflict - ModelsResponseError (18402: plugins already configured)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
@@ -154,13 +154,13 @@ async def create_plugin_config_async(
     Responses:
         201: Created - ModelsPluginResponse (Created)
 
-        400: Bad Request - ModelsResponseError (18301: invalid request body | 20002: validation error)
+        400: Bad Request - ModelsResponseError (18401: invalid request body | 20002: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        409: Conflict - ModelsResponseError (18302: plugins already configured)
+        409: Conflict - ModelsResponseError (18402: plugins already configured)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
@@ -220,11 +220,11 @@ def delete_plugin_config(
     Responses:
         204: No Content - (OK)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        404: Not Found - ModelsResponseError (18306: plugins config not found)
+        404: Not Found - ModelsResponseError (18406: plugins config not found)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
@@ -281,11 +281,11 @@ async def delete_plugin_config_async(
     Responses:
         204: No Content - (OK)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        404: Not Found - ModelsResponseError (18306: plugins config not found)
+        404: Not Found - ModelsResponseError (18406: plugins config not found)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
@@ -344,11 +344,11 @@ def get_plugin_config(
     Responses:
         200: OK - ModelsPluginResponse (OK)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        404: Not Found - ModelsResponseError (18304: plugins not found)
+        404: Not Found - ModelsResponseError (18404: plugins not found)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
@@ -405,11 +405,11 @@ async def get_plugin_config_async(
     Responses:
         200: OK - ModelsPluginResponse (OK)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        404: Not Found - ModelsResponseError (18304: plugins not found)
+        404: Not Found - ModelsResponseError (18404: plugins not found)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
@@ -471,13 +471,13 @@ def update_plugin_config(
     Responses:
         200: OK - ModelsPluginResponse (OK)
 
-        400: Bad Request - ModelsResponseError (18308: invalid request body | 20002: validation error)
+        400: Bad Request - ModelsResponseError (18408: invalid request body | 20002: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        404: Not Found - ModelsResponseError (18309: plugins config not found)
+        404: Not Found - ModelsResponseError (18409: plugins config not found)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
@@ -538,13 +538,13 @@ async def update_plugin_config_async(
     Responses:
         200: OK - ModelsPluginResponse (OK)
 
-        400: Bad Request - ModelsResponseError (18308: invalid request body | 20002: validation error)
+        400: Bad Request - ModelsResponseError (18408: invalid request body | 20002: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        404: Not Found - ModelsResponseError (18309: plugins config not found)
+        404: Not Found - ModelsResponseError (18409: plugins config not found)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """

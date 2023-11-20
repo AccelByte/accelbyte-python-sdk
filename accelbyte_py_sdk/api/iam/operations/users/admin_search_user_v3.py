@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.5.0)
+# AccelByte Gaming Services Iam Service (7.6.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -124,6 +124,8 @@ class AdminSearchUserV3(Operation):
 
         end_date: (endDate) OPTIONAL str in query
 
+        include_total: (includeTotal) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -160,6 +162,7 @@ class AdminSearchUserV3(Operation):
     namespace: str  # REQUIRED in [path]
     by: str  # OPTIONAL in [query]
     end_date: str  # OPTIONAL in [query]
+    include_total: bool  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     platform_by: str  # OPTIONAL in [query]
@@ -221,6 +224,8 @@ class AdminSearchUserV3(Operation):
             result["by"] = self.by
         if hasattr(self, "end_date"):
             result["endDate"] = self.end_date
+        if hasattr(self, "include_total"):
+            result["includeTotal"] = self.include_total
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -253,6 +258,10 @@ class AdminSearchUserV3(Operation):
 
     def with_end_date(self, value: str) -> AdminSearchUserV3:
         self.end_date = value
+        return self
+
+    def with_include_total(self, value: bool) -> AdminSearchUserV3:
+        self.include_total = value
         return self
 
     def with_limit(self, value: int) -> AdminSearchUserV3:
@@ -297,6 +306,10 @@ class AdminSearchUserV3(Operation):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = ""
+        if hasattr(self, "include_total") and self.include_total:
+            result["includeTotal"] = bool(self.include_total)
+        elif include_empty:
+            result["includeTotal"] = False
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -387,6 +400,7 @@ class AdminSearchUserV3(Operation):
         namespace: str,
         by: Optional[str] = None,
         end_date: Optional[str] = None,
+        include_total: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         platform_by: Optional[str] = None,
@@ -401,6 +415,8 @@ class AdminSearchUserV3(Operation):
             instance.by = by
         if end_date is not None:
             instance.end_date = end_date
+        if include_total is not None:
+            instance.include_total = include_total
         if limit is not None:
             instance.limit = limit
         if offset is not None:
@@ -432,6 +448,10 @@ class AdminSearchUserV3(Operation):
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = ""
+        if "includeTotal" in dict_ and dict_["includeTotal"] is not None:
+            instance.include_total = bool(dict_["includeTotal"])
+        elif include_empty:
+            instance.include_total = False
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -464,6 +484,7 @@ class AdminSearchUserV3(Operation):
             "namespace": "namespace",
             "by": "by",
             "endDate": "end_date",
+            "includeTotal": "include_total",
             "limit": "limit",
             "offset": "offset",
             "platformBy": "platform_by",
@@ -478,6 +499,7 @@ class AdminSearchUserV3(Operation):
             "namespace": True,
             "by": False,
             "endDate": False,
+            "includeTotal": False,
             "limit": False,
             "offset": False,
             "platformBy": False,

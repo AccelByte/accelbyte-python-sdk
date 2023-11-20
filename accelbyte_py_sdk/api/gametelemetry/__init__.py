@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Analytics Game Telemetry."""
 
-__version__ = "1.19.0"
+__version__ = "1.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -37,3 +37,5 @@ from .wrappers import get_events_game_telemetry_v1_admin_namespaces_namespace_ev
 from .wrappers import (
     get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_async,
 )
+from .wrappers import get_namespaces_game_telemetry_v1_admin_namespaces_get
+from .wrappers import get_namespaces_game_telemetry_v1_admin_namespaces_get_async

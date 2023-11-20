@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.16.0)
+# AccelByte Gaming Services Ugc Service (2.17.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,7 +38,6 @@ class UpdateScreenshots(Operation):
     """Update screenshot of content (UpdateScreenshots)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
     Maximum description length: 1024.
 
     Required Permission(s):

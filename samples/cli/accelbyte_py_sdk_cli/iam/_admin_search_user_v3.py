@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (7.5.0)
+# AGS Iam Service (7.6.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.command()
 @click.option("--by", "by", type=str)
 @click.option("--end_date", "end_date", type=str)
+@click.option("--include_total", "include_total", type=bool)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--platform_by", "platform_by", type=str)
@@ -53,6 +54,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 def admin_search_user_v3(
     by: Optional[str] = None,
     end_date: Optional[str] = None,
+    include_total: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     platform_by: Optional[str] = None,
@@ -75,6 +77,7 @@ def admin_search_user_v3(
     result, error = admin_search_user_v3_internal(
         by=by,
         end_date=end_date,
+        include_total=include_total,
         limit=limit,
         offset=offset,
         platform_by=platform_by,

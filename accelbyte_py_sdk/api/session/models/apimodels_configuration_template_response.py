@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.10.0)
+# AccelByte Gaming Services Session Service (3.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
         created_at: (createdAt) REQUIRED str
 
         deployment: (deployment) REQUIRED str
+
+        enable_secret: (enableSecret) REQUIRED bool
 
         inactive_timeout: (inactiveTimeout) REQUIRED int
 
@@ -94,6 +96,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     client_version: str  # REQUIRED
     created_at: str  # REQUIRED
     deployment: str  # REQUIRED
+    enable_secret: bool  # REQUIRED
     inactive_timeout: int  # REQUIRED
     invite_timeout: int  # REQUIRED
     joinability: str  # REQUIRED
@@ -133,6 +136,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
     def with_deployment(self, value: str) -> ApimodelsConfigurationTemplateResponse:
         self.deployment = value
+        return self
+
+    def with_enable_secret(self, value: bool) -> ApimodelsConfigurationTemplateResponse:
+        self.enable_secret = value
         return self
 
     def with_inactive_timeout(
@@ -269,6 +276,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = ""
+        if hasattr(self, "enable_secret"):
+            result["enableSecret"] = bool(self.enable_secret)
+        elif include_empty:
+            result["enableSecret"] = False
         if hasattr(self, "inactive_timeout"):
             result["inactiveTimeout"] = int(self.inactive_timeout)
         elif include_empty:
@@ -379,6 +390,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         client_version: str,
         created_at: str,
         deployment: str,
+        enable_secret: bool,
         inactive_timeout: int,
         invite_timeout: int,
         joinability: str,
@@ -409,6 +421,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         instance.client_version = client_version
         instance.created_at = created_at
         instance.deployment = deployment
+        instance.enable_secret = enable_secret
         instance.inactive_timeout = inactive_timeout
         instance.invite_timeout = invite_timeout
         instance.joinability = joinability
@@ -466,6 +479,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = ""
+        if "enableSecret" in dict_ and dict_["enableSecret"] is not None:
+            instance.enable_secret = bool(dict_["enableSecret"])
+        elif include_empty:
+            instance.enable_secret = False
         if "inactiveTimeout" in dict_ and dict_["inactiveTimeout"] is not None:
             instance.inactive_timeout = int(dict_["inactiveTimeout"])
         elif include_empty:
@@ -625,6 +642,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "clientVersion": "client_version",
             "createdAt": "created_at",
             "deployment": "deployment",
+            "enableSecret": "enable_secret",
             "inactiveTimeout": "inactive_timeout",
             "inviteTimeout": "invite_timeout",
             "joinability": "joinability",
@@ -657,6 +675,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "clientVersion": True,
             "createdAt": True,
             "deployment": True,
+            "enableSecret": True,
             "inactiveTimeout": True,
             "inviteTimeout": True,
             "joinability": True,

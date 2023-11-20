@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ApiListMatchPoolTicketsResponse
 from ..models import ApiListMatchPoolsResponse
 from ..models import ApiMatchPool
 from ..models import ApiMatchPoolConfig
@@ -36,6 +37,7 @@ from ..models import ApiPlayerMetricRecord
 from ..models import ApiTicketMetricResultRecord
 from ..models import ResponseError
 
+from ..operations.match_pools import AdminGetMatchPoolTickets
 from ..operations.match_pools import CreateMatchPool
 from ..operations.match_pools import DeleteMatchPool
 from ..operations.match_pools import GetPlayerMetric
@@ -43,6 +45,148 @@ from ..operations.match_pools import MatchPoolDetails
 from ..operations.match_pools import MatchPoolList
 from ..operations.match_pools import MatchPoolMetric
 from ..operations.match_pools import UpdateMatchPool
+
+
+@same_doc_as(AdminGetMatchPoolTickets)
+def admin_get_match_pool_tickets(
+    pool: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get tickets in queue for a specific match pool (adminGetMatchPoolTickets)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:TICKETS [READ]
+
+    Required Scope: social
+
+    Get tickets in queue for a specific match pool
+
+    Result: number of tickets and list of ticket detail in a match pool.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:TICKETS [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/tickets
+
+        method: GET
+
+        tags: ["Match-Pools", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pool: (pool) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ApiListMatchPoolTicketsResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetMatchPoolTickets.create(
+        pool=pool,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetMatchPoolTickets)
+async def admin_get_match_pool_tickets_async(
+    pool: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get tickets in queue for a specific match pool (adminGetMatchPoolTickets)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:TICKETS [READ]
+
+    Required Scope: social
+
+    Get tickets in queue for a specific match pool
+
+    Result: number of tickets and list of ticket detail in a match pool.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:TICKETS [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/tickets
+
+        method: GET
+
+        tags: ["Match-Pools", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pool: (pool) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ApiListMatchPoolTicketsResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetMatchPoolTickets.create(
+        pool=pool,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateMatchPool)
@@ -614,7 +758,7 @@ def match_pool_list(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ApiListMatchPoolsResponse (Created)
+        200: OK - ApiListMatchPoolsResponse (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -680,7 +824,7 @@ async def match_pool_list_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ApiListMatchPoolsResponse (Created)
+        200: OK - ApiListMatchPoolsResponse (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 

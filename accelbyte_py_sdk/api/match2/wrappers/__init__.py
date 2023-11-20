@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.11.6"
+__version__ = "2.11.7"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -39,6 +39,8 @@ from ._match_functions import match_function_list_async
 from ._match_functions import update_match_function
 from ._match_functions import update_match_function_async
 
+from ._match_pools import admin_get_match_pool_tickets
+from ._match_pools import admin_get_match_pool_tickets_async
 from ._match_pools import create_match_pool
 from ._match_pools import create_match_pool_async
 from ._match_pools import delete_match_pool

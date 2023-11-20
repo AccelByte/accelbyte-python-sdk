@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Analytics Game Telemetry Index (1.19.0)
+# Analytics Game Telemetry Index (1.20.0)
 
 
 ## Operations
@@ -18,6 +18,7 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /game-telemetry/v1/admin/namespaces/{namespace}/events | GET | get_events_game_telemetry_v1_admin_namespaces__namespace__events_get | `false` | [GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet](../../accelbyte_py_sdk/api/gametelemetry/operations/telemetry/get_events_game_telemet_b2983d.py) | [get_events_game_telemetry_v1_admin_namespaces_namespace_events_get](../../accelbyte_py_sdk/api/gametelemetry/wrappers/_telemetry.py) | [accelbyte_py_sdk_cli gametelemetry-get-events-game-telemetry-v1-admin-namespaces-namespace-events-get](../../samples/cli/accelbyte_py_sdk_cli/gametelemetry/_get_events_game_telemetry_v1_admin_namespaces_namespace_events_get.py) |
+| /game-telemetry/v1/admin/namespaces | GET | get_namespaces_game_telemetry_v1_admin_namespaces_get | `false` | [GetNamespacesGameTelemetryV1AdminNamespacesGet](../../accelbyte_py_sdk/api/gametelemetry/operations/telemetry/get_namespaces_game_tel_1106fd.py) | [get_namespaces_game_telemetry_v1_admin_namespaces_get](../../accelbyte_py_sdk/api/gametelemetry/wrappers/_telemetry.py) | [accelbyte_py_sdk_cli gametelemetry-get-namespaces-game-telemetry-v1-admin-namespaces-get](../../samples/cli/accelbyte_py_sdk_cli/gametelemetry/_get_namespaces_game_telemetry_v1_admin_namespaces_get.py) |
 
 
 ## Models

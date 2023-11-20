@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-social-service (2.10.0)
+# justice-social-service (2.10.1)
 
 from ._get_namespace_slot_config import get_namespace_slot_config
 from ._update_namespace_slot_config import update_namespace_slot_config
@@ -39,6 +39,8 @@ from ._get_global_stat_item_by_stat_code import get_global_stat_item_by_stat_cod
 from ._get_stat_cycles import get_stat_cycles
 from ._create_stat_cycle import create_stat_cycle
 from ._bulk_get_stat_cycle import bulk_get_stat_cycle
+from ._export_stat_cycle import export_stat_cycle
+from ._import_stat_cycle import import_stat_cycle
 from ._get_stat_cycle import get_stat_cycle
 from ._update_stat_cycle import update_stat_cycle
 from ._delete_stat_cycle import delete_stat_cycle
@@ -137,6 +139,8 @@ commands = [
     get_stat_cycles,
     create_stat_cycle,
     bulk_get_stat_cycle,
+    export_stat_cycle,
+    import_stat_cycle,
     get_stat_cycle,
     update_stat_cycle,
     delete_stat_cycle,

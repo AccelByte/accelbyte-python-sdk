@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.16.0"
+__version__ = "2.17.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -87,6 +87,8 @@ from .wrappers import admin_bulk_get_content_by_i_ds_v2
 from .wrappers import admin_bulk_get_content_by_i_ds_v2_async
 from .wrappers import admin_create_content_v2
 from .wrappers import admin_create_content_v2_async
+from .wrappers import admin_delete_content_by_share_code_v2
+from .wrappers import admin_delete_content_by_share_code_v2_async
 from .wrappers import admin_delete_content_screenshot_v2
 from .wrappers import admin_delete_content_screenshot_v2_async
 from .wrappers import admin_delete_official_content_v2
@@ -97,6 +99,8 @@ from .wrappers import admin_generate_official_content_upload_urlv2
 from .wrappers import admin_generate_official_content_upload_urlv2_async
 from .wrappers import admin_generate_user_content_upload_urlv2
 from .wrappers import admin_generate_user_content_upload_urlv2_async
+from .wrappers import admin_get_content_bulk_by_share_codes_v2
+from .wrappers import admin_get_content_bulk_by_share_codes_v2_async
 from .wrappers import admin_get_content_by_channel_idv2
 from .wrappers import admin_get_content_by_channel_idv2_async
 from .wrappers import admin_get_content_by_content_idv2
@@ -107,6 +111,8 @@ from .wrappers import admin_get_content_by_user_idv2
 from .wrappers import admin_get_content_by_user_idv2_async
 from .wrappers import admin_list_content_v2
 from .wrappers import admin_list_content_v2_async
+from .wrappers import admin_update_content_by_share_code_v2
+from .wrappers import admin_update_content_by_share_code_v2_async
 from .wrappers import admin_update_content_hide_status_v2
 from .wrappers import admin_update_content_hide_status_v2_async
 from .wrappers import admin_update_official_content_file_location
@@ -121,6 +127,10 @@ from .wrappers import admin_update_user_content_v2
 from .wrappers import admin_update_user_content_v2_async
 from .wrappers import admin_upload_content_screenshot_v2
 from .wrappers import admin_upload_content_screenshot_v2_async
+from .wrappers import list_content_versions_v2
+from .wrappers import list_content_versions_v2_async
+from .wrappers import rollback_content_version_v2
+from .wrappers import rollback_content_version_v2_async
 
 # admin_group
 from .wrappers import admin_create_group
@@ -207,6 +217,8 @@ from .wrappers import delete_content
 from .wrappers import delete_content_async
 from .wrappers import delete_content_screenshot
 from .wrappers import delete_content_screenshot_async
+from .wrappers import public_delete_content_by_share_code
+from .wrappers import public_delete_content_by_share_code_async
 from .wrappers import public_download_content_by_content_id
 from .wrappers import public_download_content_by_content_id_async
 from .wrappers import public_download_content_by_share_code
@@ -219,6 +231,8 @@ from .wrappers import public_get_user_content
 from .wrappers import public_get_user_content_async
 from .wrappers import public_search_content
 from .wrappers import public_search_content_async
+from .wrappers import public_update_content_by_share_code
+from .wrappers import public_update_content_by_share_code_async
 from .wrappers import search_channel_specific_content
 from .wrappers import search_channel_specific_content_async
 from .wrappers import update_content_direct
@@ -237,6 +251,8 @@ from .wrappers import public_bulk_get_content_by_idv2
 from .wrappers import public_bulk_get_content_by_idv2_async
 from .wrappers import public_create_content_v2
 from .wrappers import public_create_content_v2_async
+from .wrappers import public_delete_content_by_share_code_v2
+from .wrappers import public_delete_content_by_share_code_v2_async
 from .wrappers import public_delete_content_v2
 from .wrappers import public_delete_content_v2_async
 from .wrappers import public_generate_content_upload_urlv2
@@ -251,6 +267,8 @@ from .wrappers import public_get_content_by_user_idv2
 from .wrappers import public_get_content_by_user_idv2_async
 from .wrappers import public_list_content_v2
 from .wrappers import public_list_content_v2_async
+from .wrappers import public_update_content_by_share_code_v2
+from .wrappers import public_update_content_by_share_code_v2_async
 from .wrappers import public_update_content_file_location
 from .wrappers import public_update_content_file_location_async
 from .wrappers import public_update_content_v2

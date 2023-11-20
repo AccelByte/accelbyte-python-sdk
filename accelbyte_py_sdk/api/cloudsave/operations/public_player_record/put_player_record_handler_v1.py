@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -162,13 +162,13 @@ class PutPlayerRecordHandlerV1(Operation):
     Responses:
         200: OK - ModelsPlayerRecordResponse (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18060: invalid request body | 20002: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (18063: put action is forbidden on other user's record)
+        403: Forbidden - ModelsResponseError (18063: put action is forbidden on other user's record | 20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record | 18005: unable to decode record)
     """
 
     # region fields
@@ -305,13 +305,13 @@ class PutPlayerRecordHandlerV1(Operation):
 
         200: OK - ModelsPlayerRecordResponse (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18060: invalid request body | 20002: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (18063: put action is forbidden on other user's record)
+        403: Forbidden - ModelsResponseError (18063: put action is forbidden on other user's record | 20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record | 18005: unable to decode record)
 
         ---: HttpResponse (Undocumented Response)
 

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Analytics Game Telemetry (1.19.0)
+# Analytics Game Telemetry (1.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,9 +41,11 @@ from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
 @click.option("--event_id", "event_id", type=str)
 @click.option("--event_name", "event_name", type=str)
 @click.option("--event_payload", "event_payload", type=str)
+@click.option("--flight_id", "flight_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--start_time", "start_time", type=str)
+@click.option("--user_id", "user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -53,9 +55,11 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
     event_id: Optional[str] = None,
     event_name: Optional[str] = None,
     event_payload: Optional[str] = None,
+    flight_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     start_time: Optional[str] = None,
+    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -79,9 +83,11 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
         event_id=event_id,
         event_name=event_name,
         event_payload=event_payload,
+        flight_id=flight_id,
         limit=limit,
         offset=offset,
         start_time=start_time,
+        user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

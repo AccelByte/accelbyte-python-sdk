@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.11.6"
+__version__ = "2.11.7"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .admin_get_match_pool_tickets import AdminGetMatchPoolTickets
 from .create_match_pool import CreateMatchPool
 from .delete_match_pool import DeleteMatchPool
 from .get_player_metric import GetPlayerMetric

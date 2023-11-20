@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (7.5.0)
+# AccelByte Gaming Services Iam Service Index (7.6.0)
 
 
 ## Operations
@@ -553,7 +553,6 @@
 | model.GetBulkUserBansRequest | [ModelGetBulkUserBansRequest](../../accelbyte_py_sdk/api/iam/models/model_get_bulk_user_bans_request.py) |
 | model.GetLinkHeadlessAccountConflictResponse | [ModelGetLinkHeadlessAccountConflictResponse](../../accelbyte_py_sdk/api/iam/models/model_get_link_headless_account_conflict_response.py) |
 | model.GetPublisherUserResponse | [ModelGetPublisherUserResponse](../../accelbyte_py_sdk/api/iam/models/model_get_publisher_user_response.py) |
-| model.GetPublisherUserV3Response | [ModelGetPublisherUserV3Response](../../accelbyte_py_sdk/api/iam/models/model_get_publisher_user_v3_response.py) |
 | model.GetUserBanV3Response | [ModelGetUserBanV3Response](../../accelbyte_py_sdk/api/iam/models/model_get_user_ban_v3_response.py) |
 | model.GetUserJusticePlatformAccountResponse | [ModelGetUserJusticePlatformAccountResponse](../../accelbyte_py_sdk/api/iam/models/model_get_user_justice_platform_account_response.py) |
 | model.GetUserMapping | [ModelGetUserMapping](../../accelbyte_py_sdk/api/iam/models/model_get_user_mapping.py) |

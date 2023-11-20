@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Analytics Game Telemetry."""
 
-__version__ = "1.19.0"
+__version__ = "1.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,4 +16,7 @@ __email__ = "dev@accelbyte.net"
 
 from .get_events_game_telemet_b2983d import (
     GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet,
+)
+from .get_namespaces_game_tel_1106fd import (
+    GetNamespacesGameTelemetryV1AdminNamespacesGet,
 )

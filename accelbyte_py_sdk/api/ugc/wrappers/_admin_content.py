@@ -2043,7 +2043,6 @@ def admin_update_screenshots(
     """Update screenshot of content (AdminUpdateScreenshots)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -2102,7 +2101,6 @@ async def admin_update_screenshots_async(
     """Update screenshot of content (AdminUpdateScreenshots)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -2429,12 +2427,10 @@ def admin_upload_content_screenshot(
     """Upload screenshots for content (AdminUploadContentScreenshot)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
     All request body are required except for contentType field.
     contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
     If not specified, it will use fileExtension value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -2493,12 +2489,10 @@ async def admin_upload_content_screenshot_async(
     """Upload screenshots for content (AdminUploadContentScreenshot)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
     All request body are required except for contentType field.
     contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
     If not specified, it will use fileExtension value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -2816,6 +2810,8 @@ def rollback_content_version(
 
         404: Not Found - ResponseError (Not Found)
 
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
@@ -2871,6 +2867,8 @@ async def rollback_content_version_async(
         401: Unauthorized - ResponseError (Unauthorized)
 
         404: Not Found - ResponseError (Not Found)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """

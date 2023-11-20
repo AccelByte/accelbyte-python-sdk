@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Social Service."""
 
-__version__ = "2.10.0"
+__version__ = "2.10.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -88,6 +88,8 @@ from ._stat_configuration import get_stat
 from ._stat_configuration import get_stat_async
 from ._stat_configuration import get_stats
 from ._stat_configuration import get_stats_async
+from ._stat_configuration import import_stat_cycle
+from ._stat_configuration import import_stat_cycle_async
 from ._stat_configuration import import_stats
 from ._stat_configuration import import_stats_async
 from ._stat_configuration import query_stats
@@ -105,6 +107,8 @@ from ._stat_cycle_configuration import create_stat_cycle
 from ._stat_cycle_configuration import create_stat_cycle_async
 from ._stat_cycle_configuration import delete_stat_cycle
 from ._stat_cycle_configuration import delete_stat_cycle_async
+from ._stat_cycle_configuration import export_stat_cycle
+from ._stat_cycle_configuration import export_stat_cycle_async
 from ._stat_cycle_configuration import get_stat_cycle
 from ._stat_cycle_configuration import get_stat_cycle_async
 from ._stat_cycle_configuration import get_stat_cycle_1

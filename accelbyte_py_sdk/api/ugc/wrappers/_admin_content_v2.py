@@ -32,13 +32,16 @@ from ....core import same_doc_as
 from ..models import ModelsAdminContentRequestV2
 from ..models import ModelsAdminGetContentBulkRequest
 from ..models import ModelsAdminUpdateContentRequestV2
+from ..models import ModelsContentDownloadResponse
 from ..models import ModelsContentDownloadResponseV2
 from ..models import ModelsCreateContentResponseV2
 from ..models import ModelsCreateScreenshotRequest
 from ..models import ModelsCreateScreenshotResponse
 from ..models import ModelsGenerateContentUploadURLRequest
 from ..models import ModelsGenerateContentUploadURLResponse
+from ..models import ModelsGetContentBulkByShareCodesRequest
 from ..models import ModelsHideContentRequest
+from ..models import ModelsListContentVersionsResponse
 from ..models import ModelsPaginatedContentDownloadResponseV2
 from ..models import ModelsUpdateContentResponseV2
 from ..models import ModelsUpdateFileLocationRequest
@@ -48,16 +51,19 @@ from ..models import ResponseError
 
 from ..operations.admin_content_v2 import AdminBulkGetContentByIDsV2
 from ..operations.admin_content_v2 import AdminCreateContentV2
+from ..operations.admin_content_v2 import AdminDeleteContentByShareCodeV2
 from ..operations.admin_content_v2 import AdminDeleteContentScreenshotV2
 from ..operations.admin_content_v2 import AdminDeleteOfficialContentV2
 from ..operations.admin_content_v2 import AdminDeleteUserContentV2
 from ..operations.admin_content_v2 import AdminGenerateOfficialContentUploadURLV2
 from ..operations.admin_content_v2 import AdminGenerateUserContentUploadURLV2
+from ..operations.admin_content_v2 import AdminGetContentBulkByShareCodesV2
 from ..operations.admin_content_v2 import AdminGetContentByChannelIDV2
 from ..operations.admin_content_v2 import AdminGetContentByContentIDV2
 from ..operations.admin_content_v2 import AdminGetContentByShareCodeV2
 from ..operations.admin_content_v2 import AdminGetContentByUserIDV2
 from ..operations.admin_content_v2 import AdminListContentV2
+from ..operations.admin_content_v2 import AdminUpdateContentByShareCodeV2
 from ..operations.admin_content_v2 import AdminUpdateContentHideStatusV2
 from ..operations.admin_content_v2 import AdminUpdateOfficialContentFileLocation
 from ..operations.admin_content_v2 import AdminUpdateOfficialContentV2
@@ -65,6 +71,8 @@ from ..operations.admin_content_v2 import AdminUpdateScreenshotsV2
 from ..operations.admin_content_v2 import AdminUpdateUserContentFileLocation
 from ..operations.admin_content_v2 import AdminUpdateUserContentV2
 from ..operations.admin_content_v2 import AdminUploadContentScreenshotV2
+from ..operations.admin_content_v2 import ListContentVersionsV2
+from ..operations.admin_content_v2 import RollbackContentVersionV2
 
 
 @same_doc_as(AdminBulkGetContentByIDsV2)
@@ -278,6 +286,126 @@ async def admin_create_content_v2_async(
     request = AdminCreateContentV2.create(
         body=body,
         channel_id=channel_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminDeleteContentByShareCodeV2)
+def admin_delete_content_by_share_code_v2(
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete content by share code (AdminDeleteContentByShareCodeV2)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
+
+        method: DELETE
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteContentByShareCodeV2.create(
+        channel_id=channel_id,
+        share_code=share_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminDeleteContentByShareCodeV2)
+async def admin_delete_content_by_share_code_v2_async(
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete content by share code (AdminDeleteContentByShareCodeV2)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
+
+        method: DELETE
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteContentByShareCodeV2.create(
+        channel_id=channel_id,
+        share_code=share_code,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -874,6 +1002,112 @@ async def admin_generate_user_content_upload_urlv2_async(
         channel_id=channel_id,
         content_id=content_id,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetContentBulkByShareCodesV2)
+def admin_get_content_bulk_by_share_codes_v2(
+    body: ModelsGetContentBulkByShareCodesRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get content by content sharecodes (AdminGetContentBulkByShareCodesV2)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
+    Maximum sharecodes per request 100
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/contents/sharecodes/bulk
+
+        method: POST
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGetContentBulkByShareCodesRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsContentDownloadResponseV2] (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetContentBulkByShareCodesV2.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetContentBulkByShareCodesV2)
+async def admin_get_content_bulk_by_share_codes_v2_async(
+    body: ModelsGetContentBulkByShareCodesRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get content by content sharecodes (AdminGetContentBulkByShareCodesV2)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
+    Maximum sharecodes per request 100
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/contents/sharecodes/bulk
+
+        method: POST
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGetContentBulkByShareCodesRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsContentDownloadResponseV2] (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetContentBulkByShareCodesV2.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1519,6 +1753,152 @@ async def admin_list_content_v2_async(
     )
 
 
+@same_doc_as(AdminUpdateContentByShareCodeV2)
+def admin_update_content_by_share_code_v2(
+    body: ModelsAdminUpdateContentRequestV2,
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update content to S3 bucket by share code (AdminUpdateContentByShareCodeV2)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+
+    `shareCode` format should follows:
+
+    Max length: 7
+    Available characters: abcdefhkpqrstuxyz
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
+
+        method: PUT
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminUpdateContentRequestV2 in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponseV2 (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateContentByShareCodeV2.create(
+        body=body,
+        channel_id=channel_id,
+        share_code=share_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminUpdateContentByShareCodeV2)
+async def admin_update_content_by_share_code_v2_async(
+    body: ModelsAdminUpdateContentRequestV2,
+    channel_id: str,
+    share_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update content to S3 bucket by share code (AdminUpdateContentByShareCodeV2)
+
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+
+    `shareCode` format should follows:
+
+    Max length: 7
+    Available characters: abcdefhkpqrstuxyz
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
+
+        method: PUT
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsAdminUpdateContentRequestV2 in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        share_code: (shareCode) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponseV2 (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateContentByShareCodeV2.create(
+        body=body,
+        channel_id=channel_id,
+        share_code=share_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminUpdateContentHideStatusV2)
 def admin_update_content_hide_status_v2(
     body: ModelsHideContentRequest,
@@ -1916,7 +2296,6 @@ def admin_update_screenshots_v2(
     """Update screenshot of content (AdminUpdateScreenshotsV2)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -1975,7 +2354,6 @@ async def admin_update_screenshots_v2_async(
     """Update screenshot of content (AdminUpdateScreenshotsV2)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -2310,12 +2688,10 @@ def admin_upload_content_screenshot_v2(
     """Upload screenshots for content (AdminUploadContentScreenshotV2)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
     All request body are required except for contentType field.
     contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
     If not specified, it will use fileExtension value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -2374,12 +2750,10 @@ async def admin_upload_content_screenshot_v2_async(
     """Upload screenshots for content (AdminUploadContentScreenshotV2)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
     All request body are required except for contentType field.
     contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
     If not specified, it will use fileExtension value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-
     Maximum description length: 1024.
 
     Required Permission(s):
@@ -2422,6 +2796,230 @@ async def admin_upload_content_screenshot_v2_async(
     request = AdminUploadContentScreenshotV2.create(
         body=body,
         content_id=content_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ListContentVersionsV2)
+def list_content_versions_v2(
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List content's payload versions (ListContentVersionsV2)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Content's payload versions created when UGC is created or updated with `updateContentFile` set to true. Only list up to 10 latest versions.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/versions
+
+        method: GET
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsListContentVersionsResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListContentVersionsV2.create(
+        content_id=content_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ListContentVersionsV2)
+async def list_content_versions_v2_async(
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List content's payload versions (ListContentVersionsV2)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Content's payload versions created when UGC is created or updated with `updateContentFile` set to true. Only list up to 10 latest versions.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/versions
+
+        method: GET
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsListContentVersionsResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListContentVersionsV2.create(
+        content_id=content_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RollbackContentVersionV2)
+def rollback_content_version_v2(
+    content_id: str,
+    version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Rollback content's payload version (RollbackContentVersionV2)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Rollback content's payload to specified version.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}
+
+        method: PUT
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        version_id: (versionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RollbackContentVersionV2.create(
+        content_id=content_id,
+        version_id=version_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RollbackContentVersionV2)
+async def rollback_content_version_v2_async(
+    content_id: str,
+    version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Rollback content's payload version (RollbackContentVersionV2)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Rollback content's payload to specified version.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}
+
+        method: PUT
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["*/*"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        version_id: (versionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsContentDownloadResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RollbackContentVersionV2.create(
+        content_id=content_id,
+        version_id=version_id,
         namespace=namespace,
     )
     return await run_request_async(

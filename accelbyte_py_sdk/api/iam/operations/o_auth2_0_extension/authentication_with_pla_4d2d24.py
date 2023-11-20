@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.5.0)
+# AccelByte Gaming Services Iam Service (7.6.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -79,6 +79,8 @@ class AuthenticationWithPlatformLinkV3(Operation):
         400: Bad Request - RestErrorResponse (Invalid username or password.)
 
         401: Unauthorized - OauthmodelErrorResponse (Need 2FA.)
+
+        403: Forbidden - RestErrorResponse (10213: country is blocked)
 
         409: Conflict - RestErrorResponse (User already link this platform's another account'.)
     """
@@ -228,6 +230,8 @@ class AuthenticationWithPlatformLinkV3(Operation):
 
         401: Unauthorized - OauthmodelErrorResponse (Need 2FA.)
 
+        403: Forbidden - RestErrorResponse (10213: country is blocked)
+
         409: Conflict - RestErrorResponse (User already link this platform's another account'.)
 
         ---: HttpResponse (Undocumented Response)
@@ -249,6 +253,8 @@ class AuthenticationWithPlatformLinkV3(Operation):
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
             return None, OauthmodelErrorResponse.create_from_dict(content)
+        if code == 403:
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 409:
             return None, RestErrorResponse.create_from_dict(content)
 

@@ -259,8 +259,12 @@ class HttpxHttpClient(HttpClient):
             trust_env=True,
         )
         self.follow_redirects = follow_redirects
-        self.client = httpx.Client(transport=self.transport, follow_redirects=self.follow_redirects)
-        self.client_async = httpx.AsyncClient(transport=self.transport_async, follow_redirects=self.follow_redirects)
+        self.client = httpx.Client(
+            transport=self.transport, follow_redirects=self.follow_redirects
+        )
+        self.client_async = httpx.AsyncClient(
+            transport=self.transport_async, follow_redirects=self.follow_redirects
+        )
         self.allowed_kwarg_keys = {
             "follow_redirects",
             "timeout",
@@ -399,7 +403,9 @@ class HttpxHttpClient(HttpClient):
             follow_redirects = filtered_kwargs["follow_redirects"]
         while True:
             self.log_request(request)
-            raw_response = await self.client_async.send(request, follow_redirects=follow_redirects)
+            raw_response = await self.client_async.send(
+                request, follow_redirects=follow_redirects
+            )
             ok = self.__ok(raw_response)
             if raw_response is not None:
                 setattr(raw_response, "ok", ok)

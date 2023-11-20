@@ -82,9 +82,13 @@ def admin_delete_game_record_handler_v1(
     Responses:
         204: No Content - (Record deleted)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18040: unable to delete record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -138,9 +142,13 @@ async def admin_delete_game_record_handler_v1_async(
     Responses:
         204: No Content - (Record deleted)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18040: unable to delete record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -196,11 +204,13 @@ def admin_get_game_record_handler_v1(
     Responses:
         200: OK - ModelsGameRecordResponse (Record in namespace-level retrieved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        404: Not Found - ModelsResponseError (Not Found)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        404: Not Found - ModelsResponseError (18003: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18001: unable to get record | 18005: unable to decode record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -254,11 +264,13 @@ async def admin_get_game_record_handler_v1_async(
     Responses:
         200: OK - ModelsGameRecordResponse (Record in namespace-level retrieved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        404: Not Found - ModelsResponseError (Not Found)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        404: Not Found - ModelsResponseError (18003: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18001: unable to get record | 18005: unable to decode record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -431,11 +443,13 @@ def admin_post_game_record_handler_v1(
     Responses:
         201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
 
-        400: Bad Request - ModelsResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (18011: invalid request body | 20002: validation error | 18015: invalid request body: size of the request body must be less than [%d]MB)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18012: unable to marshal request body | 20000: internal server error | 18013: unable to save record | 18005: unable to decode record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -607,11 +621,13 @@ async def admin_post_game_record_handler_v1_async(
     Responses:
         201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
 
-        400: Bad Request - ModelsResponseError (Bad Request)
+        400: Bad Request - ModelsResponseError (18011: invalid request body | 20002: validation error | 18015: invalid request body: size of the request body must be less than [%d]MB)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18012: unable to marshal request body | 20000: internal server error | 18013: unable to save record | 18005: unable to decode record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -763,9 +779,13 @@ def admin_put_game_record_handler_v1(
     Responses:
         200: OK - ModelsGameRecordResponse (Record saved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18050: invalid request body | 20002: validation error | 18052: invalid request body: size of the request body must be less than [%d]MB)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18051: unable to marshal request body | 20000: internal server error | 18053: unable to update record | 18005: unable to decode record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -915,9 +935,13 @@ async def admin_put_game_record_handler_v1_async(
     Responses:
         200: OK - ModelsGameRecordResponse (Record saved)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError (18050: invalid request body | 20002: validation error | 18052: invalid request body: size of the request body must be less than [%d]MB)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18051: unable to marshal request body | 20000: internal server error | 18053: unable to update record | 18005: unable to decode record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -980,9 +1004,13 @@ def list_game_records_handler_v1(
     Responses:
         200: OK - ModelsListGameRecordKeysResponse (Retrieve list of records key by namespace)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18001: unable to get record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1044,9 +1072,13 @@ async def list_game_records_handler_v1_async(
     Responses:
         200: OK - ModelsListGameRecordKeysResponse (Retrieve list of records key by namespace)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        400: Bad Request - ModelsResponseError
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18001: unable to get record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

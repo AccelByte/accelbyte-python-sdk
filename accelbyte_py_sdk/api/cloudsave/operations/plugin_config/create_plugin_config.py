@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -74,13 +74,13 @@ class CreatePluginConfig(Operation):
     Responses:
         201: Created - ModelsPluginResponse (Created)
 
-        400: Bad Request - ModelsResponseError (18301: invalid request body | 20002: validation error)
+        400: Bad Request - ModelsResponseError (18401: invalid request body | 20002: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        409: Conflict - ModelsResponseError (18302: plugins already configured)
+        409: Conflict - ModelsResponseError (18402: plugins already configured)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
@@ -197,13 +197,13 @@ class CreatePluginConfig(Operation):
 
         201: Created - ModelsPluginResponse (Created)
 
-        400: Bad Request - ModelsResponseError (18301: invalid request body | 20002: validation error)
+        400: Bad Request - ModelsResponseError (18401: invalid request body | 20002: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        403: Forbidden - ModelsResponseError (Forbidden)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        409: Conflict - ModelsResponseError (18302: plugins already configured)
+        409: Conflict - ModelsResponseError (18402: plugins already configured)
 
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
 

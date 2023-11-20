@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Match Service V2 (2.11.6)
+# AccelByte Gaming Services Match Service V2 (2.11.7)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,6 +32,7 @@ from ..api.match2.models import ApiBackfillGetResponse
 from ..api.match2.models import ApiBackfillProposalResponse
 from ..api.match2.models import ApiListEnvironmentVariablesResponse
 from ..api.match2.models import ApiListMatchFunctionsResponse
+from ..api.match2.models import ApiListMatchPoolTicketsResponse
 from ..api.match2.models import ApiListMatchPoolsResponse
 from ..api.match2.models import ApiListRuleSetsResponse
 from ..api.match2.models import ApiMatch
@@ -54,14 +55,18 @@ from ..api.match2.models import ApiTeam
 from ..api.match2.models import ApiTicket
 from ..api.match2.models import ApiTicketMetricResultRecord
 from ..api.match2.models import ConfigEnvironmentVariable
+from ..api.match2.models import MatchmakerMatchTicketRecord
 from ..api.match2.models import MatchmakerParty
+from ..api.match2.models import MatchmakerProposedProposal
 from ..api.match2.models import MatchmakerTeam
+from ..api.match2.models import MatchmakerTicket
 from ..api.match2.models import ModelsConfiguration
 from ..api.match2.models import ModelsDSInformation
 from ..api.match2.models import ModelsGameSession
 from ..api.match2.models import ModelsPagination
 from ..api.match2.models import ModelsServer
 from ..api.match2.models import ModelsUser
+from ..api.match2.models import PlayerPlayerData
 from ..api.match2.models import ResponseError
 
 
@@ -127,6 +132,16 @@ def create_api_list_match_functions_response_example() -> ApiListMatchFunctionsR
     instance.functions = [randomize()]
     instance.pagination = create_models_pagination_example()
     instance.configs = [create_api_match_function_config_example()]
+    return instance
+
+
+def create_api_list_match_pool_tickets_response_example() -> (
+    ApiListMatchPoolTicketsResponse
+):
+    instance = ApiListMatchPoolTicketsResponse()
+    instance.data = [create_matchmaker_match_ticket_record_example()]
+    instance.total_data = randomize("int", min_val=1, max_val=1000)
+    instance.pagination = create_models_pagination_example()
     return instance
 
 
@@ -328,6 +343,19 @@ def create_config_environment_variable_example() -> ConfigEnvironmentVariable:
     return instance
 
 
+def create_matchmaker_match_ticket_record_example() -> MatchmakerMatchTicketRecord:
+    instance = MatchmakerMatchTicketRecord()
+    instance.created_at = randomize("date")
+    instance.is_active = randomize("bool")
+    instance.party_session_id = randomize()
+    instance.proposed_proposal = create_matchmaker_proposed_proposal_example()
+    instance.session_id = randomize("uid")
+    instance.ticket = create_matchmaker_ticket_example()
+    instance.ticket_id = randomize()
+    instance.unique_ticket_id = randomize()
+    return instance
+
+
 def create_matchmaker_party_example() -> MatchmakerParty:
     instance = MatchmakerParty()
     instance.party_id = randomize("uid")
@@ -335,10 +363,32 @@ def create_matchmaker_party_example() -> MatchmakerParty:
     return instance
 
 
+def create_matchmaker_proposed_proposal_example() -> MatchmakerProposedProposal:
+    instance = MatchmakerProposedProposal()
+    instance.backfill_id = randomize()
+    instance.proposal_id = randomize()
+    instance.status = randomize()
+    return instance
+
+
 def create_matchmaker_team_example() -> MatchmakerTeam:
     instance = MatchmakerTeam()
     instance.parties = [create_matchmaker_party_example()]
     instance.user_i_ds = [randomize()]
+    return instance
+
+
+def create_matchmaker_ticket_example() -> MatchmakerTicket:
+    instance = MatchmakerTicket()
+    instance.created_at = randomize("date")
+    instance.latencies = {}
+    instance.match_pool = randomize()
+    instance.namespace = randomize("slug")
+    instance.party_session_id = randomize()
+    instance.players = [create_player_player_data_example()]
+    instance.proposed_proposal = create_matchmaker_proposed_proposal_example()
+    instance.ticket_attributes = {randomize(): randomize()}
+    instance.ticket_id = randomize()
     return instance
 
 
@@ -425,6 +475,14 @@ def create_models_user_example() -> ModelsUser:
     instance.platform_user_id = randomize()
     instance.status = randomize()
     instance.updated_at = randomize("date")
+    return instance
+
+
+def create_player_player_data_example() -> PlayerPlayerData:
+    instance = PlayerPlayerData()
+    instance.attributes = {randomize(): randomize()}
+    instance.party_id = randomize("uid")
+    instance.player_id = randomize()
     return instance
 
 

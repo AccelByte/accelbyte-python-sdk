@@ -1927,6 +1927,7 @@ def user_request_friend(
     """user add friend (userRequestFriend)
 
     Client should provide either friendID or friendPublicID. If both are provided, friendID will be chosen to be used.
+    This endpoint will only send a pending invite that can be either rejected/accepted
 
     Properties:
         url: /friends/namespaces/{namespace}/me/request
@@ -1981,6 +1982,7 @@ async def user_request_friend_async(
     """user add friend (userRequestFriend)
 
     Client should provide either friendID or friendPublicID. If both are provided, friendID will be chosen to be used.
+    This endpoint will only send a pending invite that can be either rejected/accepted
 
     Properties:
         url: /friends/namespaces/{namespace}/me/request

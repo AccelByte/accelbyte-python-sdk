@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Analytics Game Telemetry (1.19.0)
+# Analytics Game Telemetry (1.20.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -58,11 +58,15 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
 
         event_payload: (eventPayload) OPTIONAL str in query
 
+        flight_id: (flightId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
         start_time: (startTime) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - (Successful Response)
@@ -84,9 +88,11 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
     event_id: str  # OPTIONAL in [query]
     event_name: str  # OPTIONAL in [query]
     event_payload: str  # OPTIONAL in [query]
+    flight_id: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     start_time: str  # OPTIONAL in [query]
+    user_id: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -146,12 +152,16 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
             result["eventName"] = self.event_name
         if hasattr(self, "event_payload"):
             result["eventPayload"] = self.event_payload
+        if hasattr(self, "flight_id"):
+            result["flightId"] = self.flight_id
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
         if hasattr(self, "start_time"):
             result["startTime"] = self.start_time
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -192,6 +202,12 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
         self.event_payload = value
         return self
 
+    def with_flight_id(
+        self, value: str
+    ) -> GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet:
+        self.flight_id = value
+        return self
+
     def with_limit(
         self, value: int
     ) -> GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet:
@@ -208,6 +224,12 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
         self, value: str
     ) -> GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet:
         self.start_time = value
+        return self
+
+    def with_user_id(
+        self, value: str
+    ) -> GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -236,6 +258,10 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
             result["eventPayload"] = str(self.event_payload)
         elif include_empty:
             result["eventPayload"] = ""
+        if hasattr(self, "flight_id") and self.flight_id:
+            result["flightId"] = str(self.flight_id)
+        elif include_empty:
+            result["flightId"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -248,6 +274,10 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
             result["startTime"] = str(self.start_time)
         elif include_empty:
             result["startTime"] = ""
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -300,9 +330,11 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
         event_id: Optional[str] = None,
         event_name: Optional[str] = None,
         event_payload: Optional[str] = None,
+        flight_id: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         start_time: Optional[str] = None,
+        user_id: Optional[str] = None,
         **kwargs,
     ) -> GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet:
         instance = cls()
@@ -315,12 +347,16 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
             instance.event_name = event_name
         if event_payload is not None:
             instance.event_payload = event_payload
+        if flight_id is not None:
+            instance.flight_id = flight_id
         if limit is not None:
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
         if start_time is not None:
             instance.start_time = start_time
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -348,6 +384,10 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
             instance.event_payload = str(dict_["eventPayload"])
         elif include_empty:
             instance.event_payload = ""
+        if "flightId" in dict_ and dict_["flightId"] is not None:
+            instance.flight_id = str(dict_["flightId"])
+        elif include_empty:
+            instance.flight_id = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -360,6 +400,10 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
             instance.start_time = str(dict_["startTime"])
         elif include_empty:
             instance.start_time = ""
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @staticmethod
@@ -370,9 +414,11 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
             "eventId": "event_id",
             "eventName": "event_name",
             "eventPayload": "event_payload",
+            "flightId": "flight_id",
             "limit": "limit",
             "offset": "offset",
             "startTime": "start_time",
+            "userId": "user_id",
         }
 
     @staticmethod
@@ -383,9 +429,11 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
             "eventId": False,
             "eventName": False,
             "eventPayload": False,
+            "flightId": False,
             "limit": False,
             "offset": False,
             "startTime": False,
+            "userId": False,
         }
 
     # endregion static methods

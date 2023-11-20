@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.5.0)
+# AccelByte Gaming Services Iam Service (7.6.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -144,7 +144,6 @@ from ..api.iam.models import ModelGetAdminUsersResponse
 from ..api.iam.models import ModelGetBulkUserBansRequest
 from ..api.iam.models import ModelGetLinkHeadlessAccountConflictResponse
 from ..api.iam.models import ModelGetPublisherUserResponse
-from ..api.iam.models import ModelGetPublisherUserV3Response
 from ..api.iam.models import ModelGetUserBanV3Response
 from ..api.iam.models import ModelGetUserJusticePlatformAccountResponse
 from ..api.iam.models import ModelGetUserMapping
@@ -1451,15 +1450,6 @@ def create_model_get_link_headless_account_conflict_response_example() -> (
 
 def create_model_get_publisher_user_response_example() -> ModelGetPublisherUserResponse:
     instance = ModelGetPublisherUserResponse()
-    instance.namespace = randomize("slug")
-    instance.user_id = randomize("uid")
-    return instance
-
-
-def create_model_get_publisher_user_v3_response_example() -> (
-    ModelGetPublisherUserV3Response
-):
-    instance = ModelGetPublisherUserV3Response()
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
     return instance

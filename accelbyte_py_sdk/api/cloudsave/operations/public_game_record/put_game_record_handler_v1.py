@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.4)
+# AccelByte Gaming Services Cloudsave Service (3.12.6)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -143,9 +143,13 @@ class PutGameRecordHandlerV1(Operation):
     Responses:
         200: OK - ModelsGameRecordResponse (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18050: invalid request body | 20002: validation error | 18052: invalid request body: size of the request body must be less than [%d]MB)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18051: unable to marshal request body | 18053: unable to update record | 18005: unable to decode record)
     """
 
     # region fields
@@ -271,9 +275,13 @@ class PutGameRecordHandlerV1(Operation):
 
         200: OK - ModelsGameRecordResponse (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18050: invalid request body | 20002: validation error | 18052: invalid request body: size of the request body must be less than [%d]MB)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18051: unable to marshal request body | 18053: unable to update record | 18005: unable to decode record)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -291,6 +299,10 @@ class PutGameRecordHandlerV1(Operation):
         if code == 200:
             return ModelsGameRecordResponse.create_from_dict(content), None
         if code == 400:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 401:
+            return None, ModelsResponseError.create_from_dict(content)
+        if code == 403:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)

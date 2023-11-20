@@ -203,13 +203,15 @@ def admin_put_admin_game_record_concurrent_handler_v1(
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18144: invalid request body | 20002: validation error | 18146: invalid request body: size of the request body must be less than [%d]MB)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18180: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (18145: unable to marshal request body | 20000: internal server error | 18147: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -379,13 +381,15 @@ async def admin_put_admin_game_record_concurrent_handler_v1_async(
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18144: invalid request body | 20002: validation error | 18146: invalid request body: size of the request body must be less than [%d]MB)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18180: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (18145: unable to marshal request body | 20000: internal server error | 18147: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -561,13 +565,15 @@ def admin_put_admin_player_record_concurrent_handler_v1(
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (20002: validation error | 18156: invalid request body | 18181: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18183: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18182: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -742,13 +748,15 @@ async def admin_put_admin_player_record_concurrent_handler_v1_async(
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (20002: validation error | 18156: invalid request body | 18181: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18183: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18182: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -928,13 +936,15 @@ def admin_put_game_record_concurrent_handler_v1(
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18060: invalid request body | 20002: validation error | 18052: invalid request body: size of the request body must be less than [%d]MB)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18056: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (18051: unable to marshal request body | 20000: internal server error | 18053: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1111,13 +1121,15 @@ async def admin_put_game_record_concurrent_handler_v1_async(
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18060: invalid request body | 20002: validation error | 18052: invalid request body: size of the request body must be less than [%d]MB)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18056: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (18051: unable to marshal request body | 20000: internal server error | 18053: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1300,13 +1312,15 @@ def admin_put_player_public_record_concurrent_handler_v1(
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18100: invalid request body | 18102: validation error | 20002: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18103: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18101: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1488,13 +1502,15 @@ async def admin_put_player_public_record_concurrent_handler_v1_async(
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18100: invalid request body | 18102: validation error | 20002: validation error)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18103: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18101: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1678,13 +1694,15 @@ def admin_put_player_record_concurrent_handler_v1(
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18060: invalid request body | 18064: validation error | 20002: validation error | 18065: unable to update record)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18066: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1866,13 +1884,15 @@ async def admin_put_player_record_concurrent_handler_v1_async(
     Responses:
         204: No Content - (Record saved)
 
-        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18060: invalid request body | 18064: validation error | 20002: validation error | 18065: unable to update record)
 
-        401: Unauthorized - ModelsResponseError (Unauthorized)
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
-        412: Precondition Failed - ModelsResponseError (Precondition Failed)
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (Internal Server Error)
+        412: Precondition Failed - ModelsResponseError (18066: precondition failed: record has changed)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

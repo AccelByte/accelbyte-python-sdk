@@ -45,6 +45,7 @@ from ..operations.stat_cycle_configuration import BulkGetStatCycle
 from ..operations.stat_cycle_configuration import BulkGetStatCycle1
 from ..operations.stat_cycle_configuration import CreateStatCycle
 from ..operations.stat_cycle_configuration import DeleteStatCycle
+from ..operations.stat_cycle_configuration import ExportStatCycle
 from ..operations.stat_cycle_configuration import GetStatCycle
 from ..operations.stat_cycle_configuration import GetStatCycle1
 from ..operations.stat_cycle_configuration import GetStatCycles
@@ -681,6 +682,110 @@ async def delete_stat_cycle_async(
             return None, error
     request = DeleteStatCycle.create(
         cycle_id=cycle_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ExportStatCycle)
+def export_stat_cycle(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Export all stat cycle configurations (exportStatCycle)
+
+    Export all stat cycle configurations for a given namespace into file At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/export
+
+        method: GET
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (successful export of stat cycle configs)
+
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ExportStatCycle.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ExportStatCycle)
+async def export_stat_cycle_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Export all stat cycle configurations (exportStatCycle)
+
+    Export all stat cycle configurations for a given namespace into file At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/export
+
+        method: GET
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (successful export of stat cycle configs)
+
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ExportStatCycle.create(
         namespace=namespace,
     )
     return await run_request_async(

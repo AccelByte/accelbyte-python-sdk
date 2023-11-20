@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.16.0)
+# AccelByte Gaming Services Ugc Service (2.17.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,12 +38,10 @@ class UploadContentScreenshot(Operation):
     """Upload screenshots for content (UploadContentScreenshot)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
     All request body are required except for contentType field.
     contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
     If not specified, it will use fileExtension value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-
     Maximum description length: 1024.
 
     Required Permission(s):

@@ -56,7 +56,6 @@ from ..models import ModelGetAdminUsersResponse
 from ..models import ModelGetBulkUserBansRequest
 from ..models import ModelGetLinkHeadlessAccountConflictResponse
 from ..models import ModelGetPublisherUserResponse
-from ..models import ModelGetPublisherUserV3Response
 from ..models import ModelGetUserBanV3Response
 from ..models import ModelGetUserJusticePlatformAccountResponse
 from ..models import ModelGetUserMapping
@@ -7552,6 +7551,7 @@ async def admin_save_user_role_v3_async(
 def admin_search_user_v3(
     by: Optional[str] = None,
     end_date: Optional[str] = None,
+    include_total: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     platform_by: Optional[str] = None,
@@ -7652,6 +7652,8 @@ def admin_search_user_v3(
 
         end_date: (endDate) OPTIONAL str in query
 
+        include_total: (includeTotal) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -7682,6 +7684,7 @@ def admin_search_user_v3(
     request = AdminSearchUserV3.create(
         by=by,
         end_date=end_date,
+        include_total=include_total,
         limit=limit,
         offset=offset,
         platform_by=platform_by,
@@ -7697,6 +7700,7 @@ def admin_search_user_v3(
 async def admin_search_user_v3_async(
     by: Optional[str] = None,
     end_date: Optional[str] = None,
+    include_total: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     platform_by: Optional[str] = None,
@@ -7797,6 +7801,8 @@ async def admin_search_user_v3_async(
 
         end_date: (endDate) OPTIONAL str in query
 
+        include_total: (includeTotal) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -7827,6 +7833,7 @@ async def admin_search_user_v3_async(
     request = AdminSearchUserV3.create(
         by=by,
         end_date=end_date,
+        include_total=include_total,
         limit=limit,
         offset=offset,
         platform_by=platform_by,
@@ -17806,7 +17813,7 @@ def public_get_publisher_user_v3(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelGetPublisherUserV3Response (OK)
+        200: OK - ModelGetPublisherUserResponse (OK)
 
         400: Bad Request - RestErrorResponse (Error Code: 7239 - Error Message: wrong namespace: required game namespace)
 
@@ -17865,7 +17872,7 @@ async def public_get_publisher_user_v3_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelGetPublisherUserV3Response (OK)
+        200: OK - ModelGetPublisherUserResponse (OK)
 
         400: Bad Request - RestErrorResponse (Error Code: 7239 - Error Message: wrong namespace: required game namespace)
 

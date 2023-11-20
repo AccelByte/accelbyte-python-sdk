@@ -34,6 +34,7 @@ from ..models import HTTPValidationError
 from ..operations.telemetry import (
     GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet,
 )
+from ..operations.telemetry import GetNamespacesGameTelemetryV1AdminNamespacesGet
 
 
 @same_doc_as(GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet)
@@ -42,9 +43,11 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
     event_id: Optional[str] = None,
     event_name: Optional[str] = None,
     event_payload: Optional[str] = None,
+    flight_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     start_time: Optional[str] = None,
+    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -74,11 +77,15 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
 
         event_payload: (eventPayload) OPTIONAL str in query
 
+        flight_id: (flightId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
         start_time: (startTime) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - (Successful Response)
@@ -94,9 +101,11 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
         event_id=event_id,
         event_name=event_name,
         event_payload=event_payload,
+        flight_id=flight_id,
         limit=limit,
         offset=offset,
         start_time=start_time,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -108,9 +117,11 @@ async def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_asy
     event_id: Optional[str] = None,
     event_name: Optional[str] = None,
     event_payload: Optional[str] = None,
+    flight_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     start_time: Optional[str] = None,
+    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -140,11 +151,15 @@ async def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_asy
 
         event_payload: (eventPayload) OPTIONAL str in query
 
+        flight_id: (flightId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
         start_time: (startTime) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - (Successful Response)
@@ -160,11 +175,73 @@ async def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_asy
         event_id=event_id,
         event_name=event_name,
         event_payload=event_payload,
+        flight_id=flight_id,
         limit=limit,
         offset=offset,
         start_time=start_time,
+        user_id=user_id,
         namespace=namespace,
     )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetNamespacesGameTelemetryV1AdminNamespacesGet)
+def get_namespaces_game_telemetry_v1_admin_namespaces_get(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Namespaces (get_namespaces_game_telemetry_v1_admin_namespaces_get)
+
+    This endpoint requires valid JWT token and telemetry permission
+    This endpoint retrieves namespace list
+
+    Properties:
+        url: /game-telemetry/v1/admin/namespaces
+
+        method: GET
+
+        tags: ["telemetry"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
+
+    Responses:
+        200: OK - (Successful Response)
+    """
+    request = GetNamespacesGameTelemetryV1AdminNamespacesGet.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetNamespacesGameTelemetryV1AdminNamespacesGet)
+async def get_namespaces_game_telemetry_v1_admin_namespaces_get_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Namespaces (get_namespaces_game_telemetry_v1_admin_namespaces_get)
+
+    This endpoint requires valid JWT token and telemetry permission
+    This endpoint retrieves namespace list
+
+    Properties:
+        url: /game-telemetry/v1/admin/namespaces
+
+        method: GET
+
+        tags: ["telemetry"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
+
+    Responses:
+        200: OK - (Successful Response)
+    """
+    request = GetNamespacesGameTelemetryV1AdminNamespacesGet.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

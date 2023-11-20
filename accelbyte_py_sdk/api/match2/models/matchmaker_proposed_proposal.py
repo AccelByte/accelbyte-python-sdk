@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.5.0)
+# AccelByte Gaming Services Match Service V2 (2.11.7)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,30 +28,37 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class ModelGetPublisherUserV3Response(Model):
-    """Model get publisher user V3 response (model.GetPublisherUserV3Response)
+class MatchmakerProposedProposal(Model):
+    """Matchmaker proposed proposal (matchmaker.ProposedProposal)
 
     Properties:
-        namespace: (namespace) REQUIRED str
+        backfill_id: (BackfillID) REQUIRED str
 
-        user_id: (userId) REQUIRED str
+        proposal_id: (ProposalID) REQUIRED str
+
+        status: (Status) REQUIRED str
     """
 
     # region fields
 
-    namespace: str  # REQUIRED
-    user_id: str  # REQUIRED
+    backfill_id: str  # REQUIRED
+    proposal_id: str  # REQUIRED
+    status: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> ModelGetPublisherUserV3Response:
-        self.namespace = value
+    def with_backfill_id(self, value: str) -> MatchmakerProposedProposal:
+        self.backfill_id = value
         return self
 
-    def with_user_id(self, value: str) -> ModelGetPublisherUserV3Response:
-        self.user_id = value
+    def with_proposal_id(self, value: str) -> MatchmakerProposedProposal:
+        self.proposal_id = value
+        return self
+
+    def with_status(self, value: str) -> MatchmakerProposedProposal:
+        self.status = value
         return self
 
     # endregion with_x methods
@@ -60,14 +67,18 @@ class ModelGetPublisherUserV3Response(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
+        if hasattr(self, "backfill_id"):
+            result["BackfillID"] = str(self.backfill_id)
         elif include_empty:
-            result["namespace"] = ""
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
+            result["BackfillID"] = ""
+        if hasattr(self, "proposal_id"):
+            result["ProposalID"] = str(self.proposal_id)
         elif include_empty:
-            result["userId"] = ""
+            result["ProposalID"] = ""
+        if hasattr(self, "status"):
+            result["Status"] = str(self.status)
+        elif include_empty:
+            result["Status"] = ""
         return result
 
     # endregion to methods
@@ -76,34 +87,39 @@ class ModelGetPublisherUserV3Response(Model):
 
     @classmethod
     def create(
-        cls, namespace: str, user_id: str, **kwargs
-    ) -> ModelGetPublisherUserV3Response:
+        cls, backfill_id: str, proposal_id: str, status: str, **kwargs
+    ) -> MatchmakerProposedProposal:
         instance = cls()
-        instance.namespace = namespace
-        instance.user_id = user_id
+        instance.backfill_id = backfill_id
+        instance.proposal_id = proposal_id
+        instance.status = status
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ModelGetPublisherUserV3Response:
+    ) -> MatchmakerProposedProposal:
         instance = cls()
         if not dict_:
             return instance
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
+        if "BackfillID" in dict_ and dict_["BackfillID"] is not None:
+            instance.backfill_id = str(dict_["BackfillID"])
         elif include_empty:
-            instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+            instance.backfill_id = ""
+        if "ProposalID" in dict_ and dict_["ProposalID"] is not None:
+            instance.proposal_id = str(dict_["ProposalID"])
         elif include_empty:
-            instance.user_id = ""
+            instance.proposal_id = ""
+        if "Status" in dict_ and dict_["Status"] is not None:
+            instance.status = str(dict_["Status"])
+        elif include_empty:
+            instance.status = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelGetPublisherUserV3Response]:
+    ) -> Dict[str, MatchmakerProposedProposal]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -113,7 +129,7 @@ class ModelGetPublisherUserV3Response(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ModelGetPublisherUserV3Response]:
+    ) -> List[MatchmakerProposedProposal]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -124,9 +140,9 @@ class ModelGetPublisherUserV3Response(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ModelGetPublisherUserV3Response,
-        List[ModelGetPublisherUserV3Response],
-        Dict[Any, ModelGetPublisherUserV3Response],
+        MatchmakerProposedProposal,
+        List[MatchmakerProposedProposal],
+        Dict[Any, MatchmakerProposedProposal],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -141,15 +157,17 @@ class ModelGetPublisherUserV3Response(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "userId": "user_id",
+            "BackfillID": "backfill_id",
+            "ProposalID": "proposal_id",
+            "Status": "status",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "namespace": True,
-            "userId": True,
+            "BackfillID": True,
+            "ProposalID": True,
+            "Status": True,
         }
 
     # endregion static methods

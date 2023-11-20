@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.10.0)
+# AccelByte Gaming Services Session Service (3.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -113,6 +113,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.client_version = randomize()
     instance.created_at = randomize()
     instance.deployment = randomize()
+    instance.enable_secret = randomize("bool")
     instance.inactive_timeout = randomize("int", min_val=1, max_val=1000)
     instance.invite_timeout = randomize("int", min_val=1, max_val=1000)
     instance.joinability = randomize()
@@ -169,6 +170,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
+    instance.enable_secret = randomize("bool")
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
@@ -507,6 +509,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance = ApimodelsUpdateConfigurationTemplateRequest()
     instance.client_version = randomize()
     instance.deployment = randomize()
+    instance.enable_secret = randomize("bool")
     instance.inactive_timeout = randomize("int", min_val=1, max_val=1000)
     instance.invite_timeout = randomize("int", min_val=1, max_val=1000)
     instance.joinability = randomize()

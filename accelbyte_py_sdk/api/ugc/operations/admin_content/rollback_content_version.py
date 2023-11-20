@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.16.0)
+# AccelByte Gaming Services Ugc Service (2.17.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -67,6 +67,8 @@ class RollbackContentVersion(Operation):
         401: Unauthorized - ResponseError (Unauthorized)
 
         404: Not Found - ResponseError (Not Found)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -196,6 +198,8 @@ class RollbackContentVersion(Operation):
 
         404: Not Found - ResponseError (Not Found)
 
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -216,6 +220,8 @@ class RollbackContentVersion(Operation):
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 404:
+            return None, ResponseError.create_from_dict(content)
+        if code == 422:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)
