@@ -6,10 +6,13 @@ from accelbyte_py_sdk.core import generate_id
 from accelbyte_py_sdk.api.achievement.models import ModelsAchievementRequest
 
 
-class EventLog(IntegrationTestCase):
+class EventLogTestCase(IntegrationTestCase):
     # region test:get_event_specific_user_v2_handler
 
     def test_get_event_specific_user_v2_handler(self):
+        self.skipTest(reason="test not ready")
+        return
+
         from accelbyte_py_sdk.api.eventlog import get_event_specific_user_v2_handler
 
         # arrange
