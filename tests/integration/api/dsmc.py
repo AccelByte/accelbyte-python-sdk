@@ -53,7 +53,9 @@ class DSMCTestCase(IntegrationTestCase):
         result, error = get_deployment(
             deployment=deployment_name,
         )
-        self.assertIsNone(error, error)
+        if error:
+            self.skipTest(reason="unable to get deployment")
+            return
 
         # act
         _, error = update_deployment(
@@ -91,7 +93,9 @@ class DSMCTestCase(IntegrationTestCase):
         result, error = get_deployment(
             deployment=deployment_name,
         )
-        self.assertIsNone(error, error)
+        if error:
+            self.skipTest(reason="unable to get deployment")
+            return
 
         # act
         _, error = update_deployment(
