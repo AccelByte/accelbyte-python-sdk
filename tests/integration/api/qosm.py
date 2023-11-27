@@ -5,6 +5,9 @@ class QosmTestCase(IntegrationTestCase):
     # region test:heartbeat
 
     def test_heartbeat(self):
+        if self.using_ags_starter:
+            self.login_client()
+
         from accelbyte_py_sdk.api.qosm import list_server
         from accelbyte_py_sdk.api.qosm.models import ModelsHeartbeatRequest
         from accelbyte_py_sdk.api.qosm import heartbeat

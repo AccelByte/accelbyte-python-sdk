@@ -104,7 +104,7 @@ class SessionTestCase(IntegrationTestCase):
 
     # region test:public_query_game_sessions_by_attributes
 
-    def test_public_query_game_sessions_by_attributes(self):
+    def test_public_query_game_sessions(self):
         from accelbyte_py_sdk.api.session import (
             public_query_game_sessions_by_attributes,
         )

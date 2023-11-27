@@ -1,5 +1,5 @@
-from random import randint
 from typing import Optional
+from uuid import uuid4
 
 from tests.integration.test_case import IntegrationTestCase
 
@@ -11,7 +11,7 @@ class GDPRTestCase(IntegrationTestCase):
     user_namespace: str = "accelbyte"
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
-    username = f"testPythonServerSDKUser_{str(randint(0, 1_000_000)).rjust(7, '0')}"
+    username = f"testPythonServerSDKUser_{uuid4().hex[0:7]}"
     model_user_create_request = AccountCreateUserRequestV4.create(
         auth_type="EMAILPASSWD",
         code="",
@@ -32,6 +32,8 @@ class GDPRTestCase(IntegrationTestCase):
         # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.iam import public_create_user_v4
 
+        body.username = f"testPythonServerSDKUser_{uuid4().hex[0:7]}"
+        body.email_address = f"{body.username}@test.com"
         result, error = public_create_user_v4(body=body, namespace=namespace)
 
         if error is None:
@@ -109,6 +111,9 @@ class GDPRTestCase(IntegrationTestCase):
     # region test:delete_admin_email_configuration
 
     def test_delete_admin_email_configuration(self):
+        if self.using_ags_starter:
+            self.login_client()
+
         from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
@@ -136,6 +141,9 @@ class GDPRTestCase(IntegrationTestCase):
     # region test:get_admin_email_configuration
 
     def test_get_admin_email_configuration(self):
+        if self.using_ags_starter:
+            self.login_client()
+
         from accelbyte_py_sdk.api.gdpr import get_admin_email_configuration
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
@@ -160,6 +168,9 @@ class GDPRTestCase(IntegrationTestCase):
     # region test:save_admin_email_configuration
 
     def test_save_admin_email_configuration(self):
+        if self.using_ags_starter:
+            self.login_client()
+
         from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
@@ -182,6 +193,9 @@ class GDPRTestCase(IntegrationTestCase):
     # region test:update_admin_email_configuration
 
     def test_update_admin_email_configuration(self):
+        if self.using_ags_starter:
+            self.login_client()
+
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
         from accelbyte_py_sdk.api.gdpr import update_admin_email_configuration
 

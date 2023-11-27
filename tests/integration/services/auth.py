@@ -114,6 +114,9 @@ class AuthServicesTestCase(IntegrationTestCase):
     # region test:login_platform
 
     def test_login_platform(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Invalid for AGS.")
+
         import os
         import requests
         from accelbyte_py_sdk.services.auth import login_platform
