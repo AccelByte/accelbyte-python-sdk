@@ -304,6 +304,8 @@ class IAMTestCase(IntegrationTestCase):
         if error and isinstance(error, RestErrorResponse):
             if error.error_code == 10191:  # email not verified
                 self.skipTest(reason=error.error_message)
+            if error.error_code == 10192:  # factor not enabled
+                self.skipTest(reason=error.error_message)
 
         if result is not None:
             exported_file_path.write_bytes(result)
@@ -329,6 +331,8 @@ class IAMTestCase(IntegrationTestCase):
         result, error = public_download_my_backup_codes_v4()
         if error and isinstance(error, RestErrorResponse):
             if error.error_code == 10191:  # email not verified
+                self.skipTest(reason=error.error_message)
+            if error.error_code == 10192:  # factor not enabled
                 self.skipTest(reason=error.error_message)
 
         if result is not None:
