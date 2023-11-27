@@ -28,6 +28,7 @@ class SDKTestCaseUtils:
     client_found: bool = False
     user_found: bool = False
     logged_in: bool = False
+    using_ags_starter: bool = False
 
     namespace: str = ""
     username: str = ""
@@ -100,6 +101,7 @@ class SDKTestCaseUtils:
     @classmethod
     def do_setup_class(cls):
         from accelbyte_py_sdk import is_initialized
+        from accelbyte_py_sdk.core import get_base_url
         from accelbyte_py_sdk.core import get_client_id
         from accelbyte_py_sdk.core import get_env_user_credentials
         from accelbyte_py_sdk.core import get_http_client
@@ -127,6 +129,9 @@ class SDKTestCaseUtils:
 
         _, error = login_user(username=username, password=password)
         cls.logged_in = error is None
+
+        base_url, error = get_base_url()
+        cls.using_ags_starter = error is None and "gamingservices.accelbyte.io" in base_url
 
         cls.namespace = namespace
         cls.username = username
@@ -261,6 +266,20 @@ class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
     def afterTearDown(self) -> None:
         pass
 
+    def login_client(self) -> None:
+        from accelbyte_py_sdk.services.auth import login_client
+
+        _, error = login_client()
+        if error:
+            self.fail(msg=f"Failed to login as client. Error: {error}")
+
+    def skip_if_ags(self, reason: Optional[str] = None) -> bool:
+        if self.using_ags_starter:
+            reason = f"Skipped due to AGS. Reason: {reason}" if reason else "Skipped due to AGS."
+            self.skipTest(reason=reason)
+            return True
+        return False
+
 
 class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
     login_type: Optional[str] = None
@@ -293,6 +312,27 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
 
     async def afterAsyncTearDown(self) -> None:
         pass
+
+    def login_client(self) -> None:
+        from accelbyte_py_sdk.services.auth import login_client
+
+        _, error = login_client()
+        if error:
+            self.fail(msg=f"Failed to login as client. Error: {error}")
+
+    async def login_client_async(self) -> None:
+        from accelbyte_py_sdk.services.auth import login_client_async
+
+        _, error = await login_client_async()
+        if error:
+            self.fail(msg=f"Failed to login as client. Error: {error}")
+
+    def skip_if_ags(self, reason: Optional[str] = None) -> bool:
+        if self.using_ags_starter:
+            reason = f"Skipped due to AGS. Reason: {reason}" if reason else "Skipped due to AGS."
+            self.skipTest(reason=reason)
+            return True
+        return False
 
     async def connect(self):
         from accelbyte_py_sdk.core import get_access_token
