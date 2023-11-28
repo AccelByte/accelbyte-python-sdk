@@ -68,6 +68,27 @@ pipeline {
             }
           }
         }
+        stage('Integration Tests (Starter)') {
+          options {
+            lock("justice-demo-serversdktest")
+          }
+          steps {
+            withCredentials([
+                file(credentialsId: 'justice-codegen-sdk-integration-starter-test-env', variable: 'ENV_FILE_PATH'),
+            ]) {
+              sh 'make test_integration ENV_FILE_PATH=$ENV_FILE_PATH'
+            }
+          }
+          post {
+            always {
+              script {
+                sh 'rm -f tests/integration/.env'
+                archiveArtifacts artifacts: 'test_integration.tap'
+                step([$class: "TapPublisher", testResults: "test_integration.tap"])
+              }
+            }
+          }
+        }
       }
     }
   }
