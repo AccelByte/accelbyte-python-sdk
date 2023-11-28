@@ -661,7 +661,7 @@ class RequestTestCase(TestCase):
 
 class HttpBinRequestTestCase(TestCase):
     reachable: bool = True
-    base_url: str = "http://localhost"
+    base_url: str = "http://localhost:8070"
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -736,13 +736,13 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual(
-            "https://httpbin.org/redirect-to?url=http%3A%2F%2F0.0.0.0%3A8080%3Fdata%3Dfoo",
+            "http://localhost:8070/redirect-to?url=http%3A%2F%2F0.0.0.0%3A8080%3Fdata%3Dfoo",
             request.url,
         )
         raw_response, error = http_client.send_request(
@@ -858,12 +858,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/json", request.url)
+        self.assertEqual("http://localhost:8070/json", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
@@ -934,12 +934,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/json", request.url)
+        self.assertEqual("http://localhost:8070/json", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
@@ -989,12 +989,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/json", request.url)
+        self.assertEqual("http://localhost:8070/json", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
@@ -1047,12 +1047,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/image/jpeg", request.url)
+        self.assertEqual("http://localhost:8070/image/jpeg", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
@@ -1123,12 +1123,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/json", request.url)
+        self.assertEqual("http://localhost:8070/json", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
@@ -1201,12 +1201,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/json", request.url)
+        self.assertEqual("http://localhost:8070/json", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
@@ -1279,12 +1279,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/json", request.url)
+        self.assertEqual("http://localhost:8070/json", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
@@ -1335,12 +1335,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/html", request.url)
+        self.assertEqual("http://localhost:8070/html", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
@@ -1390,12 +1390,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/html", request.url)
+        self.assertEqual("http://localhost:8070/html", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
@@ -1445,12 +1445,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/html", request.url)
+        self.assertEqual("http://localhost:8070/html", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
@@ -1497,12 +1497,12 @@ class HttpBinRequestTestCase(TestCase):
             operation=operation,
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
-            base_url="https://httpbin.org",
+            base_url="http://localhost:8070",
         )
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/json", request.url)
+        self.assertEqual("http://localhost:8070/json", request.url)
         raw_response, error = http_client.send_request(
             request, allow_redirects=not operation.has_redirects()
         )
