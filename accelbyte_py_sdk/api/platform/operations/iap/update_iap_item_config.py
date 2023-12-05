@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.40.0)
+# AccelByte Gaming Services Platform Service (4.41.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import IAPItemConfigInfo
 from ...models import IAPItemConfigUpdate
 from ...models import ValidationErrorEntity
@@ -64,6 +65,8 @@ class UpdateIAPItemConfig(Operation):
 
     Responses:
         200: OK - IAPItemConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39321: Invalid IAP item config namespace [{namespace}]: [{message}])
 
         409: Conflict - ValidationErrorEntity (39175: Duplicate IAP item mapping, IAPType: [{iapType}] and id: [{iapId}])
 
@@ -175,11 +178,14 @@ class UpdateIAPItemConfig(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, IAPItemConfigInfo], Union[None, HttpResponse, ValidationErrorEntity]
+        Union[None, IAPItemConfigInfo],
+        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
         200: OK - IAPItemConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39321: Invalid IAP item config namespace [{namespace}]: [{message}])
 
         409: Conflict - ValidationErrorEntity (39175: Duplicate IAP item mapping, IAPType: [{iapType}] and id: [{iapId}])
 
@@ -200,6 +206,8 @@ class UpdateIAPItemConfig(Operation):
 
         if code == 200:
             return IAPItemConfigInfo.create_from_dict(content), None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ValidationErrorEntity.create_from_dict(content)
         if code == 422:

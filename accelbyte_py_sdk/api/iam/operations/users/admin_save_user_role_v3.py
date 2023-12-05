@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -74,7 +74,7 @@ class AdminSaveUserRoleV3(Operation):
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
-        422: Unprocessable Entity - RestErrorResponse
+        422: Unprocessable Entity - RestErrorResponse (422: request is unprocessable)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -209,7 +209,7 @@ class AdminSaveUserRoleV3(Operation):
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
-        422: Unprocessable Entity - RestErrorResponse
+        422: Unprocessable Entity - RestErrorResponse (422: request is unprocessable)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

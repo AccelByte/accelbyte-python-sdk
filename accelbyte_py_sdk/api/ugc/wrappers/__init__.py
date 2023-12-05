@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.17.0"
+__version__ = "2.18.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -28,6 +28,11 @@ from ._admin_channel import single_admin_get_channel
 from ._admin_channel import single_admin_get_channel_async
 from ._admin_channel import single_admin_update_channel
 from ._admin_channel import single_admin_update_channel_async
+
+from ._admin_config import admin_get_configs
+from ._admin_config import admin_get_configs_async
+from ._admin_config import admin_update_config
+from ._admin_config import admin_update_config_async
 
 from ._admin_content import admin_delete_content
 from ._admin_content import admin_delete_content_async
@@ -218,6 +223,8 @@ from ._public_content_legacy import public_download_content_preview
 from ._public_content_legacy import public_download_content_preview_async
 from ._public_content_legacy import public_get_content_bulk
 from ._public_content_legacy import public_get_content_bulk_async
+from ._public_content_legacy import public_get_content_bulk_by_share_codes
+from ._public_content_legacy import public_get_content_bulk_by_share_codes_async
 from ._public_content_legacy import public_get_user_content
 from ._public_content_legacy import public_get_user_content_async
 from ._public_content_legacy import public_search_content
@@ -230,6 +237,8 @@ from ._public_content_legacy import update_content_direct
 from ._public_content_legacy import update_content_direct_async
 from ._public_content_legacy import update_content_s3
 from ._public_content_legacy import update_content_s3_async
+from ._public_content_legacy import update_content_share_code
+from ._public_content_legacy import update_content_share_code_async
 from ._public_content_legacy import update_screenshots
 from ._public_content_legacy import update_screenshots_async
 from ._public_content_legacy import upload_content_screenshot
@@ -247,6 +256,8 @@ from ._public_content_v2 import public_delete_content_v2
 from ._public_content_v2 import public_delete_content_v2_async
 from ._public_content_v2 import public_generate_content_upload_urlv2
 from ._public_content_v2 import public_generate_content_upload_urlv2_async
+from ._public_content_v2 import public_get_content_bulk_by_share_codes_v2
+from ._public_content_v2 import public_get_content_bulk_by_share_codes_v2_async
 from ._public_content_v2 import public_get_content_by_channel_idv2
 from ._public_content_v2 import public_get_content_by_channel_idv2_async
 from ._public_content_v2 import public_get_content_by_idv2
@@ -263,6 +274,8 @@ from ._public_content_v2 import public_update_content_file_location
 from ._public_content_v2 import public_update_content_file_location_async
 from ._public_content_v2 import public_update_content_v2
 from ._public_content_v2 import public_update_content_v2_async
+from ._public_content_v2 import update_content_share_code_v2
+from ._public_content_v2 import update_content_share_code_v2_async
 from ._public_content_v2 import update_screenshots_v2
 from ._public_content_v2 import update_screenshots_v2_async
 from ._public_content_v2 import upload_content_screenshot_v2

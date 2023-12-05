@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.11.0)
+# AccelByte Gaming Services Session Service (3.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ApimodelsSessionInviteRequest
+from ...models import ApimodelsSessionInviteResponse
 from ...models import ResponseError
 
 
@@ -63,7 +64,7 @@ class PublicPartyInvite(Operation):
         party_id: (partyId) REQUIRED str in path
 
     Responses:
-        201: Created - (Created)
+        201: Created - ApimodelsSessionInviteResponse (Created)
 
         204: No Content - (No Content)
 
@@ -191,10 +192,13 @@ class PublicPartyInvite(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, Optional[str]], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, ApimodelsSessionInviteResponse],
+        Union[None, HttpResponse, ResponseError],
+    ]:
         """Parse the given response.
 
-        201: Created - (Created)
+        201: Created - ApimodelsSessionInviteResponse (Created)
 
         204: No Content - (No Content)
 
@@ -220,7 +224,7 @@ class PublicPartyInvite(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 201:
-            return HttpResponse.create(code, "Created"), None
+            return ApimodelsSessionInviteResponse.create_from_dict(content), None
         if code == 204:
             return None, None
         if code == 400:

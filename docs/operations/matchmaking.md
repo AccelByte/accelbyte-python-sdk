@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Matchmaking Service Index (2.26.2)
+# AccelByte Gaming Services Matchmaking Service Index (2.27.1)
 
 
 ## Operations
@@ -106,6 +106,9 @@
 | models.Role | [ModelsRole](../../accelbyte_py_sdk/api/matchmaking/models/models_role.py) |
 | models.RuleSet | [ModelsRuleSet](../../accelbyte_py_sdk/api/matchmaking/models/models_rule_set.py) |
 | models.RuleSetV1 | [ModelsRuleSetV1](../../accelbyte_py_sdk/api/matchmaking/models/models_rule_set_v1.py) |
+| models.SelectionRule | [ModelsSelectionRule](../../accelbyte_py_sdk/api/matchmaking/models/models_selection_rule.py) |
+| models.SortTicket | [ModelsSortTicket](../../accelbyte_py_sdk/api/matchmaking/models/models_sort_ticket.py) |
+| models.SortTicketRule | [ModelsSortTicketRule](../../accelbyte_py_sdk/api/matchmaking/models/models_sort_ticket_rule.py) |
 | models.StatResumeResponse | [ModelsStatResumeResponse](../../accelbyte_py_sdk/api/matchmaking/models/models_stat_resume_response.py) |
 | models.SubGameMode | [ModelsSubGameMode](../../accelbyte_py_sdk/api/matchmaking/models/models_sub_game_mode.py) |
 | models.TicketMetricResultRecord | [ModelsTicketMetricResultRecord](../../accelbyte_py_sdk/api/matchmaking/models/models_ticket_metric_result_record.py) |

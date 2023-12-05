@@ -113,10 +113,27 @@ def admin_retrieve_user_third_party_platform_token_v3(
       * (psn) ps5
 
 
-      * xbox live
+      * epicgames
 
 
-      * steam
+      * twitch
+
+
+      * awscognito
+
+
+      *
+
+      * eaorigin
+
+
+      * snapchat
+
+
+      * twitch
+
+
+      * live
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
@@ -213,10 +230,27 @@ async def admin_retrieve_user_third_party_platform_token_v3_async(
       * (psn) ps5
 
 
-      * xbox live
+      * epicgames
 
 
-      * steam
+      * twitch
+
+
+      * awscognito
+
+
+      *
+
+      * eaorigin
+
+
+      * snapchat
+
+
+      * twitch
+
+
+      * live
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
@@ -1858,6 +1892,20 @@ def retrieve_user_third_party_platform_token_v3(
 
       * awscognito
 
+
+      *
+
+      * eaorigin
+
+
+      * snapchat
+
+
+      * twitch
+
+
+      * live
+
     Properties:
         url: /iam/v3/oauth/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken
 
@@ -1944,6 +1992,20 @@ async def retrieve_user_third_party_platform_token_v3_async(
 
 
       * awscognito
+
+
+      *
+
+      * eaorigin
+
+
+      * snapchat
+
+
+      * twitch
+
+
+      * live
 
     Properties:
         url: /iam/v3/oauth/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken
@@ -2263,6 +2325,7 @@ def token_grant_v3(
     code_verifier: Optional[str] = None,
     device_id: Optional[Union[str, HeaderStr]] = None,
     extend_exp: Optional[bool] = None,
+    extend_namespace: Optional[str] = None,
     password: Optional[str] = None,
     redirect_uri: Optional[str] = None,
     refresh_token: Optional[str] = None,
@@ -2301,6 +2364,18 @@ def token_grant_v3(
       4. Grant Type == `client_credentials`:
 
         It generates a token by checking the client credentials provided through Authorization header.
+
+
+
+      5. Grant Type == `urn:ietf:params:oauth:grant-type:extend_client_credentials`:
+
+        It generates a token by checking the client credentials provided through Authorization header.
+       It only allow publisher namespace client.
+       In generated token:
+         1.There wil be no roles, namespace_roles & permission.
+         2.The scope will be fixed as 'extend'.
+         3.There will have a new field 'extend_namespace', the value is from token request body.
+
 
 
 
@@ -2539,6 +2614,8 @@ def token_grant_v3(
 
         code_verifier: (code_verifier) OPTIONAL str in form_data
 
+        extend_namespace: (extendNamespace) OPTIONAL str in form_data
+
         extend_exp: (extend_exp) OPTIONAL bool in form_data
 
         password: (password) OPTIONAL str in form_data
@@ -2571,6 +2648,7 @@ def token_grant_v3(
         code_verifier=code_verifier,
         device_id=device_id,
         extend_exp=extend_exp,
+        extend_namespace=extend_namespace,
         password=password,
         redirect_uri=redirect_uri,
         refresh_token=refresh_token,
@@ -2589,6 +2667,7 @@ async def token_grant_v3_async(
     code_verifier: Optional[str] = None,
     device_id: Optional[Union[str, HeaderStr]] = None,
     extend_exp: Optional[bool] = None,
+    extend_namespace: Optional[str] = None,
     password: Optional[str] = None,
     redirect_uri: Optional[str] = None,
     refresh_token: Optional[str] = None,
@@ -2627,6 +2706,18 @@ async def token_grant_v3_async(
       4. Grant Type == `client_credentials`:
 
         It generates a token by checking the client credentials provided through Authorization header.
+
+
+
+      5. Grant Type == `urn:ietf:params:oauth:grant-type:extend_client_credentials`:
+
+        It generates a token by checking the client credentials provided through Authorization header.
+       It only allow publisher namespace client.
+       In generated token:
+         1.There wil be no roles, namespace_roles & permission.
+         2.The scope will be fixed as 'extend'.
+         3.There will have a new field 'extend_namespace', the value is from token request body.
+
 
 
 
@@ -2865,6 +2956,8 @@ async def token_grant_v3_async(
 
         code_verifier: (code_verifier) OPTIONAL str in form_data
 
+        extend_namespace: (extendNamespace) OPTIONAL str in form_data
+
         extend_exp: (extend_exp) OPTIONAL bool in form_data
 
         password: (password) OPTIONAL str in form_data
@@ -2897,6 +2990,7 @@ async def token_grant_v3_async(
         code_verifier=code_verifier,
         device_id=device_id,
         extend_exp=extend_exp,
+        extend_namespace=extend_namespace,
         password=password,
         redirect_uri=redirect_uri,
         refresh_token=refresh_token,

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.26.2)
+# AccelByte Gaming Services Matchmaking Service (2.27.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,6 +65,9 @@ from ..api.matchmaking.models import ModelsResultAttributeResponse
 from ..api.matchmaking.models import ModelsRole
 from ..api.matchmaking.models import ModelsRuleSet
 from ..api.matchmaking.models import ModelsRuleSetV1
+from ..api.matchmaking.models import ModelsSelectionRule
+from ..api.matchmaking.models import ModelsSortTicket
+from ..api.matchmaking.models import ModelsSortTicketRule
 from ..api.matchmaking.models import ModelsStatResumeResponse
 from ..api.matchmaking.models import ModelsSubGameMode
 from ..api.matchmaking.models import ModelsTicketMetricResultRecord
@@ -529,10 +532,15 @@ def create_models_role_example() -> ModelsRole:
 def create_models_rule_set_example() -> ModelsRuleSet:
     instance = ModelsRuleSet()
     instance.alliance = create_models_alliance_rule_example()
+    instance.batch_size = randomize("int", min_val=1, max_val=1000)
     instance.flexing_rule = [create_models_flexing_rule_example()]
     instance.match_options = create_models_match_option_rule_example()
     instance.matching_rule = [create_models_matching_rule_example()]
     instance.rebalance_enable = randomize("bool")
+    instance.sort_ticket = create_models_sort_ticket_example()
+    instance.sort_tickets = [create_models_sort_ticket_rule_example()]
+    instance.ticket_flexing_selection = randomize()
+    instance.ticket_flexing_selections = [create_models_selection_rule_example()]
     instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
     instance.bucket_mmr_rule = create_models_bucket_mmr_rule_example()
     instance.sub_game_modes = {}
@@ -544,12 +552,39 @@ def create_models_rule_set_v1_example() -> ModelsRuleSetV1:
     instance = ModelsRuleSetV1()
     instance.alliance = create_models_alliance_rule_v1_example()
     instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
+    instance.batch_size = randomize("int", min_val=1, max_val=1000)
     instance.flexing_rules = [create_models_flexing_rule_example()]
     instance.match_options = create_models_match_option_rule_example()
     instance.matching_rules = [create_models_matching_rule_example()]
+    instance.sort_ticket = create_models_sort_ticket_example()
+    instance.sort_tickets = [create_models_sort_ticket_rule_example()]
     instance.sub_game_modes = {}
+    instance.ticket_flexing_selection = randomize()
+    instance.ticket_flexing_selections = [create_models_selection_rule_example()]
     instance.bucket_mmr_rule = create_models_bucket_mmr_rule_example()
     instance.use_newest_ticket_for_flexing = randomize("bool")
+    return instance
+
+
+def create_models_selection_rule_example() -> ModelsSelectionRule:
+    instance = ModelsSelectionRule()
+    instance.selection = randomize()
+    instance.threshold = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_sort_ticket_example() -> ModelsSortTicket:
+    instance = ModelsSortTicket()
+    instance.search_result = randomize()
+    instance.ticket_queue = randomize()
+    return instance
+
+
+def create_models_sort_ticket_rule_example() -> ModelsSortTicketRule:
+    instance = ModelsSortTicketRule()
+    instance.search_result = randomize()
+    instance.threshold = randomize("int", min_val=1, max_val=1000)
+    instance.ticket_queue = randomize()
     return instance
 
 
@@ -634,6 +669,11 @@ def create_models_update_ruleset_example() -> ModelsUpdateRuleset:
     instance = ModelsUpdateRuleset()
     instance.alliance = create_models_update_alliance_rule_example()
     instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
+    instance.batch_size = randomize("int", min_val=1, max_val=1000)
+    instance.sort_ticket = create_models_sort_ticket_example()
+    instance.sort_tickets = [create_models_sort_ticket_rule_example()]
+    instance.ticket_flexing_selection = randomize()
+    instance.ticket_flexing_selections = [create_models_selection_rule_example()]
     instance.bucket_mmr_rule = create_models_bucket_mmr_rule_example()
     instance.flexing_rules = [create_models_flexing_rule_example()]
     instance.match_options = create_models_match_option_rule_example()

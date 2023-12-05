@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Cloudsave Service (3.12.6)
+# AGS Cloudsave Service (3.12.7)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,9 @@ from accelbyte_py_sdk.api.cloudsave import (
     put_player_public_record_concurrent_handler_v1 as put_player_public_record_concurrent_handler_v1_internal,
 )
 from accelbyte_py_sdk.api.cloudsave.models import ModelsConcurrentRecordRequest
+from accelbyte_py_sdk.api.cloudsave.models import (
+    ModelsPlayerRecordConcurrentUpdateResponse,
+)
 from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
 
@@ -41,6 +44,7 @@ from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 @click.argument("body", type=str)
 @click.argument("key", type=str)
 @click.argument("user_id", type=str)
+@click.option("--response_body", "response_body", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -49,6 +53,7 @@ def put_player_public_record_concurrent_handler_v1(
     body: str,
     key: str,
     user_id: str,
+    response_body: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -72,6 +77,7 @@ def put_player_public_record_concurrent_handler_v1(
         body=body,
         key=key,
         user_id=user_id,
+        response_body=response_body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

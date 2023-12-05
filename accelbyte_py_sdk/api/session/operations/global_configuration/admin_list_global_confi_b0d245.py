@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.11.0)
+# AccelByte Gaming Services Session Service (3.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseError
 
 
 class AdminListGlobalConfiguration(Operation):
-    """Record of global configuration data. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminListGlobalConfiguration)
+    """Record of global configuration data. Requires ADMIN:NAMESPACE:SESSION:CONFIGURATION [READ] (adminListGlobalConfiguration)
 
     Record of global configuration data.
 

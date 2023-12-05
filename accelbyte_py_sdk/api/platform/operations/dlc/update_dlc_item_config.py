@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.40.0)
+# AccelByte Gaming Services Platform Service (4.41.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,6 +65,8 @@ class UpdateDLCItemConfig(Operation):
 
     Responses:
         200: OK - DLCItemConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (394721: Invalid platform DLC config namespace [{namespace}]: [{message}])
 
         409: Conflict - ErrorEntity (39471: Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] )
 
@@ -183,6 +185,8 @@ class UpdateDLCItemConfig(Operation):
 
         200: OK - DLCItemConfigInfo (successful operation)
 
+        400: Bad Request - ErrorEntity (394721: Invalid platform DLC config namespace [{namespace}]: [{message}])
+
         409: Conflict - ErrorEntity (39471: Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] )
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
@@ -202,6 +206,8 @@ class UpdateDLCItemConfig(Operation):
 
         if code == 200:
             return DLCItemConfigInfo.create_from_dict(content), None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:

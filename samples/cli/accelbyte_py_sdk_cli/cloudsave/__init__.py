@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-cloudsave-service (3.12.6)
+# justice-cloudsave-service (3.12.7)
 
 from ._admin_list_admin_game_record_v1 import admin_list_admin_game_record_v1
 from ._admin_bulk_get_admin_game_record_v1 import admin_bulk_get_admin_game_record_v1
@@ -76,6 +76,7 @@ from ._admin_put_player_public_record_concurrent_handler_v1 import (
     admin_put_player_public_record_concurrent_handler_v1,
 )
 from ._admin_retrieve_player_records import admin_retrieve_player_records
+from ._admin_get_player_records_handler_v1 import admin_get_player_records_handler_v1
 from ._admin_get_player_record_handler_v1 import admin_get_player_record_handler_v1
 from ._admin_put_player_record_handler_v1 import admin_put_player_record_handler_v1
 from ._admin_post_player_record_handler_v1 import admin_post_player_record_handler_v1
@@ -204,6 +205,7 @@ commands = [
     admin_put_player_record_concurrent_handler_v1,
     admin_put_player_public_record_concurrent_handler_v1,
     admin_retrieve_player_records,
+    admin_get_player_records_handler_v1,
     admin_get_player_record_handler_v1,
     admin_put_player_record_handler_v1,
     admin_post_player_record_handler_v1,

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.11.0)
+# AccelByte Gaming Services Session Service (3.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -58,6 +58,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
 
         type_: (type) REQUIRED str
 
+        attributes: (attributes) OPTIONAL Dict[str, Any]
+
         auto_join: (autoJoin) OPTIONAL bool
 
         disable_code_generation: (disableCodeGeneration) OPTIONAL bool
@@ -97,6 +99,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
     requested_regions: List[str]  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
+    attributes: Dict[str, Any]  # OPTIONAL
     auto_join: bool  # OPTIONAL
     disable_code_generation: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
@@ -180,6 +183,12 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
 
     def with_type(self, value: str) -> ApimodelsCreateConfigurationTemplateRequest:
         self.type_ = value
+        return self
+
+    def with_attributes(
+        self, value: Dict[str, Any]
+    ) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.attributes = value
         return self
 
     def with_auto_join(
@@ -306,6 +315,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "attributes"):
+            result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
+        elif include_empty:
+            result["attributes"] = {}
         if hasattr(self, "auto_join"):
             result["autoJoin"] = bool(self.auto_join)
         elif include_empty:
@@ -377,6 +390,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         requested_regions: List[str],
         text_chat: bool,
         type_: str,
+        attributes: Optional[Dict[str, Any]] = None,
         auto_join: Optional[bool] = None,
         disable_code_generation: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
@@ -404,6 +418,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         instance.requested_regions = requested_regions
         instance.text_chat = text_chat
         instance.type_ = type_
+        if attributes is not None:
+            instance.attributes = attributes
         if auto_join is not None:
             instance.auto_join = auto_join
         if disable_code_generation is not None:
@@ -485,6 +501,12 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "attributes" in dict_ and dict_["attributes"] is not None:
+            instance.attributes = {
+                str(k0): v0 for k0, v0 in dict_["attributes"].items()
+            }
+        elif include_empty:
+            instance.attributes = {}
         if "autoJoin" in dict_ and dict_["autoJoin"] is not None:
             instance.auto_join = bool(dict_["autoJoin"])
         elif include_empty:
@@ -605,6 +627,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "requestedRegions": "requested_regions",
             "textChat": "text_chat",
             "type": "type_",
+            "attributes": "attributes",
             "autoJoin": "auto_join",
             "disableCodeGeneration": "disable_code_generation",
             "dsManualSetReady": "ds_manual_set_ready",
@@ -634,6 +657,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "requestedRegions": True,
             "textChat": True,
             "type": True,
+            "attributes": False,
             "autoJoin": False,
             "disableCodeGeneration": False,
             "dsManualSetReady": False,

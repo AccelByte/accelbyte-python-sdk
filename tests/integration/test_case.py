@@ -131,7 +131,9 @@ class SDKTestCaseUtils:
         cls.logged_in = error is None
 
         base_url, error = get_base_url()
-        cls.using_ags_starter = error is None and "gamingservices.accelbyte.io" in base_url
+        cls.using_ags_starter = (
+            error is None and "gamingservices.accelbyte.io" in base_url
+        )
 
         cls.namespace = namespace
         cls.username = username
@@ -275,7 +277,11 @@ class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
 
     def skip_if_ags(self, reason: Optional[str] = None) -> bool:
         if self.using_ags_starter:
-            reason = f"Skipped due to AGS. Reason: {reason}" if reason else "Skipped due to AGS."
+            reason = (
+                f"Skipped due to AGS. Reason: {reason}"
+                if reason
+                else "Skipped due to AGS."
+            )
             self.skipTest(reason=reason)
             return True
         return False
@@ -329,7 +335,11 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
 
     def skip_if_ags(self, reason: Optional[str] = None) -> bool:
         if self.using_ags_starter:
-            reason = f"Skipped due to AGS. Reason: {reason}" if reason else "Skipped due to AGS."
+            reason = (
+                f"Skipped due to AGS. Reason: {reason}"
+                if reason
+                else "Skipped due to AGS."
+            )
             self.skipTest(reason=reason)
             return True
         return False

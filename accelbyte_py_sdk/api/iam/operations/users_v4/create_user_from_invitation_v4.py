@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -79,7 +79,7 @@ class CreateUserFromInvitationV4(Operation):
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
@@ -213,7 +213,7 @@ class CreateUserFromInvitationV4(Operation):
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -159,7 +159,7 @@ class AdminUpdateInputValidations(Operation):
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse
+        404: Not Found - RestErrorResponse (10188: input validation field not found)
     """
 
     # region fields
@@ -263,7 +263,7 @@ class AdminUpdateInputValidations(Operation):
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse
+        404: Not Found - RestErrorResponse (10188: input validation field not found)
 
         ---: HttpResponse (Undocumented Response)
 

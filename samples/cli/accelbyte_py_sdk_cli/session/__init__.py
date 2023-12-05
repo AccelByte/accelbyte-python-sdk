@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (3.11.0)
+# justice-session-service (3.12.0)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
@@ -73,6 +73,7 @@ from ._join_game_session import join_game_session
 from ._public_promote_game_session_leader import public_promote_game_session_leader
 from ._leave_game_session import leave_game_session
 from ._public_game_session_reject import public_game_session_reject
+from ._get_session_server_secret import get_session_server_secret
 from ._append_team_game_session import append_team_game_session
 from ._public_party_join_code import public_party_join_code
 from ._public_get_party import public_get_party
@@ -153,6 +154,7 @@ commands = [
     public_promote_game_session_leader,
     leave_game_session,
     public_game_session_reject,
+    get_session_server_secret,
     append_team_game_session,
     public_party_join_code,
     public_get_party,

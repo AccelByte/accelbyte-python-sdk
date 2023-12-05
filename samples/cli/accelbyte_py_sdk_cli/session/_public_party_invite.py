@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Service (3.11.0)
+# AGS Session Service (3.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.session import (
     public_party_invite as public_party_invite_internal,
 )
 from accelbyte_py_sdk.api.session.models import ApimodelsSessionInviteRequest
+from accelbyte_py_sdk.api.session.models import ApimodelsSessionInviteResponse
 from accelbyte_py_sdk.api.session.models import ResponseError
 
 

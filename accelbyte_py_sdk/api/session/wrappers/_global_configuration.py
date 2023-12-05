@@ -42,7 +42,7 @@ from ..operations.global_configuration import AdminUpdateGlobalConfiguration
 def admin_delete_global_configuration(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Delete of global configuration data. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [DELETE] (adminDeleteGlobalConfiguration)
+    """Delete of global configuration data. Requires ADMIN:NAMESPACE:SESSION:CONFIGURATION [DELETE] (adminDeleteGlobalConfiguration)
 
     Delete of global configuration data.
 
@@ -74,7 +74,7 @@ def admin_delete_global_configuration(
 async def admin_delete_global_configuration_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Delete of global configuration data. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [DELETE] (adminDeleteGlobalConfiguration)
+    """Delete of global configuration data. Requires ADMIN:NAMESPACE:SESSION:CONFIGURATION [DELETE] (adminDeleteGlobalConfiguration)
 
     Delete of global configuration data.
 
@@ -108,7 +108,7 @@ async def admin_delete_global_configuration_async(
 def admin_list_global_configuration(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Record of global configuration data. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminListGlobalConfiguration)
+    """Record of global configuration data. Requires ADMIN:NAMESPACE:SESSION:CONFIGURATION [READ] (adminListGlobalConfiguration)
 
     Record of global configuration data.
 
@@ -140,7 +140,7 @@ def admin_list_global_configuration(
 async def admin_list_global_configuration_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Record of global configuration data. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminListGlobalConfiguration)
+    """Record of global configuration data. Requires ADMIN:NAMESPACE:SESSION:CONFIGURATION [READ] (adminListGlobalConfiguration)
 
     Record of global configuration data.
 
@@ -176,7 +176,7 @@ def admin_update_global_configuration(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upsert global configuration data. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateGlobalConfiguration)
+    """Upsert global configuration data. Requires ADMIN:NAMESPACE:SESSION:CONFIGURATION [UPDATE] (adminUpdateGlobalConfiguration)
 
     Upsert global configuration data.
 
@@ -214,7 +214,7 @@ async def admin_update_global_configuration_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upsert global configuration data. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateGlobalConfiguration)
+    """Upsert global configuration data. Requires ADMIN:NAMESPACE:SESSION:CONFIGURATION [UPDATE] (adminUpdateGlobalConfiguration)
 
     Upsert global configuration data.
 

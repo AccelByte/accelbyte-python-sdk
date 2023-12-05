@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.11.0)
+# AccelByte Gaming Services Session Service Index (3.12.0)
 
 
 ## Operations
@@ -51,6 +51,7 @@
 | /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/code | POST | gameSessionGenerateCode | `false` | [GameSessionGenerateCode](../../accelbyte_py_sdk/api/session/operations/game_session/game_session_generate_code.py) | [game_session_generate_code](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-game-session-generate-code](../../samples/cli/accelbyte_py_sdk_cli/session/_game_session_generate_code.py) |
 | /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId} | GET | getGameSession | `false` | [GetGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/get_game_session.py) | [get_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-get-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_get_game_session.py) |
 | /session/v1/public/namespaces/{namespace}/gamesessions/servers/{podName} | GET | getGameSessionByPodName | `false` | [GetGameSessionByPodName](../../accelbyte_py_sdk/api/session/operations/game_session/get_game_session_by_pod_name.py) | [get_game_session_by_pod_name](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-get-game-session-by-pod-name](../../samples/cli/accelbyte_py_sdk_cli/session/_get_game_session_by_pod_name.py) |
+| /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/secret | GET | getSessionServerSecret | `false` | [GetSessionServerSecret](../../accelbyte_py_sdk/api/session/operations/game_session/get_session_server_secret.py) | [get_session_server_secret](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-get-session-server-secret](../../samples/cli/accelbyte_py_sdk_cli/session/_get_session_server_secret.py) |
 | /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/join | POST | joinGameSession | `false` | [JoinGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/join_game_session.py) | [join_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-join-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_join_game_session.py) |
 | /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leave | DELETE | leaveGameSession | `false` | [LeaveGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/leave_game_session.py) | [leave_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-leave-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_leave_game_session.py) |
 | /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId} | PATCH | patchUpdateGameSession | `false` | [PatchUpdateGameSession](../../accelbyte_py_sdk/api/session/operations/game_session/patch_update_game_session.py) | [patch_update_game_session](../../accelbyte_py_sdk/api/session/wrappers/_game_session.py) | [accelbyte_py_sdk_cli session-patch-update-game-session](../../samples/cli/accelbyte_py_sdk_cli/session/_patch_update_game_session.py) |
@@ -164,7 +165,9 @@
 | apimodels.PutPlatformCredentialsRequest | [ApimodelsPutPlatformCredentialsRequest](../../accelbyte_py_sdk/api/session/models/apimodels_put_platform_credentials_request.py) |
 | apimodels.RequestMember | [ApimodelsRequestMember](../../accelbyte_py_sdk/api/session/models/apimodels_request_member.py) |
 | apimodels.ResponseDeleteBulkGameSessions | [ApimodelsResponseDeleteBulkGameSessions](../../accelbyte_py_sdk/api/session/models/apimodels_response_delete_bulk_game_sessions.py) |
+| apimodels.ServerSecret | [ApimodelsServerSecret](../../accelbyte_py_sdk/api/session/models/apimodels_server_secret.py) |
 | apimodels.SessionInviteRequest | [ApimodelsSessionInviteRequest](../../accelbyte_py_sdk/api/session/models/apimodels_session_invite_request.py) |
+| apimodels.SessionInviteResponse | [ApimodelsSessionInviteResponse](../../accelbyte_py_sdk/api/session/models/apimodels_session_invite_response.py) |
 | apimodels.SetDSReadyRequest | [ApimodelsSetDSReadyRequest](../../accelbyte_py_sdk/api/session/models/apimodels_set_ds_ready_request.py) |
 | apimodels.UpdateConfigurationTemplateRequest | [ApimodelsUpdateConfigurationTemplateRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_configuration_template_request.py) |
 | apimodels.UpdateGameSessionBackfillRequest | [ApimodelsUpdateGameSessionBackfillRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_game_session_backfill_request.py) |

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.40.0)
+# AccelByte Gaming Services Platform Service (4.41.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -157,6 +157,7 @@ from ..api.platform.models import FulfillmentScriptUpdate
 from ..api.platform.models import FullAppInfo
 from ..api.platform.models import FullCategoryInfo
 from ..api.platform.models import FullItemInfo
+from ..api.platform.models import FullItemPagingResult
 from ..api.platform.models import FullItemPagingSlicedResult
 from ..api.platform.models import FullSectionInfo
 from ..api.platform.models import FullViewInfo
@@ -1923,6 +1924,14 @@ def create_full_item_info_example() -> FullItemInfo:
     instance.target_namespace = randomize("slug")
     instance.thumbnail_url = randomize("url")
     instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_full_item_paging_result_example() -> FullItemPagingResult:
+    instance = FullItemPagingResult()
+    instance.data = [create_full_item_info_example()]
+    instance.paging = create_paging_example()
+    instance.total = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

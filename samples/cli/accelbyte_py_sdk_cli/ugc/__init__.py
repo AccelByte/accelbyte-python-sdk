@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-ugc-service (2.17.0)
+# justice-ugc-service (2.18.0)
 
 from ._single_admin_get_channel import single_admin_get_channel
 from ._admin_create_channel import admin_create_channel
@@ -74,6 +74,9 @@ from ._public_search_content import public_search_content
 from ._public_get_content_bulk import public_get_content_bulk
 from ._get_followed_content import get_followed_content
 from ._get_liked_content import get_liked_content
+from ._public_get_content_bulk_by_share_codes import (
+    public_get_content_bulk_by_share_codes,
+)
 from ._public_download_content_by_share_code import (
     public_download_content_by_share_code,
 )
@@ -100,6 +103,7 @@ from ._update_content_s3 import update_content_s3
 from ._public_delete_content_by_share_code import public_delete_content_by_share_code
 from ._update_content_direct import update_content_direct
 from ._delete_content import delete_content
+from ._update_content_share_code import update_content_share_code
 from ._public_get_user_content import public_get_user_content
 from ._delete_all_user_contents import delete_all_user_contents
 from ._update_screenshots import update_screenshots
@@ -126,6 +130,8 @@ from ._admin_update_official_content_file_location import (
 from ._admin_generate_official_content_upload_urlv2 import (
     admin_generate_official_content_upload_urlv2,
 )
+from ._admin_get_configs import admin_get_configs
+from ._admin_update_config import admin_update_config
 from ._admin_list_content_v2 import admin_list_content_v2
 from ._admin_bulk_get_content_by_i_ds_v2 import admin_bulk_get_content_by_i_ds_v2
 from ._admin_get_content_bulk_by_share_codes_v2 import (
@@ -159,6 +165,9 @@ from ._admin_get_user_group_contents_v2 import admin_get_user_group_contents_v2
 from ._public_get_content_by_channel_idv2 import public_get_content_by_channel_idv2
 from ._public_list_content_v2 import public_list_content_v2
 from ._public_bulk_get_content_by_idv2 import public_bulk_get_content_by_idv2
+from ._public_get_content_bulk_by_share_codes_v2 import (
+    public_get_content_bulk_by_share_codes_v2,
+)
 from ._public_get_content_by_share_code_v2 import public_get_content_by_share_code_v2
 from ._public_get_content_by_idv2 import public_get_content_by_idv2
 from ._public_add_download_count_v2 import public_add_download_count_v2
@@ -175,6 +184,7 @@ from ._public_delete_content_by_share_code_v2 import (
 from ._public_delete_content_v2 import public_delete_content_v2
 from ._public_update_content_v2 import public_update_content_v2
 from ._public_update_content_file_location import public_update_content_file_location
+from ._update_content_share_code_v2 import update_content_share_code_v2
 from ._public_generate_content_upload_urlv2 import public_generate_content_upload_urlv2
 from ._public_get_content_by_user_idv2 import public_get_content_by_user_idv2
 from ._update_screenshots_v2 import update_screenshots_v2
@@ -244,6 +254,7 @@ commands = [
     public_get_content_bulk,
     get_followed_content,
     get_liked_content,
+    public_get_content_bulk_by_share_codes,
     public_download_content_by_share_code,
     public_download_content_by_content_id,
     add_download_count,
@@ -266,6 +277,7 @@ commands = [
     public_delete_content_by_share_code,
     update_content_direct,
     delete_content,
+    update_content_share_code,
     public_get_user_content,
     delete_all_user_contents,
     update_screenshots,
@@ -288,6 +300,8 @@ commands = [
     admin_update_official_content_v2,
     admin_update_official_content_file_location,
     admin_generate_official_content_upload_urlv2,
+    admin_get_configs,
+    admin_update_config,
     admin_list_content_v2,
     admin_bulk_get_content_by_i_ds_v2,
     admin_get_content_bulk_by_share_codes_v2,
@@ -311,6 +325,7 @@ commands = [
     public_get_content_by_channel_idv2,
     public_list_content_v2,
     public_bulk_get_content_by_idv2,
+    public_get_content_bulk_by_share_codes_v2,
     public_get_content_by_share_code_v2,
     public_get_content_by_idv2,
     public_add_download_count_v2,
@@ -323,6 +338,7 @@ commands = [
     public_delete_content_v2,
     public_update_content_v2,
     public_update_content_file_location,
+    update_content_share_code_v2,
     public_generate_content_upload_urlv2,
     public_get_content_by_user_idv2,
     update_screenshots_v2,

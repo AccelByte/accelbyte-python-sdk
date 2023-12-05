@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,7 +63,7 @@ class AdminGetListJusticePlatformAccounts(Operation):
     Responses:
         200: OK - List[ModelGetUserMapping] (OK)
 
-        400: Bad Request - RestErrorResponse
+        400: Bad Request - RestErrorResponse (20025: not a publisher user | 20002: validation error)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -182,7 +182,7 @@ class AdminGetListJusticePlatformAccounts(Operation):
 
         200: OK - List[ModelGetUserMapping] (OK)
 
-        400: Bad Request - RestErrorResponse
+        400: Bad Request - RestErrorResponse (20025: not a publisher user | 20002: validation error)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 

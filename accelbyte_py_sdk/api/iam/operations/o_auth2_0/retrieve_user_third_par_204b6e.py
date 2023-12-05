@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -72,6 +72,20 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
 
 
       * awscognito
+
+
+      *
+
+      * eaorigin
+
+
+      * snapchat
+
+
+      * twitch
+
+
+      * live
 
     Properties:
         url: /iam/v3/oauth/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken

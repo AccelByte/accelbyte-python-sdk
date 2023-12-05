@@ -3956,6 +3956,8 @@ def update_iap_item_config(
     Responses:
         200: OK - IAPItemConfigInfo (successful operation)
 
+        400: Bad Request - ErrorEntity (39321: Invalid IAP item config namespace [{namespace}]: [{message}])
+
         409: Conflict - ValidationErrorEntity (39175: Duplicate IAP item mapping, IAPType: [{iapType}] and id: [{iapId}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
@@ -4007,6 +4009,8 @@ async def update_iap_item_config_async(
 
     Responses:
         200: OK - IAPItemConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39321: Invalid IAP item config namespace [{namespace}]: [{message}])
 
         409: Conflict - ValidationErrorEntity (39175: Duplicate IAP item mapping, IAPType: [{iapType}] and id: [{iapId}])
 

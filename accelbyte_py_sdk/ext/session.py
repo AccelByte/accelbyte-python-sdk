@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.11.0)
+# AccelByte Gaming Services Session Service (3.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -56,7 +56,9 @@ from ..api.session.models import ApimodelsPutGlobalConfigurationRequest
 from ..api.session.models import ApimodelsPutPlatformCredentialsRequest
 from ..api.session.models import ApimodelsRequestMember
 from ..api.session.models import ApimodelsResponseDeleteBulkGameSessions
+from ..api.session.models import ApimodelsServerSecret
 from ..api.session.models import ApimodelsSessionInviteRequest
+from ..api.session.models import ApimodelsSessionInviteResponse
 from ..api.session.models import ApimodelsSetDSReadyRequest
 from ..api.session.models import ApimodelsUpdateConfigurationTemplateRequest
 from ..api.session.models import ApimodelsUpdateGameSessionBackfillRequest
@@ -126,6 +128,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.updated_at = randomize()
+    instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
@@ -166,6 +169,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
@@ -439,6 +443,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.persistent = randomize("bool")
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.attributes = {randomize(): randomize()}
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
@@ -490,10 +495,24 @@ def create_apimodels_response_delete_bulk_game_sessions_example() -> (
     return instance
 
 
+def create_apimodels_server_secret_example() -> ApimodelsServerSecret:
+    instance = ApimodelsServerSecret()
+    instance.secret = randomize()
+    return instance
+
+
 def create_apimodels_session_invite_request_example() -> ApimodelsSessionInviteRequest:
     instance = ApimodelsSessionInviteRequest()
     instance.platform_id = randomize()
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_apimodels_session_invite_response_example() -> (
+    ApimodelsSessionInviteResponse
+):
+    instance = ApimodelsSessionInviteResponse()
+    instance.platform_user_id = randomize()
     return instance
 
 
@@ -520,6 +539,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.17.0)
+# AccelByte Gaming Services Ugc Service (2.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,7 @@ from ..api.ugc.models import ModelsAdminUpdateContentRequest
 from ..api.ugc.models import ModelsAdminUpdateContentRequestV2
 from ..api.ugc.models import ModelsChannelRequest
 from ..api.ugc.models import ModelsChannelResponse
+from ..api.ugc.models import ModelsConfigResponse
 from ..api.ugc.models import ModelsContentDownloadResponse
 from ..api.ugc.models import ModelsContentDownloadResponseV2
 from ..api.ugc.models import ModelsContentDownloaderResponse
@@ -69,6 +70,7 @@ from ..api.ugc.models import ModelsPaginatedContentDownloaderResponse
 from ..api.ugc.models import ModelsPaginatedContentLikersResponse
 from ..api.ugc.models import ModelsPaginatedCreatorOverviewResponse
 from ..api.ugc.models import ModelsPaginatedGetChannelResponse
+from ..api.ugc.models import ModelsPaginatedGetConfigsResponse
 from ..api.ugc.models import ModelsPaginatedGetTagResponse
 from ..api.ugc.models import ModelsPaginatedGetTypeResponse
 from ..api.ugc.models import ModelsPaginatedGroupResponse
@@ -81,9 +83,11 @@ from ..api.ugc.models import ModelsPublicCreateContentRequestS3
 from ..api.ugc.models import ModelsPublicGetContentBulkRequest
 from ..api.ugc.models import ModelsScreenshotResponse
 from ..api.ugc.models import ModelsUpdateChannelRequest
+from ..api.ugc.models import ModelsUpdateConfigRequest
 from ..api.ugc.models import ModelsUpdateContentRequest
 from ..api.ugc.models import ModelsUpdateContentRequestV2
 from ..api.ugc.models import ModelsUpdateContentResponseV2
+from ..api.ugc.models import ModelsUpdateContentShareCodeRequest
 from ..api.ugc.models import ModelsUpdateFileLocationRequest
 from ..api.ugc.models import ModelsUpdateScreenshot
 from ..api.ugc.models import ModelsUpdateScreenshotRequest
@@ -168,6 +172,14 @@ def create_models_channel_response_example() -> ModelsChannelResponse:
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
     instance.parent_namespace = randomize("slug")
+    return instance
+
+
+def create_models_config_response_example() -> ModelsConfigResponse:
+    instance = ModelsConfigResponse()
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.value = randomize()
     return instance
 
 
@@ -586,6 +598,15 @@ def create_models_paginated_get_channel_response_example() -> (
     return instance
 
 
+def create_models_paginated_get_configs_response_example() -> (
+    ModelsPaginatedGetConfigsResponse
+):
+    instance = ModelsPaginatedGetConfigsResponse()
+    instance.data = [create_models_config_response_example()]
+    instance.paging = create_models_paging_cursor_example()
+    return instance
+
+
 def create_models_paginated_get_tag_response_example() -> ModelsPaginatedGetTagResponse:
     instance = ModelsPaginatedGetTagResponse()
     instance.data = [create_models_create_tag_response_example()]
@@ -686,6 +707,12 @@ def create_models_update_channel_request_example() -> ModelsUpdateChannelRequest
     return instance
 
 
+def create_models_update_config_request_example() -> ModelsUpdateConfigRequest:
+    instance = ModelsUpdateConfigRequest()
+    instance.value = randomize()
+    return instance
+
+
 def create_models_update_content_request_example() -> ModelsUpdateContentRequest:
     instance = ModelsUpdateContentRequest()
     instance.content_type = randomize()
@@ -733,6 +760,14 @@ def create_models_update_content_response_v2_example() -> ModelsUpdateContentRes
     instance.sub_type = randomize()
     instance.type_ = randomize()
     instance.updated_time = randomize()
+    return instance
+
+
+def create_models_update_content_share_code_request_example() -> (
+    ModelsUpdateContentShareCodeRequest
+):
+    instance = ModelsUpdateContentShareCodeRequest()
+    instance.share_code = randomize()
     return instance
 
 

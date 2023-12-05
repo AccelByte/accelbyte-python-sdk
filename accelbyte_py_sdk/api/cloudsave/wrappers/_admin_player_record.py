@@ -30,7 +30,9 @@ from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
+from ..models import ModelsBulkGetAdminPlayerRecordResponse
 from ..models import ModelsBulkGetPlayerRecordSizeResponse
+from ..models import ModelsBulkGetPlayerRecordsRequest
 from ..models import ModelsBulkUserKeyRequest
 from ..models import ModelsListPlayerRecordKeysResponse
 from ..models import ModelsPlayerRecordRequest
@@ -43,6 +45,7 @@ from ..operations.admin_player_record import AdminDeletePlayerRecordHandlerV1
 from ..operations.admin_player_record import AdminGetPlayerPublicRecordHandlerV1
 from ..operations.admin_player_record import AdminGetPlayerRecordHandlerV1
 from ..operations.admin_player_record import AdminGetPlayerRecordSizeHandlerV1
+from ..operations.admin_player_record import AdminGetPlayerRecordsHandlerV1
 from ..operations.admin_player_record import AdminPostPlayerPublicRecordHandlerV1
 from ..operations.admin_player_record import AdminPostPlayerRecordHandlerV1
 from ..operations.admin_player_record import AdminPutPlayerPublicRecordHandlerV1
@@ -726,6 +729,148 @@ async def admin_get_player_record_size_handler_v1_async(
             return None, error
     request = AdminGetPlayerRecordSizeHandlerV1.create(
         key=key,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetPlayerRecordsHandlerV1)
+def admin_get_player_records_handler_v1(
+    body: ModelsBulkGetPlayerRecordsRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get player records by multiple record keys (adminGetPlayerRecordsHandlerV1)
+
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]`
+    --------------------|-----------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+    Retrieve player record key and payload in bulk under given namespace.
+    Maximum bulk key limit per request 20.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
+
+        method: POST
+
+        tags: ["AdminPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkGetPlayerRecordsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkGetAdminPlayerRecordResponse (OK)
+
+        400: Bad Request - ModelsResponseError (18125: invalid request body | 18126: request record keys list exceed max size [%d])
+
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18186: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18124: unable to get record | 18006: unable to decode record)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetPlayerRecordsHandlerV1.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetPlayerRecordsHandlerV1)
+async def admin_get_player_records_handler_v1_async(
+    body: ModelsBulkGetPlayerRecordsRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get player records by multiple record keys (adminGetPlayerRecordsHandlerV1)
+
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]`
+    --------------------|-----------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+    Retrieve player record key and payload in bulk under given namespace.
+    Maximum bulk key limit per request 20.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
+
+        method: POST
+
+        tags: ["AdminPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkGetPlayerRecordsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkGetAdminPlayerRecordResponse (OK)
+
+        400: Bad Request - ModelsResponseError (18125: invalid request body | 18126: request record keys list exceed max size [%d])
+
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError (18186: record not found)
+
+        500: Internal Server Error - ModelsResponseError (18124: unable to get record | 18006: unable to decode record)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetPlayerRecordsHandlerV1.create(
+        body=body,
         user_id=user_id,
         namespace=namespace,
     )

@@ -3727,7 +3727,7 @@ def admin_get_list_justice_platform_accounts(
     Responses:
         200: OK - List[ModelGetUserMapping] (OK)
 
-        400: Bad Request - RestErrorResponse
+        400: Bad Request - RestErrorResponse (20025: not a publisher user | 20002: validation error)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -3784,7 +3784,7 @@ async def admin_get_list_justice_platform_accounts_async(
     Responses:
         200: OK - List[ModelGetUserMapping] (OK)
 
-        400: Bad Request - RestErrorResponse
+        400: Bad Request - RestErrorResponse (20025: not a publisher user | 20002: validation error)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -5883,7 +5883,7 @@ def admin_link_platform_account(
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        409: Conflict - RestErrorResponse
+        409: Conflict - RestErrorResponse (10163: platform is already linked with the user account | 10200: link to a different platform account is not allowed | 10173: platform is already linked with another user account)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -5958,7 +5958,7 @@ async def admin_link_platform_account_async(
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        409: Conflict - RestErrorResponse
+        409: Conflict - RestErrorResponse (10163: platform is already linked with the user account | 10200: link to a different platform account is not allowed | 10173: platform is already linked with another user account)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -7465,7 +7465,7 @@ def admin_save_user_role_v3(
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
-        422: Unprocessable Entity - RestErrorResponse
+        422: Unprocessable Entity - RestErrorResponse (422: request is unprocessable)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -7529,7 +7529,7 @@ async def admin_save_user_role_v3_async(
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
-        422: Unprocessable Entity - RestErrorResponse
+        422: Unprocessable Entity - RestErrorResponse (422: request is unprocessable)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -10020,7 +10020,7 @@ def admin_upgrade_headless_account_v3(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10154: country not found)
 
@@ -10117,7 +10117,7 @@ async def admin_upgrade_headless_account_v3_async(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10154: country not found)
 
@@ -10763,13 +10763,13 @@ def create_user(
     Responses:
         201: Created - ModelUserCreateResponse (Created)
 
-        400: Bad Request -
+        400: Bad Request - (1014001: unable to parse request body)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        409: Conflict -
+        409: Conflict - (1014002: user already exists)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -10864,13 +10864,13 @@ async def create_user_async(
     Responses:
         201: Created - ModelUserCreateResponse (Created)
 
-        400: Bad Request -
+        400: Bad Request - (1014001: unable to parse request body)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        409: Conflict -
+        409: Conflict - (1014002: user already exists)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -10929,7 +10929,7 @@ def create_user_from_invitation_v3(
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
@@ -10991,7 +10991,7 @@ async def create_user_from_invitation_v3_async(
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
@@ -16308,7 +16308,7 @@ def public_create_user_v3(
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
@@ -16386,7 +16386,7 @@ async def public_create_user_v3_async(
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
@@ -19073,7 +19073,7 @@ def public_list_justice_platform_accounts_v3(
     Responses:
         200: OK - List[ModelGetUserMappingV3] (OK)
 
-        400: Bad Request - RestErrorResponse
+        400: Bad Request - RestErrorResponse (20025: not a publisher user | 20002: validation error)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -19128,7 +19128,7 @@ async def public_list_justice_platform_accounts_v3_async(
     Responses:
         200: OK - List[ModelGetUserMappingV3] (OK)
 
-        400: Bad Request - RestErrorResponse
+        400: Bad Request - RestErrorResponse (20025: not a publisher user | 20002: validation error)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -19466,7 +19466,7 @@ def public_partial_update_user_v3(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         409: Conflict - RestErrorResponse (10133: email already used)
 
@@ -19558,7 +19558,7 @@ async def public_partial_update_user_v3_async(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         409: Conflict - RestErrorResponse (10133: email already used)
 
@@ -21754,7 +21754,7 @@ def public_upgrade_headless_account_v3(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
@@ -21844,7 +21844,7 @@ async def public_upgrade_headless_account_v3_async(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
@@ -22701,11 +22701,11 @@ def reset_password(
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request -
+        400: Bad Request - (1014016: unable to parse request body | 1015073: new password same as old password)
 
         403: Forbidden -
 
-        404: Not Found -
+        404: Not Found - (1014017: user not found)
 
         500: Internal Server Error - (20000: internal server error)
     """
@@ -22768,11 +22768,11 @@ async def reset_password_async(
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request -
+        400: Bad Request - (1014016: unable to parse request body | 1015073: new password same as old password)
 
         403: Forbidden -
 
-        404: Not Found -
+        404: Not Found - (1014017: user not found)
 
         500: Internal Server Error - (20000: internal server error)
     """
@@ -24337,6 +24337,8 @@ def update_user_v3(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
+        403: Forbidden - RestErrorResponse (10213: country is blocked)
+
         409: Conflict - RestErrorResponse (10133: email already used)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
@@ -24437,6 +24439,8 @@ async def update_user_v3_async(
         400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (10213: country is blocked)
 
         409: Conflict - RestErrorResponse (10133: email already used)
 

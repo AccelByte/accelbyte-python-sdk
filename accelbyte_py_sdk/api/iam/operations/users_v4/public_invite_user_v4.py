@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -68,7 +68,7 @@ class PublicInviteUserV4(Operation):
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        409: Conflict - RestErrorResponse
+        409: Conflict - RestErrorResponse (10133: email already used | 10207: user namespace is not available)
 
         422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
 
@@ -173,7 +173,7 @@ class PublicInviteUserV4(Operation):
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        409: Conflict - RestErrorResponse
+        409: Conflict - RestErrorResponse (10133: email already used | 10207: user namespace is not available)
 
         422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
 

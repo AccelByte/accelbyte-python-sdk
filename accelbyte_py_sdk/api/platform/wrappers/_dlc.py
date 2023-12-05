@@ -1424,6 +1424,8 @@ def update_dlc_item_config(
     Responses:
         200: OK - DLCItemConfigInfo (successful operation)
 
+        400: Bad Request - ErrorEntity (394721: Invalid platform DLC config namespace [{namespace}]: [{message}])
+
         409: Conflict - ErrorEntity (39471: Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] )
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
@@ -1475,6 +1477,8 @@ async def update_dlc_item_config_async(
 
     Responses:
         200: OK - DLCItemConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (394721: Invalid platform DLC config namespace [{namespace}]: [{message}])
 
         409: Conflict - ErrorEntity (39471: Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] )
 

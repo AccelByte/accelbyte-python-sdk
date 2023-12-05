@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.17.0"
+__version__ = "2.18.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,6 +21,7 @@ from .models_admin_update_content_request import ModelsAdminUpdateContentRequest
 from .models_admin_update_content_request_v2 import ModelsAdminUpdateContentRequestV2
 from .models_channel_request import ModelsChannelRequest
 from .models_channel_response import ModelsChannelResponse
+from .models_config_response import ModelsConfigResponse
 from .models_content_download_response import ModelsContentDownloadResponse
 from .models_content_download_response_v2 import ModelsContentDownloadResponseV2
 from .models_content_downloader_response import ModelsContentDownloaderResponse
@@ -78,6 +79,7 @@ from .models_paginated_creator_overview_response import (
     ModelsPaginatedCreatorOverviewResponse,
 )
 from .models_paginated_get_channel_response import ModelsPaginatedGetChannelResponse
+from .models_paginated_get_configs_response import ModelsPaginatedGetConfigsResponse
 from .models_paginated_get_tag_response import ModelsPaginatedGetTagResponse
 from .models_paginated_get_type_response import ModelsPaginatedGetTypeResponse
 from .models_paginated_group_response import ModelsPaginatedGroupResponse
@@ -90,9 +92,13 @@ from .models_public_create_content_request_s3 import ModelsPublicCreateContentRe
 from .models_public_get_content_bulk_request import ModelsPublicGetContentBulkRequest
 from .models_screenshot_response import ModelsScreenshotResponse
 from .models_update_channel_request import ModelsUpdateChannelRequest
+from .models_update_config_request import ModelsUpdateConfigRequest
 from .models_update_content_request import ModelsUpdateContentRequest
 from .models_update_content_request_v2 import ModelsUpdateContentRequestV2
 from .models_update_content_response_v2 import ModelsUpdateContentResponseV2
+from .models_update_content_share_code_request import (
+    ModelsUpdateContentShareCodeRequest,
+)
 from .models_update_file_location_request import ModelsUpdateFileLocationRequest
 from .models_update_screenshot import ModelsUpdateScreenshot
 from .models_update_screenshot_request import ModelsUpdateScreenshotRequest

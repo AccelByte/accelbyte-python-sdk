@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,7 +64,7 @@ class GenerateTokenByNewHeadlessAccountV3(Operation):
 
         400: Bad Request - RestErrorResponse (Invalid platform linking token or clientID not match.)
 
-        401: Unauthorized - RestErrorResponse (Invalid Basic header.)
+        401: Unauthorized - RestErrorResponse (10213: country is blocked)
 
         404: Not Found - RestErrorResponse (Platform linking token not found.)
     """
@@ -190,7 +190,7 @@ class GenerateTokenByNewHeadlessAccountV3(Operation):
 
         400: Bad Request - RestErrorResponse (Invalid platform linking token or clientID not match.)
 
-        401: Unauthorized - RestErrorResponse (Invalid Basic header.)
+        401: Unauthorized - RestErrorResponse (10213: country is blocked)
 
         404: Not Found - RestErrorResponse (Platform linking token not found.)
 

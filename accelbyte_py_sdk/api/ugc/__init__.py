@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.17.0"
+__version__ = "2.18.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -29,6 +29,12 @@ from .wrappers import single_admin_get_channel
 from .wrappers import single_admin_get_channel_async
 from .wrappers import single_admin_update_channel
 from .wrappers import single_admin_update_channel_async
+
+# admin_config
+from .wrappers import admin_get_configs
+from .wrappers import admin_get_configs_async
+from .wrappers import admin_update_config
+from .wrappers import admin_update_config_async
 
 # admin_content
 from .wrappers import admin_delete_content
@@ -227,6 +233,8 @@ from .wrappers import public_download_content_preview
 from .wrappers import public_download_content_preview_async
 from .wrappers import public_get_content_bulk
 from .wrappers import public_get_content_bulk_async
+from .wrappers import public_get_content_bulk_by_share_codes
+from .wrappers import public_get_content_bulk_by_share_codes_async
 from .wrappers import public_get_user_content
 from .wrappers import public_get_user_content_async
 from .wrappers import public_search_content
@@ -239,6 +247,8 @@ from .wrappers import update_content_direct
 from .wrappers import update_content_direct_async
 from .wrappers import update_content_s3
 from .wrappers import update_content_s3_async
+from .wrappers import update_content_share_code
+from .wrappers import update_content_share_code_async
 from .wrappers import update_screenshots
 from .wrappers import update_screenshots_async
 from .wrappers import upload_content_screenshot
@@ -257,6 +267,8 @@ from .wrappers import public_delete_content_v2
 from .wrappers import public_delete_content_v2_async
 from .wrappers import public_generate_content_upload_urlv2
 from .wrappers import public_generate_content_upload_urlv2_async
+from .wrappers import public_get_content_bulk_by_share_codes_v2
+from .wrappers import public_get_content_bulk_by_share_codes_v2_async
 from .wrappers import public_get_content_by_channel_idv2
 from .wrappers import public_get_content_by_channel_idv2_async
 from .wrappers import public_get_content_by_idv2
@@ -273,6 +285,8 @@ from .wrappers import public_update_content_file_location
 from .wrappers import public_update_content_file_location_async
 from .wrappers import public_update_content_v2
 from .wrappers import public_update_content_v2_async
+from .wrappers import update_content_share_code_v2
+from .wrappers import update_content_share_code_v2_async
 from .wrappers import update_screenshots_v2
 from .wrappers import update_screenshots_v2_async
 from .wrappers import upload_content_screenshot_v2

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.11.0"
+__version__ = "3.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -73,6 +73,8 @@ from .wrappers import get_game_session
 from .wrappers import get_game_session_async
 from .wrappers import get_game_session_by_pod_name
 from .wrappers import get_game_session_by_pod_name_async
+from .wrappers import get_session_server_secret
+from .wrappers import get_session_server_secret_async
 from .wrappers import join_game_session
 from .wrappers import join_game_session_async
 from .wrappers import leave_game_session

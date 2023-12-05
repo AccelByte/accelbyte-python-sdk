@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Seasonpass Service (1.19.3)
+# AGS Seasonpass Service (1.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

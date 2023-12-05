@@ -36,6 +36,7 @@ from ..models import ApimodelsPartyQueryResponse
 from ..models import ApimodelsPartySessionResponse
 from ..models import ApimodelsPromoteLeaderRequest
 from ..models import ApimodelsSessionInviteRequest
+from ..models import ApimodelsSessionInviteResponse
 from ..models import ApimodelsUpdatePartyRequest
 from ..models import ResponseError
 
@@ -621,7 +622,7 @@ def public_party_invite(
         party_id: (partyId) REQUIRED str in path
 
     Responses:
-        201: Created - (Created)
+        201: Created - ApimodelsSessionInviteResponse (Created)
 
         204: No Content - (No Content)
 
@@ -682,7 +683,7 @@ async def public_party_invite_async(
         party_id: (partyId) REQUIRED str in path
 
     Responses:
-        201: Created - (Created)
+        201: Created - ApimodelsSessionInviteResponse (Created)
 
         204: No Content - (No Content)
 

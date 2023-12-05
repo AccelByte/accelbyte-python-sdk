@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.40.0)
+# AccelByte Gaming Services Platform Service Index (4.41.0)
 
 
 ## Operations
@@ -706,6 +706,7 @@
 | FullAppInfo | [FullAppInfo](../../accelbyte_py_sdk/api/platform/models/full_app_info.py) |
 | FullCategoryInfo | [FullCategoryInfo](../../accelbyte_py_sdk/api/platform/models/full_category_info.py) |
 | FullItemInfo | [FullItemInfo](../../accelbyte_py_sdk/api/platform/models/full_item_info.py) |
+| FullItemPagingResult | [FullItemPagingResult](../../accelbyte_py_sdk/api/platform/models/full_item_paging_result.py) |
 | FullItemPagingSlicedResult | [FullItemPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/full_item_paging_sliced_result.py) |
 | FullSectionInfo | [FullSectionInfo](../../accelbyte_py_sdk/api/platform/models/full_section_info.py) |
 | FullViewInfo | [FullViewInfo](../../accelbyte_py_sdk/api/platform/models/full_view_info.py) |
@@ -896,7 +897,7 @@
 | ServicePluginConfigUpdate | [ServicePluginConfigUpdate](../../accelbyte_py_sdk/api/platform/models/service_plugin_config_update.py) |
 | Slide | [Slide](../../accelbyte_py_sdk/api/platform/models/slide.py) |
 | StackableEntitlementInfo | [StackableEntitlementInfo](../../accelbyte_py_sdk/api/platform/models/stackable_entitlement_info.py) |
-| steam achievement | [SteamAchievement](../../accelbyte_py_sdk/api/platform/models/steam_achievement.py) |
+| SteamAchievement | [SteamAchievement](../../accelbyte_py_sdk/api/platform/models/steam_achievement.py) |
 | SteamAchievementUpdateRequest | [SteamAchievementUpdateRequest](../../accelbyte_py_sdk/api/platform/models/steam_achievement_update_request.py) |
 | SteamDLCSyncRequest | [SteamDLCSyncRequest](../../accelbyte_py_sdk/api/platform/models/steam_dlc_sync_request.py) |
 | SteamIAPConfig | [SteamIAPConfig](../../accelbyte_py_sdk/api/platform/models/steam_iap_config.py) |
@@ -927,7 +928,7 @@
 | TicketSaleDecrementRequest | [TicketSaleDecrementRequest](../../accelbyte_py_sdk/api/platform/models/ticket_sale_decrement_request.py) |
 | TicketSaleIncrementRequest | [TicketSaleIncrementRequest](../../accelbyte_py_sdk/api/platform/models/ticket_sale_increment_request.py) |
 | TicketSaleIncrementResult | [TicketSaleIncrementResult](../../accelbyte_py_sdk/api/platform/models/ticket_sale_increment_result.py) |
-| Time-limited balance | [TimeLimitedBalance](../../accelbyte_py_sdk/api/platform/models/time_limited_balance.py) |
+| TimeLimitedBalance | [TimeLimitedBalance](../../accelbyte_py_sdk/api/platform/models/time_limited_balance.py) |
 | TimedOwnership | [TimedOwnership](../../accelbyte_py_sdk/api/platform/models/timed_ownership.py) |
 | TLSConfig | [TLSConfig](../../accelbyte_py_sdk/api/platform/models/tls_config.py) |
 | TradeChainActionHistoryInfo | [TradeChainActionHistoryInfo](../../accelbyte_py_sdk/api/platform/models/trade_chain_action_history_info.py) |
@@ -960,7 +961,7 @@
 | XblReconcileResult | [XblReconcileResult](../../accelbyte_py_sdk/api/platform/models/xbl_reconcile_result.py) |
 | XblUserAchievements | [XblUserAchievements](../../accelbyte_py_sdk/api/platform/models/xbl_user_achievements.py) |
 | XblUserSessionRequest | [XblUserSessionRequest](../../accelbyte_py_sdk/api/platform/models/xbl_user_session_request.py) |
-| xbox achievement | [XboxAchievement](../../accelbyte_py_sdk/api/platform/models/xbox_achievement.py) |
+| XboxAchievement | [XboxAchievement](../../accelbyte_py_sdk/api/platform/models/xbox_achievement.py) |
 | XsollaConfig | [XsollaConfig](../../accelbyte_py_sdk/api/platform/models/xsolla_config.py) |
 | XsollaPaywallConfig | [XsollaPaywallConfig](../../accelbyte_py_sdk/api/platform/models/xsolla_paywall_config.py) |
 | XsollaPaywallConfigRequest | [XsollaPaywallConfigRequest](../../accelbyte_py_sdk/api/platform/models/xsolla_paywall_config_request.py) |

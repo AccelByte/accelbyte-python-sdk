@@ -679,6 +679,8 @@ def admin_get_content_bulk_by_share_codes(
     Responses:
         200: OK - List[ModelsContentDownloadResponse] (OK)
 
+        400: Bad Request - ResponseError (Bad Request)
+
         401: Unauthorized - ResponseError (Unauthorized)
 
         403: Forbidden - ResponseError (Forbidden)
@@ -730,6 +732,8 @@ async def admin_get_content_bulk_by_share_codes_async(
 
     Responses:
         200: OK - List[ModelsContentDownloadResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
 

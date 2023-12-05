@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -78,10 +78,27 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
       * (psn) ps5
 
 
-      * xbox live
+      * epicgames
 
 
-      * steam
+      * twitch
+
+
+      * awscognito
+
+
+      *
+
+      * eaorigin
+
+
+      * snapchat
+
+
+      * twitch
+
+
+      * live
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]

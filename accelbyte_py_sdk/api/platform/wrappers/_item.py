@@ -38,6 +38,7 @@ from ..models import ErrorEntity
 from ..models import EstimatedPriceInfo
 from ..models import FullAppInfo
 from ..models import FullItemInfo
+from ..models import FullItemPagingResult
 from ..models import FullItemPagingSlicedResult
 from ..models import InGameItemSync
 from ..models import ItemAcquireRequest
@@ -5166,6 +5167,7 @@ def query_items_1(
     store_id: Optional[str] = None,
     tags: Optional[str] = None,
     target_namespace: Optional[str] = None,
+    with_total: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5235,8 +5237,10 @@ def query_items_1(
 
         target_namespace: (targetNamespace) OPTIONAL str in query
 
+        with_total: (withTotal) OPTIONAL bool in query
+
     Responses:
-        200: OK - FullItemPagingSlicedResult (successful operation)
+        200: OK - FullItemPagingResult (successful operation)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
 
@@ -5264,6 +5268,7 @@ def query_items_1(
         store_id=store_id,
         tags=tags,
         target_namespace=target_namespace,
+        with_total=with_total,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -5288,6 +5293,7 @@ async def query_items_1_async(
     store_id: Optional[str] = None,
     tags: Optional[str] = None,
     target_namespace: Optional[str] = None,
+    with_total: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5357,8 +5363,10 @@ async def query_items_1_async(
 
         target_namespace: (targetNamespace) OPTIONAL str in query
 
+        with_total: (withTotal) OPTIONAL bool in query
+
     Responses:
-        200: OK - FullItemPagingSlicedResult (successful operation)
+        200: OK - FullItemPagingResult (successful operation)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
 
@@ -5386,6 +5394,7 @@ async def query_items_1_async(
         store_id=store_id,
         tags=tags,
         target_namespace=target_namespace,
+        with_total=with_total,
         namespace=namespace,
     )
     return await run_request_async(

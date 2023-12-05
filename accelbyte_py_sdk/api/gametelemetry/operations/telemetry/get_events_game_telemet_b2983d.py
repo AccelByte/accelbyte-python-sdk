@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Analytics Game Telemetry (1.20.0)
+# Analytics Game Telemetry (1.21.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,6 +34,9 @@ from ...models import HTTPValidationError
 
 class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
     """Get Events (get_events_game_telemetry_v1_admin_namespaces__namespace__events_get)
+
+    This endpoint requires valid JWT token and telemetry permission
+    This endpoint retrieves event list
 
     Properties:
         url: /game-telemetry/v1/admin/namespaces/{namespace}/events

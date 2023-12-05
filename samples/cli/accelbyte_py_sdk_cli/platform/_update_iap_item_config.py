@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.40.0)
+# AGS Platform Service (4.41.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     update_iap_item_config as update_iap_item_config_internal,
 )
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import IAPItemConfigInfo
 from accelbyte_py_sdk.api.platform.models import IAPItemConfigUpdate
 from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity

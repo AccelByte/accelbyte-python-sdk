@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.17.0)
+# AccelByte Gaming Services Ugc Service (2.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -62,6 +62,8 @@ class AdminGetContentBulkByShareCodesV2(Operation):
 
     Responses:
         200: OK - List[ModelsContentDownloadResponseV2] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -184,6 +186,8 @@ class AdminGetContentBulkByShareCodesV2(Operation):
 
         200: OK - List[ModelsContentDownloadResponseV2] (OK)
 
+        400: Bad Request - ResponseError (Bad Request)
+
         401: Unauthorized - ResponseError (Unauthorized)
 
         403: Forbidden - ResponseError (Forbidden)
@@ -207,6 +211,8 @@ class AdminGetContentBulkByShareCodesV2(Operation):
             return [
                 ModelsContentDownloadResponseV2.create_from_dict(i) for i in content
             ], None
+        if code == 400:
+            return None, ResponseError.create_from_dict(content)
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 403:

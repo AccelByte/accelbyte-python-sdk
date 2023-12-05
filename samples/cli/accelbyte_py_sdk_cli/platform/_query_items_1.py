@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.40.0)
+# AGS Platform Service (4.41.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,7 +32,7 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_items_1 as query_items_1_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
-from accelbyte_py_sdk.api.platform.models import FullItemPagingSlicedResult
+from accelbyte_py_sdk.api.platform.models import FullItemPagingResult
 from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
@@ -54,6 +54,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 @click.option("--store_id", "store_id", type=str)
 @click.option("--tags", "tags", type=str)
 @click.option("--target_namespace", "target_namespace", type=str)
+@click.option("--with_total", "with_total", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -76,6 +77,7 @@ def query_items_1(
     store_id: Optional[str] = None,
     tags: Optional[str] = None,
     target_namespace: Optional[str] = None,
+    with_total: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -113,6 +115,7 @@ def query_items_1(
         store_id=store_id,
         tags=tags,
         target_namespace=target_namespace,
+        with_total=with_total,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -83,7 +83,7 @@ class AdminLinkPlatformAccount(Operation):
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        409: Conflict - RestErrorResponse
+        409: Conflict - RestErrorResponse (10163: platform is already linked with the user account | 10200: link to a different platform account is not allowed | 10173: platform is already linked with another user account)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -232,7 +232,7 @@ class AdminLinkPlatformAccount(Operation):
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        409: Conflict - RestErrorResponse
+        409: Conflict - RestErrorResponse (10163: platform is already linked with the user account | 10200: link to a different platform account is not allowed | 10173: platform is already linked with another user account)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

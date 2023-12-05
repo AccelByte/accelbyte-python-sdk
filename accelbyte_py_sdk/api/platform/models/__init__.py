@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.40.0"
+__version__ = "4.41.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -321,6 +321,7 @@ from .full_item_info import (
     SeasonTypeEnum as FullItemInfoSeasonTypeEnum,
     StatusEnum as FullItemInfoStatusEnum,
 )
+from .full_item_paging_result import FullItemPagingResult
 from .full_item_paging_sliced_result import FullItemPagingSlicedResult
 from .full_section_info import FullSectionInfo
 from .full_section_info import RotationTypeEnum as FullSectionInfoRotationTypeEnum

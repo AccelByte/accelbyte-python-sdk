@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.11.0)
+# AccelByte Gaming Services Session Service (3.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -58,6 +58,8 @@ class ApimodelsPublicConfiguration(Model):
 
         type_: (type) REQUIRED str
 
+        attributes: (attributes) OPTIONAL Dict[str, Any]
+
         disable_code_generation: (disableCodeGeneration) OPTIONAL bool
 
         ds_manual_set_ready: (dsManualSetReady) OPTIONAL bool
@@ -95,6 +97,7 @@ class ApimodelsPublicConfiguration(Model):
     persistent: bool  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
+    attributes: Dict[str, Any]  # OPTIONAL
     disable_code_generation: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
@@ -157,6 +160,10 @@ class ApimodelsPublicConfiguration(Model):
 
     def with_type(self, value: str) -> ApimodelsPublicConfiguration:
         self.type_ = value
+        return self
+
+    def with_attributes(self, value: Dict[str, Any]) -> ApimodelsPublicConfiguration:
+        self.attributes = value
         return self
 
     def with_disable_code_generation(self, value: bool) -> ApimodelsPublicConfiguration:
@@ -265,6 +272,10 @@ class ApimodelsPublicConfiguration(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "attributes"):
+            result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
+        elif include_empty:
+            result["attributes"] = {}
         if hasattr(self, "disable_code_generation"):
             result["disableCodeGeneration"] = bool(self.disable_code_generation)
         elif include_empty:
@@ -332,6 +343,7 @@ class ApimodelsPublicConfiguration(Model):
         persistent: bool,
         text_chat: bool,
         type_: str,
+        attributes: Optional[Dict[str, Any]] = None,
         disable_code_generation: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
         ds_source: Optional[str] = None,
@@ -358,6 +370,8 @@ class ApimodelsPublicConfiguration(Model):
         instance.persistent = persistent
         instance.text_chat = text_chat
         instance.type_ = type_
+        if attributes is not None:
+            instance.attributes = attributes
         if disable_code_generation is not None:
             instance.disable_code_generation = disable_code_generation
         if ds_manual_set_ready is not None:
@@ -437,6 +451,12 @@ class ApimodelsPublicConfiguration(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "attributes" in dict_ and dict_["attributes"] is not None:
+            instance.attributes = {
+                str(k0): v0 for k0, v0 in dict_["attributes"].items()
+            }
+        elif include_empty:
+            instance.attributes = {}
         if (
             "disableCodeGeneration" in dict_
             and dict_["disableCodeGeneration"] is not None
@@ -553,6 +573,7 @@ class ApimodelsPublicConfiguration(Model):
             "persistent": "persistent",
             "textChat": "text_chat",
             "type": "type_",
+            "attributes": "attributes",
             "disableCodeGeneration": "disable_code_generation",
             "dsManualSetReady": "ds_manual_set_ready",
             "dsSource": "ds_source",
@@ -581,6 +602,7 @@ class ApimodelsPublicConfiguration(Model):
             "persistent": True,
             "textChat": True,
             "type": True,
+            "attributes": False,
             "disableCodeGeneration": False,
             "dsManualSetReady": False,
             "dsSource": False,

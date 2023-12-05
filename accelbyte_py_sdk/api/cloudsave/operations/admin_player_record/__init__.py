@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.12.6"
+__version__ = "3.12.7"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,7 @@ from .admin_delete_player_rec_168241 import AdminDeletePlayerRecordHandlerV1
 from .admin_get_player_public_f015b6 import AdminGetPlayerPublicRecordHandlerV1
 from .admin_get_player_record_b37faa import AdminGetPlayerRecordHandlerV1
 from .admin_get_player_record_d622c9 import AdminGetPlayerRecordSizeHandlerV1
+from .admin_get_player_record_f4a5eb import AdminGetPlayerRecordsHandlerV1
 from .admin_post_player_publi_98e39e import AdminPostPlayerPublicRecordHandlerV1
 from .admin_post_player_recor_6a96c8 import AdminPostPlayerRecordHandlerV1
 from .admin_put_player_public_819faf import AdminPutPlayerPublicRecordHandlerV1

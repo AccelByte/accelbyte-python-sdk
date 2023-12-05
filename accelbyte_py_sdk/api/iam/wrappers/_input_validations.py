@@ -169,7 +169,7 @@ def admin_reset_input_validations(
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse
+        404: Not Found - RestErrorResponse (10188: input validation field not found)
     """
     request = AdminResetInputValidations.create(
         field=field,
@@ -212,7 +212,7 @@ async def admin_reset_input_validations_async(
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse
+        404: Not Found - RestErrorResponse (10188: input validation field not found)
     """
     request = AdminResetInputValidations.create(
         field=field,
@@ -353,7 +353,7 @@ def admin_update_input_validations(
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse
+        404: Not Found - RestErrorResponse (10188: input validation field not found)
     """
     request = AdminUpdateInputValidations.create(
         body=body,
@@ -492,7 +492,7 @@ async def admin_update_input_validations_async(
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse
+        404: Not Found - RestErrorResponse (10188: input validation field not found)
     """
     request = AdminUpdateInputValidations.create(
         body=body,

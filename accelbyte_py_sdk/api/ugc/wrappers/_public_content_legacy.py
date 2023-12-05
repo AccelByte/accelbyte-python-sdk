@@ -35,11 +35,13 @@ from ..models import ModelsCreateContentRequest
 from ..models import ModelsCreateContentResponse
 from ..models import ModelsCreateScreenshotRequest
 from ..models import ModelsCreateScreenshotResponse
+from ..models import ModelsGetContentBulkByShareCodesRequest
 from ..models import ModelsGetContentPreviewResponse
 from ..models import ModelsPaginatedContentDownloadResponse
 from ..models import ModelsPublicCreateContentRequestS3
 from ..models import ModelsPublicGetContentBulkRequest
 from ..models import ModelsUpdateContentRequest
+from ..models import ModelsUpdateContentShareCodeRequest
 from ..models import ModelsUpdateScreenshotRequest
 from ..models import ModelsUpdateScreenshotResponse
 from ..models import ResponseError
@@ -53,12 +55,14 @@ from ..operations.public_content_legacy import PublicDownloadContentByContentID
 from ..operations.public_content_legacy import PublicDownloadContentByShareCode
 from ..operations.public_content_legacy import PublicDownloadContentPreview
 from ..operations.public_content_legacy import PublicGetContentBulk
+from ..operations.public_content_legacy import PublicGetContentBulkByShareCodes
 from ..operations.public_content_legacy import PublicGetUserContent
 from ..operations.public_content_legacy import PublicSearchContent
 from ..operations.public_content_legacy import PublicUpdateContentByShareCode
 from ..operations.public_content_legacy import SearchChannelSpecificContent
 from ..operations.public_content_legacy import UpdateContentDirect
 from ..operations.public_content_legacy import UpdateContentS3
+from ..operations.public_content_legacy import UpdateContentShareCode
 from ..operations.public_content_legacy import UpdateScreenshots
 from ..operations.public_content_legacy import UploadContentScreenshot
 
@@ -1087,6 +1091,110 @@ async def public_get_content_bulk_async(
     )
 
 
+@same_doc_as(PublicGetContentBulkByShareCodes)
+def public_get_content_bulk_by_share_codes(
+    body: ModelsGetContentBulkByShareCodesRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get content by content sharecodes (PublicGetContentBulkByShareCodes)
+
+    Require valid user token.
+    Maximum sharecodes per request 100
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/sharecodes/bulk
+
+        method: POST
+
+        tags: ["Public Content (Legacy)"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGetContentBulkByShareCodesRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsContentDownloadResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetContentBulkByShareCodes.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetContentBulkByShareCodes)
+async def public_get_content_bulk_by_share_codes_async(
+    body: ModelsGetContentBulkByShareCodesRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get content by content sharecodes (PublicGetContentBulkByShareCodes)
+
+    Require valid user token.
+    Maximum sharecodes per request 100
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/contents/sharecodes/bulk
+
+        method: POST
+
+        tags: ["Public Content (Legacy)"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsGetContentBulkByShareCodesRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsContentDownloadResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetContentBulkByShareCodes.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGetUserContent)
 def public_get_user_content(
     user_id: str,
@@ -2104,6 +2212,158 @@ async def update_content_s3_async(
         if error:
             return None, error
     request = UpdateContentS3.create(
+        body=body,
+        channel_id=channel_id,
+        content_id=content_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdateContentShareCode)
+def update_content_share_code(
+    body: ModelsUpdateContentShareCodeRequest,
+    channel_id: str,
+    content_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update content sharecode (UpdateContentShareCode)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE].
+
+    This endpoint is used to modify the shareCode of a content. However, this operation is restricted by default and requires the above permission to be granted to the User role.
+
+    `shareCode` format should follows:
+    Max length: 7
+    Available characters: abcdefhkpqrstuxyz
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/sharecode
+
+        method: PATCH
+
+        tags: ["Public Content (Legacy)"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateContentShareCodeRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateContentShareCode.create(
+        body=body,
+        channel_id=channel_id,
+        content_id=content_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateContentShareCode)
+async def update_content_share_code_async(
+    body: ModelsUpdateContentShareCodeRequest,
+    channel_id: str,
+    content_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update content sharecode (UpdateContentShareCode)
+
+    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE].
+
+    This endpoint is used to modify the shareCode of a content. However, this operation is restricted by default and requires the above permission to be granted to the User role.
+
+    `shareCode` format should follows:
+    Max length: 7
+    Available characters: abcdefhkpqrstuxyz
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE]
+
+    Properties:
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/sharecode
+
+        method: PATCH
+
+        tags: ["Public Content (Legacy)"]
+
+        consumes: ["application/json", "application/octet-stream"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUpdateContentShareCodeRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsCreateContentResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateContentShareCode.create(
         body=body,
         channel_id=channel_id,
         content_id=content_id,

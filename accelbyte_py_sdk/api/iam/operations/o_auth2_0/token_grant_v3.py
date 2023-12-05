@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,6 +39,9 @@ class GrantTypeEnum(StrEnum):
     CLIENT_CREDENTIALS = "client_credentials"
     PASSWORD = "password"
     REFRESH_TOKEN = "refresh_token"
+    URN_IETF_PARAMS_OAUTH_GRANT_TYPE_EXTEND_CLIENT_CREDENTIALS = (
+        "urn:ietf:params:oauth:grant-type:extend_client_credentials"
+    )
 
 
 class TokenGrantV3(Operation):
@@ -73,6 +76,18 @@ class TokenGrantV3(Operation):
       4. Grant Type == `client_credentials`:
 
         It generates a token by checking the client credentials provided through Authorization header.
+
+
+
+      5. Grant Type == `urn:ietf:params:oauth:grant-type:extend_client_credentials`:
+
+        It generates a token by checking the client credentials provided through Authorization header.
+       It only allow publisher namespace client.
+       In generated token:
+         1.There wil be no roles, namespace_roles & permission.
+         2.The scope will be fixed as 'extend'.
+         3.There will have a new field 'extend_namespace', the value is from token request body.
+
 
 
 
@@ -311,6 +326,8 @@ class TokenGrantV3(Operation):
 
         code_verifier: (code_verifier) OPTIONAL str in form_data
 
+        extend_namespace: (extendNamespace) OPTIONAL str in form_data
+
         extend_exp: (extend_exp) OPTIONAL bool in form_data
 
         password: (password) OPTIONAL str in form_data
@@ -350,6 +367,7 @@ class TokenGrantV3(Operation):
     client_id: str  # OPTIONAL in [form_data]
     code: str  # OPTIONAL in [form_data]
     code_verifier: str  # OPTIONAL in [form_data]
+    extend_namespace: str  # OPTIONAL in [form_data]
     extend_exp: bool  # OPTIONAL in [form_data]
     password: str  # OPTIONAL in [form_data]
     redirect_uri: str  # OPTIONAL in [form_data]
@@ -417,6 +435,8 @@ class TokenGrantV3(Operation):
             result["code"] = self.code
         if hasattr(self, "code_verifier"):
             result["code_verifier"] = self.code_verifier
+        if hasattr(self, "extend_namespace"):
+            result["extendNamespace"] = self.extend_namespace
         if hasattr(self, "extend_exp"):
             result["extend_exp"] = self.extend_exp
         if hasattr(self, "password"):
@@ -461,6 +481,10 @@ class TokenGrantV3(Operation):
 
     def with_code_verifier(self, value: str) -> TokenGrantV3:
         self.code_verifier = value
+        return self
+
+    def with_extend_namespace(self, value: str) -> TokenGrantV3:
+        self.extend_namespace = value
         return self
 
     def with_extend_exp(self, value: bool) -> TokenGrantV3:
@@ -517,6 +541,10 @@ class TokenGrantV3(Operation):
             result["code_verifier"] = str(self.code_verifier)
         elif include_empty:
             result["code_verifier"] = ""
+        if hasattr(self, "extend_namespace") and self.extend_namespace:
+            result["extendNamespace"] = str(self.extend_namespace)
+        elif include_empty:
+            result["extendNamespace"] = ""
         if hasattr(self, "extend_exp") and self.extend_exp:
             result["extend_exp"] = bool(self.extend_exp)
         elif include_empty:
@@ -611,6 +639,7 @@ class TokenGrantV3(Operation):
         client_id: Optional[str] = None,
         code: Optional[str] = None,
         code_verifier: Optional[str] = None,
+        extend_namespace: Optional[str] = None,
         extend_exp: Optional[bool] = None,
         password: Optional[str] = None,
         redirect_uri: Optional[str] = None,
@@ -632,6 +661,8 @@ class TokenGrantV3(Operation):
             instance.code = code
         if code_verifier is not None:
             instance.code_verifier = code_verifier
+        if extend_namespace is not None:
+            instance.extend_namespace = extend_namespace
         if extend_exp is not None:
             instance.extend_exp = extend_exp
         if password is not None:
@@ -671,6 +702,10 @@ class TokenGrantV3(Operation):
             instance.code_verifier = str(dict_["code_verifier"])
         elif include_empty:
             instance.code_verifier = ""
+        if "extendNamespace" in dict_ and dict_["extendNamespace"] is not None:
+            instance.extend_namespace = str(dict_["extendNamespace"])
+        elif include_empty:
+            instance.extend_namespace = ""
         if "extend_exp" in dict_ and dict_["extend_exp"] is not None:
             instance.extend_exp = bool(dict_["extend_exp"])
         elif include_empty:
@@ -706,6 +741,7 @@ class TokenGrantV3(Operation):
             "client_id": "client_id",
             "code": "code",
             "code_verifier": "code_verifier",
+            "extendNamespace": "extend_namespace",
             "extend_exp": "extend_exp",
             "password": "password",
             "redirect_uri": "redirect_uri",
@@ -723,6 +759,7 @@ class TokenGrantV3(Operation):
             "client_id": False,
             "code": False,
             "code_verifier": False,
+            "extendNamespace": False,
             "extend_exp": False,
             "password": False,
             "redirect_uri": False,
@@ -739,6 +776,7 @@ class TokenGrantV3(Operation):
                 "client_credentials",
                 "password",
                 "refresh_token",
+                "urn:ietf:params:oauth:grant-type:extend_client_credentials",
             ],  # in form_data
         }
 

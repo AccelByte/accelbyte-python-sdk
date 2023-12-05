@@ -32,6 +32,7 @@ from ....core import same_doc_as
 from ..models import ModelsAdminConcurrentRecordRequest
 from ..models import ModelsAdminGameConcurrentRecordRequest
 from ..models import ModelsAdminPlayerConcurrentRecordRequest
+from ..models import ModelsPlayerRecordConcurrentUpdateResponse
 from ..models import ModelsResponseError
 
 from ..operations.admin_concurrent_record import (
@@ -410,6 +411,7 @@ def admin_put_admin_player_record_concurrent_handler_v1(
     body: ModelsAdminPlayerConcurrentRecordRequest,
     key: str,
     user_id: str,
+    response_body: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -562,7 +564,11 @@ def admin_put_admin_player_record_concurrent_handler_v1(
 
         user_id: (userId) REQUIRED str in path
 
+        response_body: (responseBody) OPTIONAL bool in query
+
     Responses:
+        200: OK - ModelsPlayerRecordConcurrentUpdateResponse (Record saved)
+
         204: No Content - (Record saved)
 
         400: Bad Request - ModelsResponseError (20002: validation error | 18156: invalid request body | 18181: validation error)
@@ -583,6 +589,7 @@ def admin_put_admin_player_record_concurrent_handler_v1(
         body=body,
         key=key,
         user_id=user_id,
+        response_body=response_body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -593,6 +600,7 @@ async def admin_put_admin_player_record_concurrent_handler_v1_async(
     body: ModelsAdminPlayerConcurrentRecordRequest,
     key: str,
     user_id: str,
+    response_body: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -745,7 +753,11 @@ async def admin_put_admin_player_record_concurrent_handler_v1_async(
 
         user_id: (userId) REQUIRED str in path
 
+        response_body: (responseBody) OPTIONAL bool in query
+
     Responses:
+        200: OK - ModelsPlayerRecordConcurrentUpdateResponse (Record saved)
+
         204: No Content - (Record saved)
 
         400: Bad Request - ModelsResponseError (20002: validation error | 18156: invalid request body | 18181: validation error)
@@ -766,6 +778,7 @@ async def admin_put_admin_player_record_concurrent_handler_v1_async(
         body=body,
         key=key,
         user_id=user_id,
+        response_body=response_body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1150,6 +1163,7 @@ def admin_put_player_public_record_concurrent_handler_v1(
     body: ModelsAdminConcurrentRecordRequest,
     key: str,
     user_id: str,
+    response_body: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1309,7 +1323,11 @@ def admin_put_player_public_record_concurrent_handler_v1(
 
         user_id: (userId) REQUIRED str in path
 
+        response_body: (responseBody) OPTIONAL bool in query
+
     Responses:
+        200: OK - ModelsPlayerRecordConcurrentUpdateResponse (Record saved)
+
         204: No Content - (Record saved)
 
         400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18100: invalid request body | 18102: validation error | 20002: validation error)
@@ -1330,6 +1348,7 @@ def admin_put_player_public_record_concurrent_handler_v1(
         body=body,
         key=key,
         user_id=user_id,
+        response_body=response_body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1340,6 +1359,7 @@ async def admin_put_player_public_record_concurrent_handler_v1_async(
     body: ModelsAdminConcurrentRecordRequest,
     key: str,
     user_id: str,
+    response_body: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1499,7 +1519,11 @@ async def admin_put_player_public_record_concurrent_handler_v1_async(
 
         user_id: (userId) REQUIRED str in path
 
+        response_body: (responseBody) OPTIONAL bool in query
+
     Responses:
+        200: OK - ModelsPlayerRecordConcurrentUpdateResponse (Record saved)
+
         204: No Content - (Record saved)
 
         400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18100: invalid request body | 18102: validation error | 20002: validation error)
@@ -1520,6 +1544,7 @@ async def admin_put_player_public_record_concurrent_handler_v1_async(
         body=body,
         key=key,
         user_id=user_id,
+        response_body=response_body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1532,6 +1557,7 @@ def admin_put_player_record_concurrent_handler_v1(
     body: ModelsAdminConcurrentRecordRequest,
     key: str,
     user_id: str,
+    response_body: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1691,7 +1717,11 @@ def admin_put_player_record_concurrent_handler_v1(
 
         user_id: (userId) REQUIRED str in path
 
+        response_body: (responseBody) OPTIONAL bool in query
+
     Responses:
+        200: OK - ModelsPlayerRecordConcurrentUpdateResponse (Record saved)
+
         204: No Content - (Record saved)
 
         400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18060: invalid request body | 18064: validation error | 20002: validation error | 18065: unable to update record)
@@ -1712,6 +1742,7 @@ def admin_put_player_record_concurrent_handler_v1(
         body=body,
         key=key,
         user_id=user_id,
+        response_body=response_body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1722,6 +1753,7 @@ async def admin_put_player_record_concurrent_handler_v1_async(
     body: ModelsAdminConcurrentRecordRequest,
     key: str,
     user_id: str,
+    response_body: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1881,7 +1913,11 @@ async def admin_put_player_record_concurrent_handler_v1_async(
 
         user_id: (userId) REQUIRED str in path
 
+        response_body: (responseBody) OPTIONAL bool in query
+
     Responses:
+        200: OK - ModelsPlayerRecordConcurrentUpdateResponse (Record saved)
+
         204: No Content - (Record saved)
 
         400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s] | 18060: invalid request body | 18064: validation error | 20002: validation error | 18065: unable to update record)
@@ -1902,6 +1938,7 @@ async def admin_put_player_record_concurrent_handler_v1_async(
         body=body,
         key=key,
         user_id=user_id,
+        response_body=response_body,
         namespace=namespace,
     )
     return await run_request_async(

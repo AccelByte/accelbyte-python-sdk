@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.40.0)
+# justice-platform-service (4.41.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._get_fulfillment_script import get_fulfillment_script

@@ -1,3 +1,20 @@
+<a name="v0.55.0"></a>
+## [v0.55.0]
+### test
+- **integration:** re-enable some test cases
+- **core:** add using AGS starter flag
+- **auth:** add login user with no scope test
+- **dsmc:** skip tests if arrange step fails
+- **eventlog:** skip incomplete test
+- **iam:** skip tests if 2FA is disabled
+- **core:** fix httpbin test
+- **integration:** adjust tests to use client credentials for AGS starter environments
+### ci
+- **nightly:** add integration tests for AGS starter
+### fix
+- **integration:** update matchmaking test
+
+
 <a name="v0.54.0"></a>
 ## [v0.54.0]
 ### fix

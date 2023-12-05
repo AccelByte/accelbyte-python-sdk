@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -74,11 +74,11 @@ class ResetPassword(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request -
+        400: Bad Request - (1014016: unable to parse request body | 1015073: new password same as old password)
 
         403: Forbidden -
 
-        404: Not Found -
+        404: Not Found - (1014017: user not found)
 
         500: Internal Server Error - (20000: internal server error)
     """
@@ -192,11 +192,11 @@ class ResetPassword(Operation):
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request -
+        400: Bad Request - (1014016: unable to parse request body | 1015073: new password same as old password)
 
         403: Forbidden -
 
-        404: Not Found -
+        404: Not Found - (1014017: user not found)
 
         500: Internal Server Error - (20000: internal server error)
 

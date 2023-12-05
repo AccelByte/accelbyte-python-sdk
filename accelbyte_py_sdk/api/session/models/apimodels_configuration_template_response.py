@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.11.0)
+# AccelByte Gaming Services Session Service (3.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,6 +66,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         updated_at: (updatedAt) REQUIRED str
 
+        attributes: (attributes) OPTIONAL Dict[str, Any]
+
         auto_join: (autoJoin) OPTIONAL bool
 
         disable_code_generation: (disableCodeGeneration) OPTIONAL bool
@@ -109,6 +111,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
     updated_at: str  # REQUIRED
+    attributes: Dict[str, Any]  # OPTIONAL
     auto_join: bool  # OPTIONAL
     disable_code_generation: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
@@ -190,6 +193,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
     def with_updated_at(self, value: str) -> ApimodelsConfigurationTemplateResponse:
         self.updated_at = value
+        return self
+
+    def with_attributes(
+        self, value: Dict[str, Any]
+    ) -> ApimodelsConfigurationTemplateResponse:
+        self.attributes = value
         return self
 
     def with_auto_join(self, value: bool) -> ApimodelsConfigurationTemplateResponse:
@@ -328,6 +337,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "attributes"):
+            result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
+        elif include_empty:
+            result["attributes"] = {}
         if hasattr(self, "auto_join"):
             result["autoJoin"] = bool(self.auto_join)
         elif include_empty:
@@ -403,6 +416,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         text_chat: bool,
         type_: str,
         updated_at: str,
+        attributes: Optional[Dict[str, Any]] = None,
         auto_join: Optional[bool] = None,
         disable_code_generation: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
@@ -434,6 +448,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
         instance.text_chat = text_chat
         instance.type_ = type_
         instance.updated_at = updated_at
+        if attributes is not None:
+            instance.attributes = attributes
         if auto_join is not None:
             instance.auto_join = auto_join
         if disable_code_generation is not None:
@@ -531,6 +547,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "attributes" in dict_ and dict_["attributes"] is not None:
+            instance.attributes = {
+                str(k0): v0 for k0, v0 in dict_["attributes"].items()
+            }
+        elif include_empty:
+            instance.attributes = {}
         if "autoJoin" in dict_ and dict_["autoJoin"] is not None:
             instance.auto_join = bool(dict_["autoJoin"])
         elif include_empty:
@@ -655,6 +677,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "textChat": "text_chat",
             "type": "type_",
             "updatedAt": "updated_at",
+            "attributes": "attributes",
             "autoJoin": "auto_join",
             "disableCodeGeneration": "disable_code_generation",
             "dsManualSetReady": "ds_manual_set_ready",
@@ -688,6 +711,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "textChat": True,
             "type": True,
             "updatedAt": True,
+            "attributes": False,
             "autoJoin": False,
             "disableCodeGeneration": False,
             "dsManualSetReady": False,

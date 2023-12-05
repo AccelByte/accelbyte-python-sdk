@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.26.2)
+# AccelByte Gaming Services Matchmaking Service (2.27.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_alliance_flexing_rule import ModelsAllianceFlexingRule
 from ..models.models_alliance_rule_v1 import ModelsAllianceRuleV1
@@ -33,7 +34,17 @@ from ..models.models_bucket_mmr_rule import ModelsBucketMMRRule
 from ..models.models_flexing_rule import ModelsFlexingRule
 from ..models.models_match_option_rule import ModelsMatchOptionRule
 from ..models.models_matching_rule import ModelsMatchingRule
+from ..models.models_selection_rule import ModelsSelectionRule
+from ..models.models_sort_ticket import ModelsSortTicket
+from ..models.models_sort_ticket_rule import ModelsSortTicketRule
 from ..models.models_sub_game_mode import ModelsSubGameMode
+
+
+class TicketFlexingSelectionEnum(StrEnum):
+    NEWEST = "newest"
+    OLDEST = "oldest"
+    PIVOT = "pivot"
+    RANDOM = "random"
 
 
 class ModelsRuleSetV1(Model):
@@ -44,13 +55,23 @@ class ModelsRuleSetV1(Model):
 
         alliance_flexing_rule: (alliance_flexing_rule) REQUIRED List[ModelsAllianceFlexingRule]
 
+        batch_size: (batch_size) REQUIRED int
+
         flexing_rules: (flexingRules) REQUIRED List[ModelsFlexingRule]
 
         match_options: (match_options) REQUIRED ModelsMatchOptionRule
 
         matching_rules: (matchingRules) REQUIRED List[ModelsMatchingRule]
 
+        sort_ticket: (sort_ticket) REQUIRED ModelsSortTicket
+
+        sort_tickets: (sort_tickets) REQUIRED List[ModelsSortTicketRule]
+
         sub_game_modes: (sub_game_modes) REQUIRED Dict[str, ModelsSubGameMode]
+
+        ticket_flexing_selection: (ticket_flexing_selection) REQUIRED Union[str, TicketFlexingSelectionEnum]
+
+        ticket_flexing_selections: (ticket_flexing_selections) REQUIRED List[ModelsSelectionRule]
 
         bucket_mmr_rule: (bucket_mmr_rule) OPTIONAL ModelsBucketMMRRule
 
@@ -61,10 +82,15 @@ class ModelsRuleSetV1(Model):
 
     alliance: ModelsAllianceRuleV1  # REQUIRED
     alliance_flexing_rule: List[ModelsAllianceFlexingRule]  # REQUIRED
+    batch_size: int  # REQUIRED
     flexing_rules: List[ModelsFlexingRule]  # REQUIRED
     match_options: ModelsMatchOptionRule  # REQUIRED
     matching_rules: List[ModelsMatchingRule]  # REQUIRED
+    sort_ticket: ModelsSortTicket  # REQUIRED
+    sort_tickets: List[ModelsSortTicketRule]  # REQUIRED
     sub_game_modes: Dict[str, ModelsSubGameMode]  # REQUIRED
+    ticket_flexing_selection: Union[str, TicketFlexingSelectionEnum]  # REQUIRED
+    ticket_flexing_selections: List[ModelsSelectionRule]  # REQUIRED
     bucket_mmr_rule: ModelsBucketMMRRule  # OPTIONAL
     use_newest_ticket_for_flexing: bool  # OPTIONAL
 
@@ -82,6 +108,10 @@ class ModelsRuleSetV1(Model):
         self.alliance_flexing_rule = value
         return self
 
+    def with_batch_size(self, value: int) -> ModelsRuleSetV1:
+        self.batch_size = value
+        return self
+
     def with_flexing_rules(self, value: List[ModelsFlexingRule]) -> ModelsRuleSetV1:
         self.flexing_rules = value
         return self
@@ -94,10 +124,30 @@ class ModelsRuleSetV1(Model):
         self.matching_rules = value
         return self
 
+    def with_sort_ticket(self, value: ModelsSortTicket) -> ModelsRuleSetV1:
+        self.sort_ticket = value
+        return self
+
+    def with_sort_tickets(self, value: List[ModelsSortTicketRule]) -> ModelsRuleSetV1:
+        self.sort_tickets = value
+        return self
+
     def with_sub_game_modes(
         self, value: Dict[str, ModelsSubGameMode]
     ) -> ModelsRuleSetV1:
         self.sub_game_modes = value
+        return self
+
+    def with_ticket_flexing_selection(
+        self, value: Union[str, TicketFlexingSelectionEnum]
+    ) -> ModelsRuleSetV1:
+        self.ticket_flexing_selection = value
+        return self
+
+    def with_ticket_flexing_selections(
+        self, value: List[ModelsSelectionRule]
+    ) -> ModelsRuleSetV1:
+        self.ticket_flexing_selections = value
         return self
 
     def with_bucket_mmr_rule(self, value: ModelsBucketMMRRule) -> ModelsRuleSetV1:
@@ -125,6 +175,10 @@ class ModelsRuleSetV1(Model):
             ]
         elif include_empty:
             result["alliance_flexing_rule"] = []
+        if hasattr(self, "batch_size"):
+            result["batch_size"] = int(self.batch_size)
+        elif include_empty:
+            result["batch_size"] = 0
         if hasattr(self, "flexing_rules"):
             result["flexingRules"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.flexing_rules
@@ -143,6 +197,18 @@ class ModelsRuleSetV1(Model):
             ]
         elif include_empty:
             result["matchingRules"] = []
+        if hasattr(self, "sort_ticket"):
+            result["sort_ticket"] = self.sort_ticket.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["sort_ticket"] = ModelsSortTicket()
+        if hasattr(self, "sort_tickets"):
+            result["sort_tickets"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.sort_tickets
+            ]
+        elif include_empty:
+            result["sort_tickets"] = []
         if hasattr(self, "sub_game_modes"):
             result["sub_game_modes"] = {
                 str(k0): v0.to_dict(include_empty=include_empty)
@@ -150,6 +216,19 @@ class ModelsRuleSetV1(Model):
             }
         elif include_empty:
             result["sub_game_modes"] = {}
+        if hasattr(self, "ticket_flexing_selection"):
+            result["ticket_flexing_selection"] = str(self.ticket_flexing_selection)
+        elif include_empty:
+            result["ticket_flexing_selection"] = Union[
+                str, TicketFlexingSelectionEnum
+            ]()
+        if hasattr(self, "ticket_flexing_selections"):
+            result["ticket_flexing_selections"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.ticket_flexing_selections
+            ]
+        elif include_empty:
+            result["ticket_flexing_selections"] = []
         if hasattr(self, "bucket_mmr_rule"):
             result["bucket_mmr_rule"] = self.bucket_mmr_rule.to_dict(
                 include_empty=include_empty
@@ -173,10 +252,15 @@ class ModelsRuleSetV1(Model):
         cls,
         alliance: ModelsAllianceRuleV1,
         alliance_flexing_rule: List[ModelsAllianceFlexingRule],
+        batch_size: int,
         flexing_rules: List[ModelsFlexingRule],
         match_options: ModelsMatchOptionRule,
         matching_rules: List[ModelsMatchingRule],
+        sort_ticket: ModelsSortTicket,
+        sort_tickets: List[ModelsSortTicketRule],
         sub_game_modes: Dict[str, ModelsSubGameMode],
+        ticket_flexing_selection: Union[str, TicketFlexingSelectionEnum],
+        ticket_flexing_selections: List[ModelsSelectionRule],
         bucket_mmr_rule: Optional[ModelsBucketMMRRule] = None,
         use_newest_ticket_for_flexing: Optional[bool] = None,
         **kwargs,
@@ -184,10 +268,15 @@ class ModelsRuleSetV1(Model):
         instance = cls()
         instance.alliance = alliance
         instance.alliance_flexing_rule = alliance_flexing_rule
+        instance.batch_size = batch_size
         instance.flexing_rules = flexing_rules
         instance.match_options = match_options
         instance.matching_rules = matching_rules
+        instance.sort_ticket = sort_ticket
+        instance.sort_tickets = sort_tickets
         instance.sub_game_modes = sub_game_modes
+        instance.ticket_flexing_selection = ticket_flexing_selection
+        instance.ticket_flexing_selections = ticket_flexing_selections
         if bucket_mmr_rule is not None:
             instance.bucket_mmr_rule = bucket_mmr_rule
         if use_newest_ticket_for_flexing is not None:
@@ -219,6 +308,10 @@ class ModelsRuleSetV1(Model):
             ]
         elif include_empty:
             instance.alliance_flexing_rule = []
+        if "batch_size" in dict_ and dict_["batch_size"] is not None:
+            instance.batch_size = int(dict_["batch_size"])
+        elif include_empty:
+            instance.batch_size = 0
         if "flexingRules" in dict_ and dict_["flexingRules"] is not None:
             instance.flexing_rules = [
                 ModelsFlexingRule.create_from_dict(i0, include_empty=include_empty)
@@ -239,6 +332,19 @@ class ModelsRuleSetV1(Model):
             ]
         elif include_empty:
             instance.matching_rules = []
+        if "sort_ticket" in dict_ and dict_["sort_ticket"] is not None:
+            instance.sort_ticket = ModelsSortTicket.create_from_dict(
+                dict_["sort_ticket"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.sort_ticket = ModelsSortTicket()
+        if "sort_tickets" in dict_ and dict_["sort_tickets"] is not None:
+            instance.sort_tickets = [
+                ModelsSortTicketRule.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["sort_tickets"]
+            ]
+        elif include_empty:
+            instance.sort_tickets = []
         if "sub_game_modes" in dict_ and dict_["sub_game_modes"] is not None:
             instance.sub_game_modes = {
                 str(k0): ModelsSubGameMode.create_from_dict(
@@ -248,6 +354,23 @@ class ModelsRuleSetV1(Model):
             }
         elif include_empty:
             instance.sub_game_modes = {}
+        if (
+            "ticket_flexing_selection" in dict_
+            and dict_["ticket_flexing_selection"] is not None
+        ):
+            instance.ticket_flexing_selection = str(dict_["ticket_flexing_selection"])
+        elif include_empty:
+            instance.ticket_flexing_selection = Union[str, TicketFlexingSelectionEnum]()
+        if (
+            "ticket_flexing_selections" in dict_
+            and dict_["ticket_flexing_selections"] is not None
+        ):
+            instance.ticket_flexing_selections = [
+                ModelsSelectionRule.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["ticket_flexing_selections"]
+            ]
+        elif include_empty:
+            instance.ticket_flexing_selections = []
         if "bucket_mmr_rule" in dict_ and dict_["bucket_mmr_rule"] is not None:
             instance.bucket_mmr_rule = ModelsBucketMMRRule.create_from_dict(
                 dict_["bucket_mmr_rule"], include_empty=include_empty
@@ -304,10 +427,15 @@ class ModelsRuleSetV1(Model):
         return {
             "alliance": "alliance",
             "alliance_flexing_rule": "alliance_flexing_rule",
+            "batch_size": "batch_size",
             "flexingRules": "flexing_rules",
             "match_options": "match_options",
             "matchingRules": "matching_rules",
+            "sort_ticket": "sort_ticket",
+            "sort_tickets": "sort_tickets",
             "sub_game_modes": "sub_game_modes",
+            "ticket_flexing_selection": "ticket_flexing_selection",
+            "ticket_flexing_selections": "ticket_flexing_selections",
             "bucket_mmr_rule": "bucket_mmr_rule",
             "use_newest_ticket_for_flexing": "use_newest_ticket_for_flexing",
         }
@@ -317,12 +445,23 @@ class ModelsRuleSetV1(Model):
         return {
             "alliance": True,
             "alliance_flexing_rule": True,
+            "batch_size": True,
             "flexingRules": True,
             "match_options": True,
             "matchingRules": True,
+            "sort_ticket": True,
+            "sort_tickets": True,
             "sub_game_modes": True,
+            "ticket_flexing_selection": True,
+            "ticket_flexing_selections": True,
             "bucket_mmr_rule": False,
             "use_newest_ticket_for_flexing": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "ticket_flexing_selection": ["newest", "oldest", "pivot", "random"],
         }
 
     # endregion static methods

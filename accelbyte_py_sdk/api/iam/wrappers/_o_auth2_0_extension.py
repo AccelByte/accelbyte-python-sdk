@@ -232,7 +232,7 @@ def generate_token_by_new_headless_account_v3(
 
         400: Bad Request - RestErrorResponse (Invalid platform linking token or clientID not match.)
 
-        401: Unauthorized - RestErrorResponse (Invalid Basic header.)
+        401: Unauthorized - RestErrorResponse (10213: country is blocked)
 
         404: Not Found - RestErrorResponse (Platform linking token not found.)
     """
@@ -282,7 +282,7 @@ async def generate_token_by_new_headless_account_v3_async(
 
         400: Bad Request - RestErrorResponse (Invalid platform linking token or clientID not match.)
 
-        401: Unauthorized - RestErrorResponse (Invalid Basic header.)
+        401: Unauthorized - RestErrorResponse (10213: country is blocked)
 
         404: Not Found - RestErrorResponse (Platform linking token not found.)
     """

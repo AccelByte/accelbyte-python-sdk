@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.40.0)
+# AccelByte Gaming Services Platform Service (4.41.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,7 +29,7 @@ from ....core import Model
 
 
 class TimeLimitedBalance(Model):
-    """Time limited balance (Time-limited balance)
+    """Time limited balance (TimeLimitedBalance)
 
     Properties:
         balance: (balance) OPTIONAL int

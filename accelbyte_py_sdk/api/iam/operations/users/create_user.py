@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -110,13 +110,13 @@ class CreateUser(Operation):
     Responses:
         201: Created - ModelUserCreateResponse (Created)
 
-        400: Bad Request -
+        400: Bad Request - (1014001: unable to parse request body)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        409: Conflict -
+        409: Conflict - (1014002: user already exists)
     """
 
     # region fields
@@ -231,13 +231,13 @@ class CreateUser(Operation):
 
         201: Created - ModelUserCreateResponse (Created)
 
-        400: Bad Request -
+        400: Bad Request - (1014001: unable to parse request body)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        409: Conflict -
+        409: Conflict - (1014002: user already exists)
 
         ---: HttpResponse (Undocumented Response)
 

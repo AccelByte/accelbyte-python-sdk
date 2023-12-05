@@ -37,6 +37,7 @@ from ..models import ApimodelsGameSessionQueryResponse
 from ..models import ApimodelsGameSessionResponse
 from ..models import ApimodelsJoinByCodeRequest
 from ..models import ApimodelsPromoteLeaderRequest
+from ..models import ApimodelsServerSecret
 from ..models import ApimodelsSessionInviteRequest
 from ..models import ApimodelsSetDSReadyRequest
 from ..models import ApimodelsUpdateGameSessionBackfillRequest
@@ -55,6 +56,7 @@ from ..operations.game_session import DeleteGameSession
 from ..operations.game_session import GameSessionGenerateCode
 from ..operations.game_session import GetGameSession
 from ..operations.game_session import GetGameSessionByPodName
+from ..operations.game_session import GetSessionServerSecret
 from ..operations.game_session import JoinGameSession
 from ..operations.game_session import LeaveGameSession
 from ..operations.game_session import PatchUpdateGameSession
@@ -1466,6 +1468,156 @@ async def get_game_session_by_pod_name_async(
             return None, error
     request = GetGameSessionByPodName.create(
         pod_name=pod_name,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetSessionServerSecret)
+def get_session_server_secret(
+    body: ApimodelsServerSecret,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get Server Secret. Requires NAMESPACE:{namespace}:SESSION:GAME:SECRET [READ] (getSessionServerSecret)
+
+
+    Used by game Client to Get Secret
+    constraints
+    - EnableSecret = true
+    - Type = "DS"
+    - secret value will only be produced if enableSecret is true and type is DS
+
+    if enableSecret = false
+    - empty secret will be returned as 200 OK
+
+    Expected caller of this API
+    - Game Client to get server secret
+
+    In the Response you will get following:
+    - 200 OK { "secret":  }
+
+    If there is error:
+    - 400 Invalid path parameters
+    - 401 unauthorized
+    - 404 StatusNotFound
+    - 500 Internal server error
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/secret
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsServerSecret in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsServerSecret (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetSessionServerSecret.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetSessionServerSecret)
+async def get_session_server_secret_async(
+    body: ApimodelsServerSecret,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get Server Secret. Requires NAMESPACE:{namespace}:SESSION:GAME:SECRET [READ] (getSessionServerSecret)
+
+
+    Used by game Client to Get Secret
+    constraints
+    - EnableSecret = true
+    - Type = "DS"
+    - secret value will only be produced if enableSecret is true and type is DS
+
+    if enableSecret = false
+    - empty secret will be returned as 200 OK
+
+    Expected caller of this API
+    - Game Client to get server secret
+
+    In the Response you will get following:
+    - 200 OK { "secret":  }
+
+    If there is error:
+    - 400 Invalid path parameters
+    - 401 unauthorized
+    - 404 StatusNotFound
+    - 500 Internal server error
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/secret
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsServerSecret in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsServerSecret (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetSessionServerSecret.create(
+        body=body,
+        session_id=session_id,
         namespace=namespace,
     )
     return await run_request_async(

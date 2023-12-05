@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.26.2)
+# AccelByte Gaming Services Matchmaking Service (2.27.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,16 +26,27 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_alliance_flexing_rule import ModelsAllianceFlexingRule
 from ..models.models_bucket_mmr_rule import ModelsBucketMMRRule
 from ..models.models_flexing_rule import ModelsFlexingRule
 from ..models.models_match_option_rule import ModelsMatchOptionRule
 from ..models.models_matching_rule import ModelsMatchingRule
+from ..models.models_selection_rule import ModelsSelectionRule
+from ..models.models_sort_ticket import ModelsSortTicket
+from ..models.models_sort_ticket_rule import ModelsSortTicketRule
 from ..models.models_update_alliance_rule import ModelsUpdateAllianceRule
 from ..models.models_update_ruleset_sub_game_modes import (
     ModelsUpdateRulesetSubGameModes,
 )
+
+
+class TicketFlexingSelectionEnum(StrEnum):
+    NEWEST = "newest"
+    OLDEST = "oldest"
+    PIVOT = "pivot"
+    RANDOM = "random"
 
 
 class ModelsUpdateRuleset(Model):
@@ -45,6 +56,16 @@ class ModelsUpdateRuleset(Model):
         alliance: (alliance) REQUIRED ModelsUpdateAllianceRule
 
         alliance_flexing_rule: (alliance_flexing_rule) REQUIRED List[ModelsAllianceFlexingRule]
+
+        batch_size: (batch_size) REQUIRED int
+
+        sort_ticket: (sort_ticket) REQUIRED ModelsSortTicket
+
+        sort_tickets: (sort_tickets) REQUIRED List[ModelsSortTicketRule]
+
+        ticket_flexing_selection: (ticket_flexing_selection) REQUIRED Union[str, TicketFlexingSelectionEnum]
+
+        ticket_flexing_selections: (ticket_flexing_selections) REQUIRED List[ModelsSelectionRule]
 
         bucket_mmr_rule: (bucket_mmr_rule) OPTIONAL ModelsBucketMMRRule
 
@@ -63,6 +84,11 @@ class ModelsUpdateRuleset(Model):
 
     alliance: ModelsUpdateAllianceRule  # REQUIRED
     alliance_flexing_rule: List[ModelsAllianceFlexingRule]  # REQUIRED
+    batch_size: int  # REQUIRED
+    sort_ticket: ModelsSortTicket  # REQUIRED
+    sort_tickets: List[ModelsSortTicketRule]  # REQUIRED
+    ticket_flexing_selection: Union[str, TicketFlexingSelectionEnum]  # REQUIRED
+    ticket_flexing_selections: List[ModelsSelectionRule]  # REQUIRED
     bucket_mmr_rule: ModelsBucketMMRRule  # OPTIONAL
     flexing_rules: List[ModelsFlexingRule]  # OPTIONAL
     match_options: ModelsMatchOptionRule  # OPTIONAL
@@ -82,6 +108,32 @@ class ModelsUpdateRuleset(Model):
         self, value: List[ModelsAllianceFlexingRule]
     ) -> ModelsUpdateRuleset:
         self.alliance_flexing_rule = value
+        return self
+
+    def with_batch_size(self, value: int) -> ModelsUpdateRuleset:
+        self.batch_size = value
+        return self
+
+    def with_sort_ticket(self, value: ModelsSortTicket) -> ModelsUpdateRuleset:
+        self.sort_ticket = value
+        return self
+
+    def with_sort_tickets(
+        self, value: List[ModelsSortTicketRule]
+    ) -> ModelsUpdateRuleset:
+        self.sort_tickets = value
+        return self
+
+    def with_ticket_flexing_selection(
+        self, value: Union[str, TicketFlexingSelectionEnum]
+    ) -> ModelsUpdateRuleset:
+        self.ticket_flexing_selection = value
+        return self
+
+    def with_ticket_flexing_selections(
+        self, value: List[ModelsSelectionRule]
+    ) -> ModelsUpdateRuleset:
+        self.ticket_flexing_selections = value
         return self
 
     def with_bucket_mmr_rule(self, value: ModelsBucketMMRRule) -> ModelsUpdateRuleset:
@@ -129,6 +181,35 @@ class ModelsUpdateRuleset(Model):
             ]
         elif include_empty:
             result["alliance_flexing_rule"] = []
+        if hasattr(self, "batch_size"):
+            result["batch_size"] = int(self.batch_size)
+        elif include_empty:
+            result["batch_size"] = 0
+        if hasattr(self, "sort_ticket"):
+            result["sort_ticket"] = self.sort_ticket.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["sort_ticket"] = ModelsSortTicket()
+        if hasattr(self, "sort_tickets"):
+            result["sort_tickets"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.sort_tickets
+            ]
+        elif include_empty:
+            result["sort_tickets"] = []
+        if hasattr(self, "ticket_flexing_selection"):
+            result["ticket_flexing_selection"] = str(self.ticket_flexing_selection)
+        elif include_empty:
+            result["ticket_flexing_selection"] = Union[
+                str, TicketFlexingSelectionEnum
+            ]()
+        if hasattr(self, "ticket_flexing_selections"):
+            result["ticket_flexing_selections"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.ticket_flexing_selections
+            ]
+        elif include_empty:
+            result["ticket_flexing_selections"] = []
         if hasattr(self, "bucket_mmr_rule"):
             result["bucket_mmr_rule"] = self.bucket_mmr_rule.to_dict(
                 include_empty=include_empty
@@ -176,6 +257,11 @@ class ModelsUpdateRuleset(Model):
         cls,
         alliance: ModelsUpdateAllianceRule,
         alliance_flexing_rule: List[ModelsAllianceFlexingRule],
+        batch_size: int,
+        sort_ticket: ModelsSortTicket,
+        sort_tickets: List[ModelsSortTicketRule],
+        ticket_flexing_selection: Union[str, TicketFlexingSelectionEnum],
+        ticket_flexing_selections: List[ModelsSelectionRule],
         bucket_mmr_rule: Optional[ModelsBucketMMRRule] = None,
         flexing_rules: Optional[List[ModelsFlexingRule]] = None,
         match_options: Optional[ModelsMatchOptionRule] = None,
@@ -187,6 +273,11 @@ class ModelsUpdateRuleset(Model):
         instance = cls()
         instance.alliance = alliance
         instance.alliance_flexing_rule = alliance_flexing_rule
+        instance.batch_size = batch_size
+        instance.sort_ticket = sort_ticket
+        instance.sort_tickets = sort_tickets
+        instance.ticket_flexing_selection = ticket_flexing_selection
+        instance.ticket_flexing_selections = ticket_flexing_selections
         if bucket_mmr_rule is not None:
             instance.bucket_mmr_rule = bucket_mmr_rule
         if flexing_rules is not None:
@@ -226,6 +317,40 @@ class ModelsUpdateRuleset(Model):
             ]
         elif include_empty:
             instance.alliance_flexing_rule = []
+        if "batch_size" in dict_ and dict_["batch_size"] is not None:
+            instance.batch_size = int(dict_["batch_size"])
+        elif include_empty:
+            instance.batch_size = 0
+        if "sort_ticket" in dict_ and dict_["sort_ticket"] is not None:
+            instance.sort_ticket = ModelsSortTicket.create_from_dict(
+                dict_["sort_ticket"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.sort_ticket = ModelsSortTicket()
+        if "sort_tickets" in dict_ and dict_["sort_tickets"] is not None:
+            instance.sort_tickets = [
+                ModelsSortTicketRule.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["sort_tickets"]
+            ]
+        elif include_empty:
+            instance.sort_tickets = []
+        if (
+            "ticket_flexing_selection" in dict_
+            and dict_["ticket_flexing_selection"] is not None
+        ):
+            instance.ticket_flexing_selection = str(dict_["ticket_flexing_selection"])
+        elif include_empty:
+            instance.ticket_flexing_selection = Union[str, TicketFlexingSelectionEnum]()
+        if (
+            "ticket_flexing_selections" in dict_
+            and dict_["ticket_flexing_selections"] is not None
+        ):
+            instance.ticket_flexing_selections = [
+                ModelsSelectionRule.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["ticket_flexing_selections"]
+            ]
+        elif include_empty:
+            instance.ticket_flexing_selections = []
         if "bucket_mmr_rule" in dict_ and dict_["bucket_mmr_rule"] is not None:
             instance.bucket_mmr_rule = ModelsBucketMMRRule.create_from_dict(
                 dict_["bucket_mmr_rule"], include_empty=include_empty
@@ -310,6 +435,11 @@ class ModelsUpdateRuleset(Model):
         return {
             "alliance": "alliance",
             "alliance_flexing_rule": "alliance_flexing_rule",
+            "batch_size": "batch_size",
+            "sort_ticket": "sort_ticket",
+            "sort_tickets": "sort_tickets",
+            "ticket_flexing_selection": "ticket_flexing_selection",
+            "ticket_flexing_selections": "ticket_flexing_selections",
             "bucket_mmr_rule": "bucket_mmr_rule",
             "flexingRules": "flexing_rules",
             "match_options": "match_options",
@@ -323,12 +453,23 @@ class ModelsUpdateRuleset(Model):
         return {
             "alliance": True,
             "alliance_flexing_rule": True,
+            "batch_size": True,
+            "sort_ticket": True,
+            "sort_tickets": True,
+            "ticket_flexing_selection": True,
+            "ticket_flexing_selections": True,
             "bucket_mmr_rule": False,
             "flexingRules": False,
             "match_options": False,
             "matchingRules": False,
             "sub_game_modes": False,
             "use_newest_ticket_for_flexing": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "ticket_flexing_selection": ["newest", "oldest", "pivot", "random"],
         }
 
     # endregion static methods

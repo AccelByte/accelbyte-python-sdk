@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.0)
+# AccelByte Gaming Services Iam Service (7.6.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -69,7 +69,7 @@ class AdminCreateTestUsersV4(Operation):
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
-        501: Not Implemented - RestErrorResponse
+        501: Not Implemented - RestErrorResponse (20024: not implemented)
     """
 
     # region fields
@@ -190,7 +190,7 @@ class AdminCreateTestUsersV4(Operation):
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
-        501: Not Implemented - RestErrorResponse
+        501: Not Implemented - RestErrorResponse (20024: not implemented)
 
         ---: HttpResponse (Undocumented Response)
 

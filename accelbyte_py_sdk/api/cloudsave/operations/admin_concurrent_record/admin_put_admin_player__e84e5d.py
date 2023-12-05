@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.6)
+# AccelByte Gaming Services Cloudsave Service (3.12.7)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsAdminPlayerConcurrentRecordRequest
+from ...models import ModelsPlayerRecordConcurrentUpdateResponse
 from ...models import ModelsResponseError
 
 
@@ -182,7 +183,11 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        response_body: (responseBody) OPTIONAL bool in query
+
     Responses:
+        200: OK - ModelsPlayerRecordConcurrentUpdateResponse (Record saved)
+
         204: No Content - (Record saved)
 
         400: Bad Request - ModelsResponseError (20002: validation error | 18156: invalid request body | 18181: validation error)
@@ -209,6 +214,7 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
     key: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    response_body: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -250,6 +256,7 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -265,6 +272,12 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "response_body"):
+            result["responseBody"] = self.response_body
         return result
 
     # endregion get_x_params methods
@@ -295,6 +308,12 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
         self.user_id = value
         return self
 
+    def with_response_body(
+        self, value: bool
+    ) -> AdminPutAdminPlayerRecordConcurrentHandlerV1:
+        self.response_body = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -317,6 +336,10 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "response_body") and self.response_body:
+            result["responseBody"] = bool(self.response_body)
+        elif include_empty:
+            result["responseBody"] = False
         return result
 
     # endregion to methods
@@ -326,8 +349,13 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, ModelsResponseError]]:
+    ) -> Tuple[
+        Union[None, ModelsPlayerRecordConcurrentUpdateResponse],
+        Union[None, HttpResponse, ModelsResponseError],
+    ]:
         """Parse the given response.
+
+        200: OK - ModelsPlayerRecordConcurrentUpdateResponse (Record saved)
 
         204: No Content - (Record saved)
 
@@ -354,6 +382,11 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
+        if code == 200:
+            return (
+                ModelsPlayerRecordConcurrentUpdateResponse.create_from_dict(content),
+                None,
+            )
         if code == 204:
             return None, None
         if code == 400:
@@ -382,6 +415,7 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
         key: str,
         namespace: str,
         user_id: str,
+        response_body: Optional[bool] = None,
         **kwargs,
     ) -> AdminPutAdminPlayerRecordConcurrentHandlerV1:
         instance = cls()
@@ -389,6 +423,8 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
         instance.key = key
         instance.namespace = namespace
         instance.user_id = user_id
+        if response_body is not None:
+            instance.response_body = response_body
         return instance
 
     @classmethod
@@ -414,6 +450,10 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "responseBody" in dict_ and dict_["responseBody"] is not None:
+            instance.response_body = bool(dict_["responseBody"])
+        elif include_empty:
+            instance.response_body = False
         return instance
 
     @staticmethod
@@ -423,6 +463,7 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
             "key": "key",
             "namespace": "namespace",
             "userId": "user_id",
+            "responseBody": "response_body",
         }
 
     @staticmethod
@@ -432,6 +473,7 @@ class AdminPutAdminPlayerRecordConcurrentHandlerV1(Operation):
             "key": True,
             "namespace": True,
             "userId": True,
+            "responseBody": False,
         }
 
     # endregion static methods

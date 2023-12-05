@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.40.0)
+# AccelByte Gaming Services Platform Service (4.41.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -31,7 +31,7 @@ from .....core import HttpResponse
 from .....core import StrEnum
 
 from ...models import ErrorEntity
-from ...models import FullItemPagingSlicedResult
+from ...models import FullItemPagingResult
 from ...models import ValidationErrorEntity
 
 
@@ -142,8 +142,10 @@ class QueryItems1(Operation):
 
         target_namespace: (targetNamespace) OPTIONAL str in query
 
+        with_total: (withTotal) OPTIONAL bool in query
+
     Responses:
-        200: OK - FullItemPagingSlicedResult (successful operation)
+        200: OK - FullItemPagingResult (successful operation)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
 
@@ -177,6 +179,7 @@ class QueryItems1(Operation):
     store_id: str  # OPTIONAL in [query]
     tags: str  # OPTIONAL in [query]
     target_namespace: str  # OPTIONAL in [query]
+    with_total: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -262,6 +265,8 @@ class QueryItems1(Operation):
             result["tags"] = self.tags
         if hasattr(self, "target_namespace"):
             result["targetNamespace"] = self.target_namespace
+        if hasattr(self, "with_total"):
+            result["withTotal"] = self.with_total
         return result
 
     # endregion get_x_params methods
@@ -342,6 +347,10 @@ class QueryItems1(Operation):
 
     def with_target_namespace(self, value: str) -> QueryItems1:
         self.target_namespace = value
+        return self
+
+    def with_with_total(self, value: bool) -> QueryItems1:
+        self.with_total = value
         return self
 
     # endregion with_x methods
@@ -425,6 +434,10 @@ class QueryItems1(Operation):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
             result["targetNamespace"] = ""
+        if hasattr(self, "with_total") and self.with_total:
+            result["withTotal"] = bool(self.with_total)
+        elif include_empty:
+            result["withTotal"] = False
         return result
 
     # endregion to methods
@@ -435,12 +448,12 @@ class QueryItems1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, FullItemPagingSlicedResult],
+        Union[None, FullItemPagingResult],
         Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
-        200: OK - FullItemPagingSlicedResult (successful operation)
+        200: OK - FullItemPagingResult (successful operation)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
 
@@ -460,7 +473,7 @@ class QueryItems1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return FullItemPagingSlicedResult.create_from_dict(content), None
+            return FullItemPagingResult.create_from_dict(content), None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
@@ -495,6 +508,7 @@ class QueryItems1(Operation):
         store_id: Optional[str] = None,
         tags: Optional[str] = None,
         target_namespace: Optional[str] = None,
+        with_total: Optional[bool] = None,
         **kwargs,
     ) -> QueryItems1:
         instance = cls()
@@ -533,6 +547,8 @@ class QueryItems1(Operation):
             instance.tags = tags
         if target_namespace is not None:
             instance.target_namespace = target_namespace
+        if with_total is not None:
+            instance.with_total = with_total
         return instance
 
     @classmethod
@@ -613,6 +629,10 @@ class QueryItems1(Operation):
             instance.target_namespace = str(dict_["targetNamespace"])
         elif include_empty:
             instance.target_namespace = ""
+        if "withTotal" in dict_ and dict_["withTotal"] is not None:
+            instance.with_total = bool(dict_["withTotal"])
+        elif include_empty:
+            instance.with_total = False
         return instance
 
     @staticmethod
@@ -636,6 +656,7 @@ class QueryItems1(Operation):
             "storeId": "store_id",
             "tags": "tags",
             "targetNamespace": "target_namespace",
+            "withTotal": "with_total",
         }
 
     @staticmethod
@@ -659,6 +680,7 @@ class QueryItems1(Operation):
             "storeId": False,
             "tags": False,
             "targetNamespace": False,
+            "withTotal": False,
         }
 
     @staticmethod

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.12.6)
+# AccelByte Gaming Services Cloudsave Service (3.12.7)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,6 +67,7 @@ from ..api.cloudsave.models import ModelsPlayerBinaryRecordCreate
 from ..api.cloudsave.models import ModelsPlayerBinaryRecordMetadataPublicRequest
 from ..api.cloudsave.models import ModelsPlayerBinaryRecordMetadataRequest
 from ..api.cloudsave.models import ModelsPlayerBinaryRecordResponse
+from ..api.cloudsave.models import ModelsPlayerRecordConcurrentUpdateResponse
 from ..api.cloudsave.models import ModelsPlayerRecordKeyInfo
 from ..api.cloudsave.models import ModelsPlayerRecordRequest
 from ..api.cloudsave.models import ModelsPlayerRecordResponse
@@ -451,6 +452,14 @@ def create_models_player_binary_record_response_example() -> (
     instance.user_id = randomize("uid")
     instance.binary_info = create_models_binary_info_response_example()
     instance.set_by = randomize()
+    return instance
+
+
+def create_models_player_record_concurrent_update_response_example() -> (
+    ModelsPlayerRecordConcurrentUpdateResponse
+):
+    instance = ModelsPlayerRecordConcurrentUpdateResponse()
+    instance.updated_at = randomize("date")
     return instance
 
 

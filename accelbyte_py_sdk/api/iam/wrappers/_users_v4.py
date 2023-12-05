@@ -157,7 +157,7 @@ def admin_add_user_role_v4(
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
-        422: Unprocessable Entity - RestErrorResponse
+        422: Unprocessable Entity - RestErrorResponse (422: request is unprocessable)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -221,7 +221,7 @@ async def admin_add_user_role_v4_async(
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
-        422: Unprocessable Entity - RestErrorResponse
+        422: Unprocessable Entity - RestErrorResponse (422: request is unprocessable)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -396,7 +396,7 @@ def admin_create_test_users_v4(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
-        501: Not Implemented - RestErrorResponse
+        501: Not Implemented - RestErrorResponse (20024: not implemented)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -450,7 +450,7 @@ async def admin_create_test_users_v4_async(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
-        501: Not Implemented - RestErrorResponse
+        501: Not Implemented - RestErrorResponse (20024: not implemented)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2957,7 +2957,7 @@ def create_user_from_invitation_v4(
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
@@ -3027,7 +3027,7 @@ async def create_user_from_invitation_v4_async(
 
         400: Bad Request - RestErrorResponse (20002: validation error | 10130: user under age)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
@@ -3244,7 +3244,7 @@ def public_create_user_v4(
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
@@ -3316,7 +3316,7 @@ async def public_create_user_v4_async(
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
@@ -4700,7 +4700,7 @@ def public_invite_user_v4(
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        409: Conflict - RestErrorResponse
+        409: Conflict - RestErrorResponse (10133: email already used | 10207: user namespace is not available)
 
         422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
 
@@ -4751,7 +4751,7 @@ async def public_invite_user_v4_async(
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        409: Conflict - RestErrorResponse
+        409: Conflict - RestErrorResponse (10133: email already used | 10207: user namespace is not available)
 
         422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
 
@@ -5595,7 +5595,7 @@ def public_upgrade_headless_account_with_verification_code_v4(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
@@ -5674,7 +5674,7 @@ async def public_upgrade_headless_account_with_verification_code_v4_async(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context)
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
