@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -185,7 +185,9 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
     return instance
 
 
-def create_message_action_add_user_to_topic_result_example() -> MessageActionAddUserToTopicResult:
+def create_message_action_add_user_to_topic_result_example() -> (
+    MessageActionAddUserToTopicResult
+):
     instance = MessageActionAddUserToTopicResult()
     instance.processed = randomize("int", min_val=1, max_val=1000)
     instance.topic_id = randomize()
@@ -193,7 +195,9 @@ def create_message_action_add_user_to_topic_result_example() -> MessageActionAdd
     return instance
 
 
-def create_message_action_delete_topic_result_example() -> MessageActionDeleteTopicResult:
+def create_message_action_delete_topic_result_example() -> (
+    MessageActionDeleteTopicResult
+):
     instance = MessageActionDeleteTopicResult()
     instance.processed = randomize("int", min_val=1, max_val=1000)
     instance.topic_id = randomize()
@@ -212,7 +216,9 @@ def create_models_add_inbox_category_request_example() -> ModelsAddInboxCategory
     return instance
 
 
-def create_models_add_inbox_category_response_example() -> ModelsAddInboxCategoryResponse:
+def create_models_add_inbox_category_response_example() -> (
+    ModelsAddInboxCategoryResponse
+):
     instance = ModelsAddInboxCategoryResponse()
     instance.enabled = randomize("bool")
     instance.expires_in = randomize("int", min_val=1, max_val=1000)
@@ -259,14 +265,18 @@ def create_models_channel_topic_response_example() -> ModelsChannelTopicResponse
     return instance
 
 
-def create_models_channel_topic_summary_response_example() -> ModelsChannelTopicSummaryResponse:
+def create_models_channel_topic_summary_response_example() -> (
+    ModelsChannelTopicSummaryResponse
+):
     instance = ModelsChannelTopicSummaryResponse()
     instance.total_channel = randomize("int", min_val=1, max_val=1000)
     instance.total_shard = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
-def create_models_channel_topic_with_pagination_response_example() -> ModelsChannelTopicWithPaginationResponse:
+def create_models_channel_topic_with_pagination_response_example() -> (
+    ModelsChannelTopicWithPaginationResponse
+):
     instance = ModelsChannelTopicWithPaginationResponse()
     instance.data = [create_models_channel_topic_response_example()]
     instance.paging = create_models_pagination_example()
@@ -285,7 +295,9 @@ def create_models_chat_message_response_example() -> ModelsChatMessageResponse:
     return instance
 
 
-def create_models_chat_message_with_pagination_response_example() -> ModelsChatMessageWithPaginationResponse:
+def create_models_chat_message_with_pagination_response_example() -> (
+    ModelsChatMessageWithPaginationResponse
+):
     instance = ModelsChatMessageWithPaginationResponse()
     instance.data = [create_models_chat_message_response_example()]
     instance.paging = create_models_pagination_example()
@@ -433,7 +445,9 @@ def create_models_dictionary_import_result_example() -> ModelsDictionaryImportRe
     return instance
 
 
-def create_models_dictionary_insert_bulk_request_example() -> ModelsDictionaryInsertBulkRequest:
+def create_models_dictionary_insert_bulk_request_example() -> (
+    ModelsDictionaryInsertBulkRequest
+):
     instance = ModelsDictionaryInsertBulkRequest()
     instance.dictionaries = [create_models_dictionary_insert_request_example()]
     return instance
@@ -487,7 +501,9 @@ def create_models_dictionary_word_changes_example() -> ModelsDictionaryWordChang
     return instance
 
 
-def create_models_get_inbox_categories_response_item_example() -> ModelsGetInboxCategoriesResponseItem:
+def create_models_get_inbox_categories_response_item_example() -> (
+    ModelsGetInboxCategoriesResponseItem
+):
     instance = ModelsGetInboxCategoriesResponseItem()
     instance.enabled = randomize("bool")
     instance.expires_in = randomize("int", min_val=1, max_val=1000)
@@ -499,7 +515,9 @@ def create_models_get_inbox_categories_response_item_example() -> ModelsGetInbox
     return instance
 
 
-def create_models_get_inbox_messages_response_example() -> ModelsGetInboxMessagesResponse:
+def create_models_get_inbox_messages_response_example() -> (
+    ModelsGetInboxMessagesResponse
+):
     instance = ModelsGetInboxMessagesResponse()
     instance.data = [create_models_get_inbox_messages_response_data_example()]
     instance.next_ = randomize()
@@ -507,7 +525,9 @@ def create_models_get_inbox_messages_response_example() -> ModelsGetInboxMessage
     return instance
 
 
-def create_models_get_inbox_messages_response_data_example() -> ModelsGetInboxMessagesResponseData:
+def create_models_get_inbox_messages_response_data_example() -> (
+    ModelsGetInboxMessagesResponseData
+):
     instance = ModelsGetInboxMessagesResponseData()
     instance.created_at = randomize("int", min_val=1, max_val=1000)
     instance.expired_at = randomize("int", min_val=1, max_val=1000)
@@ -566,25 +586,33 @@ def create_models_pagination_example() -> ModelsPagination:
     return instance
 
 
-def create_models_public_ban_topic_members_request_example() -> ModelsPublicBanTopicMembersRequest:
+def create_models_public_ban_topic_members_request_example() -> (
+    ModelsPublicBanTopicMembersRequest
+):
     instance = ModelsPublicBanTopicMembersRequest()
     instance.user_i_ds = [randomize()]
     return instance
 
 
-def create_models_public_ban_topic_members_response_example() -> ModelsPublicBanTopicMembersResponse:
+def create_models_public_ban_topic_members_response_example() -> (
+    ModelsPublicBanTopicMembersResponse
+):
     instance = ModelsPublicBanTopicMembersResponse()
     instance.user_i_ds = [randomize()]
     return instance
 
 
-def create_models_public_unban_topic_members_request_example() -> ModelsPublicUnbanTopicMembersRequest:
+def create_models_public_unban_topic_members_request_example() -> (
+    ModelsPublicUnbanTopicMembersRequest
+):
     instance = ModelsPublicUnbanTopicMembersRequest()
     instance.user_i_ds = [randomize()]
     return instance
 
 
-def create_models_public_unban_topic_members_response_example() -> ModelsPublicUnbanTopicMembersResponse:
+def create_models_public_unban_topic_members_response_example() -> (
+    ModelsPublicUnbanTopicMembersResponse
+):
     instance = ModelsPublicUnbanTopicMembersResponse()
     instance.user_i_ds = [randomize()]
     return instance
@@ -601,7 +629,9 @@ def create_models_save_inbox_message_request_example() -> ModelsSaveInboxMessage
     return instance
 
 
-def create_models_save_inbox_message_response_example() -> ModelsSaveInboxMessageResponse:
+def create_models_save_inbox_message_response_example() -> (
+    ModelsSaveInboxMessageResponse
+):
     instance = ModelsSaveInboxMessageResponse()
     instance.category = randomize()
     instance.expired_at = randomize("int", min_val=1, max_val=1000)
@@ -618,7 +648,9 @@ def create_models_send_inbox_message_request_example() -> ModelsSendInboxMessage
     return instance
 
 
-def create_models_send_inbox_message_response_example() -> ModelsSendInboxMessageResponse:
+def create_models_send_inbox_message_response_example() -> (
+    ModelsSendInboxMessageResponse
+):
     instance = ModelsSendInboxMessageResponse()
     return instance
 
@@ -647,7 +679,9 @@ def create_models_topic_log_item_example() -> ModelsTopicLogItem:
     return instance
 
 
-def create_models_topic_log_with_pagination_response_example() -> ModelsTopicLogWithPaginationResponse:
+def create_models_topic_log_with_pagination_response_example() -> (
+    ModelsTopicLogWithPaginationResponse
+):
     instance = ModelsTopicLogWithPaginationResponse()
     instance.data = [create_models_topic_log_item_example()]
     instance.paging = create_models_pagination_example()
@@ -663,7 +697,9 @@ def create_models_topic_member_response_example() -> ModelsTopicMemberResponse:
     return instance
 
 
-def create_models_topic_member_with_pagination_response_example() -> ModelsTopicMemberWithPaginationResponse:
+def create_models_topic_member_with_pagination_response_example() -> (
+    ModelsTopicMemberWithPaginationResponse
+):
     instance = ModelsTopicMemberWithPaginationResponse()
     instance.data = [create_models_topic_member_response_example()]
     instance.paging = create_models_pagination_example()
@@ -695,18 +731,24 @@ def create_models_unban_topic_member_result_example() -> ModelsUnbanTopicMemberR
     return instance
 
 
-def create_models_unsend_inbox_message_request_example() -> ModelsUnsendInboxMessageRequest:
+def create_models_unsend_inbox_message_request_example() -> (
+    ModelsUnsendInboxMessageRequest
+):
     instance = ModelsUnsendInboxMessageRequest()
     instance.user_ids = [randomize()]
     return instance
 
 
-def create_models_unsend_inbox_message_response_example() -> ModelsUnsendInboxMessageResponse:
+def create_models_unsend_inbox_message_response_example() -> (
+    ModelsUnsendInboxMessageResponse
+):
     instance = ModelsUnsendInboxMessageResponse()
     return instance
 
 
-def create_models_update_inbox_category_request_example() -> ModelsUpdateInboxCategoryRequest:
+def create_models_update_inbox_category_request_example() -> (
+    ModelsUpdateInboxCategoryRequest
+):
     instance = ModelsUpdateInboxCategoryRequest()
     instance.enabled = randomize("bool")
     instance.expires_in = randomize("int", min_val=1, max_val=1000)
@@ -717,7 +759,9 @@ def create_models_update_inbox_category_request_example() -> ModelsUpdateInboxCa
     return instance
 
 
-def create_models_update_inbox_message_request_example() -> ModelsUpdateInboxMessageRequest:
+def create_models_update_inbox_message_request_example() -> (
+    ModelsUpdateInboxMessageRequest
+):
     instance = ModelsUpdateInboxMessageRequest()
     instance.expired_at = randomize("int", min_val=1, max_val=1000)
     instance.message = {randomize(): randomize()}

@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.chat import admin_channel_topic_summary as admin_channel_topic_summary_internal
+from accelbyte_py_sdk.api.chat import (
+    admin_channel_topic_summary as admin_channel_topic_summary_internal,
+)
 from accelbyte_py_sdk.api.chat.models import ModelsChannelTopicSummaryResponse
 from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 
@@ -41,19 +43,17 @@ from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_channel_topic_summary(
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_channel_topic_summary_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = admin_channel_topic_summary_internal(

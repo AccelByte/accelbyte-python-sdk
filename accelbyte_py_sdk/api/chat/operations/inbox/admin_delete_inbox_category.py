@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -75,8 +75,8 @@ class AdminDeleteInboxCategory(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    category: str                                                                                  # REQUIRED in [path]
-    namespace: str                                                                                 # REQUIRED in [path]
+    category: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -164,7 +164,11 @@ class AdminDeleteInboxCategory(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse, RestapiErrorResponseBody]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, HttpResponse], Union[None, HttpResponse, RestapiErrorResponseBody]
+    ]:
         """Parse the given response.
 
         200: OK - (OK)
@@ -183,7 +187,9 @@ class AdminDeleteInboxCategory(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -199,7 +205,9 @@ class AdminDeleteInboxCategory(Operation):
         if code == 500:
             return None, RestapiErrorResponseBody.create_from_dict(content)
 
-        return self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -207,10 +215,7 @@ class AdminDeleteInboxCategory(Operation):
 
     @classmethod
     def create(
-        cls,
-        category: str,
-        namespace: str,
-    **kwargs
+        cls, category: str, namespace: str, **kwargs
     ) -> AdminDeleteInboxCategory:
         instance = cls()
         instance.category = category
@@ -218,7 +223,9 @@ class AdminDeleteInboxCategory(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminDeleteInboxCategory:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AdminDeleteInboxCategory:
         instance = cls()
         if "category" in dict_ and dict_["category"] is not None:
             instance.category = str(dict_["category"])

@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.chat import admin_topic_chat_history as admin_topic_chat_history_internal
+from accelbyte_py_sdk.api.chat import (
+    admin_topic_chat_history as admin_topic_chat_history_internal,
+)
 from accelbyte_py_sdk.api.chat.models import ModelsChatMessageWithPaginationResponse
 from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 
@@ -50,28 +52,26 @@ from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_topic_chat_history(
-        topic: str,
-        end_created_at: Optional[int] = None,
-        keyword: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
-        order: Optional[str] = None,
-        sender_user_id: Optional[str] = None,
-        shard_id: Optional[str] = None,
-        start_created_at: Optional[int] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    topic: str,
+    end_created_at: Optional[int] = None,
+    keyword: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order: Optional[str] = None,
+    sender_user_id: Optional[str] = None,
+    shard_id: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_topic_chat_history_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = admin_topic_chat_history_internal(

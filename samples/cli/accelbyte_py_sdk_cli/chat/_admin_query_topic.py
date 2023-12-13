@@ -50,28 +50,26 @@ from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_query_topic(
-        include_members: Optional[bool] = None,
-        include_past_members: Optional[bool] = None,
-        include_past_topics: Optional[bool] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
-        topic: Optional[str] = None,
-        topic_sub_type: Optional[str] = None,
-        topic_type: Optional[str] = None,
-        user_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    include_members: Optional[bool] = None,
+    include_past_members: Optional[bool] = None,
+    include_past_topics: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic: Optional[str] = None,
+    topic_sub_type: Optional[str] = None,
+    topic_type: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_query_topic_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if topic is not None:

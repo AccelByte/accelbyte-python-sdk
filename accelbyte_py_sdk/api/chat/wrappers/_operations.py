@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -36,7 +36,9 @@ from ..operations.operations import PublicGetMessages
 
 
 @same_doc_as(PublicGetMessages)
-def public_get_messages(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_messages(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     """get service messages (publicGetMessages)
 
     get the list of messages.
@@ -64,7 +66,9 @@ def public_get_messages(x_additional_headers: Optional[Dict[str, str]] = None, *
 
 
 @same_doc_as(PublicGetMessages)
-async def public_get_messages_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_messages_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     """get service messages (publicGetMessages)
 
     get the list of messages.
@@ -88,4 +92,6 @@ async def public_get_messages_async(x_additional_headers: Optional[Dict[str, str
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     request = PublicGetMessages.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.chat import admin_get_inbox_messages as admin_get_inbox_messages_internal
+from accelbyte_py_sdk.api.chat import (
+    admin_get_inbox_messages as admin_get_inbox_messages_internal,
+)
 from accelbyte_py_sdk.api.chat.models import ModelsGetInboxMessagesResponse
 from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 
@@ -51,29 +53,27 @@ from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_get_inbox_messages(
-        active_only: Optional[bool] = None,
-        end_created_at: Optional[int] = None,
-        limit: Optional[int] = None,
-        message_id: Optional[str] = None,
-        offset: Optional[int] = None,
-        order: Optional[str] = None,
-        scope: Optional[str] = None,
-        start_created_at: Optional[int] = None,
-        status: Optional[str] = None,
-        transient: Optional[bool] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    active_only: Optional[bool] = None,
+    end_created_at: Optional[int] = None,
+    limit: Optional[int] = None,
+    message_id: Optional[str] = None,
+    offset: Optional[int] = None,
+    order: Optional[str] = None,
+    scope: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    status: Optional[str] = None,
+    transient: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_get_inbox_messages_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if message_id is not None:

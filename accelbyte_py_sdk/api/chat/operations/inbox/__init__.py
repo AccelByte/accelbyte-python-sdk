@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -20,7 +20,10 @@ from .admin_delete_inbox_message import AdminDeleteInboxMessage
 from .admin_get_category_schema import AdminGetCategorySchema
 from .admin_get_inbox_categories import AdminGetInboxCategories
 from .admin_get_inbox_messages import AdminGetInboxMessages
-from .admin_get_inbox_messages import ScopeEnum as AdminGetInboxMessagesScopeEnum, StatusEnum as AdminGetInboxMessagesStatusEnum
+from .admin_get_inbox_messages import (
+    ScopeEnum as AdminGetInboxMessagesScopeEnum,
+    StatusEnum as AdminGetInboxMessagesStatusEnum,
+)
 from .admin_get_inbox_stats import AdminGetInboxStats
 from .admin_get_inbox_users import AdminGetInboxUsers
 from .admin_get_inbox_users import StatusEnum as AdminGetInboxUsersStatusEnum

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -71,10 +71,16 @@ from ..operations.topic import AdminCreateTopic
 from ..operations.topic import AdminDeleteChat
 from ..operations.topic import AdminDeleteTopic
 from ..operations.topic import AdminQueryTopic
-from ..operations.topic import AdminQueryTopicTopicSubTypeEnum, AdminQueryTopicTopicTypeEnum
+from ..operations.topic import (
+    AdminQueryTopicTopicSubTypeEnum,
+    AdminQueryTopicTopicTypeEnum,
+)
 from ..operations.topic import AdminQueryTopicLog
 from ..operations.topic import AdminQueryUsersTopic
-from ..operations.topic import AdminQueryUsersTopicTopicSubTypeEnum, AdminQueryUsersTopicTopicTypeEnum
+from ..operations.topic import (
+    AdminQueryUsersTopicTopicSubTypeEnum,
+    AdminQueryUsersTopicTopicTypeEnum,
+)
 from ..operations.topic import AdminRemoveTopicMember
 from ..operations.topic import AdminSendChat
 from ..operations.topic import AdminTopicChatHistory
@@ -94,7 +100,14 @@ from ..operations.topic import PublicUnmuteUser
 
 
 @same_doc_as(AdminAddTopicMember)
-def admin_add_topic_member(body: ApiAddMemberParams, topic: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_add_topic_member(
+    body: ApiAddMemberParams,
+    topic: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin add user to topic (adminAddTopicMember)
 
     Add new member for topic in a namespace.
@@ -137,7 +150,14 @@ def admin_add_topic_member(body: ApiAddMemberParams, topic: str, user_id: str, n
 
 
 @same_doc_as(AdminAddTopicMember)
-async def admin_add_topic_member_async(body: ApiAddMemberParams, topic: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_add_topic_member_async(
+    body: ApiAddMemberParams,
+    topic: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin add user to topic (adminAddTopicMember)
 
     Add new member for topic in a namespace.
@@ -176,11 +196,19 @@ async def admin_add_topic_member_async(body: ApiAddMemberParams, topic: str, use
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminBanTopicMembers)
-def admin_ban_topic_members(body: ModelsBanTopicMemberParam, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_ban_topic_members(
+    body: ModelsBanTopicMemberParam,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admins ban user in group topic (adminBanTopicMembers)
 
     Ban users in some topic. banned user not assigned to shard for channel topic, and cannot send and query chat.
@@ -228,7 +256,13 @@ def admin_ban_topic_members(body: ModelsBanTopicMemberParam, topic: str, namespa
 
 
 @same_doc_as(AdminBanTopicMembers)
-async def admin_ban_topic_members_async(body: ModelsBanTopicMemberParam, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_ban_topic_members_async(
+    body: ModelsBanTopicMemberParam,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admins ban user in group topic (adminBanTopicMembers)
 
     Ban users in some topic. banned user not assigned to shard for channel topic, and cannot send and query chat.
@@ -272,11 +306,18 @@ async def admin_ban_topic_members_async(body: ModelsBanTopicMemberParam, topic: 
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminChannelTopicInfo)
-def admin_channel_topic_info(topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_channel_topic_info(
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get channel topic detail (adminChannelTopicInfo)
 
     Get chat list of topic in a namespace.
@@ -323,7 +364,12 @@ def admin_channel_topic_info(topic: str, namespace: Optional[str] = None, x_addi
 
 
 @same_doc_as(AdminChannelTopicInfo)
-async def admin_channel_topic_info_async(topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_channel_topic_info_async(
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get channel topic detail (adminChannelTopicInfo)
 
     Get chat list of topic in a namespace.
@@ -366,11 +412,20 @@ async def admin_channel_topic_info_async(topic: str, namespace: Optional[str] = 
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminChannelTopicList)
-def admin_channel_topic_list(limit: Optional[int] = None, offset: Optional[int] = None, topic_name: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_channel_topic_list(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic_name: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get list of channel topic (adminChannelTopicList)
 
     Get channel chat list of topic in a namespace.
@@ -421,7 +476,14 @@ def admin_channel_topic_list(limit: Optional[int] = None, offset: Optional[int] 
 
 
 @same_doc_as(AdminChannelTopicList)
-async def admin_channel_topic_list_async(limit: Optional[int] = None, offset: Optional[int] = None, topic_name: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_channel_topic_list_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic_name: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get list of channel topic (adminChannelTopicList)
 
     Get channel chat list of topic in a namespace.
@@ -468,11 +530,17 @@ async def admin_channel_topic_list_async(limit: Optional[int] = None, offset: Op
         topic_name=topic_name,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminChannelTopicSummary)
-def admin_channel_topic_summary(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_channel_topic_summary(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get channel topic summary (adminChannelTopicSummary)
 
     Get chat list of topic in a namespace.
@@ -514,7 +582,11 @@ def admin_channel_topic_summary(namespace: Optional[str] = None, x_additional_he
 
 
 @same_doc_as(AdminChannelTopicSummary)
-async def admin_channel_topic_summary_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_channel_topic_summary_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get channel topic summary (adminChannelTopicSummary)
 
     Get chat list of topic in a namespace.
@@ -552,11 +624,27 @@ async def admin_channel_topic_summary_async(namespace: Optional[str] = None, x_a
     request = AdminChannelTopicSummary.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminChatHistory)
-def admin_chat_history(chat_id: Optional[List[str]] = None, end_created_at: Optional[int] = None, keyword: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, sender_user_id: Optional[str] = None, shard_id: Optional[str] = None, start_created_at: Optional[int] = None, topic: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_chat_history(
+    chat_id: Optional[List[str]] = None,
+    end_created_at: Optional[int] = None,
+    keyword: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order: Optional[str] = None,
+    sender_user_id: Optional[str] = None,
+    shard_id: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    topic: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get chat history (adminChatHistory)
 
     Get chat history in a namespace.
@@ -628,7 +716,21 @@ def admin_chat_history(chat_id: Optional[List[str]] = None, end_created_at: Opti
 
 
 @same_doc_as(AdminChatHistory)
-async def admin_chat_history_async(chat_id: Optional[List[str]] = None, end_created_at: Optional[int] = None, keyword: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, sender_user_id: Optional[str] = None, shard_id: Optional[str] = None, start_created_at: Optional[int] = None, topic: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_chat_history_async(
+    chat_id: Optional[List[str]] = None,
+    end_created_at: Optional[int] = None,
+    keyword: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order: Optional[str] = None,
+    sender_user_id: Optional[str] = None,
+    shard_id: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    topic: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get chat history (adminChatHistory)
 
     Get chat history in a namespace.
@@ -696,11 +798,18 @@ async def admin_chat_history_async(chat_id: Optional[List[str]] = None, end_crea
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminCreateNamespaceTopic)
-def admin_create_namespace_topic(body: ApiCreateNamespaceTopicParams, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_create_namespace_topic(
+    body: ApiCreateNamespaceTopicParams,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Use to create namespace group. Message that send to this group send to connected user in a namespace (adminCreateNamespaceTopic)
 
     Create new namespace group topic in a namespace.
@@ -737,7 +846,12 @@ def admin_create_namespace_topic(body: ApiCreateNamespaceTopicParams, namespace:
 
 
 @same_doc_as(AdminCreateNamespaceTopic)
-async def admin_create_namespace_topic_async(body: ApiCreateNamespaceTopicParams, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_create_namespace_topic_async(
+    body: ApiCreateNamespaceTopicParams,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Use to create namespace group. Message that send to this group send to connected user in a namespace (adminCreateNamespaceTopic)
 
     Create new namespace group topic in a namespace.
@@ -770,11 +884,18 @@ async def admin_create_namespace_topic_async(body: ApiCreateNamespaceTopicParams
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminCreateTopic)
-def admin_create_topic(body: ApiCreateTopicParams, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_create_topic(
+    body: ApiCreateTopicParams,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Use to create group. Only group admin can use this operation (adminCreateTopic)
 
     Create new group topic in a namespace.
@@ -811,7 +932,12 @@ def admin_create_topic(body: ApiCreateTopicParams, namespace: Optional[str] = No
 
 
 @same_doc_as(AdminCreateTopic)
-async def admin_create_topic_async(body: ApiCreateTopicParams, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_create_topic_async(
+    body: ApiCreateTopicParams,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Use to create group. Only group admin can use this operation (adminCreateTopic)
 
     Create new group topic in a namespace.
@@ -844,11 +970,19 @@ async def admin_create_topic_async(body: ApiCreateTopicParams, namespace: Option
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDeleteChat)
-def admin_delete_chat(chat_id: str, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_delete_chat(
+    chat_id: str,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admins delete chat (adminDeleteChat)
 
     Delete chat.
@@ -896,7 +1030,13 @@ def admin_delete_chat(chat_id: str, topic: str, namespace: Optional[str] = None,
 
 
 @same_doc_as(AdminDeleteChat)
-async def admin_delete_chat_async(chat_id: str, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_delete_chat_async(
+    chat_id: str,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admins delete chat (adminDeleteChat)
 
     Delete chat.
@@ -940,11 +1080,18 @@ async def admin_delete_chat_async(chat_id: str, topic: str, namespace: Optional[
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDeleteTopic)
-def admin_delete_topic(topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_delete_topic(
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Use to delete group. Only group admin can use this operation (adminDeleteTopic)
 
     Delete topic in a namespace.
@@ -981,7 +1128,12 @@ def admin_delete_topic(topic: str, namespace: Optional[str] = None, x_additional
 
 
 @same_doc_as(AdminDeleteTopic)
-async def admin_delete_topic_async(topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_delete_topic_async(
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Use to delete group. Only group admin can use this operation (adminDeleteTopic)
 
     Delete topic in a namespace.
@@ -1014,11 +1166,26 @@ async def admin_delete_topic_async(topic: str, namespace: Optional[str] = None, 
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminQueryTopic)
-def admin_query_topic(include_members: Optional[bool] = None, include_past_members: Optional[bool] = None, include_past_topics: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, topic: Optional[List[str]] = None, topic_sub_type: Optional[Union[str, AdminQueryTopicTopicSubTypeEnum]] = None, topic_type: Optional[Union[str, AdminQueryTopicTopicTypeEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_query_topic(
+    include_members: Optional[bool] = None,
+    include_past_members: Optional[bool] = None,
+    include_past_topics: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic: Optional[List[str]] = None,
+    topic_sub_type: Optional[Union[str, AdminQueryTopicTopicSubTypeEnum]] = None,
+    topic_type: Optional[Union[str, AdminQueryTopicTopicTypeEnum]] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin query topics (adminQueryTopic)
 
     Get topics in a namespace.
@@ -1087,7 +1254,20 @@ def admin_query_topic(include_members: Optional[bool] = None, include_past_membe
 
 
 @same_doc_as(AdminQueryTopic)
-async def admin_query_topic_async(include_members: Optional[bool] = None, include_past_members: Optional[bool] = None, include_past_topics: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, topic: Optional[List[str]] = None, topic_sub_type: Optional[Union[str, AdminQueryTopicTopicSubTypeEnum]] = None, topic_type: Optional[Union[str, AdminQueryTopicTopicTypeEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_query_topic_async(
+    include_members: Optional[bool] = None,
+    include_past_members: Optional[bool] = None,
+    include_past_topics: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic: Optional[List[str]] = None,
+    topic_sub_type: Optional[Union[str, AdminQueryTopicTopicSubTypeEnum]] = None,
+    topic_type: Optional[Union[str, AdminQueryTopicTopicTypeEnum]] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin query topics (adminQueryTopic)
 
     Get topics in a namespace.
@@ -1152,11 +1332,25 @@ async def admin_query_topic_async(include_members: Optional[bool] = None, includ
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminQueryTopicLog)
-def admin_query_topic_log(end_created_at: Optional[int] = None, limit: Optional[int] = None, offset: Optional[int] = None, sender_user_id: Optional[str] = None, start_created_at: Optional[int] = None, topic_id: Optional[str] = None, topic_ids: Optional[List[str]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_query_topic_log(
+    end_created_at: Optional[int] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sender_user_id: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    topic_id: Optional[str] = None,
+    topic_ids: Optional[List[str]] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin query topic log (adminQueryTopicLog)
 
     Get chat log of topic in a namespace.
@@ -1222,7 +1416,19 @@ def admin_query_topic_log(end_created_at: Optional[int] = None, limit: Optional[
 
 
 @same_doc_as(AdminQueryTopicLog)
-async def admin_query_topic_log_async(end_created_at: Optional[int] = None, limit: Optional[int] = None, offset: Optional[int] = None, sender_user_id: Optional[str] = None, start_created_at: Optional[int] = None, topic_id: Optional[str] = None, topic_ids: Optional[List[str]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_query_topic_log_async(
+    end_created_at: Optional[int] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sender_user_id: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    topic_id: Optional[str] = None,
+    topic_ids: Optional[List[str]] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin query topic log (adminQueryTopicLog)
 
     Get chat log of topic in a namespace.
@@ -1284,11 +1490,23 @@ async def admin_query_topic_log_async(end_created_at: Optional[int] = None, limi
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminQueryUsersTopic)
-def admin_query_users_topic(user_id: str, include_past_topics: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, topic_sub_type: Optional[Union[str, AdminQueryUsersTopicTopicSubTypeEnum]] = None, topic_type: Optional[Union[str, AdminQueryUsersTopicTopicTypeEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_query_users_topic(
+    user_id: str,
+    include_past_topics: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic_sub_type: Optional[Union[str, AdminQueryUsersTopicTopicSubTypeEnum]] = None,
+    topic_type: Optional[Union[str, AdminQueryUsersTopicTopicTypeEnum]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin query user's topics (adminQueryUsersTopic)
 
     Get user's topics in a namespace.
@@ -1348,7 +1566,17 @@ def admin_query_users_topic(user_id: str, include_past_topics: Optional[bool] = 
 
 
 @same_doc_as(AdminQueryUsersTopic)
-async def admin_query_users_topic_async(user_id: str, include_past_topics: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, topic_sub_type: Optional[Union[str, AdminQueryUsersTopicTopicSubTypeEnum]] = None, topic_type: Optional[Union[str, AdminQueryUsersTopicTopicTypeEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_query_users_topic_async(
+    user_id: str,
+    include_past_topics: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic_sub_type: Optional[Union[str, AdminQueryUsersTopicTopicSubTypeEnum]] = None,
+    topic_type: Optional[Union[str, AdminQueryUsersTopicTopicTypeEnum]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin query user's topics (adminQueryUsersTopic)
 
     Get user's topics in a namespace.
@@ -1404,11 +1632,19 @@ async def admin_query_users_topic_async(user_id: str, include_past_topics: Optio
         topic_type=topic_type,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminRemoveTopicMember)
-def admin_remove_topic_member(topic: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_remove_topic_member(
+    topic: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin remove user from topic (adminRemoveTopicMember)
 
     Remove member from topic in a namespace.
@@ -1448,7 +1684,13 @@ def admin_remove_topic_member(topic: str, user_id: str, namespace: Optional[str]
 
 
 @same_doc_as(AdminRemoveTopicMember)
-async def admin_remove_topic_member_async(topic: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_remove_topic_member_async(
+    topic: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin remove user from topic (adminRemoveTopicMember)
 
     Remove member from topic in a namespace.
@@ -1484,11 +1726,19 @@ async def admin_remove_topic_member_async(topic: str, user_id: str, namespace: O
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminSendChat)
-def admin_send_chat(body: ApiSendChatParams, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_send_chat(
+    body: ApiSendChatParams,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admins send chat to group topic (adminSendChat)
 
     Send message to chat topic as system.
@@ -1536,7 +1786,13 @@ def admin_send_chat(body: ApiSendChatParams, topic: str, namespace: Optional[str
 
 
 @same_doc_as(AdminSendChat)
-async def admin_send_chat_async(body: ApiSendChatParams, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_send_chat_async(
+    body: ApiSendChatParams,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admins send chat to group topic (adminSendChat)
 
     Send message to chat topic as system.
@@ -1580,12 +1836,27 @@ async def admin_send_chat_async(body: ApiSendChatParams, topic: str, namespace: 
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(AdminTopicChatHistory)
-def admin_topic_chat_history(topic: str, end_created_at: Optional[int] = None, keyword: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, sender_user_id: Optional[str] = None, shard_id: Optional[str] = None, start_created_at: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_topic_chat_history(
+    topic: str,
+    end_created_at: Optional[int] = None,
+    keyword: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order: Optional[str] = None,
+    sender_user_id: Optional[str] = None,
+    shard_id: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get chat history (adminTopicChatHistory)
 
     Get chat history in a namespace.
@@ -1655,7 +1926,20 @@ def admin_topic_chat_history(topic: str, end_created_at: Optional[int] = None, k
 
 @deprecated
 @same_doc_as(AdminTopicChatHistory)
-async def admin_topic_chat_history_async(topic: str, end_created_at: Optional[int] = None, keyword: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order: Optional[str] = None, sender_user_id: Optional[str] = None, shard_id: Optional[str] = None, start_created_at: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_topic_chat_history_async(
+    topic: str,
+    end_created_at: Optional[int] = None,
+    keyword: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order: Optional[str] = None,
+    sender_user_id: Optional[str] = None,
+    shard_id: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get chat history (adminTopicChatHistory)
 
     Get chat history in a namespace.
@@ -1720,11 +2004,20 @@ async def admin_topic_chat_history_async(topic: str, end_created_at: Optional[in
         start_created_at=start_created_at,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminTopicList)
-def admin_topic_list(limit: Optional[int] = None, offset: Optional[int] = None, topic_type: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_topic_list(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic_type: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get list of topic (adminTopicList)
 
     Get chat list of topic in a namespace.
@@ -1775,7 +2068,14 @@ def admin_topic_list(limit: Optional[int] = None, offset: Optional[int] = None, 
 
 
 @same_doc_as(AdminTopicList)
-async def admin_topic_list_async(limit: Optional[int] = None, offset: Optional[int] = None, topic_type: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_topic_list_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic_type: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get list of topic (adminTopicList)
 
     Get chat list of topic in a namespace.
@@ -1822,11 +2122,23 @@ async def admin_topic_list_async(limit: Optional[int] = None, offset: Optional[i
         topic_type=topic_type,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminTopicMembers)
-def admin_topic_members(topic: str, is_banned: Optional[bool] = None, is_moderator: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, shard_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_topic_members(
+    topic: str,
+    is_banned: Optional[bool] = None,
+    is_moderator: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    shard_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get topic member (adminTopicMembers)
 
     Get topic members.
@@ -1886,7 +2198,17 @@ def admin_topic_members(topic: str, is_banned: Optional[bool] = None, is_moderat
 
 
 @same_doc_as(AdminTopicMembers)
-async def admin_topic_members_async(topic: str, is_banned: Optional[bool] = None, is_moderator: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, shard_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_topic_members_async(
+    topic: str,
+    is_banned: Optional[bool] = None,
+    is_moderator: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    shard_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get topic member (adminTopicMembers)
 
     Get topic members.
@@ -1942,11 +2264,18 @@ async def admin_topic_members_async(topic: str, is_banned: Optional[bool] = None
         shard_id=shard_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminTopicShards)
-def admin_topic_shards(topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_topic_shards(
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get shard list of topic (adminTopicShards)
 
     Get shard list from topic.
@@ -1991,7 +2320,12 @@ def admin_topic_shards(topic: str, namespace: Optional[str] = None, x_additional
 
 
 @same_doc_as(AdminTopicShards)
-async def admin_topic_shards_async(topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_topic_shards_async(
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get shard list of topic (adminTopicShards)
 
     Get shard list from topic.
@@ -2032,11 +2366,19 @@ async def admin_topic_shards_async(topic: str, namespace: Optional[str] = None, 
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUnbanTopicMembers)
-def admin_unban_topic_members(body: ModelsUnbanTopicMemberParam, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_unban_topic_members(
+    body: ModelsUnbanTopicMemberParam,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admins unban user in group topic (adminUnbanTopicMembers)
 
     Unban users in some topic.
@@ -2084,7 +2426,13 @@ def admin_unban_topic_members(body: ModelsUnbanTopicMemberParam, topic: str, nam
 
 
 @same_doc_as(AdminUnbanTopicMembers)
-async def admin_unban_topic_members_async(body: ModelsUnbanTopicMemberParam, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_unban_topic_members_async(
+    body: ModelsUnbanTopicMemberParam,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admins unban user in group topic (adminUnbanTopicMembers)
 
     Unban users in some topic.
@@ -2128,11 +2476,19 @@ async def admin_unban_topic_members_async(body: ModelsUnbanTopicMemberParam, top
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateTopic)
-def admin_update_topic(body: ApiUpdateTopicParams, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_topic(
+    body: ApiUpdateTopicParams,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Use to update group information. Only group admin can use this operation (adminUpdateTopic)
 
     Update group topic in a namespace.
@@ -2172,7 +2528,13 @@ def admin_update_topic(body: ApiUpdateTopicParams, topic: str, namespace: Option
 
 
 @same_doc_as(AdminUpdateTopic)
-async def admin_update_topic_async(body: ApiUpdateTopicParams, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_topic_async(
+    body: ApiUpdateTopicParams,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Use to update group information. Only group admin can use this operation (adminUpdateTopic)
 
     Update group topic in a namespace.
@@ -2208,11 +2570,19 @@ async def admin_update_topic_async(body: ApiUpdateTopicParams, topic: str, names
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicBanTopicMembers)
-def public_ban_topic_members(body: ModelsPublicBanTopicMembersRequest, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_ban_topic_members(
+    body: ModelsPublicBanTopicMembersRequest,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public ban topic members in a group topic (publicBanTopicMembers)
 
     Ban topic members in a group topic.
@@ -2260,7 +2630,13 @@ def public_ban_topic_members(body: ModelsPublicBanTopicMembersRequest, topic: st
 
 
 @same_doc_as(PublicBanTopicMembers)
-async def public_ban_topic_members_async(body: ModelsPublicBanTopicMembersRequest, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_ban_topic_members_async(
+    body: ModelsPublicBanTopicMembersRequest,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public ban topic members in a group topic (publicBanTopicMembers)
 
     Ban topic members in a group topic.
@@ -2304,11 +2680,21 @@ async def public_ban_topic_members_async(body: ModelsPublicBanTopicMembersReques
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicChatHistory)
-def public_chat_history(topic: str, limit: Optional[int] = None, order: Optional[str] = None, start_created_at: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_chat_history(
+    topic: str,
+    limit: Optional[int] = None,
+    order: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public get chat history (publicChatHistory)
 
     get chat history in a namespace.
@@ -2362,7 +2748,15 @@ def public_chat_history(topic: str, limit: Optional[int] = None, order: Optional
 
 
 @same_doc_as(PublicChatHistory)
-async def public_chat_history_async(topic: str, limit: Optional[int] = None, order: Optional[str] = None, start_created_at: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_chat_history_async(
+    topic: str,
+    limit: Optional[int] = None,
+    order: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public get chat history (publicChatHistory)
 
     get chat history in a namespace.
@@ -2412,11 +2806,19 @@ async def public_chat_history_async(topic: str, limit: Optional[int] = None, ord
         start_created_at=start_created_at,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicDeleteChat)
-def public_delete_chat(chat_id: str, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_delete_chat(
+    chat_id: str,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public delete chat (publicDeleteChat)
 
     Delete chat.
@@ -2464,7 +2866,13 @@ def public_delete_chat(chat_id: str, topic: str, namespace: Optional[str] = None
 
 
 @same_doc_as(PublicDeleteChat)
-async def public_delete_chat_async(chat_id: str, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_delete_chat_async(
+    chat_id: str,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public delete chat (publicDeleteChat)
 
     Delete chat.
@@ -2508,11 +2916,17 @@ async def public_delete_chat_async(chat_id: str, topic: str, namespace: Optional
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetMutedTopics)
-def public_get_muted_topics(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_muted_topics(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public get muted at topics (publicGetMutedTopics)
 
     get chat muted topics in a namespace.
@@ -2554,7 +2968,11 @@ def public_get_muted_topics(namespace: Optional[str] = None, x_additional_header
 
 
 @same_doc_as(PublicGetMutedTopics)
-async def public_get_muted_topics_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_muted_topics_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public get muted at topics (publicGetMutedTopics)
 
     get chat muted topics in a namespace.
@@ -2592,11 +3010,19 @@ async def public_get_muted_topics_async(namespace: Optional[str] = None, x_addit
     request = PublicGetMutedTopics.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicMuteUser)
-def public_mute_user(body: ApiMuteUserRequest, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_mute_user(
+    body: ApiMuteUserRequest,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public mute user in a topic (publicMuteUser)
 
     Mute user.
@@ -2644,7 +3070,13 @@ def public_mute_user(body: ApiMuteUserRequest, topic: str, namespace: Optional[s
 
 
 @same_doc_as(PublicMuteUser)
-async def public_mute_user_async(body: ApiMuteUserRequest, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_mute_user_async(
+    body: ApiMuteUserRequest,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public mute user in a topic (publicMuteUser)
 
     Mute user.
@@ -2688,11 +3120,20 @@ async def public_mute_user_async(body: ApiMuteUserRequest, topic: str, namespace
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicTopicList)
-def public_topic_list(limit: Optional[int] = None, offset: Optional[int] = None, topic_type: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_topic_list(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic_type: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public get list of topic (publicTopicList)
 
     get chat list of topic in a namespace.
@@ -2743,7 +3184,14 @@ def public_topic_list(limit: Optional[int] = None, offset: Optional[int] = None,
 
 
 @same_doc_as(PublicTopicList)
-async def public_topic_list_async(limit: Optional[int] = None, offset: Optional[int] = None, topic_type: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_topic_list_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    topic_type: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public get list of topic (publicTopicList)
 
     get chat list of topic in a namespace.
@@ -2790,11 +3238,19 @@ async def public_topic_list_async(limit: Optional[int] = None, offset: Optional[
         topic_type=topic_type,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicUnbanTopicMembers)
-def public_unban_topic_members(body: ModelsPublicUnbanTopicMembersRequest, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_unban_topic_members(
+    body: ModelsPublicUnbanTopicMembersRequest,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public unban topic members in a group topic (publicUnbanTopicMembers)
 
     Unban topic members in a group topic.
@@ -2842,7 +3298,13 @@ def public_unban_topic_members(body: ModelsPublicUnbanTopicMembersRequest, topic
 
 
 @same_doc_as(PublicUnbanTopicMembers)
-async def public_unban_topic_members_async(body: ModelsPublicUnbanTopicMembersRequest, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_unban_topic_members_async(
+    body: ModelsPublicUnbanTopicMembersRequest,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public unban topic members in a group topic (publicUnbanTopicMembers)
 
     Unban topic members in a group topic.
@@ -2886,11 +3348,19 @@ async def public_unban_topic_members_async(body: ModelsPublicUnbanTopicMembersRe
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicUnmuteUser)
-def public_unmute_user(body: ApiUnmuteUserRequest, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_unmute_user(
+    body: ApiUnmuteUserRequest,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public unmute user in a topic (publicUnmuteUser)
 
     Unmute user.
@@ -2938,7 +3408,13 @@ def public_unmute_user(body: ApiUnmuteUserRequest, topic: str, namespace: Option
 
 
 @same_doc_as(PublicUnmuteUser)
-async def public_unmute_user_async(body: ApiUnmuteUserRequest, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_unmute_user_async(
+    body: ApiUnmuteUserRequest,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public unmute user in a topic (publicUnmuteUser)
 
     Unmute user.
@@ -2982,4 +3458,6 @@ async def public_unmute_user_async(body: ApiUnmuteUserRequest, topic: str, names
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

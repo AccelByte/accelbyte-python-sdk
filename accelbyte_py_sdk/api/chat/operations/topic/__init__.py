@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -25,10 +25,16 @@ from .admin_create_topic import AdminCreateTopic
 from .admin_delete_chat import AdminDeleteChat
 from .admin_delete_topic import AdminDeleteTopic
 from .admin_query_topic import AdminQueryTopic
-from .admin_query_topic import TopicSubTypeEnum as AdminQueryTopicTopicSubTypeEnum, TopicTypeEnum as AdminQueryTopicTopicTypeEnum
+from .admin_query_topic import (
+    TopicSubTypeEnum as AdminQueryTopicTopicSubTypeEnum,
+    TopicTypeEnum as AdminQueryTopicTopicTypeEnum,
+)
 from .admin_query_topic_log import AdminQueryTopicLog
 from .admin_query_users_topic import AdminQueryUsersTopic
-from .admin_query_users_topic import TopicSubTypeEnum as AdminQueryUsersTopicTopicSubTypeEnum, TopicTypeEnum as AdminQueryUsersTopicTopicTypeEnum
+from .admin_query_users_topic import (
+    TopicSubTypeEnum as AdminQueryUsersTopicTopicSubTypeEnum,
+    TopicTypeEnum as AdminQueryUsersTopicTopicTypeEnum,
+)
 from .admin_remove_topic_member import AdminRemoveTopicMember
 from .admin_send_chat import AdminSendChat
 from .admin_topic_chat_history import AdminTopicChatHistory

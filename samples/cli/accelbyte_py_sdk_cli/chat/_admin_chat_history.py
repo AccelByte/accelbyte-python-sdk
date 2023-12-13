@@ -51,29 +51,27 @@ from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_chat_history(
-        chat_id: Optional[str] = None,
-        end_created_at: Optional[int] = None,
-        keyword: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
-        order: Optional[str] = None,
-        sender_user_id: Optional[str] = None,
-        shard_id: Optional[str] = None,
-        start_created_at: Optional[int] = None,
-        topic: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    chat_id: Optional[str] = None,
+    end_created_at: Optional[int] = None,
+    keyword: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order: Optional[str] = None,
+    sender_user_id: Optional[str] = None,
+    shard_id: Optional[str] = None,
+    start_created_at: Optional[int] = None,
+    topic: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_chat_history_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if chat_id is not None:

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -58,12 +58,12 @@ class ModelsSaveInboxMessageRequest(Model):
 
     # region fields
 
-    category: str                                                                                  # REQUIRED
-    expired_at: int                                                                                # REQUIRED
-    message: Dict[str, Any]                                                                        # REQUIRED
-    scope: Union[str, ScopeEnum]                                                                   # REQUIRED
-    status: Union[str, StatusEnum]                                                                 # REQUIRED
-    user_ids: List[str]                                                                            # REQUIRED
+    category: str  # REQUIRED
+    expired_at: int  # REQUIRED
+    message: Dict[str, Any]  # REQUIRED
+    scope: Union[str, ScopeEnum]  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    user_ids: List[str]  # REQUIRED
 
     # endregion fields
 
@@ -85,7 +85,9 @@ class ModelsSaveInboxMessageRequest(Model):
         self.scope = value
         return self
 
-    def with_status(self, value: Union[str, StatusEnum]) -> ModelsSaveInboxMessageRequest:
+    def with_status(
+        self, value: Union[str, StatusEnum]
+    ) -> ModelsSaveInboxMessageRequest:
         self.status = value
         return self
 
@@ -138,7 +140,7 @@ class ModelsSaveInboxMessageRequest(Model):
         scope: Union[str, ScopeEnum],
         status: Union[str, StatusEnum],
         user_ids: List[str],
-    **kwargs
+        **kwargs,
     ) -> ModelsSaveInboxMessageRequest:
         instance = cls()
         instance.category = category
@@ -150,7 +152,9 @@ class ModelsSaveInboxMessageRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsSaveInboxMessageRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsSaveInboxMessageRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -181,15 +185,33 @@ class ModelsSaveInboxMessageRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsSaveInboxMessageRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsSaveInboxMessageRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsSaveInboxMessageRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsSaveInboxMessageRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsSaveInboxMessageRequest, List[ModelsSaveInboxMessageRequest], Dict[Any, ModelsSaveInboxMessageRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsSaveInboxMessageRequest,
+        List[ModelsSaveInboxMessageRequest],
+        Dict[Any, ModelsSaveInboxMessageRequest],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

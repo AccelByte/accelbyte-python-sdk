@@ -159,20 +159,6 @@ def test_admin_update_achievement(self):
 
 Source: [ams.py](../tests/integration/api/ams.py)
 
-### Health Check
-
-```python
-def test_health_check(self):
-    from accelbyte_py_sdk.api.ams import basic_health_check
-
-    # arrange
-
-    # act
-    _, error = basic_health_check()
-
-    # assert
-    self.assertIsNone(error, error)
-```
 ### Info Regions
 
 ```python
@@ -225,10 +211,9 @@ def test_delete_user_profile(self):
 
     # arrange
     result, error = self.do_create_my_profile(body=self.user_profile_private_create)
-    self.log_warning(
-        msg=f"Failed to set up user profile. {str(error)}",
-        condition=error is not None,
-    )
+    if error:
+        self.skipTest(reason=f"Failed to set up user profile. {str(error)}")
+        return
     user_id = result.user_id
 
     # act
@@ -245,10 +230,9 @@ def test_get_user_profile(self):
 
     # arrange
     result, error = self.do_create_my_profile(body=self.user_profile_private_create)
-    self.log_warning(
-        msg=f"Failed to set up user profile. {str(error)}",
-        condition=error is not None,
-    )
+    if error:
+        self.skipTest(reason=f"Failed to set up user profile. {str(error)}")
+        return
     user_id = result.user_id
 
     # act
@@ -266,10 +250,9 @@ def test_public_update_user_profile(self):
 
     # arrange
     result, error = self.do_create_my_profile(body=self.user_profile_private_create)
-    self.log_warning(
-        msg=f"Failed to set up user profile. {str(error)}",
-        condition=error is not None,
-    )
+    if error:
+        self.skipTest(reason=f"Failed to set up user profile. {str(error)}")
+        return
     user_id = result.user_id
 
     # act
@@ -489,7 +472,9 @@ def test_update_deployment(self):
     result, error = get_deployment(
         deployment=deployment_name,
     )
-    self.assertIsNone(error, error)
+    if error:
+        self.skipTest(reason="unable to get deployment")
+        return
 
     # act
     _, error = update_deployment(
@@ -526,7 +511,9 @@ def test_update_deployment_with_missing_image(self):
     result, error = get_deployment(
         deployment=deployment_name,
     )
-    self.assertIsNone(error, error)
+    if error:
+        self.skipTest(reason="unable to get deployment")
+        return
 
     # act
     _, error = update_deployment(
@@ -769,6 +756,9 @@ def test_admin_submit_user_account_deletion_request(self):
 
 ```python
 def test_delete_admin_email_configuration(self):
+    if self.using_ags_starter:
+        self.login_client()
+
     from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
     from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
@@ -795,6 +785,9 @@ def test_delete_admin_email_configuration(self):
 
 ```python
 def test_get_admin_email_configuration(self):
+    if self.using_ags_starter:
+        self.login_client()
+
     from accelbyte_py_sdk.api.gdpr import get_admin_email_configuration
     from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
@@ -818,6 +811,9 @@ def test_get_admin_email_configuration(self):
 
 ```python
 def test_save_admin_email_configuration(self):
+    if self.using_ags_starter:
+        self.login_client()
+
     from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
     from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
@@ -839,6 +835,9 @@ def test_save_admin_email_configuration(self):
 
 ```python
 def test_update_admin_email_configuration(self):
+    if self.using_ags_starter:
+        self.login_client()
+
     from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
     from accelbyte_py_sdk.api.gdpr import update_admin_email_configuration
 
@@ -1218,6 +1217,8 @@ def test_admin_download_my_backup_codes_v4(self):
     if error and isinstance(error, RestErrorResponse):
         if error.error_code == 10191:  # email not verified
             self.skipTest(reason=error.error_message)
+        if error.error_code == 10192:  # factor not enabled
+            self.skipTest(reason=error.error_message)
 
     if result is not None:
         exported_file_path.write_bytes(result)
@@ -1242,6 +1243,8 @@ def test_public_download_my_backup_codes_v4(self):
     result, error = public_download_my_backup_codes_v4()
     if error and isinstance(error, RestErrorResponse):
         if error.error_code == 10191:  # email not verified
+            self.skipTest(reason=error.error_message)
+        if error.error_code == 10192:  # factor not enabled
             self.skipTest(reason=error.error_message)
 
     if result is not None:
@@ -1757,20 +1760,6 @@ def test_match_pool_list(self):
     # assert
     self.assertIsNone(error, error)
 ```
-### Get Healthcheck Info
-
-```python
-def test_get_healthcheck_info(self):
-    from accelbyte_py_sdk.api.match2 import get_healthcheck_info
-
-    # arrange
-
-    # act
-    x, error = get_healthcheck_info()
-
-    # assert
-    self.assertIsNone(error, error)
-```
 ### Match Function List
 
 ```python
@@ -1865,26 +1854,10 @@ def test_update_matchmaking_channel(self):
     )
 
     # act
+    body = ModelsUpdateChannelRequest.create_from_dict(self.channel_dict)
+    body.description = "KETARANGAN"
     _, error = update_matchmaking_channel(
-        body=ModelsUpdateChannelRequest.create(
-            deployment=self.models_channel_request.deployment,
-            description="KETERANGAN",
-            find_match_timeout_seconds=self.models_channel_request.find_match_timeout_seconds,
-            joinable=self.models_channel_request.joinable,
-            max_delay_ms=self.models_channel_request.max_delay_ms,
-            rule_set=ModelsUpdateRuleset.create(
-                alliance=ModelsUpdateAllianceRule.create(
-                    max_number=self.models_alliance_rule.max_number,
-                    min_number=self.models_alliance_rule.min_number,
-                    player_max_number=self.models_alliance_rule.player_max_number,
-                    player_min_number=self.models_alliance_rule.player_min_number,
-                ),
-                alliance_flexing_rule=self.models_alliance_flexing_rules,
-            ),
-            session_queue_timeout_seconds=self.models_channel_request.session_queue_timeout_seconds,
-            social_matchmaking=self.models_channel_request.social_matchmaking,
-            use_sub_gamemode=self.models_channel_request.use_sub_gamemode,
-        ),
+        body=body,
         channel_name=self.game_mode,
     )
 
@@ -2101,6 +2074,9 @@ Source: [qosm.py](../tests/integration/api/qosm.py)
 
 ```python
 def test_heartbeat(self):
+    if self.using_ags_starter:
+        self.login_client()
+
     from accelbyte_py_sdk.api.qosm import list_server
     from accelbyte_py_sdk.api.qosm.models import ModelsHeartbeatRequest
     from accelbyte_py_sdk.api.qosm import heartbeat
@@ -2250,11 +2226,13 @@ def test_admin_delete_configuration_template_v1(self):
     # assert
     self.assertIsNone(error, error)
 ```
-### Public Query Game Sessions
+### Public Query Game Sessions By Attributes
 
 ```python
-def test_public_query_game_sessions_by_attributes(self):
-    from accelbyte_py_sdk.api.session import public_query_game_sessions_by_attributes
+def test_public_query_game_sessions(self):
+    from accelbyte_py_sdk.api.session import (
+        public_query_game_sessions_by_attributes,
+    )
 
     # arrange
 
@@ -2468,7 +2446,10 @@ def test_create_session(self):
 
 ```python
 def test_delete_session(self):
-    from accelbyte_py_sdk.api.sessionbrowser import delete_session
+    if self.using_ags_starter:
+        self.login_client()
+
+    from accelbyte_py_sdk.api.sessionbrowser import admin_delete_session
 
     # arrange
     _, error, session_id = self.do_create_session(
@@ -2480,7 +2461,7 @@ def test_delete_session(self):
     self.session_id = session_id
 
     # act
-    _, error = delete_session(session_id=self.session_id)
+    _, error = admin_delete_session(session_id=self.session_id)
 
     # assert
     self.assertIsNone(error, error)

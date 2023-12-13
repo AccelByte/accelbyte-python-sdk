@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -39,8 +39,8 @@ class ApiMuteUserRequest(Model):
 
     # region fields
 
-    duration: int                                                                                  # REQUIRED
-    user_id: str                                                                                   # REQUIRED
+    duration: int  # REQUIRED
+    user_id: str  # REQUIRED
 
     # endregion fields
 
@@ -75,19 +75,16 @@ class ApiMuteUserRequest(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        duration: int,
-        user_id: str,
-    **kwargs
-    ) -> ApiMuteUserRequest:
+    def create(cls, duration: int, user_id: str, **kwargs) -> ApiMuteUserRequest:
         instance = cls()
         instance.duration = duration
         instance.user_id = user_id
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ApiMuteUserRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ApiMuteUserRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -102,15 +99,31 @@ class ApiMuteUserRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ApiMuteUserRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ApiMuteUserRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ApiMuteUserRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ApiMuteUserRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ApiMuteUserRequest, List[ApiMuteUserRequest], Dict[Any, ApiMuteUserRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ApiMuteUserRequest, List[ApiMuteUserRequest], Dict[Any, ApiMuteUserRequest]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

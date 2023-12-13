@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -47,12 +47,12 @@ class ModelsChatMessageResponse(Model):
 
     # region fields
 
-    from_: str                                                                                     # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    message: str                                                                                   # REQUIRED
-    read_at: int                                                                                   # REQUIRED
-    received_at: int                                                                               # REQUIRED
-    topic_id: str                                                                                  # REQUIRED
+    from_: str  # REQUIRED
+    id_: str  # REQUIRED
+    message: str  # REQUIRED
+    read_at: int  # REQUIRED
+    received_at: int  # REQUIRED
+    topic_id: str  # REQUIRED
 
     # endregion fields
 
@@ -127,7 +127,7 @@ class ModelsChatMessageResponse(Model):
         read_at: int,
         received_at: int,
         topic_id: str,
-    **kwargs
+        **kwargs,
     ) -> ModelsChatMessageResponse:
         instance = cls()
         instance.from_ = from_
@@ -139,7 +139,9 @@ class ModelsChatMessageResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsChatMessageResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsChatMessageResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -170,15 +172,33 @@ class ModelsChatMessageResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsChatMessageResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsChatMessageResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsChatMessageResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsChatMessageResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsChatMessageResponse, List[ModelsChatMessageResponse], Dict[Any, ModelsChatMessageResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsChatMessageResponse,
+        List[ModelsChatMessageResponse],
+        Dict[Any, ModelsChatMessageResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

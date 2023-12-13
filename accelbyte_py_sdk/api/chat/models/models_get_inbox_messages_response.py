@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -27,7 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_get_inbox_messages_response_data import ModelsGetInboxMessagesResponseData
+from ..models.models_get_inbox_messages_response_data import (
+    ModelsGetInboxMessagesResponseData,
+)
 
 
 class ModelsGetInboxMessagesResponse(Model):
@@ -43,15 +45,17 @@ class ModelsGetInboxMessagesResponse(Model):
 
     # region fields
 
-    data: List[ModelsGetInboxMessagesResponseData]                                                 # REQUIRED
-    next_: str                                                                                     # REQUIRED
-    previous: str                                                                                  # REQUIRED
+    data: List[ModelsGetInboxMessagesResponseData]  # REQUIRED
+    next_: str  # REQUIRED
+    previous: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(self, value: List[ModelsGetInboxMessagesResponseData]) -> ModelsGetInboxMessagesResponse:
+    def with_data(
+        self, value: List[ModelsGetInboxMessagesResponseData]
+    ) -> ModelsGetInboxMessagesResponse:
         self.data = value
         return self
 
@@ -70,7 +74,9 @@ class ModelsGetInboxMessagesResponse(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "data"):
-            result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
+            result["data"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.data
+            ]
         elif include_empty:
             result["data"] = []
         if hasattr(self, "next_"):
@@ -93,7 +99,7 @@ class ModelsGetInboxMessagesResponse(Model):
         data: List[ModelsGetInboxMessagesResponseData],
         next_: str,
         previous: str,
-    **kwargs
+        **kwargs,
     ) -> ModelsGetInboxMessagesResponse:
         instance = cls()
         instance.data = data
@@ -102,12 +108,19 @@ class ModelsGetInboxMessagesResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGetInboxMessagesResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsGetInboxMessagesResponse:
         instance = cls()
         if not dict_:
             return instance
         if "data" in dict_ and dict_["data"] is not None:
-            instance.data = [ModelsGetInboxMessagesResponseData.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
+            instance.data = [
+                ModelsGetInboxMessagesResponseData.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["data"]
+            ]
         elif include_empty:
             instance.data = []
         if "next" in dict_ and dict_["next"] is not None:
@@ -121,15 +134,33 @@ class ModelsGetInboxMessagesResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsGetInboxMessagesResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsGetInboxMessagesResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsGetInboxMessagesResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsGetInboxMessagesResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsGetInboxMessagesResponse, List[ModelsGetInboxMessagesResponse], Dict[Any, ModelsGetInboxMessagesResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsGetInboxMessagesResponse,
+        List[ModelsGetInboxMessagesResponse],
+        Dict[Any, ModelsGetInboxMessagesResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

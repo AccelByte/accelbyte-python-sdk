@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -79,9 +79,9 @@ class AdminBanTopicMembers(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsBanTopicMemberParam                                                                # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
-    topic: str                                                                                     # REQUIRED in [path]
+    body: ModelsBanTopicMemberParam  # REQUIRED in [body]
+    namespace: str  # REQUIRED in [path]
+    topic: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -183,7 +183,12 @@ class AdminBanTopicMembers(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsBanTopicMemberResult], Union[None, HttpResponse, RestapiErrorResponseBody]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, ModelsBanTopicMemberResult],
+        Union[None, HttpResponse, RestapiErrorResponseBody],
+    ]:
         """Parse the given response.
 
         200: OK - ModelsBanTopicMemberResult (OK)
@@ -202,7 +207,9 @@ class AdminBanTopicMembers(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -218,7 +225,9 @@ class AdminBanTopicMembers(Operation):
         if code == 500:
             return None, RestapiErrorResponseBody.create_from_dict(content)
 
-        return self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -226,11 +235,7 @@ class AdminBanTopicMembers(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: ModelsBanTopicMemberParam,
-        namespace: str,
-        topic: str,
-    **kwargs
+        cls, body: ModelsBanTopicMemberParam, namespace: str, topic: str, **kwargs
     ) -> AdminBanTopicMembers:
         instance = cls()
         instance.body = body
@@ -239,10 +244,14 @@ class AdminBanTopicMembers(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminBanTopicMembers:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AdminBanTopicMembers:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsBanTopicMemberParam.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = ModelsBanTopicMemberParam.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
             instance.body = ModelsBanTopicMemberParam()
         if "namespace" in dict_ and dict_["namespace"] is not None:

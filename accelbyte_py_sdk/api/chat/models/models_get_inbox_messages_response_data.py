@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -67,16 +67,16 @@ class ModelsGetInboxMessagesResponseData(Model):
 
     # region fields
 
-    created_at: int                                                                                # REQUIRED
-    expired_at: int                                                                                # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    message: Dict[str, Any]                                                                        # REQUIRED
-    scope: Union[str, ScopeEnum]                                                                   # REQUIRED
-    sender_id: str                                                                                 # REQUIRED
-    status: Union[str, StatusEnum]                                                                 # REQUIRED
-    updated_at: int                                                                                # REQUIRED
-    user_ids: List[str]                                                                            # REQUIRED
-    category: str                                                                                  # OPTIONAL
+    created_at: int  # REQUIRED
+    expired_at: int  # REQUIRED
+    id_: str  # REQUIRED
+    message: Dict[str, Any]  # REQUIRED
+    scope: Union[str, ScopeEnum]  # REQUIRED
+    sender_id: str  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    updated_at: int  # REQUIRED
+    user_ids: List[str]  # REQUIRED
+    category: str  # OPTIONAL
 
     # endregion fields
 
@@ -98,7 +98,9 @@ class ModelsGetInboxMessagesResponseData(Model):
         self.message = value
         return self
 
-    def with_scope(self, value: Union[str, ScopeEnum]) -> ModelsGetInboxMessagesResponseData:
+    def with_scope(
+        self, value: Union[str, ScopeEnum]
+    ) -> ModelsGetInboxMessagesResponseData:
         self.scope = value
         return self
 
@@ -106,7 +108,9 @@ class ModelsGetInboxMessagesResponseData(Model):
         self.sender_id = value
         return self
 
-    def with_status(self, value: Union[str, StatusEnum]) -> ModelsGetInboxMessagesResponseData:
+    def with_status(
+        self, value: Union[str, StatusEnum]
+    ) -> ModelsGetInboxMessagesResponseData:
         self.status = value
         return self
 
@@ -187,7 +191,7 @@ class ModelsGetInboxMessagesResponseData(Model):
         updated_at: int,
         user_ids: List[str],
         category: Optional[str] = None,
-    **kwargs
+        **kwargs,
     ) -> ModelsGetInboxMessagesResponseData:
         instance = cls()
         instance.created_at = created_at
@@ -204,7 +208,9 @@ class ModelsGetInboxMessagesResponseData(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGetInboxMessagesResponseData:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsGetInboxMessagesResponseData:
         instance = cls()
         if not dict_:
             return instance
@@ -251,15 +257,33 @@ class ModelsGetInboxMessagesResponseData(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsGetInboxMessagesResponseData]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsGetInboxMessagesResponseData]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsGetInboxMessagesResponseData]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsGetInboxMessagesResponseData]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsGetInboxMessagesResponseData, List[ModelsGetInboxMessagesResponseData], Dict[Any, ModelsGetInboxMessagesResponseData]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsGetInboxMessagesResponseData,
+        List[ModelsGetInboxMessagesResponseData],
+        Dict[Any, ModelsGetInboxMessagesResponseData],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

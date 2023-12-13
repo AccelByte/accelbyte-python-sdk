@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -44,7 +44,9 @@ from ..operations.config import ImportConfig
 
 
 @same_doc_as(AdminGetAllConfigV1)
-def admin_get_all_config_v1(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_all_config_v1(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     """admin get all namespaces config (adminGetAllConfigV1)
 
     Get chat config of all namespaces.
@@ -80,7 +82,9 @@ def admin_get_all_config_v1(x_additional_headers: Optional[Dict[str, str]] = Non
 
 
 @same_doc_as(AdminGetAllConfigV1)
-async def admin_get_all_config_v1_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_all_config_v1_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     """admin get all namespaces config (adminGetAllConfigV1)
 
     Get chat config of all namespaces.
@@ -112,11 +116,17 @@ async def admin_get_all_config_v1_async(x_additional_headers: Optional[Dict[str,
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     request = AdminGetAllConfigV1.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetConfigV1)
-def admin_get_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_config_v1(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get namespace config (adminGetConfigV1)
 
     Get chat config of a namespace.
@@ -160,7 +170,11 @@ def admin_get_config_v1(namespace: Optional[str] = None, x_additional_headers: O
 
 
 @same_doc_as(AdminGetConfigV1)
-async def admin_get_config_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_config_v1_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get namespace config (adminGetConfigV1)
 
     Get chat config of a namespace.
@@ -200,11 +214,18 @@ async def admin_get_config_v1_async(namespace: Optional[str] = None, x_additiona
     request = AdminGetConfigV1.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateConfigV1)
-def admin_update_config_v1(body: ModelsConfigResponse, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_config_v1(
+    body: ModelsConfigResponse,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin update namespace config (adminUpdateConfigV1)
 
     Update chat config of a namespace.
@@ -253,7 +274,12 @@ def admin_update_config_v1(body: ModelsConfigResponse, namespace: Optional[str] 
 
 
 @same_doc_as(AdminUpdateConfigV1)
-async def admin_update_config_v1_async(body: ModelsConfigResponse, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_config_v1_async(
+    body: ModelsConfigResponse,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin update namespace config (adminUpdateConfigV1)
 
     Update chat config of a namespace.
@@ -298,11 +324,17 @@ async def admin_update_config_v1_async(body: ModelsConfigResponse, namespace: Op
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ExportConfig)
-def export_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def export_config(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Export chat config to a json file. (ExportConfig)
 
 
@@ -343,7 +375,11 @@ def export_config(namespace: Optional[str] = None, x_additional_headers: Optiona
 
 
 @same_doc_as(ExportConfig)
-async def export_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def export_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Export chat config to a json file. (ExportConfig)
 
 
@@ -380,11 +416,18 @@ async def export_config_async(namespace: Optional[str] = None, x_additional_head
     request = ExportConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ImportConfig)
-def import_config(file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def import_config(
+    file: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Import chat config from a json file. (ImportConfig)
 
 
@@ -429,7 +472,12 @@ def import_config(file: Optional[Any] = None, namespace: Optional[str] = None, x
 
 
 @same_doc_as(ImportConfig)
-async def import_config_async(file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def import_config_async(
+    file: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """Import chat config from a json file. (ImportConfig)
 
 
@@ -470,4 +518,6 @@ async def import_config_async(file: Optional[Any] = None, namespace: Optional[st
         file=file,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -51,13 +51,13 @@ class ModelsGetInboxCategoriesResponseItem(Model):
 
     # region fields
 
-    enabled: bool                                                                                  # REQUIRED
-    expires_in: int                                                                                # REQUIRED
-    name: str                                                                                      # REQUIRED
-    save_inbox: bool                                                                               # REQUIRED
-    send_notification: bool                                                                        # REQUIRED
-    hook: ModelsCategoryHook                                                                       # OPTIONAL
-    json_schema: Dict[str, Any]                                                                    # OPTIONAL
+    enabled: bool  # REQUIRED
+    expires_in: int  # REQUIRED
+    name: str  # REQUIRED
+    save_inbox: bool  # REQUIRED
+    send_notification: bool  # REQUIRED
+    hook: ModelsCategoryHook  # OPTIONAL
+    json_schema: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
 
@@ -79,15 +79,21 @@ class ModelsGetInboxCategoriesResponseItem(Model):
         self.save_inbox = value
         return self
 
-    def with_send_notification(self, value: bool) -> ModelsGetInboxCategoriesResponseItem:
+    def with_send_notification(
+        self, value: bool
+    ) -> ModelsGetInboxCategoriesResponseItem:
         self.send_notification = value
         return self
 
-    def with_hook(self, value: ModelsCategoryHook) -> ModelsGetInboxCategoriesResponseItem:
+    def with_hook(
+        self, value: ModelsCategoryHook
+    ) -> ModelsGetInboxCategoriesResponseItem:
         self.hook = value
         return self
 
-    def with_json_schema(self, value: Dict[str, Any]) -> ModelsGetInboxCategoriesResponseItem:
+    def with_json_schema(
+        self, value: Dict[str, Any]
+    ) -> ModelsGetInboxCategoriesResponseItem:
         self.json_schema = value
         return self
 
@@ -141,7 +147,7 @@ class ModelsGetInboxCategoriesResponseItem(Model):
         send_notification: bool,
         hook: Optional[ModelsCategoryHook] = None,
         json_schema: Optional[Dict[str, Any]] = None,
-    **kwargs
+        **kwargs,
     ) -> ModelsGetInboxCategoriesResponseItem:
         instance = cls()
         instance.enabled = enabled
@@ -156,7 +162,9 @@ class ModelsGetInboxCategoriesResponseItem(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGetInboxCategoriesResponseItem:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsGetInboxCategoriesResponseItem:
         instance = cls()
         if not dict_:
             return instance
@@ -181,25 +189,47 @@ class ModelsGetInboxCategoriesResponseItem(Model):
         elif include_empty:
             instance.send_notification = False
         if "hook" in dict_ and dict_["hook"] is not None:
-            instance.hook = ModelsCategoryHook.create_from_dict(dict_["hook"], include_empty=include_empty)
+            instance.hook = ModelsCategoryHook.create_from_dict(
+                dict_["hook"], include_empty=include_empty
+            )
         elif include_empty:
             instance.hook = ModelsCategoryHook()
         if "jsonSchema" in dict_ and dict_["jsonSchema"] is not None:
-            instance.json_schema = {str(k0): v0 for k0, v0 in dict_["jsonSchema"].items()}
+            instance.json_schema = {
+                str(k0): v0 for k0, v0 in dict_["jsonSchema"].items()
+            }
         elif include_empty:
             instance.json_schema = {}
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsGetInboxCategoriesResponseItem]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsGetInboxCategoriesResponseItem]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsGetInboxCategoriesResponseItem]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsGetInboxCategoriesResponseItem]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsGetInboxCategoriesResponseItem, List[ModelsGetInboxCategoriesResponseItem], Dict[Any, ModelsGetInboxCategoriesResponseItem]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsGetInboxCategoriesResponseItem,
+        List[ModelsGetInboxCategoriesResponseItem],
+        Dict[Any, ModelsGetInboxCategoriesResponseItem],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

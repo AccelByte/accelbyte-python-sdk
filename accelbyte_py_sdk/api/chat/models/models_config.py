@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -71,24 +71,24 @@ class ModelsConfig(Model):
 
     # region fields
 
-    chat_rate_limit_burst: int                                                                     # REQUIRED
-    chat_rate_limit_duration: int                                                                  # REQUIRED
-    concurrent_users_limit: int                                                                    # REQUIRED
-    enable_profanity_filter: bool                                                                  # REQUIRED
-    filter_app_name: str                                                                           # REQUIRED
-    filter_param: str                                                                              # REQUIRED
-    filter_type: str                                                                               # REQUIRED
-    general_rate_limit_burst: int                                                                  # REQUIRED
-    general_rate_limit_duration: int                                                               # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    shard_capacity_limit: int                                                                      # REQUIRED
-    shard_default_limit: int                                                                       # REQUIRED
-    shard_hard_limit: int                                                                          # REQUIRED
-    spam_chat_burst: int                                                                           # REQUIRED
-    spam_chat_duration: int                                                                        # REQUIRED
-    spam_mute_duration: int                                                                        # REQUIRED
-    enable_clan_chat: bool                                                                         # OPTIONAL
-    enable_manual_topic_creation: bool                                                             # OPTIONAL
+    chat_rate_limit_burst: int  # REQUIRED
+    chat_rate_limit_duration: int  # REQUIRED
+    concurrent_users_limit: int  # REQUIRED
+    enable_profanity_filter: bool  # REQUIRED
+    filter_app_name: str  # REQUIRED
+    filter_param: str  # REQUIRED
+    filter_type: str  # REQUIRED
+    general_rate_limit_burst: int  # REQUIRED
+    general_rate_limit_duration: int  # REQUIRED
+    namespace: str  # REQUIRED
+    shard_capacity_limit: int  # REQUIRED
+    shard_default_limit: int  # REQUIRED
+    shard_hard_limit: int  # REQUIRED
+    spam_chat_burst: int  # REQUIRED
+    spam_chat_duration: int  # REQUIRED
+    spam_mute_duration: int  # REQUIRED
+    enable_clan_chat: bool  # OPTIONAL
+    enable_manual_topic_creation: bool  # OPTIONAL
 
     # endregion fields
 
@@ -241,7 +241,9 @@ class ModelsConfig(Model):
         elif include_empty:
             result["enableClanChat"] = False
         if hasattr(self, "enable_manual_topic_creation"):
-            result["EnableManualTopicCreation"] = bool(self.enable_manual_topic_creation)
+            result["EnableManualTopicCreation"] = bool(
+                self.enable_manual_topic_creation
+            )
         elif include_empty:
             result["EnableManualTopicCreation"] = False
         return result
@@ -271,7 +273,7 @@ class ModelsConfig(Model):
         spam_mute_duration: int,
         enable_clan_chat: Optional[bool] = None,
         enable_manual_topic_creation: Optional[bool] = None,
-    **kwargs
+        **kwargs,
     ) -> ModelsConfig:
         instance = cls()
         instance.chat_rate_limit_burst = chat_rate_limit_burst
@@ -305,15 +307,24 @@ class ModelsConfig(Model):
             instance.chat_rate_limit_burst = int(dict_["ChatRateLimitBurst"])
         elif include_empty:
             instance.chat_rate_limit_burst = 0
-        if "ChatRateLimitDuration" in dict_ and dict_["ChatRateLimitDuration"] is not None:
+        if (
+            "ChatRateLimitDuration" in dict_
+            and dict_["ChatRateLimitDuration"] is not None
+        ):
             instance.chat_rate_limit_duration = int(dict_["ChatRateLimitDuration"])
         elif include_empty:
             instance.chat_rate_limit_duration = 0
-        if "ConcurrentUsersLimit" in dict_ and dict_["ConcurrentUsersLimit"] is not None:
+        if (
+            "ConcurrentUsersLimit" in dict_
+            and dict_["ConcurrentUsersLimit"] is not None
+        ):
             instance.concurrent_users_limit = int(dict_["ConcurrentUsersLimit"])
         elif include_empty:
             instance.concurrent_users_limit = 0
-        if "EnableProfanityFilter" in dict_ and dict_["EnableProfanityFilter"] is not None:
+        if (
+            "EnableProfanityFilter" in dict_
+            and dict_["EnableProfanityFilter"] is not None
+        ):
             instance.enable_profanity_filter = bool(dict_["EnableProfanityFilter"])
         elif include_empty:
             instance.enable_profanity_filter = False
@@ -329,12 +340,20 @@ class ModelsConfig(Model):
             instance.filter_type = str(dict_["FilterType"])
         elif include_empty:
             instance.filter_type = ""
-        if "GeneralRateLimitBurst" in dict_ and dict_["GeneralRateLimitBurst"] is not None:
+        if (
+            "GeneralRateLimitBurst" in dict_
+            and dict_["GeneralRateLimitBurst"] is not None
+        ):
             instance.general_rate_limit_burst = int(dict_["GeneralRateLimitBurst"])
         elif include_empty:
             instance.general_rate_limit_burst = 0
-        if "GeneralRateLimitDuration" in dict_ and dict_["GeneralRateLimitDuration"] is not None:
-            instance.general_rate_limit_duration = int(dict_["GeneralRateLimitDuration"])
+        if (
+            "GeneralRateLimitDuration" in dict_
+            and dict_["GeneralRateLimitDuration"] is not None
+        ):
+            instance.general_rate_limit_duration = int(
+                dict_["GeneralRateLimitDuration"]
+            )
         elif include_empty:
             instance.general_rate_limit_duration = 0
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
@@ -369,22 +388,41 @@ class ModelsConfig(Model):
             instance.enable_clan_chat = bool(dict_["enableClanChat"])
         elif include_empty:
             instance.enable_clan_chat = False
-        if "EnableManualTopicCreation" in dict_ and dict_["EnableManualTopicCreation"] is not None:
-            instance.enable_manual_topic_creation = bool(dict_["EnableManualTopicCreation"])
+        if (
+            "EnableManualTopicCreation" in dict_
+            and dict_["EnableManualTopicCreation"] is not None
+        ):
+            instance.enable_manual_topic_creation = bool(
+                dict_["EnableManualTopicCreation"]
+            )
         elif include_empty:
             instance.enable_manual_topic_creation = False
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsConfig]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsConfig]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsConfig]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsConfig]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsConfig, List[ModelsConfig], Dict[Any, ModelsConfig]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[ModelsConfig, List[ModelsConfig], Dict[Any, ModelsConfig]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

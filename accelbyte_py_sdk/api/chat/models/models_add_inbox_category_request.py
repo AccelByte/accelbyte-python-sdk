@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -51,13 +51,13 @@ class ModelsAddInboxCategoryRequest(Model):
 
     # region fields
 
-    enabled: bool                                                                                  # REQUIRED
-    expires_in: int                                                                                # REQUIRED
-    name: str                                                                                      # REQUIRED
-    save_inbox: bool                                                                               # REQUIRED
-    send_notification: bool                                                                        # REQUIRED
-    hook: ModelsCategoryHook                                                                       # OPTIONAL
-    json_schema: Dict[str, Any]                                                                    # OPTIONAL
+    enabled: bool  # REQUIRED
+    expires_in: int  # REQUIRED
+    name: str  # REQUIRED
+    save_inbox: bool  # REQUIRED
+    send_notification: bool  # REQUIRED
+    hook: ModelsCategoryHook  # OPTIONAL
+    json_schema: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
 
@@ -141,7 +141,7 @@ class ModelsAddInboxCategoryRequest(Model):
         send_notification: bool,
         hook: Optional[ModelsCategoryHook] = None,
         json_schema: Optional[Dict[str, Any]] = None,
-    **kwargs
+        **kwargs,
     ) -> ModelsAddInboxCategoryRequest:
         instance = cls()
         instance.enabled = enabled
@@ -156,7 +156,9 @@ class ModelsAddInboxCategoryRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsAddInboxCategoryRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsAddInboxCategoryRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -181,25 +183,47 @@ class ModelsAddInboxCategoryRequest(Model):
         elif include_empty:
             instance.send_notification = False
         if "hook" in dict_ and dict_["hook"] is not None:
-            instance.hook = ModelsCategoryHook.create_from_dict(dict_["hook"], include_empty=include_empty)
+            instance.hook = ModelsCategoryHook.create_from_dict(
+                dict_["hook"], include_empty=include_empty
+            )
         elif include_empty:
             instance.hook = ModelsCategoryHook()
         if "jsonSchema" in dict_ and dict_["jsonSchema"] is not None:
-            instance.json_schema = {str(k0): v0 for k0, v0 in dict_["jsonSchema"].items()}
+            instance.json_schema = {
+                str(k0): v0 for k0, v0 in dict_["jsonSchema"].items()
+            }
         elif include_empty:
             instance.json_schema = {}
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsAddInboxCategoryRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsAddInboxCategoryRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsAddInboxCategoryRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsAddInboxCategoryRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsAddInboxCategoryRequest, List[ModelsAddInboxCategoryRequest], Dict[Any, ModelsAddInboxCategoryRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsAddInboxCategoryRequest,
+        List[ModelsAddInboxCategoryRequest],
+        Dict[Any, ModelsAddInboxCategoryRequest],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

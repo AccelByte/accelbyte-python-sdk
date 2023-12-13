@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -51,13 +51,13 @@ class ModelsDictionaryWithChildren(Model):
 
     # region fields
 
-    id_: str                                                                                       # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    parent_id: str                                                                                 # REQUIRED
-    word: str                                                                                      # REQUIRED
-    word_type: str                                                                                 # REQUIRED
-    false_negatives: List[ModelsDictionaryChild]                                                   # OPTIONAL
-    false_positives: List[ModelsDictionaryChild]                                                   # OPTIONAL
+    id_: str  # REQUIRED
+    namespace: str  # REQUIRED
+    parent_id: str  # REQUIRED
+    word: str  # REQUIRED
+    word_type: str  # REQUIRED
+    false_negatives: List[ModelsDictionaryChild]  # OPTIONAL
+    false_positives: List[ModelsDictionaryChild]  # OPTIONAL
 
     # endregion fields
 
@@ -83,11 +83,15 @@ class ModelsDictionaryWithChildren(Model):
         self.word_type = value
         return self
 
-    def with_false_negatives(self, value: List[ModelsDictionaryChild]) -> ModelsDictionaryWithChildren:
+    def with_false_negatives(
+        self, value: List[ModelsDictionaryChild]
+    ) -> ModelsDictionaryWithChildren:
         self.false_negatives = value
         return self
 
-    def with_false_positives(self, value: List[ModelsDictionaryChild]) -> ModelsDictionaryWithChildren:
+    def with_false_positives(
+        self, value: List[ModelsDictionaryChild]
+    ) -> ModelsDictionaryWithChildren:
         self.false_positives = value
         return self
 
@@ -118,11 +122,15 @@ class ModelsDictionaryWithChildren(Model):
         elif include_empty:
             result["wordType"] = ""
         if hasattr(self, "false_negatives"):
-            result["falseNegatives"] = [i0.to_dict(include_empty=include_empty) for i0 in self.false_negatives]
+            result["falseNegatives"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.false_negatives
+            ]
         elif include_empty:
             result["falseNegatives"] = []
         if hasattr(self, "false_positives"):
-            result["falsePositives"] = [i0.to_dict(include_empty=include_empty) for i0 in self.false_positives]
+            result["falsePositives"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.false_positives
+            ]
         elif include_empty:
             result["falsePositives"] = []
         return result
@@ -141,7 +149,7 @@ class ModelsDictionaryWithChildren(Model):
         word_type: str,
         false_negatives: Optional[List[ModelsDictionaryChild]] = None,
         false_positives: Optional[List[ModelsDictionaryChild]] = None,
-    **kwargs
+        **kwargs,
     ) -> ModelsDictionaryWithChildren:
         instance = cls()
         instance.id_ = id_
@@ -156,7 +164,9 @@ class ModelsDictionaryWithChildren(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsDictionaryWithChildren:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsDictionaryWithChildren:
         instance = cls()
         if not dict_:
             return instance
@@ -181,25 +191,49 @@ class ModelsDictionaryWithChildren(Model):
         elif include_empty:
             instance.word_type = ""
         if "falseNegatives" in dict_ and dict_["falseNegatives"] is not None:
-            instance.false_negatives = [ModelsDictionaryChild.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["falseNegatives"]]
+            instance.false_negatives = [
+                ModelsDictionaryChild.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["falseNegatives"]
+            ]
         elif include_empty:
             instance.false_negatives = []
         if "falsePositives" in dict_ and dict_["falsePositives"] is not None:
-            instance.false_positives = [ModelsDictionaryChild.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["falsePositives"]]
+            instance.false_positives = [
+                ModelsDictionaryChild.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["falsePositives"]
+            ]
         elif include_empty:
             instance.false_positives = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsDictionaryWithChildren]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsDictionaryWithChildren]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsDictionaryWithChildren]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsDictionaryWithChildren]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsDictionaryWithChildren, List[ModelsDictionaryWithChildren], Dict[Any, ModelsDictionaryWithChildren]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsDictionaryWithChildren,
+        List[ModelsDictionaryWithChildren],
+        Dict[Any, ModelsDictionaryWithChildren],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

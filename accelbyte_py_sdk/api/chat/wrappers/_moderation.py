@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -38,7 +38,12 @@ from ..operations.moderation import PublicGetChatSnapshot
 
 
 @same_doc_as(AdminDeleteChatSnapshot)
-def admin_delete_chat_snapshot(chat_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_delete_chat_snapshot(
+    chat_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin delete chat snapshot (adminDeleteChatSnapshot)
 
     Delete the chat snapshot
@@ -85,7 +90,12 @@ def admin_delete_chat_snapshot(chat_id: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(AdminDeleteChatSnapshot)
-async def admin_delete_chat_snapshot_async(chat_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_delete_chat_snapshot_async(
+    chat_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin delete chat snapshot (adminDeleteChatSnapshot)
 
     Delete the chat snapshot
@@ -128,11 +138,18 @@ async def admin_delete_chat_snapshot_async(chat_id: str, namespace: Optional[str
         chat_id=chat_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetChatSnapshot)
-def admin_get_chat_snapshot(chat_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_chat_snapshot(
+    chat_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get chat snapshot (adminGetChatSnapshot)
 
     Get the chat snapshot
@@ -179,7 +196,12 @@ def admin_get_chat_snapshot(chat_id: str, namespace: Optional[str] = None, x_add
 
 
 @same_doc_as(AdminGetChatSnapshot)
-async def admin_get_chat_snapshot_async(chat_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_chat_snapshot_async(
+    chat_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """admin get chat snapshot (adminGetChatSnapshot)
 
     Get the chat snapshot
@@ -222,11 +244,19 @@ async def admin_get_chat_snapshot_async(chat_id: str, namespace: Optional[str] =
         chat_id=chat_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetChatSnapshot)
-def public_get_chat_snapshot(chat_id: str, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_chat_snapshot(
+    chat_id: str,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public get chat snapshot (publicGetChatSnapshot)
 
     Get the chat snapshot
@@ -276,7 +306,13 @@ def public_get_chat_snapshot(chat_id: str, topic: str, namespace: Optional[str] 
 
 
 @same_doc_as(PublicGetChatSnapshot)
-async def public_get_chat_snapshot_async(chat_id: str, topic: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_chat_snapshot_async(
+    chat_id: str,
+    topic: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     """public get chat snapshot (publicGetChatSnapshot)
 
     Get the chat snapshot
@@ -322,4 +358,6 @@ async def public_get_chat_snapshot_async(chat_id: str, topic: str, namespace: Op
         topic=topic,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

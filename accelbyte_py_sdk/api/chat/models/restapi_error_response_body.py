@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: ags_py_codegen
@@ -39,8 +39,8 @@ class RestapiErrorResponseBody(Model):
 
     # region fields
 
-    error_code: int                                                                                # REQUIRED
-    error_message: str                                                                             # REQUIRED
+    error_code: int  # REQUIRED
+    error_message: str  # REQUIRED
 
     # endregion fields
 
@@ -76,10 +76,7 @@ class RestapiErrorResponseBody(Model):
 
     @classmethod
     def create(
-        cls,
-        error_code: int,
-        error_message: str,
-    **kwargs
+        cls, error_code: int, error_message: str, **kwargs
     ) -> RestapiErrorResponseBody:
         instance = cls()
         instance.error_code = error_code
@@ -87,7 +84,9 @@ class RestapiErrorResponseBody(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RestapiErrorResponseBody:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> RestapiErrorResponseBody:
         instance = cls()
         if not dict_:
             return instance
@@ -102,15 +101,33 @@ class RestapiErrorResponseBody(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, RestapiErrorResponseBody]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, RestapiErrorResponseBody]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[RestapiErrorResponseBody]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[RestapiErrorResponseBody]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[RestapiErrorResponseBody, List[RestapiErrorResponseBody], Dict[Any, RestapiErrorResponseBody]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        RestapiErrorResponseBody,
+        List[RestapiErrorResponseBody],
+        Dict[Any, RestapiErrorResponseBody],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
