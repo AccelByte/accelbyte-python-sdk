@@ -263,6 +263,9 @@ class DSMCSessionTestCase(IntegrationTestCase):
     # region test:claim_server
 
     def test_claim_server(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+
         from accelbyte_py_sdk.api.dsmc import claim_server
         from accelbyte_py_sdk.api.dsmc import create_session
         from accelbyte_py_sdk.api.dsmc.models import ModelsClaimSessionRequest
@@ -302,6 +305,9 @@ class DSMCSessionTestCase(IntegrationTestCase):
     # region test:create_session
 
     def test_create_session(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+
         from accelbyte_py_sdk.api.dsmc import create_session
         from accelbyte_py_sdk.api.dsmc import delete_session
 
@@ -323,6 +329,9 @@ class DSMCSessionTestCase(IntegrationTestCase):
     # region test:get_session
 
     def test_get_session(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+
         from accelbyte_py_sdk.api.dsmc import create_session
         from accelbyte_py_sdk.api.dsmc import get_session
 
