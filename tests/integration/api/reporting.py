@@ -53,9 +53,6 @@ class ReportingTestCase(IntegrationTestCase):
         super().tearDown()
 
     def test_create_reason(self):
-        if self.using_ags_starter:
-            self.skipTest(reason="Invalid for AGS.")
-
         # arrange
         reason_title = generate_id(64)
 
@@ -68,9 +65,6 @@ class ReportingTestCase(IntegrationTestCase):
         self.assertIsNone(error)
 
     def test_delete_reason(self):
-        if self.using_ags_starter:
-            self.skipTest(reason="Invalid for AGS.")
-
         # arrange
         reason_title = generate_id(64)
         result, error, reason_id = self.do_create_reason(title=reason_title)
@@ -89,9 +83,6 @@ class ReportingTestCase(IntegrationTestCase):
         self.reason_id = None
 
     def test_submit_report(self):
-        if self.using_ags_starter:
-            self.skipTest(reason="Invalid for AGS.")
-
         logs = []
 
         # arrange

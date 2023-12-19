@@ -94,9 +94,6 @@ class AuthServicesTestCase(IntegrationTestCase):
     # region test:login_user_with_no_scope
 
     def test_login_user_with_no_scope(self):
-        if not self.using_ags_starter:
-            self.skipTest(reason="Only for AGS.")
-
         from accelbyte_py_sdk.core import get_env_user_credentials
         from accelbyte_py_sdk.services.auth import login_user
 

@@ -90,9 +90,6 @@ class SessionBrowserTestCase(IntegrationTestCase):
     # region test:delete_session
 
     def test_delete_session(self):
-        if self.using_ags_starter:
-            self.login_client()
-
         from accelbyte_py_sdk.api.sessionbrowser import admin_delete_session
 
         # arrange
