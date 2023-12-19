@@ -74,7 +74,7 @@ pipeline {
           }
           steps {
             withCredentials([
-                file(credentialsId: 'justice-codegen-sdk-integration-starter-test-env', variable: 'ENV_FILE_PATH'),
+                file(credentialsId: 'justice-codegen-sdk-integration-starter-test-env-2', variable: 'ENV_FILE_PATH'),
             ]) {
               sh 'make test_integration ENV_FILE_PATH=$ENV_FILE_PATH'
             }
