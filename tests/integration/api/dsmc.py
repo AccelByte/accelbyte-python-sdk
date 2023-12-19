@@ -23,6 +23,7 @@ class DSMCTestCase(IntegrationTestCase):
 
     def test_export_config_v1(self):
         from accelbyte_py_sdk.api.dsmc import export_config_v1
+        from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
         # arrange
         exported_file_path = Path(self.exported_filename)
@@ -33,6 +34,14 @@ class DSMCTestCase(IntegrationTestCase):
 
         if result is not None:
             exported_file_path.write_bytes(result)
+
+        if (
+                error
+                and isinstance(error, ResponseError)
+                and error.error_code == 720166
+                and "does not exist" in error.error_message
+        ):
+            self.skipTest(reason=f"No config to export. {str(error)}")
 
         # assert
         self.assertIsNone(error, error)
@@ -264,7 +273,7 @@ class DSMCSessionTestCase(IntegrationTestCase):
             body=self.models_create_session_request,
             namespace=self.models_create_session_request.namespace,
         )
-        if error is not None:
+        if error:
             self.skipTest(reason=f"Failed to set up DSMC session. {str(error)}")
 
         time.sleep(5)
@@ -322,10 +331,8 @@ class DSMCSessionTestCase(IntegrationTestCase):
             body=self.models_create_session_request,
             namespace=self.models_create_session_request.namespace,
         )
-        self.log_warning(
-            msg=f"Failed to set up DSMC session. {str(error)}",
-            condition=error is not None,
-        )
+        if error:
+            self.skipTest(reason=f"Failed to set up DSMC session. {str(error)}")
 
         # act
         _, error = get_session(session_id=self.models_create_session_request.session_id)
