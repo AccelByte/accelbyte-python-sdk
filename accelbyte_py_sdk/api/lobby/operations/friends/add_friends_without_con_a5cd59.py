@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseV1
 class AddFriendsWithoutConfirmation(Operation):
     """Add friends without confirmation (addFriendsWithoutConfirmation)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]` with scope `social`
-
-    friends request in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]
-
-    Required Scope(s):
-        - social
+    Friends request in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/users/{userId}/add/bulk

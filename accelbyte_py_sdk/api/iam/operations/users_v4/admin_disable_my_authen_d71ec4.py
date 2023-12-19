@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,11 +36,6 @@ class AdminDisableMyAuthenticatorV4(Operation):
     """Disable 2FA authenticator (AdminDisableMyAuthenticatorV4)
 
     This endpoint is used to disable 2FA authenticator.
-
-
-
-
-    This endpoint Requires valid user access token
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/authenticator/disable

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,7 +37,6 @@ class LinkHeadlessAccountToMyAccountV3(Operation):
     """Link headless account to current full account (LinkHeadlessAccountToMyAccountV3)
 
     Note:
-
     1. My account should be full account
     2. My account not linked to headless account's third platform.
 

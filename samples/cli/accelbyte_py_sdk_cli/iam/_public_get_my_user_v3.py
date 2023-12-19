@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (7.6.3)
+# AGS Iam Service (7.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,10 +38,12 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
+@click.option("--include_all_platforms", "include_all_platforms", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_get_my_user_v3(
+    include_all_platforms: Optional[bool] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -55,6 +57,7 @@ def public_get_my_user_v3(
     else:
         login_as_internal(login_as)
     result, error = public_get_my_user_v3_internal(
+        include_all_platforms=include_all_platforms,
         x_additional_headers=x_additional_headers,
     )
     if error:

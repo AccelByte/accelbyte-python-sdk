@@ -79,15 +79,7 @@ def add_friends_without_confirmation(
 ):
     """Add friends without confirmation (addFriendsWithoutConfirmation)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]` with scope `social`
-
-    friends request in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]
-
-    Required Scope(s):
-        - social
+    Friends request in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/users/{userId}/add/bulk
@@ -141,15 +133,7 @@ async def add_friends_without_confirmation_async(
 ):
     """Add friends without confirmation (addFriendsWithoutConfirmation)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]` with scope `social`
-
-    friends request in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [CREATE]
-
-    Required Scope(s):
-        - social
+    Friends request in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/users/{userId}/add/bulk
@@ -205,15 +189,7 @@ def bulk_delete_friends(
 ):
     """Delete friends, and incoming/outgoing friend requests (bulkDeleteFriends)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [DELETE]` with scope `social`
-
-    friends request in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [DELETE]
-
-    Required Scope(s):
-        - social
+    Friends request in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/users/{userId}/delete/bulk
@@ -267,15 +243,7 @@ async def bulk_delete_friends_async(
 ):
     """Delete friends, and incoming/outgoing friend requests (bulkDeleteFriends)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [DELETE]` with scope `social`
-
-    friends request in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [DELETE]
-
-    Required Scope(s):
-        - social
+    Friends request in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/users/{userId}/delete/bulk
@@ -333,15 +301,7 @@ def get_incoming_friend_requests(
 ):
     """get incoming friend requests (get incoming friend requests)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]` with scope `social`
-
-    get list of incoming friend requests.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]
-
-    Required Scope(s):
-        - social
+    Get list of incoming friend requests.
 
     Properties:
         url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}/incoming
@@ -403,15 +363,7 @@ async def get_incoming_friend_requests_async(
 ):
     """get incoming friend requests (get incoming friend requests)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]` with scope `social`
-
-    get list of incoming friend requests.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]
-
-    Required Scope(s):
-        - social
+    Get list of incoming friend requests.
 
     Properties:
         url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}/incoming
@@ -475,15 +427,7 @@ def get_list_of_friends(
 ):
     """get list of friends (get list of friends)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]` with scope `social`
-
-    get list of friends in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]
-
-    Required Scope(s):
-        - social
+    Get list of friends in a namespace.
 
     Properties:
         url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}
@@ -545,15 +489,7 @@ async def get_list_of_friends_async(
 ):
     """get list of friends (get list of friends)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]` with scope `social`
-
-    get list of friends in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]
-
-    Required Scope(s):
-        - social
+    Get list of friends in a namespace.
 
     Properties:
         url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}
@@ -616,15 +552,7 @@ def get_outgoing_friend_requests(
 ):
     """get list of outgoing friend requests (get outgoing friend requests)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]` with scope `social`
-
-    get list of outgoing friend requests in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]
-
-    Required Scope(s):
-        - social
+    Get list of outgoing friend requests in a namespace.
 
     Properties:
         url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}/outgoing
@@ -682,15 +610,7 @@ async def get_outgoing_friend_requests_async(
 ):
     """get list of outgoing friend requests (get outgoing friend requests)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]` with scope `social`
-
-    get list of outgoing friend requests in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]
-
-    Required Scope(s):
-        - social
+    Get list of outgoing friend requests in a namespace.
 
     Properties:
         url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}/outgoing

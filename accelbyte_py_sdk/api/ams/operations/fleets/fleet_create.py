@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.4.0)
+# Fleet Commander (1.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ResponseErrorResponse
 
 
 class FleetCreate(Operation):
-    """create fleet (FleetCreate)
+    """Create a fleet. Optionally, sampling rules for the fleet can also be specified (FleetCreate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 

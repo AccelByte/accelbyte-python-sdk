@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,14 +36,7 @@ from ...models import RestErrorResponse
 class PublicSendVerificationLinkV3(Operation):
     """Send verification link to user, this link will point to '/iam/v3/public/users/verify_link/verify' (PublicSendVerificationLinkV3)
 
-    Required valid user authorization
-
-
     The verification link is sent to email address
-
-
-
-
     It will not send request if user email is already verified
 
     Properties:

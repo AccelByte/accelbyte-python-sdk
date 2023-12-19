@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,22 +38,8 @@ class AdminBulkGetUsersPlatform(Operation):
     """Admin bulk get users' platform info by user Ids (AdminBulkGetUsersPlatform)
 
     Notes:
-
-
-
-
-
-
-      * Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
-
-
-      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - If namespace is game, will search by game user Id, other wise will search by publisher namespace
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bulk/platforms

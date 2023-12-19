@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,16 +36,8 @@ from ...models import RestErrorResponse
 class PublicGetPublisherUserV3(Operation):
     """Get Publisher User (PublicGetPublisherUserV3)
 
-    Required permissions 'NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ].
-
-
-
-
-    Restriction:
-    Path Parameter namespace can be provided only with game namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ]
+    **Restriction:**
+    Path Parameter **namespace** can be provided only with game namespace
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher

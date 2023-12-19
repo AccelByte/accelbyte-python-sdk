@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.6.3"
+__version__ = "7.7.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -165,6 +165,8 @@ from .wrappers import revoke_user_v3
 from .wrappers import revoke_user_v3_async
 from .wrappers import send_mfa_authentication_code
 from .wrappers import send_mfa_authentication_code_async
+from .wrappers import simultaneous_login_v3
+from .wrappers import simultaneous_login_v3_async
 from .wrappers import token_grant_v3
 from .wrappers import token_grant_v3_async
 from .wrappers import token_introspection_v3
@@ -595,6 +597,8 @@ from .wrappers import public_get_user_login_histories_v3
 from .wrappers import public_get_user_login_histories_v3_async
 from .wrappers import public_get_user_platform_accounts_v3
 from .wrappers import public_get_user_platform_accounts_v3_async
+from .wrappers import public_get_users_platform_infos_v3
+from .wrappers import public_get_users_platform_infos_v3_async
 from .wrappers import public_link_platform_account
 from .wrappers import public_link_platform_account_async
 from .wrappers import public_list_justice_platform_accounts_v3
@@ -679,6 +683,8 @@ from .wrappers import admin_add_user_role_v4
 from .wrappers import admin_add_user_role_v4_async
 from .wrappers import admin_bulk_check_valid_user_idv4
 from .wrappers import admin_bulk_check_valid_user_idv4_async
+from .wrappers import admin_bulk_update_user_account_type_v4
+from .wrappers import admin_bulk_update_user_account_type_v4_async
 from .wrappers import admin_create_test_users_v4
 from .wrappers import admin_create_test_users_v4_async
 from .wrappers import admin_disable_my_authenticator_v4

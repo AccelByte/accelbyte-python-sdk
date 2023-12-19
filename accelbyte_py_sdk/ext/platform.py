@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -69,7 +69,7 @@ from ..api.platform.models import CampaignPagingSlicedResult
 from ..api.platform.models import CampaignUpdate
 from ..api.platform.models import CancelRequest
 from ..api.platform.models import CatalogChangeInfo
-from ..api.platform.models import CatalogChangePagingSlicedResult
+from ..api.platform.models import CatalogChangePagingResult
 from ..api.platform.models import CatalogChangeStatistics
 from ..api.platform.models import CategoryCreate
 from ..api.platform.models import CategoryInfo
@@ -118,10 +118,12 @@ from ..api.platform.models import EntitlementDecrementResult
 from ..api.platform.models import EntitlementGrant
 from ..api.platform.models import EntitlementGrantResult
 from ..api.platform.models import EntitlementHistoryInfo
+from ..api.platform.models import EntitlementIfc
 from ..api.platform.models import EntitlementInfo
 from ..api.platform.models import EntitlementLootBoxReward
 from ..api.platform.models import EntitlementOwnership
 from ..api.platform.models import EntitlementPagingSlicedResult
+from ..api.platform.models import EntitlementPrechekResult
 from ..api.platform.models import EntitlementRevocation
 from ..api.platform.models import EntitlementRevocationConfig
 from ..api.platform.models import EntitlementRevokeResult
@@ -294,6 +296,7 @@ from ..api.platform.models import PlayStationReconcileRequest
 from ..api.platform.models import PlayStationReconcileResult
 from ..api.platform.models import PlaystationIAPConfigRequest
 from ..api.platform.models import PopulatedItemInfo
+from ..api.platform.models import PreCheckFulfillmentRequest
 from ..api.platform.models import Predicate
 from ..api.platform.models import PredicateValidateResult
 from ..api.platform.models import PublicCustomConfigInfo
@@ -382,6 +385,7 @@ from ..api.platform.models import TicketSaleIncrementRequest
 from ..api.platform.models import TicketSaleIncrementResult
 from ..api.platform.models import TimeLimitedBalance
 from ..api.platform.models import TimedOwnership
+from ..api.platform.models import TradeActionPagingSlicedResult
 from ..api.platform.models import TradeChainActionHistoryInfo
 from ..api.platform.models import TradeChainedActionCommitRequest
 from ..api.platform.models import TradeNotification
@@ -630,7 +634,11 @@ def create_available_price_example() -> AvailablePrice:
     instance.currency_namespace = randomize("slug")
     instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.discount_expire_at = randomize("date")
+    instance.discount_purchase_at = randomize("date")
+    instance.expire_at = randomize("date")
     instance.price_details = [create_sub_item_available_price_example()]
+    instance.purchase_at = randomize("date")
     return instance
 
 
@@ -976,12 +984,11 @@ def create_catalog_change_info_example() -> CatalogChangeInfo:
     return instance
 
 
-def create_catalog_change_paging_sliced_result_example() -> (
-    CatalogChangePagingSlicedResult
-):
-    instance = CatalogChangePagingSlicedResult()
+def create_catalog_change_paging_result_example() -> CatalogChangePagingResult:
+    instance = CatalogChangePagingResult()
     instance.data = [create_catalog_change_info_example()]
     instance.paging = create_paging_example()
+    instance.total = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1474,6 +1481,31 @@ def create_entitlement_history_info_example() -> EntitlementHistoryInfo:
     return instance
 
 
+def create_entitlement_ifc_example() -> EntitlementIfc:
+    instance = EntitlementIfc()
+    instance.app_id = randomize("uid")
+    instance.app_type = randomize()
+    instance.clazz = randomize()
+    instance.created_at = randomize("date")
+    instance.end_date = randomize("date")
+    instance.features = [randomize()]
+    instance.granted_code = randomize()
+    instance.id_ = randomize()
+    instance.item_id = randomize()
+    instance.item_namespace = randomize("slug")
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.sku = randomize("slug")
+    instance.start_date = randomize("date")
+    instance.status = randomize()
+    instance.store_id = randomize()
+    instance.type_ = randomize()
+    instance.updated_at = randomize("date")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_entitlement_info_example() -> EntitlementInfo:
     instance = EntitlementInfo()
     instance.clazz = randomize()
@@ -1522,6 +1554,12 @@ def create_entitlement_paging_sliced_result_example() -> EntitlementPagingSliced
     instance = EntitlementPagingSlicedResult()
     instance.data = [create_entitlement_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_entitlement_prechek_result_example() -> EntitlementPrechekResult:
+    instance = EntitlementPrechekResult()
+    instance.is_revoke_possible = randomize("bool")
     return instance
 
 
@@ -3589,6 +3627,14 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     return instance
 
 
+def create_pre_check_fulfillment_request_example() -> PreCheckFulfillmentRequest:
+    instance = PreCheckFulfillmentRequest()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
+    return instance
+
+
 def create_predicate_example() -> Predicate:
     instance = Predicate()
     instance.any_of = randomize("int", min_val=1, max_val=1000)
@@ -4492,6 +4538,13 @@ def create_tls_config_example() -> TLSConfig:
     instance = TLSConfig()
     instance.root_cert_file_bytes = [randomize()]
     instance.root_cert_file_name = randomize()
+    return instance
+
+
+def create_trade_action_paging_sliced_result_example() -> TradeActionPagingSlicedResult:
+    instance = TradeActionPagingSlicedResult()
+    instance.data = [create_trade_chain_action_history_info_example()]
+    instance.paging = create_paging_example()
     return instance
 
 

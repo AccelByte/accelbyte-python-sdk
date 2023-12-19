@@ -29,7 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import CatalogChangePagingSlicedResult
+from ..models import CatalogChangePagingResult
 from ..models import CatalogChangeStatistics
 from ..models import ErrorEntity
 from ..models import StoreInfo
@@ -51,6 +51,12 @@ from ..operations.catalog_changes import (
     QueryChangesTypeEnum,
 )
 from ..operations.catalog_changes import SelectAllRecords
+from ..operations.catalog_changes import SelectAllRecordsByCriteria
+from ..operations.catalog_changes import (
+    SelectAllRecordsByCriteriaActionEnum,
+    SelectAllRecordsByCriteriaItemTypeEnum,
+    SelectAllRecordsByCriteriaTypeEnum,
+)
 from ..operations.catalog_changes import SelectRecord
 from ..operations.catalog_changes import UnselectAllRecords
 from ..operations.catalog_changes import UnselectRecord
@@ -444,6 +450,7 @@ def query_changes(
     type_: Optional[Union[str, QueryChangesTypeEnum]] = None,
     updated_at_end: Optional[str] = None,
     updated_at_start: Optional[str] = None,
+    with_total: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -499,8 +506,10 @@ def query_changes(
 
         updated_at_start: (updatedAtStart) OPTIONAL str in query
 
+        with_total: (withTotal) OPTIONAL bool in query
+
     Responses:
-        200: OK - CatalogChangePagingSlicedResult (successful operation)
+        200: OK - CatalogChangePagingResult (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -519,6 +528,7 @@ def query_changes(
         type_=type_,
         updated_at_end=updated_at_end,
         updated_at_start=updated_at_start,
+        with_total=with_total,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -538,6 +548,7 @@ async def query_changes_async(
     type_: Optional[Union[str, QueryChangesTypeEnum]] = None,
     updated_at_end: Optional[str] = None,
     updated_at_start: Optional[str] = None,
+    with_total: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -593,8 +604,10 @@ async def query_changes_async(
 
         updated_at_start: (updatedAtStart) OPTIONAL str in query
 
+        with_total: (withTotal) OPTIONAL bool in query
+
     Responses:
-        200: OK - CatalogChangePagingSlicedResult (successful operation)
+        200: OK - CatalogChangePagingResult (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -613,6 +626,7 @@ async def query_changes_async(
         type_=type_,
         updated_at_end=updated_at_end,
         updated_at_start=updated_at_start,
+        with_total=with_total,
         namespace=namespace,
     )
     return await run_request_async(
@@ -715,6 +729,164 @@ async def select_all_records_async(
             return None, error
     request = SelectAllRecords.create(
         store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(SelectAllRecordsByCriteria)
+def select_all_records_by_criteria(
+    store_id: str,
+    action: Optional[Union[str, SelectAllRecordsByCriteriaActionEnum]] = None,
+    item_sku: Optional[str] = None,
+    item_type: Optional[Union[str, SelectAllRecordsByCriteriaItemTypeEnum]] = None,
+    selected: Optional[bool] = None,
+    type_: Optional[Union[str, SelectAllRecordsByCriteriaTypeEnum]] = None,
+    updated_at_end: Optional[str] = None,
+    updated_at_start: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Select all changes by criteria (selectAllRecordsByCriteria)
+
+    Select all changes by criteria
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAllByCriteria
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+        action: (action) OPTIONAL Union[str, ActionEnum] in query
+
+        item_sku: (itemSku) OPTIONAL str in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        selected: (selected) OPTIONAL bool in query
+
+        type_: (type) OPTIONAL Union[str, TypeEnum] in query
+
+        updated_at_end: (updatedAtEnd) OPTIONAL str in query
+
+        updated_at_start: (updatedAtStart) OPTIONAL str in query
+
+    Responses:
+        204: No Content - (Select all changes by criteria successfully)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SelectAllRecordsByCriteria.create(
+        store_id=store_id,
+        action=action,
+        item_sku=item_sku,
+        item_type=item_type,
+        selected=selected,
+        type_=type_,
+        updated_at_end=updated_at_end,
+        updated_at_start=updated_at_start,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(SelectAllRecordsByCriteria)
+async def select_all_records_by_criteria_async(
+    store_id: str,
+    action: Optional[Union[str, SelectAllRecordsByCriteriaActionEnum]] = None,
+    item_sku: Optional[str] = None,
+    item_type: Optional[Union[str, SelectAllRecordsByCriteriaItemTypeEnum]] = None,
+    selected: Optional[bool] = None,
+    type_: Optional[Union[str, SelectAllRecordsByCriteriaTypeEnum]] = None,
+    updated_at_end: Optional[str] = None,
+    updated_at_start: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Select all changes by criteria (selectAllRecordsByCriteria)
+
+    Select all changes by criteria
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAllByCriteria
+
+        method: PUT
+
+        tags: ["CatalogChanges"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+        action: (action) OPTIONAL Union[str, ActionEnum] in query
+
+        item_sku: (itemSku) OPTIONAL str in query
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
+        selected: (selected) OPTIONAL bool in query
+
+        type_: (type) OPTIONAL Union[str, TypeEnum] in query
+
+        updated_at_end: (updatedAtEnd) OPTIONAL str in query
+
+        updated_at_start: (updatedAtStart) OPTIONAL str in query
+
+    Responses:
+        204: No Content - (Select all changes by criteria successfully)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = SelectAllRecordsByCriteria.create(
+        store_id=store_id,
+        action=action,
+        item_sku=item_sku,
+        item_type=item_type,
+        selected=selected,
+        type_=type_,
+        updated_at_end=updated_at_end,
+        updated_at_start=updated_at_start,
         namespace=namespace,
     )
     return await run_request_async(

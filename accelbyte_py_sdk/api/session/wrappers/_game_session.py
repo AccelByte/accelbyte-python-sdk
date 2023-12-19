@@ -1477,7 +1477,6 @@ async def get_game_session_by_pod_name_async(
 
 @same_doc_as(GetSessionServerSecret)
 def get_session_server_secret(
-    body: ApimodelsServerSecret,
     session_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -1520,8 +1519,6 @@ def get_session_server_secret(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsServerSecret in body
-
         namespace: (namespace) REQUIRED str in path
 
         session_id: (sessionId) REQUIRED str in path
@@ -1542,7 +1539,6 @@ def get_session_server_secret(
         if error:
             return None, error
     request = GetSessionServerSecret.create(
-        body=body,
         session_id=session_id,
         namespace=namespace,
     )
@@ -1551,7 +1547,6 @@ def get_session_server_secret(
 
 @same_doc_as(GetSessionServerSecret)
 async def get_session_server_secret_async(
-    body: ApimodelsServerSecret,
     session_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -1594,8 +1589,6 @@ async def get_session_server_secret_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsServerSecret in body
-
         namespace: (namespace) REQUIRED str in path
 
         session_id: (sessionId) REQUIRED str in path
@@ -1616,7 +1609,6 @@ async def get_session_server_secret_async(
         if error:
             return None, error
     request = GetSessionServerSecret.create(
-        body=body,
         session_id=session_id,
         namespace=namespace,
     )

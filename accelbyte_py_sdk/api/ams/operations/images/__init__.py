@@ -8,13 +8,12 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.4.0"
+__version__ = "1.7.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-from .fleet_artifact_sampling_739743 import FleetArtifactSamplingRulesGet
 from .image_get import ImageGet
 from .image_list import ImageList
 from .image_patch import ImagePatch

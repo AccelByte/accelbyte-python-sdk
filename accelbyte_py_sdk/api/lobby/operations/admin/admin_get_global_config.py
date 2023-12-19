@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,14 +36,7 @@ from ...models import RestapiErrorResponseBody
 class AdminGetGlobalConfig(Operation):
     """Record of global configuration dsmc. (adminGetGlobalConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with scope `social`
-    get dsmc global configuration.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
+    Get dsmc global configuration.
 
     Properties:
         url: /lobby/v1/admin/global-configurations

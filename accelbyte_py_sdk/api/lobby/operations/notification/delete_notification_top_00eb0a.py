@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,20 +35,12 @@ from ...models import RestapiErrorResponseV1
 class DeleteNotificationTopicV1Admin(Operation):
     """delete topic information by topic name (deleteNotificationTopicV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
-
-    delete topic information by topic name.
+    Delete topic information by topic name.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
 
     Action Code: 50217
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}

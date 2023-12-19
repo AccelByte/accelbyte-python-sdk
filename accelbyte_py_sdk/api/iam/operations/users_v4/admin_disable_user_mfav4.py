@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,16 +35,7 @@ from ...models import RestErrorResponse
 class AdminDisableUserMFAV4(Operation):
     """Disable User 2FA (AdminDisableUserMFAV4)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE] permission
-
-
-
-
-
-    This endpoint is used to disable user 2FA.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
+    **This endpoint is used to disable user 2FA.**
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/mfa/disable

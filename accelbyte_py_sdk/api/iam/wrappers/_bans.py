@@ -59,20 +59,8 @@ def admin_ban_user_bulk_v3(
 ):
     """Bulk ban user (AdminBanUserBulkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN [CREATE]'.
-
-
-
-
     Bulk ban user with specific type of ban. Ban types and reason can be queried. The maximum limit value is 100 userIDs
-
-
-
-
     action code : 10141
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN [CREATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users
@@ -124,20 +112,8 @@ async def admin_ban_user_bulk_v3_async(
 ):
     """Bulk ban user (AdminBanUserBulkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN [CREATE]'.
-
-
-
-
     Bulk ban user with specific type of ban. Ban types and reason can be queried. The maximum limit value is 100 userIDs
-
-
-
-
     action code : 10141
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN [CREATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users
@@ -194,13 +170,9 @@ def admin_get_banned_users_v3(
 ):
     """Get list of user filtered by ban types (AdminGetBannedUsersV3)
 
-    Required permission 'ADMIN:BAN [READ]'
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
     action code : 10201
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users
@@ -260,13 +232,9 @@ async def admin_get_banned_users_v3_async(
 ):
     """Get list of user filtered by ban types (AdminGetBannedUsersV3)
 
-    Required permission 'ADMIN:BAN [READ]'
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
     action code : 10201
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users
@@ -322,13 +290,9 @@ def admin_get_bans_type_v3(
 ):
     """Get list of ban types (AdminGetBansTypeV3)
 
-    Required permission 'ADMIN:BAN [READ]'
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
     action code : 10201
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
 
     Properties:
         url: /iam/v3/admin/bans
@@ -362,13 +326,9 @@ async def admin_get_bans_type_v3_async(
 ):
     """Get list of ban types (AdminGetBansTypeV3)
 
-    Required permission 'ADMIN:BAN [READ]'
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
     action code : 10201
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
 
     Properties:
         url: /iam/v3/admin/bans
@@ -406,13 +366,9 @@ def admin_get_bans_type_with_namespace_v3(
 ):
     """Get list of ban types (AdminGetBansTypeWithNamespaceV3)
 
-    Required permission 'ADMIN:BAN [READ]'
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
     action code : 10201
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bantypes
@@ -456,13 +412,9 @@ async def admin_get_bans_type_with_namespace_v3_async(
 ):
     """Get list of ban types (AdminGetBansTypeWithNamespaceV3)
 
-    Required permission 'ADMIN:BAN [READ]'
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
     action code : 10201
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bantypes
@@ -506,16 +458,8 @@ def admin_get_list_ban_reason_v3(
 ):
     """Get list of ban reasons (AdminGetListBanReasonV3)
 
-    Required permission 'ADMIN:BAN [READ]'
-
-
     Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace.
-
-
     action code : 10202
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
 
     Properties:
         url: /iam/v3/admin/bans/reasons
@@ -549,16 +493,8 @@ async def admin_get_list_ban_reason_v3_async(
 ):
     """Get list of ban reasons (AdminGetListBanReasonV3)
 
-    Required permission 'ADMIN:BAN [READ]'
-
-
     Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace.
-
-
     action code : 10202
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
 
     Properties:
         url: /iam/v3/admin/bans/reasons
@@ -597,20 +533,8 @@ def admin_unban_user_bulk_v3(
 ):
     """Bulk unban user (AdminUnbanUserBulkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN [UPDATE]'.
-
-
-
-
     disable bulk ban user. The maximum limit value is 100
-
-
-
-
     action code : 10142
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users/disabled
@@ -662,20 +586,8 @@ async def admin_unban_user_bulk_v3_async(
 ):
     """Bulk unban user (AdminUnbanUserBulkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN [UPDATE]'.
-
-
-
-
     disable bulk ban user. The maximum limit value is 100
-
-
-
-
     action code : 10142
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users/disabled
@@ -726,24 +638,8 @@ def get_bans_type(x_additional_headers: Optional[Dict[str, str]] = None, **kwarg
     """Get list of ban types (GetBansType)
 
     ## The endpoint is going to be deprecated
-
-
-
-
-    Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/bans [GET]
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
-
-        - BAN:ADMIN [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/bans [GET]_**
 
     Properties:
         url: /iam/bans
@@ -777,24 +673,8 @@ async def get_bans_type_async(
     """Get list of ban types (GetBansType)
 
     ## The endpoint is going to be deprecated
-
-
-
-
-    Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/bans [GET]
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
-
-        - BAN:ADMIN [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/bans [GET]_**
 
     Properties:
         url: /iam/bans
@@ -830,24 +710,8 @@ def get_list_ban_reason(
     """Get list of ban reasons (GetListBanReason)
 
     ## The endpoint is going to be deprecated
-
-
-
-
-    Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/bans/reasons [GET]
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
-
-        - BAN:ADMIN [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/bans/reasons [GET]_**
 
     Properties:
         url: /iam/bans/reasons
@@ -881,24 +745,8 @@ async def get_list_ban_reason_async(
     """Get list of ban reasons (GetListBanReason)
 
     ## The endpoint is going to be deprecated
-
-
-
-
-    Required permission 'BAN:ADMIN [READ]' or 'ADMIN:BAN [READ]'
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/bans/reasons [GET]
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
-
-        - BAN:ADMIN [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/bans/reasons [GET]_**
 
     Properties:
         url: /iam/bans/reasons

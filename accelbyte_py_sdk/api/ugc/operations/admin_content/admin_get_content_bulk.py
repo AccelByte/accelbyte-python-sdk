@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -61,13 +61,15 @@ class AdminGetContentBulk(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelsContentDownloadResponse] (OK)
+        200: OK - List[ModelsContentDownloadResponse] (Bulk get content by content IDs)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (773900: Malformed request/Invalid request body)
 
-        403: Forbidden - ResponseError (Forbidden)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ResponseError (773901: Unable to get ugc content: database/Unable to get creator | 773902: Failed generate download URL)
     """
 
     # region fields
@@ -180,13 +182,15 @@ class AdminGetContentBulk(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - List[ModelsContentDownloadResponse] (OK)
+        200: OK - List[ModelsContentDownloadResponse] (Bulk get content by content IDs)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (773900: Malformed request/Invalid request body)
 
-        403: Forbidden - ResponseError (Forbidden)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ResponseError (773901: Unable to get ugc content: database/Unable to get creator | 773902: Failed generate download URL)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -205,6 +209,8 @@ class AdminGetContentBulk(Operation):
             return [
                 ModelsContentDownloadResponse.create_from_dict(i) for i in content
             ], None
+        if code == 400:
+            return None, ResponseError.create_from_dict(content)
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 403:

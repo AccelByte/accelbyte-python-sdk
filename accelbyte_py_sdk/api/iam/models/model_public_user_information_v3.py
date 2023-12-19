@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.model_user_platform_info import ModelUserPlatformInfo
+
 
 class ModelPublicUserInformationV3(Model):
     """Model public user information V3 (model.PublicUserInformationV3)
@@ -41,6 +43,8 @@ class ModelPublicUserInformationV3(Model):
         user_id: (userId) REQUIRED str
 
         user_name: (userName) REQUIRED str
+
+        user_platform_infos: (userPlatformInfos) OPTIONAL List[ModelUserPlatformInfo]
     """
 
     # region fields
@@ -50,6 +54,7 @@ class ModelPublicUserInformationV3(Model):
     namespace: str  # REQUIRED
     user_id: str  # REQUIRED
     user_name: str  # REQUIRED
+    user_platform_infos: List[ModelUserPlatformInfo]  # OPTIONAL
 
     # endregion fields
 
@@ -73,6 +78,12 @@ class ModelPublicUserInformationV3(Model):
 
     def with_user_name(self, value: str) -> ModelPublicUserInformationV3:
         self.user_name = value
+        return self
+
+    def with_user_platform_infos(
+        self, value: List[ModelUserPlatformInfo]
+    ) -> ModelPublicUserInformationV3:
+        self.user_platform_infos = value
         return self
 
     # endregion with_x methods
@@ -101,6 +112,13 @@ class ModelPublicUserInformationV3(Model):
             result["userName"] = str(self.user_name)
         elif include_empty:
             result["userName"] = ""
+        if hasattr(self, "user_platform_infos"):
+            result["userPlatformInfos"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.user_platform_infos
+            ]
+        elif include_empty:
+            result["userPlatformInfos"] = []
         return result
 
     # endregion to methods
@@ -115,6 +133,7 @@ class ModelPublicUserInformationV3(Model):
         namespace: str,
         user_id: str,
         user_name: str,
+        user_platform_infos: Optional[List[ModelUserPlatformInfo]] = None,
         **kwargs,
     ) -> ModelPublicUserInformationV3:
         instance = cls()
@@ -123,6 +142,8 @@ class ModelPublicUserInformationV3(Model):
         instance.namespace = namespace
         instance.user_id = user_id
         instance.user_name = user_name
+        if user_platform_infos is not None:
+            instance.user_platform_infos = user_platform_infos
         return instance
 
     @classmethod
@@ -152,6 +173,13 @@ class ModelPublicUserInformationV3(Model):
             instance.user_name = str(dict_["userName"])
         elif include_empty:
             instance.user_name = ""
+        if "userPlatformInfos" in dict_ and dict_["userPlatformInfos"] is not None:
+            instance.user_platform_infos = [
+                ModelUserPlatformInfo.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["userPlatformInfos"]
+            ]
+        elif include_empty:
+            instance.user_platform_infos = []
         return instance
 
     @classmethod
@@ -200,6 +228,7 @@ class ModelPublicUserInformationV3(Model):
             "namespace": "namespace",
             "userId": "user_id",
             "userName": "user_name",
+            "userPlatformInfos": "user_platform_infos",
         }
 
     @staticmethod
@@ -210,6 +239,7 @@ class ModelPublicUserInformationV3(Model):
             "namespace": True,
             "userId": True,
             "userName": True,
+            "userPlatformInfos": False,
         }
 
     # endregion static methods

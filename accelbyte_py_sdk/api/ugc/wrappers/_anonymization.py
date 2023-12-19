@@ -73,13 +73,13 @@ def admin_delete_all_user_channels(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Channel deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773502: Channel not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773501: Unable to delete channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -124,13 +124,13 @@ async def admin_delete_all_user_channels_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Channel deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773502: Channel not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773501: Unable to delete channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -177,13 +177,13 @@ def admin_delete_all_user_contents(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Users content's deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773402: Content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773401: Unable to get all user content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -228,13 +228,13 @@ async def admin_delete_all_user_contents_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Users content's deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773402: Content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773401: Unable to get all user content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -281,13 +281,13 @@ def admin_delete_all_user_group(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Groups deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773302: Groups not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773301: Unable to find all user group)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -332,13 +332,13 @@ async def admin_delete_all_user_group_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Groups deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773302: Groups not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773301: Unable to find all user group)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -385,13 +385,13 @@ def admin_delete_all_user_states(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User stats deleted)
 
-        400: Bad Request - ResponseError (Bad Request)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        404: Not Found - ResponseError (773602: user states are not found: content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773601: Unable to get all user contents/Unable to delete user states)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -436,13 +436,13 @@ async def admin_delete_all_user_states_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User stats deleted)
 
-        400: Bad Request - ResponseError (Bad Request)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        404: Not Found - ResponseError (773602: user states are not found: content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773601: Unable to get all user contents/Unable to delete user states)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -489,13 +489,13 @@ def delete_all_user_channel(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Content deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773502: Channel not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773501: Unable to delete channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -540,13 +540,13 @@ async def delete_all_user_channel_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Content deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773502: Channel not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773501: Unable to delete channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -593,13 +593,13 @@ def delete_all_user_contents(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User content's deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773402: Content not found | 771601: Creator not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773401: Unable to get all user content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -644,13 +644,13 @@ async def delete_all_user_contents_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User content's deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773402: Content not found | 771601: Creator not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773401: Unable to get all user content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -697,13 +697,13 @@ def delete_all_user_group(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (groups deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773302: Groups not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773301: Unable to find all user group)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -748,13 +748,13 @@ async def delete_all_user_group_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (groups deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773302: Groups not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773301: Unable to find all user group)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -801,13 +801,13 @@ def delete_all_user_states(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User stats deleted)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (773602: user states are not found: content not found)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773601: Unable to get all user contents/Unable to delete user states)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -852,13 +852,13 @@ async def delete_all_user_states_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User stats deleted)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (773602: user states are not found: content not found)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773601: Unable to get all user contents/Unable to delete user states)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

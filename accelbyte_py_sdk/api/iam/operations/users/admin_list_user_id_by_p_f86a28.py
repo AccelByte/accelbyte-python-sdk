@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,14 +38,10 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
     """Admin List User ID By Platform User ID (AdminListUserIDByPlatformUserIDsV3)
 
     Admin List User ID By Platform User ID
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
     This endpoint intended to list game user ID from the given namespace
     This endpoint return list of user ID by given platform ID and list of platform user ID
 
-    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users

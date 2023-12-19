@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -42,12 +42,8 @@ class CategoryEnum(StrEnum):
 class Get(Operation):
     """Get configuration (Get)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [READ]
     TimeInterval is in nanoseconds.
     When there's no configuration set, the response is the default value (configurable through envar).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/configurations

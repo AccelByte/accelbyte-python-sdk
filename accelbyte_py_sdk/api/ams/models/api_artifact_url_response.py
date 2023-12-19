@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.4.0)
+# Fleet Commander (1.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,39 +27,24 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.api_artifact_type_sampling_rules_response import (
-    ApiArtifactTypeSamplingRulesResponse,
-)
 
-
-class ApiFleetArtifactsSampleRulesResponse(Model):
-    """Api fleet artifacts sample rules response (api.FleetArtifactsSampleRulesResponse)
+class ApiArtifactURLResponse(Model):
+    """Api artifact URL response (api.ArtifactURLResponse)
 
     Properties:
-        coredumps: (coredumps) REQUIRED ApiArtifactTypeSamplingRulesResponse
-
-        logs: (logs) REQUIRED ApiArtifactTypeSamplingRulesResponse
+        url: (url) REQUIRED str
     """
 
     # region fields
 
-    coredumps: ApiArtifactTypeSamplingRulesResponse  # REQUIRED
-    logs: ApiArtifactTypeSamplingRulesResponse  # REQUIRED
+    url: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_coredumps(
-        self, value: ApiArtifactTypeSamplingRulesResponse
-    ) -> ApiFleetArtifactsSampleRulesResponse:
-        self.coredumps = value
-        return self
-
-    def with_logs(
-        self, value: ApiArtifactTypeSamplingRulesResponse
-    ) -> ApiFleetArtifactsSampleRulesResponse:
-        self.logs = value
+    def with_url(self, value: str) -> ApiArtifactURLResponse:
+        self.url = value
         return self
 
     # endregion with_x methods
@@ -68,14 +53,10 @@ class ApiFleetArtifactsSampleRulesResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "coredumps"):
-            result["coredumps"] = self.coredumps.to_dict(include_empty=include_empty)
+        if hasattr(self, "url"):
+            result["url"] = str(self.url)
         elif include_empty:
-            result["coredumps"] = ApiArtifactTypeSamplingRulesResponse()
-        if hasattr(self, "logs"):
-            result["logs"] = self.logs.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["logs"] = ApiArtifactTypeSamplingRulesResponse()
+            result["url"] = ""
         return result
 
     # endregion to methods
@@ -83,42 +64,28 @@ class ApiFleetArtifactsSampleRulesResponse(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        coredumps: ApiArtifactTypeSamplingRulesResponse,
-        logs: ApiArtifactTypeSamplingRulesResponse,
-        **kwargs,
-    ) -> ApiFleetArtifactsSampleRulesResponse:
+    def create(cls, url: str, **kwargs) -> ApiArtifactURLResponse:
         instance = cls()
-        instance.coredumps = coredumps
-        instance.logs = logs
+        instance.url = url
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ApiFleetArtifactsSampleRulesResponse:
+    ) -> ApiArtifactURLResponse:
         instance = cls()
         if not dict_:
             return instance
-        if "coredumps" in dict_ and dict_["coredumps"] is not None:
-            instance.coredumps = ApiArtifactTypeSamplingRulesResponse.create_from_dict(
-                dict_["coredumps"], include_empty=include_empty
-            )
+        if "url" in dict_ and dict_["url"] is not None:
+            instance.url = str(dict_["url"])
         elif include_empty:
-            instance.coredumps = ApiArtifactTypeSamplingRulesResponse()
-        if "logs" in dict_ and dict_["logs"] is not None:
-            instance.logs = ApiArtifactTypeSamplingRulesResponse.create_from_dict(
-                dict_["logs"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.logs = ApiArtifactTypeSamplingRulesResponse()
+            instance.url = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApiFleetArtifactsSampleRulesResponse]:
+    ) -> Dict[str, ApiArtifactURLResponse]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -128,7 +95,7 @@ class ApiFleetArtifactsSampleRulesResponse(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ApiFleetArtifactsSampleRulesResponse]:
+    ) -> List[ApiArtifactURLResponse]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -139,9 +106,9 @@ class ApiFleetArtifactsSampleRulesResponse(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ApiFleetArtifactsSampleRulesResponse,
-        List[ApiFleetArtifactsSampleRulesResponse],
-        Dict[Any, ApiFleetArtifactsSampleRulesResponse],
+        ApiArtifactURLResponse,
+        List[ApiArtifactURLResponse],
+        Dict[Any, ApiArtifactURLResponse],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -156,15 +123,13 @@ class ApiFleetArtifactsSampleRulesResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "coredumps": "coredumps",
-            "logs": "logs",
+            "url": "url",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "coredumps": True,
-            "logs": True,
+            "url": True,
         }
 
     # endregion static methods

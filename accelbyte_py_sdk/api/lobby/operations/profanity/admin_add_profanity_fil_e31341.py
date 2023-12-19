@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseBody
 class AdminAddProfanityFilterIntoList(Operation):
     """add a single filter into the list (adminAddProfanityFilterIntoList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    add a single filter into the list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Add a single filter into the list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters

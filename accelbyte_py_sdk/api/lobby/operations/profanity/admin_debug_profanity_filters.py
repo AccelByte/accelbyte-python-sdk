@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,15 +37,7 @@ from ...models import RestapiErrorResponseBody
 class AdminDebugProfanityFilters(Operation):
     """get the list of filters that would modify the phrase (adminDebugProfanityFilters)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    get the list of filters that would modify the phrase
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Get the list of filters that would modify the phrase
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/filters/debug

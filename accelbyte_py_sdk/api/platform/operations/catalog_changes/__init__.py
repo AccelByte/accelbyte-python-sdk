@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.41.0"
+__version__ = "4.42.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -31,6 +31,12 @@ from .query_changes import (
     TypeEnum as QueryChangesTypeEnum,
 )
 from .select_all_records import SelectAllRecords
+from .select_all_records_by_criteria import SelectAllRecordsByCriteria
+from .select_all_records_by_criteria import (
+    ActionEnum as SelectAllRecordsByCriteriaActionEnum,
+    ItemTypeEnum as SelectAllRecordsByCriteriaItemTypeEnum,
+    TypeEnum as SelectAllRecordsByCriteriaTypeEnum,
+)
 from .select_record import SelectRecord
 from .unselect_all_records import UnselectAllRecords
 from .unselect_record import UnselectRecord

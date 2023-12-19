@@ -51,15 +51,7 @@ def admin_create_third_party_config(
 ):
     """Create Third Party Steam Config (adminCreateThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]` with scope `social`
-
-    create third party config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
+    Create third party config in a namespace.
 
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
@@ -111,15 +103,7 @@ async def admin_create_third_party_config_async(
 ):
     """Create Third Party Steam Config (adminCreateThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]` with scope `social`
-
-    create third party config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
+    Create third party config in a namespace.
 
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
@@ -282,15 +266,7 @@ def admin_get_third_party_config(
 ):
     """Get Third Party Steam Config (adminGetThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]` with scope `social`
-
-    get third party config for specified namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
+    Get third party config for specified namespace.
 
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
@@ -336,15 +312,7 @@ async def admin_get_third_party_config_async(
 ):
     """Get Third Party Steam Config (adminGetThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]` with scope `social`
-
-    get third party config for specified namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
+    Get third party config for specified namespace.
 
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
@@ -393,15 +361,7 @@ def admin_update_third_party_config(
 ):
     """Update Third Party Steam Config (adminUpdateThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [UPDATE]` with scope `social`
-
     Update third party config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
@@ -451,15 +411,7 @@ async def admin_update_third_party_config_async(
 ):
     """Update Third Party Steam Config (adminUpdateThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [UPDATE]` with scope `social`
-
     Update third party config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,17 +64,17 @@ class AdminUpdateContentHideStatusV2(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateContentResponseV2 (OK)
+        200: OK - ModelsCreateContentResponseV2 (Hide/UnHide user's generated content)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (773801: Invalid request body/Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (20013: insufficient permission)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773803: Unable to update hide status: content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773802: Unable to update hide status: database error | 773804: Unable to save ugc content: failed generate upload URL)
     """
 
     # region fields
@@ -213,17 +213,17 @@ class AdminUpdateContentHideStatusV2(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsCreateContentResponseV2 (OK)
+        200: OK - ModelsCreateContentResponseV2 (Hide/UnHide user's generated content)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (773801: Invalid request body/Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (20013: insufficient permission)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773803: Unable to update hide status: content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773802: Unable to update hide status: database error | 773804: Unable to save ugc content: failed generate upload URL)
 
         ---: HttpResponse (Undocumented Response)
 

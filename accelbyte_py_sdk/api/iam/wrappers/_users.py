@@ -120,6 +120,8 @@ from ..models import ModelUserUpdateRequest
 from ..models import ModelUserUpdateRequestV3
 from ..models import ModelUserVerificationRequest
 from ..models import ModelUserVerificationRequestV3
+from ..models import ModelUsersPlatformInfosRequestV3
+from ..models import ModelUsersPlatformInfosResponse
 from ..models import ModelVerificationCodeResponse
 from ..models import ModelVerifyRegistrationCode
 from ..models import ModelWebLinkingResponse
@@ -247,6 +249,7 @@ from ..operations.users import PublicGetUserByUserIDV2
 from ..operations.users import PublicGetUserInformationV3
 from ..operations.users import PublicGetUserLoginHistoriesV3
 from ..operations.users import PublicGetUserPlatformAccountsV3
+from ..operations.users import PublicGetUsersPlatformInfosV3
 from ..operations.users import PublicLinkPlatformAccount
 from ..operations.users import PublicListJusticePlatformAccountsV3
 from ..operations.users import PublicListUserAllPlatformAccountsDistinctV3
@@ -303,116 +306,33 @@ def add_user_permission(
     """Add User Permission (AddUserPermission)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]_**
 
     This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
-
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
 
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
@@ -476,116 +396,33 @@ async def add_user_permission_async(
     """Add User Permission (AddUserPermission)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]_**
 
     This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
-
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
 
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
@@ -649,22 +486,8 @@ def add_user_role(
     """Add User Role (AddUserRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [POST]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [POST]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -722,22 +545,8 @@ async def add_user_role_async(
     """Add User Role (AddUserRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [POST]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [POST]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -795,101 +604,29 @@ def admin_add_user_permissions_v3(
 ):
     """Add User Permissions (AdminAddUserPermissionsV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [CREATE]'
-
-
-
-
     This endpoint will APPEND user's permissions with the ones defined in body
-
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    1. Minutes: 0-59 * / , -
+    1. Hours: 0-23 * / , -
+    1. Day of month: 1-31 * / , - L W
+    1. Month: 1-12 JAN-DEC * / , -
+    1. Day of week: 0-6 SUN-SAT * / , - L #
+    1. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [CREATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    1. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    1. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    1. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    1. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    1. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    1. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
@@ -943,101 +680,29 @@ async def admin_add_user_permissions_v3_async(
 ):
     """Add User Permissions (AdminAddUserPermissionsV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [CREATE]'
-
-
-
-
     This endpoint will APPEND user's permissions with the ones defined in body
-
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    1. Minutes: 0-59 * / , -
+    1. Hours: 0-23 * / , -
+    1. Day of month: 1-31 * / , - L W
+    1. Month: 1-12 JAN-DEC * / , -
+    1. Day of week: 0-6 SUN-SAT * / , - L #
+    1. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [CREATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    1. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    1. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    1. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    1. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    1. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    1. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
@@ -1093,15 +758,7 @@ def admin_add_user_role_v3(
 ):
     """Add User Role (AdminAddUserRoleV3)
 
-    This endpoint adds role to user. Required permission ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
-
-
-
-
     action code: 10109
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -1159,15 +816,7 @@ async def admin_add_user_role_v3_async(
 ):
     """Add User Role (AdminAddUserRoleV3)
 
-    This endpoint adds role to user. Required permission ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
-
-
-
-
     action code: 10109
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -1229,23 +878,8 @@ def admin_ban_user_v2(
     """Ban a single user (AdminBanUserV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/ban
@@ -1303,23 +937,8 @@ async def admin_ban_user_v2_async(
     """Ban a single user (AdminBanUserV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/ban
@@ -1377,20 +996,8 @@ def admin_ban_user_v3(
 ):
     """Ban a single user (AdminBanUserV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
-
-
-
-
     Bans a user with specific type of ban. Ban types and reason can be queried.
-
-
-
-
     action code : 10141
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
@@ -1446,20 +1053,8 @@ async def admin_ban_user_v3_async(
 ):
     """Ban a single user (AdminBanUserV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
-
-
-
-
     Bans a user with specific type of ban. Ban types and reason can be queried.
-
-
-
-
     action code : 10141
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
@@ -1517,22 +1112,8 @@ def admin_bulk_get_users_platform(
     """Admin bulk get users' platform info by user Ids (AdminBulkGetUsersPlatform)
 
     Notes:
-
-
-
-
-
-
-      * Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
-
-
-      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - If namespace is game, will search by game user Id, other wise will search by publisher namespace
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bulk/platforms
@@ -1579,22 +1160,8 @@ async def admin_bulk_get_users_platform_async(
     """Admin bulk get users' platform info by user Ids (AdminBulkGetUsersPlatform)
 
     Notes:
-
-
-
-
-
-
-      * Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
-
-
-      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - If namespace is game, will search by game user Id, other wise will search by publisher namespace
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bulk/platforms
@@ -1643,12 +1210,7 @@ def admin_create_justice_user(
 ):
     """Create Justice User from Publisher User (AdminCreateJusticeUser)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]
-
     Create Justice User from Publisher User information. It will check first if Justice User on target namespace already exist.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -1704,12 +1266,7 @@ async def admin_create_justice_user_async(
 ):
     """Create Justice User from Publisher User (AdminCreateJusticeUser)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]
-
     Create Justice User from Publisher User information. It will check first if Justice User on target namespace already exist.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [CREATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -1769,23 +1326,8 @@ def admin_create_user_roles_v2(
     """Save User Roles (AdminCreateUserRolesV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/roles
@@ -1843,23 +1385,8 @@ async def admin_create_user_roles_v2_async(
     """Save User Roles (AdminCreateUserRolesV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/roles
@@ -1920,72 +1447,23 @@ def admin_delete_platform_link_v2(
     """Delete the link of user's account with platform (AdminDeletePlatformLinkV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
-
-
-
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]_**
 
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * device
-
-
-      * discord
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **device**
+    - **discord**
 
     Delete link of user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
-
     Delete link of justice platform will enable password token grant and password update.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
@@ -2047,72 +1525,23 @@ async def admin_delete_platform_link_v2_async(
     """Delete the link of user's account with platform (AdminDeletePlatformLinkV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
-
-
-
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]_**
 
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * device
-
-
-      * discord
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **device**
+    - **discord**
 
     Delete link of user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
-
     Delete link of justice platform will enable password token grant and password update.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
@@ -2172,10 +1601,7 @@ def admin_delete_user_information_v3(
 ):
     """Delete user's information (AdminDeleteUserInformationV3)
 
-    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow.Required permissions 'ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information
@@ -2223,10 +1649,7 @@ async def admin_delete_user_information_v3_async(
 ):
     """Delete user's information (AdminDeleteUserInformationV3)
 
-    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow.Required permissions 'ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information
@@ -2277,10 +1700,7 @@ def admin_delete_user_permission_bulk_v3(
 ):
     """Delete User Permission (AdminDeleteUserPermissionBulkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+    Delete User Permission
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
@@ -2334,10 +1754,7 @@ async def admin_delete_user_permission_bulk_v3_async(
 ):
     """Delete User Permission (AdminDeleteUserPermissionBulkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+    Delete User Permission
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
@@ -2394,10 +1811,7 @@ def admin_delete_user_permission_v3(
 ):
     """Delete User Permission (AdminDeleteUserPermissionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+    Delete User Permission
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
@@ -2455,10 +1869,7 @@ async def admin_delete_user_permission_v3_async(
 ):
     """Delete User Permission (AdminDeleteUserPermissionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+    Delete User Permission
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
@@ -2517,15 +1928,8 @@ def admin_delete_user_role_v3(
 ):
     """Delete User Role (AdminDeleteUserRoleV3)
 
-    This endpoint removes role from user. Required permission ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
-
-
-
-
+    This endpoint removes role from user
     action code: 10110
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -2581,15 +1985,8 @@ async def admin_delete_user_role_v3_async(
 ):
     """Delete User Role (AdminDeleteUserRoleV3)
 
-    This endpoint removes role from user. Required permission ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
-
-
-
-
+    This endpoint removes role from user
     action code: 10110
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -2647,10 +2044,7 @@ def admin_delete_user_roles_v3(
 ):
     """Delete User Roles (AdminDeleteUserRolesV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+    Delete User Roles
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
@@ -2704,10 +2098,7 @@ async def admin_delete_user_roles_v3_async(
 ):
     """Delete User Roles (AdminDeleteUserRolesV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+    Delete User Roles
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
@@ -2765,36 +2156,12 @@ def admin_disable_user_v2(
     """Disable a user (AdminDisableUserV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-
-    For Deletion Account purpose fill the reason with:
-
-
-
-
-
-
-      * DeactivateAccount : if your deletion request comes from user
-
-
-      * AdminDeactivateAccount : if your deletion request comes from admin
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+    For **Deletion Account** purpose fill the reason with:
+    - **DeactivateAccount** : if your deletion request comes from user
+    - **AdminDeactivateAccount** : if your deletion request comes from admin
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/disable
@@ -2852,36 +2219,12 @@ async def admin_disable_user_v2_async(
     """Disable a user (AdminDisableUserV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-
-    For Deletion Account purpose fill the reason with:
-
-
-
-
-
-
-      * DeactivateAccount : if your deletion request comes from user
-
-
-      * AdminDeactivateAccount : if your deletion request comes from admin
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+    For **Deletion Account** purpose fill the reason with:
+    - **DeactivateAccount** : if your deletion request comes from user
+    - **AdminDeactivateAccount** : if your deletion request comes from admin
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/disable
@@ -2940,23 +2283,8 @@ def admin_enable_user_v2(
     """Enable a user (AdminEnableUserV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/enable
@@ -3008,23 +2336,8 @@ async def admin_enable_user_v2_async(
     """Enable a user (AdminEnableUserV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/enable
@@ -3077,29 +2390,10 @@ def admin_get_age_restriction_status_v2(
     """Get age restriction status (AdminGetAgeRestrictionStatusV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions [GET]
-
-
-
-      * Note:
-        difference in V3 response, format difference: Pascal case => Camel case
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [GET]_**
+    - **Note:**
+    difference in V3 response, format difference: Pascal case => Camel case
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/agerestrictions
@@ -3145,29 +2439,10 @@ async def admin_get_age_restriction_status_v2_async(
     """Get age restriction status (AdminGetAgeRestrictionStatusV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions [GET]
-
-
-
-      * Note:
-        difference in V3 response, format difference: Pascal case => Camel case
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [GET]_**
+    - **Note:**
+    difference in V3 response, format difference: Pascal case => Camel case
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/agerestrictions
@@ -3213,11 +2488,7 @@ def admin_get_age_restriction_status_v3(
 ):
     """Get age restriction status (AdminGetAgeRestrictionStatusV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
     action code: 10138
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
@@ -3265,11 +2536,7 @@ async def admin_get_age_restriction_status_v3_async(
 ):
     """Get age restriction status (AdminGetAgeRestrictionStatusV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
     action code: 10138
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
@@ -3322,20 +2589,8 @@ def admin_get_bulk_user_ban_v3(
 ):
     """Get bulk user bans (AdminGetBulkUserBanV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER [READ]'
-
-
-
-
     This endpoint returns user bans of userIDs specified in the payload
-
-
-
-
     action code : 10127
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bans
@@ -3395,20 +2650,8 @@ async def admin_get_bulk_user_ban_v3_async(
 ):
     """Get bulk user bans (AdminGetBulkUserBanV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER [READ]'
-
-
-
-
     This endpoint returns user bans of userIDs specified in the payload
-
-
-
-
     action code : 10127
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bans
@@ -3468,19 +2711,8 @@ def admin_get_bulk_user_by_email_address_v3(
 ):
     """Get Bulk User By Email Address (AdminGetBulkUserByEmailAddressV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-
-
     This endpoint search user by the list of email addresses
-
-
-
     action code : 10132
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search/bulk
@@ -3532,19 +2764,8 @@ async def admin_get_bulk_user_by_email_address_v3_async(
 ):
     """Get Bulk User By Email Address (AdminGetBulkUserByEmailAddressV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-
-
     This endpoint search user by the list of email addresses
-
-
-
     action code : 10132
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search/bulk
@@ -3597,11 +2818,7 @@ def admin_get_list_country_age_restriction_v3(
 ):
     """Get List Country age restriction (AdminGetListCountryAgeRestrictionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
     action code : 10139
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries
@@ -3647,11 +2864,7 @@ async def admin_get_list_country_age_restriction_v3_async(
 ):
     """Get List Country age restriction (AdminGetListCountryAgeRestrictionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
     action code : 10139
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries
@@ -3700,12 +2913,7 @@ def admin_get_list_justice_platform_accounts(
 ):
     """Get User Justice Platform Accounts (AdminGetListJusticePlatformAccounts)
 
-    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice
@@ -3757,12 +2965,7 @@ async def admin_get_list_justice_platform_accounts_async(
 ):
     """Get User Justice Platform Accounts (AdminGetListJusticePlatformAccounts)
 
-    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice
@@ -3813,7 +3016,6 @@ def admin_get_my_user_v3(
 ):
     """Get My User (AdminGetMyUserV3)
 
-    Require valid user authorization
     Get my user data
     action code : 10147
 
@@ -3847,7 +3049,6 @@ async def admin_get_my_user_v3_async(
 ):
     """Get My User (AdminGetMyUserV3)
 
-    Require valid user authorization
     Get my user data
     action code : 10147
 
@@ -3890,100 +3091,31 @@ def admin_get_third_party_platform_token_link_status_v3(
 
     Admin get the link status of the third party platform token with user id.
 
-
-
-
     This endpoint is used for checking whether the third party user represented by third party token is
     linked with the corresponding user id.
 
-
-
-
-
-    Notes:
-
-
-
-
-
-
-      * Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
-
-
-
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The platform_tokenâs value is the authentication code returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
-
-
-      * facebook : The platform_tokenâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The platform_tokenâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The platform_tokenâs value is the authorization code returned by Twitch OAuth.
-
-
-      * discord : The platform_tokenâs value is the authorization code returned by Discord OAuth
-
-
-      * android : The device_id is the Androidâs device ID
-
-
-      * ios : The device_id is the iOSâs device ID.
-
-
-      * apple : The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
-
-
-      * device : Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
-
-
-      * justice : The platform_tokenâs value is the designated userâs access token.
-
-
-      * epicgames : The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
-
-
-      * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
-
-
-      * ps5 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
-
-
-      * nintendo : The platform_tokenâs value is the authorization code(id_token) returned by Nintendo OAuth.
-
-
-      * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
-
-
-      * live : The platform_tokenâs value is xbox XSTS token
-
-
-      * xblweb : The platform_tokenâs value is code returned by xbox after login
-
-
-      * netflix : The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
-
-
-      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+    - **steam**: The platform_tokenâs value is the authentication code returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
+    - **facebook**: The platform_tokenâs value is the authorization code returned by Facebook OAuth
+    - **google**: The platform_tokenâs value is the authorization code returned by Google OAuth
+    - **oculus**: The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The platform_tokenâs value is the authorization code returned by Twitch OAuth.
+    - **discord**: The platform_tokenâs value is the authorization code returned by Discord OAuth
+    - **android**: The device_id is the Androidâs device ID
+    - **ios**: The device_id is the iOSâs device ID.
+    - **apple**: The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
+    - **device**: Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
+    - **justice**: The platform_tokenâs value is the designated userâs access token.
+    - **epicgames**: The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
+    - **ps4**: The platform_tokenâs value is the authorization code returned by Sony OAuth.
+    - **ps5**: The platform_tokenâs value is the authorization code returned by Sony OAuth.
+    - **nintendo**: The platform_tokenâs value is the authorization code(id_token) returned by Nintendo OAuth.
+    - **awscognito**: The platform_tokenâs value is the aws cognito access token or id token (JWT).
+    - **live**: The platform_tokenâs value is xbox XSTS token
+    - **xblweb**: The platform_tokenâs value is code returned by xbox after login
+    - **netflix**: The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
+    - **snapchat**: The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/linkStatus
@@ -4045,100 +3177,31 @@ async def admin_get_third_party_platform_token_link_status_v3_async(
 
     Admin get the link status of the third party platform token with user id.
 
-
-
-
     This endpoint is used for checking whether the third party user represented by third party token is
     linked with the corresponding user id.
 
-
-
-
-
-    Notes:
-
-
-
-
-
-
-      * Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
-
-
-
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The platform_tokenâs value is the authentication code returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
-
-
-      * facebook : The platform_tokenâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The platform_tokenâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The platform_tokenâs value is the authorization code returned by Twitch OAuth.
-
-
-      * discord : The platform_tokenâs value is the authorization code returned by Discord OAuth
-
-
-      * android : The device_id is the Androidâs device ID
-
-
-      * ios : The device_id is the iOSâs device ID.
-
-
-      * apple : The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
-
-
-      * device : Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
-
-
-      * justice : The platform_tokenâs value is the designated userâs access token.
-
-
-      * epicgames : The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
-
-
-      * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
-
-
-      * ps5 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
-
-
-      * nintendo : The platform_tokenâs value is the authorization code(id_token) returned by Nintendo OAuth.
-
-
-      * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
-
-
-      * live : The platform_tokenâs value is xbox XSTS token
-
-
-      * xblweb : The platform_tokenâs value is code returned by xbox after login
-
-
-      * netflix : The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
-
-
-      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+    - **steam**: The platform_tokenâs value is the authentication code returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
+    - **facebook**: The platform_tokenâs value is the authorization code returned by Facebook OAuth
+    - **google**: The platform_tokenâs value is the authorization code returned by Google OAuth
+    - **oculus**: The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The platform_tokenâs value is the authorization code returned by Twitch OAuth.
+    - **discord**: The platform_tokenâs value is the authorization code returned by Discord OAuth
+    - **android**: The device_id is the Androidâs device ID
+    - **ios**: The device_id is the iOSâs device ID.
+    - **apple**: The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
+    - **device**: Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
+    - **justice**: The platform_tokenâs value is the designated userâs access token.
+    - **epicgames**: The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
+    - **ps4**: The platform_tokenâs value is the authorization code returned by Sony OAuth.
+    - **ps5**: The platform_tokenâs value is the authorization code returned by Sony OAuth.
+    - **nintendo**: The platform_tokenâs value is the authorization code(id_token) returned by Nintendo OAuth.
+    - **awscognito**: The platform_tokenâs value is the aws cognito access token or id token (JWT).
+    - **live**: The platform_tokenâs value is xbox XSTS token
+    - **xblweb**: The platform_tokenâs value is code returned by xbox after login
+    - **netflix**: The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
+    - **snapchat**: The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/linkStatus
@@ -4201,23 +3264,8 @@ def admin_get_user_ban_v2(
     """Get user's bans (AdminGetUserBanV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/bans
@@ -4271,23 +3319,8 @@ async def admin_get_user_ban_v2_async(
     """Get user's bans (AdminGetUserBanV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/bans
@@ -4344,20 +3377,8 @@ def admin_get_user_ban_v3(
 ):
     """Get user's bans (AdminGetUserBanV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'
-
-
-
-
     This endpoint retrieve the first page of the data if after and before parameters is empty
-
-
-
-
     action code : 10126
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
@@ -4425,20 +3446,8 @@ async def admin_get_user_ban_v3_async(
 ):
     """Get user's bans (AdminGetUserBanV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'
-
-
-
-
     This endpoint retrieve the first page of the data if after and before parameters is empty
-
-
-
-
     action code : 10126
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
@@ -4504,19 +3513,8 @@ def admin_get_user_by_email_address_v3(
 ):
     """Get User By Email Address (AdminGetUserByEmailAddressV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-
-
     This endpoint search user who owns the given email address
-
-
-
     action code : 10132
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users
@@ -4568,19 +3566,8 @@ async def admin_get_user_by_email_address_v3_async(
 ):
     """Get User By Email Address (AdminGetUserByEmailAddressV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-
-
     This endpoint search user who owns the given email address
-
-
-
     action code : 10132
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users
@@ -4639,7 +3626,7 @@ def admin_get_user_by_platform_user_idv3(
 
     This endpoint return user information by given platform ID and platform user ID
 
-    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
@@ -4697,7 +3684,7 @@ async def admin_get_user_by_platform_user_idv3_async(
 
     This endpoint return user information by given platform ID and platform user ID
 
-    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
@@ -4754,22 +3741,8 @@ def admin_get_user_by_user_id_v2(
     """Get User By User Id (AdminGetUserByUserIdV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}
@@ -4817,22 +3790,8 @@ async def admin_get_user_by_user_id_v2_async(
     """Get User By User Id (AdminGetUserByUserIdV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}
@@ -4880,10 +3839,7 @@ def admin_get_user_by_user_id_v3(
 ):
     """Admin Get User By User Id (AdminGetUserByUserIdV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+    Admin Get User By User Id
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
@@ -4935,10 +3891,7 @@ async def admin_get_user_by_user_id_v3_async(
 ):
     """Admin Get User By User Id (AdminGetUserByUserIdV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+    Admin Get User By User Id
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
@@ -4992,11 +3945,7 @@ def admin_get_user_deletion_status_v3(
 ):
     """Get User Deletion Status (AdminGetUserDeletionStatusV3)
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [READ]'
     action code : 10145
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
@@ -5046,11 +3995,7 @@ async def admin_get_user_deletion_status_v3_async(
 ):
     """Get User Deletion Status (AdminGetUserDeletionStatusV3)
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [READ]'
     action code : 10145
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
@@ -5105,17 +4050,11 @@ def admin_get_user_login_histories_v3(
 ):
     """Get User's Login Histories (AdminGetUserLoginHistoriesV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]'
-
     Notes for this endpoint:
-
-      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
-      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
-      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+    This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+    - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp."
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories
@@ -5175,17 +4114,11 @@ async def admin_get_user_login_histories_v3_async(
 ):
     """Get User's Login Histories (AdminGetUserLoginHistoriesV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]'
-
     Notes for this endpoint:
-
-      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
-      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
-      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+    This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+    - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp."
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories
@@ -5245,25 +4178,10 @@ def admin_get_user_mapping(
 ):
     """Get user mapping (AdminGetUserMapping)
 
-    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]'
-
-
-
-
+    This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
-
-
-
-
     If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-
-
-
-
     If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -5317,25 +4235,10 @@ async def admin_get_user_mapping_async(
 ):
     """Get user mapping (AdminGetUserMapping)
 
-    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]'
-
-
-
-
+    This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
-
-
-
-
     If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-
-
-
-
     If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -5394,29 +4297,14 @@ def admin_get_user_platform_accounts_v3(
 ):
     """Get platform accounts linked to the user (AdminGetUserPlatformAccountsV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'.
-
-
-
-
     ## Justice Platform Account
-
-
-
-
     The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ]
     is required in order to read the UserID who linked with the user.
-
-
-
     Gets platform accounts that are already linked with user account
-
     action code : 10128
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms
@@ -5484,29 +4372,14 @@ async def admin_get_user_platform_accounts_v3_async(
 ):
     """Get platform accounts linked to the user (AdminGetUserPlatformAccountsV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'.
-
-
-
-
     ## Justice Platform Account
-
-
-
-
     The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ]
     is required in order to read the UserID who linked with the user.
-
-
-
     Gets platform accounts that are already linked with user account
-
     action code : 10128
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms
@@ -5574,13 +4447,7 @@ def admin_get_user_single_platform_account(
     """Admin get user single platform account metadata (AdminGetUserSinglePlatformAccount)
 
     This endpoint gets user single platform account metadata.
-
     Supported platforms are same with the supported login platforms.
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/metadata
@@ -5637,13 +4504,7 @@ async def admin_get_user_single_platform_account_async(
     """Admin get user single platform account metadata (AdminGetUserSinglePlatformAccount)
 
     This endpoint gets user single platform account metadata.
-
     Supported platforms are same with the supported login platforms.
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/metadata
@@ -5700,17 +4561,12 @@ def admin_invite_user_v3(
 ):
     """Invite User (AdminInviteUserV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
-
-    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace.
-    Substitute the namespace in path parameter to desired role's namespace'. An admin user can only
-    assign role to namespaces that the admin user has the required permission.
+    Use this endpoint to invite admin or non-admin user and assign role to them.
+    The role must be scoped to namespace based on the **{namespace}** value in path parameter.
+    An admin user can only assign role to namespaces that the admin user has the required permission.
     Role is optional, if not specified then it will only assign User role
 
     The invited admin will also assigned with "User" role by default.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/invite
@@ -5766,17 +4622,12 @@ async def admin_invite_user_v3_async(
 ):
     """Invite User (AdminInviteUserV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
-
-    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace.
-    Substitute the namespace in path parameter to desired role's namespace'. An admin user can only
-    assign role to namespaces that the admin user has the required permission.
+    Use this endpoint to invite admin or non-admin user and assign role to them.
+    The role must be scoped to namespace based on the **{namespace}** value in path parameter.
+    An admin user can only assign role to namespaces that the admin user has the required permission.
     Role is optional, if not specified then it will only assign User role
 
     The invited admin will also assigned with "User" role by default.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/invite
@@ -5836,22 +4687,10 @@ def admin_link_platform_account(
 ):
     """Link a Platform User Account to User Account (AdminLinkPlatformAccount)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
     Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user.
     By default, these cases are not allowed
-
-
-
-
-      * The platform account current is linked by another account
-
-
-      * The target account ever linked this platform's another account
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    - The platform account current is linked by another account
+    - The target account ever linked this platform's another account
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/link
@@ -5911,22 +4750,10 @@ async def admin_link_platform_account_async(
 ):
     """Link a Platform User Account to User Account (AdminLinkPlatformAccount)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
     Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user.
     By default, these cases are not allowed
-
-
-
-
-      * The platform account current is linked by another account
-
-
-      * The target account ever linked this platform's another account
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    - The platform account current is linked by another account
+    - The target account ever linked this platform's another account
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/link
@@ -5989,14 +4816,10 @@ def admin_list_user_id_by_platform_user_i_ds_v3(
     """Admin List User ID By Platform User ID (AdminListUserIDByPlatformUserIDsV3)
 
     Admin List User ID By Platform User ID
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
     This endpoint intended to list game user ID from the given namespace
     This endpoint return list of user ID by given platform ID and list of platform user ID
 
-    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users
@@ -6055,14 +4878,10 @@ async def admin_list_user_id_by_platform_user_i_ds_v3_async(
     """Admin List User ID By Platform User ID (AdminListUserIDByPlatformUserIDsV3)
 
     Admin List User ID By Platform User ID
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
     This endpoint intended to list game user ID from the given namespace
     This endpoint return list of user ID by given platform ID and list of platform user ID
 
-    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users
@@ -6121,11 +4940,7 @@ def admin_list_user_id_by_user_i_ds_v3(
     """List User By User ID (AdminListUserIDByUserIDsV3)
 
     List User By User ID
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
     This endpoint intended to list user information from the given list of userID and namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bulk
@@ -6176,11 +4991,7 @@ async def admin_list_user_id_by_user_i_ds_v3_async(
     """List User By User ID (AdminListUserIDByUserIDsV3)
 
     List User By User ID
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
     This endpoint intended to list user information from the given list of userID and namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bulk
@@ -6233,14 +5044,9 @@ def admin_list_users_v3(
 ):
     """Admin List Users V3 (AdminListUsersV3)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
-
-     This endpoint requires publisher namespace.
+    **This endpoint requires publisher namespace.**
     Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
     doesn't have Justice platform account, the linkedPlatforms will be empty array.'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/platforms/justice
@@ -6294,14 +5100,9 @@ async def admin_list_users_v3_async(
 ):
     """Admin List Users V3 (AdminListUsersV3)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
-
-     This endpoint requires publisher namespace.
+    **This endpoint requires publisher namespace.**
     Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
     doesn't have Justice platform account, the linkedPlatforms will be empty array.'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/platforms/justice
@@ -6358,65 +5159,22 @@ def admin_platform_link_v3(
 ):
     """Link user's account with platform (AdminPlatformLinkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
-
-
-
-
-
-    Prerequisite: Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
-
-
+    **Prerequisite:** Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The ticketâs value is the authentication code returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
-
-
-      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The ticketâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
-
-
-      * android : The ticket's value is the Androidâs device ID
-
-
-      * ios : The ticket's value is the iOSâs device ID.
-
-
-      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
-
-
-      * device : Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
-
-
-      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
-
-
-      * awscognito : The ticketâs value is the aws cognito access token (JWT).
-
-
-      * epicgames : The ticketâs value is an access-token obtained from Epicgames EOS Account Service.
-
-
-      * nintendo : The ticketâs value is the authorization code(id_token) returned by Nintendo OAuth.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    - **steam**: The ticketâs value is the authentication code returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+    - **facebook**: The ticketâs value is the authorization code returned by Facebook OAuth
+    - **google**: The ticketâs value is the authorization code returned by Google OAuth
+    - **oculus**: The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The ticketâs value is the authorization code returned by Twitch OAuth.
+    - **android**: The ticket's value is the Androidâs device ID
+    - **ios**: The ticket's value is the iOSâs device ID.
+    - **apple**: The ticketâs value is the authorization code returned by Apple OAuth.
+    - **device**: Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
+    - **awscognito**: The ticketâs value is the aws cognito access token (JWT).
+    - **epicgames**: The ticketâs value is an access-token obtained from Epicgames EOS Account Service.
+    - **nintendo**: The ticketâs value is the authorization code(id_token) returned by Nintendo OAuth.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
@@ -6478,65 +5236,22 @@ async def admin_platform_link_v3_async(
 ):
     """Link user's account with platform (AdminPlatformLinkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
-
-
-
-
-
-    Prerequisite: Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
-
-
+    **Prerequisite:** Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The ticketâs value is the authentication code returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
-
-
-      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The ticketâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
-
-
-      * android : The ticket's value is the Androidâs device ID
-
-
-      * ios : The ticket's value is the iOSâs device ID.
-
-
-      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
-
-
-      * device : Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
-
-
-      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
-
-
-      * awscognito : The ticketâs value is the aws cognito access token (JWT).
-
-
-      * epicgames : The ticketâs value is an access-token obtained from Epicgames EOS Account Service.
-
-
-      * nintendo : The ticketâs value is the authorization code(id_token) returned by Nintendo OAuth.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    - **steam**: The ticketâs value is the authentication code returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+    - **facebook**: The ticketâs value is the authorization code returned by Facebook OAuth
+    - **google**: The ticketâs value is the authorization code returned by Google OAuth
+    - **oculus**: The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The ticketâs value is the authorization code returned by Twitch OAuth.
+    - **android**: The ticket's value is the Androidâs device ID
+    - **ios**: The ticket's value is the iOSâs device ID.
+    - **apple**: The ticketâs value is the authorization code returned by Apple OAuth.
+    - **device**: Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
+    - **awscognito**: The ticketâs value is the aws cognito access token (JWT).
+    - **epicgames**: The ticketâs value is an access-token obtained from Epicgames EOS Account Service.
+    - **nintendo**: The ticketâs value is the authorization code(id_token) returned by Nintendo OAuth.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
@@ -6600,82 +5315,28 @@ def admin_platform_unlink_v3(
 ):
     """Unlink user's account from specific platform (AdminPlatformUnlinkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * apple
-
-
-      * device
-
-
-      * discord
-
-
-      * awscognito
-
-
-      * epicgames
-
-
-      * nintendo
-
-
-      * snapchat
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **apple**
+    - **device**
+    - **discord**
+    - **awscognito**
+    - **epicgames**
+    - **nintendo**
+    - **snapchat**
 
     Unlink user's account from a specific platform. 'justice' platform might have multiple accounts from different namespaces linked.
-
-    platformNamespace need to be specified when the platform ID is 'justice'.
-
-
-
+    _platformNamespace_ need to be specified when the platform ID is 'justice'.
     Unlink user's account from justice platform will enable password token grant and password update.
-
-
-
-    If you want to unlink user's account in a game namespace, you have to specify platformNamespace to that game namespace.
-
-
-
+    If you want to unlink user's account in a game namespace, you have to specify _platformNamespace_ to that game namespace.
     action code : 10121
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}
@@ -6735,82 +5396,28 @@ async def admin_platform_unlink_v3_async(
 ):
     """Unlink user's account from specific platform (AdminPlatformUnlinkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * apple
-
-
-      * device
-
-
-      * discord
-
-
-      * awscognito
-
-
-      * epicgames
-
-
-      * nintendo
-
-
-      * snapchat
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **apple**
+    - **device**
+    - **discord**
+    - **awscognito**
+    - **epicgames**
+    - **nintendo**
+    - **snapchat**
 
     Unlink user's account from a specific platform. 'justice' platform might have multiple accounts from different namespaces linked.
-
-    platformNamespace need to be specified when the platform ID is 'justice'.
-
-
-
+    _platformNamespace_ need to be specified when the platform ID is 'justice'.
     Unlink user's account from justice platform will enable password token grant and password update.
-
-
-
-    If you want to unlink user's account in a game namespace, you have to specify platformNamespace to that game namespace.
-
-
-
+    If you want to unlink user's account in a game namespace, you have to specify _platformNamespace_ to that game namespace.
     action code : 10121
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}
@@ -6873,23 +5480,8 @@ def admin_put_user_roles_v2(
     """Update User Roles, will replace all the existing roles (AdminPutUserRolesV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/roles
@@ -6945,23 +5537,8 @@ async def admin_put_user_roles_v2_async(
     """Update User Roles, will replace all the existing roles (AdminPutUserRolesV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/roles
@@ -7019,14 +5596,7 @@ def admin_query_third_platform_link_history_v3(
 ):
     """Search linking history of the query platform with platform user id (AdminQueryThirdPlatformLinkHistoryV3)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
-
-
-
-    * if limit is not defined, The default limit is 100
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    if limit is not defined, The default limit is 100
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/linkhistories
@@ -7088,14 +5658,7 @@ async def admin_query_third_platform_link_history_v3_async(
 ):
     """Search linking history of the query platform with platform user id (AdminQueryThirdPlatformLinkHistoryV3)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
-
-
-
-    * if limit is not defined, The default limit is 100
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    if limit is not defined, The default limit is 100
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/linkhistories
@@ -7159,23 +5722,8 @@ def admin_reset_password_v2(
     """Update User Password (AdminResetPasswordV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password [PUT]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/password [PUT]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/password
@@ -7233,23 +5781,8 @@ async def admin_reset_password_v2_async(
     """Update User Password (AdminResetPasswordV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password [PUT]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/password [PUT]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/password
@@ -7307,10 +5840,7 @@ def admin_reset_password_v3(
 ):
     """Update User Password (AdminResetPasswordV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+    Update User Password
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password
@@ -7366,10 +5896,7 @@ async def admin_reset_password_v3_async(
 ):
     """Update User Password (AdminResetPasswordV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+    Update User Password
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password
@@ -7427,13 +5954,8 @@ def admin_save_user_role_v3(
 ):
     """Admin Save User Role V3 (AdminSaveUserRoleV3)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE] permission.
-
-    User's roles will be updated with given roles (replacing current user's role). Request body need to specify allowed namespace for given role to support new role restriction.
-    Skipped the check whether the user performing the request is a role manager / assigner since there is a plan to discard the role manager / assigner.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    User's roles will be replaced with roles from request body.
+    An admin user can only assign role with **namespace** (in request body) if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
@@ -7463,7 +5985,7 @@ def admin_save_user_role_v3(
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (20008: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
 
         422: Unprocessable Entity - RestErrorResponse (422: request is unprocessable)
 
@@ -7491,13 +6013,8 @@ async def admin_save_user_role_v3_async(
 ):
     """Admin Save User Role V3 (AdminSaveUserRoleV3)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE] permission.
-
-    User's roles will be updated with given roles (replacing current user's role). Request body need to specify allowed namespace for given role to support new role restriction.
-    Skipped the check whether the user performing the request is a role manager / assigner since there is a plan to discard the role manager / assigner.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    User's roles will be replaced with roles from request body.
+    An admin user can only assign role with **namespace** (in request body) if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
@@ -7527,7 +6044,7 @@ async def admin_save_user_role_v3_async(
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (20008: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
 
         422: Unprocessable Entity - RestErrorResponse (422: request is unprocessable)
 
@@ -7558,80 +6075,33 @@ def admin_search_user_v3(
     platform_id: Optional[str] = None,
     query: Optional[str] = None,
     start_date: Optional[str] = None,
+    test_account: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Search User (AdminSearchUserV3)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
-
-
-
-
     Endpoint behavior :
-
-
-      * by default this endpoint searches all users on the specified namespace
-
-
-      * if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
-
-
-      * if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
-
-
-      * if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
-
-
-      * if startDate parameter is defined, endpoint will search users that created start from the defined date
-
-
-      * if endDate parameter is defined, endpoint will search users that created until the defined date
-
-
-      * if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
-
-
-      * if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
-
-
-      * if limit is not defined, The default limit is 100
-
-
-
-
-
-
+    - by default this endpoint searches all users on the specified namespace
+    - if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
+    - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
+    - if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
+    - if startDate parameter is defined, endpoint will search users that created start from the defined date
+    - if endDate parameter is defined, endpoint will search users that created until the defined date
+    - if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
+    - if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
+    - if limit is not defined, The default limit is 100
 
     In multi tenant mode :
 
-
-
-
-      * if super admin search in super admin namespace, the result will be all game admin user
-
-
-      * if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
-
-
-      * if super admin search in game namespace, the result will be all game admin users and players under the game namespace
-
-
-      * if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
-
-
-      * if game admin search in their game namespace, the result will be all player in the game namespace
-
-
-
-
-
+    - if super admin search in super admin namespace, the result will be all game admin user
+    - if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
+    - if super admin search in game namespace, the result will be all game admin users and players under the game namespace
+    - if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
+    - if game admin search in their game namespace, the result will be all player in the game namespace
 
     action code : 10133
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search
@@ -7666,6 +6136,8 @@ def admin_search_user_v3(
 
         start_date: (startDate) OPTIONAL str in query
 
+        test_account: (testAccount) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelSearchUsersResponseWithPaginationV3 (OK)
 
@@ -7691,6 +6163,7 @@ def admin_search_user_v3(
         platform_id=platform_id,
         query=query,
         start_date=start_date,
+        test_account=test_account,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -7707,80 +6180,33 @@ async def admin_search_user_v3_async(
     platform_id: Optional[str] = None,
     query: Optional[str] = None,
     start_date: Optional[str] = None,
+    test_account: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Search User (AdminSearchUserV3)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
-
-
-
-
     Endpoint behavior :
-
-
-      * by default this endpoint searches all users on the specified namespace
-
-
-      * if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
-
-
-      * if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
-
-
-      * if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
-
-
-      * if startDate parameter is defined, endpoint will search users that created start from the defined date
-
-
-      * if endDate parameter is defined, endpoint will search users that created until the defined date
-
-
-      * if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
-
-
-      * if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
-
-
-      * if limit is not defined, The default limit is 100
-
-
-
-
-
-
+    - by default this endpoint searches all users on the specified namespace
+    - if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
+    - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
+    - if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
+    - if startDate parameter is defined, endpoint will search users that created start from the defined date
+    - if endDate parameter is defined, endpoint will search users that created until the defined date
+    - if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
+    - if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
+    - if limit is not defined, The default limit is 100
 
     In multi tenant mode :
 
-
-
-
-      * if super admin search in super admin namespace, the result will be all game admin user
-
-
-      * if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
-
-
-      * if super admin search in game namespace, the result will be all game admin users and players under the game namespace
-
-
-      * if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
-
-
-      * if game admin search in their game namespace, the result will be all player in the game namespace
-
-
-
-
-
+    - if super admin search in super admin namespace, the result will be all game admin user
+    - if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
+    - if super admin search in game namespace, the result will be all game admin users and players under the game namespace
+    - if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
+    - if game admin search in their game namespace, the result will be all player in the game namespace
 
     action code : 10133
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search
@@ -7815,6 +6241,8 @@ async def admin_search_user_v3_async(
 
         start_date: (startDate) OPTIONAL str in query
 
+        test_account: (testAccount) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelSearchUsersResponseWithPaginationV3 (OK)
 
@@ -7840,6 +6268,7 @@ async def admin_search_user_v3_async(
         platform_id=platform_id,
         query=query,
         start_date=start_date,
+        test_account=test_account,
         namespace=namespace,
     )
     return await run_request_async(
@@ -7866,23 +6295,8 @@ def admin_search_users_v2(
     """Search Users (AdminSearchUsersV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/search [GET]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users
@@ -7964,23 +6378,8 @@ async def admin_search_users_v2_async(
     """Search Users (AdminSearchUsersV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/search [GET]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users
@@ -8055,57 +6454,20 @@ def admin_send_verification_code_v3(
 ):
     """Send verification code to user (AdminSendVerificationCodeV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
     The verification code is sent to email address.
-
-
-
-
     Available contexts for use :
-
-
-
-
-
-
-      1. UserAccountRegistration
-
-
+    - **UserAccountRegistration**
     a context type used for verifying email address in user account registration. It returns 409 if the email address already verified.
-    It is the default context if the Context field is empty
+    **_It is the default context if the Context field is empty_**
 
-
-
-
-
-      2. UpdateEmailAddress
-
-
+    - **UpdateEmailAddress**
     a context type used for verify user before updating email address.(Without email address verified checking)
 
-
-
-
-
-      3. upgradeHeadlessAccount
-
-
+    - **upgradeHeadlessAccount**
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
     If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
 
-
-
-
-
-
-
-
     action code: 10116
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/request
@@ -8163,57 +6525,20 @@ async def admin_send_verification_code_v3_async(
 ):
     """Send verification code to user (AdminSendVerificationCodeV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
     The verification code is sent to email address.
-
-
-
-
     Available contexts for use :
-
-
-
-
-
-
-      1. UserAccountRegistration
-
-
+    - **UserAccountRegistration**
     a context type used for verifying email address in user account registration. It returns 409 if the email address already verified.
-    It is the default context if the Context field is empty
+    **_It is the default context if the Context field is empty_**
 
-
-
-
-
-      2. UpdateEmailAddress
-
-
+    - **UpdateEmailAddress**
     a context type used for verify user before updating email address.(Without email address verified checking)
 
-
-
-
-
-      3. upgradeHeadlessAccount
-
-
+    - **upgradeHeadlessAccount**
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
     If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
 
-
-
-
-
-
-
-
     action code: 10116
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/request
@@ -8273,31 +6598,11 @@ def admin_trustly_update_user_identity(
 ):
     """Update User Identity (AdminTrustlyUpdateUserIdentity)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:IDENTITY [UPDATE]'
-
-
-
-
-
-    This endpoint ONLY accept Client Token
-
-
-
-
-    This endpoint is utilized for specific scenarios where email notifications are disabled
-
-
-
-
+    This endpoint ONLY accept **Client Token**
+    This endpoint is utilized for specific scenarios where **email notifications are disabled**
     The user's email will be marked as verified
 
-
-
-
     action code : 10103
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IDENTITY [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/trustly/identity
@@ -8355,31 +6660,11 @@ async def admin_trustly_update_user_identity_async(
 ):
     """Update User Identity (AdminTrustlyUpdateUserIdentity)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:IDENTITY [UPDATE]'
-
-
-
-
-
-    This endpoint ONLY accept Client Token
-
-
-
-
-    This endpoint is utilized for specific scenarios where email notifications are disabled
-
-
-
-
+    This endpoint ONLY accept **Client Token**
+    This endpoint is utilized for specific scenarios where **email notifications are disabled**
     The user's email will be marked as verified
 
-
-
-
     action code : 10103
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IDENTITY [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/trustly/identity
@@ -8440,23 +6725,8 @@ def admin_update_age_restriction_config_v2(
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/agerestrictions
@@ -8508,23 +6778,8 @@ async def admin_update_age_restriction_config_v2_async(
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/agerestrictions
@@ -8576,11 +6831,7 @@ def admin_update_age_restriction_config_v3(
 ):
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
     action code: 10122
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
@@ -8630,11 +6881,7 @@ async def admin_update_age_restriction_config_v3_async(
 ):
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
     action code: 10122
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
@@ -8687,11 +6934,7 @@ def admin_update_country_age_restriction_v3(
 ):
     """Update country's age restriction (AdminUpdateCountryAgeRestrictionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
     action code: 10123
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode}
@@ -8747,11 +6990,7 @@ async def admin_update_country_age_restriction_v3_async(
 ):
     """Update country's age restriction (AdminUpdateCountryAgeRestrictionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
     action code: 10123
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode}
@@ -8810,15 +7049,10 @@ def admin_update_user_ban_v3(
 ):
     """Enable or disable ban for a single user (AdminUpdateUserBanV3)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId}
-    [UPDATE]
     Set ban status for a single user for a specific ban. Retrieve
     user ban and choose the ban ID. Set the form parameter to true/false to enable
     or disable the ban.
     action code : 10142'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId}
@@ -8878,15 +7112,10 @@ async def admin_update_user_ban_v3_async(
 ):
     """Enable or disable ban for a single user (AdminUpdateUserBanV3)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId}
-    [UPDATE]
     Set ban status for a single user for a specific ban. Retrieve
     user ban and choose the ban ID. Set the form parameter to true/false to enable
     or disable the ban.
     action code : 10142'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId}
@@ -8947,11 +7176,7 @@ def admin_update_user_deletion_status_v3(
 ):
     """Update User Deletion Status (AdminUpdateUserDeletionStatusV3)
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]'
     action code : 10144
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
@@ -9007,11 +7232,7 @@ async def admin_update_user_deletion_status_v3_async(
 ):
     """Update User Deletion Status (AdminUpdateUserDeletionStatusV3)
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]'
     action code : 10144
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DELETIONSTATUS:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
@@ -9069,101 +7290,29 @@ def admin_update_user_permission_v3(
 ):
     """Update User Permissions (AdminUpdateUserPermissionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
-
-
-
-
     This endpoint will REPLACE user's permissions with the ones defined in body
-
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
@@ -9217,101 +7366,29 @@ async def admin_update_user_permission_v3_async(
 ):
     """Update User Permissions (AdminUpdateUserPermissionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
-
-
-
-
     This endpoint will REPLACE user's permissions with the ones defined in body
-
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
@@ -9367,35 +7444,12 @@ def admin_update_user_status_v3(
 ):
     """Update user status (AdminUpdateUserStatusV3)
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-
     This endpoint disable or enable user account. Set the enable status on the request body to true to enable user account or set to false to disable it.
-
-
-
-
-    Disable user for Account Disable purpose fill the reason with:
-
-
-
-
-
-
-      * AdminDeactivateAccount : if your disable account request comes from admin
-
-
-
-
+    Disable user for **Account Disable** purpose fill the reason with:
+    - **AdminDeactivateAccount** : if your disable account request comes from admin
 
     Enable user ignore field 'reason' in the request body.
-
-
-
     action code : 10143
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status
@@ -9451,35 +7505,12 @@ async def admin_update_user_status_v3_async(
 ):
     """Update user status (AdminUpdateUserStatusV3)
 
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-
     This endpoint disable or enable user account. Set the enable status on the request body to true to enable user account or set to false to disable it.
-
-
-
-
-    Disable user for Account Disable purpose fill the reason with:
-
-
-
-
-
-
-      * AdminDeactivateAccount : if your disable account request comes from admin
-
-
-
-
+    Disable user for **Account Disable** purpose fill the reason with:
+    - **AdminDeactivateAccount** : if your disable account request comes from admin
 
     Enable user ignore field 'reason' in the request body.
-
-
-
     action code : 10143
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status
@@ -9539,54 +7570,17 @@ def admin_update_user_v2(
     """Update User (AdminUpdateUserV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-    "+
-    "
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-    "+
-    "
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
-
-    "+
-    "
-
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
-    "+
-    "
-     Several case of updating email address "+
-    "
-
-      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
-    "+
-    "
-      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
-    "+
-    "
-      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    **Several case of updating email address**
+    - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+    - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}
@@ -9644,54 +7638,17 @@ async def admin_update_user_v2_async(
     """Update User (AdminUpdateUserV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-    "+
-    "
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-    "+
-    "
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
-
-    "+
-    "
-
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
-    "+
-    "
-     Several case of updating email address "+
-    "
-
-      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
-    "+
-    "
-      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
-    "+
-    "
-      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    **Several case of updating email address**
+    - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+    - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}
@@ -9749,50 +7706,17 @@ def admin_update_user_v3(
 ):
     """Update User (AdminUpdateUserV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
-
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-
-
-
-    Supported field {country, displayName, emailAddress, languageTag, dateOfBirth}
-
-
-
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-
-
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
 
-
-
-     Response body logic when user updating email address:
-
-
-      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
-
-
-      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
-
-
-      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
-
-
-
+    **Response body logic when user updating email address:**
+    - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+    - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
 
     action code : 10103
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
@@ -9850,50 +7774,17 @@ async def admin_update_user_v3_async(
 ):
     """Update User (AdminUpdateUserV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
-
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-
-
-
-    Supported field {country, displayName, emailAddress, languageTag, dateOfBirth}
-
-
-
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-
-
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
 
-
-
-     Response body logic when user updating email address:
-
-
-      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
-
-
-      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
-
-
-      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
-
-
-
+    **Response body logic when user updating email address:**
+    - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+    - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
 
     action code : 10103
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
@@ -9954,45 +7845,17 @@ def admin_upgrade_headless_account_v3(
     """Verify or consume verification code.  (AdminUpgradeHeadlessAccountV3)
 
     If validateOnly is set false, will upgrade headless account with verification code
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
     The endpoint upgrades a headless account by linking the headless account with the email address and the password.
     By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-
-
-
-
     The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
     In order to get a verification code for the endpoint, please check the send verification code endpoint.
-
-
-
-
     This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
-
     Supported user data fields :
-
-
-
-
-      * displayName
-
-
-      * dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
-
-
-      * country : format ISO3166-1 alpha-2 two letter, e.g. US
-
-
-
+    - displayName
+    - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
+    - country : format ISO3166-1 alpha-2 two letter, e.g. US
 
     action code : 10124
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/headless/code/verify
@@ -10051,45 +7914,17 @@ async def admin_upgrade_headless_account_v3_async(
     """Verify or consume verification code.  (AdminUpgradeHeadlessAccountV3)
 
     If validateOnly is set false, will upgrade headless account with verification code
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
     The endpoint upgrades a headless account by linking the headless account with the email address and the password.
     By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-
-
-
-
     The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
     In order to get a verification code for the endpoint, please check the send verification code endpoint.
-
-
-
-
     This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
-
     Supported user data fields :
-
-
-
-
-      * displayName
-
-
-      * dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
-
-
-      * country : format ISO3166-1 alpha-2 two letter, e.g. US
-
-
-
+    - displayName
+    - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
+    - country : format ISO3166-1 alpha-2 two letter, e.g. US
 
     action code : 10124
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/headless/code/verify
@@ -10150,20 +7985,8 @@ def admin_verify_account_v3(
     """Verify or consume verification code sent to user (AdminVerifyAccountV3)
 
     Will verify account and consume code if validateOnly is set false in request body
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
     Redeems a verification code sent to a user to verify the user's contact address is correct
-
-
-    Available ContactType : email or phone
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    Available ContactType : **email** or **phone**
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/verify
@@ -10220,20 +8043,8 @@ async def admin_verify_account_v3_async(
     """Verify or consume verification code sent to user (AdminVerifyAccountV3)
 
     Will verify account and consume code if validateOnly is set false in request body
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
     Redeems a verification code sent to a user to verify the user's contact address is correct
-
-
-    Available ContactType : email or phone
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    Available ContactType : **email** or **phone**
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/verify
@@ -10290,15 +8101,8 @@ def admin_verify_user_without_verification_code_v3(
 ):
     """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
 
-    This endpoint force verify user. Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
-
-
-
-
+    This endpoint force verify user
     action code: 10118
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/verify
@@ -10352,15 +8156,8 @@ async def admin_verify_user_without_verification_code_v3_async(
 ):
     """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
 
-    This endpoint force verify user. Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
-
-
-
-
+    This endpoint force verify user
     action code: 10118
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/verify
@@ -10419,23 +8216,8 @@ def ban_user(
     """Ban a single user (BanUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/ban
@@ -10493,23 +8275,8 @@ async def ban_user_async(
     """Ban a single user (BanUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [CREATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/ban
@@ -10570,6 +8337,7 @@ def check_user_availability(
     Check user's account availability.
     Available field :
     - displayName
+    - username
 
     If request include access token with user ID data, that user ID will be excluded from availability check.
     For example, in case user update his emailAddress, he can use his own emailAddress to update his account.
@@ -10631,6 +8399,7 @@ async def check_user_availability_async(
     Check user's account availability.
     Available field :
     - displayName
+    - username
 
     If request include access token with user ID data, that user ID will be excluded from availability check.
     For example, in case user update his emailAddress, he can use his own emailAddress to update his account.
@@ -10692,56 +8461,18 @@ def create_user(
     """Create User (CreateUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      *  Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [POST]
-
-      *  Substitute endpoint: /iam/v4/public/namespaces/{namespace}/users [POST]
-
-
-
-      *  Note:
-         1. v3 & v4 introduce optional verification code
-
-         2. format differenceï¼Pascal case => Camel case)
-
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER [CREATE]'.
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [POST]_**
+    - **Substitute endpoint: _/iam/v4/public/namespaces/{namespace}/users [POST]_**
+    - **Note:**
+    1. v3 & v4 introduce optional verification code
+    2. format differenceï¼Pascal case => Camel case)
 
     Available Authentication Types:
-
-
-
-
-
-
-      1.  EMAILPASSWD : an authentication type used for new user registration through email.
-
-
-      2.  PHONEPASSWD : an authentication type used for new user registration through phone number.
-
-
-
-
+    1. **EMAILPASSWD**: an authentication type used for new user registration through email.
+    2. **PHONEPASSWD**: an authentication type used for new user registration through phone number.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER [CREATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users
@@ -10793,56 +8524,18 @@ async def create_user_async(
     """Create User (CreateUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      *  Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [POST]
-
-      *  Substitute endpoint: /iam/v4/public/namespaces/{namespace}/users [POST]
-
-
-
-      *  Note:
-         1. v3 & v4 introduce optional verification code
-
-         2. format differenceï¼Pascal case => Camel case)
-
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER [CREATE]'.
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [POST]_**
+    - **Substitute endpoint: _/iam/v4/public/namespaces/{namespace}/users [POST]_**
+    - **Note:**
+    1. v3 & v4 introduce optional verification code
+    2. format differenceï¼Pascal case => Camel case)
 
     Available Authentication Types:
-
-
-
-
-
-
-      1.  EMAILPASSWD : an authentication type used for new user registration through email.
-
-
-      2.  PHONEPASSWD : an authentication type used for new user registration through phone number.
-
-
-
-
+    1. **EMAILPASSWD**: an authentication type used for new user registration through email.
+    2. **PHONEPASSWD**: an authentication type used for new user registration through phone number.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER [CREATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users
@@ -10898,11 +8591,8 @@ def create_user_from_invitation_v3(
     This endpoint create user from saved roles when creating invitation and submitted data.
     User will be able to login after completing submitting the data through this endpoint.
     Available Authentication Types:
-
     EMAILPASSWD: an authentication type used for new user registration through email.
-
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
 
     Properties:
@@ -10960,11 +8650,8 @@ async def create_user_from_invitation_v3_async(
     This endpoint create user from saved roles when creating invitation and submitted data.
     User will be able to login after completing submitting the data through this endpoint.
     Available Authentication Types:
-
     EMAILPASSWD: an authentication type used for new user registration through email.
-
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
 
     Properties:
@@ -11022,23 +8709,8 @@ def delete_user(
     """Delete User (DeleteUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [DELETE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}
@@ -11088,23 +8760,8 @@ async def delete_user_async(
     """Delete User (DeleteUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [DELETE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}
@@ -11156,23 +8813,8 @@ def delete_user_information(
     """Delete user's information (DeleteUserInformation)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/information
@@ -11222,23 +8864,8 @@ async def delete_user_information_async(
     """Delete user's information (DeleteUserInformation)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/information
@@ -11292,22 +8919,8 @@ def delete_user_permission(
     """Delete User Permission (DeleteUserPermission)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action} [DELETE]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action} [DELETE]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
@@ -11367,22 +8980,8 @@ async def delete_user_permission_async(
     """Delete User Permission (DeleteUserPermission)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action} [DELETE]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [DELETE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action} [DELETE]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
@@ -11443,23 +9042,8 @@ def delete_user_role(
     """Delete User Role (DeleteUserRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [DELETE]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [DELETE]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -11515,23 +9099,8 @@ async def delete_user_role_async(
     """Delete User Role (DeleteUserRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [DELETE]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [DELETE]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -11589,39 +9158,12 @@ def disable_user(
     """Disable a user (DisableUser)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
-
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-
-
-
-    For Deletion Account purpose fill the reason with:
-
-
-
-
-
-
-      * DeactivateAccount : if your deletion request comes from user
-
-
-      * AdminDeactivateAccount : if your deletion request comes from admin
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+    For **Deletion Account** purpose fill the reason with:
+    - **DeactivateAccount** : if your deletion request comes from user
+    - **AdminDeactivateAccount** : if your deletion request comes from admin
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/disable
@@ -11679,39 +9221,12 @@ async def disable_user_async(
     """Disable a user (DisableUser)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
-
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-
-
-
-    For Deletion Account purpose fill the reason with:
-
-
-
-
-
-
-      * DeactivateAccount : if your deletion request comes from user
-
-
-      * AdminDeactivateAccount : if your deletion request comes from admin
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+    For **Deletion Account** purpose fill the reason with:
+    - **DeactivateAccount** : if your deletion request comes from user
+    - **AdminDeactivateAccount** : if your deletion request comes from admin
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/disable
@@ -11771,45 +9286,16 @@ def disable_user_ban(
     """Disable ban for a single user. (DisableUserBan)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
-    "+
-    "
-     Notes for using IAM in publisher - game studio scenarios
-    "+
-    "
-
+    **Notes for using IAM in publisher - game studio scenarios**
     The endpoint allows:
-
-    "+
-    "
-      * The admin user in publisher namespace disables userâs ban in publisher namespace.
-    "+
-    "
-      * The admin user in game namespace disables userâs ban in game namespace.
-    "+
-    "
-      * The admin user in publisher namespace disables userâs ban in publisher namespace.
-
-    "+
-    "
+    - The admin user in publisher namespace disables userâs ban in publisher namespace.
+    - The admin user in game namespace disables userâs ban in game namespace.
+    - The admin user in publisher namespace disables userâs ban in publisher namespace.
 
     Other scenarios are not supported and will return 403: Forbidden.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/disable
@@ -11865,45 +9351,16 @@ async def disable_user_ban_async(
     """Disable ban for a single user. (DisableUserBan)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
-    "+
-    "
-     Notes for using IAM in publisher - game studio scenarios
-    "+
-    "
-
+    **Notes for using IAM in publisher - game studio scenarios**
     The endpoint allows:
-
-    "+
-    "
-      * The admin user in publisher namespace disables userâs ban in publisher namespace.
-    "+
-    "
-      * The admin user in game namespace disables userâs ban in game namespace.
-    "+
-    "
-      * The admin user in publisher namespace disables userâs ban in publisher namespace.
-
-    "+
-    "
+    - The admin user in publisher namespace disables userâs ban in publisher namespace.
+    - The admin user in game namespace disables userâs ban in game namespace.
+    - The admin user in publisher namespace disables userâs ban in publisher namespace.
 
     Other scenarios are not supported and will return 403: Forbidden.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/disable
@@ -11960,24 +9417,8 @@ def enable_user(
     """Enable a user (EnableUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
-
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/enable
@@ -12029,24 +9470,8 @@ async def enable_user_async(
     """Enable a user (EnableUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
-
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/enable
@@ -12101,22 +9526,8 @@ def enable_user_ban(
     """Enable ban for a single user (EnableUserBan)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/enable
@@ -12172,22 +9583,8 @@ async def enable_user_ban_async(
     """Enable ban for a single user (EnableUserBan)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/enable
@@ -12244,25 +9641,10 @@ def forgot_password(
     """Request Password Reset Code (ForgotPassword)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/forgot [POST]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/forgot [POST]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or valid basic auth header"+
-    "
-
-     Special note for publisher-game scenario: Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
-
-    "+
-    "
+    **Special note for publisher-game scenario:** Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
 
     The password reset code will be sent to the publisher account's email address.
 
@@ -12319,25 +9701,10 @@ async def forgot_password_async(
     """Request Password Reset Code (ForgotPassword)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/forgot [POST]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/forgot [POST]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or valid basic auth header"+
-    "
-
-     Special note for publisher-game scenario: Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
-
-    "+
-    "
+    **Special note for publisher-game scenario:** Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
 
     The password reset code will be sent to the publisher account's email address.
 
@@ -12493,41 +9860,15 @@ def get_admin_users_by_role_id(
     """Get Admin Users By RoleId (GetAdminUsersByRoleID)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(Public): /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users [GET]
-
-
-
-      * Note:
-        difference in V3 response, format difference: Pascal case => Camel case
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint(Public): _/iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users [GET]_**
+    - **Note:**
+    difference in V3 response, format difference: Pascal case => Camel case
 
     This endpoint search admin users which have the roleId
 
-
-
-
     Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
     Use endpoint [GET] /roles/{roleId}/admin to check the role status
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/admin
@@ -12593,41 +9934,15 @@ async def get_admin_users_by_role_id_async(
     """Get Admin Users By RoleId (GetAdminUsersByRoleID)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(Public): /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users [GET]
-
-
-
-      * Note:
-        difference in V3 response, format difference: Pascal case => Camel case
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint(Public): _/iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users [GET]_**
+    - **Note:**
+    difference in V3 response, format difference: Pascal case => Camel case
 
     This endpoint search admin users which have the roleId
 
-
-
-
     Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
     Use endpoint [GET] /roles/{roleId}/admin to check the role status
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/admin
@@ -12693,25 +10008,11 @@ def get_admin_users_by_role_id_v3(
 ):
     """Get Admin Users By RoleId (GetAdminUsersByRoleIdV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-
-
     This endpoint search admin users which have the roleId
-
-
-
 
     Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
     Use endpoint [GET] /roles/{roleId}/admin to check the role status
-
-
-
     action code : 10140
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users
@@ -12775,25 +10076,11 @@ async def get_admin_users_by_role_id_v3_async(
 ):
     """Get Admin Users By RoleId (GetAdminUsersByRoleIdV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-
-
     This endpoint search admin users which have the roleId
-
-
-
 
     Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
     Use endpoint [GET] /roles/{roleId}/admin to check the role status
-
-
-
     action code : 10140
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users
@@ -12857,23 +10144,8 @@ def get_list_country_age_restriction(
     """Get List Country age restriction (GetListCountryAgeRestriction)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/countries/agerestrictions
@@ -12919,23 +10191,8 @@ async def get_list_country_age_restriction_async(
     """Get List Country age restriction (GetListCountryAgeRestriction)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/countries/agerestrictions
@@ -12984,18 +10241,8 @@ def get_list_justice_platform_accounts(
     """Get User Justice Platform Accounts (GetListJusticePlatformAccounts)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice [GET]
-
-
-
-
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice [GET]_**
 
     This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
 
@@ -13045,18 +10292,8 @@ async def get_list_justice_platform_accounts_async(
     """Get User Justice Platform Accounts (GetListJusticePlatformAccounts)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice [GET]
-
-
-
-
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice [GET]_**
 
     This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
 
@@ -13108,30 +10345,11 @@ def get_publisher_user(
     """Get Publisher User (GetPublisherUser)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]
-
-
-
-
-
-
-    Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ].
-
-
-
-
-    Restriction:
-    Path Parameter namespace can be provided only with game namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ]
+    **Restriction:**
+    Path Parameter *namespace* can be provided only with game namespace
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/publisher
@@ -13183,30 +10401,11 @@ async def get_publisher_user_async(
     """Get Publisher User (GetPublisherUser)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]
-
-
-
-
-
-
-    Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ].
-
-
-
-
-    Restriction:
-    Path Parameter namespace can be provided only with game namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ]
+    **Restriction:**
+    Path Parameter *namespace* can be provided only with game namespace
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/publisher
@@ -13260,23 +10459,8 @@ def get_user_ban_history(
     """Get user's bans history (GetUserBanHistory)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans
@@ -13326,23 +10510,8 @@ async def get_user_ban_history_async(
     """Get user's bans history (GetUserBanHistory)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans
@@ -13394,22 +10563,8 @@ def get_user_by_login_id(
     """Get User By Login Id (GetUserByLoginID)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [GET]
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [GET]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/byLoginId
@@ -13459,22 +10614,8 @@ async def get_user_by_login_id_async(
     """Get User By Login Id (GetUserByLoginID)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [GET]
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [GET]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/byLoginId
@@ -13527,30 +10668,11 @@ def get_user_by_platform_user_id(
     """Get User By Platform User ID (GetUserByPlatformUserID)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
-
-      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
-
-
-
-      * Note:
-        1. difference in V3 response, format difference: Pascal case => Camel case
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]_**
+    - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]_**
+    - **Note:**
+    1. difference in V3 response, format difference: Pascal case => Camel case
 
     Properties:
         url: /iam/namespaces/{namespace}/users/byPlatformUserID
@@ -13606,30 +10728,11 @@ async def get_user_by_platform_user_id_async(
     """Get User By Platform User ID (GetUserByPlatformUserID)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
-
-      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
-
-
-
-      * Note:
-        1. difference in V3 response, format difference: Pascal case => Camel case
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]_**
+    - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]_**
+    - **Note:**
+    1. difference in V3 response, format difference: Pascal case => Camel case
 
     Properties:
         url: /iam/namespaces/{namespace}/users/byPlatformUserID
@@ -13686,30 +10789,11 @@ def get_user_by_user_id(
     """Get User By User Id (GetUserByUserID)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/users/{userId} [GET]
-
-      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
-
-
-
-      * Note:
-        format difference in response: Pascal case => Camel case
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/users/{userId} [GET]_**
+    - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
+    - **Note:**
+    format difference in response: Pascal case => Camel case
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}
@@ -13757,30 +10841,11 @@ async def get_user_by_user_id_async(
     """Get User By User Id (GetUserByUserID)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/users/{userId} [GET]
-
-      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
-
-
-
-      * Note:
-        format difference in response: Pascal case => Camel case
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/users/{userId} [GET]_**
+    - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
+    - **Note:**
+    format difference in response: Pascal case => Camel case
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}
@@ -13830,23 +10895,8 @@ def get_user_information(
     """Get user's information (GetUserInformation)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/information [GET]
-
-
-
-
-
-    Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/information [GET]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/information
@@ -13896,23 +10946,8 @@ async def get_user_information_async(
     """Get user's information (GetUserInformation)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/information [GET]
-
-
-
-
-
-    Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/information [GET]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/information
@@ -13965,41 +11000,16 @@ def get_user_justice_platform_account(
     """Get the Justice linked accounts on the designated namespace (GetUserJusticePlatformAccount)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]_**
 
+    This endpoint requires the client access token as the bearer token
 
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
-
-
-
-
-
-    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]'
-
-
-
-
-    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going toÂ create and return the new Justice platform account.
+    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going to *create and return the new Justice platform account.*
     The newly user Justice platform account is going to be forced to perform token grant through the given user and can't perform password update
 
-
-
-
     ### Read Justice Platform Account UserID
-
-
-
-
-    In order to read the Justice platform account UserID, it is required to have the permission: NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ] , otherwise the UserID is going to be censored and replaced with âRedactedâ text.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
-
-        - NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
+    Without permission the UserID is going to be censored and replaced with âRedactedâ text.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -14053,41 +11063,16 @@ async def get_user_justice_platform_account_async(
     """Get the Justice linked accounts on the designated namespace (GetUserJusticePlatformAccount)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]_**
 
+    This endpoint requires the client access token as the bearer token
 
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
-
-
-
-
-
-    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]'
-
-
-
-
-    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going toÂ create and return the new Justice platform account.
+    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going to *create and return the new Justice platform account.*
     The newly user Justice platform account is going to be forced to perform token grant through the given user and can't perform password update
 
-
-
-
     ### Read Justice Platform Account UserID
-
-
-
-
-    In order to read the Justice platform account UserID, it is required to have the permission: NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ] , otherwise the UserID is going to be censored and replaced with âRedactedâ text.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
-
-        - NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
+    Without permission the UserID is going to be censored and replaced with âRedactedâ text.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -14145,42 +11130,15 @@ def get_user_login_histories(
     """Get User's Login Histories (GetUserLoginHistories)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]'"+
-    "
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
 
     Notes for this endpoint:
-
-    "+
-    "
-
-      * This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
-    "+
-    "
-      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
-    "+
-    "
-      * This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
-    "+
-    "
-      * This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+    - This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
+    - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    - This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
+    - This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/logins/histories
@@ -14242,42 +11200,15 @@ async def get_user_login_histories_async(
     """Get User's Login Histories (GetUserLoginHistories)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]'"+
-    "
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
 
     Notes for this endpoint:
-
-    "+
-    "
-
-      * This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
-    "+
-    "
-      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
-    "+
-    "
-      * This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
-    "+
-    "
-      * This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+    - This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
+    - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    - This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
+    - This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/logins/histories
@@ -14339,40 +11270,13 @@ def get_user_mapping(
     """Get user mapping (GetUserMapping)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
-
-
-
-
-
-
-
-    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]'
-
-
-
-
+    This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
-
-
-
-
     If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-
-
-
-
     If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -14428,40 +11332,13 @@ async def get_user_mapping_async(
     """Get user mapping (GetUserMapping)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
-
-
-
-
-
-
-
-    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]'
-
-
-
-
+    This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
-
-
-
-
     If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-
-
-
-
     If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -14518,39 +11395,15 @@ def get_user_platform_accounts(
     """Get platform accounts linked to the user (GetUserPlatformAccounts)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms [GET]
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms [GET]
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'.
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/platforms [GET]_**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms [GET]_**
 
     ## Justice Platform Account
-
-
-
-
     The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
-        - NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms
@@ -14600,39 +11453,15 @@ async def get_user_platform_accounts_async(
     """Get platform accounts linked to the user (GetUserPlatformAccounts)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms [GET]
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms [GET]
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'.
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/platforms [GET]_**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms [GET]_**
 
     ## Justice Platform Account
-
-
-
-
     The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
-        - NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms
@@ -14685,12 +11514,8 @@ def get_user_verification_code(
     [WARNING] This endpoint is only for testing purpose.
     This endpoint get active user verification
     code. There are 3 scenario of getting verification codes : after account registration, after reset password
-    request, and after headless account upgrade. All of them will be returned on this endpoint. Required permission
-    'ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE' [READ]
+    request, and after headless account upgrade. All of them will be returned on this endpoint.
     action code: 10146
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/codes
@@ -14743,12 +11568,8 @@ async def get_user_verification_code_async(
     [WARNING] This endpoint is only for testing purpose.
     This endpoint get active user verification
     code. There are 3 scenario of getting verification codes : after account registration, after reset password
-    request, and after headless account upgrade. All of them will be returned on this endpoint. Required permission
-    'ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE' [READ]
+    request, and after headless account upgrade. All of them will be returned on this endpoint.
     action code: 10146
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/codes
@@ -14802,24 +11623,9 @@ def get_users_by_login_ids(
     """Get a List of Users By Their Login Id (GetUsersByLoginIds)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(query by email list): /iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]
-
-      * Substitute endpoint(query by user id list): /iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint(query by email list): _/iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]_**
+    - **Substitute endpoint(query by user id list): _/iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/listByLoginIds
@@ -14869,24 +11675,9 @@ async def get_users_by_login_ids_async(
     """Get a List of Users By Their Login Id (GetUsersByLoginIds)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(query by email list): /iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]
-
-      * Substitute endpoint(query by user id list): /iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint(query by email list): _/iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]_**
+    - **Substitute endpoint(query by user id list): _/iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/listByLoginIds
@@ -14936,7 +11727,6 @@ def link_headless_account_to_my_account_v3(
     """Link headless account to current full account (LinkHeadlessAccountToMyAccountV3)
 
     Note:
-
     1. My account should be full account
     2. My account not linked to headless account's third platform.
 
@@ -14981,7 +11771,6 @@ async def link_headless_account_to_my_account_v3_async(
     """Link headless account to current full account (LinkHeadlessAccountToMyAccountV3)
 
     Note:
-
     1. My account should be full account
     2. My account not linked to headless account's third platform.
 
@@ -15030,15 +11819,10 @@ def list_admins_v3(
 ):
     """List User Admins (ListAdminsV3)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
-
     List all users that has admin role (role that has admin_role attribute set to true).
 
     The endpoint will return all admin from all namespace when called from publisher namespace.
     When not called from publisher namespace, the endpoint will return all admin from the path namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/admins
@@ -15094,15 +11878,10 @@ async def list_admins_v3_async(
 ):
     """List User Admins (ListAdminsV3)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
-
     List all users that has admin role (role that has admin_role attribute set to true).
 
     The endpoint will return all admin from all namespace when called from publisher namespace.
     When not called from publisher namespace, the endpoint will return all admin from the path namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/admins
@@ -15162,33 +11941,12 @@ def list_cross_namespace_account_link(
     """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
-
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
     Access token from original namespace is needed as authorization header. Access token from designated account needed as form parameter to verify the ownership of that account.
     When platformID (device platfom ID) is specified, platform login method for that specific platform ID is removed.
     This means to protect account from second hand device usage.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/crosslink
@@ -15248,33 +12006,12 @@ async def list_cross_namespace_account_link_async(
     """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
-
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
     Access token from original namespace is needed as authorization header. Access token from designated account needed as form parameter to verify the ownership of that account.
     When platformID (device platfom ID) is specified, platform login method for that specific platform ID is removed.
     This means to protect account from second hand device usage.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/crosslink
@@ -15336,71 +12073,23 @@ def platform_link(
     """Link user's account with platform (PlatformLink)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
-
-
-
-
-
-    Prerequisite: Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
-
+    **Prerequisite:** Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
 
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The ticketâs value is the authentication code returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
-
-
-      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The ticketâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
-
-
-      * android : The ticket's value is the Androidâs device ID
-
-
-      * ios : The ticket's value is the iOSâs device ID.
-
-
-      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
-
-
-      * device : Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
-
-
-      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    - **steam**: The ticketâs value is the authentication code returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+    - **facebook**: The ticketâs value is the authorization code returned by Facebook OAuth
+    - **google**: The ticketâs value is the authorization code returned by Google OAuth
+    - **oculus**: The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The ticketâs value is the authorization code returned by Twitch OAuth.
+    - **android**: The ticket's value is the Androidâs device ID
+    - **ios**: The ticket's value is the iOSâs device ID.
+    - **apple**: The ticketâs value is the authorization code returned by Apple OAuth.
+    - **device**: Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
@@ -15464,71 +12153,23 @@ async def platform_link_async(
     """Link user's account with platform (PlatformLink)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
-
-
-
-
-
-    Prerequisite: Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
-
+    **Prerequisite:** Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
 
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The ticketâs value is the authentication code returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
-
-
-      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The ticketâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
-
-
-      * android : The ticket's value is the Androidâs device ID
-
-
-      * ios : The ticket's value is the iOSâs device ID.
-
-
-      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
-
-
-      * device : Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
-
-
-      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    - **steam**: The ticketâs value is the authentication code returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+    - **facebook**: The ticketâs value is the authorization code returned by Facebook OAuth
+    - **google**: The ticketâs value is the authorization code returned by Google OAuth
+    - **oculus**: The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The ticketâs value is the authorization code returned by Twitch OAuth.
+    - **android**: The ticket's value is the Androidâs device ID
+    - **ios**: The ticket's value is the iOSâs device ID.
+    - **apple**: The ticketâs value is the authorization code returned by Apple OAuth.
+    - **device**: Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
@@ -15594,75 +12235,23 @@ def platform_unlink(
     """Unlink user's account with platform (PlatformUnlink)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]
-
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]_**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]_**
 
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * device
-
-
-      * justice : A user might have several 'justiceâ platform on different namespaces. Thatâs why the platform_namespace need to be specified when the platform ID is âjusticeâ. The platform_namespace is the designated userâs namespace.
-
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **device**
+    - **justice**: A user might have several 'justiceâ platform on different namespaces. Thatâs why the platform_namespace need to be specified when the platform ID is âjusticeâ. The platform_namespace is the designated userâs namespace.
     Unlink user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
-
     Unlinking justice platform will enable password token grant and password update.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/unlink
@@ -15724,75 +12313,23 @@ async def platform_unlink_async(
     """Unlink user's account with platform (PlatformUnlink)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]
-
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]_**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]_**
 
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * device
-
-
-      * justice : A user might have several 'justiceâ platform on different namespaces. Thatâs why the platform_namespace need to be specified when the platform ID is âjusticeâ. The platform_namespace is the designated userâs namespace.
-
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **device**
+    - **justice**: A user might have several 'justiceâ platform on different namespaces. Thatâs why the platform_namespace need to be specified when the platform ID is âjusticeâ. The platform_namespace is the designated userâs namespace.
     Unlink user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
-
     Unlinking justice platform will enable password token grant and password update.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/unlink
@@ -15853,19 +12390,9 @@ def public_bulk_get_users(
     """Bulk get users' basic info by user Id (PublicBulkGetUsers)
 
     Notes:
-
-
-
-
-
-
-      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
-
-
-      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
-
-
-      * Result will include displayName(if it exists)
+    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - If namespace is game, will search by game user Id, other wise will search by publisher namespace
+    - **Result will include displayName(if it exists)**
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/bulk/basic
@@ -15912,19 +12439,9 @@ async def public_bulk_get_users_async(
     """Bulk get users' basic info by user Id (PublicBulkGetUsers)
 
     Notes:
-
-
-
-
-
-
-      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
-
-
-      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
-
-
-      * Result will include displayName(if it exists)
+    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - If namespace is game, will search by game user Id, other wise will search by publisher namespace
+    - **Result will include displayName(if it exists)**
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/bulk/basic
@@ -16080,43 +12597,15 @@ def public_create_user_v2(
     """Create User (PublicCreateUserV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      *  Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [POST]
-
-      *  Substitute endpoint: /iam/v4/public/namespaces/{namespace}/users [POST]
-
-
-
-      *  Note:
-         1. v3 & v4 introduce optional verification code
-
-         2. format differenceï¼Pascal case => Camel case)
-
-
-
-
-
-
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [POST]_**
+    - **Substitute endpoint: _/iam/v4/public/namespaces/{namespace}/users [POST]_**
+    - **Note:**
+    1. v3 & v4 introduce optional verification code
+    2. format differenceï¼Pascal case => Camel case)
 
     Available Authentication Types:
-
-
-
-
-
-
-      1.  EMAILPASSWD : an authentication type used for new user registration through email.
-
-
-
-
-
+    1. *EMAILPASSWD*: an authentication type used for new user registration through email.
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
     Properties:
@@ -16169,43 +12658,15 @@ async def public_create_user_v2_async(
     """Create User (PublicCreateUserV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      *  Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [POST]
-
-      *  Substitute endpoint: /iam/v4/public/namespaces/{namespace}/users [POST]
-
-
-
-      *  Note:
-         1. v3 & v4 introduce optional verification code
-
-         2. format differenceï¼Pascal case => Camel case)
-
-
-
-
-
-
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [POST]_**
+    - **Substitute endpoint: _/iam/v4/public/namespaces/{namespace}/users [POST]_**
+    - **Note:**
+    1. v3 & v4 introduce optional verification code
+    2. format differenceï¼Pascal case => Camel case)
 
     Available Authentication Types:
-
-
-
-
-
-
-      1.  EMAILPASSWD : an authentication type used for new user registration through email.
-
-
-
-
-
+    1. *EMAILPASSWD*: an authentication type used for new user registration through email.
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
     Properties:
@@ -16258,32 +12719,11 @@ def public_create_user_v3(
 ):
     """Create User (PublicCreateUserV3)
 
-
-
-
     Available Authentication Types:
-
-
-
-
-
-
-      1. EMAILPASSWD : an authentication type used for new user registration through email.
-
-
-
-
+    1. **EMAILPASSWD**: an authentication type used for new user registration through email.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-
-
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-
-
-
     This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
 
     Properties:
@@ -16336,32 +12776,11 @@ async def public_create_user_v3_async(
 ):
     """Create User (PublicCreateUserV3)
 
-
-
-
     Available Authentication Types:
-
-
-
-
-
-
-      1. EMAILPASSWD : an authentication type used for new user registration through email.
-
-
-
-
+    1. **EMAILPASSWD**: an authentication type used for new user registration through email.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-
-
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-
-
-
     This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
 
     Properties:
@@ -16420,65 +12839,23 @@ def public_delete_platform_link_v2(
     """Delete the link of user's account with platform (PublicDeletePlatformLinkV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]
-
-
-
-
-
-
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]_**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]_**
 
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * device
-
-
-      * discord
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **device**
+    - **discord**
 
     Delete link of user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
-
     Delete link of justice platform will enable password token grant and password update.
 
     Properties:
@@ -16541,65 +12918,23 @@ async def public_delete_platform_link_v2_async(
     """Delete the link of user's account with platform (PublicDeletePlatformLinkV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]
-
-
-
-
-
-
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]_**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]_**
 
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * device
-
-
-      * discord
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **device**
+    - **discord**
 
     Delete link of user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
-
     Delete link of justice platform will enable password token grant and password update.
 
     Properties:
@@ -16662,9 +12997,8 @@ def public_force_link_platform_with_progression(
     """Force link 3rd platform account and transfer progression (PublicForceLinkPlatformWithProgression)
 
     Force update other account's Platform Account relation to current User Account.
-
     This endpoint can transfer progression from 3rd platform binding account's to current account.
-    This endpoint need the same requestID which also used in Get link status.
+    This endpoint need the same requestID which also used in [Get link status](#operations-Users-PublicGetAsyncStatus).
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/linkWithProgression
@@ -16719,9 +13053,8 @@ async def public_force_link_platform_with_progression_async(
     """Force link 3rd platform account and transfer progression (PublicForceLinkPlatformWithProgression)
 
     Force update other account's Platform Account relation to current User Account.
-
     This endpoint can transfer progression from 3rd platform binding account's to current account.
-    This endpoint need the same requestID which also used in Get link status.
+    This endpoint need the same requestID which also used in [Get link status](#operations-Users-PublicGetAsyncStatus).
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/linkWithProgression
@@ -16778,83 +13111,31 @@ def public_force_platform_link_v3(
     """Force linking user's account with platform (PublicForcePlatformLinkV3)
 
     Force linking user account with platform.
-
     If this platform account was already linked to another user account, this endpoint will perform force linking and remove platform from that conflict user, not only from the current request namespace but also include all the enrolled namespaces.
-
     If current user have linked to this platform with another platform account (include once linked but it is unlinked now), it will not allow user to perform linking.
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The platform_tokenâs value is the binary ticket returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
-
-
-      * facebook : The platform_tokenâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The platform_tokenâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The platform_tokenâs value is the authorization code returned by Twitch OAuth.
-
-
-      * discord : The platform_tokenâs value is the authorization code returned by Discord OAuth
-
-
-      * android : The device_id is the Androidâs device ID
-
-
-      * ios : The device_id is the iOSâs device ID.
-
-
-      * apple : The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
-
-
-      * device : Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
-
-
-      * justice : The platform_tokenâs value is the designated userâs access token.
-
-
-      * epicgames : The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
-
-
-      * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
-
-
-      * ps5 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
-
-
-      * nintendo : The platform_tokenâs value is the id_token returned by Nintendo OAuth.
-
-
-      * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
-
-
-      * live : The platform_tokenâs value is xbox XSTS token
-
-
-      * xblweb : The platform_tokenâs value is code returned by xbox after login
-
-
-      * netflix : The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
-
-
-      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
-
-
-      * for specific generic oauth (OIDC) : The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
+    - **steam**: The platform_tokenâs value is the binary ticket returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
+    - **facebook**: The platform_tokenâs value is the authorization code returned by Facebook OAuth
+    - **google**: The platform_tokenâs value is the authorization code returned by Google OAuth
+    - **oculus**: The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The platform_tokenâs value is the authorization code returned by Twitch OAuth.
+    - **discord**: The platform_tokenâs value is the authorization code returned by Discord OAuth
+    - **android**: The device_id is the Androidâs device ID
+    - **ios**: The device_id is the iOSâs device ID.
+    - **apple**: The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
+    - **device**: Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
+    - **justice**: The platform_tokenâs value is the designated userâs access token.
+    - **epicgames**: The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
+    - **ps4**: The platform_tokenâs value is the authorization code returned by Sony OAuth.
+    - **ps5**: The platform_tokenâs value is the authorization code returned by Sony OAuth.
+    - **nintendo**: The platform_tokenâs value is the id_token returned by Nintendo OAuth.
+    - **awscognito**: The platform_tokenâs value is the aws cognito access token or id token (JWT).
+    - **live**: The platform_tokenâs value is xbox XSTS token
+    - **xblweb**: The platform_tokenâs value is code returned by xbox after login
+    - **netflix**: The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
+    - **snapchat**: The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
+    - **for specific generic oauth (OIDC)**: The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/force
@@ -16911,83 +13192,31 @@ async def public_force_platform_link_v3_async(
     """Force linking user's account with platform (PublicForcePlatformLinkV3)
 
     Force linking user account with platform.
-
     If this platform account was already linked to another user account, this endpoint will perform force linking and remove platform from that conflict user, not only from the current request namespace but also include all the enrolled namespaces.
-
     If current user have linked to this platform with another platform account (include once linked but it is unlinked now), it will not allow user to perform linking.
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The platform_tokenâs value is the binary ticket returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
-
-
-      * facebook : The platform_tokenâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The platform_tokenâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The platform_tokenâs value is the authorization code returned by Twitch OAuth.
-
-
-      * discord : The platform_tokenâs value is the authorization code returned by Discord OAuth
-
-
-      * android : The device_id is the Androidâs device ID
-
-
-      * ios : The device_id is the iOSâs device ID.
-
-
-      * apple : The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
-
-
-      * device : Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
-
-
-      * justice : The platform_tokenâs value is the designated userâs access token.
-
-
-      * epicgames : The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
-
-
-      * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
-
-
-      * ps5 : The platform_tokenâs value is the authorization code returned by Sony OAuth.
-
-
-      * nintendo : The platform_tokenâs value is the id_token returned by Nintendo OAuth.
-
-
-      * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
-
-
-      * live : The platform_tokenâs value is xbox XSTS token
-
-
-      * xblweb : The platform_tokenâs value is code returned by xbox after login
-
-
-      * netflix : The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
-
-
-      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
-
-
-      * for specific generic oauth (OIDC) : The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
+    - **steam**: The platform_tokenâs value is the binary ticket returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The platform_token's value is URL generated by Steam on web authentication
+    - **facebook**: The platform_tokenâs value is the authorization code returned by Facebook OAuth
+    - **google**: The platform_tokenâs value is the authorization code returned by Google OAuth
+    - **oculus**: The platform_tokenâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The platform_tokenâs value is the authorization code returned by Twitch OAuth.
+    - **discord**: The platform_tokenâs value is the authorization code returned by Discord OAuth
+    - **android**: The device_id is the Androidâs device ID
+    - **ios**: The device_id is the iOSâs device ID.
+    - **apple**: The platform_tokenâs value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token)
+    - **device**: Every device that doesânt run Android and iOS is categorized as a device. The device_id is the deviceâs ID.
+    - **justice**: The platform_tokenâs value is the designated userâs access token.
+    - **epicgames**: The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
+    - **ps4**: The platform_tokenâs value is the authorization code returned by Sony OAuth.
+    - **ps5**: The platform_tokenâs value is the authorization code returned by Sony OAuth.
+    - **nintendo**: The platform_tokenâs value is the id_token returned by Nintendo OAuth.
+    - **awscognito**: The platform_tokenâs value is the aws cognito access token or id token (JWT).
+    - **live**: The platform_tokenâs value is xbox XSTS token
+    - **xblweb**: The platform_tokenâs value is code returned by xbox after login
+    - **netflix**: The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
+    - **snapchat**: The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
+    - **for specific generic oauth (OIDC)**: The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/force
@@ -17046,25 +13275,10 @@ def public_forgot_password_v2(
     """Request Password Reset Code (PublicForgotPasswordV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/forgot [POST]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/forgot [POST]
-
-
-
-
-
-
-    Special note for publisher-game scenario: Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
-
-    "+
-    "
-
+    **Special note for publisher-game scenario:** Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
     The password reset code will be sent to the publisher account's email address.
 
     Properties:
@@ -17117,25 +13331,10 @@ async def public_forgot_password_v2_async(
     """Request Password Reset Code (PublicForgotPasswordV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/forgot [POST]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/forgot [POST]
-
-
-
-
-
-
-    Special note for publisher-game scenario: Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
-
-    "+
-    "
-
+    **Special note for publisher-game scenario:** Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
     The password reset code will be sent to the publisher account's email address.
 
     Properties:
@@ -17188,18 +13387,10 @@ def public_forgot_password_v3(
 ):
     """Request Password Reset Code (PublicForgotPasswordV3)
 
-    Special note for publisher-game scenario:
+    **Special note for publisher-game scenario:**
     Game Client should provide game namespace path parameter and Publisher
     Client should provide publisher namespace path parameter.
-
-
-
-
     The password reset code will be sent to the publisher account's email address.
-
-
-
-
     action code : 10104
 
     Properties:
@@ -17248,18 +13439,10 @@ async def public_forgot_password_v3_async(
 ):
     """Request Password Reset Code (PublicForgotPasswordV3)
 
-    Special note for publisher-game scenario:
+    **Special note for publisher-game scenario:**
     Game Client should provide game namespace path parameter and Publisher
     Client should provide publisher namespace path parameter.
-
-
-
-
     The password reset code will be sent to the publisher account's email address.
-
-
-
-
     action code : 10104
 
     Properties:
@@ -17310,9 +13493,8 @@ def public_get_async_status(
 ):
     """Get Linking Progress Status (PublicGetAsyncStatus)
 
-
     This endpoint is used to get linking status.
-    This API need logged user and user can only request its own linking status.'
+    This API need logged user and user can only request its own linking status.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status
@@ -17360,9 +13542,8 @@ async def public_get_async_status_async(
 ):
     """Get Linking Progress Status (PublicGetAsyncStatus)
 
-
     This endpoint is used to get linking status.
-    This API need logged user and user can only request its own linking status.'
+    This API need logged user and user can only request its own linking status.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status
@@ -17414,14 +13595,8 @@ def public_get_country_age_restriction(
     """Public get age restriction by country code (PublicGetCountryAgeRestriction)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]_**
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/countries/{countryCode}/agerestrictions
@@ -17469,14 +13644,8 @@ async def public_get_country_age_restriction_async(
     """Public get age restriction by country code (PublicGetCountryAgeRestriction)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]_**
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/countries/{countryCode}/agerestrictions
@@ -17618,11 +13787,10 @@ def public_get_link_headless_account_to_my_account_conflict_v3(
     """Get conflict result when link headless account to current full account by one time code (PublicGetLinkHeadlessAccountToMyAccountConflictV3)
 
     Note:
-
     1. My account should be full account
     2. My account not linked to request headless account's third platform.
 
-    After client resolving the conflict, it will call endpoint /iam/v3/public/users/me/headless/linkWithProgression [POST]
+    After client resolving the conflict, it will call endpoint `/iam/v3/public/users/me/headless/linkWithProgression [POST]`
 
     Properties:
         url: /iam/v3/public/users/me/headless/link/conflict
@@ -17665,11 +13833,10 @@ async def public_get_link_headless_account_to_my_account_conflict_v3_async(
     """Get conflict result when link headless account to current full account by one time code (PublicGetLinkHeadlessAccountToMyAccountConflictV3)
 
     Note:
-
     1. My account should be full account
     2. My account not linked to request headless account's third platform.
 
-    After client resolving the conflict, it will call endpoint /iam/v3/public/users/me/headless/linkWithProgression [POST]
+    After client resolving the conflict, it will call endpoint `/iam/v3/public/users/me/headless/linkWithProgression [POST]`
 
     Properties:
         url: /iam/v3/public/users/me/headless/link/conflict
@@ -17707,12 +13874,27 @@ async def public_get_link_headless_account_to_my_account_conflict_v3_async(
 
 @same_doc_as(PublicGetMyUserV3)
 def public_get_my_user_v3(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    include_all_platforms: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Get My User (PublicGetMyUserV3)
 
-    Require valid user authorization
     Get my user data
+
+    __Supported 3rd platforms:__
+
+    * __PSN(ps4web, ps4, ps5)__
+    * display name
+    * avatar
+    * __Xbox(live, xblweb)__
+    * display name
+    * __Steam(steam, steamopenid)__
+    * display name
+    * avatar
+    * __EpicGames(epicgames)__
+    * display name
+
     action code : 10147
 
     Properties:
@@ -17728,6 +13910,8 @@ def public_get_my_user_v3(
 
         securities: [BEARER_AUTH]
 
+        include_all_platforms: (includeAllPlatforms) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelUserResponseV3 (OK)
 
@@ -17735,18 +13919,35 @@ def public_get_my_user_v3(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = PublicGetMyUserV3.create()
+    request = PublicGetMyUserV3.create(
+        include_all_platforms=include_all_platforms,
+    )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetMyUserV3)
 async def public_get_my_user_v3_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    include_all_platforms: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Get My User (PublicGetMyUserV3)
 
-    Require valid user authorization
     Get my user data
+
+    __Supported 3rd platforms:__
+
+    * __PSN(ps4web, ps4, ps5)__
+    * display name
+    * avatar
+    * __Xbox(live, xblweb)__
+    * display name
+    * __Steam(steam, steamopenid)__
+    * display name
+    * avatar
+    * __EpicGames(epicgames)__
+    * display name
+
     action code : 10147
 
     Properties:
@@ -17762,6 +13963,8 @@ async def public_get_my_user_v3_async(
 
         securities: [BEARER_AUTH]
 
+        include_all_platforms: (includeAllPlatforms) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelUserResponseV3 (OK)
 
@@ -17769,7 +13972,9 @@ async def public_get_my_user_v3_async(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = PublicGetMyUserV3.create()
+    request = PublicGetMyUserV3.create(
+        include_all_platforms=include_all_platforms,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -17784,16 +13989,8 @@ def public_get_publisher_user_v3(
 ):
     """Get Publisher User (PublicGetPublisherUserV3)
 
-    Required permissions 'NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ].
-
-
-
-
-    Restriction:
-    Path Parameter namespace can be provided only with game namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ]
+    **Restriction:**
+    Path Parameter **namespace** can be provided only with game namespace
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher
@@ -17843,16 +14040,8 @@ async def public_get_publisher_user_v3_async(
 ):
     """Get Publisher User (PublicGetPublisherUserV3)
 
-    Required permissions 'NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ].
-
-
-
-
-    Restriction:
-    Path Parameter namespace can be provided only with game namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ]
+    **Restriction:**
+    Path Parameter **namespace** can be provided only with game namespace
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher
@@ -17907,14 +14096,8 @@ def public_get_user_ban(
     """Get user's bans (PublicGetUserBan)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans [GET]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/bans
@@ -17968,14 +14151,8 @@ async def public_get_user_ban_async(
     """Get user's bans (PublicGetUserBan)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans [GET]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/bans
@@ -18032,20 +14209,9 @@ def public_get_user_ban_history_v3(
 ):
     """Get user's bans (PublicGetUserBanHistoryV3)
 
-    Required valid user authorization.
-
-
     Notes:
-
-
-
-
-
-
-      * This endpoint retrieve the first page of the data if after and before parameters is empty
-
-
-      * The pagination is not working yet
+    - This endpoint retrieve the first page of the data if after and before parameters is empty
+    - **The pagination is not working yet**
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans
@@ -18113,20 +14279,9 @@ async def public_get_user_ban_history_v3_async(
 ):
     """Get user's bans (PublicGetUserBanHistoryV3)
 
-    Required valid user authorization.
-
-
     Notes:
-
-
-
-
-
-
-      * This endpoint retrieve the first page of the data if after and before parameters is empty
-
-
-      * The pagination is not working yet
+    - This endpoint retrieve the first page of the data if after and before parameters is empty
+    - **The pagination is not working yet**
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans
@@ -18194,10 +14349,8 @@ def public_get_user_by_platform_user_idv3(
     """Get User By Platform User ID (PublicGetUserByPlatformUserIDV3)
 
     Get User By Platform User ID
-
     This endpoint return user information by given platform ID and platform user ID
-
-    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
@@ -18252,10 +14405,8 @@ async def public_get_user_by_platform_user_idv3_async(
     """Get User By Platform User ID (PublicGetUserByPlatformUserIDV3)
 
     Get User By Platform User ID
-
     This endpoint return user information by given platform ID and platform user ID
-
-    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
@@ -18312,10 +14463,7 @@ def public_get_user_by_user_id_v3(
     """Get User By User ID (PublicGetUserByUserIdV3)
 
     This endpoint retrieve user attributes. action code: 10129
-
-
-
-    Substitute endpoint: /v4/public/namespaces/{namespace}/users/{userId} [READ]
+    **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [READ]
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}
@@ -18365,10 +14513,7 @@ async def public_get_user_by_user_id_v3_async(
     """Get User By User ID (PublicGetUserByUserIdV3)
 
     This endpoint retrieve user attributes. action code: 10129
-
-
-
-    Substitute endpoint: /v4/public/namespaces/{namespace}/users/{userId} [READ]
+    **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [READ]
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}
@@ -18420,21 +14565,11 @@ def public_get_user_by_user_idv2(
     """Get User By User ID (PublicGetUserByUserIDV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/users/{userId} [GET]
-
-      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
-
-
-
-      * Note:
-        format difference in response: Pascal case => Camel case
+    **Endpoint migration guide**
+    - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/users/{userId} [GET]_**
+    - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
+    - **Note:**
+    format difference in response: Pascal case => Camel case
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}
@@ -18482,21 +14617,11 @@ async def public_get_user_by_user_idv2_async(
     """Get User By User ID (PublicGetUserByUserIDV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/users/{userId} [GET]
-
-      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
-
-
-
-      * Note:
-        format difference in response: Pascal case => Camel case
+    **Endpoint migration guide**
+    - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/users/{userId} [GET]_**
+    - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
+    - **Note:**
+    format difference in response: Pascal case => Camel case
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}
@@ -18544,11 +14669,7 @@ def public_get_user_information_v3(
 ):
     """Get user's information v3 (PublicGetUserInformationV3)
 
-    This endpoint retrieves user info and linked platform accounts.
-    Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    This endpoint retrieves user info and linked platform accounts
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/information
@@ -18598,11 +14719,7 @@ async def public_get_user_information_v3_async(
 ):
     """Get user's information v3 (PublicGetUserInformationV3)
 
-    This endpoint retrieves user info and linked platform accounts.
-    Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    This endpoint retrieves user info and linked platform accounts
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/information
@@ -18657,14 +14774,11 @@ def public_get_user_login_histories_v3(
 ):
     """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
 
-    Required valid user authorization.
-
     Notes for this endpoint:
-
-      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
-      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
-      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+    - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+    - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories
@@ -18724,14 +14838,11 @@ async def public_get_user_login_histories_v3_async(
 ):
     """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
 
-    Required valid user authorization.
-
     Notes for this endpoint:
-
-      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
-      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
-      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+    - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+    - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories
@@ -18794,8 +14905,7 @@ def public_get_user_platform_accounts_v3(
 ):
     """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
 
-    This endpoint retrieves platform accounts linked to user. Required valid user authorization.
-
+    This endpoint retrieves platform accounts linked to user.
     action code: 10128
 
     Properties:
@@ -18864,8 +14974,7 @@ async def public_get_user_platform_accounts_v3_async(
 ):
     """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
 
-    This endpoint retrieves platform accounts linked to user. Required valid user authorization.
-
+    This endpoint retrieves platform accounts linked to user.
     action code: 10128
 
     Properties:
@@ -18923,6 +15032,136 @@ async def public_get_user_platform_accounts_v3_async(
     )
 
 
+@same_doc_as(PublicGetUsersPlatformInfosV3)
+def public_get_users_platform_infos_v3(
+    body: ModelUsersPlatformInfosRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get user's basic info and public info of 3rd party account (PublicGetUsersPlatformInfosV3)
+
+    Note:
+    1. the max count of user ids in the request is 100
+    2. if platform id is not empty, the result will only contain the corresponding platform infos
+    3. if platform id is empty, the result will contain all the supported platform infos
+
+    __Supported 3rd platforms:__
+
+    * __PSN(ps4web, ps4, ps5)__
+    * display name
+    * avatar
+    * __Xbox(live, xblweb)__
+    * display name
+    * __Steam(steam, steamopenid)__
+    * display name
+    * avatar
+    * __EpicGames(epicgames)__
+    * display name
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/platforms
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUsersPlatformInfosRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUsersPlatformInfosResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUsersPlatformInfosV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetUsersPlatformInfosV3)
+async def public_get_users_platform_infos_v3_async(
+    body: ModelUsersPlatformInfosRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get user's basic info and public info of 3rd party account (PublicGetUsersPlatformInfosV3)
+
+    Note:
+    1. the max count of user ids in the request is 100
+    2. if platform id is not empty, the result will only contain the corresponding platform infos
+    3. if platform id is empty, the result will contain all the supported platform infos
+
+    __Supported 3rd platforms:__
+
+    * __PSN(ps4web, ps4, ps5)__
+    * display name
+    * avatar
+    * __Xbox(live, xblweb)__
+    * display name
+    * __Steam(steam, steamopenid)__
+    * display name
+    * avatar
+    * __EpicGames(epicgames)__
+    * display name
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/platforms
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUsersPlatformInfosRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUsersPlatformInfosResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUsersPlatformInfosV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicLinkPlatformAccount)
 def public_link_platform_account(
     body: ModelLinkPlatformAccountRequest,
@@ -18933,8 +15172,9 @@ def public_link_platform_account(
 ):
     """Link a Platform User Account to User Account (PublicLinkPlatformAccount)
 
-    It is going to be DEPRECATED.
+    It is going to be **DEPRECATED**.
     Update Platform Account relation to current User Account.
+
     Note: Game progression data (statistics, reward, etc) associated with previous User Account will not be
     transferred. If the data is tight to game user ID, the user will have the game progression data.
 
@@ -18990,8 +15230,9 @@ async def public_link_platform_account_async(
 ):
     """Link a Platform User Account to User Account (PublicLinkPlatformAccount)
 
-    It is going to be DEPRECATED.
+    It is going to be **DEPRECATED**.
     Update Platform Account relation to current User Account.
+
     Note: Game progression data (statistics, reward, etc) associated with previous User Account will not be
     transferred. If the data is tight to game user ID, the user will have the game progression data.
 
@@ -19050,9 +15291,6 @@ def public_list_justice_platform_accounts_v3(
 
     This endpoint gets list justice platform account by providing publisher namespace and publisher userID
 
-
-    Requires valid user access token
-
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice
 
@@ -19104,9 +15342,6 @@ async def public_list_justice_platform_accounts_v3_async(
     """Get User Justice Platform Accounts (PublicListJusticePlatformAccountsV3)
 
     This endpoint gets list justice platform account by providing publisher namespace and publisher userID
-
-
-    Requires valid user access token
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice
@@ -19161,10 +15396,7 @@ def public_list_user_all_platform_accounts_distinct_v3(
     """Get distinct platform accounts linked to the user (PublicListUserAllPlatformAccountsDistinctV3)
 
     This endpoint retrieves platform accounts linked to user.
-
     It will query all linked platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
-
-    Required valid user authorization.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/distinctPlatforms
@@ -19217,10 +15449,7 @@ async def public_list_user_all_platform_accounts_distinct_v3_async(
     """Get distinct platform accounts linked to the user (PublicListUserAllPlatformAccountsDistinctV3)
 
     This endpoint retrieves platform accounts linked to user.
-
     It will query all linked platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
-
-    Required valid user authorization.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/distinctPlatforms
@@ -19280,7 +15509,7 @@ def public_list_user_id_by_platform_user_i_ds_v3(
     This endpoint intended to list game user ID from the given namespace
     This endpoint return list of user ID by given platform ID and list of platform user ID
 
-    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users
@@ -19342,7 +15571,7 @@ async def public_list_user_id_by_platform_user_i_ds_v3_async(
     This endpoint intended to list game user ID from the given namespace
     This endpoint return list of user ID by given platform ID and list of platform user ID
 
-    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users
@@ -19400,45 +15629,14 @@ def public_partial_update_user_v3(
 ):
     """Update User (PublicPartialUpdateUserV3)
 
-    Requires valid user access token
-
-
-
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-
-
-
-    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl}
-
-
-
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-
-
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-
-
-     Response body logic when user updating email address:
-
-
-      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
-
-
-      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
-
-
-      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
-
-
-
-
+    **Response body logic when user updating email address:**
+    - User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+    - User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
 
     action code : 10103
 
@@ -19492,45 +15690,14 @@ async def public_partial_update_user_v3_async(
 ):
     """Update User (PublicPartialUpdateUserV3)
 
-    Requires valid user access token
-
-
-
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-
-
-
-    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl}
-
-
-
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-
-
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-
-
-     Response body logic when user updating email address:
-
-
-      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
-
-
-      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
-
-
-      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
-
-
-
-
+    **Response body logic when user updating email address:**
+    - User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+    - User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
 
     action code : 10103
 
@@ -19590,60 +15757,23 @@ def public_platform_link_v2(
     """Link user's account with platform (PublicPlatformLinkV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
-
-
-
-
-
-
-
-    Prerequisite:
+    **Prerequisite:**
     Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
 
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The ticketâs value is the authentication code returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
-
-
-      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The ticketâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
-
-
-      * android : The ticket's value is the Androidâs device ID
-
-
-      * ios : The ticket's value is the iOSâs device ID.
-
-
-      * device : Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
-
-
-      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
+    - **steam**: The ticketâs value is the authentication code returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+    - **facebook**: The ticketâs value is the authorization code returned by Facebook OAuth
+    - **google**: The ticketâs value is the authorization code returned by Google OAuth
+    - **oculus**: The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The ticketâs value is the authorization code returned by Twitch OAuth.
+    - **android**: The ticket's value is the Androidâs device ID
+    - **ios**: The ticket's value is the iOSâs device ID.
+    - **device**: Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
@@ -19707,60 +15837,23 @@ async def public_platform_link_v2_async(
     """Link user's account with platform (PublicPlatformLinkV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
-
-
-
-
-
-
-
-    Prerequisite:
+    **Prerequisite:**
     Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
 
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The ticketâs value is the authentication code returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
-
-
-      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The ticketâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
-
-
-      * android : The ticket's value is the Androidâs device ID
-
-
-      * ios : The ticket's value is the iOSâs device ID.
-
-
-      * device : Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
-
-
-      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
+    - **steam**: The ticketâs value is the authentication code returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+    - **facebook**: The ticketâs value is the authorization code returned by Facebook OAuth
+    - **google**: The ticketâs value is the authorization code returned by Google OAuth
+    - **oculus**: The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The ticketâs value is the authorization code returned by Twitch OAuth.
+    - **android**: The ticket's value is the Androidâs device ID
+    - **ios**: The ticket's value is the iOSâs device ID.
+    - **device**: Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link
@@ -19824,89 +15917,31 @@ def public_platform_link_v3(
 ):
     """Link user's account with platform (PublicPlatformLinkV3)
 
-    Required valid user authorization.
-
-
-
-    Prerequisite:
+    **Prerequisite:**
     Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The ticketâs value is the binary ticket returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
-
-
-      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The ticketâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
-
-
-      * android : The ticket's value is the Androidâs device ID
-
-
-      * ios : The ticket's value is the iOSâs device ID.
-
-
-      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
-
-
-      * device : Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
-
-
-      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
-
-
-      * ps4web : The ticketâs value is the authorization code returned by PSN OAuth.
-
-
-      * ps4 : The ticketâs value is the authorization code returned by PSN OAuth.
-
-
-      * ps5 : The ticketâs value is the authorization code returned by PSN OAuth.
-
-
-      * xblweb : The ticketâs value is the authorization code returned by XBox Live OAuth.
-
-
-      * live : The ticketâs value is the XSTS token.
-
-
-      * awscognito : The ticketâs value is the aws cognito access token (JWT).
-
-
-      * epicgames : The ticketâs value is an access-token or authorization code obtained from Epicgames EOS Account Service.
-
-
-      * nintendo : The ticketâs value is the id_token returned by Nintendo OAuth.
-
-
-      * netflix : The ticketâs value is GAT (Gamer Access Token) returned by Netflix backend.
-
-
-      * snapchat : The ticketâs value is authorization code returned by Snapchat OAuth.
-
-
-      * for specific generic oauth (OIDC) : The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
-
-
-
-
+    - **steam**: The ticketâs value is the binary ticket returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+    - **facebook**: The ticketâs value is the authorization code returned by Facebook OAuth
+    - **google**: The ticketâs value is the authorization code returned by Google OAuth
+    - **oculus**: The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The ticketâs value is the authorization code returned by Twitch OAuth.
+    - **android**: The ticket's value is the Androidâs device ID
+    - **ios**: The ticket's value is the iOSâs device ID.
+    - **apple**: The ticketâs value is the authorization code returned by Apple OAuth.
+    - **device**: Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
+    - **ps4web**: The ticketâs value is the authorization code returned by PSN OAuth.
+    - **ps4**: The ticketâs value is the authorization code returned by PSN OAuth.
+    - **ps5**: The ticketâs value is the authorization code returned by PSN OAuth.
+    - **xblweb**: The ticketâs value is the authorization code returned by XBox Live OAuth.
+    - **live**: The ticketâs value is the XSTS token.
+    - **awscognito**: The ticketâs value is the aws cognito access token (JWT).
+    - **epicgames**: The ticketâs value is an access-token or authorization code obtained from Epicgames EOS Account Service.
+    - **nintendo**: The ticketâs value is the id_token returned by Nintendo OAuth.
+    - **netflix**: The ticketâs value is GAT (Gamer Access Token) returned by Netflix backend.
+    - **snapchat**: The ticketâs value is authorization code returned by Snapchat OAuth.
+    - **for specific generic oauth (OIDC)**: The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
     action code : 10144
 
     Properties:
@@ -19967,89 +16002,31 @@ async def public_platform_link_v3_async(
 ):
     """Link user's account with platform (PublicPlatformLinkV3)
 
-    Required valid user authorization.
-
-
-
-    Prerequisite:
+    **Prerequisite:**
     Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables).
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam : The ticketâs value is the binary ticket returned by Steam.
-
-
-      * steamopenid : Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
-
-
-      * facebook : The ticketâs value is the authorization code returned by Facebook OAuth
-
-
-      * google : The ticketâs value is the authorization code returned by Google OAuth
-
-
-      * oculus : The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
-
-
-      * twitch : The ticketâs value is the authorization code returned by Twitch OAuth.
-
-
-      * android : The ticket's value is the Androidâs device ID
-
-
-      * ios : The ticket's value is the iOSâs device ID.
-
-
-      * apple : The ticketâs value is the authorization code returned by Apple OAuth.
-
-
-      * device : Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
-
-
-      * discord : The ticketâs value is the authorization code returned by Discord OAuth.
-
-
-      * ps4web : The ticketâs value is the authorization code returned by PSN OAuth.
-
-
-      * ps4 : The ticketâs value is the authorization code returned by PSN OAuth.
-
-
-      * ps5 : The ticketâs value is the authorization code returned by PSN OAuth.
-
-
-      * xblweb : The ticketâs value is the authorization code returned by XBox Live OAuth.
-
-
-      * live : The ticketâs value is the XSTS token.
-
-
-      * awscognito : The ticketâs value is the aws cognito access token (JWT).
-
-
-      * epicgames : The ticketâs value is an access-token or authorization code obtained from Epicgames EOS Account Service.
-
-
-      * nintendo : The ticketâs value is the id_token returned by Nintendo OAuth.
-
-
-      * netflix : The ticketâs value is GAT (Gamer Access Token) returned by Netflix backend.
-
-
-      * snapchat : The ticketâs value is authorization code returned by Snapchat OAuth.
-
-
-      * for specific generic oauth (OIDC) : The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
-
-
-
-
+    - **steam**: The ticketâs value is the binary ticket returned by Steam.
+    - **steamopenid**: Steam's user authentication method using OpenID 2.0. The ticket's value is URL generated by Steam on web authentication
+    - **facebook**: The ticketâs value is the authorization code returned by Facebook OAuth
+    - **google**: The ticketâs value is the authorization code returned by Google OAuth
+    - **oculus**: The ticketâs value is a string composed of Oculus's user ID and the nonce separated by a colon (:).
+    - **twitch**: The ticketâs value is the authorization code returned by Twitch OAuth.
+    - **android**: The ticket's value is the Androidâs device ID
+    - **ios**: The ticket's value is the iOSâs device ID.
+    - **apple**: The ticketâs value is the authorization code returned by Apple OAuth.
+    - **device**: Every device that doesn't run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
+    - **ps4web**: The ticketâs value is the authorization code returned by PSN OAuth.
+    - **ps4**: The ticketâs value is the authorization code returned by PSN OAuth.
+    - **ps5**: The ticketâs value is the authorization code returned by PSN OAuth.
+    - **xblweb**: The ticketâs value is the authorization code returned by XBox Live OAuth.
+    - **live**: The ticketâs value is the XSTS token.
+    - **awscognito**: The ticketâs value is the aws cognito access token (JWT).
+    - **epicgames**: The ticketâs value is an access-token or authorization code obtained from Epicgames EOS Account Service.
+    - **nintendo**: The ticketâs value is the id_token returned by Nintendo OAuth.
+    - **netflix**: The ticketâs value is GAT (Gamer Access Token) returned by Netflix backend.
+    - **snapchat**: The ticketâs value is authorization code returned by Snapchat OAuth.
+    - **for specific generic oauth (OIDC)**: The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
     action code : 10144
 
     Properties:
@@ -20110,8 +16087,6 @@ def public_platform_unlink_all_v3(
 ):
     """Unlink user's account from specific platform (PublicPlatformUnlinkAllV3)
 
-    Required valid user authorization.
-
     Unlink user's account from third platform in all namespaces.
 
     This API support to handling platform group use case:
@@ -20169,8 +16144,6 @@ async def public_platform_unlink_all_v3_async(
     **kwargs
 ):
     """Unlink user's account from specific platform (PublicPlatformUnlinkAllV3)
-
-    Required valid user authorization.
 
     Unlink user's account from third platform in all namespaces.
 
@@ -20233,75 +16206,26 @@ def public_platform_unlink_v3(
 ):
     """Unlink user's account from specific platform (PublicPlatformUnlinkV3)
 
-    Required valid user authorization.
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * apple
-
-
-      * device
-
-
-      * discord
-
-
-      * awscognito
-
-
-      * epicgames
-
-
-      * nintendo
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **apple**
+    - **device**
+    - **discord**
+    - **awscognito**
+    - **epicgames**
+    - **nintendo**
 
     Unlink user's account from a specific platform. 'justice' platform might have multiple accounts from different namespaces linked.
-
-    platformNamespace need to be specified when the platform ID is 'justice'.
-
-
-
+    _platformNamespace_ need to be specified when the platform ID is 'justice'.
     Unlink user's account from justice platform will enable password token grant and password update.
-
-
-
-    If you want to unlink user's account in a game namespace, you have to specify platformNamespace to that game namespace.
-
-
-
+    If you want to unlink user's account in a game namespace, you have to specify _platformNamespace_ to that game namespace.
     action code : 10121
 
     Properties:
@@ -20356,75 +16280,26 @@ async def public_platform_unlink_v3_async(
 ):
     """Unlink user's account from specific platform (PublicPlatformUnlinkV3)
 
-    Required valid user authorization.
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * apple
-
-
-      * device
-
-
-      * discord
-
-
-      * awscognito
-
-
-      * epicgames
-
-
-      * nintendo
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **apple**
+    - **device**
+    - **discord**
+    - **awscognito**
+    - **epicgames**
+    - **nintendo**
 
     Unlink user's account from a specific platform. 'justice' platform might have multiple accounts from different namespaces linked.
-
-    platformNamespace need to be specified when the platform ID is 'justice'.
-
-
-
+    _platformNamespace_ need to be specified when the platform ID is 'justice'.
     Unlink user's account from justice platform will enable password token grant and password update.
-
-
-
-    If you want to unlink user's account in a game namespace, you have to specify platformNamespace to that game namespace.
-
-
-
+    If you want to unlink user's account in a game namespace, you have to specify _platformNamespace_ to that game namespace.
     action code : 10121
 
     Properties:
@@ -20483,8 +16358,7 @@ def public_process_web_link_platform_v3(
     """Process Link Progress  (PublicProcessWebLinkPlatformV3)
 
     This endpoint is used to process third party account link, this endpoint will return the link status directly instead of redirecting to the original page.
-
-    The param state comes from the response of /users/me/platforms/{platformId}/web/link
+    The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/process
@@ -20537,8 +16411,7 @@ async def public_process_web_link_platform_v3_async(
     """Process Link Progress  (PublicProcessWebLinkPlatformV3)
 
     This endpoint is used to process third party account link, this endpoint will return the link status directly instead of redirecting to the original page.
-
-    The param state comes from the response of /users/me/platforms/{platformId}/web/link
+    The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/process
@@ -20592,14 +16465,8 @@ def public_reset_password_v2(
     """Reset User Password (PublicResetPasswordV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/reset [POST]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/resetPassword
@@ -20651,14 +16518,8 @@ async def public_reset_password_v2_async(
     """Reset User Password (PublicResetPasswordV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/reset [POST]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/resetPassword
@@ -20706,6 +16567,8 @@ def public_search_user_v3(
     by: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    platform_by: Optional[str] = None,
+    platform_id: Optional[str] = None,
     query: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -20713,17 +16576,40 @@ def public_search_user_v3(
 ):
     """Search User (PublicSearchUserV3)
 
-    Requires valid user access token
+    This endpoint search all users on the specified namespace that match the query on these fields: display name, and username or by 3rd party display name.
+    The query length should greater than 2ï¼otherwise will not query the database. The default limit value is 100.
+    **Note: searching by 3rd party platform display name is exact query**
+    ---
+    When searching by 3rd party platform display name:
+    1. set __by__ to __thirdPartyPlatform__
+    2. set __platformId__ to the supported platform id
+    3. set __platformBy__ to __platformDisplayName__
+    ---
+    Supported platform id:
 
-
-
-
-    This endpoint search all users on the specified namespace that match the query on these fields: display name, and username.
-    The query length should greater than 1ï¼otherwise will not query the database. The default limit value is 100
-
-
-
-    action code : 10132
+    * steam
+    * steamopenid
+    * facebook
+    * google
+    * oculus
+    * oculusweb
+    * twitch
+    * discord
+    * android
+    * ios
+    * apple
+    * device
+    * epicgames
+    * ps4
+    * ps5
+    * ps4web
+    * nintendo
+    * awscognito
+    * live
+    * xblweb
+    * netflix
+    * snapchat
+    * oidc platform id
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users
@@ -20746,6 +16632,10 @@ def public_search_user_v3(
 
         offset: (offset) OPTIONAL int in query
 
+        platform_by: (platformBy) OPTIONAL str in query
+
+        platform_id: (platformId) OPTIONAL str in query
+
         query: (query) OPTIONAL str in query
 
     Responses:
@@ -20767,6 +16657,8 @@ def public_search_user_v3(
         by=by,
         limit=limit,
         offset=offset,
+        platform_by=platform_by,
+        platform_id=platform_id,
         query=query,
         namespace=namespace,
     )
@@ -20778,6 +16670,8 @@ async def public_search_user_v3_async(
     by: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    platform_by: Optional[str] = None,
+    platform_id: Optional[str] = None,
     query: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -20785,17 +16679,40 @@ async def public_search_user_v3_async(
 ):
     """Search User (PublicSearchUserV3)
 
-    Requires valid user access token
+    This endpoint search all users on the specified namespace that match the query on these fields: display name, and username or by 3rd party display name.
+    The query length should greater than 2ï¼otherwise will not query the database. The default limit value is 100.
+    **Note: searching by 3rd party platform display name is exact query**
+    ---
+    When searching by 3rd party platform display name:
+    1. set __by__ to __thirdPartyPlatform__
+    2. set __platformId__ to the supported platform id
+    3. set __platformBy__ to __platformDisplayName__
+    ---
+    Supported platform id:
 
-
-
-
-    This endpoint search all users on the specified namespace that match the query on these fields: display name, and username.
-    The query length should greater than 1ï¼otherwise will not query the database. The default limit value is 100
-
-
-
-    action code : 10132
+    * steam
+    * steamopenid
+    * facebook
+    * google
+    * oculus
+    * oculusweb
+    * twitch
+    * discord
+    * android
+    * ios
+    * apple
+    * device
+    * epicgames
+    * ps4
+    * ps5
+    * ps4web
+    * nintendo
+    * awscognito
+    * live
+    * xblweb
+    * netflix
+    * snapchat
+    * oidc platform id
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users
@@ -20818,6 +16735,10 @@ async def public_search_user_v3_async(
 
         offset: (offset) OPTIONAL int in query
 
+        platform_by: (platformBy) OPTIONAL str in query
+
+        platform_id: (platformId) OPTIONAL str in query
+
         query: (query) OPTIONAL str in query
 
     Responses:
@@ -20839,6 +16760,8 @@ async def public_search_user_v3_async(
         by=by,
         limit=limit,
         offset=offset,
+        platform_by=platform_by,
+        platform_id=platform_id,
         query=query,
         namespace=namespace,
     )
@@ -20857,11 +16780,9 @@ def public_send_registration_code(
     """Send verification code to new unregistered account's email address (PublicSendRegistrationCode)
 
     This endpoint will validate the request's email address.
-
     If it already been used, will response 409.
-
     If it is available, we will send a verification code to this email address.
-    This code can be verified by this endpoint.
+    This code can be verified by this [endpoint](#operations-Users-PublicVerifyRegistrationCode).
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/code/request
@@ -20908,11 +16829,9 @@ async def public_send_registration_code_async(
     """Send verification code to new unregistered account's email address (PublicSendRegistrationCode)
 
     This endpoint will validate the request's email address.
-
     If it already been used, will response 409.
-
     If it is available, we will send a verification code to this email address.
-    This code can be verified by this endpoint.
+    This code can be verified by this [endpoint](#operations-Users-PublicVerifyRegistrationCode).
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/code/request
@@ -20960,54 +16879,16 @@ def public_send_verification_code_v3(
 ):
     """Send verification code to user (PublicSendVerificationCodeV3)
 
-    Required valid user authorization
-
-
     The verification code is sent to email address
-
-
-
-
     Available contexts for use :
-
-
-
-
-
-
-      1.
-    UserAccountRegistration
-
-
+    1. **UserAccountRegistration**
     a context type used for verifying email address in user account registration. It returns 409 if the email address already verified.
-    It is the default context if the Context field is empty
-
-
-
-
-
-      2.
-    UpdateEmailAddress
-
-
+    **_It is the default context if the Context field is empty_**
+    2. **UpdateEmailAddress**
     a context type used for verify user before updating email address.(Without email address verified checking)
-
-
-
-
-
-      3. upgradeHeadlessAccount
-
-
+    3. **upgradeHeadlessAccount**
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
     If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
-
-
-
-
-
-
-
 
     action code: 10116
 
@@ -21061,54 +16942,16 @@ async def public_send_verification_code_v3_async(
 ):
     """Send verification code to user (PublicSendVerificationCodeV3)
 
-    Required valid user authorization
-
-
     The verification code is sent to email address
-
-
-
-
     Available contexts for use :
-
-
-
-
-
-
-      1.
-    UserAccountRegistration
-
-
+    1. **UserAccountRegistration**
     a context type used for verifying email address in user account registration. It returns 409 if the email address already verified.
-    It is the default context if the Context field is empty
-
-
-
-
-
-      2.
-    UpdateEmailAddress
-
-
+    **_It is the default context if the Context field is empty_**
+    2. **UpdateEmailAddress**
     a context type used for verify user before updating email address.(Without email address verified checking)
-
-
-
-
-
-      3. upgradeHeadlessAccount
-
-
+    3. **upgradeHeadlessAccount**
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
     If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
-
-
-
-
-
-
-
 
     action code: 10116
 
@@ -21163,14 +17006,7 @@ def public_send_verification_link_v3(
 ):
     """Send verification link to user, this link will point to '/iam/v3/public/users/verify_link/verify' (PublicSendVerificationLinkV3)
 
-    Required valid user authorization
-
-
     The verification link is sent to email address
-
-
-
-
     It will not send request if user email is already verified
 
     Properties:
@@ -21213,14 +17049,7 @@ async def public_send_verification_link_v3_async(
 ):
     """Send verification link to user, this link will point to '/iam/v3/public/users/verify_link/verify' (PublicSendVerificationLinkV3)
 
-    Required valid user authorization
-
-
     The verification link is sent to email address
-
-
-
-
     It will not send request if user email is already verified
 
     Properties:
@@ -21269,20 +17098,8 @@ def public_update_password_v2(
     """Update User Password (PublicUpdatePasswordV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/password [PUT]
-
-
-
-
-
-    This endpoint need a valid user access token
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/password [PUT]_**
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/password
@@ -21340,20 +17157,8 @@ async def public_update_password_v2_async(
     """Update User Password (PublicUpdatePasswordV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/password [PUT]
-
-
-
-
-
-    This endpoint need a valid user access token
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/password [PUT]_**
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/password
@@ -21410,7 +17215,6 @@ def public_update_password_v3(
 ):
     """Update User Password (PublicUpdatePasswordV3)
 
-    Required valid user authorization.
     action code: 10107
 
     Properties:
@@ -21459,7 +17263,6 @@ async def public_update_password_v3_async(
 ):
     """Update User Password (PublicUpdatePasswordV3)
 
-    Required valid user authorization.
     action code: 10107
 
     Properties:
@@ -21513,38 +17316,15 @@ def public_update_user_v2(
     """Update User (PublicUpdateUserV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint([PUT]): _/iam/v3/public/namespaces/{namespace}/users/me [PUT]_**
+    - **Substitute endpoint([PATCH]): _/iam/v3/public/namespaces/{namespace}/users/me [PATCH]_**
+    - **Substitute endpoint([PATCH]): _/iam/v4/public/namespaces/{namespace}/users/me [PATCH]_**
+    - **Note:**
+    1. Prefer [PATCH] if client support PATCH method
+    2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint([PUT]): /iam/v3/public/namespaces/{namespace}/users/me [PUT]
-
-      * Substitute endpoint([PATCH]): /iam/v3/public/namespaces/{namespace}/users/me [PATCH]
-
-      * Substitute endpoint([PATCH]): /iam/v4/public/namespaces/{namespace}/users/me [PATCH]
-
-
-
-      * Note:
-        1. Prefer [PATCH] if client support PATCH method
-
-        2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
-
-
-
-
-
-
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-    "+
-    "This endpoint require valid user access token to accessed.
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
 
     Properties:
@@ -21603,38 +17383,15 @@ async def public_update_user_v2_async(
     """Update User (PublicUpdateUserV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint([PUT]): _/iam/v3/public/namespaces/{namespace}/users/me [PUT]_**
+    - **Substitute endpoint([PATCH]): _/iam/v3/public/namespaces/{namespace}/users/me [PATCH]_**
+    - **Substitute endpoint([PATCH]): _/iam/v4/public/namespaces/{namespace}/users/me [PATCH]_**
+    - **Note:**
+    1. Prefer [PATCH] if client support PATCH method
+    2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint([PUT]): /iam/v3/public/namespaces/{namespace}/users/me [PUT]
-
-      * Substitute endpoint([PATCH]): /iam/v3/public/namespaces/{namespace}/users/me [PATCH]
-
-      * Substitute endpoint([PATCH]): /iam/v4/public/namespaces/{namespace}/users/me [PATCH]
-
-
-
-      * Note:
-        1. Prefer [PATCH] if client support PATCH method
-
-        2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
-
-
-
-
-
-
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-    "+
-    "This endpoint require valid user access token to accessed.
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
 
     Properties:
@@ -21693,40 +17450,15 @@ def public_upgrade_headless_account_v3(
     """Verify or consume verification code. (PublicUpgradeHeadlessAccountV3)
 
     If validateOnly is set false, consume code and upgrade headless account and automatically verified the email address if it is succeeded
-
-
-    Require valid user access token.
-
-
     The endpoint upgrades a headless account by linking the headless account with the email address and the password.
     By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-
-
-
-
     The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
     In order to get a verification code for the endpoint, please check the send verification code endpoint.
-
-
-
-
     This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
-
     Supported user data fields :
-
-
-
-
-      * displayName
-
-
-      * dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
-
-
-      * country : format ISO3166-1 alpha-2 two letter, e.g. US
-
-
-
+    - displayName
+    - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
+    - country : format ISO3166-1 alpha-2 two letter, e.g. US
 
     action code : 10124
 
@@ -21783,40 +17515,15 @@ async def public_upgrade_headless_account_v3_async(
     """Verify or consume verification code. (PublicUpgradeHeadlessAccountV3)
 
     If validateOnly is set false, consume code and upgrade headless account and automatically verified the email address if it is succeeded
-
-
-    Require valid user access token.
-
-
     The endpoint upgrades a headless account by linking the headless account with the email address and the password.
     By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-
-
-
-
     The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
     In order to get a verification code for the endpoint, please check the send verification code endpoint.
-
-
-
-
     This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
-
     Supported user data fields :
-
-
-
-
-      * displayName
-
-
-      * dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
-
-
-      * country : format ISO3166-1 alpha-2 two letter, e.g. US
-
-
-
+    - displayName
+    - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
+    - country : format ISO3166-1 alpha-2 two letter, e.g. US
 
     action code : 10124
 
@@ -21875,25 +17582,8 @@ def public_user_verification_v3(
     """Validate or consume verification code sent to user (PublicUserVerificationV3)
 
     Will consume code if validateOnly is set false
-
-
-
-
-    Required valid user authorization
-
-
-
-
     Redeems a verification code sent to a user to verify the user's contact address is correct
-
-
-
-
-    Available ContactType : email
-
-
-
-
+    Available ContactType : **email**
     action code: 10107
 
     Properties:
@@ -21945,25 +17635,8 @@ async def public_user_verification_v3_async(
     """Validate or consume verification code sent to user (PublicUserVerificationV3)
 
     Will consume code if validateOnly is set false
-
-
-
-
-    Required valid user authorization
-
-
-
-
     Redeems a verification code sent to a user to verify the user's contact address is correct
-
-
-
-
-    Available ContactType : email
-
-
-
-
+    Available ContactType : **email**
     action code: 10107
 
     Properties:
@@ -22017,17 +17690,10 @@ def public_validate_user_by_user_id_and_password_v3(
 ):
     """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
 
-    This endpoint is used to validate the user password. Required valid user authorization and valid user ID.
-
+    This endpoint is used to validate the user password. Require valid user ID.
 
     Notes:
-
-
-
-
-
-
-      * This endpoint validate the user password by specifying the userId and password
+    - This endpoint validate the user password by specifying the userId and password
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/validate
@@ -22083,17 +17749,10 @@ async def public_validate_user_by_user_id_and_password_v3_async(
 ):
     """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
 
-    This endpoint is used to validate the user password. Required valid user authorization and valid user ID.
-
+    This endpoint is used to validate the user password. Require valid user ID.
 
     Notes:
-
-
-
-
-
-
-      * This endpoint validate the user password by specifying the userId and password
+    - This endpoint validate the user password by specifying the userId and password
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/validate
@@ -22149,19 +17808,11 @@ def public_verify_headless_account_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upgrade user account to full account (with email) (PublicVerifyHeadlessAccountV3)
+    """Upgrade user headless account to full account (with email) (PublicVerifyHeadlessAccountV3)
 
-    Require valid user authorization
     action code : 10124
 
-
-
-
     if set NeedVerificationCode = true, IAM will send verification code into email
-
-
-
-
     user can use that verification code to verify user through /iam/v3/public/namespaces/{namespace}/users/me/code/verify
 
     Properties:
@@ -22216,19 +17867,11 @@ async def public_verify_headless_account_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upgrade user account to full account (with email) (PublicVerifyHeadlessAccountV3)
+    """Upgrade user headless account to full account (with email) (PublicVerifyHeadlessAccountV3)
 
-    Require valid user authorization
     action code : 10124
 
-
-
-
     if set NeedVerificationCode = true, IAM will send verification code into email
-
-
-
-
     user can use that verification code to verify user through /iam/v3/public/namespaces/{namespace}/users/me/code/verify
 
     Properties:
@@ -22664,19 +18307,8 @@ def reset_password(
     """Reset User Password (ResetPassword)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/reset [POST]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or valid basic auth header
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
@@ -22703,7 +18335,7 @@ def reset_password(
 
         400: Bad Request - (1014016: unable to parse request body | 1015073: new password same as old password)
 
-        403: Forbidden -
+        403: Forbidden - (1014021: verification code expired | 1014019: verification code already used | 1014020: verification code invalid | 1014018: verification code not found)
 
         404: Not Found - (1014017: user not found)
 
@@ -22731,19 +18363,8 @@ async def reset_password_async(
     """Reset User Password (ResetPassword)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/reset [POST]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or valid basic auth header
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
@@ -22770,7 +18391,7 @@ async def reset_password_async(
 
         400: Bad Request - (1014016: unable to parse request body | 1015073: new password same as old password)
 
-        403: Forbidden -
+        403: Forbidden - (1014021: verification code expired | 1014019: verification code already used | 1014020: verification code invalid | 1014018: verification code not found)
 
         404: Not Found - (1014017: user not found)
 
@@ -22899,116 +18520,33 @@ def save_user_permission(
     """Save User Permissions (SaveUserPermission)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]_**
 
     This endpoint will REPLACE user's permissions with the ones defined in body
-
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
 
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/permissions
@@ -23064,116 +18602,33 @@ async def save_user_permission_async(
     """Save User Permissions (SaveUserPermission)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]'
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]_**
 
     This endpoint will REPLACE user's permissions with the ones defined in body
-
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
 
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PERMISSION:USER:{userId} [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/permissions
@@ -23231,22 +18686,8 @@ def save_user_roles(
     """Save User Roles (SaveUserRoles)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/roles
@@ -23304,22 +18745,8 @@ async def save_user_roles_async(
     """Save User Roles (SaveUserRoles)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/roles
@@ -23378,26 +18805,10 @@ def search_user(
     """Search users (SearchUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/search [GET]
-
-
-
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
     Search all users that match the query on these fields: all login IDs (email address, phone number, and platform user id),
     userID, display name, and on the specified namespace. If the query is not defined, then it searches all users on the specified namespace.
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:* [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:* [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/search
@@ -23447,26 +18858,10 @@ async def search_user_async(
     """Search users (SearchUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/search [GET]
-
-
-
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
     Search all users that match the query on these fields: all login IDs (email address, phone number, and platform user id),
     userID, display name, and on the specified namespace. If the query is not defined, then it searches all users on the specified namespace.
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:* [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:* [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/search
@@ -23519,52 +18914,17 @@ def send_verification_code(
     """Send verification code to user (SendVerificationCode)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/code/request [POST]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/code/request [POST]_**
 
     The verification code is sent to either the phone number or email address. It depends on the LoginID's value.
-
-
-
-
     Available contexts for use :
-
-
-
-
-
-
-      1. UserAccountRegistration
-
-    a context type used for verifying email address in user account registration. It returns 409 if the email address already verified. It is the default context if the Context field is empty
-
-
-
-      2. UpdateEmailAddress
-
+    1. **UserAccountRegistration**
+    a context type used for verifying email address in user account registration. It returns 409 if the email address already verified. **_It is the default context if the Context field is empty_**
+    2. **UpdateEmailAddress**
     a context type used for verify user before updating email address.(Without email address verified checking)
-
-
-
-      3. upgradeHeadlessAccount
-
+    3. **upgradeHeadlessAccount**
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account. If this context used, IAM rejects the request if the loginId field's value is already used by others by returning HTTP Status Code 409.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/verificationcode
@@ -23626,52 +18986,17 @@ async def send_verification_code_async(
     """Send verification code to user (SendVerificationCode)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/code/request [POST]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/code/request [POST]_**
 
     The verification code is sent to either the phone number or email address. It depends on the LoginID's value.
-
-
-
-
     Available contexts for use :
-
-
-
-
-
-
-      1. UserAccountRegistration
-
-    a context type used for verifying email address in user account registration. It returns 409 if the email address already verified. It is the default context if the Context field is empty
-
-
-
-      2. UpdateEmailAddress
-
+    1. **UserAccountRegistration**
+    a context type used for verifying email address in user account registration. It returns 409 if the email address already verified. **_It is the default context if the Context field is empty_**
+    2. **UpdateEmailAddress**
     a context type used for verify user before updating email address.(Without email address verified checking)
-
-
-
-      3. upgradeHeadlessAccount
-
+    3. **upgradeHeadlessAccount**
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account. If this context used, IAM rejects the request if the loginId field's value is already used by others by returning HTTP Status Code 409.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/verificationcode
@@ -23735,23 +19060,8 @@ def update_country_age_restriction(
     """Update country's age restriction (UpdateCountryAgeRestriction)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/countries/{countryCode}
@@ -23807,23 +19117,8 @@ async def update_country_age_restriction_async(
     """Update country's age restriction (UpdateCountryAgeRestriction)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/countries/{countryCode}
@@ -23881,22 +19176,8 @@ def update_password(
     """Update User Password (UpdatePassword)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/password [PUT]
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/password [PUT]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/password
@@ -23954,22 +19235,8 @@ async def update_password_async(
     """Update User Password (UpdatePassword)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/password [PUT]
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/password [PUT]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/password
@@ -24029,65 +19296,22 @@ def update_user(
     """Update User (UpdateUser)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint([PUT]): _/iam/v3/public/namespaces/{namespace}/users/me [PUT]_**
+    - **Substitute endpoint([PATCH]): _/iam/v3/public/namespaces/{namespace}/users/me [PATCH]_**
+    - **Substitute endpoint([PATCH]): _/iam/v4/public/namespaces/{namespace}/users/me [PATCH]_**
+    - **Note:**
+    1. Prefer [PATCH] if client support PATCH method
+    2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint([PUT]): /iam/v3/public/namespaces/{namespace}/users/me [PUT]
-
-      * Substitute endpoint([PATCH]): /iam/v3/public/namespaces/{namespace}/users/me [PATCH]
-
-      * Substitute endpoint([PATCH]): /iam/v4/public/namespaces/{namespace}/users/me [PATCH]
-
-
-
-      * Note:
-        1. Prefer [PATCH] if client support PATCH method
-
-        2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-    "+
-    "
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-    "+
-    "
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
-
-    "+
-    "
-
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
-    "+
-    "
-     Several case of updating email address "+
-    "
-
-      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
-    "+
-    "
-      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
-    "+
-    "
-      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    **Several case of updating email address**
+    - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address
+    - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}
@@ -24145,65 +19369,22 @@ async def update_user_async(
     """Update User (UpdateUser)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint([PUT]): _/iam/v3/public/namespaces/{namespace}/users/me [PUT]_**
+    - **Substitute endpoint([PATCH]): _/iam/v3/public/namespaces/{namespace}/users/me [PATCH]_**
+    - **Substitute endpoint([PATCH]): _/iam/v4/public/namespaces/{namespace}/users/me [PATCH]_**
+    - **Note:**
+    1. Prefer [PATCH] if client support PATCH method
+    2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint([PUT]): /iam/v3/public/namespaces/{namespace}/users/me [PUT]
-
-      * Substitute endpoint([PATCH]): /iam/v3/public/namespaces/{namespace}/users/me [PATCH]
-
-      * Substitute endpoint([PATCH]): /iam/v4/public/namespaces/{namespace}/users/me [PATCH]
-
-
-
-      * Note:
-        1. Prefer [PATCH] if client support PATCH method
-
-        2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-    "+
-    "
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-    "+
-    "
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
-
-    "+
-    "
-
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
-    "+
-    "
-     Several case of updating email address "+
-    "
-
-      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
-    "+
-    "
-      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
-    "+
-    "
-      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    **Several case of updating email address**
+    - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address
+    - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}
@@ -24260,56 +19441,18 @@ def update_user_v3(
 ):
     """Update User (UpdateUserV3)
 
-    Requires valid user access token
-
-
-
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-
-
-
-    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl}
-
-
-
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-
-
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+    **Response body logic when user updating email address:**
+    - User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+    - User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
 
-
-
-     Response body logic when user updating email address:
-
-
-      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
-
-
-      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
-
-
-      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
-
-
-
-
-    Important notes:
-
-
-
+    **Important notes:**
     This endpoint provides support for client that doesn't have PATCH support, i.e. UE4 before v4.23 released.
-
     If the client support PATCH method, use [PATCH] /iam/v3/public/namespaces/{namespace}/users/me instead
-
-
-
-
 
     action code : 10103
 
@@ -24363,56 +19506,18 @@ async def update_user_v3_async(
 ):
     """Update User (UpdateUserV3)
 
-    Requires valid user access token
-
-
-
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-
-
-
-    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl}
-
-
-
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-
-
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
+    **Response body logic when user updating email address:**
+    - User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
+    - User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
 
-
-
-     Response body logic when user updating email address:
-
-
-      * User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
-
-
-      * User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
-
-
-      * User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
-
-
-
-
-    Important notes:
-
-
-
+    **Important notes:**
     This endpoint provides support for client that doesn't have PATCH support, i.e. UE4 before v4.23 released.
-
     If the client support PATCH method, use [PATCH] /iam/v3/public/namespaces/{namespace}/users/me instead
-
-
-
-
 
     action code : 10103
 
@@ -24472,23 +19577,8 @@ def upgrade_headless_account(
 
     ## The endpoint is going to be deprecated
 
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccount
@@ -24543,23 +19633,8 @@ async def upgrade_headless_account_async(
 
     ## The endpoint is going to be deprecated
 
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccount
@@ -24615,27 +19690,11 @@ def upgrade_headless_account_with_verification_code(
     """Upgrade headless account and automatically verified the email address if it is succeeded (UpgradeHeadlessAccountWithVerificationCode)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]_**
 
     The endpoint upgrades a headless account by linking the headless account with the email address and the password. By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
     The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call. In order to get a verification code for the endpoint, please check the send verification code endpoint.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode
@@ -24691,27 +19750,11 @@ async def upgrade_headless_account_with_verification_code_async(
     """Upgrade headless account and automatically verified the email address if it is succeeded (UpgradeHeadlessAccountWithVerificationCode)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]_**
 
     The endpoint upgrades a headless account by linking the headless account with the email address and the password. By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
     The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call. In order to get a verification code for the endpoint, please check the send verification code endpoint.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode
@@ -24769,31 +19812,11 @@ def user_verification(
     """Redeem verification code sent to user (UserVerification)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/code/verify [POST]
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/code/verify [POST]_**
 
     Redeems a verification code sent to a user to verify the user's contact address is correct
-
-
-    Available ContactType : email or phone
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    Available ContactType : *email* or *phone*
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/verification
@@ -24851,31 +19874,11 @@ async def user_verification_async(
     """Redeem verification code sent to user (UserVerification)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/code/verify [POST]
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/code/verify [POST]_**
 
     Redeems a verification code sent to a user to verify the user's contact address is correct
-
-
-    Available ContactType : email or phone
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    Available ContactType : *email* or *phone*
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/verification

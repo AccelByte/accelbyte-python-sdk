@@ -74,13 +74,13 @@ def get_followed_content(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+        200: OK - ModelsPaginatedContentDownloadResponse (Get contents from followed creators)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771311: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771310: Unable to get ugc content: database error | 770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -126,13 +126,13 @@ async def get_followed_content_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+        200: OK - ModelsPaginatedContentDownloadResponse (Get contents from followed creators)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771311: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771310: Unable to get ugc content: database error | 770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -180,13 +180,13 @@ def get_followed_users(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (Get followed creators)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771304: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771300: Unable to get creators: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -232,13 +232,13 @@ async def get_followed_users_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (Get followed creators)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771304: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771300: Unable to get creators: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -287,13 +287,13 @@ def get_public_followers(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (Get list of followers)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771304: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771303: Unable to get creators: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -341,13 +341,13 @@ async def get_public_followers_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (Get list of followers)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771304: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771303: Unable to get creators: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -397,13 +397,13 @@ def get_public_following(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (Get list of following)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771304: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771303: Unable to get creators: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -451,13 +451,13 @@ async def get_public_following_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (Get list of following)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771304: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771303: Unable to get creators: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -506,15 +506,13 @@ def update_user_follow_status(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUserFollowResponse (OK)
+        200: OK - ModelsUserFollowResponse (update status follow/unfollow status to a user)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771200: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771201: Unable to update follow status: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -560,15 +558,13 @@ async def update_user_follow_status_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUserFollowResponse (OK)
+        200: OK - ModelsUserFollowResponse (update status follow/unfollow status to a user)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771200: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771201: Unable to update follow status: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

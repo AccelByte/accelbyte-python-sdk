@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,20 +39,8 @@ class CreateClient(Operation):
     """Create Client (CreateClient)
 
     ## The endpoint is going to be deprecated
-
-
-
-
-    Required permission 'CLIENT:ADMIN [CREATE]'.
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/clients [POST]
-
-    Required Permission(s):
-        - CLIENT:ADMIN [CREATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [POST]_**
 
     Properties:
         url: /iam/clients

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -66,13 +66,17 @@ class PublicGenerateContentUploadURLV2(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGenerateContentUploadURLResponse (OK)
+        200: OK - ModelsGenerateContentUploadURLResponse (content upload URL generated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
+
+        404: Not Found - ResponseError (772603: Content not found)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 772605: Unable to save ugc content: failed generate upload URL)
     """
 
     # region fields
@@ -220,13 +224,17 @@ class PublicGenerateContentUploadURLV2(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsGenerateContentUploadURLResponse (OK)
+        200: OK - ModelsGenerateContentUploadURLResponse (content upload URL generated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
+
+        404: Not Found - ResponseError (772603: Content not found)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 772605: Unable to save ugc content: failed generate upload URL)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -249,6 +257,10 @@ class PublicGenerateContentUploadURLV2(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 403:
+            return None, ResponseError.create_from_dict(content)
+        if code == 404:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

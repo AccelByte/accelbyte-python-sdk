@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.4.0)
+# AccelByte Gaming Services Cloudsave Service (3.12.8)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,37 +27,33 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.api_artifact_sampling_rule_response import ApiArtifactSamplingRuleResponse
 
-
-class ApiArtifactTypeSamplingRulesResponse(Model):
-    """Api artifact type sampling rules response (api.ArtifactTypeSamplingRulesResponse)
+class ModelsBulkUpdatePlayerRecordRequestDetail(Model):
+    """Models bulk update player record request detail (models.BulkUpdatePlayerRecordRequestDetail)
 
     Properties:
-        crashed: (crashed) REQUIRED ApiArtifactSamplingRuleResponse
+        key: (key) REQUIRED str
 
-        success: (success) REQUIRED ApiArtifactSamplingRuleResponse
+        value: (value) REQUIRED Dict[str, Any]
     """
 
     # region fields
 
-    crashed: ApiArtifactSamplingRuleResponse  # REQUIRED
-    success: ApiArtifactSamplingRuleResponse  # REQUIRED
+    key: str  # REQUIRED
+    value: Dict[str, Any]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_crashed(
-        self, value: ApiArtifactSamplingRuleResponse
-    ) -> ApiArtifactTypeSamplingRulesResponse:
-        self.crashed = value
+    def with_key(self, value: str) -> ModelsBulkUpdatePlayerRecordRequestDetail:
+        self.key = value
         return self
 
-    def with_success(
-        self, value: ApiArtifactSamplingRuleResponse
-    ) -> ApiArtifactTypeSamplingRulesResponse:
-        self.success = value
+    def with_value(
+        self, value: Dict[str, Any]
+    ) -> ModelsBulkUpdatePlayerRecordRequestDetail:
+        self.value = value
         return self
 
     # endregion with_x methods
@@ -66,14 +62,14 @@ class ApiArtifactTypeSamplingRulesResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "crashed"):
-            result["crashed"] = self.crashed.to_dict(include_empty=include_empty)
+        if hasattr(self, "key"):
+            result["key"] = str(self.key)
         elif include_empty:
-            result["crashed"] = ApiArtifactSamplingRuleResponse()
-        if hasattr(self, "success"):
-            result["success"] = self.success.to_dict(include_empty=include_empty)
+            result["key"] = ""
+        if hasattr(self, "value"):
+            result["value"] = {str(k0): v0 for k0, v0 in self.value.items()}
         elif include_empty:
-            result["success"] = ApiArtifactSamplingRuleResponse()
+            result["value"] = {}
         return result
 
     # endregion to methods
@@ -82,41 +78,34 @@ class ApiArtifactTypeSamplingRulesResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        crashed: ApiArtifactSamplingRuleResponse,
-        success: ApiArtifactSamplingRuleResponse,
-        **kwargs,
-    ) -> ApiArtifactTypeSamplingRulesResponse:
+        cls, key: str, value: Dict[str, Any], **kwargs
+    ) -> ModelsBulkUpdatePlayerRecordRequestDetail:
         instance = cls()
-        instance.crashed = crashed
-        instance.success = success
+        instance.key = key
+        instance.value = value
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ApiArtifactTypeSamplingRulesResponse:
+    ) -> ModelsBulkUpdatePlayerRecordRequestDetail:
         instance = cls()
         if not dict_:
             return instance
-        if "crashed" in dict_ and dict_["crashed"] is not None:
-            instance.crashed = ApiArtifactSamplingRuleResponse.create_from_dict(
-                dict_["crashed"], include_empty=include_empty
-            )
+        if "key" in dict_ and dict_["key"] is not None:
+            instance.key = str(dict_["key"])
         elif include_empty:
-            instance.crashed = ApiArtifactSamplingRuleResponse()
-        if "success" in dict_ and dict_["success"] is not None:
-            instance.success = ApiArtifactSamplingRuleResponse.create_from_dict(
-                dict_["success"], include_empty=include_empty
-            )
+            instance.key = ""
+        if "value" in dict_ and dict_["value"] is not None:
+            instance.value = {str(k0): v0 for k0, v0 in dict_["value"].items()}
         elif include_empty:
-            instance.success = ApiArtifactSamplingRuleResponse()
+            instance.value = {}
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApiArtifactTypeSamplingRulesResponse]:
+    ) -> Dict[str, ModelsBulkUpdatePlayerRecordRequestDetail]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -126,7 +115,7 @@ class ApiArtifactTypeSamplingRulesResponse(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ApiArtifactTypeSamplingRulesResponse]:
+    ) -> List[ModelsBulkUpdatePlayerRecordRequestDetail]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -137,9 +126,9 @@ class ApiArtifactTypeSamplingRulesResponse(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ApiArtifactTypeSamplingRulesResponse,
-        List[ApiArtifactTypeSamplingRulesResponse],
-        Dict[Any, ApiArtifactTypeSamplingRulesResponse],
+        ModelsBulkUpdatePlayerRecordRequestDetail,
+        List[ModelsBulkUpdatePlayerRecordRequestDetail],
+        Dict[Any, ModelsBulkUpdatePlayerRecordRequestDetail],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -154,15 +143,15 @@ class ApiArtifactTypeSamplingRulesResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "crashed": "crashed",
-            "success": "success",
+            "key": "key",
+            "value": "value",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "crashed": True,
-            "success": True,
+            "key": True,
+            "value": True,
         }
 
     # endregion static methods

@@ -29,128 +29,14 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import ApiFleetArtifactsSampleRulesResponse
 from ..models import ApiImageDetails
 from ..models import ApiImageList
 from ..models import ApiImageUpdate
 from ..models import ResponseErrorResponse
 
-from ..operations.images import FleetArtifactSamplingRulesGet
 from ..operations.images import ImageGet
 from ..operations.images import ImageList
 from ..operations.images import ImagePatch
-
-
-@same_doc_as(FleetArtifactSamplingRulesGet)
-def fleet_artifact_sampling_rules_get(
-    fleet_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Get the sampling rules for a fleet (FleetArtifactSamplingRulesGet)
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACTS [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACTS [READ]
-
-    Properties:
-        url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules
-
-        method: GET
-
-        tags: ["Images"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        fleet_id: (fleetID) REQUIRED str in path
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - ApiFleetArtifactsSampleRulesResponse (success)
-
-        400: Bad Request - ResponseErrorResponse (invalid fleet ID)
-
-        401: Unauthorized - ResponseErrorResponse (no authorization provided)
-
-        403: Forbidden - ResponseErrorResponse (insufficient permissions)
-
-        404: Not Found - ResponseErrorResponse (artifact sampling rules not found for fleet)
-
-        500: Internal Server Error - ResponseErrorResponse (internal server error)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = FleetArtifactSamplingRulesGet.create(
-        fleet_id=fleet_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(FleetArtifactSamplingRulesGet)
-async def fleet_artifact_sampling_rules_get_async(
-    fleet_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Get the sampling rules for a fleet (FleetArtifactSamplingRulesGet)
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACTS [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACTS [READ]
-
-    Properties:
-        url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules
-
-        method: GET
-
-        tags: ["Images"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        fleet_id: (fleetID) REQUIRED str in path
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - ApiFleetArtifactsSampleRulesResponse (success)
-
-        400: Bad Request - ResponseErrorResponse (invalid fleet ID)
-
-        401: Unauthorized - ResponseErrorResponse (no authorization provided)
-
-        403: Forbidden - ResponseErrorResponse (insufficient permissions)
-
-        404: Not Found - ResponseErrorResponse (artifact sampling rules not found for fleet)
-
-        500: Internal Server Error - ResponseErrorResponse (internal server error)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = FleetArtifactSamplingRulesGet.create(
-        fleet_id=fleet_id,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
 
 
 @same_doc_as(ImageGet)

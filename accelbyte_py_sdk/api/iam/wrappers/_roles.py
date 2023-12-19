@@ -124,25 +124,10 @@ def add_role_managers(
     """Add Role Managers (AddRoleManagers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-
-
     Role can only be assigned to other users by the role's manager.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/managers [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/managers
@@ -190,25 +175,10 @@ async def add_role_managers_async(
     """Add Role Managers (AddRoleManagers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-
-
     Role can only be assigned to other users by the role's manager.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/managers [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/managers
@@ -258,30 +228,12 @@ def add_role_members(
     """Add Role Members (AddRoleMembers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-
-
     Admin roles has its members listed in the role.
-
-
-
 
     Role can only be assigned to other users by the role's manager.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/members [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/members
@@ -329,30 +281,12 @@ async def add_role_members_async(
     """Add Role Members (AddRoleMembers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-
-
     Admin roles has its members listed in the role.
-
-
-
 
     Role can only be assigned to other users by the role's manager.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/members [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/members
@@ -404,119 +338,35 @@ def add_role_permission(
     """Add Role Permission (AddRolePermission)
 
     ## The endpoint is going to be deprecated
-
-
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' Or 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
 
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
 
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    - Seconds: 0-59 * / , -
+    - Minutes: 0-59 * / , -
+    - Hours: 0-23 * / , -
+    - Day of month: 1-31 * / , - L W
+    - Month: 1-12 JAN-DEC * / , -
+    - Day of week: 0-6 SUN-SAT * / , - L #
+    - Year: 1970-2099 * / , -
 
     Special characters:
+    - **: all values in the fields, e.g. * in seconds fields indicates every second
+    - /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    - ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    - -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    - L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    - W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    - #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(update): /iam/v3/admin/roles/{roleId}/permissions [PUT]
-
-
-      * Substitute endpoint(create): /iam/v3/admin/roles/{roleId}/permissions [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint(update): _/iam/v3/admin/roles/{roleId}/permissions [PUT]_**
+    - **Substitute endpoint(create): _/iam/v3/admin/roles/{roleId}/permissions [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/permissions/{resource}/{action}
@@ -572,119 +422,35 @@ async def add_role_permission_async(
     """Add Role Permission (AddRolePermission)
 
     ## The endpoint is going to be deprecated
-
-
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' Or 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
 
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
 
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    - Seconds: 0-59 * / , -
+    - Minutes: 0-59 * / , -
+    - Hours: 0-23 * / , -
+    - Day of month: 1-31 * / , - L W
+    - Month: 1-12 JAN-DEC * / , -
+    - Day of week: 0-6 SUN-SAT * / , - L #
+    - Year: 1970-2099 * / , -
 
     Special characters:
+    - **: all values in the fields, e.g. * in seconds fields indicates every second
+    - /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    - ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    - -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    - L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    - W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    - #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(update): /iam/v3/admin/roles/{roleId}/permissions [PUT]
-
-
-      * Substitute endpoint(create): /iam/v3/admin/roles/{roleId}/permissions [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint(update): _/iam/v3/admin/roles/{roleId}/permissions [PUT]_**
+    - **Substitute endpoint(create): _/iam/v3/admin/roles/{roleId}/permissions [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/permissions/{resource}/{action}
@@ -739,18 +505,7 @@ def admin_add_role_managers_v3(
     """Add Role Managers (AdminAddRoleManagersV3)
 
     Role can only be assigned to other users by the role's manager.
-
-
-
-
-
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
     action code: 10408
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers
@@ -799,18 +554,7 @@ async def admin_add_role_managers_v3_async(
     """Add Role Managers (AdminAddRoleManagersV3)
 
     Role can only be assigned to other users by the role's manager.
-
-
-
-
-
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
     action code: 10408
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers
@@ -860,23 +604,9 @@ def admin_add_role_members_v3(
 ):
     """Add Role Members (AdminAddRoleMembersV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     Role can only be assigned to other users by the role's manager.
-
-
     action code: 10410
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members
@@ -926,23 +656,9 @@ async def admin_add_role_members_v3_async(
 ):
     """Add Role Members (AdminAddRoleMembersV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     Role can only be assigned to other users by the role's manager.
-
-
     action code: 10410
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members
@@ -994,104 +710,30 @@ def admin_add_role_permissions_v3(
 ):
     """Add Role Permissions (AdminAddRolePermissionsV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will ATTACH permission(s) into the role
-
-
-
     action code: 10404
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    1. Minutes: 0-59 * / , -
+    1. Hours: 0-23 * / , -
+    1. Day of month: 1-31 * / , - L W
+    1. Month: 1-12 JAN-DEC * / , -
+    1. Day of week: 0-6 SUN-SAT * / , - L #
+    1. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    1. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    1. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    1. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    1. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    1. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    1. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions
@@ -1139,104 +781,30 @@ async def admin_add_role_permissions_v3_async(
 ):
     """Add Role Permissions (AdminAddRolePermissionsV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will ATTACH permission(s) into the role
-
-
-
     action code: 10404
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    1. Minutes: 0-59 * / , -
+    1. Hours: 0-23 * / , -
+    1. Day of month: 1-31 * / , - L W
+    1. Month: 1-12 JAN-DEC * / , -
+    1. Day of week: 0-6 SUN-SAT * / , - L #
+    1. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    1. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    1. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    1. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    1. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    1. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    1. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions
@@ -1286,104 +854,31 @@ def admin_add_role_permissions_v4(
 ):
     """Add Role Permissions V4 (AdminAddRolePermissionsV4)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will ATTACH permission(s) into the role
-
-
-
     action code: 10404
 
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/permissions
@@ -1429,104 +924,31 @@ async def admin_add_role_permissions_v4_async(
 ):
     """Add Role Permissions V4 (AdminAddRolePermissionsV4)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will ATTACH permission(s) into the role
-
-
-
     action code: 10404
 
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/permissions
@@ -1574,17 +996,12 @@ def admin_assign_user_to_role_v4(
 ):
     """Assign User to Role (AdminAssignUserToRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
     Parameters:
-    - userId: string (required)
-    - namespace: string (userâs namespace) (required)
-    - assignedNamespaces: array of string (namespaces to be assigned on role) (required)
+    - **userId**: string (required)
+    - **namespace**: string (userâs namespace) (required)
+    - **assignedNamespaces**: array of string (namespaces to be assigned on role) (required)
 
     action code: 10410
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
@@ -1610,7 +1027,7 @@ def admin_assign_user_to_role_v4(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager | 10182: given namespace cannot be assigned to the role)
 
         404: Not Found - RestErrorResponse (10456: role not found | 20008: user not found)
 
@@ -1634,17 +1051,12 @@ async def admin_assign_user_to_role_v4_async(
 ):
     """Assign User to Role (AdminAssignUserToRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
     Parameters:
-    - userId: string (required)
-    - namespace: string (userâs namespace) (required)
-    - assignedNamespaces: array of string (namespaces to be assigned on role) (required)
+    - **userId**: string (required)
+    - **namespace**: string (userâs namespace) (required)
+    - **assignedNamespaces**: array of string (namespaces to be assigned on role) (required)
 
     action code: 10410
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
@@ -1670,7 +1082,7 @@ async def admin_assign_user_to_role_v4_async(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager | 10182: given namespace cannot be assigned to the role)
 
         404: Not Found - RestErrorResponse (10456: role not found | 20008: user not found)
 
@@ -1695,8 +1107,6 @@ def admin_create_role_v3(
 ):
     """Create Role (AdminCreateRoleV3)
 
-    Required permission 'ADMIN:ROLE [CREATE]'
-
     Create role request body:
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - permissions: specify the permission that this role have
@@ -1706,11 +1116,7 @@ def admin_create_role_v3(
     - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
     - deletable: specify if role can be deleted or not (default true)
 
-
     action code: 10401
-
-    Required Permission(s):
-        - ADMIN:ROLE [CREATE]
 
     Properties:
         url: /iam/v3/admin/roles
@@ -1752,8 +1158,6 @@ async def admin_create_role_v3_async(
 ):
     """Create Role (AdminCreateRoleV3)
 
-    Required permission 'ADMIN:ROLE [CREATE]'
-
     Create role request body:
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - permissions: specify the permission that this role have
@@ -1763,11 +1167,7 @@ async def admin_create_role_v3_async(
     - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
     - deletable: specify if role can be deleted or not (default true)
 
-
     action code: 10401
-
-    Required Permission(s):
-        - ADMIN:ROLE [CREATE]
 
     Properties:
         url: /iam/v3/admin/roles
@@ -1811,8 +1211,6 @@ def admin_create_role_v4(
 ):
     """Create Role (AdminCreateRoleV4)
 
-    Required permission: ADMIN:ROLE [CREATE]
-
     Create role request body:
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - adminRole: specify if role is for admin user (default false)
@@ -1820,9 +1218,6 @@ def admin_create_role_v4(
     - deletable: specify if role can be deleted (default true)
 
     action code: 10401
-
-    Required Permission(s):
-        - ADMIN:ROLE [CREATE]
 
     Properties:
         url: /iam/v4/admin/roles
@@ -1864,8 +1259,6 @@ async def admin_create_role_v4_async(
 ):
     """Create Role (AdminCreateRoleV4)
 
-    Required permission: ADMIN:ROLE [CREATE]
-
     Create role request body:
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - adminRole: specify if role is for admin user (default false)
@@ -1873,9 +1266,6 @@ async def admin_create_role_v4_async(
     - deletable: specify if role can be deleted (default true)
 
     action code: 10401
-
-    Required Permission(s):
-        - ADMIN:ROLE [CREATE]
 
     Properties:
         url: /iam/v4/admin/roles
@@ -1921,11 +1311,7 @@ def admin_delete_role_permission_v3(
 ):
     """Delete Role Permission (AdminDeleteRolePermissionV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
     action code: 10406
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions/{resource}/{action}
@@ -1977,11 +1363,7 @@ async def admin_delete_role_permission_v3_async(
 ):
     """Delete Role Permission (AdminDeleteRolePermissionV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
     action code: 10406
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions/{resource}/{action}
@@ -2034,11 +1416,6 @@ def admin_delete_role_permissions_v3(
 ):
     """Delete Role (AdminDeleteRolePermissionsV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions
 
@@ -2080,11 +1457,6 @@ async def admin_delete_role_permissions_v3_async(
     **kwargs
 ):
     """Delete Role (AdminDeleteRolePermissionsV3)
-
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions
@@ -2130,11 +1502,6 @@ def admin_delete_role_permissions_v4(
 ):
     """Delete Role Permission V4 (AdminDeleteRolePermissionsV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
     Properties:
         url: /iam/v4/admin/roles/{roleId}/permissions
 
@@ -2177,11 +1544,6 @@ async def admin_delete_role_permissions_v4_async(
 ):
     """Delete Role Permission V4 (AdminDeleteRolePermissionsV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
     Properties:
         url: /iam/v4/admin/roles/{roleId}/permissions
 
@@ -2223,11 +1585,7 @@ def admin_delete_role_v3(
 ):
     """Delete Role (AdminDeleteRoleV3)
 
-    Required permission ''ADMIN:ROLE [DELETE]''
     action code: 10403
-
-    Required Permission(s):
-        - ADMIN:ROLE [DELETE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}
@@ -2271,11 +1629,7 @@ async def admin_delete_role_v3_async(
 ):
     """Delete Role (AdminDeleteRoleV3)
 
-    Required permission ''ADMIN:ROLE [DELETE]''
     action code: 10403
-
-    Required Permission(s):
-        - ADMIN:ROLE [DELETE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}
@@ -2321,14 +1675,8 @@ def admin_delete_role_v4(
 ):
     """Delete Role (AdminDeleteRoleV4)
 
-    Required permission ADMIN:ROLE [DELETE]
-
     Removes role ID from user's Roles and NamespaceRoles before deleting the role.
-
     action code: 10403
-
-    Required Permission(s):
-        - ADMIN:ROLE [DELETE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}
@@ -2370,14 +1718,8 @@ async def admin_delete_role_v4_async(
 ):
     """Delete Role (AdminDeleteRoleV4)
 
-    Required permission ADMIN:ROLE [DELETE]
-
     Removes role ID from user's Roles and NamespaceRoles before deleting the role.
-
     action code: 10403
-
-    Required Permission(s):
-        - ADMIN:ROLE [DELETE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}
@@ -2421,20 +1763,8 @@ def admin_get_role_admin_status_v3(
 ):
     """Get Role Admin Status (AdminGetRoleAdminStatusV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     action code: 10420
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin
@@ -2476,20 +1806,8 @@ async def admin_get_role_admin_status_v3_async(
 ):
     """Get Role Admin Status (AdminGetRoleAdminStatusV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     action code: 10420
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin
@@ -2538,19 +1856,8 @@ def admin_get_role_managers_v3(
 ):
     """Get Role Managers (AdminGetRoleManagersV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
-
-
     Role can only be assigned to other users by the role's manager.
-
-
-
     action code: 10415
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers
@@ -2606,19 +1913,8 @@ async def admin_get_role_managers_v3_async(
 ):
     """Get Role Managers (AdminGetRoleManagersV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
-
-
     Role can only be assigned to other users by the role's manager.
-
-
-
     action code: 10415
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers
@@ -2676,20 +1972,8 @@ def admin_get_role_members_v3(
 ):
     """Get Role Members (AdminGetRoleMembersV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     action code: 10416
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members
@@ -2745,20 +2029,8 @@ async def admin_get_role_members_v3_async(
 ):
     """Get Role Members (AdminGetRoleMembersV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     action code: 10416
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members
@@ -2811,13 +2083,7 @@ def admin_get_role_v3(
 ):
     """Get Role (AdminGetRoleV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
     action code: 10419
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}
@@ -2859,13 +2125,7 @@ async def admin_get_role_v3_async(
 ):
     """Get Role (AdminGetRoleV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
     action code: 10419
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}
@@ -2909,12 +2169,7 @@ def admin_get_role_v4(
 ):
     """Get Role (AdminGetRoleV4)
 
-    Required permission ADMIN:ROLE [READ]
-
     action code: 10419
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}
@@ -2956,12 +2211,7 @@ async def admin_get_role_v4_async(
 ):
     """Get Role (AdminGetRoleV4)
 
-    Required permission ADMIN:ROLE [READ]
-
     action code: 10419
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}
@@ -3010,13 +2260,7 @@ def admin_get_roles_v3(
 ):
     """Get Roles (AdminGetRolesV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
     action code: 10414
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles
@@ -3070,13 +2314,7 @@ async def admin_get_roles_v3_async(
 ):
     """Get Roles (AdminGetRolesV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
     action code: 10414
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles
@@ -3132,12 +2370,7 @@ def admin_get_roles_v4(
 ):
     """Get Roles (AdminGetRolesV4)
 
-    Required permission ADMIN:ROLE [READ]
-
     action code: 10414
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v4/admin/roles
@@ -3191,12 +2424,7 @@ async def admin_get_roles_v4_async(
 ):
     """Get Roles (AdminGetRolesV4)
 
-    Required permission ADMIN:ROLE [READ]
-
     action code: 10414
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v4/admin/roles
@@ -3252,12 +2480,8 @@ def admin_list_assigned_users_v4(
 ):
     """Get Role's Assigned Users (AdminListAssignedUsersV4)
 
-    Required permission ADMIN:ROLE [READ]
     Query all users that has the specified role.
     action code: 10416
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
@@ -3311,12 +2535,8 @@ async def admin_list_assigned_users_v4_async(
 ):
     """Get Role's Assigned Users (AdminListAssignedUsersV4)
 
-    Required permission ADMIN:ROLE [READ]
     Query all users that has the specified role.
     action code: 10416
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
@@ -3367,12 +2587,7 @@ def admin_remove_role_admin_v3(
 ):
     """Remove Role Admin Status (AdminRemoveRoleAdminV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
     code: 10413
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin
@@ -3414,12 +2629,7 @@ async def admin_remove_role_admin_v3_async(
 ):
     """Remove Role Admin Status (AdminRemoveRoleAdminV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
     code: 10413
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin
@@ -3466,18 +2676,8 @@ def admin_remove_role_managers_v3(
 ):
     """Remove Role Managers (AdminRemoveRoleManagersV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     Role can only be assigned to other users by the role's manager.
-
-
     action code: 10409
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers
@@ -3525,18 +2725,8 @@ async def admin_remove_role_managers_v3_async(
 ):
     """Remove Role Managers (AdminRemoveRoleManagersV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     Role can only be assigned to other users by the role's manager.
-
-
     action code: 10409
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers
@@ -3586,23 +2776,9 @@ def admin_remove_role_members_v3(
 ):
     """Remove Role Members (AdminRemoveRoleMembersV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     Role can only be assigned to other users by the role's manager.
-
-
     action code: 10411
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members
@@ -3650,23 +2826,9 @@ async def admin_remove_role_members_v3_async(
 ):
     """Remove Role Members (AdminRemoveRoleMembersV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     Role can only be assigned to other users by the role's manager.
-
-
     action code: 10411
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members
@@ -3716,8 +2878,6 @@ def admin_revoke_user_from_role_v4(
 ):
     """Revoke User from Role (AdminRevokeUserFromRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
     Current implementation will revoke user from role in all assigned namespaces.
 
     Parameters:
@@ -3725,9 +2885,6 @@ def admin_revoke_user_from_role_v4(
     - namespace: string (userâs namespace) (required)
 
     action code: 10411
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
@@ -3773,8 +2930,6 @@ async def admin_revoke_user_from_role_v4_async(
 ):
     """Revoke User from Role (AdminRevokeUserFromRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
     Current implementation will revoke user from role in all assigned namespaces.
 
     Parameters:
@@ -3782,9 +2937,6 @@ async def admin_revoke_user_from_role_v4_async(
     - namespace: string (userâs namespace) (required)
 
     action code: 10411
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
@@ -3829,24 +2981,9 @@ def admin_update_admin_role_status_v3(
 ):
     """Set Role as Admin Role (AdminUpdateAdminRoleStatusV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     Role can be set as admin role only when it has at least 1 manager.
-
-
-
     action code: 10412
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin
@@ -3888,24 +3025,9 @@ async def admin_update_admin_role_status_v3_async(
 ):
     """Set Role as Admin Role (AdminUpdateAdminRoleStatusV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     Role can be set as admin role only when it has at least 1 manager.
-
-
-
     action code: 10412
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin
@@ -3952,104 +3074,30 @@ def admin_update_role_permissions_v3(
 ):
     """Update Role Permissions (AdminUpdateRolePermissionsV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will REPLACE role's permissions with the ones defined in body
-
-
-
     action code: 10405
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    1. Minutes: 0-59 * / , -
+    1. Hours: 0-23 * / , -
+    1. Day of month: 1-31 * / , - L W
+    1. Month: 1-12 JAN-DEC * / , -
+    1. Day of week: 0-6 SUN-SAT * / , - L #
+    1. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    1. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    1. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    1. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    1. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    1. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    1. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions
@@ -4097,104 +3145,30 @@ async def admin_update_role_permissions_v3_async(
 ):
     """Update Role Permissions (AdminUpdateRolePermissionsV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will REPLACE role's permissions with the ones defined in body
-
-
-
     action code: 10405
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    1. Minutes: 0-59 * / , -
+    1. Hours: 0-23 * / , -
+    1. Day of month: 1-31 * / , - L W
+    1. Month: 1-12 JAN-DEC * / , -
+    1. Day of week: 0-6 SUN-SAT * / , - L #
+    1. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    1. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    1. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    1. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    1. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    1. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    1. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions
@@ -4244,104 +3218,30 @@ def admin_update_role_permissions_v4(
 ):
     """Update Role Permissions (AdminUpdateRolePermissionsV4)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will REPLACE role's permissions with the ones defined in body
-
-
-
     action code: 10405
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/permissions
@@ -4387,104 +3287,30 @@ async def admin_update_role_permissions_v4_async(
 ):
     """Update Role Permissions (AdminUpdateRolePermissionsV4)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will REPLACE role's permissions with the ones defined in body
-
-
-
     action code: 10405
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
-
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/permissions
@@ -4532,18 +3358,12 @@ def admin_update_role_v3(
 ):
     """Update Role (AdminUpdateRoleV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
     Update role request body:
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
     - deletable: specify if role can be deleted or not (optional)
 
-
     action code: 10402
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}
@@ -4591,18 +3411,12 @@ async def admin_update_role_v3_async(
 ):
     """Update Role (AdminUpdateRoleV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
     Update role request body:
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
     - deletable: specify if role can be deleted or not (optional)
 
-
     action code: 10402
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}
@@ -4652,8 +3466,6 @@ def admin_update_role_v4(
 ):
     """Update Role (AdminUpdateRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
     Update role request body:
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - adminRole: specify if role is for admin user (default false)
@@ -4661,9 +3473,6 @@ def admin_update_role_v4(
     - deletable: specify if role can be deleted (optional)
 
     action code: 10402
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}
@@ -4709,8 +3518,6 @@ async def admin_update_role_v4_async(
 ):
     """Update Role (AdminUpdateRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
     Update role request body:
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - adminRole: specify if role is for admin user (default false)
@@ -4718,9 +3525,6 @@ async def admin_update_role_v4_async(
     - deletable: specify if role can be deleted (optional)
 
     action code: 10402
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}
@@ -4769,35 +3573,13 @@ def create_role(
     """Create Role (CreateRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [CREATE]' or 'ADMIN:ROLE [CREATE]'
-
-
     Role can only be assigned to other users by the role's manager.
-
-
-
 
     If role is an administrator role (i.e. AdminRole == true), it will list out the role's members.
 
-
-
-
     Administrator role can be created only when at least 1 manager is specified.
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [CREATE]
-
-        - ROLE:ADMIN [CREATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles [POST]_**
 
     Properties:
         url: /iam/roles
@@ -4839,35 +3621,13 @@ async def create_role_async(
     """Create Role (CreateRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [CREATE]' or 'ADMIN:ROLE [CREATE]'
-
-
     Role can only be assigned to other users by the role's manager.
-
-
-
 
     If role is an administrator role (i.e. AdminRole == true), it will list out the role's members.
 
-
-
-
     Administrator role can be created only when at least 1 manager is specified.
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [CREATE]
-
-        - ROLE:ADMIN [CREATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles [POST]_**
 
     Properties:
         url: /iam/roles
@@ -4909,20 +3669,8 @@ def delete_role(
     """Delete Role (DeleteRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [DELETE]' or 'ADMIN:ROLE [DELETE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [DELETE]
-
-        - ROLE:ADMIN [DELETE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId} [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}
@@ -4962,20 +3710,8 @@ async def delete_role_async(
     """Delete Role (DeleteRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [DELETE]' or 'ADMIN:ROLE [DELETE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [DELETE]
-
-        - ROLE:ADMIN [DELETE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId} [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}
@@ -5021,23 +3757,9 @@ def delete_role_permission(
     """Delete Role Permission (DeleteRolePermission)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/permissions/{resource}/{action} [DELETE]
-
-
-      * Substitute endpoint: /iam/v4/admin/roles/{roleId}/permissions [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/permissions/{resource}/{action} [DELETE]_**
+    - **Substitute endpoint: _/iam/v4/admin/roles/{roleId}/permissions [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}/permissions/{resource}/{action}
@@ -5089,23 +3811,9 @@ async def delete_role_permission_async(
     """Delete Role Permission (DeleteRolePermission)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/permissions/{resource}/{action} [DELETE]
-
-
-      * Substitute endpoint: /iam/v4/admin/roles/{roleId}/permissions [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/permissions/{resource}/{action} [DELETE]_**
+    - **Substitute endpoint: _/iam/v4/admin/roles/{roleId}/permissions [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}/permissions/{resource}/{action}
@@ -5155,18 +3863,8 @@ def get_role(
     """Get Role (GetRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId} [GET]_**
 
     Properties:
         url: /iam/roles/{roleId}
@@ -5206,18 +3904,8 @@ async def get_role_async(
     """Get Role (GetRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId} [GET]_**
 
     Properties:
         url: /iam/roles/{roleId}
@@ -5259,23 +3947,10 @@ def get_role_admin_status(
     """Get Role Admin Status (GetRoleAdminStatus)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]
-
-
     Admin roles has its members listed in the role.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/admin [GET]_**
 
     Properties:
         url: /iam/roles/{roleId}/admin
@@ -5317,23 +3992,10 @@ async def get_role_admin_status_async(
     """Get Role Admin Status (GetRoleAdminStatus)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]
-
-
     Admin roles has its members listed in the role.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/admin [GET]_**
 
     Properties:
         url: /iam/roles/{roleId}/admin
@@ -5377,23 +4039,10 @@ def get_role_managers(
     """Get Role Managers (GetRoleManagers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]'
-
-
     Role can only be assigned to other users by the role's manager.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/managers [GET]_**
 
     Properties:
         url: /iam/roles/{roleId}/managers
@@ -5435,23 +4084,10 @@ async def get_role_managers_async(
     """Get Role Managers (GetRoleManagers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]'
-
-
     Role can only be assigned to other users by the role's manager.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/managers [GET]_**
 
     Properties:
         url: /iam/roles/{roleId}/managers
@@ -5495,18 +4131,8 @@ def get_role_members(
     """Get Role Members (GetRoleMembers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/members [GET]_**
 
     Properties:
         url: /iam/roles/{roleId}/members
@@ -5548,18 +4174,8 @@ async def get_role_members_async(
     """Get Role Members (GetRoleMembers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/members [GET]_**
 
     Properties:
         url: /iam/roles/{roleId}/members
@@ -5605,18 +4221,8 @@ def get_roles(
     """Get Roles (GetRoles)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles [GET]_**
 
     Properties:
         url: /iam/roles
@@ -5656,18 +4262,8 @@ async def get_roles_async(
     """Get Roles (GetRoles)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles [GET]_**
 
     Properties:
         url: /iam/roles
@@ -5705,7 +4301,6 @@ def public_get_role_v3(
 ):
     """Get Public Role (PublicGetRoleV3)
 
-
     This endpoint is used to get non-admin role based on specify roleId.
     action code : 10417
 
@@ -5742,7 +4337,6 @@ async def public_get_role_v3_async(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     """Get Public Role (PublicGetRoleV3)
-
 
     This endpoint is used to get non-admin role based on specify roleId.
     action code : 10417
@@ -5788,10 +4382,7 @@ def public_get_roles_v3(
 ):
     """Get Roles (PublicGetRolesV3)
 
-
     This endpoint is used to get all non-admin role.
-
-
     action code: 10418
 
     Properties:
@@ -5840,10 +4431,7 @@ async def public_get_roles_v3_async(
 ):
     """Get Roles (PublicGetRolesV3)
 
-
     This endpoint is used to get all non-admin role.
-
-
     action code: 10418
 
     Properties:
@@ -5891,20 +4479,8 @@ def remove_role_admin(
     """Remove Role Admin Status (RemoveRoleAdmin)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/admin [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}/admin
@@ -5946,20 +4522,8 @@ async def remove_role_admin_async(
     """Remove Role Admin Status (RemoveRoleAdmin)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/admin [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}/admin
@@ -6006,20 +4570,8 @@ def remove_role_managers(
     """Remove Role Managers (RemoveRoleManagers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/managers [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}/managers
@@ -6067,20 +4619,8 @@ async def remove_role_managers_async(
     """Remove Role Managers (RemoveRoleManagers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/managers [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}/managers
@@ -6130,20 +4670,8 @@ def remove_role_members(
     """Remove Role Members (RemoveRoleMembers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/members [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}/members
@@ -6191,20 +4719,8 @@ async def remove_role_members_async(
     """Remove Role Members (RemoveRoleMembers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/members [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}/members
@@ -6251,30 +4767,12 @@ def set_role_as_admin(
     """Set Role as Admin Role (SetRoleAsAdmin)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-
-
     Admin roles has its members listed in the role.
-
-
-
 
     Role can be set as admin role only when it has at least 1 manager.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/admin [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/admin
@@ -6316,30 +4814,12 @@ async def set_role_as_admin_async(
     """Set Role as Admin Role (SetRoleAsAdmin)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-
-
     Admin roles has its members listed in the role.
-
-
-
 
     Role can be set as admin role only when it has at least 1 manager.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/admin [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/admin [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/admin
@@ -6386,20 +4866,8 @@ def update_role(
     """Update Role (UpdateRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [PATCH]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId} [PATCH]_**
 
     Properties:
         url: /iam/roles/{roleId}
@@ -6447,20 +4915,8 @@ async def update_role_async(
     """Update Role (UpdateRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId} [PATCH]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId} [PATCH]_**
 
     Properties:
         url: /iam/roles/{roleId}
@@ -6510,116 +4966,34 @@ def update_role_permissions(
     """Update Role Permissions (UpdateRolePermissions)
 
     ## The endpoint is going to be deprecated
-
-
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will REPLACE role's permissions with the ones defined in body
 
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
 
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/permissions [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/permissions [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/permissions
@@ -6667,116 +5041,34 @@ async def update_role_permissions_async(
     """Update Role Permissions (UpdateRolePermissions)
 
     ## The endpoint is going to be deprecated
-
-
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     This endpoint will REPLACE role's permissions with the ones defined in body
 
-
-
-
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-
-
-
-
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-
-
-
-
     In ranged schedule, first element will be start date, and second one will be end date
-
-
-
-
     If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
 
-
-
-
     Syntax reference
-
-
-
-
     Fields:
-
-
-
-
-
-
-      1. Seconds: 0-59 * / , -
-
-
-      2. Minutes: 0-59 * / , -
-
-
-      3. Hours: 0-23 * / , -
-
-
-      4. Day of month: 1-31 * / , - L W
-
-
-      5. Month: 1-12 JAN-DEC * / , -
-
-
-      6. Day of week: 0-6 SUN-SAT * / , - L #
-
-
-      7. Year: 1970-2099 * / , -
-
-
-
-
+    1. Seconds: 0-59 * / , -
+    2. Minutes: 0-59 * / , -
+    3. Hours: 0-23 * / , -
+    4. Day of month: 1-31 * / , - L W
+    5. Month: 1-12 JAN-DEC * / , -
+    6. Day of week: 0-6 SUN-SAT * / , - L #
+    7. Year: 1970-2099 * / , -
 
     Special characters:
+    1. *: all values in the fields, e.g. * in seconds fields indicates every second
+    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
+    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
+    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
+    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
+    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
+    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
 
-
-
-
-
-
-      1. *: all values in the fields, e.g. * in seconds fields indicates every second
-
-
-      2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-
-
-      3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-
-
-      4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-
-
-      5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-
-
-      6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-
-
-      7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
-
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/permissions [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/permissions [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/permissions

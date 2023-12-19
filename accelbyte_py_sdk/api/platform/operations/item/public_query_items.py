@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -99,6 +99,8 @@ class PublicQueryItems(Operation):
 
         app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         base_app_id: (baseAppId) OPTIONAL str in query
 
         category_path: (categoryPath) OPTIONAL str in query
@@ -142,6 +144,7 @@ class PublicQueryItems(Operation):
 
     namespace: str  # REQUIRED in [path]
     app_type: Union[str, AppTypeEnum]  # OPTIONAL in [query]
+    auto_calc_estimated_price: bool  # OPTIONAL in [query]
     base_app_id: str  # OPTIONAL in [query]
     category_path: str  # OPTIONAL in [query]
     features: str  # OPTIONAL in [query]
@@ -207,6 +210,8 @@ class PublicQueryItems(Operation):
         result = {}
         if hasattr(self, "app_type"):
             result["appType"] = self.app_type
+        if hasattr(self, "auto_calc_estimated_price"):
+            result["autoCalcEstimatedPrice"] = self.auto_calc_estimated_price
         if hasattr(self, "base_app_id"):
             result["baseAppId"] = self.base_app_id
         if hasattr(self, "category_path"):
@@ -247,6 +252,10 @@ class PublicQueryItems(Operation):
 
     def with_app_type(self, value: Union[str, AppTypeEnum]) -> PublicQueryItems:
         self.app_type = value
+        return self
+
+    def with_auto_calc_estimated_price(self, value: bool) -> PublicQueryItems:
+        self.auto_calc_estimated_price = value
         return self
 
     def with_base_app_id(self, value: str) -> PublicQueryItems:
@@ -311,6 +320,13 @@ class PublicQueryItems(Operation):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = Union[str, AppTypeEnum]()
+        if (
+            hasattr(self, "auto_calc_estimated_price")
+            and self.auto_calc_estimated_price
+        ):
+            result["autoCalcEstimatedPrice"] = bool(self.auto_calc_estimated_price)
+        elif include_empty:
+            result["autoCalcEstimatedPrice"] = False
         if hasattr(self, "base_app_id") and self.base_app_id:
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
@@ -416,6 +432,7 @@ class PublicQueryItems(Operation):
         cls,
         namespace: str,
         app_type: Optional[Union[str, AppTypeEnum]] = None,
+        auto_calc_estimated_price: Optional[bool] = None,
         base_app_id: Optional[str] = None,
         category_path: Optional[str] = None,
         features: Optional[str] = None,
@@ -434,6 +451,8 @@ class PublicQueryItems(Operation):
         instance.namespace = namespace
         if app_type is not None:
             instance.app_type = app_type
+        if auto_calc_estimated_price is not None:
+            instance.auto_calc_estimated_price = auto_calc_estimated_price
         if base_app_id is not None:
             instance.base_app_id = base_app_id
         if category_path is not None:
@@ -473,6 +492,13 @@ class PublicQueryItems(Operation):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = Union[str, AppTypeEnum]()
+        if (
+            "autoCalcEstimatedPrice" in dict_
+            and dict_["autoCalcEstimatedPrice"] is not None
+        ):
+            instance.auto_calc_estimated_price = bool(dict_["autoCalcEstimatedPrice"])
+        elif include_empty:
+            instance.auto_calc_estimated_price = False
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
@@ -531,6 +557,7 @@ class PublicQueryItems(Operation):
         return {
             "namespace": "namespace",
             "appType": "app_type",
+            "autoCalcEstimatedPrice": "auto_calc_estimated_price",
             "baseAppId": "base_app_id",
             "categoryPath": "category_path",
             "features": "features",
@@ -550,6 +577,7 @@ class PublicQueryItems(Operation):
         return {
             "namespace": True,
             "appType": False,
+            "autoCalcEstimatedPrice": False,
             "baseAppId": False,
             "categoryPath": False,
             "features": False,

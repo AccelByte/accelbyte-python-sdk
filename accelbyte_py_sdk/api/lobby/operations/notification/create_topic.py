@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,18 +36,10 @@ from ...models import RestapiErrorResponseBody
 class CreateTopic(Operation):
     """create new notification topic (createTopic)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [CREATE]` with scope `social`
-
     Create new notification topic.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics

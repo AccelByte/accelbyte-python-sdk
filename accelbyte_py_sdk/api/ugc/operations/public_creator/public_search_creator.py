@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -62,13 +62,13 @@ class PublicSearchCreator(Operation):
         sortby: (sortby) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (Search creator)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770800: invalid paging parameter/max allowed number of tags is {maxTags}/invalid official parameter/invalid ishidden parameter)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator)
     """
 
     # region fields
@@ -215,13 +215,13 @@ class PublicSearchCreator(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (Search creator)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770800: invalid paging parameter/max allowed number of tags is {maxTags}/invalid official parameter/invalid ishidden parameter)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator)
 
         ---: HttpResponse (Undocumented Response)
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetClientsByNamespaceV3(Operation):
     """Get clients by namespace (AdminGetClientsByNamespaceV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [READ]'
-
-
-
-
     action code: 10308
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLIENT [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients

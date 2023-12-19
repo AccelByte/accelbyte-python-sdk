@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -56,15 +56,13 @@ class AddDownloadCount(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsAddDownloadCountResponse (OK)
+        200: OK - ModelsAddDownloadCountResponse (added download count to a content)
 
-        400: Bad Request - ResponseError (Bad Request)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        404: Not Found - ResponseError (772903: Unable to add content download: content not found)
 
-        404: Not Found - ResponseError (Not Found)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772902: Unable to add content download: database error)
     """
 
     # region fields
@@ -175,15 +173,13 @@ class AddDownloadCount(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsAddDownloadCountResponse (OK)
+        200: OK - ModelsAddDownloadCountResponse (added download count to a content)
 
-        400: Bad Request - ResponseError (Bad Request)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        404: Not Found - ResponseError (772903: Unable to add content download: content not found)
 
-        404: Not Found - ResponseError (Not Found)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772902: Unable to add content download: database error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -200,8 +196,6 @@ class AddDownloadCount(Operation):
 
         if code == 200:
             return ModelsAddDownloadCountResponse.create_from_dict(content), None
-        if code == 400:
-            return None, ResponseError.create_from_dict(content)
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 404:

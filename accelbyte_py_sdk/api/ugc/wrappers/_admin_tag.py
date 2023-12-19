@@ -73,15 +73,15 @@ def admin_create_tag(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateTagResponse (Created)
+        201: Created - ModelsCreateTagResponse (Tags created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771401: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (771403: Conflicted resource indentifier)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771402: Unable to save ugc tag)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -127,15 +127,15 @@ async def admin_create_tag_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateTagResponse (Created)
+        201: Created - ModelsCreateTagResponse (Tags created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771401: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (771403: Conflicted resource indentifier)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771402: Unable to save ugc tag)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -182,13 +182,13 @@ def admin_delete_tag(
         tag_id: (tagId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Tags deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772003: Tag not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772002: Unable delete tag)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -233,13 +233,13 @@ async def admin_delete_tag_async(
         tag_id: (tagId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Tags deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772003: Tag not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772002: Unable delete tag)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -289,13 +289,13 @@ def admin_get_tag(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetTagResponse (OK)
+        200: OK - ModelsPaginatedGetTagResponse (Get Tags)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771501: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771402: Unable to save ugc tag)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -344,13 +344,13 @@ async def admin_get_tag_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetTagResponse (OK)
+        200: OK - ModelsPaginatedGetTagResponse (Get Tags)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771501: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771402: Unable to save ugc tag)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -402,17 +402,17 @@ def admin_update_tag(
         tag_id: (tagId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateTagResponse (OK)
+        200: OK - ModelsCreateTagResponse (Tags updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772801: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772803: Tag not found)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (772804: Proposed Tag already exist)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772802: Unable update tags)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -462,17 +462,17 @@ async def admin_update_tag_async(
         tag_id: (tagId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateTagResponse (OK)
+        200: OK - ModelsCreateTagResponse (Tags updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772801: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772803: Tag not found)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (772804: Proposed Tag already exist)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772802: Unable update tags)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

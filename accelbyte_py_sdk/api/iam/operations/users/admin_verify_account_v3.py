@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,20 +37,8 @@ class AdminVerifyAccountV3(Operation):
     """Verify or consume verification code sent to user (AdminVerifyAccountV3)
 
     Will verify account and consume code if validateOnly is set false in request body
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
     Redeems a verification code sent to a user to verify the user's contact address is correct
-
-
-    Available ContactType : email or phone
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    Available ContactType : **email** or **phone**
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/verify

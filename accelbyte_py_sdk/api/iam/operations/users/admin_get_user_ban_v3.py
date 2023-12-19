@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,20 +36,8 @@ from ...models import RestErrorResponse
 class AdminGetUserBanV3(Operation):
     """Get user's bans (AdminGetUserBanV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'
-
-
-
-
     This endpoint retrieve the first page of the data if after and before parameters is empty
-
-
-
-
     action code : 10126
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans

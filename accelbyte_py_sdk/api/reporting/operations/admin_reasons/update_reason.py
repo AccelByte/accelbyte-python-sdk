@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,10 +37,7 @@ from ...models import RestapiErrorResponse
 class UpdateReason(Operation):
     """Update a report reason (updateReason)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+    This endpoint update a reason for a namespace with ID.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,19 +37,11 @@ class VerifyToken(Operation):
     """OAuth2 token verification API (VerifyToken)
 
     ## The endpoint is going to be deprecated
-
-
     This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/oauth/verify [POST]
-
-
-      * Note: difference in V3 response:
-        1. format differenceï¼Pascal case => Camel case): permissions field from Action => action, Resource => resource
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/oauth/verify [POST]_**
+    - **Note: difference in V3 response:**
+    1. format differenceï¼Pascal case => Camel case): permissions field from Action => action, Resource => resource
 
     Properties:
         url: /iam/oauth/verify

@@ -32,17 +32,21 @@ from ....core import same_doc_as
 from ..models import ErrorEntity
 from ..models import FulfillCodeRequest
 from ..models import FulfillmentHistoryPagingSlicedResult
+from ..models import FulfillmentItem
 from ..models import FulfillmentRequest
 from ..models import FulfillmentResult
+from ..models import PreCheckFulfillmentRequest
 from ..models import RewardsRequest
 
 from ..operations.fulfillment import FulfillItem
 from ..operations.fulfillment import FulfillRewards
 from ..operations.fulfillment import FulfillRewardsV2
+from ..operations.fulfillment import PreCheckFulfillItem
 from ..operations.fulfillment import PublicRedeemCode
 from ..operations.fulfillment import QueryFulfillmentHistories
 from ..operations.fulfillment import QueryFulfillmentHistoriesStatusEnum
 from ..operations.fulfillment import RedeemCode
+from ..models import FulfillmentItemItemTypeEnum
 from ..models import FulfillmentRequestOriginEnum, FulfillmentRequestSourceEnum
 from ..models import RewardsRequestOriginEnum, RewardsRequestSourceEnum
 
@@ -407,6 +411,122 @@ async def fulfill_rewards_v2_async(
     )
 
 
+@same_doc_as(PreCheckFulfillItem)
+def pre_check_fulfill_item(
+    user_id: str,
+    body: Optional[PreCheckFulfillmentRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Pre check fulfillment items (preCheckFulfillItem)
+
+    Retrieve and check fulfillment items based on the provided request.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=READ
+      *  Returns : list of fulfillment items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/preCheck
+
+        method: POST
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PreCheckFulfillmentRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[FulfillmentItem] (Successful retrieval)
+
+        400: Bad Request - ErrorEntity (38121: Duplicate permanent item exists)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PreCheckFulfillItem.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PreCheckFulfillItem)
+async def pre_check_fulfill_item_async(
+    user_id: str,
+    body: Optional[PreCheckFulfillmentRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Pre check fulfillment items (preCheckFulfillItem)
+
+    Retrieve and check fulfillment items based on the provided request.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=READ
+      *  Returns : list of fulfillment items
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/preCheck
+
+        method: POST
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL PreCheckFulfillmentRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[FulfillmentItem] (Successful retrieval)
+
+        400: Bad Request - ErrorEntity (38121: Duplicate permanent item exists)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PreCheckFulfillItem.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicRedeemCode)
 def public_redeem_code(
     user_id: str,
@@ -417,7 +537,7 @@ def public_redeem_code(
 ):
     """Redeem campaign code (publicRedeemCode)
 
-    Redeem campaign code.
+    Redeem campaign code, this api have rate limit, default: only allow request once per user in 2 seconds
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
@@ -453,6 +573,8 @@ def public_redeem_code(
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 37142: Code [{code}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 20006: optimistic lock | 31177: Permanent item already owned)
+
+        429: Too Many Requests - ErrorEntity (20007: too many requests)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -476,7 +598,7 @@ async def public_redeem_code_async(
 ):
     """Redeem campaign code (publicRedeemCode)
 
-    Redeem campaign code.
+    Redeem campaign code, this api have rate limit, default: only allow request once per user in 2 seconds
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
@@ -512,6 +634,8 @@ async def public_redeem_code_async(
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 37142: Code [{code}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 20006: optimistic lock | 31177: Permanent item already owned)
+
+        429: Too Many Requests - ErrorEntity (20007: too many requests)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

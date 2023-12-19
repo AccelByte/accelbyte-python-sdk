@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,30 +38,12 @@ class AddRoleMembers(Operation):
     """Add Role Members (AddRoleMembers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-
-
     Admin roles has its members listed in the role.
-
-
-
 
     Role can only be assigned to other users by the role's manager.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/members [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/members [POST]_**
 
     Properties:
         url: /iam/roles/{roleId}/members

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,12 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetRolesV4(Operation):
     """Get Roles (AdminGetRolesV4)
 
-    Required permission ADMIN:ROLE [READ]
-
     action code: 10414
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v4/admin/roles

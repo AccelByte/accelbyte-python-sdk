@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,45 +38,16 @@ class DisableUserBan(Operation):
     """Disable ban for a single user. (DisableUserBan)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]'.
-    "+
-    "
-     Notes for using IAM in publisher - game studio scenarios
-    "+
-    "
-
+    **Notes for using IAM in publisher - game studio scenarios**
     The endpoint allows:
-
-    "+
-    "
-      * The admin user in publisher namespace disables userâs ban in publisher namespace.
-    "+
-    "
-      * The admin user in game namespace disables userâs ban in game namespace.
-    "+
-    "
-      * The admin user in publisher namespace disables userâs ban in publisher namespace.
-
-    "+
-    "
+    - The admin user in publisher namespace disables userâs ban in publisher namespace.
+    - The admin user in game namespace disables userâs ban in game namespace.
+    - The admin user in publisher namespace disables userâs ban in publisher namespace.
 
     Other scenarios are not supported and will return 403: Forbidden.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans/{banId}/disable

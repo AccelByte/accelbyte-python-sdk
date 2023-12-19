@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,13 +63,13 @@ class GetGroups(Operation):
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGroupResponse (OK)
+        200: OK - ModelsPaginatedGroupResponse (Get all user group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (772301: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772302: Unable get groups)
     """
 
     # region fields
@@ -205,13 +205,13 @@ class GetGroups(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsPaginatedGroupResponse (OK)
+        200: OK - ModelsPaginatedGroupResponse (Get all user group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (772301: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772302: Unable get groups)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -228,9 +228,9 @@ class GetGroups(Operation):
 
         if code == 200:
             return ModelsPaginatedGroupResponse.create_from_dict(content), None
-        if code == 401:
+        if code == 400:
             return None, ResponseError.create_from_dict(content)
-        if code == 404:
+        if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

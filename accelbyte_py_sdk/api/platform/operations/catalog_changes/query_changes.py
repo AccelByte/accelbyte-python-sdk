@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,7 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
-from ...models import CatalogChangePagingSlicedResult
+from ...models import CatalogChangePagingResult
 
 
 class ActionEnum(StrEnum):
@@ -127,8 +127,10 @@ class QueryChanges(Operation):
 
         updated_at_start: (updatedAtStart) OPTIONAL str in query
 
+        with_total: (withTotal) OPTIONAL bool in query
+
     Responses:
-        200: OK - CatalogChangePagingSlicedResult (successful operation)
+        200: OK - CatalogChangePagingResult (successful operation)
     """
 
     # region fields
@@ -153,6 +155,7 @@ class QueryChanges(Operation):
     type_: Union[str, TypeEnum]  # OPTIONAL in [query]
     updated_at_end: str  # OPTIONAL in [query]
     updated_at_start: str  # OPTIONAL in [query]
+    with_total: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -228,6 +231,8 @@ class QueryChanges(Operation):
             result["updatedAtEnd"] = self.updated_at_end
         if hasattr(self, "updated_at_start"):
             result["updatedAtStart"] = self.updated_at_start
+        if hasattr(self, "with_total"):
+            result["withTotal"] = self.with_total
         return result
 
     # endregion get_x_params methods
@@ -290,6 +295,10 @@ class QueryChanges(Operation):
         self.updated_at_start = value
         return self
 
+    def with_with_total(self, value: bool) -> QueryChanges:
+        self.with_total = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -348,6 +357,10 @@ class QueryChanges(Operation):
             result["updatedAtStart"] = str(self.updated_at_start)
         elif include_empty:
             result["updatedAtStart"] = ""
+        if hasattr(self, "with_total") and self.with_total:
+            result["withTotal"] = bool(self.with_total)
+        elif include_empty:
+            result["withTotal"] = False
         return result
 
     # endregion to methods
@@ -357,10 +370,10 @@ class QueryChanges(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, CatalogChangePagingSlicedResult], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, CatalogChangePagingResult], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - CatalogChangePagingSlicedResult (successful operation)
+        200: OK - CatalogChangePagingResult (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -376,7 +389,7 @@ class QueryChanges(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return CatalogChangePagingSlicedResult.create_from_dict(content), None
+            return CatalogChangePagingResult.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -402,6 +415,7 @@ class QueryChanges(Operation):
         type_: Optional[Union[str, TypeEnum]] = None,
         updated_at_end: Optional[str] = None,
         updated_at_start: Optional[str] = None,
+        with_total: Optional[bool] = None,
         **kwargs,
     ) -> QueryChanges:
         instance = cls()
@@ -429,6 +443,8 @@ class QueryChanges(Operation):
             instance.updated_at_end = updated_at_end
         if updated_at_start is not None:
             instance.updated_at_start = updated_at_start
+        if with_total is not None:
+            instance.with_total = with_total
         return instance
 
     @classmethod
@@ -486,6 +502,10 @@ class QueryChanges(Operation):
             instance.updated_at_start = str(dict_["updatedAtStart"])
         elif include_empty:
             instance.updated_at_start = ""
+        if "withTotal" in dict_ and dict_["withTotal"] is not None:
+            instance.with_total = bool(dict_["withTotal"])
+        elif include_empty:
+            instance.with_total = False
         return instance
 
     @staticmethod
@@ -504,6 +524,7 @@ class QueryChanges(Operation):
             "type": "type_",
             "updatedAtEnd": "updated_at_end",
             "updatedAtStart": "updated_at_start",
+            "withTotal": "with_total",
         }
 
     @staticmethod
@@ -522,6 +543,7 @@ class QueryChanges(Operation):
             "type": False,
             "updatedAtEnd": False,
             "updatedAtStart": False,
+            "withTotal": False,
         }
 
     @staticmethod

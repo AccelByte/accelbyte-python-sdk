@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,12 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetListJusticePlatformAccounts(Operation):
     """Get User Justice Platform Accounts (AdminGetListJusticePlatformAccounts)
 
-    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+    This endpoint gets list justice platform account by providing publisher namespace and publisher userID
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice

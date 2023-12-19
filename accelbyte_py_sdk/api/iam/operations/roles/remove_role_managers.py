@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,20 +38,8 @@ class RemoveRoleManagers(Operation):
     """Remove Role Managers (RemoveRoleManagers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission Required permission 'ROLE:ADMIN [UPDATE]' or 'ADMIN:ROLE [UPDATE]'
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [DELETE]
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
-
-        - ROLE:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/managers [DELETE]_**
 
     Properties:
         url: /iam/roles/{roleId}/managers

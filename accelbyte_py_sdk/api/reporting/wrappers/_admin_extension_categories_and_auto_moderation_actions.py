@@ -63,11 +63,7 @@ def admin_create_extension_category(
 ):
     """Create Extension Category (adminCreateExtensionCategory)
 
-    Required permission: ADMIN:REPORTINGCONFIG [CREATE]
     Create extension category data
-
-    Required Permission(s):
-        - ADMIN:REPORTINGCONFIG [CREATE]
 
     Properties:
         url: /reporting/v1/admin/extensionCategories
@@ -105,11 +101,7 @@ async def admin_create_extension_category_async(
 ):
     """Create Extension Category (adminCreateExtensionCategory)
 
-    Required permission: ADMIN:REPORTINGCONFIG [CREATE]
     Create extension category data
-
-    Required Permission(s):
-        - ADMIN:REPORTINGCONFIG [CREATE]
 
     Properties:
         url: /reporting/v1/admin/extensionCategories
@@ -149,11 +141,7 @@ def admin_create_mod_action(
 ):
     """Create Auto Moderation Action data (adminCreateModAction)
 
-    Required permission: ADMIN:REPORTINGCONFIG [CREATE]
     Create auto moderation action
-
-    Required Permission(s):
-        - ADMIN:REPORTINGCONFIG [CREATE]
 
     Properties:
         url: /reporting/v1/admin/extensionActions
@@ -191,11 +179,7 @@ async def admin_create_mod_action_async(
 ):
     """Create Auto Moderation Action data (adminCreateModAction)
 
-    Required permission: ADMIN:REPORTINGCONFIG [CREATE]
     Create auto moderation action
-
-    Required Permission(s):
-        - ADMIN:REPORTINGCONFIG [CREATE]
 
     Properties:
         url: /reporting/v1/admin/extensionActions
@@ -233,11 +217,7 @@ def admin_find_action_list(
 ):
     """Find Auto Moderation Action List (adminFindActionList)
 
-    Required permission: ADMIN:REPORTINGCONFIG [READ]
     Get a list of auto moderation actions
-
-    Required Permission(s):
-        - ADMIN:REPORTINGCONFIG [READ]
 
     Properties:
         url: /reporting/v1/admin/extensionActions
@@ -269,11 +249,7 @@ async def admin_find_action_list_async(
 ):
     """Find Auto Moderation Action List (adminFindActionList)
 
-    Required permission: ADMIN:REPORTINGCONFIG [READ]
     Get a list of auto moderation actions
-
-    Required Permission(s):
-        - ADMIN:REPORTINGCONFIG [READ]
 
     Properties:
         url: /reporting/v1/admin/extensionActions
@@ -310,11 +286,7 @@ def admin_find_extension_category_list(
 ):
     """Find Extension Category List (adminFindExtensionCategoryList)
 
-    Required permission: ADMIN:REPORTINGCONFIG [READ]
     Get a list of extension category data with the specified name
-
-    Required Permission(s):
-        - ADMIN:REPORTINGCONFIG [READ]
 
     Properties:
         url: /reporting/v1/admin/extensionCategories
@@ -356,11 +328,7 @@ async def admin_find_extension_category_list_async(
 ):
     """Find Extension Category List (adminFindExtensionCategoryList)
 
-    Required permission: ADMIN:REPORTINGCONFIG [READ]
     Get a list of extension category data with the specified name
-
-    Required Permission(s):
-        - ADMIN:REPORTINGCONFIG [READ]
 
     Properties:
         url: /reporting/v1/admin/extensionCategories

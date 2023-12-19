@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,42 +38,15 @@ class GetUserLoginHistories(Operation):
     """Get User's Login Histories (GetUserLoginHistories)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]'"+
-    "
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
 
     Notes for this endpoint:
-
-    "+
-    "
-
-      * This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
-    "+
-    "
-      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
-    "+
-    "
-      * This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
-    "+
-    "
-      * This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:HISTORY:LOGIN:USER:{userId} [READ]
+    - This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
+    - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    - This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
+    - This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/logins/histories

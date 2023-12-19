@@ -62,15 +62,7 @@ def admin_bulk_block_players_v1(
 ):
     """Admin bulk blocks player by list user id (adminBulkBlockPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [CREATE]` with scope `social`
-
     Bulk block player in a namespace by list of user id
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/bulk/block
@@ -124,15 +116,7 @@ async def admin_bulk_block_players_v1_async(
 ):
     """Admin bulk blocks player by list user id (adminBulkBlockPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [CREATE]` with scope `social`
-
     Bulk block player in a namespace by list of user id
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/bulk/block
@@ -187,15 +171,7 @@ def admin_get_all_player_session_attribute(
 ):
     """admin get all player's session attribute (adminGetAllPlayerSessionAttribute)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]` with scope `social`
-
-    get all player's session attribute by user id in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]
-
-    Required Scope(s):
-        - social
+    Get all player's session attribute by user id in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes
@@ -243,15 +219,7 @@ async def admin_get_all_player_session_attribute_async(
 ):
     """admin get all player's session attribute (adminGetAllPlayerSessionAttribute)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]` with scope `social`
-
-    get all player's session attribute by user id in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]
-
-    Required Scope(s):
-        - social
+    Get all player's session attribute by user id in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes
@@ -301,15 +269,7 @@ def admin_get_bulk_player_blocked_players_v1(
 ):
     """admin get blocked players by bulk user ids (adminGetBulkPlayerBlockedPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]` with scope `social`
-
-    get blocked players data by bulk user ids in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]
-
-    Required Scope(s):
-        - social
+    Get blocked players data by bulk user ids in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/bulk/blocked
@@ -361,15 +321,7 @@ async def admin_get_bulk_player_blocked_players_v1_async(
 ):
     """admin get blocked players by bulk user ids (adminGetBulkPlayerBlockedPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]` with scope `social`
-
-    get blocked players data by bulk user ids in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]
-
-    Required Scope(s):
-        - social
+    Get blocked players data by bulk user ids in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/bulk/blocked
@@ -422,15 +374,7 @@ def admin_get_lobby_ccu(
 ):
     """admin get number of players currently connected to the lobby. (adminGetLobbyCCU)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]` with scope `social`
-
     Get the number of players connected to the Lobby in the given namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/ccu
@@ -478,15 +422,7 @@ async def admin_get_lobby_ccu_async(
 ):
     """admin get number of players currently connected to the lobby. (adminGetLobbyCCU)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]` with scope `social`
-
     Get the number of players connected to the Lobby in the given namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/ccu
@@ -537,15 +473,7 @@ def admin_get_player_blocked_by_players_v1(
 ):
     """get players who blocked this player by user id (adminGetPlayerBlockedByPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]` with scope `social`
-
-    load get players who blocked this player in a namespace based on user id
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]
-
-    Required Scope(s):
-        - social
+    Load get players who blocked this player in a namespace based on user id
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/blocked-by
@@ -597,15 +525,7 @@ async def admin_get_player_blocked_by_players_v1_async(
 ):
     """get players who blocked this player by user id (adminGetPlayerBlockedByPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]` with scope `social`
-
-    load get players who blocked this player in a namespace based on user id
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]
-
-    Required Scope(s):
-        - social
+    Load get players who blocked this player in a namespace based on user id
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/blocked-by
@@ -659,15 +579,7 @@ def admin_get_player_blocked_players_v1(
 ):
     """admin get blocked players by user id (adminGetPlayerBlockedPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]` with scope `social`
-
-    get blocked players data by user id in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]
-
-    Required Scope(s):
-        - social
+    Get blocked players data by user id in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/blocked
@@ -719,15 +631,7 @@ async def admin_get_player_blocked_players_v1_async(
 ):
     """admin get blocked players by user id (adminGetPlayerBlockedPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]` with scope `social`
-
-    get blocked players data by user id in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [READ]
-
-    Required Scope(s):
-        - social
+    Get blocked players data by user id in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/blocked
@@ -782,15 +686,7 @@ def admin_get_player_session_attribute(
 ):
     """admin get player's session attribute (adminGetPlayerSessionAttribute)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]` with scope `social`
-
-    get player's specific session attribute by user id in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]
-
-    Required Scope(s):
-        - social
+    Get player's specific session attribute by user id in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes/{attribute}
@@ -846,15 +742,7 @@ async def admin_get_player_session_attribute_async(
 ):
     """admin get player's session attribute (adminGetPlayerSessionAttribute)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]` with scope `social`
-
-    get player's specific session attribute by user id in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [READ]
-
-    Required Scope(s):
-        - social
+    Get player's specific session attribute by user id in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes/{attribute}
@@ -912,15 +800,7 @@ def admin_set_player_session_attribute(
 ):
     """admin set player's session attribute (adminSetPlayerSessionAttribute)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [UPDATE]` with scope `social`
-
-    set player's session attribute by user id in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [UPDATE]
-
-    Required Scope(s):
-        - social
+    Set player's session attribute by user id in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes
@@ -976,15 +856,7 @@ async def admin_set_player_session_attribute_async(
 ):
     """admin set player's session attribute (adminSetPlayerSessionAttribute)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [UPDATE]` with scope `social`
-
-    set player's session attribute by user id in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [UPDATE]
-
-    Required Scope(s):
-        - social
+    Set player's session attribute by user id in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes

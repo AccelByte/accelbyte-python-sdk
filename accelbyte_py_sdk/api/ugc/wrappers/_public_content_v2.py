@@ -105,15 +105,17 @@ def delete_content_screenshot_v2(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Screenshot deleted)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (772603: Content not found | 772602: Unable to check user ban status/Unable to get updated ugc content)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -166,15 +168,17 @@ async def delete_content_screenshot_v2_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Screenshot deleted)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (772603: Content not found | 772602: Unable to check user ban status/Unable to get updated ugc content)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -221,13 +225,13 @@ def public_bulk_get_content_by_idv2(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelsContentDownloadResponseV2] (OK)
+        200: OK - List[ModelsContentDownloadResponseV2] (Get contents by content Ids)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (773900: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator | 773902: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -270,13 +274,13 @@ async def public_bulk_get_content_by_idv2_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelsContentDownloadResponseV2] (OK)
+        200: OK - List[ModelsContentDownloadResponseV2] (Get contents by content Ids)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (773900: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator | 773902: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -329,13 +333,15 @@ def public_create_content_v2(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateContentResponseV2 (Created)
+        201: Created - ModelsCreateContentResponseV2 (Content created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770100: Malformed request/Invalid request body/channel do not exist)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (770106: channel doesn't exist)
+
+        500: Internal Server Error - ResponseError (770102: Unable to check user ban status/Unable to save ugc content: unable to get channel | 770105: Unable to save ugc content: failed generate upload URL | 770103: Unable to save ugc content: shareCode exceed the limit)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -388,13 +394,15 @@ async def public_create_content_v2_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateContentResponseV2 (Created)
+        201: Created - ModelsCreateContentResponseV2 (Content created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770100: Malformed request/Invalid request body/channel do not exist)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (770106: channel doesn't exist)
+
+        500: Internal Server Error - ResponseError (770102: Unable to check user ban status/Unable to save ugc content: unable to get channel | 770105: Unable to save ugc content: failed generate upload URL | 770103: Unable to save ugc content: shareCode exceed the limit)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -449,13 +457,13 @@ def public_delete_content_by_share_code_v2(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Content deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772702: Content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772701: Unable to delete content/Unable to update user liked count/Unable to delete like state/Unable to delete like state)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -508,13 +516,13 @@ async def public_delete_content_by_share_code_v2_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Content deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772702: Content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772701: Unable to delete content/Unable to update user liked count/Unable to delete like state/Unable to delete like state)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -569,13 +577,13 @@ def public_delete_content_v2(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Content deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772702: Content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772701: Unable to delete content/Unable to update user liked count/Unable to delete like state/Unable to delete like state)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -628,13 +636,13 @@ async def public_delete_content_v2_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Content deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772702: Content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772701: Unable to delete content/Unable to update user liked count/Unable to delete like state/Unable to delete like state)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -692,13 +700,17 @@ def public_generate_content_upload_urlv2(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGenerateContentUploadURLResponse (OK)
+        200: OK - ModelsGenerateContentUploadURLResponse (content upload URL generated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
+
+        404: Not Found - ResponseError (772603: Content not found)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 772605: Unable to save ugc content: failed generate upload URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -755,13 +767,17 @@ async def public_generate_content_upload_urlv2_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGenerateContentUploadURLResponse (OK)
+        200: OK - ModelsGenerateContentUploadURLResponse (content upload URL generated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
+
+        404: Not Found - ResponseError (772603: Content not found)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 772605: Unable to save ugc content: failed generate upload URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -809,15 +825,15 @@ def public_get_content_bulk_by_share_codes_v2(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelsContentDownloadResponseV2] (OK)
+        200: OK - List[ModelsContentDownloadResponseV2] (Bulk get content by content sharecodes)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (773900: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773901: Unable to get ugc content: database/Unable to get creator | 773902: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -860,15 +876,15 @@ async def public_get_content_bulk_by_share_codes_v2_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelsContentDownloadResponseV2] (OK)
+        200: OK - List[ModelsContentDownloadResponseV2] (Bulk get content by content sharecodes)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (773900: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773901: Unable to get ugc content: database/Unable to get creator | 773902: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -887,6 +903,7 @@ async def public_get_content_bulk_by_share_codes_v2_async(
 def public_get_content_by_channel_idv2(
     channel_id: str,
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     sort_by: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -916,16 +933,20 @@ def public_get_content_by_channel_idv2(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
         sort_by: (sortBy) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (List content specific to a channel)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770804: invalid paging parameter)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        500: Internal Server Error - ResponseError (770805: Unable to get ugc content: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -934,6 +955,7 @@ def public_get_content_by_channel_idv2(
     request = PublicGetContentByChannelIDV2.create(
         channel_id=channel_id,
         limit=limit,
+        name=name,
         offset=offset,
         sort_by=sort_by,
         namespace=namespace,
@@ -945,6 +967,7 @@ def public_get_content_by_channel_idv2(
 async def public_get_content_by_channel_idv2_async(
     channel_id: str,
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     sort_by: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -974,16 +997,20 @@ async def public_get_content_by_channel_idv2_async(
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
         sort_by: (sortBy) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (List content specific to a channel)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770804: invalid paging parameter)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        500: Internal Server Error - ResponseError (770805: Unable to get ugc content: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -992,6 +1019,7 @@ async def public_get_content_by_channel_idv2_async(
     request = PublicGetContentByChannelIDV2.create(
         channel_id=channel_id,
         limit=limit,
+        name=name,
         offset=offset,
         sort_by=sort_by,
         namespace=namespace,
@@ -1030,13 +1058,13 @@ def public_get_content_by_idv2(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsContentDownloadResponseV2 (OK)
+        200: OK - ModelsContentDownloadResponseV2 (Get content by content ID)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773200: ugc content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773201: Unable to get ugc content/Unable to get creator/Unable to get included group | 770301: Unable to get ugc content/Unable to get creator | 773203: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1078,13 +1106,13 @@ async def public_get_content_by_idv2_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsContentDownloadResponseV2 (OK)
+        200: OK - ModelsContentDownloadResponseV2 (Get content by content ID)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773200: ugc content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773201: Unable to get ugc content/Unable to get creator/Unable to get included group | 770301: Unable to get ugc content/Unable to get creator | 773203: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1128,13 +1156,13 @@ def public_get_content_by_share_code_v2(
         share_code: (shareCode) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsContentDownloadResponseV2 (OK)
+        200: OK - ModelsContentDownloadResponseV2 (Get content by sharecode)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770300: ugc content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770301: Unable to get ugc content/Unable to get creator | 770303: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1176,13 +1204,13 @@ async def public_get_content_by_share_code_v2_async(
         share_code: (shareCode) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsContentDownloadResponseV2 (OK)
+        200: OK - ModelsContentDownloadResponseV2 (Get content by sharecode)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770300: ugc content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770301: Unable to get ugc content/Unable to get creator | 770303: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1238,11 +1266,13 @@ def public_get_content_by_user_idv2(
         sort_by: (sortBy) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (Get content by user ID)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770900: invalid paging parameter)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        500: Internal Server Error - ResponseError (770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1299,11 +1329,13 @@ async def public_get_content_by_user_idv2_async(
         sort_by: (sortBy) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (Get content by user ID)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770900: invalid paging parameter)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        500: Internal Server Error - ResponseError (770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1323,6 +1355,7 @@ async def public_get_content_by_user_idv2_async(
 
 @same_doc_as(PublicListContentV2)
 def public_list_content_v2(
+    is_official: Optional[bool] = None,
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
@@ -1367,6 +1400,8 @@ def public_list_content_v2(
 
         namespace: (namespace) REQUIRED str in path
 
+        is_official: (isOfficial) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         name: (name) OPTIONAL str in query
@@ -1382,17 +1417,20 @@ def public_list_content_v2(
         type_: (type) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (list content's)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770800: invalid paging parameter/max allowed number of tags is {maxTags}/invalid official parameter/invalid ishidden parameter)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicListContentV2.create(
+        is_official=is_official,
         limit=limit,
         name=name,
         offset=offset,
@@ -1407,6 +1445,7 @@ def public_list_content_v2(
 
 @same_doc_as(PublicListContentV2)
 async def public_list_content_v2_async(
+    is_official: Optional[bool] = None,
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
@@ -1451,6 +1490,8 @@ async def public_list_content_v2_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        is_official: (isOfficial) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         name: (name) OPTIONAL str in query
@@ -1466,17 +1507,20 @@ async def public_list_content_v2_async(
         type_: (type) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (list content's)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770800: invalid paging parameter/max allowed number of tags is {maxTags}/invalid official parameter/invalid ishidden parameter)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicListContentV2.create(
+        is_official=is_official,
         limit=limit,
         name=name,
         offset=offset,
@@ -1532,17 +1576,19 @@ def public_update_content_by_share_code_v2(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateContentResponseV2 (OK)
+        200: OK - ModelsCreateContentResponseV2 (content updated at s3)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
 
-        409: Conflict - ResponseError (Conflict)
+        404: Not Found - ResponseError (772603: Content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        409: Conflict - ResponseError (772606: Share code already used)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1599,17 +1645,19 @@ async def public_update_content_by_share_code_v2_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateContentResponseV2 (OK)
+        200: OK - ModelsCreateContentResponseV2 (content updated at s3)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
 
-        409: Conflict - ResponseError (Conflict)
+        404: Not Found - ResponseError (772603: Content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        409: Conflict - ResponseError (772606: Share code already used)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1669,17 +1717,17 @@ def public_update_content_file_location(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateContentResponseV2 (OK)
+        200: OK - ModelsUpdateContentResponseV2 (Update content file location)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (774001: unable to read response body/unable to update file location)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (772604: User has been banned to update content | 20013: insufficient permission)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (774002: unable to update content file location: content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 774003: unable to update content file location)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1737,17 +1785,17 @@ async def public_update_content_file_location_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateContentResponseV2 (OK)
+        200: OK - ModelsUpdateContentResponseV2 (Update content file location)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (774001: unable to read response body/unable to update file location)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (772604: User has been banned to update content | 20013: insufficient permission)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (774002: unable to update content file location: content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 774003: unable to update content file location)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1806,15 +1854,17 @@ def public_update_content_v2(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateContentResponseV2 (OK)
+        200: OK - ModelsUpdateContentResponseV2 (Content updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (772603: Content not found)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1871,15 +1921,17 @@ async def public_update_content_v2_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateContentResponseV2 (OK)
+        200: OK - ModelsUpdateContentResponseV2 (Content updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (772603: Content not found)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1944,19 +1996,19 @@ def update_content_share_code_v2(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateContentResponseV2 (OK)
+        200: OK - ModelsCreateContentResponseV2 (Update content sharecode)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request | 772607: Unable to update ugc content: invalid shareCode format)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (772604: User has been banned to update content | 20013: insufficient permission)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772603: Content not found)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (772606: Share code already used)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2019,19 +2071,19 @@ async def update_content_share_code_v2_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateContentResponseV2 (OK)
+        200: OK - ModelsCreateContentResponseV2 (Update content sharecode)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request | 772607: Unable to update ugc content: invalid shareCode format)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (772604: User has been banned to update content | 20013: insufficient permission)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772603: Content not found)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (772606: Share code already used)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2088,15 +2140,17 @@ def update_screenshots_v2(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateScreenshotResponse (OK)
+        200: OK - ModelsUpdateScreenshotResponse (Screenshot updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (772603: Content not found)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2150,15 +2204,17 @@ async def update_screenshots_v2_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateScreenshotResponse (OK)
+        200: OK - ModelsUpdateScreenshotResponse (Screenshot updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (772603: Content not found)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2218,13 +2274,15 @@ def upload_content_screenshot_v2(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateScreenshotResponse (Created)
+        201: Created - ModelsCreateScreenshotResponse (Screenshot uploaded)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 772605: Unable to save ugc content: failed generate upload URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2282,13 +2340,15 @@ async def upload_content_screenshot_v2_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateScreenshotResponse (Created)
+        201: Created - ModelsCreateScreenshotResponse (Screenshot uploaded)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 772605: Unable to save ugc content: failed generate upload URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

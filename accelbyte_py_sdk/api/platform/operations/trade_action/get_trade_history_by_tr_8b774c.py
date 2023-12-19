@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+
+from ...models import TradeChainActionHistoryInfo
 
 
 class GetTradeHistoryByTransactionId(Operation):
@@ -58,7 +60,7 @@ class GetTradeHistoryByTransactionId(Operation):
         transaction_id: (transactionId) REQUIRED str in path
 
     Responses:
-        default: (successful operation)
+        200: OK - TradeChainActionHistoryInfo (successful operation)
     """
 
     # region fields
@@ -161,10 +163,10 @@ class GetTradeHistoryByTransactionId(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, TradeChainActionHistoryInfo], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        default: (successful operation)
+        200: OK - TradeChainActionHistoryInfo (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -180,7 +182,7 @@ class GetTradeHistoryByTransactionId(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return TradeChainActionHistoryInfo.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

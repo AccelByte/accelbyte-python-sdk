@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,11 +36,8 @@ from ...models import RestapiReasonGroupListResponse
 class AdminListReasonGroups(Operation):
     """List reason groups under a namespace (adminListReasonGroups)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-    Return list of reason groups ID and title under given namespace. To fetch the reasons inside a group, use get reason group endpoint.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+    Return list of reason groups ID and title under given namespace.
+    To fetch the reasons inside a group, use get reason group endpoint.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups

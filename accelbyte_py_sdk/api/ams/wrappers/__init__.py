@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.4.0"
+__version__ = "1.7.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -32,6 +32,19 @@ from ._ams_qo_s import qo_s_regions_get
 from ._ams_qo_s import qo_s_regions_get_async
 from ._ams_qo_s import qo_s_regions_update
 from ._ams_qo_s import qo_s_regions_update_async
+
+from ._artifacts import artifact_delete
+from ._artifacts import artifact_delete_async
+from ._artifacts import artifact_get
+from ._artifacts import artifact_get_async
+from ._artifacts import artifact_get_url
+from ._artifacts import artifact_get_url_async
+from ._artifacts import artifact_usage_get
+from ._artifacts import artifact_usage_get_async
+from ._artifacts import fleet_artifact_sampling_rules_get
+from ._artifacts import fleet_artifact_sampling_rules_get_async
+from ._artifacts import fleet_artifact_sampling_rules_set
+from ._artifacts import fleet_artifact_sampling_rules_set_async
 
 from ._auth import auth_check
 from ._auth import auth_check_async
@@ -60,8 +73,6 @@ from ._fleets import fleet_servers_async
 from ._fleets import fleet_update
 from ._fleets import fleet_update_async
 
-from ._images import fleet_artifact_sampling_rules_get
-from ._images import fleet_artifact_sampling_rules_get_async
 from ._images import image_get
 from ._images import image_get_async
 from ._images import image_list

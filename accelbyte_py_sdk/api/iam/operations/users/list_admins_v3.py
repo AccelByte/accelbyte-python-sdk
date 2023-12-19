@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,10 @@ from ...models import RestErrorResponse
 class ListAdminsV3(Operation):
     """List User Admins (ListAdminsV3)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
-
     List all users that has admin role (role that has admin_role attribute set to true).
 
     The endpoint will return all admin from all namespace when called from publisher namespace.
     When not called from publisher namespace, the endpoint will return all admin from the path namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/admins

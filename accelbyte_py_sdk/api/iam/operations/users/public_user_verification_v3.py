@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,25 +37,8 @@ class PublicUserVerificationV3(Operation):
     """Validate or consume verification code sent to user (PublicUserVerificationV3)
 
     Will consume code if validateOnly is set false
-
-
-
-
-    Required valid user authorization
-
-
-
-
     Redeems a verification code sent to a user to verify the user's contact address is correct
-
-
-
-
-    Available ContactType : email
-
-
-
-
+    Available ContactType : **email**
     action code: 10107
 
     Properties:

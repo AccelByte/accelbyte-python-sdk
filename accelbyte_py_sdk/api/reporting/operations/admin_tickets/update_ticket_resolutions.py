@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,11 +37,7 @@ from ...models import RestapiUpdateTicketResolutionsRequest
 class UpdateTicketResolutions(Operation):
     """Update ticket resolution to a given status (updateTicketResolutions)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
     Update ticket resolution status to either OPEN or CLOSED. It is mandatory to provide notes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}/resolutions

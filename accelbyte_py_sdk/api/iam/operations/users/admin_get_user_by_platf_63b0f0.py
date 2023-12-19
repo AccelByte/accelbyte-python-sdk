@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,7 +40,7 @@ class AdminGetUserByPlatformUserIDV3(Operation):
 
     This endpoint return user information by given platform ID and platform user ID
 
-    nintendo platform user ID : NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}

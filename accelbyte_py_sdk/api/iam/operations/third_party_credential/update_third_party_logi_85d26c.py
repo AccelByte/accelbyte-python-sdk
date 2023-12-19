@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,14 +38,6 @@ class UpdateThirdPartyLoginPlatformDomainV3(Operation):
     """Set Third Party Platform Credential's domain (UpdateThirdPartyLoginPlatformDomainV3)
 
     This is the API to set 3rd Platform domain.
-
-
-
-
-    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE] resource.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain

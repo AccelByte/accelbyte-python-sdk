@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,11 +36,7 @@ from ...models import RestapiErrorResponse
 class AdminFindActionList(Operation):
     """Find Auto Moderation Action List (adminFindActionList)
 
-    Required permission: ADMIN:REPORTINGCONFIG [READ]
     Get a list of auto moderation actions
-
-    Required Permission(s):
-        - ADMIN:REPORTINGCONFIG [READ]
 
     Properties:
         url: /reporting/v1/admin/extensionActions

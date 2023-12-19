@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,12 +37,8 @@ from ...models import RestapiUpdateReasonGroupRequest
 class UpdateReasonGroup(Operation):
     """Update a reason group (updateReasonGroup)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
-    Reason group title is case insensitive, meaning you can't have reason if you already create a reason titled Reason
+    Reason group title is case insensitive, meaning you can't have **reason** if you already create a reason titled **Reason**
     If no reasonIds passed when updating, the current reasons under the reason group will be kept (reasons will not be removed from the group).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}

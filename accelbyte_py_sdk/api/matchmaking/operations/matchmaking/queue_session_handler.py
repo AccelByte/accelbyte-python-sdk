@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,10 +36,6 @@ from ...models import ResponseError
 class QueueSessionHandler(Operation):
     """Queue joinable session (QueueSessionHandler)
 
-    Required Permission: NAMESPACE:{namespace}:SESSION [CREATE]
-
-    Required Scope: social
-
     Queues joinable session so that it will be matched with player's match request tickets.
     The session queued must be in a channel/game mode that is set to have joinable flag.
     The session will be in queue until it is full or expired.
@@ -51,12 +47,6 @@ class QueueSessionHandler(Operation):
     If a session is already queued, and game server wants to modify the data or
     renew the queue timeout (e.g. some player left and more empty slot opened up),
     simply call this endpoint with the updated session data.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/sessions

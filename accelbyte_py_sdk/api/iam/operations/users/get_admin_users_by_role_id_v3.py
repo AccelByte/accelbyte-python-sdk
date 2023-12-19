@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,25 +36,11 @@ from ...models import RestErrorResponse
 class GetAdminUsersByRoleIdV3(Operation):
     """Get Admin Users By RoleId (GetAdminUsersByRoleIdV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-
-
-
     This endpoint search admin users which have the roleId
-
-
-
 
     Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
     Use endpoint [GET] /roles/{roleId}/admin to check the role status
-
-
-
     action code : 10140
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users

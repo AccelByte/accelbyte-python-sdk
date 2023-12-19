@@ -111,13 +111,13 @@ def get_liked_content(
         type_: (type) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+        200: OK - ModelsPaginatedContentDownloadResponse (Get liked contents)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771100: unable to parse isofficial param)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771101: Unable to get ugc content: database error | 770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -211,13 +211,13 @@ async def get_liked_content_async(
         type_: (type) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+        200: OK - ModelsPaginatedContentDownloadResponse (Get liked contents)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771100: unable to parse isofficial param)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771101: Unable to get ugc content: database error | 770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -272,13 +272,15 @@ def update_content_like_status(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsContentLikeResponse (OK)
+        200: OK - ModelsContentLikeResponse (Update like/unlike status to a content)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771000: Malformed request/Content not found/Unable to update like status: content not found)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (771000: Malformed request/Content not found/Unable to update like status: content not found | 771001: unable to like content/Unable to update like status: database error | 771000: Malformed request/Content not found/Unable to update like status: content not found)
+
+        500: Internal Server Error - ResponseError (771001: unable to like content/Unable to update like status: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -324,13 +326,15 @@ async def update_content_like_status_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsContentLikeResponse (OK)
+        200: OK - ModelsContentLikeResponse (Update like/unlike status to a content)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771000: Malformed request/Content not found/Unable to update like status: content not found)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (771000: Malformed request/Content not found/Unable to update like status: content not found | 771001: unable to like content/Unable to update like status: database error | 771000: Malformed request/Content not found/Unable to update like status: content not found)
+
+        500: Internal Server Error - ResponseError (771001: unable to like content/Unable to update like status: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

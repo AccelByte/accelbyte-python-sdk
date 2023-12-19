@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,13 +36,9 @@ from ...models import RestErrorResponse
 class AdminGetBansTypeV3(Operation):
     """Get list of ban types (AdminGetBansTypeV3)
 
-    Required permission 'ADMIN:BAN [READ]'
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
     action code : 10201
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
 
     Properties:
         url: /iam/v3/admin/bans

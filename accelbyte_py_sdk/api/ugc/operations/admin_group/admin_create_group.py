@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -60,13 +60,13 @@ class AdminCreateGroup(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateGroupResponse (Created)
+        201: Created - ModelsCreateGroupResponse (groups created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772101: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772102: Unable to create group)
     """
 
     # region fields
@@ -178,13 +178,13 @@ class AdminCreateGroup(Operation):
     ]:
         """Parse the given response.
 
-        201: Created - ModelsCreateGroupResponse (Created)
+        201: Created - ModelsCreateGroupResponse (groups created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772101: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772102: Unable to create group)
 
         ---: HttpResponse (Undocumented Response)
 

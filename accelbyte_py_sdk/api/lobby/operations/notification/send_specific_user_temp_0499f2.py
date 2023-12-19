@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,8 +36,6 @@ from ...models import RestapiErrorResponseV1
 class SendSpecificUserTemplatedNotificationV1Admin(Operation):
     """send templated notification to specific user (sendSpecificUserTemplatedNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends templated notification to a user.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
@@ -46,12 +44,6 @@ class SendSpecificUserTemplatedNotificationV1Admin(Operation):
     Template need to be published before it can be use to send notifications
 
     Action Code: 50212
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/templates/notify

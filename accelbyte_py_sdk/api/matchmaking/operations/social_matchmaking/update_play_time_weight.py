@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,19 +38,9 @@ from ...models import ResponseErrorV1
 class UpdatePlayTimeWeight(Operation):
     """Update player -- playtime connection weight (UpdatePlayTimeWeight)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
-
-    Required Scope: social
-
     Update a connection weight between player and playtime.
 
     This endpoint is intended to be called by admin for debugging purpose on social matchmaking rule.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/social/playtime/namespaces/{namespace}/weight

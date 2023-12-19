@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,10 +38,7 @@ class PublicGetUserByUserIdV3(Operation):
     """Get User By User ID (PublicGetUserByUserIdV3)
 
     This endpoint retrieve user attributes. action code: 10129
-
-
-
-    Substitute endpoint: /v4/public/namespaces/{namespace}/users/{userId} [READ]
+    **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [READ]
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}

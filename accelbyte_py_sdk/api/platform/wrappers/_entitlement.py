@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import AppEntitlementInfo
@@ -39,9 +40,11 @@ from ..models import EntitlementDecrement
 from ..models import EntitlementDecrementResult
 from ..models import EntitlementGrant
 from ..models import EntitlementHistoryInfo
+from ..models import EntitlementIfc
 from ..models import EntitlementInfo
 from ..models import EntitlementOwnership
 from ..models import EntitlementPagingSlicedResult
+from ..models import EntitlementPrechekResult
 from ..models import EntitlementSoldRequest
 from ..models import EntitlementSoldResult
 from ..models import EntitlementUpdate
@@ -79,6 +82,7 @@ from ..operations.entitlement import (
 )
 from ..operations.entitlement import GrantEntitlements
 from ..operations.entitlement import GrantUserEntitlement
+from ..operations.entitlement import PreCheckRevokeUserEntitlementByUseCount
 from ..operations.entitlement import PublicConsumeUserEntitlement
 from ..operations.entitlement import PublicExistsAnyMyActiveEntitlement
 from ..operations.entitlement import PublicExistsAnyUserActiveEntitlement
@@ -135,6 +139,7 @@ from ..operations.entitlement import RevokeAllEntitlements
 from ..operations.entitlement import RevokeEntitlements
 from ..operations.entitlement import RevokeUseCount
 from ..operations.entitlement import RevokeUserEntitlement
+from ..operations.entitlement import RevokeUserEntitlementByUseCount
 from ..operations.entitlement import RevokeUserEntitlements
 from ..operations.entitlement import SellUserEntitlement
 from ..operations.entitlement import UpdateUserEntitlement
@@ -150,6 +155,12 @@ from ..models import (
 )
 from ..models import EntitlementGrantSourceEnum
 from ..models import EntitlementHistoryInfoActionEnum
+from ..models import (
+    EntitlementIfcAppTypeEnum,
+    EntitlementIfcClazzEnum,
+    EntitlementIfcStatusEnum,
+    EntitlementIfcTypeEnum,
+)
 from ..models import (
     EntitlementInfoAppTypeEnum,
     EntitlementInfoClazzEnum,
@@ -2252,6 +2263,126 @@ async def grant_user_entitlement_async(
     request = GrantUserEntitlement.create(
         user_id=user_id,
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PreCheckRevokeUserEntitlementByUseCount)
+def pre_check_revoke_user_entitlement_by_use_count(
+    entitlement_id: str,
+    quantity: int,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Check if specified count of user entitlement can be revoked (preCheckRevokeUserEntitlementByUseCount)
+
+    Checks if specified use count of user entitlement can be revoked without actually revoking it.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (READ)
+      *  Returns : true if revokable, false otherwise
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke/byUseCount/preCheck
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        quantity: (quantity) REQUIRED int in query
+
+    Responses:
+        200: OK - EntitlementPrechekResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PreCheckRevokeUserEntitlementByUseCount.create(
+        entitlement_id=entitlement_id,
+        quantity=quantity,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PreCheckRevokeUserEntitlementByUseCount)
+async def pre_check_revoke_user_entitlement_by_use_count_async(
+    entitlement_id: str,
+    quantity: int,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Check if specified count of user entitlement can be revoked (preCheckRevokeUserEntitlementByUseCount)
+
+    Checks if specified use count of user entitlement can be revoked without actually revoking it.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (READ)
+      *  Returns : true if revokable, false otherwise
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke/byUseCount/preCheck
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        quantity: (quantity) REQUIRED int in query
+
+    Responses:
+        200: OK - EntitlementPrechekResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PreCheckRevokeUserEntitlementByUseCount.create(
+        entitlement_id=entitlement_id,
+        quantity=quantity,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -5367,6 +5498,7 @@ async def revoke_entitlements_async(
     )
 
 
+@deprecated
 @same_doc_as(RevokeUseCount)
 def revoke_use_count(
     entitlement_id: str,
@@ -5378,7 +5510,7 @@ def revoke_use_count(
 ):
     """Revoke specified use count of user entitlement (revokeUseCount)
 
-    Revoke specified use count of user entitlement.
+    Revoke specified use count of user entitlement. please use /{entitlementId}/revoke/byUseCount endpoint instead of this endpoint
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
@@ -5426,6 +5558,7 @@ def revoke_use_count(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(RevokeUseCount)
 async def revoke_use_count_async(
     entitlement_id: str,
@@ -5437,7 +5570,7 @@ async def revoke_use_count_async(
 ):
     """Revoke specified use count of user entitlement (revokeUseCount)
 
-    Revoke specified use count of user entitlement.
+    Revoke specified use count of user entitlement. please use /{entitlementId}/revoke/byUseCount endpoint instead of this endpoint
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
@@ -5592,6 +5725,126 @@ async def revoke_user_entitlement_async(
     request = RevokeUserEntitlement.create(
         entitlement_id=entitlement_id,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RevokeUserEntitlementByUseCount)
+def revoke_user_entitlement_by_use_count(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[RevokeUseCountRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Revoke specified count of user entitlement. (revokeUserEntitlementByUseCount)
+
+    Revoke specified count of user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : The revoked entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke/byUseCount
+
+        method: POST
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RevokeUseCountRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementIfc (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RevokeUserEntitlementByUseCount.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RevokeUserEntitlementByUseCount)
+async def revoke_user_entitlement_by_use_count_async(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[RevokeUseCountRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Revoke specified count of user entitlement. (revokeUserEntitlementByUseCount)
+
+    Revoke specified count of user entitlement.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : The revoked entitlement
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke/byUseCount
+
+        method: POST
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL RevokeUseCountRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementIfc (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RevokeUserEntitlementByUseCount.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

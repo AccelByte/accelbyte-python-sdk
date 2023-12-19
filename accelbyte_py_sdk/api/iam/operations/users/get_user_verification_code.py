@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,12 +39,8 @@ class GetUserVerificationCode(Operation):
     [WARNING] This endpoint is only for testing purpose.
     This endpoint get active user verification
     code. There are 3 scenario of getting verification codes : after account registration, after reset password
-    request, and after headless account upgrade. All of them will be returned on this endpoint. Required permission
-    'ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE' [READ]
+    request, and after headless account upgrade. All of them will be returned on this endpoint.
     action code: 10146
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CODE [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/codes

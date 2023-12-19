@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,20 +37,8 @@ from ...models import RestErrorResponse
 class AdminUnbanUserBulkV3(Operation):
     """Bulk unban user (AdminUnbanUserBulkV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:BAN [UPDATE]'.
-
-
-
-
     disable bulk ban user. The maximum limit value is 100
-
-
-
-
     action code : 10142
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users/disabled

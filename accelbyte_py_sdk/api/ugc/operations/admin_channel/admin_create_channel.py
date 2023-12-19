@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -60,15 +60,15 @@ class AdminCreateChannel(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsChannelResponse (Created)
+        201: Created - ModelsChannelResponse (Channel created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770503: Invalid channel {ID}: should uuid without hypen)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (770504: Channel already exist)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770502: Unable to save channel)
     """
 
     # region fields
@@ -180,15 +180,15 @@ class AdminCreateChannel(Operation):
     ]:
         """Parse the given response.
 
-        201: Created - ModelsChannelResponse (Created)
+        201: Created - ModelsChannelResponse (Channel created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770503: Invalid channel {ID}: should uuid without hypen)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (770504: Channel already exist)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770502: Unable to save channel)
 
         ---: HttpResponse (Undocumented Response)
 

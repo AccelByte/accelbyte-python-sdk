@@ -58,12 +58,7 @@ def submit_report(
     Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
 
     Fill the 'reason' field with a 'reason title'
-    Supported category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
+    Supported category: - UGC - USER - CHAT - EXTENSION
 
     Properties:
         url: /reporting/v1/public/namespaces/{namespace}/reports
@@ -121,12 +116,7 @@ async def submit_report_async(
     Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
 
     Fill the 'reason' field with a 'reason title'
-    Supported category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
+    Supported category: - UGC - USER - CHAT - EXTENSION
 
     Properties:
         url: /reporting/v1/public/namespaces/{namespace}/reports

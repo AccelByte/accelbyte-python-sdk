@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,75 +36,26 @@ from ...models import RestErrorResponse
 class PublicPlatformUnlinkV3(Operation):
     """Unlink user's account from specific platform (PublicPlatformUnlinkV3)
 
-    Required valid user authorization.
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * apple
-
-
-      * device
-
-
-      * discord
-
-
-      * awscognito
-
-
-      * epicgames
-
-
-      * nintendo
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **apple**
+    - **device**
+    - **discord**
+    - **awscognito**
+    - **epicgames**
+    - **nintendo**
 
     Unlink user's account from a specific platform. 'justice' platform might have multiple accounts from different namespaces linked.
-
-    platformNamespace need to be specified when the platform ID is 'justice'.
-
-
-
+    _platformNamespace_ need to be specified when the platform ID is 'justice'.
     Unlink user's account from justice platform will enable password token grant and password update.
-
-
-
-    If you want to unlink user's account in a game namespace, you have to specify platformNamespace to that game namespace.
-
-
-
+    If you want to unlink user's account in a game namespace, you have to specify _platformNamespace_ to that game namespace.
     action code : 10121
 
     Properties:

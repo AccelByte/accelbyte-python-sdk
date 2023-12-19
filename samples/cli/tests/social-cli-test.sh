@@ -43,7 +43,7 @@ social-get-global-stat-items --login_with_auth "Bearer foo"
 social-get-global-stat-item-by-stat-code 'd3PBddN8S48l9lyN' --login_with_auth "Bearer foo"
 social-get-stat-cycles --login_with_auth "Bearer foo"
 social-create-stat-cycle --body '{"cycleType": "SEASONAL", "description": "nNjkfZrQvGgbLdLs", "end": "1987-01-19T00:00:00Z", "name": "zHkBMr1yrOMlNFSr", "resetDate": 96, "resetDay": 63, "resetMonth": 18, "resetTime": "f7Gc26SaiGVkydwY", "seasonPeriod": 99, "start": "1972-12-14T00:00:00Z"}' --login_with_auth "Bearer foo"
-social-bulk-get-stat-cycle --body '{"cycleIds": ["DG8aMVGLiBNrDjqo", "xcwgGLXpUL4pp2nc", "yiuATus9hsfpFDcS"]}' --login_with_auth "Bearer foo"
+social-bulk-get-stat-cycle --body '{"cycleIds": ["yiuATus9hsfpFDcS", "xcwgGLXpUL4pp2nc", "DG8aMVGLiBNrDjqo"]}' --login_with_auth "Bearer foo"
 social-export-stat-cycle --login_with_auth "Bearer foo"
 social-import-stat-cycle --login_with_auth "Bearer foo"
 social-get-stat-cycle 'YAHdNzDmeIP6rOvD' --login_with_auth "Bearer foo"
@@ -57,13 +57,13 @@ social-bulk-inc-user-stat-item-value --body '[{"inc": 0.6417094043899652, "statC
 social-bulk-fetch-or-default-stat-items 'YetOO847g8OudOfj' '["nCuHZ3c46IjGa23Y", "vYmmDg7VYPXIuvUY", "TZBRujIUE1Tq5jyA"]' --login_with_auth "Bearer foo"
 social-bulk-reset-user-stat-item --body '[{"statCode": "ZvkRCMNFIurjh2im", "userId": "db4rbkXj0ZwsVC0g"}, {"statCode": "L97ZVJSPqJiwv1ql", "userId": "YB1RSKs6gQxC3Gb7"}, {"statCode": "S0o4zGYY7KQI1AeF", "userId": "gPqaOkvo1aolB4lk"}]' --login_with_auth "Bearer foo"
 social-get-stats --login_with_auth "Bearer foo"
-social-create-stat --body '{"cycleIds": ["0KOww3HICQLfl7MU", "KB4EYOkQ1jMD3cym", "8xIfkOVW2grREOLx"], "defaultValue": 0.4426899784977135, "description": "G7qtPu64yAtURKLR", "ignoreAdditionalDataOnValueRejected": false, "incrementOnly": true, "isPublic": false, "maximum": 0.018629476179174542, "minimum": 0.6988306187111987, "name": "PZTF6oQAXVG7tnsZ", "setAsGlobal": false, "setBy": "CLIENT", "statCode": "5QgXjvyGJPN4eXbJ", "tags": ["E5Vs2GcyomQoIXim", "BJehyxlNsjUgxBkF", "6wFPoJeQediogEhh"]}' --login_with_auth "Bearer foo"
+social-create-stat --body '{"cycleIds": ["8xIfkOVW2grREOLx", "KB4EYOkQ1jMD3cym", "0KOww3HICQLfl7MU"], "defaultValue": 0.4426899784977135, "description": "G7qtPu64yAtURKLR", "ignoreAdditionalDataOnValueRejected": false, "incrementOnly": true, "isPublic": false, "maximum": 0.018629476179174542, "minimum": 0.6988306187111987, "name": "PZTF6oQAXVG7tnsZ", "setAsGlobal": false, "setBy": "CLIENT", "statCode": "5QgXjvyGJPN4eXbJ", "tags": ["BJehyxlNsjUgxBkF", "E5Vs2GcyomQoIXim", "6wFPoJeQediogEhh"]}' --login_with_auth "Bearer foo"
 social-export-stats --login_with_auth "Bearer foo"
 social-import-stats --login_with_auth "Bearer foo"
 social-query-stats 'M2rIizGdKvOPdq5x' --login_with_auth "Bearer foo"
 social-get-stat 'rgxSmy1DN9LFkYW5' --login_with_auth "Bearer foo"
 social-delete-stat 'DQyj4bj5Ro2ogaKt' --login_with_auth "Bearer foo"
-social-update-stat '2ujQSa3Zdb65UXmy' --body '{"cycleIds": ["0Zp6iIaTIKUkmkk9", "2AK6eXUGPJsw1fiP", "QM0NBMA9ORxpzwLR"], "defaultValue": 0.9716918984737875, "description": "0G9Pclxcft2ulIJz", "ignoreAdditionalDataOnValueRejected": false, "isPublic": true, "name": "rQDXuNFviMarv8mn", "tags": ["Bp3HBvepnDCjgyJl", "SGEdlwuUccE536ug", "fHK8CCmE2lPnsbD3"]}' --login_with_auth "Bearer foo"
+social-update-stat '2ujQSa3Zdb65UXmy' --body '{"cycleIds": ["2AK6eXUGPJsw1fiP", "0Zp6iIaTIKUkmkk9", "QM0NBMA9ORxpzwLR"], "defaultValue": 0.9716918984737875, "description": "0G9Pclxcft2ulIJz", "ignoreAdditionalDataOnValueRejected": false, "isPublic": true, "name": "rQDXuNFviMarv8mn", "tags": ["fHK8CCmE2lPnsbD3", "SGEdlwuUccE536ug", "Bp3HBvepnDCjgyJl"]}' --login_with_auth "Bearer foo"
 social-get-stat-items 'Xe36mgWjLfFmteue' --login_with_auth "Bearer foo"
 social-delete-tied-stat '9nzJ6fH24T805tVg' --login_with_auth "Bearer foo"
 social-get-user-stat-cycle-items '8JqU0jZpjvsugAOS' '7u8RiWyerCSa8SRg' --login_with_auth "Bearer foo"
@@ -79,13 +79,13 @@ social-reset-user-stat-item-value 'S5BvmgBLxh4ijFnE' '3Tam69qSZ7PC6f6Q' --body '
 social-get-global-stat-items-1 --login_with_auth "Bearer foo"
 social-get-global-stat-item-by-stat-code-1 'ip68J1nsv4W2OJht' --login_with_auth "Bearer foo"
 social-get-stat-cycles-1 --login_with_auth "Bearer foo"
-social-bulk-get-stat-cycle-1 --body '{"cycleIds": ["cl5LLLOexL4fZvWt", "afxMSJlHeb34sZKH", "ND2tcBFpX8lNtFEJ"]}' --login_with_auth "Bearer foo"
+social-bulk-get-stat-cycle-1 --body '{"cycleIds": ["afxMSJlHeb34sZKH", "ND2tcBFpX8lNtFEJ", "cl5LLLOexL4fZvWt"]}' --login_with_auth "Bearer foo"
 social-get-stat-cycle-1 '7tnkY6Mca5afj12K' --login_with_auth "Bearer foo"
 social-bulk-fetch-stat-items-1 '2IzrBvvWm4udE0OX' 'udXgNne8kJATwlc6' --login_with_auth "Bearer foo"
 social-public-bulk-inc-user-stat-item --body '[{"inc": 0.06643478035275929, "statCode": "sUp6Sw1I98jeZQ7h", "userId": "fxnhLd3Knaknoed9"}, {"inc": 0.47165086077270413, "statCode": "HhLOqQGhCUr6iTrj", "userId": "yEgarAdNJOIG36I6"}, {"inc": 0.31534837905474267, "statCode": "RbRcrEveMdAdiPKD", "userId": "UVSC00PYeDcaggin"}]' --login_with_auth "Bearer foo"
 social-public-bulk-inc-user-stat-item-value --body '[{"inc": 0.37121030043209935, "statCode": "nFIna3yddcbsPheT", "userId": "H26IUJNvYuGRUvpZ"}, {"inc": 0.010544701389554323, "statCode": "HCuESOiIZsMfB4ZH", "userId": "3mtgWgU4pCAKxeE7"}, {"inc": 0.850741273139212, "statCode": "CaunQNxot371W9G4", "userId": "AvQkqsGnmyo5JJTU"}]' --login_with_auth "Bearer foo"
 social-bulk-reset-user-stat-item-2 --body '[{"statCode": "Vmb8GEXFTlEMEsFz", "userId": "YqwgK1Np5nodqpLm"}, {"statCode": "7FhJBNXzAFdO0Khq", "userId": "f6kiTdSGv2LFjAKY"}, {"statCode": "7CbgsWqFWZX7kPBo", "userId": "m8F9GLLTG8phc3n4"}]' --login_with_auth "Bearer foo"
-social-create-stat-1 --body '{"cycleIds": ["iLoIllKlpO2pqiXJ", "rKF7SUQPLG59e0k5", "F3WGRaoQomSJC4Dd"], "defaultValue": 0.8327543277373785, "description": "tX6wK7PpUlcIW32i", "ignoreAdditionalDataOnValueRejected": true, "incrementOnly": true, "isPublic": true, "maximum": 0.3117353719176619, "minimum": 0.8563166008085898, "name": "ixY5rA1WoVeJIePF", "setAsGlobal": false, "setBy": "CLIENT", "statCode": "rQzP4zvtdxdbZUpd", "tags": ["6FJtHJ1pyVwyKQLY", "6FEO65Rb3z7CYLM8", "IlsHqffnrfsGlfPa"]}' --login_with_auth "Bearer foo"
+social-create-stat-1 --body '{"cycleIds": ["F3WGRaoQomSJC4Dd", "iLoIllKlpO2pqiXJ", "rKF7SUQPLG59e0k5"], "defaultValue": 0.8327543277373785, "description": "tX6wK7PpUlcIW32i", "ignoreAdditionalDataOnValueRejected": true, "incrementOnly": true, "isPublic": true, "maximum": 0.3117353719176619, "minimum": 0.8563166008085898, "name": "ixY5rA1WoVeJIePF", "setAsGlobal": false, "setBy": "CLIENT", "statCode": "rQzP4zvtdxdbZUpd", "tags": ["IlsHqffnrfsGlfPa", "6FEO65Rb3z7CYLM8", "6FJtHJ1pyVwyKQLY"]}' --login_with_auth "Bearer foo"
 social-public-list-my-stat-cycle-items 'ZKBwa3Ddb60ufPpz' --login_with_auth "Bearer foo"
 social-public-list-my-stat-items --login_with_auth "Bearer foo"
 social-public-list-all-my-stat-items --login_with_auth "Bearer foo"
@@ -291,7 +291,7 @@ eval_tap $? 29 'CreateStatCycle' test.out
 
 #- 30 BulkGetStatCycle
 $PYTHON -m $MODULE 'social-bulk-get-stat-cycle' \
-    --body '{"cycleIds": ["p90AyyUJyAK5PRMR", "T1WsRNMZcA92hzC7", "MNa8vVe4MHX6AgMe"]}' \
+    --body '{"cycleIds": ["MNa8vVe4MHX6AgMe", "p90AyyUJyAK5PRMR", "T1WsRNMZcA92hzC7"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 30 'BulkGetStatCycle' test.out
@@ -390,7 +390,7 @@ eval_tap $? 43 'GetStats' test.out
 
 #- 44 CreateStat
 $PYTHON -m $MODULE 'social-create-stat' \
-    --body '{"cycleIds": ["J66OzOj84O6tgohj", "tC7bzjPpucddXJ5z", "hnoluO6ti0QP2ssi"], "defaultValue": 0.13888898729627375, "description": "fF8y959anrNSleyw", "ignoreAdditionalDataOnValueRejected": true, "incrementOnly": false, "isPublic": true, "maximum": 0.5426350063624478, "minimum": 0.14225848978067424, "name": "g6IKWVZ77KeRWdEC", "setAsGlobal": false, "setBy": "CLIENT", "statCode": "FGzfZ2hxcJ2Fnemn", "tags": ["sRoYIK69yg9ADCGi", "FP1OW0nXOErQPS4V", "7M23SzUo4hNBDh9Z"]}' \
+    --body '{"cycleIds": ["tC7bzjPpucddXJ5z", "hnoluO6ti0QP2ssi", "J66OzOj84O6tgohj"], "defaultValue": 0.13888898729627375, "description": "fF8y959anrNSleyw", "ignoreAdditionalDataOnValueRejected": true, "incrementOnly": false, "isPublic": true, "maximum": 0.5426350063624478, "minimum": 0.14225848978067424, "name": "g6IKWVZ77KeRWdEC", "setAsGlobal": false, "setBy": "CLIENT", "statCode": "FGzfZ2hxcJ2Fnemn", "tags": ["FP1OW0nXOErQPS4V", "7M23SzUo4hNBDh9Z", "sRoYIK69yg9ADCGi"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 44 'CreateStat' test.out
@@ -431,7 +431,7 @@ eval_tap $? 49 'DeleteStat' test.out
 #- 50 UpdateStat
 $PYTHON -m $MODULE 'social-update-stat' \
     'uD3QxCXMd00YBWCa' \
-    --body '{"cycleIds": ["76dGGJwJ00UH197M", "J6zU7JLMQyMWzYQC", "VVmM45mfIZsWhkS4"], "defaultValue": 0.4213326359933013, "description": "aPJgoxGJoJaSzUtY", "ignoreAdditionalDataOnValueRejected": true, "isPublic": true, "name": "0Xtb0U4pH16NUsVY", "tags": ["0QJQeaWytPfds1BY", "21NVIs7NRen2Y3Ns", "x0EaURydf8ZyyZeH"]}' \
+    --body '{"cycleIds": ["VVmM45mfIZsWhkS4", "76dGGJwJ00UH197M", "J6zU7JLMQyMWzYQC"], "defaultValue": 0.4213326359933013, "description": "aPJgoxGJoJaSzUtY", "ignoreAdditionalDataOnValueRejected": true, "isPublic": true, "name": "0Xtb0U4pH16NUsVY", "tags": ["x0EaURydf8ZyyZeH", "21NVIs7NRen2Y3Ns", "0QJQeaWytPfds1BY"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 50 'UpdateStat' test.out
@@ -552,7 +552,7 @@ eval_tap $? 65 'GetStatCycles1' test.out
 
 #- 66 BulkGetStatCycle1
 $PYTHON -m $MODULE 'social-bulk-get-stat-cycle-1' \
-    --body '{"cycleIds": ["hnaB3YxKNdOTacCc", "ZkwbYkBLyO6A0Fqf", "JfIfXshuLUk5Wdpx"]}' \
+    --body '{"cycleIds": ["JfIfXshuLUk5Wdpx", "ZkwbYkBLyO6A0Fqf", "hnaB3YxKNdOTacCc"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 66 'BulkGetStatCycle1' test.out
@@ -595,7 +595,7 @@ eval_tap $? 71 'BulkResetUserStatItem2' test.out
 
 #- 72 CreateStat1
 $PYTHON -m $MODULE 'social-create-stat-1' \
-    --body '{"cycleIds": ["uWfgBAKx27MSBqab", "UXOGkkoMUZn1YXj5", "zFZeOCOR9NvBQZSJ"], "defaultValue": 0.669084082841231, "description": "OIKrRBrYVzi9ui3l", "ignoreAdditionalDataOnValueRejected": true, "incrementOnly": true, "isPublic": false, "maximum": 0.6297692985305396, "minimum": 0.21879437364785648, "name": "LRH36bqS2oFY76PU", "setAsGlobal": true, "setBy": "CLIENT", "statCode": "ziBOHEAj1cT3u6Zc", "tags": ["Lc0xcTjqjdcEfU61", "2FbrTFznTgDIwZIR", "Wf6T3by2kYSCdnFK"]}' \
+    --body '{"cycleIds": ["zFZeOCOR9NvBQZSJ", "UXOGkkoMUZn1YXj5", "uWfgBAKx27MSBqab"], "defaultValue": 0.669084082841231, "description": "OIKrRBrYVzi9ui3l", "ignoreAdditionalDataOnValueRejected": true, "incrementOnly": true, "isPublic": false, "maximum": 0.6297692985305396, "minimum": 0.21879437364785648, "name": "LRH36bqS2oFY76PU", "setAsGlobal": true, "setBy": "CLIENT", "statCode": "ziBOHEAj1cT3u6Zc", "tags": ["2FbrTFznTgDIwZIR", "Lc0xcTjqjdcEfU61", "Wf6T3by2kYSCdnFK"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 72 'CreateStat1' test.out

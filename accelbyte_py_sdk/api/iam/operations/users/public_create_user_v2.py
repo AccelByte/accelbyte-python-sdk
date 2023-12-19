@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,43 +39,15 @@ class PublicCreateUserV2(Operation):
     """Create User (PublicCreateUserV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      *  Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [POST]
-
-      *  Substitute endpoint: /iam/v4/public/namespaces/{namespace}/users [POST]
-
-
-
-      *  Note:
-         1. v3 & v4 introduce optional verification code
-
-         2. format differenceï¼Pascal case => Camel case)
-
-
-
-
-
-
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [POST]_**
+    - **Substitute endpoint: _/iam/v4/public/namespaces/{namespace}/users [POST]_**
+    - **Note:**
+    1. v3 & v4 introduce optional verification code
+    2. format differenceï¼Pascal case => Camel case)
 
     Available Authentication Types:
-
-
-
-
-
-
-      1.  EMAILPASSWD : an authentication type used for new user registration through email.
-
-
-
-
-
+    1. *EMAILPASSWD*: an authentication type used for new user registration through email.
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
     Properties:

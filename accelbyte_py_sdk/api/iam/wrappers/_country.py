@@ -49,12 +49,7 @@ def admin_add_country_blacklist_v3(
 ):
     """Update Country Blacklist (AdminAddCountryBlacklistV3)
 
-    Admin update country blacklist:
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
+    Admin update country blacklist
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist
@@ -104,12 +99,7 @@ async def admin_add_country_blacklist_v3_async(
 ):
     """Update Country Blacklist (AdminAddCountryBlacklistV3)
 
-    Admin update country blacklist:
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
+    Admin update country blacklist
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist
@@ -160,12 +150,7 @@ def admin_get_country_blacklist_v3(
 ):
     """Get Country Blacklist (AdminGetCountryBlacklistV3)
 
-    Admin get country blacklist:
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MISC [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [READ]
+    Admin get country blacklist
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist
@@ -209,12 +194,7 @@ async def admin_get_country_blacklist_v3_async(
 ):
     """Get Country Blacklist (AdminGetCountryBlacklistV3)
 
-    Admin get country blacklist:
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MISC [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [READ]
+    Admin get country blacklist
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist

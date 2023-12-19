@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -60,13 +60,13 @@ class ListContentVersionsV2(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsListContentVersionsResponse (OK)
+        200: OK - ModelsListContentVersionsResponse (List content's payload verisions)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (774004: ugc content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (774005: unable to get ugc content)
     """
 
     # region fields
@@ -175,13 +175,13 @@ class ListContentVersionsV2(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsListContentVersionsResponse (OK)
+        200: OK - ModelsListContentVersionsResponse (List content's payload verisions)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (774004: ugc content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (774005: unable to get ugc content)
 
         ---: HttpResponse (Undocumented Response)
 

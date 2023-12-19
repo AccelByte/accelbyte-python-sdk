@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseBody
 class GetListOfFriends(Operation):
     """get list of friends (get list of friends)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]` with scope `social`
-
-    get list of friends in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [READ]
-
-    Required Scope(s):
-        - social
+    Get list of friends in a namespace.
 
     Properties:
         url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}

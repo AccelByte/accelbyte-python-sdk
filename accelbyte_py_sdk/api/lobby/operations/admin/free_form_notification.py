@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseBody
 class FreeFormNotification(Operation):
     """send freeform notification to a user (freeFormNotification)
 
-    Required permission : `NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to all connected users in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/freeform

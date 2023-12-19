@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,20 +35,10 @@ from ...models import ResponseError
 class DeleteChannelHandler(Operation):
     """Delete a channel (DeleteChannelHandler)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope: social
-
     Deletes a matchmaking channel. Matchmaking channels is a list of
     pool name that is eligible for matchmaking processes. GameMode isolates each matchmaking pools.
 
     Trying to delete non-existent channel will result deletion success
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels/{channel}

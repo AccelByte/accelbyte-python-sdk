@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (7.6.3)
+# justice-iam-service (7.7.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -294,6 +294,7 @@ from ._auth_code_request_v3 import auth_code_request_v3
 from ._platform_token_grant_v3 import platform_token_grant_v3
 from ._get_revocation_list_v3 import get_revocation_list_v3
 from ._token_revocation_v3 import token_revocation_v3
+from ._simultaneous_login_v3 import simultaneous_login_v3
 from ._token_grant_v3 import token_grant_v3
 from ._verify_token_v3 import verify_token_v3
 from ._platform_authentication_v3 import platform_authentication_v3
@@ -341,6 +342,7 @@ from ._public_force_platform_link_v3 import public_force_platform_link_v3
 from ._public_web_link_platform import public_web_link_platform
 from ._public_web_link_platform_establish import public_web_link_platform_establish
 from ._public_process_web_link_platform_v3 import public_process_web_link_platform_v3
+from ._public_get_users_platform_infos_v3 import public_get_users_platform_infos_v3
 from ._reset_password_v3 import reset_password_v3
 from ._public_get_user_by_user_id_v3 import public_get_user_by_user_id_v3
 from ._public_get_user_ban_history_v3 import public_get_user_ban_history_v3
@@ -390,6 +392,9 @@ from ._admin_decrypt_device_v4 import admin_decrypt_device_v4
 from ._admin_unban_device_v4 import admin_unban_device_v4
 from ._admin_get_users_by_device_v4 import admin_get_users_by_device_v4
 from ._admin_create_test_users_v4 import admin_create_test_users_v4
+from ._admin_bulk_update_user_account_type_v4 import (
+    admin_bulk_update_user_account_type_v4,
+)
 from ._admin_bulk_check_valid_user_idv4 import admin_bulk_check_valid_user_idv4
 from ._admin_update_user_v4 import admin_update_user_v4
 from ._admin_update_user_email_address_v4 import admin_update_user_email_address_v4
@@ -689,6 +694,7 @@ commands = [
     platform_token_grant_v3,
     get_revocation_list_v3,
     token_revocation_v3,
+    simultaneous_login_v3,
     token_grant_v3,
     verify_token_v3,
     platform_authentication_v3,
@@ -726,6 +732,7 @@ commands = [
     public_web_link_platform,
     public_web_link_platform_establish,
     public_process_web_link_platform_v3,
+    public_get_users_platform_infos_v3,
     reset_password_v3,
     public_get_user_by_user_id_v3,
     public_get_user_ban_history_v3,
@@ -763,6 +770,7 @@ commands = [
     admin_unban_device_v4,
     admin_get_users_by_device_v4,
     admin_create_test_users_v4,
+    admin_bulk_update_user_account_type_v4,
     admin_bulk_check_valid_user_idv4,
     admin_update_user_v4,
     admin_update_user_email_address_v4,

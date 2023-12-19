@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -58,13 +58,13 @@ class AdminDeleteTag(Operation):
         tag_id: (tagId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Tags deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772003: Tag not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772002: Unable delete tag)
     """
 
     # region fields
@@ -170,13 +170,13 @@ class AdminDeleteTag(Operation):
     ) -> Tuple[None, Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        204: No Content - (No Content)
+        204: No Content - (Tags deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772003: Tag not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772002: Unable delete tag)
 
         ---: HttpResponse (Undocumented Response)
 

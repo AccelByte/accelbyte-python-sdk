@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseBody
 class AdminGetPartyDataV1(Operation):
     """admin get party data (adminGetPartyDataV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]` with scope `social`
-
-    get party data in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]
-
-    Required Scope(s):
-        - social
+    Get party data in a namespace.
 
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}

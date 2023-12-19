@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,20 +37,8 @@ class GetRevocationListV3(Operation):
     """OAuth2 revocation list API (GetRevocationListV3)
 
     This endpoint will return a list of revoked users and revoked tokens. List of revoked tokens in bloom filter format.
-
-
-
-
     This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
-
-
-
-
     The bloom filter uses MurmurHash3 algorithm for hashing the values
-
-
-
-
     action code : 10708
 
     Properties:

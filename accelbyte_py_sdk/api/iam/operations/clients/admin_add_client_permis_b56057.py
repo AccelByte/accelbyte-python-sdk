@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,19 +36,9 @@ from ...models import RestErrorResponse
 class AdminAddClientPermissionsV3(Operation):
     """Add Client Permissions (AdminAddClientPermissionsV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT' [UPDATE]'
-
-
-     Note for Multi Tenant Mode:
-
+    **Note for Multi Tenant Mode:**
     1. The assigned permission(s) should be restricted in the Default Client permission collection.
-
-
-
     action code: 10303
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions

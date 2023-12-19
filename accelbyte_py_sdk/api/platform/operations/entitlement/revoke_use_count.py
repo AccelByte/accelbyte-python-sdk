@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import EntitlementInfo
 from ...models import ErrorEntity
@@ -37,7 +38,7 @@ from ...models import RevokeUseCountRequest
 class RevokeUseCount(Operation):
     """Revoke specified use count of user entitlement (revokeUseCount)
 
-    Revoke specified use count of user entitlement.
+    Revoke specified use count of user entitlement. please use /{entitlementId}/revoke/byUseCount endpoint instead of this endpoint
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.4.0"
+__version__ = "1.7.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,17 +22,16 @@ from .api_account_link_response import ApiAccountLinkResponse
 from .api_account_link_token_response import ApiAccountLinkTokenResponse
 from .api_account_response import ApiAccountResponse
 from .api_ams_regions_response import ApiAMSRegionsResponse
-from .api_artifact_sampling_rule_response import ApiArtifactSamplingRuleResponse
-from .api_artifact_type_sampling_rules_response import (
-    ApiArtifactTypeSamplingRulesResponse,
-)
+from .api_artifact_response import ApiArtifactResponse
+from .api_artifact_sampling_rule import ApiArtifactSamplingRule
+from .api_artifact_type_sampling_rules import ApiArtifactTypeSamplingRules
+from .api_artifact_url_response import ApiArtifactURLResponse
+from .api_artifact_usage_response import ApiArtifactUsageResponse
 from .api_available_instance_types_response import ApiAvailableInstanceTypesResponse
 from .api_ds_history_event import ApiDSHistoryEvent
 from .api_ds_history_list import ApiDSHistoryList
 from .api_ds_host_configuration import ApiDSHostConfiguration
-from .api_fleet_artifacts_sample_rules_response import (
-    ApiFleetArtifactsSampleRulesResponse,
-)
+from .api_fleet_artifacts_sample_rules import ApiFleetArtifactsSampleRules
 from .api_fleet_claim_by_keys_req import ApiFleetClaimByKeysReq
 from .api_fleet_claim_req import ApiFleetClaimReq
 from .api_fleet_claim_response import ApiFleetClaimResponse

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,8 +36,7 @@ from ...models import RestErrorResponse
 class PublicGetUserPublicInfoByUserIdV4(Operation):
     """Get User Public Info By User ID (PublicGetUserPublicInfoByUserIdV4)
 
-    This endpoint requires a valid user token and only returns user's public information.
-
+    This endpoint only returns user's public information.
     action code: 10129
 
     Properties:

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,22 +36,12 @@ from ...models import ResponseErrorV1
 class ImportChannels(Operation):
     """Import channels (ImportChannels)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope: social
-
     Import channels configuration from file. It will merge with existing channels.
     Available import strategy:
     - leaveOut: if channel with same key exist, the existing will be used and imported one will be ignored (default)
     - replace: if channel with same key exist, the imported channel will be used and existing one will be removed
 
     Action Code: 510113
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/import

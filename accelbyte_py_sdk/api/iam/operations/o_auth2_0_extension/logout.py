@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,22 +33,10 @@ from .....core import HttpResponse
 class Logout(Operation):
     """Logout (Logout)
 
-    This endpoint is used to remove access_token , refresh_token from cookie and revoke token from usage.
-
-
-
-
+    This endpoint is used to remove **access_token**, **refresh_token** from cookie and revoke token from usage.
     Supported methods:
-
-
-
-
-
-
-      * VerifyToken to verify token from header
-
-
-      * AddTokenToRevocationList to revoke token with TTL
+    - VerifyToken to verify token from header
+    - AddTokenToRevocationList to revoke token with TTL
 
     Properties:
         url: /iam/v3/logout

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,11 +35,7 @@ from ...models import RestErrorResponse
 class AdminDeleteClientV3(Operation):
     """Delete Client (AdminDeleteClientV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [DELETE]'
     action code : 10310
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLIENT [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}

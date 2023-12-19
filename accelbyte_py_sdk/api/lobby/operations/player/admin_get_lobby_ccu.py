@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseBody
 class AdminGetLobbyCCU(Operation):
     """admin get number of players currently connected to the lobby. (adminGetLobbyCCU)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]` with scope `social`
-
     Get the number of players connected to the Lobby in the given namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CCU [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/ccu

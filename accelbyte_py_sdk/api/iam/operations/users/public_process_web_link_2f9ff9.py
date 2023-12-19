@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,8 +37,7 @@ class PublicProcessWebLinkPlatformV3(Operation):
     """Process Link Progress  (PublicProcessWebLinkPlatformV3)
 
     This endpoint is used to process third party account link, this endpoint will return the link status directly instead of redirecting to the original page.
-
-    The param state comes from the response of /users/me/platforms/{platformId}/web/link
+    The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/process

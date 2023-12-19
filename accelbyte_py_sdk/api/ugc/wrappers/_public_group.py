@@ -80,13 +80,13 @@ def create_group(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateGroupResponse (Created)
+        201: Created - ModelsCreateGroupResponse (Group Created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772101: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772102: Unable to create group)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -135,13 +135,13 @@ async def create_group_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateGroupResponse (Created)
+        201: Created - ModelsCreateGroupResponse (Group Created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772101: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772102: Unable to create group)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -192,13 +192,13 @@ def delete_group(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Group deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772403: Group not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772402: Unable delete groups)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -247,13 +247,13 @@ async def delete_group_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Group deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772403: Group not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772402: Unable delete groups)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -304,13 +304,13 @@ def get_group(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateGroupResponse (OK)
+        200: OK - ModelsCreateGroupResponse (Get user's group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773002: Group not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773001: Unable get group)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -359,13 +359,13 @@ async def get_group_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateGroupResponse (OK)
+        200: OK - ModelsCreateGroupResponse (Get user's group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773002: Group not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773001: Unable get group)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -422,13 +422,15 @@ def get_group_content(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+        200: OK - ModelsPaginatedContentDownloadResponse (Get contents belong to a group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (773101: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (773103: No group content was found)
+
+        500: Internal Server Error - ResponseError (773102: Unable to get ugc content: database error | 770901: Unable to get ugc content: database error/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -485,13 +487,15 @@ async def get_group_content_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+        200: OK - ModelsPaginatedContentDownloadResponse (Get contents belong to a group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (773101: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (773103: No group content was found)
+
+        500: Internal Server Error - ResponseError (773102: Unable to get ugc content: database error | 770901: Unable to get ugc content: database error/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -547,13 +551,13 @@ def get_groups(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGroupResponse (OK)
+        200: OK - ModelsPaginatedGroupResponse (Get all user group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (772301: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772302: Unable get groups)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -606,13 +610,13 @@ async def get_groups_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGroupResponse (OK)
+        200: OK - ModelsPaginatedGroupResponse (Get all user group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (772301: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772302: Unable get groups)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -670,13 +674,15 @@ def public_get_group_contents_v2(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (Get content belong to a group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (773101: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (773103: No group content was found)
+
+        500: Internal Server Error - ResponseError (773102: Unable to get ugc content: database error | 770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -733,13 +739,15 @@ async def public_get_group_contents_v2_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (Get content belong to a group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (773101: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (773103: No group content was found)
+
+        500: Internal Server Error - ResponseError (773102: Unable to get ugc content: database error | 770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -796,15 +804,15 @@ def update_group(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateGroupResponse (OK)
+        200: OK - ModelsCreateGroupResponse (Group updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772201: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772203: Group not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772202: Unable to update group)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -858,15 +866,15 @@ async def update_group_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateGroupResponse (OK)
+        200: OK - ModelsCreateGroupResponse (Group updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772201: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772203: Group not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772202: Unable to update group)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

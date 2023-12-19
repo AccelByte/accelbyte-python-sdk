@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -49,11 +49,7 @@ class SortByEnum(StrEnum):
 class AdminFindExtensionCategoryList(Operation):
     """Find Extension Category List (adminFindExtensionCategoryList)
 
-    Required permission: ADMIN:REPORTINGCONFIG [READ]
     Get a list of extension category data with the specified name
-
-    Required Permission(s):
-        - ADMIN:REPORTINGCONFIG [READ]
 
     Properties:
         url: /reporting/v1/admin/extensionCategories

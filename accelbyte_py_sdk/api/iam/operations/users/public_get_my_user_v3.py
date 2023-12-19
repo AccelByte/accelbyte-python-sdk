@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,8 +36,21 @@ from ...models import RestErrorResponse
 class PublicGetMyUserV3(Operation):
     """Get My User (PublicGetMyUserV3)
 
-    Require valid user authorization
     Get my user data
+
+    __Supported 3rd platforms:__
+
+    * __PSN(ps4web, ps4, ps5)__
+    * display name
+    * avatar
+    * __Xbox(live, xblweb)__
+    * display name
+    * __Steam(steam, steamopenid)__
+    * display name
+    * avatar
+    * __EpicGames(epicgames)__
+    * display name
+
     action code : 10147
 
     Properties:
@@ -52,6 +65,8 @@ class PublicGetMyUserV3(Operation):
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        include_all_platforms: (includeAllPlatforms) OPTIONAL bool in query
 
     Responses:
         200: OK - ModelUserResponseV3 (OK)
@@ -69,6 +84,8 @@ class PublicGetMyUserV3(Operation):
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
+
+    include_all_platforms: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -107,7 +124,15 @@ class PublicGetMyUserV3(Operation):
     # region get_x_params methods
 
     def get_all_params(self) -> dict:
-        return {}
+        return {
+            "query": self.get_query_params(),
+        }
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "include_all_platforms"):
+            result["includeAllPlatforms"] = self.include_all_platforms
+        return result
 
     # endregion get_x_params methods
 
@@ -117,12 +142,20 @@ class PublicGetMyUserV3(Operation):
 
     # region with_x methods
 
+    def with_include_all_platforms(self, value: bool) -> PublicGetMyUserV3:
+        self.include_all_platforms = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "include_all_platforms") and self.include_all_platforms:
+            result["includeAllPlatforms"] = bool(self.include_all_platforms)
+        elif include_empty:
+            result["includeAllPlatforms"] = False
         return result
 
     # endregion to methods
@@ -172,8 +205,12 @@ class PublicGetMyUserV3(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, **kwargs) -> PublicGetMyUserV3:
+    def create(
+        cls, include_all_platforms: Optional[bool] = None, **kwargs
+    ) -> PublicGetMyUserV3:
         instance = cls()
+        if include_all_platforms is not None:
+            instance.include_all_platforms = include_all_platforms
         return instance
 
     @classmethod
@@ -181,14 +218,22 @@ class PublicGetMyUserV3(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> PublicGetMyUserV3:
         instance = cls()
+        if "includeAllPlatforms" in dict_ and dict_["includeAllPlatforms"] is not None:
+            instance.include_all_platforms = bool(dict_["includeAllPlatforms"])
+        elif include_empty:
+            instance.include_all_platforms = False
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {}
+        return {
+            "includeAllPlatforms": "include_all_platforms",
+        }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
-        return {}
+        return {
+            "includeAllPlatforms": False,
+        }
 
     # endregion static methods

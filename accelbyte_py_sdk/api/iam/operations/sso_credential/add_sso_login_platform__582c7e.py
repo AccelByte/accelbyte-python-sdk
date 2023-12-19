@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,22 +37,14 @@ from ...models import RestErrorResponse
 class AddSSOLoginPlatformCredential(Operation):
     """Add SSO Platform Credential (AddSSOLoginPlatformCredential)
 
-    This is the API to Add SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE] resource.
-
+    This is the API to Add SSO Platform Credential.
     ## Supported platforms:
-
-
-
-      * discourse
+    - **discourse**
     the ssoUrl of the discourse is the discourse forum url. example: https://forum.example.com
-
-      * azure with SAML
-     appId is an application identifier in IdP, in azure it's called EntityID
-    acsUrl is an endpoint on the service provider where the identity provider will redirect to with its authentication response. example: /iam/v3/sso/saml/azuresaml/authenticate
-    federationMetadataUrl is an endpoint on the Identity Provider(IdP) to get IdP federation metadata for service provider to build trust relationship
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE]
+    - **azure with SAML**
+    **appId** is an application identifier in IdP, in azure it's called EntityID
+    **acsUrl** is an endpoint on the service provider where the identity provider will redirect to with its authentication response. example: /iam/v3/sso/saml/azuresaml/authenticate
+    **federationMetadataUrl** is an endpoint on the Identity Provider(IdP) to get IdP federation metadata for service provider to build trust relationship
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso

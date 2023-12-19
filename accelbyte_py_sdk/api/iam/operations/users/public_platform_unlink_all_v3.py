@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,8 +34,6 @@ from ...models import RestErrorResponse
 
 class PublicPlatformUnlinkAllV3(Operation):
     """Unlink user's account from specific platform (PublicPlatformUnlinkAllV3)
-
-    Required valid user authorization.
 
     Unlink user's account from third platform in all namespaces.
 

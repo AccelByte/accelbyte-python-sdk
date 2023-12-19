@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.4.0)
+# AccelByte Gaming Services Cloudsave Service (3.12.8)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,30 +28,39 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class ApiArtifactSamplingRuleResponse(Model):
-    """Api artifact sampling rule response (api.ArtifactSamplingRuleResponse)
+class ModelsBulkUpdatePlayerRecordResponse(Model):
+    """Models bulk update player record response (models.BulkUpdatePlayerRecordResponse)
 
     Properties:
-        collect: (collect) REQUIRED bool
+        detail: (detail) REQUIRED Dict[str, Any]
 
-        percentage: (percentage) REQUIRED float
+        key: (key) REQUIRED str
+
+        success: (success) REQUIRED bool
     """
 
     # region fields
 
-    collect: bool  # REQUIRED
-    percentage: float  # REQUIRED
+    detail: Dict[str, Any]  # REQUIRED
+    key: str  # REQUIRED
+    success: bool  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_collect(self, value: bool) -> ApiArtifactSamplingRuleResponse:
-        self.collect = value
+    def with_detail(
+        self, value: Dict[str, Any]
+    ) -> ModelsBulkUpdatePlayerRecordResponse:
+        self.detail = value
         return self
 
-    def with_percentage(self, value: float) -> ApiArtifactSamplingRuleResponse:
-        self.percentage = value
+    def with_key(self, value: str) -> ModelsBulkUpdatePlayerRecordResponse:
+        self.key = value
+        return self
+
+    def with_success(self, value: bool) -> ModelsBulkUpdatePlayerRecordResponse:
+        self.success = value
         return self
 
     # endregion with_x methods
@@ -60,14 +69,18 @@ class ApiArtifactSamplingRuleResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "collect"):
-            result["collect"] = bool(self.collect)
+        if hasattr(self, "detail"):
+            result["detail"] = {str(k0): v0 for k0, v0 in self.detail.items()}
         elif include_empty:
-            result["collect"] = False
-        if hasattr(self, "percentage"):
-            result["percentage"] = float(self.percentage)
+            result["detail"] = {}
+        if hasattr(self, "key"):
+            result["key"] = str(self.key)
         elif include_empty:
-            result["percentage"] = 0.0
+            result["key"] = ""
+        if hasattr(self, "success"):
+            result["success"] = bool(self.success)
+        elif include_empty:
+            result["success"] = False
         return result
 
     # endregion to methods
@@ -76,34 +89,39 @@ class ApiArtifactSamplingRuleResponse(Model):
 
     @classmethod
     def create(
-        cls, collect: bool, percentage: float, **kwargs
-    ) -> ApiArtifactSamplingRuleResponse:
+        cls, detail: Dict[str, Any], key: str, success: bool, **kwargs
+    ) -> ModelsBulkUpdatePlayerRecordResponse:
         instance = cls()
-        instance.collect = collect
-        instance.percentage = percentage
+        instance.detail = detail
+        instance.key = key
+        instance.success = success
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ApiArtifactSamplingRuleResponse:
+    ) -> ModelsBulkUpdatePlayerRecordResponse:
         instance = cls()
         if not dict_:
             return instance
-        if "collect" in dict_ and dict_["collect"] is not None:
-            instance.collect = bool(dict_["collect"])
+        if "detail" in dict_ and dict_["detail"] is not None:
+            instance.detail = {str(k0): v0 for k0, v0 in dict_["detail"].items()}
         elif include_empty:
-            instance.collect = False
-        if "percentage" in dict_ and dict_["percentage"] is not None:
-            instance.percentage = float(dict_["percentage"])
+            instance.detail = {}
+        if "key" in dict_ and dict_["key"] is not None:
+            instance.key = str(dict_["key"])
         elif include_empty:
-            instance.percentage = 0.0
+            instance.key = ""
+        if "success" in dict_ and dict_["success"] is not None:
+            instance.success = bool(dict_["success"])
+        elif include_empty:
+            instance.success = False
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApiArtifactSamplingRuleResponse]:
+    ) -> Dict[str, ModelsBulkUpdatePlayerRecordResponse]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -113,7 +131,7 @@ class ApiArtifactSamplingRuleResponse(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ApiArtifactSamplingRuleResponse]:
+    ) -> List[ModelsBulkUpdatePlayerRecordResponse]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -124,9 +142,9 @@ class ApiArtifactSamplingRuleResponse(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ApiArtifactSamplingRuleResponse,
-        List[ApiArtifactSamplingRuleResponse],
-        Dict[Any, ApiArtifactSamplingRuleResponse],
+        ModelsBulkUpdatePlayerRecordResponse,
+        List[ModelsBulkUpdatePlayerRecordResponse],
+        Dict[Any, ModelsBulkUpdatePlayerRecordResponse],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -141,15 +159,17 @@ class ApiArtifactSamplingRuleResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "collect": "collect",
-            "percentage": "percentage",
+            "detail": "detail",
+            "key": "key",
+            "success": "success",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "collect": True,
-            "percentage": True,
+            "detail": True,
+            "key": True,
+            "success": True,
         }
 
     # endregion static methods

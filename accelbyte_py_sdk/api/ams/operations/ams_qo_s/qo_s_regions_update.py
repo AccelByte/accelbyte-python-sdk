@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.4.0)
+# Fleet Commander (1.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,6 +35,14 @@ from ...models import ResponseErrorResponse
 
 class QoSRegionsUpdate(Operation):
     """Update the status of a QoS region (QoSRegionsUpdate)
+
+    ```
+    Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
+
+    This endpoint updates the registered QoS service's configurable configuration.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/qos/{region}

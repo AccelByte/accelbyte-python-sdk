@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import RestapiErrorResponseBody
 
 
 class AdminUpdateGlobalConfig(Operation):
-    """Required permission : ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE] (adminUpdateGlobalConfig)
+    """Upsert global configuration data. (adminUpdateGlobalConfig)
 
     Upsert global configuration data.
 

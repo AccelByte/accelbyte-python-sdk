@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,23 +38,8 @@ class GetUserBanHistory(Operation):
     """Get user's bans history (GetUserBanHistory)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BAN:USER:{userId} [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/bans

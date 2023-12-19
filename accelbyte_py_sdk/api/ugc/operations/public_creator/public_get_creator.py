@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -56,13 +56,13 @@ class PublicGetCreator(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreatorResponse (OK)
+        200: OK - ModelsCreatorResponse (Get creator stats)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (771601: Creator not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771103: Unable to get total liked content)
     """
 
     # region fields
@@ -170,13 +170,13 @@ class PublicGetCreator(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsCreatorResponse (OK)
+        200: OK - ModelsCreatorResponse (Get creator stats)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (771601: Creator not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771103: Unable to get total liked content)
 
         ---: HttpResponse (Undocumented Response)
 

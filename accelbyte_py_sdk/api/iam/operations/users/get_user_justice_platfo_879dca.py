@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,41 +38,16 @@ class GetUserJusticePlatformAccount(Operation):
     """Get the Justice linked accounts on the designated namespace (GetUserJusticePlatformAccount)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]_**
 
+    This endpoint requires the client access token as the bearer token
 
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
-
-
-
-
-
-    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]'
-
-
-
-
-    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going toÂ create and return the new Justice platform account.
+    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going to *create and return the new Justice platform account.*
     The newly user Justice platform account is going to be forced to perform token grant through the given user and can't perform password update
 
-
-
-
     ### Read Justice Platform Account UserID
-
-
-
-
-    In order to read the Justice platform account UserID, it is required to have the permission: NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ] , otherwise the UserID is going to be censored and replaced with âRedactedâ text.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
-
-        - NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]
+    Without permission the UserID is going to be censored and replaced with âRedactedâ text.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -62,6 +62,8 @@ class PublicListActiveSections(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         language: (language) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
@@ -87,6 +89,7 @@ class PublicListActiveSections(Operation):
 
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    auto_calc_estimated_price: bool  # OPTIONAL in [query]
     language: str  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
     store_id: str  # OPTIONAL in [query]
@@ -144,6 +147,8 @@ class PublicListActiveSections(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "auto_calc_estimated_price"):
+            result["autoCalcEstimatedPrice"] = self.auto_calc_estimated_price
         if hasattr(self, "language"):
             result["language"] = self.language
         if hasattr(self, "region"):
@@ -168,6 +173,10 @@ class PublicListActiveSections(Operation):
 
     def with_user_id(self, value: str) -> PublicListActiveSections:
         self.user_id = value
+        return self
+
+    def with_auto_calc_estimated_price(self, value: bool) -> PublicListActiveSections:
+        self.auto_calc_estimated_price = value
         return self
 
     def with_language(self, value: str) -> PublicListActiveSections:
@@ -200,6 +209,13 @@ class PublicListActiveSections(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if (
+            hasattr(self, "auto_calc_estimated_price")
+            and self.auto_calc_estimated_price
+        ):
+            result["autoCalcEstimatedPrice"] = bool(self.auto_calc_estimated_price)
+        elif include_empty:
+            result["autoCalcEstimatedPrice"] = False
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
@@ -263,6 +279,7 @@ class PublicListActiveSections(Operation):
         cls,
         namespace: str,
         user_id: str,
+        auto_calc_estimated_price: Optional[bool] = None,
         language: Optional[str] = None,
         region: Optional[str] = None,
         store_id: Optional[str] = None,
@@ -272,6 +289,8 @@ class PublicListActiveSections(Operation):
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
+        if auto_calc_estimated_price is not None:
+            instance.auto_calc_estimated_price = auto_calc_estimated_price
         if language is not None:
             instance.language = language
         if region is not None:
@@ -295,6 +314,13 @@ class PublicListActiveSections(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if (
+            "autoCalcEstimatedPrice" in dict_
+            and dict_["autoCalcEstimatedPrice"] is not None
+        ):
+            instance.auto_calc_estimated_price = bool(dict_["autoCalcEstimatedPrice"])
+        elif include_empty:
+            instance.auto_calc_estimated_price = False
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -318,6 +344,7 @@ class PublicListActiveSections(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+            "autoCalcEstimatedPrice": "auto_calc_estimated_price",
             "language": "language",
             "region": "region",
             "storeId": "store_id",
@@ -329,6 +356,7 @@ class PublicListActiveSections(Operation):
         return {
             "namespace": True,
             "userId": True,
+            "autoCalcEstimatedPrice": False,
             "language": False,
             "region": False,
             "storeId": False,

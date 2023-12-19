@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,16 +36,8 @@ from ...models import RestErrorResponse
 class AdminGetListBanReasonV3(Operation):
     """Get list of ban reasons (AdminGetListBanReasonV3)
 
-    Required permission 'ADMIN:BAN [READ]'
-
-
     Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace.
-
-
     action code : 10202
-
-    Required Permission(s):
-        - ADMIN:BAN [READ]
 
     Properties:
         url: /iam/v3/admin/bans/reasons

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,15 +35,8 @@ from ...models import RestErrorResponse
 class AdminDeleteUserRoleV3(Operation):
     """Delete User Role (AdminDeleteUserRoleV3)
 
-    This endpoint removes role from user. Required permission ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
-
-
-
-
+    This endpoint removes role from user
     action code: 10110
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:{userId} [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}

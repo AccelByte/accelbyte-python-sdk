@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,19 +38,9 @@ class PublicBulkGetUsers(Operation):
     """Bulk get users' basic info by user Id (PublicBulkGetUsers)
 
     Notes:
-
-
-
-
-
-
-      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
-
-
-      * If namespace is game, will search by game user Id, other wise will search by publisher namespace
-
-
-      * Result will include displayName(if it exists)
+    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - If namespace is game, will search by game user Id, other wise will search by publisher namespace
+    - **Result will include displayName(if it exists)**
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/bulk/basic

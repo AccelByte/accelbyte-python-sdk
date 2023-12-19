@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,10 +37,6 @@ from ...models import ResponseError
 class CreateChannelHandler(Operation):
     """Create a channel (CreateChannelHandler)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
-
-    Required Scope: social
-
     Creates a new matchmaking channel.
 
     Matchmaking channels is a list of pool name that is eligible for matchmaking processes.
@@ -55,12 +51,6 @@ class CreateChannelHandler(Operation):
     Matching Rule used to classify the player. Player that has matched criteria will be grouped together within an ally.
 
     Valid value for criteria is "distance"
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels

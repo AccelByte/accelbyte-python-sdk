@@ -51,20 +51,10 @@ def admin_export_config_v1(
     """Export lobby config to a json file. (adminExportConfigV1)
 
 
-        Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
-
-        Required Scope: social
-
         Export lobby configuration to a json file. The file can then be imported from the /import endpoint.
 
         JSON Schema of the exported file:
-        {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"},"unregisterDelay":{"type":"integer","format":"integer"}}}
-
-        Required Permission(s):
-            - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
-
-        Required Scope(s):
-            - social
+        {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"int64"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"int64"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"int64"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"int64"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"int64"},"unregisterDelay":{"type":"integer","format":"int64"}}}
 
         Properties:
             url: /lobby/v1/admin/config/namespaces/{namespace}/export
@@ -84,7 +74,7 @@ def admin_export_config_v1(
         Responses:
             200: OK - Any (OK
     JSON Schema of the exported file:
-    {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"},"unregisterDelay":{"type":"integer","format":"integer"}}})
+    {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"int64"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"int64"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"int64"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"int64"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"int64"},"unregisterDelay":{"type":"integer","format":"int64"}}})
 
             401: Unauthorized - ResponseError (Unauthorized)
 
@@ -111,20 +101,10 @@ async def admin_export_config_v1_async(
     """Export lobby config to a json file. (adminExportConfigV1)
 
 
-        Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
-
-        Required Scope: social
-
         Export lobby configuration to a json file. The file can then be imported from the /import endpoint.
 
         JSON Schema of the exported file:
-        {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"},"unregisterDelay":{"type":"integer","format":"integer"}}}
-
-        Required Permission(s):
-            - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
-
-        Required Scope(s):
-            - social
+        {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"int64"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"int64"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"int64"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"int64"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"int64"},"unregisterDelay":{"type":"integer","format":"int64"}}}
 
         Properties:
             url: /lobby/v1/admin/config/namespaces/{namespace}/export
@@ -144,7 +124,7 @@ async def admin_export_config_v1_async(
         Responses:
             200: OK - Any (OK
     JSON Schema of the exported file:
-    {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"},"unregisterDelay":{"type":"integer","format":"integer"}}})
+    {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"int64"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"int64"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"int64"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"int64"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"int64"},"unregisterDelay":{"type":"integer","format":"int64"}}})
 
             401: Unauthorized - ResponseError (Unauthorized)
 
@@ -170,16 +150,8 @@ def admin_get_all_config_v1(
 ):
     """admin get all namespaces config (adminGetAllConfigV1)
 
-    Required permission : `ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]` with scope `social`
-
-    get lobby config of all namespaces.
+    Get lobby config of all namespaces.
     default MaxDSWaitTime is 120 (second)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/config
@@ -217,16 +189,8 @@ async def admin_get_all_config_v1_async(
 ):
     """admin get all namespaces config (adminGetAllConfigV1)
 
-    Required permission : `ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]` with scope `social`
-
-    get lobby config of all namespaces.
+    Get lobby config of all namespaces.
     default MaxDSWaitTime is 120 (second)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/config
@@ -268,16 +232,8 @@ def admin_get_config_v1(
 ):
     """admin get namespace config (adminGetConfigV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with scope `social`
-
-    get lobby config of a namespace.
+    Get lobby config of a namespace.
     default MaxDSWaitTime is 120 (second)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/config/namespaces/{namespace}
@@ -325,16 +281,8 @@ async def admin_get_config_v1_async(
 ):
     """admin get namespace config (adminGetConfigV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with scope `social`
-
-    get lobby config of a namespace.
+    Get lobby config of a namespace.
     default MaxDSWaitTime is 120 (second)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/config/namespaces/{namespace}
@@ -386,20 +334,10 @@ def admin_import_config_v1(
     """Import lobby config from a json file. (adminImportConfigV1)
 
 
-    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
-
-    Required Scope: social
-
     Import config configuration from file. The existing configuration will be replaced.
     The json file to import can be obtained from the /export endpoint.
 
     MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/config/namespaces/{namespace}/import
@@ -448,20 +386,10 @@ async def admin_import_config_v1_async(
     """Import lobby config from a json file. (adminImportConfigV1)
 
 
-    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
-
-    Required Scope: social
-
     Import config configuration from file. The existing configuration will be replaced.
     The json file to import can be obtained from the /export endpoint.
 
     MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/config/namespaces/{namespace}/import
@@ -511,16 +439,8 @@ def admin_update_config_v1(
 ):
     """admin update namespace config (adminUpdateConfigV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]` with scope `social`
-
-    update lobby config of a namespace.
+    Update lobby config of a namespace.
     MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/config/namespaces/{namespace}
@@ -574,16 +494,8 @@ async def admin_update_config_v1_async(
 ):
     """admin update namespace config (adminUpdateConfigV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]` with scope `social`
-
-    update lobby config of a namespace.
+    Update lobby config of a namespace.
     MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/config/namespaces/{namespace}

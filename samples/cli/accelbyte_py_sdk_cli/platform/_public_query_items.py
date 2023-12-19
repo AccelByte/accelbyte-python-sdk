@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.41.0)
+# AGS Platform Service (4.42.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 @click.command()
 @click.option("--app_type", "app_type", type=str)
+@click.option("--auto_calc_estimated_price", "auto_calc_estimated_price", type=bool)
 @click.option("--base_app_id", "base_app_id", type=str)
 @click.option("--category_path", "category_path", type=str)
 @click.option("--features", "features", type=str)
@@ -58,6 +59,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 @click.option("--doc", type=bool)
 def public_query_items(
     app_type: Optional[str] = None,
+    auto_calc_estimated_price: Optional[bool] = None,
     base_app_id: Optional[str] = None,
     category_path: Optional[str] = None,
     features: Optional[str] = None,
@@ -91,6 +93,7 @@ def public_query_items(
             raise Exception(f"Invalid JSON for 'sortBy'. {str(e)}") from e
     result, error = public_query_items_internal(
         app_type=app_type,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         base_app_id=base_app_id,
         category_path=category_path,
         features=features,

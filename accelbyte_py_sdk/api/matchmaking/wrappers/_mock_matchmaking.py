@@ -56,19 +56,9 @@ def bulk_create_mock_tickets(
 ):
     """Bulk create mock tickets (BulkCreateMockTickets)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope: social
-
     Create and queue mock tickets into specified game mode's pool.
     The tickets input will be used as is.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/tickets/bulk
@@ -124,19 +114,9 @@ async def bulk_create_mock_tickets_async(
 ):
     """Bulk create mock tickets (BulkCreateMockTickets)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope: social
-
     Create and queue mock tickets into specified game mode's pool.
     The tickets input will be used as is.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/tickets/bulk
@@ -193,18 +173,8 @@ def clean_all_mocks(
 ):
     """Delete all mock tickets and matches (CleanAllMocks)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope: social
-
     Delete all mock tickets and matches in a channel.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks
@@ -256,18 +226,8 @@ async def clean_all_mocks_async(
 ):
     """Delete all mock tickets and matches (CleanAllMocks)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope: social
-
     Delete all mock tickets and matches in a channel.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks
@@ -322,20 +282,10 @@ def create_mock_tickets(
 ):
     """Create mock tickets (CreateMockTickets)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope: social
-
     Create and queue mock tickets into specified game mode's pool.
     Ticket's MMRs will be randomized using Normal distribution according to the input mean and standard deviation.
     All mock tickets and matches will be cleaned up automatically after 1 day.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/tickets
@@ -391,20 +341,10 @@ async def create_mock_tickets_async(
 ):
     """Create mock tickets (CreateMockTickets)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope: social
-
     Create and queue mock tickets into specified game mode's pool.
     Ticket's MMRs will be randomized using Normal distribution according to the input mean and standard deviation.
     All mock tickets and matches will be cleaned up automatically after 1 day.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/tickets
@@ -461,18 +401,8 @@ def get_all_mock_matches(
 ):
     """Get all mock matches (GetAllMockMatches)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Read all mock matches in a channel resulted from matching mock tickets.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/matches
@@ -524,18 +454,8 @@ async def get_all_mock_matches_async(
 ):
     """Get all mock matches (GetAllMockMatches)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Read all mock matches in a channel resulted from matching mock tickets.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/matches
@@ -589,18 +509,8 @@ def get_all_mock_tickets(
 ):
     """Get all mock tickets (GetAllMockTickets)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Read all mock tickets in a channel.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/tickets
@@ -652,18 +562,8 @@ async def get_all_mock_tickets_async(
 ):
     """Get all mock tickets (GetAllMockTickets)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Read all mock tickets in a channel.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/tickets
@@ -718,18 +618,8 @@ def get_mock_matches_by_timestamp(
 ):
     """Get mock matches after timestamp (GetMockMatchesByTimestamp)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Read mock matches that has timestamp older than specified timestamp in a channel resulted from matching mock tickets.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/matches
@@ -785,18 +675,8 @@ async def get_mock_matches_by_timestamp_async(
 ):
     """Get mock matches after timestamp (GetMockMatchesByTimestamp)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Read mock matches that has timestamp older than specified timestamp in a channel resulted from matching mock tickets.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/matches
@@ -854,18 +734,8 @@ def get_mock_tickets_by_timestamp(
 ):
     """Get mock tickets after timestamp (GetMockTicketsByTimestamp)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Read mock tickets after the specified timestamp in a channel.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/tickets/query
@@ -921,18 +791,8 @@ async def get_mock_tickets_by_timestamp_async(
 ):
     """Get mock tickets after timestamp (GetMockTicketsByTimestamp)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Read mock tickets after the specified timestamp in a channel.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/tickets/query

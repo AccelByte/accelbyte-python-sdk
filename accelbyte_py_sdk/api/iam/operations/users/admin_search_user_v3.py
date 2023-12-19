@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,74 +36,26 @@ from ...models import RestErrorResponse
 class AdminSearchUserV3(Operation):
     """Search User (AdminSearchUserV3)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
-
-
-
-
     Endpoint behavior :
-
-
-      * by default this endpoint searches all users on the specified namespace
-
-
-      * if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
-
-
-      * if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
-
-
-      * if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
-
-
-      * if startDate parameter is defined, endpoint will search users that created start from the defined date
-
-
-      * if endDate parameter is defined, endpoint will search users that created until the defined date
-
-
-      * if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
-
-
-      * if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
-
-
-      * if limit is not defined, The default limit is 100
-
-
-
-
-
-
+    - by default this endpoint searches all users on the specified namespace
+    - if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
+    - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
+    - if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
+    - if startDate parameter is defined, endpoint will search users that created start from the defined date
+    - if endDate parameter is defined, endpoint will search users that created until the defined date
+    - if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
+    - if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
+    - if limit is not defined, The default limit is 100
 
     In multi tenant mode :
 
-
-
-
-      * if super admin search in super admin namespace, the result will be all game admin user
-
-
-      * if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
-
-
-      * if super admin search in game namespace, the result will be all game admin users and players under the game namespace
-
-
-      * if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
-
-
-      * if game admin search in their game namespace, the result will be all player in the game namespace
-
-
-
-
-
+    - if super admin search in super admin namespace, the result will be all game admin user
+    - if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
+    - if super admin search in game namespace, the result will be all game admin users and players under the game namespace
+    - if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
+    - if game admin search in their game namespace, the result will be all player in the game namespace
 
     action code : 10133
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search
@@ -138,6 +90,8 @@ class AdminSearchUserV3(Operation):
 
         start_date: (startDate) OPTIONAL str in query
 
+        test_account: (testAccount) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelSearchUsersResponseWithPaginationV3 (OK)
 
@@ -169,6 +123,7 @@ class AdminSearchUserV3(Operation):
     platform_id: str  # OPTIONAL in [query]
     query: str  # OPTIONAL in [query]
     start_date: str  # OPTIONAL in [query]
+    test_account: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -238,6 +193,8 @@ class AdminSearchUserV3(Operation):
             result["query"] = self.query
         if hasattr(self, "start_date"):
             result["startDate"] = self.start_date
+        if hasattr(self, "test_account"):
+            result["testAccount"] = self.test_account
         return result
 
     # endregion get_x_params methods
@@ -288,6 +245,10 @@ class AdminSearchUserV3(Operation):
         self.start_date = value
         return self
 
+    def with_test_account(self, value: bool) -> AdminSearchUserV3:
+        self.test_account = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -334,6 +295,10 @@ class AdminSearchUserV3(Operation):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = ""
+        if hasattr(self, "test_account") and self.test_account:
+            result["testAccount"] = bool(self.test_account)
+        elif include_empty:
+            result["testAccount"] = False
         return result
 
     # endregion to methods
@@ -407,6 +372,7 @@ class AdminSearchUserV3(Operation):
         platform_id: Optional[str] = None,
         query: Optional[str] = None,
         start_date: Optional[str] = None,
+        test_account: Optional[bool] = None,
         **kwargs,
     ) -> AdminSearchUserV3:
         instance = cls()
@@ -429,6 +395,8 @@ class AdminSearchUserV3(Operation):
             instance.query = query
         if start_date is not None:
             instance.start_date = start_date
+        if test_account is not None:
+            instance.test_account = test_account
         return instance
 
     @classmethod
@@ -476,6 +444,10 @@ class AdminSearchUserV3(Operation):
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
             instance.start_date = ""
+        if "testAccount" in dict_ and dict_["testAccount"] is not None:
+            instance.test_account = bool(dict_["testAccount"])
+        elif include_empty:
+            instance.test_account = False
         return instance
 
     @staticmethod
@@ -491,6 +463,7 @@ class AdminSearchUserV3(Operation):
             "platformId": "platform_id",
             "query": "query",
             "startDate": "start_date",
+            "testAccount": "test_account",
         }
 
     @staticmethod
@@ -506,6 +479,7 @@ class AdminSearchUserV3(Operation):
             "platformId": False,
             "query": False,
             "startDate": False,
+            "testAccount": False,
         }
 
     # endregion static methods

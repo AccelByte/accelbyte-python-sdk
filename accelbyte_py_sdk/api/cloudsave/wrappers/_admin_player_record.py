@@ -33,6 +33,8 @@ from ....core import same_doc_as
 from ..models import ModelsBulkGetAdminPlayerRecordResponse
 from ..models import ModelsBulkGetPlayerRecordSizeResponse
 from ..models import ModelsBulkGetPlayerRecordsRequest
+from ..models import ModelsBulkUpdatePlayerRecordResponse
+from ..models import ModelsBulkUpdatePlayerRecordsRequest
 from ..models import ModelsBulkUserKeyRequest
 from ..models import ModelsListPlayerRecordKeysResponse
 from ..models import ModelsPlayerRecordRequest
@@ -50,6 +52,7 @@ from ..operations.admin_player_record import AdminPostPlayerPublicRecordHandlerV
 from ..operations.admin_player_record import AdminPostPlayerRecordHandlerV1
 from ..operations.admin_player_record import AdminPutPlayerPublicRecordHandlerV1
 from ..operations.admin_player_record import AdminPutPlayerRecordHandlerV1
+from ..operations.admin_player_record import AdminPutPlayerRecordsHandlerV1
 from ..operations.admin_player_record import AdminRetrievePlayerRecords
 from ..operations.admin_player_record import BulkGetPlayerRecordSizeHandlerV1
 from ..operations.admin_player_record import ListPlayerRecordHandlerV1
@@ -747,8 +750,8 @@ def admin_get_player_records_handler_v1(
 ):
     """Bulk get player records by multiple record keys (adminGetPlayerRecordsHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]`
-    --------------------|-----------------------------------------------------------
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [READ]`
+    --------------------|--------------------------------------------------------------
     Required Scope      | `social`
 
 
@@ -758,7 +761,7 @@ def admin_get_player_records_handler_v1(
     Maximum bulk key limit per request 20.
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [READ]
 
     Required Scope(s):
         - social
@@ -817,8 +820,8 @@ async def admin_get_player_records_handler_v1_async(
 ):
     """Bulk get player records by multiple record keys (adminGetPlayerRecordsHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]`
-    --------------------|-----------------------------------------------------------
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [READ]`
+    --------------------|--------------------------------------------------------------
     Required Scope      | `social`
 
 
@@ -828,7 +831,7 @@ async def admin_get_player_records_handler_v1_async(
     Maximum bulk key limit per request 20.
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [READ]
 
     Required Scope(s):
         - social
@@ -2197,6 +2200,140 @@ async def admin_put_player_record_handler_v1_async(
     request = AdminPutPlayerRecordHandlerV1.create(
         body=body,
         key=key,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminPutPlayerRecordsHandlerV1)
+def admin_put_player_records_handler_v1(
+    body: ModelsBulkUpdatePlayerRecordsRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk update player records (adminPutPlayerRecordsHandlerV1)
+
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|----------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+    This endpoints will create new player record or replace the existing player record in bulk.
+    Maximum bulk key limit per request 10.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
+
+        method: PUT
+
+        tags: ["AdminPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUpdatePlayerRecordsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsBulkUpdatePlayerRecordResponse] (OK)
+
+        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body | 18355: unable to marshal request body)
+
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminPutPlayerRecordsHandlerV1.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminPutPlayerRecordsHandlerV1)
+async def admin_put_player_records_handler_v1_async(
+    body: ModelsBulkUpdatePlayerRecordsRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk update player records (adminPutPlayerRecordsHandlerV1)
+
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|----------------------------------------------------------------
+    Required Scope      | `social`
+
+
+
+
+    This endpoints will create new player record or replace the existing player record in bulk.
+    Maximum bulk key limit per request 10.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [UPDATE]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
+
+        method: PUT
+
+        tags: ["AdminPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUpdatePlayerRecordsRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsBulkUpdatePlayerRecordResponse] (OK)
+
+        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body | 18355: unable to marshal request body)
+
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminPutPlayerRecordsHandlerV1.create(
+        body=body,
         user_id=user_id,
         namespace=namespace,
     )

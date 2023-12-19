@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -59,13 +59,15 @@ class UpdateContentLikeStatus(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsContentLikeResponse (OK)
+        200: OK - ModelsContentLikeResponse (Update like/unlike status to a content)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771000: Malformed request/Content not found/Unable to update like status: content not found)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (771000: Malformed request/Content not found/Unable to update like status: content not found | 771001: unable to like content/Unable to update like status: database error | 771000: Malformed request/Content not found/Unable to update like status: content not found)
+
+        500: Internal Server Error - ResponseError (771001: unable to like content/Unable to update like status: database error)
     """
 
     # region fields
@@ -188,13 +190,15 @@ class UpdateContentLikeStatus(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsContentLikeResponse (OK)
+        200: OK - ModelsContentLikeResponse (Update like/unlike status to a content)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771000: Malformed request/Content not found/Unable to update like status: content not found)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (771000: Malformed request/Content not found/Unable to update like status: content not found | 771001: unable to like content/Unable to update like status: database error | 771000: Malformed request/Content not found/Unable to update like status: content not found)
+
+        500: Internal Server Error - ResponseError (771001: unable to like content/Unable to update like status: database error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -214,6 +218,8 @@ class UpdateContentLikeStatus(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 404:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

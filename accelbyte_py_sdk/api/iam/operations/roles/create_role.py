@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,35 +39,13 @@ class CreateRole(Operation):
     """Create Role (CreateRole)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE:ADMIN [CREATE]' or 'ADMIN:ROLE [CREATE]'
-
-
     Role can only be assigned to other users by the role's manager.
-
-
-
 
     If role is an administrator role (i.e. AdminRole == true), it will list out the role's members.
 
-
-
-
     Administrator role can be created only when at least 1 manager is specified.
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles [POST]
-
-    Required Permission(s):
-        - ADMIN:ROLE [CREATE]
-
-        - ROLE:ADMIN [CREATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles [POST]_**
 
     Properties:
         url: /iam/roles

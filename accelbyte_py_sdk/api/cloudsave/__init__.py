@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.12.7"
+__version__ = "3.12.8"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -91,6 +91,8 @@ from .wrappers import admin_put_player_public_record_handler_v1
 from .wrappers import admin_put_player_public_record_handler_v1_async
 from .wrappers import admin_put_player_record_handler_v1
 from .wrappers import admin_put_player_record_handler_v1_async
+from .wrappers import admin_put_player_records_handler_v1
+from .wrappers import admin_put_player_records_handler_v1_async
 from .wrappers import admin_retrieve_player_records
 from .wrappers import admin_retrieve_player_records_async
 from .wrappers import bulk_get_player_record_size_handler_v1

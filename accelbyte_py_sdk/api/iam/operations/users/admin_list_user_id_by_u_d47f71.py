@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,11 +38,7 @@ class AdminListUserIDByUserIDsV3(Operation):
     """List User By User ID (AdminListUserIDByUserIDsV3)
 
     List User By User ID
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
     This endpoint intended to list user information from the given list of userID and namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bulk

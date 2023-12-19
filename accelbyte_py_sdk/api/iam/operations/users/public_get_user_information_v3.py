@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,11 +36,7 @@ from ...models import RestErrorResponse
 class PublicGetUserInformationV3(Operation):
     """Get user's information v3 (PublicGetUserInformationV3)
 
-    This endpoint retrieves user info and linked platform accounts.
-    Required permissions 'NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    This endpoint retrieves user info and linked platform accounts
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/information

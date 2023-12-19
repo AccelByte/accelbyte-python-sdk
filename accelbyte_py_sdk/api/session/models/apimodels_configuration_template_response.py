@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.12.0)
+# AccelByte Gaming Services Session Service (3.12.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,8 +39,6 @@ class ApimodelsConfigurationTemplateResponse(Model):
         created_at: (createdAt) REQUIRED str
 
         deployment: (deployment) REQUIRED str
-
-        enable_secret: (enableSecret) REQUIRED bool
 
         inactive_timeout: (inactiveTimeout) REQUIRED int
 
@@ -76,9 +74,13 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         ds_source: (dsSource) OPTIONAL str
 
+        enable_secret: (enableSecret) OPTIONAL bool
+
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
         immutable_storage: (immutableStorage) OPTIONAL bool
+
+        leader_election_grace_period: (leaderElectionGracePeriod) OPTIONAL int
 
         max_active_sessions: (maxActiveSessions) OPTIONAL int
 
@@ -98,7 +100,6 @@ class ApimodelsConfigurationTemplateResponse(Model):
     client_version: str  # REQUIRED
     created_at: str  # REQUIRED
     deployment: str  # REQUIRED
-    enable_secret: bool  # REQUIRED
     inactive_timeout: int  # REQUIRED
     invite_timeout: int  # REQUIRED
     joinability: str  # REQUIRED
@@ -116,8 +117,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
     disable_code_generation: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
+    enable_secret: bool  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
     immutable_storage: bool  # OPTIONAL
+    leader_election_grace_period: int  # OPTIONAL
     max_active_sessions: int  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
@@ -139,10 +142,6 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
     def with_deployment(self, value: str) -> ApimodelsConfigurationTemplateResponse:
         self.deployment = value
-        return self
-
-    def with_enable_secret(self, value: bool) -> ApimodelsConfigurationTemplateResponse:
-        self.enable_secret = value
         return self
 
     def with_inactive_timeout(
@@ -221,6 +220,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self.ds_source = value
         return self
 
+    def with_enable_secret(self, value: bool) -> ApimodelsConfigurationTemplateResponse:
+        self.enable_secret = value
+        return self
+
     def with_fallback_claim_keys(
         self, value: List[str]
     ) -> ApimodelsConfigurationTemplateResponse:
@@ -231,6 +234,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self, value: bool
     ) -> ApimodelsConfigurationTemplateResponse:
         self.immutable_storage = value
+        return self
+
+    def with_leader_election_grace_period(
+        self, value: int
+    ) -> ApimodelsConfigurationTemplateResponse:
+        self.leader_election_grace_period = value
         return self
 
     def with_max_active_sessions(
@@ -285,10 +294,6 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = ""
-        if hasattr(self, "enable_secret"):
-            result["enableSecret"] = bool(self.enable_secret)
-        elif include_empty:
-            result["enableSecret"] = False
         if hasattr(self, "inactive_timeout"):
             result["inactiveTimeout"] = int(self.inactive_timeout)
         elif include_empty:
@@ -357,6 +362,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["dsSource"] = str(self.ds_source)
         elif include_empty:
             result["dsSource"] = ""
+        if hasattr(self, "enable_secret"):
+            result["enableSecret"] = bool(self.enable_secret)
+        elif include_empty:
+            result["enableSecret"] = False
         if hasattr(self, "fallback_claim_keys"):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
@@ -365,6 +374,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["immutableStorage"] = bool(self.immutable_storage)
         elif include_empty:
             result["immutableStorage"] = False
+        if hasattr(self, "leader_election_grace_period"):
+            result["leaderElectionGracePeriod"] = int(self.leader_election_grace_period)
+        elif include_empty:
+            result["leaderElectionGracePeriod"] = 0
         if hasattr(self, "max_active_sessions"):
             result["maxActiveSessions"] = int(self.max_active_sessions)
         elif include_empty:
@@ -403,7 +416,6 @@ class ApimodelsConfigurationTemplateResponse(Model):
         client_version: str,
         created_at: str,
         deployment: str,
-        enable_secret: bool,
         inactive_timeout: int,
         invite_timeout: int,
         joinability: str,
@@ -421,8 +433,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
         disable_code_generation: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
         ds_source: Optional[str] = None,
+        enable_secret: Optional[bool] = None,
         fallback_claim_keys: Optional[List[str]] = None,
         immutable_storage: Optional[bool] = None,
+        leader_election_grace_period: Optional[int] = None,
         max_active_sessions: Optional[int] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         preferred_claim_keys: Optional[List[str]] = None,
@@ -435,7 +449,6 @@ class ApimodelsConfigurationTemplateResponse(Model):
         instance.client_version = client_version
         instance.created_at = created_at
         instance.deployment = deployment
-        instance.enable_secret = enable_secret
         instance.inactive_timeout = inactive_timeout
         instance.invite_timeout = invite_timeout
         instance.joinability = joinability
@@ -458,10 +471,14 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.ds_manual_set_ready = ds_manual_set_ready
         if ds_source is not None:
             instance.ds_source = ds_source
+        if enable_secret is not None:
+            instance.enable_secret = enable_secret
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
         if immutable_storage is not None:
             instance.immutable_storage = immutable_storage
+        if leader_election_grace_period is not None:
+            instance.leader_election_grace_period = leader_election_grace_period
         if max_active_sessions is not None:
             instance.max_active_sessions = max_active_sessions
         if native_session_setting is not None:
@@ -495,10 +512,6 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = ""
-        if "enableSecret" in dict_ and dict_["enableSecret"] is not None:
-            instance.enable_secret = bool(dict_["enableSecret"])
-        elif include_empty:
-            instance.enable_secret = False
         if "inactiveTimeout" in dict_ and dict_["inactiveTimeout"] is not None:
             instance.inactive_timeout = int(dict_["inactiveTimeout"])
         elif include_empty:
@@ -572,6 +585,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.ds_source = str(dict_["dsSource"])
         elif include_empty:
             instance.ds_source = ""
+        if "enableSecret" in dict_ and dict_["enableSecret"] is not None:
+            instance.enable_secret = bool(dict_["enableSecret"])
+        elif include_empty:
+            instance.enable_secret = False
         if "fallbackClaimKeys" in dict_ and dict_["fallbackClaimKeys"] is not None:
             instance.fallback_claim_keys = [
                 str(i0) for i0 in dict_["fallbackClaimKeys"]
@@ -582,6 +599,15 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.immutable_storage = bool(dict_["immutableStorage"])
         elif include_empty:
             instance.immutable_storage = False
+        if (
+            "leaderElectionGracePeriod" in dict_
+            and dict_["leaderElectionGracePeriod"] is not None
+        ):
+            instance.leader_election_grace_period = int(
+                dict_["leaderElectionGracePeriod"]
+            )
+        elif include_empty:
+            instance.leader_election_grace_period = 0
         if "maxActiveSessions" in dict_ and dict_["maxActiveSessions"] is not None:
             instance.max_active_sessions = int(dict_["maxActiveSessions"])
         elif include_empty:
@@ -664,7 +690,6 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "clientVersion": "client_version",
             "createdAt": "created_at",
             "deployment": "deployment",
-            "enableSecret": "enable_secret",
             "inactiveTimeout": "inactive_timeout",
             "inviteTimeout": "invite_timeout",
             "joinability": "joinability",
@@ -682,8 +707,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "disableCodeGeneration": "disable_code_generation",
             "dsManualSetReady": "ds_manual_set_ready",
             "dsSource": "ds_source",
+            "enableSecret": "enable_secret",
             "fallbackClaimKeys": "fallback_claim_keys",
             "immutableStorage": "immutable_storage",
+            "leaderElectionGracePeriod": "leader_election_grace_period",
             "maxActiveSessions": "max_active_sessions",
             "nativeSessionSetting": "native_session_setting",
             "preferredClaimKeys": "preferred_claim_keys",
@@ -698,7 +725,6 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "clientVersion": True,
             "createdAt": True,
             "deployment": True,
-            "enableSecret": True,
             "inactiveTimeout": True,
             "inviteTimeout": True,
             "joinability": True,
@@ -716,8 +742,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "disableCodeGeneration": False,
             "dsManualSetReady": False,
             "dsSource": False,
+            "enableSecret": False,
             "fallbackClaimKeys": False,
             "immutableStorage": False,
+            "leaderElectionGracePeriod": False,
             "maxActiveSessions": False,
             "nativeSessionSetting": False,
             "preferredClaimKeys": False,

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,30 +38,11 @@ class GetPublisherUser(Operation):
     """Get Publisher User (GetPublisherUser)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]
-
-
-
-
-
-
-    Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ].
-
-
-
-
-    Restriction:
-    Path Parameter namespace can be provided only with game namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ]
+    **Restriction:**
+    Path Parameter *namespace* can be provided only with game namespace
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/publisher

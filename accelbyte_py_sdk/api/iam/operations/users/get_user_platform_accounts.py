@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,39 +38,15 @@ class GetUserPlatformAccounts(Operation):
     """Get platform accounts linked to the user (GetUserPlatformAccounts)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms [GET]
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms [GET]
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'.
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/platforms [GET]_**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms [GET]_**
 
     ## Justice Platform Account
-
-
-
-
     The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
-        - NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms

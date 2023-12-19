@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,59 +34,30 @@ class AuthCodeRequestV3(Operation):
     """Generate url to request auth code from third party platform. (AuthCodeRequestV3)
 
     Generate url to request auth code from third party platform
-
-
-
     ## Supported platforms:
-
-
-
-      * steamopenid
-    This endpoint redirects to steam login page, then redirect back to platform
+    - **steamopenid**This endpoint redirects to steam login page, then redirect back to platform
     authenticate endpoint after successfully authenticating user steam.
-
-      * xblweb
-    This endpoint redirects to xbox login page, then redirect back to platform
+    - **xblweb**This endpoint redirects to xbox login page, then redirect back to platform
     authenticate endpoint after successfully authenticating xbox user.
-
-      * ps4web
-    This endpoint redirects to psn login page, then redirect back to platform
+    - **ps4web**This endpoint redirects to psn login page, then redirect back to platform
     authenticate endpoint after successfully authenticating psn user.
-
-      * epicgames
-    This endpoint redirects to Epicgames OAuth login page. then redirect to platform
+    - **epicgames**This endpoint redirects to Epicgames OAuth login page. then redirect to platform
     authenticate endpoint after successfully authenticating an Epicgames credential
-
-      * twitch
-    This endpoint redirects to twitch login page, then redirect back to platform
+    - **twitch**This endpoint redirects to twitch login page, then redirect back to platform
     authenticate endpoint after successfully authenticating twitch user.
-
-      * azure
-    This endpoint redirects to azure login page, then redirect back to platform
+    - **azure**This endpoint redirects to azure login page, then redirect back to platform
     authenticate(saml) endpoint after successfully authenticating azure user.
-
-      * facebook
-    This endpoint redirects to facebook login page, then redirect back to platform
+    - **facebook**This endpoint redirects to facebook login page, then redirect back to platform
     authenticate endpoint after successfully authenticating facebook user.
-
-      * google
-    This endpoint redirects to google login page, then redirect back to platform
+    - **google**This endpoint redirects to google login page, then redirect back to platform
     authenticate endpoint after successfully authenticating google user.
-
-      * snapchat
-    This endpoint redirects to snapchat login page, then redirect back to platform
+    - **snapchat**This endpoint redirects to snapchat login page, then redirect back to platform
     authenticate endpoint after successfully authenticating snapchat user.
-
-      * discord
-    This endpoint redirects to discord login page, then redirect back to platform
+    - **discord**This endpoint redirects to discord login page, then redirect back to platform
     authenticate endpoint after successfully authenticating discord user.
-
-      * amazon
-    This endpoint redirects to amazon login page, then redirect back to platform
+    - **amazon**This endpoint redirects to amazon login page, then redirect back to platform
     authenticate endpoint after successfully authenticating amazon user.
-
-      * oculusweb
-    This endpoint redirects to oculus login page, then redirect back to Login Website page after successfully authenticating oculus user.
+    - **oculusweb**This endpoint redirects to oculus login page, then redirect back to Login Website page after successfully authenticating oculus user.
 
     action code : 10702'
 

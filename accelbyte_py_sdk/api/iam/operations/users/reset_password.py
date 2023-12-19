@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,19 +37,8 @@ class ResetPassword(Operation):
     """Reset User Password (ResetPassword)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/reset [POST]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]' or valid basic auth header
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
@@ -76,7 +65,7 @@ class ResetPassword(Operation):
 
         400: Bad Request - (1014016: unable to parse request body | 1015073: new password same as old password)
 
-        403: Forbidden -
+        403: Forbidden - (1014021: verification code expired | 1014019: verification code already used | 1014020: verification code invalid | 1014018: verification code not found)
 
         404: Not Found - (1014017: user not found)
 
@@ -194,7 +183,7 @@ class ResetPassword(Operation):
 
         400: Bad Request - (1014016: unable to parse request body | 1015073: new password same as old password)
 
-        403: Forbidden -
+        403: Forbidden - (1014021: verification code expired | 1014019: verification code already used | 1014020: verification code invalid | 1014018: verification code not found)
 
         404: Not Found - (1014017: user not found)
 

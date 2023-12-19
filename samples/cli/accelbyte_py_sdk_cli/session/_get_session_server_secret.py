@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Service (3.12.0)
+# AGS Session Service (3.12.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,14 +38,12 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 
 
 @click.command()
-@click.argument("body", type=str)
 @click.argument("session_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_session_server_secret(
-    body: str,
     session_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -60,14 +58,7 @@ def get_session_server_secret(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if body is not None:
-        try:
-            body_json = json.loads(body)
-            body = ApimodelsServerSecret.create_from_dict(body_json)
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = get_session_server_secret_internal(
-        body=body,
         session_id=session_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

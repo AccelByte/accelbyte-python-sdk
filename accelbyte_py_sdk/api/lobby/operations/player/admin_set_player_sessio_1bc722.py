@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseBody
 class AdminSetPlayerSessionAttribute(Operation):
     """admin set player's session attribute (adminSetPlayerSessionAttribute)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [UPDATE]` with scope `social`
-
-    set player's session attribute by user id in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:ATTRIBUTES [UPDATE]
-
-    Required Scope(s):
-        - social
+    Set player's session attribute by user id in a namespace.
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes

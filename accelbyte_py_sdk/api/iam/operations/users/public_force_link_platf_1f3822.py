@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,9 +37,8 @@ class PublicForceLinkPlatformWithProgression(Operation):
     """Force link 3rd platform account and transfer progression (PublicForceLinkPlatformWithProgression)
 
     Force update other account's Platform Account relation to current User Account.
-
     This endpoint can transfer progression from 3rd platform binding account's to current account.
-    This endpoint need the same requestID which also used in Get link status.
+    This endpoint need the same requestID which also used in [Get link status](#operations-Users-PublicGetAsyncStatus).
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/linkWithProgression

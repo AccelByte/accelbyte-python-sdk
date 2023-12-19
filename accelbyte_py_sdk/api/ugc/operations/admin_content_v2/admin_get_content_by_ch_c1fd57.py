@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -60,16 +60,20 @@ class AdminGetContentByChannelIDV2(Operation):
 
         limit: (limit) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
         sort_by: (sortBy) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (List contents specific to a channel)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770804: invalid paging parameter)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        500: Internal Server Error - ResponseError (770805: Unable to get ugc content: database error)
     """
 
     # region fields
@@ -84,6 +88,7 @@ class AdminGetContentByChannelIDV2(Operation):
     channel_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
+    name: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     sort_by: str  # OPTIONAL in [query]
 
@@ -141,6 +146,8 @@ class AdminGetContentByChannelIDV2(Operation):
         result = {}
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "name"):
+            result["name"] = self.name
         if hasattr(self, "offset"):
             result["offset"] = self.offset
         if hasattr(self, "sort_by"):
@@ -165,6 +172,10 @@ class AdminGetContentByChannelIDV2(Operation):
 
     def with_limit(self, value: int) -> AdminGetContentByChannelIDV2:
         self.limit = value
+        return self
+
+    def with_name(self, value: str) -> AdminGetContentByChannelIDV2:
+        self.name = value
         return self
 
     def with_offset(self, value: int) -> AdminGetContentByChannelIDV2:
@@ -193,6 +204,10 @@ class AdminGetContentByChannelIDV2(Operation):
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = 0
+        if hasattr(self, "name") and self.name:
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = ""
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
@@ -216,11 +231,13 @@ class AdminGetContentByChannelIDV2(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (List contents specific to a channel)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770804: invalid paging parameter)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        500: Internal Server Error - ResponseError (770805: Unable to get ugc content: database error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -240,6 +257,8 @@ class AdminGetContentByChannelIDV2(Operation):
                 ModelsPaginatedContentDownloadResponseV2.create_from_dict(content),
                 None,
             )
+        if code == 400:
+            return None, ResponseError.create_from_dict(content)
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
@@ -259,6 +278,7 @@ class AdminGetContentByChannelIDV2(Operation):
         channel_id: str,
         namespace: str,
         limit: Optional[int] = None,
+        name: Optional[str] = None,
         offset: Optional[int] = None,
         sort_by: Optional[str] = None,
         **kwargs,
@@ -268,6 +288,8 @@ class AdminGetContentByChannelIDV2(Operation):
         instance.namespace = namespace
         if limit is not None:
             instance.limit = limit
+        if name is not None:
+            instance.name = name
         if offset is not None:
             instance.offset = offset
         if sort_by is not None:
@@ -291,6 +313,10 @@ class AdminGetContentByChannelIDV2(Operation):
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = 0
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = ""
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
@@ -307,6 +333,7 @@ class AdminGetContentByChannelIDV2(Operation):
             "channelId": "channel_id",
             "namespace": "namespace",
             "limit": "limit",
+            "name": "name",
             "offset": "offset",
             "sortBy": "sort_by",
         }
@@ -317,6 +344,7 @@ class AdminGetContentByChannelIDV2(Operation):
             "channelId": True,
             "namespace": True,
             "limit": False,
+            "name": False,
             "offset": False,
             "sortBy": False,
         }

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,11 +37,7 @@ class PublicUpdateUserEmailAddressV4(Operation):
     """Update My Email Address (PublicUpdateUserEmailAddressV4)
 
     The endpoint to update my email address.
-
-
-
-
-    It requires a verification code from /users/me/code/request with UpdateEmailAddress context.
+    It requires a verification code from `/users/me/code/request` with **UpdateEmailAddress** context.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/email

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseBody
 class AdminCreateProfanityList(Operation):
     """create a new list (adminCreateProfanityList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    create a new list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Create a new list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists

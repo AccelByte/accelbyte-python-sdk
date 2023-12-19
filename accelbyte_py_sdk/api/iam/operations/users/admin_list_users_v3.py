@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,14 +36,9 @@ from ...models import RestErrorResponse
 class AdminListUsersV3(Operation):
     """Admin List Users V3 (AdminListUsersV3)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
-
-     This endpoint requires publisher namespace.
+    **This endpoint requires publisher namespace.**
     Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
     doesn't have Justice platform account, the linkedPlatforms will be empty array.'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/platforms/justice

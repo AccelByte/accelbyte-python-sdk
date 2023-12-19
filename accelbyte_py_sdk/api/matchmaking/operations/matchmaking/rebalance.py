@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,21 +37,11 @@ from ...models import ResponseError
 class Rebalance(Operation):
     """Rebalance Matchmaking based on MMR (Rebalance)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]
-
-    Required Scope: social
-
     Do rebalance the teams based on MMR from given matchID,
     consider attribute name "mmr" (case-insensitive),
     or any first attribute with criteria "distance"
 
     Will return rebalanced mm result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/rebalance

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -59,13 +59,13 @@ class AdminGetUserContentByShareCode(Operation):
         share_code: (shareCode) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsContentDownloadResponse (OK)
+        200: OK - ModelsContentDownloadResponse (Get content by sharecode)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770300: ugc content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770301: Unable to get ugc content/Unable to get creator | 770303: Failed generate download URL)
     """
 
     # region fields
@@ -174,13 +174,13 @@ class AdminGetUserContentByShareCode(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsContentDownloadResponse (OK)
+        200: OK - ModelsContentDownloadResponse (Get content by sharecode)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770300: ugc content not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770301: Unable to get ugc content/Unable to get creator | 770303: Failed generate download URL)
 
         ---: HttpResponse (Undocumented Response)
 

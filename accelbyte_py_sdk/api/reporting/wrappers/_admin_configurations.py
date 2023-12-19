@@ -47,12 +47,8 @@ def get(
 ):
     """Get configuration (Get)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [READ]
     TimeInterval is in nanoseconds.
     When there's no configuration set, the response is the default value (configurable through envar).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/configurations
@@ -96,12 +92,8 @@ async def get_async(
 ):
     """Get configuration (Get)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [READ]
     TimeInterval is in nanoseconds.
     When there's no configuration set, the response is the default value (configurable through envar).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/configurations
@@ -147,13 +139,9 @@ def upsert(
 ):
     """Create/Update configuration (Upsert)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [CREATE]
     The behaviour of this endpoint is upsert based on the namespace.
     So, you can use this for both creating & updating the configuration.
     TimeInterval is in nanoseconds.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [CREATE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/configurations
@@ -199,13 +187,9 @@ async def upsert_async(
 ):
     """Create/Update configuration (Upsert)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [CREATE]
     The behaviour of this endpoint is upsert based on the namespace.
     So, you can use this for both creating & updating the configuration.
     TimeInterval is in nanoseconds.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REPORTINGCONFIG [CREATE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/configurations

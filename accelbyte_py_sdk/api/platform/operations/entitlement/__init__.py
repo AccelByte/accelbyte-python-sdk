@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.41.0"
+__version__ = "4.42.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -44,6 +44,7 @@ from .get_user_entitlement_ow_dab0ca import (
 )
 from .grant_entitlements import GrantEntitlements
 from .grant_user_entitlement import GrantUserEntitlement
+from .pre_check_revoke_user_e_124298 import PreCheckRevokeUserEntitlementByUseCount
 from .public_consume_user_ent_7254fa import PublicConsumeUserEntitlement
 from .public_exists_any_my_ac_dbd2a5 import PublicExistsAnyMyActiveEntitlement
 from .public_exists_any_user__3977e5 import PublicExistsAnyUserActiveEntitlement
@@ -106,6 +107,7 @@ from .revoke_all_entitlements import RevokeAllEntitlements
 from .revoke_entitlements import RevokeEntitlements
 from .revoke_use_count import RevokeUseCount
 from .revoke_user_entitlement import RevokeUserEntitlement
+from .revoke_user_entitlement_491388 import RevokeUserEntitlementByUseCount
 from .revoke_user_entitlements import RevokeUserEntitlements
 from .sell_user_entitlement import SellUserEntitlement
 from .update_user_entitlement import UpdateUserEntitlement

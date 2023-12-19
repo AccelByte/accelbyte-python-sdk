@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.12.0)
+# AccelByte Gaming Services Session Service (3.12.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,8 +75,10 @@ from ..api.session.models import ModelsPSNAppServerCredentials
 from ..api.session.models import ModelsPartyMembers
 from ..api.session.models import ModelsPlatformCredentials
 from ..api.session.models import ModelsPortConfigurationAMS
+from ..api.session.models import ModelsRecentPlayerQueryResponse
 from ..api.session.models import ModelsRequestReconcileMaxActiveSession
 from ..api.session.models import ModelsTeam
+from ..api.session.models import ModelsUserInfo
 from ..api.session.models import ModelsUserPlatformInfo
 from ..api.session.models import ResponseError
 
@@ -115,7 +117,6 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.client_version = randomize()
     instance.created_at = randomize()
     instance.deployment = randomize()
-    instance.enable_secret = randomize("bool")
     instance.inactive_timeout = randomize("int", min_val=1, max_val=1000)
     instance.invite_timeout = randomize("int", min_val=1, max_val=1000)
     instance.joinability = randomize()
@@ -133,8 +134,10 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
+    instance.enable_secret = randomize("bool")
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
+    instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
@@ -177,6 +180,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.enable_secret = randomize("bool")
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
+    instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
@@ -449,6 +453,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
+    instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
     instance.max_active_session = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
@@ -546,6 +551,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
+    instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
@@ -718,6 +724,14 @@ def create_models_psn_app_server_credentials_example() -> ModelsPSNAppServerCred
     return instance
 
 
+def create_models_recent_player_query_response_example() -> (
+    ModelsRecentPlayerQueryResponse
+):
+    instance = ModelsRecentPlayerQueryResponse()
+    instance.data = [create_models_user_info_example()]
+    return instance
+
+
 def create_models_request_reconcile_max_active_session_example() -> (
     ModelsRequestReconcileMaxActiveSession
 ):
@@ -730,6 +744,14 @@ def create_models_team_example() -> ModelsTeam:
     instance = ModelsTeam()
     instance.parties = [create_models_party_members_example()]
     instance.user_i_ds = [randomize()]
+    return instance
+
+
+def create_models_user_info_example() -> ModelsUserInfo:
+    instance = ModelsUserInfo()
+    instance.namespace = randomize("slug")
+    instance.platform_name = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 

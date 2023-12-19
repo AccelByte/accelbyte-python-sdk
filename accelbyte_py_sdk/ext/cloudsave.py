@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.12.7)
+# AccelByte Gaming Services Cloudsave Service (3.12.8)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,6 +46,9 @@ from ..api.cloudsave.models import ModelsBulkGetPlayerBinaryRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordSizeResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordsRequest
+from ..api.cloudsave.models import ModelsBulkUpdatePlayerRecordRequestDetail
+from ..api.cloudsave.models import ModelsBulkUpdatePlayerRecordResponse
+from ..api.cloudsave.models import ModelsBulkUpdatePlayerRecordsRequest
 from ..api.cloudsave.models import ModelsBulkUserIDsRequest
 from ..api.cloudsave.models import ModelsBulkUserKeyRequest
 from ..api.cloudsave.models import ModelsConcurrentRecordRequest
@@ -263,6 +266,33 @@ def create_models_bulk_get_player_records_request_example() -> (
 ):
     instance = ModelsBulkGetPlayerRecordsRequest()
     instance.keys = [randomize()]
+    return instance
+
+
+def create_models_bulk_update_player_record_request_detail_example() -> (
+    ModelsBulkUpdatePlayerRecordRequestDetail
+):
+    instance = ModelsBulkUpdatePlayerRecordRequestDetail()
+    instance.key = randomize()
+    instance.value = {randomize(): randomize()}
+    return instance
+
+
+def create_models_bulk_update_player_record_response_example() -> (
+    ModelsBulkUpdatePlayerRecordResponse
+):
+    instance = ModelsBulkUpdatePlayerRecordResponse()
+    instance.detail = {randomize(): randomize()}
+    instance.key = randomize()
+    instance.success = randomize("bool")
+    return instance
+
+
+def create_models_bulk_update_player_records_request_example() -> (
+    ModelsBulkUpdatePlayerRecordsRequest
+):
+    instance = ModelsBulkUpdatePlayerRecordsRequest()
+    instance.data = [create_models_bulk_update_player_record_request_detail_example()]
     return instance
 
 

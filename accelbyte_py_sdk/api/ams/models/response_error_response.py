@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.4.0)
+# Fleet Commander (1.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,12 +34,15 @@ class ResponseErrorResponse(Model):
     Properties:
         error_message: (errorMessage) REQUIRED str
 
+        error_type: (errorType) REQUIRED str
+
         trace_id: (traceId) REQUIRED str
     """
 
     # region fields
 
     error_message: str  # REQUIRED
+    error_type: str  # REQUIRED
     trace_id: str  # REQUIRED
 
     # endregion fields
@@ -48,6 +51,10 @@ class ResponseErrorResponse(Model):
 
     def with_error_message(self, value: str) -> ResponseErrorResponse:
         self.error_message = value
+        return self
+
+    def with_error_type(self, value: str) -> ResponseErrorResponse:
+        self.error_type = value
         return self
 
     def with_trace_id(self, value: str) -> ResponseErrorResponse:
@@ -64,6 +71,10 @@ class ResponseErrorResponse(Model):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
             result["errorMessage"] = ""
+        if hasattr(self, "error_type"):
+            result["errorType"] = str(self.error_type)
+        elif include_empty:
+            result["errorType"] = ""
         if hasattr(self, "trace_id"):
             result["traceId"] = str(self.trace_id)
         elif include_empty:
@@ -76,10 +87,11 @@ class ResponseErrorResponse(Model):
 
     @classmethod
     def create(
-        cls, error_message: str, trace_id: str, **kwargs
+        cls, error_message: str, error_type: str, trace_id: str, **kwargs
     ) -> ResponseErrorResponse:
         instance = cls()
         instance.error_message = error_message
+        instance.error_type = error_type
         instance.trace_id = trace_id
         return instance
 
@@ -94,6 +106,10 @@ class ResponseErrorResponse(Model):
             instance.error_message = str(dict_["errorMessage"])
         elif include_empty:
             instance.error_message = ""
+        if "errorType" in dict_ and dict_["errorType"] is not None:
+            instance.error_type = str(dict_["errorType"])
+        elif include_empty:
+            instance.error_type = ""
         if "traceId" in dict_ and dict_["traceId"] is not None:
             instance.trace_id = str(dict_["traceId"])
         elif include_empty:
@@ -142,6 +158,7 @@ class ResponseErrorResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "errorMessage": "error_message",
+            "errorType": "error_type",
             "traceId": "trace_id",
         }
 
@@ -149,6 +166,7 @@ class ResponseErrorResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "errorMessage": True,
+            "errorType": True,
             "traceId": True,
         }
 

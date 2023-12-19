@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,17 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetUsersByDeviceV4(Operation):
     """Admin get users by device id (AdminGetUsersByDeviceV4)
 
-    This is the endpoint for an admin to get users that ever login on the device.
-
-
-
-    Required permission
-
-
-        'ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
+    This is the endpoint for an admin to get users that ever login on the device
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/users

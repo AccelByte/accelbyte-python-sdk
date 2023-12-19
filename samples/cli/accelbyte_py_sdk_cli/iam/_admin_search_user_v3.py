@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (7.6.3)
+# AGS Iam Service (7.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -47,6 +47,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--platform_id", "platform_id", type=str)
 @click.option("--query", "query", type=str)
 @click.option("--start_date", "start_date", type=str)
+@click.option("--test_account", "test_account", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -61,6 +62,7 @@ def admin_search_user_v3(
     platform_id: Optional[str] = None,
     query: Optional[str] = None,
     start_date: Optional[str] = None,
+    test_account: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -84,6 +86,7 @@ def admin_search_user_v3(
         platform_id=platform_id,
         query=query,
         start_date=start_date,
+        test_account=test_account,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

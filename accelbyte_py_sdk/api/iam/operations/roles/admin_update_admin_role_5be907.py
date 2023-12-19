@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,24 +35,9 @@ from ...models import RestErrorResponse
 class AdminUpdateAdminRoleStatusV3(Operation):
     """Set Role as Admin Role (AdminUpdateAdminRoleStatusV3)
 
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     Role can be set as admin role only when it has at least 1 manager.
-
-
-
     action code: 10412
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin

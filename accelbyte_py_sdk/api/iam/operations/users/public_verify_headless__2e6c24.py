@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,19 +35,11 @@ from ...models import RestErrorResponse
 
 
 class PublicVerifyHeadlessAccountV3(Operation):
-    """Upgrade user account to full account (with email) (PublicVerifyHeadlessAccountV3)
+    """Upgrade user headless account to full account (with email) (PublicVerifyHeadlessAccountV3)
 
-    Require valid user authorization
     action code : 10124
 
-
-
-
     if set NeedVerificationCode = true, IAM will send verification code into email
-
-
-
-
     user can use that verification code to verify user through /iam/v3/public/namespaces/{namespace}/users/me/code/verify
 
     Properties:

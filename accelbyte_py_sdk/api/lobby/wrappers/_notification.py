@@ -87,8 +87,6 @@ def create_notification_template_v1_admin(
 ):
     """create new notification template (createNotificationTemplateV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Create new notification template. Include handlebars {{key}} for replaceable contexts. The key inside
     handlebars will be the key to be replaced when sending notification. Already existing template with the same
     slug and language can not be created.
@@ -96,12 +94,6 @@ def create_notification_template_v1_admin(
     Check model description for detailed input restrictions.
 
     Action Code: 50204
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
@@ -153,8 +145,6 @@ async def create_notification_template_v1_admin_async(
 ):
     """create new notification template (createNotificationTemplateV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Create new notification template. Include handlebars {{key}} for replaceable contexts. The key inside
     handlebars will be the key to be replaced when sending notification. Already existing template with the same
     slug and language can not be created.
@@ -162,12 +152,6 @@ async def create_notification_template_v1_admin_async(
     Check model description for detailed input restrictions.
 
     Action Code: 50204
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
@@ -221,20 +205,12 @@ def create_notification_topic_v1_admin(
 ):
     """create new notification topic (createNotificationTopicV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Create new notification topic.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
 
     Action Code: 50214
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
@@ -282,20 +258,12 @@ async def create_notification_topic_v1_admin_async(
 ):
     """create new notification topic (createNotificationTopicV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Create new notification topic.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
 
     Action Code: 50214
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
@@ -345,18 +313,10 @@ def create_topic(
 ):
     """create new notification topic (createTopic)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [CREATE]` with scope `social`
-
     Create new notification topic.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics
@@ -406,18 +366,10 @@ async def create_topic_async(
 ):
     """create new notification topic (createTopic)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [CREATE]` with scope `social`
-
     Create new notification topic.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics
@@ -469,17 +421,9 @@ def delete_notification_template_slug_v1_admin(
 ):
     """delete template slug in notification template (deleteNotificationTemplateSlugV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
-
     Delete template slug in notification template
 
     Action Code: 50206
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
@@ -529,17 +473,9 @@ async def delete_notification_template_slug_v1_admin_async(
 ):
     """delete template slug in notification template (deleteNotificationTemplateSlugV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
-
     Delete template slug in notification template
 
     Action Code: 50206
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
@@ -591,20 +527,12 @@ def delete_notification_topic_v1_admin(
 ):
     """delete topic information by topic name (deleteNotificationTopicV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
-
-    delete topic information by topic name.
+    Delete topic information by topic name.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
 
     Action Code: 50217
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -654,20 +582,12 @@ async def delete_notification_topic_v1_admin_async(
 ):
     """delete topic information by topic name (deleteNotificationTopicV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
-
-    delete topic information by topic name.
+    Delete topic information by topic name.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
 
     Action Code: 50217
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -720,17 +640,9 @@ def delete_template_localization_v1_admin(
 ):
     """delete template localization (deleteTemplateLocalizationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
-
-    delete template localization
+    Delete template localization
 
     Action Code: 50209
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -784,17 +696,9 @@ async def delete_template_localization_v1_admin_async(
 ):
     """delete template localization (deleteTemplateLocalizationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
-
-    delete template localization
+    Delete template localization
 
     Action Code: 50209
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -849,18 +753,10 @@ def delete_topic_by_topic_name(
 ):
     """delete topic information by topic name (deleteTopicByTopicName)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [DELETE]` with scope `social`
-
     delete topic information by topic name.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}
@@ -910,18 +806,10 @@ async def delete_topic_by_topic_name_async(
 ):
     """delete topic information by topic name (deleteTopicByTopicName)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [DELETE]` with scope `social`
-
     delete topic information by topic name.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}
@@ -974,15 +862,7 @@ def free_form_notification_by_user_id(
 ):
     """send freeform notification to a user (freeFormNotificationByUserID)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to a user.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/users/{userId}/freeform
@@ -1036,15 +916,7 @@ async def free_form_notification_by_user_id_async(
 ):
     """send freeform notification to a user (freeFormNotificationByUserID)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to a user.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/users/{userId}/freeform
@@ -1098,17 +970,9 @@ def get_all_notification_templates_v1_admin(
 ):
     """get all notification template in a namespace (getAllNotificationTemplatesV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
-
     Get all templates in a namespace
 
     Action Code: 50203
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
@@ -1156,17 +1020,9 @@ async def get_all_notification_templates_v1_admin_async(
 ):
     """get all notification template in a namespace (getAllNotificationTemplatesV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
-
     Get all templates in a namespace
 
     Action Code: 50203
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
@@ -1219,17 +1075,9 @@ def get_all_notification_topics_v1_admin(
 ):
     """get topic by namespace (getAllNotificationTopicsV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
-
-    get topic by namespace.
+    Get topic by namespace.
 
     Action Code: 50213
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
@@ -1287,17 +1135,9 @@ async def get_all_notification_topics_v1_admin_async(
 ):
     """get topic by namespace (getAllNotificationTopicsV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
-
-    get topic by namespace.
+    Get topic by namespace.
 
     Action Code: 50213
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
@@ -1355,17 +1195,9 @@ def get_notification_topic_v1_admin(
 ):
     """get topic information by topic name (getNotificationTopicV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
-
-    get topic information by topic name.
+    Get topic information by topic name.
 
     Action Code: 50215
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -1415,17 +1247,9 @@ async def get_notification_topic_v1_admin_async(
 ):
     """get topic information by topic name (getNotificationTopicV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
-
-    get topic information by topic name.
+    Get topic information by topic name.
 
     Action Code: 50215
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -1478,17 +1302,9 @@ def get_single_template_localization_v1_admin(
 ):
     """get a template localization (getSingleTemplateLocalizationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
-
     Get a template localization
 
     Action Code: 50207
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -1542,17 +1358,9 @@ async def get_single_template_localization_v1_admin_async(
 ):
     """get a template localization (getSingleTemplateLocalizationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
-
     Get a template localization
 
     Action Code: 50207
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -1610,17 +1418,9 @@ def get_template_slug_localizations_template_v1_admin(
 ):
     """get all notification template localization in a slug (getTemplateSlugLocalizationsTemplateV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
-
     Get all templates in a namespace
 
     Action Code: 50205
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
@@ -1682,17 +1482,9 @@ async def get_template_slug_localizations_template_v1_admin_async(
 ):
     """get all notification template localization in a slug (getTemplateSlugLocalizationsTemplateV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]` with scope `social`
-
     Get all templates in a namespace
 
     Action Code: 50205
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
@@ -1755,15 +1547,7 @@ def get_topic_by_namespace(
 ):
     """get topic by namespace (getTopicByNamespace)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
-
     get topic by namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics
@@ -1821,15 +1605,7 @@ async def get_topic_by_namespace_async(
 ):
     """get topic by namespace (getTopicByNamespace)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
-
     get topic by namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics
@@ -1887,15 +1663,7 @@ def get_topic_by_topic_name(
 ):
     """get topic information by topic name (getTopicByTopicName)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
-
     get topic information by topic name.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}
@@ -1945,15 +1713,7 @@ async def get_topic_by_topic_name_async(
 ):
     """get topic information by topic name (getTopicByTopicName)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
-
     get topic information by topic name.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}
@@ -2006,20 +1766,12 @@ def notification_with_template_by_user_id(
 ):
     """send notification to a user with template (notificationWithTemplateByUserID)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to a user with predefined template.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
 
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
     Template need to be published before it can be use to send notifications
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/users/{userId}/templated
@@ -2073,20 +1825,12 @@ async def notification_with_template_by_user_id_async(
 ):
     """send notification to a user with template (notificationWithTemplateByUserID)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to a user with predefined template.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
 
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
     Template need to be published before it can be use to send notifications
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/users/{userId}/templated
@@ -2142,17 +1886,9 @@ def publish_template_localization_v1_admin(
 ):
     """publish template localization draft (publishTemplateLocalizationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Publish notification template draft. Empty draft can not be published.
 
     Action Code: 50210
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
@@ -2206,17 +1942,9 @@ async def publish_template_localization_v1_admin_async(
 ):
     """publish template localization draft (publishTemplateLocalizationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Publish notification template draft. Empty draft can not be published.
 
     Action Code: 50210
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
@@ -2271,16 +1999,8 @@ def send_multiple_users_freeform_notification_v1_admin(
 ):
     """send freeform notification to multiple users (sendMultipleUsersFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to multiple user.
     Action Code: 50211
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/bulkUsers/freeform/notify
@@ -2328,16 +2048,8 @@ async def send_multiple_users_freeform_notification_v1_admin_async(
 ):
     """send freeform notification to multiple users (sendMultipleUsersFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to multiple user.
     Action Code: 50211
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/bulkUsers/freeform/notify
@@ -2388,15 +2100,7 @@ def send_party_freeform_notification_v1_admin(
 ):
     """send freeform notification to a party (sendPartyFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to a party.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/freeform/notify
@@ -2450,15 +2154,7 @@ async def send_party_freeform_notification_v1_admin_async(
 ):
     """send freeform notification to a party (sendPartyFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to a party.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/freeform/notify
@@ -2514,20 +2210,12 @@ def send_party_templated_notification_v1_admin(
 ):
     """send templated notification to a party (sendPartyTemplatedNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends templated notification to a party.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
 
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
     Template need to be published before it can be use to send notifications
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/templates/notify
@@ -2581,20 +2269,12 @@ async def send_party_templated_notification_v1_admin_async(
 ):
     """send templated notification to a party (sendPartyTemplatedNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends templated notification to a party.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
 
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
     Template need to be published before it can be use to send notifications
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/templates/notify
@@ -2650,16 +2330,8 @@ def send_specific_user_freeform_notification_v1_admin(
 ):
     """send freeform notification to a user (sendSpecificUserFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to a user.
     Action Code: 50211
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/freeform/notify
@@ -2713,16 +2385,8 @@ async def send_specific_user_freeform_notification_v1_admin_async(
 ):
     """send freeform notification to a user (sendSpecificUserFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to a user.
     Action Code: 50211
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/freeform/notify
@@ -2778,8 +2442,6 @@ def send_specific_user_templated_notification_v1_admin(
 ):
     """send templated notification to specific user (sendSpecificUserTemplatedNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends templated notification to a user.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
@@ -2788,12 +2450,6 @@ def send_specific_user_templated_notification_v1_admin(
     Template need to be published before it can be use to send notifications
 
     Action Code: 50212
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/templates/notify
@@ -2847,8 +2503,6 @@ async def send_specific_user_templated_notification_v1_admin_async(
 ):
     """send templated notification to specific user (sendSpecificUserTemplatedNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends templated notification to a user.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
@@ -2857,12 +2511,6 @@ async def send_specific_user_templated_notification_v1_admin_async(
     Template need to be published before it can be use to send notifications
 
     Action Code: 50212
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/templates/notify
@@ -2917,17 +2565,9 @@ def send_users_freeform_notification_v1_admin(
 ):
     """send freeform notification to connected users (sendUsersFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to all connected users in a namespace.
 
     Action Code: 50201
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/freeform/notify
@@ -2977,17 +2617,9 @@ async def send_users_freeform_notification_v1_admin_async(
 ):
     """send freeform notification to connected users (sendUsersFreeformNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to all connected users in a namespace.
 
     Action Code: 50201
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/freeform/notify
@@ -3039,8 +2671,6 @@ def send_users_templated_notification_v1_admin(
 ):
     """send notification to connected users with template (sendUsersTemplatedNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to all connected users in a namespace with predefined template.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
@@ -3049,12 +2679,6 @@ def send_users_templated_notification_v1_admin(
     Template need to be published before it can be use to send notifications
 
     Action Code: 50202
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/notify
@@ -3104,8 +2728,6 @@ async def send_users_templated_notification_v1_admin_async(
 ):
     """send notification to connected users with template (sendUsersTemplatedNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to all connected users in a namespace with predefined template.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
@@ -3114,12 +2736,6 @@ async def send_users_templated_notification_v1_admin_async(
     Template need to be published before it can be use to send notifications
 
     Action Code: 50202
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/notify
@@ -3172,20 +2788,12 @@ def update_notification_topic_v1_admin(
 ):
     """update topic information by topic name (updateNotificationTopicV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]` with scope `social`
-
-    update topic information by topic name.
+    Update topic information by topic name.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
 
     Action Code: 50216
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -3241,20 +2849,12 @@ async def update_notification_topic_v1_admin_async(
 ):
     """update topic information by topic name (updateNotificationTopicV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]` with scope `social`
-
-    update topic information by topic name.
+    Update topic information by topic name.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
 
     Action Code: 50216
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -3313,17 +2913,9 @@ def update_template_localization_v1_admin(
 ):
     """update template localization (updateTemplateLocalizationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]` with scope `social`
-
-    update template localization
+    Update template localization
 
     Action Code: 50208
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -3383,17 +2975,9 @@ async def update_template_localization_v1_admin_async(
 ):
     """update template localization (updateTemplateLocalizationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]` with scope `social`
-
-    update template localization
+    Update template localization
 
     Action Code: 50208
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -3454,18 +3038,10 @@ def update_topic_by_topic_name(
 ):
     """update topic information by topic name (updateTopicByTopicName)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [UPDATE]` with scope `social`
-
     update topic information by topic name.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}
@@ -3519,18 +3095,10 @@ async def update_topic_by_topic_name_async(
 ):
     """update topic information by topic name (updateTopicByTopicName)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [UPDATE]` with scope `social`
-
     update topic information by topic name.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}

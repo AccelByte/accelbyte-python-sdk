@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,14 +36,11 @@ from ...models import RestErrorResponse
 class PublicGetUserLoginHistoriesV3(Operation):
     """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
 
-    Required valid user authorization.
-
     Notes for this endpoint:
-
-      * This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
-      * The maximum value of the limit is 100 and the minimum value of the limit is 1.
-      * This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-      * This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+    - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+    - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
+    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories

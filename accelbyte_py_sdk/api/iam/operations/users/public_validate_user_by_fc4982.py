@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,17 +35,10 @@ from ...models import RestErrorResponse
 class PublicValidateUserByUserIDAndPasswordV3(Operation):
     """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
 
-    This endpoint is used to validate the user password. Required valid user authorization and valid user ID.
-
+    This endpoint is used to validate the user password. Require valid user ID.
 
     Notes:
-
-
-
-
-
-
-      * This endpoint validate the user password by specifying the userId and password
+    - This endpoint validate the user password by specifying the userId and password
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/validate

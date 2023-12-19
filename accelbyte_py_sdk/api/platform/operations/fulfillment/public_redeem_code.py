@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,7 +37,7 @@ from ...models import FulfillmentResult
 class PublicRedeemCode(Operation):
     """Redeem campaign code (publicRedeemCode)
 
-    Redeem campaign code.
+    Redeem campaign code, this api have rate limit, default: only allow request once per user in 2 seconds
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
@@ -73,6 +73,8 @@ class PublicRedeemCode(Operation):
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 37142: Code [{code}] does not exist in namespace [{namespace}])
 
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 20006: optimistic lock | 31177: Permanent item already owned)
+
+        429: Too Many Requests - ErrorEntity (20007: too many requests)
     """
 
     # region fields
@@ -203,6 +205,8 @@ class PublicRedeemCode(Operation):
 
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 20006: optimistic lock | 31177: Permanent item already owned)
 
+        429: Too Many Requests - ErrorEntity (20007: too many requests)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -223,6 +227,8 @@ class PublicRedeemCode(Operation):
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 429:
             return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(

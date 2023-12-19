@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,10 +35,7 @@ from ...models import RestapiErrorResponse
 class DeleteReasonGroup(Operation):
     """Delete a reason group (deleteReasonGroup)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+    This endpoint delete a reason group for a namespace with ID.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}

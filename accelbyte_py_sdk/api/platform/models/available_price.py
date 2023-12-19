@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,7 +42,15 @@ class AvailablePrice(Model):
 
         price: (price) REQUIRED int
 
+        discount_expire_at: (discountExpireAt) OPTIONAL str
+
+        discount_purchase_at: (discountPurchaseAt) OPTIONAL str
+
+        expire_at: (expireAt) OPTIONAL str
+
         price_details: (priceDetails) OPTIONAL List[SubItemAvailablePrice]
+
+        purchase_at: (purchaseAt) OPTIONAL str
     """
 
     # region fields
@@ -51,7 +59,11 @@ class AvailablePrice(Model):
     currency_namespace: str  # REQUIRED
     discounted_price: int  # REQUIRED
     price: int  # REQUIRED
+    discount_expire_at: str  # OPTIONAL
+    discount_purchase_at: str  # OPTIONAL
+    expire_at: str  # OPTIONAL
     price_details: List[SubItemAvailablePrice]  # OPTIONAL
+    purchase_at: str  # OPTIONAL
 
     # endregion fields
 
@@ -73,8 +85,24 @@ class AvailablePrice(Model):
         self.price = value
         return self
 
+    def with_discount_expire_at(self, value: str) -> AvailablePrice:
+        self.discount_expire_at = value
+        return self
+
+    def with_discount_purchase_at(self, value: str) -> AvailablePrice:
+        self.discount_purchase_at = value
+        return self
+
+    def with_expire_at(self, value: str) -> AvailablePrice:
+        self.expire_at = value
+        return self
+
     def with_price_details(self, value: List[SubItemAvailablePrice]) -> AvailablePrice:
         self.price_details = value
+        return self
+
+    def with_purchase_at(self, value: str) -> AvailablePrice:
+        self.purchase_at = value
         return self
 
     # endregion with_x methods
@@ -99,12 +127,28 @@ class AvailablePrice(Model):
             result["price"] = int(self.price)
         elif include_empty:
             result["price"] = 0
+        if hasattr(self, "discount_expire_at"):
+            result["discountExpireAt"] = str(self.discount_expire_at)
+        elif include_empty:
+            result["discountExpireAt"] = ""
+        if hasattr(self, "discount_purchase_at"):
+            result["discountPurchaseAt"] = str(self.discount_purchase_at)
+        elif include_empty:
+            result["discountPurchaseAt"] = ""
+        if hasattr(self, "expire_at"):
+            result["expireAt"] = str(self.expire_at)
+        elif include_empty:
+            result["expireAt"] = ""
         if hasattr(self, "price_details"):
             result["priceDetails"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.price_details
             ]
         elif include_empty:
             result["priceDetails"] = []
+        if hasattr(self, "purchase_at"):
+            result["purchaseAt"] = str(self.purchase_at)
+        elif include_empty:
+            result["purchaseAt"] = ""
         return result
 
     # endregion to methods
@@ -118,7 +162,11 @@ class AvailablePrice(Model):
         currency_namespace: str,
         discounted_price: int,
         price: int,
+        discount_expire_at: Optional[str] = None,
+        discount_purchase_at: Optional[str] = None,
+        expire_at: Optional[str] = None,
         price_details: Optional[List[SubItemAvailablePrice]] = None,
+        purchase_at: Optional[str] = None,
         **kwargs,
     ) -> AvailablePrice:
         instance = cls()
@@ -126,8 +174,16 @@ class AvailablePrice(Model):
         instance.currency_namespace = currency_namespace
         instance.discounted_price = discounted_price
         instance.price = price
+        if discount_expire_at is not None:
+            instance.discount_expire_at = discount_expire_at
+        if discount_purchase_at is not None:
+            instance.discount_purchase_at = discount_purchase_at
+        if expire_at is not None:
+            instance.expire_at = expire_at
         if price_details is not None:
             instance.price_details = price_details
+        if purchase_at is not None:
+            instance.purchase_at = purchase_at
         return instance
 
     @classmethod
@@ -153,6 +209,18 @@ class AvailablePrice(Model):
             instance.price = int(dict_["price"])
         elif include_empty:
             instance.price = 0
+        if "discountExpireAt" in dict_ and dict_["discountExpireAt"] is not None:
+            instance.discount_expire_at = str(dict_["discountExpireAt"])
+        elif include_empty:
+            instance.discount_expire_at = ""
+        if "discountPurchaseAt" in dict_ and dict_["discountPurchaseAt"] is not None:
+            instance.discount_purchase_at = str(dict_["discountPurchaseAt"])
+        elif include_empty:
+            instance.discount_purchase_at = ""
+        if "expireAt" in dict_ and dict_["expireAt"] is not None:
+            instance.expire_at = str(dict_["expireAt"])
+        elif include_empty:
+            instance.expire_at = ""
         if "priceDetails" in dict_ and dict_["priceDetails"] is not None:
             instance.price_details = [
                 SubItemAvailablePrice.create_from_dict(i0, include_empty=include_empty)
@@ -160,6 +228,10 @@ class AvailablePrice(Model):
             ]
         elif include_empty:
             instance.price_details = []
+        if "purchaseAt" in dict_ and dict_["purchaseAt"] is not None:
+            instance.purchase_at = str(dict_["purchaseAt"])
+        elif include_empty:
+            instance.purchase_at = ""
         return instance
 
     @classmethod
@@ -203,7 +275,11 @@ class AvailablePrice(Model):
             "currencyNamespace": "currency_namespace",
             "discountedPrice": "discounted_price",
             "price": "price",
+            "discountExpireAt": "discount_expire_at",
+            "discountPurchaseAt": "discount_purchase_at",
+            "expireAt": "expire_at",
             "priceDetails": "price_details",
+            "purchaseAt": "purchase_at",
         }
 
     @staticmethod
@@ -213,7 +289,11 @@ class AvailablePrice(Model):
             "currencyNamespace": True,
             "discountedPrice": True,
             "price": True,
+            "discountExpireAt": False,
+            "discountPurchaseAt": False,
+            "expireAt": False,
             "priceDetails": False,
+            "purchaseAt": False,
         }
 
     # endregion static methods

@@ -1,3 +1,23 @@
+<a name="v0.56.0"></a>
+## [v0.56.0]
+### fix
+- **integration:** skip tests when in AGS starter
+- **auth:** fix error handling in platform login
+### docs
+- **:** update accelbyte doc portal links
+### feat
+- **api:** bootstrap chat service support
+### chore
+- **api:** regenerate chat service
+### test
+- **api:** add chat integration tests
+- **api:** dsmc fix no config error handling
+- **integration:** remove special cases for AGS starter
+- **integration:** add special cases for AGS starter
+### ci
+- **jenkins:** update integration env file
+
+
 <a name="v0.55.0"></a>
 ## [v0.55.0]
 ### test

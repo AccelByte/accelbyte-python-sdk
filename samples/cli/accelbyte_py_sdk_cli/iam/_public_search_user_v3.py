@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service (7.6.3)
+# AGS Iam Service (7.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,6 +41,8 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--by", "by", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--platform_by", "platform_by", type=str)
+@click.option("--platform_id", "platform_id", type=str)
 @click.option("--query", "query", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -50,6 +52,8 @@ def public_search_user_v3(
     by: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    platform_by: Optional[str] = None,
+    platform_id: Optional[str] = None,
     query: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -68,6 +72,8 @@ def public_search_user_v3(
         by=by,
         limit=limit,
         offset=offset,
+        platform_by=platform_by,
+        platform_id=platform_id,
         query=query,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

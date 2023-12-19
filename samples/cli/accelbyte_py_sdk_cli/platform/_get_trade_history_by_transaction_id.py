@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.41.0)
+# AGS Platform Service (4.42.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     get_trade_history_by_transaction_id as get_trade_history_by_transaction_id_internal,
 )
+from accelbyte_py_sdk.api.platform.models import TradeChainActionHistoryInfo
 
 
 @click.command()

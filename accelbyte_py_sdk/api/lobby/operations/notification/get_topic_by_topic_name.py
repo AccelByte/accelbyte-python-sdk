@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseBody
 class GetTopicByTopicName(Operation):
     """get topic information by topic name (getTopicByTopicName)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [READ]` with scope `social`
-
     get topic information by topic name.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}

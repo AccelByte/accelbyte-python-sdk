@@ -52,7 +52,6 @@ def admin_submit_report(
 ):
     """Submit a report by admin (adminSubmitReport)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [CREATE]
     Submit a report and will return ticket for reported object.
     New ticket will be created if no OPEN ticket present for reported object (based by objectId and objectType) in a namespace.
 
@@ -60,15 +59,7 @@ def admin_submit_report(
     Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
 
     Fill the 'reason' field with a 'reason title'
-    Supported category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [CREATE]
+    Supported category: - UGC - USER - CHAT - EXTENSION
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reports
@@ -116,7 +107,6 @@ async def admin_submit_report_async(
 ):
     """Submit a report by admin (adminSubmitReport)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [CREATE]
     Submit a report and will return ticket for reported object.
     New ticket will be created if no OPEN ticket present for reported object (based by objectId and objectType) in a namespace.
 
@@ -124,15 +114,7 @@ async def admin_submit_report_async(
     Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
 
     Fill the 'reason' field with a 'reason title'
-    Supported category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [CREATE]
+    Supported category: - UGC - USER - CHAT - EXTENSION
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reports

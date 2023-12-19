@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,10 +38,7 @@ class PublicCreateTestUserV4(Operation):
     """[TEST FACILITY ONLY]Create test User (PublicCreateTestUserV4)
 
     Create a test user and not send verification code email
-
-
-
-    Required attributes:
+    **Required attributes:**
     - verified: this new user is verified or not
     - authType: possible value is EMAILPASSWD
     - emailAddress: Please refer to the rule from /v3/public/inputValidations API.
@@ -50,13 +47,8 @@ class PublicCreateTestUserV4(Operation):
     - country: ISO3166-1 alpha-2 two letter, e.g. US.
     - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
 
-
-    Not required attributes:
+    **Not required attributes:**
     - displayName: Please refer to the rule from /v3/public/inputValidations API.
-
-
-
-
 
     This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
 

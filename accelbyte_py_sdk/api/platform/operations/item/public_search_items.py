@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -74,6 +74,8 @@ class PublicSearchItems(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
 
         limit: (limit) OPTIONAL int in query
@@ -104,6 +106,7 @@ class PublicSearchItems(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    auto_calc_estimated_price: bool  # OPTIONAL in [query]
     item_type: Union[str, ItemTypeEnum]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
@@ -162,6 +165,8 @@ class PublicSearchItems(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "auto_calc_estimated_price"):
+            result["autoCalcEstimatedPrice"] = self.auto_calc_estimated_price
         if hasattr(self, "item_type"):
             result["itemType"] = self.item_type
         if hasattr(self, "limit"):
@@ -188,6 +193,10 @@ class PublicSearchItems(Operation):
 
     def with_namespace(self, value: str) -> PublicSearchItems:
         self.namespace = value
+        return self
+
+    def with_auto_calc_estimated_price(self, value: bool) -> PublicSearchItems:
+        self.auto_calc_estimated_price = value
         return self
 
     def with_item_type(self, value: Union[str, ItemTypeEnum]) -> PublicSearchItems:
@@ -228,6 +237,13 @@ class PublicSearchItems(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if (
+            hasattr(self, "auto_calc_estimated_price")
+            and self.auto_calc_estimated_price
+        ):
+            result["autoCalcEstimatedPrice"] = bool(self.auto_calc_estimated_price)
+        elif include_empty:
+            result["autoCalcEstimatedPrice"] = False
         if hasattr(self, "item_type") and self.item_type:
             result["itemType"] = str(self.item_type)
         elif include_empty:
@@ -306,6 +322,7 @@ class PublicSearchItems(Operation):
         namespace: str,
         keyword: str,
         language: str,
+        auto_calc_estimated_price: Optional[bool] = None,
         item_type: Optional[Union[str, ItemTypeEnum]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -317,6 +334,8 @@ class PublicSearchItems(Operation):
         instance.namespace = namespace
         instance.keyword = keyword
         instance.language = language
+        if auto_calc_estimated_price is not None:
+            instance.auto_calc_estimated_price = auto_calc_estimated_price
         if item_type is not None:
             instance.item_type = item_type
         if limit is not None:
@@ -338,6 +357,13 @@ class PublicSearchItems(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if (
+            "autoCalcEstimatedPrice" in dict_
+            and dict_["autoCalcEstimatedPrice"] is not None
+        ):
+            instance.auto_calc_estimated_price = bool(dict_["autoCalcEstimatedPrice"])
+        elif include_empty:
+            instance.auto_calc_estimated_price = False
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
@@ -372,6 +398,7 @@ class PublicSearchItems(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "autoCalcEstimatedPrice": "auto_calc_estimated_price",
             "itemType": "item_type",
             "limit": "limit",
             "offset": "offset",
@@ -385,6 +412,7 @@ class PublicSearchItems(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "autoCalcEstimatedPrice": False,
             "itemType": False,
             "limit": False,
             "offset": False,

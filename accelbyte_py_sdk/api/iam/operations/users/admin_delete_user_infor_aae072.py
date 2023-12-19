@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,10 +35,7 @@ from ...models import RestErrorResponse
 class AdminDeleteUserInformationV3(Operation):
     """Delete user's information (AdminDeleteUserInformationV3)
 
-    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow.Required permissions 'ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]'.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,31 +37,10 @@ from ...models import RestErrorResponse
 class AdminUpdateMyUserV4(Operation):
     """Admin Update My User (AdminUpdateMyUserV4)
 
-    Requires valid user access token
-
-
-
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-
-
-
-    Supported field {country, displayName, languageTag, dateOfBirth, userName}
-
-
-
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-
-
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-
-
 
     action code : 10103
 

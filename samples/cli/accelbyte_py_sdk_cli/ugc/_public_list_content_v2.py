@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Ugc Service (2.18.0)
+# AGS Ugc Service (2.19.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()
+@click.option("--is_official", "is_official", type=bool)
 @click.option("--limit", "limit", type=int)
 @click.option("--name", "name", type=str)
 @click.option("--offset", "offset", type=int)
@@ -50,6 +51,7 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_list_content_v2(
+    is_official: Optional[bool] = None,
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
@@ -77,6 +79,7 @@ def public_list_content_v2(
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = public_list_content_v2_internal(
+        is_official=is_official,
         limit=limit,
         name=name,
         offset=offset,

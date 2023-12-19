@@ -76,13 +76,13 @@ def delete_channel(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Channel deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772502: Channel not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772501: Unable to delete channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -131,13 +131,13 @@ async def delete_channel_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Channel deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772502: Channel not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772501: Unable to delete channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -194,13 +194,13 @@ def get_channels(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetChannelResponse (OK)
+        200: OK - ModelsPaginatedGetChannelResponse (Channel in namespace-level retrieved)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770702: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770700: Unable get user channels)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -257,13 +257,13 @@ async def get_channels_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetChannelResponse (OK)
+        200: OK - ModelsPaginatedGetChannelResponse (Channel in namespace-level retrieved)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770702: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770700: Unable get user channels)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -316,13 +316,13 @@ def public_create_channel(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsChannelResponse (Created)
+        201: Created - ModelsChannelResponse (channel created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770500: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770502: Unable to save channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -371,13 +371,13 @@ async def public_create_channel_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsChannelResponse (Created)
+        201: Created - ModelsChannelResponse (channel created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770500: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770502: Unable to save channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -431,15 +431,15 @@ def update_channel(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsChannelResponse (OK)
+        200: OK - ModelsChannelResponse (Channel updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770600: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770603: Channel was not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -492,15 +492,15 @@ async def update_channel_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsChannelResponse (OK)
+        200: OK - ModelsChannelResponse (Channel updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770600: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770603: Channel was not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

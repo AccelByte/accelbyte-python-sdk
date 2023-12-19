@@ -38,6 +38,7 @@ from ..models import StatCycleCreate
 from ..models import StatCycleInfo
 from ..models import StatCyclePagingSlicedResult
 from ..models import StatCycleUpdate
+from ..models import StatImportInfo
 from ..models import ValidationErrorEntity
 
 from ..operations.stat_cycle_configuration import BulkAddStats
@@ -58,6 +59,7 @@ from ..operations.stat_cycle_configuration import (
     GetStatCycles1CycleTypeEnum,
     GetStatCycles1StatusEnum,
 )
+from ..operations.stat_cycle_configuration import ImportStatCycle
 from ..operations.stat_cycle_configuration import StopStatCycle
 from ..operations.stat_cycle_configuration import UpdateStatCycle
 from ..models import StatCycleCreateCycleTypeEnum
@@ -1322,6 +1324,130 @@ async def get_stat_cycles_1_async(
         offset=offset,
         sort_by=sort_by,
         status=status,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ImportStatCycle)
+def import_stat_cycle(
+    file: Optional[Any] = None,
+    replace_existing: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Import stat cycle configurations (importStatCycle)
+
+    Import stat cycle configurations for a given namespace from file. At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/import
+
+        method: POST
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        replace_existing: (replaceExisting) OPTIONAL bool in query
+
+    Responses:
+        201: Created - StatImportInfo (Import stat cycles successfully)
+
+        400: Bad Request - ErrorEntity (12222: Stats data for namespace [{namespace}] is invalid)
+
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImportStatCycle.create(
+        file=file,
+        replace_existing=replace_existing,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ImportStatCycle)
+async def import_stat_cycle_async(
+    file: Optional[Any] = None,
+    replace_existing: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Import stat cycle configurations (importStatCycle)
+
+    Import stat cycle configurations for a given namespace from file. At current, only JSON file is supported.
+
+    Other detail info:
+
+      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/import
+
+        method: POST
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        replace_existing: (replaceExisting) OPTIONAL bool in query
+
+    Responses:
+        201: Created - StatImportInfo (Import stat cycles successfully)
+
+        400: Bad Request - ErrorEntity (12222: Stats data for namespace [{namespace}] is invalid)
+
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImportStatCycle.create(
+        file=file,
+        replace_existing=replace_existing,
         namespace=namespace,
     )
     return await run_request_async(

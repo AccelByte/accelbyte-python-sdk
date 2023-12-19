@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.12.0)
+# AccelByte Gaming Services Session Service (3.12.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -74,6 +74,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
 
         immutable_storage: (immutableStorage) OPTIONAL bool
 
+        leader_election_grace_period: (leaderElectionGracePeriod) OPTIONAL int
+
         max_active_sessions: (maxActiveSessions) OPTIONAL int
 
         native_session_setting: (NativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
@@ -107,6 +109,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
     enable_secret: bool  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
     immutable_storage: bool  # OPTIONAL
+    leader_election_grace_period: int  # OPTIONAL
     max_active_sessions: int  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
@@ -231,6 +234,12 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         self.immutable_storage = value
         return self
 
+    def with_leader_election_grace_period(
+        self, value: int
+    ) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.leader_election_grace_period = value
+        return self
+
     def with_max_active_sessions(
         self, value: int
     ) -> ApimodelsCreateConfigurationTemplateRequest:
@@ -347,6 +356,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             result["immutableStorage"] = bool(self.immutable_storage)
         elif include_empty:
             result["immutableStorage"] = False
+        if hasattr(self, "leader_election_grace_period"):
+            result["leaderElectionGracePeriod"] = int(self.leader_election_grace_period)
+        elif include_empty:
+            result["leaderElectionGracePeriod"] = 0
         if hasattr(self, "max_active_sessions"):
             result["maxActiveSessions"] = int(self.max_active_sessions)
         elif include_empty:
@@ -398,6 +411,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         enable_secret: Optional[bool] = None,
         fallback_claim_keys: Optional[List[str]] = None,
         immutable_storage: Optional[bool] = None,
+        leader_election_grace_period: Optional[int] = None,
         max_active_sessions: Optional[int] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
         preferred_claim_keys: Optional[List[str]] = None,
@@ -434,6 +448,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.fallback_claim_keys = fallback_claim_keys
         if immutable_storage is not None:
             instance.immutable_storage = immutable_storage
+        if leader_election_grace_period is not None:
+            instance.leader_election_grace_period = leader_election_grace_period
         if max_active_sessions is not None:
             instance.max_active_sessions = max_active_sessions
         if native_session_setting is not None:
@@ -540,6 +556,15 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.immutable_storage = bool(dict_["immutableStorage"])
         elif include_empty:
             instance.immutable_storage = False
+        if (
+            "leaderElectionGracePeriod" in dict_
+            and dict_["leaderElectionGracePeriod"] is not None
+        ):
+            instance.leader_election_grace_period = int(
+                dict_["leaderElectionGracePeriod"]
+            )
+        elif include_empty:
+            instance.leader_election_grace_period = 0
         if "maxActiveSessions" in dict_ and dict_["maxActiveSessions"] is not None:
             instance.max_active_sessions = int(dict_["maxActiveSessions"])
         elif include_empty:
@@ -635,6 +660,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "enableSecret": "enable_secret",
             "fallbackClaimKeys": "fallback_claim_keys",
             "immutableStorage": "immutable_storage",
+            "leaderElectionGracePeriod": "leader_election_grace_period",
             "maxActiveSessions": "max_active_sessions",
             "NativeSessionSetting": "native_session_setting",
             "preferredClaimKeys": "preferred_claim_keys",
@@ -665,6 +691,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "enableSecret": False,
             "fallbackClaimKeys": False,
             "immutableStorage": False,
+            "leaderElectionGracePeriod": False,
             "maxActiveSessions": False,
             "NativeSessionSetting": False,
             "preferredClaimKeys": False,

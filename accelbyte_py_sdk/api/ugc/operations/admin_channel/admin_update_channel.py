@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,15 +64,15 @@ class AdminUpdateChannel(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsChannelResponse (OK)
+        200: OK - ModelsChannelResponse (Channel updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770600: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770603: Channel was not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
 
     # region fields
@@ -208,15 +208,15 @@ class AdminUpdateChannel(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsChannelResponse (OK)
+        200: OK - ModelsChannelResponse (Channel updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770600: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770603: Channel was not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770602: Unable to save channel)
 
         ---: HttpResponse (Undocumented Response)
 

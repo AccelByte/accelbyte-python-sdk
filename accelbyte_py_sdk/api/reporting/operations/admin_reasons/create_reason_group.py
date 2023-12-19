@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,12 +37,9 @@ from ...models import RestapiReasonGroupResponse
 class CreateReasonGroup(Operation):
     """Create a reason group (createReasonGroup)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
-    Create a reason group for easier query. You can query reasons by specifying the group title in the list reasons query.
-    Reason group title is case insensitive, meaning you can't have reason if you already create a reason titled Reason
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+    Create a reason group for easier query. You can query reasons by specifying
+    the group title in the list reasons query. Reason group title is case insensitive,
+    meaning you can't have **reason** if you already create a reason titled **Reason**
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups

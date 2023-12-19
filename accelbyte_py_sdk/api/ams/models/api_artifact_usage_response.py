@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# Fleet Commander (1.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,36 +27,38 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.catalog_change_info import CatalogChangeInfo
-from ..models.paging import Paging
 
-
-class CatalogChangePagingSlicedResult(Model):
-    """Catalog change paging sliced result (CatalogChangePagingSlicedResult)
+class ApiArtifactUsageResponse(Model):
+    """Api artifact usage response (api.ArtifactUsageResponse)
 
     Properties:
-        data: (data) REQUIRED List[CatalogChangeInfo]
+        quota_bytes: (quotaBytes) REQUIRED int
 
-        paging: (paging) OPTIONAL Paging
+        remaining_bytes: (remainingBytes) REQUIRED int
+
+        used_bytes: (usedBytes) REQUIRED int
     """
 
     # region fields
 
-    data: List[CatalogChangeInfo]  # REQUIRED
-    paging: Paging  # OPTIONAL
+    quota_bytes: int  # REQUIRED
+    remaining_bytes: int  # REQUIRED
+    used_bytes: int  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(
-        self, value: List[CatalogChangeInfo]
-    ) -> CatalogChangePagingSlicedResult:
-        self.data = value
+    def with_quota_bytes(self, value: int) -> ApiArtifactUsageResponse:
+        self.quota_bytes = value
         return self
 
-    def with_paging(self, value: Paging) -> CatalogChangePagingSlicedResult:
-        self.paging = value
+    def with_remaining_bytes(self, value: int) -> ApiArtifactUsageResponse:
+        self.remaining_bytes = value
+        return self
+
+    def with_used_bytes(self, value: int) -> ApiArtifactUsageResponse:
+        self.used_bytes = value
         return self
 
     # endregion with_x methods
@@ -65,16 +67,18 @@ class CatalogChangePagingSlicedResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "data"):
-            result["data"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.data
-            ]
+        if hasattr(self, "quota_bytes"):
+            result["quotaBytes"] = int(self.quota_bytes)
         elif include_empty:
-            result["data"] = []
-        if hasattr(self, "paging"):
-            result["paging"] = self.paging.to_dict(include_empty=include_empty)
+            result["quotaBytes"] = 0
+        if hasattr(self, "remaining_bytes"):
+            result["remainingBytes"] = int(self.remaining_bytes)
         elif include_empty:
-            result["paging"] = Paging()
+            result["remainingBytes"] = 0
+        if hasattr(self, "used_bytes"):
+            result["usedBytes"] = int(self.used_bytes)
+        elif include_empty:
+            result["usedBytes"] = 0
         return result
 
     # endregion to methods
@@ -83,40 +87,39 @@ class CatalogChangePagingSlicedResult(Model):
 
     @classmethod
     def create(
-        cls, data: List[CatalogChangeInfo], paging: Optional[Paging] = None, **kwargs
-    ) -> CatalogChangePagingSlicedResult:
+        cls, quota_bytes: int, remaining_bytes: int, used_bytes: int, **kwargs
+    ) -> ApiArtifactUsageResponse:
         instance = cls()
-        instance.data = data
-        if paging is not None:
-            instance.paging = paging
+        instance.quota_bytes = quota_bytes
+        instance.remaining_bytes = remaining_bytes
+        instance.used_bytes = used_bytes
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> CatalogChangePagingSlicedResult:
+    ) -> ApiArtifactUsageResponse:
         instance = cls()
         if not dict_:
             return instance
-        if "data" in dict_ and dict_["data"] is not None:
-            instance.data = [
-                CatalogChangeInfo.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["data"]
-            ]
+        if "quotaBytes" in dict_ and dict_["quotaBytes"] is not None:
+            instance.quota_bytes = int(dict_["quotaBytes"])
         elif include_empty:
-            instance.data = []
-        if "paging" in dict_ and dict_["paging"] is not None:
-            instance.paging = Paging.create_from_dict(
-                dict_["paging"], include_empty=include_empty
-            )
+            instance.quota_bytes = 0
+        if "remainingBytes" in dict_ and dict_["remainingBytes"] is not None:
+            instance.remaining_bytes = int(dict_["remainingBytes"])
         elif include_empty:
-            instance.paging = Paging()
+            instance.remaining_bytes = 0
+        if "usedBytes" in dict_ and dict_["usedBytes"] is not None:
+            instance.used_bytes = int(dict_["usedBytes"])
+        elif include_empty:
+            instance.used_bytes = 0
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, CatalogChangePagingSlicedResult]:
+    ) -> Dict[str, ApiArtifactUsageResponse]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -126,7 +129,7 @@ class CatalogChangePagingSlicedResult(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[CatalogChangePagingSlicedResult]:
+    ) -> List[ApiArtifactUsageResponse]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -137,9 +140,9 @@ class CatalogChangePagingSlicedResult(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        CatalogChangePagingSlicedResult,
-        List[CatalogChangePagingSlicedResult],
-        Dict[Any, CatalogChangePagingSlicedResult],
+        ApiArtifactUsageResponse,
+        List[ApiArtifactUsageResponse],
+        Dict[Any, ApiArtifactUsageResponse],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -154,15 +157,17 @@ class CatalogChangePagingSlicedResult(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "data": "data",
-            "paging": "paging",
+            "quotaBytes": "quota_bytes",
+            "remainingBytes": "remaining_bytes",
+            "usedBytes": "used_bytes",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "data": True,
-            "paging": False,
+            "quotaBytes": True,
+            "remainingBytes": True,
+            "usedBytes": True,
         }
 
     # endregion static methods

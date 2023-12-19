@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,11 +37,9 @@ class PublicSendRegistrationCode(Operation):
     """Send verification code to new unregistered account's email address (PublicSendRegistrationCode)
 
     This endpoint will validate the request's email address.
-
     If it already been used, will response 409.
-
     If it is available, we will send a verification code to this email address.
-    This code can be verified by this endpoint.
+    This code can be verified by this [endpoint](#operations-Users-PublicVerifyRegistrationCode).
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/code/request

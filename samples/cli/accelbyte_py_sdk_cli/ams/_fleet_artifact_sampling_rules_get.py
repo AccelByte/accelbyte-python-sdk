@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Commander (1.4.0)
+# Fleet Commander (1.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.ams import (
     fleet_artifact_sampling_rules_get as fleet_artifact_sampling_rules_get_internal,
 )
-from accelbyte_py_sdk.api.ams.models import ApiFleetArtifactsSampleRulesResponse
+from accelbyte_py_sdk.api.ams.models import ApiFleetArtifactsSampleRules
 from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 

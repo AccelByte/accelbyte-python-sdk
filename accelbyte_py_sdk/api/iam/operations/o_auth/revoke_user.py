@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,32 +35,11 @@ class RevokeUser(Operation):
     """Revokes user's tokens' (RevokeUser)
 
     ## The endpoint is going to be deprecated
-
-
-
-
     This endpoint requires all requests to have authorization header set with bearer token.
 
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
-
-
     The endpoint revokes all access tokens and refresh tokens a user has prior the revocation time. It is a convenient feature for the developer (or admin) who wanted to revokes all user's access tokens and refresh tokens generated before some period of time.
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/revoke [POST]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/revoke [POST]_**
 
     Properties:
         url: /iam/oauth/namespaces/{namespace}/users/{userId}/revoke

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,10 +36,7 @@ from ...models import RestapiTicketResponse
 class GetTicketDetail(Operation):
     """Get single ticket (getTicketDetail)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+    This endpoint will return ticket detail with ticket id.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}

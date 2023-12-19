@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,9 +37,7 @@ from ...models import RestErrorResponse
 class PublicUpgradeHeadlessAccountV4(Operation):
     """Upgrade user account to full account (PublicUpgradeHeadlessAccountV4)
 
-    Require valid user authorization
     Upgrade headless account to full account without verifying email address. Client does not need to provide verification code which sent to email address.
-
     action code : 10124
 
     Properties:

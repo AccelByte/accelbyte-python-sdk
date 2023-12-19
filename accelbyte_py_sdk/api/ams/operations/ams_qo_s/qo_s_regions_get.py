@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.4.0)
+# Fleet Commander (1.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,13 +36,30 @@ from ...models import ResponseErrorResponse
 class QoSRegionsGet(Operation):
     """Get the list of available AMS QoS regions. (QoSRegionsGet)
 
-    Required Permission: NAMESPACE:{namespace}:QOS:SERVER [READ]
+    ```
+    Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
+
+    This endpoint lists all QoS services available in all regions.
+
+    This endpoint is intended to be called by game client to find out all available regions.
+    After getting a list of QoS on each region, game client is expected to ping each one with UDP
+    connection as described below:
+
+    1. Make UDP connection to each QoS's IP:Port
+    2. Send string "PING" after connection established
+    3. Wait for string "PONG" response
+    4. Note the request-response latency for each QoS in each region
+
+    The game then can use ping latency information to either:
+    1. Inform the player on these latencies and let player choose preferred region
+    2. Send the latency list to Matchmaking Service so that player can be matched with other players
+    in nearby regions
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:QOS:SERVER [READ]
+        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
 
     Properties:
-        url: /ams/v1/namespaces/{namespace}/qos
+        url: /ams/v1/admin/namespaces/{namespace}/qos
 
         method: GET
 
@@ -72,7 +89,7 @@ class QoSRegionsGet(Operation):
 
     # region fields
 
-    _url: str = "/ams/v1/namespaces/{namespace}/qos"
+    _url: str = "/ams/v1/admin/namespaces/{namespace}/qos"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]

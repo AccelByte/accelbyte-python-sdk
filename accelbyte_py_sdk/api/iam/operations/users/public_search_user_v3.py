@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,17 +36,40 @@ from ...models import RestErrorResponse
 class PublicSearchUserV3(Operation):
     """Search User (PublicSearchUserV3)
 
-    Requires valid user access token
+    This endpoint search all users on the specified namespace that match the query on these fields: display name, and username or by 3rd party display name.
+    The query length should greater than 2ï¼otherwise will not query the database. The default limit value is 100.
+    **Note: searching by 3rd party platform display name is exact query**
+    ---
+    When searching by 3rd party platform display name:
+    1. set __by__ to __thirdPartyPlatform__
+    2. set __platformId__ to the supported platform id
+    3. set __platformBy__ to __platformDisplayName__
+    ---
+    Supported platform id:
 
-
-
-
-    This endpoint search all users on the specified namespace that match the query on these fields: display name, and username.
-    The query length should greater than 1ï¼otherwise will not query the database. The default limit value is 100
-
-
-
-    action code : 10132
+    * steam
+    * steamopenid
+    * facebook
+    * google
+    * oculus
+    * oculusweb
+    * twitch
+    * discord
+    * android
+    * ios
+    * apple
+    * device
+    * epicgames
+    * ps4
+    * ps5
+    * ps4web
+    * nintendo
+    * awscognito
+    * live
+    * xblweb
+    * netflix
+    * snapchat
+    * oidc platform id
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users
@@ -68,6 +91,10 @@ class PublicSearchUserV3(Operation):
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        platform_by: (platformBy) OPTIONAL str in query
+
+        platform_id: (platformId) OPTIONAL str in query
 
         query: (query) OPTIONAL str in query
 
@@ -96,6 +123,8 @@ class PublicSearchUserV3(Operation):
     by: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    platform_by: str  # OPTIONAL in [query]
+    platform_id: str  # OPTIONAL in [query]
     query: str  # OPTIONAL in [query]
 
     # endregion fields
@@ -154,6 +183,10 @@ class PublicSearchUserV3(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "platform_by"):
+            result["platformBy"] = self.platform_by
+        if hasattr(self, "platform_id"):
+            result["platformId"] = self.platform_id
         if hasattr(self, "query"):
             result["query"] = self.query
         return result
@@ -182,6 +215,14 @@ class PublicSearchUserV3(Operation):
         self.offset = value
         return self
 
+    def with_platform_by(self, value: str) -> PublicSearchUserV3:
+        self.platform_by = value
+        return self
+
+    def with_platform_id(self, value: str) -> PublicSearchUserV3:
+        self.platform_id = value
+        return self
+
     def with_query(self, value: str) -> PublicSearchUserV3:
         self.query = value
         return self
@@ -208,6 +249,14 @@ class PublicSearchUserV3(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "platform_by") and self.platform_by:
+            result["platformBy"] = str(self.platform_by)
+        elif include_empty:
+            result["platformBy"] = ""
+        if hasattr(self, "platform_id") and self.platform_id:
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = ""
         if hasattr(self, "query") and self.query:
             result["query"] = str(self.query)
         elif include_empty:
@@ -276,6 +325,8 @@ class PublicSearchUserV3(Operation):
         by: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        platform_by: Optional[str] = None,
+        platform_id: Optional[str] = None,
         query: Optional[str] = None,
         **kwargs,
     ) -> PublicSearchUserV3:
@@ -287,6 +338,10 @@ class PublicSearchUserV3(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if platform_by is not None:
+            instance.platform_by = platform_by
+        if platform_id is not None:
+            instance.platform_id = platform_id
         if query is not None:
             instance.query = query
         return instance
@@ -312,6 +367,14 @@ class PublicSearchUserV3(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "platformBy" in dict_ and dict_["platformBy"] is not None:
+            instance.platform_by = str(dict_["platformBy"])
+        elif include_empty:
+            instance.platform_by = ""
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = ""
         if "query" in dict_ and dict_["query"] is not None:
             instance.query = str(dict_["query"])
         elif include_empty:
@@ -325,6 +388,8 @@ class PublicSearchUserV3(Operation):
             "by": "by",
             "limit": "limit",
             "offset": "offset",
+            "platformBy": "platform_by",
+            "platformId": "platform_id",
             "query": "query",
         }
 
@@ -335,6 +400,8 @@ class PublicSearchUserV3(Operation):
             "by": False,
             "limit": False,
             "offset": False,
+            "platformBy": False,
+            "platformId": False,
             "query": False,
         }
 

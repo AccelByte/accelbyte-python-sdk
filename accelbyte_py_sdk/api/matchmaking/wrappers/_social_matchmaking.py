@@ -46,19 +46,9 @@ def update_play_time_weight(
 ):
     """Update player -- playtime connection weight (UpdatePlayTimeWeight)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
-
-    Required Scope: social
-
     Update a connection weight between player and playtime.
 
     This endpoint is intended to be called by admin for debugging purpose on social matchmaking rule.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/social/playtime/namespaces/{namespace}/weight
@@ -110,19 +100,9 @@ async def update_play_time_weight_async(
 ):
     """Update player -- playtime connection weight (UpdatePlayTimeWeight)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
-
-    Required Scope: social
-
     Update a connection weight between player and playtime.
 
     This endpoint is intended to be called by admin for debugging purpose on social matchmaking rule.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/social/playtime/namespaces/{namespace}/weight

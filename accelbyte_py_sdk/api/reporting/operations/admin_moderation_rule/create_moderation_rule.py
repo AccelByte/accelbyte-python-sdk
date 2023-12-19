@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,57 +37,16 @@ class CreateModerationRule(Operation):
     """Create auto moderation rule (createModerationRule)
 
     This endpoint create moderation rule.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [CREATE]
-
-
-
-
-    Supported Category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
-
-
-
-
-
-
+    Supported Category: - UGC - USER - CHAT - EXTENSION
     Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
 
-
-
-
-
-
-      * HideContent
-
-
-
-
+    * HideContent
 
     Supported Actions:
 
-
-
-
-
-
-      * hideContent : Hide the content
-
-
-      * banAccount : Ban the user account
-
-
-      * deleteChat : Delete chat
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [CREATE]
+    * **hideContent**: Hide the content
+    * **banAccount**: Ban the user account
+    * **deleteChat**: Delete chat
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule

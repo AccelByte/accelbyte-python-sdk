@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,12 +35,7 @@ from ...models import RestErrorResponse
 class AdminResetInputValidations(Operation):
     """Admin Reset Input Validations (AdminResetInputValidations)
 
-    Required permission 'ADMIN:CONFIGURATION' [DELETE]
-
     This endpoint is used to reset input validation to the default input validation configurations
-
-    Required Permission(s):
-        - ADMIN:CONFIGURATION [DELETE]
 
     Properties:
         url: /iam/v3/admin/inputValidations/{field}

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,12 +36,7 @@ from ...models import RestErrorResponse
 class AdminListUserRolesV4(Operation):
     """Admin List User's Roles V4 (AdminListUserRolesV4)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [READ] permission.
-
     List roles assigned to a user
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [READ]
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles

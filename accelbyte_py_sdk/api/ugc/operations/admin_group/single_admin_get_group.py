@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -59,13 +59,13 @@ class SingleAdminGetGroup(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateGroupResponse (OK)
+        200: OK - ModelsCreateGroupResponse (Get specific group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773002: Group not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773001: Unable get group)
     """
 
     # region fields
@@ -173,13 +173,13 @@ class SingleAdminGetGroup(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsCreateGroupResponse (OK)
+        200: OK - ModelsCreateGroupResponse (Get specific group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (773002: Group not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (773001: Unable get group)
 
         ---: HttpResponse (Undocumented Response)
 

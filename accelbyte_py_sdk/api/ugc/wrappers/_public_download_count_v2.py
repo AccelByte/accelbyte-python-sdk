@@ -66,17 +66,15 @@ def public_add_download_count_v2(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsAddDownloadCountResponse (OK)
+        200: OK - ModelsAddDownloadCountResponse (Added download count to a content)
 
-        400: Bad Request - ResponseError (Bad Request)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        404: Not Found - ResponseError (772903: Unable to add content download: content not found)
 
-        404: Not Found - ResponseError (Not Found)
+        429: Too Many Requests - ResponseError (772906: Unable to add content download: too many request)
 
-        429: Too Many Requests - ResponseError (Too Many Requests)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772902: Unable to add content download: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -118,17 +116,15 @@ async def public_add_download_count_v2_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsAddDownloadCountResponse (OK)
+        200: OK - ModelsAddDownloadCountResponse (Added download count to a content)
 
-        400: Bad Request - ResponseError (Bad Request)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        404: Not Found - ResponseError (772903: Unable to add content download: content not found)
 
-        404: Not Found - ResponseError (Not Found)
+        429: Too Many Requests - ResponseError (772906: Unable to add content download: too many request)
 
-        429: Too Many Requests - ResponseError (Too Many Requests)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772902: Unable to add content download: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -184,13 +180,13 @@ def public_list_content_downloader_v2(
         user_id: (userId) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloaderResponse (OK)
+        200: OK - ModelsPaginatedContentDownloaderResponse (List content downloader)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770800: invalid paging parameter/max allowed number of tags is {maxTags}/invalid official parameter/invalid ishidden parameter)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772904: Unable to list content downloader: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -248,13 +244,13 @@ async def public_list_content_downloader_v2_async(
         user_id: (userId) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloaderResponse (OK)
+        200: OK - ModelsPaginatedContentDownloaderResponse (List content downloader)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770800: invalid paging parameter/max allowed number of tags is {maxTags}/invalid official parameter/invalid ishidden parameter)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772904: Unable to list content downloader: database error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

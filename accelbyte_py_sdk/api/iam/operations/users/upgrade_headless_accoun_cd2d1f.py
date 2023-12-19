@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,27 +39,11 @@ class UpgradeHeadlessAccountWithVerificationCode(Operation):
     """Upgrade headless account and automatically verified the email address if it is succeeded (UpgradeHeadlessAccountWithVerificationCode)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]_**
 
     The endpoint upgrades a headless account by linking the headless account with the email address and the password. By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
     The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call. In order to get a verification code for the endpoint, please check the send verification code endpoint.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode

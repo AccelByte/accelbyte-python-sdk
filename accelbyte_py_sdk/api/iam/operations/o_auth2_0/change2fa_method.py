@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,28 +36,11 @@ class Change2faMethod(Operation):
     """Change 2FA method (Change2FAMethod)
 
     Change 2FA method
-
-
-
     This endpoint is used for change 2FA method. Only enabled methods are accepted.
-
-
-
-
     Supported methods:
-
-
-
-
-
-
-      * authenticator
-
-
-      * backupCode
-
-
-      * email
+    - authenticator
+    - backupCode
+    - email
 
     Properties:
         url: /iam/v3/oauth/mfa/factor/change

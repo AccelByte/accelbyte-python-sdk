@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,13 +65,15 @@ class AdminGetUserGroupContentsV2(Operation):
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (Get contents belong to a group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (773101: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (773103: No group content was found)
+
+        500: Internal Server Error - ResponseError (773102: Unable to get ugc content: database error | 770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
     """
 
     # region fields
@@ -220,13 +222,15 @@ class AdminGetUserGroupContentsV2(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (Get contents belong to a group)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (773101: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (773103: No group content was found)
+
+        500: Internal Server Error - ResponseError (773102: Unable to get ugc content: database error | 770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -246,6 +250,8 @@ class AdminGetUserGroupContentsV2(Operation):
                 ModelsPaginatedContentDownloadResponseV2.create_from_dict(content),
                 None,
             )
+        if code == 400:
+            return None, ResponseError.create_from_dict(content)
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 404:

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -45,12 +45,7 @@ class SubmitReport(Operation):
     Reporting the same user / object in the same OPEN ticket will return HTTP code 409 (conflict).
 
     Fill the 'reason' field with a 'reason title'
-    Supported category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
+    Supported category: - UGC - USER - CHAT - EXTENSION
 
     Properties:
         url: /reporting/v1/public/namespaces/{namespace}/reports

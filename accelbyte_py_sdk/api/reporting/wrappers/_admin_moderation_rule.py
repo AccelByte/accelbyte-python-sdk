@@ -57,57 +57,16 @@ def create_moderation_rule(
     """Create auto moderation rule (createModerationRule)
 
     This endpoint create moderation rule.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [CREATE]
-
-
-
-
-    Supported Category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
-
-
-
-
-
-
+    Supported Category: - UGC - USER - CHAT - EXTENSION
     Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
 
-
-
-
-
-
-      * HideContent
-
-
-
-
+    * HideContent
 
     Supported Actions:
 
-
-
-
-
-
-      * hideContent : Hide the content
-
-
-      * banAccount : Ban the user account
-
-
-      * deleteChat : Delete chat
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [CREATE]
+    * **hideContent**: Hide the content
+    * **banAccount**: Ban the user account
+    * **deleteChat**: Delete chat
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule
@@ -156,57 +115,16 @@ async def create_moderation_rule_async(
     """Create auto moderation rule (createModerationRule)
 
     This endpoint create moderation rule.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [CREATE]
-
-
-
-
-    Supported Category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
-
-
-
-
-
-
+    Supported Category: - UGC - USER - CHAT - EXTENSION
     Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
 
-
-
-
-
-
-      * HideContent
-
-
-
-
+    * HideContent
 
     Supported Actions:
 
-
-
-
-
-
-      * hideContent : Hide the content
-
-
-      * banAccount : Ban the user account
-
-
-      * deleteChat : Delete chat
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [CREATE]
+    * **hideContent**: Hide the content
+    * **banAccount**: Ban the user account
+    * **deleteChat**: Delete chat
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule
@@ -258,14 +176,6 @@ def delete_moderation_rule(
 
     This endpoint delete moderation rule.
 
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [DELETE]
-
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}
 
@@ -311,14 +221,6 @@ async def delete_moderation_rule_async(
     """Delete auto moderation rule (deleteModerationRule)
 
     This endpoint delete moderation rule.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [DELETE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}
@@ -368,14 +270,6 @@ def get_moderation_rule_details(
 
     This endpoint get moderation rule.
 
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [READ]
-
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rules/{ruleId}
 
@@ -421,14 +315,6 @@ async def get_moderation_rule_details_async(
     """Get auto moderation rule (getModerationRuleDetails)
 
     This endpoint get moderation rule.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rules/{ruleId}
@@ -480,14 +366,6 @@ def get_moderation_rules(
     """Get auto moderation rules (getModerationRules)
 
     This endpoint get moderation rules.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rules
@@ -549,14 +427,6 @@ async def get_moderation_rules_async(
 
     This endpoint get moderation rules.
 
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [READ]
-
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rules
 
@@ -616,55 +486,14 @@ def update_moderation_rule(
     """Update auto moderation rule (updateModerationRule)
 
     This endpoint update moderation rule.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
-
-
-    Supported Category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
-
-
-
-
-
-
+    Supported Category:- UGC - USER - CHAT - EXTENSION
     Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
-
-
-
-
-
-
-      * HideContent
-
-
-
-
+    * HideContent
 
     Supported Actions:
-
-
-
-
-
-
-      * hideContent : Hide the content
-
-
-      * banAccount : Ban the user account
-
-
-      * deleteChat : Delete chat
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+    * **hideContent**: Hide the content
+    * **banAccount**: Ban the user account
+    * **deleteChat**: Delete chat
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}
@@ -719,55 +548,14 @@ async def update_moderation_rule_async(
     """Update auto moderation rule (updateModerationRule)
 
     This endpoint update moderation rule.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
-
-
-    Supported Category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
-
-
-
-
-
-
+    Supported Category:- UGC - USER - CHAT - EXTENSION
     Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
-
-
-
-
-
-
-      * HideContent
-
-
-
-
+    * HideContent
 
     Supported Actions:
-
-
-
-
-
-
-      * hideContent : Hide the content
-
-
-      * banAccount : Ban the user account
-
-
-      * deleteChat : Delete chat
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+    * **hideContent**: Hide the content
+    * **banAccount**: Ban the user account
+    * **deleteChat**: Delete chat
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}
@@ -825,14 +613,6 @@ def update_moderation_rule_status(
 
     This endpoint enable/disable moderation rule status.
 
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
-
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}/status
 
@@ -884,14 +664,6 @@ async def update_moderation_rule_status_async(
     """Enable/Disable auto moderation rule (updateModerationRuleStatus)
 
     This endpoint enable/disable moderation rule status.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}/status

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,17 +35,9 @@ from ...models import RestapiErrorResponseV1
 class DeleteNotificationTemplateSlugV1Admin(Operation):
     """delete template slug in notification template (deleteNotificationTemplateSlugV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]` with scope `social`
-
     Delete template slug in notification template
 
     Action Code: 50206
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}

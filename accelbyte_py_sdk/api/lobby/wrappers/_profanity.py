@@ -69,15 +69,7 @@ def admin_add_profanity_filter_into_list(
 ):
     """add a single filter into the list (adminAddProfanityFilterIntoList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    add a single filter into the list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Add a single filter into the list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters
@@ -133,15 +125,7 @@ async def admin_add_profanity_filter_into_list_async(
 ):
     """add a single filter into the list (adminAddProfanityFilterIntoList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    add a single filter into the list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Add a single filter into the list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters
@@ -199,15 +183,7 @@ def admin_add_profanity_filters(
 ):
     """add multiple filters into the list (adminAddProfanityFilters)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    add multiple filters into the list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Add multiple filters into the list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk
@@ -263,15 +239,7 @@ async def admin_add_profanity_filters_async(
 ):
     """add multiple filters into the list (adminAddProfanityFilters)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    add multiple filters into the list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Add multiple filters into the list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk
@@ -328,15 +296,7 @@ def admin_create_profanity_list(
 ):
     """create a new list (adminCreateProfanityList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    create a new list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Create a new list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists
@@ -388,15 +348,7 @@ async def admin_create_profanity_list_async(
 ):
     """create a new list (adminCreateProfanityList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    create a new list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Create a new list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists
@@ -450,15 +402,7 @@ def admin_debug_profanity_filters(
 ):
     """get the list of filters that would modify the phrase (adminDebugProfanityFilters)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    get the list of filters that would modify the phrase
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Get the list of filters that would modify the phrase
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/filters/debug
@@ -510,15 +454,7 @@ async def admin_debug_profanity_filters_async(
 ):
     """get the list of filters that would modify the phrase (adminDebugProfanityFilters)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    get the list of filters that would modify the phrase
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Get the list of filters that would modify the phrase
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/filters/debug
@@ -573,15 +509,7 @@ def admin_delete_profanity_filter(
 ):
     """delete the filter from the list (adminDeleteProfanityFilter)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with scope `social`
-
-    delete the filter from the list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]
-
-    Required Scope(s):
-        - social
+    Delete the filter from the list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/delete
@@ -637,15 +565,7 @@ async def admin_delete_profanity_filter_async(
 ):
     """delete the filter from the list (adminDeleteProfanityFilter)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with scope `social`
-
-    delete the filter from the list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]
-
-    Required Scope(s):
-        - social
+    Delete the filter from the list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/delete
@@ -702,15 +622,7 @@ def admin_delete_profanity_list(
 ):
     """delete a list include all filters inside of it (adminDeleteProfanityList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with scope `social`
-
-    delete a list include all filters inside of it
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]
-
-    Required Scope(s):
-        - social
+    Delete a list include all filters inside of it
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}
@@ -762,15 +674,7 @@ async def admin_delete_profanity_list_async(
 ):
     """delete a list include all filters inside of it (adminDeleteProfanityList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with scope `social`
-
-    delete a list include all filters inside of it
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]
-
-    Required Scope(s):
-        - social
+    Delete a list include all filters inside of it
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}
@@ -824,15 +728,7 @@ def admin_get_profanity_list_filters_v1(
 ):
     """get the list of filters inside the list (adminGetProfanityListFiltersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    get the list of filters inside the list.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Get the list of filters inside the list.
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters
@@ -884,15 +780,7 @@ async def admin_get_profanity_list_filters_v1_async(
 ):
     """get the list of filters inside the list (adminGetProfanityListFiltersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    get the list of filters inside the list.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Get the list of filters inside the list.
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters
@@ -945,15 +833,7 @@ def admin_get_profanity_lists(
 ):
     """get lists (adminGetProfanityLists)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    get lists
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Get lists
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists
@@ -1001,15 +881,7 @@ async def admin_get_profanity_lists_async(
 ):
     """get lists (adminGetProfanityLists)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    get lists
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Get lists
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists
@@ -1059,15 +931,7 @@ def admin_get_profanity_rule(
 ):
     """get current profanity rule (adminGetProfanityRule)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    get current profanity rule
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Get current profanity rule
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
@@ -1115,15 +979,7 @@ async def admin_get_profanity_rule_async(
 ):
     """get current profanity rule (adminGetProfanityRule)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    get current profanity rule
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Get current profanity rule
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
@@ -1175,15 +1031,7 @@ def admin_import_profanity_filters_from_file(
 ):
     """import a file with filters (adminImportProfanityFiltersFromFile)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    import a file with filters
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Import a file with filters
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk-file
@@ -1239,15 +1087,7 @@ async def admin_import_profanity_filters_from_file_async(
 ):
     """import a file with filters (adminImportProfanityFiltersFromFile)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    import a file with filters
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Import a file with filters
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk-file
@@ -1304,15 +1144,7 @@ def admin_set_profanity_rule_for_namespace(
 ):
     """set current profanity rule (adminSetProfanityRuleForNamespace)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with scope `social`
-
-    set current profanity rule
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]
-
-    Required Scope(s):
-        - social
+    Set current profanity rule
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
@@ -1364,15 +1196,7 @@ async def admin_set_profanity_rule_for_namespace_async(
 ):
     """set current profanity rule (adminSetProfanityRuleForNamespace)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with scope `social`
-
-    set current profanity rule
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]
-
-    Required Scope(s):
-        - social
+    Set current profanity rule
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/rule
@@ -1427,15 +1251,7 @@ def admin_update_profanity_list(
 ):
     """update the list (adminUpdateProfanityList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with scope `social`
-
-    update the list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]
-
-    Required Scope(s):
-        - social
+    Update the list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}
@@ -1491,15 +1307,7 @@ async def admin_update_profanity_list_async(
 ):
     """update the list (adminUpdateProfanityList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]` with scope `social`
-
-    update the list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [UPDATE]
-
-    Required Scope(s):
-        - social
+    Update the list
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}
@@ -1556,15 +1364,7 @@ def admin_verify_message_profanity_response(
 ):
     """verify a message directly from the UI or other services (adminVerifyMessageProfanityResponse)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    verify a message directly from the UI or other services
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Verify a message directly from the UI or other services
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/verify
@@ -1616,15 +1416,7 @@ async def admin_verify_message_profanity_response_async(
 ):
     """verify a message directly from the UI or other services (adminVerifyMessageProfanityResponse)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    verify a message directly from the UI or other services
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Verify a message directly from the UI or other services
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/verify

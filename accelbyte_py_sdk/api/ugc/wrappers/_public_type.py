@@ -67,13 +67,13 @@ def get_type(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetTypeResponse (OK)
+        200: OK - ModelsPaginatedGetTypeResponse (Get types)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771801: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771802: Unable get types)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -119,13 +119,13 @@ async def get_type_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetTypeResponse (OK)
+        200: OK - ModelsPaginatedGetTypeResponse (Get types)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771801: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771802: Unable get types)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

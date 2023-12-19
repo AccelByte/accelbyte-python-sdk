@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,6 +35,8 @@ from ...models import RestapiErrorResponse
 
 class AdminGetReasons(Operation):
     """Get list of reasons (adminGetReasons)
+
+    This endpoint get reasons with pagination
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons

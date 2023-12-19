@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -61,15 +61,15 @@ class AdminGetConfigs(Operation):
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetConfigsResponse (OK)
+        200: OK - ModelsPaginatedGetConfigsResponse (Get configs)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (774204: invalid paging parameter)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (774205: Unable to get configs)
     """
 
     # region fields
@@ -194,15 +194,15 @@ class AdminGetConfigs(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsPaginatedGetConfigsResponse (OK)
+        200: OK - ModelsPaginatedGetConfigsResponse (Get configs)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (774204: invalid paging parameter)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (774205: Unable to get configs)
 
         ---: HttpResponse (Undocumented Response)
 

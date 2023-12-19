@@ -74,6 +74,8 @@ from .personal_chat_history_response import PersonalChatHistoryResponse
 from .personal_chat_notif import PersonalChatNotif
 from .personal_chat_request import PersonalChatRequest
 from .personal_chat_response import PersonalChatResponse
+from .refresh_token_request import RefreshTokenRequest
+from .refresh_token_response import RefreshTokenResponse
 from .reject_friends_notif import RejectFriendsNotif
 from .reject_friends_request import RejectFriendsRequest
 from .reject_friends_response import RejectFriendsResponse
@@ -180,6 +182,8 @@ models = {
     PersonalChatNotif.get_type(): PersonalChatNotif,
     PersonalChatRequest.get_type(): PersonalChatRequest,
     PersonalChatResponse.get_type(): PersonalChatResponse,
+    RefreshTokenRequest.get_type(): RefreshTokenRequest,
+    RefreshTokenResponse.get_type(): RefreshTokenResponse,
     RejectFriendsNotif.get_type(): RejectFriendsNotif,
     RejectFriendsRequest.get_type(): RejectFriendsRequest,
     RejectFriendsResponse.get_type(): RejectFriendsResponse,

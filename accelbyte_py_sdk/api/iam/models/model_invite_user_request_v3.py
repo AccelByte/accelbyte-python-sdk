@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,17 +36,17 @@ class ModelInviteUserRequestV3(Model):
 
         is_admin: (isAdmin) REQUIRED bool
 
-        namespace: (namespace) REQUIRED str
-
         roles: (roles) REQUIRED List[str]
+
+        namespace: (namespace) OPTIONAL str
     """
 
     # region fields
 
     email_addresses: List[str]  # REQUIRED
     is_admin: bool  # REQUIRED
-    namespace: str  # REQUIRED
     roles: List[str]  # REQUIRED
+    namespace: str  # OPTIONAL
 
     # endregion fields
 
@@ -60,12 +60,12 @@ class ModelInviteUserRequestV3(Model):
         self.is_admin = value
         return self
 
-    def with_namespace(self, value: str) -> ModelInviteUserRequestV3:
-        self.namespace = value
-        return self
-
     def with_roles(self, value: List[str]) -> ModelInviteUserRequestV3:
         self.roles = value
+        return self
+
+    def with_namespace(self, value: str) -> ModelInviteUserRequestV3:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -82,14 +82,14 @@ class ModelInviteUserRequestV3(Model):
             result["isAdmin"] = bool(self.is_admin)
         elif include_empty:
             result["isAdmin"] = False
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = ""
         if hasattr(self, "roles"):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
             result["roles"] = []
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -101,15 +101,16 @@ class ModelInviteUserRequestV3(Model):
         cls,
         email_addresses: List[str],
         is_admin: bool,
-        namespace: str,
         roles: List[str],
+        namespace: Optional[str] = None,
         **kwargs,
     ) -> ModelInviteUserRequestV3:
         instance = cls()
         instance.email_addresses = email_addresses
         instance.is_admin = is_admin
-        instance.namespace = namespace
         instance.roles = roles
+        if namespace is not None:
+            instance.namespace = namespace
         return instance
 
     @classmethod
@@ -127,14 +128,14 @@ class ModelInviteUserRequestV3(Model):
             instance.is_admin = bool(dict_["isAdmin"])
         elif include_empty:
             instance.is_admin = False
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = ""
         if "roles" in dict_ and dict_["roles"] is not None:
             instance.roles = [str(i0) for i0 in dict_["roles"]]
         elif include_empty:
             instance.roles = []
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = ""
         return instance
 
     @classmethod
@@ -180,8 +181,8 @@ class ModelInviteUserRequestV3(Model):
         return {
             "emailAddresses": "email_addresses",
             "isAdmin": "is_admin",
-            "namespace": "namespace",
             "roles": "roles",
+            "namespace": "namespace",
         }
 
     @staticmethod
@@ -189,8 +190,8 @@ class ModelInviteUserRequestV3(Model):
         return {
             "emailAddresses": True,
             "isAdmin": True,
-            "namespace": True,
             "roles": True,
+            "namespace": False,
         }
 
     # endregion static methods

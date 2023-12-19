@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseBody
 class AdminBulkBlockPlayersV1(Operation):
     """Admin bulk blocks player by list user id (adminBulkBlockPlayersV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [CREATE]` with scope `social`
-
     Bulk block player in a namespace by list of user id
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PLAYER:BLOCK [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/bulk/block

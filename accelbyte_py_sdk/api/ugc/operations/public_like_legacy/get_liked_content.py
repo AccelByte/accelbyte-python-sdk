@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -92,13 +92,13 @@ class GetLikedContent(Operation):
         type_: (type) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+        200: OK - ModelsPaginatedContentDownloadResponse (Get liked contents)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771100: unable to parse isofficial param)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771101: Unable to get ugc content: database error | 770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
 
     # region fields
@@ -300,13 +300,13 @@ class GetLikedContent(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsPaginatedContentDownloadResponse (OK)
+        200: OK - ModelsPaginatedContentDownloadResponse (Get liked contents)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771100: unable to parse isofficial param)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771101: Unable to get ugc content: database error | 770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -326,9 +326,9 @@ class GetLikedContent(Operation):
                 ModelsPaginatedContentDownloadResponse.create_from_dict(content),
                 None,
             )
-        if code == 401:
+        if code == 400:
             return None, ResponseError.create_from_dict(content)
-        if code == 404:
+        if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

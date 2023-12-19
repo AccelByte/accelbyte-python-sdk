@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,11 +40,8 @@ class CreateUserFromInvitationV3(Operation):
     This endpoint create user from saved roles when creating invitation and submitted data.
     User will be able to login after completing submitting the data through this endpoint.
     Available Authentication Types:
-
     EMAILPASSWD: an authentication type used for new user registration through email.
-
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
 
     Properties:

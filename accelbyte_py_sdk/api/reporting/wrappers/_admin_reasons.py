@@ -64,14 +64,6 @@ def admin_get_all_reasons(
 
     This endpoint get all reasons without pagination.
 
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/all
 
@@ -111,14 +103,6 @@ async def admin_get_all_reasons_async(
     """Get all reasons (adminGetAllReasons)
 
     This endpoint get all reasons without pagination.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/all
@@ -161,10 +145,7 @@ def admin_get_reason(
 ):
     """Get a single reason (adminGetReason)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+    This endpoint get a single reason.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
@@ -210,10 +191,7 @@ async def admin_get_reason_async(
 ):
     """Get a single reason (adminGetReason)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+    This endpoint get a single reason.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
@@ -263,6 +241,8 @@ def admin_get_reasons(
     **kwargs
 ):
     """Get list of reasons (adminGetReasons)
+
+    This endpoint get reasons with pagination
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons
@@ -319,6 +299,8 @@ async def admin_get_reasons_async(
     **kwargs
 ):
     """Get list of reasons (adminGetReasons)
+
+    This endpoint get reasons with pagination
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons
@@ -378,14 +360,6 @@ def admin_get_unused_reasons(
 
     This endpoint get reasons not used by moderation rules.
 
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/unused
 
@@ -435,14 +409,6 @@ async def admin_get_unused_reasons_async(
     """Get list of reasons that not used by moderation rules (adminGetUnusedReasons)
 
     This endpoint get reasons not used by moderation rules.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/unused
@@ -494,11 +460,8 @@ def admin_list_reason_groups(
 ):
     """List reason groups under a namespace (adminListReasonGroups)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-    Return list of reason groups ID and title under given namespace. To fetch the reasons inside a group, use get reason group endpoint.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+    Return list of reason groups ID and title under given namespace.
+    To fetch the reasons inside a group, use get reason group endpoint.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups
@@ -546,11 +509,8 @@ async def admin_list_reason_groups_async(
 ):
     """List reason groups under a namespace (adminListReasonGroups)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-    Return list of reason groups ID and title under given namespace. To fetch the reasons inside a group, use get reason group endpoint.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
+    Return list of reason groups ID and title under given namespace.
+    To fetch the reasons inside a group, use get reason group endpoint.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups
@@ -599,10 +559,7 @@ def create_reason(
 ):
     """Create a report reason (createReason)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+    This endpoint create a reason for a namespace.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons
@@ -650,10 +607,7 @@ async def create_reason_async(
 ):
     """Create a report reason (createReason)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+    This endpoint create a reason for a namespace.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons
@@ -703,12 +657,9 @@ def create_reason_group(
 ):
     """Create a reason group (createReasonGroup)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
-    Create a reason group for easier query. You can query reasons by specifying the group title in the list reasons query.
-    Reason group title is case insensitive, meaning you can't have reason if you already create a reason titled Reason
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+    Create a reason group for easier query. You can query reasons by specifying
+    the group title in the list reasons query. Reason group title is case insensitive,
+    meaning you can't have **reason** if you already create a reason titled **Reason**
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups
@@ -756,12 +707,9 @@ async def create_reason_group_async(
 ):
     """Create a reason group (createReasonGroup)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
-    Create a reason group for easier query. You can query reasons by specifying the group title in the list reasons query.
-    Reason group title is case insensitive, meaning you can't have reason if you already create a reason titled Reason
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [CREATE]
+    Create a reason group for easier query. You can query reasons by specifying
+    the group title in the list reasons query. Reason group title is case insensitive,
+    meaning you can't have **reason** if you already create a reason titled **Reason**
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups
@@ -811,10 +759,7 @@ def delete_reason(
 ):
     """Delete a report reason (deleteReason)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+    This endpoint delete a reason for a namespace with ID.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
@@ -858,10 +803,7 @@ async def delete_reason_async(
 ):
     """Delete a report reason (deleteReason)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+    This endpoint delete a reason for a namespace with ID.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
@@ -907,10 +849,7 @@ def delete_reason_group(
 ):
     """Delete a reason group (deleteReasonGroup)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+    This endpoint delete a reason group for a namespace with ID.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
@@ -954,10 +893,7 @@ async def delete_reason_group_async(
 ):
     """Delete a reason group (deleteReasonGroup)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [DELETE]
+    This endpoint delete a reason group for a namespace with ID.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
@@ -1003,11 +939,6 @@ def get_reason_group(
 ):
     """Get reason group (getReasonGroup)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
 
@@ -1051,11 +982,6 @@ async def get_reason_group_async(
     **kwargs
 ):
     """Get reason group (getReasonGroup)
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
@@ -1104,10 +1030,7 @@ def update_reason(
 ):
     """Update a report reason (updateReason)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+    This endpoint update a reason for a namespace with ID.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
@@ -1159,10 +1082,7 @@ async def update_reason_async(
 ):
     """Update a report reason (updateReason)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
+    This endpoint update a reason for a namespace with ID.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}
@@ -1216,12 +1136,8 @@ def update_reason_group(
 ):
     """Update a reason group (updateReasonGroup)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
-    Reason group title is case insensitive, meaning you can't have reason if you already create a reason titled Reason
+    Reason group title is case insensitive, meaning you can't have **reason** if you already create a reason titled **Reason**
     If no reasonIds passed when updating, the current reasons under the reason group will be kept (reasons will not be removed from the group).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}
@@ -1273,12 +1189,8 @@ async def update_reason_group_async(
 ):
     """Update a reason group (updateReasonGroup)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
-    Reason group title is case insensitive, meaning you can't have reason if you already create a reason titled Reason
+    Reason group title is case insensitive, meaning you can't have **reason** if you already create a reason titled **Reason**
     If no reasonIds passed when updating, the current reasons under the reason group will be kept (reasons will not be removed from the group).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [UPDATE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasonGroups/{groupId}

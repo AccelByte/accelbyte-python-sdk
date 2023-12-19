@@ -48,20 +48,8 @@ def admin_get_input_validations(
 ):
     """Admin Get Input Validations (AdminGetInputValidations)
 
-    Required permission 'ADMIN:CONFIGURATION'[READ]
-
-
-
-
     This endpoint is to get list of input validation configuration.
-
-
-
-
     `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it will be empty.
-
-    Required Permission(s):
-        - ADMIN:CONFIGURATION [READ]
 
     Properties:
         url: /iam/v3/admin/inputValidations
@@ -93,20 +81,8 @@ async def admin_get_input_validations_async(
 ):
     """Admin Get Input Validations (AdminGetInputValidations)
 
-    Required permission 'ADMIN:CONFIGURATION'[READ]
-
-
-
-
     This endpoint is to get list of input validation configuration.
-
-
-
-
     `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it will be empty.
-
-    Required Permission(s):
-        - ADMIN:CONFIGURATION [READ]
 
     Properties:
         url: /iam/v3/admin/inputValidations
@@ -140,12 +116,7 @@ def admin_reset_input_validations(
 ):
     """Admin Reset Input Validations (AdminResetInputValidations)
 
-    Required permission 'ADMIN:CONFIGURATION' [DELETE]
-
     This endpoint is used to reset input validation to the default input validation configurations
-
-    Required Permission(s):
-        - ADMIN:CONFIGURATION [DELETE]
 
     Properties:
         url: /iam/v3/admin/inputValidations/{field}
@@ -183,12 +154,7 @@ async def admin_reset_input_validations_async(
 ):
     """Admin Reset Input Validations (AdminResetInputValidations)
 
-    Required permission 'ADMIN:CONFIGURATION' [DELETE]
-
     This endpoint is used to reset input validation to the default input validation configurations
-
-    Required Permission(s):
-        - ADMIN:CONFIGURATION [DELETE]
 
     Properties:
         url: /iam/v3/admin/inputValidations/{field}
@@ -230,106 +196,32 @@ def admin_update_input_validations(
 ):
     """Admin Update Input Validations (AdminUpdateInputValidations)
 
-    Required permission 'ADMIN:CONFIGURATION' [UPDATE]
-
-
-
-
     This endpoint is used to update input validation configuration.
-
-
     Supported `field`:
-
-
-
-
-
-      * displayName
-
-
-      * password
-
-
-      * username
-
-
-      * email
-
-
-      * avatar
-
-
-
-
+    - displayName
+    - password
+    - username
+    - email
+    - avatar
 
     If `isCustomRegex` is set to true, `regex` parameter will be used as input validation and the other parameters will be ignored. Otherwise, `regex` parameter will be ignored and regex for input validation will be generated based on the combination of the other parameters.
-
-
-
-
     If `allowUnicode` is set to true, unicode regex pattern will be use as the input validation and the other parameters will be ignored.
-
-
     Supported `letterCase`:
-
-
-
-
-
-      * lowercase
-
-
-      * uppercase
-
-
-      * mixed: uppercase and lowercase
-
-
-      * mixed: uppercase and/or lowercase
-
-
+    - lowercase
+    - uppercase
+    - mixed: uppercase and lowercase
+    - mixed: uppercase and/or lowercase
 
     flexible special character non words with `allowAllSpecialCharacters`
-
-
-
     if `allowAllSpecialCharacters` is set to true `specialCharacters` will forced to empty.
-
-
     Supported `specialCharacterLocation`:
-
-
-
-
-
-      * anywhere
-
-
-      * middle
-
-
-
-
+    - anywhere
+    - middle
 
     If `specialCharacters` is empty, `specialCharacterLocation` and `maxRepeatingSpecialCharacter` will be ignored.
-
-
-
-
     `minCharType` is used to identify how many required criteria in the regex. The supported criteria are number, letter, special character, and letter case. If set to 0 or 1 means all criteria are optional. It can be set as much as the number of criteria enabled.
-
-
-
-
     If `blockedWord` is set by admin, any input from user which contain kind of blocked word(s) will be blocked for create/upgrade/update account
-
-
-
-
     If `avatarConfig` is set, will use this config and skip all the other validation conditions
-
-    Required Permission(s):
-        - ADMIN:CONFIGURATION [UPDATE]
 
     Properties:
         url: /iam/v3/admin/inputValidations
@@ -369,106 +261,32 @@ async def admin_update_input_validations_async(
 ):
     """Admin Update Input Validations (AdminUpdateInputValidations)
 
-    Required permission 'ADMIN:CONFIGURATION' [UPDATE]
-
-
-
-
     This endpoint is used to update input validation configuration.
-
-
     Supported `field`:
-
-
-
-
-
-      * displayName
-
-
-      * password
-
-
-      * username
-
-
-      * email
-
-
-      * avatar
-
-
-
-
+    - displayName
+    - password
+    - username
+    - email
+    - avatar
 
     If `isCustomRegex` is set to true, `regex` parameter will be used as input validation and the other parameters will be ignored. Otherwise, `regex` parameter will be ignored and regex for input validation will be generated based on the combination of the other parameters.
-
-
-
-
     If `allowUnicode` is set to true, unicode regex pattern will be use as the input validation and the other parameters will be ignored.
-
-
     Supported `letterCase`:
-
-
-
-
-
-      * lowercase
-
-
-      * uppercase
-
-
-      * mixed: uppercase and lowercase
-
-
-      * mixed: uppercase and/or lowercase
-
-
+    - lowercase
+    - uppercase
+    - mixed: uppercase and lowercase
+    - mixed: uppercase and/or lowercase
 
     flexible special character non words with `allowAllSpecialCharacters`
-
-
-
     if `allowAllSpecialCharacters` is set to true `specialCharacters` will forced to empty.
-
-
     Supported `specialCharacterLocation`:
-
-
-
-
-
-      * anywhere
-
-
-      * middle
-
-
-
-
+    - anywhere
+    - middle
 
     If `specialCharacters` is empty, `specialCharacterLocation` and `maxRepeatingSpecialCharacter` will be ignored.
-
-
-
-
     `minCharType` is used to identify how many required criteria in the regex. The supported criteria are number, letter, special character, and letter case. If set to 0 or 1 means all criteria are optional. It can be set as much as the number of criteria enabled.
-
-
-
-
     If `blockedWord` is set by admin, any input from user which contain kind of blocked word(s) will be blocked for create/upgrade/update account
-
-
-
-
     If `avatarConfig` is set, will use this config and skip all the other validation conditions
-
-    Required Permission(s):
-        - ADMIN:CONFIGURATION [UPDATE]
 
     Properties:
         url: /iam/v3/admin/inputValidations
@@ -586,15 +404,7 @@ def public_get_input_validations(
     """Public Get Input Validations (PublicGetInputValidations)
 
     No role required
-
-
-
-
     This endpoint is to get list of input validation configuration.
-
-
-
-
     `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it will be empty.
 
     Properties:
@@ -638,15 +448,7 @@ async def public_get_input_validations_async(
     """Public Get Input Validations (PublicGetInputValidations)
 
     No role required
-
-
-
-
     This endpoint is to get list of input validation configuration.
-
-
-
-
     `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it will be empty.
 
     Properties:

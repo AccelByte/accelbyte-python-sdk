@@ -46,13 +46,30 @@ def qo_s_regions_get(
 ):
     """Get the list of available AMS QoS regions. (QoSRegionsGet)
 
-    Required Permission: NAMESPACE:{namespace}:QOS:SERVER [READ]
+    ```
+    Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
+
+    This endpoint lists all QoS services available in all regions.
+
+    This endpoint is intended to be called by game client to find out all available regions.
+    After getting a list of QoS on each region, game client is expected to ping each one with UDP
+    connection as described below:
+
+    1. Make UDP connection to each QoS's IP:Port
+    2. Send string "PING" after connection established
+    3. Wait for string "PONG" response
+    4. Note the request-response latency for each QoS in each region
+
+    The game then can use ping latency information to either:
+    1. Inform the player on these latencies and let player choose preferred region
+    2. Send the latency list to Matchmaking Service so that player can be matched with other players
+    in nearby regions
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:QOS:SERVER [READ]
+        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
 
     Properties:
-        url: /ams/v1/namespaces/{namespace}/qos
+        url: /ams/v1/admin/namespaces/{namespace}/qos
 
         method: GET
 
@@ -99,13 +116,30 @@ async def qo_s_regions_get_async(
 ):
     """Get the list of available AMS QoS regions. (QoSRegionsGet)
 
-    Required Permission: NAMESPACE:{namespace}:QOS:SERVER [READ]
+    ```
+    Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
+
+    This endpoint lists all QoS services available in all regions.
+
+    This endpoint is intended to be called by game client to find out all available regions.
+    After getting a list of QoS on each region, game client is expected to ping each one with UDP
+    connection as described below:
+
+    1. Make UDP connection to each QoS's IP:Port
+    2. Send string "PING" after connection established
+    3. Wait for string "PONG" response
+    4. Note the request-response latency for each QoS in each region
+
+    The game then can use ping latency information to either:
+    1. Inform the player on these latencies and let player choose preferred region
+    2. Send the latency list to Matchmaking Service so that player can be matched with other players
+    in nearby regions
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:QOS:SERVER [READ]
+        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
 
     Properties:
-        url: /ams/v1/namespaces/{namespace}/qos
+        url: /ams/v1/admin/namespaces/{namespace}/qos
 
         method: GET
 
@@ -154,6 +188,14 @@ def qo_s_regions_update(
     **kwargs
 ):
     """Update the status of a QoS region (QoSRegionsUpdate)
+
+    ```
+    Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
+
+    This endpoint updates the registered QoS service's configurable configuration.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/qos/{region}
@@ -208,6 +250,14 @@ async def qo_s_regions_update_async(
     **kwargs
 ):
     """Update the status of a QoS region (QoSRegionsUpdate)
+
+    ```
+    Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
+
+    This endpoint updates the registered QoS service's configurable configuration.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/qos/{region}

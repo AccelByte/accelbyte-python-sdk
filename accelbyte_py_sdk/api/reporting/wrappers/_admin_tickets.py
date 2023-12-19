@@ -55,11 +55,7 @@ def delete_ticket(
 ):
     """Delete single ticket (deleteTicket)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [DELETE]
     This endpoint will delete ticket and all its reports.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [DELETE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}
@@ -105,11 +101,7 @@ async def delete_ticket_async(
 ):
     """Delete single ticket (deleteTicket)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [DELETE]
     This endpoint will delete ticket and all its reports.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [DELETE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}
@@ -159,11 +151,7 @@ def get_reports_by_ticket(
 ):
     """Get reports by ticket ID (getReportsByTicket)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
     List reports ordered by createdAt in descending order.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}/reports
@@ -215,11 +203,7 @@ async def get_reports_by_ticket_async(
 ):
     """Get reports by ticket ID (getReportsByTicket)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
     List reports ordered by createdAt in descending order.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}/reports
@@ -271,10 +255,7 @@ def get_ticket_detail(
 ):
     """Get single ticket (getTicketDetail)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+    This endpoint will return ticket detail with ticket id.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}
@@ -320,10 +301,7 @@ async def get_ticket_detail_async(
 ):
     """Get single ticket (getTicketDetail)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+    This endpoint will return ticket detail with ticket id.
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}
@@ -378,14 +356,10 @@ def list_tickets(
 ):
     """List report tickets (listTickets)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
     Tickets list can be ordered by:
     - createdAt
     - reportsCount
     - status (currently there are OPEN, AUTO_MODERATED and CLOSED statuses, desc order will put ticket with CLOSED status at the top)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets
@@ -457,14 +431,10 @@ async def list_tickets_async(
 ):
     """List report tickets (listTickets)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
     Tickets list can be ordered by:
     - createdAt
     - reportsCount
     - status (currently there are OPEN, AUTO_MODERATED and CLOSED statuses, desc order will put ticket with CLOSED status at the top)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets
@@ -532,10 +502,9 @@ def ticket_statistic(
 ):
     """Ticket statistic (ticketStatistic)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+    Ticket statistic can be filtered by:
+    - category
+    - extension category
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/statistic
@@ -583,10 +552,9 @@ async def ticket_statistic_async(
 ):
     """Ticket statistic (ticketStatistic)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+    Ticket statistic can be filtered by:
+    - category
+    - extension category
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/statistic
@@ -636,11 +604,7 @@ def update_ticket_resolutions(
 ):
     """Update ticket resolution to a given status (updateTicketResolutions)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
     Update ticket resolution status to either OPEN or CLOSED. It is mandatory to provide notes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}/resolutions
@@ -688,11 +652,7 @@ async def update_ticket_resolutions_async(
 ):
     """Update ticket resolution to a given status (updateTicketResolutions)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
     Update ticket resolution status to either OPEN or CLOSED. It is mandatory to provide notes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}/resolutions

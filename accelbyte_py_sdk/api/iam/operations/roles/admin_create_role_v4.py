@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,8 +37,6 @@ from ...models import RestErrorResponse
 class AdminCreateRoleV4(Operation):
     """Create Role (AdminCreateRoleV4)
 
-    Required permission: ADMIN:ROLE [CREATE]
-
     Create role request body:
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - adminRole: specify if role is for admin user (default false)
@@ -46,9 +44,6 @@ class AdminCreateRoleV4(Operation):
     - deletable: specify if role can be deleted (default true)
 
     action code: 10401
-
-    Required Permission(s):
-        - ADMIN:ROLE [CREATE]
 
     Properties:
         url: /iam/v4/admin/roles

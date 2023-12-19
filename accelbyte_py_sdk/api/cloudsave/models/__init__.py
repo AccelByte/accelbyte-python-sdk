@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.12.7"
+__version__ = "3.12.8"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -54,6 +54,15 @@ from .models_bulk_get_player_record_size_response import (
     ModelsBulkGetPlayerRecordSizeResponse,
 )
 from .models_bulk_get_player_records_request import ModelsBulkGetPlayerRecordsRequest
+from .models_bulk_update_player_record_request_detail import (
+    ModelsBulkUpdatePlayerRecordRequestDetail,
+)
+from .models_bulk_update_player_record_response import (
+    ModelsBulkUpdatePlayerRecordResponse,
+)
+from .models_bulk_update_player_records_request import (
+    ModelsBulkUpdatePlayerRecordsRequest,
+)
 from .models_bulk_user_i_ds_request import ModelsBulkUserIDsRequest
 from .models_bulk_user_key_request import ModelsBulkUserKeyRequest
 from .models_concurrent_record_request import ModelsConcurrentRecordRequest

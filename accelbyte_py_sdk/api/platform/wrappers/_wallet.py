@@ -52,6 +52,7 @@ from ..models import WalletTransactionPagingSlicedResult
 
 from ..operations.wallet import BulkCredit
 from ..operations.wallet import BulkDebit
+from ..operations.wallet import CheckBalance
 from ..operations.wallet import CheckWallet
 from ..operations.wallet import CheckWalletOriginEnum
 from ..operations.wallet import CreditUserWallet
@@ -296,6 +297,126 @@ async def bulk_debit_async(
             return None, error
     request = BulkDebit.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(CheckBalance)
+def check_balance(
+    currency_code: str,
+    request: DebitByWalletPlatformRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Check if a user has enough balance (checkBalance)
+
+    Checks if the user has enough balance based on the provided criteria.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : boolean value indicating if the user has enough balance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/balanceCheck
+
+        method: POST
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        request: (request) REQUIRED DebitByWalletPlatformRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - (Successfully determined if user has enough balance.)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CheckBalance.create(
+        currency_code=currency_code,
+        request=request,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CheckBalance)
+async def check_balance_async(
+    currency_code: str,
+    request: DebitByWalletPlatformRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Check if a user has enough balance (checkBalance)
+
+    Checks if the user has enough balance based on the provided criteria.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : boolean value indicating if the user has enough balance
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/balanceCheck
+
+        method: POST
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        request: (request) REQUIRED DebitByWalletPlatformRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - (Successfully determined if user has enough balance.)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CheckBalance.create(
+        currency_code=currency_code,
+        request=request,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -556,8 +677,8 @@ async def credit_user_wallet_async(
 @same_doc_as(DebitByWalletPlatform)
 def debit_by_wallet_platform(
     currency_code: str,
+    request: DebitByWalletPlatformRequest,
     user_id: str,
-    body: Optional[DebitByWalletPlatformRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -603,7 +724,7 @@ def debit_by_wallet_platform(
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        body: (body) OPTIONAL DebitByWalletPlatformRequest in body
+        request: (request) REQUIRED DebitByWalletPlatformRequest in body
 
         currency_code: (currencyCode) REQUIRED str in path
 
@@ -624,8 +745,8 @@ def debit_by_wallet_platform(
             return None, error
     request = DebitByWalletPlatform.create(
         currency_code=currency_code,
+        request=request,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -634,8 +755,8 @@ def debit_by_wallet_platform(
 @same_doc_as(DebitByWalletPlatform)
 async def debit_by_wallet_platform_async(
     currency_code: str,
+    request: DebitByWalletPlatformRequest,
     user_id: str,
-    body: Optional[DebitByWalletPlatformRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -681,7 +802,7 @@ async def debit_by_wallet_platform_async(
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        body: (body) OPTIONAL DebitByWalletPlatformRequest in body
+        request: (request) REQUIRED DebitByWalletPlatformRequest in body
 
         currency_code: (currencyCode) REQUIRED str in path
 
@@ -702,8 +823,8 @@ async def debit_by_wallet_platform_async(
             return None, error
     request = DebitByWalletPlatform.create(
         currency_code=currency_code,
+        request=request,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,20 +36,12 @@ from ...models import RestapiErrorResponseV1
 class SendPartyTemplatedNotificationV1Admin(Operation):
     """send templated notification to a party (sendPartyTemplatedNotificationV1Admin)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends templated notification to a party.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
 
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
     Template need to be published before it can be use to send notifications
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/parties/{partyId}/templates/notify

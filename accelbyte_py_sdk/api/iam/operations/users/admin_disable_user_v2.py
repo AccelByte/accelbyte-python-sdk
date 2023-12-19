@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,36 +38,12 @@ class AdminDisableUserV2(Operation):
     """Disable a user (AdminDisableUserV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-
-    For Deletion Account purpose fill the reason with:
-
-
-
-
-
-
-      * DeactivateAccount : if your deletion request comes from user
-
-
-      * AdminDeactivateAccount : if your deletion request comes from admin
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+    For **Deletion Account** purpose fill the reason with:
+    - **DeactivateAccount** : if your deletion request comes from user
+    - **AdminDeactivateAccount** : if your deletion request comes from admin
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/disable

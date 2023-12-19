@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service (2.10.2)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,65 +29,62 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import DebitByWalletPlatformRequest
 from ...models import ErrorEntity
-from ...models import StatImportInfo
 
 
-class ImportStatCycle(Operation):
-    """Import stat cycle configurations (importStatCycle)
+class CheckBalance(Operation):
+    """Check if a user has enough balance (checkBalance)
 
-    Import stat cycle configurations for a given namespace from file. At current, only JSON file is supported.
-
+    Checks if the user has enough balance based on the provided criteria.
     Other detail info:
 
-      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
+      *  Returns : boolean value indicating if the user has enough balance
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
 
     Properties:
-        url: /social/v1/admin/namespaces/{namespace}/statCycles/import
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/balanceCheck
 
         method: POST
 
-        tags: ["StatConfiguration"]
+        tags: ["Wallet"]
 
-        consumes: ["multipart/form-data"]
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        file: (file) OPTIONAL Any in form_data
+        request: (request) REQUIRED DebitByWalletPlatformRequest in body
+
+        currency_code: (currencyCode) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
-        replace_existing: (replaceExisting) OPTIONAL bool in query
+        user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - StatImportInfo (Import stat cycles successfully)
+        200: OK - (Successfully determined if user has enough balance.)
 
-        400: Bad Request - ErrorEntity (12222: Stats data for namespace [{namespace}] is invalid)
-
-        401: Unauthorized - ErrorEntity (20001: Unauthorized)
-
-        403: Forbidden - ErrorEntity (20013: insufficient permission)
-
-        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
     """
 
     # region fields
 
-    _url: str = "/social/v1/admin/namespaces/{namespace}/statCycles/import"
+    _url: str = "/platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/balanceCheck"
     _method: str = "POST"
-    _consumes: List[str] = ["multipart/form-data"]
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    file: Any  # OPTIONAL in [form_data]
+    request: DebitByWalletPlatformRequest  # REQUIRED in [body]
+    currency_code: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
-    replace_existing: bool  # OPTIONAL in [query]
+    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -127,27 +124,23 @@ class ImportStatCycle(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "form_data": self.get_form_data_params(),
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
-            "query": self.get_query_params(),
         }
 
-    def get_form_data_params(self) -> dict:
-        result = {}
-        if hasattr(self, "file"):
-            result["file"] = self.file
-        return result
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "request") or self.request is None:
+            return None
+        return self.request.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "currency_code"):
+            result["currencyCode"] = self.currency_code
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        return result
-
-    def get_query_params(self) -> dict:
-        result = {}
-        if hasattr(self, "replace_existing"):
-            result["replaceExisting"] = self.replace_existing
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -158,16 +151,20 @@ class ImportStatCycle(Operation):
 
     # region with_x methods
 
-    def with_file(self, value: Any) -> ImportStatCycle:
-        self.file = value
+    def with_request(self, value: DebitByWalletPlatformRequest) -> CheckBalance:
+        self.request = value
         return self
 
-    def with_namespace(self, value: str) -> ImportStatCycle:
+    def with_currency_code(self, value: str) -> CheckBalance:
+        self.currency_code = value
+        return self
+
+    def with_namespace(self, value: str) -> CheckBalance:
         self.namespace = value
         return self
 
-    def with_replace_existing(self, value: bool) -> ImportStatCycle:
-        self.replace_existing = value
+    def with_user_id(self, value: str) -> CheckBalance:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -176,18 +173,22 @@ class ImportStatCycle(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "file") and self.file:
-            result["file"] = Any(self.file)
+        if hasattr(self, "request") and self.request:
+            result["request"] = self.request.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["file"] = Any()
+            result["request"] = DebitByWalletPlatformRequest()
+        if hasattr(self, "currency_code") and self.currency_code:
+            result["currencyCode"] = str(self.currency_code)
+        elif include_empty:
+            result["currencyCode"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "replace_existing") and self.replace_existing:
-            result["replaceExisting"] = bool(self.replace_existing)
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
         elif include_empty:
-            result["replaceExisting"] = False
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -197,18 +198,12 @@ class ImportStatCycle(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, StatImportInfo], Union[None, ErrorEntity, HttpResponse]]:
+    ) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        201: Created - StatImportInfo (Import stat cycles successfully)
+        200: OK - (Successfully determined if user has enough balance.)
 
-        400: Bad Request - ErrorEntity (12222: Stats data for namespace [{namespace}] is invalid)
-
-        401: Unauthorized - ErrorEntity (20001: Unauthorized)
-
-        403: Forbidden - ErrorEntity (20013: insufficient permission)
-
-        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -223,15 +218,9 @@ class ImportStatCycle(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 201:
-            return StatImportInfo.create_from_dict(content), None
+        if code == 200:
+            return HttpResponse.create(code, "OK"), None
         if code == 400:
-            return None, ErrorEntity.create_from_dict(content)
-        if code == 401:
-            return None, ErrorEntity.create_from_dict(content)
-        if code == 403:
-            return None, ErrorEntity.create_from_dict(content)
-        if code == 500:
             return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
@@ -245,52 +234,58 @@ class ImportStatCycle(Operation):
     @classmethod
     def create(
         cls,
+        request: DebitByWalletPlatformRequest,
+        currency_code: str,
         namespace: str,
-        file: Optional[Any] = None,
-        replace_existing: Optional[bool] = None,
+        user_id: str,
         **kwargs,
-    ) -> ImportStatCycle:
+    ) -> CheckBalance:
         instance = cls()
+        instance.request = request
+        instance.currency_code = currency_code
         instance.namespace = namespace
-        if file is not None:
-            instance.file = file
-        if replace_existing is not None:
-            instance.replace_existing = replace_existing
+        instance.user_id = user_id
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ImportStatCycle:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CheckBalance:
         instance = cls()
-        if "file" in dict_ and dict_["file"] is not None:
-            instance.file = Any(dict_["file"])
+        if "request" in dict_ and dict_["request"] is not None:
+            instance.request = DebitByWalletPlatformRequest.create_from_dict(
+                dict_["request"], include_empty=include_empty
+            )
         elif include_empty:
-            instance.file = Any()
+            instance.request = DebitByWalletPlatformRequest()
+        if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
+            instance.currency_code = str(dict_["currencyCode"])
+        elif include_empty:
+            instance.currency_code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "replaceExisting" in dict_ and dict_["replaceExisting"] is not None:
-            instance.replace_existing = bool(dict_["replaceExisting"])
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.replace_existing = False
+            instance.user_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "file": "file",
+            "request": "request",
+            "currencyCode": "currency_code",
             "namespace": "namespace",
-            "replaceExisting": "replace_existing",
+            "userId": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "file": False,
+            "request": True,
+            "currencyCode": True,
             "namespace": True,
-            "replaceExisting": False,
+            "userId": True,
         }
 
     # endregion static methods

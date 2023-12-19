@@ -76,15 +76,15 @@ def admin_create_channel(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsChannelResponse (Created)
+        201: Created - ModelsChannelResponse (Channel created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770503: Invalid channel {ID}: should uuid without hypen)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (770504: Channel already exist)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770502: Unable to save channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -129,15 +129,15 @@ async def admin_create_channel_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsChannelResponse (Created)
+        201: Created - ModelsChannelResponse (Channel created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770503: Invalid channel {ID}: should uuid without hypen)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (770504: Channel already exist)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770502: Unable to save channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -187,13 +187,13 @@ def admin_delete_channel(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Channel deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772502: Channel not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772501: Unable to delete channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -242,13 +242,13 @@ async def admin_delete_channel_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Channel deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772502: Channel not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772501: Unable to delete channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -305,13 +305,13 @@ def admin_get_channel(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetChannelResponse (OK)
+        200: OK - ModelsPaginatedGetChannelResponse (Get channels)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770702: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770700: Unable get user channels)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -368,13 +368,13 @@ async def admin_get_channel_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetChannelResponse (OK)
+        200: OK - ModelsPaginatedGetChannelResponse (Get channels)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770702: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770700: Unable get user channels)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -430,15 +430,15 @@ def admin_update_channel(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsChannelResponse (OK)
+        200: OK - ModelsChannelResponse (Channel updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770600: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770603: Channel was not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -491,15 +491,15 @@ async def admin_update_channel_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsChannelResponse (OK)
+        200: OK - ModelsChannelResponse (Channel updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770600: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770603: Channel was not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -548,13 +548,13 @@ def single_admin_delete_channel(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Channel deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772502: Channel not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772501: Unable to delete channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -599,13 +599,13 @@ async def single_admin_delete_channel_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Channel deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772502: Channel not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772501: Unable to delete channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -655,13 +655,13 @@ def single_admin_get_channel(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetChannelResponse (OK)
+        200: OK - ModelsPaginatedGetChannelResponse (Get channels)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770702: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770700: Unable get user channels)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -710,13 +710,13 @@ async def single_admin_get_channel_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetChannelResponse (OK)
+        200: OK - ModelsPaginatedGetChannelResponse (Get channels)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770702: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770700: Unable get user channels)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -767,15 +767,15 @@ def single_admin_update_channel(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsChannelResponse (OK)
+        200: OK - ModelsChannelResponse (Channel updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770600: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770603: Channel was not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -824,15 +824,15 @@ async def single_admin_update_channel_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsChannelResponse (OK)
+        200: OK - ModelsChannelResponse (Channel updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770600: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (770603: Channel was not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

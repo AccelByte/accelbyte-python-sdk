@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.12.0"
+__version__ = "3.12.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -103,9 +103,11 @@ from .models_party_members import ModelsPartyMembers
 from .models_platform_credentials import ModelsPlatformCredentials
 from .models_port_configuration_ams import ModelsPortConfigurationAMS
 from .models_psn_app_server_credentials import ModelsPSNAppServerCredentials
+from .models_recent_player_query_response import ModelsRecentPlayerQueryResponse
 from .models_request_reconcile_max_active_session import (
     ModelsRequestReconcileMaxActiveSession,
 )
 from .models_team import ModelsTeam
+from .models_user_info import ModelsUserInfo
 from .models_user_platform_info import ModelsUserPlatformInfo
 from .response_error import ResponseError

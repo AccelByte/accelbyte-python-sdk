@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,22 +36,10 @@ from ...models import RestErrorResponse
 class AdminLinkPlatformAccount(Operation):
     """Link a Platform User Account to User Account (AdminLinkPlatformAccount)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
     Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user.
     By default, these cases are not allowed
-
-
-
-
-      * The platform account current is linked by another account
-
-
-      * The target account ever linked this platform's another account
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    - The platform account current is linked by another account
+    - The target account ever linked this platform's another account
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/link

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,14 +37,6 @@ class UpdateModerationRuleStatus(Operation):
     """Enable/Disable auto moderation rule (updateModerationRuleStatus)
 
     This endpoint enable/disable moderation rule status.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}/status

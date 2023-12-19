@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,18 +36,8 @@ from ...models import ResponseErrorV1
 class GetAllMockMatches(Operation):
     """Get all mock matches (GetAllMockMatches)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Read all mock matches in a channel resulted from matching mock tickets.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/matches

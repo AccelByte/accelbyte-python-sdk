@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,19 +36,11 @@ from ...models import RestapiErrorResponseBody
 class CreateTemplate(Operation):
     """create new notification template (createTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [CREATE]` with scope `social`
-
     Create new notification template. Include handlebars {{key}} for replaceable contexts. The the key inside
     handlebars will be the key to be replaced when sending notification. Already existing template with the same
     slug and language can not be created.
 
     Check model description for detailed input restrictions.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates

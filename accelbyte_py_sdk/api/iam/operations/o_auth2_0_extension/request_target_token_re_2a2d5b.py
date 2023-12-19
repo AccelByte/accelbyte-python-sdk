@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,10 +36,8 @@ class RequestTargetTokenResponseV3(Operation):
     """Generate target token by code (RequestTargetTokenResponseV3)
 
     This endpoint is being used to generate target token.
-
-    It requires basic header with ClientID and Secret, it should match the ClientID when call /iam/v3/namespace/{namespace}/token/request
-
-    The code should be generated from /iam/v3/namespace/{namespace}/token/request.
+    It requires basic header with ClientID and Secret, it should match the ClientID when call `/iam/v3/namespace/{namespace}/token/request`
+    The code should be generated from `/iam/v3/namespace/{namespace}/token/request`.
 
     Properties:
         url: /iam/v3/token/exchange

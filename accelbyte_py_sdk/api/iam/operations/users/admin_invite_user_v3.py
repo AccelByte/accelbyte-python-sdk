@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,17 +37,12 @@ from ...models import RestErrorResponse
 class AdminInviteUserV3(Operation):
     """Invite User (AdminInviteUserV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
-
-    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace.
-    Substitute the namespace in path parameter to desired role's namespace'. An admin user can only
-    assign role to namespaces that the admin user has the required permission.
+    Use this endpoint to invite admin or non-admin user and assign role to them.
+    The role must be scoped to namespace based on the **{namespace}** value in path parameter.
+    An admin user can only assign role to namespaces that the admin user has the required permission.
     Role is optional, if not specified then it will only assign User role
 
     The invited admin will also assigned with "User" role by default.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:INVITE [CREATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/invite

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,21 +36,12 @@ class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
     """Generate publisher token by headless account's one time link code (RequestTokenByOneTimeLinkCodeResponseV3)
 
     This endpoint is being used to generate user's token by one time link code.
-
     It require publisher ClientID
+    It required a code which can be generated from `/iam/v3/link/code/request`.
 
-    It required a code which can be generated from /iam/v3/link/code/request.
-
-
-
-
-
-
-    This endpoint support creating transient token by utilizing isTransient param:
-
-    isTransient=true will generate a transient token with a short Time Expiration and without a refresh token
-
-    isTransient=false will consume the one-time code and generate the access token with a refresh token.
+    This endpoint support creating transient token by utilizing **isTransient** param:
+    **isTransient=true** will generate a transient token with a short Time Expiration and without a refresh token
+    **isTransient=false** will consume the one-time code and generate the access token with a refresh token.
 
     Properties:
         url: /iam/v3/link/token/exchange

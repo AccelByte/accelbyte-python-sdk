@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,23 +39,8 @@ class UpdateCountryAgeRestriction(Operation):
     """Update country's age restriction (UpdateCountryAgeRestriction)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/countries/{countryCode}

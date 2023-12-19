@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,15 +35,7 @@ from ...models import RestapiErrorResponseBody
 class AdminImportProfanityFiltersFromFile(Operation):
     """import a file with filters (adminImportProfanityFiltersFromFile)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]` with scope `social`
-
-    import a file with filters
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [CREATE]
-
-    Required Scope(s):
-        - social
+    Import a file with filters
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk-file

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,11 +37,7 @@ from ...models import RestErrorResponse
 class AdminUpdateCountryAgeRestrictionV3(Operation):
     """Update country's age restriction (AdminUpdateCountryAgeRestrictionV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]'
     action code: 10123
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AGERESTRICTION [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode}

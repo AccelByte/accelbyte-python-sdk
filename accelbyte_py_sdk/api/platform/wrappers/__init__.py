@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.41.0"
+__version__ = "4.42.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -81,6 +81,8 @@ from ._catalog_changes import query_changes
 from ._catalog_changes import query_changes_async
 from ._catalog_changes import select_all_records
 from ._catalog_changes import select_all_records_async
+from ._catalog_changes import select_all_records_by_criteria
+from ._catalog_changes import select_all_records_by_criteria_async
 from ._catalog_changes import select_record
 from ._catalog_changes import select_record_async
 from ._catalog_changes import unselect_all_records
@@ -202,6 +204,8 @@ from ._entitlement import grant_entitlements
 from ._entitlement import grant_entitlements_async
 from ._entitlement import grant_user_entitlement
 from ._entitlement import grant_user_entitlement_async
+from ._entitlement import pre_check_revoke_user_entitlement_by_use_count
+from ._entitlement import pre_check_revoke_user_entitlement_by_use_count_async
 from ._entitlement import public_consume_user_entitlement
 from ._entitlement import public_consume_user_entitlement_async
 from ._entitlement import public_exists_any_my_active_entitlement
@@ -254,6 +258,8 @@ from ._entitlement import revoke_use_count
 from ._entitlement import revoke_use_count_async
 from ._entitlement import revoke_user_entitlement
 from ._entitlement import revoke_user_entitlement_async
+from ._entitlement import revoke_user_entitlement_by_use_count
+from ._entitlement import revoke_user_entitlement_by_use_count_async
 from ._entitlement import revoke_user_entitlements
 from ._entitlement import revoke_user_entitlements_async
 from ._entitlement import sell_user_entitlement
@@ -267,6 +273,8 @@ from ._fulfillment import fulfill_rewards
 from ._fulfillment import fulfill_rewards_async
 from ._fulfillment import fulfill_rewards_v2
 from ._fulfillment import fulfill_rewards_v2_async
+from ._fulfillment import pre_check_fulfill_item
+from ._fulfillment import pre_check_fulfill_item_async
 from ._fulfillment import public_redeem_code
 from ._fulfillment import public_redeem_code_async
 from ._fulfillment import query_fulfillment_histories
@@ -859,6 +867,8 @@ from ._wallet import bulk_credit
 from ._wallet import bulk_credit_async
 from ._wallet import bulk_debit
 from ._wallet import bulk_debit_async
+from ._wallet import check_balance
+from ._wallet import check_balance_async
 from ._wallet import check_wallet
 from ._wallet import check_wallet_async
 from ._wallet import credit_user_wallet

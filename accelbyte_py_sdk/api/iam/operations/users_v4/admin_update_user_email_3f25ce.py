@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,21 +36,8 @@ from ...models import RestErrorResponse
 class AdminUpdateUserEmailAddressV4(Operation):
     """Update a User Email Address (AdminUpdateUserEmailAddressV4)
 
-    Required permission
-
-
-        'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-
-
-
-
-
     This is the endpoint for an admin to update a user email address.
     This endpoint need a valid user token from an admin to verify its identity (email) before updating a user.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/email

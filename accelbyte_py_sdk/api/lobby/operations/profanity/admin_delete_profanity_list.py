@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,15 +35,7 @@ from ...models import RestapiErrorResponseBody
 class AdminDeleteProfanityList(Operation):
     """delete a list include all filters inside of it (adminDeleteProfanityList)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]` with scope `social`
-
-    delete a list include all filters inside of it
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [DELETE]
-
-    Required Scope(s):
-        - social
+    Delete a list include all filters inside of it
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/lists/{list}

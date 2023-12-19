@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,19 +37,8 @@ class DeleteClientPermission(Operation):
     """Delete Client Permission (DeleteClientPermission)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'CLIENT:ADMIN [UPDATE]'
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action} [DELETE]
-
-    Required Permission(s):
-        - CLIENT:ADMIN [UPDATE]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action} [DELETE]_**
 
     Properties:
         url: /iam/clients/{clientId}/clientpermissions/{resource}/{action}

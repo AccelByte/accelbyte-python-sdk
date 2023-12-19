@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,14 +37,6 @@ class GetModerationRuleDetails(Operation):
     """Get auto moderation rule (getModerationRuleDetails)
 
     This endpoint get moderation rule.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rules/{ruleId}

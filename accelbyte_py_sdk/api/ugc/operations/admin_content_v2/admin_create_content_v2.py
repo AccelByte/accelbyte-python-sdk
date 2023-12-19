@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -62,13 +62,17 @@ class AdminCreateContentV2(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateContentResponseV2 (Created)
+        201: Created - ModelsCreateContentResponseV2 (Content created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770100: Malformed request/Invalid request body/channel do not exist | 770107: Unable to update ugc content: invalid shareCode format)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (770106: channel doesn't exist)
+
+        409: Conflict - ResponseError (770103: Unable to save ugc content: shareCode exceed the limit)
+
+        500: Internal Server Error - ResponseError (770102: Unable to check user ban status/Unable to save ugc content: unable to get channel | 770105: Unable to save ugc content: failed generate upload URL | 770103: Unable to save ugc content: shareCode exceed the limit)
     """
 
     # region fields
@@ -192,13 +196,17 @@ class AdminCreateContentV2(Operation):
     ]:
         """Parse the given response.
 
-        201: Created - ModelsCreateContentResponseV2 (Created)
+        201: Created - ModelsCreateContentResponseV2 (Content created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770100: Malformed request/Invalid request body/channel do not exist | 770107: Unable to update ugc content: invalid shareCode format)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (770106: channel doesn't exist)
+
+        409: Conflict - ResponseError (770103: Unable to save ugc content: shareCode exceed the limit)
+
+        500: Internal Server Error - ResponseError (770102: Unable to check user ban status/Unable to save ugc content: unable to get channel | 770105: Unable to save ugc content: failed generate upload URL | 770103: Unable to save ugc content: shareCode exceed the limit)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -218,6 +226,10 @@ class AdminCreateContentV2(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 404:
+            return None, ResponseError.create_from_dict(content)
+        if code == 409:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

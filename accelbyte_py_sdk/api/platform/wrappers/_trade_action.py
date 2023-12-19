@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import TradeActionPagingSlicedResult
 from ..models import TradeChainActionHistoryInfo
 from ..models import TradeChainedActionCommitRequest
 
@@ -217,7 +218,7 @@ def get_trade_history_by_criteria(
         user_id: (userId) OPTIONAL str in query
 
     Responses:
-        default: (successful operation)
+        200: OK - TradeActionPagingSlicedResult (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -280,7 +281,7 @@ async def get_trade_history_by_criteria_async(
         user_id: (userId) OPTIONAL str in query
 
     Responses:
-        default: (successful operation)
+        200: OK - TradeActionPagingSlicedResult (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -333,7 +334,7 @@ def get_trade_history_by_transaction_id(
         transaction_id: (transactionId) REQUIRED str in path
 
     Responses:
-        default: (successful operation)
+        200: OK - TradeChainActionHistoryInfo (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -380,7 +381,7 @@ async def get_trade_history_by_transaction_id_async(
         transaction_id: (transactionId) REQUIRED str in path
 
     Responses:
-        default: (successful operation)
+        200: OK - TradeChainActionHistoryInfo (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

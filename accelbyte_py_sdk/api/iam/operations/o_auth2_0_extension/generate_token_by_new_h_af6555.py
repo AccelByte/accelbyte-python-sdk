@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,7 +38,7 @@ class GenerateTokenByNewHeadlessAccountV3(Operation):
 
     This endpoint is being used to create headless account after 3rd platform authenticated, and response token .
     The 'linkingToken' in request body is received from "/platforms/{platformId}/token"
-    when 3rd platform account is not linked to justice account yet.'
+    when 3rd platform account is not linked to justice account yet.
 
     Properties:
         url: /iam/v3/headless/token

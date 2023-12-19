@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,13 +37,7 @@ class AdminGetUserSinglePlatformAccount(Operation):
     """Admin get user single platform account metadata (AdminGetUserSinglePlatformAccount)
 
     This endpoint gets user single platform account metadata.
-
     Supported platforms are same with the supported login platforms.
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/metadata

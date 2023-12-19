@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,7 +36,6 @@ from ...models import RestErrorResponse
 class PublicUpdatePasswordV3(Operation):
     """Update User Password (PublicUpdatePasswordV3)
 
-    Required valid user authorization.
     action code: 10107
 
     Properties:

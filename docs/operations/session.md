@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.12.0)
+# AccelByte Gaming Services Session Service Index (3.12.3)
 
 
 ## Operations
@@ -120,6 +120,11 @@
 | /session/v1/public/namespaces/{namespace}/users/me/attributes | GET | publicGetPlayerAttributes | `false` | [PublicGetPlayerAttributes](../../accelbyte_py_sdk/api/session/operations/player/public_get_player_attributes.py) | [public_get_player_attributes](../../accelbyte_py_sdk/api/session/wrappers/_player.py) | [accelbyte_py_sdk_cli session-public-get-player-attributes](../../samples/cli/accelbyte_py_sdk_cli/session/_public_get_player_attributes.py) |
 | /session/v1/public/namespaces/{namespace}/users/me/attributes | POST | publicStorePlayerAttributes | `false` | [PublicStorePlayerAttributes](../../accelbyte_py_sdk/api/session/operations/player/public_store_player_attributes.py) | [public_store_player_attributes](../../accelbyte_py_sdk/api/session/wrappers/_player.py) | [accelbyte_py_sdk_cli session-public-store-player-attributes](../../samples/cli/accelbyte_py_sdk_cli/session/_public_store_player_attributes.py) |
 
+### Recent Player
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /session/v1/public/namespaces/{namespace}/recent-player/{userId} | GET | publicGetRecentPlayer | `false` | [PublicGetRecentPlayer](../../accelbyte_py_sdk/api/session/operations/recent_player/public_get_recent_player.py) | [public_get_recent_player](../../accelbyte_py_sdk/api/session/wrappers/_recent_player.py) | [accelbyte_py_sdk_cli session-public-get-recent-player](../../samples/cli/accelbyte_py_sdk_cli/session/_public_get_recent_player.py) |
+
 ### Session Storage
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -184,7 +189,9 @@
 | models.PlatformCredentials | [ModelsPlatformCredentials](../../accelbyte_py_sdk/api/session/models/models_platform_credentials.py) |
 | models.PortConfigurationAMS | [ModelsPortConfigurationAMS](../../accelbyte_py_sdk/api/session/models/models_port_configuration_ams.py) |
 | models.PSNAppServerCredentials | [ModelsPSNAppServerCredentials](../../accelbyte_py_sdk/api/session/models/models_psn_app_server_credentials.py) |
+| models.RecentPlayerQueryResponse | [ModelsRecentPlayerQueryResponse](../../accelbyte_py_sdk/api/session/models/models_recent_player_query_response.py) |
 | models.RequestReconcileMaxActiveSession | [ModelsRequestReconcileMaxActiveSession](../../accelbyte_py_sdk/api/session/models/models_request_reconcile_max_active_session.py) |
 | models.Team | [ModelsTeam](../../accelbyte_py_sdk/api/session/models/models_team.py) |
+| models.UserInfo | [ModelsUserInfo](../../accelbyte_py_sdk/api/session/models/models_user_info.py) |
 | models.UserPlatformInfo | [ModelsUserPlatformInfo](../../accelbyte_py_sdk/api/session/models/models_user_platform_info.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/session/models/response_error.py) |

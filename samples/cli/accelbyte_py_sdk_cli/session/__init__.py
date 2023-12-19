@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (3.12.0)
+# justice-session-service (3.12.3)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
@@ -88,6 +88,7 @@ from ._public_party_leave import public_party_leave
 from ._public_party_reject import public_party_reject
 from ._public_party_kick import public_party_kick
 from ._public_create_party import public_create_party
+from ._public_get_recent_player import public_get_recent_player
 from ._public_update_insert_session_storage_leader import (
     public_update_insert_session_storage_leader,
 )
@@ -169,6 +170,7 @@ commands = [
     public_party_reject,
     public_party_kick,
     public_create_party,
+    public_get_recent_player,
     public_update_insert_session_storage_leader,
     public_update_insert_session_storage,
     public_get_bulk_player_current_platform,

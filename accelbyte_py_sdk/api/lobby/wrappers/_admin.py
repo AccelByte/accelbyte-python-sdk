@@ -59,7 +59,7 @@ from ..operations.admin import UpdateLocalizationTemplate
 def admin_delete_global_config(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Required permission : ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [DELETE] (adminDeleteGlobalConfig)
+    """Delete of global configuration data. (adminDeleteGlobalConfig)
 
     Delete of global configuration data.
 
@@ -91,7 +91,7 @@ def admin_delete_global_config(
 async def admin_delete_global_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Required permission : ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [DELETE] (adminDeleteGlobalConfig)
+    """Delete of global configuration data. (adminDeleteGlobalConfig)
 
     Delete of global configuration data.
 
@@ -127,14 +127,7 @@ def admin_get_global_config(
 ):
     """Record of global configuration dsmc. (adminGetGlobalConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with scope `social`
-    get dsmc global configuration.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
+    Get dsmc global configuration.
 
     Properties:
         url: /lobby/v1/admin/global-configurations
@@ -172,14 +165,7 @@ async def admin_get_global_config_async(
 ):
     """Record of global configuration dsmc. (adminGetGlobalConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with scope `social`
-    get dsmc global configuration.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
+    Get dsmc global configuration.
 
     Properties:
         url: /lobby/v1/admin/global-configurations
@@ -219,7 +205,7 @@ def admin_update_global_config(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Required permission : ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE] (adminUpdateGlobalConfig)
+    """Upsert global configuration data. (adminUpdateGlobalConfig)
 
     Upsert global configuration data.
 
@@ -257,7 +243,7 @@ async def admin_update_global_config_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Required permission : ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE] (adminUpdateGlobalConfig)
+    """Upsert global configuration data. (adminUpdateGlobalConfig)
 
     Upsert global configuration data.
 
@@ -300,19 +286,11 @@ def create_template(
 ):
     """create new notification template (createTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [CREATE]` with scope `social`
-
     Create new notification template. Include handlebars {{key}} for replaceable contexts. The the key inside
     handlebars will be the key to be replaced when sending notification. Already existing template with the same
     slug and language can not be created.
 
     Check model description for detailed input restrictions.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates
@@ -362,19 +340,11 @@ async def create_template_async(
 ):
     """create new notification template (createTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [CREATE]` with scope `social`
-
     Create new notification template. Include handlebars {{key}} for replaceable contexts. The the key inside
     handlebars will be the key to be replaced when sending notification. Already existing template with the same
     slug and language can not be created.
 
     Check model description for detailed input restrictions.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates
@@ -427,15 +397,7 @@ def delete_template_localization(
 ):
     """delete template localization (deleteTemplateLocalization)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [DELETE]` with scope `social`
-
     Delete all template in a slug
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -489,15 +451,7 @@ async def delete_template_localization_async(
 ):
     """delete template localization (deleteTemplateLocalization)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [DELETE]` with scope `social`
-
     Delete all template in a slug
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -552,15 +506,7 @@ def delete_template_slug(
 ):
     """delete template localization (deleteTemplateSlug)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [DELETE]` with scope `social`
-
     Delete localization template
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}
@@ -610,15 +556,7 @@ async def delete_template_slug_async(
 ):
     """delete template localization (deleteTemplateSlug)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [DELETE]` with scope `social`
-
     Delete localization template
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}
@@ -670,15 +608,7 @@ def free_form_notification(
 ):
     """send freeform notification to a user (freeFormNotification)
 
-    Required permission : `NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to all connected users in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/freeform
@@ -728,15 +658,7 @@ async def free_form_notification_async(
 ):
     """send freeform notification to a user (freeFormNotification)
 
-    Required permission : `NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to all connected users in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/freeform
@@ -787,15 +709,7 @@ def get_game_template(
 ):
     """get all notification template in a namespace (getGameTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope `social`
-
     Get all templates in a namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates
@@ -841,15 +755,7 @@ async def get_game_template_async(
 ):
     """get all notification template in a namespace (getGameTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope `social`
-
     Get all templates in a namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates
@@ -899,15 +805,7 @@ def get_localization_template(
 ):
     """get a template localization (getLocalizationTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope `social`
-
     Get a template localization
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -961,15 +859,7 @@ async def get_localization_template_async(
 ):
     """get a template localization (getLocalizationTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope `social`
-
     Get a template localization
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -1027,15 +917,7 @@ def get_slug_template(
 ):
     """get all notification template in a slug (getSlugTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope `social`
-
     Get all templates in a namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}
@@ -1097,15 +979,7 @@ async def get_slug_template_async(
 ):
     """get all notification template in a slug (getSlugTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [READ]` with scope `social`
-
     Get all templates in a namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}
@@ -1166,20 +1040,12 @@ def notification_with_template(
 ):
     """send notification to a user with template (notificationWithTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to all connected users in a namespace with predefined template.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
 
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
     Template need to be published before it can be use to send notifications
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templated
@@ -1229,20 +1095,12 @@ async def notification_with_template_async(
 ):
     """send notification to a user with template (notificationWithTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:NOTIFICATION [CREATE]` with scope `social`
-
     Sends notification to all connected users in a namespace with predefined template.
 
     In the request body, specify which template slug (template identifier) to use and the template language.
 
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
     Template need to be published before it can be use to send notifications
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:NOTIFICATION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templated
@@ -1295,15 +1153,7 @@ def publish_template(
 ):
     """publish draft template (publishTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [CREATE]` with scope `social`
-
     Publish notification template draft. Empty draft can not be published.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
@@ -1357,15 +1207,7 @@ async def publish_template_async(
 ):
     """publish draft template (publishTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [CREATE]` with scope `social`
-
     Publish notification template draft. Empty draft can not be published.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
@@ -1422,15 +1264,7 @@ def update_localization_template(
 ):
     """update template draft (updateLocalizationTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [UPDATE]` with scope `social`
-
     Modify draft template
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -1488,15 +1322,7 @@ async def update_localization_template_async(
 ):
     """update template draft (updateLocalizationTemplate)
 
-    Required permission : `NAMESPACE:{namespace}:TEMPLATE [UPDATE]` with scope `social`
-
     Modify draft template
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TEMPLATE [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}

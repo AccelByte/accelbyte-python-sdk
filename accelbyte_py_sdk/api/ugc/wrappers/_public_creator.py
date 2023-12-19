@@ -66,13 +66,13 @@ def public_get_creator(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreatorResponse (OK)
+        200: OK - ModelsCreatorResponse (Get creator stats)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (771601: Creator not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771103: Unable to get total liked content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -114,13 +114,13 @@ async def public_get_creator_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreatorResponse (OK)
+        200: OK - ModelsCreatorResponse (Get creator stats)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (771601: Creator not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771103: Unable to get total liked content)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -173,13 +173,13 @@ def public_search_creator(
         sortby: (sortby) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (Search creator)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770800: invalid paging parameter/max allowed number of tags is {maxTags}/invalid official parameter/invalid ishidden parameter)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -233,13 +233,13 @@ async def public_search_creator_async(
         sortby: (sortby) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (Search creator)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770800: invalid paging parameter/max allowed number of tags is {maxTags}/invalid official parameter/invalid ishidden parameter)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

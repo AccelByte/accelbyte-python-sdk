@@ -3647,6 +3647,7 @@ async def list_item_type_configs_async(
 @same_doc_as(PublicBulkGetItems)
 def public_bulk_get_items(
     item_ids: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     language: Optional[str] = None,
     region: Optional[str] = None,
     store_id: Optional[str] = None,
@@ -3679,6 +3680,8 @@ def public_bulk_get_items(
 
         namespace: (namespace) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         language: (language) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
@@ -3698,6 +3701,7 @@ def public_bulk_get_items(
             return None, error
     request = PublicBulkGetItems.create(
         item_ids=item_ids,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         language=language,
         region=region,
         store_id=store_id,
@@ -3709,6 +3713,7 @@ def public_bulk_get_items(
 @same_doc_as(PublicBulkGetItems)
 async def public_bulk_get_items_async(
     item_ids: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     language: Optional[str] = None,
     region: Optional[str] = None,
     store_id: Optional[str] = None,
@@ -3741,6 +3746,8 @@ async def public_bulk_get_items_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         language: (language) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
@@ -3760,6 +3767,7 @@ async def public_bulk_get_items_async(
             return None, error
     request = PublicBulkGetItems.create(
         item_ids=item_ids,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         language=language,
         region=region,
         store_id=store_id,
@@ -4005,6 +4013,7 @@ async def public_get_estimated_price_async(
 @same_doc_as(PublicGetItem)
 def public_get_item(
     item_id: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     language: Optional[str] = None,
     populate_bundle: Optional[bool] = None,
     region: Optional[str] = None,
@@ -4040,6 +4049,8 @@ def public_get_item(
 
         namespace: (namespace) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         language: (language) OPTIONAL str in query
 
         populate_bundle: (populateBundle) OPTIONAL bool in query
@@ -4059,6 +4070,7 @@ def public_get_item(
             return None, error
     request = PublicGetItem.create(
         item_id=item_id,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         language=language,
         populate_bundle=populate_bundle,
         region=region,
@@ -4071,6 +4083,7 @@ def public_get_item(
 @same_doc_as(PublicGetItem)
 async def public_get_item_async(
     item_id: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     language: Optional[str] = None,
     populate_bundle: Optional[bool] = None,
     region: Optional[str] = None,
@@ -4106,6 +4119,8 @@ async def public_get_item_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         language: (language) OPTIONAL str in query
 
         populate_bundle: (populateBundle) OPTIONAL bool in query
@@ -4125,6 +4140,7 @@ async def public_get_item_async(
             return None, error
     request = PublicGetItem.create(
         item_id=item_id,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         language=language,
         populate_bundle=populate_bundle,
         region=region,
@@ -4265,6 +4281,7 @@ async def public_get_item_by_app_id_async(
 @same_doc_as(PublicGetItemBySku)
 def public_get_item_by_sku(
     sku: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     language: Optional[str] = None,
     region: Optional[str] = None,
     store_id: Optional[str] = None,
@@ -4297,6 +4314,8 @@ def public_get_item_by_sku(
 
         namespace: (namespace) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         language: (language) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
@@ -4316,6 +4335,7 @@ def public_get_item_by_sku(
             return None, error
     request = PublicGetItemBySku.create(
         sku=sku,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         language=language,
         region=region,
         store_id=store_id,
@@ -4327,6 +4347,7 @@ def public_get_item_by_sku(
 @same_doc_as(PublicGetItemBySku)
 async def public_get_item_by_sku_async(
     sku: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     language: Optional[str] = None,
     region: Optional[str] = None,
     store_id: Optional[str] = None,
@@ -4359,6 +4380,8 @@ async def public_get_item_by_sku_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         language: (language) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
@@ -4378,6 +4401,7 @@ async def public_get_item_by_sku_async(
             return None, error
     request = PublicGetItemBySku.create(
         sku=sku,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         language=language,
         region=region,
         store_id=store_id,
@@ -4487,6 +4511,7 @@ async def public_get_item_dynamic_data_async(
 @same_doc_as(PublicQueryItems)
 def public_query_items(
     app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None,
+    auto_calc_estimated_price: Optional[bool] = None,
     base_app_id: Optional[str] = None,
     category_path: Optional[str] = None,
     features: Optional[str] = None,
@@ -4530,6 +4555,8 @@ def public_query_items(
 
         app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         base_app_id: (baseAppId) OPTIONAL str in query
 
         category_path: (categoryPath) OPTIONAL str in query
@@ -4567,6 +4594,7 @@ def public_query_items(
             return None, error
     request = PublicQueryItems.create(
         app_type=app_type,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         base_app_id=base_app_id,
         category_path=category_path,
         features=features,
@@ -4587,6 +4615,7 @@ def public_query_items(
 @same_doc_as(PublicQueryItems)
 async def public_query_items_async(
     app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None,
+    auto_calc_estimated_price: Optional[bool] = None,
     base_app_id: Optional[str] = None,
     category_path: Optional[str] = None,
     features: Optional[str] = None,
@@ -4630,6 +4659,8 @@ async def public_query_items_async(
 
         app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         base_app_id: (baseAppId) OPTIONAL str in query
 
         category_path: (categoryPath) OPTIONAL str in query
@@ -4667,6 +4698,7 @@ async def public_query_items_async(
             return None, error
     request = PublicQueryItems.create(
         app_type=app_type,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         base_app_id=base_app_id,
         category_path=category_path,
         features=features,
@@ -4690,6 +4722,7 @@ async def public_query_items_async(
 def public_search_items(
     keyword: str,
     language: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     item_type: Optional[Union[str, PublicSearchItemsItemTypeEnum]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -4724,6 +4757,8 @@ def public_search_items(
 
         namespace: (namespace) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
 
         limit: (limit) OPTIONAL int in query
@@ -4750,6 +4785,7 @@ def public_search_items(
     request = PublicSearchItems.create(
         keyword=keyword,
         language=language,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         item_type=item_type,
         limit=limit,
         offset=offset,
@@ -4764,6 +4800,7 @@ def public_search_items(
 async def public_search_items_async(
     keyword: str,
     language: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     item_type: Optional[Union[str, PublicSearchItemsItemTypeEnum]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -4798,6 +4835,8 @@ async def public_search_items_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
 
         limit: (limit) OPTIONAL int in query
@@ -4824,6 +4863,7 @@ async def public_search_items_async(
     request = PublicSearchItems.create(
         keyword=keyword,
         language=language,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         item_type=item_type,
         limit=limit,
         offset=offset,

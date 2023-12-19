@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,15 +37,7 @@ from ...models import RestapiErrorResponseV1
 class AdminCreateThirdPartyConfig(Operation):
     """Create Third Party Steam Config (adminCreateThirdPartyConfig)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]` with scope `social`
-
-    create third party config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
+    Create third party config in a namespace.
 
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam

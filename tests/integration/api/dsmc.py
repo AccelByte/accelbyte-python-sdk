@@ -36,10 +36,10 @@ class DSMCTestCase(IntegrationTestCase):
             exported_file_path.write_bytes(result)
 
         if (
-                error
-                and isinstance(error, ResponseError)
-                and error.error_code == 720166
-                and "does not exist" in error.error_message
+            error
+            and isinstance(error, ResponseError)
+            and error.error_code == 720166
+            and "does not exist" in error.error_message
         ):
             self.skipTest(reason=f"No config to export. {str(error)}")
 

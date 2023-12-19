@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.41.0)
+# AGS Platform Service (4.42.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -80,4 +80,4 @@ def revoke_use_count(
 
 
 revoke_use_count.operation_id = "revokeUseCount"
-revoke_use_count.is_deprecated = False
+revoke_use_count.is_deprecated = True

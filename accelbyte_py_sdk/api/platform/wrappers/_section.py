@@ -444,6 +444,7 @@ async def get_section_async(
 @same_doc_as(PublicListActiveSections)
 def public_list_active_sections(
     user_id: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     language: Optional[str] = None,
     region: Optional[str] = None,
     store_id: Optional[str] = None,
@@ -480,6 +481,8 @@ def public_list_active_sections(
 
         user_id: (userId) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         language: (language) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
@@ -499,6 +502,7 @@ def public_list_active_sections(
             return None, error
     request = PublicListActiveSections.create(
         user_id=user_id,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         language=language,
         region=region,
         store_id=store_id,
@@ -511,6 +515,7 @@ def public_list_active_sections(
 @same_doc_as(PublicListActiveSections)
 async def public_list_active_sections_async(
     user_id: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     language: Optional[str] = None,
     region: Optional[str] = None,
     store_id: Optional[str] = None,
@@ -547,6 +552,8 @@ async def public_list_active_sections_async(
 
         user_id: (userId) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         language: (language) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
@@ -566,6 +573,7 @@ async def public_list_active_sections_async(
             return None, error
     request = PublicListActiveSections.create(
         user_id=user_id,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         language=language,
         region=region,
         store_id=store_id,

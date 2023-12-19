@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,19 +37,9 @@ from ...models import ResponseError
 class StoreMatchResults(Operation):
     """Store match result (StoreMatchResults)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHRESULT [CREATE]
-
-    Required Scope: social
-
     Process match result into final attribute value and stores it to player attribute
 
     Will return final attribute value
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHRESULT [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/matchresult

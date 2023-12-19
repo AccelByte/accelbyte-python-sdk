@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,19 +36,9 @@ from ...models import ResponseErrorV1
 class GetSingleMatchmakingChannel(Operation):
     """Get single channel (GetSingleMatchmakingChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
-
-    Required Scope: social
-
     Reads single channel based on namespace and channel name
 
     Action Code: 510112
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}

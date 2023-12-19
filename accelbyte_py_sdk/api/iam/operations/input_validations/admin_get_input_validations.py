@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,20 +36,8 @@ from ...models import RestErrorResponse
 class AdminGetInputValidations(Operation):
     """Admin Get Input Validations (AdminGetInputValidations)
 
-    Required permission 'ADMIN:CONFIGURATION'[READ]
-
-
-
-
     This endpoint is to get list of input validation configuration.
-
-
-
-
     `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it will be empty.
-
-    Required Permission(s):
-        - ADMIN:CONFIGURATION [READ]
 
     Properties:
         url: /iam/v3/admin/inputValidations

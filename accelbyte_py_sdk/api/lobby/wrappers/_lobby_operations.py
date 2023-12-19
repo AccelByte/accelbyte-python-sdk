@@ -49,15 +49,7 @@ def admin_join_party_v1(
 ):
     """admin join a player into a party (adminJoinPartyV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
-
-    admin join a player into a party.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
-
-    Required Scope(s):
-        - social
+    Admin join a player into a party.
 
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId}
@@ -115,15 +107,7 @@ async def admin_join_party_v1_async(
 ):
     """admin join a player into a party (adminJoinPartyV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
-
-    admin join a player into a party.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
-
-    Required Scope(s):
-        - social
+    Admin join a player into a party.
 
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId}
@@ -183,15 +167,7 @@ def admin_update_party_attributes_v1(
 ):
     """admin update party attributes (adminUpdatePartyAttributesV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
-
-    update party attributes in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
-
-    Required Scope(s):
-        - social
+    Update party attributes in a namespace.
 
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/attributes
@@ -249,15 +225,7 @@ async def admin_update_party_attributes_v1_async(
 ):
     """admin update party attributes (adminUpdatePartyAttributesV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
-
-    update party attributes in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
-
-    Required Scope(s):
-        - social
+    Update party attributes in a namespace.
 
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/attributes

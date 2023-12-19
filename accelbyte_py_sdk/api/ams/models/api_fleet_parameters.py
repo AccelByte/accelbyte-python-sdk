@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.4.0)
+# Fleet Commander (1.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.api_ds_host_configuration import ApiDSHostConfiguration
+from ..models.api_fleet_artifacts_sample_rules import ApiFleetArtifactsSampleRules
 from ..models.api_image_deployment_profile import ApiImageDeploymentProfile
 from ..models.api_region_config import ApiRegionConfig
 
@@ -46,6 +47,8 @@ class ApiFleetParameters(Model):
 
         regions: (regions) REQUIRED List[ApiRegionConfig]
 
+        sampling_rules: (samplingRules) REQUIRED ApiFleetArtifactsSampleRules
+
         claim_keys: (claimKeys) OPTIONAL List[str]
     """
 
@@ -56,6 +59,7 @@ class ApiFleetParameters(Model):
     image_deployment_profile: ApiImageDeploymentProfile  # REQUIRED
     name: str  # REQUIRED
     regions: List[ApiRegionConfig]  # REQUIRED
+    sampling_rules: ApiFleetArtifactsSampleRules  # REQUIRED
     claim_keys: List[str]  # OPTIONAL
 
     # endregion fields
@@ -84,6 +88,12 @@ class ApiFleetParameters(Model):
 
     def with_regions(self, value: List[ApiRegionConfig]) -> ApiFleetParameters:
         self.regions = value
+        return self
+
+    def with_sampling_rules(
+        self, value: ApiFleetArtifactsSampleRules
+    ) -> ApiFleetParameters:
+        self.sampling_rules = value
         return self
 
     def with_claim_keys(self, value: List[str]) -> ApiFleetParameters:
@@ -122,6 +132,12 @@ class ApiFleetParameters(Model):
             ]
         elif include_empty:
             result["regions"] = []
+        if hasattr(self, "sampling_rules"):
+            result["samplingRules"] = self.sampling_rules.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["samplingRules"] = ApiFleetArtifactsSampleRules()
         if hasattr(self, "claim_keys"):
             result["claimKeys"] = [str(i0) for i0 in self.claim_keys]
         elif include_empty:
@@ -140,6 +156,7 @@ class ApiFleetParameters(Model):
         image_deployment_profile: ApiImageDeploymentProfile,
         name: str,
         regions: List[ApiRegionConfig],
+        sampling_rules: ApiFleetArtifactsSampleRules,
         claim_keys: Optional[List[str]] = None,
         **kwargs,
     ) -> ApiFleetParameters:
@@ -149,6 +166,7 @@ class ApiFleetParameters(Model):
         instance.image_deployment_profile = image_deployment_profile
         instance.name = name
         instance.regions = regions
+        instance.sampling_rules = sampling_rules
         if claim_keys is not None:
             instance.claim_keys = claim_keys
         return instance
@@ -192,6 +210,12 @@ class ApiFleetParameters(Model):
             ]
         elif include_empty:
             instance.regions = []
+        if "samplingRules" in dict_ and dict_["samplingRules"] is not None:
+            instance.sampling_rules = ApiFleetArtifactsSampleRules.create_from_dict(
+                dict_["samplingRules"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.sampling_rules = ApiFleetArtifactsSampleRules()
         if "claimKeys" in dict_ and dict_["claimKeys"] is not None:
             instance.claim_keys = [str(i0) for i0 in dict_["claimKeys"]]
         elif include_empty:
@@ -242,6 +266,7 @@ class ApiFleetParameters(Model):
             "imageDeploymentProfile": "image_deployment_profile",
             "name": "name",
             "regions": "regions",
+            "samplingRules": "sampling_rules",
             "claimKeys": "claim_keys",
         }
 
@@ -253,6 +278,7 @@ class ApiFleetParameters(Model):
             "imageDeploymentProfile": True,
             "name": True,
             "regions": True,
+            "samplingRules": True,
             "claimKeys": False,
         }
 

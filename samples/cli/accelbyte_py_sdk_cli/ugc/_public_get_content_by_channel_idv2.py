@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Ugc Service (2.18.0)
+# AGS Ugc Service (2.19.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 @click.command()
 @click.argument("channel_id", type=str)
 @click.option("--limit", "limit", type=int)
+@click.option("--name", "name", type=str)
 @click.option("--offset", "offset", type=int)
 @click.option("--sort_by", "sort_by", type=str)
 @click.option("--namespace", type=str)
@@ -49,6 +50,7 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 def public_get_content_by_channel_idv2(
     channel_id: str,
     limit: Optional[int] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
     sort_by: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -67,6 +69,7 @@ def public_get_content_by_channel_idv2(
     result, error = public_get_content_by_channel_idv2_internal(
         channel_id=channel_id,
         limit=limit,
+        name=name,
         offset=offset,
         sort_by=sort_by,
         namespace=namespace,

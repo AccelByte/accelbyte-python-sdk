@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,24 +38,9 @@ class GetUsersByLoginIds(Operation):
     """Get a List of Users By Their Login Id (GetUsersByLoginIds)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint(query by email list): /iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]
-
-      * Substitute endpoint(query by user id list): /iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER [READ]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint(query by email list): _/iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]_**
+    - **Substitute endpoint(query by user id list): _/iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/listByLoginIds

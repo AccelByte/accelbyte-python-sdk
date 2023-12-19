@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,24 +35,11 @@ class RevokeToken(Operation):
     """OAuth2 token revocation API (RevokeToken)
 
     ## The endpoint is going to be deprecated
-
-
-
-
     Revokes a token.
-
-
-
-
     This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret or Bearer access authentication with valid access token.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /v3/oauth/revoke [POST]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/v3/oauth/revoke [POST]_**
 
     Properties:
         url: /iam/oauth/revoke/token

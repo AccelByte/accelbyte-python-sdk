@@ -72,106 +72,27 @@ def add_third_party_login_platform_credential_v3(
     """Add Third Party Platform Credential (AddThirdPartyLoginPlatformCredentialV3)
 
     This is the API to Add 3rd Platform Credential.
-
-
-
-
-    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE] resource.
-
-
-
-
-    The secret for apple is base64 encoded private key.
-
-
-
-
-    No secret for awscognito , we only need to configure AWS Cognito Region and User Pool
-
-
-
-
-    The secret for discord is client secret of the twitch client id.
-
-
-
-
-    The secret for epicgames is client secret of the epicgames client id.
-
-
-
-
-    The secret for facebook is client secret of the facebook client id.
-
-
-
-
-    The secret for google is client secret of the google OAuth client.
-
-
-
-
-    No secret for nintendo , we only need to configure app id of the game
-
-
-
-
-    No secret for netflix , we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
-
-
-
-
-    The secret for oculus is app secret of the oculus app.
-
-
-
-
-    The secret for ps4, ps5, and ps4web is client secret of the psn web server.
-
-
-
-
-    The secret for steam is the Steam Web API Key.
-
-
-
-
-    The secret for steamopenid is the Steam Web API Key.
-
-
-
-
-    The secret for twitch is client secret of the twitch client.
-
-
-
-
-    The secret for live is the Relying Party Private Key in base64 encode PEM format.
-
-
-
-
-    The secret for xblwebapi is client secret of the xbl client.
-
-
-
+    - The secret for **apple** is base64 encoded private key.
+    - No secret for **awscognito**, we only need to configure AWS Cognito Region and User Pool
+    - The secret for **discord** is client secret of the twitch client id.
+    - The secret for **epicgames** is client secret of the epicgames client id.
+    - The secret for **facebook** is client secret of the facebook client id.
+    - The secret for **google** is client secret of the google OAuth client.
+    - No secret for **nintendo**, we only need to configure app id of the game
+    - No secret for **netflix**, we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
+    - The secret for **oculus** is app secret of the oculus app.
+    - The secret for **ps4, ps5, and ps4web** is client secret of the psn web server.
+    - The secret for **steam** is the Steam Web API Key.
+    - The secret for **steamopenid** is the Steam Web API Key.
+    - The secret for **twitch** is client secret of the twitch client.
+    - The secret for **live** is the Relying Party Private Key in base64 encode PEM format.
+    - The secret for **xblwebapi** is client secret of the xbl client.
 
     If generic oauth flow is set to true:
-
-
-
-
-
-
-      * Current supported value for TokenAuthenticationType are code, idToken and bearerToken
-
-
-      * `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
+    - Current supported value for TokenAuthenticationType are **code, idToken and bearerToken**
+    - `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
     Its a JSON format with key should be `name`, `email` and `avatarUrl`
-    since IAM will look up for these key when extracting user info. default claims keys : userIdentity/sub, name, email and avatarUrl/picture
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+    since IAM will look up for these key when extracting user info. **default claims keys : userIdentity/sub, name, email and avatarUrl/picture**
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -226,106 +147,27 @@ async def add_third_party_login_platform_credential_v3_async(
     """Add Third Party Platform Credential (AddThirdPartyLoginPlatformCredentialV3)
 
     This is the API to Add 3rd Platform Credential.
-
-
-
-
-    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE] resource.
-
-
-
-
-    The secret for apple is base64 encoded private key.
-
-
-
-
-    No secret for awscognito , we only need to configure AWS Cognito Region and User Pool
-
-
-
-
-    The secret for discord is client secret of the twitch client id.
-
-
-
-
-    The secret for epicgames is client secret of the epicgames client id.
-
-
-
-
-    The secret for facebook is client secret of the facebook client id.
-
-
-
-
-    The secret for google is client secret of the google OAuth client.
-
-
-
-
-    No secret for nintendo , we only need to configure app id of the game
-
-
-
-
-    No secret for netflix , we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
-
-
-
-
-    The secret for oculus is app secret of the oculus app.
-
-
-
-
-    The secret for ps4, ps5, and ps4web is client secret of the psn web server.
-
-
-
-
-    The secret for steam is the Steam Web API Key.
-
-
-
-
-    The secret for steamopenid is the Steam Web API Key.
-
-
-
-
-    The secret for twitch is client secret of the twitch client.
-
-
-
-
-    The secret for live is the Relying Party Private Key in base64 encode PEM format.
-
-
-
-
-    The secret for xblwebapi is client secret of the xbl client.
-
-
-
+    - The secret for **apple** is base64 encoded private key.
+    - No secret for **awscognito**, we only need to configure AWS Cognito Region and User Pool
+    - The secret for **discord** is client secret of the twitch client id.
+    - The secret for **epicgames** is client secret of the epicgames client id.
+    - The secret for **facebook** is client secret of the facebook client id.
+    - The secret for **google** is client secret of the google OAuth client.
+    - No secret for **nintendo**, we only need to configure app id of the game
+    - No secret for **netflix**, we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
+    - The secret for **oculus** is app secret of the oculus app.
+    - The secret for **ps4, ps5, and ps4web** is client secret of the psn web server.
+    - The secret for **steam** is the Steam Web API Key.
+    - The secret for **steamopenid** is the Steam Web API Key.
+    - The secret for **twitch** is client secret of the twitch client.
+    - The secret for **live** is the Relying Party Private Key in base64 encode PEM format.
+    - The secret for **xblwebapi** is client secret of the xbl client.
 
     If generic oauth flow is set to true:
-
-
-
-
-
-
-      * Current supported value for TokenAuthenticationType are code, idToken and bearerToken
-
-
-      * `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
+    - Current supported value for TokenAuthenticationType are **code, idToken and bearerToken**
+    - `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
     Its a JSON format with key should be `name`, `email` and `avatarUrl`
-    since IAM will look up for these key when extracting user info. default claims keys : userIdentity/sub, name, email and avatarUrl/picture
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+    since IAM will look up for these key when extracting user info. **default claims keys : userIdentity/sub, name, email and avatarUrl/picture**
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -380,10 +222,7 @@ def delete_third_party_login_platform_credential_v3(
 ):
     """Delete Third Party Platform Credential (DeleteThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Delete 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE]
+    This is the API to Delete 3rd Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -433,10 +272,7 @@ async def delete_third_party_login_platform_credential_v3_async(
 ):
     """Delete Third Party Platform Credential (DeleteThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Delete 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [DELETE]
+    This is the API to Delete 3rd Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -490,14 +326,6 @@ def delete_third_party_login_platform_domain_v3(
     """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
 
     This is the API to unregister 3rd Platform domain.
-
-
-
-
-    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE] resource.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
@@ -554,14 +382,6 @@ async def delete_third_party_login_platform_domain_v3_async(
     """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
 
     This is the API to unregister 3rd Platform domain.
-
-
-
-
-    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE] resource.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
@@ -805,10 +625,7 @@ def retrieve_all_active_third_party_login_platform_credential_v3(
 ):
     """Get All Active Third Party Platform Active Credential (RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ]
+    This is the API to Get All Active 3rd Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients/active
@@ -854,10 +671,7 @@ async def retrieve_all_active_third_party_login_platform_credential_v3_async(
 ):
     """Get All Active Third Party Platform Active Credential (RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ]
+    This is the API to Get All Active 3rd Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients/active
@@ -905,10 +719,7 @@ def retrieve_all_third_party_login_platform_credential_v3(
 ):
     """Get All Third Party Platform Credential (RetrieveAllThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ]
+    This is the API to Get All Active 3rd Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients
@@ -954,10 +765,7 @@ async def retrieve_all_third_party_login_platform_credential_v3_async(
 ):
     """Get All Third Party Platform Credential (RetrieveAllThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ]
+    This is the API to Get All Active 3rd Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients
@@ -1006,10 +814,7 @@ def retrieve_third_party_login_platform_credential_v3(
 ):
     """Retrieve Third Party Platform Credential (RetrieveThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [READ]
+    This is the API to Get 3rd Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -1059,10 +864,7 @@ async def retrieve_third_party_login_platform_credential_v3_async(
 ):
     """Retrieve Third Party Platform Credential (RetrieveThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [READ]
+    This is the API to Get 3rd Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -1116,106 +918,27 @@ def update_third_party_login_platform_credential_v3(
     """Update Third Party Platform Credential (UpdateThirdPartyLoginPlatformCredentialV3)
 
     This is the API to Add 3rd Platform Credential.
-
-
-
-
-    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE] resource.
-
-
-
-
-    The secret for apple is base64 encoded private key.
-
-
-
-
-    No secret for awscognito , we only need to configure AWS Cognito Region and User Pool
-
-
-
-
-    The secret for discord is client secret of the twitch client id.
-
-
-
-
-    The secret for epicgames is client secret of the epicgames client id.
-
-
-
-
-    The secret for facebook is client secret of the facebook client id.
-
-
-
-
-    The secret for google is client secret of the google OAuth client.
-
-
-
-
-    No secret for nintendo , we only need to configure app id of the game
-
-
-
-
-    No secret for netflix , we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
-
-
-
-
-    The secret for oculus is app secret of the oculus app.
-
-
-
-
-    The secret for ps4, ps5, and ps4web is client secret of the psn web server.
-
-
-
-
-    The secret for steam is the Steam Web API Key.
-
-
-
-
-    The secret for steamopenid is the Steam Web API Key.
-
-
-
-
-    The secret for twitch is client secret of the twitch client.
-
-
-
-
-    The secret for live is the Relying Party Private Key in base64 encode PEM format.
-
-
-
-
-    The secret for xblwebapi is client secret of the xbl client.
-
-
-
+    - The secret for **apple** is base64 encoded private key.
+    - No secret for **awscognito**, we only need to configure AWS Cognito Region and User Pool
+    - The secret for **discord** is client secret of the twitch client id.
+    - The secret for **epicgames** is client secret of the epicgames client id.
+    - The secret for **facebook** is client secret of the facebook client id.
+    - The secret for **google** is client secret of the google OAuth client.
+    - No secret for **nintendo**, we only need to configure app id of the game
+    - No secret for **netflix**, we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
+    - The secret for **oculus** is app secret of the oculus app.
+    - The secret for **ps4, ps5, and ps4web** is client secret of the psn web server.
+    - The secret for **steam** is the Steam Web API Key.
+    - The secret for **steamopenid** is the Steam Web API Key.
+    - The secret for **twitch** is client secret of the twitch client.
+    - The secret for **live** is the Relying Party Private Key in base64 encode PEM format.
+    - The secret for **xblwebapi** is client secret of the xbl client.
 
     If generic oauth flow is set to true:
-
-
-
-
-
-
-      * Current supported value for TokenAuthenticationType is code, idToken and bearerToken
-
-
-      * `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
+    - Current supported value for TokenAuthenticationType is **code, idToken and bearerToken**
+    - `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
     Its a JSON format with key should be `name`, `email` and `avatarUrl`
-    since IAM will look up for these key when extracting user info. default claims keys : userIdentity/sub, name, email and avatarUrl/picture
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+    since IAM will look up for these key when extracting user info.**default claims keys : userIdentity/sub, name, email and avatarUrl/picture**
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -1272,106 +995,27 @@ async def update_third_party_login_platform_credential_v3_async(
     """Update Third Party Platform Credential (UpdateThirdPartyLoginPlatformCredentialV3)
 
     This is the API to Add 3rd Platform Credential.
-
-
-
-
-    It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE] resource.
-
-
-
-
-    The secret for apple is base64 encoded private key.
-
-
-
-
-    No secret for awscognito , we only need to configure AWS Cognito Region and User Pool
-
-
-
-
-    The secret for discord is client secret of the twitch client id.
-
-
-
-
-    The secret for epicgames is client secret of the epicgames client id.
-
-
-
-
-    The secret for facebook is client secret of the facebook client id.
-
-
-
-
-    The secret for google is client secret of the google OAuth client.
-
-
-
-
-    No secret for nintendo , we only need to configure app id of the game
-
-
-
-
-    No secret for netflix , we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
-
-
-
-
-    The secret for oculus is app secret of the oculus app.
-
-
-
-
-    The secret for ps4, ps5, and ps4web is client secret of the psn web server.
-
-
-
-
-    The secret for steam is the Steam Web API Key.
-
-
-
-
-    The secret for steamopenid is the Steam Web API Key.
-
-
-
-
-    The secret for twitch is client secret of the twitch client.
-
-
-
-
-    The secret for live is the Relying Party Private Key in base64 encode PEM format.
-
-
-
-
-    The secret for xblwebapi is client secret of the xbl client.
-
-
-
+    - The secret for **apple** is base64 encoded private key.
+    - No secret for **awscognito**, we only need to configure AWS Cognito Region and User Pool
+    - The secret for **discord** is client secret of the twitch client id.
+    - The secret for **epicgames** is client secret of the epicgames client id.
+    - The secret for **facebook** is client secret of the facebook client id.
+    - The secret for **google** is client secret of the google OAuth client.
+    - No secret for **nintendo**, we only need to configure app id of the game
+    - No secret for **netflix**, we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
+    - The secret for **oculus** is app secret of the oculus app.
+    - The secret for **ps4, ps5, and ps4web** is client secret of the psn web server.
+    - The secret for **steam** is the Steam Web API Key.
+    - The secret for **steamopenid** is the Steam Web API Key.
+    - The secret for **twitch** is client secret of the twitch client.
+    - The secret for **live** is the Relying Party Private Key in base64 encode PEM format.
+    - The secret for **xblwebapi** is client secret of the xbl client.
 
     If generic oauth flow is set to true:
-
-
-
-
-
-
-      * Current supported value for TokenAuthenticationType is code, idToken and bearerToken
-
-
-      * `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
+    - Current supported value for TokenAuthenticationType is **code, idToken and bearerToken**
+    - `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
     Its a JSON format with key should be `name`, `email` and `avatarUrl`
-    since IAM will look up for these key when extracting user info. default claims keys : userIdentity/sub, name, email and avatarUrl/picture
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
+    since IAM will look up for these key when extracting user info.**default claims keys : userIdentity/sub, name, email and avatarUrl/picture**
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -1431,14 +1075,6 @@ def update_third_party_login_platform_domain_v3(
 
     This is the API to set 3rd Platform domain.
 
-
-
-
-    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE] resource.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE]
-
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
 
@@ -1494,14 +1130,6 @@ async def update_third_party_login_platform_domain_v3_async(
     """Set Third Party Platform Credential's domain (UpdateThirdPartyLoginPlatformDomainV3)
 
     This is the API to set 3rd Platform domain.
-
-
-
-
-    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE] resource.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [UPDATE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain

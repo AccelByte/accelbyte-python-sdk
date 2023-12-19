@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,17 +37,12 @@ from ...models import RestErrorResponse
 class AdminAssignUserToRoleV4(Operation):
     """Assign User to Role (AdminAssignUserToRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
     Parameters:
-    - userId: string (required)
-    - namespace: string (userâs namespace) (required)
-    - assignedNamespaces: array of string (namespaces to be assigned on role) (required)
+    - **userId**: string (required)
+    - **namespace**: string (userâs namespace) (required)
+    - **assignedNamespaces**: array of string (namespaces to be assigned on role) (required)
 
     action code: 10410
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users
@@ -73,7 +68,7 @@ class AdminAssignUserToRoleV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager | 10182: given namespace cannot be assigned to the role)
 
         404: Not Found - RestErrorResponse (10456: role not found | 20008: user not found)
 
@@ -198,7 +193,7 @@ class AdminAssignUserToRoleV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 10459: operator is not a role manager | 10182: given namespace cannot be assigned to the role)
 
         404: Not Found - RestErrorResponse (10456: role not found | 20008: user not found)
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,22 +37,8 @@ class AdminGetUserByUserIdV2(Operation):
     """Get User By User Id (AdminGetUserByUserIdV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [READ]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}

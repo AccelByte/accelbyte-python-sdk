@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,14 +36,10 @@ from ...models import RestapiTicketListResponse
 class ListTickets(Operation):
     """List report tickets (listTickets)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [READ]
     Tickets list can be ordered by:
     - createdAt
     - reportsCount
     - status (currently there are OPEN, AUTO_MODERATED and CLOSED statuses, desc order will put ticket with CLOSED status at the top)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets

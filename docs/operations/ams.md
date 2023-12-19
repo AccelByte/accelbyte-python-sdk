@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.4.0)
+# Fleet Commander Index (1.7.1)
 
 
 ## Operations
@@ -24,8 +24,18 @@
 ### AMS QoS
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /ams/v1/namespaces/{namespace}/qos | GET | QoSRegionsGet | `false` | [QoSRegionsGet](../../accelbyte_py_sdk/api/ams/operations/ams_qo_s/qo_s_regions_get.py) | [qo_s_regions_get](../../accelbyte_py_sdk/api/ams/wrappers/_ams_qo_s.py) | [accelbyte_py_sdk_cli ams-qo-s-regions-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_qo_s_regions_get.py) |
+| /ams/v1/admin/namespaces/{namespace}/qos | GET | QoSRegionsGet | `false` | [QoSRegionsGet](../../accelbyte_py_sdk/api/ams/operations/ams_qo_s/qo_s_regions_get.py) | [qo_s_regions_get](../../accelbyte_py_sdk/api/ams/wrappers/_ams_qo_s.py) | [accelbyte_py_sdk_cli ams-qo-s-regions-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_qo_s_regions_get.py) |
 | /ams/v1/admin/namespaces/{namespace}/qos/{region} | PATCH | QoSRegionsUpdate | `false` | [QoSRegionsUpdate](../../accelbyte_py_sdk/api/ams/operations/ams_qo_s/qo_s_regions_update.py) | [qo_s_regions_update](../../accelbyte_py_sdk/api/ams/wrappers/_ams_qo_s.py) | [accelbyte_py_sdk_cli ams-qo-s-regions-update](../../samples/cli/accelbyte_py_sdk_cli/ams/_qo_s_regions_update.py) |
+
+### Artifacts
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /ams/v1/admin/namespaces/{namespace}/artifacts/{artifactID} | DELETE | ArtifactDelete | `false` | [ArtifactDelete](../../accelbyte_py_sdk/api/ams/operations/artifacts/artifact_delete.py) | [artifact_delete](../../accelbyte_py_sdk/api/ams/wrappers/_artifacts.py) | [accelbyte_py_sdk_cli ams-artifact-delete](../../samples/cli/accelbyte_py_sdk_cli/ams/_artifact_delete.py) |
+| /ams/v1/admin/namespaces/{namespace}/artifacts | GET | ArtifactGet | `false` | [ArtifactGet](../../accelbyte_py_sdk/api/ams/operations/artifacts/artifact_get.py) | [artifact_get](../../accelbyte_py_sdk/api/ams/wrappers/_artifacts.py) | [accelbyte_py_sdk_cli ams-artifact-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_artifact_get.py) |
+| /ams/v1/admin/namespaces/{namespace}/artifacts/{artifactID}/url | GET | ArtifactGetURL | `false` | [ArtifactGetURL](../../accelbyte_py_sdk/api/ams/operations/artifacts/artifact_get_url.py) | [artifact_get_url](../../accelbyte_py_sdk/api/ams/wrappers/_artifacts.py) | [accelbyte_py_sdk_cli ams-artifact-get-url](../../samples/cli/accelbyte_py_sdk_cli/ams/_artifact_get_url.py) |
+| /ams/v1/admin/namespaces/{namespace}/artifacts/usage | GET | ArtifactUsageGet | `false` | [ArtifactUsageGet](../../accelbyte_py_sdk/api/ams/operations/artifacts/artifact_usage_get.py) | [artifact_usage_get](../../accelbyte_py_sdk/api/ams/wrappers/_artifacts.py) | [accelbyte_py_sdk_cli ams-artifact-usage-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_artifact_usage_get.py) |
+| /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules | GET | FleetArtifactSamplingRulesGet | `false` | [FleetArtifactSamplingRulesGet](../../accelbyte_py_sdk/api/ams/operations/artifacts/fleet_artifact_sampling_739743.py) | [fleet_artifact_sampling_rules_get](../../accelbyte_py_sdk/api/ams/wrappers/_artifacts.py) | [accelbyte_py_sdk_cli ams-fleet-artifact-sampling-rules-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_fleet_artifact_sampling_rules_get.py) |
+| /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules | PUT | FleetArtifactSamplingRulesSet | `false` | [FleetArtifactSamplingRulesSet](../../accelbyte_py_sdk/api/ams/operations/artifacts/fleet_artifact_sampling_a22d2b.py) | [fleet_artifact_sampling_rules_set](../../accelbyte_py_sdk/api/ams/wrappers/_artifacts.py) | [accelbyte_py_sdk_cli ams-fleet-artifact-sampling-rules-set](../../samples/cli/accelbyte_py_sdk_cli/ams/_fleet_artifact_sampling_rules_set.py) |
 
 ### Auth
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -54,7 +64,6 @@
 ### Images
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules | GET | FleetArtifactSamplingRulesGet | `false` | [FleetArtifactSamplingRulesGet](../../accelbyte_py_sdk/api/ams/operations/images/fleet_artifact_sampling_739743.py) | [fleet_artifact_sampling_rules_get](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-fleet-artifact-sampling-rules-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_fleet_artifact_sampling_rules_get.py) |
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID} | GET | ImageGet | `false` | [ImageGet](../../accelbyte_py_sdk/api/ams/operations/images/image_get.py) | [image_get](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_get.py) |
 | /ams/v1/admin/namespaces/{namespace}/images | GET | ImageList | `false` | [ImageList](../../accelbyte_py_sdk/api/ams/operations/images/image_list.py) | [image_list](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-list](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_list.py) |
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID} | PATCH | ImagePatch | `false` | [ImagePatch](../../accelbyte_py_sdk/api/ams/operations/images/image_patch.py) | [image_patch](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-patch](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_patch.py) |
@@ -84,13 +93,16 @@
 | api.AccountLinkTokenResponse | [ApiAccountLinkTokenResponse](../../accelbyte_py_sdk/api/ams/models/api_account_link_token_response.py) |
 | api.AccountResponse | [ApiAccountResponse](../../accelbyte_py_sdk/api/ams/models/api_account_response.py) |
 | api.AMSRegionsResponse | [ApiAMSRegionsResponse](../../accelbyte_py_sdk/api/ams/models/api_ams_regions_response.py) |
-| api.ArtifactSamplingRuleResponse | [ApiArtifactSamplingRuleResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_sampling_rule_response.py) |
-| api.ArtifactTypeSamplingRulesResponse | [ApiArtifactTypeSamplingRulesResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_type_sampling_rules_response.py) |
+| api.ArtifactResponse | [ApiArtifactResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_response.py) |
+| api.ArtifactSamplingRule | [ApiArtifactSamplingRule](../../accelbyte_py_sdk/api/ams/models/api_artifact_sampling_rule.py) |
+| api.ArtifactTypeSamplingRules | [ApiArtifactTypeSamplingRules](../../accelbyte_py_sdk/api/ams/models/api_artifact_type_sampling_rules.py) |
+| api.ArtifactURLResponse | [ApiArtifactURLResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_url_response.py) |
+| api.ArtifactUsageResponse | [ApiArtifactUsageResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_usage_response.py) |
 | api.AvailableInstanceTypesResponse | [ApiAvailableInstanceTypesResponse](../../accelbyte_py_sdk/api/ams/models/api_available_instance_types_response.py) |
 | api.DSHistoryEvent | [ApiDSHistoryEvent](../../accelbyte_py_sdk/api/ams/models/api_ds_history_event.py) |
 | api.DSHistoryList | [ApiDSHistoryList](../../accelbyte_py_sdk/api/ams/models/api_ds_history_list.py) |
 | api.DSHostConfiguration | [ApiDSHostConfiguration](../../accelbyte_py_sdk/api/ams/models/api_ds_host_configuration.py) |
-| api.FleetArtifactsSampleRulesResponse | [ApiFleetArtifactsSampleRulesResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_artifacts_sample_rules_response.py) |
+| api.FleetArtifactsSampleRules | [ApiFleetArtifactsSampleRules](../../accelbyte_py_sdk/api/ams/models/api_fleet_artifacts_sample_rules.py) |
 | api.FleetClaimByKeysReq | [ApiFleetClaimByKeysReq](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_by_keys_req.py) |
 | api.FleetClaimReq | [ApiFleetClaimReq](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_req.py) |
 | api.FleetClaimResponse | [ApiFleetClaimResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_response.py) |

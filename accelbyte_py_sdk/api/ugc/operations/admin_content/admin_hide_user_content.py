@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,13 +64,15 @@ class AdminHideUserContent(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateContentResponse (OK)
+        200: OK - ModelsCreateContentResponse (hide/unhide user's generated content)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (773801: Invalid request body/Malformed request)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (773803: Unable to update hide status: content not found)
+
+        500: Internal Server Error - ResponseError (773802: Unable to update hide status: database error | 773804: Unable to save ugc content: failed generate upload URL | 773805: Unable to save ugc content preview: failed generate upload URL)
     """
 
     # region fields
@@ -207,13 +209,15 @@ class AdminHideUserContent(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsCreateContentResponse (OK)
+        200: OK - ModelsCreateContentResponse (hide/unhide user's generated content)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (773801: Invalid request body/Malformed request)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (773803: Unable to update hide status: content not found)
+
+        500: Internal Server Error - ResponseError (773802: Unable to update hide status: database error | 773804: Unable to save ugc content: failed generate upload URL | 773805: Unable to save ugc content preview: failed generate upload URL)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -230,6 +234,8 @@ class AdminHideUserContent(Operation):
 
         if code == 200:
             return ModelsCreateContentResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ResponseError.create_from_dict(content)
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 404:

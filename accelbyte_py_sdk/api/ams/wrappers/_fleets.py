@@ -288,7 +288,7 @@ def fleet_create(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """create fleet (FleetCreate)
+    """Create a fleet. Optionally, sampling rules for the fleet can also be specified (FleetCreate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
@@ -341,7 +341,7 @@ async def fleet_create_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """create fleet (FleetCreate)
+    """Create a fleet. Optionally, sampling rules for the fleet can also be specified (FleetCreate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
@@ -809,7 +809,7 @@ def fleet_update(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a fleet – overrides current data (FleetUpdate)
+    """Update a fleet – overrides current data. Optionally, sampling rules for the fleet can also be updated (FleetUpdate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
 
@@ -868,7 +868,7 @@ async def fleet_update_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a fleet – overrides current data (FleetUpdate)
+    """Update a fleet – overrides current data. Optionally, sampling rules for the fleet can also be updated (FleetUpdate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
 

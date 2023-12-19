@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,13 +38,7 @@ class AdminBulkCheckValidUserIDV4(Operation):
     """Admin Check Valid User ID (AdminBulkCheckValidUserIDV4)
 
     Use this endpoint to check if userID exists or not
-
-    Required permission ' ADMIN:NAMESPACE:{namespace}:USER [READ]'
-
     Maximum number of userID to be checked is 50
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/bulk/validate

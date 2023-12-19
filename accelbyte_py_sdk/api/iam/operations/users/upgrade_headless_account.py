@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,23 +40,8 @@ class UpgradeHeadlessAccount(Operation):
 
     ## The endpoint is going to be deprecated
 
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccount

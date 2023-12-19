@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,15 +37,7 @@ class TokenIntrospectionV3(Operation):
     """OAuth2 token introspection API (TokenIntrospectionV3)
 
     This endpoint returns information about an access token intended to be used by resource servers or other internal servers.
-
-
-
-
     This endpoint requires authorized requests header with valid basic or bearer token.
-
-
-
-
     action code : 10705
 
     Properties:

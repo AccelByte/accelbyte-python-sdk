@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,10 +37,7 @@ class PublicListUserAllPlatformAccountsDistinctV3(Operation):
     """Get distinct platform accounts linked to the user (PublicListUserAllPlatformAccountsDistinctV3)
 
     This endpoint retrieves platform accounts linked to user.
-
     It will query all linked platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
-
-    Required valid user authorization.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/distinctPlatforms

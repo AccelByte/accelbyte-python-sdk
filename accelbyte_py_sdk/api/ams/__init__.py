@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.4.0"
+__version__ = "1.7.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -35,6 +35,20 @@ from .wrappers import qo_s_regions_get
 from .wrappers import qo_s_regions_get_async
 from .wrappers import qo_s_regions_update
 from .wrappers import qo_s_regions_update_async
+
+# artifacts
+from .wrappers import artifact_delete
+from .wrappers import artifact_delete_async
+from .wrappers import artifact_get
+from .wrappers import artifact_get_async
+from .wrappers import artifact_get_url
+from .wrappers import artifact_get_url_async
+from .wrappers import artifact_usage_get
+from .wrappers import artifact_usage_get_async
+from .wrappers import fleet_artifact_sampling_rules_get
+from .wrappers import fleet_artifact_sampling_rules_get_async
+from .wrappers import fleet_artifact_sampling_rules_set
+from .wrappers import fleet_artifact_sampling_rules_set_async
 
 # auth
 from .wrappers import auth_check
@@ -67,8 +81,6 @@ from .wrappers import fleet_update
 from .wrappers import fleet_update_async
 
 # images
-from .wrappers import fleet_artifact_sampling_rules_get
-from .wrappers import fleet_artifact_sampling_rules_get_async
 from .wrappers import image_get
 from .wrappers import image_get_async
 from .wrappers import image_list

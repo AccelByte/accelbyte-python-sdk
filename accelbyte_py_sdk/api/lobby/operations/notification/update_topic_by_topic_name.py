@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,18 +36,10 @@ from ...models import RestapiErrorResponseBody
 class UpdateTopicByTopicName(Operation):
     """update topic information by topic name (updateTopicByTopicName)
 
-    Required permission : `NAMESPACE:{namespace}:TOPIC [UPDATE]` with scope `social`
-
     update topic information by topic name.
 
     topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
     Already existing topic can not be created
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:TOPIC [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /notification/namespaces/{namespace}/topics/{topic}

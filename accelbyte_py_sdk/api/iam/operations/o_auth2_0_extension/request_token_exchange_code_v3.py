@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,16 +37,10 @@ class RequestTokenExchangeCodeV3(Operation):
 
     This endpoint is being used to request the code to exchange a new token.
     The target new token's clientId should NOT be same with current using one.
-
-    It requires a valid user token.
-
     Path namespace should be target namespace.
-
     Client ID should match the target namespace.
 
-
-
-    The code in response can be consumed by /iam/v3/token/exchange
+    The code in response can be consumed by `/iam/v3/token/exchange`
 
     Properties:
         url: /iam/v3/namespace/{namespace}/token/request

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,15 +65,17 @@ class UpdateScreenshots(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateScreenshotResponse (OK)
+        200: OK - ModelsUpdateScreenshotResponse (Screenshot updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (772603: Content not found)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
 
     # region fields
@@ -208,15 +210,17 @@ class UpdateScreenshots(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsUpdateScreenshotResponse (OK)
+        200: OK - ModelsUpdateScreenshotResponse (Screenshot updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (772601: Malformed request)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - ResponseError (772604: User has been banned to update content)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        404: Not Found - ResponseError (772603: Content not found)
+
+        500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -236,6 +240,8 @@ class UpdateScreenshots(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 403:
             return None, ResponseError.create_from_dict(content)
         if code == 404:
             return None, ResponseError.create_from_dict(content)

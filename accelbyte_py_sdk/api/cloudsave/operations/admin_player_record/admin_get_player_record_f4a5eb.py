@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.7)
+# AccelByte Gaming Services Cloudsave Service (3.12.8)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,8 +37,8 @@ from ...models import ModelsResponseError
 class AdminGetPlayerRecordsHandlerV1(Operation):
     """Bulk get player records by multiple record keys (adminGetPlayerRecordsHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]`
-    --------------------|-----------------------------------------------------------
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [READ]`
+    --------------------|--------------------------------------------------------------
     Required Scope      | `social`
 
 
@@ -48,7 +48,7 @@ class AdminGetPlayerRecordsHandlerV1(Operation):
     Maximum bulk key limit per request 20.
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [READ]
 
     Required Scope(s):
         - social

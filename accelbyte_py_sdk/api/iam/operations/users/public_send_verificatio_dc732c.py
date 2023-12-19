@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,54 +36,16 @@ from ...models import RestErrorResponse
 class PublicSendVerificationCodeV3(Operation):
     """Send verification code to user (PublicSendVerificationCodeV3)
 
-    Required valid user authorization
-
-
     The verification code is sent to email address
-
-
-
-
     Available contexts for use :
-
-
-
-
-
-
-      1.
-    UserAccountRegistration
-
-
+    1. **UserAccountRegistration**
     a context type used for verifying email address in user account registration. It returns 409 if the email address already verified.
-    It is the default context if the Context field is empty
-
-
-
-
-
-      2.
-    UpdateEmailAddress
-
-
+    **_It is the default context if the Context field is empty_**
+    2. **UpdateEmailAddress**
     a context type used for verify user before updating email address.(Without email address verified checking)
-
-
-
-
-
-      3. upgradeHeadlessAccount
-
-
+    3. **upgradeHeadlessAccount**
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
     If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
-
-
-
-
-
-
-
 
     action code: 10116
 

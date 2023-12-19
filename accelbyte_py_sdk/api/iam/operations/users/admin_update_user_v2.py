@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,54 +39,17 @@ class AdminUpdateUserV2(Operation):
     """Update User (AdminUpdateUserV2)
 
     ## The endpoint is going to be deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
-
-    "+
-    "
-
-
-    This Endpoint support update user based on given data. Single request can update single field or multi fields.
-
-    "+
-    "
-
+    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
-
-    "+
-    "
-
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
-    "+
-    "
-     Several case of updating email address "+
-    "
-
-      * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
-    "+
-    "
-      * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
-    "+
-    "
-      * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]
+    **Several case of updating email address**
+    - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+    - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}

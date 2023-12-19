@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,17 +63,17 @@ class AdminUpdateType(Operation):
         type_id: (typeId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateTypeResponse (OK)
+        200: OK - ModelsCreateTypeResponse (Types updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771901: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (771903: Type not found)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (771904: Proposed Type already exist)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771902: Unable update types)
     """
 
     # region fields
@@ -196,17 +196,17 @@ class AdminUpdateType(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsCreateTypeResponse (OK)
+        200: OK - ModelsCreateTypeResponse (Types updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771901: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (771903: Type not found)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (771904: Proposed Type already exist)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771902: Unable update types)
 
         ---: HttpResponse (Undocumented Response)
 

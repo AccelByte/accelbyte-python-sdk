@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -77,7 +77,7 @@ class DebitByWalletPlatform(Operation):
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        body: (body) OPTIONAL DebitByWalletPlatformRequest in body
+        request: (request) REQUIRED DebitByWalletPlatformRequest in body
 
         currency_code: (currencyCode) REQUIRED str in path
 
@@ -102,7 +102,7 @@ class DebitByWalletPlatform(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: DebitByWalletPlatformRequest  # OPTIONAL in [body]
+    request: DebitByWalletPlatformRequest  # REQUIRED in [body]
     currency_code: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -150,9 +150,9 @@ class DebitByWalletPlatform(Operation):
         }
 
     def get_body_params(self) -> Any:
-        if not hasattr(self, "body") or self.body is None:
+        if not hasattr(self, "request") or self.request is None:
             return None
-        return self.body.to_dict()
+        return self.request.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
@@ -172,8 +172,10 @@ class DebitByWalletPlatform(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: DebitByWalletPlatformRequest) -> DebitByWalletPlatform:
-        self.body = value
+    def with_request(
+        self, value: DebitByWalletPlatformRequest
+    ) -> DebitByWalletPlatform:
+        self.request = value
         return self
 
     def with_currency_code(self, value: str) -> DebitByWalletPlatform:
@@ -194,10 +196,10 @@ class DebitByWalletPlatform(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "body") and self.body:
-            result["body"] = self.body.to_dict(include_empty=include_empty)
+        if hasattr(self, "request") and self.request:
+            result["request"] = self.request.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = DebitByWalletPlatformRequest()
+            result["request"] = DebitByWalletPlatformRequest()
         if hasattr(self, "currency_code") and self.currency_code:
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
@@ -262,18 +264,17 @@ class DebitByWalletPlatform(Operation):
     @classmethod
     def create(
         cls,
+        request: DebitByWalletPlatformRequest,
         currency_code: str,
         namespace: str,
         user_id: str,
-        body: Optional[DebitByWalletPlatformRequest] = None,
         **kwargs,
     ) -> DebitByWalletPlatform:
         instance = cls()
+        instance.request = request
         instance.currency_code = currency_code
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         return instance
 
     @classmethod
@@ -281,12 +282,12 @@ class DebitByWalletPlatform(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> DebitByWalletPlatform:
         instance = cls()
-        if "body" in dict_ and dict_["body"] is not None:
-            instance.body = DebitByWalletPlatformRequest.create_from_dict(
-                dict_["body"], include_empty=include_empty
+        if "request" in dict_ and dict_["request"] is not None:
+            instance.request = DebitByWalletPlatformRequest.create_from_dict(
+                dict_["request"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = DebitByWalletPlatformRequest()
+            instance.request = DebitByWalletPlatformRequest()
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
@@ -304,7 +305,7 @@ class DebitByWalletPlatform(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "body": "body",
+            "request": "request",
             "currencyCode": "currency_code",
             "namespace": "namespace",
             "userId": "user_id",
@@ -313,7 +314,7 @@ class DebitByWalletPlatform(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "request": True,
             "currencyCode": True,
             "namespace": True,
             "userId": True,

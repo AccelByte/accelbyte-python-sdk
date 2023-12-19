@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,14 +38,8 @@ class PublicGetCountryAgeRestriction(Operation):
     """Public get age restriction by country code (PublicGetCountryAgeRestriction)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]_**
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/countries/{countryCode}/agerestrictions

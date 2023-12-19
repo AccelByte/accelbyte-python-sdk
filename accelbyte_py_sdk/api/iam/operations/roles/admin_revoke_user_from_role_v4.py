@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,8 +36,6 @@ from ...models import RestErrorResponse
 class AdminRevokeUserFromRoleV4(Operation):
     """Revoke User from Role (AdminRevokeUserFromRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
     Current implementation will revoke user from role in all assigned namespaces.
 
     Parameters:
@@ -45,9 +43,6 @@ class AdminRevokeUserFromRoleV4(Operation):
     - namespace: string (userâs namespace) (required)
 
     action code: 10411
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users

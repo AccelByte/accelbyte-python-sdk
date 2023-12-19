@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,11 +36,6 @@ class AdminDisableMyEmailV4(Operation):
     """Disable 2FA email (AdminDisableMyEmailV4)
 
     This endpoint is used to disable 2FA email.
-
-
-
-
-    This endpoint Requires valid user access token
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/email/disable

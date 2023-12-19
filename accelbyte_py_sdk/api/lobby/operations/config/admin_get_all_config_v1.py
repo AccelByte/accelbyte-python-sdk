@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,16 +36,8 @@ from ...models import RestapiErrorResponseBody
 class AdminGetAllConfigV1(Operation):
     """admin get all namespaces config (adminGetAllConfigV1)
 
-    Required permission : `ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]` with scope `social`
-
-    get lobby config of all namespaces.
+    Get lobby config of all namespaces.
     default MaxDSWaitTime is 120 (second)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LOBBY:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/config

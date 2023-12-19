@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.41.0)
+# AGS Platform Service (4.42.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,7 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import query_changes as query_changes_internal
-from accelbyte_py_sdk.api.platform.models import CatalogChangePagingSlicedResult
+from accelbyte_py_sdk.api.platform.models import CatalogChangePagingResult
 
 
 @click.command()
@@ -47,6 +47,7 @@ from accelbyte_py_sdk.api.platform.models import CatalogChangePagingSlicedResult
 @click.option("--type", "type_", type=str)
 @click.option("--updated_at_end", "updated_at_end", type=str)
 @click.option("--updated_at_start", "updated_at_start", type=str)
+@click.option("--with_total", "with_total", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -64,6 +65,7 @@ def query_changes(
     type_: Optional[str] = None,
     updated_at_end: Optional[str] = None,
     updated_at_start: Optional[str] = None,
+    with_total: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -96,6 +98,7 @@ def query_changes(
         type_=type_,
         updated_at_end=updated_at_end,
         updated_at_start=updated_at_start,
+        with_total=with_total,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

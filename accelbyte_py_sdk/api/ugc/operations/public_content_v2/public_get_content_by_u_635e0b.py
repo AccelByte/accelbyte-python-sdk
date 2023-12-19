@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,11 +65,13 @@ class PublicGetContentByUserIDV2(Operation):
         sort_by: (sortBy) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (Get content by user ID)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770900: invalid paging parameter)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        500: Internal Server Error - ResponseError (770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
     """
 
     # region fields
@@ -216,11 +218,13 @@ class PublicGetContentByUserIDV2(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsPaginatedContentDownloadResponseV2 (OK)
+        200: OK - ModelsPaginatedContentDownloadResponseV2 (Get content by user ID)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (770900: invalid paging parameter)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        500: Internal Server Error - ResponseError (770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -240,6 +244,8 @@ class PublicGetContentByUserIDV2(Operation):
                 ModelsPaginatedContentDownloadResponseV2.create_from_dict(content),
                 None,
             )
+        if code == 400:
+            return None, ResponseError.create_from_dict(content)
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 500:

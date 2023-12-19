@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.41.0"
+__version__ = "4.42.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -85,6 +85,8 @@ from .wrappers import query_changes
 from .wrappers import query_changes_async
 from .wrappers import select_all_records
 from .wrappers import select_all_records_async
+from .wrappers import select_all_records_by_criteria
+from .wrappers import select_all_records_by_criteria_async
 from .wrappers import select_record
 from .wrappers import select_record_async
 from .wrappers import unselect_all_records
@@ -211,6 +213,8 @@ from .wrappers import grant_entitlements
 from .wrappers import grant_entitlements_async
 from .wrappers import grant_user_entitlement
 from .wrappers import grant_user_entitlement_async
+from .wrappers import pre_check_revoke_user_entitlement_by_use_count
+from .wrappers import pre_check_revoke_user_entitlement_by_use_count_async
 from .wrappers import public_consume_user_entitlement
 from .wrappers import public_consume_user_entitlement_async
 from .wrappers import public_exists_any_my_active_entitlement
@@ -263,6 +267,8 @@ from .wrappers import revoke_use_count
 from .wrappers import revoke_use_count_async
 from .wrappers import revoke_user_entitlement
 from .wrappers import revoke_user_entitlement_async
+from .wrappers import revoke_user_entitlement_by_use_count
+from .wrappers import revoke_user_entitlement_by_use_count_async
 from .wrappers import revoke_user_entitlements
 from .wrappers import revoke_user_entitlements_async
 from .wrappers import sell_user_entitlement
@@ -277,6 +283,8 @@ from .wrappers import fulfill_rewards
 from .wrappers import fulfill_rewards_async
 from .wrappers import fulfill_rewards_v2
 from .wrappers import fulfill_rewards_v2_async
+from .wrappers import pre_check_fulfill_item
+from .wrappers import pre_check_fulfill_item_async
 from .wrappers import public_redeem_code
 from .wrappers import public_redeem_code_async
 from .wrappers import query_fulfillment_histories
@@ -895,6 +903,8 @@ from .wrappers import bulk_credit
 from .wrappers import bulk_credit_async
 from .wrappers import bulk_debit
 from .wrappers import bulk_debit_async
+from .wrappers import check_balance
+from .wrappers import check_balance_async
 from .wrappers import check_wallet
 from .wrappers import check_wallet_async
 from .wrappers import credit_user_wallet

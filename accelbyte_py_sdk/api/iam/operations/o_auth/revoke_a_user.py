@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,37 +35,12 @@ class RevokeAUser(Operation):
     """OAuth2 user revocation API (RevokeAUser)
 
     ## The endpoint is going to be deprecated
-
-
-
-
     This endpoint revokes a user.
-
-
-
-
     This endpoint requires all requests to have Authorization header set with Bearer access authentication with valid access token.
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userID}:ADMIN [UPDATE]'
-
-
-
-
     When other clients know that the userID has been revoked and the token is issued before the revocation, forcing a new token will contain banned permissions.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/revoke [POST]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userID}:ADMIN [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/revoke [POST]_**
 
     Properties:
         url: /iam/oauth/revoke/user

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,12 +37,8 @@ from ...models import RestErrorResponse
 class AdminUpdateUserRoleV4(Operation):
     """Admin Update User's Role V4 (AdminUpdateUserRoleV4)
 
-    This endpoint requires ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [UPDATE] permission.
-
     User's roles will be replaced with roles from request body.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ROLE:USER:* [UPDATE]
+    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this endpoint.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
@@ -72,7 +68,7 @@ class AdminUpdateUserRoleV4(Operation):
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (20008: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
 
         422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
 
@@ -208,7 +204,7 @@ class AdminUpdateUserRoleV4(Operation):
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (20008: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
 
         422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
 

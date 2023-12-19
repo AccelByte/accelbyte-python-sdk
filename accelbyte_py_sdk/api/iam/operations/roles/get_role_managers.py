@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,23 +38,10 @@ class GetRoleManagers(Operation):
     """Get Role Managers (GetRoleManagers)
 
     ## The endpoint is going to be deprecated
-
-
-    Required permission 'ROLE [READ]'
-
-
     Role can only be assigned to other users by the role's manager.
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/roles/{roleId}/managers [GET]
-
-    Required Permission(s):
-        - ROLE [READ]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/managers [GET]_**
 
     Properties:
         url: /iam/roles/{roleId}/managers

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,55 +38,14 @@ class UpdateModerationRule(Operation):
     """Update auto moderation rule (updateModerationRule)
 
     This endpoint update moderation rule.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
-
-
-    Supported Category:
-
-      * UGC
-      * USER
-      * CHAT
-      * EXTENSION
-
-
-
-
-
-
+    Supported Category:- UGC - USER - CHAT - EXTENSION
     Supported Action (GOING TO DEPRECATE, for replacement please use "actions"):
-
-
-
-
-
-
-      * HideContent
-
-
-
-
+    * HideContent
 
     Supported Actions:
-
-
-
-
-
-
-      * hideContent : Hide the content
-
-
-      * banAccount : Ban the user account
-
-
-      * deleteChat : Delete chat
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:RULE [UPDATE]
+    * **hideContent**: Hide the content
+    * **banAccount**: Ban the user account
+    * **deleteChat**: Delete chat
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/rule/{ruleId}

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,7 @@ from ....core import Model
 from ..models.accountcommon_namespace_role import AccountcommonNamespaceRole
 from ..models.model_user_active_ban_response_v3 import ModelUserActiveBanResponseV3
 from ..models.model_user_permissions_response_v3 import ModelUserPermissionsResponseV3
+from ..models.model_user_platform_info import ModelUserPlatformInfo
 
 
 class ModelUserResponseV3(Model):
@@ -88,7 +89,11 @@ class ModelUserResponseV3(Model):
 
         platform_id: (platformId) OPTIONAL str
 
+        platform_infos: (platformInfos) OPTIONAL List[ModelUserPlatformInfo]
+
         platform_user_id: (platformUserId) OPTIONAL str
+
+        test_account: (testAccount) OPTIONAL bool
 
         user_name: (userName) OPTIONAL str
     """
@@ -121,7 +126,9 @@ class ModelUserResponseV3(Model):
     platform_avatar_url: str  # OPTIONAL
     platform_display_name: str  # OPTIONAL
     platform_id: str  # OPTIONAL
+    platform_infos: List[ModelUserPlatformInfo]  # OPTIONAL
     platform_user_id: str  # OPTIONAL
+    test_account: bool  # OPTIONAL
     user_name: str  # OPTIONAL
 
     # endregion fields
@@ -238,8 +245,18 @@ class ModelUserResponseV3(Model):
         self.platform_id = value
         return self
 
+    def with_platform_infos(
+        self, value: List[ModelUserPlatformInfo]
+    ) -> ModelUserResponseV3:
+        self.platform_infos = value
+        return self
+
     def with_platform_user_id(self, value: str) -> ModelUserResponseV3:
         self.platform_user_id = value
+        return self
+
+    def with_test_account(self, value: bool) -> ModelUserResponseV3:
+        self.test_account = value
         return self
 
     def with_user_name(self, value: str) -> ModelUserResponseV3:
@@ -364,10 +381,20 @@ class ModelUserResponseV3(Model):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = ""
+        if hasattr(self, "platform_infos"):
+            result["platformInfos"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.platform_infos
+            ]
+        elif include_empty:
+            result["platformInfos"] = []
         if hasattr(self, "platform_user_id"):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["platformUserId"] = ""
+        if hasattr(self, "test_account"):
+            result["testAccount"] = bool(self.test_account)
+        elif include_empty:
+            result["testAccount"] = False
         if hasattr(self, "user_name"):
             result["userName"] = str(self.user_name)
         elif include_empty:
@@ -407,7 +434,9 @@ class ModelUserResponseV3(Model):
         platform_avatar_url: Optional[str] = None,
         platform_display_name: Optional[str] = None,
         platform_id: Optional[str] = None,
+        platform_infos: Optional[List[ModelUserPlatformInfo]] = None,
         platform_user_id: Optional[str] = None,
+        test_account: Optional[bool] = None,
         user_name: Optional[str] = None,
         **kwargs,
     ) -> ModelUserResponseV3:
@@ -447,8 +476,12 @@ class ModelUserResponseV3(Model):
             instance.platform_display_name = platform_display_name
         if platform_id is not None:
             instance.platform_id = platform_id
+        if platform_infos is not None:
+            instance.platform_infos = platform_infos
         if platform_user_id is not None:
             instance.platform_user_id = platform_user_id
+        if test_account is not None:
+            instance.test_account = test_account
         if user_name is not None:
             instance.user_name = user_name
         return instance
@@ -587,10 +620,21 @@ class ModelUserResponseV3(Model):
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = ""
+        if "platformInfos" in dict_ and dict_["platformInfos"] is not None:
+            instance.platform_infos = [
+                ModelUserPlatformInfo.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["platformInfos"]
+            ]
+        elif include_empty:
+            instance.platform_infos = []
         if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
             instance.platform_user_id = ""
+        if "testAccount" in dict_ and dict_["testAccount"] is not None:
+            instance.test_account = bool(dict_["testAccount"])
+        elif include_empty:
+            instance.test_account = False
         if "userName" in dict_ and dict_["userName"] is not None:
             instance.user_name = str(dict_["userName"])
         elif include_empty:
@@ -662,7 +706,9 @@ class ModelUserResponseV3(Model):
             "platformAvatarUrl": "platform_avatar_url",
             "platformDisplayName": "platform_display_name",
             "platformId": "platform_id",
+            "platformInfos": "platform_infos",
             "platformUserId": "platform_user_id",
+            "testAccount": "test_account",
             "userName": "user_name",
         }
 
@@ -695,7 +741,9 @@ class ModelUserResponseV3(Model):
             "platformAvatarUrl": False,
             "platformDisplayName": False,
             "platformId": False,
+            "platformInfos": False,
             "platformUserId": False,
+            "testAccount": False,
             "userName": False,
         }
 

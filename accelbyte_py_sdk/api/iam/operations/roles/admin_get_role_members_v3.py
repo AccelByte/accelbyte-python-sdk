@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,20 +36,8 @@ from ...models import RestErrorResponse
 class AdminGetRoleMembersV3(Operation):
     """Get Role Members (AdminGetRoleMembersV3)
 
-    Required permission 'ADMIN:ROLE [READ]'
-
-
-
-
     Admin roles has its members listed in the role.
-
-
-
-
     action code: 10416
-
-    Required Permission(s):
-        - ADMIN:ROLE [READ]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members

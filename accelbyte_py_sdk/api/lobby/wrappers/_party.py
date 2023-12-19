@@ -50,15 +50,7 @@ def admin_get_party_data_v1(
 ):
     """admin get party data (adminGetPartyDataV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]` with scope `social`
-
-    get party data in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]
-
-    Required Scope(s):
-        - social
+    Get party data in a namespace.
 
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}
@@ -110,15 +102,7 @@ async def admin_get_party_data_v1_async(
 ):
     """admin get party data (adminGetPartyDataV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]` with scope `social`
-
-    get party data in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]
-
-    Required Scope(s):
-        - social
+    Get party data in a namespace.
 
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}
@@ -172,15 +156,7 @@ def admin_get_user_party_v1(
 ):
     """admin get user party data (adminGetUserPartyV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]` with scope `social`
-
-    get party data in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]
-
-    Required Scope(s):
-        - social
+    Get party data in a namespace.
 
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/users/{userId}/party
@@ -232,15 +208,7 @@ async def admin_get_user_party_v1_async(
 ):
     """admin get user party data (adminGetUserPartyV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]` with scope `social`
-
-    get party data in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [READ]
-
-    Required Scope(s):
-        - social
+    Get party data in a namespace.
 
     Properties:
         url: /lobby/v1/admin/party/namespaces/{namespace}/users/{userId}/party

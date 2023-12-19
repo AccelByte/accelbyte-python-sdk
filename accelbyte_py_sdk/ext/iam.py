@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -112,6 +112,7 @@ from ..api.iam.models import ModelAuthenticatorKeyResponseV4
 from ..api.iam.models import ModelBackupCodesResponseV4
 from ..api.iam.models import ModelBanCreateRequest
 from ..api.iam.models import ModelBanUpdateRequest
+from ..api.iam.models import ModelBulkAccountTypeUpdateRequestV4
 from ..api.iam.models import ModelBulkBanCreateRequestV3
 from ..api.iam.models import ModelBulkUnbanCreateRequestV3
 from ..api.iam.models import ModelCheckValidUserIDRequestV4
@@ -256,6 +257,7 @@ from ..api.iam.models import ModelUserPasswordUpdateRequest
 from ..api.iam.models import ModelUserPasswordUpdateV3Request
 from ..api.iam.models import ModelUserPermissionsResponseV3
 from ..api.iam.models import ModelUserPlatformInfo
+from ..api.iam.models import ModelUserPlatformInfos
 from ..api.iam.models import ModelUserPlatformMetadata
 from ..api.iam.models import ModelUserPublicInfoResponseV4
 from ..api.iam.models import ModelUserResponse
@@ -267,6 +269,8 @@ from ..api.iam.models import ModelUserUpdateRequestV3
 from ..api.iam.models import ModelUserVerificationRequest
 from ..api.iam.models import ModelUserVerificationRequestV3
 from ..api.iam.models import ModelUserWithPlatformInfo
+from ..api.iam.models import ModelUsersPlatformInfosRequestV3
+from ..api.iam.models import ModelUsersPlatformInfosResponse
 from ..api.iam.models import ModelValidUserIDResponseV4
 from ..api.iam.models import ModelValidationDetail
 from ..api.iam.models import ModelValidationDetailPublic
@@ -1197,6 +1201,15 @@ def create_model_ban_update_request_example() -> ModelBanUpdateRequest:
     return instance
 
 
+def create_model_bulk_account_type_update_request_v4_example() -> (
+    ModelBulkAccountTypeUpdateRequestV4
+):
+    instance = ModelBulkAccountTypeUpdateRequestV4()
+    instance.test_account = randomize("bool")
+    instance.user_ids = [randomize()]
+    return instance
+
+
 def create_model_bulk_ban_create_request_v3_example() -> ModelBulkBanCreateRequestV3:
     instance = ModelBulkBanCreateRequestV3()
     instance.ban = randomize()
@@ -1564,8 +1577,8 @@ def create_model_invite_user_request_v3_example() -> ModelInviteUserRequestV3:
     instance = ModelInviteUserRequestV3()
     instance.email_addresses = [randomize()]
     instance.is_admin = randomize("bool")
-    instance.namespace = randomize("slug")
     instance.roles = [randomize()]
+    instance.namespace = randomize("slug")
     return instance
 
 
@@ -1824,6 +1837,7 @@ def create_model_public_user_information_v3_example() -> ModelPublicUserInformat
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
     instance.user_name = randomize("slug")
+    instance.user_platform_infos = [create_model_user_platform_info_example()]
     return instance
 
 
@@ -2579,9 +2593,20 @@ def create_model_user_permissions_response_v3_example() -> (
 
 def create_model_user_platform_info_example() -> ModelUserPlatformInfo:
     instance = ModelUserPlatformInfo()
-    instance.platform_display_name = randomize()
     instance.platform_id = randomize()
+    instance.platform_avatar_url = randomize("url")
+    instance.platform_display_name = randomize()
+    instance.platform_group = randomize()
     instance.platform_user_id = randomize()
+    return instance
+
+
+def create_model_user_platform_infos_example() -> ModelUserPlatformInfos:
+    instance = ModelUserPlatformInfos()
+    instance.platform_infos = [create_model_user_platform_info_example()]
+    instance.user_id = randomize("uid")
+    instance.avatar_url = randomize("url")
+    instance.display_name = randomize("slug")
     return instance
 
 
@@ -2663,7 +2688,9 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.platform_avatar_url = randomize("url")
     instance.platform_display_name = randomize()
     instance.platform_id = randomize()
+    instance.platform_infos = [create_model_user_platform_info_example()]
     instance.platform_user_id = randomize()
+    instance.test_account = randomize("bool")
     instance.user_name = randomize("slug")
     return instance
 
@@ -2733,6 +2760,23 @@ def create_model_user_with_platform_info_example() -> ModelUserWithPlatformInfo:
     instance.display_name = randomize("slug")
     instance.username = randomize("slug")
     instance.xuid = randomize()
+    return instance
+
+
+def create_model_users_platform_infos_request_v3_example() -> (
+    ModelUsersPlatformInfosRequestV3
+):
+    instance = ModelUsersPlatformInfosRequestV3()
+    instance.platform_id = randomize()
+    instance.user_ids = [randomize()]
+    return instance
+
+
+def create_model_users_platform_infos_response_example() -> (
+    ModelUsersPlatformInfosResponse
+):
+    instance = ModelUsersPlatformInfosResponse()
+    instance.data = [create_model_user_platform_infos_example()]
     return instance
 
 

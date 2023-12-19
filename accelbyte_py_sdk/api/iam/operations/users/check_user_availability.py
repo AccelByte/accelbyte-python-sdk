@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,6 +38,7 @@ class CheckUserAvailability(Operation):
     Check user's account availability.
     Available field :
     - displayName
+    - username
 
     If request include access token with user ID data, that user ID will be excluded from availability check.
     For example, in case user update his emailAddress, he can use his own emailAddress to update his account.

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,15 +37,7 @@ from ...models import RestapiErrorResponseBody
 class AdminVerifyMessageProfanityResponse(Operation):
     """verify a message directly from the UI or other services (adminVerifyMessageProfanityResponse)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]` with scope `social`
-
-    verify a message directly from the UI or other services
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFANITY [READ]
-
-    Required Scope(s):
-        - social
+    Verify a message directly from the UI or other services
 
     Properties:
         url: /lobby/v1/admin/profanity/namespaces/{namespace}/verify

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,72 +37,23 @@ class AdminDeletePlatformLinkV2(Operation):
     """Delete the link of user's account with platform (AdminDeletePlatformLinkV2)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]
-
-
-
-
-
-
-
-    Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]'.
-
-
-
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]_**
 
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * android
-
-
-      * ios
-
-
-      * device
-
-
-      * discord
-
-
-
-
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **android**
+    - **ios**
+    - **device**
+    - **discord**
 
     Delete link of user's account with platform. 'justice' platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is 'justice'.
-
     Delete link of justice platform will enable password token grant and password update.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
 
     Properties:
         url: /iam/v2/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link

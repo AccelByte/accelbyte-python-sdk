@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,40 +38,13 @@ class GetUserMapping(Operation):
     """Get user mapping (GetUserMapping)
 
     ## The endpoint is going to be deprecated
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]_**
 
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
-
-
-
-
-
-
-
-    This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]'
-
-
-
-
+    This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
-
-
-
-
     If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-
-
-
-
     If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}

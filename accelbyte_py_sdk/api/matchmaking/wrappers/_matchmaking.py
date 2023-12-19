@@ -91,17 +91,7 @@ def add_user_into_session_in_channel(
 ):
     """Add user into the session in a channel (AddUserIntoSessionInChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope: social
-
     Add user into the session in a channel.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}
@@ -161,17 +151,7 @@ async def add_user_into_session_in_channel_async(
 ):
     """Add user into the session in a channel (AddUserIntoSessionInChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope: social
-
     Add user into the session in a channel.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Create]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}
@@ -231,17 +211,7 @@ def bulk_get_sessions(
 ):
     """Bulk get sessions (BulkGetSessions)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Bulk get sessions.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/all/sessions/bulk
@@ -293,17 +263,7 @@ async def bulk_get_sessions_async(
 ):
     """Bulk get sessions (BulkGetSessions)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Bulk get sessions.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/all/sessions/bulk
@@ -357,10 +317,6 @@ def create_channel_handler(
 ):
     """Create a channel (CreateChannelHandler)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
-
-    Required Scope: social
-
     Creates a new matchmaking channel.
 
     Matchmaking channels is a list of pool name that is eligible for matchmaking processes.
@@ -375,12 +331,6 @@ def create_channel_handler(
     Matching Rule used to classify the player. Player that has matched criteria will be grouped together within an ally.
 
     Valid value for criteria is "distance"
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels
@@ -432,10 +382,6 @@ async def create_channel_handler_async(
 ):
     """Create a channel (CreateChannelHandler)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
-
-    Required Scope: social
-
     Creates a new matchmaking channel.
 
     Matchmaking channels is a list of pool name that is eligible for matchmaking processes.
@@ -450,12 +396,6 @@ async def create_channel_handler_async(
     Matching Rule used to classify the player. Player that has matched criteria will be grouped together within an ally.
 
     Valid value for criteria is "distance"
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels
@@ -509,20 +449,10 @@ def delete_channel_handler(
 ):
     """Delete a channel (DeleteChannelHandler)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope: social
-
     Deletes a matchmaking channel. Matchmaking channels is a list of
     pool name that is eligible for matchmaking processes. GameMode isolates each matchmaking pools.
 
     Trying to delete non-existent channel will result deletion success
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels/{channel}
@@ -570,20 +500,10 @@ async def delete_channel_handler_async(
 ):
     """Delete a channel (DeleteChannelHandler)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope: social
-
     Deletes a matchmaking channel. Matchmaking channels is a list of
     pool name that is eligible for matchmaking processes. GameMode isolates each matchmaking pools.
 
     Trying to delete non-existent channel will result deletion success
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels/{channel}
@@ -634,17 +554,7 @@ def delete_session_in_channel(
 ):
     """Delete session in a channel (DeleteSessionInChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope: social
-
     Delete a session in a channel.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}
@@ -700,17 +610,7 @@ async def delete_session_in_channel_async(
 ):
     """Delete session in a channel (DeleteSessionInChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope: social
-
     Delete a session in a channel.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}
@@ -769,17 +669,7 @@ def delete_user_from_session_in_channel(
 ):
     """Delete user from the session in a channel (DeleteUserFromSessionInChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope: social
-
     Delete a user from a session in the channel.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}/users/{userID}
@@ -841,17 +731,7 @@ async def delete_user_from_session_in_channel_async(
 ):
     """Delete user from the session in a channel (DeleteUserFromSessionInChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope: social
-
     Delete a user from a session in the channel.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions/{matchID}/users/{userID}
@@ -913,20 +793,10 @@ def dequeue_session_handler(
 ):
     """Dequeue joinable session (DequeueSessionHandler)
 
-    Required Permission: NAMESPACE:{namespace}:SESSION [UPDATE]
-
-    Required Scope: social
-
     Dequeues joinable session so that it will not be matched with player's match request tickets.
 
     This endpoint is intended to be called by game server to let matchmaker know that
     the game server does not want more players to its session, even though it is not full.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/sessions/dequeue
@@ -978,20 +848,10 @@ async def dequeue_session_handler_async(
 ):
     """Dequeue joinable session (DequeueSessionHandler)
 
-    Required Permission: NAMESPACE:{namespace}:SESSION [UPDATE]
-
-    Required Scope: social
-
     Dequeues joinable session so that it will not be matched with player's match request tickets.
 
     This endpoint is intended to be called by game server to let matchmaker know that
     the game server does not want more players to its session, even though it is not full.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/sessions/dequeue
@@ -1044,19 +904,9 @@ def export_channels(
 ):
     """Export channels (ExportChannels)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Export channels configuration to file.
 
     Action Code: 510114
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/export
@@ -1100,19 +950,9 @@ async def export_channels_async(
 ):
     """Export channels (ExportChannels)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Export channels configuration to file.
 
     Action Code: 510114
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/export
@@ -1160,17 +1000,7 @@ def get_all_channels_handler(
 ):
     """Get all channels (GetAllChannelsHandler)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
-
-    Required Scope: social
-
     Reads all available channels in a namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels
@@ -1226,17 +1056,7 @@ async def get_all_channels_handler_async(
 ):
     """Get all channels (GetAllChannelsHandler)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
-
-    Required Scope: social
-
     Reads all available channels in a namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels
@@ -1292,17 +1112,7 @@ def get_all_party_in_all_channel(
 ):
     """Get all party in all channels (GetAllPartyInAllChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Get all parties queueing in all channels.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/all/parties
@@ -1350,17 +1160,7 @@ async def get_all_party_in_all_channel_async(
 ):
     """Get all party in all channels (GetAllPartyInAllChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Get all parties queueing in all channels.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/all/parties
@@ -1411,17 +1211,7 @@ def get_all_party_in_channel(
 ):
     """Get all party in a channel (GetAllPartyInChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Get all parties queueing in a channel.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/parties
@@ -1473,17 +1263,7 @@ async def get_all_party_in_channel_async(
 ):
     """Get all party in a channel (GetAllPartyInChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Get all parties queueing in a channel.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/parties
@@ -1537,19 +1317,9 @@ def get_all_sessions_in_channel(
 ):
     """Get all channel sessions (GetAllSessionsInChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Get all sessions in a channel.
 
     if party_id value empty/null, field will not show in response body.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions
@@ -1601,19 +1371,9 @@ async def get_all_sessions_in_channel_async(
 ):
     """Get all channel sessions (GetAllSessionsInChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Get all sessions in a channel.
 
     if party_id value empty/null, field will not show in response body.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions
@@ -1667,19 +1427,9 @@ def get_match_pool_metric(
 ):
     """Get metrics for a specific channel (GetMatchPoolMetric)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]
-
-    Required Scope: social
-
     Get metric for a specific match pool
 
     Result: queue_time in seconds
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels/{channelName}/metrics
@@ -1729,19 +1479,9 @@ async def get_match_pool_metric_async(
 ):
     """Get metrics for a specific channel (GetMatchPoolMetric)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]
-
-    Required Scope: social
-
     Get metric for a specific match pool
 
     Result: queue_time in seconds
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels/{channelName}/metrics
@@ -1816,19 +1556,9 @@ def get_session_history_detailed(
 
 
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Get session history detailed.
 
     if party_id value empty/null, field will not show in response body.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed
@@ -1903,19 +1633,9 @@ async def get_session_history_detailed_async(
 
 
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Get session history detailed.
 
     if party_id value empty/null, field will not show in response body.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed
@@ -1969,19 +1689,9 @@ def get_single_matchmaking_channel(
 ):
     """Get single channel (GetSingleMatchmakingChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
-
-    Required Scope: social
-
     Reads single channel based on namespace and channel name
 
     Action Code: 510112
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}
@@ -2033,19 +1743,9 @@ async def get_single_matchmaking_channel_async(
 ):
     """Get single channel (GetSingleMatchmakingChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
-
-    Required Scope: social
-
     Reads single channel based on namespace and channel name
 
     Action Code: 510112
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}
@@ -2099,18 +1799,8 @@ def get_stat_data(
 ):
     """Get stats (GetStatData)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Get a channel's stat data (mean, stddev, min, max) according to the stats collected from statistics service.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/stats
@@ -2162,18 +1852,8 @@ async def get_stat_data_async(
 ):
     """Get stats (GetStatData)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Get a channel's stat data (mean, stddev, min, max) according to the stats collected from statistics service.
     '
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/stats
@@ -2228,22 +1908,12 @@ def import_channels(
 ):
     """Import channels (ImportChannels)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope: social
-
     Import channels configuration from file. It will merge with existing channels.
     Available import strategy:
     - leaveOut: if channel with same key exist, the existing will be used and imported one will be ignored (default)
     - replace: if channel with same key exist, the imported channel will be used and existing one will be removed
 
     Action Code: 510113
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/import
@@ -2297,22 +1967,12 @@ async def import_channels_async(
 ):
     """Import channels (ImportChannels)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope: social
-
     Import channels configuration from file. It will merge with existing channels.
     Available import strategy:
     - leaveOut: if channel with same key exist, the existing will be used and imported one will be ignored (default)
     - replace: if channel with same key exist, the imported channel will be used and existing one will be removed
 
     Action Code: 510113
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/import
@@ -2571,10 +2231,6 @@ def query_session_handler(
 ):
     """Query joinable session status (QuerySessionHandler)
 
-    Required Permission: NAMESPACE:{namespace}:SESSION [READ]
-
-    Required Scope: social
-
     Queries the specified session's status. Game servers are expected to
     call this periodically as long as it has a session in queue to see
     if there are new players being matched to the session.
@@ -2582,12 +2238,6 @@ def query_session_handler(
     Possible session statuses are "sessionInQueue", "sessionFull", and "sessionTimeout".
 
     if party_id value empty/null, field will not show in response body.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/sessions/{matchID}/status
@@ -2639,10 +2289,6 @@ async def query_session_handler_async(
 ):
     """Query joinable session status (QuerySessionHandler)
 
-    Required Permission: NAMESPACE:{namespace}:SESSION [READ]
-
-    Required Scope: social
-
     Queries the specified session's status. Game servers are expected to
     call this periodically as long as it has a session in queue to see
     if there are new players being matched to the session.
@@ -2650,12 +2296,6 @@ async def query_session_handler_async(
     Possible session statuses are "sessionInQueue", "sessionFull", and "sessionTimeout".
 
     if party_id value empty/null, field will not show in response body.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/sessions/{matchID}/status
@@ -2709,10 +2349,6 @@ def queue_session_handler(
 ):
     """Queue joinable session (QueueSessionHandler)
 
-    Required Permission: NAMESPACE:{namespace}:SESSION [CREATE]
-
-    Required Scope: social
-
     Queues joinable session so that it will be matched with player's match request tickets.
     The session queued must be in a channel/game mode that is set to have joinable flag.
     The session will be in queue until it is full or expired.
@@ -2724,12 +2360,6 @@ def queue_session_handler(
     If a session is already queued, and game server wants to modify the data or
     renew the queue timeout (e.g. some player left and more empty slot opened up),
     simply call this endpoint with the updated session data.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/sessions
@@ -2779,10 +2409,6 @@ async def queue_session_handler_async(
 ):
     """Queue joinable session (QueueSessionHandler)
 
-    Required Permission: NAMESPACE:{namespace}:SESSION [CREATE]
-
-    Required Scope: social
-
     Queues joinable session so that it will be matched with player's match request tickets.
     The session queued must be in a channel/game mode that is set to have joinable flag.
     The session will be in queue until it is full or expired.
@@ -2794,12 +2420,6 @@ async def queue_session_handler_async(
     If a session is already queued, and game server wants to modify the data or
     renew the queue timeout (e.g. some player left and more empty slot opened up),
     simply call this endpoint with the updated session data.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/sessions
@@ -2851,21 +2471,11 @@ def rebalance(
 ):
     """Rebalance Matchmaking based on MMR (Rebalance)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]
-
-    Required Scope: social
-
     Do rebalance the teams based on MMR from given matchID,
     consider attribute name "mmr" (case-insensitive),
     or any first attribute with criteria "distance"
 
     Will return rebalanced mm result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/rebalance
@@ -2917,21 +2527,11 @@ async def rebalance_async(
 ):
     """Rebalance Matchmaking based on MMR (Rebalance)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]
-
-    Required Scope: social
-
     Do rebalance the teams based on MMR from given matchID,
     consider attribute name "mmr" (case-insensitive),
     or any first attribute with criteria "distance"
 
     Will return rebalanced mm result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/rebalance
@@ -3014,17 +2614,7 @@ def search_sessions(
 
 
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Search sessions.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/sessions/history/search
@@ -3123,17 +2713,7 @@ async def search_sessions_async(
 
 
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Search sessions.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/sessions/history/search
@@ -3231,18 +2811,8 @@ def search_sessions_v2(
 
 
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace & other filter (partyID, userID, matchID).
     Query with filter namespace only will not group whole session data while query with filter namespace & other filter will include session data.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v2/admin/namespaces/{namespace}/sessions/history/search
@@ -3338,18 +2908,8 @@ async def search_sessions_v2_async(
 
 
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace & other filter (partyID, userID, matchID).
     Query with filter namespace only will not group whole session data while query with filter namespace & other filter will include session data.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v2/admin/namespaces/{namespace}/sessions/history/search
@@ -3421,19 +2981,9 @@ def store_match_results(
 ):
     """Store match result (StoreMatchResults)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHRESULT [CREATE]
-
-    Required Scope: social
-
     Process match result into final attribute value and stores it to player attribute
 
     Will return final attribute value
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHRESULT [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/matchresult
@@ -3483,19 +3033,9 @@ async def store_match_results_async(
 ):
     """Store match result (StoreMatchResults)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHRESULT [CREATE]
-
-    Required Scope: social
-
     Process match result into final attribute value and stores it to player attribute
 
     Will return final attribute value
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHRESULT [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/matchresult
@@ -3548,19 +3088,9 @@ def update_matchmaking_channel(
 ):
     """Update a channel (UpdateMatchmakingChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope: social
-
     Update channel based on namespace and channel name
 
     Action Code: 510111
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}
@@ -3616,19 +3146,9 @@ async def update_matchmaking_channel_async(
 ):
     """Update a channel (UpdateMatchmakingChannel)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope: social
-
     Update channel based on namespace and channel name
 
     Action Code: 510111
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Update]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}

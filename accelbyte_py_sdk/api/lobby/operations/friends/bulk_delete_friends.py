@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,15 +37,7 @@ from ...models import RestapiErrorResponseV1
 class BulkDeleteFriends(Operation):
     """Delete friends, and incoming/outgoing friend requests (bulkDeleteFriends)
 
-    Required permission : `NAMESPACE:{namespace}:USER:{userId}:FRIENDS [DELETE]` with scope `social`
-
-    friends request in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FRIENDS [DELETE]
-
-    Required Scope(s):
-        - social
+    Friends request in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/users/{userId}/delete/bulk

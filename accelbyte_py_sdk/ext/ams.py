@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.4.0)
+# Fleet Commander (1.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,13 +32,16 @@ from ..api.ams.models import ApiAccountLinkRequest
 from ..api.ams.models import ApiAccountLinkResponse
 from ..api.ams.models import ApiAccountLinkTokenResponse
 from ..api.ams.models import ApiAccountResponse
-from ..api.ams.models import ApiArtifactSamplingRuleResponse
-from ..api.ams.models import ApiArtifactTypeSamplingRulesResponse
+from ..api.ams.models import ApiArtifactResponse
+from ..api.ams.models import ApiArtifactSamplingRule
+from ..api.ams.models import ApiArtifactTypeSamplingRules
+from ..api.ams.models import ApiArtifactURLResponse
+from ..api.ams.models import ApiArtifactUsageResponse
 from ..api.ams.models import ApiAvailableInstanceTypesResponse
 from ..api.ams.models import ApiDSHistoryEvent
 from ..api.ams.models import ApiDSHistoryList
 from ..api.ams.models import ApiDSHostConfiguration
-from ..api.ams.models import ApiFleetArtifactsSampleRulesResponse
+from ..api.ams.models import ApiFleetArtifactsSampleRules
 from ..api.ams.models import ApiFleetClaimByKeysReq
 from ..api.ams.models import ApiFleetClaimReq
 from ..api.ams.models import ApiFleetClaimResponse
@@ -131,21 +134,47 @@ def create_api_ams_regions_response_example() -> ApiAMSRegionsResponse:
     return instance
 
 
-def create_api_artifact_sampling_rule_response_example() -> (
-    ApiArtifactSamplingRuleResponse
-):
-    instance = ApiArtifactSamplingRuleResponse()
+def create_api_artifact_response_example() -> ApiArtifactResponse:
+    instance = ApiArtifactResponse()
+    instance.artifact_type = randomize()
+    instance.created_on = create_api_time_example()
+    instance.ds_id = randomize()
+    instance.expires_on = create_api_time_example()
+    instance.fleet_id = randomize()
+    instance.id_ = randomize()
+    instance.image_id = randomize()
+    instance.namespace = randomize("slug")
+    instance.size_bytes = randomize("int", min_val=1, max_val=1000)
+    instance.status = randomize()
+    instance.storage_path = randomize()
+    return instance
+
+
+def create_api_artifact_sampling_rule_example() -> ApiArtifactSamplingRule:
+    instance = ApiArtifactSamplingRule()
     instance.collect = randomize("bool")
     instance.percentage = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
-def create_api_artifact_type_sampling_rules_response_example() -> (
-    ApiArtifactTypeSamplingRulesResponse
-):
-    instance = ApiArtifactTypeSamplingRulesResponse()
-    instance.crashed = create_api_artifact_sampling_rule_response_example()
-    instance.success = create_api_artifact_sampling_rule_response_example()
+def create_api_artifact_type_sampling_rules_example() -> ApiArtifactTypeSamplingRules:
+    instance = ApiArtifactTypeSamplingRules()
+    instance.crashed = create_api_artifact_sampling_rule_example()
+    instance.success = create_api_artifact_sampling_rule_example()
+    return instance
+
+
+def create_api_artifact_url_response_example() -> ApiArtifactURLResponse:
+    instance = ApiArtifactURLResponse()
+    instance.url = randomize("url")
+    return instance
+
+
+def create_api_artifact_usage_response_example() -> ApiArtifactUsageResponse:
+    instance = ApiArtifactUsageResponse()
+    instance.quota_bytes = randomize("int", min_val=1, max_val=1000)
+    instance.remaining_bytes = randomize("int", min_val=1, max_val=1000)
+    instance.used_bytes = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -187,12 +216,10 @@ def create_api_ds_host_configuration_example() -> ApiDSHostConfiguration:
     return instance
 
 
-def create_api_fleet_artifacts_sample_rules_response_example() -> (
-    ApiFleetArtifactsSampleRulesResponse
-):
-    instance = ApiFleetArtifactsSampleRulesResponse()
-    instance.coredumps = create_api_artifact_type_sampling_rules_response_example()
-    instance.logs = create_api_artifact_type_sampling_rules_response_example()
+def create_api_fleet_artifacts_sample_rules_example() -> ApiFleetArtifactsSampleRules:
+    instance = ApiFleetArtifactsSampleRules()
+    instance.coredumps = create_api_artifact_type_sampling_rules_example()
+    instance.logs = create_api_artifact_type_sampling_rules_example()
     return instance
 
 
@@ -261,6 +288,7 @@ def create_api_fleet_parameters_example() -> ApiFleetParameters:
     instance.image_deployment_profile = create_api_image_deployment_profile_example()
     instance.name = randomize()
     instance.regions = [create_api_region_config_example()]
+    instance.sampling_rules = create_api_fleet_artifacts_sample_rules_example()
     instance.claim_keys = [randomize()]
     return instance
 
@@ -467,6 +495,7 @@ def create_api_update_server_request_example() -> ApiUpdateServerRequest:
 def create_response_error_response_example() -> ResponseErrorResponse:
     instance = ResponseErrorResponse()
     instance.error_message = randomize()
+    instance.error_type = randomize()
     instance.trace_id = randomize()
     return instance
 

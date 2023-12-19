@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -67,13 +67,15 @@ class CreateContentDirect(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateContentResponse (Created)
+        201: Created - ModelsCreateContentResponse (Content uploaded)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770100: Malformed request/Invalid request body/channel do not exist)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ResponseError (770104: User has been banned to create content)
+
+        500: Internal Server Error - ResponseError (770102: Unable to check user ban status/Unable to save ugc content: unable to get channel | 770103: Unable to save ugc content: shareCode exceed the limit)
     """
 
     # region fields
@@ -208,13 +210,15 @@ class CreateContentDirect(Operation):
     ]:
         """Parse the given response.
 
-        201: Created - ModelsCreateContentResponse (Created)
+        201: Created - ModelsCreateContentResponse (Content uploaded)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (770100: Malformed request/Invalid request body/channel do not exist)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ResponseError (770104: User has been banned to create content)
+
+        500: Internal Server Error - ResponseError (770102: Unable to check user ban status/Unable to save ugc content: unable to get channel | 770103: Unable to save ugc content: shareCode exceed the limit)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -234,6 +238,8 @@ class CreateContentDirect(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 403:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

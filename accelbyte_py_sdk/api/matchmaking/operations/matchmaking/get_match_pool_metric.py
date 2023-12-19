@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,19 +36,9 @@ from ...models import ResponseError
 class GetMatchPoolMetric(Operation):
     """Get metrics for a specific channel (GetMatchPoolMetric)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]
-
-    Required Scope: social
-
     Get metric for a specific match pool
 
     Result: queue_time in seconds
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/namespaces/{namespace}/channels/{channelName}/metrics

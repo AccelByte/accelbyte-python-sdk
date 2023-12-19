@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.41.0)
+# AGS Platform Service (4.42.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.platform.models import ItemPagingSlicedResult
 @click.command()
 @click.argument("keyword", type=str)
 @click.argument("language", type=str)
+@click.option("--auto_calc_estimated_price", "auto_calc_estimated_price", type=bool)
 @click.option("--item_type", "item_type", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
@@ -52,6 +53,7 @@ from accelbyte_py_sdk.api.platform.models import ItemPagingSlicedResult
 def public_search_items(
     keyword: str,
     language: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     item_type: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -73,6 +75,7 @@ def public_search_items(
     result, error = public_search_items_internal(
         keyword=keyword,
         language=language,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         item_type=item_type,
         limit=limit,
         offset=offset,

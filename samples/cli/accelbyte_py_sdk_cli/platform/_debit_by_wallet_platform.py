@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.41.0)
+# AGS Platform Service (4.42.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,17 +40,17 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()
+@click.argument("request", type=str)
 @click.argument("currency_code", type=str)
 @click.argument("user_id", type=str)
-@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def debit_by_wallet_platform(
+    request: str,
     currency_code: str,
     user_id: str,
-    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -64,16 +64,16 @@ def debit_by_wallet_platform(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if body is not None:
+    if request is not None:
         try:
-            body_json = json.loads(body)
-            body = DebitByWalletPlatformRequest.create_from_dict(body_json)
+            request_json = json.loads(request)
+            request = DebitByWalletPlatformRequest.create_from_dict(request_json)
         except ValueError as e:
-            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+            raise Exception(f"Invalid JSON for 'request'. {str(e)}") from e
     result, error = debit_by_wallet_platform_internal(
+        request=request,
         currency_code=currency_code,
         user_id=user_id,
-        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

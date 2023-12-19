@@ -72,15 +72,15 @@ def admin_get_configs(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetConfigsResponse (OK)
+        200: OK - ModelsPaginatedGetConfigsResponse (Get configs)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (774204: invalid paging parameter)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (774205: Unable to get configs)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -129,15 +129,15 @@ async def admin_get_configs_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetConfigsResponse (OK)
+        200: OK - ModelsPaginatedGetConfigsResponse (Get configs)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (774204: invalid paging parameter)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (774205: Unable to get configs)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -191,15 +191,15 @@ def admin_update_config(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - (Created)
+        201: Created - (Config updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (774201: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (774202: Unable to save config)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -251,15 +251,15 @@ async def admin_update_config_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - (Created)
+        201: Created - (Config updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (774201: Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        403: Forbidden - ResponseError (Forbidden)
+        403: Forbidden - ResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (774202: Unable to save config)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

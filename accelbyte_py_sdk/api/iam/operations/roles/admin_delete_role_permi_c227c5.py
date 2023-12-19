@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,11 +34,6 @@ from ...models import RestErrorResponse
 
 class AdminDeleteRolePermissionsV3(Operation):
     """Delete Role (AdminDeleteRolePermissionsV3)
-
-    Required permission 'ADMIN:ROLE [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions

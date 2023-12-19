@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,8 +37,6 @@ from ...models import RestErrorResponse
 class AdminUpdateRoleV4(Operation):
     """Update Role (AdminUpdateRoleV4)
 
-    Required permission ADMIN:ROLE [UPDATE]
-
     Update role request body:
     - roleName: specify role name, alphanumeric, cannot have special character (required)
     - adminRole: specify if role is for admin user (default false)
@@ -46,9 +44,6 @@ class AdminUpdateRoleV4(Operation):
     - deletable: specify if role can be deleted (optional)
 
     action code: 10402
-
-    Required Permission(s):
-        - ADMIN:ROLE [UPDATE]
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}

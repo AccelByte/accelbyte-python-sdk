@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,33 +37,12 @@ class ListCrossNamespaceAccountLink(Operation):
     """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
-
-
-
-
-
-
-
-    Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
-
-
-
-
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
     Access token from original namespace is needed as authorization header. Access token from designated account needed as form parameter to verify the ownership of that account.
     When platformID (device platfom ID) is specified, platform login method for that specific platform ID is removed.
     This means to protect account from second hand device usage.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/crosslink

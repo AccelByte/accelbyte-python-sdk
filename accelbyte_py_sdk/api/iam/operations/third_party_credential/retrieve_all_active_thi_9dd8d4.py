@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,10 +36,7 @@ from ...models import RestErrorResponse
 class RetrieveAllActiveThirdPartyLoginPlatformCredentialV3(Operation):
     """Get All Active Third Party Platform Active Credential (RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:CLIENT [READ]
+    This is the API to Get All Active 3rd Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients/active

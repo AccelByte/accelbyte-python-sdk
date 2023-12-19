@@ -73,15 +73,15 @@ def admin_create_type(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateTypeResponse (Created)
+        201: Created - ModelsCreateTypeResponse (types created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771701: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (771703: Conflicted resource indentifier)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771702: Unable to save ugc type)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -127,15 +127,15 @@ async def admin_create_type_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsCreateTypeResponse (Created)
+        201: Created - ModelsCreateTypeResponse (types created)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771701: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (771703: Conflicted resource indentifier)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771702: Unable to save ugc type)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -182,13 +182,13 @@ def admin_delete_type(
         type_id: (typeId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Types deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772005: Type not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772004: Unable delete type)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -233,13 +233,13 @@ async def admin_delete_type_async(
         type_id: (typeId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Types deleted)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (772005: Type not found)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (772004: Unable delete type)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -289,13 +289,13 @@ def admin_get_type(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetTypeResponse (OK)
+        200: OK - ModelsPaginatedGetTypeResponse (Get types)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771801: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771802: Unable get types)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -344,13 +344,13 @@ async def admin_get_type_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsPaginatedGetTypeResponse (OK)
+        200: OK - ModelsPaginatedGetTypeResponse (Get types)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        400: Bad Request - ResponseError (771801: invalid paging parameter)
 
-        404: Not Found - ResponseError (Not Found)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771802: Unable get types)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -402,17 +402,17 @@ def admin_update_type(
         type_id: (typeId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateTypeResponse (OK)
+        200: OK - ModelsCreateTypeResponse (Types updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771901: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (771903: Type not found)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (771904: Proposed Type already exist)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771902: Unable update types)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -462,17 +462,17 @@ async def admin_update_type_async(
         type_id: (typeId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreateTypeResponse (OK)
+        200: OK - ModelsCreateTypeResponse (Types updated)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (771901: Malformed request/Invalid request body)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (771903: Type not found)
 
-        409: Conflict - ResponseError (Conflict)
+        409: Conflict - ResponseError (771904: Proposed Type already exist)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (771902: Unable update types)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

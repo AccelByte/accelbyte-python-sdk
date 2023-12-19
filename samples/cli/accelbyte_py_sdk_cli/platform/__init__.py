@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.41.0)
+# justice-platform-service (4.42.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._get_fulfillment_script import get_fulfillment_script
@@ -202,6 +202,7 @@ from ._query_changes import query_changes
 from ._publish_all import publish_all
 from ._publish_selected import publish_selected
 from ._select_all_records import select_all_records
+from ._select_all_records_by_criteria import select_all_records_by_criteria
 from ._get_statistic import get_statistic
 from ._unselect_all_records import unselect_all_records
 from ._select_record import select_record
@@ -265,10 +266,15 @@ from ._disable_user_entitlement import disable_user_entitlement
 from ._enable_user_entitlement import enable_user_entitlement
 from ._get_user_entitlement_histories import get_user_entitlement_histories
 from ._revoke_user_entitlement import revoke_user_entitlement
+from ._revoke_user_entitlement_by_use_count import revoke_user_entitlement_by_use_count
+from ._pre_check_revoke_user_entitlement_by_use_count import (
+    pre_check_revoke_user_entitlement_by_use_count,
+)
 from ._revoke_use_count import revoke_use_count
 from ._sell_user_entitlement import sell_user_entitlement
 from ._fulfill_item import fulfill_item
 from ._redeem_code import redeem_code
+from ._pre_check_fulfill_item import pre_check_fulfill_item
 from ._fulfill_rewards import fulfill_rewards
 from ._query_user_iap_orders import query_user_iap_orders
 from ._query_all_user_iap_orders import query_all_user_iap_orders
@@ -309,6 +315,7 @@ from ._acquire_user_ticket import acquire_user_ticket
 from ._query_user_currency_wallets import query_user_currency_wallets
 from ._debit_user_wallet_by_currency_code import debit_user_wallet_by_currency_code
 from ._list_user_currency_transactions import list_user_currency_transactions
+from ._check_balance import check_balance
 from ._check_wallet import check_wallet
 from ._credit_user_wallet import credit_user_wallet
 from ._debit_by_wallet_platform import debit_by_wallet_platform
@@ -693,6 +700,7 @@ commands = [
     publish_all,
     publish_selected,
     select_all_records,
+    select_all_records_by_criteria,
     get_statistic,
     unselect_all_records,
     select_record,
@@ -744,10 +752,13 @@ commands = [
     enable_user_entitlement,
     get_user_entitlement_histories,
     revoke_user_entitlement,
+    revoke_user_entitlement_by_use_count,
+    pre_check_revoke_user_entitlement_by_use_count,
     revoke_use_count,
     sell_user_entitlement,
     fulfill_item,
     redeem_code,
+    pre_check_fulfill_item,
     fulfill_rewards,
     query_user_iap_orders,
     query_all_user_iap_orders,
@@ -782,6 +793,7 @@ commands = [
     query_user_currency_wallets,
     debit_user_wallet_by_currency_code,
     list_user_currency_transactions,
+    check_balance,
     check_wallet,
     credit_user_wallet,
     debit_by_wallet_platform,

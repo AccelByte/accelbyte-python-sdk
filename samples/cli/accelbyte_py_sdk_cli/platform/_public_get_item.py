@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.41.0)
+# AGS Platform Service (4.42.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,6 +37,7 @@ from accelbyte_py_sdk.api.platform.models import PopulatedItemInfo
 
 @click.command()
 @click.argument("item_id", type=str)
+@click.option("--auto_calc_estimated_price", "auto_calc_estimated_price", type=bool)
 @click.option("--language", "language", type=str)
 @click.option("--populate_bundle", "populate_bundle", type=bool)
 @click.option("--region", "region", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.platform.models import PopulatedItemInfo
 @click.option("--doc", type=bool)
 def public_get_item(
     item_id: str,
+    auto_calc_estimated_price: Optional[bool] = None,
     language: Optional[str] = None,
     populate_bundle: Optional[bool] = None,
     region: Optional[str] = None,
@@ -66,6 +68,7 @@ def public_get_item(
         login_as_internal(login_as)
     result, error = public_get_item_internal(
         item_id=item_id,
+        auto_calc_estimated_price=auto_calc_estimated_price,
         language=language,
         populate_bundle=populate_bundle,
         region=region,

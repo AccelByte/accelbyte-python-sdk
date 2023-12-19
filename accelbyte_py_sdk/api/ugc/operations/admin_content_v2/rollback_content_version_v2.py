@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.18.0)
+# AccelByte Gaming Services Ugc Service (2.19.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -62,15 +62,15 @@ class RollbackContentVersionV2(Operation):
         version_id: (versionId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsContentDownloadResponse (OK)
+        200: OK - ModelsContentDownloadResponse (Rollback content's payload version)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (774101: ugc content not found | 774102: version not found)
 
-        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+        422: Unprocessable Entity - ResponseError (774103: unable to get ugc content/content cannot be restored using the current content version)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (774103: unable to get ugc content/content cannot be restored using the current content version)
     """
 
     # region fields
@@ -192,15 +192,15 @@ class RollbackContentVersionV2(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsContentDownloadResponse (OK)
+        200: OK - ModelsContentDownloadResponse (Rollback content's payload version)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - ResponseError (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        404: Not Found - ResponseError (774101: ugc content not found | 774102: version not found)
 
-        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+        422: Unprocessable Entity - ResponseError (774103: unable to get ugc content/content cannot be restored using the current content version)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - ResponseError (774103: unable to get ugc content/content cannot be restored using the current content version)
 
         ---: HttpResponse (Undocumented Response)
 

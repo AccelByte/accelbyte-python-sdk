@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Lobby Server (3.32.3)
+# AccelByte Gaming Services Lobby Server (3.32.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -240,7 +240,7 @@ def create_model_get_all_notification_topics_response_example() -> (
 def create_model_get_friends_response_example() -> ModelGetFriendsResponse:
     instance = ModelGetFriendsResponse()
     instance.friend_i_ds = [randomize()]
-    instance.friends_since_times = [randomize()]
+    instance.friends_since_times = [randomize("date")]
     instance.paging = create_model_pagination_example()
     instance.friends = [create_model_friend_with_platform_example()]
     return instance

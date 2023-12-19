@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,32 +37,11 @@ from ...models import RestErrorResponse
 class PublicCreateUserV3(Operation):
     """Create User (PublicCreateUserV3)
 
-
-
-
     Available Authentication Types:
-
-
-
-
-
-
-      1. EMAILPASSWD : an authentication type used for new user registration through email.
-
-
-
-
+    1. **EMAILPASSWD**: an authentication type used for new user registration through email.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-
-
-
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-
-
-
     This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
 
     Properties:

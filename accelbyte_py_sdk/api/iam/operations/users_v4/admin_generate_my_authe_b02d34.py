@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,11 +38,6 @@ class AdminGenerateMyAuthenticatorKeyV4(Operation):
 
     This endpoint is used to generate a secret key for 3rd-party authenticator app.
     A QR code URI is also returned so that frontend can generate QR code image.
-
-
-
-
-    This endpoint Requires valid user access token
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/authenticator/key

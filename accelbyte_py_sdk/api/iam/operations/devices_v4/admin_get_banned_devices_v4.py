@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,17 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetBannedDevicesV4(Operation):
     """Admin get banned devices (AdminGetBannedDevicesV4)
 
-    This is the endpoint for an admin to get banned devices.
-
-
-
-    Required permission
-
-
-        'ADMIN:NAMESPACE:{namespace}:DEVICE [READ]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DEVICE [READ]
+    This is the endpoint for an admin to get banned devices
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/devices/banned

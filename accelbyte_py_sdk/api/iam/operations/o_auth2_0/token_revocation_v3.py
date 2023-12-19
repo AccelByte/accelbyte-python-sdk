@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,13 +36,7 @@ class TokenRevocationV3(Operation):
     """OAuth2 token revocation API (TokenRevocationV3)
 
     This endpoint revokes a token.
-
-
-
-
     This endpoint requires authorized requests header with Basic Authentication from client that establish the token.
-
-
     action code: 10706
 
     Properties:

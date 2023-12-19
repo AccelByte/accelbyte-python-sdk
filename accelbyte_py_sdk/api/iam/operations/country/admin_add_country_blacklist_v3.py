@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,12 +36,7 @@ from ...models import RestErrorResponse
 class AdminAddCountryBlacklistV3(Operation):
     """Update Country Blacklist (AdminAddCountryBlacklistV3)
 
-    Admin update country blacklist:
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
+    Admin update country blacklist
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist

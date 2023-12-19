@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,24 +37,8 @@ class EnableUser(Operation):
     """Enable a user (EnableUser)
 
     ## The endpoint is going to be deprecated
-
-
-    Endpoint migration guide
-
-
-
-
-      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
-
-
-
-
-
-
-    Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]
+    ### Endpoint migration guide
+    - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/enable

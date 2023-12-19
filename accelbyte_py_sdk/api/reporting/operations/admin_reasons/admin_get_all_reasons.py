@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,14 +37,6 @@ class AdminGetAllReasons(Operation):
     """Get all reasons (adminGetAllReasons)
 
     This endpoint get all reasons without pagination.
-
-
-
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:REASON [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REASON [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reasons/all

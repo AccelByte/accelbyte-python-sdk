@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,14 +37,6 @@ class DeleteThirdPartyLoginPlatformDomainV3(Operation):
     """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
 
     This is the API to unregister 3rd Platform domain.
-
-
-
-
-    It needs ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE] resource.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLIENTDOMAIN [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain

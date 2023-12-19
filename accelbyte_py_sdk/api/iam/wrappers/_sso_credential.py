@@ -50,22 +50,14 @@ def add_sso_login_platform_credential(
 ):
     """Add SSO Platform Credential (AddSSOLoginPlatformCredential)
 
-    This is the API to Add SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE] resource.
-
+    This is the API to Add SSO Platform Credential.
     ## Supported platforms:
-
-
-
-      * discourse
+    - **discourse**
     the ssoUrl of the discourse is the discourse forum url. example: https://forum.example.com
-
-      * azure with SAML
-     appId is an application identifier in IdP, in azure it's called EntityID
-    acsUrl is an endpoint on the service provider where the identity provider will redirect to with its authentication response. example: /iam/v3/sso/saml/azuresaml/authenticate
-    federationMetadataUrl is an endpoint on the Identity Provider(IdP) to get IdP federation metadata for service provider to build trust relationship
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE]
+    - **azure with SAML**
+    **appId** is an application identifier in IdP, in azure it's called EntityID
+    **acsUrl** is an endpoint on the service provider where the identity provider will redirect to with its authentication response. example: /iam/v3/sso/saml/azuresaml/authenticate
+    **federationMetadataUrl** is an endpoint on the Identity Provider(IdP) to get IdP federation metadata for service provider to build trust relationship
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
@@ -119,22 +111,14 @@ async def add_sso_login_platform_credential_async(
 ):
     """Add SSO Platform Credential (AddSSOLoginPlatformCredential)
 
-    This is the API to Add SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE] resource.
-
+    This is the API to Add SSO Platform Credential.
     ## Supported platforms:
-
-
-
-      * discourse
+    - **discourse**
     the ssoUrl of the discourse is the discourse forum url. example: https://forum.example.com
-
-      * azure with SAML
-     appId is an application identifier in IdP, in azure it's called EntityID
-    acsUrl is an endpoint on the service provider where the identity provider will redirect to with its authentication response. example: /iam/v3/sso/saml/azuresaml/authenticate
-    federationMetadataUrl is an endpoint on the Identity Provider(IdP) to get IdP federation metadata for service provider to build trust relationship
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [CREATE]
+    - **azure with SAML**
+    **appId** is an application identifier in IdP, in azure it's called EntityID
+    **acsUrl** is an endpoint on the service provider where the identity provider will redirect to with its authentication response. example: /iam/v3/sso/saml/azuresaml/authenticate
+    **federationMetadataUrl** is an endpoint on the Identity Provider(IdP) to get IdP federation metadata for service provider to build trust relationship
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
@@ -189,10 +173,7 @@ def delete_sso_login_platform_credential_v3(
 ):
     """Delete SSO Platform Credential (DeleteSSOLoginPlatformCredentialV3)
 
-    This is the API to Delete SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE]
+    This is the API to Delete SSO Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
@@ -244,10 +225,7 @@ async def delete_sso_login_platform_credential_v3_async(
 ):
     """Delete SSO Platform Credential (DeleteSSOLoginPlatformCredentialV3)
 
-    This is the API to Delete SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [DELETE]
+    This is the API to Delete SSO Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
@@ -302,10 +280,7 @@ def retrieve_all_sso_login_platform_credential_v3(
 ):
     """Get All SSO Platform Credential (RetrieveAllSSOLoginPlatformCredentialV3)
 
-    This is the API to Get All Active SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ]
+    This is the API to Get All Active SSO Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/sso
@@ -359,10 +334,7 @@ async def retrieve_all_sso_login_platform_credential_v3_async(
 ):
     """Get All SSO Platform Credential (RetrieveAllSSOLoginPlatformCredentialV3)
 
-    This is the API to Get All Active SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:*:SSO [READ]
+    This is the API to Get All Active SSO Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/sso
@@ -417,10 +389,7 @@ def retrieve_sso_login_platform_credential(
 ):
     """Retrieve SSO Platform Credential (RetrieveSSOLoginPlatformCredential)
 
-    This is the API to Get SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [READ]
+    This is the API to Get SSO Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
@@ -472,10 +441,7 @@ async def retrieve_sso_login_platform_credential_async(
 ):
     """Retrieve SSO Platform Credential (RetrieveSSOLoginPlatformCredential)
 
-    This is the API to Get SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [READ] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [READ]
+    This is the API to Get SSO Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
@@ -530,10 +496,7 @@ def update_sso_platform_credential(
 ):
     """Update SSO Platform Credential (UpdateSSOPlatformCredential)
 
-    This is the API to Delete SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE]
+    This is the API to Delete SSO Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso
@@ -589,10 +552,7 @@ async def update_sso_platform_credential_async(
 ):
     """Update SSO Platform Credential (UpdateSSOPlatformCredential)
 
-    This is the API to Delete SSO Platform Credential. It needs ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE] resource
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:SSO [UPDATE]
+    This is the API to Delete SSO Platform Credential.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso

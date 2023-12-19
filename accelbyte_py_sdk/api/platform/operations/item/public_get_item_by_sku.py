@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.41.0)
+# AccelByte Gaming Services Platform Service (4.42.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -59,6 +59,8 @@ class PublicGetItemBySku(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        auto_calc_estimated_price: (autoCalcEstimatedPrice) OPTIONAL bool in query
+
         language: (language) OPTIONAL str in query
 
         region: (region) OPTIONAL str in query
@@ -83,6 +85,7 @@ class PublicGetItemBySku(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    auto_calc_estimated_price: bool  # OPTIONAL in [query]
     language: str  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
     store_id: str  # OPTIONAL in [query]
@@ -138,6 +141,8 @@ class PublicGetItemBySku(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "auto_calc_estimated_price"):
+            result["autoCalcEstimatedPrice"] = self.auto_calc_estimated_price
         if hasattr(self, "language"):
             result["language"] = self.language
         if hasattr(self, "region"):
@@ -158,6 +163,10 @@ class PublicGetItemBySku(Operation):
 
     def with_namespace(self, value: str) -> PublicGetItemBySku:
         self.namespace = value
+        return self
+
+    def with_auto_calc_estimated_price(self, value: bool) -> PublicGetItemBySku:
+        self.auto_calc_estimated_price = value
         return self
 
     def with_language(self, value: str) -> PublicGetItemBySku:
@@ -186,6 +195,13 @@ class PublicGetItemBySku(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if (
+            hasattr(self, "auto_calc_estimated_price")
+            and self.auto_calc_estimated_price
+        ):
+            result["autoCalcEstimatedPrice"] = bool(self.auto_calc_estimated_price)
+        elif include_empty:
+            result["autoCalcEstimatedPrice"] = False
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
@@ -249,6 +265,7 @@ class PublicGetItemBySku(Operation):
         cls,
         namespace: str,
         sku: str,
+        auto_calc_estimated_price: Optional[bool] = None,
         language: Optional[str] = None,
         region: Optional[str] = None,
         store_id: Optional[str] = None,
@@ -257,6 +274,8 @@ class PublicGetItemBySku(Operation):
         instance = cls()
         instance.namespace = namespace
         instance.sku = sku
+        if auto_calc_estimated_price is not None:
+            instance.auto_calc_estimated_price = auto_calc_estimated_price
         if language is not None:
             instance.language = language
         if region is not None:
@@ -274,6 +293,13 @@ class PublicGetItemBySku(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if (
+            "autoCalcEstimatedPrice" in dict_
+            and dict_["autoCalcEstimatedPrice"] is not None
+        ):
+            instance.auto_calc_estimated_price = bool(dict_["autoCalcEstimatedPrice"])
+        elif include_empty:
+            instance.auto_calc_estimated_price = False
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -296,6 +322,7 @@ class PublicGetItemBySku(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "autoCalcEstimatedPrice": "auto_calc_estimated_price",
             "language": "language",
             "region": "region",
             "storeId": "store_id",
@@ -306,6 +333,7 @@ class PublicGetItemBySku(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "autoCalcEstimatedPrice": False,
             "language": False,
             "region": False,
             "storeId": False,

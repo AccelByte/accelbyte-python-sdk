@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.29)
+# AccelByte Gaming Services Reporting Service (0.1.30)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,11 +35,7 @@ from ...models import RestapiErrorResponse
 class DeleteTicket(Operation):
     """Delete single ticket (deleteTicket)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:TICKET [DELETE]
     This endpoint will delete ticket and all its reports.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [DELETE]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/tickets/{ticketId}

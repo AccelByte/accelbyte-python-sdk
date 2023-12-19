@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.27.1)
+# AccelByte Gaming Services Matchmaking Service (2.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -57,18 +57,8 @@ class SearchSessionsV2(Operation):
 
 
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope: social
-
     Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace & other filter (partyID, userID, matchID).
     Query with filter namespace only will not group whole session data while query with filter namespace & other filter will include session data.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /matchmaking/v2/admin/namespaces/{namespace}/sessions/history/search

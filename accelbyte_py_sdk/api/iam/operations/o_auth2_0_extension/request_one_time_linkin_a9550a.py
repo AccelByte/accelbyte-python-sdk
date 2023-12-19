@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,83 +36,30 @@ class RequestOneTimeLinkingCodeV3(Operation):
     """Generate one time linking code (RequestOneTimeLinkingCodeV3)
 
     This endpoint is being used to request the one time code [8 length] for headless account to link or upgrade to a full account.
-
-    It requires a valid user token.
-
     Should specify the target platform id and current user should already linked to this platform.
-
     Current user should be a headless account.
-
-
-
     ## Supported platforms:
-
-
-
-
-
-
-      * steam
-
-
-      * steamopenid
-
-
-      * facebook
-
-
-      * google
-
-
-      * oculus
-
-
-      * twitch
-
-
-      * discord
-
-
-      * android
-
-
-      * ios
-
-
-      * apple
-
-
-      * device
-
-
-      * justice
-
-
-      * epicgames
-
-
-      * ps4
-
-
-      * ps5
-
-
-      * nintendo
-
-
-      * awscognito
-
-
-      * live
-
-
-      * xblweb
-
-
-      * netflix
-
-
-      * snapchat
+    - **steam**
+    - **steamopenid**
+    - **facebook**
+    - **google**
+    - **oculus**
+    - **twitch**
+    - **discord**
+    - **android**
+    - **ios**
+    - **apple**
+    - **device**
+    - **justice**
+    - **epicgames**
+    - **ps4**
+    - **ps5**
+    - **nintendo**
+    - **awscognito**
+    - **live**
+    - **xblweb**
+    - **netflix**
+    - **snapchat**
 
     Properties:
         url: /iam/v3/link/code/request

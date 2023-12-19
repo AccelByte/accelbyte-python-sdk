@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.6.3)
+# AccelByte Gaming Services Iam Service (7.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,29 +32,43 @@ class ModelUserPlatformInfo(Model):
     """Model user platform info (model.UserPlatformInfo)
 
     Properties:
-        platform_display_name: (platformDisplayName) REQUIRED str
-
         platform_id: (platformId) REQUIRED str
 
-        platform_user_id: (platformUserId) REQUIRED str
+        platform_avatar_url: (platformAvatarUrl) OPTIONAL str
+
+        platform_display_name: (platformDisplayName) OPTIONAL str
+
+        platform_group: (platformGroup) OPTIONAL str
+
+        platform_user_id: (platformUserId) OPTIONAL str
     """
 
     # region fields
 
-    platform_display_name: str  # REQUIRED
     platform_id: str  # REQUIRED
-    platform_user_id: str  # REQUIRED
+    platform_avatar_url: str  # OPTIONAL
+    platform_display_name: str  # OPTIONAL
+    platform_group: str  # OPTIONAL
+    platform_user_id: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
+    def with_platform_id(self, value: str) -> ModelUserPlatformInfo:
+        self.platform_id = value
+        return self
+
+    def with_platform_avatar_url(self, value: str) -> ModelUserPlatformInfo:
+        self.platform_avatar_url = value
+        return self
+
     def with_platform_display_name(self, value: str) -> ModelUserPlatformInfo:
         self.platform_display_name = value
         return self
 
-    def with_platform_id(self, value: str) -> ModelUserPlatformInfo:
-        self.platform_id = value
+    def with_platform_group(self, value: str) -> ModelUserPlatformInfo:
+        self.platform_group = value
         return self
 
     def with_platform_user_id(self, value: str) -> ModelUserPlatformInfo:
@@ -67,14 +81,22 @@ class ModelUserPlatformInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "platform_display_name"):
-            result["platformDisplayName"] = str(self.platform_display_name)
-        elif include_empty:
-            result["platformDisplayName"] = ""
         if hasattr(self, "platform_id"):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = ""
+        if hasattr(self, "platform_avatar_url"):
+            result["platformAvatarUrl"] = str(self.platform_avatar_url)
+        elif include_empty:
+            result["platformAvatarUrl"] = ""
+        if hasattr(self, "platform_display_name"):
+            result["platformDisplayName"] = str(self.platform_display_name)
+        elif include_empty:
+            result["platformDisplayName"] = ""
+        if hasattr(self, "platform_group"):
+            result["platformGroup"] = str(self.platform_group)
+        elif include_empty:
+            result["platformGroup"] = ""
         if hasattr(self, "platform_user_id"):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
@@ -88,15 +110,23 @@ class ModelUserPlatformInfo(Model):
     @classmethod
     def create(
         cls,
-        platform_display_name: str,
         platform_id: str,
-        platform_user_id: str,
+        platform_avatar_url: Optional[str] = None,
+        platform_display_name: Optional[str] = None,
+        platform_group: Optional[str] = None,
+        platform_user_id: Optional[str] = None,
         **kwargs,
     ) -> ModelUserPlatformInfo:
         instance = cls()
-        instance.platform_display_name = platform_display_name
         instance.platform_id = platform_id
-        instance.platform_user_id = platform_user_id
+        if platform_avatar_url is not None:
+            instance.platform_avatar_url = platform_avatar_url
+        if platform_display_name is not None:
+            instance.platform_display_name = platform_display_name
+        if platform_group is not None:
+            instance.platform_group = platform_group
+        if platform_user_id is not None:
+            instance.platform_user_id = platform_user_id
         return instance
 
     @classmethod
@@ -106,14 +136,22 @@ class ModelUserPlatformInfo(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "platformDisplayName" in dict_ and dict_["platformDisplayName"] is not None:
-            instance.platform_display_name = str(dict_["platformDisplayName"])
-        elif include_empty:
-            instance.platform_display_name = ""
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = ""
+        if "platformAvatarUrl" in dict_ and dict_["platformAvatarUrl"] is not None:
+            instance.platform_avatar_url = str(dict_["platformAvatarUrl"])
+        elif include_empty:
+            instance.platform_avatar_url = ""
+        if "platformDisplayName" in dict_ and dict_["platformDisplayName"] is not None:
+            instance.platform_display_name = str(dict_["platformDisplayName"])
+        elif include_empty:
+            instance.platform_display_name = ""
+        if "platformGroup" in dict_ and dict_["platformGroup"] is not None:
+            instance.platform_group = str(dict_["platformGroup"])
+        elif include_empty:
+            instance.platform_group = ""
         if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
@@ -161,17 +199,21 @@ class ModelUserPlatformInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "platformDisplayName": "platform_display_name",
             "platformId": "platform_id",
+            "platformAvatarUrl": "platform_avatar_url",
+            "platformDisplayName": "platform_display_name",
+            "platformGroup": "platform_group",
             "platformUserId": "platform_user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "platformDisplayName": True,
             "platformId": True,
-            "platformUserId": True,
+            "platformAvatarUrl": False,
+            "platformDisplayName": False,
+            "platformGroup": False,
+            "platformUserId": False,
         }
 
     # endregion static methods
