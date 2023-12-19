@@ -143,7 +143,7 @@ def login_platform(
             x_additional_headers=x_additional_headers,
             **kwargs,
         )
-        if error is None:
+        if error:
             return None, error
 
         _, error = set_token(token=token, sdk=kwargs.get("sdk"))
@@ -433,7 +433,7 @@ async def login_platform_async(
             x_additional_headers=x_additional_headers,
             **kwargs,
         )
-        if error is None:
+        if error:
             return None, error
 
         _, error = set_token(token=token, sdk=kwargs.get("sdk"))
